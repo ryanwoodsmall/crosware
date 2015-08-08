@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# needs:
+#   downloader
+#   install symlinks
+
+jythonjar="${HOME}/downloads/jython/jython-standalone.jar"
+
+java -jar ${jythonjar} "${@}"

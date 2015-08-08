@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# needs
+#   downloader
+#   install symlinks
+
+subcmd="$(basename ${0})"
+
+jrubyjar="${HOME}/downloads/jruby/jruby-complete.jar"
+jrubyargs=""
+
+case "${subcmd}" in
+  jruby|ruby)
+    ;;
+  gem|irb|rake|rdoc|ri)
+    jrubyargs="-S ${subcmd}"
+    ;;
+  *)
+    echo "don't understand '${subcmd}'" 1>&2
+    exit 1
+    ;;
+esac
+
+if [ $# -eq 0 ] ; then
+  java -jar ${jrubyjar} ${jrubyargs}
+else
+  java -jar ${jrubyjar} ${jrubyargs} "${@}"
+fi
