@@ -10,6 +10,7 @@ Some things
 - busybox
 - byacc
 - crosstool-ng toolchain (gcc, a libc, binutils, etc.)
+- dnsmasq
 - dropbear
 - file
 - flex
