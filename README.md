@@ -35,6 +35,7 @@ Some other things
 - cmake
 - go
 - gradle
+- groovy
 - java-repl
 - jq
 - llvm / clang
@@ -47,6 +48,7 @@ Some other things
 - python
 - qemu
 - rhino
+- ringojs
 - scala
 - stunnel
 - tsocks
