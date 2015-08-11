@@ -37,7 +37,9 @@ Some other things
 - gradle
 - groovy
 - java-repl
+- jgit standalone client
 - jq
+- hg4j and client wrapper
 - llvm / clang
 - maven
 - musl
@@ -51,6 +53,7 @@ Some other things
 - ringojs
 - scala
 - stunnel
+- svnkit 
 - tsocks
 - vpnc
 - support libraries for building the above
