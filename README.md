@@ -57,4 +57,5 @@ Some other things
 - tsocks
 - vpnc
 - support libraries for building the above
+- heirloom project tools (http://heirloom.sourceforge.net/)
 - whatever else seems useful
