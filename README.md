@@ -1,7 +1,9 @@
 # crosware
-Tools, things, stuff, miscellaneous, etc., for Chrome OS / Chromium OS.
+Tools, things, stuff, miscellaneous, detritus, junk, etc., for Chrome OS / Chromium OS.
 
 Eventually this will be a development-ish environment for Chrome OS on both ARM and x86\_64.
+
+Ultimately I'd like this to be a self-hosting virtual distribution of sorts, targeting all variations of 32-/64-bit x86 and ARM on Chrome OS.
 
 It's currently just some not-even-half-lazy scripts and a config file or two.
 
@@ -19,7 +21,7 @@ Some things
 - jruby
 - jython
 - make
-- mercurial
+- mercurial / hg
 - nc / netcat
 - screen
 - socat
@@ -33,6 +35,7 @@ Some other things
 - bc/dc (gnu)
 - clojure
 - cmake
+- elinks
 - go
 - gradle
 - groovy
@@ -51,9 +54,11 @@ Some other things
 - qemu
 - rhino
 - ringojs
+- rlwrap / jline
 - scala
 - stunnel
 - svnkit 
+- tig
 - tsocks
 - vpnc
 - support libraries for building the above
