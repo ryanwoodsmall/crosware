@@ -39,14 +39,17 @@ Some other things
 - go
 - gradle
 - groovy
+- hg4j and client wrapper (dead?)
 - java-repl
 - jgit standalone client
 - jq
-- hg4j and client wrapper
+- jscheme
+- kawa
 - llvm / clang
 - maven
 - musl
 - openconnect
+- parenj / parenjs
 - pcc
 - perl
 - pkg-config
@@ -56,9 +59,11 @@ Some other things
 - ringojs
 - rlwrap / jline
 - scala
+- sisc
 - stunnel
 - svnkit 
 - tig
+- tinyscheme
 - tsocks
 - vpnc
 - support libraries for building the above
