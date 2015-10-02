@@ -42,6 +42,7 @@ Some other things
 - hg4j and client wrapper (dead?)
 - java-repl
 - jgit standalone client
+- jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
 - jq
 - jscheme
 - kawa
