@@ -35,6 +35,7 @@ Some other things
 - bc/dc (gnu)
 - clojure
 - cmake
+- dynjs
 - elinks
 - go
 - gradle
@@ -49,6 +50,8 @@ Some other things
 - llvm / clang
 - maven
 - musl
+- node / npm (ugh)
+- nodyn (dead)
 - openconnect
 - parenj / parenjs
 - pcc
