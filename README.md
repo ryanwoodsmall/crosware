@@ -30,6 +30,7 @@ Some things
 - vim (with syntax highlighting)
 
 Some other things
+- abcl (https://common-lisp.net/project/armedbear/)
 - ant
 - autoconf / automake / libtool / m4
 - bc/dc (gnu)
