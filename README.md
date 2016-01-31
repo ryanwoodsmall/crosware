@@ -46,9 +46,10 @@ Some other things
 - jgit standalone client
 - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
 - jq
-- jscheme
+- jscheme (dead)
 - kawa
 - llvm / clang
+- luaj
 - maven
 - musl
 - node / npm (ugh)
