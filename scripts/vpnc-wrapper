@@ -26,6 +26,8 @@ test -e /var/run/vpnc || mkdir -p /var/run/vpnc
 # check shill to see if we already have an interface override in place
 tr \\0 \\n < /proc/$(pgrep shill)/environ | \
   grep -q "^BLACKLISTED_DEVICES=${vpnif}$" || {
+	echo "adding ${vpnif} to shill BLACKLISTED_DEVICES"
+	echo "restarting shill"
 	stop shill
 	sleep ${sleeptime}
 	start shill BLACKLISTED_DEVICES="${vpnif}"
@@ -34,9 +36,11 @@ sleep ${sleeptime}
 
 # check for and create our vpn device
 ifconfig -a | grep -q "^${vpnif}" || {
+	echo "adding tunnel device ${vpnif} with openvpn"
 	openvpn --mktun --dev "${vpnif}"
 }
 sleep ${sleeptime}
 
 # finally run vpnc
+echo "attempting to connect to private network via vpnc"
 vpnc --ifname="${vpnif}"
