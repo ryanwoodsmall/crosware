@@ -24,6 +24,8 @@ done
 test -e /var/run/vpnc || mkdir -p /var/run/vpnc
 
 # check shill to see if we already have an interface override in place
+# XXX - this should check for .*$IF.* and _append_ if not found
+# from shill_main.cc, this should be a comma-separated list
 tr \\0 \\n < /proc/$(pgrep shill)/environ | \
   grep -q "^BLACKLISTED_DEVICES=${vpnif}$" || {
 	echo "adding ${vpnif} to shill BLACKLISTED_DEVICES"
