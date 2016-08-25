@@ -1,0 +1,42 @@
+#!/bin/bash
+
+whoami | grep -q ^root$ || {
+	echo "please run this as root (via sudo)"
+	exit 1
+}
+
+# required programs
+reqprogs="vpnc openvpn"
+# sleep time for pauses
+sleeptime="5"
+# vpn tun/tap device
+vpnif="tun0"
+
+# check for required programs
+for reqprog in ${reqprogs} ; do
+	which "${reqprog}" >/dev/null 2>&1 || {
+		echo "${i}: required program not found"
+		exit 1
+	}
+done
+
+# make our runtime directory
+test -e /var/run/vpnc || mkdir -p /var/run/vpnc
+
+# check shill to see if we already have an interface override in place
+tr \\0 \\n < /proc/$(pgrep shill)/environ | \
+  grep -q "^BLACKLISTED_DEVICES=${vpnif}$" || {
+	stop shill
+	sleep ${sleeptime}
+	start shill BLACKLISTED_DEVICES="${vpnif}"
+}
+sleep ${sleeptime}
+
+# check for and create our vpn device
+ifconfig -a | grep -q "^${vpnif}" || {
+	openvpn --mktun --dev "${vpnif}"
+}
+sleep ${sleeptime}
+
+# finally run vpnc
+vpnc --ifname="${vpnif}"
