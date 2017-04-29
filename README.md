@@ -52,6 +52,8 @@ Some other things
 - luaj
 - maven
 - musl
+- musl-cross-make
+- moreutils
 - node / npm (ugh)
 - nodyn (dead)
 - openconnect
