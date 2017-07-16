@@ -22,10 +22,10 @@ Some things
 - jython
 - make
 - mercurial / hg
-- nc / netcat
+- nc / ncat / netcat
 - screen
 - socat
-- subversion
+- subversion / svn
 - tmux
 - vim (with syntax highlighting)
 
@@ -33,9 +33,10 @@ Some other things
 - abcl (https://common-lisp.net/project/armedbear/)
 - ant
 - autoconf / automake / libtool / m4
-- bc/dc (gnu)
+- bc / dc (gnu)
 - clojure
 - cmake
+- cvs
 - dynjs
 - elinks
 - go
@@ -43,6 +44,7 @@ Some other things
 - groovy
 - hg4j and client wrapper (dead?)
 - java-repl
+- jcvs
 - jgit standalone client
 - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
 - jq
@@ -52,7 +54,7 @@ Some other things
 - luaj
 - maven
 - musl
-- musl-cross-make
+- musl-cross-make (static only?)
 - moreutils
 - node / npm (ugh)
 - nodyn (dead)
@@ -70,6 +72,7 @@ Some other things
 - sisc
 - stunnel
 - svnkit 
+- tcc
 - tig
 - tinyscheme
 - tsocks
