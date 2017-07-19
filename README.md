@@ -9,7 +9,7 @@ It's currently just some not-even-half-lazy scripts and a config file or two.
 
 Some things
 - bison
-- busybox
+- busybox (static)
 - byacc
 - crosstool-ng toolchain (gcc, a libc, binutils, etc.)
 - dnsmasq
@@ -17,7 +17,7 @@ Some things
 - file
 - flex
 - git
-- java
+- java (oracle or zulu openjdk?)
 - jruby
 - jython
 - make
@@ -70,6 +70,8 @@ Some other things
 - rlwrap / jline
 - scala
 - sisc
+- spidermonkey
+- spidernode
 - stunnel
 - svnkit 
 - tcc
