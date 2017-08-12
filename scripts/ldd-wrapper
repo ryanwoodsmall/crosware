@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [[ ${#} -le 0 ]] ; then
+  echo "ldd: missing file arguments" 1>&2
+  exit 1
+fi
+
+test ${#} -gt 1 && echoname=1 || echoname=0
+
+# XXX - need to test on
+#  - 32-bit intel
+#  - 64-bit intel
+#  - 32-bit arm
+#  - 64-bit arm
+# linker is almost certainly different
+ldarch="$(uname -m | tr '_' '-')"
+lddir="lib"
+uname -m | grep -q 64$ && lddir+="64"
+
+for p in ${@} ; do
+  test -e "${p}" || {
+    echo "ldd: ${p}: No such file or directory" 1>&2
+    exit 1
+  }
+  test ${echoname} -eq 1 && echo "${p}:"
+  LD_TRACE_LOADED_OBJECTS=1 /${lddir}/ld-linux-${ldarch}.so.2 "${p}"
+done
