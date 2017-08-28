@@ -51,14 +51,18 @@ Some other things
 - jscheme (dead)
 - kawa
 - llvm / clang
+- libressl
 - luaj
+- lynx
 - maven
 - musl
 - musl-cross-make (static only?)
 - moreutils
+- ncurses
 - node / npm (ugh)
 - nodyn (dead)
 - openconnect
+- openssl
 - parenj / parenjs
 - pcc
 - perl
@@ -70,6 +74,7 @@ Some other things
 - rlwrap / jline
 - scala
 - sisc
+- slang
 - spidermonkey
 - spidernode
 - stunnel
