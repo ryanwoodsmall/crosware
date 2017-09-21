@@ -71,6 +71,7 @@ Some other things:
 - go
 - gradle
 - groovy
+- heimdal
 - hg4j and client wrapper (dead?)
 - java-repl
 - jcvs
@@ -80,6 +81,7 @@ Some other things:
 - jscheme (dead)
 - kawa
 - llvm / clang
+- libedit
 - libressl
 - libtool
 - links (ncurses)
@@ -88,8 +90,9 @@ Some other things:
 - m4
 - maven
 - mg (https://homepage.boetes.org/software/mg/)
-- musl
 - moreutils
+- musl
+- mutt
 - ncurses
 - node / npm (ugh)
 - nodyn (dead)
@@ -103,6 +106,7 @@ Some other things:
 - python
 - qemacs (https://bellard.org/qemacs/)
 - qemu
+- readline
 - rhino
 - ringojs
 - rlwrap
