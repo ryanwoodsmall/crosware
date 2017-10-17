@@ -55,7 +55,7 @@ Some things:
 - vim (with syntax highlighting)
 
 Some other things:
-- abcl (https://common-lisp.net/project/armedbear/)
+- abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - ant
 - antlr
 - at&t ast
@@ -79,7 +79,7 @@ Some other things:
 - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
 - jq
 - jscheme (dead)
-- kawa
+- kawa (scheme)
 - llvm / clang
 - libedit
 - libressl
@@ -107,11 +107,12 @@ Some other things:
 - qemacs (https://bellard.org/qemacs/)
 - qemu
 - readline
+- rembulan (lua)
 - rhino
 - ringojs
 - rlwrap
 - scala
-- sisc
+- sisc (scheme)
 - slang
 - spidermonkey
 - spidernode
