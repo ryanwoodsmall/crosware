@@ -94,6 +94,7 @@ Some other things:
 - musl
 - mutt
 - ncurses
+- netbsd-curses (sabotage https://github.com/sabotage-linux/netbsd-curses)
 - node / npm (ugh)
 - nodyn (dead)
 - openconnect
