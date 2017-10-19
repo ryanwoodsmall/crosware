@@ -78,6 +78,7 @@ Some other things:
 - cvs
 - dynjs
 - elinks (old, deprecated)
+- gc (http://www.hboehm.info/gc/)
 - go
 - gradle
 - groovy
@@ -134,6 +135,7 @@ Some other things:
 - tinyscheme
 - tsocks
 - vpnc
+- w3m (or fork)
 - support libraries for building the above
 - heirloom project tools (http://heirloom.sourceforge.net/)
 - whatever else seems useful
