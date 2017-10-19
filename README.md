@@ -8,7 +8,7 @@ Ultimately I'd like this to be a self-hosting virtual distribution of sorts, tar
 - get static bootstrapped compiler
 - checkout rest of project
 - build GNU make (v3, no perl)
-- build native busybox (if I don't distributed one)
+- build native busybox (if I don't distribute one)
 - build a few libs / support (ncurses, openssl, slang, zlib, bzip2, lzma, libevent, pkg-config) 
 - build a few packages (curl, vim w/syntax, tmux, links, lynx - mostly because I use them)
 
