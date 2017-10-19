@@ -102,7 +102,7 @@ Some other things:
 - parenj / parenjs
 - pcc
 - perl
-- plan9port (without x11...)
+- plan9port (without x11) and/or 9base (https://tools.suckless.org/9base)
 - pkg-config
 - python
 - qemacs (https://bellard.org/qemacs/)
