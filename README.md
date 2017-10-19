@@ -22,6 +22,11 @@ Environment stuff to figure out how to handle:
 
 This is currently just some notes, not-even-half-lazy scripts, and a config file or two.
 
+Alpine and Sabotage are good sources of inspiration and patches:
+
+- Alpine: https://alpinelinux.org/ and git: https://git.alpinelinux.org/
+- Sabotage: http://sabotage.tech/ and git: https://github.com/sabotage-linux/sabotage/
+
 Chromebrew looks nice and exists now: (https://github.com/skycocker/chromebrew)
 
 Mes might be useful at some point.
