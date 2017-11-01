@@ -113,7 +113,7 @@ Some other things:
 - parenj / parenjs
 - pcc
 - perl
-- plan9port (without x11) and/or 9base (https://tools.suckless.org/9base)
+- plan9port (without x11)
 - pkg-config
 - python
 - qemacs (https://bellard.org/qemacs/)
@@ -129,6 +129,7 @@ Some other things:
 - spidermonkey
 - spidernode
 - stunnel
+- suckless 9base (https://tools.suckless.org/9base), sbase (https://core.suckless.org/sbase), ubase (https://core.suckless.org/ubase)
 - svnkit 
 - tcc
 - tig
