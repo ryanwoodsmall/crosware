@@ -62,6 +62,7 @@ Some things:
 - socat
 - subversion / svn
 - tmux
+- toybox (static)
 - vim (with syntax highlighting)
 
 Some other things:
