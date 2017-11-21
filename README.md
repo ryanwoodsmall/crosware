@@ -110,6 +110,7 @@ Some other things:
 - node / npm (ugh)
 - nodyn (dead)
 - openconnect
+- opennc (openbsd netcat http://systhread.net/coding/opennc.php)
 - openssl
 - parenj / parenjs
 - pcc
