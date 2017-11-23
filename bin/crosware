@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#
+# XXX
+#  - canonical arch
+#  - java arch
+#  - top directory
+#  - files to source w/path, compiler vars, pkg-config, etc.
+#
+
+# exit early, exit often
+set -eu
+
+echo "nothing to see here yet"
