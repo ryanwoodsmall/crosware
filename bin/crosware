@@ -2,10 +2,35 @@
 
 #
 # XXX
+#  - check that we're running as root
+#  - top directory (/usr/local/crosware)
+#    - software install dir (/usr/local/crosware/software/packagename-vX.Y.Z)
+#    - download dir (/usr/local/crosware/download or ~/Downloads)
+#    - build dir (/usr/local/crosware/build)
+#    - current/previous symlinks for versioned installs
+#    - ignore directories with generated files (path, cpp/ld flags, ...)
+#    - ignore software install dir
+#    - ignore 
+#  - what will a "reboostrap" do?
 #  - canonical arch
+#    - use static "toybox file" to figure out?
 #  - java arch
-#  - top directory
+#  - all(?) aarch64 chrome os machines are using 32-bit armv7l userland (for arm chrome pepper/flash?)
+#    - jdk will need to be arm on aarch64
 #  - files to source w/path, compiler vars, pkg-config, etc.
+#    - top-level etc/profile to source
+#    - sources an etc/local and/or etc/local.d with shell snippets (obvious, local settings)
+#    - reads in generated shell snippets (one per package) to set:
+#      - PATH (etc/paths.d)
+#      - CC, CXX, CFLAGS, CXXFLAGS, CPPFLAGS, LDFLAGS (etc/cppflags.d, etc/ldflags.d, ...)
+#      - PKG_CONFIG_PATH, PKG_CONFIG_LIBDIR (etc/pkg-config.d)
+#  - bash shell stuff
+#    - make sure we're not sourced ($0 vs ${BASH_SOURCE...)
+#    - make sure we're using bash v4
+#  - dependencies and dependants (maybe?)
+#    - simple directory of files with pkgname.dependents, pkgname.dependencies
+#  - install must chase down upstream deps
+#  - update may require downstream dep updates
 #
 
 # exit early, exit often
