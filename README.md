@@ -32,6 +32,10 @@ Alpine and Sabotage are good sources of inspiration and patches:
 - Alpine: https://alpinelinux.org/ and git: https://git.alpinelinux.org/
 - Sabotage: http://sabotage.tech/ and git: https://github.com/sabotage-linux/sabotage/
 
+And the musl wiki has some pointers:
+
+- https://wiki.musl-libc.org/compatibility.html#Software-compatibility,-patches-and-build-instructions
+
 Mes might be useful at some point.
 
 - https://gitlab.com/janneke/mes
