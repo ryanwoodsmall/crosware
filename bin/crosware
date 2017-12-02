@@ -134,12 +134,13 @@ declare -A zulu_jdk_dir zulu_jdk_file zulu_jdk_url
 for supported_arch in ${supported_arches[@]} ; do
 	if [[ ${supported_arch} =~ ^x86_64$ ]] ; then
 		zulu_jdk_dir[${supported_arch}]="zulu${zulu_jdk_ver[${supported_arch}]}-linux_${zulu_jdk_arch[${supported_arch}]}"
-		zulu_jdk_url[${supported_arch}]="http://cdn.azul.com/zulu/bin/${zulu_jdk_file[${supported_arch}]}"
+		zulu_jdk_base_url="http://cdn.azul.com/zulu/bin"
 	elif [[ ${supported_arch} =~ ^a(rmv|arch) ]] ; then
 		zulu_jdk_dir[${supported_arch}]="ezdk-${zulu_jdk_ver[${supported_arch}]}-eval-linux_${zulu_jdk_arch[${supported_arch}]}"
-		zulu_jdk_url[${supported_arch}]="http://cdn.azul.com/zulu-embedded/bin/${zulu_jdk_file[${supported_arch}]}"
+		zulu_jdk_base_url="http://cdn.azul.com/zulu-embedded/bin"
 	fi
 	zulu_jdk_file[${supported_arch}]="${zulu_jdk_dir[${supported_arch}]}.tar.gz"
+	zulu_jdk_url[${supported_arch}]="${zulu_jdk_base_url}/${zulu_jdk_file[${supported_arch}]}"
 done
 
 echo "nothing to see here yet"
