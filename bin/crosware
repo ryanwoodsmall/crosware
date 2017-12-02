@@ -30,6 +30,10 @@
 #  - update may require downstream dep updates
 #
 
+#
+# shell feature and usage check
+#
+
 # make sure we're using bash and not sourced
 if [ -z "${BASH_SOURCE}" -o "${0}" != "${BASH_SOURCE}" ] ; then
 	echo "please execute this script instead of sourcing it"
@@ -48,13 +52,17 @@ fi
 # exit early, exit often
 set -eu
 
+#
+# supported architecture check
+#
+
 # architecture names and support
-supported_archs=( aarch64 armv6l armv7l x86_64 )
+supported_arches=( aarch64 armv6l armv7l x86_64 )
 karch="$(uname -m)"
 
 # be somewhat strict about supported architectures
 supported=0
-for supported_arch in ${supported_archs[@]} ; do
+for supported_arch in ${supported_arches[@]} ; do
 	if [[ ${karch} =~ ^${supported_arch}$ ]] ; then
 		supported=1
 	fi
@@ -63,6 +71,10 @@ if [ ${supported} -eq 0 ] ; then
 	echo "architecture ${karch} not yet supported"
 	exit 1
 fi
+
+#
+# userspace vs kernel architecture check
+#
 
 # userspace may be different than kernel, i.e., 32-bit arm on 64-bit aarch64
 # we'll use the first chunk of bash $MACHTYPE environment variable
@@ -90,5 +102,44 @@ if [[ ${bash_arch} =~ ^arm ]] ; then
 	fi
 fi
 uarch="${bash_arch}"
+
+#
+# zulu jdk setup (for bootstrap)
+#
+
+# zulu jdk arch map
+# XXX - arm 32-bit hard float assumption, again
+declare -A zulu_jdk_arch
+zulu_jdk_arch["aarch64"]="aarch64"
+zulu_jdk_arch["armv6l"]="aarch32hf"
+zulu_jdk_arch["armv7l"]="aarch32hf"
+zulu_jdk_arch["x86_64"]="x64"
+
+# zulu jdk version map
+declare -A zulu_jdk_ver
+zulu_jdk_ver["aarch64"]="1.8.0_152-8.25.0.79"
+zulu_jdk_ver["armv6l"]="1.8.0_152-8.25.0.76"
+zulu_jdk_ver["armv7l"]="1.8.0_152-8.25.0.76"
+zulu_jdk_ver["x86_64"]="8.25.0.1-jdk8.0.152"
+
+# zulu jdk file sha256sum
+declare -A zulu_jdk_sha256sum
+zulu_jdk_sha256sum["aarch64"]="45997b734a0d3ec5035b836f8c235d291c677547811704e3c62f656ee943cdc8"
+zulu_jdk_sha256sum["armv6l"]="a7bc9f9edd1cf60aad51b9c6b93c8dcf49af87891b8de5d7982d0d97bfb43636"
+zulu_jdk_sha256sum["armv7l"]="a7bc9f9edd1cf60aad51b9c6b93c8dcf49af87891b8de5d7982d0d97bfb43636"
+zulu_jdk_sha256sum["x86_64"]="57911a136fedc476a8b505d00c364913bf4cf5b7a50ef6913334362bc219e21a"
+
+# zulu directory, file, and url map
+declare -A zulu_jdk_dir zulu_jdk_file zulu_jdk_url
+for supported_arch in ${supported_arches[@]} ; do
+	if [[ ${supported_arch} =~ ^x86_64$ ]] ; then
+		zulu_jdk_dir[${supported_arch}]="zulu${zulu_jdk_ver[${supported_arch}]}-linux_${zulu_jdk_arch[${supported_arch}]}"
+		zulu_jdk_url[${supported_arch}]="http://cdn.azul.com/zulu/bin/${zulu_jdk_file[${supported_arch}]}"
+	elif [[ ${supported_arch} =~ ^a(rmv|arch) ]] ; then
+		zulu_jdk_dir[${supported_arch}]="ezdk-${zulu_jdk_ver[${supported_arch}]}-eval-linux_${zulu_jdk_arch[${supported_arch}]}"
+		zulu_jdk_url[${supported_arch}]="http://cdn.azul.com/zulu-embedded/bin/${zulu_jdk_file[${supported_arch}]}"
+	fi
+	zulu_jdk_file[${supported_arch}]="${zulu_jdk_dir[${supported_arch}]}.tar.gz"
+done
 
 echo "nothing to see here yet"
