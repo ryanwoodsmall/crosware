@@ -66,15 +66,28 @@ fi
 
 # userspace may be different than kernel, i.e., 32-bit arm on 64-bit aarch64
 # we'll use the first chunk of bash $MACHTYPE environment variable
-# it will be something like (on chrome os):
-#   x86_64-cros-linux-gnu
-#   armv7a-cros-linux-gnu
+# it will be something like:
+#   x86_64-cros-linux-gnu (x86_64 chrome os)
+#   armv7a-cros-linux-gnu (armv7l and aarch64 chrome os with 32-bit userspace)
+#   arm-unknown-linux-gnueabihf (armv7l (armv6l?) 32-bit debian/ubuntu/raspbian)
+#   arm-unknown-linux-gnueabi (armv7l 32-bit debian?)
+#   aarch64-unknown-linux-gnu (aarch64 full 64-bit debian/ubuntu)
+#   aarch64-alpine-linux-musl (aarch64 full 64-bit alpine)
+#   armv6-alpine-linux-musleabihf (armv6/armv7 32-bit alpine)
+#   x86_64-generic-linux-gnu (intel clear linux)
+#   x86_64-pc-linux-gnu (x86_64 debian/ubuntu)
+#   x86_64-redhat-linux-gnu (x86_64 centos/rhel/fedora)
 #   ...
 # transform arm or armv7a to armv7l for parity with "uname -m"
-# this assumes aarch64/x86_64 
+# XXX - this assumes aarch64/x86_64 return the "right" $MACHTYPE
+# XXX - this assumes we have hardware float on armv6/v7
 bash_arch="${MACHTYPE%%-*}"
 if [[ ${bash_arch} =~ ^arm ]] ; then
-	bash_arch="${bash_arch/#arm*/$(uname -m)}"
+	if [[ ${karch} =~ ^aarch64 ]] ; then
+		bash_arch="armv7l"
+	elif [[ ${karch} =~ ^armv(6|7) ]] ; then
+		bash_arch="${bash_arch/#arm*/$(uname -m)}"
+	fi
 fi
 uarch="${bash_arch}"
 
