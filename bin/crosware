@@ -24,14 +24,26 @@
 #      - PATH (etc/paths.d)
 #      - CC, CXX, CFLAGS, CXXFLAGS, CPPFLAGS, LDFLAGS (etc/cppflags.d, etc/ldflags.d, ...)
 #      - PKG_CONFIG_PATH, PKG_CONFIG_LIBDIR (etc/pkg-config.d)
-#  - bash shell stuff
-#    - make sure we're not sourced ($0 vs ${BASH_SOURCE...)
-#    - make sure we're using bash v4
 #  - dependencies and dependants (maybe?)
 #    - simple directory of files with pkgname.dependents, pkgname.dependencies
 #  - install must chase down upstream deps
 #  - update may require downstream dep updates
 #
+
+# make sure we're using bash and not sourced
+if [ -z "${BASH_SOURCE}" -o "${0}" != "${BASH_SOURCE}" ] ; then
+	echo "please execute this script instead of sourcing it"
+	if [ "${0}" != "${BASH_SOURCE}" ] ; then
+		return
+	fi
+	exit 1
+fi
+
+# check that we're using bash 4
+if [ ${BASH_VERSINFO[0]} -lt 4 ] ; then
+	echo "please make sure GNU Bash 4+ is in use"
+	exit 1
+fi
 
 # exit early, exit often
 set -eu
