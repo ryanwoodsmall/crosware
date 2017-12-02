@@ -48,4 +48,20 @@ fi
 # exit early, exit often
 set -eu
 
+# architecture names
+supported_archs=( aarch64 armv7l x86_64 )
+myarch="$(uname -m)"
+
+# be somewhat strict about supported architectures
+supported=0
+for supported_arch in ${supported_archs[@]} ; do
+	if [[ ${myarch} =~ ^${supported_arch}$ ]] ; then
+		supported=1
+	fi
+done
+if [ ${supported} -eq 0 ] ; then
+	echo "architecture ${myarch} not yet supported"
+	exit 1
+fi
+
 echo "nothing to see here yet"
