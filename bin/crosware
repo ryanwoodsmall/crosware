@@ -48,20 +48,34 @@ fi
 # exit early, exit often
 set -eu
 
-# architecture names
-supported_archs=( aarch64 armv7l x86_64 )
-myarch="$(uname -m)"
+# architecture names and support
+supported_archs=( aarch64 armv6l armv7l x86_64 )
+karch="$(uname -m)"
 
 # be somewhat strict about supported architectures
 supported=0
 for supported_arch in ${supported_archs[@]} ; do
-	if [[ ${myarch} =~ ^${supported_arch}$ ]] ; then
+	if [[ ${karch} =~ ^${supported_arch}$ ]] ; then
 		supported=1
 	fi
 done
 if [ ${supported} -eq 0 ] ; then
-	echo "architecture ${myarch} not yet supported"
+	echo "architecture ${karch} not yet supported"
 	exit 1
 fi
+
+# userspace may be different than kernel, i.e., 32-bit arm on 64-bit aarch64
+# we'll use the first chunk of bash $MACHTYPE environment variable
+# it will be something like (on chrome os):
+#   x86_64-cros-linux-gnu
+#   armv7a-cros-linux-gnu
+#   ...
+# transform arm or armv7a to armv7l for parity with "uname -m"
+# this assumes aarch64/x86_64 
+bash_arch="${MACHTYPE%%-*}"
+if [[ ${bash_arch} =~ ^arm ]] ; then
+	bash_arch="${bash_arch/#arm*/$(uname -m)}"
+fi
+uarch="${bash_arch}"
 
 echo "nothing to see here yet"
