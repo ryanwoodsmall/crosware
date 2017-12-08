@@ -28,6 +28,9 @@
 #    - simple directory of files with pkgname.dependents, pkgname.dependencies
 #  - install must chase down upstream deps
 #  - update may require downstream dep updates
+#  - etc/local.d - scriptlets, not tracked in git
+#  - var/ - track installs/versions
+#  - use_local_java - env var to avoid dl/use of zulu during bootstrap
 #
 
 #
