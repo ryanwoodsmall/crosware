@@ -58,13 +58,27 @@ set -eu
 # XXX - wget, curl, ...
 
 #
+# where we live
+#
+# XXX - default to /usr/local/crosware but allow override (that may or may not work)
+: ${cwtop:="/usr/local/crosware"}
+export cwtop
+export cwbuild="${cwtop}/builds"
+export cwddl="${cwtop}/downloads"
+export cwetc="${cwtop}/etc"
+export cwsw="${cwtop}/software"
+export cwtmp="${cwtop}/tmp"
+
+# we'll use this for bootstrap since /tmp may be mounted noexec
+tmptmp="/usr/local/tmp"
+
+#
 # supported architecture check
 #
 
 # architecture names and support
 supported_arches=( aarch64 armv6l armv7l x86_64 )
-karch="$(uname -m)"
-export karch
+export karch="$(uname -m)"
 
 # be somewhat strict about supported architectures
 supported=0
@@ -99,8 +113,8 @@ fi
 # transform arm or armv7a to armv7l for parity with "uname -m"
 # XXX - this assumes aarch64/x86_64 return the "right" $MACHTYPE
 # XXX - this assumes we have hardware float on armv6/v7
+export bash_triplet="${MACHTYPE}"
 bash_arch="${MACHTYPE%%-*}"
-export bash_arch
 if [[ ${bash_arch} =~ ^arm ]] ; then
 	if [[ ${karch} =~ ^aarch64 ]] ; then
 		bash_arch="armv7l"
@@ -108,8 +122,7 @@ if [[ ${bash_arch} =~ ^arm ]] ; then
 		bash_arch="${bash_arch/#arm*/$(uname -m)}"
 	fi
 fi
-uarch="${bash_arch}"
-export uarch
+export uarch="${bash_arch}"
 
 #
 # zulu jdk setup (for bootstrap)
