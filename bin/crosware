@@ -133,6 +133,9 @@ export uarch="${bash_arch}"
 
 # XXX - zulu jdk arch will be uarch
 
+# basic zulu vars
+zulu_inst_dir="zulu"
+
 # zulu jdk arch map
 # XXX - arm 32-bit hard float assumption, again
 declare -A zulu_jdk_arch
@@ -174,6 +177,13 @@ done
 #
 
 # XXX - will need to make sure java tmpdir is set
+# https://repo.eclipse.org/content/groups/releases/org/eclipse/jgit/org.eclipse.jgit.pgm/4.9.1.201712030800-r/org.eclipse.jgit.pgm-4.9.1.201712030800-r.sh
+jgitsh_ver="4.9.1.201712030800-r"
+jgitsh_file="org.eclipse.jgit.pgm-${jgitsh_ver}.sh"
+jgitsh_url="https://repo.eclipse.org/content/groups/releases/org/eclipse/jgit/org.eclipse.jgit.pgm/${jgitsh_ver}/${jgitsh_file}"
+jgitsh_sha256sum="0b2b613cf1cdc5066c812edf83250c32e7dbb37cb169d9802d398d5b8aef6452"
+jgitsh_symlink="jgit.sh"
+jgitsh_inst_dir="jgit"
 
 #
 # static compiler bootstrap
