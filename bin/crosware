@@ -53,12 +53,18 @@ fi
 set -eu
 
 #
+# prereqs
+#
+# XXX - wget, curl, ...
+
+#
 # supported architecture check
 #
 
 # architecture names and support
 supported_arches=( aarch64 armv6l armv7l x86_64 )
 karch="$(uname -m)"
+export karch
 
 # be somewhat strict about supported architectures
 supported=0
@@ -68,7 +74,7 @@ for supported_arch in ${supported_arches[@]} ; do
 	fi
 done
 if [ ${supported} -eq 0 ] ; then
-	echo "architecture ${karch} not yet supported"
+	echo "architecture ${karch} not supported"
 	exit 1
 fi
 
@@ -94,6 +100,7 @@ fi
 # XXX - this assumes aarch64/x86_64 return the "right" $MACHTYPE
 # XXX - this assumes we have hardware float on armv6/v7
 bash_arch="${MACHTYPE%%-*}"
+export bash_arch
 if [[ ${bash_arch} =~ ^arm ]] ; then
 	if [[ ${karch} =~ ^aarch64 ]] ; then
 		bash_arch="armv7l"
@@ -102,10 +109,13 @@ if [[ ${bash_arch} =~ ^arm ]] ; then
 	fi
 fi
 uarch="${bash_arch}"
+export uarch
 
 #
 # zulu jdk setup (for bootstrap)
 #
+
+# XXX - zulu jdk arch will be uarch
 
 # zulu jdk arch map
 # XXX - arm 32-bit hard float assumption, again
@@ -141,6 +151,48 @@ for supported_arch in ${supported_arches[@]} ; do
 	fi
 	zulu_jdk_file[${supported_arch}]="${zulu_jdk_dir[${supported_arch}]}.tar.gz"
 	zulu_jdk_url[${supported_arch}]="${zulu_jdk_base_url}/${zulu_jdk_file[${supported_arch}]}"
+done
+
+#
+# jgit
+#
+
+# XXX - will need to make sure java tmpdir is set
+
+#
+# static compiler bootstrap
+#
+
+# XXX - compiler arch will be karch/uname -m
+
+# common static compiler release/tag, archive, and url
+static_compiler_archive_ext="tar.bz2"
+static_compiler_checksum_ext="sha256"
+static_compiler_release="20171207"
+static_compiler_base_url="https://github.com/ryanwoodsmall/musl-misc/releases/download"
+static_compiler_release_url="${static_compiler_base_url}/${static_compiler_release}"
+
+# architecture to musl triplet
+declare -A static_compiler_triplet
+static_compiler_triplet["aarch64"]="aarch64-linux-musl"
+static_compiler_triplet["armv6l"]="arm-linux-musleabihf"
+static_compiler_triplet["armv7l"]="arm-linux-musleabihf"
+static_compiler_triplet["x86_64"]="x86_64-linux-musl"
+
+# architecture to release prefix
+declare -A static_compiler_prefix
+static_compiler_prefix["aarch64"]="20171207083535"
+static_compiler_prefix["armv6l"]="20171207083535"
+static_compiler_prefix["armv7l"]="20171207083535"
+static_compiler_prefix["x86_64"]="20171207083535"
+
+# architecture to filename, urls and sha256 file
+declare -A static_compiler_file static_compiler_checksum static_compiler_file_url static_compiler_checksum_url
+for supported_arch in ${supported_arches[@]} ; do
+	static_compiler_file[${supported_arch}]="${static_compiler_prefix[${supported_arch}]}-${static_compiler_triplet[${supported_arch}]}.${static_compiler_archive_ext}"
+	static_compiler_checksum[${supported_arch}]="${static_compiler_file[${supported_arch}]}.${static_compiler_checksum_ext}"
+	static_compiler_file_url[${supported_arch}]="${static_compiler_release_url}/${static_compiler_file[${supported_arch}]}"
+	static_compiler_checksum_url[${supported_arch}]="${static_compiler_release_url}/${static_compiler_checksum[${supported_arch}]}"
 done
 
 echo "nothing to see here yet"
