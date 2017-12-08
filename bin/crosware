@@ -182,33 +182,35 @@ done
 # XXX - compiler arch will be karch/uname -m
 
 # common static compiler release/tag, archive, and url
-static_compiler_archive_ext="tar.bz2"
-static_compiler_checksum_ext="sha256"
-static_compiler_release="20171207"
-static_compiler_base_url="https://github.com/ryanwoodsmall/musl-misc/releases/download"
-static_compiler_release_url="${static_compiler_base_url}/${static_compiler_release}"
+static_toolchain_archive_ext="tar.bz2"
+static_toolchain_checksum_ext="sha256"
+static_toolchain_release="20171207"
+static_toolchain_base_url="https://github.com/ryanwoodsmall/musl-misc/releases/download"
+static_toolchain_release_url="${static_toolchain_base_url}/${static_toolchain_release}"
+static_toolchain_inst_dir="${cwsw}/static-toolchain"
 
 # architecture to musl triplet
-declare -A static_compiler_triplet
-static_compiler_triplet["aarch64"]="aarch64-linux-musl"
-static_compiler_triplet["armv6l"]="arm-linux-musleabihf"
-static_compiler_triplet["armv7l"]="arm-linux-musleabihf"
-static_compiler_triplet["x86_64"]="x86_64-linux-musl"
+declare -A static_toolchain_triplet
+static_toolchain_triplet["aarch64"]="aarch64-linux-musl"
+static_toolchain_triplet["armv6l"]="arm-linux-musleabihf"
+static_toolchain_triplet["armv7l"]="arm-linux-musleabihf"
+static_toolchain_triplet["x86_64"]="x86_64-linux-musl"
 
 # architecture to release prefix
-declare -A static_compiler_prefix
-static_compiler_prefix["aarch64"]="20171207083535"
-static_compiler_prefix["armv6l"]="20171207083535"
-static_compiler_prefix["armv7l"]="20171207083535"
-static_compiler_prefix["x86_64"]="20171207083535"
+declare -A static_toolchain_prefix
+static_toolchain_prefix["aarch64"]="20171207083535"
+static_toolchain_prefix["armv6l"]="20171207083535"
+static_toolchain_prefix["armv7l"]="20171207083535"
+static_toolchain_prefix["x86_64"]="20171207083535"
 
-# architecture to filename, urls and sha256 file
-declare -A static_compiler_file static_compiler_checksum static_compiler_file_url static_compiler_checksum_url
+# architecture to filename, urls, sha256 file, dir, ...
+declare -A static_toolchain_file static_toolchain_checksum static_toolchain_file_url static_toolchain_checksum_url static_toolchain_dir
 for supported_arch in ${supported_arches[@]} ; do
-	static_compiler_file[${supported_arch}]="${static_compiler_prefix[${supported_arch}]}-${static_compiler_triplet[${supported_arch}]}.${static_compiler_archive_ext}"
-	static_compiler_checksum[${supported_arch}]="${static_compiler_file[${supported_arch}]}.${static_compiler_checksum_ext}"
-	static_compiler_file_url[${supported_arch}]="${static_compiler_release_url}/${static_compiler_file[${supported_arch}]}"
-	static_compiler_checksum_url[${supported_arch}]="${static_compiler_release_url}/${static_compiler_checksum[${supported_arch}]}"
+	static_toolchain_file[${supported_arch}]="${static_toolchain_prefix[${supported_arch}]}-${static_toolchain_triplet[${supported_arch}]}.${static_toolchain_archive_ext}"
+	static_toolchain_checksum[${supported_arch}]="${static_toolchain_file[${supported_arch}]}.${static_toolchain_checksum_ext}"
+	static_toolchain_file_url[${supported_arch}]="${static_toolchain_release_url}/${static_toolchain_file[${supported_arch}]}"
+	static_toolchain_checksum_url[${supported_arch}]="${static_toolchain_release_url}/${static_toolchain_checksum[${supported_arch}]}"
+	static_toolchain_dir[${supported_arch}]="${static_toolchain_prefix[${supported_arch}]}-${static_toolchain_triplet[${supported_arch}]}"
 done
 
 echo "nothing to see here yet"
