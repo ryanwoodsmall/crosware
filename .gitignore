@@ -1,0 +1,8 @@
+/builds/*
+!/builds/crosware_directory_not_tracked_in_git
+/downloads/*
+!/downloads/crosware_directory_not_tracked_in_git
+/software/*
+!/software/crosware_directory_not_tracked_in_git
+/tmp/*
+!/tmp/crosware_directory_not_tracked_in_git
