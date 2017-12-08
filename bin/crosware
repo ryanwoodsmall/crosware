@@ -72,6 +72,9 @@ export cwtmp="${cwtop}/tmp"
 # we'll use this for bootstrap since /tmp may be mounted noexec
 tmptmp="/usr/local/tmp"
 
+# temp dir permissions
+tmpperm="1777"
+
 #
 # supported architecture check
 #
