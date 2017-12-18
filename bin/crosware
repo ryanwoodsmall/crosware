@@ -58,7 +58,14 @@ set -eu
 #
 # prereqs
 #
-# XXX - wget, curl, ...
+# XXX - curl, ... wget? what else?
+prereqs=( curl )
+for prereq in ${prereqs[@]} ; do
+	which "${prereq}" >/dev/null 2>&1 || {
+		echo "${prereq} not found"
+		exit 1
+	}
+done
 
 #
 # where we live
@@ -73,10 +80,11 @@ export cwsw="${cwtop}/software"
 export cwtmp="${cwtop}/tmp"
 
 # we'll use this for bootstrap since /tmp may be mounted noexec
-tmptmp="/usr/local/tmp"
+: ${tmptmp:="/usr/local/tmp"}
+export tmptmp
 
 # temp dir permissions
-tmpperm="1777"
+export tmpperm="1777"
 
 #
 # supported architecture check
