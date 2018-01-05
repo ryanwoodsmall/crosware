@@ -17,6 +17,8 @@
 #  - java arch
 #  - all(?) aarch64 chrome os machines are using 32-bit armv7l userland (for arm chrome pepper/flash?)
 #    - jdk will need to be arm on aarch64
+#  - handle armv8l 32-bit compat on aarch64
+#  - handle i686 (?) (no current, supported chrome os devices are 32-bit)
 #  - files to source w/path, compiler vars, pkg-config, etc.
 #    - top-level etc/profile to source
 #    - sources an etc/local and/or etc/local.d with shell snippets (obvious, local settings)
@@ -91,7 +93,7 @@ export tmpperm="1777"
 #
 
 # architecture names and support
-supported_arches=( aarch64 armv6l armv7l x86_64 )
+supported_arches=( aarch64 armv6l armv7l armv8l x86_64 )
 export karch="$(uname -m)"
 
 # be somewhat strict about supported architectures
@@ -132,7 +134,7 @@ bash_arch="${MACHTYPE%%-*}"
 if [[ ${bash_arch} =~ ^arm ]] ; then
 	if [[ ${karch} =~ ^aarch64 ]] ; then
 		bash_arch="armv7l"
-	elif [[ ${karch} =~ ^armv(6|7) ]] ; then
+	elif [[ ${karch} =~ ^armv(6|7|8) ]] ; then
 		bash_arch="${bash_arch/#arm*/$(uname -m)}"
 	fi
 fi
@@ -153,6 +155,7 @@ declare -A zulu_jdk_arch
 zulu_jdk_arch["aarch64"]="aarch64"
 zulu_jdk_arch["armv6l"]="aarch32hf"
 zulu_jdk_arch["armv7l"]="aarch32hf"
+zulu_jdk_arch["armv8l"]="aarch32hf"
 zulu_jdk_arch["x86_64"]="x64"
 
 # zulu jdk version map
@@ -160,6 +163,7 @@ declare -A zulu_jdk_ver
 zulu_jdk_ver["aarch64"]="1.8.0_152-8.25.0.79"
 zulu_jdk_ver["armv6l"]="1.8.0_152-8.25.0.76"
 zulu_jdk_ver["armv7l"]="1.8.0_152-8.25.0.76"
+zulu_jdk_ver["armv8l"]="1.8.0_152-8.25.0.76"
 zulu_jdk_ver["x86_64"]="8.25.0.1-jdk8.0.152"
 
 # zulu jdk file sha256sum
@@ -167,6 +171,7 @@ declare -A zulu_jdk_sha256sum
 zulu_jdk_sha256sum["aarch64"]="45997b734a0d3ec5035b836f8c235d291c677547811704e3c62f656ee943cdc8"
 zulu_jdk_sha256sum["armv6l"]="a7bc9f9edd1cf60aad51b9c6b93c8dcf49af87891b8de5d7982d0d97bfb43636"
 zulu_jdk_sha256sum["armv7l"]="a7bc9f9edd1cf60aad51b9c6b93c8dcf49af87891b8de5d7982d0d97bfb43636"
+zulu_jdk_sha256sum["armv8l"]="a7bc9f9edd1cf60aad51b9c6b93c8dcf49af87891b8de5d7982d0d97bfb43636"
 zulu_jdk_sha256sum["x86_64"]="57911a136fedc476a8b505d00c364913bf4cf5b7a50ef6913334362bc219e21a"
 
 # zulu directory, file, and url map
@@ -215,6 +220,7 @@ declare -A static_toolchain_triplet
 static_toolchain_triplet["aarch64"]="aarch64-linux-musl"
 static_toolchain_triplet["armv6l"]="arm-linux-musleabihf"
 static_toolchain_triplet["armv7l"]="arm-linux-musleabihf"
+static_toolchain_triplet["armv8l"]="arm-linux-musleabihf"
 static_toolchain_triplet["x86_64"]="x86_64-linux-musl"
 
 # architecture to release prefix
@@ -222,6 +228,7 @@ declare -A static_toolchain_prefix
 static_toolchain_prefix["aarch64"]="20171207083535"
 static_toolchain_prefix["armv6l"]="20171207083535"
 static_toolchain_prefix["armv7l"]="20171207083535"
+static_toolchain_prefix["armv8l"]="20171207083535"
 static_toolchain_prefix["x86_64"]="20171207083535"
 
 # architecture to filename, urls, sha256 file, dir, ...
