@@ -18,7 +18,9 @@
 #  - all(?) aarch64 chrome os machines are using 32-bit armv7l userland (for arm chrome pepper/flash?)
 #    - jdk will need to be arm on aarch64
 #  - handle armv8l 32-bit compat on aarch64
-#  - handle i686 (?) (no current, supported chrome os devices are 32-bit)
+#  - handle i386 (?)
+#    - no current, supported chrome os devices are 32-bit
+#    - maybe grab neverware cloudready 32b for testing?
 #  - files to source w/path, compiler vars, pkg-config, etc.
 #    - top-level etc/profile to source
 #    - sources an etc/local and/or etc/local.d with shell snippets (obvious, local settings)
