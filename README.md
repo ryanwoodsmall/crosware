@@ -14,14 +14,14 @@ Ultimately I'd like this to be a self-hosting virtual distribution of sorts, tar
 
 Environment stuff to figure out how to handle:
 
-- PATH
-- PKG_CONFIG_LIBDIR/PKG_CONFIG_PATH
-- CC
-- CFLAGS
-- CPP
-- CPPFLAGS
-- CXX
-- LDFLAGS
+- ```PATH```
+- ```PKG_CONFIG_LIBDIR/PKG_CONFIG_PATH```
+- ```CC```
+- ```CFLAGS```
+- ```CPP```
+- ```CPPFLAGS```
+- ```CXX```
+- ```LDFLAGS```
 
 This is currently just some notes, not-even-half-lazy scripts, and a config file or two.
 
@@ -118,6 +118,7 @@ Some other things:
 - openssl
 - parenj / parenjs
 - pcc
+- pcre
 - perl
 - plan9port (without x11)
 - pkg-config
