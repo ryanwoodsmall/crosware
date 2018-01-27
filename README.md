@@ -89,7 +89,7 @@ Some other things:
 - groovy
 - heimdal
 - hg4j and client wrapper (dead?)
-- hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc , https://gist.github.com/ryanwoodsmall/8d56113b8708971cfb6eaf291024820a)
+- hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
 - java-repl
 - jcvs
 - jline

@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#
+# download hterm utils for the chromium/chrome terminal emulator to /usr/local
+#
+
+htudir="/usr/local/bin"
+htubaseurl="https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc"
+htufiles=( hterm-notify.sh hterm-show-file.sh osc52.sh )
+
+echo "${UID}" | grep -q '^0$' || {
+  echo "please run this as root"
+  exit 1
+}
+
+test -e "${htudir}" || {
+  mkdir -p "${htudir}" || {
+    echo "could not create directory ${htudir}"
+    exit 1
+  }
+}
+
+for htufile in ${htufiles[@]} ; do
+  htuurl="${htubaseurl}/${htufile}?format=TEXT"
+  htuout="${htudir}/${htufile}"
+  echo "downloading ${htuurl} to ${htuout}"
+  curl -kLs "${htuurl}" | base64 -d > "${htuout}"
+  chmod 755 "${htuout}"
+done
