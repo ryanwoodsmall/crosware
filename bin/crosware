@@ -43,17 +43,17 @@
 
 # make sure we're using bash and not sourced
 if [ -z "${BASH_SOURCE}" -o "${0}" != "${BASH_SOURCE}" ] ; then
-	echo "please execute this script instead of sourcing it"
-	if [ "${0}" != "${BASH_SOURCE}" ] ; then
-		return
-	fi
-	exit 1
+  echo "please execute this script instead of sourcing it"
+  if [ "${0}" != "${BASH_SOURCE}" ] ; then
+    return
+  fi
+  exit 1
 fi
 
 # check that we're using bash 4
 if [ ${BASH_VERSINFO[0]} -lt 4 ] ; then
-	echo "please make sure GNU Bash 4+ is in use"
-	exit 1
+  echo "please make sure GNU Bash 4+ is in use"
+  exit 1
 fi
 
 # exit early, exit often
@@ -65,10 +65,10 @@ set -eu
 # XXX - curl, ... wget? what else?
 prereqs=( curl )
 for prereq in ${prereqs[@]} ; do
-	which "${prereq}" >/dev/null 2>&1 || {
-		echo "${prereq} not found"
-		exit 1
-	}
+  which "${prereq}" >/dev/null 2>&1 || {
+    echo "${prereq} not found"
+    exit 1
+  }
 done
 
 #
@@ -101,13 +101,13 @@ export karch="$(uname -m)"
 # be somewhat strict about supported architectures
 supported=0
 for supported_arch in ${supported_arches[@]} ; do
-	if [[ ${karch} =~ ^${supported_arch}$ ]] ; then
-		supported=1
-	fi
+  if [[ ${karch} =~ ^${supported_arch}$ ]] ; then
+    supported=1
+  fi
 done
 if [ ${supported} -eq 0 ] ; then
-	echo "architecture ${karch} not supported"
-	exit 1
+  echo "architecture ${karch} not supported"
+  exit 1
 fi
 
 #
@@ -134,11 +134,11 @@ fi
 export bash_triplet="${MACHTYPE}"
 bash_arch="${MACHTYPE%%-*}"
 if [[ ${bash_arch} =~ ^arm ]] ; then
-	if [[ ${karch} =~ ^aarch64 ]] ; then
-		bash_arch="armv7l"
-	elif [[ ${karch} =~ ^armv(6|7|8) ]] ; then
-		bash_arch="${bash_arch/#arm*/$(uname -m)}"
-	fi
+  if [[ ${karch} =~ ^aarch64 ]] ; then
+    bash_arch="armv7l"
+  elif [[ ${karch} =~ ^armv(6|7|8) ]] ; then
+    bash_arch="${bash_arch/#arm*/$(uname -m)}"
+  fi
 fi
 export uarch="${bash_arch}"
 
@@ -179,15 +179,15 @@ zulu_jdk_sha256sum["x86_64"]="57911a136fedc476a8b505d00c364913bf4cf5b7a50ef69133
 # zulu directory, file, and url map
 declare -A zulu_jdk_dir zulu_jdk_file zulu_jdk_url
 for supported_arch in ${supported_arches[@]} ; do
-	if [[ ${supported_arch} =~ ^x86_64$ ]] ; then
-		zulu_jdk_dir[${supported_arch}]="zulu${zulu_jdk_ver[${supported_arch}]}-linux_${zulu_jdk_arch[${supported_arch}]}"
-		zulu_jdk_base_url="http://cdn.azul.com/zulu/bin"
-	elif [[ ${supported_arch} =~ ^a(rmv|arch) ]] ; then
-		zulu_jdk_dir[${supported_arch}]="ezdk-${zulu_jdk_ver[${supported_arch}]}-eval-linux_${zulu_jdk_arch[${supported_arch}]}"
-		zulu_jdk_base_url="http://cdn.azul.com/zulu-embedded/bin"
-	fi
-	zulu_jdk_file[${supported_arch}]="${zulu_jdk_dir[${supported_arch}]}.tar.gz"
-	zulu_jdk_url[${supported_arch}]="${zulu_jdk_base_url}/${zulu_jdk_file[${supported_arch}]}"
+  if [[ ${supported_arch} =~ ^x86_64$ ]] ; then
+    zulu_jdk_dir[${supported_arch}]="zulu${zulu_jdk_ver[${supported_arch}]}-linux_${zulu_jdk_arch[${supported_arch}]}"
+    zulu_jdk_base_url="http://cdn.azul.com/zulu/bin"
+  elif [[ ${supported_arch} =~ ^a(rmv|arch) ]] ; then
+    zulu_jdk_dir[${supported_arch}]="ezdk-${zulu_jdk_ver[${supported_arch}]}-eval-linux_${zulu_jdk_arch[${supported_arch}]}"
+    zulu_jdk_base_url="http://cdn.azul.com/zulu-embedded/bin"
+  fi
+  zulu_jdk_file[${supported_arch}]="${zulu_jdk_dir[${supported_arch}]}.tar.gz"
+  zulu_jdk_url[${supported_arch}]="${zulu_jdk_base_url}/${zulu_jdk_file[${supported_arch}]}"
 done
 
 #
@@ -236,11 +236,11 @@ static_toolchain_prefix["x86_64"]="20171207083535"
 # architecture to filename, urls, sha256 file, dir, ...
 declare -A static_toolchain_file static_toolchain_checksum static_toolchain_file_url static_toolchain_checksum_url static_toolchain_dir
 for supported_arch in ${supported_arches[@]} ; do
-	static_toolchain_file[${supported_arch}]="${static_toolchain_prefix[${supported_arch}]}-${static_toolchain_triplet[${supported_arch}]}.${static_toolchain_archive_ext}"
-	static_toolchain_checksum[${supported_arch}]="${static_toolchain_file[${supported_arch}]}.${static_toolchain_checksum_ext}"
-	static_toolchain_file_url[${supported_arch}]="${static_toolchain_release_url}/${static_toolchain_file[${supported_arch}]}"
-	static_toolchain_checksum_url[${supported_arch}]="${static_toolchain_release_url}/${static_toolchain_checksum[${supported_arch}]}"
-	static_toolchain_dir[${supported_arch}]="${static_toolchain_prefix[${supported_arch}]}-${static_toolchain_triplet[${supported_arch}]}"
+  static_toolchain_file[${supported_arch}]="${static_toolchain_prefix[${supported_arch}]}-${static_toolchain_triplet[${supported_arch}]}.${static_toolchain_archive_ext}"
+  static_toolchain_checksum[${supported_arch}]="${static_toolchain_file[${supported_arch}]}.${static_toolchain_checksum_ext}"
+  static_toolchain_file_url[${supported_arch}]="${static_toolchain_release_url}/${static_toolchain_file[${supported_arch}]}"
+  static_toolchain_checksum_url[${supported_arch}]="${static_toolchain_release_url}/${static_toolchain_checksum[${supported_arch}]}"
+  static_toolchain_dir[${supported_arch}]="${static_toolchain_prefix[${supported_arch}]}-${static_toolchain_triplet[${supported_arch}]}"
 done
 
 echo "nothing to see here yet"
