@@ -38,6 +38,14 @@
 #
 
 #
+# we'll use this everywhere
+#
+function failexit() {
+  echo "${1}"
+  exit 1
+}
+
+#
 # shell feature and usage check
 #
 
@@ -52,8 +60,7 @@ fi
 
 # check that we're using bash 4
 if [ ${BASH_VERSINFO[0]} -lt 4 ] ; then
-  echo "please make sure GNU Bash 4+ is in use"
-  exit 1
+  failexit "please make sure GNU Bash 4+ is in use"
 fi
 
 # exit early, exit often
@@ -62,12 +69,11 @@ set -eu
 #
 # prereqs
 #
-# XXX - curl, ... wget? what else?
-prereqs=( curl )
+# XXX - curl, ... wget? what else? check for tls/ssl support?
+prereqs=( curl wget )
 for prereq in ${prereqs[@]} ; do
   which "${prereq}" >/dev/null 2>&1 || {
-    echo "${prereq} not found"
-    exit 1
+    failexit "${prereq} not found"
   }
 done
 
@@ -106,8 +112,7 @@ for supported_arch in ${supported_arches[@]} ; do
   fi
 done
 if [ ${supported} -eq 0 ] ; then
-  echo "architecture ${karch} not supported"
-  exit 1
+  failexit "architecture ${karch} not supported"
 fi
 
 #
@@ -141,6 +146,10 @@ if [[ ${bash_arch} =~ ^arm ]] ; then
   fi
 fi
 export uarch="${bash_arch}"
+
+#
+# bootstrap vars
+#
 
 #
 # zulu jdk setup (for bootstrap)
@@ -242,5 +251,16 @@ for supported_arch in ${supported_arches[@]} ; do
   static_toolchain_checksum_url[${supported_arch}]="${static_toolchain_release_url}/${static_toolchain_checksum[${supported_arch}]}"
   static_toolchain_dir[${supported_arch}]="${static_toolchain_prefix[${supported_arch}]}-${static_toolchain_triplet[${supported_arch}]}"
 done
+
+#
+# check and make our temporary temporary directory
+#
+function mktmptmp() {
+  if [ ! -e "${tmptmp}" ] ; then
+    mkdir -p "${tmptmp}" || failexit "could not create ${tmptmp}"
+    chmod "${tmpperm}" "${tmptmp}"
+  fi
+  test -e "${tmptmp}" || failexit "${tmptmp} still doesn't exist"
+}
 
 echo "nothing to see here yet"
