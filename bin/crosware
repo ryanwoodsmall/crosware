@@ -101,7 +101,7 @@ export tmpperm="1777"
 #
 
 # architecture names and support
-supported_arches=( aarch64 armv6l armv7l armv8l x86_64 )
+supported_arches=( aarch64 armv6l armv7l armv8l i686 x86_64 )
 export karch="$(uname -m)"
 
 # be somewhat strict about supported architectures
@@ -132,6 +132,9 @@ fi
 #   x86_64-generic-linux-gnu (intel clear linux)
 #   x86_64-pc-linux-gnu (x86_64 debian/ubuntu)
 #   x86_64-redhat-linux-gnu (x86_64 centos/rhel/fedora)
+#   i586-alpine-linux-musl (x86 alpine)
+#   i686-pc-linux-gnu (i686 debian/ubuntu)
+#   i386-redhat-linux-gnu (i686 centos)
 #   ...
 # transform arm or armv7a to armv7l for parity with "uname -m"
 # XXX - this assumes aarch64/x86_64 return the "right" $MACHTYPE
@@ -144,6 +147,8 @@ if [[ ${bash_arch} =~ ^arm ]] ; then
   elif [[ ${karch} =~ ^armv(6|7|8) ]] ; then
     bash_arch="${bash_arch/#arm*/$(uname -m)}"
   fi
+elif [[ ${bash_arch} =~ ^i.86 ]] ; then
+  bash_arch="i686"
 fi
 export uarch="${bash_arch}"
 
@@ -167,6 +172,7 @@ zulu_jdk_arch["aarch64"]="aarch64"
 zulu_jdk_arch["armv6l"]="aarch32hf"
 zulu_jdk_arch["armv7l"]="aarch32hf"
 zulu_jdk_arch["armv8l"]="aarch32hf"
+zulu_jdk_arch["i686"]="i686"
 zulu_jdk_arch["x86_64"]="x64"
 
 # zulu jdk version map
@@ -175,6 +181,7 @@ zulu_jdk_ver["aarch64"]="1.8.0_152-8.25.0.79"
 zulu_jdk_ver["armv6l"]="1.8.0_152-8.25.0.76"
 zulu_jdk_ver["armv7l"]="1.8.0_152-8.25.0.76"
 zulu_jdk_ver["armv8l"]="1.8.0_152-8.25.0.76"
+zulu_jdk_ver["i686"]="8.25.0.3-jdk8.0.153"
 zulu_jdk_ver["x86_64"]="8.25.0.1-jdk8.0.152"
 
 # zulu jdk file sha256sum
@@ -183,12 +190,13 @@ zulu_jdk_sha256sum["aarch64"]="45997b734a0d3ec5035b836f8c235d291c677547811704e3c
 zulu_jdk_sha256sum["armv6l"]="a7bc9f9edd1cf60aad51b9c6b93c8dcf49af87891b8de5d7982d0d97bfb43636"
 zulu_jdk_sha256sum["armv7l"]="a7bc9f9edd1cf60aad51b9c6b93c8dcf49af87891b8de5d7982d0d97bfb43636"
 zulu_jdk_sha256sum["armv8l"]="a7bc9f9edd1cf60aad51b9c6b93c8dcf49af87891b8de5d7982d0d97bfb43636"
+zulu_jdk_sha256sum["i686"]="1a12eae6d8497ec001d1fbbc7dad68d1c2c687d52cf28671b427ff788c1c6ef8"
 zulu_jdk_sha256sum["x86_64"]="57911a136fedc476a8b505d00c364913bf4cf5b7a50ef6913334362bc219e21a"
 
 # zulu directory, file, and url map
 declare -A zulu_jdk_dir zulu_jdk_file zulu_jdk_url
 for supported_arch in ${supported_arches[@]} ; do
-  if [[ ${supported_arch} =~ ^x86_64$ ]] ; then
+  if [[ ${supported_arch} =~ ^(i686|x86_64)$ ]] ; then
     zulu_jdk_dir[${supported_arch}]="zulu${zulu_jdk_ver[${supported_arch}]}-linux_${zulu_jdk_arch[${supported_arch}]}"
     zulu_jdk_base_url="http://cdn.azul.com/zulu/bin"
   elif [[ ${supported_arch} =~ ^a(rmv|arch) ]] ; then
@@ -221,7 +229,7 @@ jgitsh_inst_dir="jgit"
 # common static compiler release/tag, archive, and url
 static_toolchain_archive_ext="tar.bz2"
 static_toolchain_checksum_ext="sha256"
-static_toolchain_release="20171207"
+static_toolchain_release="20180207"
 static_toolchain_base_url="https://github.com/ryanwoodsmall/musl-misc/releases/download"
 static_toolchain_release_url="${static_toolchain_base_url}/${static_toolchain_release}"
 static_toolchain_inst_dir="${cwsw}/static-toolchain"
@@ -232,15 +240,17 @@ static_toolchain_triplet["aarch64"]="aarch64-linux-musl"
 static_toolchain_triplet["armv6l"]="arm-linux-musleabihf"
 static_toolchain_triplet["armv7l"]="arm-linux-musleabihf"
 static_toolchain_triplet["armv8l"]="arm-linux-musleabihf"
+static_toolchain_triplet["i686"]="i686-linux-musl"
 static_toolchain_triplet["x86_64"]="x86_64-linux-musl"
 
 # architecture to release prefix
 declare -A static_toolchain_prefix
-static_toolchain_prefix["aarch64"]="20171207083535"
-static_toolchain_prefix["armv6l"]="20171207083535"
-static_toolchain_prefix["armv7l"]="20171207083535"
-static_toolchain_prefix["armv8l"]="20171207083535"
-static_toolchain_prefix["x86_64"]="20171207083535"
+static_toolchain_prefix["aarch64"]="201802070242"
+static_toolchain_prefix["armv6l"]="201802070242"
+static_toolchain_prefix["armv7l"]="201802070242"
+static_toolchain_prefix["armv8l"]="201802070242"
+static_toolchain_prefix["i686"]="201802070242"
+static_toolchain_prefix["x86_64"]="201802070242"
 
 # architecture to filename, urls, sha256 file, dir, ...
 declare -A static_toolchain_file static_toolchain_checksum static_toolchain_file_url static_toolchain_checksum_url static_toolchain_dir
