@@ -35,6 +35,8 @@
 #  - etc/local.d - scriptlets, not tracked in git
 #  - var/ - track installs/versions
 #  - use_local_java - env var to avoid dl/use of zulu during bootstrap
+#  - jgit.sh doesn't have "jgit.sh pull" shortcut; use:
+#    - jgit.sh fetch origin ; jgit.sh merge origin/master
 #
 
 #
@@ -182,7 +184,7 @@ zulu_jdk_ver["armv6l"]="1.8.0_152-8.25.0.76"
 zulu_jdk_ver["armv7l"]="1.8.0_152-8.25.0.76"
 zulu_jdk_ver["armv8l"]="1.8.0_152-8.25.0.76"
 zulu_jdk_ver["i686"]="8.25.0.3-jdk8.0.153"
-zulu_jdk_ver["x86_64"]="8.25.0.1-jdk8.0.152"
+zulu_jdk_ver["x86_64"]="8.27.0.7-jdk8.0.162"
 
 # zulu jdk file sha256sum
 declare -A zulu_jdk_sha256sum
@@ -191,7 +193,7 @@ zulu_jdk_sha256sum["armv6l"]="a7bc9f9edd1cf60aad51b9c6b93c8dcf49af87891b8de5d798
 zulu_jdk_sha256sum["armv7l"]="a7bc9f9edd1cf60aad51b9c6b93c8dcf49af87891b8de5d7982d0d97bfb43636"
 zulu_jdk_sha256sum["armv8l"]="a7bc9f9edd1cf60aad51b9c6b93c8dcf49af87891b8de5d7982d0d97bfb43636"
 zulu_jdk_sha256sum["i686"]="1a12eae6d8497ec001d1fbbc7dad68d1c2c687d52cf28671b427ff788c1c6ef8"
-zulu_jdk_sha256sum["x86_64"]="57911a136fedc476a8b505d00c364913bf4cf5b7a50ef6913334362bc219e21a"
+zulu_jdk_sha256sum["x86_64"]="8940e6e12a326ede65e55a0fd3815387862e3fa42684eb49cb3b52fbde8b0c4f"
 
 # zulu directory, file, and url map
 declare -A zulu_jdk_dir zulu_jdk_file zulu_jdk_url
