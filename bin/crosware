@@ -72,7 +72,7 @@ set -eu
 # prereqs
 #
 # XXX - curl, ... wget? what else? check for tls/ssl support?
-prereqs=( curl wget )
+prereqs=( curl sha256sum wget )
 for prereq in ${prereqs[@]} ; do
   which "${prereq}" >/dev/null 2>&1 || {
     failexit "${prereq} not found"
