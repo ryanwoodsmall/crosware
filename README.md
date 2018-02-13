@@ -44,6 +44,10 @@ Mes might be useful at some point.
 
 Regarding compilers, the GCC 4.7 series is the last version written in C; subsequent versions have moved to C++. GCC 4.x isn't even on life support anymore - i.e., it's dead - but distributing a C-only build system with no C++ support has a masochistic appeal to me.
 
+Newer static musl compilers (GCC 6+) are "done:"
+
+- https://github.com/ryanwoodsmall/musl-misc/releases
+
 Some things:
 - bison
 - busybox (static)
@@ -126,6 +130,7 @@ Some other things:
 - python
 - qemacs (https://bellard.org/qemacs/)
 - qemu
+- rc (https://github.com/rakitzis/rc)
 - readline
 - rembulan (jvm lua)
 - rhino
@@ -137,7 +142,10 @@ Some other things:
 - spidermonkey
 - spidernode
 - stunnel
-- suckless 9base (https://tools.suckless.org/9base), sbase (https://core.suckless.org/sbase), ubase (https://core.suckless.org/ubase)
+- suckless
+  - 9base (https://tools.suckless.org/9base)
+  - sbase (https://core.suckless.org/sbase)
+  - ubase (https://core.suckless.org/ubase)
 - svnkit 
 - tcc
 - tig
