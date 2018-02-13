@@ -45,12 +45,12 @@
 #
 scriptname="$(basename ${0})"
 
-function scriptecho() {
+function cwscriptecho() {
   echo -e "${scriptname}: ${1}"
 }
 
-function failexit() {
-  scriptecho "${1}"
+function cwfailexit() {
+  cwscriptecho "${1}"
   exit 1
 }
 
@@ -69,7 +69,7 @@ fi
 
 # check that we're using bash 4
 if [ ${BASH_VERSINFO[0]} -lt 4 ] ; then
-  failexit "please make sure GNU Bash 4+ is in use"
+  cwfailexit "please make sure GNU Bash 4+ is in use"
 fi
 
 # exit early, exit often
@@ -82,7 +82,7 @@ set -eu
 prereqs=( curl sha256sum wget )
 for prereq in ${prereqs[@]} ; do
   which "${prereq}" >/dev/null 2>&1 || {
-    failexit "${prereq} not found"
+    cwfailexit "${prereq} not found"
   }
 done
 
@@ -130,7 +130,7 @@ for supported_arch in ${supported_arches[@]} ; do
   fi
 done
 if [ ${supported} -eq 0 ] ; then
-  failexit "architecture ${karch} not supported"
+  cwfailexit "architecture ${karch} not supported"
 fi
 
 #
@@ -285,46 +285,46 @@ done
 #
 function mktmptmp() {
   if [ ! -e "${tmptmp}" ] ; then
-    mkdir -p "${tmptmp}" || failexit "could not create ${tmptmp}"
+    mkdir -p "${tmptmp}" || cwfailexit "could not create ${tmptmp}"
     chmod "${tmpperm}" "${tmptmp}"
   fi
-  test -e "${tmptmp}" || failexit "${tmptmp} still doesn't exist"
+  test -e "${tmptmp}" || cwfailexit "${tmptmp} still doesn't exist"
 }
 
 #
-# fetch
+# cwfetch
 #   receives:
 #     url to download
 #     full path to save file to
-function fetch() {
+function cwfetch() {
   local downloadurl="${1}"
   local targetfile="${2}"
-  scriptecho "downloading ${downloadurl} to ${targetfile}"
+  cwscriptecho "downloading ${downloadurl} to ${targetfile}"
   curl ${copts} -o "${targetfile}" "${downloadurl}"
   if [ "${?}" -eq 0 ] ; then
-    scriptecho "successfully downloaded ${downloadurl} to ${targetfile}"
+    cwscriptecho "successfully downloaded ${downloadurl} to ${targetfile}"
     return 0
   else
-    failexit "curl failed for ${downloadurl}"
+    cwfailexit "curl failed for ${downloadurl}"
     return 1
   fi
 }
 
 #
-# checksha256sum
+# cwchecksha256sum
 #   receives:
 #     full path to file to check
 #     sha256sum for comparison
-function checksha256sum() {
+function cwchecksha256sum() {
   local checkfile="${1}"
   local storedsha256sum="${2}"
-  scriptecho "checking sha256sum for ${checkfile}"
+  cwscriptecho "checking sha256sum for ${checkfile}"
   local sha256sum="$(sha256sum ${checkfile} | awk '{print $1}')"
   if [ "${storedsha256sum}" == "${sha256sum}" ] ; then
-    scriptecho "sha256 checksum succeeded for ${checkfile}"
+    cwscriptecho "sha256 checksum succeeded for ${checkfile}"
     return 0
   else
-    failexit "sha256 checksum failed for ${checkfile}"
+    cwfailexit "sha256 checksum failed for ${checkfile}"
     return 1
   fi
 }
@@ -334,25 +334,25 @@ function checksha256sum() {
 #
 function bootstrap() {
   # check if we're already bootstrapped and fetch/merge if we are
-  scriptecho "bootstrapping"
+  cwscriptecho "bootstrapping"
   # make sure we have a tmp directory
   mktmptmp
   # architecture specfic toolchain checksum file
   local statictoolchainchecksumfile="${tmptmp}/${static_toolchain_checksum_file[${uarch}]}"
-  fetch "${static_toolchain_checksum_url[${uarch}]}" "${statictoolchainchecksumfile}"
+  cwfetch "${static_toolchain_checksum_url[${uarch}]}" "${statictoolchainchecksumfile}"
   local statictoolchainchecksum="$(awk '{print $1}' ${statictoolchainchecksumfile})"
   # static toolchain
   local statictoolchainarchive="${tmptmp}/${static_toolchain_file[${uarch}]}"
-  fetch "${static_toolchain_file_url[${uarch}]}" "${statictoolchainarchive}"
-  checksha256sum "${statictoolchainarchive}" "${statictoolchainchecksum}"
+  cwfetch "${static_toolchain_file_url[${uarch}]}" "${statictoolchainarchive}"
+  cwchecksha256sum "${statictoolchainarchive}" "${statictoolchainchecksum}"
   # zulu
   local zuluarchive="${tmptmp}/${zulu_jdk_file[${uarch}]}"
-  fetch "${zulu_jdk_url[${uarch}]}" "${zuluarchive}"
-  checksha256sum "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}"
+  cwfetch "${zulu_jdk_url[${uarch}]}" "${zuluarchive}"
+  cwchecksha256sum "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}"
   # jgit
   local jgitsh="${tmptmp}/${jgitsh_file}"
-  fetch "${jgitsh_url}" "${jgitsh}"
-  checksha256sum "${jgitsh}" "${jgitsh_sha256sum}"
+  cwfetch "${jgitsh_url}" "${jgitsh}"
+  cwchecksha256sum "${jgitsh}" "${jgitsh_sha256sum}"
 }
 
-scriptecho "nothing to see here yet"
+cwscriptecho "nothing to see here yet"
