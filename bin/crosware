@@ -4,7 +4,8 @@
 # XXX
 #  - check that we're running as root
 #  - top directory (/usr/local/crosware)
-#    - software install dir (/usr/local/crosware/software/packagename-vX.Y.Z)
+#    - will need to checkout repo in $(dirname ${cwtop})
+#    - software install dir (/usr/local/crosware/software/packagename/packagename-vX.Y.Z)
 #    - download dir (/usr/local/crosware/download or ~/Downloads)
 #    - build dir (/usr/local/crosware/build)
 #    - current/previous symlinks for versioned installs
@@ -40,10 +41,16 @@
 #
 
 #
-# we'll use this everywhere
+# we'll use these everywhere
 #
+scriptname="$(basename ${0})"
+
+function scriptecho() {
+  echo -e "${scriptname}: ${1}"
+}
+
 function failexit() {
-  echo "${1}"
+  scriptecho "${1}"
   exit 1
 }
 
@@ -78,6 +85,15 @@ for prereq in ${prereqs[@]} ; do
     failexit "${prereq} not found"
   }
 done
+
+#
+# common opts
+#
+# curl
+#  XXX
+#   -s for silent downloads?
+#   -f for fail on http error
+copts=" -f -k -L "
 
 #
 # where we live
@@ -165,7 +181,7 @@ export uarch="${bash_arch}"
 # XXX - zulu jdk arch will be uarch
 
 # basic zulu vars
-zulu_inst_dir="zulu"
+zulu_inst_dir="${cwsw}/zulu"
 
 # zulu jdk arch map
 # XXX - arm 32-bit hard float assumption, again
@@ -220,7 +236,7 @@ jgitsh_file="org.eclipse.jgit.pgm-${jgitsh_ver}.sh"
 jgitsh_url="https://repo.eclipse.org/content/groups/releases/org/eclipse/jgit/org.eclipse.jgit.pgm/${jgitsh_ver}/${jgitsh_file}"
 jgitsh_sha256sum="76305c50c934f05838d876604a474b188b6b7a374aa87923eb5803028fcf8cd9"
 jgitsh_symlink="jgit.sh"
-jgitsh_inst_dir="jgit"
+jgitsh_inst_dir="${cwsw}/jgit"
 
 #
 # static compiler bootstrap
@@ -255,12 +271,12 @@ static_toolchain_prefix["i686"]="201802070242"
 static_toolchain_prefix["x86_64"]="201802070242"
 
 # architecture to filename, urls, sha256 file, dir, ...
-declare -A static_toolchain_file static_toolchain_checksum static_toolchain_file_url static_toolchain_checksum_url static_toolchain_dir
+declare -A static_toolchain_file static_toolchain_checksum static_toolchain_checksum_file static_toolchain_file_url static_toolchain_checksum_url static_toolchain_dir
 for supported_arch in ${supported_arches[@]} ; do
   static_toolchain_file[${supported_arch}]="${static_toolchain_prefix[${supported_arch}]}-${static_toolchain_triplet[${supported_arch}]}.${static_toolchain_archive_ext}"
-  static_toolchain_checksum[${supported_arch}]="${static_toolchain_file[${supported_arch}]}.${static_toolchain_checksum_ext}"
+  static_toolchain_checksum_file[${supported_arch}]="${static_toolchain_file[${supported_arch}]}.${static_toolchain_checksum_ext}"
   static_toolchain_file_url[${supported_arch}]="${static_toolchain_release_url}/${static_toolchain_file[${supported_arch}]}"
-  static_toolchain_checksum_url[${supported_arch}]="${static_toolchain_release_url}/${static_toolchain_checksum[${supported_arch}]}"
+  static_toolchain_checksum_url[${supported_arch}]="${static_toolchain_release_url}/${static_toolchain_checksum_file[${supported_arch}]}"
   static_toolchain_dir[${supported_arch}]="${static_toolchain_prefix[${supported_arch}]}-${static_toolchain_triplet[${supported_arch}]}"
 done
 
@@ -275,4 +291,68 @@ function mktmptmp() {
   test -e "${tmptmp}" || failexit "${tmptmp} still doesn't exist"
 }
 
-echo "nothing to see here yet"
+#
+# fetch
+#   receives:
+#     url to download
+#     full path to save file to
+function fetch() {
+  local downloadurl="${1}"
+  local targetfile="${2}"
+  scriptecho "downloading ${downloadurl} to ${targetfile}"
+  curl ${copts} -o "${targetfile}" "${downloadurl}"
+  if [ "${?}" -eq 0 ] ; then
+    scriptecho "successfully downloaded ${downloadurl} to ${targetfile}"
+    return 0
+  else
+    failexit "curl failed for ${downloadurl}"
+    return 1
+  fi
+}
+
+#
+# checksha256sum
+#   receives:
+#     full path to file to check
+#     sha256sum for comparison
+function checksha256sum() {
+  local checkfile="${1}"
+  local storedsha256sum="${2}"
+  scriptecho "checking sha256sum for ${checkfile}"
+  local sha256sum="$(sha256sum ${checkfile} | awk '{print $1}')"
+  if [ "${storedsha256sum}" == "${sha256sum}" ] ; then
+    scriptecho "sha256 checksum succeeded for ${checkfile}"
+    return 0
+  else
+    failexit "sha256 checksum failed for ${checkfile}"
+    return 1
+  fi
+}
+
+#
+# bootstrap
+#
+function bootstrap() {
+  # check if we're already bootstrapped and fetch/merge if we are
+  scriptecho "bootstrapping"
+  # make sure we have a tmp directory
+  mktmptmp
+  # architecture specfic toolchain checksum file
+  local statictoolchainchecksumfile="${tmptmp}/${static_toolchain_checksum_file[${uarch}]}"
+  fetch "${static_toolchain_checksum_url[${uarch}]}" "${statictoolchainchecksumfile}"
+  local statictoolchainchecksum="$(awk '{print $1}' ${statictoolchainchecksumfile})"
+  # static toolchain
+  local statictoolchainarchive="${tmptmp}/${static_toolchain_file[${uarch}]}"
+  fetch "${static_toolchain_file_url[${uarch}]}" "${statictoolchainarchive}"
+  checksha256sum "${statictoolchainarchive}" "${statictoolchainchecksum}"
+  # zulu
+  local zuluarchive="${tmptmp}/${zulu_jdk_file[${uarch}]}"
+  fetch "${zulu_jdk_url[${uarch}]}" "${zuluarchive}"
+  checksha256sum "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}"
+  # jgit
+  local jgitsh="${tmptmp}/${jgitsh_file}"
+  fetch "${jgitsh_url}" "${jgitsh}"
+  checksha256sum "${jgitsh}" "${jgitsh_sha256sum}"
+}
+
+scriptecho "nothing to see here yet"
