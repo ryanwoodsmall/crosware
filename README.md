@@ -32,7 +32,15 @@ Alpine and Sabotage are good sources of inspiration and patches:
 - Alpine: https://alpinelinux.org/ and git: https://git.alpinelinux.org/
 - Sabotage: http://sabotage.tech/ and git: https://github.com/sabotage-linux/sabotage/
 
-And the musl wiki has some pointers:
+The Alpine folks distribute a chroot installer (untested):
+
+- https://github.com/alpinelinux/alpine-chroot-install
+
+And I wrote a little quick/dirty Alpine chroot creator that works on Chrome/Chromium OS; no Docker or other software necessary.
+
+- https://github.com/ryanwoodsmall/shell-ish/blob/master/bin/chralpine.sh
+
+And the musl wiki has some pointers on patches and compatibility:
 
 - https://wiki.musl-libc.org/compatibility.html#Software-compatibility,-patches-and-build-instructions
 
@@ -44,7 +52,7 @@ Mes might be useful at some point.
 
 Regarding compilers, the GCC 4.7 series is the last version written in C; subsequent versions have moved to C++. GCC 4.x isn't even on life support anymore - i.e., it's dead - but distributing a C-only build system with no C++ support has a masochistic appeal to me.
 
-Newer static musl compilers (GCC 6+) are "done:"
+Newer static musl compilers (GCC 6+) are "done," and should work to compile (static-only) binaries on Chrome OS:
 
 - https://github.com/ryanwoodsmall/musl-misc/releases
 
