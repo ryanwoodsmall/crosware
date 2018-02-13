@@ -11,17 +11,27 @@
 #    - current/previous symlinks for versioned installs
 #    - ignore directories with generated files (path, cpp/ld flags, ...)
 #    - ignore software install dir
-#    - ignore 
 #  - what will a "reboostrap" do?
 #  - canonical arch
 #    - use static "toybox file" to figure out?
+#    - "user" arch (uarch), figured via bash $MACHTYPE environment variable
+#    - kernel arch (karch), figured via uname -m
 #  - java arch
+#    - use zulu
+#      - jdk 8
+#    - glibc only
+#    - armv6l/armv7l/armv8l hard float only (aarch32hf)
+#    - aarch64
+#    - i686
+#    - x86_64 (x64)
 #  - all(?) aarch64 chrome os machines are using 32-bit armv7l userland (for arm chrome pepper/flash?)
 #    - jdk will need to be arm on aarch64
 #  - handle armv8l 32-bit compat on aarch64
-#  - handle i386 (?)
+#    - treat like armv6l/armv7l
+#  - handle i686
 #    - no current, supported chrome os devices are 32-bit
 #    - maybe grab neverware cloudready 32b for testing?
+#    - i686 *only*, no i386/i486/i586
 #  - files to source w/path, compiler vars, pkg-config, etc.
 #    - top-level etc/profile to source
 #    - sources an etc/local and/or etc/local.d with shell snippets (obvious, local settings)
@@ -38,6 +48,8 @@
 #  - use_local_java - env var to avoid dl/use of zulu during bootstrap
 #  - jgit.sh doesn't have "jgit.sh pull" shortcut; use:
 #    - jgit.sh fetch origin ; jgit.sh merge origin/master
+#  - where to store recipe scriptlets?
+#    - and how abstract should they be?
 #
 
 #
