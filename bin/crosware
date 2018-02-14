@@ -99,6 +99,15 @@ for prereq in ${prereqs[@]} ; do
 done
 
 #
+# script options/commands
+#
+cwname="crosware"
+declare -A cwcmds
+cwcmds["help"]="show help"
+cwcmds["bootstrap"]="bootstrap ${cwname}"
+cwcmdlist=( $(echo ${!cwcmds[@]}) )
+
+#
 # common opts
 #
 # curl
@@ -111,7 +120,7 @@ copts=" -f -k -L "
 # where we live
 #
 # XXX - default to /usr/local/crosware but allow override (that may or may not work)
-: ${cwtop:="/usr/local/crosware"}
+: ${cwtop:="/usr/local/${cwname}"}
 export cwtop
 export cwbuild="${cwtop}/builds"
 export cwddl="${cwtop}/downloads"
@@ -295,7 +304,7 @@ done
 #
 # check and make our temporary temporary directory
 #
-function mktmptmp() {
+function cwmktmptmp() {
   if [ ! -e "${tmptmp}" ] ; then
     mkdir -p "${tmptmp}" || cwfailexit "could not create ${tmptmp}"
     chmod "${tmpperm}" "${tmptmp}"
@@ -342,13 +351,13 @@ function cwchecksha256sum() {
 }
 
 #
-# bootstrap
+# cwbootstrap
 #
-function bootstrap() {
+function cwbootstrap() {
   # check if we're already bootstrapped and fetch/merge if we are
   cwscriptecho "bootstrapping"
   # make sure we have a tmp directory
-  mktmptmp
+  cwmktmptmp
   # architecture specfic toolchain checksum file
   local statictoolchainchecksumfile="${tmptmp}/${static_toolchain_checksum_file[${uarch}]}"
   cwfetch "${static_toolchain_checksum_url[${uarch}]}" "${statictoolchainchecksumfile}"
@@ -367,4 +376,45 @@ function bootstrap() {
   cwchecksha256sum "${jgitsh}" "${jgitsh_sha256sum}"
 }
 
-cwscriptecho "nothing to see here yet"
+#
+# usage
+#
+function cwusage() {
+  echo "usage: ${cwname} [command]"
+  echo
+  echo "commands:"
+  for cwcmd in $(echo ${!cwcmds[@]} | tr ' ' '\n' | sort) ; do
+    echo "  ${cwcmd} : ${cwcmds[${cwcmd}]}"
+  done
+  echo
+}
+
+#
+# make sure we have a command
+#
+if [ ${#} -lt 1 ] ; then
+  cwusage
+  cwfailexit "exiting"
+fi
+
+#
+# exit on unknown command
+#
+cmd="${1}"
+if [[ ! ${cwcmdlist[@]} =~ ${cmd} ]] ; then
+  cwfailexit "command ${cmd} not found"
+fi
+shift
+
+#
+# execute our given command
+#
+# XXX - commands will have additional arguments, i.e., package name for install, etc.
+case "${cmd}" in
+  bootstrap)
+    cwbootstrap
+    ;;
+  help)
+    cwusage
+    ;;
+esac
