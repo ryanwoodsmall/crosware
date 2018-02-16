@@ -108,13 +108,21 @@ cwcmds["bootstrap"]="bootstrap ${cwname}"
 cwcmdlist=( $(echo ${!cwcmds[@]}) )
 
 #
+# common commands
+#
+# extract commands
+export cwuntbz2="tar -jxf"
+export cwuntgz="tar -zxf"
+export cwuntxz="tar -Jxf"
+
+#
 # common opts
 #
 # curl
 #  XXX
 #   -s for silent downloads?
 #   -f for fail on http error
-copts=" -f -k -L "
+export copts="-f -k -L"
 
 #
 # where we live
@@ -129,11 +137,14 @@ export cwsw="${cwtop}/software"
 export cwtmp="${cwtop}/tmp"
 
 # we'll use this for bootstrap since /tmp may be mounted noexec
-: ${tmptmp:="/usr/local/tmp"}
-export tmptmp
+: ${cwtmptmp:="/usr/local/tmp"}
+export cwtmptmp
 
 # temp dir permissions
-export tmpperm="1777"
+export cwtmpperm="1777"
+
+# execute perms
+export cwexecperm="775"
 
 #
 # supported architecture check
@@ -302,14 +313,44 @@ for supported_arch in ${supported_arches[@]} ; do
 done
 
 #
-# check and make our temporary temporary directory
+# cwmkdir
+#   mkdir -p with check/wrapper
 #
-function cwmktmptmp() {
-  if [ ! -e "${tmptmp}" ] ; then
-    mkdir -p "${tmptmp}" || cwfailexit "could not create ${tmptmp}"
-    chmod "${tmpperm}" "${tmptmp}"
+function cwmkdir() {
+  local tgtdir="${1}"
+  if [ ! -e "${tgtdir}" ] ; then
+    cwscriptecho "creating directory ${tgtdir}"
+    mkdir -p "${tgtdir}" || cwfailexit "could not create ${tgtdir}"
   fi
-  test -e "${tmptmp}" || cwfailexit "${tmptmp} still doesn't exist"
+  test -e "${tgtdir}" || cwfailexit "${tgtdir} still doesn't exist"
+}
+
+#
+# cwchmod
+#   chmod wrapper
+#   receives:
+#     octal mode
+#     path
+#
+function cwchmod() {
+  local tgtmode="${1}"
+  local tgtpath="${2}"
+  cwscriptecho "setting mode ${tgtmode} on ${tgtpath}"
+  chmod "${tgtmode}" "${tgtpath}" || cwfailexit "could not set mode ${tgtmode} on ${tgtpath}"
+  # XXX - probably need to be careful here
+  #if [ ! "$(stat -c %a ${tgtpath})" == "${tgtmode}" ] ; then
+  #  cwfailexit "stat verification on ${tgtpath} failed"
+  #fi
+}
+
+# cwmkcwtmptmp
+#   check and make our temporary temporary directory
+#
+function cwmkcwtmptmp() {
+  if [ ! -e "${cwtmptmp}" ] ; then
+    cwmkdir "${cwtmptmp}"
+    cwchmod "${cwtmpperm}" "${cwtmptmp}"
+  fi
 }
 
 #
@@ -351,29 +392,57 @@ function cwchecksha256sum() {
 }
 
 #
+# cwextract
+#   receives:
+#     full path to file
+#     target directory
+#
+function cwextract() {
+  local archive="${1}"
+  local tgtdir="${2}"
+  cwscriptecho "extracting ${archive} to ${tgtdir}"
+  if [[ ${archive} =~ \.t(|ar)(|.)bz(|2)$ ]] ; then
+    ${cwuntbz2} "${archive}" -C "${tgtdir}"
+  elif [[ ${archive} =~ \.t(|ar)(|.)gz$ ]] ; then
+    ${cwuntgz} "${archive}" -C "${tgtdir}"
+  elif [[ ${archive} =~ \.t(|ar)(|.)xz$ ]] ; then
+    ${cwuntxz} "${archive}" -C "${tgtdir}"
+  else
+    cwfailexit "archive type of ${archive} not understood"
+  fi
+  if [ ${?} -eq 0 ] ; then
+    cwscriptecho "extraction of ${archive} succeeded"
+  else
+    cwfailexit "extraction of ${archive} failed"
+  fi
+}
+
+#
 # cwbootstrap
 #
 function cwbootstrap() {
   # check if we're already bootstrapped and fetch/merge if we are
   cwscriptecho "bootstrapping"
   # make sure we have a tmp directory
-  cwmktmptmp
+  cwmkcwtmptmp
   # architecture specfic toolchain checksum file
-  local statictoolchainchecksumfile="${tmptmp}/${static_toolchain_checksum_file[${uarch}]}"
+  local statictoolchainchecksumfile="${cwtmptmp}/${static_toolchain_checksum_file[${uarch}]}"
   cwfetch "${static_toolchain_checksum_url[${uarch}]}" "${statictoolchainchecksumfile}"
   local statictoolchainchecksum="$(awk '{print $1}' ${statictoolchainchecksumfile})"
   # static toolchain
-  local statictoolchainarchive="${tmptmp}/${static_toolchain_file[${uarch}]}"
+  local statictoolchainarchive="${cwtmptmp}/${static_toolchain_file[${uarch}]}"
   cwfetch "${static_toolchain_file_url[${uarch}]}" "${statictoolchainarchive}"
   cwchecksha256sum "${statictoolchainarchive}" "${statictoolchainchecksum}"
-  # zulu
-  local zuluarchive="${tmptmp}/${zulu_jdk_file[${uarch}]}"
-  cwfetch "${zulu_jdk_url[${uarch}]}" "${zuluarchive}"
-  cwchecksha256sum "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}"
   # jgit
-  local jgitsh="${tmptmp}/${jgitsh_file}"
+  local jgitsh="${cwtmptmp}/${jgitsh_file}"
   cwfetch "${jgitsh_url}" "${jgitsh}"
   cwchecksha256sum "${jgitsh}" "${jgitsh_sha256sum}"
+  cwchmod "${cwexecperm}" "${jgitsh}"
+  # zulu
+  local zuluarchive="${cwtmptmp}/${zulu_jdk_file[${uarch}]}"
+  cwfetch "${zulu_jdk_url[${uarch}]}" "${zuluarchive}"
+  cwchecksha256sum "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}"
+  cwextract "${zuluarchive}" "${cwtmptmp}"
 }
 
 #
