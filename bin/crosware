@@ -102,6 +102,7 @@ done
 # script options/commands
 #
 cwname="crosware"
+cwurl="https://github.com/ryanwoodsmall/${cwname}.git"
 declare -A cwcmds
 cwcmds["help"]="show help"
 cwcmds["bootstrap"]="bootstrap ${cwname}"
