@@ -422,6 +422,10 @@ function cwextract() {
 #
 function cwbootstrap() {
   # check if we're already bootstrapped and fetch/merge if we are
+  if [ -e "${cwtop}" ] ; then
+    cwscriptecho "it looks like ${cwtop} already exists"
+    return
+  fi
   cwscriptecho "bootstrapping"
   # make sure we have a tmp directory
   cwmkcwtmptmp
