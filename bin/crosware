@@ -443,11 +443,16 @@ function cwbootstrap() {
   cwfetch "${jgitsh_url}" "${jgitsh}"
   cwchecksha256sum "${jgitsh}" "${jgitsh_sha256sum}"
   cwchmod "${cwexecperm}" "${jgitsh}"
+  ln -sf "${jgitsh_file}" "${cwtmptmp}/${jgitsh_symlink}"
   # zulu
   local zuluarchive="${cwtmptmp}/${zulu_jdk_file[${uarch}]}"
+  local zulujdkdir="${cwtmptmp}/${zulu_jdk_dir[${uarch}]}"
   cwfetch "${zulu_jdk_url[${uarch}]}" "${zuluarchive}"
   cwchecksha256sum "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}"
   cwextract "${zuluarchive}" "${cwtmptmp}"
+  # add zulu and tmp dir (for jgit) to our path
+  export JAVA_HOME="${zulujdkdir}"
+  export PATH="${JAVA_HOME}/bin:${cwtmptmp}:${PATH}"
 }
 
 #
