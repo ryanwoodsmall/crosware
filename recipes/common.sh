@@ -21,7 +21,7 @@ function cwconfigure_${rname}() {
 "
 
 eval "
-function cwbuild_${rname}() {
+function cwmake_${rname}() {
   pushd ${cwbuild}/${rdir} >/dev/null 2>&1
   make -j$(($(nproc)+1))
   popd >/dev/null 2>&1
@@ -42,7 +42,7 @@ function cwinstall_${rname}() {
   cwclean_${rname}
   cwextract "${cwdl}/${rfile}" "${cwbuild}"
   cwconfigure_${rname}
-  cwbuild_${rname}
+  cwmake_${rname}
   cwmakeinstall_${rname}
   cwclean_${rname}
 }

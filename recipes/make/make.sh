@@ -16,7 +16,7 @@ function cwconfigure_${rname}() {
 "
 
 eval "
-function cwbuild_${rname}() {
+function cwmake_${rname}() {
   pushd ${cwbuild}/${rdir} >/dev/null 2>&1
   ./build.sh
   popd >/dev/null 2>&1
