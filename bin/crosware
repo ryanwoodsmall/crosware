@@ -637,9 +637,10 @@ case "${cmd}" in
     ;;
   env)
     # unnecessary, gratuitous use of cat
-    cat "${cwetc}/profile" \
-    | sed "s#^\(cwetcdir\)=.*#\1=${cwetc}#g" \
-    | sed "s#^\(cwbindir\)=.*#\1=${cwbin}#g"
+    test -e "${cwetc}/profile" && \
+      cat "${cwetc}/profile" \
+      | sed "s#^\(cwetcdir\)=.*#\1=${cwetc}#g" \
+      | sed "s#^\(cwbindir\)=.*#\1=${cwbin}#g"
     ;;
   profile)
     cwprofileline
