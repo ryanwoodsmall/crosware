@@ -28,11 +28,21 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwbuild_${rname}() {
+  pushd ${cwbuild}/${rdir} >/dev/null 2>&1
+  ./build.sh
+  file make
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwinstall_${rname}() {
   cwfetch_${rname}
   cwclean_${rname}
   cwextract "${cwdl}/${rfile}" "${cwbuild}"
   cwconfigure_${rname}
+  cwbuild_${rname}
   cwclean_${rname}
 }
 "
