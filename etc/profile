@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# get our etc and bin dir
+cwetcdir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
+cwbindir="$(cd "${cwetcdir}"/../bin && pwd)"
+
+# add our bin dir to our path
+export PATH="${PATH}:${cwbindir}"
+
+# profile.d holds packages' profile scriplets
+# local.d holds custom scriptlets
+profiled="profile.d"
+locald="local.d"
+for d in ${profiled} ${locald} ; do
+  for p in ${cwetcdir}/${d}/*.sh ; do
+    test -r "${p}" && source "${p}"
+  done
+done
