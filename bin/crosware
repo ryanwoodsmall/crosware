@@ -3,6 +3,7 @@
 #
 # XXX
 #  - check that we're running as root
+#    - note on perms if sudo/root is not wanted
 #  - top directory (/usr/local/crosware)
 #    - will need to checkout repo in $(dirname ${cwtop})
 #    - software install dir (/usr/local/crosware/software/packagename/packagename-vX.Y.Z)
@@ -55,7 +56,12 @@
 #
 # we'll use these everywhere
 #
-scriptname="$(basename ${0})"
+export cwname="crosware"
+if [[ ${0} =~ ^/dev/fd/ ]] ; then
+  scriptname="${cwname}"
+else
+  scriptname="$(basename ${0})"
+fi
 
 function cwscriptecho() {
   echo -e "${scriptname}: ${1}"
@@ -101,13 +107,14 @@ done
 #
 # script options/commands/variables
 #
-cwname="crosware"
 : ${cwurl:="https://github.com/ryanwoodsmall/${cwname}.git"}
 : ${cworigin:="origin"}
 : ${cwbranch:="master"}
 declare -A cwcmds
 cwcmds["help"]="show help"
 cwcmds["bootstrap"]="bootstrap ${cwname}"
+cwcmds["env"]="dump source-/eval-able ${cwname} etc/profile"
+cwcmds["profile"]="show .profile addition"
 cwcmdlist=( $(echo ${!cwcmds[@]}) )
 
 #
@@ -134,12 +141,13 @@ export copts="-f -k -L -s"
 # XXX - default to /usr/local/crosware but allow override (that may or may not work)
 : ${cwtop:="/usr/local/${cwname}"}
 export cwtop
+export cwbin="${cwtop}/bin"
 export cwbuild="${cwtop}/builds"
 export cwddl="${cwtop}/downloads"
 export cwetc="${cwtop}/etc"
+export cwetcprofd="${cwetc}/profile.d"
 export cwsw="${cwtop}/software"
 export cwtmp="${cwtop}/tmp"
-export cwprofd="${cwetc}/profile.d"
 
 # we'll use this for bootstrap since /tmp may be mounted noexec
 : ${cwtmptmp:="/usr/local/tmp"}
@@ -360,10 +368,6 @@ function cwchmod() {
   local tgtpath="${2}"
   cwscriptecho "setting mode ${tgtmode} on ${tgtpath}"
   chmod "${tgtmode}" "${tgtpath}" || cwfailexit "could not set mode ${tgtmode} on ${tgtpath}"
-  # XXX - probably need to be careful here
-  #if [ ! "$(stat -c %a ${tgtpath})" == "${tgtmode}" ] ; then
-  #  cwfailexit "stat verification on ${tgtpath} failed"
-  #fi
 }
 
 # cwmkcwtmptmp
@@ -512,6 +516,15 @@ function cwexpandenv() {
 }
 
 #
+# cwprofileline
+#
+function cwprofileline() {
+  echo
+  echo "  test -e ${cwetc}/profile && source ${cwetc}/profile"
+  echo
+}
+
+#
 # cwbootstrap
 #
 function cwbootstrap() {
@@ -564,18 +577,24 @@ function cwbootstrap() {
   mkdir -p "${zulu_inst_dir}"
   cwextract "${zuluarchive}" "${zulu_inst_dir}"
   cwlinkdir "${zulu_jdk_dir[${uarch}]}" "${zulu_inst_dir}"
-  cwexpandenv "zulu" "${cwprofd}/zulu.sh"
+  cwexpandenv "zulu" "${cwetcprofd}/zulu.sh"
   # jgit
   mkdir -p "${jgitsh_inst_dir}/${jgitsh_ver}/bin"
   cp -a "${jgitsh}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/"
   ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink}"
   cwlinkdir "${jgitsh_ver}" "${jgitsh_inst_dir}"
-  cwexpandenv "jgitsh" "${cwprofd}/jgitsh.sh"
+  cwexpandenv "jgitsh" "${cwetcprofd}/jgitsh.sh"
   # toolchain
   mkdir -p "${static_toolchain_inst_dir}"
   cwextract "${statictoolchainarchive}" "${static_toolchain_inst_dir}"
   cwlinkdir "${static_toolchain_dir[${uarch}]}" "${static_toolchain_inst_dir}"
-  cwexpandenv "static_toolchain" "${cwprofd}/static_toolchain.sh"
+  cwexpandenv "static_toolchain" "${cwetcprofd}/static_toolchain.sh"
+  # we're bootstrapped...
+  cwscriptecho "bootstrap complete"
+  cwscriptecho "add ${cwname} to your environment with a line in your .profile/.bash_profile/.bashrc"
+  cwprofileline
+  # XXX - add to installed/db/...
+  # XXX - cleanup temp files?
 }
 
 #
@@ -615,6 +634,15 @@ shift
 case "${cmd}" in
   bootstrap)
     cwbootstrap
+    ;;
+  env)
+    # unnecessary, gratuitous use of cat
+    cat "${cwetc}/profile" \
+    | sed "s#^\(cwetcdir\)=.*#\1=${cwetc}#g" \
+    | sed "s#^\(cwbindir\)=.*#\1=${cwbin}#g"
+    ;;
+  profile)
+    cwprofileline
     ;;
   help)
     cwusage
