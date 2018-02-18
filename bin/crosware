@@ -458,6 +458,7 @@ function cwfetchcheck() {
 function cwextract() {
   local archive="${1}"
   local tgtdir="${2}"
+  test -e "${tgtdir}" || cwmkdir "${tgtdir}"
   cwscriptecho "extracting ${archive} to ${tgtdir}"
   if [[ ${archive} =~ \.t(|ar)(|.)bz(|2)$ ]] ; then
     ${cwuntbz2} "${archive}" -C "${tgtdir}"
