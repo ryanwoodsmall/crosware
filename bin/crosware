@@ -51,6 +51,8 @@
 #    - jgit.sh fetch origin ; jgit.sh merge origin/master
 #  - where to store recipe scriptlets?
 #    - and how abstract should they be?
+#  - update environment without rebootstrap
+#  - profile.d file writer
 #
 
 #
