@@ -314,13 +314,6 @@ static_toolchain_base_url="https://github.com/ryanwoodsmall/musl-misc/releases/d
 static_toolchain_release_url="${static_toolchain_base_url}/${static_toolchain_release}"
 static_toolchain_inst_dir="${cwsw}/static-toolchain"
 
-# static toolchain environment
-declare -A static_toolchain_env
-static_toolchain_env["PATH"]="\${PATH}:${static_toolchain_inst_dir}/current/bin"
-static_toolchain_env["CFLAGS"]="-Wl,-static"
-static_toolchain_env["LDFLAGS"]="-static --static"
-static_toolchain_envs=( "PATH" "CFLAGS" "LDFLAGS" )
-
 # architecture to musl triplet
 declare -A static_toolchain_triplet
 static_toolchain_triplet["aarch64"]="aarch64-linux-musl"
@@ -348,6 +341,18 @@ for supported_arch in ${supported_arches[@]} ; do
   static_toolchain_checksum_url[${supported_arch}]="${static_toolchain_release_url}/${static_toolchain_checksum_file[${supported_arch}]}"
   static_toolchain_dir[${supported_arch}]="${static_toolchain_prefix[${supported_arch}]}-${static_toolchain_triplet[${supported_arch}]}"
 done
+
+# static toolchain environment
+declare -A static_toolchain_env
+static_toolchain_env["PATH"]="\${PATH}:${static_toolchain_inst_dir}/current/bin"
+static_toolchain_env["CFLAGS"]="-Wl,-static"
+static_toolchain_env["CXXFLAGS"]="-Wl,-static"
+static_toolchain_env["LDFLAGS"]="-static --static"
+static_toolchain_env["CC"]="${static_toolchain_triplet[${uarch}]}-gcc"
+static_toolchain_env["CXX"]="${static_toolchain_triplet[${uarch}]}-g++"
+static_toolchain_env["LD"]="${static_toolchain_triplet[${uarch}]}-ld"
+static_toolchain_env["CPP"]="${static_toolchain_triplet[${uarch}]}-cpp"
+static_toolchain_envs=( "PATH" "CFLAGS" "CXXFLAGS" "LDFLAGS" "CC" "CXX" "CPP" "LD" )
 
 #
 # cwmkdir
