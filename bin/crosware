@@ -139,6 +139,7 @@ export cwddl="${cwtop}/downloads"
 export cwetc="${cwtop}/etc"
 export cwsw="${cwtop}/software"
 export cwtmp="${cwtop}/tmp"
+export cwprofd="${cwetc}/profile.d"
 
 # we'll use this for bootstrap since /tmp may be mounted noexec
 : ${cwtmptmp:="/usr/local/tmp"}
@@ -219,6 +220,12 @@ export uarch="${bash_arch}"
 # basic zulu vars
 zulu_inst_dir="${cwsw}/zulu"
 
+# zulu environment
+declare -A zulu_env
+zulu_env["JAVA_HOME"]="${zulu_inst_dir}/current"
+zulu_env["PATH"]='${PATH}:${JAVA_HOME}/bin'
+zulu_envs=( "JAVA_HOME" "PATH" )
+
 # zulu jdk arch map
 # XXX - arm 32-bit hard float assumption, again
 declare -A zulu_jdk_arch
@@ -274,6 +281,11 @@ jgitsh_sha256sum="76305c50c934f05838d876604a474b188b6b7a374aa87923eb5803028fcf8c
 jgitsh_symlink="jgit.sh"
 jgitsh_inst_dir="${cwsw}/jgit"
 
+# jgit environment
+declare -A jgitsh_env
+jgitsh_env["PATH"]="\${PATH}:${jgitsh_inst_dir}/current/bin"
+jgitsh_envs=( "PATH" )
+
 #
 # static compiler bootstrap
 #
@@ -287,6 +299,13 @@ static_toolchain_release="20180207"
 static_toolchain_base_url="https://github.com/ryanwoodsmall/musl-misc/releases/download"
 static_toolchain_release_url="${static_toolchain_base_url}/${static_toolchain_release}"
 static_toolchain_inst_dir="${cwsw}/static-toolchain"
+
+# static toolchain environment
+declare -A static_toolchain_env
+static_toolchain_env["PATH"]="\${PATH}:${static_toolchain_inst_dir}/current/bin"
+static_toolchain_env["CFLAGS"]="-Wl,-static"
+static_toolchain_env["LDFLAGS"]="-static --static"
+static_toolchain_envs=( "PATH" "CFLAGS" "LDFLAGS" )
 
 # architecture to musl triplet
 declare -A static_toolchain_triplet
@@ -470,6 +489,29 @@ function cwlinkdir() {
 }
 
 #
+# cwexpandenv
+#   receives:
+#     name of var
+#     full path of file to expand into
+#
+# expands environment variables for a given name
+# assumes the existence of:
+#   example_env['VAR']='value' - hash/associative array
+#   example_envs[0]='VAR' - normal array controlling exapanded vars and ordering
+#
+function cwexpandenv() {
+  local name="${1}"
+  local envfile="${2}"
+  if [ -e "${envfile}" ] ; then
+    rm -f "${envfile}" || cwfailexit "could not remove existing ${envfile}"
+  fi
+  echo -n > "${envfile}" || cwfailexit "could not (re)create ${envfile}"
+  for var in $(eval echo \${${name}_envs[@]}) ; do
+    echo "export ${var}=\"$(eval echo \${${name}_env[${var}]})\"" >> "${envfile}"
+  done
+}
+
+#
 # cwbootstrap
 #
 function cwbootstrap() {
@@ -522,15 +564,18 @@ function cwbootstrap() {
   mkdir -p "${zulu_inst_dir}"
   cwextract "${zuluarchive}" "${zulu_inst_dir}"
   cwlinkdir "${zulu_jdk_dir[${uarch}]}" "${zulu_inst_dir}"
+  cwexpandenv "zulu" "${cwprofd}/zulu.sh"
   # jgit
   mkdir -p "${jgitsh_inst_dir}/${jgitsh_ver}/bin"
   cp -a "${jgitsh}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/"
   ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink}"
   cwlinkdir "${jgitsh_ver}" "${jgitsh_inst_dir}"
+  cwexpandenv "jgitsh" "${cwprofd}/jgitsh.sh"
   # toolchain
   mkdir -p "${static_toolchain_inst_dir}"
   cwextract "${statictoolchainarchive}" "${static_toolchain_inst_dir}"
   cwlinkdir "${static_toolchain_dir[${uarch}]}" "${static_toolchain_inst_dir}"
+  cwexpandenv "static_toolchain" "${cwprofd}/static_toolchain.sh"
 }
 
 #
