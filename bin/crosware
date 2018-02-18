@@ -515,7 +515,7 @@ function cwlinkdir() {
 # expands environment variables for a given name
 # assumes the existence of:
 #   example_env['VAR']='value' - hash/associative array
-#   example_envs[0]='VAR' - normal array controlling exapanded vars and ordering
+#   example_envs[0]='VAR' - normal array controlling expanded vars and ordering
 #
 function cwexpandenv() {
   local name="${1}"
