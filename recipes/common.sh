@@ -45,9 +45,6 @@ function cwinstall_${rname}() {
   cwmake_${rname}
   cwmakeinstall_${rname}
   cwlinkdir "${rdir}" "${cwsw}/${rname}"
-  if [ $(eval echo \${#${rname}_envs[@]}) -ge 1 ] ; then
-    cwexpandenv "${rname}" "${cwetcprofd}/${rname}.sh"
-  fi
   cwclean_${rname}
 }
 "
