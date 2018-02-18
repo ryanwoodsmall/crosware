@@ -143,7 +143,7 @@ export copts="-f -k -L -s"
 export cwtop
 export cwbin="${cwtop}/bin"
 export cwbuild="${cwtop}/builds"
-export cwddl="${cwtop}/downloads"
+export cwdl="${cwtop}/downloads"
 export cwetc="${cwtop}/etc"
 export cwetcprofd="${cwetc}/profile.d"
 export cwsw="${cwtop}/software"
