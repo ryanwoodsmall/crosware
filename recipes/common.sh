@@ -37,6 +37,12 @@ function cwmakeinstall_${rname}() {
 "
 
 eval "
+function cwgenprofd_${rname}() {
+  echo "\\\# ${rname}" > "${rprof}"
+}
+"
+
+eval "
 function cwinstall_${rname}() {
   cwfetch_${rname}
   cwclean_${rname}
@@ -45,6 +51,7 @@ function cwinstall_${rname}() {
   cwmake_${rname}
   cwmakeinstall_${rname}
   cwlinkdir "${rdir}" "${cwsw}/${rname}"
+  cwgenprofd_${rname}
   cwclean_${rname}
 }
 "
