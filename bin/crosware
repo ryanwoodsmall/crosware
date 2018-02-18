@@ -447,6 +447,29 @@ function cwextract() {
 }
 
 #
+# cwlinkdir
+#   receives:
+#     directory name/path (relative or full)
+#     full path to a directory to run in
+#
+# shuffles previous/current symlinks
+#
+function cwlinkdir() {
+  local linktgt="${1}"
+  local linkdir="${2}"
+  local prev="${linkdir}/previous"
+  local curr="${linkdir}/current"
+  cwscriptecho "setting up ${linktgt} symlink in ${linkdir}"
+  if [ -e "${prev}" ] ; then
+    rm -f "${prev}" || cwfailexit "could not remove ${prev}"
+  fi
+  if [ -e "${curr}" ] ; then
+    mv "${curr}" "${prev}" || cwfailexit "could not move ${curr} to ${prev}"
+  fi
+  ln -sf "${linktgt}" "${curr}" || cwfailexit "could not symlink ${linktgt} to ${curr}"
+}
+
+#
 # cwbootstrap
 #
 function cwbootstrap() {
@@ -494,6 +517,20 @@ function cwbootstrap() {
       popd >/dev/null 2>&1
     fi
   fi
+  # setup our base tools
+  # zulu
+  mkdir -p "${zulu_inst_dir}"
+  cwextract "${zuluarchive}" "${zulu_inst_dir}"
+  cwlinkdir "${zulu_jdk_dir[${uarch}]}" "${zulu_inst_dir}"
+  # jgit
+  mkdir -p "${jgitsh_inst_dir}/${jgitsh_ver}/bin"
+  cp -a "${jgitsh}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/"
+  ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink}"
+  cwlinkdir "${jgitsh_ver}" "${jgitsh_inst_dir}"
+  # toolchain
+  mkdir -p "${static_toolchain_inst_dir}"
+  cwextract "${statictoolchainarchive}" "${static_toolchain_inst_dir}"
+  cwlinkdir "${static_toolchain_dir[${uarch}]}" "${static_toolchain_inst_dir}"
 }
 
 #
