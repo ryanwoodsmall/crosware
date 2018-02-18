@@ -115,6 +115,7 @@ cwcmds["help"]="show help"
 cwcmds["bootstrap"]="bootstrap ${cwname}"
 cwcmds["env"]="dump source-/eval-able ${cwname} etc/profile"
 cwcmds["profile"]="show .profile addition"
+cwcmds["list-recipes"]="list build recipes"
 cwcmdlist=( $(echo ${!cwcmds[@]}) )
 
 #
@@ -145,6 +146,7 @@ export cwbin="${cwtop}/bin"
 export cwbuild="${cwtop}/builds"
 export cwdl="${cwtop}/downloads"
 export cwetc="${cwtop}/etc"
+export cwrecipe="${cwtop}/recipes"
 export cwetcprofd="${cwetc}/profile.d"
 export cwsw="${cwtop}/software"
 export cwtmp="${cwtop}/tmp"
@@ -158,6 +160,9 @@ export cwtmpperm="1777"
 
 # execute perms
 export cwexecperm="775"
+
+# start off with an empty recipe list
+export cwrecipes=()
 
 #
 # supported architecture check
@@ -598,6 +603,30 @@ function cwbootstrap() {
 }
 
 #
+# cwsourcerecipes
+#
+function cwsourcerecipes() {
+  if [ ! -e ${cwrecipe} ] ; then
+    cwscriptecho "no recipe directory ${cwrecipe} found"
+    return 1
+  fi
+  for recipe in ${cwrecipe}/*/*.sh ; do
+    source ${recipe}
+    cwrecipes[${#cwrecipes[@]}]="${rname}"
+  done
+}
+
+#
+# cwlistrecipes
+#
+function cwlistrecipes() {
+  cwsourcerecipes
+  for recipe in ${cwrecipes[@]} ; do
+    echo "${recipe}"
+  done | sort
+}
+
+#
 # usage
 #
 function cwusage() {
@@ -644,6 +673,9 @@ case "${cmd}" in
     ;;
   profile)
     cwprofileline
+    ;;
+  list-recipes)
+    cwlistrecipes
     ;;
   help)
     cwusage
