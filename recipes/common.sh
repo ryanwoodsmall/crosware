@@ -1,6 +1,6 @@
 eval "
 function cwclean_${rname}() {
-  pushd ${cwbuild} >/dev/null 2>&1
+  pushd "${cwbuild}" >/dev/null 2>&1
   rm -rf "${rdir}"
   popd >/dev/null 2>&1
 }
@@ -14,7 +14,7 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd ${cwbuild}/${rdir} >/dev/null 2>&1
+  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
   ./configure --prefix="${cwsw}/${rname}/${rdir}"
   popd >/dev/null 2>&1
 }
@@ -22,7 +22,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd ${cwbuild}/${rdir} >/dev/null 2>&1
+  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
   make -j$(($(nproc)+1))
   popd >/dev/null 2>&1
 }
@@ -30,7 +30,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd ${cwbuild}/${rdir} >/dev/null 2>&1
+  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
   make install
   popd >/dev/null 2>&1
 }
@@ -44,6 +44,7 @@ function cwinstall_${rname}() {
   cwconfigure_${rname}
   cwmake_${rname}
   cwmakeinstall_${rname}
+  cwlinkdir "${rdir}" "${cwsw}/${rname}"
   cwclean_${rname}
 }
 "
