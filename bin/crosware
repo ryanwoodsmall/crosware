@@ -99,10 +99,12 @@ for prereq in ${prereqs[@]} ; do
 done
 
 #
-# script options/commands
+# script options/commands/variables
 #
 cwname="crosware"
-cwurl="https://github.com/ryanwoodsmall/${cwname}.git"
+: ${cwurl:="https://github.com/ryanwoodsmall/${cwname}.git"}
+: ${cworigin:="origin"}
+: ${cwbranch:="master"}
 declare -A cwcmds
 cwcmds["help"]="show help"
 cwcmds["bootstrap"]="bootstrap ${cwname}"
@@ -120,10 +122,11 @@ export cwuntxz="tar -Jxf"
 # common opts
 #
 # curl
-#  XXX
-#   -s for silent downloads?
 #   -f for fail on http error
-export copts="-f -k -L"
+#   -k accept insecure certs
+#   -L follow redirects
+#   -s for silent downloads?
+export copts="-f -k -L -s"
 
 #
 # where we live
@@ -387,10 +390,14 @@ function cwchecksha256sum() {
     cwscriptecho "sha256 checksum succeeded for ${checkfile}"
     return 0
   else
-    cwfailexit "sha256 checksum failed for ${checkfile}"
+    cwscriptecho "sha256 checksum failed for ${checkfile}"
     return 1
   fi
 }
+
+# XXX - fetch and check function
+#   check for existing download
+#   if checksum fails, redownload
 
 #
 # cwextract
@@ -422,10 +429,10 @@ function cwextract() {
 # cwbootstrap
 #
 function cwbootstrap() {
+  bootstrapped=1
   # check if we're already bootstrapped and fetch/merge if we are
   if [ -e "${cwtop}" ] ; then
-    cwscriptecho "it looks like ${cwtop} already exists"
-    return
+    bootstrapped=0
   fi
   cwscriptecho "bootstrapping"
   # make sure we have a tmp directory
@@ -437,22 +444,38 @@ function cwbootstrap() {
   # static toolchain
   local statictoolchainarchive="${cwtmptmp}/${static_toolchain_file[${uarch}]}"
   cwfetch "${static_toolchain_file_url[${uarch}]}" "${statictoolchainarchive}"
-  cwchecksha256sum "${statictoolchainarchive}" "${statictoolchainchecksum}"
+  cwchecksha256sum "${statictoolchainarchive}" "${statictoolchainchecksum}" || cwfailexit "failed checksum for ${statictoolchainarchive}"
   # jgit
   local jgitsh="${cwtmptmp}/${jgitsh_file}"
   cwfetch "${jgitsh_url}" "${jgitsh}"
-  cwchecksha256sum "${jgitsh}" "${jgitsh_sha256sum}"
+  cwchecksha256sum "${jgitsh}" "${jgitsh_sha256sum}" || cwfailexit "failed checksum for ${jgitsh}"
   cwchmod "${cwexecperm}" "${jgitsh}"
   ln -sf "${jgitsh_file}" "${cwtmptmp}/${jgitsh_symlink}"
   # zulu
   local zuluarchive="${cwtmptmp}/${zulu_jdk_file[${uarch}]}"
   local zulujdkdir="${cwtmptmp}/${zulu_jdk_dir[${uarch}]}"
   cwfetch "${zulu_jdk_url[${uarch}]}" "${zuluarchive}"
-  cwchecksha256sum "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}"
+  cwchecksha256sum "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}" || cwfailexit "failed checksum for ${zuluarchive}"
   cwextract "${zuluarchive}" "${cwtmptmp}"
   # add zulu and tmp dir (for jgit) to our path
   export JAVA_HOME="${zulujdkdir}"
   export PATH="${JAVA_HOME}/bin:${cwtmptmp}:${PATH}"
+  # clone or fetch the repo
+  if [ ${bootstrapped} -eq 1 ] ; then
+    cwscriptecho "attempting to clone ${cwurl} into ${cwtop}"
+    ${jgitsh} clone "${cwurl}" "${cwtop}" || cwfailexit "could not clone ${cwurl} into ${cwtop}"
+  else
+    cwscriptecho "it looks like ${cwtop} already exists"
+    if [ ! -e "${cwtop}/.git" ] ; then
+      cwfailexit "${cwtop} doesn't appear to be a git clone"
+    else
+      cwscriptecho "attempting to fetch/merge in ${cwtop}"
+      pushd "${cwtop}" >/dev/null 2>&1 || cwfailexit "could not pushd into ${cwtop}"
+      ${jgitsh} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
+      ${jgitsh} merge "${cworigin}/${cwbranch}" || { popd ; cwfailexit "could not merge ${cworigin}/${cwbranch} in ${cwtop}" ; }
+      popd >/dev/null 2>&1
+    fi
+  fi
 }
 
 #
