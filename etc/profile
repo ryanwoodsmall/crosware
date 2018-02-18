@@ -4,8 +4,17 @@
 cwetcdir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
 cwbindir="$(cd "${cwetcdir}"/../bin && pwd)"
 
+# simple path functions
+#   https://github.com/ryanwoodsmall/shell-ish/blob/master/lib/path-functions.sh
+function append_path() {
+  export PATH="${PATH}:${1}"
+}
+function prepend_path() {
+  export PATH="${1}:${PATH}"
+}
+
 # add our bin dir to our path
-export PATH="${PATH}:${cwbindir}"
+append_path "${cwbindir}"
 
 # profile.d holds packages' profile scriplets
 # local.d holds custom scriptlets
