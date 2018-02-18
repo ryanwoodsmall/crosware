@@ -116,6 +116,7 @@ cwcmds["bootstrap"]="bootstrap ${cwname}"
 cwcmds["env"]="dump source-/eval-able ${cwname} etc/profile"
 cwcmds["profile"]="show .profile addition"
 cwcmds["list-recipes"]="list build recipes"
+cwcmds["install"]="attempt to build/install a packge from a known recipe"
 cwcmdlist=( $(echo ${!cwcmds[@]}) )
 
 #
@@ -627,6 +628,27 @@ function cwlistrecipes() {
 }
 
 #
+# cwinstall
+#
+# build/install some stuff
+#
+function cwinstall() {
+  local recipestobuild=()
+  cwsourcerecipes
+  for recipe in "${@}" ; do
+    if ! $(set | grep -q "^cwinstall_${recipe}") ; then
+      cwfailexit "recipe ${recipe} not found"
+    fi
+    recipestobuild[${#recipestobuild[@]}]="cwinstall_${recipe}"
+  done
+  test ${#recipestobuild[@]} -eq 0 && cwfailexit "please provide at least one valid recipe to build"
+  for buildrecipe in ${recipestobuild[@]} ; do
+    cwscriptecho "building recipe ${buildrecipe//cwinstall_/}"
+    ${buildrecipe}
+  done
+}
+
+#
 # usage
 #
 function cwusage() {
@@ -676,6 +698,9 @@ case "${cmd}" in
     ;;
   list-recipes)
     cwlistrecipes
+    ;;
+  install)
+    cwinstall "${@}"
     ;;
   help)
     cwusage
