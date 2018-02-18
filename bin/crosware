@@ -643,6 +643,7 @@ function cwinstall() {
     recipestobuild[${#recipestobuild[@]}]="cwinstall_${recipe}"
   done
   test ${#recipestobuild[@]} -eq 0 && cwfailexit "please provide at least one valid recipe to build"
+  source "${cwetc}/profile"
   for buildrecipe in ${recipestobuild[@]} ; do
     cwscriptecho "building recipe ${buildrecipe//cwinstall_/}"
     ${buildrecipe}
