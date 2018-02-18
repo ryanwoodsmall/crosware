@@ -395,9 +395,30 @@ function cwchecksha256sum() {
   fi
 }
 
-# XXX - fetch and check function
-#   check for existing download
-#   if checksum fails, redownload
+#
+# cwfetchcheck
+#   receives:
+#     url to download
+#     full path to save file
+#     sha256sum for comparison
+#
+function cwfetchcheck() {
+  local downloadurl="${1}"
+  local targetfile="${2}"
+  local storedsha256sum="${3}"
+  if [ -e "${targetfile}" ] ; then
+    cwscriptecho "${targetfile} already exists"
+    local sha256sum="$(sha256sum ${targetfile} | awk '{print $1}')"
+    if [ "${storedsha256sum}" == "${sha256sum}" ] ; then
+      cwscriptecho "existing ${targetfile} matched checksum"
+      return
+    else
+      cwscriptecho "existing ${targetfile} failed checksum, redownloading"
+    fi
+  fi
+  cwfetch "${downloadurl}" "${targetfile}"
+  cwchecksha256sum "${targetfile}" "${storedsha256sum}" || cwfailexit "fetch and sha256 checksum of ${downloadurl} failed"
+}
 
 #
 # cwextract
@@ -443,19 +464,16 @@ function cwbootstrap() {
   local statictoolchainchecksum="$(awk '{print $1}' ${statictoolchainchecksumfile})"
   # static toolchain
   local statictoolchainarchive="${cwtmptmp}/${static_toolchain_file[${uarch}]}"
-  cwfetch "${static_toolchain_file_url[${uarch}]}" "${statictoolchainarchive}"
-  cwchecksha256sum "${statictoolchainarchive}" "${statictoolchainchecksum}" || cwfailexit "failed checksum for ${statictoolchainarchive}"
+  cwfetchcheck "${static_toolchain_file_url[${uarch}]}" "${statictoolchainarchive}" "${statictoolchainchecksum}"
   # jgit
   local jgitsh="${cwtmptmp}/${jgitsh_file}"
-  cwfetch "${jgitsh_url}" "${jgitsh}"
-  cwchecksha256sum "${jgitsh}" "${jgitsh_sha256sum}" || cwfailexit "failed checksum for ${jgitsh}"
+  cwfetchcheck "${jgitsh_url}" "${jgitsh}" "${jgitsh_sha256sum}"
   cwchmod "${cwexecperm}" "${jgitsh}"
   ln -sf "${jgitsh_file}" "${cwtmptmp}/${jgitsh_symlink}"
   # zulu
   local zuluarchive="${cwtmptmp}/${zulu_jdk_file[${uarch}]}"
   local zulujdkdir="${cwtmptmp}/${zulu_jdk_dir[${uarch}]}"
-  cwfetch "${zulu_jdk_url[${uarch}]}" "${zuluarchive}"
-  cwchecksha256sum "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}" || cwfailexit "failed checksum for ${zuluarchive}"
+  cwfetchcheck "${zulu_jdk_url[${uarch}]}" "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}"
   cwextract "${zuluarchive}" "${cwtmptmp}"
   # add zulu and tmp dir (for jgit) to our path
   export JAVA_HOME="${zulujdkdir}"
