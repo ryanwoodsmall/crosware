@@ -1,3 +1,5 @@
+rprof="${cwetcprofd}/${rname}.sh"
+
 eval "
 function cwclean_${rname}() {
   pushd "${cwbuild}" >/dev/null 2>&1
