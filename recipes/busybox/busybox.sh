@@ -1,8 +1,3 @@
-#
-# XXX - needs:
-#  make
-#  cmp (toybox? sbase?)
-#
 rname="busybox"
 rver="1.28.1"
 rdir="${rname}-${rver}"
@@ -17,7 +12,6 @@ eval "
 function cwconfigure_${rname}() {
   pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
   curl -kLsO https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/bb_config_script.sh
-  sed -i.ORIG 's/make/make LDLIBS=\"-lgcc -lc -lm\"/g' bb_config_script.sh
   bash bb_config_script.sh -m -s
   popd >/dev/null 2>&1
 }
@@ -26,7 +20,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
-  make -j$(($(nproc)+1)) CC="\${CC}" HOSTCC="\${CC}" CFLAGS="\${CFLAGS}" HOSTCFLAGS="\${CFLAGS}" LDLIBS="-lgcc -lc -lm"
+  make -j$(($(nproc)+1)) CC="\${CC}" HOSTCC="\${CC}" CFLAGS="\${CFLAGS}" HOSTCFLAGS="\${CFLAGS}"
   popd >/dev/null 2>&1
 }
 "
