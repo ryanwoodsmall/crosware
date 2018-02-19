@@ -100,7 +100,7 @@ set -eu
 # prereqs
 #
 # XXX - curl, sha256sum, ... ? what else? check for tls/ssl support?
-prereqs=( bzip2, curl sha256sum which )
+prereqs=( 'bzip2' 'curl' 'sha256sum' 'which' )
 for prereq in ${prereqs[@]} ; do
   hash "${prereq}" >/dev/null 2>&1 || {
     cwfailexit "${prereq} not found"
