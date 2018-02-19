@@ -13,9 +13,9 @@ function cwconfigure_${rname}() {
   pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
   curl -kLsO https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/bb_config_script.sh
   sed -i.ORIG 's/^make/#make/g;s/^test/#test/g' bb_config_script.sh
-  make defconfig HOSTCC="\${CC} \${CFLAGS}" HOSTCFLAGS="\${CFLAGS}" HOSTLDFLAGS="\${LDFLAGS} -lgcc -lc -lm"
+  make defconfig HOSTCC="\${CC} \${CFLAGS}" HOSTCFLAGS="\${CFLAGS}" HOSTLDFLAGS="\${LDFLAGS}" LDLIBS="c m gcc"
   bash bb_config_script.sh -m -s
-  make oldconfig HOSTCC="\${CC} \${CFLAGS}" HOSTCFLAGS="\${CFLAGS}" HOSTLDFLAGS="\${LDFLAGS} -lgcc -lc -lm"
+  make oldconfig HOSTCC="\${CC} \${CFLAGS}" HOSTCFLAGS="\${CFLAGS}" HOSTLDFLAGS="\${LDFLAGS}" LDLIBS="c m gcc"
   popd >/dev/null 2>&1
 }
 "
@@ -23,7 +23,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
-  make -j$(($(nproc)+1)) CC="\${CC} \${CFLAGS}" HOSTCC="\${CC} \${CFLAGS}" CFLAGS="\${CFLAGS}" HOSTCFLAGS="\${CFLAGS}" HOSTLDFLAGS="\${LDFLAGS} -lgcc -lc -lm"
+  make -j$(($(nproc)+1)) CC="\${CC} \${CFLAGS}" HOSTCC="\${CC} \${CFLAGS}" CFLAGS="\${CFLAGS}" HOSTCFLAGS="\${CFLAGS}" HOSTLDFLAGS="\${LDFLAGS}" LDLIBS="c m gcc" 
   popd >/dev/null 2>&1
 }
 "
