@@ -356,7 +356,8 @@ static_toolchain_env["CXX"]="${static_toolchain_triplet[${karch}]}-g++"
 static_toolchain_env["LD"]="${static_toolchain_triplet[${karch}]}-ld"
 static_toolchain_env["CPP"]="${static_toolchain_triplet[${karch}]}-cpp"
 static_toolchain_env["AR"]="${static_toolchain_triplet[${karch}]}-ar"
-static_toolchain_envs=( "PATH" "CFLAGS" "CXXFLAGS" "LDFLAGS" "CC" "CXX" "CPP" "LD" "AR" )
+static_toolchain_env["AS"]="${static_toolchain_triplet[${karch}]}-as"
+static_toolchain_envs=( "PATH" "CFLAGS" "CXXFLAGS" "LDFLAGS" "CC" "CXX" "CPP" "LD" "AR" "AS" )
 
 #
 # cwmkdir
