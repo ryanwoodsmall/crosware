@@ -10,7 +10,7 @@ rprof="${cwetcprofd}/${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd ${cwbuild}/${rdir} >/dev/null 2>&1
+  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
   ./configure --prefix="${cwsw}/${rname}/${rdir}" --disable-load
   popd >/dev/null 2>&1
 }
@@ -18,7 +18,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd ${cwbuild}/${rdir} >/dev/null 2>&1
+  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
   ./build.sh
   popd >/dev/null 2>&1
 }
@@ -26,7 +26,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd ${cwbuild}/${rdir} >/dev/null 2>&1
+  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
   ./make install-binPROGRAMS
   popd >/dev/null 2>&1
 }
