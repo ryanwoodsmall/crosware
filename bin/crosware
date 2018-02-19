@@ -99,8 +99,8 @@ set -eu
 #
 # prereqs
 #
-# XXX - curl, ... wget? what else? check for tls/ssl support?
-prereqs=( curl sha256sum wget )
+# XXX - curl, sha256sum, ... ? what else? check for tls/ssl support?
+prereqs=( curl sha256sum )
 for prereq in ${prereqs[@]} ; do
   which "${prereq}" >/dev/null 2>&1 || {
     cwfailexit "${prereq} not found"
