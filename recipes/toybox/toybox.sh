@@ -36,7 +36,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir "${cwsw}/${rname}/${rdir}/bin"
   rm -f "${cwsw}/${rname}/${rdir}/bin/${rname}"
   cp -a "${rname}" "${cwsw}/${rname}/${rdir}/bin"
-  for a in \$(./${rname} --list) ; do
+  for a in \$(./${rname}) ; do
     ln -sf ${rname} "${cwsw}/${rname}/${rdir}/bin/\${a}"
   done
   popd >/dev/null 2>&1
