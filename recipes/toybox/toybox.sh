@@ -5,7 +5,7 @@ rname="toybox"
 rver="0.7.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="http://landley.net/${rname}/downloads/${file}"
+rurl="http://landley.net/${rname}/downloads/${rfile}"
 rsha256="3ada450ac1eab1dfc352fee915ea6129b9a4349c1885f1394b61bd2d89a46c04"
 
 . "${cwrecipe}/common.sh"
