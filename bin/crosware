@@ -351,11 +351,11 @@ static_toolchain_env["PATH"]="${static_toolchain_inst_dir}/current/bin:\${PATH}"
 static_toolchain_env["CFLAGS"]="-Wl,-static"
 static_toolchain_env["CXXFLAGS"]="-Wl,-static"
 static_toolchain_env["LDFLAGS"]="-static"
-static_toolchain_env["CC"]="${static_toolchain_triplet[${uarch}]}-gcc"
-static_toolchain_env["CXX"]="${static_toolchain_triplet[${uarch}]}-g++"
-static_toolchain_env["LD"]="${static_toolchain_triplet[${uarch}]}-ld"
-static_toolchain_env["CPP"]="${static_toolchain_triplet[${uarch}]}-cpp"
-static_toolchain_env["AR"]="${static_toolchain_triplet[${uarch}]}-ar"
+static_toolchain_env["CC"]="${static_toolchain_triplet[${karch}]}-gcc"
+static_toolchain_env["CXX"]="${static_toolchain_triplet[${karch}]}-g++"
+static_toolchain_env["LD"]="${static_toolchain_triplet[${karch}]}-ld"
+static_toolchain_env["CPP"]="${static_toolchain_triplet[${karch}]}-cpp"
+static_toolchain_env["AR"]="${static_toolchain_triplet[${karch}]}-ar"
 static_toolchain_envs=( "PATH" "CFLAGS" "CXXFLAGS" "LDFLAGS" "CC" "CXX" "CPP" "LD" "AR" )
 
 #
@@ -553,12 +553,12 @@ function cwbootstrap() {
   # make sure we have a tmp directory
   cwmkcwtmptmp
   # architecture specfic toolchain checksum file
-  local statictoolchainchecksumfile="${cwtmptmp}/${static_toolchain_checksum_file[${uarch}]}"
-  cwfetch "${static_toolchain_checksum_url[${uarch}]}" "${statictoolchainchecksumfile}"
+  local statictoolchainchecksumfile="${cwtmptmp}/${static_toolchain_checksum_file[${karch}]}"
+  cwfetch "${static_toolchain_checksum_url[${karch}]}" "${statictoolchainchecksumfile}"
   local statictoolchainchecksum="$(awk '{print $1}' ${statictoolchainchecksumfile})"
   # static toolchain
-  local statictoolchainarchive="${cwtmptmp}/${static_toolchain_file[${uarch}]}"
-  cwfetchcheck "${static_toolchain_file_url[${uarch}]}" "${statictoolchainarchive}" "${statictoolchainchecksum}"
+  local statictoolchainarchive="${cwtmptmp}/${static_toolchain_file[${karch}]}"
+  cwfetchcheck "${static_toolchain_file_url[${karch}]}" "${statictoolchainarchive}" "${statictoolchainchecksum}"
   # jgit
   local jgitsh="${cwtmptmp}/${jgitsh_file}"
   cwfetchcheck "${jgitsh_url}" "${jgitsh}" "${jgitsh_sha256sum}"
@@ -603,7 +603,7 @@ function cwbootstrap() {
   # toolchain
   mkdir -p "${static_toolchain_inst_dir}"
   cwextract "${statictoolchainarchive}" "${static_toolchain_inst_dir}"
-  cwlinkdir "${static_toolchain_dir[${uarch}]}" "${static_toolchain_inst_dir}"
+  cwlinkdir "${static_toolchain_dir[${karch}]}" "${static_toolchain_inst_dir}"
   cwexpandenv "static_toolchain" "${cwetcprofd}/static_toolchain.sh"
   # we're bootstrapped...
   cwscriptecho "bootstrap complete"
