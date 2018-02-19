@@ -347,7 +347,7 @@ done
 
 # static toolchain environment
 declare -A static_toolchain_env
-static_toolchain_env["PATH"]="\${PATH}:${static_toolchain_inst_dir}/current/bin"
+static_toolchain_env["PATH"]="${static_toolchain_inst_dir}/current/bin:\${PATH}"
 static_toolchain_env["CFLAGS"]="-Wl,-static"
 static_toolchain_env["CXXFLAGS"]="-Wl,-static"
 static_toolchain_env["LDFLAGS"]="-static"
