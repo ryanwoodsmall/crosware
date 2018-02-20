@@ -580,16 +580,7 @@ function cwbootstrap() {
     cwscriptecho "attempting to clone ${cwurl} into ${cwtop}"
     ${jgitsh} clone "${cwurl}" "${cwtop}" || cwfailexit "could not clone ${cwurl} into ${cwtop}"
   else
-    cwscriptecho "it looks like ${cwtop} already exists"
-    if [ ! -e "${cwtop}/.git" ] ; then
-      cwfailexit "${cwtop} doesn't appear to be a git clone"
-    else
-      cwscriptecho "attempting to fetch/merge in ${cwtop}"
-      pushd "${cwtop}" >/dev/null 2>&1 || cwfailexit "could not pushd into ${cwtop}"
-      ${jgitsh} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
-      ${jgitsh} merge "${cworigin}/${cwbranch}" || { popd ; cwfailexit "could not merge ${cworigin}/${cwbranch} in ${cwtop}" ; }
-      popd >/dev/null 2>&1
-    fi
+    cwupdate
   fi
   # setup our base tools
   # zulu
