@@ -1,6 +1,18 @@
 rprof="${cwetcprofd}/${rname}.sh"
 
 eval "
+function cwname_${rname}() {
+  echo "${rname}"
+}
+"
+
+eval "
+function cwver_${rname}() {
+  echo "${rver}"
+}
+"
+
+eval "
 function cwclean_${rname}() {
   pushd "${cwbuild}" >/dev/null 2>&1
   rm -rf "${rdir}"
