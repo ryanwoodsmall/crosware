@@ -120,6 +120,7 @@ cwcmds["env"]="dump source-/eval-able ${cwname} etc/profile"
 cwcmds["profile"]="show .profile addition"
 cwcmds["list-recipes"]="list build recipes"
 cwcmds["install"]="attempt to build/install a packge from a known recipe"
+cwcmds["update"]="attempt to update existing install of ${cwname}" 
 cwcmdlist=( $(echo ${!cwcmds[@]}) )
 
 #
@@ -151,6 +152,7 @@ export cwbuild="${cwtop}/builds"
 export cwdl="${cwtop}/downloads"
 export cwetc="${cwtop}/etc"
 export cwrecipe="${cwtop}/recipes"
+export cwetcprofile="${cwetc}/profile"
 export cwetcprofd="${cwetc}/profile.d"
 export cwsw="${cwtop}/software"
 export cwtmp="${cwtop}/tmp"
@@ -537,7 +539,7 @@ function cwexpandenv() {
 #
 function cwprofileline() {
   echo
-  echo "  test -e ${cwetc}/profile && source ${cwetc}/profile"
+  echo "  test -e ${cwetc}/profile && source ${cwetcprofile}"
   echo
 }
 
@@ -615,6 +617,27 @@ function cwbootstrap() {
 }
 
 #
+# cwupdate
+#
+function cwupdate() {
+  if [ -e "${cwtop}" ] ; then
+    cwscriptecho "it looks like ${cwtop} already exists, attempting update"
+    if [ ! -e "${cwtop}/.git" ] ; then
+      cwfailexit "${cwtop} doesn't appear to be a git clone"
+    else
+      source "${cwetcprofile}"
+      cwscriptecho "attempting to fetch/merge in ${cwtop}"
+      pushd "${cwtop}" >/dev/null 2>&1 || cwfailexit "could not pushd into ${cwtop}"
+      ${jgitsh_symlink} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
+      ${jgitsh_symlink} merge "${cworigin}/${cwbranch}" || { popd ; cwfailexit "could not merge ${cworigin}/${cwbranch} in ${cwtop}" ; }
+      popd >/dev/null 2>&1
+    fi
+  else
+    cwfailexit "${cwtop} does not exist, have you run '${cwname} bootstrap' yet?"
+  fi
+}
+
+#
 # cwsourcerecipes
 #
 function cwsourcerecipes() {
@@ -654,7 +677,7 @@ function cwinstall() {
   done
   test ${#recipestobuild[@]} -eq 0 && cwfailexit "please provide at least one valid recipe to build"
   for buildrecipe in ${recipestobuild[@]} ; do
-    source "${cwetc}/profile"
+    source "${cwetcprofile}"
     cwscriptecho "building recipe ${buildrecipe//cwinstall_/}"
     ${buildrecipe}
   done
@@ -697,6 +720,9 @@ shift
 case "${cmd}" in
   bootstrap)
     cwbootstrap
+    ;;
+  update)
+    cwupdate
     ;;
   env)
     # unnecessary, gratuitous use of cat
