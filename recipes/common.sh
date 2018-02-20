@@ -29,6 +29,7 @@ function cwcheckreqs_${rname}() {
   for rreq in ${rreqs} ; do
     if ! \$(cwcheckinstalled \${rreq}) ; then
       cwinstall_\${rreq}
+      cwsourceprofile
     fi
   done
 }
@@ -74,6 +75,7 @@ eval "
 function cwinstall_${rname}() {
   cwfetch_${rname}
   cwcheckreqs_${rname}
+  cwsourceprofile
   cwclean_${rname}
   cwextract "${cwdl}/${rfile}" "${cwbuild}"
   cwconfigure_${rname}

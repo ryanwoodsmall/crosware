@@ -118,7 +118,7 @@ cwcmds["env"]="dump source-/eval-able ${cwname} etc/profile"
 cwcmds["profile"]="show .profile addition"
 cwcmds["list-recipes"]="list build recipes"
 cwcmds["install"]="attempt to build/install a package from a known recipe"
-cwcmds["update"]="attempt to update existing install of ${cwname}" 
+cwcmds["update"]="attempt to update existing install of ${cwname}"
 cwcmds["list-installed"]="list installed recipes"
 cwcmds["uninstall"]="uninstall some packages"
 cwcmds["set"]="run 'set' to show full ${cwname} environment"
@@ -634,6 +634,13 @@ function cwbootstrap() {
 }
 
 #
+# cwsourceprofile
+#
+function cwsourceprofile() {
+  source "${cwetcprofile}"
+}
+
+#
 # cwupdate
 #
 function cwupdate() {
@@ -642,7 +649,7 @@ function cwupdate() {
     if [ ! -e "${cwtop}/.git" ] ; then
       cwfailexit "${cwtop} doesn't appear to be a git clone"
     else
-      source "${cwetcprofile}"
+      cwsourceprofile
       cwscriptecho "attempting to fetch/merge in ${cwtop}"
       pushd "${cwtop}" >/dev/null 2>&1 || cwfailexit "could not pushd into ${cwtop}"
       ${jgitsh_symlink} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
@@ -695,7 +702,7 @@ function cwinstall() {
   done
   test ${#recipestobuild[@]} -eq 0 && cwfailexit "please provide at least one valid recipe to build"
   for buildrecipe in ${recipestobuild[@]} ; do
-    source "${cwetcprofile}"
+    cwsourceprofile
     cwscriptecho "building recipe ${buildrecipe//cwinstall_/}"
     ${buildrecipe}
   done
