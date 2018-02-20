@@ -154,6 +154,8 @@ export cwetcprofile="${cwetc}/profile"
 export cwetcprofd="${cwetc}/profile.d"
 export cwsw="${cwtop}/software"
 export cwtmp="${cwtop}/tmp"
+export cwvar="${cwtop}/var"
+export cwvarinst="${cwvar}/inst"
 
 # we'll use this for bootstrap since /tmp may be mounted noexec
 : ${cwtmptmp:="/usr/local/tmp"}
@@ -238,7 +240,8 @@ export uarch="${bash_arch}"
 # XXX - zulu jdk arch will be uarch
 
 # basic zulu vars
-zulu_inst_dir="${cwsw}/zulu"
+zulu_pkgname="zulu"
+zulu_inst_dir="${cwsw}/${zulu_pkgname}"
 
 # zulu environment
 declare -A zulu_env
@@ -299,7 +302,8 @@ jgitsh_file="org.eclipse.jgit.pgm-${jgitsh_ver}.sh"
 jgitsh_url="https://repo.eclipse.org/content/groups/releases/org/eclipse/jgit/org.eclipse.jgit.pgm/${jgitsh_ver}/${jgitsh_file}"
 jgitsh_sha256sum="76305c50c934f05838d876604a474b188b6b7a374aa87923eb5803028fcf8cd9"
 jgitsh_symlink="jgit.sh"
-jgitsh_inst_dir="${cwsw}/jgit"
+jgitsh_pkgname="jgitsh"
+jgitsh_inst_dir="${cwsw}/${jgitsh_pkgname}"
 
 # jgit environment
 declare -A jgitsh_env
@@ -318,7 +322,8 @@ static_toolchain_checksum_ext="sha256"
 static_toolchain_release="20180207"
 static_toolchain_base_url="https://github.com/ryanwoodsmall/musl-misc/releases/download"
 static_toolchain_release_url="${static_toolchain_base_url}/${static_toolchain_release}"
-static_toolchain_inst_dir="${cwsw}/static-toolchain"
+static_toolchain_pkgname="static-toolchain"
+static_toolchain_inst_dir="${cwsw}/${static_toolchain_pkgname}"
 
 # architecture to musl triplet
 declare -A static_toolchain_triplet
@@ -591,19 +596,22 @@ function cwbootstrap() {
     mkdir -p "${zulu_inst_dir}"
     cwextract "${zuluarchive}" "${zulu_inst_dir}"
     cwlinkdir "${zulu_jdk_dir[${uarch}]}" "${zulu_inst_dir}"
-    cwexpandenv "zulu" "${cwetcprofd}/zulu.sh"
+    cwexpandenv "${zulu_pkgname}" "${cwetcprofd}/${zulu_pkgname}.sh"
+    cwmarkinstall "${zulu_pkgname}" "${zulu_jdk_ver[${uarch}]}"
   fi
   # jgit
   mkdir -p "${jgitsh_inst_dir}/${jgitsh_ver}/bin"
   cp -a "${jgitsh}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/"
   ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink}"
   cwlinkdir "${jgitsh_ver}" "${jgitsh_inst_dir}"
-  cwexpandenv "jgitsh" "${cwetcprofd}/jgitsh.sh"
+  cwexpandenv "${jgitsh_pkgname}" "${cwetcprofd}/${jgitsh_pkgname}.sh"
+  cwmarkinstall "${jgitsh_pkgname}" "${jgitsh_ver}"
   # toolchain
   mkdir -p "${static_toolchain_inst_dir}"
   cwextract "${statictoolchainarchive}" "${static_toolchain_inst_dir}"
   cwlinkdir "${static_toolchain_dir[${karch}]}" "${static_toolchain_inst_dir}"
-  cwexpandenv "static_toolchain" "${cwetcprofd}/static_toolchain.sh"
+  cwexpandenv "static_toolchain" "${cwetcprofd}/${static_toolchain_pkgname}.sh"
+  cwmarkinstall "${static_toolchain_pkgname}" "${static_toolchain_prefix[${karch}]}"
   # we're bootstrapped...
   cwscriptecho "bootstrap complete"
   cwscriptecho "add ${cwname} to your environment with a line in your .profile/.bash_profile/.bashrc"
@@ -677,6 +685,22 @@ function cwinstall() {
     cwscriptecho "building recipe ${buildrecipe//cwinstall_/}"
     ${buildrecipe}
   done
+}
+
+#
+# cwmarkinstall
+#   receives:
+#     package/recipe name
+#     package/recipe version
+#
+# writes a file to ${cwvarinst}/${pkgname} containing the pkg version
+#
+function cwmarkinstall() {
+  local pkgname="${1}"
+  local pkgver="${2}"
+  local pkgfile="${cwvarinst}/${pkgname}"
+  cwmkdir "${cwvarinst}"
+  echo "${pkgver}" > "${pkgfile}" || cwfailexit "could not write ${pkgfile}"
 }
 
 #

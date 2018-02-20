@@ -45,6 +45,12 @@ function cwgenprofd_${rname}() {
 "
 
 eval "
+function cwmarkinstall_${rname}() {
+  cwmarkinstall "${rname}" "${rver}"
+}
+"
+
+eval "
 function cwinstall_${rname}() {
   cwfetch_${rname}
   cwclean_${rname}
@@ -54,6 +60,7 @@ function cwinstall_${rname}() {
   cwmakeinstall_${rname}
   cwlinkdir "${rdir}" "${cwsw}/${rname}"
   cwgenprofd_${rname}
+  cwmarkinstall_${rname}
   cwclean_${rname}
 }
 "

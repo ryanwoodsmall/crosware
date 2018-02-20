@@ -12,3 +12,5 @@
 /etc/local.d/*
 !/etc/local.d/empty.sh
 !/etc/local.d/crosware_directory_not_tracked_in_git
+/var/inst/*
+!/var/inst/.crosware_directory_not_tracked_in_git
