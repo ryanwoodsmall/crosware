@@ -169,6 +169,9 @@ export cwexecperm="775"
 # start off with an empty recipe list
 export cwrecipes=()
 
+# and a "user-visible" var whether we want to use an external jvm/jdk
+: ${CW_EXT_JAVA:="1"}
+
 #
 # supported architecture check
 #
@@ -567,13 +570,15 @@ function cwbootstrap() {
   cwchmod "${cwexecperm}" "${jgitsh}"
   ln -sf "${jgitsh_file}" "${cwtmptmp}/${jgitsh_symlink}"
   # zulu
-  local zuluarchive="${cwtmptmp}/${zulu_jdk_file[${uarch}]}"
-  local zulujdkdir="${cwtmptmp}/${zulu_jdk_dir[${uarch}]}"
-  cwfetchcheck "${zulu_jdk_url[${uarch}]}" "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}"
-  cwextract "${zuluarchive}" "${cwtmptmp}"
-  # add zulu and tmp dir (for jgit) to our path
-  export JAVA_HOME="${zulujdkdir}"
-  export PATH="${JAVA_HOME}/bin:${cwtmptmp}:${PATH}"
+  if [ ${CW_EXT_JAVA} -eq 1 ] ; then
+    local zuluarchive="${cwtmptmp}/${zulu_jdk_file[${uarch}]}"
+    local zulujdkdir="${cwtmptmp}/${zulu_jdk_dir[${uarch}]}"
+    cwfetchcheck "${zulu_jdk_url[${uarch}]}" "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}"
+    cwextract "${zuluarchive}" "${cwtmptmp}"
+    # add zulu and tmp dir (for jgit) to our path
+    export JAVA_HOME="${zulujdkdir}"
+    export PATH="${JAVA_HOME}/bin:${cwtmptmp}:${PATH}"
+  fi
   # clone or fetch the repo
   if [ ${bootstrapped} -eq 1 ] ; then
     cwscriptecho "attempting to clone ${cwurl} into ${cwtop}"
@@ -583,10 +588,12 @@ function cwbootstrap() {
   fi
   # setup our base tools
   # zulu
-  mkdir -p "${zulu_inst_dir}"
-  cwextract "${zuluarchive}" "${zulu_inst_dir}"
-  cwlinkdir "${zulu_jdk_dir[${uarch}]}" "${zulu_inst_dir}"
-  cwexpandenv "zulu" "${cwetcprofd}/zulu.sh"
+  if [ ${CW_EXT_JAVA} -eq 1 ] ; then
+    mkdir -p "${zulu_inst_dir}"
+    cwextract "${zuluarchive}" "${zulu_inst_dir}"
+    cwlinkdir "${zulu_jdk_dir[${uarch}]}" "${zulu_inst_dir}"
+    cwexpandenv "zulu" "${cwetcprofd}/zulu.sh"
+  fi
   # jgit
   mkdir -p "${jgitsh_inst_dir}/${jgitsh_ver}/bin"
   cp -a "${jgitsh}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/"
