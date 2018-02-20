@@ -117,9 +117,10 @@ cwcmds["bootstrap"]="bootstrap ${cwname}"
 cwcmds["env"]="dump source-/eval-able ${cwname} etc/profile"
 cwcmds["profile"]="show .profile addition"
 cwcmds["list-recipes"]="list build recipes"
-cwcmds["install"]="attempt to build/install a packge from a known recipe"
+cwcmds["install"]="attempt to build/install a package from a known recipe"
 cwcmds["update"]="attempt to update existing install of ${cwname}" 
 cwcmds["list-installed"]="list installed recipes"
+cwcmds["uninstall"]="uninstall some packages"
 cwcmdlist=( $(echo ${!cwcmds[@]} | tr ' ' '\n' | sort | xargs echo) )
 
 #
@@ -715,6 +716,21 @@ function cwlistinstalled() {
 }
 
 #
+# cwuninstall
+#
+# uninstall some recipes
+#
+function cwuninstall() {
+  cwsourcerecipes
+  for recipe in "${@}" ; do
+    if $(cwlistinstalled | grep -q "^${recipe} :") ; then
+      cwscriptecho "uninstalling ${recipe}"
+      cwuninstall_${recipe}
+    fi
+  done
+}
+
+#
 # usage
 #
 function cwusage() {
@@ -773,6 +789,9 @@ case "${cmd}" in
     ;;
   install)
     cwinstall "${@}"
+    ;;
+  uninstall)
+    cwuninstall "${@}"
     ;;
   help)
     cwusage

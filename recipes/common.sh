@@ -64,3 +64,13 @@ function cwinstall_${rname}() {
   cwclean_${rname}
 }
 "
+
+eval "
+function cwuninstall_${rname}() {
+  pushd "${cwsw}" >/dev/null 2>&1
+  rm -rf "${rname}"
+  rm -f "${rprof}"
+  rm -f "${cwvarinst}/${rname}"
+  popd >/dev/null 2>&1
+}
+"
