@@ -796,4 +796,7 @@ case "${cmd}" in
   help)
     cwusage
     ;;
+  *)
+    cwfailexit "command ${cmd} not found"
+    ;;
 esac
