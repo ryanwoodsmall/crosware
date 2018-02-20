@@ -170,7 +170,7 @@ export cwexecperm="775"
 export cwrecipes=()
 
 # and a "user-visible" var whether we want to use an external jvm/jdk
-: ${CW_EXT_JAVA:="1"}
+: ${CW_EXT_JAVA:="false"}
 
 #
 # supported architecture check
@@ -570,7 +570,7 @@ function cwbootstrap() {
   cwchmod "${cwexecperm}" "${jgitsh}"
   ln -sf "${jgitsh_file}" "${cwtmptmp}/${jgitsh_symlink}"
   # zulu
-  if [ ${CW_EXT_JAVA} -eq 1 ] ; then
+  if [ "${CW_EXT_JAVA}" == "false" ] ; then
     local zuluarchive="${cwtmptmp}/${zulu_jdk_file[${uarch}]}"
     local zulujdkdir="${cwtmptmp}/${zulu_jdk_dir[${uarch}]}"
     cwfetchcheck "${zulu_jdk_url[${uarch}]}" "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}"
@@ -588,7 +588,7 @@ function cwbootstrap() {
   fi
   # setup our base tools
   # zulu
-  if [ ${CW_EXT_JAVA} -eq 1 ] ; then
+  if [ "${CW_EXT_JAVA}" == "false" ] ; then
     mkdir -p "${zulu_inst_dir}"
     cwextract "${zuluarchive}" "${zulu_inst_dir}"
     cwlinkdir "${zulu_jdk_dir[${uarch}]}" "${zulu_inst_dir}"
