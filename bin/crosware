@@ -744,7 +744,7 @@ function cwlistinstalled() {
 #
 function cwcheckinstalled() {
   local pkgname="${1}"
-  if $(cwlistinstalled | grep -q "${pkgname}") ; then
+  if $(cwlistinstalled | grep -q "^${pkgname} :") ; then
     return 0
   else
     return 1
