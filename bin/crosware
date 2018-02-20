@@ -615,6 +615,8 @@ function cwbootstrap() {
   cwlinkdir "${static_toolchain_dir[${karch}]}" "${static_toolchain_inst_dir}"
   cwexpandenv "static_toolchain" "${cwetcprofd}/${static_toolchain_pkgname}.sh"
   cwmarkinstall "${static_toolchain_pkgname}" "${static_toolchain_prefix[${karch}]}"
+  # set tmp directory perm
+  cwchmod "${cwtmpperm}" "${cwtmp}"
   # we're bootstrapped...
   cwscriptecho "bootstrap complete"
   cwscriptecho "add ${cwname} to your environment with a line in your .profile/.bash_profile/.bashrc"
@@ -638,6 +640,7 @@ function cwupdate() {
       ${jgitsh_symlink} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
       ${jgitsh_symlink} merge "${cworigin}/${cwbranch}" || { popd ; cwfailexit "could not merge ${cworigin}/${cwbranch} in ${cwtop}" ; }
       popd >/dev/null 2>&1
+      cwchmod "${cwtmpperm}" "${cwtmp}"
     fi
   else
     cwfailexit "${cwtop} does not exist, have you run '${cwname} bootstrap' yet?"
