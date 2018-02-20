@@ -121,6 +121,7 @@ cwcmds["install"]="attempt to build/install a package from a known recipe"
 cwcmds["update"]="attempt to update existing install of ${cwname}" 
 cwcmds["list-installed"]="list installed recipes"
 cwcmds["uninstall"]="uninstall some packages"
+cwcmds["set"]="run 'set' to show full ${cwname} environment"
 cwcmdlist=( $(echo ${!cwcmds[@]} | tr ' ' '\n' | sort | xargs echo) )
 
 #
@@ -731,6 +732,14 @@ function cwuninstall() {
 }
 
 #
+# cwset
+#
+function cwset() {
+  cwsourcerecipes
+  set
+}
+
+#
 # usage
 #
 function cwusage() {
@@ -792,6 +801,9 @@ case "${cmd}" in
     ;;
   uninstall)
     cwuninstall "${@}"
+    ;;
+  set)
+    cwset
     ;;
   help)
     cwusage
