@@ -119,6 +119,7 @@ cwcmds["profile"]="show .profile addition"
 cwcmds["list-recipes"]="list build recipes"
 cwcmds["install"]="attempt to build/install a packge from a known recipe"
 cwcmds["update"]="attempt to update existing install of ${cwname}" 
+cwcmds["list-installed"]="list installed recipes"
 cwcmdlist=( $(echo ${!cwcmds[@]} | tr ' ' '\n' | sort | xargs echo) )
 
 #
@@ -704,6 +705,16 @@ function cwmarkinstall() {
 }
 
 #
+# cwlistinstalled
+#
+function cwlistinstalled() {
+  local pkgname=""
+  for pkgname in $(find ${cwvarinst} -maxdepth 1 -type f ! -name .\* | sort) ; do
+    echo "$(basename ${pkgname}) : $(cat ${pkgname})"
+  done
+}
+
+#
 # usage
 #
 function cwusage() {
@@ -756,6 +767,9 @@ case "${cmd}" in
     ;;
   list-recipes)
     cwlistrecipes
+    ;;
+  list-installed)
+    cwlistinstalled
     ;;
   install)
     cwinstall "${@}"
