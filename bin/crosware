@@ -775,6 +775,7 @@ function cwuninstall() {
 #
 function cwset() {
   cwsourcerecipes
+  cwsourceprofile
   set
 }
 
