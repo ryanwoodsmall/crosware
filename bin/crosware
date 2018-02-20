@@ -172,6 +172,7 @@ export cwexecperm="775"
 
 # start off with an empty recipe list
 export cwrecipes=()
+export cwbootstraprecipes=()
 
 # and a "user-visible" var whether we want to use an external jvm/jdk
 : ${CW_EXT_JAVA:="false"}
@@ -369,6 +370,13 @@ static_toolchain_env["CPP"]="${static_toolchain_triplet[${karch}]}-cpp"
 static_toolchain_env["AR"]="${static_toolchain_triplet[${karch}]}-ar"
 static_toolchain_env["AS"]="${static_toolchain_triplet[${karch}]}-as"
 static_toolchain_envs=( "PATH" "CFLAGS" "CXXFLAGS" "LDFLAGS" "CC" "CXX" "CPP" "LD" "AR" "AS" )
+
+#
+# "special" bootstrap recipes
+#
+for cwbootstraprecipe in "${zulu_pkgname}" "${jgitsh_pkgname}" "${static_toolchain_pkgname}" ; do
+  cwbootstraprecipes[${#cwbootstraprecipes[@]}]="${cwbootstraprecipe}"
+done
 
 #
 # cwmkdir
@@ -720,6 +728,22 @@ function cwlistinstalled() {
 }
 
 #
+# cwcheckinstalled
+#   receives:
+#     recipe package name
+#
+# returns 0 if installed, 1 if not
+#
+function cwcheckinstalled() {
+  local pkgname="${1}"
+  if $(cwlistinstalled | grep -q "${pkgname}") ; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+#
 # cwuninstall
 #
 # uninstall some recipes
@@ -727,6 +751,10 @@ function cwlistinstalled() {
 function cwuninstall() {
   cwsourcerecipes
   for recipe in "${@}" ; do
+    if ! $(set | grep -q "^cwuninstall_${recipe}") ; then
+      cwscriptecho "no uninstall found for ${recipe}"
+      continue
+    fi
     if $(cwlistinstalled | grep -q "^${recipe} :") ; then
       cwscriptecho "uninstalling ${recipe}"
       cwuninstall_${recipe}

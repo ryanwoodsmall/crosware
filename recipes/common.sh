@@ -25,6 +25,16 @@ function cwfetch_${rname}() {
 "
 
 eval "
+function cwcheckreqs_${rname}() {
+  for rreq in ${rreqs} ; do
+    if ! \$(cwcheckinstalled \${rreq}) ; then
+      cwinstall_\${rreq}
+    fi
+  done
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
   pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
   ./configure --prefix="${cwsw}/${rname}/${rdir}"
@@ -63,6 +73,7 @@ function cwmarkinstall_${rname}() {
 eval "
 function cwinstall_${rname}() {
   cwfetch_${rname}
+  cwcheckreqs_${rname}
   cwclean_${rname}
   cwextract "${cwdl}/${rfile}" "${cwbuild}"
   cwconfigure_${rname}

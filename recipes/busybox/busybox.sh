@@ -5,6 +5,7 @@ rfile="${rdir}.tar.bz2"
 rurl="http://${rname}.net/downloads/${rfile}"
 rsha256="98fe1d3c311156c597cd5cfa7673bb377dc552b6fa20b5d3834579da3b13652e"
 rprof="${cwetcprofd}/${rname}.sh"
+rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
