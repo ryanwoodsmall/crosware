@@ -53,7 +53,6 @@
 #    - and how abstract should they be?
 #  - update environment without rebootstrap
 #  - profile.d file writer
-#  - update crosware function for fetch/merge
 #
 
 #
