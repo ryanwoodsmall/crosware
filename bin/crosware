@@ -121,7 +121,7 @@ cwcmds["profile"]="show .profile addition"
 cwcmds["list-recipes"]="list build recipes"
 cwcmds["install"]="attempt to build/install a packge from a known recipe"
 cwcmds["update"]="attempt to update existing install of ${cwname}" 
-cwcmdlist=( $(echo ${!cwcmds[@]}) )
+cwcmdlist=( $(echo ${!cwcmds[@]} | tr ' ' '\n' | sort | xargs echo) )
 
 #
 # common commands
