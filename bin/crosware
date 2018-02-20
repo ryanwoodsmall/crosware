@@ -46,7 +46,6 @@
 #  - update may require downstream dep updates
 #  - etc/local.d - scriptlets, not tracked in git
 #  - var/ - track installs/versions
-#  - use_local_java - env var to avoid dl/use of zulu during bootstrap
 #  - jgit.sh doesn't have "jgit.sh pull" shortcut; use:
 #    - jgit.sh fetch origin ; jgit.sh merge origin/master
 #  - where to store recipe scriptlets?
