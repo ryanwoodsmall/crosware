@@ -584,6 +584,7 @@ function cwbootstrap() {
   cwfetchcheck "${jgitsh_url}" "${jgitsh}" "${jgitsh_sha256sum}"
   cwchmod "${cwexecperm}" "${jgitsh}"
   ln -sf "${jgitsh_file}" "${cwtmptmp}/${jgitsh_symlink}"
+  export PATH="${cwtmptmp}:${PATH}"
   # zulu
   if [ "${CW_EXT_JAVA}" == "false" ] ; then
     local zuluarchive="${cwtmptmp}/${zulu_jdk_file[${uarch}]}"
@@ -592,7 +593,7 @@ function cwbootstrap() {
     cwextract "${zuluarchive}" "${cwtmptmp}"
     # add zulu and tmp dir (for jgit) to our path
     export JAVA_HOME="${zulujdkdir}"
-    export PATH="${JAVA_HOME}/bin:${cwtmptmp}:${PATH}"
+    export PATH="${JAVA_HOME}/bin:${PATH}"
   fi
   # clone or fetch the repo
   if [ ${bootstrapped} -eq 1 ] ; then
