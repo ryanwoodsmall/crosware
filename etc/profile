@@ -7,6 +7,7 @@ cwbindir="$(cd "${cwetcdir}"/../bin && pwd)"
 
 # simple path functions
 #   https://github.com/ryanwoodsmall/shell-ish/blob/master/lib/path-functions.sh
+# XXX - need same for pkgconfig, libdir, includedir, ...
 function append_path() {
   export PATH="${PATH}:${1}"
 }

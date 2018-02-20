@@ -825,7 +825,8 @@ case "${cmd}" in
     test -e "${cwetc}/profile" && \
       cat "${cwetc}/profile" \
       | sed "s#^\(cwetcdir\)=.*#\1=${cwetc}#g" \
-      | sed "s#^\(cwbindir\)=.*#\1=${cwbin}#g"
+      | sed "s#^\(cwbindir\)=.*#\1=${cwbin}#g" \
+      | sed "s#^\(cwtop\)=.*#\1=${cwtop}#g"
     ;;
   profile)
     cwprofileline
