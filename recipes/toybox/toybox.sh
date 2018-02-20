@@ -1,12 +1,10 @@
-# make defconfig HOSTCC="$CC $CFLAGS"
-# make oldconfig HOSTCC="$CC $CFLAGS"
-# CC="$CC $CFLAGS" HOSTCC="$CC $CFLAGS" CFLAGS=$CFLAGS HOSTCFLAGS=$CFLAGS LDFLAGS="$LDFLAGS" make
 rname="toybox"
 rver="0.7.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://landley.net/${rname}/downloads/${rfile}"
 rsha256="3ada450ac1eab1dfc352fee915ea6129b9a4349c1885f1394b61bd2d89a46c04"
+rprof="${cwetcprofd}/${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
@@ -37,7 +35,7 @@ function cwmakeinstall_${rname}() {
   rm -f "${cwsw}/${rname}/${rdir}/bin/${rname}"
   cp -a "${rname}" "${cwsw}/${rname}/${rdir}/bin"
   for a in \$(./${rname}) ; do
-    ln -sf ${rname} "${cwsw}/${rname}/${rdir}/bin/\${a}"
+    ln -sf "${cwsw}/${rname}/${rdir}/bin/${rname}" "${cwsw}/${rname}/${rdir}/bin/\${a}"
   done
   popd >/dev/null 2>&1
 }

@@ -1,5 +1,3 @@
-rprof="${cwetcprofd}/${rname}.sh"
-
 eval "
 function cwname_${rname}() {
   echo "${rname}"
