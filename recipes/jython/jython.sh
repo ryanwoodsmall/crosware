@@ -31,6 +31,5 @@ function cwinstall_${rname}() {
   cwlinkdir "${rdir}" "${cwsw}/${rname}"
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
-  cwclean_${rname}
 }
 "
