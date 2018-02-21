@@ -22,6 +22,7 @@ Environment stuff to figure out how to handle:
 - ```CPPFLAGS```
 - ```CXX```
 - ```LDFLAGS```
+- ```MANPATH```
 
 This is currently just some notes, not-even-half-lazy scripts, and a config file or two.
 
