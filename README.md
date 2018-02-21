@@ -146,7 +146,7 @@ Some other things:
 - ringojs
 - rlwrap
 - scala
-- sdkman
+- sdkman (http://sdkman.io)
 - sisc (scheme)
 - slang
 - spidermonkey
