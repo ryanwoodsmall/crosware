@@ -11,6 +11,7 @@ rreqs=""
 
 eval "
 function cwmakeinstall_${rname}() {
+  unset JYTHON_HOME
   test -e "${cwsw}/${rname}/${rdir}" && mv "${cwsw}/${rname}/${rdir}"{,.PRE-$(date '+%Y%m%d%H%M%S')}
   java -jar "${cwdl}/${rfile}" -s -t all -d "${cwsw}/${rname}/${rdir}"
 }
