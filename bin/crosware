@@ -52,6 +52,9 @@
 #    - and how abstract should they be?
 #  - update environment without rebootstrap
 #  - profile.d file writer
+#  - zulu, jgitsh, static-toolchain split out to separate install functions
+#    - trim down bootstrap/make 
+#    - make them easier to update
 #
 
 #
@@ -249,9 +252,10 @@ zulu_inst_dir="${cwsw}/${zulu_pkgname}"
 
 # zulu environment
 declare -A zulu_env
+zulu_env["_JAVA_OPTIONS"]="-Djava.io.tmpdir=${cwtmp}"
 zulu_env["JAVA_HOME"]="${zulu_inst_dir}/current"
 zulu_env["PATH"]='${PATH}:${JAVA_HOME}/bin'
-zulu_envs=( "JAVA_HOME" "PATH" )
+zulu_envs=( "_JAVA_OPTIONS" "JAVA_HOME" "PATH" )
 
 # zulu jdk arch map
 # XXX - arm 32-bit hard float assumption, again
