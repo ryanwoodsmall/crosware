@@ -5,6 +5,7 @@ rfile="$(basename ${rurl})"
 rdir="${rfile//.tar.bz2/}"
 rsha256="123456..."
 rprof="${cwetcprofd}/${rname}.sh"
+rreqs=""
 
 . "${cwrecipe}/common.sh"
 
@@ -15,17 +16,28 @@ rprof="${cwetcprofd}/${rname}.sh"
 #
 #  cwinstall_pkgname
 #
+# uninstall will do the same, albeit with cwuninstall_pkgname
+#
+# quoting may be tricky depending on required expansion time
+# toybox and busybox have somewhat complicated expansion setups
+#
+# a completely self-contained custom install function is all that's necessary for a simple recipe
+# configure/make/make install *should* work out of the box with only the ^r vars above and the common.sh source
+#
 # the following functions are defined in common.sh, hopefully with sane defaults
 # functions can be defined on a per-recipe basis
 # functions in a recipe file override those from common.sh, on a case-by-case basis
 #
+#  cwcheckreqs_${rname}
 #  cwclean_${rname}
-#  cwfetch_${rname}
 #  cwconfigure_${rname}
-#  cwmake_${rname}
-#  cwmakeinstall_${rname}
+#  cwfetch_${rname}
 #  cwgenprofd_${rname}
 #  cwinstall_${rname}
+#  cwmakeinstall_${rname}
+#  cwmake_${rname}
+#  cwmarkinstall_${rname}
+#  cwuninstall_${rname}
 #
 # any function from bin/crosware can be used
 # these may be useful
@@ -85,13 +97,15 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo "\\\# ${rname}" > "${rprof}"
+  echo 'append_path "${cwsw}/${rname}/current/bin"' > ${rprof}
 }
 "
 
 eval "
 function cwinstall_${rname}() {
   cwfetch_${rname}
+  cwcheckreqs_${rname}
+  cwsourceprofile
   cwclean_${rname}
   cwextract "${cwdl}/${rfile}" "${cwbuild}"
   cwconfigure_${rname}
@@ -99,6 +113,7 @@ function cwinstall_${rname}() {
   cwmakeinstall_${rname}
   cwlinkdir "${rdir}" "${cwsw}/${rname}"
   cwgenprofd_${rname}
+  cwmarkinstall_${rname}
   cwclean_${rname}
 }
 "
