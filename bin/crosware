@@ -702,6 +702,7 @@ function cwlistrecipes() {
 #
 function cwinstall() {
   local recipestobuild=()
+  cwsourceprofile
   cwsourcerecipes
   for recipe in "${@}" ; do
     if ! $(set | grep -q "^cwinstall_${recipe}") ; then

@@ -29,6 +29,7 @@ eval "
 function cwinstall_${rname}() {
   cwfetch_${rname}
   cwsourceprofile
+  cwcheckreqs_${rname}
   cwmakeinstall_${rname}
   cwlinkdir "${rdir}" "${cwsw}/${rname}"
   cwgenprofd_${rname}
