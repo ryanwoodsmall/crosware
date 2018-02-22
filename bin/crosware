@@ -179,6 +179,10 @@ export cwbootstraprecipes=()
 
 # and a "user-visible" var whether we want to use an external jvm/jdk
 : ${CW_EXT_JAVA:="false"}
+export CW_EXT_JAVA
+# time travel?
+: ${TS:="$(date '+%Y%m%d%H%M%S')"}
+export TS
 
 #
 # supported architecture check

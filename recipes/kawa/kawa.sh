@@ -13,8 +13,8 @@ rreqs="busybox"
 eval "
 function cwmakeinstall_${rname}() {
   cwmkdir "${cwsw}/${rname}"
-  test -e "${cwsw}/${rname}/${rdir}" && mv "${cwsw}/${rname}/${rdir}"{,.PRE-$(date '+%Y%m%d%H%M%S')}
-  unzip "${cwdl}/${rfile}" -d "${cwsw}/${rname}"
+  test -e "${cwsw}/${rname}/${rdir}" && mv "${cwsw}/${rname}/${rdir}"{,.PRE-${TS}}
+  unzip -o "${cwdl}/${rfile}" -d "${cwsw}/${rname}"
 }
 "
 
