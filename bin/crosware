@@ -55,6 +55,11 @@
 #  - zulu, jgitsh, static-toolchain split out to separate install functions
 #    - trim down bootstrap/make 
 #    - make them easier to update
+#  - recipes
+#    - rrel - internal release to aid upgrade?
+#    - rbreqs - split rreqs into normal requirements and build requirements
+#    - rbdir - recipe build dir
+#    - ridir - recipe install dir
 #
 
 #
