@@ -20,7 +20,8 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path "${cwsw}/${rname}/current/bin"' > "${rprof}"
+  echo 'export KAWA_HOME=\"${cwsw}/${rname}/current\"' > "${rprof}"
+  echo 'append_path \"\${KAWA_HOME}/bin\"' >> "${rprof}"
 }
 "
 
