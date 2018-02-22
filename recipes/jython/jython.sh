@@ -19,8 +19,8 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'JYTHON_HOME=\"${cwsw}/${rname}/current\"' > ${rprof}
-  echo 'append_path \"\${JYTHON_HOME}/bin\"' >> ${rprof}
+  echo 'JYTHON_HOME=\"${cwsw}/${rname}/current\"' > "${rprof}"
+  echo 'append_path \"\${JYTHON_HOME}/bin\"' >> "${rprof}"
 }
 "
 

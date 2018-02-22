@@ -44,6 +44,6 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path "${cwsw}/${rname}/current/bin"' > ${rprof}
+  echo 'append_path "${cwsw}/${rname}/current/bin"' > "${rprof}"
 }
 "
