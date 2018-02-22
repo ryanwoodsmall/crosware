@@ -1,24 +1,15 @@
-rfile=""
-rsha256=""
+# should use git but jgit is slow
+# https://github.com/ryanwoodsmall/suckless-misc/blob/master/rpm/SPECS/9base.spec
 rname="9base"
-rver="09e95a2"
-rurl="https://git.suckless.org/${rname}"
+rver="09e95a2d6f8dbafc6601147b2f5f150355813be6"
 rdir="${rname}-${rver}"
+rfile="${rdir}.tar.bz2"
+rurl="https://git.suckless.org/${rname}/snapshot/${rfile}"
+rsha256="2a7d31a11cb68cd75a7720141cea26f053421064e2230e206c227efbe343d2d8"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rreqs="jgitsh static-toolchain make"
 
 . "${cwrecipe}/common.sh"
-
-eval "
-function cwfetch_${rname} {
-  pushd "${cwbuild}/" >/dev/null 2>&1
-  rm -rf "${rdir}"
-  ${jgitsh_symlink} clone "${rurl}" "${rdir}"
-  cd "${rdir}"
-  ${jgitsh_symlink} checkout "${rver}"
-  popd >/dev/null 2>&1
-}
-"
 
 eval "
 function cwconfigure_${rname}() {
@@ -45,21 +36,5 @@ eval "
 function cwgenprofd_${rname}() {
   echo 'export PLAN9=\"${cwsw}/${rname}/current\"' > "${rprof}"
   echo 'append_path \"\${PLAN9}/bin\"' >> "${rprof}"
-}
-"
-
-eval "
-function cwinstall_${rname}() {
-  cwclean_${rname}
-  cwcheckreqs_${rname}
-  cwsourceprofile
-  cwfetch_${rname}
-  cwconfigure_${rname}
-  cwmake_${rname}
-  cwmakeinstall_${rname}
-  cwlinkdir "${rdir}" "${cwsw}/${rname}"
-  cwgenprofd_${rname}
-  cwmarkinstall_${rname}
-  cwclean_${rname}
 }
 "
