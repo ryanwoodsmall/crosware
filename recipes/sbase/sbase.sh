@@ -42,6 +42,22 @@ function cwgenprofd_${rname}() {
 "
 
 eval "
+function cwmake_${rname}() {
+  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
+  make sbase-box
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
+  make sbase-box-install
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwinstall_${rname}() {
   cwclean_${rname}
   cwcheckreqs_${rname}
