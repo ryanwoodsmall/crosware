@@ -1,24 +1,15 @@
-rfile=""
-rsha256=""
+# should use git instead, but jgit is slow
+# https://github.com/ryanwoodsmall/suckless-misc/blob/master/rpm/SPECS/sbase.spec
 rname="sbase"
-rver="4b9c664"
-rurl="https://git.suckless.org/${rname}"
+rver="4b9c6645f548fc65c86c7980dffcb074182423da"
 rdir="${rname}-${rver}"
+rfile="${rdir}.tar.bz2"
+rurl="https://git.suckless.org/${rname}/snapshot/${rfile}"
+rsha256="a6c0a32a242f4f0bea558bc510bcc6b000596bc5d0b014e963846d45a8b9b1c7"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rreqs="jgitsh static-toolchain make"
 
 . "${cwrecipe}/common.sh"
-
-eval "
-function cwfetch_${rname} {
-  pushd "${cwbuild}/" >/dev/null 2>&1
-  rm -rf "${rdir}"
-  ${jgitsh_symlink} clone "${rurl}" "${rdir}"
-  cd "${rdir}"
-  ${jgitsh_symlink} checkout "${rver}"
-  popd >/dev/null 2>&1
-}
-"
 
 eval "
 function cwconfigure_${rname}() {
@@ -54,21 +45,5 @@ function cwmakeinstall_${rname}() {
   pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
   make sbase-box-install
   popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwinstall_${rname}() {
-  cwclean_${rname}
-  cwcheckreqs_${rname}
-  cwsourceprofile
-  cwfetch_${rname}
-  cwconfigure_${rname}
-  cwmake_${rname}
-  cwmakeinstall_${rname}
-  cwlinkdir "${rdir}" "${cwsw}/${rname}"
-  cwgenprofd_${rname}
-  cwmarkinstall_${rname}
-  cwclean_${rname}
 }
 "
