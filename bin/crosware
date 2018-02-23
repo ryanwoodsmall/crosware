@@ -630,6 +630,7 @@ function cwbootstrap() {
   mkdir -p "${jgitsh_inst_dir}/${jgitsh_ver}/bin"
   cp -a "${jgitsh}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/"
   ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink}"
+  ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink/%.sh/}"
   cwlinkdir "${jgitsh_ver}" "${jgitsh_inst_dir}"
   cwexpandenv "${jgitsh_pkgname}" "${cwetcprofd}/${jgitsh_pkgname}.sh"
   cwmarkinstall "${jgitsh_pkgname}" "${jgitsh_ver}"
