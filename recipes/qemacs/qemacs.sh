@@ -18,9 +18,13 @@ function cwconfigure_${rname}() {
     --disable-xv \
     --disable-xrender \
     --disable-html \
-    --disable-png
+    --disable-png \
+    --cc=\"\${CC}\" \
+    --extra-cflags=\"\${CFLAGS}\" \
+    --extra-ldflags=\"\${LDFLAGS}\"
   grep -v 'install.*html2png.*/bin' Makefile > Makefile.NEW
   sed '/^install:/ s/html2png//g' Makefile.NEW > Makefile
+  sed -i 's/HOST_CC/CC/g' libqhtml/Makefile
   popd >/dev/null 2>&1
 }
 "
