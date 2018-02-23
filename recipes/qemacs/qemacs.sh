@@ -24,7 +24,7 @@ function cwconfigure_${rname}() {
     --extra-ldflags=\"\${LDFLAGS}\"
   grep -v 'install.*html2png.*/bin' Makefile > Makefile.NEW
   sed '/^install:/ s/html2png//g' Makefile.NEW > Makefile
-  sed -i 's/HOST_CC/CC/g' libqhtml/Makefile
+  sed -i 's/HOST_CC/CC/g;s/CFLAGS)/CFLAGS) \$(LDFLAGS)/g' libqhtml/Makefile
   popd >/dev/null 2>&1
 }
 "
