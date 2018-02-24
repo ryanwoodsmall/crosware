@@ -58,7 +58,6 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - https://github.com/ryanwoodsmall/musl-misc/releases
 
 Some things:
-- bison
 - busybox (static)
 - byacc
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
@@ -90,6 +89,7 @@ Some other things:
 - autoconf
 - automake
 - bc / dc (gnu)
+- bison (needs perl to build)
 - clojure
 - cmake
 - curl
