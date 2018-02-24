@@ -5,7 +5,7 @@ rfile="${rdir}.tar.gz"
 rurl="https://github.com/westes/flex/releases/download/v${rver}/${rfile}"
 rsha256="e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995"
 rprof="${cwetcprofd}/${rname}.sh"
-rreqs="make"
+rreqs="make m4"
 
 . "${cwrecipe}/common.sh"
 
