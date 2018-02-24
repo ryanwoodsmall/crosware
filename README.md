@@ -103,7 +103,7 @@ Some other things:
 - autoconf
 - automake
 - bc / dc (gnu)
-- bison (needs perl to build)
+- bison (requires perl)
 - clojure
 - cmake
 - curl
@@ -164,6 +164,7 @@ Some other things:
 - spidermonkey
 - spidernode
 - stunnel
+- texinfo (requires perl)
 - tcc
 - tig
 - tinyscheme
