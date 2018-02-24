@@ -57,28 +57,42 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 
 - https://github.com/ryanwoodsmall/musl-misc/releases
 
-Some things:
+Bootstrap recipes:
+- **zulu** azul zulu openjdk jvm
+- **jgitsh** standalone jgit shell script
+- **static-toolchain** musl-cross-make static toolchain
+
+Working recipes:
 - busybox (static)
 - byacc
+- flex
+- jython
+- kawa (scheme)
+- m4
+- make
+- qemacs (https://bellard.org/qemacs/)
+- sisc (scheme)
+- suckless
+  - 9base (https://tools.suckless.org/9base)
+  - sbase (https://core.suckless.org/sbase)
+  - ubase (https://core.suckless.org/ubase)
+- svnkit 
+- toybox (static)
+
+Some things:
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
-- musl-cross-make (static only? preferable, easier)
 - dnsmasq
 - dropbear
 - file
-- flex
 - git
 - java (oracle or zulu openjdk? both)
-- jgit (standalone client)
 - jruby
-- jython
-- make
 - mercurial / hg
 - nc / ncat / netcat
 - screen
 - socat
 - subversion / svn
 - tmux
-- toybox (static)
 - vim (with syntax highlighting)
 
 Some other things:
@@ -111,7 +125,6 @@ Some other things:
 - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
 - jq
 - jscheme (dead)
-- kawa (scheme)
 - llvm / clang
 - libedit
 - libressl
@@ -119,7 +132,6 @@ Some other things:
 - links (ncurses)
 - luaj
 - lynx (ncurses, s-lang)
-- m4
 - maven
 - mg (https://homepage.boetes.org/software/mg/)
 - moreutils
@@ -139,7 +151,6 @@ Some other things:
 - plan9port (without x11)
 - pkg-config
 - python
-- qemacs (https://bellard.org/qemacs/)
 - qemu
 - rc (https://github.com/rakitzis/rc)
 - readline
@@ -149,16 +160,10 @@ Some other things:
 - rlwrap
 - scala
 - sdkman (http://sdkman.io)
-- sisc (scheme)
 - slang
 - spidermonkey
 - spidernode
 - stunnel
-- suckless
-  - 9base (https://tools.suckless.org/9base)
-  - sbase (https://core.suckless.org/sbase)
-  - ubase (https://core.suckless.org/ubase)
-- svnkit 
 - tcc
 - tig
 - tinyscheme
