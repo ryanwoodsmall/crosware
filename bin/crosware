@@ -29,8 +29,11 @@
 #    - jdk will need to be arm on aarch64
 #  - handle armv8l 32-bit compat on aarch64
 #    - treat like armv6l/armv7l
+#  - arm soft-float?
+#    - bash will return something like armv5tel
+#    - need sf zulu jdk, compiler set
 #  - handle i686
-#    - no current, supported chrome os devices are 32-bit
+#    - no current, supported intel chrome os devices are 32-bit
 #    - maybe grab neverware cloudready 32b for testing?
 #    - i686 *only*, no i386/i486/i586
 #  - files to source w/path, compiler vars, pkg-config, etc.
@@ -56,10 +59,13 @@
 #    - trim down bootstrap/make 
 #    - make them easier to update
 #  - recipes
+#    - rname - recipe name
+#    - rver - recipe version
 #    - rrel - internal release to aid upgrade?
-#    - rbreqs - split rreqs into normal requirements and build requirements
+#    - rbreqs - split rreqs into normal requirements (rreqs) and build requirements
 #    - rbdir - recipe build dir
 #    - ridir - recipe install dir
+#    - rprof - profile.d file
 #    - need to set sane default r* values in common.sh with ': ${rblah:="blah.setting"}'
 #    - unset vals after parse so there's no bleed through?
 #
@@ -234,9 +240,13 @@ fi
 # transform arm or armv7a to armv7l for parity with "uname -m"
 # XXX - this assumes aarch64/x86_64 return the "right" $MACHTYPE
 # XXX - this assumes we have hardware float on armv6/v7
+# XXX - HOSTTYPE is the first part of MACHTYPE
 export bash_triplet="${MACHTYPE}"
 bash_arch="${MACHTYPE%%-*}"
 if [[ ${bash_arch} =~ ^arm ]] ; then
+  if [[ ${bash_arch} =~ ^armv5 ]] ; then
+    cwfailexit "it looks like your machine type is ${MACHTYPE}; the minimum is armv6 with hardware float"
+  fi
   if [[ ${karch} =~ ^aarch64 ]] ; then
     bash_arch="armv7l"
   elif [[ ${karch} =~ ^armv(6|7|8) ]] ; then
