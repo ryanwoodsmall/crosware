@@ -32,6 +32,7 @@
 #  - arm soft-float?
 #    - bash will return something like armv5tel
 #    - need sf zulu jdk, compiler set
+#    - probably not worth it
 #  - handle i686
 #    - no current, supported intel chrome os devices are 32-bit
 #    - maybe grab neverware cloudready 32b for testing?
@@ -47,6 +48,8 @@
 #    - simple directory of files with pkgname.dependents, pkgname.dependencies
 #  - install must chase down upstream deps
 #  - update may require downstream dep updates
+#    - var/deps/recipename/depname
+#    - var/reqs/recipename/reqname
 #  - etc/local.d - scriptlets, not tracked in git
 #  - var/ - track installs/versions
 #  - jgit.sh doesn't have "jgit.sh pull" shortcut; use:
@@ -57,7 +60,7 @@
 #  - profile.d file writer
 #  - zulu, jgitsh, static-toolchain split out to separate install functions
 #    - trim down bootstrap/make 
-#    - make them easier to update
+#    - make them easier to upgrade
 #  - recipes
 #    - rname - recipe name
 #    - rver - recipe version
@@ -66,8 +69,12 @@
 #    - rbdir - recipe build dir
 #    - ridir - recipe install dir
 #    - rprof - profile.d file
+#    - rdeps / rbdeps?
 #    - need to set sane default r* values in common.sh with ': ${rblah:="blah.setting"}'
 #    - unset vals after parse so there's no bleed through?
+#  - recipe/function names
+#    - need _ instead of - (?)
+#    - rename static-toolchain back to static_toolchain (?)
 #
 
 #
@@ -700,7 +707,7 @@ function cwsourcerecipes() {
   for recipe in ${cwrecipe}/*/*.sh ; do
     source ${recipe}
     cwrecipes[${#cwrecipes[@]}]="${rname}"
-    unset rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir
+    unset rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rdeps rbdeps
   done
   unset recipe
 }
