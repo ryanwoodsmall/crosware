@@ -700,7 +700,9 @@ function cwsourcerecipes() {
   for recipe in ${cwrecipe}/*/*.sh ; do
     source ${recipe}
     cwrecipes[${#cwrecipes[@]}]="${rname}"
+    unset rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir
   done
+  unset recipe
 }
 
 #
