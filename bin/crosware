@@ -147,6 +147,7 @@ cwcmds["update"]="attempt to update existing install of ${cwname}"
 cwcmds["list-installed"]="list installed recipes"
 cwcmds["uninstall"]="uninstall some packages"
 cwcmds["set"]="run 'set' to show full ${cwname} environment"
+cwcmds["list-available"]="list available recipes which are not installed"
 cwcmdlist=( $(echo ${!cwcmds[@]} | tr ' ' '\n' | sort | xargs echo) )
 
 #
@@ -790,6 +791,20 @@ function cwcheckinstalled() {
 }
 
 #
+# cwlistavailable
+#
+# lists available but uninstalled recipes
+#
+function cwlistavailable() {
+  local pkgname=""
+  for pkgname in $(cwlistrecipes) ; do
+    if ! $(cwcheckinstalled ${pkgname}) ; then
+      echo "${pkgname}"
+    fi
+  done
+}
+
+#
 # cwuninstall
 #
 # uninstall some recipes
@@ -874,6 +889,9 @@ case "${cmd}" in
     ;;
   list-installed)
     cwlistinstalled
+    ;;
+  list-available)
+    cwlistavailable
     ;;
   install)
     cwinstall "${@}"
