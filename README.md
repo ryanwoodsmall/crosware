@@ -95,12 +95,14 @@ Some other things:
 - curl
 - cvs
 - dynjs
+- editline (https://github.com/troglobit/editline)
 - elinks (old, deprecated)
 - gc (http://www.hboehm.info/gc/)
 - go
 - gradle
 - groovy
 - heimdal
+- henplus (http://henplus.sourceforge.net/)
 - hg4j and client wrapper (dead?)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
 - java-repl
