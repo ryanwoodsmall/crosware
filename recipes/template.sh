@@ -5,7 +5,10 @@ rfile="$(basename ${rurl})"
 rdir="${rfile//.tar.bz2/}"
 rsha256="123456..."
 rprof="${cwetcprofd}/${rname}.sh"
-rreqs=""
+rbdir="${cwbuild}/${rdir}"
+rtdir="${cwsw}/${rname}"
+ridir="${rtdir}/${rdir}"
+rreqs="fakereq1 fakereq2"
 
 . "${cwrecipe}/common.sh"
 
@@ -73,15 +76,15 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
-  ./configure --prefix="${cwsw}/${rname}/${rdir}" --custom-flag
+  pushd "${rbdir}" >/dev/null 2>&1
+  ./configure --prefix="${ridir}" --custom-flag
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
+  pushd "${rbdir}" >/dev/null 2>&1
   make -custom...
   popd >/dev/null 2>&1
 }
@@ -89,7 +92,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
+  pushd "${rbdir}" >/dev/null 2>&1
   make install DESTDIR=...
   popd >/dev/null 2>&1
 }
@@ -97,7 +100,7 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path "${cwsw}/${rname}/current/bin"' > ${rprof}
+  echo 'append_path "${rtdir}/current/bin"' > ${rprof}
 }
 "
 
@@ -111,7 +114,7 @@ function cwinstall_${rname}() {
   cwconfigure_${rname}
   cwmake_${rname}
   cwmakeinstall_${rname}
-  cwlinkdir "${rdir}" "${cwsw}/${rname}"
+  cwlinkdir "${rdir}" "${rtdir}"
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
   cwclean_${rname}
