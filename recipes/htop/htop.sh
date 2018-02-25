@@ -21,7 +21,15 @@ function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   mkdir -p buildbin
   ln -s \$(which jython) buildbin/python
-  env PATH=\"./buildbin:\${PATH}\" make
+  env PATH=\"./buildbin:\${PATH}\" make -j$(($(nproc)+1))
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd "${rbdir}" >/dev/null 2>&1
+  env PATH=\"./buildbin:\${PATH}\" make install
   popd >/dev/null 2>&1
 }
 "
