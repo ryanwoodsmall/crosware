@@ -75,7 +75,7 @@ Working recipes:
 - less
 - libevent (no openssl support yet)
 - links (ncurses)
-- lynx (slang, no ncurses for now)
+- lynx (ncurses and slang, ncurses default)
 - m4
 - make
 - ncurses
