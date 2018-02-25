@@ -399,6 +399,7 @@ for supported_arch in ${supported_arches[@]} ; do
 done
 
 # static toolchain environment
+# XXX - set more ld flags? -s/--strip-all or -S/--strip-debug
 declare -A static_toolchain_env
 static_toolchain_env["PATH"]="${static_toolchain_inst_dir}/current/bin:\${PATH}"
 static_toolchain_env["CFLAGS"]="-Wl,-static"
