@@ -13,7 +13,7 @@ rreqs="static-toolchain make"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
+  pushd "${rbdir}" >/dev/null 2>&1
   sed -i '/^PREFIX/d' config.mk
   sed -i '/^CC/d' config.mk
   sed -i '/^AR/d' config.mk
@@ -21,20 +21,20 @@ function cwconfigure_${rname}() {
   echo "CC = \${CC}" >> config.mk
   echo "AR = \${AR}" >> config.mk
   echo "LDFLAGS = \${LDFLAGS}" >> config.mk
-  echo "PREFIX = ${cwsw}/${rname}/${rdir}" >> config.mk
+  echo "PREFIX = ${ridir}" >> config.mk
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${cwsw}/${rname}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
+  pushd "${rbdir}" >/dev/null 2>&1
   make sbase-box
   popd >/dev/null 2>&1
 }
@@ -42,7 +42,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
+  pushd "${rbdir}" >/dev/null 2>&1
   make sbase-box-install
   popd >/dev/null 2>&1
 }
