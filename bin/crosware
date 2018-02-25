@@ -76,7 +76,6 @@
 #  - recipe/function names
 #    - need _ instead of - (?)
 #    - rename static-toolchain back to static_toolchain (?)
-#    - cwextract_recipe name wrapper function for each recipe
 #  - whatprovides functionality
 #    - given a program or dir/subdir/blah path pattern dump the all directory names under software/ that match
 #  - os detector

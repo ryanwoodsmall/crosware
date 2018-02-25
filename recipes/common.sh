@@ -81,12 +81,18 @@ function cwmarkinstall_${rname}() {
 "
 
 eval "
+function cwextract_${rname}() {
+  cwextract "${cwdl}/${rfile}" "${cwbuild}"
+}
+"
+
+eval "
 function cwinstall_${rname}() {
   cwfetch_${rname}
   cwcheckreqs_${rname}
   cwsourceprofile
   cwclean_${rname}
-  cwextract "${cwdl}/${rfile}" "${cwbuild}"
+  cwextract_${rname}
   cwconfigure_${rname}
   cwmake_${rname}
   cwmakeinstall_${rname}
