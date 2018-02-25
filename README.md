@@ -70,9 +70,12 @@ Working recipes:
 - kawa (scheme)
 - less
 - libevent (no openssl support yet)
+- links (ncurses)
 - m4
 - make
 - ncurses
+- openssl
+- pkg-config (named pkgconfig)
 - qemacs (https://bellard.org/qemacs/)
 - readline
 - rlwrap
@@ -85,14 +88,12 @@ Working recipes:
 - svnkit 
 - tmux
 - toybox (static)
+- zlib
 
 Possibly working recipes:
 - bison
 - groff
-- openssl
 - perl
-- pkg-config (named pkgconfig)
-- zlib
 
 Some things:
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
@@ -141,7 +142,6 @@ Some other things:
 - libedit
 - libressl
 - libtool
-- links (ncurses)
 - luaj
 - lynx (ncurses, s-lang)
 - maven
