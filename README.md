@@ -74,6 +74,7 @@ Working recipes:
 - less
 - libevent (no openssl support yet)
 - links (ncurses)
+- lynx (slang, no ncurses for now)
 - m4
 - make
 - ncurses
@@ -85,6 +86,7 @@ Working recipes:
 - rlwrap
 - screen
 - sisc (scheme)
+- slang
 - suckless
   - 9base (https://tools.suckless.org/9base)
   - sbase (https://core.suckless.org/sbase)
@@ -144,7 +146,6 @@ Some other things:
 - libressl
 - libtool
 - luaj
-- lynx (ncurses, s-lang)
 - maven
 - mg (https://homepage.boetes.org/software/mg/)
 - moreutils
@@ -167,7 +168,6 @@ Some other things:
 - ringojs
 - scala
 - sdkman (http://sdkman.io)
-- slang
 - spidermonkey
 - spidernode
 - stunnel
