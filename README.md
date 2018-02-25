@@ -68,8 +68,10 @@ Working recipes:
 - flex
 - jython
 - kawa (scheme)
+- less
 - m4
 - make
+- ncurses
 - qemacs (https://bellard.org/qemacs/)
 - sisc (scheme)
 - suckless
@@ -131,7 +133,6 @@ Some other things:
 - jq
 - jscheme (dead)
 - llvm / clang
-- less
 - libedit
 - libressl
 - libtool
@@ -143,7 +144,6 @@ Some other things:
 - moreutils
 - musl
 - mutt
-- ncurses
 - netbsd-curses (sabotage https://github.com/sabotage-linux/netbsd-curses)
 - node / npm (ugh)
 - nodyn (dead)
