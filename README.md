@@ -74,6 +74,8 @@ Working recipes:
 - make
 - ncurses
 - qemacs (https://bellard.org/qemacs/)
+- readline
+- rlwrap
 - sisc (scheme)
 - suckless
   - 9base (https://tools.suckless.org/9base)
@@ -158,11 +160,9 @@ Some other things:
 - python
 - qemu
 - rc (https://github.com/rakitzis/rc)
-- readline
 - rembulan (jvm lua)
 - rhino
 - ringojs
-- rlwrap
 - scala
 - sdkman (http://sdkman.io)
 - slang

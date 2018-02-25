@@ -92,6 +92,7 @@
 #    - debian
 #    - ubuntu
 #  - deleted recipes can't be uninstalled (i.e, break when moving bison.sh to .OFF)
+#  - cppflags/ldflags need to have dupes removed
 #
 
 #
