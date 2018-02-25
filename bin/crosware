@@ -77,6 +77,12 @@
 #    - rename static-toolchain back to static_toolchain (?)
 #  - whatprovides functionality
 #    - given a program or dir/subdir/blah path pattern dump the all directory names under software/ that match
+#  - os detector
+#    - chrome os/chromium os
+#    - alpine
+#    - centos
+#    - debian
+#    - ubuntu
 #
 
 #
