@@ -18,8 +18,8 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   make install
-  mv "${rtdir}/current/bin/yacc" "${rtdir}/current/bin/byacc"
-  ln -sf "${rtdir}/current/bin/byacc" "${rtdir}/current/bin/yacc"
+  mv "${ridir}/bin/yacc" "${ridir}/bin/byacc"
+  ln -sf "${ridir}/bin/byacc" "${ridir}/bin/yacc"
   popd >/dev/null 2>&1
 }
 "
