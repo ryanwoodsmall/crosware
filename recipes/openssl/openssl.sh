@@ -1,5 +1,5 @@
 rname="openssl"
-rver="1.0.2.n"
+rver="1.0.2n"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.openssl.org/source/${rfile}"
