@@ -69,6 +69,7 @@ Working recipes:
 - jython
 - kawa (scheme)
 - less
+- libevent (no openssl support yet)
 - m4
 - make
 - ncurses
@@ -79,6 +80,7 @@ Working recipes:
   - sbase (https://core.suckless.org/sbase)
   - ubase (https://core.suckless.org/ubase)
 - svnkit 
+- tmux
 - toybox (static)
 
 Possibly working recipes:
@@ -100,7 +102,6 @@ Some things:
 - screen
 - socat
 - subversion / svn
-- tmux
 - vim (with syntax highlighting)
 
 Some other things:
