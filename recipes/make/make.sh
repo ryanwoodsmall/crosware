@@ -32,6 +32,7 @@ function cwmakeinstall_${rname}() {
   popd >/dev/null 2>&1
 }
 "
+
 eval "
 function cwgenprofd_${rname}() {
   echo 'append_path "${cwsw}/${rname}/current/bin"' > "${rprof}"

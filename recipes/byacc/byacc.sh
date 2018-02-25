@@ -14,3 +14,13 @@ function cwgenprofd_${rname}() {
   echo 'append_path "${cwsw}/${rname}/current/bin"' > "${rprof}"
 }
 "
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
+  make install
+  mv "${cwsw}/${rname}/current/bin/yacc" "${cwsw}/${rname}/current/bin/byacc"
+  ln -sf "${cwsw}/${rname}/current/bin/byacc" "${cwsw}/${rname}/current/bin/yacc"
+  popd >/dev/null 2>&1
+}
+"
