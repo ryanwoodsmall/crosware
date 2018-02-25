@@ -79,6 +79,10 @@ Working recipes:
 - svnkit 
 - toybox (static)
 
+Possibly working recipes:
+- bison
+- perl
+
 Some things:
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
 - dnsmasq
@@ -103,7 +107,6 @@ Some other things:
 - autoconf
 - automake
 - bc / dc (gnu)
-- bison (requires perl)
 - clojure
 - cmake
 - curl
@@ -147,7 +150,6 @@ Some other things:
 - parenj / parenjs
 - pcc
 - pcre
-- perl
 - plan9port (without x11)
 - pkg-config
 - python
