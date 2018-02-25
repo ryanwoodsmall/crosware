@@ -1,33 +1,32 @@
 rname="make"
 rver="4.2.1"
-rurl="https://ftp.gnu.org/gnu/${rname}/${rname}-${rver}.tar.bz2"
-rfile="$(basename ${rurl})"
-rdir="${rfile//.tar.bz2/}"
+rdir="${rname}-${rver}"
+rfile="${rdir}.tar.bz2"
+rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="d6e262bf3601b42d2b1e4ef8310029e1dcf20083c5446b4b7aa67081fdffc589"
-rprof="${cwetcprofd}/${rname}.sh"
 rreqs="static-toolchain"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
-  ./configure --prefix="${cwsw}/${rname}/${rdir}" --disable-load
+  pushd "${rbdir}" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix} --disable-load
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
-  ./build.sh
+  pushd "${rbdir}" >/dev/null 2>&1
+  bash ./build.sh
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
+  pushd "${rbdir}" >/dev/null 2>&1
   ./make install-binPROGRAMS
   popd >/dev/null 2>&1
 }
@@ -35,6 +34,6 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path "${cwsw}/${rname}/current/bin"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
 "
