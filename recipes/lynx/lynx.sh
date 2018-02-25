@@ -17,13 +17,13 @@ function cwgenprofd_${rname}() {
 eval "
 function cwbuild_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  local commonopts=\"--with-ssl --enable-widec --with-zlib LIBS=\'-lssl -lcrypto -lz\'\"
-  #./configure ${cwconfigureprefix} --with-screen=ncursesw \${commonopts} 
+  local commonopts=\"--with-ssl --enable-widec --with-zlib\"
+  #./configure ${cwconfigureprefix} --with-screen=ncursesw \${commonopts} LIBS=\"-lcrypto -lssl -lz\"
   #make
   #make install
   #mv "${ridir}/bin/${rname}" "${ridir}/bin/${rname}-ncurses"
   #make clean
-  ./configure ${cwconfigureprefix} --with-screen=slang \${commonopts}
+  ./configure ${cwconfigureprefix} --with-screen=slang \${commonopts} LIBS=\"-lcrypto -lssl -lz\"
   make
   make install
   sed -i.DEFAULT 's/#ACCEPT_ALL_COOKIES:FALSE/ACCEPT_ALL_COOKIES:TRUE/g' "${ridir}/etc/lynx.cfg"
