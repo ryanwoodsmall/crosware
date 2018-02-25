@@ -17,7 +17,7 @@ function cwgenprofd_${rname}() {
 eval "
 function cwbuild_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  local commonopts=\"--with-ssl --enable-widec --with-zlib LIBS='-lssl -lcrypto -lz'\"
+  local commonopts=\"--with-ssl --enable-widec --with-zlib LIBS=\'-lssl -lcrypto -lz\'\"
   #./configure ${cwconfigureprefix} --with-screen=ncursesw \${commonopts} 
   #make
   #make install
