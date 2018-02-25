@@ -1,3 +1,9 @@
+: ${rbdir:="${cwbuild}/${rdir}"}
+: ${rtdir:="${cwsw}/${rname}"}
+: ${ridir:="${rtdir}/${rdir}"}
+: ${rprof:="${cwetcprofd}/${rname}.sh"}
+
+cwconfigureprefix="--prefix=${ridir}"
 cwconfigurelibopts="--enable-static --enable-static=yes --disable-shared --enable-shared=no"
 
 eval "
@@ -39,15 +45,15 @@ function cwcheckreqs_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
-  ./configure --prefix="${cwsw}/${rname}/${rdir}"
+  pushd "${rbdir}" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix}
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
+  pushd "${rbdir}" >/dev/null 2>&1
   make -j$(($(nproc)+1))
   popd >/dev/null 2>&1
 }
@@ -55,7 +61,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
+  pushd "${rbdir}" >/dev/null 2>&1
   make install
   popd >/dev/null 2>&1
 }
@@ -83,7 +89,7 @@ function cwinstall_${rname}() {
   cwconfigure_${rname}
   cwmake_${rname}
   cwmakeinstall_${rname}
-  cwlinkdir "${rdir}" "${cwsw}/${rname}"
+  cwlinkdir "${rdir}" "${rtdir}"
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
   cwclean_${rname}

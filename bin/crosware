@@ -64,10 +64,11 @@
 #  - recipes
 #    - rname - recipe name
 #    - rver - recipe version
-#    - rrel - internal release to aid upgrade?
+#    - rrel - internal release to aid upgrade? - XXX
 #    - rbreqs - split rreqs into normal requirements (rreqs) and build requirements
 #    - rbdir - recipe build dir
-#    - ridir - recipe install dir
+#    - rtdir - recipe top dir where installs are done
+#    - ridir - versioned recipe install dir
 #    - rprof - profile.d file
 #    - rdeps / rbdeps?
 #    - need to set sane default r* values in common.sh with ': ${rblah:="blah.setting"}'
@@ -83,6 +84,7 @@
 #    - centos
 #    - debian
 #    - ubuntu
+#  - deleted recipes can't be uninstalled (i.e, break when moving bison.sh to .OFF)
 #
 
 #
@@ -717,7 +719,7 @@ function cwsourcerecipes() {
   for recipe in ${cwrecipe}/*/*.sh ; do
     source ${recipe}
     cwrecipes[${#cwrecipes[@]}]="${rname}"
-    unset rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rdeps rbdeps
+    unset rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps
   done
   unset recipe
 }
