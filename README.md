@@ -66,6 +66,8 @@ Working recipes:
 - busybox (static)
 - byacc
 - flex
+- groff
+- htop (uses jython during build)
 - jython
 - kawa (scheme)
 - less
@@ -75,6 +77,7 @@ Working recipes:
 - make
 - ncurses
 - openssl
+- perl
 - pkg-config (named pkgconfig)
 - qemacs (https://bellard.org/qemacs/)
 - readline
@@ -92,8 +95,6 @@ Working recipes:
 
 Possibly working recipes:
 - bison
-- groff
-- perl
 
 Some things:
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
