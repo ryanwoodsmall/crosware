@@ -63,6 +63,7 @@ Bootstrap recipes:
 - **static-toolchain** musl-cross-make static toolchain
 
 Working recipes:
+- abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - busybox (static)
 - byacc
 - dropbear
@@ -114,7 +115,6 @@ Some things:
 - vim (with syntax highlighting)
 
 Some other things:
-- abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - ant
 - antlr
 - at&t ast
