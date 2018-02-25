@@ -12,7 +12,6 @@ cwbindir="$(cd "${cwetcdir}"/../bin && pwd)"
 : ${LDFLAGS:=""}
 
 # pkg-config
-: ${PKG_CONFIG_LIBDIR:=""}
 : ${PKG_CONFIG_PATH:=""}
 
 # simple path functions
@@ -35,6 +34,12 @@ function append_ldflags() {
 }
 function prepend_ldflags() {
   export LDFLAGS="${1} ${LDFLAGS}"
+}
+function append_pkgconfigpath() {
+  export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:${1}"
+}
+function prepend_pkgconfigpath() {
+  export PKG_CONFIG_PATH="${1}:${PKG_CONFIG_PATH}"
 }
 
 # add our bin dir to our path

@@ -11,10 +11,10 @@ rreqs="make toybox busybox byacc"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  sttop=\"\$(realpath \$(dirname \$(realpath \$(which \${CC})))/..)\"
-  stinc="\${sttop}/\${CC//-gcc/}/include"
-  stbin="\${sttop}/bin"
-  stlib="\${sttop}/\${CC//-gcc/}/lib"
+  local sttop=\"\$(realpath \$(dirname \$(realpath \$(which \${CC})))/..)\"
+  local stinc="\${sttop}/\${CC//-gcc/}/include"
+  local stbin="\${sttop}/bin"
+  local stlib="\${sttop}/\${CC//-gcc/}/lib"
   mkdir -p sysroot/usr
   ln -sf \${stbin} sysroot/usr/bin
   ln -sf \${stinc} sysroot/usr/include
