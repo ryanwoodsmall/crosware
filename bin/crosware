@@ -413,7 +413,7 @@ declare -A static_toolchain_env
 static_toolchain_env["PATH"]="${static_toolchain_inst_dir}/current/bin:\${PATH}"
 static_toolchain_env["CFLAGS"]="-Wl,-static"
 static_toolchain_env["CXXFLAGS"]="-Wl,-static"
-static_toolchain_env["LDFLAGS"]="-static"
+static_toolchain_env["LDFLAGS"]="-static \${LDFLAGS}"
 static_toolchain_env["CC"]="${static_toolchain_triplet[${karch}]}-gcc"
 static_toolchain_env["CXX"]="${static_toolchain_triplet[${karch}]}-g++"
 static_toolchain_env["LD"]="${static_toolchain_triplet[${karch}]}-ld"
