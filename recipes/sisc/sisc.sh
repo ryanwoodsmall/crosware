@@ -4,7 +4,7 @@ rurl="https://sourceforge.net/projects/${rname}/files/SISC/${rver}/${rname}-${rv
 rfile="$(basename ${rurl//\/download/})"
 rdir="${rname}-${rver}"
 rsha256="65e15ac81d96e97de3ecabd409b3d2bc9307e624f46908d9f74047175c527ecf"
-rreqs=""
+rreqs="rlwrap"
 
 . "${cwrecipe}/common.sh"
 
