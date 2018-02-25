@@ -1,3 +1,5 @@
+cwconfigurelibopts="--enable-static --enable-static=yes --disable-shared --enable-shared=no"
+
 eval "
 function cwname_${rname}() {
   echo "${rname}"
