@@ -82,6 +82,7 @@ Working recipes:
 - perl
 - pkg-config (named pkgconfig)
 - qemacs (https://bellard.org/qemacs/)
+- rc (http://tobold.org/article/rc, https://github.com/rakitzis/rc)
 - readline
 - rlwrap
 - screen
@@ -162,7 +163,6 @@ Some other things:
 - plan9port (without x11)
 - python
 - qemu
-- rc (https://github.com/rakitzis/rc)
 - rembulan (jvm lua)
 - rhino
 - ringojs
