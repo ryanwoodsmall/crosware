@@ -10,6 +10,6 @@ rreqs="make m4"
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path "${rtdir}/current/bin"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
 "
