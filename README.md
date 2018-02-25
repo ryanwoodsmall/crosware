@@ -81,6 +81,7 @@ Working recipes:
 
 Possibly working recipes:
 - bison
+- groff
 - perl
 - pkg-config (named pkgconfig)
 
@@ -130,6 +131,7 @@ Some other things:
 - jq
 - jscheme (dead)
 - llvm / clang
+- less
 - libedit
 - libressl
 - libtool
