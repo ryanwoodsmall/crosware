@@ -4,14 +4,13 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.cpan.org/src/5.0/${rfile}"
 rsha256="e763aa485e8dc1a70483dbe6d615986bbf32b977f38016480d68c99237e701dd"
-rprof="${cwetcprofd}/${rname}.sh"
 rreqs="make toybox busybox byacc"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
+  pushd "${rbdir}" >/dev/null 2>&1
   sttop=\"\$(realpath \$(dirname \$(realpath \$(which \${CC})))/..)\"
   stinc="\${sttop}/\${CC//-gcc/}/include"
   stbin="\${sttop}/bin"
@@ -27,7 +26,7 @@ function cwconfigure_${rname}() {
     -Dso='none' \
     -Ddlext='none' \
     -Dusedl='n' \
-    -Dprefix="${cwsw}/${rname}/${rdir}" \
+    -Dprefix="${ridir}" \
     -Dsysroot="\${PWD}/sysroot" \
     -Dlibc="\${stlib}/libc.a" \
     -Dcc=\"\${CC} \${CFLAGS} \${LDFLAGS}\"
@@ -37,6 +36,6 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path "${cwsw}/${rname}/current/bin"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
 "
