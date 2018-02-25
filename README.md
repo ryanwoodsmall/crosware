@@ -89,8 +89,10 @@ Working recipes:
 Possibly working recipes:
 - bison
 - groff
+- openssl
 - perl
 - pkg-config (named pkgconfig)
+- zlib
 
 Some things:
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
@@ -152,7 +154,6 @@ Some other things:
 - nodyn (dead)
 - openconnect
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)
-- openssl
 - parenj / parenjs
 - pcc
 - pcre
