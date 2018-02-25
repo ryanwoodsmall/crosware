@@ -2,6 +2,7 @@
 : ${rtdir:="${cwsw}/${rname}"}
 : ${ridir:="${rtdir}/${rdir}"}
 : ${rprof:="${cwetcprofd}/${rname}.sh"}
+: ${rreqs:=""}
 
 cwconfigureprefix="--prefix=${ridir}"
 cwconfigurelibopts="--enable-static --enable-static=yes --disable-shared --enable-shared=no"
