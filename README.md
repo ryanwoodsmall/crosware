@@ -82,6 +82,7 @@ Working recipes:
 Possibly working recipes:
 - bison
 - perl
+- pkg-config (named pkgconfig)
 
 Some things:
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
@@ -151,7 +152,6 @@ Some other things:
 - pcc
 - pcre
 - plan9port (without x11)
-- pkg-config
 - python
 - qemu
 - rc (https://github.com/rakitzis/rc)
