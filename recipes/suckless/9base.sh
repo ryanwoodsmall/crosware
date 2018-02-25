@@ -13,14 +13,14 @@ rreqs="static-toolchain make"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${cwbuild}/${rdir}" >/dev/null 2>&1
+  pushd "${rbdir}" >/dev/null 2>&1
   grep -ril /usr/local/plan9 . \
   | grep -v '\.git' \
-  | xargs sed -i "s#/usr/local/plan9#${cwsw}/${rname}/${rdir}#g"
+  | xargs sed -i "s#/usr/local/plan9#${ridir}#g"
   sed -i '/^PREFIX/d' config.mk
   sed -i '/^CC/d' config.mk
   echo "CC = \${CC}" >> config.mk
-  echo "PREFIX = ${cwsw}/${rname}/${rdir}" >> config.mk
+  echo "PREFIX = ${ridir}" >> config.mk
   if [[ $(uname -m) =~ x86_64 ]] ; then
     sed -i '/^OBJTYPE/d' config.mk
     echo "OBJTYPE = x86_64" >> config.mk
@@ -34,7 +34,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'export PLAN9=\"${cwsw}/${rname}/current\"' > "${rprof}"
+  echo 'export PLAN9=\"${rtdir}/current\"' > "${rprof}"
   echo 'append_path \"\${PLAN9}/bin\"' >> "${rprof}"
 }
 "
