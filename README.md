@@ -76,6 +76,7 @@ Working recipes:
 - qemacs (https://bellard.org/qemacs/)
 - readline
 - rlwrap
+- screen
 - sisc (scheme)
 - suckless
   - 9base (https://tools.suckless.org/9base)
@@ -101,7 +102,6 @@ Some things:
 - jruby
 - mercurial / hg
 - nc / ncat / netcat
-- screen
 - socat
 - subversion / svn
 - vim (with syntax highlighting)
