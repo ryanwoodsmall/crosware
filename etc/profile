@@ -5,6 +5,16 @@ cwetcdir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
 cwtop="$(cd "${cwetcdir}"/.. && pwd)"
 cwbindir="$(cd "${cwetcdir}"/../bin && pwd)"
 
+# CPPFLAGS - includes
+: ${CPPFLAGS:=""}
+
+# LDFLAGS - libraries
+: ${LDFLAGS:=""}
+
+# pkg-config
+: ${PKG_CONFIG_LIBDIR:=""}
+: ${PKG_CONFIG_PATH:=""}
+
 # simple path functions
 #   https://github.com/ryanwoodsmall/shell-ish/blob/master/lib/path-functions.sh
 # XXX - need same for pkgconfig, libdir, includedir, ...
@@ -13,6 +23,18 @@ function append_path() {
 }
 function prepend_path() {
   export PATH="${1}:${PATH}"
+}
+function append_cppflags() {
+  export CPPFLAGS="${CPPFLAGS} ${1}"
+}
+function prepend_cppflags() {
+  export CPPFLAGS="${1} ${CPPFLAGS}"
+}
+function append_ldflags() {
+  export LDFLAGS="${LDFLAGS} ${1}"
+}
+function prepend_ldflags() {
+  export LDFLAGS="${1} ${LDFLAGS}"
 }
 
 # add our bin dir to our path
