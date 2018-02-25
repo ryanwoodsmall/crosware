@@ -4,7 +4,6 @@ rurl="ftp://ftp.gnu.org/pub/gnu/${rname}/${rname}-${rver}.zip"
 rfile="$(basename ${rurl})"
 rdir="${rname}-${rver}"
 rsha256="63116eec4b2b2dd8fae0b30127639aa42ad7a7430c4970d3fd76b42a148e423c"
-rprof="${cwetcprofd}/${rname}.sh"
 # we need unzip, use the busybox version
 rreqs="busybox"
 
