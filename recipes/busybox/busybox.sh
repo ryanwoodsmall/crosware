@@ -31,11 +31,11 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  cwmkdir "${rbdir}/bin"
-  rm -f "${rbdir}/bin/${rname}"
-  cp -a "${rname}" "${rbdir}/bin"
+  cwmkdir "${ridir}/bin"
+  rm -f "${ridir}/bin/${rname}"
+  cp -a "${rname}" "${ridir}/bin"
   for a in \$(./${rname} --list) ; do
-    ln -sf "${rbdir}/bin/${rname}" "${rbdir}/bin/\${a}"
+    ln -sf "${ridir}/bin/${rname}" "${ridir}/bin/\${a}"
   done
   popd >/dev/null 2>&1
 }
