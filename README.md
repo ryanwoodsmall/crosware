@@ -65,6 +65,7 @@ Bootstrap recipes:
 Working recipes:
 - busybox (static)
 - byacc
+- dropbear
 - flex
 - groff
 - htop (uses jython during build)
@@ -99,7 +100,6 @@ Possibly working recipes:
 Some things:
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
 - dnsmasq
-- dropbear
 - file
 - git
 - java (oracle or zulu openjdk? both)
