@@ -289,7 +289,7 @@ zulu_inst_dir="${cwsw}/${zulu_pkgname}"
 
 # zulu environment
 declare -A zulu_env
-zulu_env["_JAVA_OPTIONS"]="-Djava.io.tmpdir=${cwtmp}"
+zulu_env["_JAVA_OPTIONS"]="-Djava.io.tmpdir=${cwtmp} -Djava.awt.headless=true"
 zulu_env["JAVA_HOME"]="${zulu_inst_dir}/current"
 zulu_env["PATH"]='${PATH}:${JAVA_HOME}/bin'
 zulu_envs=( "_JAVA_OPTIONS" "JAVA_HOME" "PATH" )
