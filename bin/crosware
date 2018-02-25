@@ -73,11 +73,18 @@
 #    - rdeps / rbdeps?
 #    - need to set sane default r* values in common.sh with ': ${rblah:="blah.setting"}'
 #    - unset vals after parse so there's no bleed through?
+#    - generic profile.d generator
+#      - find bin dir, append_path it
+#      - find pc files, append_pkgcfg the dirs
+#      - libs...
+#      - inclues...
+#    - custom/pre/post functions
 #  - recipe/function names
 #    - need _ instead of - (?)
 #    - rename static-toolchain back to static_toolchain (?)
 #  - whatprovides functionality
 #    - given a program or dir/subdir/blah path pattern dump the all directory names under software/ that match
+#    - generate index of files at install time
 #  - os detector
 #    - chrome os/chromium os
 #    - alpine
