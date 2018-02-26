@@ -96,6 +96,7 @@ Working recipes:
 - svnkit 
 - tmux
 - toybox (static)
+- vim (with syntax highlighting, which chrome/chromium os vim lacks)
 - zlib
 
 Possibly working recipes:
@@ -112,7 +113,6 @@ Some things:
 - nc / ncat / netcat
 - socat
 - subversion / svn
-- vim (with syntax highlighting)
 
 Some other things:
 - ant
