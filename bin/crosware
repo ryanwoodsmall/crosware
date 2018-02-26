@@ -695,6 +695,7 @@ function cwbootstrap() {
   cwprofileline
   # XXX - add to installed/db/...
   # XXX - cleanup temp files?
+  rm -rf "${zulujdkdir}"
 }
 
 #
