@@ -695,7 +695,10 @@ function cwbootstrap() {
   cwprofileline
   # XXX - add to installed/db/...
   # XXX - cleanup temp files?
-  rm -rf "${zulujdkdir}"
+  if [ "${CW_EXT_JAVA}" == "false" ] ; then
+    cwscriptecho "removing temporary zulu jdk directory"
+    rm -rf "${zulujdkdir}"
+  fi
 }
 
 #
