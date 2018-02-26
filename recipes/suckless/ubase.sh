@@ -7,7 +7,7 @@ rfile="${rdir}.tar.bz2"
 rurl="https://git.suckless.org/${rname}/snapshot/${rfile}"
 rsha256="cd5f5346fe4cc5b8e486532202e80f75ee46144d33b2678b133b137d5e4fa8d2"
 rprof="${cwetcprofd}/zz_${rname}.sh"
-rreqs="static-toolchain make"
+rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
