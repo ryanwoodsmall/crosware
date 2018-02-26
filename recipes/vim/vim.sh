@@ -15,3 +15,10 @@ function cwconfigure_${rname}() {
   popd >/dev/null 2>&1
 }
 "
+
+eval "
+function cwgenprofd_${rname}() {
+  # XXX - should prepend instead to prefer our vim?
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
