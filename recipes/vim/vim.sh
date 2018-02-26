@@ -18,7 +18,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  # XXX - should prepend instead to prefer our vim?
-  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  # XXX - prepend to prefer our vim/xxd/etc.
+  echo 'prepend_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
