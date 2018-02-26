@@ -99,6 +99,10 @@
 #    - fake /bin, /lib, /usr/bin, /usr/include, /usr/lib from static toolchain
 #    - link in/bind mount
 #    - add busybox/toybox (and real bash) for a chroot-able environment?
+#  - man wrapper
+#    - busybox (man), less, groff
+#    - sets PAGER to (real less) "less -R"
+#    - MANPATH?
 #
 
 #
