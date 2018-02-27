@@ -103,6 +103,7 @@
 #    - busybox (man), less, groff
 #    - sets PAGER to (real less) "less -R"
 #    - MANPATH?
+#  - need a fallback mirror
 #
 
 #
