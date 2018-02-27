@@ -87,6 +87,7 @@ Working recipes:
 - readline
 - rlwrap
 - screen
+- sdkman (http://sdkman.io)
 - sisc (scheme)
 - slang
 - suckless
@@ -168,7 +169,6 @@ Some other things:
 - rhino
 - ringojs
 - scala
-- sdkman (http://sdkman.io)
 - spidermonkey
 - spidernode
 - stunnel
