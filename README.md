@@ -123,6 +123,7 @@ Some other things:
 - at&t ast
 - autoconf
 - automake
+- bash (4.x, static)
 - bc / dc (gnu)
 - clojure
 - cmake
