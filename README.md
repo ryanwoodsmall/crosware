@@ -189,5 +189,6 @@ Bootstrap packages:
 - bash
 - openssl
 - curl (https)
+- git (https/ssh, could replace jgit, not require a jdk?)
 - busybox
 - toybox
