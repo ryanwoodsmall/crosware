@@ -1,9 +1,9 @@
 rname="dropbear"
-rver="2017.75"
+rver="2018.76"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://matt.ucc.asn.au/dropbear/releases/${rfile}"
-rsha256="6cbc1dcb1c9709d226dff669e5604172a18cf5dbf9a201474d5618ae4465098c"
+rsha256="f2fb9167eca8cf93456a5fc1d4faf709902a3ab70dd44e352f3acbc3ffdaea65"
 # need a patch program, try toybox
 rreqs="make toybox zlib"
 
@@ -12,7 +12,10 @@ rreqs="make toybox zlib"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  curl -kLO https://raw.githubusercontent.com/ryanwoodsmall/dropbear-misc/master/options/dropbear-${rver}_options.h.patch
+  cwscriptecho 'getting localoptions.h from github'
+  curl -kLso localoptions.h https://raw.githubusercontent.com/ryanwoodsmall/dropbear-misc/master/options/dropbear-${rver}_localoptions.h
+  cwscriptecho 'patching localoptions.h' 
+  sed -i \"s#/opt/dropbear#${rtdir}#g\" localoptions.h
   ./configure \
     ${cwconfigureprefix} \
     --disable-lastlog \
@@ -25,9 +28,8 @@ function cwconfigure_${rname}() {
     --enable-bundled-libtom \
     --disable-pam \
     --enable-zlib \
+    --enable-static \
       CC=\"\${CC}\" LDFLAGS=\"\${LDFLAGS}\"
-  patch -p0 < dropbear-${rver}_options.h.patch
-  sed -i \"s#/opt/dropbear#${rtdir}#g\" options.h
   popd >/dev/null 2>&1
 }
 "
@@ -38,7 +40,6 @@ function cwmake_${rname}() {
   make -j$(($(nproc)+1)) \
     MULTI=1 \
     SCPPROGRESS=1 \
-    STATIC=1 \
     PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
   popd >/dev/null 2>&1
 }
@@ -50,7 +51,6 @@ function cwmakeinstall_${rname}() {
   make install \
     MULTI=1 \
     SCPPROGRESS=1 \
-    STATIC=1 \
     PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
   cwmkdir "${rtdir}/etc"
   popd >/dev/null 2>&1
