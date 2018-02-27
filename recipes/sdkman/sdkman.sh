@@ -4,10 +4,9 @@ rurl="https://get.sdkman.io"
 rfile="get_sdkman_io.bash"
 rdir="${rver}"
 rsha256=""
-# we need real zip
-# use the busybox version of unzip
-# PAGER needs to be set, busybox (and less) recipes will set it
-rreqs="busybox zip"
+# we need real zip and unzip
+# PAGER needs to be set, busybox (or less) recipes will set it
+rreqs="busybox unzip zip"
 
 . "${cwrecipe}/common.sh"
 
