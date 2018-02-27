@@ -97,6 +97,7 @@ Working recipes:
 - svnkit 
 - tmux
 - toybox (static)
+- unzip
 - vim (with syntax highlighting, which chrome/chromium os vim lacks)
 - zip
 - zlib
