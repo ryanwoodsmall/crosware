@@ -184,3 +184,10 @@ Some other things:
 - support libraries for building the above
 - heirloom project tools (http://heirloom.sourceforge.net/)
 - whatever else seems useful
+
+Bootstrap packages:
+- bash
+- openssl
+- curl (https)
+- busybox
+- toybox
