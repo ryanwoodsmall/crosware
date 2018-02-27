@@ -97,6 +97,7 @@ Working recipes:
 - tmux
 - toybox (static)
 - vim (with syntax highlighting, which chrome/chromium os vim lacks)
+- zip
 - zlib
 
 Possibly working recipes:
