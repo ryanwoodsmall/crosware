@@ -124,6 +124,7 @@ Some other things:
 - at&t ast
 - autoconf
 - automake
+- awk (gnu gawk)
 - bash (4.x, static)
 - bc / dc (gnu)
 - clojure
@@ -171,6 +172,7 @@ Some other things:
 - rhino
 - ringojs
 - scala
+- sed (gnu gsed)
 - spidermonkey
 - spidernode
 - stunnel
