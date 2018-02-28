@@ -70,7 +70,8 @@
 #    - rtdir - recipe top dir where installs are done
 #    - ridir - versioned recipe install dir
 #    - rprof - profile.d file
-#    - rdeps / rbdeps?
+#    - rdeps / rbdeps? - deps and build deps?
+#    - rdesc - recipe description?
 #    - need to set sane default r* values in common.sh with ': ${rblah:="blah.setting"}'
 #    - unset vals after parse so there's no bleed through?
 #    - generic profile.d generator
