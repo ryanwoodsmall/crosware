@@ -105,7 +105,10 @@
 #    - sets PAGER to (real less) "less -R"
 #    - MANPATH?
 #  - need a fallback mirror
-#  - XXX - cwrecipes should be an associative array to prevent dupes
+#  - XXX - unset recipe vars should be a list
+#  - XXX - cwinstall() should likely use associative array to only do a single install
+#    - i.e., "crosware install make m4 make flex make" should only install the make recipe *once*
+#  - XXX - zulu/static-toolchain/jgitsh should have cwinstall/cwname/cwver/_... funcs
 #
 
 #
@@ -229,8 +232,9 @@ export cwtmpperm="1777"
 export cwexecperm="775"
 
 # start off with an empty recipe list
-export cwrecipes=()
-export cwbootstraprecipes=()
+declare -A cwrecipes cwbootstraprecipes
+export cwrecipes
+export cwbootstraprecipes
 
 # and a "user-visible" var whether we want to use an external jvm/jdk
 : ${CW_EXT_JAVA:="false"}
@@ -443,8 +447,9 @@ static_toolchain_envs=( "PATH" "CFLAGS" "CXXFLAGS" "LDFLAGS" "CC" "CXX" "CPP" "L
 # "special" bootstrap recipes
 #
 for cwbootstraprecipe in "${zulu_pkgname}" "${jgitsh_pkgname}" "${static_toolchain_pkgname}" ; do
-  cwbootstraprecipes[${#cwbootstraprecipes[@]}]="${cwbootstraprecipe}"
+  cwbootstraprecipes["${cwbootstraprecipe}"]=1
 done
+export cwbootstraprecipes
 
 #
 # cwmkdir
@@ -746,10 +751,11 @@ function cwsourcerecipes() {
   fi
   for recipe in ${cwrecipe}/*/*.sh ; do
     source ${recipe}
-    cwrecipes[${#cwrecipes[@]}]="${rname}"
+    cwrecipes["${rname}"]=1
     unset rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps
   done
   unset recipe
+  export cwrecipes
 }
 
 #
@@ -757,7 +763,7 @@ function cwsourcerecipes() {
 #
 function cwlistrecipes() {
   cwsourcerecipes
-  for recipe in ${cwrecipes[@]} ; do
+  for recipe in ${!cwrecipes[@]} ; do
     echo "${recipe}"
   done | sort
 }
