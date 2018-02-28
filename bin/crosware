@@ -177,6 +177,7 @@ cwcmds["uninstall"]="uninstall some packages"
 cwcmds["set"]="run 'set' to show full ${cwname} environment"
 cwcmds["list-available"]="list available recipes which are not installed"
 cwcmds["list-funcs"]="list ${cwname} shell functions"
+cwcmds["run-func"]="run ${cwname} shell function"
 cwcmdlist=( $(echo ${!cwcmds[@]} | tr ' ' '\n' | sort | xargs echo) )
 
 #
@@ -876,6 +877,25 @@ function cwlistfuncs() {
 }
 
 #
+# cwrunfunc
+#   receives:
+#     at least one function name
+#
+# run a function that we know about
+#
+function cwrunfunc() {
+  cwsourcerecipes
+  cwsourceprofile
+  for cwfunc in "${@}" ; do
+    if ! $(set | grep -q "^${cwfunc} ") ; then
+      cwscriptecho "function ${cwfunc} not known"
+      continue
+    fi
+    ${cwfunc}
+  done
+}
+
+#
 # usage
 #
 function cwusage() {
@@ -947,6 +967,9 @@ case "${cmd}" in
     ;;
   list-funcs)
     cwlistfuncs
+    ;;
+  run-func)
+    cwrunfunc "${@}"
     ;;
   help)
     cwusage
