@@ -66,6 +66,7 @@ Working recipes:
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - busybox (static)
 - byacc
+- curl
 - dropbear
 - flex
 - groff
@@ -127,7 +128,6 @@ Some other things:
 - bc / dc (gnu)
 - clojure
 - cmake
-- curl
 - cvs
 - dynjs
 - editline (https://github.com/troglobit/editline)
