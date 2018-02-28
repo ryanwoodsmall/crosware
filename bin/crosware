@@ -105,6 +105,7 @@
 #    - sets PAGER to (real less) "less -R"
 #    - MANPATH?
 #  - need a fallback mirror
+#  - XXX - cwrecipes should be an associative array to prevent dupes
 #
 
 #
