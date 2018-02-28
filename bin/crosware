@@ -178,6 +178,7 @@ cwcmds["set"]="run 'set' to show full ${cwname} environment"
 cwcmds["list-available"]="list available recipes which are not installed"
 cwcmds["list-funcs"]="list ${cwname} shell functions"
 cwcmds["run-func"]="run ${cwname} shell function"
+cwcmds["show-env"]="run 'env' to show ${cwname} environment"
 cwcmdlist=( $(echo ${!cwcmds[@]} | tr ' ' '\n' | sort | xargs echo) )
 
 #
@@ -859,6 +860,15 @@ function cwuninstall() {
 }
 
 #
+# cwenv
+#
+function cwenv() {
+  cwsourcerecipes
+  cwsourceprofile
+  env
+}
+
+#
 # cwset
 #
 function cwset() {
@@ -970,6 +980,9 @@ case "${cmd}" in
     ;;
   run-func)
     cwrunfunc "${@}"
+    ;;
+  show-env)
+    cwenv
     ;;
   help)
     cwusage
