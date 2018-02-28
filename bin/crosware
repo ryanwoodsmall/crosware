@@ -175,6 +175,7 @@ cwcmds["list-installed"]="list installed recipes"
 cwcmds["uninstall"]="uninstall some packages"
 cwcmds["set"]="run 'set' to show full ${cwname} environment"
 cwcmds["list-available"]="list available recipes which are not installed"
+cwcmds["list-funcs"]="list ${cwname} shell functions"
 cwcmdlist=( $(echo ${!cwcmds[@]} | tr ' ' '\n' | sort | xargs echo) )
 
 #
@@ -865,6 +866,15 @@ function cwset() {
 }
 
 #
+# cwlistfuncs
+#
+function cwlistfuncs() {
+  cwset \
+  | grep -F ' ()' \
+  | cut -f1 -d' '
+}
+
+#
 # usage
 #
 function cwusage() {
@@ -933,6 +943,9 @@ case "${cmd}" in
     ;;
   set)
     cwset
+    ;;
+  list-funcs)
+    cwlistfuncs
     ;;
   help)
     cwusage
