@@ -782,7 +782,7 @@ function cwinstall() {
   cwsourceprofile
   cwsourcerecipes
   for recipe in "${@}" ; do
-    if ! $(set | grep -q "^cwinstall_${recipe}") ; then
+    if ! $(set | grep -q "^cwinstall_${recipe} ") ; then
       cwfailexit "recipe ${recipe} not found"
     fi
     recipestobuild[${#recipestobuild[@]}]="cwinstall_${recipe}"
@@ -859,7 +859,7 @@ function cwlistavailable() {
 function cwuninstall() {
   cwsourcerecipes
   for recipe in "${@}" ; do
-    if ! $(set | grep -q "^cwuninstall_${recipe}") ; then
+    if ! $(set | grep -q "^cwuninstall_${recipe} ") ; then
       cwscriptecho "no uninstall found for ${recipe}"
       continue
     fi
