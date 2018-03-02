@@ -106,6 +106,7 @@ Working recipes:
 
 Possibly working recipes:
 - bison
+- bzip2
 - expat
 
 Some things:
