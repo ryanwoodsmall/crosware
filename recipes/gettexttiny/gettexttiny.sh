@@ -2,7 +2,7 @@ rname="gettexttiny"
 rver="0.2.0"
 rdir="gettext-tiny-${rver}"
 rfile="v${rver}.tar.gz"
-rurl="https://github.com/sabotage-linux/${rname}/archive/${rfile}"
+rurl="https://github.com/sabotage-linux/gettext-tiny/archive/${rfile}"
 rsha256="1e0b57c4befb76f8f5c55f57ea4f1c2dbe62f57b80c34276fd49d870edf03dcb"
 rreqs="make"
 
