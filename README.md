@@ -108,6 +108,7 @@ Possibly working recipes:
 - bison
 - bzip2
 - expat
+- gettext-tiny (named gettexttiny)
 - git
 - pcre
 - pcre2
