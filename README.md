@@ -108,6 +108,7 @@ Possibly working recipes:
 - bison
 - bzip2
 - expat
+- git
 - pcre
 - pcre2
 
@@ -115,7 +116,6 @@ Some things:
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
 - dnsmasq
 - file
-- git
 - java (oracle or zulu openjdk? both)
 - jruby
 - mercurial / hg
