@@ -64,6 +64,7 @@ Bootstrap recipes:
 
 Working recipes:
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
+- bash (4.x, static)
 - busybox (static)
 - byacc
 - curl
@@ -125,7 +126,6 @@ Some other things:
 - autoconf
 - automake
 - awk (gnu gawk)
-- bash (4.x, static)
 - bc / dc (gnu)
 - clojure
 - cmake
