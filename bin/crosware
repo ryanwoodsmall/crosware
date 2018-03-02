@@ -497,6 +497,7 @@ function cwmkcwtmptmp() {
 #   receives:
 #     url to download
 #     full path to save file to
+#
 function cwfetch() {
   local downloadurl="${1}"
   local targetfile="${2}"
@@ -516,6 +517,7 @@ function cwfetch() {
 #   receives:
 #     full path to file to check
 #     sha256sum for comparison
+#
 function cwchecksha256sum() {
   local checkfile="${1}"
   local storedsha256sum="${2}"
