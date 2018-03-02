@@ -17,7 +17,17 @@ function cwconfigure_${rname}() {
     --with-libpcre2 \
     --with-openssl \
     --without-python \
-    --without-tcltk
+    --without-tcltk \
+      CC=\"\${CC}\" \
+      CXX=\"\${CXX}\" \
+      CFLAGS=\"\${CFLAGS}\" \
+      CXXFLAGS=\"\${CXXFLAGS}\" \
+      LDFLAGS=\"\${LDFLAGS}\" \
+      LIBS='-lssl -lcrypto -lz'
+  sed -i.ORIG 's/-lcurl/-lcurl -lssl -lcrypto/g' Makefile
+  for h in \$(grep -ril sys/poll\\.h ${rbdir}/ | grep \\.h\$) ; do
+    sed -i.ORIG 's#sys/poll\.h#poll.h#g' \${h}
+  done
   popd >/dev/null 2>&1
 }
 "
