@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
 rsha256="9acc4339b7a2ab484eea69d705923271682b7058015219cf5a7e6ed8dee5b5fb"
-rreqs="make bzip2 zlib openssl curl expat pcre2 perl"
+rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny"
 
 . "${cwrecipe}/common.sh"
 
