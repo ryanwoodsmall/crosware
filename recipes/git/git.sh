@@ -16,6 +16,7 @@ function cwconfigure_${rname}() {
     --with-expat \
     --with-libpcre2 \
     --with-openssl \
+    --with-perl=${cwsw}/perl/current/bin/perl \
     --without-python \
     --without-tcltk \
       CC=\"\${CC}\" \
