@@ -109,6 +109,7 @@ Possibly working recipes:
 - bzip2
 - expat
 - pcre
+- pcre2
 
 Some things:
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
