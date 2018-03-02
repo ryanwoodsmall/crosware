@@ -108,6 +108,7 @@ Possibly working recipes:
 - bison
 - bzip2
 - expat
+- pcre
 
 Some things:
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
@@ -166,7 +167,6 @@ Some other things:
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)
 - parenj / parenjs
 - pcc
-- pcre
 - plan9port (without x11)
 - python
 - qemu
