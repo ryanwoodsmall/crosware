@@ -106,6 +106,7 @@ Working recipes:
 
 Possibly working recipes:
 - bison
+- expat
 
 Some things:
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
