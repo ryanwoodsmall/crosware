@@ -83,6 +83,7 @@ Working recipes:
 - less
 - libevent (no openssl support yet)
 - links (ncurses)
+- lua (posix, no readline)
 - lynx (ncurses and slang, ncurses default)
 - m4
 - make
