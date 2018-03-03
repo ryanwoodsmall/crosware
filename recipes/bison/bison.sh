@@ -11,5 +11,6 @@ rreqs="make m4 flex perl"
 eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
 }
 "
