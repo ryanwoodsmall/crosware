@@ -69,6 +69,7 @@ Working recipes:
 - byacc
 - curl
 - dropbear
+- file
 - flex
 - groff
 - htop (uses jython during build)
@@ -116,7 +117,6 @@ Possibly working recipes:
 Some things:
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
 - dnsmasq
-- file
 - java (oracle or zulu openjdk? both)
 - jruby
 - mercurial / hg
