@@ -65,12 +65,17 @@ Bootstrap recipes:
 Working recipes:
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - bash (4.x, static)
+- bison
 - busybox (static)
 - byacc
+- bzip2
 - curl
 - dropbear
+- expat
 - file
 - flex
+- gettext-tiny (named gettexttiny)
+- git
 - groff
 - htop (uses jython during build)
 - jython
@@ -83,6 +88,8 @@ Working recipes:
 - make
 - ncurses
 - openssl
+- pcre
+- pcre2
 - perl
 - pkg-config (named pkgconfig)
 - qemacs (https://bellard.org/qemacs/)
@@ -104,15 +111,6 @@ Working recipes:
 - vim (with syntax highlighting, which chrome/chromium os vim lacks)
 - zip
 - zlib
-
-Possibly working recipes:
-- bison
-- bzip2
-- expat
-- gettext-tiny (named gettexttiny)
-- git
-- pcre
-- pcre2
 
 Some things:
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
