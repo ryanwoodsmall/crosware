@@ -101,6 +101,7 @@ Working recipes:
 - sdkman (http://sdkman.io)
 - sisc (scheme)
 - slang
+- socat
 - suckless
   - 9base (https://tools.suckless.org/9base)
   - sbase (https://core.suckless.org/sbase)
@@ -120,7 +121,6 @@ Some things:
 - jruby
 - mercurial / hg
 - nc / ncat / netcat
-- socat
 - subversion / svn
 
 Some other things:
