@@ -88,6 +88,7 @@ Working recipes:
 - m4
 - make
 - ncurses
+- netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - openssl
 - pcre
 - pcre2
@@ -162,7 +163,6 @@ Some other things:
 - moreutils
 - musl
 - mutt
-- netbsd-curses (sabotage https://github.com/sabotage-linux/netbsd-curses)
 - node / npm (ugh)
 - nodyn (dead)
 - openconnect
