@@ -31,7 +31,8 @@ function cwmake_${rname}() {
   cd nbperf
   make nbperf CPPFLAGS='-I..' LDFLAGS='-static'
   cd ..
-  make all-static PREFIX="${ridir}" CPPFLAGS='-I./ -I./libterminfo' LDFLAGS='-static'
+  sed -i.ORIG '/(TERMINFODIR)/ s#TERMINFODIR=#TERMINFO=#g;s#(TERMINFODIR)#(PWD)/terminfo/terminfo#g' GNUmakefile
+  make -j$(($(nproc)+1)) all-static PREFIX="${ridir}" CPPFLAGS='-I./ -I./libterminfo' LDFLAGS='-static'
   popd >/dev/null 2>&1
 }
 "
