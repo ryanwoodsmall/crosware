@@ -97,6 +97,7 @@ Working recipes:
 - rc (http://tobold.org/article/rc, https://github.com/rakitzis/rc)
 - readline
 - rlwrap
+- rogue
 - screen
 - sdkman (http://sdkman.io)
 - sisc (scheme)
