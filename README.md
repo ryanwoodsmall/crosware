@@ -136,11 +136,13 @@ Some other things:
 - clojure
 - cmake
 - cvs
+- duplicity (http://duplicity.nongnu.org/)
 - dynjs
 - editline (https://github.com/troglobit/editline)
 - elinks (old, deprecated)
 - gc (http://www.hboehm.info/gc/)
 - go
+- gpg
 - gradle
 - groovy
 - heimdal
