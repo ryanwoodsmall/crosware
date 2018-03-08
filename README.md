@@ -170,6 +170,7 @@ Some other things:
 - openconnect
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)
 - parenj / parenjs
+- pass (https://www.passwordstore.org/)
 - pcc
 - plan9port (without x11)
 - python
