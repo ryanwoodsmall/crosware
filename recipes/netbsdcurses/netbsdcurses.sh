@@ -25,13 +25,18 @@ function cwconfigure_${rname}() {
 }
 "
 
+# XXX - full term list:
+#       awk -F'|' '/\|/&&!/^(#|$|\t)/{print $1}' terminfo/terminfo | sort -u
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
+  sed -i.ORIG '/(TERMINFODIR)/ s#TERMINFODIR=#TERMINFO=#g;s#(TERMINFODIR)#(PWD)/terminfo/terminfo#g' GNUmakefile
+  sed -i.ORIG '/^screen$/a\\
+tmux\\
+tmux-256color' libterminfo/genterms
   cd nbperf
   make nbperf CPPFLAGS='-I..' LDFLAGS='-static'
   cd ..
-  sed -i.ORIG '/(TERMINFODIR)/ s#TERMINFODIR=#TERMINFO=#g;s#(TERMINFODIR)#(PWD)/terminfo/terminfo#g' GNUmakefile
   make -j$(($(nproc)+1)) all-static PREFIX="${ridir}" CPPFLAGS='-I./ -I./libterminfo' LDFLAGS='-static'
   popd >/dev/null 2>&1
 }
