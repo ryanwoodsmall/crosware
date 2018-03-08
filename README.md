@@ -99,6 +99,7 @@ Working recipes:
 - readline
 - rlwrap
 - rogue
+- rsync
 - screen
 - sdkman (http://sdkman.io)
 - sisc (scheme)
