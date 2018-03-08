@@ -110,7 +110,7 @@ function cwinstall_${rname}() {
   cwcheckreqs_${rname}
   cwsourceprofile
   cwclean_${rname}
-  cwextract "${cwdl}/${rfile}" "${cwbuild}"
+  cwextract "${cwdl}/${rname}/${rfile}" "${cwbuild}"
   cwconfigure_${rname}
   cwmake_${rname}
   cwmakeinstall_${rname}

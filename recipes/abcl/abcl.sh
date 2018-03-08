@@ -19,7 +19,7 @@ function cwinstall_${rname}() {
   cwfetch_${rname}
   cwsourceprofile
   cwmkdir "${rtdir}"
-  cwextract "${cwdl}/${rfile}" "${rtdir}"
+  cwextract "${cwdl}/${rname}/${rfile}" "${rtdir}"
   echo '#!/bin/sh' > "${ridir}/${rname}"
   echo "rlwrap -C ${rname} java -jar ${ridir}/${rname}.jar \\\"\\\${@}\\\"" >> "${ridir}/${rname}"
   cwchmod "755" "${ridir}/${rname}"

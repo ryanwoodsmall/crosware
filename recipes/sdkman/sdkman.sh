@@ -12,14 +12,14 @@ rreqs="busybox unzip zip"
 
 eval "
 function cwfetch_${rname}() {
-  cwfetch "${rurl}" "${cwdl}/${rfile}"
+  cwfetch "${rurl}" "${cwdl}/${rname}/${rfile}"
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
   cwmkdir "${rtdir}"
-  env SDKMAN_DIR="${ridir}" bash "${cwdl}/${rfile}"
+  env SDKMAN_DIR="${ridir}" bash "${cwdl}/${rname}/${rfile}"
 }
 "
 

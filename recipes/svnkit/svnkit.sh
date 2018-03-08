@@ -13,7 +13,7 @@ eval "
 function cwmakeinstall_${rname}() {
   cwmkdir "${rtdir}"
   test -e "${ridir}" && mv "${ridir}"{,.PRE-${TS}}
-  unzip -o "${cwdl}/${rfile}" -d "${rtdir}"
+  unzip -o "${cwdl}/${rname}/${rfile}" -d "${rtdir}"
 }
 "
 

@@ -110,7 +110,7 @@
 #  - XXX - cwinstall() should likely use associative array to only do a single install
 #    - i.e., "crosware install make m4 make flex make" should only install the make recipe *once*
 #  - XXX - zulu/static-toolchain/jgitsh should have cwinstall/cwname/cwver/_... funcs
-#  - XXX - downloads should go into ${cwdl}/${rname}/${rfile}
+#  - XXX - downloads now go into ${cwdl}/${rname}/${rfile}
 #    - and all fetching should happen in cwfetch_recipe func
 #    - can run offline after all fetches are done
 #
@@ -501,6 +501,8 @@ function cwmkcwtmptmp() {
 function cwfetch() {
   local downloadurl="${1}"
   local targetfile="${2}"
+  local targetdir="$(dirname "${targetfile}")"
+  cwmkdir "${targetdir}"
   cwscriptecho "downloading ${downloadurl} to ${targetfile}"
   curl ${copts} -o "${targetfile}" "${downloadurl}"
   if [ "${?}" -eq 0 ] ; then

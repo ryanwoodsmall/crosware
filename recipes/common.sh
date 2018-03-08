@@ -29,7 +29,7 @@ function cwclean_${rname}() {
 
 eval "
 function cwfetch_${rname}() {
-  cwfetchcheck "${rurl}" "${cwdl}/${rfile}" "${rsha256}"
+  cwfetchcheck "${rurl}" "${cwdl}/${rname}/${rfile}" "${rsha256}"
 }
 "
 
@@ -82,7 +82,7 @@ function cwmarkinstall_${rname}() {
 
 eval "
 function cwextract_${rname}() {
-  cwextract "${cwdl}/${rfile}" "${cwbuild}"
+  cwextract "${cwdl}/${rname}/${rfile}" "${cwbuild}"
 }
 "
 

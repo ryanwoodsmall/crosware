@@ -11,7 +11,7 @@ eval "
 function cwmakeinstall_${rname}() {
   unset JYTHON_HOME
   test -e "${ridir}" && mv "${ridir}"{,.PRE-${TS}}
-  java -jar "${cwdl}/${rfile}" -s -t all -d "${ridir}"
+  java -jar "${cwdl}/${rname}/${rfile}" -s -t all -d "${ridir}"
 }
 "
 
