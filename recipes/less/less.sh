@@ -8,10 +8,11 @@ rreqs="make ncurses"
 
 . "${cwrecipe}/common.sh"
 
-# XXX - less -R for default pager?
+# XXX - add -R for default pager?
 eval "
 function cwgenprofd_${rname}() {
   echo 'prepend_path \"${rtdir}/current/bin\"' > \"${rprof}\"
-  echo 'export PAGER=\"less\"' >> \"${rprof}\"
+  echo 'export PAGER=\"less -Q -L\"' >> \"${rprof}\"
+  echo 'alias less=\"less -Q -L\"' >> \"${rprof}\"
 }
 "
