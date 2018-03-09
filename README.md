@@ -148,6 +148,7 @@ Some other things:
 - go
 - gpg
 - gradle
+- grep (gnu grep)
 - groovy
 - heimdal
 - henplus (http://henplus.sourceforge.net/)
