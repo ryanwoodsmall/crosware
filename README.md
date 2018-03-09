@@ -129,7 +129,7 @@ Some things:
 Some other things:
 - ant
 - antlr
-- at&t ast
+- at&t ast (just ksh now?)
 - autoconf
 - automake
 - awk (gnu gawk)
@@ -164,7 +164,6 @@ Some other things:
 - maven
 - mg (https://homepage.boetes.org/software/mg/)
 - moreutils
-- musl
 - mutt
 - node / npm (ugh)
 - nodyn (dead)
