@@ -11,6 +11,7 @@ rreqs="ed flex make ncurses readline"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
+  sed -i.ORIG '/^SUBDIRS/ s/doc//g' Makefile.{am,in}
   ./configure ${cwconfigureprefix} --with-readline LIBS='-lreadline -lncurses -static'
   popd >/dev/null 2>&1
 }
