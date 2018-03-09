@@ -79,6 +79,7 @@ Working recipes:
 - gawk (gnu awk)
 - gettext-tiny (named gettexttiny)
 - git
+- grep (gnu grep)
 - groff
 - htop (uses jython during build)
 - jython
@@ -148,7 +149,6 @@ Some other things:
 - go
 - gpg
 - gradle
-- grep (gnu grep)
 - groovy
 - heimdal
 - henplus (http://henplus.sourceforge.net/)
