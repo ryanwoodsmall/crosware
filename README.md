@@ -87,6 +87,7 @@ Working recipes:
 - links (ncurses)
 - lua (posix, no readline)
 - lynx (ncurses and slang, ncurses default)
+- lzip
 - m4
 - make
 - ncurses
