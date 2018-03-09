@@ -74,6 +74,7 @@ Working recipes:
 - expat
 - file
 - flex
+- gawk (gnu awk)
 - gettext-tiny (named gettexttiny)
 - git
 - groff
@@ -133,7 +134,6 @@ Some other things:
 - at&t ast (just ksh now?)
 - autoconf
 - automake
-- awk (gnu gawk)
 - bc / dc (gnu)
 - clojure
 - cmake
