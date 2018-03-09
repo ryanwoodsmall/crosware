@@ -72,6 +72,7 @@ Working recipes:
 - bzip2
 - curl
 - dropbear
+- ed (gnu ed)
 - expat
 - file
 - flex
