@@ -102,6 +102,7 @@ Working recipes:
 - rsync
 - screen
 - sdkman (http://sdkman.io)
+- sed (gnu gsed)
 - sisc (scheme)
 - slang
 - socat
@@ -179,7 +180,6 @@ Some other things:
 - rhino
 - ringojs
 - scala
-- sed (gnu gsed)
 - spidermonkey
 - spidernode
 - stunnel
