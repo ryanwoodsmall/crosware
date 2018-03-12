@@ -1,0 +1,31 @@
+rname="python2"
+rver="2.7.14"
+rdir="Python-${rver}"
+rfile="${rdir}.tar.xz"
+rurl="https://www.python.org/ftp/python/${rver}/${rfile}"
+rsha256=""
+rreqs="make zlib"
+
+. "${cwrecipe}/common.sh"
+
+# XXX - sucks, really wants shared libs, have to fix compiler/ld.so
+
+eval "
+function cwconfigure_${rname}() {
+  pushd "${rbdir}" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} #LIBS='-static'
+  #sed -i.ORIG '/^LIBM=/ s/-lm/-lm -static/g' Makefile
+  #sed -i '/^LINKFORSHARED=/ s/LINKFORSHARED=.*/LINKFORSHARED= /g' Makefile
+  #sed -i 's/-fPIC//g' Makefile
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
+  echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
+  echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
+}
+"
