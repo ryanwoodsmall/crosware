@@ -85,6 +85,7 @@ Working recipes:
 - jython
 - kawa (scheme)
 - less
+- libbsd
 - libevent (no openssl support yet)
 - links (ncurses)
 - lua (posix, no readline)
