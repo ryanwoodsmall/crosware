@@ -11,7 +11,7 @@ rreqs="make"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts}
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} LDFLAGS='-static'
   sed -i.ORIG '/__GLIBC_PREREQ/ s|^#if |#if 1 //|g' include/bsd/string.h include/bsd/stdlib.h 
   popd >/dev/null 2>&1
 }
