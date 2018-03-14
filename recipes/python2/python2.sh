@@ -12,11 +12,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   #./configure ${cwconfigureprefix} LDFLAGS=\"\${LDFLAGS//-static/}\" CFLAGS=\"\${CFLAGS//-Wl,-static/}\" CXXFLAGS=\"\${CXXFLAGS//-Wl,-static/}\"
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
-    --build=\${CC//-gcc/} \
-    --host=\${CC//-gcc/} \
-    --target=\${CC//-gcc/} \
-    LDFLAGS='' CFLAGS='' CXXFLAGS='' CPPFLAGS='' PKG_CONFIG_PATH='' PKG_CONFIG_LIBDIR=''
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} LDFLAGS='' CFLAGS='' CXXFLAGS='' CPPFLAGS=''
   popd >/dev/null 2>&1
 }
 "
