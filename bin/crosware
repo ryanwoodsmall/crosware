@@ -235,10 +235,11 @@ export cwtmpperm="1777"
 # execute perms
 export cwexecperm="775"
 
-# start off with an empty recipe list
-declare -A cwrecipes cwbootstraprecipes
+# start off with an empty recipe and installed list
+declare -A cwrecipes cwbootstraprecipes cwinstalled
 export cwrecipes
 export cwbootstraprecipes
+export cwinstalled
 
 # and a "user-visible" var whether we want to use an external jvm/jdk
 : ${CW_EXT_JAVA:="false"}
@@ -819,9 +820,12 @@ function cwmarkinstall() {
 # cwlistinstalled
 #
 function cwlistinstalled() {
+  local pkgfile=""
   local pkgname=""
-  for pkgname in $(find ${cwvarinst} -maxdepth 1 -type f ! -name .\* | sort) ; do
-    echo "$(basename ${pkgname}) : $(cat ${pkgname})"
+  for pkgfile in $(find ${cwvarinst} -maxdepth 1 -type f ! -name .\* | sort) ; do
+    pkgname="$(basename ${pkgfile})"
+    echo "${pkgname} : $(cat ${pkgfile})"
+    cwinstalled[${pkgname}]=1
   done
 }
 
@@ -842,14 +846,29 @@ function cwcheckinstalled() {
 }
 
 #
+# cwgetinstalled
+#   updates recipe installation status
+#
+function cwgetinstalled() {
+  local pkgname=""
+  cwsourceprofile
+  cwsourcerecipes
+  for pkgname in ${!cwrecipes[@]} ; do
+    cwinstalled[${pkgname}]=0
+  done
+  cwlistinstalled >/dev/null
+}
+
+#
 # cwlistavailable
 #
 # lists available but uninstalled recipes
 #
 function cwlistavailable() {
   local pkgname=""
+  cwgetinstalled
   for pkgname in $(cwlistrecipes) ; do
-    if ! $(cwcheckinstalled ${pkgname}) ; then
+    if [ ${cwinstalled[${pkgname}]} -ne 1 ] ; then
       echo "${pkgname}"
     fi
   done
