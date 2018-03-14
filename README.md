@@ -79,6 +79,7 @@ Working recipes:
 - gawk (gnu awk)
 - gettext-tiny (named gettexttiny)
 - git
+- glib
 - grep (gnu grep)
 - groff
 - htop (uses jython during build)
@@ -96,11 +97,13 @@ Working recipes:
 - make
 - ncurses
 - netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
+- opennc (openbsd netcat http://systhread.net/coding/opennc.php)
 - openssl
 - pcre
 - pcre2
 - perl
 - pkg-config (named pkgconfig)
+- python2 (very basic support)
 - qemacs (https://bellard.org/qemacs/)
 - rc (http://tobold.org/article/rc, https://github.com/rakitzis/rc)
 - readline
@@ -174,12 +177,10 @@ Some other things:
 - node / npm (ugh)
 - nodyn (dead)
 - openconnect
-- opennc (openbsd netcat http://systhread.net/coding/opennc.php)
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
 - pcc
 - plan9port (without x11)
-- python
 - qemu
 - rembulan (jvm lua)
 - rhino
