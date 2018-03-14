@@ -1,45 +1,24 @@
 rname="glib"
-rver="2.54.3"
+rver="2.56.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
-rurl="https://ftp.gnome.org/pub/gnome/sources/${rname}/2.54/${rfile}"
-rsha256="963fdc6685dc3da8e5381dfb9f15ca4b5709b28be84d9d05a9bb8e446abac0a8"
-rreqs="gettexttiny jython libffi make zlib"
-
-# XXX - needs real python
+rurl="https://ftp.acc.umu.se/pub/gnome/sources/${rname}/2.56/${rfile}"
+rsha256="ecef6e17e97b8d9150d0e8a4b3edee1ac37331213b8a2a87a083deea408a0fc7"
+rreqs="gettexttiny libffi make perl python2 zlib"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  mkdir buildbin
-  ln -s \$(which jython) buildbin/python2.7
-  ln -s \$(which jython) buildbin/python2
-  ln -s \$(which jython) buildbin/python
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-python=\${PWD}/buildbin/python \
     --with-pcre=internal \
     --disable-libmount \
     --disable-gtk-doc \
     --disable-compile-warnings \
-    --disable-fam
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"./buildbin:\${PATH}\" make -j$(($(nproc)+1))
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"./buildbin:\${PATH}\" make install
+    --disable-fam \
+    --with-python=python2.7
   popd >/dev/null 2>&1
 }
 "
