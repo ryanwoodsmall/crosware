@@ -3,20 +3,16 @@ rver="2.7.14"
 rdir="Python-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.python.org/ftp/python/${rver}/${rfile}"
-rsha256=""
-rreqs="make zlib"
+rsha256="71ffb26e09e78650e424929b2b457b9c912ac216576e6bd9e7d204ed03296a66"
+rreqs="make"
 
 . "${cwrecipe}/common.sh"
-
-# XXX - sucks, really wants shared libs, have to fix compiler/ld.so
 
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} #LIBS='-static'
-  #sed -i.ORIG '/^LIBM=/ s/-lm/-lm -static/g' Makefile
-  #sed -i '/^LINKFORSHARED=/ s/LINKFORSHARED=.*/LINKFORSHARED= /g' Makefile
-  #sed -i 's/-fPIC//g' Makefile
+  #./configure ${cwconfigureprefix} LDFLAGS=\"\${LDFLAGS//-static/}\" CFLAGS=\"\${CFLAGS//-Wl,-static/}\" CXXFLAGS=\"\${CXXFLAGS//-Wl,-static/}\"
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} LDFLAGS='' CFLAGS='' CXXFLAGS='' CPPFLAGS=''
   popd >/dev/null 2>&1
 }
 "
