@@ -11,7 +11,6 @@ rreqs="make"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  #./configure ${cwconfigureprefix} LDFLAGS=\"\${LDFLAGS//-static/}\" CFLAGS=\"\${CFLAGS//-Wl,-static/}\" CXXFLAGS=\"\${CXXFLAGS//-Wl,-static/}\"
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} LDFLAGS='' CFLAGS='' CXXFLAGS='' CPPFLAGS=''
   popd >/dev/null 2>&1
 }
