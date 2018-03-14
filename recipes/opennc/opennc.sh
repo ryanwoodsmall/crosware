@@ -28,6 +28,7 @@ function cwmakeinstall_${rname}() {
   install -D -m 755 nc "${ridir}/bin/${rname}"
   ln -sf "${ridir}/bin/${rname}" "${ridir}/bin/nc"
   install -D -m 644 nc.1 "${ridir}/share/man/man1/${rname}.1"
+  ln -sf "${ridir}/share/man/man1/${rname}.1" "${ridir}/share/man/man1/nc.1"
   popd >/dev/null 2>&1
 }
 "
