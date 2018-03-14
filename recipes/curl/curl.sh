@@ -1,9 +1,9 @@
 rname="curl"
-rver="7.58.0"
+rver="7.59.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
-rsha256="1cb081f97807c01e3ed747b6e1c9fee7a01cb10048f1cd0b5f56cfe0209de731"
+rsha256="b5920ffd6a8c95585fb95070e0ced38322790cb335c39d0dab852d12e157b5a0"
 rreqs="make zlib openssl"
 
 . "${cwrecipe}/common.sh"
