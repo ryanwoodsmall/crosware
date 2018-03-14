@@ -11,8 +11,14 @@ rreqs="make"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} LDFLAGS='-static'
   sed -i.ORIG '/__GLIBC_PREREQ/ s|^#if |#if 1 //|g' include/bsd/string.h include/bsd/stdlib.h 
+  for h in \$(egrep -rl '__(BEGIN|END)_DECLS' include | grep -v '/cdefs\.h$') ; do
+    echo "attempting to fix up \${h}"
+    cat \${h} > \${h}.ORIG
+    sed '/^#ifndef __BEGIN_DECLS/,/^$/!d' include/bsd/sys/cdefs.h > \${h}
+    cat \${h}.ORIG >> \${h}
+  done
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts}
   popd >/dev/null 2>&1
 }
 "
