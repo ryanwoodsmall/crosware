@@ -12,7 +12,6 @@ eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
-    --with-python=\${PWD}/buildbin/python \
     --with-pcre=internal \
     --disable-libmount \
     --disable-gtk-doc \
