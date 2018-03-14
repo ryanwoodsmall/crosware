@@ -18,7 +18,7 @@ function cwconfigure_${rname}() {
     sed '/^#ifndef __BEGIN_DECLS/,/^$/!d' include/bsd/sys/cdefs.h > \${h}
     cat \${h}.ORIG >> \${h}
   done
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts}
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} LDFLAGS='-static' CPPFLAGS=''
   popd >/dev/null 2>&1
 }
 "
