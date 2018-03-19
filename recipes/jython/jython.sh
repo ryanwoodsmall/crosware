@@ -11,7 +11,7 @@ eval "
 function cwmakeinstall_${rname}() {
   unset JYTHON_HOME
   test -e "${ridir}" && mv "${ridir}"{,.PRE-${TS}}
-  java -jar "${cwdl}/${rname}/${rfile}" -s -t all -d "${ridir}"
+  env PATH=\"\$(echo \${PATH} | tr : '\n' | egrep -v '/(j|p)ython' | xargs echo | tr ' ' :)\" java -jar "${cwdl}/${rname}/${rfile}" -s -t all -d "${ridir}"
 }
 "
 
