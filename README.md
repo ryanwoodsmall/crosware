@@ -89,6 +89,8 @@ Working recipes:
 - libbsd
 - libevent (no openssl support yet)
 - libffi
+- libgcrypt
+- libgpg-error (named libgpgerror)
 - links (ncurses)
 - lua (posix, no readline)
 - lynx (ncurses and slang, ncurses default)
