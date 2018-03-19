@@ -29,6 +29,7 @@ function cwbuild_${rname}() {
   mv "${ridir}/bin/${rname}" "${ridir}/bin/${rname}-slang"
   ln -sf "${ridir}/bin/${rname}-ncurses" "${ridir}/bin/${rname}"
   sed -i.DEFAULT 's/#ACCEPT_ALL_COOKIES:FALSE/ACCEPT_ALL_COOKIES:TRUE/g' "${ridir}/etc/lynx.cfg"
+  sed -i 's/#FORCE_SSL_PROMPT:PROMPT/FORCE_SSL_PROMPT:no/g' "${ridir}/etc/lynx.cfg"
   popd >/dev/null 2>&1
 }
 "
