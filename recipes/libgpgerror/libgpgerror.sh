@@ -8,9 +8,13 @@ rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
+# XXX - https://git.alpinelinux.org/cgit/aports/tree/main/libgpg-error/fix-va_list.patch
+
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
+  sed -i.ORIG '/_gpgrt_logv_printhex.*NULL,.*NULL/ s/NULL,.*NULL/NULL, arg_ptr/g' src/logging.c
+  #sed -i 's/va_list arg_ptr;/va_list arg_ptr = {};/g' src/logging.c
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts}
   popd >/dev/null 2>&1
 }
