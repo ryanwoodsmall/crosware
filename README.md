@@ -145,6 +145,7 @@ Some other things:
 - at&t ast (just ksh now?)
 - autoconf
 - automake
+- c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - clojure
 - cmake
 - cvs
