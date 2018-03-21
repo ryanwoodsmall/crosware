@@ -171,6 +171,7 @@ Some other things:
 - libedit
 - libressl
 - libtool
+- lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - luaj
 - maven
 - mg (https://homepage.boetes.org/software/mg/)
