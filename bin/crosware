@@ -113,6 +113,11 @@
 #  - XXX - downloads now go into ${cwdl}/${rname}/${rfile}
 #    - and all fetching should happen in cwfetch_recipe func
 #    - can run offline after all fetches are done
+#  - XXX - use wget instead of curl?
+#    - 'wget -O -' works (as does busybox version, which should be available everywhere
+#    - ssl/tls with busybox version may be funky
+#    - curl could theoretically bootstrap itself...
+#    - ... but openssl req needs perl, which requires things that need curl
 #
 
 #

@@ -1,3 +1,8 @@
+#
+# XXX - look at other ssl/tls providers
+#   - polar, cyassl/wolfssl, axtls, gnutls, nss, ...
+#
+
 rname="curl"
 rver="7.59.0"
 rdir="${rname}-${rver}"
