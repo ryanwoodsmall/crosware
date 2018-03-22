@@ -196,6 +196,7 @@ Some other things:
 - scala
 - spidermonkey
 - spidernode
+- sslwrap (http://www.rickk.com/sslwrap/ way old)
 - stunnel
 - texinfo (requires perl)
 - tcc
