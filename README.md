@@ -97,6 +97,7 @@ Working recipes:
 - lzip
 - m4
 - make
+- mbedtls (polarssl)
 - ncurses
 - netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)
@@ -177,7 +178,6 @@ Some other things:
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - luaj
 - maven
-- mbedtls (polarssl)
 - mg (https://homepage.boetes.org/software/mg/)
 - moreutils
 - mutt
