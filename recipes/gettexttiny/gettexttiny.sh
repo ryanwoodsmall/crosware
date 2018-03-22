@@ -1,3 +1,8 @@
+#
+# XXX - use musl libintl
+#   - make LIBINTL=MUSL
+#
+
 rname="gettexttiny"
 rver="0.2.0"
 rdir="gettext-tiny-${rver}"

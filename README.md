@@ -145,6 +145,7 @@ Some other things:
 - at&t ast (just ksh now?)
 - autoconf
 - automake
+- axtls
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - clojure
 - cmake
@@ -154,6 +155,7 @@ Some other things:
 - editline (https://github.com/troglobit/editline)
 - elinks (old, deprecated)
 - gc (http://www.hboehm.info/gc/)
+- gnutls
 - go
 - gpg
 - gradle
@@ -175,11 +177,13 @@ Some other things:
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - luaj
 - maven
+- mbedtls (polarssl)
 - mg (https://homepage.boetes.org/software/mg/)
 - moreutils
 - mutt
 - node / npm (ugh)
 - nodyn (dead)
+- nss
 - openconnect
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
@@ -200,6 +204,8 @@ Some other things:
 - tsocks
 - vpnc
 - w3m (or fork)
+- wget
+- wolfssl (cyassl)
 - support libraries for building the above
 - heirloom project tools (http://heirloom.sourceforge.net/)
 - whatever else seems useful
