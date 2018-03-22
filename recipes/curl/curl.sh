@@ -1,6 +1,6 @@
 #
 # XXX - look at other ssl/tls providers
-#   - polar, cyassl/wolfssl, axtls, gnutls, nss, ...
+#   - polar, cyassl/wolfssl, axtls, gnutls, nss, mbedtls, ...
 #
 
 rname="curl"
