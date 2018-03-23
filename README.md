@@ -9,20 +9,21 @@ Ultimately I'd like this to be a self-hosting virtual distribution of sorts, tar
 - checkout rest of project
 - build GNU make (v3, no perl)
 - build native busybox (if I don't distribute one)
-- build a few libs / support (ncurses, openssl, slang, zlib, bzip2, lzma, libevent, pkg-config) 
+- build a few libs / support (ncurses, openssl, slang, zlib, bzip2, lzma, libevent, pkg-config)
 - build a few packages (curl, vim w/syntax hightlighting, screen, tmux, links, lynx - mostly because I use them)
 
 Environment stuff to figure out how to handle:
 
-- ```PATH```
-- ```PKG_CONFIG_LIBDIR/PKG_CONFIG_PATH```
-- ```CC```
-- ```CFLAGS```
-- ```CPP```
-- ```CPPFLAGS```
-- ```CXX```
-- ```LDFLAGS```
+- ```PATH``` (working)
+- ```PKG_CONFIG_LIBDIR/PKG_CONFIG_PATH``` (working)
+- ```CC``` (working)
+- ```CFLAGS``` (working)
+- ```CPP``` (working)
+- ```CPPFLAGS``` (working)
+- ```CXX``` (working)
+- ```LDFLAGS``` (working)
 - ```MANPATH```
+- ```ACLOCAL_PATH```
 
 This is currently just some notes, not-even-half-lazy scripts, and a config file or two.
 
@@ -126,7 +127,7 @@ Working recipes:
   - 9base (https://tools.suckless.org/9base)
   - sbase (https://core.suckless.org/sbase)
   - ubase (https://core.suckless.org/ubase)
-- svnkit 
+- svnkit
 - tmux
 - toybox (static)
 - unzip
