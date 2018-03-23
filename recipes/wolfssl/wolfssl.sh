@@ -13,7 +13,8 @@ function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   touch wolfssl/wolfcrypt/fips.h
   touch cyassl/ctaocrypt/fips.h
-  autoreconf -fiv -I${cwsw}/libtool/current/share/aclocal
+  env PATH=${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH} libtoolize
+  env PATH=${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH} autoreconf -fiv -I${cwsw}/libtool/current/share/aclocal
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --enable-all \
     --disable-fips \
