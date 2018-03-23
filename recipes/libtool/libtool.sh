@@ -11,7 +11,7 @@ rreqs="make perl m4 autoconf automake"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=${cwsw}/perl/current/bin:${cwsw}/m4/current/bin:${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:\${PATH} ./configure ${cwconfigureprefix}
+  env PATH=${cwsw}/perl/current/bin:${cwsw}/m4/current/bin:${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:\${PATH} ./configure ${cwconfigureprefix} ${cwconfigurelibopts}
   popd >/dev/null 2>&1
 }
 "
