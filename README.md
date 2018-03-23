@@ -194,6 +194,7 @@ Some other things:
 - rhino
 - ringojs
 - scala
+- slibtool (https://github.com/midipix-project/slibtool)
 - spidermonkey
 - spidernode
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
