@@ -132,6 +132,7 @@ Working recipes:
 - toybox (static)
 - unzip
 - vim (with syntax highlighting, which chrome/chromium os vim lacks)
+- wolfssl (cyassl)
 - zip
 - zlib
 
@@ -208,7 +209,6 @@ Some other things:
 - vpnc
 - w3m (or fork)
 - wget
-- wolfssl (cyassl)
 - support libraries for building the above
 - heirloom project tools (http://heirloom.sourceforge.net/)
 - whatever else seems useful
