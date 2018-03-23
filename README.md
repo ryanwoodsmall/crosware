@@ -93,6 +93,7 @@ Working recipes:
 - libffi
 - libgcrypt
 - libgpg-error (named libgpgerror)
+- libtool
 - links (ncurses)
 - lua (posix, no readline)
 - lynx (ncurses and slang, ncurses default)
@@ -174,7 +175,6 @@ Some other things:
 - llvm / clang
 - libedit
 - libressl
-- libtool
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - luaj
 - maven
