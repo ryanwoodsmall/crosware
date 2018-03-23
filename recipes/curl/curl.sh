@@ -9,14 +9,14 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
 rsha256="b5920ffd6a8c95585fb95070e0ced38322790cb335c39d0dab852d12e157b5a0"
-rreqs="make zlib openssl mbedtls"
+rreqs="make zlib openssl mbedtls wolfssl"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-zlib --without-mbedtls --with-ssl --with-default-ssl-backend=openssl
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-zlib --without-mbedtls --without-cyassl --with-ssl --with-default-ssl-backend=openssl
   popd >/dev/null 2>&1
 }
 "
@@ -28,10 +28,33 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   make install
+  popd >/dev/null 2>&1
+  cwmakeinstall_${rname}-mbedtls
+  cwmakeinstall_${rname}-wolfssl
+}
+"
+
+#
+# XXX - ugly
+#
+eval "
+function cwmakeinstall_${rname}-mbedtls() {
+  pushd "${rbdir}" >/dev/null 2>&1
   make distclean
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-zlib --without-ssl --with-mbedtls --with-default-ssl-backend=mbedtls
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-zlib --without-ssl --without-cyassl --with-mbedtls --with-default-ssl-backend=mbedtls
   make -j$(($(nproc)+1))
   install -m 0755 src/curl ${ridir}/bin/curl-mbedtls
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}-wolfssl() {
+  pushd "${rbdir}" >/dev/null 2>&1
+  make distclean
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-zlib --without-ssl --without-mbedtls --with-cyassl --with-default-ssl-backend=cyassl
+  make -j$(($(nproc)+1))
+  install -m 0755 src/curl ${ridir}/bin/curl-wolfssl
   popd >/dev/null 2>&1
 }
 "
