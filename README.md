@@ -150,6 +150,7 @@ Some other things:
 - antlr
 - at&t ast (just ksh now?)
 - axtls
+- brogue
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - clojure
 - cmake
@@ -183,6 +184,7 @@ Some other things:
 - mg (https://homepage.boetes.org/software/mg/)
 - moreutils
 - mutt
+- nethack
 - node / npm (ugh)
 - nodyn (dead)
 - nss
