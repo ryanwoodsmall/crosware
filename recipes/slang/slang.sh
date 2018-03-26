@@ -1,9 +1,9 @@
 rname="slang"
-rver="2.3.1a"
+rver="2.3.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://www.jedsoft.org/releases/${rname}/${rfile}"
-rsha256="54f0c3007fde918039c058965dffdfd6c5aec0bad0f4227192cc486021f08c36"
+rsha256="fc9e3b0fc4f67c3c1f6d43c90c16a5c42d117b8e28457c5b46831b8b5d3ae31a"
 rreqs="make zlib"
 
 . "${cwrecipe}/common.sh"
