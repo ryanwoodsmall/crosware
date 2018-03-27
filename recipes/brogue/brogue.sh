@@ -14,8 +14,9 @@ function cwconfigure_${rname}() {
   cat Makefile > Makefile.ORIG
   sed -i 's/-march=i586//g' Makefile
   sed -i \"/^CURSES_DEF/ s# = # = -I${cwsw}/ncurses/current/include -I${cwsw}/ncurses/current/include/ncurses #g\" Makefile
-  sed -i \"/^CURSES_LIB/ s# = # = -L${cwsw}/ncurses/current/lib #g\" Makefile
+  sed -i \"/^CURSES_LIB/ s# = # = -L${cwsw}/ncurses/current/lib -static #g\" Makefile
   sed -i \"/^SDL_FLAGS/d\" Makefile
+  sed -i \"s/^CFLAGS=/CFLAGS=-Wl,-static /g\" Makefile
   popd >/dev/null 2>&1
 }
 "
@@ -32,6 +33,8 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   mkdir -p ${ridir}
+  find . -maxdepth 1 ! -type d -exec chmod a-x {} +
+  chmod 755 brogue
   rsync -avHS ${rbdir}/. ${ridir}/.
   popd >/dev/null 2>&1
 }
