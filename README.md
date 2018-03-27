@@ -70,6 +70,7 @@ Working recipes:
 - bash (4.x, static)
 - bc (gnu bc, dc)
 - bison
+- brogue
 - busybox (static)
 - byacc
 - bzip2
@@ -150,7 +151,6 @@ Some other things:
 - antlr
 - at&t ast (just ksh now?)
 - axtls
-- brogue
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - clojure
 - cmake
