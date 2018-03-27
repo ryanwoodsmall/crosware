@@ -81,6 +81,7 @@
 #      - libs...
 #      - inclues...
 #    - custom/pre/post functions
+#    - cwlinkdir_${rname} function wrapper
 #  - recipe/function names
 #    - need _ instead of - (?)
 #    - rename static-toolchain back to static_toolchain (?)
