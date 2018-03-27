@@ -1,9 +1,9 @@
 rname="openssl"
-rver="1.0.2n"
+rver="1.0.2o"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.openssl.org/source/${rfile}"
-rsha256="370babb75f278c39e0c50e8c4e7493bc0f18db6867478341a832a982fd15a8fe"
+rsha256="ec3f5c9714ba0fd45cb4e087301eb1336c317e0d20b575a125050470e8089e4d"
 rreqs="make perl zlib"
 
 . "${cwrecipe}/common.sh"
