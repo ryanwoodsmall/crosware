@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="2fc0ffb965a8dc8f1e4a89cbe834c0ae7b9c22f559ebafc84c7874ad1866559a"
-rreqs="make lzip openssl zlib pcre gettexttiny"
+rreqs="make lzip openssl zlib pcre gettexttiny pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
@@ -32,6 +32,6 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'prepend_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
 "
