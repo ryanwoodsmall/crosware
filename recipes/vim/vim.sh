@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
 rsha256="0e59383f29a7b1ab9493d51823714f594e33dd995f95292c4c0970bddfd719dd"
-rreqs="make ncurses lua"
+rreqs="make ncurses lua gettexttiny"
 
 . "${cwrecipe}/common.sh"
 
