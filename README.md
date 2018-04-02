@@ -189,6 +189,7 @@ Some other things:
 - node / npm (ugh)
 - nodyn (dead)
 - nss
+- num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - openconnect
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
@@ -199,6 +200,7 @@ Some other things:
 - rhino
 - ringojs
 - scala
+- shuffle (http://savannah.nongnu.org/projects/shuffle/)
 - slibtool (https://github.com/midipix-project/slibtool)
 - spidermonkey
 - spidernode
