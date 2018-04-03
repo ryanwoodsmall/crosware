@@ -102,6 +102,7 @@ Working recipes:
 - lzip
   - clzip
   - lzip
+  - pdlzip
 - m4
 - make
 - mbedtls (polarssl)
