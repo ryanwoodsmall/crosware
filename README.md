@@ -197,6 +197,7 @@ Some other things:
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
 - pcc
+- pigz
 - plan9port (without x11)
 - qemu
 - rembulan (jvm lua)
