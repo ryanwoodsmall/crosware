@@ -164,7 +164,7 @@ Some other things:
 - clojure
 - cmake
 - cvs
-- dockbook?
+- docbook?
 - duplicity (http://duplicity.nongnu.org/)
 - dynjs
 - editline (https://github.com/troglobit/editline)
