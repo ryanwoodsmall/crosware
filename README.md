@@ -224,6 +224,7 @@ Some other things:
 - tig
 - tinyscheme
 - tsocks
+- upx (https://github.com/upx/upx)
 - vpnc
 - w3m (or fork)
 - xmlstarlet
