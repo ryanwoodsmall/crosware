@@ -4,14 +4,14 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="f57962ba930d70d02fc71d6be5c5f2346b16992a455ab9c43be7061dec9810db"
-rreqs="make lzip"
+rreqs="make lunzip"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwextract_${rname}() {
   pushd "${cwbuild}" >/dev/null 2>&1
-  lzip -dc "${cwdl}/${rname}/${rfile}" | tar -xf -
+  lunzip -dc "${cwdl}/${rname}/${rfile}" | tar -xf -
   popd >/dev/null 2>&1
 }
 "
