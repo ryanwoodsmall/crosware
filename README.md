@@ -161,6 +161,7 @@ Some other things:
 - clojure
 - cmake
 - cvs
+- dockbook?
 - duplicity (http://duplicity.nongnu.org/)
 - dynjs
 - editline (https://github.com/troglobit/editline)
@@ -184,6 +185,8 @@ Some other things:
 - llvm / clang
 - libedit
 - libressl
+- libxml2
+- libxslt
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - luaj
 - lzip
@@ -223,6 +226,7 @@ Some other things:
 - tsocks
 - vpnc
 - w3m (or fork)
+- xmlstarlet
 - support libraries for building the above
 - heirloom project tools (http://heirloom.sourceforge.net/)
 - whatever else seems useful
