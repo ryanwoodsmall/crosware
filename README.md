@@ -100,6 +100,8 @@ Working recipes:
 - lua (posix, no readline)
 - lynx (ncurses and slang, ncurses default)
 - lzip
+  - clzip
+  - lzip
 - m4
 - make
 - mbedtls (polarssl)
