@@ -103,6 +103,7 @@ Working recipes:
   - clzip
   - lunzip
   - lzip
+  - lziprecover
   - pdlzip
 - m4
 - make
