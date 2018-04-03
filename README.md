@@ -105,6 +105,7 @@ Working recipes:
   - lzip
   - lziprecover
   - pdlzip
+  - zutils
 - m4
 - make
 - mbedtls (polarssl)
@@ -192,7 +193,6 @@ Some other things:
 - lzip
   - lzlib
   - plzip
-  - zutils
 - maven
 - mg (https://homepage.boetes.org/software/mg/)
 - moreutils
