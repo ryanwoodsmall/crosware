@@ -165,6 +165,7 @@ Some other things:
 - cmake
 - cvs
 - docbook?
+- dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
 - duplicity (http://duplicity.nongnu.org/)
 - dynjs
 - editline (https://github.com/troglobit/editline)
