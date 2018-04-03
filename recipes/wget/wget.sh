@@ -4,14 +4,15 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="2fc0ffb965a8dc8f1e4a89cbe834c0ae7b9c22f559ebafc84c7874ad1866559a"
-rreqs="make lzip openssl zlib pcre gettexttiny pkgconfig"
+rreqs="make lunzip openssl zlib pcre gettexttiny pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwextract_${rname}() {
   pushd "${cwbuild}" >/dev/null 2>&1
-  lzip -dc "${cwdl}/${rname}/${rfile}" | tar -xf -
+  cwscriptecho \"extracting ${rfile} in ${cwbuild}\"
+  lunzip -dc "${cwdl}/${rname}/${rfile}" | tar -xf -
   popd >/dev/null 2>&1
 }
 "
