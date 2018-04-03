@@ -106,6 +106,7 @@ Working recipes:
   - lziprecover
   - lzlib
   - pdlzip
+  - plzip
   - zutils
 - m4
 - make
@@ -191,8 +192,6 @@ Some other things:
 - libxslt
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - luaj
-- lzip
-  - plzip
 - maven
 - mg (https://homepage.boetes.org/software/mg/)
 - moreutils
