@@ -11,7 +11,7 @@ rreqs="make"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  sed -i.ORIG '/__GLIBC_PREREQ/ s|^#if |#if 1 //|g' include/bsd/string.h include/bsd/stdlib.h 
+  sed -i.ORIG '/__GLIBC_PREREQ/ s|^#if |#if 1 //|g' include/bsd/string.h include/bsd/stdlib.h
   for h in \$(egrep -rl '__(BEGIN|END)_DECLS' include | grep -v '/cdefs\.h$') ; do
     echo "attempting to fix up \${h}"
     cat \${h} > \${h}.ORIG

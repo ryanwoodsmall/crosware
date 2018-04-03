@@ -14,7 +14,7 @@ function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   cwscriptecho 'getting localoptions.h from github'
   curl -kLso localoptions.h https://raw.githubusercontent.com/ryanwoodsmall/dropbear-misc/master/options/dropbear-${rver}_localoptions.h
-  cwscriptecho 'patching localoptions.h' 
+  cwscriptecho 'patching localoptions.h'
   sed -i \"s#/opt/dropbear#${rtdir}#g\" localoptions.h
   ./configure \
     ${cwconfigureprefix} \

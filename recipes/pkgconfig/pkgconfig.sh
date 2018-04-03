@@ -8,12 +8,12 @@ rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
-eval "                                                                                                                                                                                                 
-function cwconfigure_${rname}() { 
-  pushd "${rbdir}" >/dev/null 2>&1 
+eval "
+function cwconfigure_${rname}() {
+  pushd "${rbdir}" >/dev/null 2>&1
   # sed -i.ORIG 's/-Werror=format=. //g' glib/configure
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-internal-glib
-  popd >/dev/null 2>&1 
+  popd >/dev/null 2>&1
 }
 "
 
