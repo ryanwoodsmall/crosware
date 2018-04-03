@@ -186,6 +186,10 @@ Some other things:
 - libressl
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - luaj
+- lzip
+  - lzlib
+  - plzip
+  - zutils
 - maven
 - mg (https://homepage.boetes.org/software/mg/)
 - moreutils
