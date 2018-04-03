@@ -59,7 +59,7 @@
 #  - update environment without rebootstrap
 #  - profile.d file writer
 #  - zulu, jgitsh, static-toolchain split out to separate install functions
-#    - trim down bootstrap/make 
+#    - trim down bootstrap/make
 #    - make them easier to upgrade
 #  - recipes
 #    - rname - recipe name
