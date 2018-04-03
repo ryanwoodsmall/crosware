@@ -101,6 +101,7 @@ Working recipes:
 - lynx (ncurses and slang, ncurses default)
 - lzip
   - clzip
+  - lunzip
   - lzip
   - pdlzip
 - m4
