@@ -120,6 +120,8 @@
 #    - curl could theoretically bootstrap itself...
 #    - ... but openssl req needs perl, which requires things that need curl
 #  - XXX - make jobs (-j#) needs to be calculated once at the top level, not every time a recipe is parsed
+#  - "strip" script command
+#    -traverse ${cwtop}/software/*/*/bin/ and run "strip --strip-all" on any ELF binaries
 #
 
 #
