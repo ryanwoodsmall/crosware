@@ -122,6 +122,12 @@
 #  - XXX - make jobs (-j#) needs to be calculated once at the top level, not every time a recipe is parsed
 #  - "strip" script command
 #    -traverse ${cwtop}/software/*/*/bin/ and run "strip --strip-all" on any ELF binaries
+#  - compiler opts
+#    - http://www.productive-cpp.com/hardening-cpp-programs-executable-space-protection-address-space-layout-randomization-aslr/
+#    - pic/pie/...
+#    - need to explore -fpic/-fPIC and -fpie/-fPIE and -pie
+#    - -static-pie in GCC 7/8/+
+#    - force -static-libgcc -static-libstdc++
 #
 
 #
