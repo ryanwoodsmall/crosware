@@ -37,7 +37,7 @@ tmux-256color' libterminfo/genterms
   cd nbperf
   make nbperf CPPFLAGS='-I..' LDFLAGS='-static'
   cd ..
-  make -j$(($(nproc)+1)) all-static PREFIX="${ridir}" CPPFLAGS='-I./ -I./libterminfo' LDFLAGS='-static'
+  make -j${cwmakejobs} all-static PREFIX="${ridir}" CPPFLAGS='-I./ -I./libterminfo' LDFLAGS='-static'
   popd >/dev/null 2>&1
 }
 "

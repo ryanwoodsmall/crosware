@@ -21,7 +21,7 @@ function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   mkdir -p buildbin
   ln -s \$(which jython) buildbin/python
-  env PATH=\"./buildbin:\${PATH}\" make -j$(($(nproc)+1))
+  env PATH=\"./buildbin:\${PATH}\" make -j${cwmakejobs}
   popd >/dev/null 2>&1
 }
 "

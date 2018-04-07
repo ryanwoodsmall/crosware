@@ -19,7 +19,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  make -j$(($(nproc)+1)) no_test CC=\"\${CC}\" CFLAGS=\"-Wl,-static\" LDFLAGS=\"-static\"
+  make -j${cwmakejobs} no_test CC=\"\${CC}\" CFLAGS=\"-Wl,-static\" LDFLAGS=\"-static\"
   popd >/dev/null 2>&1
 }
 "

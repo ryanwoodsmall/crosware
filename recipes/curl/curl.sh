@@ -42,7 +42,7 @@ function cwmakeinstall_${rname}-mbedtls() {
   pushd "${rbdir}" >/dev/null 2>&1
   make distclean
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-zlib --without-ssl --without-cyassl --with-mbedtls --with-default-ssl-backend=mbedtls
-  make -j$(($(nproc)+1))
+  make -j${cwmakejobs}
   install -m 0755 src/curl ${ridir}/bin/curl-mbedtls
   popd >/dev/null 2>&1
 }
@@ -53,7 +53,7 @@ function cwmakeinstall_${rname}-wolfssl() {
   pushd "${rbdir}" >/dev/null 2>&1
   make distclean
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-zlib --without-ssl --without-mbedtls --with-cyassl --with-default-ssl-backend=cyassl
-  make -j$(($(nproc)+1))
+  make -j${cwmakejobs}
   install -m 0755 src/curl ${ridir}/bin/curl-wolfssl
   popd >/dev/null 2>&1
 }

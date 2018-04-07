@@ -24,7 +24,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  env LIBINTL=MUSL make -j$(($(nproc)+1))
+  env LIBINTL=MUSL make -j${cwmakejobs}
   popd >/dev/null 2>&1
 }
 "

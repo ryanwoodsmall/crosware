@@ -37,7 +37,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  make -j$(($(nproc)+1)) \
+  make -j${cwmakejobs} \
     MULTI=1 \
     SCPPROGRESS=1 \
     PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"

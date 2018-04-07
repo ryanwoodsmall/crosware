@@ -55,7 +55,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  make -j$(($(nproc)+1))
+  make -j${cwmakejobs}
   popd >/dev/null 2>&1
 }
 "

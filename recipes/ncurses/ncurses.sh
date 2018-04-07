@@ -23,11 +23,11 @@ eval "
 function cwbuild_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} --without-shared -without-cxx-shared
-  make -j$(($(nproc)+1))
+  make -j${cwmakejobs}
   make install
   make clean
   ./configure ${cwconfigureprefix} --without-shared -without-cxx-shared --enable-widec
-  make -j$(($(nproc)+1))
+  make -j${cwmakejobs}
   make install
   popd >/dev/null 2>&1
 }

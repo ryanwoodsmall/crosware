@@ -29,8 +29,8 @@ function cwmake_${rname}() {
   # ganked from alpine
   #  https://git.alpinelinux.org/cgit/aports/tree/main/bash/APKBUILD
   make y.tab.c
-  make -j$(($(nproc)+1)) builtins/libbuiltins.a
-  make -j$(($(nproc)+1))
+  make -j${cwmakejobs} builtins/libbuiltins.a
+  make -j${cwmakejobs}
   make strip
   popd >/dev/null 2>&1
 }

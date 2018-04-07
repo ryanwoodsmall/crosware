@@ -20,7 +20,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  make -j$(($(nproc)+1)) posix MYCFLAGS=\"\${CFLAGS} \${CPPFLAGS} \" MYLDFLAGS=\"\${LDFLAGS}\"
+  make -j${cwmakejobs} posix MYCFLAGS=\"\${CFLAGS} \${CPPFLAGS} \" MYLDFLAGS=\"\${LDFLAGS}\"
   popd >/dev/null 2>&1
 }
 "
