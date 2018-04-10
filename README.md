@@ -89,7 +89,8 @@ Working recipes:
 - htop (uses jython during build)
 - iftop
 - iperf
-- iperf3
+  - iperf
+  - iperf3
 - jython
 - kawa (scheme)
 - less
@@ -161,6 +162,8 @@ Some things:
 - subversion / svn
 
 Some other things:
+- ack (https://beyondgrep.com/)
+- ag (the silver searcher https://geoff.greer.fm/ag/)
 - ant
 - antlr
 - at&t ast (just ksh now?)
@@ -175,6 +178,7 @@ Some other things:
 - dynjs
 - editline (https://github.com/troglobit/editline)
 - elinks (old, deprecated)
+- entr (http://entrproject.org/)
 - gc (http://www.hboehm.info/gc/)
 - gnutls
 - go
@@ -185,6 +189,7 @@ Some other things:
 - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
 - hg4j and client wrapper (dead?)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
+- inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - java-repl
 - jcvs
 - jline
