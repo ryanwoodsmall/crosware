@@ -16,6 +16,7 @@ function cwconfigure_${rname}() {
   ./configure \
     ${cwconfigureprefix} \
     ${cwconfigurelibopts} \
+    --with-pcap=linux \
     --with-libnl=\"${cwtop}/software/libnl/current\" \
       CPPFLAGS=\"\${CPPFLAGS}\" \
       CFLAGS=\"\${CFLAGS}\" \
