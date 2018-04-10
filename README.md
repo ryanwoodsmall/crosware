@@ -87,6 +87,7 @@ Working recipes:
 - grep (gnu grep)
 - groff
 - htop (uses jython during build)
+- iftop
 - iperf
 - iperf3
 - jython
