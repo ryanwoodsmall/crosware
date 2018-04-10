@@ -98,6 +98,7 @@ Working recipes:
 - libffi
 - libgcrypt
 - libgpg-error (named libgpgerror)
+- libnl
 - libpcap
 - libtool
 - links (ncurses)
