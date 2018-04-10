@@ -87,6 +87,8 @@ Working recipes:
 - grep (gnu grep)
 - groff
 - htop (uses jython during build)
+- iperf
+- iperf3
 - jython
 - kawa (scheme)
 - less
@@ -180,7 +182,6 @@ Some other things:
 - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
 - hg4j and client wrapper (dead?)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
-- iperf / iperf3
 - java-repl
 - jcvs
 - jline
