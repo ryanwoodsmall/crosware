@@ -4,7 +4,7 @@ rdir="iperf-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/esnet/${rname}/archive/${rfile}"
 rsha256="4c318707a29d46d7b64e517a4fe5e5e75e698aef030c6906e9b26dc51d9b1fce"
-rreqs="make"
+rreqs="make openssl"
 
 . "${cwrecipe}/common.sh"
 
