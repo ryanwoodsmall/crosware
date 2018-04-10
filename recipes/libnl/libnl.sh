@@ -22,5 +22,6 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/sbin\"' > "${rprof}"
   echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
   echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
+  echo 'append_cppflags \"-I${rtdir}/current/include/libnl3\"' >> \"${rprof}\"
 }
 "
