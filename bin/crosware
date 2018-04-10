@@ -129,6 +129,7 @@
 #    - need to explore -fpic/-fPIC and -fpie/-fPIE and -pie
 #    - -static-pie in GCC 7/8/+
 #    - force -static-libgcc -static-libstdc++
+#  - "archive" step/script command to save tar of installed binary dir?
 #
 
 #
