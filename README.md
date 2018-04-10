@@ -97,6 +97,7 @@ Working recipes:
 - libffi
 - libgcrypt
 - libgpg-error (named libgpgerror)
+- libpcap
 - libtool
 - links (ncurses)
 - lua (posix, no readline)
