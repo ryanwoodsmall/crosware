@@ -1,6 +1,9 @@
 #
-# XXX - look at other ssl/tls providers
-#   - polar, cyassl/wolfssl, axtls, gnutls, nss, mbedtls, ...
+# - other ssl/tls providers
+#   - axtls, gnutls, nss, ...
+# - libssh2
+#   - supports one of openssl, mbed, libgcrypt
+#   - mix/match with ssl/tls providers? seems like a bad idea
 #
 
 rname="curl"
@@ -29,8 +32,8 @@ function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   make install
   popd >/dev/null 2>&1
-  cwmakeinstall_${rname}-mbedtls
-  cwmakeinstall_${rname}-wolfssl
+  cwmakeinstall_${rname}_mbedtls
+  cwmakeinstall_${rname}_wolfssl
 }
 "
 
@@ -38,7 +41,7 @@ function cwmakeinstall_${rname}() {
 # XXX - ugly
 #
 eval "
-function cwmakeinstall_${rname}-mbedtls() {
+function cwmakeinstall_${rname}_mbedtls() {
   pushd "${rbdir}" >/dev/null 2>&1
   make distclean
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-zlib --without-ssl --without-cyassl --with-mbedtls --with-default-ssl-backend=mbedtls
@@ -49,7 +52,7 @@ function cwmakeinstall_${rname}-mbedtls() {
 "
 
 eval "
-function cwmakeinstall_${rname}-wolfssl() {
+function cwmakeinstall_${rname}_wolfssl() {
   pushd "${rbdir}" >/dev/null 2>&1
   make distclean
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-zlib --without-ssl --without-mbedtls --with-cyassl --with-default-ssl-backend=cyassl
