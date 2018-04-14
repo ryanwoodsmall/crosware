@@ -101,6 +101,7 @@ Working recipes:
 - libgpg-error (named libgpgerror)
 - libnl
 - libpcap
+- libssh2 (openssl, zlib)
 - libtool
 - links (ncurses)
 - lua (posix, no readline)
