@@ -130,6 +130,9 @@
 #    - -static-pie in GCC 7/8/+
 #    - force -static-libgcc -static-libstdc++
 #  - "archive" step/script command to save tar of installed binary dir?
+#  - cwrunfunc needs to be able to handle arguments
+#  - LDFLAGS is over-expanded here, can probably remove \${LDFLAGS}
+#    - can set to bare "-static" in etc/profile and remove it from static-toolchain profile.d
 #
 
 #
