@@ -217,6 +217,9 @@ Some other things:
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
 - pcc
+- picolisp
+  - picolisp (c, lisp)
+  - ersatz picolisp (java)
 - pigz
 - plan9port (without x11)
 - qemu
