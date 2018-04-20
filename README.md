@@ -144,6 +144,7 @@ Working recipes:
   - sbase (https://core.suckless.org/sbase)
   - ubase (https://core.suckless.org/ubase)
 - svnkit
+- tig
 - tmux
 - toybox (static)
 - unzip
@@ -235,7 +236,6 @@ Some other things:
 - stunnel
 - texinfo (requires perl)
 - tcc
-- tig
 - tinyscheme
 - tsocks
 - upx (https://github.com/upx/upx)
