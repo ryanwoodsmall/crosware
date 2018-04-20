@@ -24,6 +24,7 @@ Environment stuff to figure out how to handle:
 - ```LDFLAGS``` (working)
 - ```MANPATH```
 - ```ACLOCAL_PATH```
+- ```EDITOR``` (vim?)
 
 This is currently just some notes, not-even-half-lazy scripts, and a config file or two.
 

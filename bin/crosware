@@ -132,7 +132,12 @@
 #  - "archive" step/script command to save tar of installed binary dir?
 #  - cwrunfunc needs to be able to handle arguments
 #  - LDFLAGS is over-expanded here, can probably remove \${LDFLAGS}
-#    - can set to bare "-static" in etc/profile and remove it from static-toolchain profile.d
+#    - can't set to bare "-static" in etc/profile and remove it from static-toolchain profile.d
+#    - static-toolchain profile.d file is self-contained, don't need any more environment to use it
+#    - don't muck with that
+#    - do something like this in etc/profile after all shell snippet parsing:
+#        export LDFLAGS="-static ${LDFLAGS//-static /}"
+#    - otherwise need a hash of seen flags to trim dupes, that gets slow if generalized
 #
 
 #
