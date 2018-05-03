@@ -1,3 +1,8 @@
+#
+# XXX - this really needs to be a git commit, release is way out of date
+#       repo: https://github.com/rakitzis/rc
+#
+
 rname="rc"
 rver="1.7.4"
 rdir="${rname}-${rver}"
