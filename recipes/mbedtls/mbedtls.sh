@@ -1,9 +1,9 @@
 rname="mbedtls"
-rver="2.8.0"
+rver="2.9.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}-apache.tgz"
 rurl="https://tls.mbed.org/download/${rfile}"
-rsha256="ab8b62b995781bcf22e87a265ed06267f87c3041198e996b44441223d19fa9c3"
+rsha256="a06a9b43e583b7e6707becfeeb13d88ed00f25fee31a5386cb3a3014c454bad8"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
