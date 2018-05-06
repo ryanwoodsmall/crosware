@@ -132,6 +132,7 @@ Working recipes:
 - qemacs (https://bellard.org/qemacs/)
 - rc (http://tobold.org/article/rc, https://github.com/rakitzis/rc)
 - readline
+- rhino
 - rlwrap
 - rogue
 - rsync
@@ -226,7 +227,6 @@ Some other things:
 - plan9port (without x11)
 - qemu
 - rembulan (jvm lua)
-- rhino
 - ringojs
 - scala
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
