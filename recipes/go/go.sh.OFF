@@ -1,0 +1,80 @@
+#
+# XXX - can't bootstrap from pure source on aarch64
+#       linux arm64 support only showed up in go 1.5+
+#       last version of go in c was 1.4
+#       chicken, egg
+#       make this just use a binary distributions?
+#
+
+rname="go"
+rver="1.10.2"
+rdir="${rname}${rver}"
+rfile="${rdir}.src.tar.gz"
+rurl="https://dl.google.com/${rname}/${rfile}"
+rsha256="6264609c6b9cd8ed8e02ca84605d727ce1898d74efa79841660b2e3e985a98bd"
+rreqs="make"
+
+# XXX - go 1.4 bootstrap
+gobsurl="https://dl.google.com/go/go1.4-bootstrap-20171003.tar.gz"
+gobsfile="$(basename ${gobsurl})"
+gobssha256="f4ff5b5eb3a3cae1c993723f3eab519c5bae18866b5e5f96fe1102f0cb5c3e52"
+
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwfetch_${rname}() {
+  cwfetchcheck "${rurl}" "${cwdl}/${rname}/${rfile}" "${rsha256}"
+  cwfetchcheck "${gobsurl}" "${cwdl}/${rname}/${gobsfile}" "${gobssha256}"
+}
+"
+
+# XXX - ugly, always replaces the installation
+eval "
+function cwextract_${rname}() {
+  cwmkdir "${rtdir}"
+  pushd "${rtdir}" >/dev/null 2>&1
+  rm -rf "${rname}" "${rdir}"
+  cwextract "${cwdl}/${rname}/${rfile}" "${rtdir}"
+  mv "${rname}" "${rdir}"
+  cd "${rdir}"
+  cwmkdir "bootstrap"
+  cwextract "${cwdl}/${rname}/${gobsfile}" "${ridir}/bootstrap"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwconfigure_${rname}() {
+  cwscriptecho \"cwconfigure_${rname} noop\"
+}
+"
+
+# XXX - cwmake_go is actually go 1.4 bootstrap
+eval "
+function cwmake_${rname}() {
+  cwscriptecho \"building bootstrap ${rname}\"
+  pushd "${ridir}/bootstrap/${rname}/src" >/dev/null 2>&1
+  env CGO_ENABLED=0 bash make.bash
+  popd >/dev/null 2>&1
+}
+"
+
+# XXX - cwmakeinstall_go is real go build
+eval "
+function cwmakeinstall_${rname}() {
+  cwscriptecho \"building real ${rname}\"
+  pushd "${ridir}/src" >/dev/null 2>&1
+  env CGO_ENABLED=0 GOROOT_BOOTSTRAP="${ridir}/bootstrap/${rname}" bash make.bash
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+
+unset gobsurl
+unset gobsfile
+unset gobssha256
