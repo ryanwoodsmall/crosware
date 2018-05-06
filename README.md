@@ -92,6 +92,7 @@ Working recipes:
 - iperf
   - iperf
   - iperf3
+- jscheme
 - jython
 - kawa (scheme)
 - less
@@ -198,7 +199,6 @@ Some other things:
 - jline
 - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
 - jq
-- jscheme (dead)
 - llvm / clang
 - libedit
 - libressl
