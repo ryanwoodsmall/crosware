@@ -1,9 +1,9 @@
 rname="lynx"
-rver="2.8.9dev.17"
+rver="2.8.9dev.18"
 rdir="${rname}${rver}"
 rfile="${rname}${rver}.tar.bz2"
 rurl="ftp://ftp.invisible-island.net/${rname}/tarballs/${rfile}"
-rsha256="a43811b9078c46ccd6d91a3d5ae0a8bc1f247a4dd89c1a6ccdbcd6c2b3d56ed3"
+rsha256="e57339558934381bd5d9aff8b8d4938bf11e0cd8e63cf3b76396670a51b16323"
 rreqs="make slang ncurses openssl zlib"
 
 . "${cwrecipe}/common.sh"
