@@ -405,10 +405,10 @@ done
 
 # XXX - will need to make sure java tmpdir is set
 # https://repo.eclipse.org/content/groups/releases/org/eclipse/jgit/org.eclipse.jgit.pgm/4.9.1.201712030800-r/org.eclipse.jgit.pgm-4.9.1.201712030800-r.sh
-jgitsh_ver="4.10.0.201712302008-r"
+jgitsh_ver="4.11.0.201803080745-r"
 jgitsh_file="org.eclipse.jgit.pgm-${jgitsh_ver}.sh"
 jgitsh_url="https://repo.eclipse.org/content/groups/releases/org/eclipse/jgit/org.eclipse.jgit.pgm/${jgitsh_ver}/${jgitsh_file}"
-jgitsh_sha256sum="76305c50c934f05838d876604a474b188b6b7a374aa87923eb5803028fcf8cd9"
+jgitsh_sha256sum="f12ec2fe7bb6a9a7899bf0628a98a303c2b325640021afb883bebc1d42fb41cf"
 jgitsh_symlink="jgit.sh"
 jgitsh_pkgname="jgitsh"
 jgitsh_inst_dir="${cwsw}/${jgitsh_pkgname}"
