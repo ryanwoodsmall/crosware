@@ -7,11 +7,11 @@
 #
 
 rname="curl"
-rver="7.59.0"
+rver="7.60.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
-rsha256="b5920ffd6a8c95585fb95070e0ced38322790cb335c39d0dab852d12e157b5a0"
+rsha256="897dfb2204bd99be328279f88f55b7c61592216b0542fcbe995c60aa92871e9b"
 rreqs="make zlib openssl mbedtls wolfssl libssh2"
 
 . "${cwrecipe}/common.sh"
