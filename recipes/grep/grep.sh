@@ -17,6 +17,17 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwmakeinstall_${rname}() {
+  pushd "${rbdir}" >/dev/null 2>&1
+  make install
+  ln -sf g${rname} ${ridir}/bin/${rname}
+  ln -sf ge${rname} ${ridir}/bin/e${rname}
+  ln -sf gf${rname} ${ridir}/bin/f${rname}
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
