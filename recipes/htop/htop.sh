@@ -19,7 +19,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ln -s \${cwtop}/software/python2/current/bin buildbin
+  ln -s \${cwsw}/python2/current/bin buildbin
   env PATH=\"./buildbin:\${PATH}\" make -j${cwmakejobs}
   popd >/dev/null 2>&1
 }
