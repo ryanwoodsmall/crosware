@@ -21,7 +21,7 @@ function cwinstall_${rname}() {
   cwsourceprofile
   cwmkdir "${rtdir}"
   cwextract "${cwdl}/${rname}/${rfile}" "${rtdir}"
-  cwlinkdir "${rdir}" "${rtdir}"
+  cwlinkdir_${rname} 
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
 }
