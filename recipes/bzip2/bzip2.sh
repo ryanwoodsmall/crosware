@@ -12,7 +12,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   sed -i.ORIG \"/^PREFIX=/ s#PREFIX=.*#PREFIX=${ridir}#g\" Makefile
-  sed -i \"/^CFLAGS=/ s#CFLAGS=#CFLAGS=-Wl,-static #g\" Makefile
+  sed -i \"/^CFLAGS=/ s#CFLAGS=#CFLAGS=-Wl,-static -fPIC #g\" Makefile
   sed -i \"/^LDFLAGS=/ s#LDFLAGS=#LDFLAGS=-static #g\" Makefile
   popd >/dev/null 2>&1
 }
