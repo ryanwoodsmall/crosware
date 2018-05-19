@@ -11,7 +11,7 @@ rreqs="make ncurses"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-curses
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-curses ${cwconfigurefpicopts}
   popd >/dev/null 2>&1
 }
 "
