@@ -30,7 +30,7 @@ function cwinstall_${rname}() {
   cwsourceprofile
   cwcheckreqs_${rname}
   cwmakeinstall_${rname}
-  cwlinkdir "${rdir}" "${rtdir}"
+  cwlinkdir_${rname} 
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
 }
