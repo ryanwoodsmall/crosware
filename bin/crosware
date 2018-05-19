@@ -12,31 +12,6 @@
 #    - current/previous symlinks for versioned installs
 #    - ignore directories with generated files (path, cpp/ld flags, ...)
 #    - ignore software install dir
-#  - what will a "reboostrap" do?
-#  - canonical arch
-#    - use static "toybox file" to figure out?
-#    - "user" arch (uarch), figured via bash $MACHTYPE environment variable
-#    - kernel arch (karch), figured via uname -m
-#  - java arch
-#    - use zulu
-#      - jdk 8
-#    - glibc only
-#    - armv6l/armv7l/armv8l hard float only (aarch32hf)
-#    - aarch64
-#    - i686
-#    - x86_64 (x64)
-#  - all(?) aarch64 chrome os machines are using 32-bit armv7l userland (for arm chrome pepper/flash?)
-#    - jdk will need to be arm on aarch64
-#  - handle armv8l 32-bit compat on aarch64
-#    - treat like armv6l/armv7l
-#  - arm soft-float?
-#    - bash will return something like armv5tel
-#    - need sf zulu jdk, compiler set
-#    - probably not worth it
-#  - handle i686
-#    - no current, supported intel chrome os devices are 32-bit
-#    - maybe grab neverware cloudready 32b for testing?
-#    - i686 *only*, no i386/i486/i586
 #  - files to source w/path, compiler vars, pkg-config, etc.
 #    - top-level etc/profile to source
 #    - sources an etc/local and/or etc/local.d with shell snippets (obvious, local settings)
@@ -52,10 +27,6 @@
 #    - var/reqs/recipename/reqname
 #  - etc/local.d - scriptlets, not tracked in git
 #  - var/ - track installs/versions
-#  - jgit.sh doesn't have "jgit.sh pull" shortcut; use:
-#    - jgit.sh fetch origin ; jgit.sh merge origin/master
-#  - where to store recipe scriptlets?
-#    - and how abstract should they be?
 #  - update environment without rebootstrap
 #  - profile.d file writer
 #  - zulu, jgitsh, static-toolchain split out to separate install functions
@@ -118,14 +89,16 @@
 #    - ssl/tls with busybox version may be funky
 #    - curl could theoretically bootstrap itself...
 #    - ... but openssl req needs perl, which requires things that need curl
-#  - XXX - make jobs (-j#) needs to be calculated once at the top level, not every time a recipe is parsed
-#    - cwmakeopts var as well
+#      - mbedtls
+#  - make jobs may need common cwmakeopts var
 #  - "strip" script command
 #    -traverse ${cwtop}/software/*/*/bin/ and run "strip --strip-all" on any ELF binaries
 #  - compiler opts
 #    - http://www.productive-cpp.com/hardening-cpp-programs-executable-space-protection-address-space-layout-randomization-aslr/
 #    - pic/pie/...
 #    - need to explore -fpic/-fPIC and -fpie/-fPIE and -pie
+#      - -fPIC works on x86_64/aarch64 at least
+#      - manually specified for now in recipe opt
 #    - -static-pie in GCC 7/8/+
 #    - force -static-libgcc -static-libstdc++
 #  - "archive" step/script command to save tar of installed binary dir?
