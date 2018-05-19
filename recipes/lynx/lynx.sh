@@ -1,9 +1,9 @@
 rname="lynx"
-rver="2.8.9dev.18"
+rver="2.8.9dev.19"
 rdir="${rname}${rver}"
 rfile="${rname}${rver}.tar.bz2"
 rurl="ftp://ftp.invisible-island.net/${rname}/tarballs/${rfile}"
-rsha256="e57339558934381bd5d9aff8b8d4938bf11e0cd8e63cf3b76396670a51b16323"
+rsha256="0223706f8310ecb738342c6bc51ebbe1879f2890a56c5e6f099e28289a8a8e9f"
 rreqs="make slang ncurses openssl zlib"
 
 . "${cwrecipe}/common.sh"
@@ -43,7 +43,7 @@ function cwinstall_${rname}() {
   cwclean_${rname}
   cwextract_${rname}
   cwbuild_${rname}
-  cwlinkdir "${rdir}" "${rtdir}"
+  cwlinkdir_${rname} 
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
   cwclean_${rname}
