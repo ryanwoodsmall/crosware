@@ -41,7 +41,7 @@ function cwinstall_${rname}() {
   cwclean_${rname}
   cwextract_${rname}
   cwbuild_${rname}
-  cwlinkdir "${rdir}" "${rtdir}"
+  cwlinkdir "$(basename ${ridir})" "${rtdir}"
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
   cwclean_${rname}
