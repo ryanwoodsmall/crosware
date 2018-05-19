@@ -1,9 +1,21 @@
+#
+# XXX - module failures
+#       need to build zlib/curses/readline/openssl/bzip2 with -fPIC?
+#
+# Failed to build these modules:
+# _bsddb             _curses            _curses_panel
+# _hashlib           _multiprocessing   _sqlite3
+# _ssl               _tkinter           binascii
+# bz2                dbm                gdbm
+# nis                readline           zlib
+#
+
 rname="python2"
-rver="2.7.14"
+rver="2.7.15"
 rdir="Python-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.python.org/ftp/python/${rver}/${rfile}"
-rsha256="71ffb26e09e78650e424929b2b457b9c912ac216576e6bd9e7d204ed03296a66"
+rsha256="22d9b1ac5b26135ad2b8c2901a9413537e08749a753356ee913c84dbd2df5574"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
