@@ -22,11 +22,11 @@ function cwgenprofd_${rname}() {
 eval "
 function cwbuild_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} --without-shared -without-cxx-shared
+  ./configure ${cwconfigureprefix} --without-shared -without-cxx-shared ${cwconfigurefpicopts}
   make -j${cwmakejobs}
   make install
   make clean
-  ./configure ${cwconfigureprefix} --without-shared -without-cxx-shared --enable-widec
+  ./configure ${cwconfigureprefix} --without-shared -without-cxx-shared --enable-widec ${cwconfigurefpicopts}
   make -j${cwmakejobs}
   make install
   popd >/dev/null 2>&1
