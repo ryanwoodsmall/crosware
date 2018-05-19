@@ -11,7 +11,7 @@ rreqs="make"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} --static
+  env CFLAGS=\"\${CFLAGS} -fPIC\" ./configure ${cwconfigureprefix} --static
   popd >/dev/null 2>&1
 }
 "
