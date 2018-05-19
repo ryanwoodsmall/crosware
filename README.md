@@ -173,6 +173,7 @@ Some other things:
 - antlr
 - at&t ast (just ksh now?)
 - axtls
+- bdb
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - clojure
 - cmake
@@ -185,6 +186,8 @@ Some other things:
 - elinks (old, deprecated)
 - entr (http://entrproject.org/)
 - gc (http://www.hboehm.info/gc/)
+- gdb
+- gdbm
 - gnutls
 - go
 - gpg
@@ -233,6 +236,7 @@ Some other things:
 - slibtool (https://github.com/midipix-project/slibtool)
 - spidermonkey
 - spidernode
+- sqlite
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - stunnel
 - texinfo (requires perl)
