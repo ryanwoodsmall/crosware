@@ -32,7 +32,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  mkdir -p ${ridir}
+  cwmkdir "${ridir}"
   find . -maxdepth 1 ! -type d -exec chmod a-x {} +
   chmod 755 brogue
   rsync -avHS ${rbdir}/. ${ridir}/.
