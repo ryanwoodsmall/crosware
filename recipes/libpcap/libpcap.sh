@@ -12,12 +12,12 @@ rreqs="make bison flex libnl"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ln -s ${cwtop}/software/libnl/current/include/libnl3/netlink .
+  ln -s ${cwsw}/libnl/current/include/libnl3/netlink .
   ./configure \
     ${cwconfigureprefix} \
     ${cwconfigurelibopts} \
     --with-pcap=linux \
-    --with-libnl=\"${cwtop}/software/libnl/current\" \
+    --with-libnl=\"${cwsw}/libnl/current\" \
       CPPFLAGS=\"\${CPPFLAGS}\" \
       CFLAGS=\"\${CFLAGS}\" \
       LDFLAGS=\"\${LDFLAGS}\"
