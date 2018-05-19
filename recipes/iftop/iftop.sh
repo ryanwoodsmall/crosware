@@ -12,7 +12,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   autoreconf -fiv
-  ./configure ${cwconfigureprefix} LIBS=\"\$(${cwtop}/software/libpcap/current/bin/pcap-config --static --libs)\"
+  ./configure ${cwconfigureprefix} LIBS=\"\$(${cwsw}/libpcap/current/bin/pcap-config --static --libs)\"
   popd >/dev/null 2>&1
 }
 "
