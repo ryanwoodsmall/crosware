@@ -1,3 +1,4 @@
+# XXX - probably needs a zz_ prepended to profile.d file so python/python2/python3 come first in $PATH
 rname="jython"
 rver="2.7.1"
 rurl="https://repo.maven.apache.org/maven2/org/python/${rname}-installer/${rver}/${rname}-installer-${rver}.jar"
