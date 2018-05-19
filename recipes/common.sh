@@ -87,6 +87,12 @@ function cwextract_${rname}() {
 }
 "
 
+eval "
+function cwlinkdir_${rname}() {
+  cwlinkdir "$(basename ${ridir})" "${rtdir}"
+}
+"
+
 # XXX - link directory should probably be
 #       cwlinkdir "$(basename ${ridir})" "${rtdir}"
 eval "
@@ -99,7 +105,7 @@ function cwinstall_${rname}() {
   cwconfigure_${rname}
   cwmake_${rname}
   cwmakeinstall_${rname}
-  cwlinkdir "${rdir}" "${rtdir}"
+  cwlinkdir_${rname}
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
   cwclean_${rname}
