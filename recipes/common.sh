@@ -93,8 +93,6 @@ function cwlinkdir_${rname}() {
 }
 "
 
-# XXX - link directory should probably be
-#       cwlinkdir "$(basename ${ridir})" "${rtdir}"
 eval "
 function cwinstall_${rname}() {
   cwfetch_${rname}
