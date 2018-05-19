@@ -6,6 +6,7 @@
 
 cwconfigureprefix="--prefix=${ridir}"
 cwconfigurelibopts="--enable-static --enable-static=yes --disable-shared --enable-shared=no"
+cwconfigurefpicopts="CFLAGS=\"\${CFLAGS} -fPIC\" CXXFLAGS=\"\${CXXFLAGS} -fPIC\""
 
 eval "
 function cwname_${rname}() {
