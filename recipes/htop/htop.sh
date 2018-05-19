@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://hisham.hm/${rname}/releases/${rver}/${rfile}"
 rsha256="d9d6826f10ce3887950d709b53ee1d8c1849a70fa38e91d5896ad8cbc6ba3c57"
-rreqs="make ncurses jython"
+rreqs="make ncurses python2"
 
 . "${cwrecipe}/common.sh"
 
@@ -19,8 +19,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  mkdir -p buildbin
-  ln -s \$(which jython) buildbin/python
+  ln -s \${cwtop}/software/python2/current/bin buildbin
   env PATH=\"./buildbin:\${PATH}\" make -j${cwmakejobs}
   popd >/dev/null 2>&1
 }
