@@ -1,3 +1,7 @@
+#
+# XXX - site appears to be dead, really need to setup a mirror and support for it
+#
+
 rname="opennc"
 rver="1.89"
 rdir="${rname}-${rver}"
