@@ -5,6 +5,7 @@ rurl="https://repo.maven.apache.org/maven2/org/python/${rname}-installer/${rver}
 rfile="$(basename ${rurl})"
 rdir="${rname}-${rver}"
 rsha256="6e58dad0b8565b95c6fb14b4bfbf570523d1c5290244cfb33822789fa53b1d25"
+rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
