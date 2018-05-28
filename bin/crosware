@@ -29,7 +29,7 @@
 #  - var/ - track installs/versions
 #  - update environment without rebootstrap
 #  - profile.d file writer
-#  - zulu, jgitsh, static-toolchain split out to separate install functions
+#  - zulu, jgitsh, statictoolchain split out to separate install functions
 #    - trim down bootstrap/make
 #    - make them easier to upgrade
 #  - recipes
@@ -53,8 +53,8 @@
 #      - inclues...
 #    - custom/pre/post functions
 #  - recipe/function names
-#    - need _ instead of - (?)
-#    - rename static-toolchain back to static_toolchain (?)
+#    - need _ instead of -
+#    - rename static-toolchain to statictoolchain
 #  - whatprovides functionality
 #    - given a program or dir/subdir/blah path pattern dump the all directory names under software/ that match
 #    - generate index of files at install time
@@ -80,7 +80,7 @@
 #  - XXX - unset recipe vars should be a list
 #  - XXX - cwinstall() should likely use associative array to only do a single install
 #    - i.e., "crosware install make m4 make flex make" should only install the make recipe *once*
-#  - XXX - zulu/static-toolchain/jgitsh should have cwinstall/cwname/cwver/_... funcs
+#  - XXX - zulu/statictoolchain/jgitsh should have cwinstall/cwname/cwver/_... funcs
 #  - XXX - downloads now go into ${cwdl}/${rname}/${rfile}
 #    - and all fetching should happen in cwfetch_recipe func
 #    - can run offline after all fetches are done
@@ -104,12 +104,14 @@
 #  - "archive" step/script command to save tar of installed binary dir?
 #  - cwrunfunc needs to be able to handle arguments
 #  - LDFLAGS is over-expanded here, can probably remove \${LDFLAGS}
-#    - can't set to bare "-static" in etc/profile and remove it from static-toolchain profile.d
-#    - static-toolchain profile.d file is self-contained, don't need any more environment to use it
+#    - can't set to bare "-static" in etc/profile and remove it from statictoolchain profile.d
+#    - statictoolchain profile.d file is self-contained, don't need any more environment to use it
 #    - don't muck with that
 #    - do something like this in etc/profile after all shell snippet parsing:
 #        export LDFLAGS="-static ${LDFLAGS//-static /}"
 #    - otherwise need a hash of seen flags to trim dupes, that gets slow if generalized
+# - need CW_EXT_GIT functionality
+#   - override provided jgit
 #
 
 #
