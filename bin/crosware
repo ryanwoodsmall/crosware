@@ -54,7 +54,6 @@
 #    - custom/pre/post functions
 #  - recipe/function names
 #    - need _ instead of -
-#    - rename static-toolchain to statictoolchain
 #  - whatprovides functionality
 #    - given a program or dir/subdir/blah path pattern dump the all directory names under software/ that match
 #    - generate index of files at install time
@@ -440,9 +439,9 @@ done
 # XXX - set more ld flags? -s/--strip-all or -S/--strip-debug
 declare -A static_toolchain_env
 static_toolchain_env["PATH"]="${static_toolchain_inst_dir}/current/bin:\${PATH}"
-static_toolchain_env["CFLAGS"]="-Wl,-static"
-static_toolchain_env["CXXFLAGS"]="-Wl,-static"
-static_toolchain_env["LDFLAGS"]="-static \${LDFLAGS}"
+static_toolchain_env["CFLAGS"]="-Wl,-static -fPIC"
+static_toolchain_env["CXXFLAGS"]="-Wl,-static -fPIC"
+static_toolchain_env["LDFLAGS"]="-static \${LDFLAGS//-static/}"
 static_toolchain_env["CC"]="${static_toolchain_triplet[${karch}]}-gcc"
 static_toolchain_env["CXX"]="${static_toolchain_triplet[${karch}]}-g++"
 static_toolchain_env["LD"]="${static_toolchain_triplet[${karch}]}-ld"
