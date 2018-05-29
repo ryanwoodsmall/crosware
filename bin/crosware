@@ -399,12 +399,13 @@ jgitsh_envs=( "PATH" )
 # XXX - compiler arch will be karch/uname -m
 
 # common static compiler release/tag, archive, and url
+old_static_toolchain_pkgname="static-toolchain"
 static_toolchain_archive_ext="tar.bz2"
 static_toolchain_checksum_ext="sha256"
-static_toolchain_release="20180511"
+static_toolchain_release="20180528"
 static_toolchain_base_url="https://github.com/ryanwoodsmall/musl-misc/releases/download"
 static_toolchain_release_url="${static_toolchain_base_url}/${static_toolchain_release}"
-static_toolchain_pkgname="static-toolchain"
+static_toolchain_pkgname="statictoolchain"
 static_toolchain_inst_dir="${cwsw}/${static_toolchain_pkgname}"
 
 # architecture to musl triplet
@@ -418,12 +419,12 @@ static_toolchain_triplet["x86_64"]="x86_64-linux-musl"
 
 # architecture to release prefix
 declare -A static_toolchain_prefix
-static_toolchain_prefix["aarch64"]="201805110355"
-static_toolchain_prefix["armv6l"]="201805110355"
-static_toolchain_prefix["armv7l"]="201805110355"
-static_toolchain_prefix["armv8l"]="201805110355"
-static_toolchain_prefix["i686"]="201805110355"
-static_toolchain_prefix["x86_64"]="201805110355"
+static_toolchain_prefix["aarch64"]="201805280052"
+static_toolchain_prefix["armv6l"]="201805280052"
+static_toolchain_prefix["armv7l"]="201805280052"
+static_toolchain_prefix["armv8l"]="201805280052"
+static_toolchain_prefix["i686"]="201805280052"
+static_toolchain_prefix["x86_64"]="201805280052"
 
 # architecture to filename, urls, sha256 file, dir, ...
 declare -A static_toolchain_file static_toolchain_checksum static_toolchain_checksum_file static_toolchain_file_url static_toolchain_checksum_url static_toolchain_dir
@@ -721,6 +722,18 @@ function cwbootstrap() {
     cwscriptecho "removing temporary zulu jdk directory"
     rm -rf "${zulujdkdir}"
   fi
+  # if we have an old "static-toolchain" setup, move it out of the way
+  if [ -e "${cwsw}/${old_static_toolchain_pkgname}" ] ; then
+    mv ${cwsw}/${old_static_toolchain_pkgname}{,.PRE-${TS}}
+  fi
+  if [ -e "${cwvarinst}/${old_static_toolchain_pkgname}" ] ; then
+    rm -f ${cwvarinst}/${old_static_toolchain_pkgname}
+  fi
+  if [ -e "${cwetcprofd}/${old_static_toolchain_pkgname}.sh" ] ; then
+    mv ${cwetcprofd}/${old_static_toolchain_pkgname}.sh{,.OFF}
+  fi
+  # make sure we have a static-toolchain -> statictoolchain symlink just in case
+  ln -sf ${cwsw}/${static_toolchain_pkgname} ${cwsw}/${old_static_toolchain_pkgname}
 }
 
 #
