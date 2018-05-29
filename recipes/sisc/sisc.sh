@@ -18,6 +18,7 @@ function cwgenprofd_${rname}() {
 eval "
 function cwinstall_${rname}() {
   cwfetch_${rname}
+  cwcheckreqs_${rname}
   cwsourceprofile
   cwmkdir "${rtdir}"
   cwextract "${cwdl}/${rname}/${rfile}" "${rtdir}"
