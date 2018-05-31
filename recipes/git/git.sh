@@ -1,9 +1,9 @@
 rname="git"
-rver="2.16.3"
+rver="2.16.4"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.gz"
+rfile="${rdir}.tar.xz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
-rsha256="dda229e9c73f4fbb7d4324e0d993e11311673df03f73b194c554c2e9451e17cd"
+rsha256="6e69b0e9c487e5da52a14d4829f0b6a28b2c18a0bb6fb67c0dc8b5b5658bd532"
 rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny"
 
 . "${cwrecipe}/common.sh"
@@ -26,9 +26,9 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"\${LDFLAGS}\" \
       LIBS='-lssl -lcrypto -lz'
   sed -i.ORIG 's/-lcurl/-lcurl -lssl -lcrypto/g' Makefile
-  for h in \$(grep -ril sys/poll\\.h ${rbdir}/ | grep \\.h\$) ; do
-    sed -i.ORIG 's#sys/poll\.h#poll.h#g' \${h}
-  done
+  grep -ril sys/poll\\.h ${rbdir}/ \
+  | grep \\.h\$ \
+  | xargs sed -i.ORIG 's#sys/poll\.h#poll.h#g'
   popd >/dev/null 2>&1
 }
 "
