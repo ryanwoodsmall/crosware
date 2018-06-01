@@ -82,6 +82,7 @@ Working recipes:
 - file
 - flex
 - gawk (gnu awk)
+- gc
 - gettext-tiny (named gettexttiny)
 - git
 - glib
