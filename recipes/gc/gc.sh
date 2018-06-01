@@ -6,6 +6,13 @@
 #       default is 64k
 #       GC_DONT_GC turns off collection, and works, but seems like a bad idea
 #
+# XXX - known issue on musl w/static linking (alpine)
+#       https://github.com/ivmai/bdwgc/issues/154
+#
+# XXX - other opts
+#       -DUSE_GET_STACKBASE_FOR_MAIN (https://bugzilla.redhat.com/show_bug.cgi?id=689877)
+#       -DGC_DISABLE_INCREMENTAL
+#
 
 rname="gc"
 rver="7.6.6"
@@ -22,8 +29,13 @@ function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --enable-cplusplus \
-      CFLAGS=\"\${CFLAGS} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR\" \
-      CXXFLAGS=\"\${CXXFLAGS} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR\"
+    --disable-parallel-mark \
+    --disable-threads \
+    --enable-threads=no \
+    --disable-disclaim \
+    --with-pic \
+      CFLAGS=\"\${CFLAGS} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -DIGNORE_DYNAMIC_LOADING\" \
+      CXXFLAGS=\"\${CXXFLAGS} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -DIGNORE_DYNAMIC_LOADING\"
   sed -i.ORIG 's|#include <unistd.h>|\\
 #include <unistd.h>\\
 #include <sys/select.h>|g' pthread_stop_world.c
