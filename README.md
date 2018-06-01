@@ -241,6 +241,7 @@ Some other things:
 - spidernode
 - sqlite
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
+- strace
 - stunnel
 - texinfo (requires perl)
 - tcc

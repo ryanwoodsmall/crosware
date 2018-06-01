@@ -1,9 +1,18 @@
+#
+# XXX - works fine on x86_64, aarch64; not so much on armv7l, gc segfault
+#       https://github.com/ivmai/bdwgc/blob/master/doc/README.environment
+#       https://github.com/ivmai/bdwgc/blob/master/doc/README.macros
+#       GC_INITIAL_HEAP_SIZE=... to 1MB+
+#       default is 64k
+#       GC_DONT_GC turns off collection, and works, but seems like a bad idea
+#
+
 rname="gc"
-rver="7.6.4"
+rver="7.6.6"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ivmai/bdwgc/releases/download/v${rver}/${rfile}"
-rsha256="b94c1f2535f98354811ee644dccab6e84a0cf73e477ca03fb5a3758fb1fecd1c"
+rsha256="e968edf8f80d83284dd473e00a5e3377addc2df261ffb7e6dc77c9a34a0039dc"
 rreqs="make libatomicops pkgconfig"
 
 . "${cwrecipe}/common.sh"
