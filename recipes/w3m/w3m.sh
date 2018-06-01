@@ -1,5 +1,5 @@
 #
-# XXX - works fine on x86_64, aarch64; not so much on armv7l
+# XXX - works fine on x86_64, aarch64; not so much on armv7l, gc segfault
 #
 
 rname="w3m"

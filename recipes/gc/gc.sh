@@ -1,9 +1,9 @@
 rname="gc"
-rver="7.6.6"
+rver="7.6.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ivmai/bdwgc/releases/download/v${rver}/${rfile}"
-rsha256="e968edf8f80d83284dd473e00a5e3377addc2df261ffb7e6dc77c9a34a0039dc"
+rsha256="b94c1f2535f98354811ee644dccab6e84a0cf73e477ca03fb5a3758fb1fecd1c"
 rreqs="make libatomicops pkgconfig"
 
 . "${cwrecipe}/common.sh"
