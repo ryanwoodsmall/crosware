@@ -13,7 +13,11 @@ function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --enable-cplusplus \
-      CFLAGS=\"\${CFLAGS} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR\"
+      CFLAGS=\"\${CFLAGS} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR\" \
+      CXXFLAGS=\"\${CXXFLAGS} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR\"
+  sed -i.ORIG 's|#include <unistd.h>|\\
+#include <unistd.h>\\
+#include <sys/select.h>|g' pthread_stop_world.c
   popd >/dev/null 2>&1
 }
 "
