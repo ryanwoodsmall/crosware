@@ -12,6 +12,7 @@
 # XXX - other opts
 #       -DUSE_GET_STACKBASE_FOR_MAIN (https://bugzilla.redhat.com/show_bug.cgi?id=689877)
 #       -DGC_DISABLE_INCREMENTAL
+#       -DHBLKSIZE=#####
 #
 
 rname="gc"
@@ -29,10 +30,7 @@ function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --enable-cplusplus \
-    --disable-parallel-mark \
-    --disable-threads \
-    --enable-threads=no \
-    --disable-disclaim \
+    --enable-large-config \
     --with-pic \
       CFLAGS=\"\${CFLAGS} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -DIGNORE_DYNAMIC_LOADING\" \
       CXXFLAGS=\"\${CXXFLAGS} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -DIGNORE_DYNAMIC_LOADING\"
