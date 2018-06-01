@@ -96,6 +96,7 @@ Working recipes:
 - jython
 - kawa (scheme)
 - less
+- libatomic\_ops (named libatomicops
 - libbsd
 - libevent (no openssl support yet)
 - libffi
