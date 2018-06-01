@@ -1,3 +1,7 @@
+#
+# XXX - works fine on x86_64, aarch64; not so much on armv7l
+#
+
 rname="w3m"
 rver="0.5.3-git20180125"
 rdir="${rname}-${rver}"

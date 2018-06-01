@@ -1,3 +1,7 @@
+#
+# XXX - really need to add -lz to libs in .pc files
+#
+
 rname="openssl"
 rver="1.0.2o"
 rdir="${rname}-${rver}"
