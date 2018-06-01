@@ -1,3 +1,7 @@
+#
+# XXX - ugly disabling of garbage collection below
+#
+
 rname="w3m"
 rver="0.5.3-git20180125"
 rdir="${rname}-${rver}"
@@ -20,6 +24,8 @@ function cwconfigure_${rname}() {
     --with-ssl=${cwsw}/openssl/current \
     --with-termlib=ncurses \
       LIBS='-lssl -lcrypto -lz'
+  sed -i.ORIG 's/GC_INIT/setenv(\"GC_DONT_GC\",\"1\",\"1\");GC_INIT/g' main.c
+  #sed -i.ORIG 's/GC_INIT/setenv(\"GC_INITIAL_HEAP_SIZE\",\"256M\",\"1\");GC_INIT/g' main.c
   popd >/dev/null 2>&1
 }
 "
