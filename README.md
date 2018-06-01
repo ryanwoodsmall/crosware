@@ -154,6 +154,7 @@ Working recipes:
 - toybox (static)
 - unzip
 - vim (with syntax highlighting, which chrome/chromium os vim lacks)
+- w3m (https://github.com/tats/w3m)
 - wget
 - wolfssl (cyassl)
 - zip
@@ -247,7 +248,6 @@ Some other things:
 - tsocks
 - upx (https://github.com/upx/upx)
 - vpnc
-- w3m (or fork)
 - xmlstarlet
 - support libraries for building the above
 - heirloom project tools (http://heirloom.sourceforge.net/)
