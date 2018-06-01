@@ -11,7 +11,9 @@ rreqs="make libatomicops pkgconfig"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --enable-cplusplus
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+    --enable-cplusplus \
+      CFLAGS=\"\${CFLAGS} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR\"
   popd >/dev/null 2>&1
 }
 "
