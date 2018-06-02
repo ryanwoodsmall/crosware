@@ -32,6 +32,9 @@
 #  - zulu, jgitsh, statictoolchain split out to separate install functions
 #    - trim down bootstrap/make
 #    - make them easier to upgrade
+#    - and cwbootstrap_... for statictoolchain/zulu/jgitsh
+#    - much easier to do that for manually installed git clones
+#    - can run individual steps with cwrunfunc
 #  - recipes
 #    - rname - recipe name
 #    - rver - recipe version
@@ -111,6 +114,8 @@
 #    - otherwise need a hash of seen flags to trim dupes, that gets slow if generalized
 # - need CW_EXT_GIT functionality
 #   - override provided jgit
+# - hardlinks in statictoolchain archives?
+#   - should be symlinks, but may not be
 #
 
 #
