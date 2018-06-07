@@ -120,6 +120,8 @@
 #   - should be symlinks, but may not be
 # - cwgenrecipe list
 #   - generate an .md with recipe names, versions, sites, etc.
+# - replace etc/profile append/prepend function subshells with "if [[ ${1} =~ ${FLAGS} ]]"
+#   - speeds up processing of environment by ~2x
 #
 
 #
