@@ -46,6 +46,8 @@
 #    - rprof - profile.d file
 #    - rdeps / rbdeps? - deps and build deps?
 #    - rdesc - recipe description?
+#    - rsite - url for recipe
+#    - rlicense - license
 #    - rold - list of old versions to clean up recipes that don't fully remove rdir?
 #    - need to set sane default r* values in common.sh with ': ${rblah:="blah.setting"}'
 #    - unset vals after parse so there's no bleed through?
@@ -116,6 +118,8 @@
 #   - override provided jgit
 # - hardlinks in statictoolchain archives?
 #   - should be symlinks, but may not be
+# - cwgenrecipe list
+#   - generate an .md with recipe names, versions, sites, etc.
 #
 
 #
