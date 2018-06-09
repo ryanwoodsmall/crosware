@@ -1,9 +1,9 @@
 rname="wolfssl"
-rver="3.14.0"
+rver="3.15.0"
 rdir="${rname}-${rver}-stable"
 rfile="v${rver}-stable.tar.gz"
 rurl="https://github.com/wolfSSL/${rname}/archive/${rfile}"
-rsha256="4ab543c869a65a77dc5d0bc934b9d4852aa3d5834bd2f707a74a936602bd3687"
+rsha256="67e04f6b1ab51e4d6d0b706c784b18f9bde5149b841713fd745479e13dc2670f"
 rreqs="make perl m4 autoconf automake libtool zlib"
 
 . "${cwrecipe}/common.sh"
@@ -17,14 +17,17 @@ function cwconfigure_${rname}() {
   env PATH=${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH} autoreconf -fiv -I${cwsw}/libtool/current/share/aclocal
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --enable-all \
+    --enable-singlethreaded \
+    --enable-distro \
     --disable-fips \
     --enable-tlsv10 \
     --with-libz=\"${cwsw}/zlib/current/\" \
     --enable-jobserver=no \
+    --disable-examples \
     --disable-openssh \
     --disable-opensslcoexist \
     --disable-opensslextra \
-      CFLAGS='-Wl,-static' \
+      CFLAGS=\"\${CFLAGS}\" \
       LDFLAGS=\"-static -L${cwsw}/zlib/current/lib\" \
       CPPFLAGS=\"-I${cwsw}/zlib/current/include\"
   popd >/dev/null 2>&1
