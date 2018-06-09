@@ -1,9 +1,9 @@
 rname="mbedtls"
-rver="2.9.0"
-rdir="${rname}-${rver}"
-rfile="${rdir}-apache.tgz"
-rurl="https://tls.mbed.org/download/${rfile}"
-rsha256="a06a9b43e583b7e6707becfeeb13d88ed00f25fee31a5386cb3a3014c454bad8"
+rver="2.10.0"
+rdir="${rname}-${rname}-${rver}"
+rfile="${rname}-${rver}.tar.gz"
+rurl="https://github.com/ARMmbed/${rname}/archive/${rfile}"
+rsha256="ca11a8809d6974ac0f76455b3df5bfd3b5fe973296b4038fdd7a5d7b8a3cd30d"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
@@ -19,7 +19,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  make -j${cwmakejobs} no_test CC=\"\${CC}\" CFLAGS=\"-Wl,-static\" LDFLAGS=\"-static\"
+  make -j${cwmakejobs} no_test CC=\"\${CC}\" CFLAGS=\"\${CFLAGS}\" LDFLAGS=\"-static\"
   popd >/dev/null 2>&1
 }
 "
