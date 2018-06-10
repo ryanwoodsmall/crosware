@@ -60,6 +60,7 @@ function prepend_pkgconfigpath() {
 
 # remove duplicate entries in a passed environment variable preserving order, i.e.,:
 #   export LDFLAGS="$(remove_dupes ${LDFLAGS})"
+# XXX - needs a delimiter specifier
 function remove_dupes() {
   local -A aa
   local -a nv
