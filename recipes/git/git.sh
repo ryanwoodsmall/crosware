@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
 rsha256="6e69b0e9c487e5da52a14d4829f0b6a28b2c18a0bb6fb67c0dc8b5b5658bd532"
-rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny"
+rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny libssh2"
 
 . "${cwrecipe}/common.sh"
 
@@ -24,8 +24,8 @@ function cwconfigure_${rname}() {
       CFLAGS=\"\${CFLAGS}\" \
       CXXFLAGS=\"\${CXXFLAGS}\" \
       LDFLAGS=\"\${LDFLAGS}\" \
-      LIBS='-lssl -lcrypto -lz'
-  sed -i.ORIG 's/-lcurl/-lcurl -lssl -lcrypto/g' Makefile
+      LIBS='-lssl -lcrypto -lz -lssh2'
+  sed -i.ORIG 's/-lcurl/-lcurl -lssl -lcrypto -lssh2/g' Makefile
   grep -ril sys/poll\\.h ${rbdir}/ \
   | grep \\.h\$ \
   | xargs sed -i.ORIG 's#sys/poll\.h#poll.h#g'
