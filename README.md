@@ -205,7 +205,10 @@ Recipes to consider:
 - kotlin (included in sdkman)
 - llvm / clang
 - libedit
+- libeditline
+- libfuse
 - libressl
+- libtirpc
 - libxml2
 - libxslt
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
@@ -238,6 +241,7 @@ Recipes to consider:
 - qemu
 - rembulan (jvm lua)
 - ringojs
+- rpcbind
 - sbt (included in sdkman)
 - scala (included in sdkman)
 - shells?
@@ -263,13 +267,15 @@ Recipes to consider:
 - tinyscheme
 - tsocks
 - upx (https://github.com/upx/upx)
+- util-linux?
 - vpnc
 - xmlstarlet
 - support libraries for building the above
 - heirloom project tools (http://heirloom.sourceforge.net/)
 - whatever else seems useful
 
-Bootstrap recipes that need work (i.e., build arch-specific versions installed into /usr/local/tmp, archive, etc.); these could be used to build a fully functional build environment/initrd/chroot/container/etc.
+Bootstrap recipes that need work (i.e., arch-specific versions installed into /usr/local/tmp/bootstrap, archive, etc.);
+these could be used to create a fully functional build environment/initrd/chroot/container/etc.
 - 9base
 - bash
 - busybox
