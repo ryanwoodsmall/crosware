@@ -180,6 +180,7 @@ Some other things:
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - clojure
 - cmake
+- coreutils?
 - cvs
 - docbook?
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
@@ -213,6 +214,10 @@ Some other things:
 - libxslt
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - luaj
+- man stuff
+  - man-pages (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/)
+  - man-pages-posix (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/)
+  - stick with busybox man+groff+less or use man-db or old standard man?
 - maven
 - mg (https://homepage.boetes.org/software/mg/)
 - moreutils
