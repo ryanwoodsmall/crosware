@@ -26,8 +26,6 @@ Environment stuff to figure out how to handle:
 - ```ACLOCAL_PATH```
 - ```EDITOR``` (vim?)
 
-This is currently just some notes, not-even-half-lazy scripts, and a config file or two.
-
 Chromebrew looks nice and exists now: (https://github.com/skycocker/chromebrew)
 
 Alpine and Sabotage are good sources of inspiration and patches:
@@ -97,7 +95,7 @@ Working recipes:
 - jython
 - kawa (scheme)
 - less
-- libatomic\_ops (named libatomicops
+- libatomic\_ops (named libatomicops)
 - libbsd
 - libevent (no openssl support yet)
 - libffi
@@ -132,7 +130,7 @@ Working recipes:
 - pkg-config (named pkgconfig)
 - python2 (very basic support)
 - qemacs (https://bellard.org/qemacs/)
-- rc (http://tobold.org/article/rc, https://github.com/rakitzis/rc)
+- rc (http://tobold.org/article/rc, https://github.com/rakitzis/rc - needs to be git hash, currently old release)
 - readline
 - rhino
 - rlwrap
@@ -160,29 +158,22 @@ Working recipes:
 - zip
 - zlib
 
-Some things:
-- crosstool-ng toolchain (gcc, a libc, binutils, etc. ?) _or_
-- dnsmasq
-- java (oracle or zulu openjdk? both)
-- jruby
-- mercurial / hg
-- nc / ncat / netcat
-- subversion / svn
-
-Some other things:
+Recipes to consider:
 - ack (https://beyondgrep.com/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
-- ant
+- ant (included in sdkman)
 - antlr
 - at&t ast (just ksh now?)
 - axtls
 - bdb
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
-- clojure
+- clojure (leiningen included in sdkman)
 - cmake
 - coreutils?
+- crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - cvs
 - docbook?
+- dnsmasq
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
 - duplicity (http://duplicity.nongnu.org/)
 - dynjs
@@ -193,10 +184,13 @@ Some other things:
 - gdb
 - gdbm
 - gnutls
-- go
+- go (chicken/egg problem with source builds on aarch64)
 - gpg
-- gradle
-- groovy
+- gradle (included in sdkman)
+- grails (included in sdkman)
+- groovy (included in sdkman)
+- hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
+- hbase (version?)
 - heimdal
 - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
 - hg4j and client wrapper (dead?)
@@ -207,6 +201,8 @@ Some other things:
 - jline
 - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
 - jq
+- jruby
+- kotlin (included in sdkman)
 - llvm / clang
 - libedit
 - libressl
@@ -218,10 +214,13 @@ Some other things:
   - man-pages (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/)
   - man-pages-posix (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/)
   - stick with busybox man+groff+less or use man-db or old standard man?
-- maven
+  - MANPAGER and MANPATH settings
+- maven (included in sdkman)
+- mercurial / hg
 - mg (https://homepage.boetes.org/software/mg/)
 - moreutils
 - mutt
+- nc / ncat / netcat
 - nethack
 - node / npm (ugh)
 - nodyn (dead)
@@ -235,19 +234,30 @@ Some other things:
   - picolisp (c, lisp)
   - ersatz picolisp (java)
 - pigz
-- plan9port (without x11)
+- plan9port (without x11; necessary? already have stripped down suckless 9base)
 - qemu
 - rembulan (jvm lua)
 - ringojs
-- scala
+- sbt (included in sdkman)
+- scala (included in sdkman)
+- shells?
+  - dash
+  - es (https://github.com/wryun/es-shell)
+  - fish
+  - mksh
+  - pdksh
+  - tcsh (and/or standard csh)
+  - zsh
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
 - slibtool (https://github.com/midipix-project/slibtool)
+- spark (included in sdkman)
 - spidermonkey
 - spidernode
 - sqlite
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - strace
 - stunnel
+- subversion / svn
 - texinfo (requires perl)
 - tcc
 - tinyscheme
@@ -259,10 +269,16 @@ Some other things:
 - heirloom project tools (http://heirloom.sourceforge.net/)
 - whatever else seems useful
 
-Bootstrap packages:
+Bootstrap recipes that need work (i.e., build arch-specific versions installed into /usr/local/tmp, archive, etc.); these could be used to build a fully functional build environment/initrd/chroot/container/etc.
+- 9base
 - bash
-- openssl
-- curl (https)
-- git (https/ssh, could replace jgit, not require a jdk?)
 - busybox
+- curl (https, static mbedtls binary is probably best candidate)
+- dropbear
+- git (https/ssh, could replace jgit, not require a jdk?)
+- make
+- openssl
+- sbase
+- statictoolchain
 - toybox
+- ubase
