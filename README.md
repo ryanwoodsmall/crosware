@@ -217,7 +217,7 @@ Recipes to consider:
   - MANPAGER and MANPATH settings
 - maven (included in sdkman)
 - mercurial / hg
-- mg (https://homepage.boetes.org/software/mg/)
+- mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
 - moreutils
 - mutt
 - nc / ncat / netcat
