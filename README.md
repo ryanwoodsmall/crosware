@@ -169,7 +169,7 @@ Recipes to consider:
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - clojure (leiningen included in sdkman)
 - cmake
-- coreutils?
+- coreutils (static, symlinks, without nls/attr/acl/gmp/selinux; needs -shared and stdbuf\_supported disabled in configure)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - cvs
 - docbook?
