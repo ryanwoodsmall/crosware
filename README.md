@@ -270,6 +270,7 @@ Recipes to consider:
 - util-linux?
 - vpnc
 - xmlstarlet
+- xz utils (https://tukaani.org/xz/)
 - support libraries for building the above
 - heirloom project tools (http://heirloom.sourceforge.net/)
 - whatever else seems useful
