@@ -1,9 +1,9 @@
 rname="byacc"
-rver="20180510"
+rver="20180609"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://invisible-mirror.net/archives/${rname}/${rfile}"
-rsha256="d0940dbffbc7e9c9dd4985c25349c390beede84ae1d9fe86b71c0aa659a6d693"
+rsha256="5bbb0b3ec3da5981a2488383b652499d6c1e0236b47d8bac5fcdfa12954f749c"
 rreqs="make m4 flex"
 
 . "${cwrecipe}/common.sh"
