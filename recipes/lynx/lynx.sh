@@ -1,10 +1,10 @@
 rname="lynx"
-rver="2.8.9dev.19"
+rver="2.8.9pre.1"
 rdir="${rname}${rver}"
 rfile="${rname}${rver}.tar.bz2"
 rurl="ftp://ftp.invisible-island.net/${rname}/tarballs/${rfile}"
-rsha256="0223706f8310ecb738342c6bc51ebbe1879f2890a56c5e6f099e28289a8a8e9f"
-rreqs="make slang ncurses openssl zlib"
+rsha256="a02267765a7677ffa77bf950b608dfb8d428080d7cf4311d59d1c0c57abe9ce1"
+rreqs="make bzip2 slang ncurses openssl zlib"
 
 . "${cwrecipe}/common.sh"
 
@@ -17,7 +17,7 @@ function cwgenprofd_${rname}() {
 eval "
 function cwbuild_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  local commonopts=\"--with-ssl --enable-widec --with-zlib\"
+  local commonopts=\"--with-ssl --enable-widec --with-zlib --with-bzlib --disable-idna\"
   ./configure ${cwconfigureprefix} --with-screen=ncurses \${commonopts} LIBS=\"-lcrypto -lssl -lz\"
   make
   make install
