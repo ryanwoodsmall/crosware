@@ -73,6 +73,7 @@ Working recipes:
 - busybox (static)
 - byacc
 - bzip2
+- coreutils (single static binary with symlinks, no nls/attr/acl/gmp/pcap/selinux)
 - curl
 - dropbear
 - ed (gnu ed)
@@ -169,7 +170,6 @@ Recipes to consider:
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - clojure (leiningen included in sdkman)
 - cmake
-- coreutils (static, symlinks, without nls/attr/acl/gmp/selinux; needs -shared and stdbuf\_supported disabled in configure)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - cvs
 - docbook?
