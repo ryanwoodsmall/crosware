@@ -12,7 +12,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   sed -i.ORIG s/stdbuf_supported=yes/stdbuf_supported=no/g configure
-  ./configure ${cwconfigureprefix} \
+  env FORCE_UNSAFE_CONFIGURE=1 ./configure ${cwconfigureprefix} \
     --disable-acl \
     --disable-libcap \
     --disable-nls \
