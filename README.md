@@ -165,12 +165,15 @@ Recipes to consider:
 - ant (included in sdkman)
 - antlr
 - at&t ast (just ksh now?)
+- at
 - axtls
 - bdb
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
+- cflow
 - clojure (leiningen included in sdkman)
 - cmake
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
+- ctags
 - cvs
 - docbook?
 - dnsmasq
@@ -232,6 +235,7 @@ Recipes to consider:
 - openconnect
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
+- pax
 - pcc
 - picolisp
   - picolisp (c, lisp)
