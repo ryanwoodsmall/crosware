@@ -73,6 +73,7 @@ Working recipes:
 - busybox (static)
 - byacc
 - bzip2
+- cflow
 - coreutils (single static binary with symlinks, no nls/attr/acl/gmp/pcap/selinux)
 - ctags (exberant ctags for now, universal ctags a better choice?)
 - curl
@@ -170,7 +171,6 @@ Recipes to consider:
 - axtls
 - bdb
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
-- cflow
 - clojure (leiningen included in sdkman)
 - cmake
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
