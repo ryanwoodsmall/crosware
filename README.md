@@ -88,6 +88,7 @@ Working recipes:
 - gettext-tiny (named gettexttiny)
 - git
 - glib
+- global
 - grep (gnu grep)
 - groff
 - htop
