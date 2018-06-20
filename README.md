@@ -78,6 +78,7 @@ Working recipes:
 - cscope
 - ctags (exberant ctags for now, universal ctags a better choice?)
 - curl
+- cxref
 - dropbear
 - ed (gnu ed)
 - expat
