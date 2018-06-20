@@ -265,6 +265,8 @@ Recipes to consider:
 - spark (included in sdkman)
 - spidermonkey
 - spidernode
+- sparse
+- splint
 - sqlite
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - strace
