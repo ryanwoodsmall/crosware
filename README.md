@@ -74,6 +74,7 @@ Working recipes:
 - byacc
 - bzip2
 - coreutils (single static binary with symlinks, no nls/attr/acl/gmp/pcap/selinux)
+- ctags (exberant ctags for now, universal ctags a better choice?)
 - curl
 - dropbear
 - ed (gnu ed)
@@ -173,7 +174,6 @@ Recipes to consider:
 - clojure (leiningen included in sdkman)
 - cmake
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
-- ctags
 - cvs
 - docbook?
 - dnsmasq
