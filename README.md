@@ -75,6 +75,7 @@ Working recipes:
 - bzip2
 - cflow
 - coreutils (single static binary with symlinks, no nls/attr/acl/gmp/pcap/selinux)
+- cscope
 - ctags (exberant ctags for now, universal ctags a better choice?)
 - curl
 - dropbear
