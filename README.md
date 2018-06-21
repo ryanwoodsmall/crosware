@@ -79,6 +79,7 @@ Working recipes:
 - cscope
 - ctags (exberant ctags for now, universal ctags a better choice?)
 - curl
+- cvs
 - cxref
 - dropbear
 - ed (gnu ed)
@@ -180,7 +181,6 @@ Recipes to consider:
 - cmake
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - cssc (gnu sccs)
-- cvs
 - docbook?
 - dnsmasq
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
