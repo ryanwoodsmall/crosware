@@ -171,7 +171,7 @@ Recipes to consider:
 - ant (included in sdkman)
 - antlr
 - at&t ast (just ksh now?)
-- at
+- at (http://ftp.debian.org/debian/pool/main/a/at/)
 - axtls
 - bdb
 - bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
@@ -179,6 +179,7 @@ Recipes to consider:
 - clojure (leiningen included in sdkman)
 - cmake
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
+- cssc (gnu sccs)
 - cvs
 - docbook?
 - dnsmasq
@@ -205,7 +206,6 @@ Recipes to consider:
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - java-repl
-- jcvs
 - jline
 - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
 - jq
@@ -221,6 +221,7 @@ Recipes to consider:
 - libxslt
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - luaj
+- mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
 - man stuff
   - man-pages (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/)
   - man-pages-posix (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/)
@@ -248,6 +249,7 @@ Recipes to consider:
 - pigz
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
 - qemu
+- rcs (gnu)
 - rembulan (jvm lua)
 - ringojs
 - rpcbind
