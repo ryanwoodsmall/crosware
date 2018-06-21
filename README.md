@@ -174,6 +174,7 @@ Recipes to consider:
 - at
 - axtls
 - bdb
+- bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - clojure (leiningen included in sdkman)
 - cmake
