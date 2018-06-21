@@ -9,6 +9,14 @@ rreqs="make sed"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwconfigure_${rname}() {
+  pushd "${rbdir}" >/dev/null 2>&1
+  env PATH=\"${cwsw}/sed/current/bin:\${PATH}\" ./configure ${cwconfigureprefix}
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   env PATH=\"${cwsw}/sed/current/bin:\${PATH}\" make -j${cwmakejobs}
