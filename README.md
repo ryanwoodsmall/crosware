@@ -88,7 +88,7 @@ Working recipes:
 - expat
 - file
 - flex
-- gawk (gnu awk)
+- gawk (gnu awk, currently appended to $PATH, should be prepended?)
 - gc
 - gettext-tiny (named gettexttiny)
 - git
@@ -149,7 +149,7 @@ Working recipes:
 - rsync
 - screen
 - sdkman (http://sdkman.io)
-- sed (gnu gsed)
+- sed (gnu gsed, currently appended to $PATH, should be prepended?)
 - sisc (scheme)
 - slang
 - socat
