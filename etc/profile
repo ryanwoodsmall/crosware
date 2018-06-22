@@ -3,7 +3,8 @@
 # get our etc and bin dir
 cwetcdir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
 cwtop="$(cd "${cwetcdir}"/.. && pwd)"
-cwbindir="$(cd "${cwetcdir}"/../bin && pwd)"
+cwbindir="${cwtop}/bin"
+cwsw="${cwtop}/software"
 
 # CPPFLAGS - includes
 : ${CPPFLAGS:=""}
