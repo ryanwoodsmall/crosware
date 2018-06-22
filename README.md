@@ -158,6 +158,7 @@ Working recipes:
   - sbase (https://core.suckless.org/sbase)
   - ubase (https://core.suckless.org/ubase)
 - svnkit
+- texinfo (untested, requires perl)
 - tig
 - tmux
 - toybox (static)
@@ -191,6 +192,7 @@ Recipes to consider:
 - editline (https://github.com/troglobit/editline)
 - elinks (old, deprecated)
 - entr (http://entrproject.org/)
+- findutils
 - gc (http://www.hboehm.info/gc/)
 - gdb
 - gdbm
@@ -206,6 +208,7 @@ Recipes to consider:
 - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
 - hg4j and client wrapper (dead?)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
+- inetutils
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - java-repl
 - jline
@@ -256,6 +259,7 @@ Recipes to consider:
 - rpcbind
 - sbt (included in sdkman)
 - scala (included in sdkman)
+- sharutils
 - shells?
   - dash
   - es (https://github.com/wryun/es-shell)
@@ -276,7 +280,6 @@ Recipes to consider:
 - strace
 - stunnel
 - subversion / svn
-- texinfo (requires perl)
 - tcc
 - tinyscheme
 - tsocks
