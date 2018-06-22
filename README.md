@@ -77,6 +77,7 @@ Working recipes:
 - coreutils (single static binary with symlinks, no nls/attr/acl/gmp/pcap/selinux)
 - cppcheck
 - cscope
+- cssc (gnu sccs)
 - ctags (exberant ctags for now, universal ctags a better choice?)
 - curl
 - cvs
@@ -182,7 +183,6 @@ Recipes to consider:
 - clojure (leiningen included in sdkman)
 - cmake
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
-- cssc (gnu sccs)
 - docbook?
 - dnsmasq
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
