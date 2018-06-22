@@ -140,6 +140,7 @@ Working recipes:
 - python2 (very basic support)
 - qemacs (https://bellard.org/qemacs/)
 - rc (http://tobold.org/article/rc, https://github.com/rakitzis/rc - needs to be git hash, currently old release)
+- rcs (gnu)
 - readline
 - rhino
 - rlwrap
@@ -250,7 +251,6 @@ Recipes to consider:
 - pigz
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
 - qemu
-- rcs (gnu)
 - rembulan (jvm lua)
 - ringojs
 - rpcbind
