@@ -191,6 +191,7 @@ Recipes to consider:
 - dynjs
 - editline (https://github.com/troglobit/editline)
 - elinks (old, deprecated)
+- ellcc (embedded clang build, http://ellcc.org/)
 - entr (http://entrproject.org/)
 - findutils
 - gdb
