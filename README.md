@@ -286,6 +286,7 @@ Recipes to consider:
 - subversion / svn
 - tcc
 - tinyscheme
+- tre (https://github.com/laurikari/tre)
 - tsocks
 - upx (https://github.com/upx/upx)
 - util-linux?
