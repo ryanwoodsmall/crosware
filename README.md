@@ -89,7 +89,7 @@ Working recipes:
 - file
 - flex
 - gawk (gnu awk, currently appended to $PATH, should be prepended?)
-- gc
+- gc (working on x86\_64, aarch64; broken on i386, arm)
 - gettext-tiny (named gettexttiny)
 - git
 - glib
@@ -193,7 +193,6 @@ Recipes to consider:
 - elinks (old, deprecated)
 - entr (http://entrproject.org/)
 - findutils
-- gc (http://www.hboehm.info/gc/)
 - gdb
 - gdbm
 - gnutls
