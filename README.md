@@ -218,7 +218,7 @@ Recipes to consider:
 - llvm / clang
 - libedit
 - libeditline
-- libfuse
+- libfuse (separate userspace? uses meson?)
 - libressl
 - libtirpc
 - libxml2
@@ -235,11 +235,13 @@ Recipes to consider:
 - mercurial / hg
   - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```
   - config/build/install with: ```env PATH=${cwsw}/python2/current/bin:${PATH} make <all|install> PREFIX=${ridir} CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS//-static/}" CFLAGS='' CPPFLAGS=''```
+- meson (http://mesonbuild.com/ - python 3 and ninja)
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
 - moreutils (https://joeyh.name/code/moreutils/)
 - mutt
 - nc / ncat / netcat
 - nethack
+- ninja
 - node / npm (ugh)
 - nodyn (dead)
 - nss
