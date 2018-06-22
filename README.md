@@ -81,6 +81,7 @@ Working recipes:
 - curl
 - cvs
 - cxref
+- diffutils
 - dropbear
 - ed (gnu ed)
 - expat
