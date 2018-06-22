@@ -234,6 +234,8 @@ Recipes to consider:
   - MANPAGER and MANPATH settings
 - maven (included in sdkman)
 - mercurial / hg
+  - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```
+  - config/build/install with: ```env PATH=${cwsw}/python2/current/bin:${PATH} make <all|install> PREFIX=${ridir} CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS//-static/}" CFLAGS='' CPPFLAGS=''```
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
 - moreutils
 - mutt
