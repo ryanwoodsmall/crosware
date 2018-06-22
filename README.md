@@ -212,7 +212,7 @@ Recipes to consider:
 - java-repl
 - jline
 - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
-- jq
+- jq (with oniguruma regex)
 - jruby
 - kotlin (included in sdkman)
 - llvm / clang
@@ -246,6 +246,7 @@ Recipes to consider:
 - nodyn (dead)
 - nss
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
+- oniguruma
 - openconnect
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
