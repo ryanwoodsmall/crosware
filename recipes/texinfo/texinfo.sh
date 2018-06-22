@@ -11,7 +11,7 @@ rreqs="make sed perl ncurses"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"${cwsw}/sed/current/bin:${cwsw}/perl/current/bin:\${PATH}\" ./configure ${cwconfigureprefix} --disable-nls
+  PATH=\"${cwsw}/perl/current/bin:\${PATH}\" ./configure ${cwconfigureprefix} --disable-nls
   popd >/dev/null 2>&1
 }
 "
@@ -19,7 +19,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"${cwsw}/sed/current/bin:${cwsw}/perl/current/bin:\${PATH}\" make -j${cwmakejobs}
+  env PATH=\"${cwsw}/perl/current/bin:\${PATH}\" make -j${cwmakejobs}
   popd >/dev/null 2>&1
 }
 "

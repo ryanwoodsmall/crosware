@@ -149,7 +149,7 @@ Working recipes:
 - rsync
 - screen
 - sdkman (http://sdkman.io)
-- sed (gnu gsed, currently appended to $PATH, should be prepended?)
+- sed (gnu gsed, prepended to $PATH, becomes default sed)
 - sisc (scheme)
 - slang
 - socat

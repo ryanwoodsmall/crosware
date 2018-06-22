@@ -11,15 +11,7 @@ rreqs="make sed gettexttiny ed diffutils"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"${cwsw}/sed/current/bin:\${PATH}\" ./configure ${cwconfigureprefix} CFLAGS=\"\${CFLAGS} -std=c99\"
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"${cwsw}/sed/current/bin:\${PATH}\" make -j${cwmakejobs}
+  ./configure ${cwconfigureprefix} CFLAGS=\"\${CFLAGS} -std=c99\"
   popd >/dev/null 2>&1
 }
 "

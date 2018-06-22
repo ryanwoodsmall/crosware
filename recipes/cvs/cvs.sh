@@ -13,15 +13,7 @@ function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   sed -i.ORIG 's/^getline /getline_OFF /g' lib/getline.c 
   sed -i.ORIG '/getline __PROTO/ s/getline /getline_OFF /g' lib/getline.h 
-  env PATH=\"${cwsw}/sed/current/bin:\${PATH}\" ./configure ${cwconfigureprefix} --with-ssh 
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"${cwsw}/sed/current/bin:\${PATH}\" make -j${cwmakejobs}
+  ./configure ${cwconfigureprefix} --with-ssh 
   popd >/dev/null 2>&1
 }
 "

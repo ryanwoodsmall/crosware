@@ -13,15 +13,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   sed -i.ORIG '/gets is a/d' lib/stdio.in.h
-  env PATH=\"${cwsw}/sed/current/bin:\${PATH}\" ./configure ${cwconfigureprefix} --disable-nls
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"${cwsw}/sed/current/bin:\${PATH}\" make -j${cwmakejobs}
+  ./configure ${cwconfigureprefix} --disable-nls
   popd >/dev/null 2>&1
 }
 "

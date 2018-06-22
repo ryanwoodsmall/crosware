@@ -11,15 +11,7 @@ rreqs="make sed"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"${cwsw}/sed/current/bin:\${PATH}\" ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --enable-binary
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"${cwsw}/sed/current/bin:\${PATH}\" make -j${cwmakejobs}
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --enable-binary
   popd >/dev/null 2>&1
 }
 "
