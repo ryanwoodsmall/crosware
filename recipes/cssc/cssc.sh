@@ -8,9 +8,11 @@ rreqs="make sed"
 
 . "${cwrecipe}/common.sh"
 
+# XXX - testutils dir breaks on arm 32b
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
+  sed -i.ORIG '/^SUBDIRS/ s/testutils//g' Makefile.{am,in}
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --enable-binary
   popd >/dev/null 2>&1
 }
