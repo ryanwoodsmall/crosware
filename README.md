@@ -238,6 +238,7 @@ Recipes to consider:
   - config/build/install with: ```env PATH=${cwsw}/python2/current/bin:${PATH} make <all|install> PREFIX=${ridir} CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS//-static/}" CFLAGS='' CPPFLAGS=''```
 - meson (http://mesonbuild.com/ - python 3 and ninja)
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
+- mina (apache multipurpose infrastructure for network applications: nio, ftp, sshd, etc.; https://mina.apache.org/)
 - moreutils (https://joeyh.name/code/moreutils/)
 - mutt
 - nc / ncat / netcat
