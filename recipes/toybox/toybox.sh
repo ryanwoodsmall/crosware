@@ -1,9 +1,9 @@
 rname="toybox"
-rver="0.7.6"
+rver="0.7.7"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/landley/${rname}/archive/${rfile}"
-rsha256="f52d978220325e9b07142ea898129c4824be895b75590ac09071092501c51f33"
+rsha256="2d339528c28d280c4e64f2d53e54389b4d61b51ef0a524e32cb1ab446d180780"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
