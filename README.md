@@ -183,6 +183,7 @@ Recipes to consider:
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - clojure (leiningen included in sdkman)
 - cmake
+- cppi (https://www.gnu.org/software/cppi/)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - docbook?
 - dnsmasq
@@ -208,6 +209,7 @@ Recipes to consider:
 - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
 - hg4j and client wrapper (dead?)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
+- indent (https://www.gnu.org/software/indent/ and/or beautify?)
 - inetutils
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - java-repl
