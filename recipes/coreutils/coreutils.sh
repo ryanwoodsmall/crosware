@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="92d0fa1c311cacefa89853bdb53c62f4110cdfda3820346b59cbd098f40f955e"
-rreqs="make gettexttiny"
+rreqs="make gettexttiny sed"
 
 . "${cwrecipe}/common.sh"
 
