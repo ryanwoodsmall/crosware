@@ -243,6 +243,7 @@ Recipes to consider:
 - mina (apache multipurpose infrastructure for network applications: nio, ftp, sshd, etc.; https://mina.apache.org/)
 - moreutils (https://joeyh.name/code/moreutils/)
 - mutt
+- nailgun (https://github.com/facebook/nailgun and http://www.martiansoftware.com/nailgun/)
 - nc / ncat / netcat
 - nethack
 - ninja
