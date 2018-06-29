@@ -255,6 +255,7 @@ Recipes to consider:
 - openconnect
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
+- patch (gnu)
 - pax
 - pcc
 - picolisp
