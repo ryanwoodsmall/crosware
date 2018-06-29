@@ -222,6 +222,7 @@ Recipes to consider:
 - libedit
 - libeditline
 - libfuse (separate userspace? uses meson?)
+- libgit2
 - libressl
 - libtirpc
 - libxml2
