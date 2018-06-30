@@ -183,6 +183,7 @@ Recipes to consider:
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - clojure (leiningen included in sdkman)
 - cmake
+  - configure: ```./bootstrap --prefix=${cwsw}/cmake/$(basename $(pwd)) --no-system-libs --parallel=$(nproc)```
 - cppi (https://www.gnu.org/software/cppi/)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - docbook?
@@ -223,6 +224,9 @@ Recipes to consider:
 - libeditline
 - libfuse (separate userspace? uses meson?)
 - libgit2
+  - uses cmake
+  - needs curl, openssl, ssh2
+  - configure: ```mkdir b ; cd b ; cmake -DCMAKE_INSTALL_PREFIX:PATH=${cwsw}/libgit2/$(basename $(cd .. ; pwd)) -DBUILD_SHARED_LIBS=OFF ..```
 - libressl
 - libtirpc
 - libxml2
