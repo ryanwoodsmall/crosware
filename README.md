@@ -101,6 +101,7 @@ Working recipes:
 - iperf
   - iperf
   - iperf3
+- j7zip
 - jscheme
 - jython
 - kawa (scheme)
@@ -214,7 +215,6 @@ Recipes to consider:
 - indent (https://www.gnu.org/software/indent/ and/or beautify?)
 - inetutils
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
-- j7zip
 - java-repl
 - jline
 - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
