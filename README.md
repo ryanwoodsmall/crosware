@@ -188,6 +188,7 @@ Recipes to consider:
   - configure: ```./bootstrap --prefix=${cwsw}/cmake/$(basename $(pwd)) --no-system-libs --parallel=$(nproc)```
 - cppi (https://www.gnu.org/software/cppi/)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
+- derby
 - docbook?
 - dnsmasq
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
