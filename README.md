@@ -134,6 +134,7 @@ Working recipes:
 - netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)
 - openssl
+- p7zip
 - pcre
 - pcre2
 - perl
@@ -259,7 +260,6 @@ Recipes to consider:
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - oniguruma
 - openconnect
-- p7zip
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
 - patch (gnu)
