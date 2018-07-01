@@ -213,6 +213,7 @@ Recipes to consider:
 - indent (https://www.gnu.org/software/indent/ and/or beautify?)
 - inetutils
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
+- j7zip
 - java-repl
 - jline
 - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
@@ -258,6 +259,7 @@ Recipes to consider:
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - oniguruma
 - openconnect
+- p7zip
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
 - patch (gnu)
