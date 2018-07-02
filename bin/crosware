@@ -129,6 +129,9 @@
 # - "run-command" function?
 #   - run a command in the crosware environment
 #   - useful for pkg-config, etc.
+# - function to update config.sub, config.guess, etc.
+#   - add a recipe for it?
+#   - http://git.savannah.gnu.org/gitweb/?p=config.git
 #
 
 #
