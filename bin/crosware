@@ -126,6 +126,9 @@
 #   - looks like an early vs late eval thing when pattern matching using "if [[ ... =~ ... ]]"?
 # - need initial package installs as part of bootstrap?
 #   - make, sed, gettexttiny, ...
+# - "run-command" function?
+#   - run a command in the crosware environment
+#   - useful for pkg-config, etc.
 #
 
 #
