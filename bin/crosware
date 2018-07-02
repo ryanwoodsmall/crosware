@@ -124,6 +124,8 @@
 #   - speeds up processing of environment by ~2x
 #   - doesn't work for CPPFLAGS/LDFLAGS? becaues of -I or -L? or...?
 #   - looks like an early vs late eval thing when pattern matching using "if [[ ... =~ ... ]]"?
+# - need initial package installs as part of bootstrap?
+#   - make, sed, gettexttiny, ...
 #
 
 #
