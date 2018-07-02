@@ -155,6 +155,7 @@ Working recipes:
 - sisc (scheme)
 - slang
 - socat
+- sqlite
 - suckless
   - 9base (https://tools.suckless.org/9base)
   - sbase (https://core.suckless.org/sbase)
@@ -293,7 +294,6 @@ Recipes to consider:
 - spidernode
 - sparse
 - splint
-- sqlite
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - strace
 - stunnel
