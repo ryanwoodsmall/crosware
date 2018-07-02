@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="075cef2e814642e30e10e8155e93022e4a91ca38a65aa1d5467d4e969f97f338"
-rreqs="make m4 flex perl"
+rreqs="make m4 flex perl sed"
 
 . "${cwrecipe}/common.sh"
 
