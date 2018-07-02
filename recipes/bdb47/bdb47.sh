@@ -9,9 +9,18 @@ rbdir="${cwbuild}/${rdir}/build_unix"
 
 . "${cwrecipe}/common.sh"
 
+# XXX - config.sub/config.guess for aarch64; need to normalize since this is done in rogue as well
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
+  cd ../dist/
+  mv config.guess{,.ORIG}
+  mv config.sub{,.ORIG}
+  cwfetch \"http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=3d5db9ebe860\" \"\${PWD}/config.guess\"
+  cwfetch \"http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=3d5db9ebe860\" \"\${PWD}/config.sub\"
+  cwchmod 755 \"\${PWD}/config.guess\"
+  cwchmod 755 \"\${PWD}/config.sub\"
+  cd \"${rbdir}\"
   ../dist/configure ${cwconfigureprefix} ${cwconfigurelibopts} --enable-compat185 --enable-cxx
   popd >/dev/null 2>&1
 }
