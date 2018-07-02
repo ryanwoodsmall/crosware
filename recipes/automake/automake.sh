@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="5d05bb38a23fd3312b10aea93840feec685bdf4a41146e78882848165d3ae921"
-rreqs="make perl m4 autoconf"
+rreqs="make perl m4 autoconf sed"
 
 . "${cwrecipe}/common.sh"
 

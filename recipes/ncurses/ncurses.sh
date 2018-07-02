@@ -5,7 +5,7 @@ rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17"
 # cmp, use toybox
-rreqs="make toybox"
+rreqs="make toybox sed"
 
 . "${cwrecipe}/common.sh"
 

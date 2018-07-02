@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="d1119785e746d46a8209d28b2de404a57f983aa48670f4e225531d3bdc175551"
-rreqs="make"
+rreqs="make sed"
 
 . "${cwrecipe}/common.sh"
 

@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="29fbe6f3d5408430c572a63fe32bd43d5860f32691173dfd84edc06869edca75"
-rreqs="make lunzip openssl zlib pcre gettexttiny pkgconfig"
+rreqs="make lunzip openssl zlib pcre gettexttiny pkgconfig sed"
 
 . "${cwrecipe}/common.sh"
 

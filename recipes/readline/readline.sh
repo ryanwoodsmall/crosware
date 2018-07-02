@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="750d437185286f40a369e1e4f4764eda932b9459b5ec9a731628393dd3d32334"
-rreqs="make ncurses"
+rreqs="make ncurses sed"
 
 . "${cwrecipe}/common.sh"
 
