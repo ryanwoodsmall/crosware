@@ -187,6 +187,7 @@ Recipes to consider:
 - axtls
 - bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
+- check (https://libcheck.github.io/check/)
 - clojure (leiningen included in sdkman)
 - cmake
   - configure: ```./bootstrap --prefix=${cwsw}/cmake/$(basename $(pwd)) --no-system-libs --parallel=$(nproc)```
