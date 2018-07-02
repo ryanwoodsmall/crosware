@@ -100,6 +100,7 @@ Working recipes:
 - groff
 - htop
 - iftop
+- indent
 - iperf
   - iperf
   - iperf3
@@ -214,7 +215,6 @@ Recipes to consider:
 - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
 - hg4j and client wrapper (dead?)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
-- indent (https://www.gnu.org/software/indent/ and/or beautify?)
 - inetutils
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - java-repl
