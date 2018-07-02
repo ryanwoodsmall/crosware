@@ -44,7 +44,7 @@ function cwinstall_${rname}() {
   cwclean_${rname}
   cwextract_${rname}
   cwbuild_${rname}
-  cwlinkdir_${rname} 
+  cwlinkdir_${rname}
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
   cwclean_${rname}

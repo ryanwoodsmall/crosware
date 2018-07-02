@@ -25,7 +25,7 @@ function cwinstall_${rname}() {
   echo '#!/bin/sh' > "${ridir}/${rname}"
   echo "rlwrap -C ${rname} java -jar ${ridir}/${rname}.jar \\\"\\\${@}\\\"" >> "${ridir}/${rname}"
   cwchmod "755" "${ridir}/${rname}"
-  cwlinkdir_${rname} 
+  cwlinkdir_${rname}
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
 }

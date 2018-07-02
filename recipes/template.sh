@@ -114,7 +114,7 @@ function cwinstall_${rname}() {
   cwconfigure_${rname}
   cwmake_${rname}
   cwmakeinstall_${rname}
-  cwlinkdir_${rname} 
+  cwlinkdir_${rname}
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
   cwclean_${rname}
