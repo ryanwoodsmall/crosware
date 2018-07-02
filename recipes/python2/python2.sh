@@ -1,14 +1,11 @@
 #
-# XXX - module failures
-#       build zlib/curses/readline/openssl/bzip2 with -fPIC
-#
 # Failed to build these modules:
-# _bsddb
-# _sqlite3
-# _tkinter
-# dbm
-# gdbm
-# nis
+#  _tkinter - tcl/tk, gui
+#  bsddb185 - backwards compat
+#  dl - deprecated
+#  imageop - deprecated
+#  nis - no yp/nis/nis+ with musl
+#  sunaudiodev - deprecated
 #
 
 rname="python2"
