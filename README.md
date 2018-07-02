@@ -77,6 +77,7 @@ Working recipes:
 - cflow
 - coreutils (single static binary with symlinks, no nls/attr/acl/gmp/pcap/selinux)
 - cppcheck
+- cppi
 - cscope
 - cssc (gnu sccs)
 - ctags (exberant ctags for now, universal ctags a better choice?)
@@ -189,7 +190,6 @@ Recipes to consider:
 - clojure (leiningen included in sdkman)
 - cmake
   - configure: ```./bootstrap --prefix=${cwsw}/cmake/$(basename $(pwd)) --no-system-libs --parallel=$(nproc)```
-- cppi (https://www.gnu.org/software/cppi/)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - derby
 - docbook?
