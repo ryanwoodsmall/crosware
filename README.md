@@ -224,7 +224,7 @@ Recipes to consider:
 - jq (with oniguruma regex)
 - jruby
 - kotlin (included in sdkman)
-- llvm / clang
+- lf (https://github.com/gokcehan/lf - go)
 - libedit
 - libeditline
 - libfuse (separate userspace? uses meson?)
@@ -236,6 +236,7 @@ Recipes to consider:
 - libtirpc
 - libxml2
 - libxslt
+- llvm / clang
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - luaj
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
@@ -252,6 +253,8 @@ Recipes to consider:
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
 - mina (apache multipurpose infrastructure for network applications: nio, ftp, sshd, etc.; https://mina.apache.org/)
 - moreutils (https://joeyh.name/code/moreutils/)
+- mpg123
+- mpg321
 - mutt
 - nailgun (https://github.com/facebook/nailgun and http://www.martiansoftware.com/nailgun/)
 - nc / ncat / netcat
@@ -259,6 +262,8 @@ Recipes to consider:
 - ninja
 - node / npm (ugh)
 - nodyn (dead)
+- noice (https://git.2f30.org/noice/)
+- nnn (https://github.com/jarun/nnn)
 - nss
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - oniguruma
@@ -274,8 +279,10 @@ Recipes to consider:
 - pigz
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
 - qemu
+- ranger (https://ranger.github.io - python)
 - rembulan (jvm lua)
 - ringojs
+- rover (https://lecram.github.io/p/rover)
 - rpcbind
 - sbt (included in sdkman)
 - scala (included in sdkman)
@@ -305,6 +312,7 @@ Recipes to consider:
 - tsocks
 - upx (https://github.com/upx/upx)
 - util-linux?
+- vifm (https://github.com/vifm/vifm)
 - vpnc
 - xmlstarlet
 - xz utils (https://tukaani.org/xz/)
