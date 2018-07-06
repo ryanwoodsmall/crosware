@@ -9,7 +9,6 @@ rbdir="${cwbuild}/${rdir}/build_unix"
 
 . "${cwrecipe}/common.sh"
 
-# XXX - config.sub/config.guess for aarch64; need to normalize since this is done in rogue as well
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
