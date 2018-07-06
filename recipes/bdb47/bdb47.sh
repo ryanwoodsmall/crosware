@@ -4,7 +4,7 @@ rdir="db-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://download.oracle.com/berkeley-db/${rfile}"
 rsha256="cd39c711023ff44c01d3c8ff0323eef7318660772b24f287556e6bf676a12535"
-rreqs="make"
+rreqs="make configgit"
 rbdir="${cwbuild}/${rdir}/build_unix"
 
 . "${cwrecipe}/common.sh"
@@ -16,10 +16,8 @@ function cwconfigure_${rname}() {
   cd ../dist/
   mv config.guess{,.ORIG}
   mv config.sub{,.ORIG}
-  cwfetch \"http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=3d5db9ebe860\" \"\${PWD}/config.guess\"
-  cwfetch \"http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=3d5db9ebe860\" \"\${PWD}/config.sub\"
-  cwchmod 755 \"\${PWD}/config.guess\"
-  cwchmod 755 \"\${PWD}/config.sub\"
+  install -m 0755 ${cwsw}/configgit/current/config.sub config.sub
+  install -m 0755 ${cwsw}/configgit/current/config.guess config.guess
   cd \"${rbdir}\"
   ../dist/configure ${cwconfigureprefix} ${cwconfigurelibopts} --enable-compat185 --enable-cxx
   popd >/dev/null 2>&1
