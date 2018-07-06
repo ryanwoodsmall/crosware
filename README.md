@@ -171,6 +171,7 @@ Working recipes:
 - tmux
 - toybox (static)
 - unzip
+- util-linux (as utillinux)
 - vim (with syntax highlighting, which chrome/chromium os vim lacks)
 - w3m (https://github.com/tats/w3m)
 - wget
@@ -312,7 +313,6 @@ Recipes to consider:
 - tre (https://github.com/laurikari/tre)
 - tsocks
 - upx (https://github.com/upx/upx)
-- util-linux?
 - vifm (https://github.com/vifm/vifm)
 - vpnc
 - xmlstarlet
