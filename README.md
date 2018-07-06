@@ -76,6 +76,7 @@ Working recipes:
 - bzip2
 - cflow
 - check
+- configgit (gnu config.guess, config.sub updates for musl, aarch64, etc. http://git.savannah.gnu.org/gitweb/?p=config.git;a=summary)
 - coreutils (single static binary with symlinks, no nls/attr/acl/gmp/pcap/selinux)
 - cppcheck
 - cppi
