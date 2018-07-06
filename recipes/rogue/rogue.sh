@@ -4,7 +4,7 @@ rdir="${rname}${rver}"
 rfile="${rdir}a-src.tar.gz"
 rurl="http://rogue.rogueforge.net/files/rogue5.4/${rfile}"
 rsha256="6d38e38f95a291e7854162227e7d2de28b51dfbda761707a190c2d7f629cf4a6"
-rreqs="make ncurses"
+rreqs="make ncurses configgit"
 
 . "${cwrecipe}/common.sh"
 
@@ -14,10 +14,8 @@ function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   mv config.guess{,.ORIG}
   mv config.sub{,.ORIG}
-  cwfetch \"http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=3d5db9ebe860\" \"${rbdir}/config.guess\"
-  cwfetch \"http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=3d5db9ebe860\" \"${rbdir}/config.sub\"
-  cwchmod 755 \"${rbdir}/config.guess\"
-  cwchmod 755 \"${rbdir}/config.sub\"
+  install -m 0755 ${cwsw}/configgit/current/config.sub config.sub
+  install -m 0755 ${cwsw}/configgit/current/config.guess config.guess
   ./configure ${cwconfigureprefix} \
     --enable-wizardmode \
     --enable-scorefile=${rtdir}/rogue.scr \
