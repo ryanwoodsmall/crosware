@@ -1,3 +1,7 @@
+#
+# XXX - provide an update function to rename/move config.sub/config.guess and copy new ones in?
+#
+
 rname="configgit"
 rver="dd5d5dd697df579a5ebd119a88475b446c07c6b0"
 rdir="config-dd5d5dd"
