@@ -231,6 +231,7 @@ Recipes to consider:
   - cacao
   - jamvm
   - jikes rvm
+  - maxine (https://github.com/beehive-lab/Maxine-VM)
   - openj9
   - ...
 - jisql (https://github.com/stdunbar/jisql)
