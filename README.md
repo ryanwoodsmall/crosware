@@ -193,6 +193,7 @@ Recipes to consider:
 - clojure (leiningen included in sdkman)
 - cmake
   - configure: ```./bootstrap --prefix=${cwsw}/cmake/$(basename $(pwd)) --no-system-libs --parallel=$(nproc)```
+- cparser (https://pp.ipd.kit.edu/git/cparser/)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - derby
 - docbook?
