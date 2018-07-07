@@ -190,8 +190,10 @@ Recipes to consider:
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - axtls
 - beanshell
+- bigloo
 - bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
+- chicken
 - clojure (leiningen included in sdkman)
 - cmake
   - configure: ```./bootstrap --prefix=${cwsw}/cmake/$(basename $(pwd)) --no-system-libs --parallel=$(nproc)```
@@ -285,6 +287,7 @@ Recipes to consider:
 - pigz
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
 - qemu
+- racket
 - ranger (https://ranger.github.io - python)
 - rembulan (jvm lua)
 - ringojs
