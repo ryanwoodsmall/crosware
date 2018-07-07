@@ -160,6 +160,7 @@ Working recipes:
 - sed (gnu gsed, prepended to $PATH, becomes default sed)
 - sisc (scheme)
 - slang
+- slibtool (https://github.com/midipix-project/slibtool)
 - socat
 - sqlite
 - suckless
@@ -300,7 +301,6 @@ Recipes to consider:
   - tcsh (and/or standard csh)
   - zsh
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
-- slibtool (https://github.com/midipix-project/slibtool)
 - spark (included in sdkman)
 - spidermonkey
 - spidernode
