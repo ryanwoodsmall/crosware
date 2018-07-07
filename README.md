@@ -226,6 +226,13 @@ Recipes to consider:
 - inetutils
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - java-repl
+- java/jvm/jdk stuff
+  - avian (https://readytalk.github.io/avian/) 
+  - cacao
+  - jamvm
+  - jikes rvm
+  - openj9
+  - ...
 - jisql (https://github.com/stdunbar/jisql)
 - jline
 - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
