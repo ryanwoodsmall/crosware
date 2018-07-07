@@ -11,7 +11,7 @@ rreqs="make"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} --all-static
+  env ARCH=\"$(uname -m)\" ./configure ${cwconfigureprefix} --all-static
   popd >/dev/null 2>&1
 }
 "
