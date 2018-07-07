@@ -4,7 +4,7 @@ rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver}/${rfile}"
 rsha256="6c7397abc764e32e8159c2e96042874a190303e77adceb4ac5bd502a272a4734"
-rreqs="make zlib ncurses readline gettexttiny"
+rreqs="make zlib ncurses readline gettexttiny slibtool"
 
 . "${cwrecipe}/common.sh"
 
@@ -25,7 +25,24 @@ function cwconfigure_${rname}() {
     --without-selinux \
     --without-smack \
     --without-systemd \
-      LIBS='-lreadline -lncurses -lncursesw'
+      LIBS='-lreadline -lncurses -lncursesw' \
+      LIBTOOL='slibtool-static -all-static'
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  pushd "${rbdir}" >/dev/null 2>&1
+  make -j${cwmakejobs} LIBTOOL='slibtool-static -all-static'
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd "${rbdir}" >/dev/null 2>&1
+  make install LIBTOOL='slibtool-static -all-static'
   popd >/dev/null 2>&1
 }
 "
