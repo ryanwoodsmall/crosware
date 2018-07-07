@@ -189,6 +189,7 @@ Recipes to consider:
 - at&t ast (just ksh now?)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - axtls
+- beanshell
 - bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - clojure (leiningen included in sdkman)
