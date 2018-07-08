@@ -109,6 +109,7 @@ Working recipes:
   - iperf
   - iperf3
 - j7zip
+- jruby
 - jscheme
 - jython
 - kawa (scheme)
@@ -238,7 +239,6 @@ Recipes to consider:
 - jline
 - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
 - jq (with oniguruma regex)
-- jruby
 - kotlin (included in sdkman)
 - lf (https://github.com/gokcehan/lf - go)
 - libedit
@@ -301,6 +301,7 @@ Recipes to consider:
 - ringojs
 - rover (https://lecram.github.io/p/rover)
 - rpcbind
+- rvm?
 - sbt (included in sdkman)
 - scala (included in sdkman)
 - sharutils
