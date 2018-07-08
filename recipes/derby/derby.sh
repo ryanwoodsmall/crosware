@@ -11,7 +11,7 @@ rreqs=""
 eval "
 function cwgenprofd_${rname}() {
   echo 'export DERBY_HOME=\"${rtdir}/current\"' > "${rprof}"
-  echo 'append_path \"\${DERBY_HOME}\"' >> "${rprof}"
+  echo 'append_path \"\${DERBY_HOME}/bin\"' >> "${rprof}"
 }
 "
 
