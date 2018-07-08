@@ -1,7 +1,76 @@
 # crosware
-Tools, things, stuff, miscellaneous, detritus, junk, etc., for Chrome OS / Chromium OS. Eventually this will be a development-ish environment for Chrome OS on both ARM and x86 (32-bit and 64-bit for both). It should work (eventually) on "normal" Linux too.
+Tools, things, stuff, miscellaneous, detritus, junk, etc., primarily for Chrome OS / Chromium OS. Eventually this will be a development-ish environment for Chrome OS on both ARM and x86 (32-bit and 64-bit for both). It should work on "normal" Linux too (Armbian, CentOS, Debian, Raspbian, Ubuntu - glibc for now since jgit requires a jdk).
 
-Ultimately I'd like this to be a self-hosting virtual distribution of sorts, targeting all variations of 32-/64-bit x86 and ARM on Chrome OS. Leaning towards distributing a static-only build system using musl-libc (with musl-cross-make); this precludes things like emacs, but doesn't stop anyone from using a musl toolchain to build a glibc-based shared toolchain. Planning on starting out with shell script-based recipes for configuring/compiling/installing versioned "packages." Initial bootstrap will look something like:
+## bootstrap
+
+To bootstrap, using ```/usr/local/crosware``` with initial downloads in ```/usr/local/tmp```:
+
+```
+# allow your regular user to write to /usr/local
+sudo chgrp ${GROUPS} /usr/local
+sudo chmod 2775 /usr/local
+
+# run the bootstrap
+# use curl to download the primary shell script
+# this in turn downloads a jdk, jgit and a toolchain
+bash <(curl -kLs https://raw.githubusercontent.com/ryanwoodsmall/crosware/master/bin/crosware) bootstrap
+
+# source the environment
+source /usr/local/crosware/etc/profile
+which crosware
+```
+
+## install some packages
+```
+# source the environment and install some stuff
+crosware install make busybox toybox
+
+# update environment
+source /usr/local/crosware/etc/profile
+
+# see what we just installed
+which -a make busybox toybox \
+| xargs realpath \
+| xargs toybox file
+```
+
+## update
+
+To get new recipes:
+
+```crosware update```
+
+And to re-bootstrap (for any updated zulu, jgitsh, statictoolchain installs):
+
+```crosware bootstrap```
+
+### further usage
+
+Run **crosware** without any arguments to see usage; i.e, a (possibly outdated) example:
+
+```
+usage: crosware [command]
+
+commands:
+  bootstrap : bootstrap crosware
+  env : dump source-/eval-able crosware etc/profile
+  help : show help
+  install : attempt to build/install a package from a known recipe
+  list-available : list available recipes which are not installed
+  list-funcs : list crosware shell functions
+  list-installed : list installed recipes
+  list-recipes : list build recipes
+  profile : show .profile addition
+  run-func : run crosware shell function
+  set : run 'set' to show full crosware environment
+  show-env : run 'env' to show crosware environment
+  uninstall : uninstall some packages
+  update : attempt to update existing install of crosware
+```
+
+# notes
+
+Ultimately I'd like this to be a self-hosting virtual distribution of sorts, targeting all variations of 32-/64-bit x86 and ARM on Chrome OS. A static-only GCC compiler using musl-libc (with musl-cross-make) is installed as part of the bootstrap; this sort of precludes things like emacs, but doesn't stop anyone from using a musl toolchain to build a glibc-based shared toolchain. Planning on starting out with shell script-based recipes for configuring/compiling/installing versioned "packages." Initial bootstrap will look something like:
 
 - get a JDK (Azul Zulu OpenJDK)
 - get jgit.sh (standalone)
@@ -11,6 +80,8 @@ Ultimately I'd like this to be a self-hosting virtual distribution of sorts, tar
 - build native busybox (if I don't distribute one)
 - build a few libs / support (ncurses, openssl, slang, zlib, bzip2, lzma, libevent, pkg-config)
 - build a few packages (curl, vim w/syntax hightlighting, screen, tmux, links, lynx - mostly because I use them)
+
+# environment
 
 Environment stuff to figure out how to handle:
 
@@ -22,11 +93,13 @@ Environment stuff to figure out how to handle:
 - ```CPPFLAGS``` (working)
 - ```CXX``` (working)
 - ```LDFLAGS``` (working)
-- ```MANPATH```
+- ```MANPATH``` and ```MANPAGER```
 - ```ACLOCAL_PATH```
 - ```EDITOR``` (vim?)
 
-Chromebrew looks nice and exists now: (https://github.com/skycocker/chromebrew)
+# links
+
+Chromebrew looks nice and exists now: https://github.com/skycocker/chromebrew
 
 Alpine and Sabotage are good sources of inspiration and patches:
 
@@ -51,11 +124,14 @@ Mes might be useful at some point.
 - https://lists.gnu.org/archive/html/guile-user/2016-06/msg00061.html
 - https://lists.gnu.org/archive/html/guile-user/2017-07/msg00089.html
 
-Regarding compilers, the GCC 4.7 series is the last version written in C; subsequent versions have moved to C++. GCC 4.x isn't even on life support anymore - i.e., it's dead - but distributing a C-only build system with no C++ support has a masochistic appeal to me.
+Suckless has a list of good stuff:
+- https://suckless.org/rocks/
 
 Newer static musl compilers (GCC 6+) are "done," and should work to compile (static-only) binaries on Chrome OS:
 
 - https://github.com/ryanwoodsmall/musl-misc/releases
+
+# recipes
 
 Bootstrap recipes:
 - **zulu** azul zulu openjdk jvm
@@ -220,7 +296,6 @@ Recipes to consider:
 - groovy (included in sdkman)
 - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
 - hbase (version?)
-- heimdal
 - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
 - hg4j and client wrapper (dead?)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
@@ -228,7 +303,7 @@ Recipes to consider:
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - java-repl
 - java/jvm/jdk stuff
-  - avian (https://readytalk.github.io/avian/) 
+  - avian (https://readytalk.github.io/avian/)
   - cacao
   - jamvm
   - jikes rvm
@@ -239,6 +314,9 @@ Recipes to consider:
 - jline
 - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
 - jq (with oniguruma regex)
+- kerberos
+  - heimdal
+  - mit
 - kotlin (included in sdkman)
 - lf (https://github.com/gokcehan/lf - go)
 - libedit
@@ -280,7 +358,7 @@ Recipes to consider:
 - nodyn (dead)
 - noice (https://git.2f30.org/noice/)
 - nnn (https://github.com/jarun/nnn)
-- nss
+- nss (ugh)
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - oniguruma
 - openconnect
@@ -288,7 +366,7 @@ Recipes to consider:
 - pass (https://www.passwordstore.org/)
 - patch (gnu)
 - pax
-- pcc
+- pcc (http://pcc.ludd.ltu.se/)
 - picolisp
   - picolisp (c, lisp)
   - ersatz picolisp (java)
@@ -317,13 +395,14 @@ Recipes to consider:
 - spark (included in sdkman)
 - spidermonkey
 - spidernode
-- sparse
-- splint
+- sparse (https://sparse.wiki.kernel.org/index.php/Main_Page)
+- splint (https://en.wikipedia.org/wiki/Splint_(programming_tool))
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - strace
 - stunnel
 - subversion / svn
-- tcc
+  - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
+- tcc (http://repo.or.cz/w/tinycc.git)
 - tinyscheme
 - tre (https://github.com/laurikari/tre)
 - tsocks
@@ -341,6 +420,7 @@ these could be used to create a fully functional build environment/initrd/chroot
 - 9base
 - bash
 - busybox
+- coreutils
 - curl (https, static mbedtls binary is probably best candidate)
 - dropbear
 - git (https/ssh, could replace jgit, not require a jdk?)
@@ -350,3 +430,4 @@ these could be used to create a fully functional build environment/initrd/chroot
 - statictoolchain
 - toybox
 - ubase
+- utillinux
