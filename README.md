@@ -285,10 +285,18 @@ Recipes to consider:
 - editline (https://github.com/troglobit/editline)
 - elinks (old, deprecated)
 - ellcc (embedded clang build, http://ellcc.org/)
+- emacs
+  - 26.1 can be compiled without gnutls
+  - needs aslr disabled during dump
+  - or ```setarch $(uname -m) -R``` prepended to make?
 - entr (http://entrproject.org/)
 - findutils
 - gdb
+- gmplib
+  - needs m4
 - gnutls
+  - needs nettle, gmplib
+  - configure needs ```--with-included-libtasn1 --with-included-unistring --without-p11-kit```
 - go (chicken/egg problem with source builds on aarch64)
 - gpg
 - gradle (included in sdkman)
@@ -327,6 +335,7 @@ Recipes to consider:
   - needs curl, openssl, ssh2
   - configure: ```mkdir b ; cd b ; cmake -DCMAKE_INSTALL_PREFIX:PATH=${cwsw}/libgit2/$(basename $(cd .. ; pwd)) -DBUILD_SHARED_LIBS=OFF ..```
 - libressl
+- libtasn1
 - libtirpc
 - libxml2
 - libxslt
@@ -353,6 +362,8 @@ Recipes to consider:
 - nailgun (https://github.com/facebook/nailgun and http://www.martiansoftware.com/nailgun/)
 - nc / ncat / netcat
 - nethack
+- nettle
+  - configure libdir=.../lib since lib64 may be set by default
 - ninja
 - node / npm (ugh)
 - nodyn (dead)
@@ -362,6 +373,11 @@ Recipes to consider:
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - oniguruma
 - openconnect
+- p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
+  - probably not...
+  - "cannot be used as a static library" - what?
+  - needs libffi, libtasn1
+  - configure ```--without-libffi --without-libtasn1```
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
 - patch (gnu)
@@ -407,10 +423,12 @@ Recipes to consider:
 - tre (https://github.com/laurikari/tre)
 - tsocks
 - upx (https://github.com/upx/upx)
+- utalk (http://utalk.ourproject.org/)
 - vifm (https://github.com/vifm/vifm)
 - vpnc
 - xmlstarlet
 - xz utils (https://tukaani.org/xz/)
+- ytalk (http://ytalk.ourproject.org/)
 - support libraries for building the above
 - heirloom project tools (http://heirloom.sourceforge.net/)
 - whatever else seems useful
