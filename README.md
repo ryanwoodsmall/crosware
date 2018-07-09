@@ -388,6 +388,8 @@ Recipes to consider:
   - ersatz picolisp (java)
 - pigz
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
+- procps-ng
+- psmisc
 - qemu
 - racket
 - ranger (https://ranger.github.io - python)
