@@ -136,7 +136,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 Bootstrap recipes:
 - **zulu** azul zulu openjdk jvm
 - **jgitsh** standalone jgit shell script
-- **static-toolchain** musl-cross-make static toolchain
+- **statictoolchain** musl-cross-make static toolchain
 
 Working recipes:
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
