@@ -10,10 +10,17 @@ rreqs="make toybox zlib"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwfetch_${rname}() {
+  cwfetchcheck \"${rurl}\" \"${cwdl}/${rname}/${rfile}\" \"${rsha256}\"
+  cwfetch \"https://raw.githubusercontent.com/ryanwoodsmall/dropbear-misc/master/options/dropbear-${rver}_localoptions.h\" \"${cwdl}/${rname}/dropbear-${rver}_localoptions.h\"
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   cwscriptecho 'getting localoptions.h from github'
-  curl -kLso localoptions.h https://raw.githubusercontent.com/ryanwoodsmall/dropbear-misc/master/options/dropbear-${rver}_localoptions.h
+  cat \"${cwdl}/${rname}/dropbear-${rver}_localoptions.h\" > localoptions.h
   cwscriptecho 'patching localoptions.h'
   sed -i \"s#/opt/dropbear#${rtdir}#g\" localoptions.h
   ./configure \
@@ -36,7 +43,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   make -j${cwmakejobs} \
     MULTI=1 \
     SCPPROGRESS=1 \
@@ -47,29 +54,29 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   make install \
     MULTI=1 \
     SCPPROGRESS=1 \
     PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
-  cwmkdir "${rtdir}/etc"
+  cwmkdir \"${rtdir}/etc\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwuninstall_${rname}() {
-  pushd "${rtdir}" >/dev/null 2>&1
-  rm -rf "${rdir}"
-  rm -f "${rprof}"
-  rm -f "${cwvarinst}/${rname}"
+  pushd \"${rtdir}\" >/dev/null 2>&1
+  rm -rf \"${rdir}\"
+  rm -f \"${rprof}\"
+  rm -f \"${cwvarinst}/${rname}\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
-  echo 'append_path \"${rtdir}/current/sbin\"' >> "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/sbin\"' >> \"${rprof}\"
 }
 "
