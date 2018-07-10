@@ -8,7 +8,6 @@ rreqs="make ncurses configgit"
 
 . "${cwrecipe}/common.sh"
 
-# XXX - config.* stuff needs to be in cwfetch_${rname}
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
