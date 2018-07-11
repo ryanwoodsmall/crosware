@@ -97,6 +97,7 @@ Environment stuff to figure out how to handle:
 - ```MANPATH``` and ```MANPAGER```
 - ```ACLOCAL_PATH```
 - ```EDITOR``` (vim?)
+- ```PAGER``` (working, set to less (gnu or busybox))
 
 # links
 
