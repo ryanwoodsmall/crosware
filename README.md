@@ -71,14 +71,14 @@ commands:
 
 # notes
 
-Ultimately I'd like this to be a self-hosting virtual distribution of sorts, targeting all variations of 32-/64-bit x86 and ARM on Chrome OS. A static-only GCC compiler using musl-libc (with musl-cross-make) is installed as part of the bootstrap; this sort of precludes things like emacs, but doesn't stop anyone from using a musl toolchain to build a glibc-based shared toolchain. Planning on starting out with shell script-based recipes for configuring/compiling/installing versioned "packages." Initial bootstrap will look something like:
+Ultimately I'd like this to be a self-hosting virtual distribution of sorts, targeting all variations of 32-/64-bit x86 and ARM on Chrome OS. A static-only GCC compiler using musl-libc (with musl-cross-make) is installed as part of the bootstrap; this sort of precludes things like emacs, but doesn't stop anyone from using a musl toolchain to build a glibc-based shared toolchain. Planning on starting out with shell script-based recipes for configuring/compiling/installing versioned "packages." Initial bootstrap looks something like:
 
 - get a JDK (Azul Zulu OpenJDK)
 - get jgit.sh (standalone)
 - get static bootstrapped compiler
 - checkout rest of project
-- build GNU make (v3, no perl)
-- build native busybox (if I don't distribute one)
+- build GNU make
+- build native busybox, toolbox, sed, etc. 
 - build a few libs / support (ncurses, openssl, slang, zlib, bzip2, lzma, libevent, pkg-config)
 - build a few packages (curl, vim w/syntax hightlighting, screen, tmux, links, lynx - mostly because I use them)
 
@@ -264,17 +264,17 @@ Working recipes:
 Recipes to consider:
 - ack (https://beyondgrep.com/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
-- ant (included in sdkman)
-- antlr
+- assemblers?
+  - fasm
+  - nasm
+  - yasm
 - at&t ast (just ksh now?)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - axtls
-- beanshell
 - bigloo
 - bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - chicken
-- clojure (leiningen included in sdkman)
 - cmake
   - configure: ```./bootstrap --prefix=${cwsw}/cmake/$(basename $(pwd)) --no-system-libs --parallel=$(nproc)```
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
@@ -283,7 +283,6 @@ Recipes to consider:
 - dnsmasq
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
 - duplicity (http://duplicity.nongnu.org/)
-- dynjs
 - editline (https://github.com/troglobit/editline)
 - elinks (old, deprecated)
 - ellcc (embedded clang build, http://ellcc.org/)
@@ -301,18 +300,36 @@ Recipes to consider:
   - configure needs ```--with-included-libtasn1 --with-included-unistring --without-p11-kit```
 - go (chicken/egg problem with source builds on aarch64)
 - gpg
-- gradle (included in sdkman)
-- grails (included in sdkman)
-- groovy (included in sdkman)
 - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
 - hbase (version?)
-- henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
-- hg4j and client wrapper (dead?)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
 - inetutils
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
-- java-repl
-- java/jvm/jdk stuff
+- java stuff
+  - ant (included in sdkman)
+  - antlr
+  - beanshell
+  - clojure (leiningen included in sdkman)
+  - dynjs (dead?)
+  - gradle (included in sdkman)
+  - grails (included in sdkman)
+  - groovy (included in sdkman)
+  - hg4j and client wrapper (https://github.com/nathansgreen/hg4j)
+  - java-repl
+  - jline
+  - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
+  - kotlin (included in sdkman)
+  - luaj
+  - maven (included in sdkman)
+  - mina (apache multipurpose infrastructure for network applications: java nio, ftp, sshd, etc.; https://mina.apache.org/)
+  - nailgun (https://github.com/facebook/nailgun and http://www.martiansoftware.com/nailgun/)
+  - nodyn (dead)
+  - rembulan (jvm lua)
+  - ringojs
+  - sbt (included in sdkman)
+  - scala (included in sdkman)
+  - spark (included in sdkman)
+- java jvm/jdk stuff
   - avian (https://readytalk.github.io/avian/)
   - cacao
   - jamvm
@@ -320,14 +337,21 @@ Recipes to consider:
   - maxine (https://github.com/beehive-lab/Maxine-VM)
   - openj9
   - ...
-- jisql (https://github.com/stdunbar/jisql)
-- jline
-- jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
+- jdbc
+  - drivers
+    - derby
+    - mssql
+    - mysql
+    - oracle?
+    - postgresql
+    - sqlite
+  - programs/clients
+    - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
+    - jisql (https://github.com/stdunbar/jisql)
 - jq (with oniguruma regex)
 - kerberos
   - heimdal
   - mit
-- kotlin (included in sdkman)
 - lf (https://github.com/gokcehan/lf - go)
 - libedit
 - libeditline
@@ -343,32 +367,27 @@ Recipes to consider:
 - libxslt
 - llvm / clang
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
-- luaj
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
 - man stuff
   - man-pages (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/)
   - man-pages-posix (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/)
   - stick with busybox man+groff+less or use man-db or old standard man?
   - MANPAGER and MANPATH settings
-- maven (included in sdkman)
 - mercurial / hg
   - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```
   - config/build/install with: ```env PATH=${cwsw}/python2/current/bin:${PATH} make <all|install> PREFIX=${ridir} CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS//-static/}" CFLAGS='' CPPFLAGS=''```
 - meson (http://mesonbuild.com/ - python 3 and ninja)
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
-- mina (apache multipurpose infrastructure for network applications: nio, ftp, sshd, etc.; https://mina.apache.org/)
 - moreutils (https://joeyh.name/code/moreutils/)
 - mpg123
 - mpg321
 - mutt
-- nailgun (https://github.com/facebook/nailgun and http://www.martiansoftware.com/nailgun/)
 - nc / ncat / netcat
 - nethack
 - nettle
   - configure libdir=.../lib since lib64 may be set by default
 - ninja
 - node / npm (ugh)
-- nodyn (dead)
 - noice (https://git.2f30.org/noice/)
 - nnn (https://github.com/jarun/nnn)
 - nss (ugh)
@@ -395,13 +414,9 @@ Recipes to consider:
 - qemu
 - racket
 - ranger (https://ranger.github.io - python)
-- rembulan (jvm lua)
-- ringojs
 - rover (https://lecram.github.io/p/rover)
 - rpcbind
 - rvm?
-- sbt (included in sdkman)
-- scala (included in sdkman)
 - sharutils
 - shells?
   - dash
@@ -412,7 +427,6 @@ Recipes to consider:
   - tcsh (and/or standard csh)
   - zsh
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
-- spark (included in sdkman)
 - spidermonkey
 - spidernode
 - sparse (https://sparse.wiki.kernel.org/index.php/Main_Page)
