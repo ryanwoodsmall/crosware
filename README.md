@@ -267,6 +267,7 @@ Recipes to consider:
 - assemblers?
   - fasm
   - nasm
+  - vasm
   - yasm
 - at&t ast (just ksh now?)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
