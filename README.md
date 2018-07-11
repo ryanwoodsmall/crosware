@@ -432,6 +432,7 @@ Recipes to consider:
 - spidernode
 - sparse (https://sparse.wiki.kernel.org/index.php/Main_Page)
 - splint (https://en.wikipedia.org/wiki/Splint_(programming_tool))
+- squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - strace
 - stunnel
