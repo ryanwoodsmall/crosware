@@ -21,8 +21,9 @@ which crosware
 ```
 
 ## install some packages
+
 ```
-# source the environment and install some stuff
+# install some stuff
 crosware install make busybox toybox
 
 # update environment
