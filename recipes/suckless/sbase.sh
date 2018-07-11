@@ -1,11 +1,11 @@
 # should use git instead, but jgit is slow
 # https://github.com/ryanwoodsmall/suckless-misc/blob/master/rpm/SPECS/sbase.spec
 rname="sbase"
-rver="f45156d5b4f49ada1c130168a2aabdcb02f430a4"
+rver="7441770cfd70bbd3caafd6cf035dd74a860741ae"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://git.suckless.org/${rname}/snapshot/${rfile}"
-rsha256="f753dcf5ac29ba6f13912139ec2b243c7cb1302a11a5ff1d1a2194b973f399b0"
+rsha256="0d8e661630713b519aa83664dc98cd6c5f54b3bc1a81a87f654140b35588fd5b"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rreqs="make"
 
