@@ -127,7 +127,12 @@ Mes might be useful at some point.
 - https://lists.gnu.org/archive/html/guile-user/2017-07/msg00089.html
 
 Suckless has a list of good stuff:
+
 - https://suckless.org/rocks/
+
+Mark Williams Company open sourced Coherent; might be a good source for SUSv3/SUSv4/POSIX stuff:
+
+- http://www.nesssoftware.com/home/mwc/source.php
 
 Newer static musl compilers (GCC 6+) are "done," and should work to compile (static-only) binaries on Chrome OS:
 
