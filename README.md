@@ -175,6 +175,7 @@ Working recipes:
 - ed (gnu ed)
 - expat
 - file
+- findutils
 - flex
 - gawk (gnu awk, currently appended to $PATH, should be prepended?)
 - gc (working on x86\_64, aarch64; broken on i386, arm)
@@ -297,7 +298,6 @@ Recipes to consider:
   - needs aslr disabled during dump
   - or ```setarch $(uname -m) -R``` prepended to make?
 - entr (http://entrproject.org/)
-- findutils
 - gdb
 - gmplib
   - needs m4
