@@ -228,6 +228,7 @@ Working recipes:
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)
 - openssl
 - p7zip
+- patch (gnu)
 - pcre
 - pcre2
 - perl
@@ -407,7 +408,6 @@ Recipes to consider:
   - configure ```--without-libffi --without-libtasn1```
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
-- patch (gnu)
 - pax
 - pcc (http://pcc.ludd.ltu.se/)
 - picolisp
