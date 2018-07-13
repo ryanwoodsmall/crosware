@@ -178,6 +178,8 @@ set -eu
 # prereqs
 #
 # XXX - curl, sha256sum, ... ? what else? check for tls/ssl support?
+#       xz/xzcat? bzip2/bzcat? gzip?
+#
 prereqs=( 'bzip2' 'curl' 'nproc' 'sha256sum' )
 for prereq in ${prereqs[@]} ; do
   hash "${prereq}" >/dev/null 2>&1 || {
@@ -587,6 +589,12 @@ function cwfetchcheck() {
 #   receives:
 #     full path to file
 #     target directory
+#
+# XXX - which form to use? is this simpler?
+#         bzcat ${archive}    | tar -C ${tgtdir} -xf -
+#         gzip -dc ${archive} | tar -C ${tgtdir} -xf -
+#         xzcat ${archive}    | tar -C ${tgtdir} -xf -
+#       separate out (de)compressor from (un)archiver?
 #
 function cwextract() {
   local archive="${1}"
