@@ -24,8 +24,8 @@ function cwconfigure_${rname}() {
       CFLAGS=\"\${CFLAGS}\" \
       CXXFLAGS=\"\${CXXFLAGS}\" \
       LDFLAGS=\"\${LDFLAGS}\" \
-      LIBS='-lssl -lcrypto -lz -lssh2'
-  sed -i.ORIG 's/-lcurl/-lcurl -lssl -lcrypto -lssh2/g' Makefile
+      LIBS='-lcurl -lssh2 -lssl -lcrypto -lz'
+  sed -i.ORIG 's/-lcurl/-lcurl -lssh2 -lssl -lcrypto -lz/g' Makefile
   grep -ril sys/poll\\.h ${rbdir}/ \
   | grep \\.h\$ \
   | xargs sed -i.ORIG 's#sys/poll\.h#poll.h#g'
