@@ -1,9 +1,9 @@
 rname="lua"
-rver="5.3.4"
+rver="5.3.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.lua.org/ftp/${rfile}"
-rsha256="f681aa518233bc407e23acf0f5887c884f17436f000d453b2491a9f11a52400c"
+rsha256="0c2eed3f960446e1a3e4b9a1ca2f3ff893b6ce41942cf54d5dd59ab4b3b058ac"
 rreqs="make ncurses readline"
 
 . "${cwrecipe}/common.sh"
