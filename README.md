@@ -94,7 +94,8 @@ Environment stuff to figure out how to handle:
 - ```CPPFLAGS``` (working)
 - ```CXX``` (working)
 - ```LDFLAGS``` (working)
-- ```MANPATH``` and ```MANPAGER```
+- ```MANPAGER``` (working)
+- ```MANPATH```
 - ```ACLOCAL_PATH```
 - ```EDITOR``` (vim?)
 - ```PAGER``` (working, set to less (gnu or busybox))
