@@ -1,9 +1,9 @@
 rname="busybox"
-rver="1.28.4"
+rver="1.29.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="http://${rname}.net/downloads/${rfile}"
-rsha256="e3c14a3699dc7e82fed397392957afc78e37bdf25398ac38ead6e84621b2ae6a"
+rsha256="fc250730ea16d28839bfecda3c431683fa6bd4273ffca6b632cbeb3556c914c3"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
