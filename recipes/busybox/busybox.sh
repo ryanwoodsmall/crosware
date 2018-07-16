@@ -45,5 +45,6 @@ eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
   echo 'export PAGER=\"less\"' >> "${rprof}"
+  echo 'export MANPAGER=\"less -R\"' >> "${rprof}"
 }
 "
