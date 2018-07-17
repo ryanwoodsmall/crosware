@@ -319,6 +319,7 @@ Recipes to consider:
   - beanshell
   - clojure (leiningen included in sdkman)
   - dynjs (dead?)
+  - frege (https://github.com/Frege/frege)
   - gradle (included in sdkman)
   - grails (included in sdkman)
   - groovy (included in sdkman)
@@ -347,13 +348,15 @@ Recipes to consider:
   - ...
 - jdbc
   - drivers
-    - derby
-    - mssql
-    - mysql
-    - oracle?
-    - postgresql
-    - sqlite
-  - programs/clients
+    - derby (included in derby.jar)
+    - mariadb (https://mariadb.com/kb/en/library/about-mariadb-connector-j/)
+    - mssql (https://github.com/Microsoft/mssql-jdbc)
+    - mysql (https://dev.mysql.com/downloads/connector/j/)
+    - oracle? (probably not)
+    - postgresql (https://jdbc.postgresql.org/)
+    - sqlite (https://bitbucket.org/xerial/sqlite-jdbc and https://github.com/xerial/sqlite-jdbc)
+  - programs/clients/other
+    - ha-jdbc (https://github.com/ha-jdbc/ha-jdbc)
     - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
     - jisql (https://github.com/stdunbar/jisql)
 - jq (with oniguruma regex)
