@@ -453,6 +453,7 @@ Recipes to consider:
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
 - tcc (http://repo.or.cz/w/tinycc.git)
 - tinyscheme
+- tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tre (https://github.com/laurikari/tre)
 - tsocks
 - upx (https://github.com/upx/upx)
