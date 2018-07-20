@@ -100,6 +100,10 @@ Environment stuff to figure out how to handle:
 - ```EDITOR``` (vim?)
 - ```PAGER``` (working, set to less (gnu or busybox))
 
+# stuff to figure out
+
+- certs for openssl/wolfssl/mbedtls/gnutls/...
+
 # links
 
 Chromebrew looks nice and exists now: https://github.com/skycocker/chromebrew
