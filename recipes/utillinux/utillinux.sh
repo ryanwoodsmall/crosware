@@ -1,9 +1,9 @@
 rname="utillinux"
-rver="2.32"
+rver="2.32.1"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
-rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver}/${rfile}"
-rsha256="6c7397abc764e32e8159c2e96042874a190303e77adceb4ac5bd502a272a4734"
+rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver//.1}/${rfile}"
+rsha256="86e6707a379c7ff5489c218cfaf1e3464b0b95acf7817db0bc5f179e356a67b2"
 rreqs="make zlib ncurses readline gettexttiny slibtool"
 
 . "${cwrecipe}/common.sh"
@@ -26,7 +26,7 @@ function cwconfigure_${rname}() {
     --without-smack \
     --without-systemd \
       LIBS='-lreadline -lncurses -lncursesw' \
-      LIBTOOL='slibtool-static -all-static'
+      LIBTOOL='${cwsw}/slibtool/current/bin/slibtool-static -all-static'
   popd >/dev/null 2>&1
 }
 "
@@ -34,7 +34,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  make -j${cwmakejobs} LIBTOOL='slibtool-static -all-static'
+  make -j${cwmakejobs} LIBTOOL='${cwsw}/slibtool/current/bin/slibtool-static -all-static'
   popd >/dev/null 2>&1
 }
 "
@@ -42,7 +42,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  make install LIBTOOL='slibtool-static -all-static'
+  make install LIBTOOL='${cwsw}/slibtool/current/bin/slibtool-static -all-static'
   popd >/dev/null 2>&1
 }
 "
