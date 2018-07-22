@@ -1,9 +1,9 @@
 rname="libgpgerror"
-rver="1.31"
+rver="1.32"
 rdir="libgpg-error-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/libgpg-error/${rfile}"
-rsha256="40d0a823c9329478063903192a1f82496083b277265904878f4bc09e0db7a4ef"
+rsha256="c345c5e73cc2332f8d50db84a2280abfb1d8f6d4f1858b9daa30404db44540ca"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
