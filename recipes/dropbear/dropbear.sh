@@ -59,6 +59,7 @@ function cwmakeinstall_${rname}() {
     MULTI=1 \
     SCPPROGRESS=1 \
     PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
+  ln -sf \"${ridir}/bin/dbclient\" \"${ridir}/bin/ssh\"
   cwmkdir \"${rtdir}/etc\"
   popd >/dev/null 2>&1
 }
