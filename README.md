@@ -232,6 +232,7 @@ Working recipes:
 - mbedtls (polarssl)
 - ncurses
 - netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
+- oniguruma (https://github.com/kkos/oniguruma)
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)
 - openssl
 - p7zip
@@ -413,7 +414,6 @@ Recipes to consider:
 - nnn (https://github.com/jarun/nnn)
 - nss (ugh)
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
-- oniguruma
 - openconnect
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
