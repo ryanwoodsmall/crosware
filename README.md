@@ -198,6 +198,7 @@ Working recipes:
   - iperf
   - iperf3
 - j7zip
+- jq (https://stedolan.github.io/jq/ - with oniguruma regex)
 - jruby
 - jscheme
 - jython
@@ -367,7 +368,6 @@ Recipes to consider:
     - ha-jdbc (https://github.com/ha-jdbc/ha-jdbc)
     - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
     - jisql (https://github.com/stdunbar/jisql)
-- jq (with oniguruma regex)
 - kerberos
   - heimdal
   - mit
