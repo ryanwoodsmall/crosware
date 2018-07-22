@@ -270,6 +270,7 @@ Working recipes:
 - w3m (https://github.com/tats/w3m)
 - wget
 - wolfssl (cyassl)
+- xz (https://tukaani.org/xz/)
 - zip
 - zlib
 
@@ -466,7 +467,6 @@ Recipes to consider:
 - vifm (https://github.com/vifm/vifm)
 - vpnc
 - xmlstarlet
-- xz utils (https://tukaani.org/xz/)
 - ytalk (http://ytalk.ourproject.org/)
 - support libraries for building the above
 - heirloom project tools (http://heirloom.sourceforge.net/)
