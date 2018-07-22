@@ -102,7 +102,7 @@ Environment stuff to figure out how to handle:
 
 # stuff to figure out
 
-- certs for openssl/wolfssl/mbedtls/gnutls/...
+See [the to-do list](TODO.md)
 
 # links
 
