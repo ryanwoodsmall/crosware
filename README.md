@@ -274,6 +274,7 @@ Working recipes:
 - w3m (https://github.com/tats/w3m)
 - wget
 - wolfssl (cyassl)
+- xmlstarlet (http://xmlstar.sourceforge.net/)
 - xz (https://tukaani.org/xz/)
 - zip
 - zlib
@@ -467,7 +468,6 @@ Recipes to consider:
 - utalk (http://utalk.ourproject.org/)
 - vifm (https://github.com/vifm/vifm)
 - vpnc
-- xmlstarlet
 - ytalk (http://ytalk.ourproject.org/)
 - support libraries for building the above
 - heirloom project tools (http://heirloom.sourceforge.net/)
