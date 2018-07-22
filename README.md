@@ -214,6 +214,7 @@ Working recipes:
 - libssh2 (openssl, zlib)
 - libtool
 - libxml2
+- libxslt
 - links (ncurses)
 - lua (posix, no readline)
 - lynx (ncurses and slang, ncurses default)
@@ -380,7 +381,6 @@ Recipes to consider:
 - libressl
 - libtasn1
 - libtirpc
-- libxslt
 - llvm / clang
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
