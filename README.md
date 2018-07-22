@@ -447,6 +447,7 @@ Recipes to consider:
   - tcsh (and/or standard csh)
   - zsh
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
+- sljit (http://sljit.sourceforge.net/)
 - spidermonkey
 - spidernode
 - sparse (https://sparse.wiki.kernel.org/index.php/Main_Page)
