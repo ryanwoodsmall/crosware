@@ -132,3 +132,10 @@
   - http://git.savannah.gnu.org/gitweb/?p=config.git
 - certs for openssl/wolfssl/mbedtls/gnutls/...
 - recipes that need slibtool need a flag to set/use LIBTOOL=... on make
+- cwextract
+  - which form to use? is this simpler?
+  - separate out (de)compressor from (un)archiver?
+    - ```bzcat ${archive}    | tar -C ${tgtdir} -xf -```
+    - ```gzip -dc ${archive} | tar -C ${tgtdir} -xf -```
+    - ```xzcat ${archive}    | tar -C ${tgtdir} -xf -```
+  - add decompressors to prereqs check
