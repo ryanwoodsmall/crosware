@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://download.samba.org/pub/${rname}/${rfile}"
 rsha256="55cc554efec5fdaad70de921cd5a5eeb6c29a95524c715f3bbf849235b0800c0"
-rreqs="make"
+rreqs="make perl"
 
 . "${cwrecipe}/common.sh"
 
