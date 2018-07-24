@@ -400,11 +400,13 @@ Recipes to consider:
 - moreutils (https://joeyh.name/code/moreutils/)
 - mpg123
 - mpg321
-- musl-utils
-  - should these be in statictoolchain, i.e in https://github.com/ryanwoodsmall/musl-misc?
-  - getconf (https://git.alpinelinux.org/cgit/aports/tree/main/musl/getconf.c)
-  - getent (https://git.alpinelinux.org/cgit/aports/tree/main/musl/getent.c)
-  - iconv (https://git.alpinelinux.org/cgit/aports/tree/main/musl/iconv.c)
+- musl stuff
+  - musl-fts (https://github.com/pullmoll/musl-fts)
+  - musl-utils
+    - should these be in statictoolchain, i.e in https://github.com/ryanwoodsmall/musl-misc?
+    - getconf (https://git.alpinelinux.org/cgit/aports/tree/main/musl/getconf.c)
+    - getent (https://git.alpinelinux.org/cgit/aports/tree/main/musl/getent.c)
+    - iconv (https://git.alpinelinux.org/cgit/aports/tree/main/musl/iconv.c)
 - mutt
 - nc / ncat / netcat
 - nethack
