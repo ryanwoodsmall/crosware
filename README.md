@@ -231,6 +231,7 @@ Working recipes:
 - m4
 - make
 - mbedtls (polarssl)
+- mksh
 - ncurses
 - netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - oniguruma (https://github.com/kkos/oniguruma)
@@ -443,7 +444,6 @@ Recipes to consider:
   - dash
   - es (https://github.com/wryun/es-shell)
   - fish
-  - mksh
   - pdksh
   - tcsh (and/or standard csh)
   - zsh
