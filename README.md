@@ -358,6 +358,17 @@ Recipes to consider:
   - maxine (https://github.com/beehive-lab/Maxine-VM)
   - openj9
   - ...
+- javascript engines
+  - colony-compiler (unmaintained - https://github.com/tessel/colony-compiler)
+  - duktape (http://duktape.org/ and https://github.com/svaarala/duktape)
+  - espruino (https://github.com/espruino/Espruino)
+  - iv (https://github.com/Constellation/iv)
+  - jerryscript (https://github.com/jerryscript-project/jerryscript and http://jerryscript.net/)
+  - jsi (jsish - https://jsish.org/)
+  - mjs (formerly v7 - https://github.com/cesanta/mjs and https://github.com/cesanta/v7/)
+  - mujs (http://mujs.com/ and https://github.com/ccxvii/mujs)
+  - quad-wheel (https://code.google.com/archive/p/quad-wheel/)
+  - tiny-js (https://github.com/gfwilliams/tiny-js)
 - jdbc
   - drivers
     - derby (included in derby.jar)
