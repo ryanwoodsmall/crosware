@@ -1,3 +1,9 @@
+#
+# XXX - opts
+#  oniguruma: --with-onig
+#  pcre: --with-pcre
+#  zlib: --with-z
+#
 rname="slang"
 rver="2.3.2"
 rdir="${rname}-${rver}"
