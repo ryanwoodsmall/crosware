@@ -132,6 +132,7 @@
   - http://git.savannah.gnu.org/gitweb/?p=config.git
 - certs for openssl/wolfssl/mbedtls/gnutls/...
 - recipes that need slibtool need a flag to set/use LIBTOOL=... on make
+- recipes that need autoreconf/libtoolize/etc. flag
 - cwextract
   - which form to use? is this simpler?
   - separate out (de)compressor from (un)archiver?
