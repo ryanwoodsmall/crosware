@@ -232,6 +232,7 @@ Working recipes:
 - make
 - mbedtls (polarssl)
 - mksh
+- musl-fts (named muslfts - https://github.com/pullmoll/musl-fts)
 - ncurses
 - netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - oniguruma (https://github.com/kkos/oniguruma)
@@ -401,7 +402,6 @@ Recipes to consider:
 - mpg123
 - mpg321
 - musl stuff
-  - musl-fts (https://github.com/pullmoll/musl-fts)
   - musl-utils
     - should these be in statictoolchain, i.e in https://github.com/ryanwoodsmall/musl-misc?
     - getconf (https://git.alpinelinux.org/cgit/aports/tree/main/musl/getconf.c)
