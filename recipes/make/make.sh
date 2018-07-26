@@ -28,6 +28,8 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   ./make install-binPROGRAMS
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/g${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/gnu${rname}\"
   popd >/dev/null 2>&1
 }
 "
