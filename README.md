@@ -261,6 +261,7 @@ Working recipes:
 - slibtool (https://github.com/midipix-project/slibtool)
 - socat
 - sqlite
+- star (with pax/spax - http://cdrtools.sourceforge.net/private/star.html)
 - suckless
   - 9base (https://tools.suckless.org/9base)
   - sbase (https://core.suckless.org/sbase)
