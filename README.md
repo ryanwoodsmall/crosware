@@ -261,7 +261,6 @@ Working recipes:
 - slibtool (https://github.com/midipix-project/slibtool)
 - socat
 - sqlite
-- star (with pax/spax - http://cdrtools.sourceforge.net/private/star.html)
 - suckless
   - 9base (https://tools.suckless.org/9base)
   - sbase (https://core.suckless.org/sbase)
@@ -319,7 +318,7 @@ Recipes to consider:
 - gnutls
   - needs nettle, gmplib
   - configure needs ```--with-included-libtasn1 --with-included-unistring --without-p11-kit```
-- go (chicken/egg problem with source builds on aarch64)
+- go (**chicken/egg problem with source builds on aarch64**)
 - gpg
 - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
 - hbase (version?)
@@ -470,6 +469,7 @@ Recipes to consider:
 - splint (https://en.wikipedia.org/wiki/Splint_(programming_tool))
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
+- star (with pax/spax - http://cdrtools.sourceforge.net/private/star.html - **does not (yet) work on aarch64**)
 - strace
 - stunnel
 - subversion / svn
