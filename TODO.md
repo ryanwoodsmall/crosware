@@ -140,3 +140,7 @@
     - ```gzip -dc ${archive} | tar -C ${tgtdir} -xf -```
     - ```xzcat ${archive}    | tar -C ${tgtdir} -xf -```
   - add decompressors to prereqs check
+- per-recipe environment variable listing declared variables
+  - unset at end of recipe to discourage env var leaks
+  - unset in main script as well to double-check
+  - compare before/after environment and bail if anything is left dangling
