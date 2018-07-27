@@ -147,3 +147,5 @@
 - log builds
   - something like ```... 2>&1 | tee ${cwtop}/var/log/builds/${TS}-${rname}.out``` on main cwinstall() and for each prereq in cwcheckreqs_${rname}()
   - probably need associated log cleaning command
+- native linux32/linux64 personality environment variable based on ${karch} for ```busybox setarch ____ -R cmd``` to disable ASLR
+  - or just use util-linux ```setarch $(uname -m) -R cmd```?
