@@ -461,7 +461,8 @@ Recipes to consider:
   - dash
   - es (https://github.com/wryun/es-shell)
   - fish
-  - pdksh
+  - loksh (https://github.com/dimkr/loksh)
+  - pdksh (dead, use mksh)
   - tcsh (and/or standard csh)
   - zsh
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
