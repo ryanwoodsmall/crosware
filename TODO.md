@@ -144,3 +144,6 @@
   - unset at end of recipe to discourage env var leaks
   - unset in main script as well to double-check
   - compare before/after environment and bail if anything is left dangling
+- log builds
+  - something like ```... 2>&1 | tee ${cwtop}/var/log/builds/${TS}-${rname}.out``` on main cwinstall() and for each prereq in cwcheckreqs_${rname}()
+  - probably need associated log cleaning command
