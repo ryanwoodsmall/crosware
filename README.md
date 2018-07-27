@@ -385,6 +385,7 @@ Recipes to consider:
 - kerberos
   - heimdal
   - mit
+- lemon (https://www.hwaci.com/sw/lemon/ https://www.sqlite.org/lemon.html https://sqlite.org/src/doc/trunk/doc/lemon.html)
 - lf (https://github.com/gokcehan/lf - go)
 - libedit
 - libeditline
