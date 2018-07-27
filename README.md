@@ -396,8 +396,9 @@ Recipes to consider:
   - needs curl, openssl, ssh2
   - configure: ```mkdir b ; cd b ; cmake -DCMAKE_INSTALL_PREFIX:PATH=${cwsw}/libgit2/$(basename $(cd .. ; pwd)) -DBUILD_SHARED_LIBS=OFF ..```
 - libressl
-- libtasn1
+- libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtirpc
+- libunistring (https://ftp.gnu.org/gnu/libunistring/)
 - llvm / clang
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
