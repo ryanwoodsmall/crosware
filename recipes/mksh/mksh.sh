@@ -1,3 +1,7 @@
+#
+# XXX - need ksh88/ksh93 symlinks?
+#
+
 rname="mksh"
 rver="R56c"
 rdir="${rname}-${rver}"
