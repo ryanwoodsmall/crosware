@@ -462,6 +462,7 @@ Recipes to consider:
   - es (https://github.com/wryun/es-shell)
   - fish
   - loksh (https://github.com/dimkr/loksh)
+  - oksh (https://connochaetos.org/oksh/)
   - pdksh (dead, use mksh)
   - tcsh (and/or standard csh)
   - zsh
