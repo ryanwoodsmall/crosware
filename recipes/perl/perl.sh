@@ -1,3 +1,7 @@
+#
+# XXX - sysroot should be recreated at build time in ${rtdir}/sysroot
+#
+
 rname="perl"
 rver="5.26.2"
 rdir="${rname}-${rver}"
