@@ -18,12 +18,13 @@ rreqs="make zlib openssl mbedtls wolfssl libssh2"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-libssh2 \
     --with-zlib \
     --without-mbedtls \
     --without-cyassl \
+    --without-gnutls \
     --with-ssl \
     --with-default-ssl-backend=openssl
   popd >/dev/null 2>&1
@@ -35,12 +36,12 @@ function cwconfigure_${rname}() {
 #
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   rm -f \"${ridir}/bin/${rname}\" \"${ridir}/bin/${rname}-openssl\"
   make install
   popd >/dev/null 2>&1
   mv \"${ridir}/bin/${rname}\" \"${ridir}/bin/${rname}-openssl\"
-  ln -sf \"${ridir}/bin/${rname}-openssl\" \"${ridir}/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname}-openssl\" \"${ridir}/bin/${rname}\"
   cwmakeinstall_${rname}_mbedtls
   cwmakeinstall_${rname}_wolfssl
 }
@@ -51,13 +52,14 @@ function cwmakeinstall_${rname}() {
 #
 eval "
 function cwmakeinstall_${rname}_mbedtls() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   make distclean
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-zlib \
     --without-libssh2 \
     --without-ssl \
     --without-cyassl \
+    --without-gnutls \
     --with-mbedtls \
     --with-default-ssl-backend=mbedtls
   make -j${cwmakejobs}
@@ -68,13 +70,14 @@ function cwmakeinstall_${rname}_mbedtls() {
 
 eval "
 function cwmakeinstall_${rname}_wolfssl() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   make distclean
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-zlib \
     --without-libssh2 \
     --without-ssl \
     --without-mbedtls \
+    --without-gnutls \
     --with-cyassl \
     --with-default-ssl-backend=cyassl
   make -j${cwmakejobs}
