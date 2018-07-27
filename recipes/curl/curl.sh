@@ -36,8 +36,11 @@ function cwconfigure_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
+  rm -f \"${ridir}/bin/${rname}\" \"${ridir}/bin/${rname}-openssl\"
   make install
   popd >/dev/null 2>&1
+  mv \"${ridir}/bin/${rname}\" \"${ridir}/bin/${rname}-openssl\"
+  ln -sf \"${ridir}/bin/${rname}-openssl\" \"${ridir}/bin/${rname}\"
   cwmakeinstall_${rname}_mbedtls
   cwmakeinstall_${rname}_wolfssl
 }
