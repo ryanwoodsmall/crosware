@@ -1,3 +1,10 @@
+#
+# XXX
+#   compile with libgcrypt?
+#   allow linking into curl with openssl/mbedtls/wolfssl?
+#   libgit2 support down the road?
+#
+
 rname="libssh2"
 rver="1.8.0"
 rdir="${rname}-${rver}"
