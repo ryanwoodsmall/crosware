@@ -1,9 +1,9 @@
 rname="libpcap"
-rver="1.8.1"
+rver="1.9.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.tcpdump.org/release/${rfile}"
-rsha256="673dbc69fdc3f5a86fb5759ab19899039a8e5e6c631749e48dcd9c6f0c83541e"
+rsha256="2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019"
 rreqs="make bison flex libnl"
 
 . "${cwrecipe}/common.sh"
@@ -21,6 +21,8 @@ function cwconfigure_${rname}() {
       CPPFLAGS=\"\${CPPFLAGS}\" \
       CFLAGS=\"\${CFLAGS}\" \
       LDFLAGS=\"\${LDFLAGS}\"
+  echo '#include <limits.h>' >> config.h
+  echo '#include <unistd.h>' >> config.h
   popd >/dev/null 2>&1
 }
 "
