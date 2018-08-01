@@ -1,9 +1,9 @@
 rname="netbsdcurses"
-rver="0.2.1"
+rver="0.2.2"
 rdir="netbsd-curses-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/sabotage-linux/netbsd-curses/archive/${rfile}"
-rsha256="673d4f89a7ceddb77266052103ec366ebc90436b95d9e99af3e86cb1f7b9ed8c"
+rsha256="c381ec8388a8679be05ac19c83850acff02b60c7e1fd36c1d3dd27cb72b9832c"
 rreqs="make"
 # we want this to come after ncurses
 rprof="${cwetcprofd}/zz_${rname}.sh"
