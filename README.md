@@ -484,6 +484,7 @@ Recipes to consider:
 - tinyscheme
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tre (https://github.com/laurikari/tre)
+- tree (http://mama.indstate.edu/users/ice/tree/)
 - tsocks
 - upx (https://github.com/upx/upx)
 - utalk (http://utalk.ourproject.org/)
