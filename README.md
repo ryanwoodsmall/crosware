@@ -191,6 +191,7 @@ Working recipes:
 - global
 - grep (gnu grep)
 - groff
+- heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
 - htop
 - iftop
 - indent
@@ -490,7 +491,6 @@ Recipes to consider:
 - vpnc
 - ytalk (http://ytalk.ourproject.org/)
 - support libraries for building the above
-- heirloom project tools (http://heirloom.sourceforge.net/)
 - whatever else seems useful
 
 Bootstrap recipes that need work (i.e., arch-specific versions installed into /usr/local/tmp/bootstrap, archive, etc.);
