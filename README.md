@@ -374,6 +374,8 @@ Recipes to consider:
 - jdbc
   - drivers
     - derby (included in derby.jar)
+    - h2 (http://www.h2database.com/html/main.html)
+    - hsqldb (http://hsqldb.org/)
     - mariadb (https://mariadb.com/kb/en/library/about-mariadb-connector-j/)
     - mssql (https://github.com/Microsoft/mssql-jdbc)
     - mysql (https://dev.mysql.com/downloads/connector/j/)
