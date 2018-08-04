@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
 rsha256="66ec90be036747602f2b48f98312361a9180c97c68a690a5f376fa0f67d0af7c"
-rreqs="make libgpgerror"
+rreqs="make libgpgerror slibtool"
 
 . "${cwrecipe}/common.sh"
 
