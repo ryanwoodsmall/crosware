@@ -431,9 +431,10 @@ Recipes to consider:
 - nettle
   - configure libdir=.../lib since lib64 may be set by default
 - ninja
+- nmap
+- nnn (https://github.com/jarun/nnn)
 - node / npm (ugh)
 - noice (https://git.2f30.org/noice/)
-- nnn (https://github.com/jarun/nnn)
 - nss (ugh)
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - openconnect
