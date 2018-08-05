@@ -403,6 +403,7 @@ Recipes to consider:
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtirpc
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
+- libuv (https://github.com/libuv/libuv)
 - llvm / clang
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
