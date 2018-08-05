@@ -4,7 +4,6 @@ rdir="${rname}-${rver}"
 rurl="https://git.suckless.org/${rname}"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rreqs="make"
-rbdir="${cwbuild}/${rname}"
 rsha256=""
 rfile=""
 
@@ -12,25 +11,19 @@ rfile=""
 
 eval "
 function cwfetch_${rname}() {
-  cd \"${cwbuild}\"
-  rm -rf \"${rname}\"
-  jgit clone \"${rurl}\"
-  cd \"${rname}\"
+  cwscriptecho \"fetching ${rname} from git at ${rurl}\"
+  pushd \"${cwbuild}\" >/dev/null 2>&1
+  rm -rf \"${rdir}\"
+  jgit clone \"${rurl}\" \"${rdir}\"
+  cd \"${rdir}\"
   jgit checkout \"${rver}\"
+  popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwextract_${rname}() {
   cwscriptecho \"cwextract_${rname} noop\"
-}
-"
-
-eval "
-function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
-  rm -rf \"${rname}\"
-  popd >/dev/null 2>&1
 }
 "
 
