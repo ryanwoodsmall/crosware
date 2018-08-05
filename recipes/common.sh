@@ -95,10 +95,10 @@ function cwlinkdir_${rname}() {
 
 eval "
 function cwinstall_${rname}() {
+  cwclean_${rname}
   cwfetch_${rname}
   cwcheckreqs_${rname}
   cwsourceprofile
-  cwclean_${rname}
   cwextract_${rname}
   cwconfigure_${rname}
   cwmake_${rname}

@@ -106,10 +106,10 @@ function cwgenprofd_${rname}() {
 
 eval "
 function cwinstall_${rname}() {
+  cwclean_${rname}
   cwfetch_${rname}
   cwcheckreqs_${rname}
   cwsourceprofile
-  cwclean_${rname}
   cwextract "${cwdl}/${rname}/${rfile}" "${cwbuild}"
   cwconfigure_${rname}
   cwmake_${rname}

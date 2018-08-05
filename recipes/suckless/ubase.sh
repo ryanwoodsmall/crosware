@@ -1,19 +1,42 @@
-# should use git but jgit is slow
-# https://github.com/ryanwoodsmall/suckless-misc/blob/master/rpm/SPECS/ubase.spec
 rname="ubase"
 rver="604b66ae8b4005d89eed1cbab45a64cb57e75390"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.bz2"
-rurl="https://git.suckless.org/${rname}/snapshot/${rfile}"
-rsha256="0a8cf4e93b4a8137df91ef8544a2ef6889427d6ebb764622115fc2c52f833649"
+rurl="https://git.suckless.org/${rname}"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rreqs="make"
+rbdir="${cwbuild}/${rname}"
+rfile=""
+rsha256=""
 
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwfetch_${rname}() {
+  cd \"${cwbuild}\"
+  rm -rf \"${rname}\"
+  jgit clone \"${rurl}\"
+  cd \"${rname}\"
+  jgit checkout \"${rver}\"
+}
+"
+
+eval "
+function cwextract_${rname}() {
+  cwscriptecho \"cwextract_${rname} noop\"
+}
+"
+
+eval "
+function cwclean_${rname}() {
+  pushd \"${cwbuild}\" >/dev/null 2>&1
+  rm -rf \"${rname}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i '/^PREFIX/d' config.mk
   sed -i '/^CC/d' config.mk
   sed -i '/^AR/d' config.mk
@@ -28,22 +51,22 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  make ubase-box
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make ${rname}-box
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  make ubase-box-install
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make ${rname}-box-install
   popd >/dev/null 2>&1
 }
 "

@@ -1,19 +1,42 @@
-# should use git but jgit is slow
-# https://github.com/ryanwoodsmall/suckless-misc/blob/master/rpm/SPECS/9base.spec
 rname="9base"
 rver="09e95a2d6f8dbafc6601147b2f5f150355813be6"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.bz2"
-rurl="https://git.suckless.org/${rname}/snapshot/${rfile}"
-rsha256="2a7d31a11cb68cd75a7720141cea26f053421064e2230e206c227efbe343d2d8"
+rurl="https://git.suckless.org/${rname}"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rreqs="make"
+rbdir="${cwbuild}/${rname}"
+rsha256=""
+rfile=""
 
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwfetch_${rname}() {
+  cd \"${cwbuild}\"
+  rm -rf \"${rname}\"
+  jgit clone \"${rurl}\"
+  cd \"${rname}\"
+  jgit checkout \"${rver}\"
+}
+"
+
+eval "
+function cwextract_${rname}() {
+  cwscriptecho \"cwextract_${rname} noop\"
+}
+"
+
+eval "
+function cwclean_${rname}() {
+  pushd \"${cwbuild}\" >/dev/null 2>&1
+  rm -rf \"${rname}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   grep -ril /usr/local/plan9 . \
   | grep -v '\.git' \
   | xargs sed -i "s#/usr/local/plan9#${ridir}#g"
@@ -34,7 +57,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'export PLAN9=\"${rtdir}/current\"' > "${rprof}"
-  echo 'append_path \"\${PLAN9}/bin\"' >> "${rprof}"
+  echo 'export PLAN9=\"${rtdir}/current\"' > \"${rprof}\"
+  echo 'append_path \"\${PLAN9}/bin\"' >> \"${rprof}\"
 }
 "

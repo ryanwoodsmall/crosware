@@ -35,10 +35,10 @@ function cwbuild_${rname}() {
 
 eval "
 function cwinstall_${rname}() {
+  cwclean_${rname}
   cwfetch_${rname}
   cwcheckreqs_${rname}
   cwsourceprofile
-  cwclean_${rname}
   cwextract_${rname}
   cwbuild_${rname}
   cwlinkdir_${rname}
