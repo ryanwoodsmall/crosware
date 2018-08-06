@@ -1,3 +1,12 @@
+#
+# XXX - build
+#   - can build with byacc, maybe a better/smaller choice than bison?
+#   - netbsdcurses works: set proper -I and -L, add '-DTPARM_VARARGS -DUSE_TERMCAP' to CPPFLAGS, set LCURS to '-lcurses -lterminfo'
+#   - 9base provides yacc and ed and they seem to work
+#
+# XXX - profile ordering
+#   - use zz_00_heirloom.sh to come before 9base?
+#
 rname="heirloom"
 rver="20180802-musl"
 rdir="${rname}-project-${rver}"
