@@ -4,7 +4,7 @@ rdir="${rname}-project-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/ryanwoodsmall/${rname}-project/archive/${rfile}"
 rsha256="4434595f93b8fe34cb2f52ddb9fb6b69119c06a76c57cb829727e0418ccce353"
-rreqs="make sed ncurses zlib bzip2 flex bison"
+rreqs="make sed ncurses zlib bzip2 flex bison ed"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
