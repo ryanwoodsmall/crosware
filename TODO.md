@@ -149,3 +149,5 @@
   - probably need associated log cleaning command
 - native linux32/linux64 personality environment variable based on ${karch} for ```busybox setarch ____ -R cmd``` to disable ASLR
   - or just use util-linux ```setarch $(uname -m) -R cmd```?
+- do ```unset d ; unset p``` at the end of **etc/profile**
+  - might bleed through to recipe vars?
