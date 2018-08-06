@@ -78,7 +78,7 @@ Ultimately I'd like this to be a self-hosting virtual distribution of sorts, tar
 - get static bootstrapped compiler
 - checkout rest of project
 - build GNU make
-- build native busybox, toolbox, sed, etc. 
+- build native busybox, toolbox, sed, etc.
 - build a few libs / support (ncurses, openssl, slang, zlib, bzip2, lzma, libevent, pkg-config)
 - build a few packages (curl, vim w/syntax hightlighting, screen, tmux, links, lynx - mostly because I use them)
 
@@ -389,6 +389,13 @@ Recipes to consider:
 - kerberos
   - heimdal
   - mit
+- ldd
+  - driver script
+  - run toybox to figure out if musl or glibc and get dyld
+  - if static just say so
+  - depending on dynamic linker...
+    - glibc: ```LD_TRACE_LOADED_OBJECTS=1 /path/to/linker.so /path/to/executable```
+    - musl: setup **ldd** symlink to **ld.so**, run ```ldd /path/to/executable```
 - lemon (https://www.hwaci.com/sw/lemon/ https://www.sqlite.org/lemon.html https://sqlite.org/src/doc/trunk/doc/lemon.html)
 - lf (https://github.com/gokcehan/lf - go)
 - libedit
@@ -448,6 +455,8 @@ Recipes to consider:
 - pass (https://www.passwordstore.org/)
 - pax
 - pcc (http://pcc.ludd.ltu.se/)
+  - pcc and pcc-libs are now separate
+  - will almost certainly have to tinker with ld stuff
 - picolisp
   - picolisp (c, lisp)
   - ersatz picolisp (java)
@@ -485,6 +494,25 @@ Recipes to consider:
 - subversion / svn
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
 - tcc (http://repo.or.cz/w/tinycc.git)
+  - static compilation is _pretty broken_
+  - configure/build with something like...
+```local triplet="$(which ${CC} | xargs realpath | xargs basename | sed s/-gcc//g)"
+env \
+  CPPFLAGS= \
+  CXXFLAGS= \
+  LDFLAGS='-static' \
+  CFLAGS='-fPIC -Wl,-static' \
+  ./configure \
+    --prefix=${ridir} \
+    --config-musl \
+    --enable-static \
+    --libpaths=${cwsw}/statictoolchain/current/${triplet}/lib \
+    --crtprefix=${cwsw}/statictoolchain/current/${triplet}/lib \
+    --elfinterp=${cwsw}/statictoolchain/current/${triplet}/lib/ld.so \
+    --sysincludepaths=${cwsw}/statictoolchain/current/${triplet}/include
+make CPPFLAGS= CXXFLAGS= LDFLAGS='-static' CFLAGS='-Wl,-static -fPIC'
+make install
+```
 - tinyscheme
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tre (https://github.com/laurikari/tre)
