@@ -1,9 +1,9 @@
 rname="bzip2"
 rver="1.0.6"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.gz"
-rurl="http://www.bzip.org/${rver}/${rfile}"
-rsha256="a2848f34fcd5d6cf47def00461fcb528a0484d8edef8208d6d2e2909dc61d9cd"
+rfile="${rver}.tar.gz"
+rurl="https://github.com/ryanwoodsmall/${rname}/archive/${rfile}"
+rsha256="1a8b3a69c92ac300121f37be9d40409c36d783b5914d9b695856e83256cdad0f"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
