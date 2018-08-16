@@ -1,9 +1,9 @@
 rname="libatomicops"
-rver="7.6.4"
+rver="7.6.6"
 rdir="libatomic_ops-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ivmai/libatomic_ops/releases/download/v${rver}/${rfile}"
-rsha256="5b823d5a685dd70caeef8fc50da7d763ba7f6167fe746abca7762e2835b3dd4e"
+rsha256="99feabc5f54877f314db4fadeb109f0b3e1d1a54afb6b4b3dfba1e707e38e074"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
