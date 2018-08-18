@@ -302,6 +302,7 @@ Recipes to consider:
   - configure: ```./bootstrap --prefix=${cwsw}/cmake/$(basename $(pwd)) --no-system-libs --parallel=$(nproc)```
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
+- ddrescue
 - docbook?
 - dnsmasq
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
