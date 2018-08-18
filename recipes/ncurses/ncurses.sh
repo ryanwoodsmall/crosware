@@ -1,3 +1,8 @@
+#
+# XXX - need to maintain version symlinks for hard-coded paths to termcap/terminfo files
+# XXX - i.e., 6.1 -> 6.2, 6.2 -> ...
+#
+
 rname="ncurses"
 rver="6.1"
 rdir="${rname}-${rver}"
