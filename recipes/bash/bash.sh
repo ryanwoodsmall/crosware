@@ -10,7 +10,7 @@ rreqs="make bison flex sed"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --disable-nls \
     --disable-separate-helpfiles \
@@ -25,7 +25,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   # ganked from alpine
   #  https://git.alpinelinux.org/cgit/aports/tree/main/bash/APKBUILD
   make y.tab.c
@@ -38,15 +38,16 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  cwmkdir "${ridir}/bin"
-  install "${rname}" \"${ridir}/bin/${rname}\"
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  cwmkdir \"${ridir}/bin\"
+  install \"${rname}\" \"${ridir}/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/sh\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
