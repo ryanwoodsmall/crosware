@@ -236,30 +236,29 @@ zulu_jdk_arch["x86_64"]="x64"
 
 # zulu jdk version map
 declare -A zulu_jdk_ver
-zulu_jdk_ver["aarch64"]="1.8.0_172-8.30.0.105"
-zulu_jdk_ver["armv6l"]="1.8.0_172-8.30.0.106"
-zulu_jdk_ver["armv7l"]="1.8.0_172-8.30.0.106"
-zulu_jdk_ver["armv8l"]="1.8.0_172-8.30.0.106"
-zulu_jdk_ver["i686"]="8.30.0.1-jdk8.0.172"
-zulu_jdk_ver["x86_64"]="8.30.0.1-jdk8.0.172"
+zulu_jdk_ver["aarch64"]="8.31.1.122-jdk1.8.0_181"
+zulu_jdk_ver["armv6l"]="8.31.1.122-jdk1.8.0_181"
+zulu_jdk_ver["armv7l"]="8.31.1.122-jdk1.8.0_181"
+zulu_jdk_ver["armv8l"]="8.31.1.122-jdk1.8.0_181"
+zulu_jdk_ver["i686"]="8.31.0.1-jdk8.0.181"
+zulu_jdk_ver["x86_64"]="8.31.0.1-jdk8.0.181"
 
 # zulu jdk file sha256sum
 declare -A zulu_jdk_sha256sum
-zulu_jdk_sha256sum["aarch64"]="6c2e5031b5fe293c2eef7f624f7a804c2f18533ad32803010c3187cc9bd050aa"
-zulu_jdk_sha256sum["armv6l"]="fa3d17959b46d5d0c1127a0c8bf3a6ddd0932045d4d094df85552457882ffe75"
-zulu_jdk_sha256sum["armv7l"]="fa3d17959b46d5d0c1127a0c8bf3a6ddd0932045d4d094df85552457882ffe75"
-zulu_jdk_sha256sum["armv8l"]="fa3d17959b46d5d0c1127a0c8bf3a6ddd0932045d4d094df85552457882ffe75"
-zulu_jdk_sha256sum["i686"]="d31277ea99a5db28821bf04b8b60a7ce7cab53cf4f569bc1c19b262831996f14"
-zulu_jdk_sha256sum["x86_64"]="65a1b180ad46c5a1cc2f9ffff29b85d682c0e937b7b964b557f2a3b9084de5b9"
+zulu_jdk_sha256sum["aarch64"]="0915ceca44ca50dde54362b3569d39a259a482b4f25df9857cbb46260c4de397"
+zulu_jdk_sha256sum["armv6l"]="fe014c3b8226d99521f0b1447f0337f27ea7689b653ee5015e4838063633be7c"
+zulu_jdk_sha256sum["armv7l"]="fe014c3b8226d99521f0b1447f0337f27ea7689b653ee5015e4838063633be7c"
+zulu_jdk_sha256sum["armv8l"]="fe014c3b8226d99521f0b1447f0337f27ea7689b653ee5015e4838063633be7c"
+zulu_jdk_sha256sum["i686"]="11c96c4befafe519727a72d1e54545a80d52cd16170f8a72964c9d19cba9ca31"
+zulu_jdk_sha256sum["x86_64"]="ccc9cff02b8f57ff3bc83c4580a5e5948460212dfbd21f1b4b1702b5bbf81079"
 
 # zulu directory, file, and url map
 declare -A zulu_jdk_dir zulu_jdk_file zulu_jdk_url
 for supported_arch in ${supported_arches[@]} ; do
+  zulu_jdk_dir[${supported_arch}]="zulu${zulu_jdk_ver[${supported_arch}]}-linux_${zulu_jdk_arch[${supported_arch}]}"
   if [[ ${supported_arch} =~ ^(i686|x86_64)$ ]] ; then
-    zulu_jdk_dir[${supported_arch}]="zulu${zulu_jdk_ver[${supported_arch}]}-linux_${zulu_jdk_arch[${supported_arch}]}"
     zulu_jdk_base_url="http://cdn.azul.com/zulu/bin"
   elif [[ ${supported_arch} =~ ^a(rmv|arch) ]] ; then
-    zulu_jdk_dir[${supported_arch}]="ezdk-${zulu_jdk_ver[${supported_arch}]}-eval-linux_${zulu_jdk_arch[${supported_arch}]}"
     zulu_jdk_base_url="http://cdn.azul.com/zulu-embedded/bin"
   fi
   zulu_jdk_file[${supported_arch}]="${zulu_jdk_dir[${supported_arch}]}.tar.gz"
