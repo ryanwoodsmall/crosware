@@ -329,6 +329,13 @@ Recipes to consider:
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
 - inetutils
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
+- invisible-island (thomas e. dickey) stuff
+  - bcpp (https://invisible-island.net/bcpp/bcpp.html)
+  - c_count (https://invisible-island.net/c_count/c_count.html)
+  - cindent (https://invisible-island.net/cindent/cindent.html)
+  - cproto (https://invisible-island.net/cproto/cproto.html)
+  - mawk (https://invisible-island.net/mawk/mawk.html)
+  - reflex (https://invisible-island.net/reflex/reflex.html)
 - java stuff
   - ant (included in sdkman)
   - antlr
