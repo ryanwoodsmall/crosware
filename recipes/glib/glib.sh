@@ -1,9 +1,9 @@
 rname="glib"
-rver="2.56.1"
+rver="2.56.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="http://ftp.gnome.org/pub/gnome/sources/glib/2.56/${rfile}"
-rsha256="40ef3f44f2c651c7a31aedee44259809b6f03d3d20be44545cd7d177221c0b8d"
+rsha256="d64abd16813501c956c4e123ae79f47f1b58de573df9fdd3b0795f1e2c1aa789"
 rreqs="gettexttiny libffi make perl pkgconfig python2 zlib"
 
 . "${cwrecipe}/common.sh"
