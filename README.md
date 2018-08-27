@@ -125,9 +125,25 @@ And the musl wiki has some pointers on patches and compatibility:
 
 - https://wiki.musl-libc.org/compatibility.html#Software-compatibility,-patches-and-build-instructions
 
-Mes might be useful at some point.
+Mes (and m2) might be useful at some point.
 
-- https://gitlab.com/janneke/mes
+- https://www.gnu.org/software/mes/
+- janneke stuff:
+  - https://gitlab.com/users/janneke/projects
+  - https://gitlab.com/janneke/mes
+  - https://gitlab.com/janneke/mes-seed
+  - https://github.com/janneke/mescc-tools
+  - https://gitlab.com/janneke/nyacc
+  - https://gitlab.com/janneke/stage0
+  - https://gitlab.com/janneke/stage0-seed
+  - https://gitlab.com/janneke/tinycc
+- oriansj stuff:
+  - https://github.com/oriansj/M2-Planet
+  - https://github.com/oriansj/M2-Moon
+  - https://github.com/oriansj/mes-m2
+  - https://github.com/oriansj/mescc-tools-seed
+  - https://github.com/oriansj/mescc-tools
+  - https://github.com/oriansj/stage0
 - https://lists.gnu.org/archive/html/guile-user/2016-06/msg00061.html
 - https://lists.gnu.org/archive/html/guile-user/2017-07/msg00089.html
 
@@ -431,6 +447,7 @@ Recipes to consider:
 - mercurial / hg
   - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```
   - config/build/install with: ```env PATH=${cwsw}/python2/current/bin:${PATH} make <all|install> PREFIX=${ridir} CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS//-static/}" CFLAGS='' CPPFLAGS=''```
+- mes (https://www.gnu.org/software/mes/) and m2 stuff (links above)
 - meson (http://mesonbuild.com/ - python 3 and ninja)
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
 - moreutils (https://joeyh.name/code/moreutils/)
