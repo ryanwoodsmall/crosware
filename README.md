@@ -473,6 +473,7 @@ Recipes to consider:
 - noice (https://git.2f30.org/noice/)
 - nss (ugh)
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
+- nyacc (https://www.nongnu.org/nyacc/ and https://savannah.nongnu.org/projects/nyacc)
 - openconnect
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
