@@ -138,6 +138,7 @@ Mes (and m2) might be useful at some point.
   - https://gitlab.com/janneke/stage0-seed
   - https://gitlab.com/janneke/tinycc
 - oriansj stuff:
+  - https://github.com/oriansj
   - https://github.com/oriansj/M2-Planet
   - https://github.com/oriansj/M2-Moon
   - https://github.com/oriansj/mes-m2
@@ -146,6 +147,7 @@ Mes (and m2) might be useful at some point.
   - https://github.com/oriansj/stage0
 - https://lists.gnu.org/archive/html/guile-user/2016-06/msg00061.html
 - https://lists.gnu.org/archive/html/guile-user/2017-07/msg00089.html
+- http://lists.gnu.org/archive/html/info-gnu/2018-08/msg00006.html
 
 Suckless has a list of good stuff:
 
