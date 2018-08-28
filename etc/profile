@@ -1,5 +1,22 @@
 #!/bin/bash
 
+#
+# lots of bashisms
+#   can likely work with ash/dash with...
+#     - 'function name() {...}' replaced with posix 'name() {...}'
+#     - BASH_SOURCE[0] replaced with $(realpath $_) - must be first command
+#       - or not, $0/$_ isn't consistent across shells, $_ is funky in posix
+#     - something like...
+#       if [ -z "${BASH_VERSION}" ] ; then
+#         : ${cwetcdir:="/usr/local/crosware/etc"}
+#       else
+#         cwetcdir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
+#       fi
+#     - "source" replaced with "."
+#     - ${...//::/:} doesn't seem to work in dash
+#     - this all sucks
+#
+
 # get our etc and bin dir
 cwetcdir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
 cwtop="$(cd "${cwetcdir}"/.. && pwd)"
