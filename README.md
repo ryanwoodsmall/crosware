@@ -486,6 +486,7 @@ Recipes to consider:
 - pcc (http://pcc.ludd.ltu.se/)
   - pcc and pcc-libs are now separate
   - will almost certainly have to tinker with ld stuff
+- pdsh (https://github.com/chaos/pdsh or https://github.com/grondo/pdsh ?)
 - picolisp
   - picolisp (c, lisp)
   - ersatz picolisp (java)
