@@ -438,6 +438,7 @@ Recipes to consider:
 - libtirpc
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
 - libuv (https://github.com/libuv/libuv)
+- libyaml (https://github.com/yaml/libyaml)
 - llvm / clang
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
@@ -474,6 +475,9 @@ Recipes to consider:
 - nss (ugh)
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - nyacc (https://www.nongnu.org/nyacc/ and https://savannah.nongnu.org/projects/nyacc)
+- odbc?
+  - iodbc?
+  - unixodbc?
 - openconnect
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
