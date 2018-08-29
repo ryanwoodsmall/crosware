@@ -500,6 +500,7 @@ Recipes to consider:
 - psmisc
 - qemu
 - racket
+- ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
 - rover (https://lecram.github.io/p/rover)
 - rpcbind
