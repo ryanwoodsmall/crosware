@@ -151,3 +151,6 @@
   - or just use util-linux ```setarch $(uname -m) -R cmd```?
 - do ```unset d ; unset p``` at the end of **etc/profile**
   - might bleed through to recipe vars?
+- linting, testing
+  - bats (https://github.com/sstephenson/bats)
+  - shellcheck (https://www.shellcheck.net/ and https://github.com/koalaman/shellcheck)
