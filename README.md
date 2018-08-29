@@ -342,6 +342,7 @@ Recipes to consider:
   - configure needs ```--with-included-libtasn1 --with-included-unistring --without-p11-kit```
 - go (**chicken/egg problem with source builds on aarch64**)
 - gpg
+- graphviz (http://graphviz.org/)
 - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
 - hbase (version?)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
