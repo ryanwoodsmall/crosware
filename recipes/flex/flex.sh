@@ -11,16 +11,17 @@ rreqs="make m4"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   make install
-  ln -sf "${rname}" "${ridir}/bin/lex"
+  ln -sf \"${rname}\" \"${ridir}/bin/lex\"
+  ln -sf \"${rname}++\" \"${ridir}/bin/lex++\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
   echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
   echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
 }
