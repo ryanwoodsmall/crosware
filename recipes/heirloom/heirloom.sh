@@ -1,6 +1,7 @@
 #
 # XXX - build
 #   - can build with byacc, maybe a better/smaller choice than bison?
+#   - can build with reflex instead of flex
 #   - netbsdcurses works: set proper -I and -L, add '-DTPARM_VARARGS -DUSE_TERMCAP' to CPPFLAGS, set LCURS to '-lcurses -lterminfo'
 #   - 9base provides yacc and ed and they seem to work
 #
