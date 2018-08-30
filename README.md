@@ -414,6 +414,7 @@ Recipes to consider:
     - ha-jdbc (https://github.com/ha-jdbc/ha-jdbc)
     - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
     - jisql (https://github.com/stdunbar/jisql)
+- jed (https://www.jedsoft.org/jed/)
 - kerberos
   - heimdal
   - mit
@@ -455,6 +456,7 @@ Recipes to consider:
 - meson (http://mesonbuild.com/ - python 3 and ninja)
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
 - moreutils (https://joeyh.name/code/moreutils/)
+- most (https://www.jedsoft.org/most/)
 - mpg123
 - mpg321
 - musl stuff
