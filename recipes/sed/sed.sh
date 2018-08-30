@@ -1,10 +1,15 @@
+#
+# XXX - require both toybox and busybox since we need xz (indirectly, via tar) 
+# XXX - prepend toybox to $PATH since chrome/chromium os sed is sandboxed by default
+#
+
 rname="sed"
 rver="4.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="7aad73c8839c2bdadca9476f884d2953cdace9567ecd0d90f9959f229d146b40"
-rreqs="make toybox"
+rreqs="make busybox toybox"
 
 . "${cwrecipe}/common.sh"
 
