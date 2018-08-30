@@ -269,6 +269,7 @@ Working recipes:
 - rc (http://tobold.org/article/rc, https://github.com/rakitzis/rc - needs to be git hash, currently old release)
 - rcs (gnu)
 - readline
+- reflex (https://invisible-island.net/reflex/reflex.html)
 - rhino
 - rlwrap
 - rogue
@@ -354,7 +355,6 @@ Recipes to consider:
   - cindent (https://invisible-island.net/cindent/cindent.html)
   - cproto (https://invisible-island.net/cproto/cproto.html)
   - mawk (https://invisible-island.net/mawk/mawk.html)
-  - reflex (https://invisible-island.net/reflex/reflex.html)
 - java stuff
   - ant (included in sdkman)
   - antlr
