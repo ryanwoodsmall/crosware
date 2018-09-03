@@ -1,5 +1,7 @@
 #
 # XXX - sysroot should be recreated at build time in ${rtdir}/sysroot
+# XXX - arch specific static toolchain dir can be more like:
+#       $(dirname $(which gcc))/../$(gcc -dumpmachine)
 #
 
 rname="perl"
