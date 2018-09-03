@@ -154,3 +154,12 @@
 - linting, testing
   - bats (https://github.com/sstephenson/bats)
   - shellcheck (https://www.shellcheck.net/ and https://github.com/koalaman/shellcheck)
+- static tool chain vars:
+  - can be used to contruct a sysroot (i.e., in perl recipe)
+  - cwstarch: ```gcc -dumpmachine```
+  - cwsttop: ```cd $(dirname $(which gcc))/../ && pwd```
+  - cwstbin: ```${cwsttop}/bin```
+  - cwstlib: ```${cwsttop}/lib```
+  - cwstabin: ```${cwsttop}/${cwstarch}/bin```
+  - cwstainclude: ```${cwsttop}/${cwstarch}/include```
+  - cwstalib: ```${cwsttop}/${cwstarch}/lib```
