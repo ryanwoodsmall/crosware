@@ -1,3 +1,7 @@
+#
+# XXX - needs classpath and main func to bring in contrib jar
+#       https://common-lisp.net/project/armedbear/doc/abcl-install-with-java.html#linux
+#
 rname="abcl"
 rver="1.5.0"
 rdir="${rname}-bin-${rver}"
