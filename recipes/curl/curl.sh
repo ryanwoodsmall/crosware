@@ -7,11 +7,11 @@
 #
 
 rname="curl"
-rver="7.61.0"
+rver="7.61.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
-rsha256="5f6f336921cf5b84de56afbd08dfb70adeef2303751ffb3e570c936c6d656c9c"
+rsha256="a308377dbc9a16b2e994abd55455e5f9edca4e31666f8f8fcfe7a1a4aea419b9"
 rreqs="make zlib openssl mbedtls wolfssl libssh2"
 
 . "${cwrecipe}/common.sh"
@@ -20,6 +20,8 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+    --disable-dependency-tracking \
+    --disable-maintainer-mode \
     --with-libssh2 \
     --with-zlib \
     --without-mbedtls \
@@ -55,6 +57,8 @@ function cwmakeinstall_${rname}_mbedtls() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make distclean
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+    --disable-dependency-tracking \
+    --disable-maintainer-mode \
     --with-zlib \
     --without-libssh2 \
     --without-ssl \
@@ -73,6 +77,8 @@ function cwmakeinstall_${rname}_wolfssl() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make distclean
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+    --disable-dependency-tracking \
+    --disable-maintainer-mode \
     --with-zlib \
     --without-libssh2 \
     --without-ssl \
