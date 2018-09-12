@@ -293,7 +293,7 @@ jgitsh_envs=( "PATH" )
 old_static_toolchain_pkgname="static-toolchain"
 static_toolchain_archive_ext="tar.bz2"
 static_toolchain_checksum_ext="sha256"
-static_toolchain_release="20180706"
+static_toolchain_release="20180911"
 static_toolchain_base_url="https://github.com/ryanwoodsmall/musl-misc/releases/download"
 static_toolchain_release_url="${static_toolchain_base_url}/${static_toolchain_release}"
 static_toolchain_pkgname="statictoolchain"
@@ -310,12 +310,12 @@ static_toolchain_triplet["x86_64"]="x86_64-linux-musl"
 
 # architecture to release prefix
 declare -A static_toolchain_prefix
-static_toolchain_prefix["aarch64"]="201807060825"
-static_toolchain_prefix["armv6l"]="201807060825"
-static_toolchain_prefix["armv7l"]="201807060825"
-static_toolchain_prefix["armv8l"]="201807060825"
-static_toolchain_prefix["i686"]="201807060825"
-static_toolchain_prefix["x86_64"]="201807060825"
+static_toolchain_prefix["aarch64"]="201809111945"
+static_toolchain_prefix["armv6l"]="201809111945"
+static_toolchain_prefix["armv7l"]="201809111945"
+static_toolchain_prefix["armv8l"]="201809111945"
+static_toolchain_prefix["i686"]="201809111945"
+static_toolchain_prefix["x86_64"]="201809111945"
 
 # architecture to filename, urls, sha256 file, dir, ...
 declare -A static_toolchain_file static_toolchain_checksum static_toolchain_checksum_file static_toolchain_file_url static_toolchain_checksum_url static_toolchain_dir
