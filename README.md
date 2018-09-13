@@ -359,6 +359,7 @@ Recipes to consider:
   - ant (included in sdkman)
   - antlr
   - beanshell
+  - ceylon (included in sdkman)
   - clojure (leiningen included in sdkman)
   - dynjs (dead?)
   - frege (https://github.com/Frege/frege)
@@ -380,6 +381,7 @@ Recipes to consider:
   - sbt (included in sdkman)
   - scala (included in sdkman)
   - spark (included in sdkman)
+  - xtend
 - java jvm/jdk stuff
   - avian (https://readytalk.github.io/avian/)
   - cacao
