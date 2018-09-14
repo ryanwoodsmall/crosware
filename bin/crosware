@@ -81,6 +81,7 @@ cwcmds["list-upgradable"]="list installed packages with available upgrades"
 cwcmds["list-funcs"]="list ${cwname} shell functions"
 cwcmds["run-func"]="run ${cwname} shell function"
 cwcmds["show-env"]="run 'env' to show ${cwname} environment"
+cwcmds["upgrade"]="uninstall then install a recipe"
 # XXX - does this need to be an associative array to generate case ..) statements?
 cwcmdaliases=( 'list-upgradeable' )
 cwcmdlist=( $(echo ${!cwcmds[@]} ${cwcmdaliases[@]} | tr ' ' '\n' | sort | xargs echo) )
@@ -821,7 +822,7 @@ function cwlistupgradable() {
   for installed in $(cwlistinstalled | sed "s/ : /|/g") ; do
     installedrecipe["${installed%%|*}"]="${installed#*|}"
   done
-  for recipe in ${!installedrecipe[@]} ; do
+  for recipe in $(echo ${!installedrecipe[@]} | tr ' ' '\n' | sort) ; do
     local rv="$(cwver_${recipe})"
     local iv="${installedrecipe[${recipe}]}"
     if [[ $rv != $iv ]] ; then
@@ -846,6 +847,18 @@ function cwuninstall() {
       cwscriptecho "uninstalling ${recipe}"
       cwuninstall_${recipe}
     fi
+  done
+}
+
+#
+# cwupgrade
+#
+# uninstall and install recipes
+#
+function cwupgrade() {
+  for recipe in "${@}" ; do
+    cwuninstall "${recipe}"
+    cwinstall "${recipe}"
   done
 }
 
@@ -979,6 +992,9 @@ case "${cmd}" in
     ;;
   show-env)
     cwenv
+    ;;
+  upgrade)
+    cwupgrade "${@}"
     ;;
   help)
     cwusage
