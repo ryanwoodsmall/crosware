@@ -77,10 +77,13 @@ cwcmds["list-installed"]="list installed recipes"
 cwcmds["uninstall"]="uninstall some packages"
 cwcmds["set"]="run 'set' to show full ${cwname} environment"
 cwcmds["list-available"]="list available recipes which are not installed"
+cwcmds["list-upgradable"]="list installed packages with available upgrades"
 cwcmds["list-funcs"]="list ${cwname} shell functions"
 cwcmds["run-func"]="run ${cwname} shell function"
 cwcmds["show-env"]="run 'env' to show ${cwname} environment"
-cwcmdlist=( $(echo ${!cwcmds[@]} | tr ' ' '\n' | sort | xargs echo) )
+# XXX - does this need to be an associative array to generate case ..) statements?
+cwcmdaliases=( 'list-upgradeable' )
+cwcmdlist=( $(echo ${!cwcmds[@]} ${cwcmdaliases[@]} | tr ' ' '\n' | sort | xargs echo) )
 
 #
 # common commands
@@ -809,6 +812,25 @@ function cwlistavailable() {
 }
 
 #
+# cwlistupgradable
+#
+function cwlistupgradable() {
+  cwsourcerecipes
+  local recipe=""
+  declare -A installedrecipe
+  for installed in $(cwlistinstalled | sed "s/ : /|/g") ; do
+    installedrecipe["${installed%%|*}"]="${installed#*|}"
+  done
+  for recipe in ${!installedrecipe[@]} ; do
+    local rv="$(cwver_${recipe})"
+    local iv="${installedrecipe[${recipe}]}"
+    if [[ $rv != $iv ]] ; then
+      echo $recipe : $iv : $rv
+    fi
+  done
+}
+
+#
 # cwuninstall
 #
 # uninstall some recipes
@@ -936,6 +958,9 @@ case "${cmd}" in
     ;;
   list-available)
     cwlistavailable
+    ;;
+  list-upgradable|list-upgradeable)
+    cwlistupgradable
     ;;
   install)
     cwinstall "${@}"
