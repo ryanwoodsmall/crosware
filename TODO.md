@@ -163,3 +163,9 @@
   - cwstabin: ```${cwsttop}/${cwstarch}/bin```
   - cwstainclude: ```${cwsttop}/${cwstarch}/include```
   - cwstalib: ```${cwsttop}/${cwstarch}/lib```
+- prereqs really need to be a graph
+  - ```install```, ```upgrade-all``` need to work on a dag
+    - check prereq installed _or_...
+    - check if installed prereq needs upgrade
+    - recursively chase down to "root", i.e., until prereq graph is empty (or has only **make**)
+    - only do this once - expensive
