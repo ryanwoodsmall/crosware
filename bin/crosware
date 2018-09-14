@@ -70,6 +70,7 @@ cwcmds["bootstrap"]="bootstrap ${cwname}"
 cwcmds["env"]="dump source-/eval-able ${cwname} etc/profile"
 cwcmds["profile"]="show .profile addition"
 cwcmds["list-recipes"]="list build recipes"
+cwcmds["list-recipe-versions"]="list recipes with version number"
 cwcmds["install"]="attempt to build/install a package from a known recipe"
 cwcmds["update"]="attempt to update existing install of ${cwname}"
 cwcmds["list-installed"]="list installed recipes"
@@ -242,6 +243,7 @@ zulu_jdk_ver["armv7l"]="8.31.1.122-jdk1.8.0_181"
 zulu_jdk_ver["armv8l"]="8.31.1.122-jdk1.8.0_181"
 zulu_jdk_ver["i686"]="8.31.0.1-jdk8.0.181"
 zulu_jdk_ver["x86_64"]="8.31.0.1-jdk8.0.181"
+zulu_ver="${zulu_jdk_ver[$(uname -m)]}"
 
 # zulu jdk file sha256sum
 declare -A zulu_jdk_sha256sum
@@ -291,64 +293,76 @@ jgitsh_envs=( "PATH" )
 
 # common static compiler release/tag, archive, and url
 old_static_toolchain_pkgname="static-toolchain"
-static_toolchain_archive_ext="tar.bz2"
-static_toolchain_checksum_ext="sha256"
-static_toolchain_release="20180911"
-static_toolchain_base_url="https://github.com/ryanwoodsmall/musl-misc/releases/download"
-static_toolchain_release_url="${static_toolchain_base_url}/${static_toolchain_release}"
-static_toolchain_pkgname="statictoolchain"
-static_toolchain_inst_dir="${cwsw}/${static_toolchain_pkgname}"
+statictoolchain_archive_ext="tar.bz2"
+statictoolchain_checksum_ext="sha256"
+statictoolchain_release="20180911"
+statictoolchain_base_url="https://github.com/ryanwoodsmall/musl-misc/releases/download"
+statictoolchain_release_url="${statictoolchain_base_url}/${statictoolchain_release}"
+statictoolchain_pkgname="statictoolchain"
+statictoolchain_inst_dir="${cwsw}/${statictoolchain_pkgname}"
 
 # architecture to musl triplet
-declare -A static_toolchain_triplet
-static_toolchain_triplet["aarch64"]="aarch64-linux-musl"
-static_toolchain_triplet["armv6l"]="arm-linux-musleabihf"
-static_toolchain_triplet["armv7l"]="arm-linux-musleabihf"
-static_toolchain_triplet["armv8l"]="arm-linux-musleabihf"
-static_toolchain_triplet["i686"]="i686-linux-musl"
-static_toolchain_triplet["x86_64"]="x86_64-linux-musl"
+declare -A statictoolchain_triplet
+statictoolchain_triplet["aarch64"]="aarch64-linux-musl"
+statictoolchain_triplet["armv6l"]="arm-linux-musleabihf"
+statictoolchain_triplet["armv7l"]="arm-linux-musleabihf"
+statictoolchain_triplet["armv8l"]="arm-linux-musleabihf"
+statictoolchain_triplet["i686"]="i686-linux-musl"
+statictoolchain_triplet["x86_64"]="x86_64-linux-musl"
 
 # architecture to release prefix
-declare -A static_toolchain_prefix
-static_toolchain_prefix["aarch64"]="201809111945"
-static_toolchain_prefix["armv6l"]="201809111945"
-static_toolchain_prefix["armv7l"]="201809111945"
-static_toolchain_prefix["armv8l"]="201809111945"
-static_toolchain_prefix["i686"]="201809111945"
-static_toolchain_prefix["x86_64"]="201809111945"
+statictoolchain_ver="201809111945"
+declare -A statictoolchain_prefix
+statictoolchain_prefix["aarch64"]="${statictoolchain_ver}"
+statictoolchain_prefix["armv6l"]="${statictoolchain_ver}"
+statictoolchain_prefix["armv7l"]="${statictoolchain_ver}"
+statictoolchain_prefix["armv8l"]="${statictoolchain_ver}"
+statictoolchain_prefix["i686"]="${statictoolchain_ver}"
+statictoolchain_prefix["x86_64"]="${statictoolchain_ver}"
 
 # architecture to filename, urls, sha256 file, dir, ...
-declare -A static_toolchain_file static_toolchain_checksum static_toolchain_checksum_file static_toolchain_file_url static_toolchain_checksum_url static_toolchain_dir
+declare -A statictoolchain_file statictoolchain_checksum statictoolchain_checksum_file statictoolchain_file_url statictoolchain_checksum_url statictoolchain_dir
 for supported_arch in ${supported_arches[@]} ; do
-  static_toolchain_file[${supported_arch}]="${static_toolchain_prefix[${supported_arch}]}-${static_toolchain_triplet[${supported_arch}]}.${static_toolchain_archive_ext}"
-  static_toolchain_checksum_file[${supported_arch}]="${static_toolchain_file[${supported_arch}]}.${static_toolchain_checksum_ext}"
-  static_toolchain_file_url[${supported_arch}]="${static_toolchain_release_url}/${static_toolchain_file[${supported_arch}]}"
-  static_toolchain_checksum_url[${supported_arch}]="${static_toolchain_release_url}/${static_toolchain_checksum_file[${supported_arch}]}"
-  static_toolchain_dir[${supported_arch}]="${static_toolchain_prefix[${supported_arch}]}-${static_toolchain_triplet[${supported_arch}]}"
+  statictoolchain_file[${supported_arch}]="${statictoolchain_prefix[${supported_arch}]}-${statictoolchain_triplet[${supported_arch}]}.${statictoolchain_archive_ext}"
+  statictoolchain_checksum_file[${supported_arch}]="${statictoolchain_file[${supported_arch}]}.${statictoolchain_checksum_ext}"
+  statictoolchain_file_url[${supported_arch}]="${statictoolchain_release_url}/${statictoolchain_file[${supported_arch}]}"
+  statictoolchain_checksum_url[${supported_arch}]="${statictoolchain_release_url}/${statictoolchain_checksum_file[${supported_arch}]}"
+  statictoolchain_dir[${supported_arch}]="${statictoolchain_prefix[${supported_arch}]}-${statictoolchain_triplet[${supported_arch}]}"
 done
 
 # static toolchain environment
 # XXX - set more ld flags? -s/--strip-all or -S/--strip-debug
-declare -A static_toolchain_env
-static_toolchain_env["PATH"]="${static_toolchain_inst_dir}/current/bin:\${PATH}"
-static_toolchain_env["CFLAGS"]="-Wl,-static -fPIC"
-static_toolchain_env["CXXFLAGS"]="-Wl,-static -fPIC"
-static_toolchain_env["LDFLAGS"]="-static \${LDFLAGS//-static/}"
-static_toolchain_env["CC"]="${static_toolchain_triplet[${karch}]}-gcc"
-static_toolchain_env["CXX"]="${static_toolchain_triplet[${karch}]}-g++"
-static_toolchain_env["LD"]="${static_toolchain_triplet[${karch}]}-ld"
-static_toolchain_env["CPP"]="${static_toolchain_triplet[${karch}]}-cpp"
-static_toolchain_env["AR"]="${static_toolchain_triplet[${karch}]}-ar"
-static_toolchain_env["AS"]="${static_toolchain_triplet[${karch}]}-as"
-static_toolchain_envs=( "PATH" "CFLAGS" "CXXFLAGS" "LDFLAGS" "CC" "CXX" "CPP" "LD" "AR" "AS" )
+declare -A statictoolchain_env
+statictoolchain_env["PATH"]="${statictoolchain_inst_dir}/current/bin:\${PATH}"
+statictoolchain_env["CFLAGS"]="-Wl,-static -fPIC"
+statictoolchain_env["CXXFLAGS"]="-Wl,-static -fPIC"
+statictoolchain_env["LDFLAGS"]="-static \${LDFLAGS//-static/}"
+statictoolchain_env["CC"]="${statictoolchain_triplet[${karch}]}-gcc"
+statictoolchain_env["CXX"]="${statictoolchain_triplet[${karch}]}-g++"
+statictoolchain_env["LD"]="${statictoolchain_triplet[${karch}]}-ld"
+statictoolchain_env["CPP"]="${statictoolchain_triplet[${karch}]}-cpp"
+statictoolchain_env["AR"]="${statictoolchain_triplet[${karch}]}-ar"
+statictoolchain_env["AS"]="${statictoolchain_triplet[${karch}]}-as"
+statictoolchain_envs=( "PATH" "CFLAGS" "CXXFLAGS" "LDFLAGS" "CC" "CXX" "CPP" "LD" "AR" "AS" )
 
 #
 # "special" bootstrap recipes
 #
-for cwbootstraprecipe in "${zulu_pkgname}" "${jgitsh_pkgname}" "${static_toolchain_pkgname}" ; do
+for cwbootstraprecipe in "${zulu_pkgname}" "${jgitsh_pkgname}" "${statictoolchain_pkgname}" ; do
   cwbootstraprecipes["${cwbootstraprecipe}"]=1
 done
 export cwbootstraprecipes
+
+#
+# generate cwver_${bootstraprecipe}
+#
+for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
+  eval "
+  function cwver_${cwbootstraprecipe}() {
+    echo \"\${${cwbootstraprecipe}_ver}\"
+  }
+  "
+done
 
 #
 # cwmkdir
@@ -549,12 +563,12 @@ function cwbootstrap() {
   # make sure we have a tmp directory
   cwmkcwtmptmp
   # architecture specfic toolchain checksum file
-  local statictoolchainchecksumfile="${cwtmptmp}/${static_toolchain_checksum_file[${karch}]}"
-  cwfetch "${static_toolchain_checksum_url[${karch}]}" "${statictoolchainchecksumfile}"
+  local statictoolchainchecksumfile="${cwtmptmp}/${statictoolchain_checksum_file[${karch}]}"
+  cwfetch "${statictoolchain_checksum_url[${karch}]}" "${statictoolchainchecksumfile}"
   local statictoolchainchecksum="$(awk '{print $1}' ${statictoolchainchecksumfile})"
   # static toolchain
-  local statictoolchainarchive="${cwtmptmp}/${static_toolchain_file[${karch}]}"
-  cwfetchcheck "${static_toolchain_file_url[${karch}]}" "${statictoolchainarchive}" "${statictoolchainchecksum}"
+  local statictoolchainarchive="${cwtmptmp}/${statictoolchain_file[${karch}]}"
+  cwfetchcheck "${statictoolchain_file_url[${karch}]}" "${statictoolchainarchive}" "${statictoolchainchecksum}"
   # jgit
   local jgitsh="${cwtmptmp}/${jgitsh_file}"
   cwfetchcheck "${jgitsh_url}" "${jgitsh}" "${jgitsh_sha256sum}"
@@ -596,11 +610,11 @@ function cwbootstrap() {
   cwexpandenv "${jgitsh_pkgname}" "${cwetcprofd}/${jgitsh_pkgname}.sh"
   cwmarkinstall "${jgitsh_pkgname}" "${jgitsh_ver}"
   # toolchain
-  mkdir -p "${static_toolchain_inst_dir}"
-  cwextract "${statictoolchainarchive}" "${static_toolchain_inst_dir}"
-  cwlinkdir "${static_toolchain_dir[${karch}]}" "${static_toolchain_inst_dir}"
-  cwexpandenv "static_toolchain" "${cwetcprofd}/${static_toolchain_pkgname}.sh"
-  cwmarkinstall "${static_toolchain_pkgname}" "${static_toolchain_prefix[${karch}]}"
+  mkdir -p "${statictoolchain_inst_dir}"
+  cwextract "${statictoolchainarchive}" "${statictoolchain_inst_dir}"
+  cwlinkdir "${statictoolchain_dir[${karch}]}" "${statictoolchain_inst_dir}"
+  cwexpandenv "statictoolchain" "${cwetcprofd}/${statictoolchain_pkgname}.sh"
+  cwmarkinstall "${statictoolchain_pkgname}" "${statictoolchain_prefix[${karch}]}"
   # set tmp directory perm
   cwchmod "${cwtmpperm}" "${cwtmp}"
   # we're bootstrapped...
@@ -627,7 +641,7 @@ function cwbootstrap() {
   fi
   # make sure we have a static-toolchain -> statictoolchain symlink just in case
   if [ ! -e "${cwsw}/${old_static_toolchain_pkgname}" ] ; then
-    ln -sf ${cwsw}/${static_toolchain_pkgname} ${cwsw}/${old_static_toolchain_pkgname}
+    ln -sf ${cwsw}/${statictoolchain_pkgname} ${cwsw}/${old_static_toolchain_pkgname}
   fi
 }
 
@@ -685,6 +699,18 @@ function cwlistrecipes() {
   for recipe in ${!cwrecipes[@]} ; do
     echo "${recipe}"
   done | sort
+}
+
+#
+# cwlistrecipeversions
+#
+function cwlistrecipeversions() {
+  #local filter="^($(echo ${!cwbootstraprecipes[@]} | tr ' ' '|'))$"
+  cwsourcerecipes
+  #for recipe in $(echo ${!cwrecipes[@]} | tr ' ' '\n' | egrep -v "${filter}" | sort | xargs echo) ; do
+  for recipe in $(echo ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} | tr ' ' '\n' | sort | xargs echo) ; do
+    eval 'echo "${recipe} : $(cwver_${recipe})"'
+  done
 }
 
 #
@@ -903,6 +929,9 @@ case "${cmd}" in
     ;;
   list-recipes)
     cwlistrecipes
+    ;;
+  list-recipe-versions)
+    cwlistrecipeversions
     ;;
   list-installed)
     cwlistinstalled
