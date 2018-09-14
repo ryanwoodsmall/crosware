@@ -860,8 +860,8 @@ function cwuninstall() {
 function cwupgrade() {
   local upgrade=""
   for upgrade in "${@}" ; do
-    cwuninstall "${recipe}"
-    cwinstall "${recipe}"
+    cwuninstall "${upgrade}"
+    cwinstall "${upgrade}"
   done
 }
 
@@ -873,7 +873,7 @@ function cwupgrade() {
 function cwupgradeall() {
   local upgradable=""
   for upgradable in $(cwlistupgradable | cut -f1 -d' ') ; do
-    cwupgrade "${recipe}"
+    cwupgrade "${upgradable}"
   done
 }
 
