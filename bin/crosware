@@ -858,8 +858,8 @@ function cwuninstall() {
 # uninstall and install recipes
 #
 function cwupgrade() {
-  local recipe=""
-  for recipe in "${@}" ; do
+  local upgrade=""
+  for upgrade in "${@}" ; do
     cwuninstall "${recipe}"
     cwinstall "${recipe}"
   done
@@ -871,8 +871,8 @@ function cwupgrade() {
 # upgrade all packages that we can
 #
 function cwupgradeall() {
-  local recipe
-  for recipe in $(cwlistupgradable | cut -f1 -d' ') ; do
+  local upgradable=""
+  for upgradable in $(cwlistupgradable | cut -f1 -d' ') ; do
     cwupgrade "${recipe}"
   done
 }
