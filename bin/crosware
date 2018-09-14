@@ -705,11 +705,9 @@ function cwlistrecipes() {
 # cwlistrecipeversions
 #
 function cwlistrecipeversions() {
-  #local filter="^($(echo ${!cwbootstraprecipes[@]} | tr ' ' '|'))$"
   cwsourcerecipes
-  #for recipe in $(echo ${!cwrecipes[@]} | tr ' ' '\n' | egrep -v "${filter}" | sort | xargs echo) ; do
   for recipe in $(echo ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} | tr ' ' '\n' | sort | xargs echo) ; do
-    eval 'echo "${recipe} : $(cwver_${recipe})"'
+    echo "${recipe} : $(cwver_${recipe})"
   done
 }
 
