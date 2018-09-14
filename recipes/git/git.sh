@@ -1,9 +1,9 @@
 rname="git"
-rver="2.18.0"
+rver="2.19.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
-rsha256="8b40be383a603147ae29337136c00d1c634bdfdc169a30924a024596a7e30e92"
+rsha256="180feff58fc0d965d23ea010aa2c69ead92ec318eb9b09cf737529aec62f3ef4"
 rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny libssh2"
 
 . "${cwrecipe}/common.sh"
