@@ -51,7 +51,7 @@ set -eu
 # XXX - curl, sha256sum, ... ? what else? check for tls/ssl support?
 #       xz/xzcat? bzip2/bzcat? gzip?
 #
-prereqs=( 'bzip2' 'curl' 'nproc' 'sha256sum' )
+prereqs=( 'bzip2' 'curl' 'gzip' 'nproc' 'sha256sum' 'tar' )
 for prereq in ${prereqs[@]} ; do
   hash "${prereq}" >/dev/null 2>&1 || {
     cwfailexit "${prereq} not found"
