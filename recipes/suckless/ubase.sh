@@ -17,6 +17,7 @@ function cwfetch_${rname}() {
   jgit clone \"${rurl}\" \"${rdir}\"
   cd \"${rdir}\"
   jgit checkout \"${rver}\"
+  jgit log | head -6
   popd >/dev/null 2>&1
 }
 "

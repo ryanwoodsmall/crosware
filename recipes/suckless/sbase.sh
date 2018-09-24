@@ -1,5 +1,5 @@
 rname="sbase"
-rver="7441770cfd70bbd3caafd6cf035dd74a860741ae"
+rver="a1627b94195e83dba5b7b483d5af780e316cb73f"
 rdir="${rname}-${rver}"
 rurl="https://git.suckless.org/${rname}"
 rprof="${cwetcprofd}/zz_${rname}.sh"
@@ -17,6 +17,7 @@ function cwfetch_${rname}() {
   jgit clone \"${rurl}\" \"${rdir}\"
   cd \"${rdir}\"
   jgit checkout \"${rver}\"
+  jgit log | head -6
   popd >/dev/null 2>&1
 }
 "
