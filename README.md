@@ -387,6 +387,7 @@ Recipes to consider:
   - cacao
   - jamvm
   - jikes rvm
+  - liberica (https://www.bell-sw.com/java.html)
   - maxine (https://github.com/beehive-lab/Maxine-VM)
   - openj9
   - ...
