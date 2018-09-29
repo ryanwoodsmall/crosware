@@ -291,6 +291,7 @@ Working recipes:
 - tig
 - tmux
 - toybox (static)
+- unrar
 - unzip
 - util-linux (as utillinux)
 - vim (with syntax highlighting, which chrome/chromium os vim lacks)
