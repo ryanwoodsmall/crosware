@@ -169,3 +169,4 @@
     - check if installed prereq needs upgrade
     - recursively chase down to "root", i.e., until prereq graph is empty (or has only **make**)
     - only do this once - expensive
+- need custom **cwclean_${rname}** for recipes where ```${rdir} != ${rbdir}``` and ```${rbdir} != ${cwbuild}/${rdir}```
