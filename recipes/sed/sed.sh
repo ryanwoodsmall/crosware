@@ -1,5 +1,5 @@
 #
-# XXX - require both toybox and busybox since we need xz (indirectly, via tar) 
+# XXX - require both toybox and busybox since we need xz (indirectly, via tar)
 # XXX - prepend toybox to $PATH since chrome/chromium os sed is sandboxed by default
 #
 
