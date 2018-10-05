@@ -61,12 +61,16 @@ commands:
   list-funcs : list crosware shell functions
   list-installed : list installed recipes
   list-recipes : list build recipes
+  list-recipe-versions : list recipes with version number
+  list-upgradable : list installed packages with available upgrades
   profile : show .profile addition
   run-func : run crosware shell function
   set : run 'set' to show full crosware environment
   show-env : run 'env' to show crosware environment
   uninstall : uninstall some packages
   update : attempt to update existing install of crosware
+  upgrade : uninstall then install a recipe
+  upgrade-all : upgrade all packages with different recipe versions
 ```
 
 # notes
