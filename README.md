@@ -343,6 +343,10 @@ Recipes to consider:
   - 26.1 can be compiled without gnutls
   - needs aslr disabled during dump
   - or ```setarch $(uname -m) -R``` prepended to make?
+- emulation stuff
+  - gxemul
+  - qemu
+  - simh
 - entr (http://entrproject.org/)
 - gdb
 - gmplib
@@ -511,7 +515,6 @@ Recipes to consider:
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
 - procps-ng
 - psmisc
-- qemu
 - racket
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
