@@ -315,6 +315,10 @@ Recipes to consider:
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - axtls
 - bearssl
+- big data stuff
+  - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
+  - hbase (version?)
+  - spark (included in sdkman)
 - bigloo
 - bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
@@ -345,8 +349,6 @@ Recipes to consider:
 - go (**chicken/egg problem with source builds on aarch64**)
 - gpg
 - graphviz (http://graphviz.org/)
-- hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
-- hbase (version?)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
 - inetutils
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
@@ -381,7 +383,6 @@ Recipes to consider:
   - ringojs
   - sbt (included in sdkman)
   - scala (included in sdkman)
-  - spark (included in sdkman)
   - xtend
 - java jvm/jdk stuff
   - avian (https://readytalk.github.io/avian/)
