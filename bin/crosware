@@ -248,7 +248,7 @@ zulu_jdk_ver["armv7l"]="8.31.1.122-jdk1.8.0_181"
 zulu_jdk_ver["armv8l"]="8.31.1.122-jdk1.8.0_181"
 zulu_jdk_ver["i686"]="8.31.0.1-jdk8.0.181"
 zulu_jdk_ver["x86_64"]="8.31.0.1-jdk8.0.181"
-zulu_ver="${zulu_jdk_ver[$(uname -m)]}"
+zulu_ver="${zulu_jdk_ver[${uarch}]}"
 
 # zulu jdk file sha256sum
 declare -A zulu_jdk_sha256sum
