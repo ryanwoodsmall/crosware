@@ -1,3 +1,9 @@
+#
+# XXX - needs a "--program-prefix=g" and symlinks setup similar to sed
+#     - or symlinks from non-prefix to prefix executables
+#     - gnudiff symlink too
+#
+
 rname="diffutils"
 rver="3.6"
 rdir="${rname}-${rver}"
@@ -11,7 +17,7 @@ rreqs="make sed gettexttiny"
 # XXX - sed fix from https://git.alpinelinux.org/cgit/aports/tree/main/diffutils/APKBUILD
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG '/gets is a/d' lib/stdio.in.h
   ./configure ${cwconfigureprefix} --disable-nls
   popd >/dev/null 2>&1
@@ -20,6 +26,6 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'prepend_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'prepend_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
