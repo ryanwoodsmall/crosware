@@ -1,6 +1,6 @@
 #
-# XXX - needs a "--program-prefix=g" and symlinks setup similar to sed
-#     - or symlinks from non-prefix to prefix executables
+# XXX - needs a "--program-prefix=g" and symlinks setup similar to grep/sed
+#     - or symlinks from non-prefix to prefix executables, like make
 #     - gnudiff symlink too
 #
 
