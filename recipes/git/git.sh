@@ -9,6 +9,13 @@ rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny libssh2"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwfetch_${rname}() {
+  cwfetchcheck \"${rurl}\" \"${cwdl}/${rname}/${rfile}\" \"${rsha256}\"
+  cwfetchcheck \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \"${cwdl}/${rname}/${rfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \"27af909c7a43ffc8b1736af19a6a68d8a5b177963ec4ddd2b2f9f0ed53bcc6ee\"
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
@@ -47,12 +54,14 @@ function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make -j${cwmakejobs} install NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
   cwmkdir \"${ridir}/etc\"
+  cwmkdir \"${ridir}/share/man\"
+  tar -C \"${ridir}/share/man\" -Jxf \"${cwdl}/${rname}/${rfile//${rname}-${rver}/${rname}-manpages-${rver}}\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
