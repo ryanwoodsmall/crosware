@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="http://ftp.gnome.org/pub/gnome/sources/glib/${rver%.*}/${rfile}"
 rsha256="97d6a9d926b6aa3dfaadad3077cfb43eec74432ab455dff14250c769d526d7d6"
-rreqs="gettexttiny libffi make perl pkgconfig python2 zlib autoconf automake libtool"
+rreqs="gettexttiny libffi make perl pkgconfig python2 zlib autoconf automake libtool slibtool"
 
 . "${cwrecipe}/common.sh"
 
@@ -25,6 +25,22 @@ EOF
     --disable-compile-warnings \
     --disable-fam \
     --with-python=\"${cwsw}/python2/current/bin/python2.7\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make -j${cwmakejobs} LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\"
   popd >/dev/null 2>&1
 }
 "
