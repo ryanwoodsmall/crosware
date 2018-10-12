@@ -7,7 +7,7 @@
 # - update the vim recipe
 # - build/upgrade vim
 # - show the version
-# - dump the version
+# - show git diff
 # - dump the git commit command
 #
 
