@@ -10,10 +10,18 @@
 # - show git diff
 # - dump the git commit command
 #
+# TODO:
+# - make this generic?
+# - recipe and version number?
+#
 
 set -eu
 
-vrf="./recipes/vim/vim.sh"
+td="$(cd $(dirname "${BASH_SOURCE[0]}")/.. && pwd)"
+
+cw="${td}/bin/crosware"
+
+vrf="${td}/recipes/vim/vim.sh"
 
 if [ ${#} -ne 1 ] ; then
   echo "please provide a single vim version number"
@@ -37,14 +45,14 @@ vss="$(curl -fkLs ${vfu} | sha256sum | awk '{print $1}')"
 sed -i '/^rver=/s/^rver=.*/rver="'"${1}"'"/g' "${vrf}"
 sed -i '/^rsha256=/s/^rsha256=.*/rsha256="'"${vss}"'"/g' "${vrf}"
 
-git diff
+git diff "${vrf}"
 echo
-./bin/crosware list-upgradable
-./bin/crosware upgrade vim
+"${cw}" list-upgradable
+"${cw}" upgrade vim
 echo
-./software/vim/current/bin/vim --version | egrep '(^VIM|patches:)'
+"${td}/software/vim/current/bin/vim" --version | egrep '(^VIM|patches:)'
 echo
-git diff
+git diff "${vrf}"
 echo
 echo "git commit -a -m 'vim: update to ${1}'"
 echo
