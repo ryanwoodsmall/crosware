@@ -204,7 +204,7 @@ Working recipes:
 - file
 - findutils
 - flex
-- gawk (gnu awk, currently appended to $PATH, should be prepended?)
+- gawk (gnu awk, prepended to $PATH, becomes default awk)
 - gc (working on x86\_64, aarch64; broken on i386, arm)
 - gdbm
 - gettext-tiny (named gettexttiny)
