@@ -14,6 +14,16 @@
 # - make this generic?
 # - recipe and version number?
 #
+# XXX:
+# - if not given a rev, get latest via something like...
+#
+#   curl -kLs https://github.com/vim/vim/releases \
+#   | xmllint --format --html - 2>/dev/null \
+#   | awk -F'"' '/\/vim\/vim\/releases\/tag\//{print $2}' \
+#   | head -1 \
+#   | xargs basename \
+#   | sed s/^v//g
+#
 
 set -eu
 
