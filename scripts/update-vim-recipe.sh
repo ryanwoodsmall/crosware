@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 #
-# given a vim verison matching #.#.####:
+# given a vim verison matching #.#.####...
+# -*or*-
+# no arguments...
+# - figure out either given or latest default version
 # - make sure it's valid
 # - get the sha256sum
 # - update the vim recipe
@@ -14,16 +17,6 @@
 # - make this generic?
 # - recipe and version number?
 #
-# XXX:
-# - if not given a rev, get latest via something like...
-#
-#   curl -kLs https://github.com/vim/vim/releases \
-#   | xmllint --format --html - 2>/dev/null \
-#   | awk -F'"' '/\/vim\/vim\/releases\/tag\//{print $2}' \
-#   | head -1 \
-#   | xargs basename \
-#   | sed s/^v//g
-#
 
 set -eu
 
@@ -33,9 +26,17 @@ cw="${td}/bin/crosware"
 
 vrf="${td}/recipes/vim/vim.sh"
 
+vbu="https://github.com/vim/vim"
+
 if [ ${#} -ne 1 ] ; then
-  echo "please provide a single vim version number"
-  exit 1
+  vvn="$(curl -kLs "${vbu}/releases" \
+  | xmllint --format --html - 2>/dev/null \
+  | awk -F'"' '/\/vim\/vim\/releases\/tag\//{print $2}' \
+  | head -1 \
+  | xargs basename \
+  | sed s/^v//g)"
+else
+  vvn="${1}"
 fi
 
 if [ ! -e "${vrf}" ] ; then
@@ -43,7 +44,7 @@ if [ ! -e "${vrf}" ] ; then
   exit 1
 fi
 
-vfu="https://github.com/vim/vim/archive/v${1}.tar.gz"
+vfu="${vbu}/archive/v${vvn}.tar.gz"
 
 if ! $(curl -fkILs "${vfu}" >/dev/null 2>&1) ; then
   echo "HEAD against ${vfu} failed"
@@ -52,8 +53,13 @@ fi
 
 vss="$(curl -fkLs ${vfu} | sha256sum | awk '{print $1}')"
 
-sed -i '/^rver=/s/^rver=.*/rver="'"${1}"'"/g' "${vrf}"
+sed -i '/^rver=/s/^rver=.*/rver="'"${vvn}"'"/g' "${vrf}"
 sed -i '/^rsha256=/s/^rsha256=.*/rsha256="'"${vss}"'"/g' "${vrf}"
+
+if $(git diff "${vrf}" | wc -l | grep -q '^0$') ; then
+  echo "no change detected in ${vrf}"
+  exit 1
+fi
 
 git diff "${vrf}"
 echo
@@ -64,5 +70,5 @@ echo
 echo
 git diff "${vrf}"
 echo
-echo "git commit -a -m 'vim: update to ${1}'"
+echo "git commit -a -m 'vim: update to ${vvn}'"
 echo
