@@ -1,5 +1,8 @@
 # TODO
 
+- need to set ```set -o pipefail```? prolly
+  - and ```trap...```
+  - and use ```... ||:``` as a ```... || true``` shortcut
 - need initial package installs as part of bootstrap?
   - make, sed, gettexttiny, gawk, ...
 - check that we are running as root
