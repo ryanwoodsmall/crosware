@@ -1,5 +1,7 @@
 # TODO
 
+- need initial package installs as part of bootstrap?
+  - make, sed, gettexttiny, gawk, ...
 - check that we are running as root
   - note on perms if sudo/root is not wanted
 - top directory (/usr/local/crosware)
@@ -122,8 +124,6 @@
   - speeds up processing of environment by ~2x
   - does not work for CPPFLAGS/LDFLAGS? becaues of -I or -L? or...?
   - looks like an early vs late eval thing when pattern matching using ```if [[ ... =~ ... ]]```?
-- need initial package installs as part of bootstrap?
-  - make, sed, gettexttiny, ...
 - ```run-command``` function?
   - run a command in the crosware environment
   - useful for pkg-config, etc.
