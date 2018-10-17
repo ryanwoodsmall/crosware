@@ -1,7 +1,5 @@
 #
 # XXX - build
-#   - can build with byacc, maybe a better/smaller choice than bison?
-#   - can build with reflex instead of flex
 #   - netbsdcurses works: set proper -I and -L, add '-DTPARM_VARARGS -DUSE_TERMCAP' to CPPFLAGS, set LCURS to '-lcurses -lterminfo'
 #   - 9base provides yacc and ed and they seem to work
 #
@@ -14,7 +12,7 @@ rdir="${rname}-project-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/ryanwoodsmall/${rname}-project/archive/${rfile}"
 rsha256="7c6d2ad7e99b9f312120f9c087f94086ace29788c41a6ca9ae5c077c76270848"
-rreqs="make sed ncurses zlib bzip2 flex bison ed"
+rreqs="make sed ncurses zlib bzip2 ed byacc reflex"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -24,6 +22,8 @@ function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   grep -ril \"/usr/local/${rname}\" . \
   | xargs sed -i \"s#/usr/local/${rname}#${ridir}#g\"
+  sed -i '/^LEX = /s/LEX.*/LEX=reflex/g' heirloom/build/mk.config
+  sed -i '/^YACC = /s/YACC.*/YACC=byacc/g' heirloom/build/mk.config
   popd >/dev/null 2>&1
 }
 "
