@@ -221,6 +221,7 @@ Working recipes:
   - iperf
   - iperf3
 - j7zip
+- jo (https://github.com/jpmens/jo)
 - jq (https://stedolan.github.io/jq/ - with oniguruma regex)
 - jruby
 - jscheme
@@ -428,7 +429,6 @@ Recipes to consider:
     - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
     - jisql (https://github.com/stdunbar/jisql)
 - jed (https://www.jedsoft.org/jed/)
-- jo (https://github.com/jpmens/jo)
 - kerberos
   - heimdal
   - mit
