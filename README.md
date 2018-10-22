@@ -286,6 +286,7 @@ Working recipes:
 - slang
 - slibtool (https://github.com/midipix-project/slibtool)
 - socat
+- stunnel
 - sqlite
 - suckless
   - 9base (https://tools.suckless.org/9base)
@@ -541,7 +542,6 @@ Recipes to consider:
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - star (with pax/spax - http://cdrtools.sourceforge.net/private/star.html - **does not (yet) work on aarch64**)
 - strace
-- stunnel
 - subversion / svn
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
 - tcc (http://repo.or.cz/w/tinycc.git)
