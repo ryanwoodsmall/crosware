@@ -192,7 +192,7 @@ Working recipes:
 - cppi
 - cscope
 - cssc (gnu sccs)
-- ctags (exberant ctags for now, universal ctags a better choice?)
+- ctags (exuberant ctags for now, universal ctags a better choice?)
 - curl
 - cvs
 - cxref
