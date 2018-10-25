@@ -119,6 +119,9 @@
   - otherwise need a hash of seen flags to trim dupes, that gets slow if generalized
 - need CW_EXT_GIT functionality
   - override provided jgit
+  - ```CW_GIT_CMD```?
+  - jigtsh/git should also provide ```${cwgitcmd}```
+  - prefer git over jgitsh?
 - hardlinks in statictoolchain archives?
   - should be symlinks, but may not be
 - cwgenrecipe list
