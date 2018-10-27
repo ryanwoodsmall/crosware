@@ -73,6 +73,25 @@ commands:
   upgrade-all : upgrade all packages with different recipe versions
 ```
 
+#### alpine
+
+Alpine (https://alpinelinux.org/) uses musl libc (http://musl-libc.org) and as such cannot use the Zulu JDK as distributed. To bootstrap using the system-supplied OpenJDK from Alpine repos:
+
+```
+export CW_EXT_JAVA=true
+apk update
+apk upgrade
+apk add bash curl openjdk8
+cd /tmp
+curl -kLO https://raw.githubusercontent.com/ryanwoodsmall/crosware/master/bin/crosware
+bash crosware bootstrap
+```
+
+Make sure the environment variable ```CW_EXT_JAVA``` is set to **true** (something other than **false**) to use system Java. Please note that ```/usr/local/crosware/etc/profile``` contains bashisms, and does not work on BusyBox ash, so set your ```SHELL``` accordingly. If Zulu is installed on a non-glibc distro, remove the files
+
+- /usr/local/crosware/etc/profile.d/zulu.sh
+- /usr/local/crosware/var/inst/zulu
+
 # notes
 
 Ultimately I'd like this to be a self-hosting virtual distribution of sorts, targeting all variations of 32-/64-bit x86 and ARM on Chrome OS. A static-only GCC compiler using musl-libc (with musl-cross-make) is installed as part of the bootstrap; this sort of precludes things like emacs, but doesn't stop anyone from using a musl toolchain to build a glibc-based shared toolchain. Planning on starting out with shell script-based recipes for configuring/compiling/installing versioned "packages." Initial bootstrap looks something like:
