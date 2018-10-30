@@ -1,9 +1,9 @@
 rname="bison"
-rver="3.1"
+rver="3.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="7c2464ad6cb7b513b2c350a092d919327e1f63d12ff024836acbb504475da5c6"
+rsha256="deec377b95aa72ec4e1a33fe2c938d2480749d740b5291a7cc1d77808d3710bf"
 rreqs="make m4 flex perl sed"
 
 . "${cwrecipe}/common.sh"
