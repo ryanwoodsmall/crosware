@@ -137,7 +137,32 @@
   - add a recipe for it?
   - http://git.savannah.gnu.org/gitweb/?p=config.git
 - certs for openssl/wolfssl/mbedtls/gnutls/...
-- recipes that need slibtool need a flag to set/use LIBTOOL=... on make
+- recipes that need slibtool need a flag to set/use LIBTOOL=... on make/make install; i.e.:
+```
+: ${rlibtool:=""}
+
+if [[ ${rlibtool} == "" && ${rreqs} =~ slibtool ]] ; then
+  rlibtool="LIBTOOL='${cwsw}/slibtool/current/bin/slibtool-static -all-static'"
+fi
+
+eval "
+function cwmake_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make -j${cwmakejobs} ${rlibtool}
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install ${rlibtool}
+  popd >/dev/null 2>&1
+}
+"
+
+unset rlibtool
+```
 - recipes that need autoreconf/libtoolize/etc. flag
 - cwextract
   - which form to use? is this simpler?
