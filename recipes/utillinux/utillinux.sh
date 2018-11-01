@@ -26,7 +26,7 @@ function cwconfigure_${rname}() {
     --without-smack \
     --without-systemd \
       LIBS='-lreadline -lncurses -lncursesw' \
-      LIBTOOL='${cwsw}/slibtool/current/bin/slibtool-static -all-static'
+      LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\"
   popd >/dev/null 2>&1
 }
 "
@@ -34,7 +34,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  make -j${cwmakejobs} LIBTOOL='${cwsw}/slibtool/current/bin/slibtool-static -all-static'
+  make -j${cwmakejobs} LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\"
   popd >/dev/null 2>&1
 }
 "
@@ -42,7 +42,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  make install LIBTOOL='${cwsw}/slibtool/current/bin/slibtool-static -all-static'
+  make install LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\"
   popd >/dev/null 2>&1
 }
 "
