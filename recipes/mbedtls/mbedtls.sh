@@ -1,3 +1,7 @@
+#
+# XXX - need to require and enable zlib? probably not?
+#
+
 rname="mbedtls"
 rver="2.13.1"
 rdir="${rname}-${rname}-${rver}"
