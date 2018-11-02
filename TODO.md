@@ -96,7 +96,8 @@
   - ssl/tls with busybox version may be funky
   - curl could theoretically bootstrap itself...
   - ... but openssl req needs perl, which requires things that need curl
-    - mbedtls
+    - wolfssl is smaller than openssl
+    - mbedtls is smaller still
 - make jobs may need common cwmakeopts var
 - ```strip``` script command
   -traverse ${cwtop}/software/*/*/bin/ and run ```strip --strip-all``` on any ELF binaries
