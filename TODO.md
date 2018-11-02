@@ -179,3 +179,7 @@
     - recursively chase down to "root", i.e., until prereq graph is empty (or has only **make**)
     - only do this once - expensive
 - need custom **cwclean_${rname}** for recipes where ```${rdir} != ${rbdir}``` and ```${rbdir} != ${cwbuild}/${rdir}```
+- systems where ```/bin/sh``` is not bash...
+  - breaks wolfssl autotools-generated configure
+  - other autoconf/automake/libtool recipes?
+  - ...
