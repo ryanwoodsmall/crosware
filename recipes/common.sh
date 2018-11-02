@@ -3,6 +3,11 @@
 : ${ridir:="${rtdir}/${rdir}"}
 : ${rprof:="${cwetcprofd}/${rname}.sh"}
 : ${rreqs:=""}
+: ${rlibtool:=""}
+
+if [[ ${rlibtool} == "" && ${rreqs} =~ slibtool ]] ; then
+  rlibtool="LIBTOOL='${cwsw}/slibtool/current/bin/slibtool-static -all-static'"
+fi
 
 cwconfigureprefix="--prefix=${ridir}"
 cwconfigurelibopts="--enable-static --enable-static=yes --disable-shared --enable-shared=no"
@@ -55,16 +60,16 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  make -j${cwmakejobs}
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make -j${cwmakejobs} ${rlibtool}
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  make install
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install ${rlibtool}
   popd >/dev/null 2>&1
 }
 "
