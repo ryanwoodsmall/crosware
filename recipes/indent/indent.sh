@@ -31,22 +31,6 @@ function cwconfigure_${rname}() {
 "
 
 eval "
-function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\"
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make install LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\"
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
