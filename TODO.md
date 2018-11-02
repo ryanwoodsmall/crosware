@@ -180,8 +180,8 @@
     - only do this once - expensive
 - need custom **cwclean_${rname}** for recipes where ```${rdir} != ${rbdir}``` and ```${rbdir} != ${cwbuild}/${rdir}```
 - systems where ```/bin/sh``` is not bash...
-  - breaks wolfssl autotools-generated configure
-  - other autoconf/automake/libtool recipes?
+  - wolfssl autotools-generated configure needs bash?
+  - other autoconf/automake/libtool recipes seem fine?
   - right after ```libtool ... ; autoreconf ...``` run:
     - ```sed -i '/^#!/s#/bin/sh#/usr/bin/env bash#g' configure```
   - ...

@@ -15,7 +15,8 @@ function cwconfigure_${rname}() {
   touch cyassl/ctaocrypt/fips.h
   env PATH=${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH} libtoolize
   env PATH=${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH} autoreconf -fiv -I${cwsw}/libtool/current/share/aclocal
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+  sed -i '/^#!/s#/bin/sh#/usr/bin/env bash#g' configure
+  bash ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --enable-all \
     --enable-singlethreaded \
     --enable-distro \
