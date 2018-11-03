@@ -15,9 +15,20 @@ rreqs="make zlib"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwconfigure_${rname}() {
+  pushd "${rbdir}" >/dev/null 2>&1
+  sed -i.ORIG 's/-ltermcap/-lncurses/g' configure
+  sed -i 's/ncurses5-config/ncurses6-config/g' configure
+  sed -i 's/ncursesw5-config/ncursesw6-config/g' configure
+  ./configure ${cwconfigureprefix}
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  make static
+  make -j${cwmakejobs} static
   popd >/dev/null 2>&1
 }
 "
