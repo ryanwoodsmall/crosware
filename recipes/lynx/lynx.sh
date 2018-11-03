@@ -4,7 +4,7 @@ rdir="${rname}${rver}"
 rfile="${rname}${rver}.tar.bz2"
 rurl="ftp://ftp.invisible-island.net/${rname}/tarballs/${rfile}"
 rsha256="387f193d7792f9cfada14c60b0e5c0bff18f227d9257a39483e14fa1aaf79595"
-rreqs="make bzip2 slang ncurses openssl zlib"
+rreqs="make bzip2 ncurses slang openssl zlib"
 
 . "${cwrecipe}/common.sh"
 
