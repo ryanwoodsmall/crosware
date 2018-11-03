@@ -1,9 +1,13 @@
+#
+# XXX - should probably use tag for toybox_config_script.sh
+#
+
 rname="toybox"
-rver="0.7.7"
+rver="0.7.8"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/landley/${rname}/archive/${rfile}"
-rsha256="2d339528c28d280c4e64f2d53e54389b4d61b51ef0a524e32cb1ab446d180780"
+rsha256="ef788f8e400e438615941ca3d49550c9d027a64a6bb274f67eefcef96b7b9ad3"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
