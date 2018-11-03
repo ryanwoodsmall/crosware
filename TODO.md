@@ -185,3 +185,7 @@
   - right after ```libtool ... ; autoreconf ...``` run:
     - ```sed -i '/^#!/s#/bin/sh#/usr/bin/env bash#g' configure```
   - ...
+- versioned symlinks for packages with state...
+  - ncurses
+  - openssl
+  - ???
