@@ -204,6 +204,7 @@ Working recipes:
 - busybox (static)
 - byacc
 - bzip2
+- ccache
 - cflow
 - check
 - configgit (gnu config.guess, config.sub updates for musl, aarch64, etc. http://git.savannah.gnu.org/gitweb/?p=config.git;a=summary)
