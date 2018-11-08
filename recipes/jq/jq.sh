@@ -1,9 +1,9 @@
 rname="jq"
-rver="1.5"
+rver="1.6"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/stedolan/${rname}/releases/download/${rdir}/${rfile}"
-rsha256="c4d2bfec6436341113419debf479d833692cc5cdab7eb0326b5a4d4fbe9f493c"
+rsha256="9625784cf2e4fd9842f1d407681ce4878b5b0dcddbcd31c6135114a30c71e6a8"
 rreqs="make byacc flex oniguruma"
 
 . "${cwrecipe}/common.sh"
