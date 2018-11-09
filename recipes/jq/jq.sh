@@ -1,3 +1,7 @@
+#
+# XXX - should probably prepend path, we're probably newer than distro
+#
+
 rname="jq"
 rver="1.6"
 rdir="${rname}-${rver}"
