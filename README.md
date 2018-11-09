@@ -219,6 +219,7 @@ Working recipes:
 - cxref
 - derby
 - diffutils
+- diction and style (https://www.gnu.org/software/diction/)
 - dropbear
 - ed (gnu ed)
 - expat
