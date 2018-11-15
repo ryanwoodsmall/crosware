@@ -11,15 +11,15 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 eval "
 function cwmakeinstall_${rname}() {
   unset JYTHON_HOME
-  test -e "${ridir}" && mv "${ridir}"{,.PRE-${TS}}
-  env PATH=\"\$(echo \${PATH} | tr : '\n' | egrep -v '/(j|p)ython' | xargs echo | tr ' ' :)\" java -jar "${cwdl}/${rname}/${rfile}" -s -t all -d "${ridir}"
+  test -e \"${ridir}\" && mv \"${ridir}\"{,.PRE-${TS}}
+  env PATH=\"\$(echo \${PATH} | tr : '\n' | egrep -v '/(j|p)ython' | xargs echo | tr ' ' :)\" java -jar \"${cwdl}/${rname}/${rfile}\" -s -t all -d \"${ridir}\"
 }
 "
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'export JYTHON_HOME=\"${rtdir}/current\"' > "${rprof}"
-  echo 'append_path \"\${JYTHON_HOME}/bin\"' >> "${rprof}"
+  echo 'export JYTHON_HOME=\"${rtdir}/current\"' > \"${rprof}\"
+  echo 'append_path \"\${JYTHON_HOME}/bin\"' >> \"${rprof}\"
 }
 "
 
