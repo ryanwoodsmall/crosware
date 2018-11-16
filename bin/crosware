@@ -359,12 +359,15 @@ done
 export cwbootstraprecipes
 
 #
-# generate cwver_${bootstraprecipe}
+# generate cw*_${bootstraprecipe} functions
 #
 for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
   eval "
   function cwver_${cwbootstraprecipe}() {
     echo \"\${${cwbootstraprecipe}_ver}\"
+  }
+  function cwuninstall_${cwbootstraprecipe}() {
+    cwscriptecho \"${cwbootstraprecipe}_uninstall noop\"
   }
   "
 done
