@@ -541,6 +541,7 @@ Recipes to consider:
 - racket
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
+- roswell (https://github.com/roswell/roswell)
 - rover (https://lecram.github.io/p/rover)
 - rpcbind
 - rvm?
