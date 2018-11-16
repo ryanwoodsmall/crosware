@@ -478,6 +478,16 @@ Recipes to consider:
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
 - libuv (https://github.com/libuv/libuv)
 - libyaml (https://github.com/yaml/libyaml)
+- lisp stuff
+  - clisp (https://clisp.sourceforge.io/)
+  - clozure (https://ccl.clozure.com/)
+  - cmucl (https://www.cons.org/cmucl/)
+  - ecl (https://common-lisp.net/project/ecl/)
+  - gcl (https://www.gnu.org/software/gcl/)
+  - picolisp (https://picolisp.com/wiki/?home)
+    - picolisp (c, lisp)
+    - ersatz picolisp (java)
+  - sbcl (sbcl.org and https://github.com/sbcl/sbcl)
 - llvm / clang
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
@@ -531,9 +541,6 @@ Recipes to consider:
   - pcc and pcc-libs are now separate
   - will almost certainly have to tinker with ld stuff
 - pdsh (https://github.com/chaos/pdsh or https://github.com/grondo/pdsh ?)
-- picolisp
-  - picolisp (c, lisp)
-  - ersatz picolisp (java)
 - pigz
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
 - procps-ng
