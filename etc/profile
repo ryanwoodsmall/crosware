@@ -107,4 +107,6 @@ for d in ${profiled} ${locald} ; do
   for p in ${cwetcdir}/${d}/*.sh ; do
     test -r "${p}" && source "${p}"
   done
+  unset p
 done
+unset d
