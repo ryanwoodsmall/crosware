@@ -487,6 +487,7 @@ Recipes to consider:
   - picolisp (https://picolisp.com/wiki/?home)
     - picolisp (c, lisp)
     - ersatz picolisp (java)
+  - roswell (https://github.com/roswell/roswell)
   - sbcl (sbcl.org and https://github.com/sbcl/sbcl)
 - llvm / clang
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
@@ -548,7 +549,6 @@ Recipes to consider:
 - racket
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
-- roswell (https://github.com/roswell/roswell)
 - rover (https://lecram.github.io/p/rover)
 - rpcbind
 - rvm?
