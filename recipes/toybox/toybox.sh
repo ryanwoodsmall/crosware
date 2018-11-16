@@ -38,6 +38,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir "${ridir}/bin"
   rm -f "${ridir}/bin/${rname}"
   cp -a "${rname}" "${ridir}/bin"
+  local a=''
   for a in \$(./${rname}) ; do
     ln -sf "${ridir}/bin/${rname}" "${ridir}/bin/\${a}"
   done
