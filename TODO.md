@@ -60,6 +60,10 @@
     - libs...
     - inclues...
   - custom/pre/post functions
+  - ```cwupgrade_${rname} function```
+    - move from bin/crosware?
+    - uninstall/reinstall by default
+    - cwreinstall_... as well? alias/wrapper?
 - recipe/function names
   - need _ instead of -
 - whatprovides functionality
