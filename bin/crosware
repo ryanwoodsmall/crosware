@@ -272,6 +272,19 @@ for supported_arch in ${supported_arches[@]} ; do
   zulu_jdk_url[${supported_arch}]="${zulu_jdk_base_url}/${zulu_jdk_file[${supported_arch}]}"
 done
 
+# zulu install function
+function cwinstall_zulu() {
+  if [ ! -e "${cwbin}/${cwname}" ] ; then
+    cwbootstrap
+  else
+    cwfetchcheck "${zulu_jdk_url[${uarch}]}" "${cwtmptmp}/${zulu_jdk_file[${uarch}]}" "${zulu_jdk_sha256sum[${uarch}]}"
+    cwextract "${cwtmptmp}/${zulu_jdk_file[${uarch}]}" "${zulu_inst_dir}"
+    cwlinkdir "${zulu_jdk_dir[${uarch}]}" "${zulu_inst_dir}"
+    cwexpandenv "${zulu_pkgname}" "${cwetcprofd}/${zulu_pkgname}.sh"
+    cwmarkinstall "${zulu_pkgname}" "${zulu_jdk_ver[${uarch}]}"
+  fi
+}
+
 #
 # jgit
 #
