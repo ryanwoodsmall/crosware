@@ -380,6 +380,20 @@ statictoolchain_env["AR"]="${statictoolchain_triplet[${karch}]}-ar"
 statictoolchain_env["AS"]="${statictoolchain_triplet[${karch}]}-as"
 statictoolchain_envs=( "PATH" "CFLAGS" "CXXFLAGS" "LDFLAGS" "CC" "CXX" "CPP" "LD" "AR" "AS" )
 
+# statictoolchain install function
+function cwinstall_statictoolchain() {
+  if [ ! -e "${cwbin}/${cwname}" ] ; then
+    cwbootstrap
+  else
+    cwfetch "${statictoolchain_checksum_url[${karch}]}" "${cwtmptmp}/${statictoolchain_checksum_file[${karch}]}"
+    cwfetchcheck "${statictoolchain_file_url[${karch}]}" "${cwtmptmp}/${statictoolchain_file[${karch}]}" "$(awk '{print $1}' ${cwtmptmp}/${statictoolchain_checksum_file[${karch}]})"
+    cwextract "${cwtmptmp}/${statictoolchain_file[${karch}]}" "${statictoolchain_inst_dir}"
+    cwlinkdir "${statictoolchain_dir[${karch}]}" "${statictoolchain_inst_dir}"
+    cwexpandenv "${statictoolchain_pkgname}" "${cwetcprofd}/${statictoolchain_pkgname}.sh"
+    cwmarkinstall "${statictoolchain_pkgname}" "${statictoolchain_prefix[${karch}]}"
+  fi
+}
+
 #
 # "special" bootstrap recipes
 #
