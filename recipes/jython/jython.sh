@@ -14,8 +14,8 @@ function cwmakeinstall_${rname}() {
   unset JYTHON_HOME
   test -e \"${ridir}\" && mv \"${ridir}\"{,.PRE-${TS}}
   env \
-    PATH=\"${cwsw}/bash/current/bin:${cwsw}/busybox/current/bin\" \
-    \"\${JAVA_HOME}/bin/java\" -jar \"${cwdl}/${rname}/${rfile}\" -s -t all -d \"${ridir}\"
+    PATH=\"${cwsw}/bash/current/bin:${cwsw}/busybox/current/bin:\${JAVA_HOME}/bin\" \
+    java -jar \"${cwdl}/${rname}/${rfile}\" -s -t all -d \"${ridir}\"
 }
 "
 
