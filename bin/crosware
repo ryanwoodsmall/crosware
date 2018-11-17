@@ -303,6 +303,23 @@ declare -A jgitsh_env
 jgitsh_env["PATH"]="\${PATH}:${jgitsh_inst_dir}/current/bin"
 jgitsh_envs=( "PATH" )
 
+# jgitsh install function
+function cwinstall_jgitsh() {
+  if [ ! -e "${cwbin}/${cwname}" ] ; then
+    cwbootstrap
+  else
+    cwfetchcheck "${jgitsh_url}" "${cwtmptmp}/${jgitsh_file}" "${jgitsh_sha256sum}"
+    cwmkdir "${jgitsh_inst_dir}/${jgitsh_ver}/bin"
+    rm -f "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_file}"
+    install -m 0755 "${cwtmptmp}/${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/"
+    ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink}"
+    ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink/%.sh/}"
+    cwlinkdir "${jgitsh_ver}" "${jgitsh_inst_dir}"
+    cwexpandenv "${jgitsh_pkgname}" "${cwetcprofd}/${jgitsh_pkgname}.sh"
+    cwmarkinstall "${jgitsh_pkgname}" "${jgitsh_ver}"
+  fi
+}
+
 #
 # static compiler bootstrap
 #
