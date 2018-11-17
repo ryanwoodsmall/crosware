@@ -242,7 +242,7 @@ zulu_jdk_arch["x86_64"]="x64"
 
 # zulu jdk version map
 declare -A zulu_jdk_ver
-zulu_jdk_ver["aarch64"]="8.31.1.122-jdk1.8.0_181"
+zulu_jdk_ver["aarch64"]="8.33.0.135-jdk1.8.0_192"
 zulu_jdk_ver["armv6l"]="8.33.0.134-jdk1.8.0_192"
 zulu_jdk_ver["armv7l"]="8.33.0.134-jdk1.8.0_192"
 zulu_jdk_ver["armv8l"]="8.33.0.134-jdk1.8.0_192"
@@ -252,7 +252,7 @@ zulu_ver="${zulu_jdk_ver[${uarch}]}"
 
 # zulu jdk file sha256sum
 declare -A zulu_jdk_sha256sum
-zulu_jdk_sha256sum["aarch64"]="0915ceca44ca50dde54362b3569d39a259a482b4f25df9857cbb46260c4de397"
+zulu_jdk_sha256sum["aarch64"]="750976bf52d0e5bed6b44799881245027e1cfd8e79dec3db040e985623515512"
 zulu_jdk_sha256sum["armv6l"]="5ca1d484c32d35ae4ded3b137386f00eed57d584d2bf325bf46fdd78f1a0a780"
 zulu_jdk_sha256sum["armv7l"]="5ca1d484c32d35ae4ded3b137386f00eed57d584d2bf325bf46fdd78f1a0a780"
 zulu_jdk_sha256sum["armv8l"]="5ca1d484c32d35ae4ded3b137386f00eed57d584d2bf325bf46fdd78f1a0a780"
