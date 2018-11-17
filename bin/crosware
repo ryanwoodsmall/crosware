@@ -397,7 +397,7 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
     echo \"\${${cwbootstraprecipe}_ver}\"
   }
   function cwuninstall_${cwbootstraprecipe}() {
-    cwscriptecho \"${cwbootstraprecipe}_uninstall noop\"
+    cwscriptecho \"${cwbootstraprecipe} uninstall noop\"
   }
   "
 done
