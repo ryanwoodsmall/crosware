@@ -17,6 +17,7 @@
 #     - this all sucks
 #
 
+# XXX - probably need realpath in the chain here somewhere
 # get our etc and bin dir
 cwetcdir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
 cwtop="$(cd "${cwetcdir}"/.. && pwd)"
