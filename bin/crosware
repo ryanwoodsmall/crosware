@@ -684,16 +684,15 @@ function cwbootstrap() {
     if [ ! -L "${cwsw}/${old_static_toolchain_pkgname}" ] ; then
       mv ${cwsw}/${old_static_toolchain_pkgname}{,.PRE-${TS}}
     fi
+  # make sure we have a static-toolchain -> statictoolchain symlink just in case
+  else
+    ln -sf ${cwsw}/${statictoolchain_pkgname} ${cwsw}/${old_static_toolchain_pkgname}
   fi
   if [ -e "${cwvarinst}/${old_static_toolchain_pkgname}" ] ; then
     rm -f ${cwvarinst}/${old_static_toolchain_pkgname}
   fi
   if [ -e "${cwetcprofd}/${old_static_toolchain_pkgname}.sh" ] ; then
     mv ${cwetcprofd}/${old_static_toolchain_pkgname}.sh{,.OFF}
-  fi
-  # make sure we have a static-toolchain -> statictoolchain symlink just in case
-  if [ ! -e "${cwsw}/${old_static_toolchain_pkgname}" ] ; then
-    ln -sf ${cwsw}/${statictoolchain_pkgname} ${cwsw}/${old_static_toolchain_pkgname}
   fi
 }
 
