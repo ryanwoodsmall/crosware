@@ -274,15 +274,11 @@ done
 
 # zulu install function
 function cwinstall_zulu() {
-  if [ ! -e "${cwbin}/${cwname}" ] ; then
-    cwbootstrap
-  else
-    cwfetchcheck "${zulu_jdk_url[${uarch}]}" "${cwtmptmp}/${zulu_jdk_file[${uarch}]}" "${zulu_jdk_sha256sum[${uarch}]}"
-    cwextract "${cwtmptmp}/${zulu_jdk_file[${uarch}]}" "${zulu_inst_dir}"
-    cwlinkdir "${zulu_jdk_dir[${uarch}]}" "${zulu_inst_dir}"
-    cwexpandenv "${zulu_pkgname}" "${cwetcprofd}/${zulu_pkgname}.sh"
-    cwmarkinstall "${zulu_pkgname}" "${zulu_jdk_ver[${uarch}]}"
-  fi
+  cwfetchcheck "${zulu_jdk_url[${uarch}]}" "${cwtmptmp}/${zulu_jdk_file[${uarch}]}" "${zulu_jdk_sha256sum[${uarch}]}"
+  cwextract "${cwtmptmp}/${zulu_jdk_file[${uarch}]}" "${zulu_inst_dir}"
+  cwlinkdir "${zulu_jdk_dir[${uarch}]}" "${zulu_inst_dir}"
+  cwexpandenv "${zulu_pkgname}" "${cwetcprofd}/${zulu_pkgname}.sh"
+  cwmarkinstall "${zulu_pkgname}" "${zulu_jdk_ver[${uarch}]}"
 }
 
 #
@@ -305,19 +301,15 @@ jgitsh_envs=( "PATH" )
 
 # jgitsh install function
 function cwinstall_jgitsh() {
-  if [ ! -e "${cwbin}/${cwname}" ] ; then
-    cwbootstrap
-  else
-    cwfetchcheck "${jgitsh_url}" "${cwtmptmp}/${jgitsh_file}" "${jgitsh_sha256sum}"
-    cwmkdir "${jgitsh_inst_dir}/${jgitsh_ver}/bin"
-    rm -f "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_file}"
-    install -m 0755 "${cwtmptmp}/${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/"
-    ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink}"
-    ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink/%.sh/}"
-    cwlinkdir "${jgitsh_ver}" "${jgitsh_inst_dir}"
-    cwexpandenv "${jgitsh_pkgname}" "${cwetcprofd}/${jgitsh_pkgname}.sh"
-    cwmarkinstall "${jgitsh_pkgname}" "${jgitsh_ver}"
-  fi
+  cwfetchcheck "${jgitsh_url}" "${cwtmptmp}/${jgitsh_file}" "${jgitsh_sha256sum}"
+  cwmkdir "${jgitsh_inst_dir}/${jgitsh_ver}/bin"
+  rm -f "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_file}"
+  install -m 0755 "${cwtmptmp}/${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/"
+  ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink}"
+  ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink/%.sh/}"
+  cwlinkdir "${jgitsh_ver}" "${jgitsh_inst_dir}"
+  cwexpandenv "${jgitsh_pkgname}" "${cwetcprofd}/${jgitsh_pkgname}.sh"
+  cwmarkinstall "${jgitsh_pkgname}" "${jgitsh_ver}"
 }
 
 #
@@ -382,16 +374,12 @@ statictoolchain_envs=( "PATH" "CFLAGS" "CXXFLAGS" "LDFLAGS" "CC" "CXX" "CPP" "LD
 
 # statictoolchain install function
 function cwinstall_statictoolchain() {
-  if [ ! -e "${cwbin}/${cwname}" ] ; then
-    cwbootstrap
-  else
-    cwfetch "${statictoolchain_checksum_url[${karch}]}" "${cwtmptmp}/${statictoolchain_checksum_file[${karch}]}"
-    cwfetchcheck "${statictoolchain_file_url[${karch}]}" "${cwtmptmp}/${statictoolchain_file[${karch}]}" "$(awk '{print $1}' ${cwtmptmp}/${statictoolchain_checksum_file[${karch}]})"
-    cwextract "${cwtmptmp}/${statictoolchain_file[${karch}]}" "${statictoolchain_inst_dir}"
-    cwlinkdir "${statictoolchain_dir[${karch}]}" "${statictoolchain_inst_dir}"
-    cwexpandenv "${statictoolchain_pkgname}" "${cwetcprofd}/${statictoolchain_pkgname}.sh"
-    cwmarkinstall "${statictoolchain_pkgname}" "${statictoolchain_prefix[${karch}]}"
-  fi
+  cwfetch "${statictoolchain_checksum_url[${karch}]}" "${cwtmptmp}/${statictoolchain_checksum_file[${karch}]}"
+  cwfetchcheck "${statictoolchain_file_url[${karch}]}" "${cwtmptmp}/${statictoolchain_file[${karch}]}" "$(awk '{print $1}' ${cwtmptmp}/${statictoolchain_checksum_file[${karch}]})"
+  cwextract "${cwtmptmp}/${statictoolchain_file[${karch}]}" "${statictoolchain_inst_dir}"
+  cwlinkdir "${statictoolchain_dir[${karch}]}" "${statictoolchain_inst_dir}"
+  cwexpandenv "${statictoolchain_pkgname}" "${cwetcprofd}/${statictoolchain_pkgname}.sh"
+  cwmarkinstall "${statictoolchain_pkgname}" "${statictoolchain_prefix[${karch}]}"
 }
 
 #
@@ -415,6 +403,15 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
   }
   "
 done
+
+#
+# cwchecktop
+#
+function cwchecktop() {
+  if [ ! -e "${cwtop}" ] ; then
+    cwfailexit "${cwtop} does not exist, have you run '${cwname} bootstrap' yet?"
+  fi
+}
 
 #
 # cwmkdir
@@ -700,6 +697,11 @@ function cwbootstrap() {
 # cwsourceprofile
 #
 function cwsourceprofile() {
+  cwchecktop
+  if [ ! -e "${cwetcprofile}" ] ; then
+    cwscriptecho "${cwetcprofile} does not exist"
+    return 1
+  fi
   source "${cwetcprofile}"
 }
 
@@ -707,21 +709,18 @@ function cwsourceprofile() {
 # cwupdate
 #
 function cwupdate() {
-  if [ -e "${cwtop}" ] ; then
-    cwscriptecho "it looks like ${cwtop} already exists, attempting update"
-    if [ ! -e "${cwtop}/.git" ] ; then
-      cwfailexit "${cwtop} doesn't appear to be a git clone"
-    else
-      cwsourceprofile
-      cwscriptecho "attempting to fetch/merge in ${cwtop}"
-      pushd "${cwtop}" >/dev/null 2>&1 || cwfailexit "could not pushd into ${cwtop}"
-      ${jgitsh_symlink} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
-      ${jgitsh_symlink} merge "${cworigin}/${cwbranch}" || { popd ; cwfailexit "could not merge ${cworigin}/${cwbranch} in ${cwtop}" ; }
-      popd >/dev/null 2>&1
-      cwchmod "${cwtmpperm}" "${cwtmp}"
-    fi
+  cwchecktop
+  cwscriptecho "it looks like ${cwtop} already exists, attempting update"
+  if [ ! -e "${cwtop}/.git" ] ; then
+    cwfailexit "${cwtop} doesn't appear to be a git clone"
   else
-    cwfailexit "${cwtop} does not exist, have you run '${cwname} bootstrap' yet?"
+    cwsourceprofile
+    cwscriptecho "attempting to fetch/merge in ${cwtop}"
+    pushd "${cwtop}" >/dev/null 2>&1 || cwfailexit "could not pushd into ${cwtop}"
+    ${jgitsh_symlink} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
+    ${jgitsh_symlink} merge "${cworigin}/${cwbranch}" || { popd ; cwfailexit "could not merge ${cworigin}/${cwbranch} in ${cwtop}" ; }
+    popd >/dev/null 2>&1
+    cwchmod "${cwtmpperm}" "${cwtmp}"
   fi
 }
 
@@ -729,6 +728,7 @@ function cwupdate() {
 # cwsourcerecipes
 #
 function cwsourcerecipes() {
+  cwchecktop
   if [ ! -e ${cwrecipe} ] ; then
     cwscriptecho "no recipe directory ${cwrecipe} found"
     return 1
@@ -807,6 +807,10 @@ function cwmarkinstall() {
 function cwlistinstalled() {
   local pkgfile=""
   local pkgname=""
+  if [ ! -e "${cwvarinst}" ] ; then
+    cwscriptecho "directory ${cwvarinst} does not exist"
+    return 1
+  fi
   for pkgfile in $(find ${cwvarinst} -maxdepth 1 -type f ! -name .\* | sort) ; do
     pkgname="$(basename ${pkgfile})"
     echo "${pkgname} : $(cat ${pkgfile})"
