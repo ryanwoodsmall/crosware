@@ -780,7 +780,7 @@ function cwinstall() {
   test ${#recipestobuild[@]} -eq 0 && cwfailexit "please provide at least one valid recipe to build"
   for buildrecipe in ${recipestobuild[@]} ; do
     cwsourceprofile
-    cwscriptecho "building recipe ${buildrecipe//cwinstall_/}"
+    cwscriptecho "installing recipe ${buildrecipe//cwinstall_/}"
     ${buildrecipe}
   done
 }
