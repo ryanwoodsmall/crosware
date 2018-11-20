@@ -644,26 +644,12 @@ function cwbootstrap() {
   # setup our base tools
   # zulu
   if [ "${CW_EXT_JAVA}" == "false" ] ; then
-    mkdir -p "${zulu_inst_dir}"
-    cwextract "${zuluarchive}" "${zulu_inst_dir}"
-    cwlinkdir "${zulu_jdk_dir[${uarch}]}" "${zulu_inst_dir}"
-    cwexpandenv "${zulu_pkgname}" "${cwetcprofd}/${zulu_pkgname}.sh"
-    cwmarkinstall "${zulu_pkgname}" "${zulu_jdk_ver[${uarch}]}"
+    cwinstall "${zulu_pkgname}"
   fi
   # jgit
-  mkdir -p "${jgitsh_inst_dir}/${jgitsh_ver}/bin"
-  cp -a "${jgitsh}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/"
-  ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink}"
-  ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink/%.sh/}"
-  cwlinkdir "${jgitsh_ver}" "${jgitsh_inst_dir}"
-  cwexpandenv "${jgitsh_pkgname}" "${cwetcprofd}/${jgitsh_pkgname}.sh"
-  cwmarkinstall "${jgitsh_pkgname}" "${jgitsh_ver}"
+  cwinstall "${jgitsh_pkgname}"
   # toolchain
-  mkdir -p "${statictoolchain_inst_dir}"
-  cwextract "${statictoolchainarchive}" "${statictoolchain_inst_dir}"
-  cwlinkdir "${statictoolchain_dir[${karch}]}" "${statictoolchain_inst_dir}"
-  cwexpandenv "statictoolchain" "${cwetcprofd}/${statictoolchain_pkgname}.sh"
-  cwmarkinstall "${statictoolchain_pkgname}" "${statictoolchain_prefix[${karch}]}"
+  cwinstall "${statictoolchain_pkgname}"
   # set tmp directory perm
   cwchmod "${cwtmpperm}" "${cwtmp}"
   # we're bootstrapped...
