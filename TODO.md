@@ -25,9 +25,13 @@
 - dependencies and dependants (maybe?)
   - simple directory of files with pkgname.dependents, pkgname.dependencies
 - install must chase down upstream deps
-- update may require downstream dep updates
+- update may require downstream req/upstream dep updates
   - var/deps/recipename/depname
   - var/reqs/recipename/reqname
+  - update-reqs / update-deps commands
+    - given a package, update its downstream requirements or upstream dependents
+  - prequisites instead of reqs?
+  - confusing naming
 - etc/local.d - scriptlets, not tracked in git
 - var/ - track installs/versions
 - update environment without rebootstrap
