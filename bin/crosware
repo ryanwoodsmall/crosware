@@ -399,9 +399,9 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
     echo \"\${${cwbootstraprecipe}_ver}\"
   }
   function cwuninstall_${cwbootstraprecipe}() {
-    rm -rf "${cwsw}/\${${cwbootstraprecipe}_pkgname}"
-    rm -f "${cwetcprofd}/\${${cwbootstraprecipe}_pkgname}.sh"
-    rm -f "${cwvarinst}/${cwbootstraprecipe}"
+    rm -rf \"${cwsw}/\${${cwbootstraprecipe}_pkgname}\"
+    rm -f \"${cwetcprofd}/\${${cwbootstraprecipe}_pkgname}.sh\"
+    rm -f \"${cwvarinst}/${cwbootstraprecipe}\"
   }
   "
 done
