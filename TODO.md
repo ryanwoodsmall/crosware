@@ -68,6 +68,8 @@
     - move from bin/crosware?
     - uninstall/reinstall by default
     - cwreinstall_... as well? alias/wrapper?
+  - ${cwconfigureprefix} leaks through
+    - need to unset with r* vars
 - recipe/function names
   - need _ instead of -
 - whatprovides functionality
