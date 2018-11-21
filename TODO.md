@@ -109,8 +109,11 @@
     - wolfssl is smaller than openssl
     - mbedtls is smaller still
 - make jobs may need common cwmakeopts var
+  - ${cwmakejobs}
+  - should be environment-friendly, i.e.:
+  - ```: ${cwmakejobs:="$(($(nproc)+1))"}```
 - ```strip``` script command
-  -traverse ${cwtop}/software/*/*/bin/ and run ```strip --strip-all``` on any ELF binaries
+  - traverse ${cwtop}/software/*/*/bin/ and run ```strip --strip-all``` on any ELF binaries
 - compiler opts
   - http://www.productive-cpp.com/hardening-cpp-programs-executable-space-protection-address-space-layout-randomization-aslr/
   - pic/pie/...
