@@ -399,7 +399,9 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
     echo \"\${${cwbootstraprecipe}_ver}\"
   }
   function cwuninstall_${cwbootstraprecipe}() {
-    cwscriptecho \"${cwbootstraprecipe} uninstall noop\"
+    rm -rf "${cwsw}/\${${cwbootstraprecipe}_pkgname}"
+    rm -f "${cwetcprofd}/\${${cwbootstraprecipe}_pkgname}.sh"
+    rm -f "${cwvarinst}/${cwbootstraprecipe}"
   }
   "
 done
@@ -828,7 +830,7 @@ function cwgetinstalled() {
   local pkgname=""
   cwsourceprofile
   cwsourcerecipes
-  for pkgname in ${!cwrecipes[@]} ; do
+  for pkgname in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
     cwinstalled[${pkgname}]=0
   done
   cwlistinstalled >/dev/null
