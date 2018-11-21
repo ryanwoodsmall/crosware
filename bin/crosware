@@ -733,7 +733,7 @@ function cwsourcerecipes() {
 #
 function cwlistrecipes() {
   cwsourcerecipes
-  for recipe in ${!cwrecipes[@]} ; do
+  for recipe in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
     echo "${recipe}"
   done | sort
 }
