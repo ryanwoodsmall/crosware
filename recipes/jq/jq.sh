@@ -1,7 +1,3 @@
-#
-# XXX - should probably prepend path, we're probably newer than distro
-#
-
 rname="jq"
 rver="1.6"
 rdir="${rname}-${rver}"
@@ -28,7 +24,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'prepend_path \"${rtdir}/current/bin\"' > "${rprof}"
   echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
   echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
 }
