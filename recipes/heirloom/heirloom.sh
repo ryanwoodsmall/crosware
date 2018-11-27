@@ -33,8 +33,8 @@ function cwmake_${rname}() {
   local d=''
   for d in ${rname}{,-{sh,devtools,doctools,ex-vi}} ; do
     pushd \${d}
-    make
-    make install
+    env CHARSET= make
+    env CHARSET= make install
     popd
   done
   popd >/dev/null 2>&1
