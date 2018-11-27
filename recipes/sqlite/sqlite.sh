@@ -1,9 +1,9 @@
 rname="sqlite"
-rver="3250200"
+rver="3250300"
 rdir="${rname}-autoconf-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.sqlite.org/2018/${rfile}"
-rsha256="da9a1484423d524d3ac793af518cdf870c8255d209e369bd6a193e9f9d0e3181"
+rsha256="00ebf97be13928941940cc71de3d67e9f852698233cd98ce2d178fd08092f3dd"
 rreqs="make ncurses readline zlib"
 
 . "${cwrecipe}/common.sh"
