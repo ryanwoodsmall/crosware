@@ -334,6 +334,7 @@ Working recipes:
 Recipes to consider:
 - ack (https://beyondgrep.com/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
+- align (and width, perl scripts, http://kinzler.com/me/align/)
 - assemblers?
   - fasm
   - nasm
