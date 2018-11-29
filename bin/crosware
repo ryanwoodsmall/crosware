@@ -246,7 +246,7 @@ zulu_jdk_ver["aarch64"]="8.33.0.135-jdk1.8.0_192"
 zulu_jdk_ver["armv6l"]="8.33.0.134-jdk1.8.0_192"
 zulu_jdk_ver["armv7l"]="8.33.0.134-jdk1.8.0_192"
 zulu_jdk_ver["armv8l"]="8.33.0.134-jdk1.8.0_192"
-zulu_jdk_ver["i686"]="8.31.0.1-jdk8.0.181"
+zulu_jdk_ver["i686"]="8.33.0.1-jdk8.0.192"
 zulu_jdk_ver["x86_64"]="8.33.0.1-jdk8.0.192"
 zulu_ver="${zulu_jdk_ver[${uarch}]}"
 
@@ -256,7 +256,7 @@ zulu_jdk_sha256sum["aarch64"]="750976bf52d0e5bed6b44799881245027e1cfd8e79dec3db0
 zulu_jdk_sha256sum["armv6l"]="5ca1d484c32d35ae4ded3b137386f00eed57d584d2bf325bf46fdd78f1a0a780"
 zulu_jdk_sha256sum["armv7l"]="5ca1d484c32d35ae4ded3b137386f00eed57d584d2bf325bf46fdd78f1a0a780"
 zulu_jdk_sha256sum["armv8l"]="5ca1d484c32d35ae4ded3b137386f00eed57d584d2bf325bf46fdd78f1a0a780"
-zulu_jdk_sha256sum["i686"]="11c96c4befafe519727a72d1e54545a80d52cd16170f8a72964c9d19cba9ca31"
+zulu_jdk_sha256sum["i686"]="dc08383e76e2c6e7b02359871bedfd8fc88213b494c3aa9108c259f99795ddf8"
 zulu_jdk_sha256sum["x86_64"]="95a33bfc8de5b88b07d29116edd4485a59182921825e193f68fe494b03ab3523"
 
 # zulu directory, file, and url map
