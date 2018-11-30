@@ -322,6 +322,7 @@ Working recipes:
 - unrar
 - unzip
 - util-linux (as utillinux)
+- uucp (https://www.airs.com/ian/uucp.html and https://www.gnu.org/software/uucp/)
 - vim (with syntax highlighting, which chrome/chromium os vim lacks)
 - w3m (https://github.com/tats/w3m)
 - wget
@@ -602,7 +603,6 @@ make install
 - tsocks
 - upx (https://github.com/upx/upx)
 - utalk (http://utalk.ourproject.org/)
-- uucp (https://www.airs.com/ian/uucp.html and https://www.gnu.org/software/uucp/)
 - vifm (https://github.com/vifm/vifm)
 - vpnc
 - ytalk (http://ytalk.ourproject.org/)
