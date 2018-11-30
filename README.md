@@ -351,6 +351,7 @@ Recipes to consider:
   - spark (included in sdkman)
 - bigloo
 - bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
+- brotli (https://github.com/google/brotli)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - chicken
 - cmake
@@ -526,6 +527,7 @@ Recipes to consider:
 - nethack
 - nettle
   - configure libdir=.../lib since lib64 may be set by default
+- nghttp2 (https://github.com/nghttp2/nghttp2)
 - ninja
 - nmap
 - nnn (https://github.com/jarun/nnn)
