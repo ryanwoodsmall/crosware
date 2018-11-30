@@ -508,6 +508,7 @@ Recipes to consider:
   - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```
   - config/build/install with: ```env PATH=${cwsw}/python2/current/bin:${PATH} make <all|install> PREFIX=${ridir} CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS//-static/}" CFLAGS='' CPPFLAGS=''```
 - mes (https://www.gnu.org/software/mes/) and m2 stuff (links above)
+- mesalink (https://mesalink.io/ and https://github.com/mesalock-linux/mesalink)
 - meson (http://mesonbuild.com/ - python 3 and ninja)
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
 - moreutils (https://joeyh.name/code/moreutils/)
