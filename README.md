@@ -480,6 +480,7 @@ Recipes to consider:
   - configure: ```mkdir b ; cd b ; cmake -DCMAKE_INSTALL_PREFIX:PATH=${cwsw}/libgit2/$(basename $(cd .. ; pwd)) -DBUILD_SHARED_LIBS=OFF ..```
 - libidn / libidn2 (https://www.gnu.org/software/libidn/ and https://gitlab.com/libidn/libidn2)
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
+- libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
 - libressl
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtirpc
