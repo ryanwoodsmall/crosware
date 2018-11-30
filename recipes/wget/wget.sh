@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="29fbe6f3d5408430c572a63fe32bd43d5860f32691173dfd84edc06869edca75"
-rreqs="make lunzip openssl zlib pcre gettexttiny pkgconfig sed"
+rreqs="make lunzip openssl zlib pcre gettexttiny pkgconfig sed expat libmetalink"
 
 . "${cwrecipe}/common.sh"
 
@@ -22,11 +22,13 @@ function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --with-ssl=openssl \
+    --with-metalink \
     --with-openssl=yes \
     --with-zlib \
     --enable-pcre \
     --with-included-libunistring \
-    --with-included-regex
+    --with-included-regex \
+      LIBS='-lexpat'
   popd >/dev/null 2>&1
 }
 "
