@@ -382,6 +382,9 @@ Recipes to consider:
   - configure needs ```--with-included-libtasn1 --with-included-unistring --without-p11-kit```
 - go (**chicken/egg problem with source builds on aarch64**)
 - gpg
+  - gnupg
+  - gpgme
+  - etc.
 - graphviz (http://graphviz.org/)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
 - inetutils
@@ -473,6 +476,7 @@ Recipes to consider:
   - uses cmake
   - needs curl, openssl, ssh2
   - configure: ```mkdir b ; cd b ; cmake -DCMAKE_INSTALL_PREFIX:PATH=${cwsw}/libgit2/$(basename $(cd .. ; pwd)) -DBUILD_SHARED_LIBS=OFF ..```
+- libmetalink (https://github.com/metalink-dev/libmetalink)
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
 - libressl
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
