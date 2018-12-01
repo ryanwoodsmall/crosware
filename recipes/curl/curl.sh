@@ -12,7 +12,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
 rsha256="7802c54076500be500b171fde786258579d60547a3a35b8c5a23d8c88e8f9620"
-rreqs="make zlib openssl mbedtls wolfssl libssh2"
+rreqs="make zlib openssl mbedtls wolfssl libssh2 expat libmetalink"
 
 . "${cwrecipe}/common.sh"
 
@@ -22,13 +22,15 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
+    --with-libmetalink \
     --with-libssh2 \
     --with-zlib \
     --without-mbedtls \
     --without-cyassl \
     --without-gnutls \
     --with-ssl \
-    --with-default-ssl-backend=openssl
+    --with-default-ssl-backend=openssl \
+      LIBS='-lexpat'
   popd >/dev/null 2>&1
 }
 "
@@ -60,6 +62,7 @@ function cwmakeinstall_${rname}_mbedtls() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --with-zlib \
+    --without-libmetalink \
     --without-libssh2 \
     --without-ssl \
     --without-cyassl \
@@ -80,6 +83,7 @@ function cwmakeinstall_${rname}_wolfssl() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --with-zlib \
+    --without-libmetalink \
     --without-libssh2 \
     --without-ssl \
     --without-mbedtls \
