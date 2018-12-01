@@ -200,3 +200,4 @@
   - ncurses
   - openssl
   - ???
+- convert all ```${...}``` vars in recipes to ```\${...}``` to force later expansion/evaluation?
