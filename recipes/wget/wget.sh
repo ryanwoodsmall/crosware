@@ -1,10 +1,10 @@
 rname="wget"
-rver="1.19.5"
+rver="1.20"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="29fbe6f3d5408430c572a63fe32bd43d5860f32691173dfd84edc06869edca75"
-rreqs="make lunzip openssl zlib pcre gettexttiny pkgconfig sed expat libmetalink"
+rsha256="b0b80f565ac27f5e56c847431c75b4f8fcb31af9dad2bf5ce947d89651f3681e"
+rreqs="make lunzip openssl zlib pcre2 gettexttiny pkgconfig sed expat libmetalink"
 
 . "${cwrecipe}/common.sh"
 
@@ -25,7 +25,8 @@ function cwconfigure_${rname}() {
     --with-metalink \
     --with-openssl=yes \
     --with-zlib \
-    --enable-pcre \
+    --disable-pcre \
+    --enable-pcre2 \
     --with-included-libunistring \
     --with-included-regex \
       LIBS='-lexpat'
