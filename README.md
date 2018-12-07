@@ -615,6 +615,8 @@ make install
 - utalk (http://utalk.ourproject.org/)
 - vifm (https://github.com/vifm/vifm)
 - vpnc
+- xq (https://github.com/jeffbr13/xq)
+- yq (https://github.com/kislyuk/yq)
 - ytalk (http://ytalk.ourproject.org/)
 - support libraries for building the above
 - whatever else seems useful
