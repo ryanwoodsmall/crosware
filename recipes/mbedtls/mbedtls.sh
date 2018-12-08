@@ -3,11 +3,11 @@
 #
 
 rname="mbedtls"
-rver="2.14.0"
+rver="2.14.1"
 rdir="${rname}-${rname}-${rver}"
 rfile="${rname}-${rver}.tar.gz"
 rurl="https://github.com/ARMmbed/${rname}/archive/${rfile}"
-rsha256="3e733731eca47ffdc85330cde47774e075f5d1326e413555713dec8bf9c31eb3"
+rsha256="547943e7a4e79d3f71603087117d28cf4c03b2de6fc0c7cd79f92ad3188b3f80"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
