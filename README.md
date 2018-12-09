@@ -355,6 +355,7 @@ Recipes to consider:
 - brotli (https://github.com/google/brotli)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - chicken
+- chrpath
 - cmake
   - configure: ```./bootstrap --prefix=${cwsw}/cmake/$(basename $(pwd)) --no-system-libs --parallel=$(nproc)```
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
