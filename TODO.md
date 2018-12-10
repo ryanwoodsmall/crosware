@@ -70,6 +70,9 @@
     - cwreinstall_... as well? alias/wrapper?
   - ${cwconfigureprefix} leaks through
     - need to unset with r* vars
+  - need a ```cwshowenv_${rname}()``` function
+    - dumps an installed recipe environment
+    - separate out **etc/profile** functions into separate source-able script
 - recipe/function names
   - need _ instead of -
 - whatprovides functionality
