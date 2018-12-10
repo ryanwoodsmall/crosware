@@ -87,7 +87,11 @@ curl -kLO https://raw.githubusercontent.com/ryanwoodsmall/crosware/master/bin/cr
 bash crosware bootstrap
 ```
 
-Make sure the environment variable ```CW_EXT_JAVA``` is set to **true** (or just something other than **false**) to use system Java. Please note that ```/usr/local/crosware/etc/profile``` contains bashisms, and does not work on BusyBox ash, so set your ```SHELL``` accordingly. If Zulu is installed on a non-glibc distro, remove the files and directory:
+Make sure the environment variable ```CW_EXT_JAVA``` is set to **true** (or just something other than **false**) to use system Java. Please note that ```/usr/local/crosware/etc/profile``` contains bashisms, and does not work on BusyBox ash, so set your ```SHELL``` accordingly.
+
+If Zulu is installed on a non-glibc distro, run ```crosware uninstall zulu``` and make sure **CW_EXT_JAVA** and **JAVA_HOME** environment variables are configured.
+
+To manually remove the Zulu install directory, environment script and installation flag, remove these paths:
 
 - /usr/local/crosware/etc/profile.d/zulu.sh
 - /usr/local/crosware/var/inst/zulu
