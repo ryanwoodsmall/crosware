@@ -1,6 +1,6 @@
 #
 # - other ssl/tls providers
-#   - axtls, gnutls, nss, ...
+#   - gnutls, nss, ...
 # - libssh2
 #   - supports one of openssl, mbed, libgcrypt
 #   - mix/match with ssl/tls providers? seems like a bad idea
