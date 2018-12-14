@@ -348,7 +348,7 @@ Recipes to consider:
   - yasm
 - at&t ast (just ksh now?)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
-- axtls
+- axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
 - bearssl
 - big data stuff
   - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
