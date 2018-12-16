@@ -1,9 +1,9 @@
 rname="git"
-rver="2.19.2"
+rver="2.20.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
-rsha256="fce9a3a3297db5f3756c4553a2fc1fec209ee08178f8491e76ff4ff8fe7b8be9"
+rsha256="bc94735073e14b138a1290cc99af3c379d544f514c43f8ebde988fc50d0ad81f"
 rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny libssh2"
 
 . "${cwrecipe}/common.sh"
@@ -11,28 +11,29 @@ rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny libssh2"
 eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"${rurl}\" \"${cwdl}/${rname}/${rfile}\" \"${rsha256}\"
-  cwfetchcheck \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \"${cwdl}/${rname}/${rfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \"25fd8ba1914f5859b59f72d6c6aa2324abe84891e071adae2195faa526a510eb\"
+  cwfetchcheck \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \"${cwdl}/${rname}/${rfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \"79bdaa083528bc59b971131fec9b1ff1abbfcc943b4eb781ff4af5172b103690\"
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} \
-    --with-curl \
-    --with-expat \
-    --with-libpcre2 \
-    --with-openssl \
-    --with-perl=${cwsw}/perl/current/bin/perl \
-    --without-iconv \
-    --without-python \
-    --without-tcltk \
-      CC=\"\${CC}\" \
-      CXX=\"\${CXX}\" \
-      CFLAGS=\"\${CFLAGS}\" \
-      CXXFLAGS=\"\${CXXFLAGS}\" \
-      LDFLAGS=\"\${LDFLAGS}\" \
-      LIBS='-lcurl -lssh2 -lssl -lcrypto -lz'
+  env PATH=\"\${cwsw}/curl/current/bin:\${PATH}\" \
+    ./configure ${cwconfigureprefix} \
+      --with-curl \
+      --with-expat \
+      --with-libpcre2 \
+      --with-openssl \
+      --with-perl=${cwsw}/perl/current/bin/perl \
+      --without-iconv \
+      --without-python \
+      --without-tcltk \
+        CC=\"\${CC}\" \
+        CXX=\"\${CXX}\" \
+        CFLAGS=\"\${CFLAGS}\" \
+        CXXFLAGS=\"\${CXXFLAGS}\" \
+        LDFLAGS=\"\${LDFLAGS}\" \
+        LIBS='-lcurl -lssh2 -lssl -lcrypto -lz'
   sed -i.ORIG 's/-lcurl/-lcurl -lssh2 -lssl -lcrypto -lz/g' Makefile
   grep -ril sys/poll\\.h ${rbdir}/ \
   | grep \\.h\$ \
