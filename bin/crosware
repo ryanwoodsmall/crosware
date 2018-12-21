@@ -795,6 +795,7 @@ function cwmarkinstall() {
 function cwlistinstalled() {
   local pkgfile=""
   local pkgname=""
+  # XXX - logic should be in cwgetinstalled
   if [ ! -e "${cwvarinst}" ] ; then
     cwscriptecho "directory ${cwvarinst} does not exist"
     return 1
@@ -815,6 +816,7 @@ function cwlistinstalled() {
 #
 function cwcheckinstalled() {
   local pkgname="${1}"
+  # XXX - can get rid of this and do ${cwinstalled[${pkgname}]} -eq 1 after cwgetinstalled here
   if $(cwlistinstalled | grep -q "^${pkgname} :") ; then
     return 0
   else
@@ -833,6 +835,7 @@ function cwgetinstalled() {
   for pkgname in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
     cwinstalled[${pkgname}]=0
   done
+  # XXX - as above
   cwlistinstalled >/dev/null
 }
 
