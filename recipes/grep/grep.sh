@@ -1,9 +1,9 @@
 rname="grep"
-rver="3.1"
+rver="3.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="db625c7ab3bb3ee757b3926a5cfa8d9e1c3991ad24707a83dde8a5ef2bf7a07e"
+rsha256="8e6e1f05bf76c30f52605278d0ab06c322e7bfa69e3c193499a8fd2c2c31599c"
 rreqs="make pcre sed"
 
 . "${cwrecipe}/common.sh"
