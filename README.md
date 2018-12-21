@@ -381,6 +381,7 @@ Recipes to consider:
   - qemu
   - simh
 - entr (http://entrproject.org/)
+- fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
 - gdb
 - gmplib
   - needs m4
@@ -566,6 +567,8 @@ Recipes to consider:
 - racket
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
+- redir (https://github.com/troglobit/redir)
+- rredir (https://github.com/rofl0r/rrredir)
 - rover (https://lecram.github.io/p/rover)
 - rpcbind
 - rvm?
