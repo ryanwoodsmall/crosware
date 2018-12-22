@@ -4,11 +4,11 @@
 #
 
 rname="sed"
-rver="4.6"
+rver="4.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="beff6acf1c7838cc722714d143a64e706e2fd3bd1e00d3cd75152f596b09bb9e"
+rsha256="2885768cd0a29ff8d58a6280a270ff161f6a3deb5690b2be6c49f46d4c67bd6a"
 rreqs="make busybox toybox"
 
 . "${cwrecipe}/common.sh"
