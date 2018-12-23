@@ -1,9 +1,9 @@
 rname="jo"
-rver="1.1"
+rver="1.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://github.com/jpmens/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="63ed4766c2e0fcb5391a14033930329369f437d7060a11d82874e57e278bda5f"
+rurl="https://github.com/jpmens/${rname}/releases/download/${rver}/${rfile}"
+rsha256="36ec2fc4937c6478467684b18f0b213ff7267d34f5626cd5a0996a39ca64adae"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
