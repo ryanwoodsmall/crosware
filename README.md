@@ -395,6 +395,9 @@ Recipes to consider:
   - etc.
 - graphviz (http://graphviz.org/)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
+- iodine (https://github.com/yarrick/iodine)
+  - **src/Makefile** needs a ```$(CC) -c``` for the _.c.o_ rule
+  - build with something like ```make CFLAGS="-I${cwsw}/zlib/current/include -D__GLIBC__=1" LDFLAGS="-L${cwsw}/zlib/current/lib -lz -static" CPPFLAGS= SHELL='bash -x'```
 - inetutils
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - invisible-island (thomas e. dickey) stuff
