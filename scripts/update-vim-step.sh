@@ -8,10 +8,11 @@
 set -eu
 
 uvr="$(dirname $(realpath ${BASH_SOURCE[0]}))/update-vim-recipe.sh"
-test -e "${uvr}" || {
-  echo "$(basename ${uvr}) not found"
+slv="$(dirname $(realpath ${BASH_SOURCE[0]}))/show-latest-vim.sh"
+if [ ! -e "${uvr}" -o ! -e "${slv}" ] ; then
+  echo "$(basename ${uvr}) or $(basename ${slv}) not found"
   exit 1
-}
+fi
 
 z='4'
 function sz() {
@@ -30,7 +31,8 @@ function pz() {
 }
 
 cwtop="/usr/local/crosware"
-vver="$(awk -F'"' '/^rver=/{print $2}' ${cwtop}/recipes/vim/vim.sh)"
+vrp="${cwtop}/recipes/vim/vim.sh"
+vver="$(awk -F'"' '/^rver=/{print $2}' ${vrp})"
 vmaj="${vver%%.*}"
 vmin="${vver#*.}"
 vmin="${vmin%%.*}"
@@ -38,12 +40,7 @@ vpat="${vver##*.}"
 echo "cur ver is ${vver}"
 
 if [ ${#} -ne 1 ] ; then
-  vmax="$(curl -kLs "https://github.com/vim/vim/releases" \
-  | xmllint --format --html - 2>/dev/null \
-  | awk -F'"' '/\/vim\/vim\/releases\/tag\//{print $2}' \
-  | head -1 \
-  | xargs basename \
-  | sed s/^v//g)"
+  vmax="$(bash ${slv})"
 else
   vmax="${1}"
 fi
@@ -56,6 +53,7 @@ if [ $(sz ${vpat}) -lt $(sz ${vmaxpat}) ] ; then
   for p in $(seq "${vpat}" $(sz "${vmaxpat}")) ; do
     v="${vmaj}.${vmin}.$(pz ${p})"
     "${uvr}" "${v}"
-    git commit -a -m "vim: update to ${v}"
+    git add "${vrp}"
+    git commit -m "vim: update to ${v}"
   done
 fi

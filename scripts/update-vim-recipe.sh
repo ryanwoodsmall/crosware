@@ -28,13 +28,14 @@ vrf="${td}/recipes/vim/vim.sh"
 
 vbu="https://github.com/vim/vim"
 
+slv="$(dirname $(realpath ${BASH_SOURCE[0]}))/show-latest-vim.sh"
+if [ ! -e "${slv}" ] ; then
+  echo "$(basename ${slv}) not found"
+  exit 1
+fi
+
 if [ ${#} -ne 1 ] ; then
-  vvn="$(curl -kLs "${vbu}/releases" \
-  | xmllint --format --html - 2>/dev/null \
-  | awk -F'"' '/\/vim\/vim\/releases\/tag\//{print $2}' \
-  | head -1 \
-  | xargs basename \
-  | sed s/^v//g)"
+  vvn="$(bash ${slv})"
 else
   vvn="${1}"
 fi
