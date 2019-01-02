@@ -5,11 +5,11 @@
 #
 
 rname="diffutils"
-rver="3.6"
+rver="3.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="d621e8bdd4b573918c8145f7ae61817d1be9deb4c8d2328a65cea8e11d783bd6"
+rsha256="b3a7a6221c3dc916085f0d205abf6b8e1ba443d4dd965118da364a1dc1cb3a26"
 rreqs="make sed gettexttiny"
 
 . "${cwrecipe}/common.sh"
