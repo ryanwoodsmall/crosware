@@ -468,6 +468,7 @@ Recipes to consider:
     - ha-jdbc (https://github.com/ha-jdbc/ha-jdbc)
     - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
     - jisql (https://github.com/stdunbar/jisql)
+    - sqlshell (scala, sbt - https://github.com/bmc/sqlshell)
 - jed (https://www.jedsoft.org/jed/)
 - kerberos
   - heimdal
