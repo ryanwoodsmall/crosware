@@ -1,9 +1,9 @@
 rname="zutils"
-rver="1.7"
+rver="1.8"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="http://download.savannah.gnu.org/releases/${rname}/${rfile}"
-rsha256="c4ffadab70458fab8f1fe51b003f953c590d95e060658105622144bdd93ba650"
+rsha256="07a47e1602be66a166bd3bf99c80efe2df889e2d407fadcd7ff83974762da337"
 # diff is needed, use busybox version for now
 rreqs="make busybox lunzip"
 
