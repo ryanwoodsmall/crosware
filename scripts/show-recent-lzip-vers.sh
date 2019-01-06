@@ -13,7 +13,7 @@ if [ ! -e "${cw}" ] ; then
 fi
 
 ${cw} set \
-| awk '/cwfetch.*\/lzip\//{print $2}' \
+| awk '/cwfetch.*\/(l(|un)zip|lzlib|zutils)\//{print $2}' \
 | while read -r l ; do
   u="$(dirname ${l})"
   curl -kLs "${u}" \
@@ -24,3 +24,8 @@ ${cw} set \
   | egrep -v '(/|\.sig)$' \
   | sed "s#^#${u}/#g"
 done
+
+echo
+
+${cw} list-recipe-versions \
+| egrep '(l.*zip|lzlib|zutils)'
