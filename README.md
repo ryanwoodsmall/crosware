@@ -622,6 +622,7 @@ make install
 ```
 - tinyscheme
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
+- tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - tre (https://github.com/laurikari/tre)
 - tree (http://mama.indstate.edu/users/ice/tree/)
 - tsocks
