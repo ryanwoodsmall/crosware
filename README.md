@@ -482,6 +482,7 @@ Recipes to consider:
     - musl: setup **ldd** symlink to **ld.so**, run ```ldd /path/to/executable```
 - lemon (https://www.hwaci.com/sw/lemon/ https://www.sqlite.org/lemon.html https://sqlite.org/src/doc/trunk/doc/lemon.html)
 - lf (https://github.com/gokcehan/lf - go)
+- lftp (https://lftp.tech/)
 - libedit
 - libeditline
 - libfuse (separate userspace? uses meson?)
