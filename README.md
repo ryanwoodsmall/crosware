@@ -407,6 +407,7 @@ Recipes to consider:
   - cindent (https://invisible-island.net/cindent/cindent.html)
   - cproto (https://invisible-island.net/cproto/cproto.html)
   - mawk (https://invisible-island.net/mawk/mawk.html)
+  - misc_tools (ftp://ftp.invisible-island.net/pub/misc_tools/)
 - java stuff
   - ant (included in sdkman)
   - antlr
