@@ -203,5 +203,7 @@
   - ncurses
   - openssl
   - ???
-- convert all ```${...}``` vars in recipes to ```\${...}``` to force later expansion/evaluation?
+- evaluation
+  - convert all ```${...}``` vars in recipes to ```\${...}``` to force later expansion/evaluation?
+  - convert any ```\"...\"``` escapes in **eval** blocks (recipes) to ```'...'```
 - with ```k1om``` qemu x86_64 translation, uname -m returns/karch is set to ```x86-64``` and that is not a supported arch
