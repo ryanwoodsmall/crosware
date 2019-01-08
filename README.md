@@ -501,6 +501,7 @@ Recipes to consider:
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
 - libuv (https://github.com/libuv/libuv)
 - libyaml (https://github.com/yaml/libyaml)
+- libz (sortix, zlib fork https://sortix.org/libz/)
 - lisp stuff
   - clisp (https://clisp.sourceforge.io/)
   - clozure (https://ccl.clozure.com/)
@@ -526,6 +527,7 @@ Recipes to consider:
 - mes (https://www.gnu.org/software/mes/) and m2 stuff (links above)
 - mesalink (https://mesalink.io/ and https://github.com/mesalock-linux/mesalink)
 - meson (http://mesonbuild.com/ - python 3 and ninja)
+- miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
 - moreutils (https://joeyh.name/code/moreutils/)
 - most (https://www.jedsoft.org/most/)
