@@ -20,7 +20,7 @@ function cwconfigure_${rname}() {
     --with-curses \
       CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
       LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib/ -static\" \
-      LIBS='-L${cwsw}/netbsdcurses/current/lib/ -lcurses -lterminfo'
+      LIBS=\"-L${cwsw}/netbsdcurses/current/lib/ -lcurses -lterminfo\"
   popd >/dev/null 2>&1
 }
 "
@@ -28,6 +28,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  make strip
   make install
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}5\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/sh\"

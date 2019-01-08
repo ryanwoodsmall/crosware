@@ -20,7 +20,7 @@ function cwconfigure_${rname}() {
     --with-curses \
       CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
       LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib/ -static\" \
-      LIBS='-L${cwsw}/netbsdcurses/current/lib/ -lcurses -lterminfo'
+      LIBS=\"-L${cwsw}/netbsdcurses/current/lib/ -lcurses -lterminfo\"
   popd >/dev/null 2>&1
 }
 "
