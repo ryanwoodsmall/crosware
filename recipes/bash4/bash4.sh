@@ -1,8 +1,8 @@
-rname="bash"
+rname="bash4"
 rver="4.4.18"
-rdir="${rname}-${rver}"
+rdir="${rname%4}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
+rurl="https://ftp.gnu.org/gnu/${rname%4}/${rfile}"
 rsha256="604d9eec5e4ed5fd2180ee44dd756ddca92e0b6aa4217bbab2b6227380317f23"
 rreqs="make bison flex sed"
 
@@ -40,8 +40,9 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cwmkdir \"${ridir}/bin\"
-  install \"${rname}\" \"${ridir}/bin/${rname}\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/sh\"
+  install -m 0755 bash \"${ridir}/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname%4}\"
+  ln -sf \"${rtdir}/current/bin/${rname%4}\" \"${ridir}/bin/sh\"
   popd >/dev/null 2>&1
 }
 "
