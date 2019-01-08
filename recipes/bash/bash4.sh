@@ -4,7 +4,7 @@ rdir="${rname%4}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname%4}/${rfile}"
 rsha256="604d9eec5e4ed5fd2180ee44dd756ddca92e0b6aa4217bbab2b6227380317f23"
-rreqs="make bison flex sed"
+rreqs="make bison flex sed netbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
@@ -17,8 +17,10 @@ function cwconfigure_${rname}() {
     --enable-readline \
     --enable-static-link \
     --without-bash-malloc \
-    --without-curses \
-      LDFLAGS='-static' CPPFLAGS=''
+    --with-curses \
+      CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
+      LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib/ -static\" \
+      LIBS='-L${cwsw}/netbsdcurses/current/lib/ -lcurses -lterminfo'
   popd >/dev/null 2>&1
 }
 "
