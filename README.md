@@ -484,6 +484,7 @@ Recipes to consider:
 - lemon (https://www.hwaci.com/sw/lemon/ https://www.sqlite.org/lemon.html https://sqlite.org/src/doc/trunk/doc/lemon.html)
 - lf (https://github.com/gokcehan/lf - go)
 - lftp (https://lftp.tech/)
+- libdeflate (https://sortix.org/libdeflate/)
 - libedit
 - libeditline
 - libfuse (separate userspace? uses meson?)
