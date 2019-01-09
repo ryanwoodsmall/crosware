@@ -1,4 +1,8 @@
 #
+# XXX - enable readline tab completion/history in pythonrc
+# XXX - conditionally set PYTHONSTARTUP in profile.d file
+# XXX - example at https://gist.github.com/ryanwoodsmall/72b60ec679e4a1680c7eb7639694afd1
+#
 # Failed to build these modules:
 #  _tkinter - tcl/tk, gui
 #  bsddb185 - backwards compat
