@@ -543,6 +543,7 @@ Recipes to consider:
 - mutt
 - nc / ncat / netcat
 - nethack
+- netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
 - nettle
   - configure libdir=.../lib since lib64 may be set by default
 - nghttp2 (https://github.com/nghttp2/nghttp2)
