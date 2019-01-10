@@ -1,9 +1,9 @@
 rname="clzip"
-rver="1.10"
+rver="1.11"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://download.savannah.gnu.org/releases/lzip/${rname}/${rfile}"
-rsha256="e33506b4654b87ff1d5f02ce3db23363dd1a674c00625d799644f93628acac0f"
+rsha256="d9d51212afa80371dc2546d278ef8ebbb3cd57c06fdd761b7b204497586d24c0"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
