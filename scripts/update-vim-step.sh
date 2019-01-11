@@ -26,7 +26,7 @@ function pz() {
   local v="${1}"
   while $(test $(echo -n "${v}" | wc -c) -lt "${z}") ; do
     v="0${v}"
-  done 
+  done
   echo "${v}"
 }
 
