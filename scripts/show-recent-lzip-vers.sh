@@ -13,7 +13,7 @@ if [ ! -e "${cw}" ] ; then
 fi
 
 ${cw} set \
-| awk '/cwfetch.*\/(l(|un)zip|lzlib|zutils)\//{print $2}' \
+| gawk '/cwfetch.*\/(l(|un)zip|lzlib|zutils)\//{print $2}' \
 | while read -r l ; do
   u="$(dirname ${l})"
   curl -kLs "${u}" \
