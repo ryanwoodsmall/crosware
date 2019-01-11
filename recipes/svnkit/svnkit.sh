@@ -1,9 +1,9 @@
 rname="svnkit"
-rver="1.9.3"
+rver="1.10.0"
 rurl="https://www.svnkit.com/org.tmatesoft.svn_${rver}.standalone.nojna.zip"
 rfile="$(basename ${rurl})"
 rdir="${rname}-${rver}"
-rsha256="055e54e7909b7f7a57312d07c90b546d97d34c007e0d13f5c07b96960d4d559b"
+rsha256="e711bee3a8fa2adccf3b1024b9c6e74657e1ed5c04c7e24adebfbc59fb86576a"
 # we need unzip, use the busybox version
 rreqs="busybox"
 
