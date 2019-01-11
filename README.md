@@ -242,6 +242,7 @@ Working recipes:
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
 - htop
 - iftop
+- inetutils
 - indent
 - iperf
   - iperf
@@ -399,7 +400,6 @@ Recipes to consider:
   - **src/Makefile** needs a ```$(CC) -c``` for the _.c.o_ rule
   - build with something like ```make CFLAGS="-I${cwsw}/zlib/current/include -D__GLIBC__=1" LDFLAGS="-L${cwsw}/zlib/current/lib -lz -static" CPPFLAGS= SHELL='bash -x'```
   - musl static build errors out with ```iodined: open_tun: Failed to open tunneling device: No such file or directory```?
-- inetutils (gnu, configure with ```--enable-servers --enable-clients --disable-rcp --disable-rlogin --disable-rsh```)
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - invisible-island (thomas e. dickey) stuff
   - bcpp (https://invisible-island.net/bcpp/bcpp.html)
