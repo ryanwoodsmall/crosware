@@ -1,7 +1,6 @@
 #
 # XXX - sysroot should be recreated at build time in ${rtdir}/sysroot
-# XXX - arch specific static toolchain dir can be more like:
-#       $(dirname $(which gcc))/../$(gcc -dumpmachine)
+# XXX - sysroot creation should be moved to statictoolchain recipe!!!
 #
 
 rname="perl"
@@ -16,11 +15,12 @@ rreqs="make toybox busybox byacc"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  local sttop=\"\$(realpath \$(dirname \$(realpath \$(which \${CC})))/..)\"
-  local stinc="\${sttop}/\${CC//-gcc/}/include"
-  local stbin="\${sttop}/bin"
-  local stlib="\${sttop}/\${CC//-gcc/}/lib"
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  local sttop=\"\$(cd \$(dirname \$(which \${CC}))/.. ; pwd)\"
+  local starch=\"\$(\${CC} -dumpmachine)\"
+  local stbin=\"\${sttop}/bin\"
+  local stinc=\"\${sttop}/\${starch}/include\"
+  local stlib=\"\${sttop}/\${starch}/lib\"
   mkdir -p sysroot/usr
   ln -sf \${stbin} sysroot/usr/bin
   ln -sf \${stinc} sysroot/usr/include
@@ -33,8 +33,8 @@ function cwconfigure_${rname}() {
     -Ddlext='none' \
     -Dusedl='n' \
     -Dprefix="${ridir}" \
-    -Dsysroot="\${PWD}/sysroot" \
-    -Dlibc="\${stlib}/libc.a" \
+    -Dsysroot=\"\${PWD}/sysroot\" \
+    -Dlibc=\"\${stlib}/libc.a\" \
     -Dcc=\"\${CC} \${CFLAGS} \${LDFLAGS}\"
   popd >/dev/null 2>&1
 }
@@ -42,6 +42,6 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
