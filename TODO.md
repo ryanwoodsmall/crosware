@@ -207,5 +207,26 @@
   - convert all ```${...}``` vars in recipes to ```\${...}``` to force later expansion/evaluation?
   - convert any ```\"...\"``` escapes in **eval** blocks (recipes) to ```'...'```
 - with ```k1om``` qemu x86_64 translation, uname -m returns/karch is set to ```x86-64``` and that is not a supported arch
-- possibly build _.ipk_ files and include **opkg** for binary installation?
+- binary packaging?
+  - possibly build _.ipk_ files and include **opkg** for binary installation?
+  - _.tar_ would suffice
   - hosting, ugh, signing, ugh, verification, ugh, ugh,
+    - local only _package/_ directory
+  - packages have to have a release version
+  - packages are obviously per architecture
+    - has to be captured in naming
+  - naming: **${rname}-${rver}-${rrel}.${rarch}.ext**
+    - does this suffice?
+    - very RPM-ish
+    - _no_ "noarch" packages
+    - not worried about duplicates/wasted space
+  - would need a reliable way of getting...
+    - _software/_ directory for recipe
+    - _etc/profile.d_ file
+    - _var/inst_ file
+  - command set...
+    - ```crosware create-package ...``` - (possibly build/install and) archive a recipe
+    - ```crosware install-pacakge ...``` - extract the package archive, create the _current/_ symlink
+      - need version, release, etc.
+  - graph would come in handy here, again
+  - this sort of relies on a downstream requirement tracker and ability to rebuild dependents
