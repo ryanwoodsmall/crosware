@@ -145,6 +145,9 @@ export cwinstalled
 # and a "user-visible" var whether we want to use an external jvm/jdk
 : ${CW_EXT_JAVA:="false"}
 export CW_EXT_JAVA
+# same for git, default to jgit.sh
+: ${CW_GIT_CMD:="jgit.sh"}
+export CW_GIT_CMD
 # time travel?
 : ${TS:="$(date '+%Y%m%d%H%M%S')"}
 export TS
@@ -639,7 +642,7 @@ function cwbootstrap() {
   # clone or fetch the repo
   if [ ${bootstrapped} -eq 1 ] ; then
     cwscriptecho "attempting to clone ${cwurl} into ${cwtop}"
-    ${jgitsh} clone "${cwurl}" "${cwtop}" || cwfailexit "could not clone ${cwurl} into ${cwtop}"
+    ${CW_GIT_CMD} clone "${cwurl}" "${cwtop}" || cwfailexit "could not clone ${cwurl} into ${cwtop}"
   else
     cwupdate
   fi
@@ -705,8 +708,8 @@ function cwupdate() {
     cwsourceprofile
     cwscriptecho "attempting to fetch/merge in ${cwtop}"
     pushd "${cwtop}" >/dev/null 2>&1 || cwfailexit "could not pushd into ${cwtop}"
-    ${jgitsh_symlink} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
-    ${jgitsh_symlink} merge "${cworigin}/${cwbranch}" || { popd ; cwfailexit "could not merge ${cworigin}/${cwbranch} in ${cwtop}" ; }
+    ${CW_GIT_CMD} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
+    ${CW_GIT_CMD} merge "${cworigin}/${cwbranch}" || { popd ; cwfailexit "could not merge ${cworigin}/${cwbranch} in ${cwtop}" ; }
     popd >/dev/null 2>&1
     cwchmod "${cwtmpperm}" "${cwtmp}"
   fi
