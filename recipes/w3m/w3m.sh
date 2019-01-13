@@ -3,11 +3,11 @@
 #
 
 rname="w3m"
-rver="0.5.3-git20180125"
+rver="0.5.3-git20190105"
 rdir="${rname}-${rver}"
 rfile="v${rver//-/+}.tar.gz"
 rurl="https://github.com/tats/${rname}/archive/${rfile}"
-rsha256="c75068ef06963c9e3fd387e8695a203c6edda2f467b5f2f754835afb75eb36f3"
+rsha256="0467bb5429b75749205a3f57b9f5e8abba49929272aeab6fce94ff17953f0784"
 rreqs="make gc gettexttiny ncurses openssl perl pkgconfig zlib"
 
 . "${cwrecipe}/common.sh"
