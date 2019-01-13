@@ -143,11 +143,14 @@ export cwbootstraprecipes
 export cwinstalled
 
 # and a "user-visible" var whether we want to use an external jvm/jdk
+: ${CW_USE_JAVA:="true"}
 : ${CW_EXT_JAVA:="false"}
-export CW_EXT_JAVA
+export CW_USE_JAVA CW_EXT_JAVA
 # same for git, default to jgit.sh
+: ${CW_USE_JGIT:="true"}
+: ${CW_EXT_JGIT:="false"}
 : ${CW_GIT_CMD:="jgit.sh"}
-export CW_GIT_CMD
+export CW_USE_JGIT CW_EXT_JGIT CW_GIT_CMD
 # time travel?
 : ${TS:="$(date '+%Y%m%d%H%M%S')"}
 export TS
@@ -623,14 +626,19 @@ function cwbootstrap() {
   # static toolchain
   local statictoolchainarchive="${cwtmptmp}/${statictoolchain_file[${karch}]}"
   cwfetchcheck "${statictoolchain_file_url[${karch}]}" "${statictoolchainarchive}" "${statictoolchainchecksum}"
+  # git
   # jgit
-  local jgitsh="${cwtmptmp}/${jgitsh_file}"
-  cwfetchcheck "${jgitsh_url}" "${jgitsh}" "${jgitsh_sha256sum}"
-  cwchmod "${cwexecperm}" "${jgitsh}"
-  ln -sf "${jgitsh_file}" "${cwtmptmp}/${jgitsh_symlink}"
-  export PATH="${cwtmptmp}:${PATH}"
+  if [ "${CW_USE_JGIT}" == "true" ] ; then
+    if [ "${CW_EXT_JGIT}" == "false" ] ; then
+      local jgitsh="${cwtmptmp}/${jgitsh_file}"
+      cwfetchcheck "${jgitsh_url}" "${jgitsh}" "${jgitsh_sha256sum}"
+      cwchmod "${cwexecperm}" "${jgitsh}"
+      ln -sf "${jgitsh_file}" "${cwtmptmp}/${jgitsh_symlink}"
+      export PATH="${cwtmptmp}:${PATH}"
+    fi
+  fi
   # zulu
-  if [ "${CW_EXT_JAVA}" == "false" ] ; then
+  if [ "${CW_USE_JAVA}" == "true" -a "${CW_EXT_JAVA}" == "false" ] ; then
     local zuluarchive="${cwtmptmp}/${zulu_jdk_file[${uarch}]}"
     local zulujdkdir="${cwtmptmp}/${zulu_jdk_dir[${uarch}]}"
     cwfetchcheck "${zulu_jdk_url[${uarch}]}" "${zuluarchive}" "${zulu_jdk_sha256sum[${uarch}]}"
@@ -648,11 +656,16 @@ function cwbootstrap() {
   fi
   # setup our base tools
   # zulu
-  if [ "${CW_EXT_JAVA}" == "false" ] ; then
+  if [ "${CW_USE_JAVA}" == "true" -a "${CW_EXT_JAVA}" == "false" ] ; then
     cwinstall "${zulu_pkgname}"
   fi
+  # git
   # jgit
-  cwinstall "${jgitsh_pkgname}"
+  if [ "${CW_USE_JGIT}" == "true" ] ; then
+    if [ "${CW_EXT_JGIT}" == "false" ] ; then
+      cwinstall "${jgitsh_pkgname}"
+    fi
+  fi
   # toolchain
   cwinstall "${statictoolchain_pkgname}"
   # set tmp directory perm
@@ -661,9 +674,8 @@ function cwbootstrap() {
   cwscriptecho "bootstrap complete"
   cwscriptecho "add ${cwname} to your environment with a line in your .profile/.bash_profile/.bashrc"
   cwprofileline
-  # XXX - add to installed/db/...
-  # XXX - cleanup temp files?
-  if [ "${CW_EXT_JAVA}" == "false" ] ; then
+  # cleanup temp files?
+  if [ "${CW_USE_JAVA}" == "true" -a "${CW_EXT_JAVA}" == "false" ] ; then
     cwscriptecho "removing temporary zulu jdk directory"
     rm -rf "${zulujdkdir}"
   fi
