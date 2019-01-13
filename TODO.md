@@ -55,6 +55,8 @@
   - rdesc - recipe description?
   - rsite - url for recipe
   - rlicense - license
+  - rcommonopts - recipes that have a common set of options (curl, ncurses, lynx) can bundle these here
+  - rconfigureopts - can set here instead of defining custom *cwconfigure_*
   - rold - list of old versions to clean up recipes that do not fully remove rdir?
   - need to set sane default r* values in common.sh with ```: ${rblah:="blah.setting"}```
   - unset vals after parse so there is no bleed through?
@@ -154,10 +156,8 @@
   - add a recipe for it?
   - http://git.savannah.gnu.org/gitweb/?p=config.git
 - certs for openssl/wolfssl/mbedtls/gnutls/...
-- recipes that need custom libtool can set _${rlibtool}_ to the env passed to **make**
-  - i.e., ```rlibtool="LIBTOOL='libtool --some-flag ...'"```
-  - recipes that require **slibtool** should automatically set rlibtool appropriately
 - recipes that need autoreconf/libtoolize/etc. flag
+- recipes that are libraries w/--enable-static and the like need a flag
 - cwextract
   - which form to use? is this simpler?
   - separate out (de)compressor from (un)archiver?

@@ -4,6 +4,8 @@
 : ${rprof:="${cwetcprofd}/${rname}.sh"}
 : ${rreqs:=""}
 : ${rlibtool:=""}
+: ${rconfigureopts:=""}
+: ${rcommonopts:=""}
 
 if [[ ${rlibtool} == "" && ${rreqs} =~ slibtool ]] ; then
   rlibtool="LIBTOOL='${cwsw}/slibtool/current/bin/slibtool-static -all-static'"
@@ -53,7 +55,7 @@ function cwcheckreqs_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix}
+  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts}
   popd >/dev/null 2>&1
 }
 "

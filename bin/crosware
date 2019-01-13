@@ -724,7 +724,7 @@ function cwsourcerecipes() {
   for recipe in ${cwrecipe}/*/*.sh ; do
     source ${recipe}
     cwrecipes["${rname}"]=1
-    unset rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps rlibtool
+    unset rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps rlibtool rconfigureopts rcommonopts
   done
   unset recipe
   export cwrecipes
