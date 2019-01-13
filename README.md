@@ -73,6 +73,18 @@ commands:
   upgrade-all : upgrade all packages with different recipe versions
 ```
 
+#### use external or disable java and jgit
+
+A few user environment variables are available to control how crosware checks itself out and updates recipes.
+
+| var         | default | purpose                                        |
+| ----------- | ------- | ---------------------------------------------- |
+| CW_GIT_CMD  | jgit.sh | which "git" command to use for checkout/update |
+| CW_USE_JAVA | true    | use java for bootstrap, jgit                   |
+| CW_EXT_JAVA | false   | use system java instead of zulu recipe         |
+| CW_USE_JGIT | true    | use jgit.sh for checkout/update                |
+| CW_EXT_JGIT | false   | use system jgit.sh instead of jgitsh recipe    |
+
 #### alpine
 
 Alpine (https://alpinelinux.org/) uses musl libc (http://musl-libc.org) and as such cannot use the Zulu JDK as distributed. To bootstrap using the system-supplied OpenJDK from Alpine repos:
@@ -96,6 +108,26 @@ To manually remove the Zulu install directory, environment script and installati
 - /usr/local/crosware/etc/profile.d/zulu.sh
 - /usr/local/crosware/var/inst/zulu
 - /usr/local/crosware/software/zulu/
+
+#### container
+
+A minimal container suitable for bootstrapping is buildable from: https://github.com/ryanwoodsmall/dockerfiles/tree/master/crosware
+
+Build and run with something like:
+
+```
+docker build --tag crosware https://raw.githubusercontent.com/ryanwoodsmall/dockerfiles/master/crosware/Dockerfile
+docker run -it crosware
+```
+
+Inside the container, install **git** to enable updates and list any upgradable packages:
+
+```
+crosware install statictoolchain git
+. /usr/local/crosware/etc/profile
+crosware update
+crosware list-upgradable
+```
 
 # notes
 
@@ -191,12 +223,14 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 
 # recipes
 
-Bootstrap recipes:
+## bootstrap recipes
+
 - **zulu** azul zulu openjdk jvm
 - **jgitsh** standalone jgit shell script
 - **statictoolchain** musl-cross-make static toolchain
 
-Working recipes:
+## working recipes
+
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - autoconf
 - automake
@@ -338,7 +372,8 @@ Working recipes:
 - zip
 - zlib
 
-Recipes to consider:
+## recipes to consider
+
 - ack (https://beyondgrep.com/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - align (and width, perl scripts, http://kinzler.com/me/align/)
@@ -644,6 +679,11 @@ make install
 - ytalk (http://ytalk.ourproject.org/)
 - support libraries for building the above
 - whatever else seems useful
+
+
+# bootstrap notes
+
+(probably somewhat out of date, see container info above)
 
 Bootstrap recipes that need work (i.e., arch-specific versions installed into /usr/local/tmp/bootstrap, archive, etc.);
 these could be used to create a fully functional build environment/initrd/chroot/container/etc.
