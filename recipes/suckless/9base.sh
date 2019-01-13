@@ -14,10 +14,10 @@ function cwfetch_${rname}() {
   cwscriptecho \"fetching ${rname} from git at ${rurl}\"
   pushd \"${cwbuild}\" >/dev/null 2>&1
   rm -rf \"${rdir}\"
-  jgit clone \"${rurl}\" \"${rdir}\"
+  \${CW_GIT_CMD} clone \"${rurl}\" \"${rdir}\"
   cd \"${rdir}\"
-  jgit checkout \"${rver}\"
-  jgit log | head -6
+  \${CW_GIT_CMD} checkout \"${rver}\"
+  \${CW_GIT_CMD} log | head -6
   popd >/dev/null 2>&1
 }
 "
