@@ -538,6 +538,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - libressl
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtirpc
+- libusb (https://github.com/libusb/libusb)
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
 - libuv (https://github.com/libuv/libuv)
 - libyaml (https://github.com/yaml/libyaml)
@@ -609,6 +610,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - pcc (http://pcc.ludd.ltu.se/)
   - pcc and pcc-libs are now separate
   - will almost certainly have to tinker with ld stuff
+- pciutils (https://github.com/pciutils/pciutils)
 - pdsh (https://github.com/chaos/pdsh or https://github.com/grondo/pdsh ?)
 - pigz
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
@@ -671,6 +673,7 @@ make install
 - tree (http://mama.indstate.edu/users/ice/tree/)
 - tsocks
 - upx (https://github.com/upx/upx)
+- usbutils (https://github.com/gregkh/usbutils)
 - utalk (http://utalk.ourproject.org/)
 - vifm (https://github.com/vifm/vifm)
 - vpnc
