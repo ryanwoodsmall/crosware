@@ -1,9 +1,9 @@
 rname="lzlib"
-rver="1.10"
+rver="1.11"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://download.savannah.gnu.org/releases/lzip/${rname}/${rfile}"
-rsha256="1d6ab7800a5b43e56fd20607fd2cfda9e550350dc95f5beb6a4ce14f85b41043"
+rsha256="6c5c5f8759d1ab7c4c3c53788ea2d9daad04aeddcf338226893f8ff134914d36"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
