@@ -19,20 +19,24 @@
 
 # XXX - probably need realpath in the chain here somewhere
 # get our etc and bin dir
-cwetcdir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
-cwtop="$(cd "${cwetcdir}"/.. && pwd)"
-cwbindir="${cwtop}/bin"
-cwsw="${cwtop}/software"
+export cwetcdir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
+export cwetc="${cwetcdir}"
+export cwtop="$(cd "${cwetcdir}"/.. && pwd)"
+export cwbindir="${cwtop}/bin"
+export cwsw="${cwtop}/software"
 
 # CPPFLAGS - includes
 : ${CPPFLAGS:=""}
+export CPPFLAGS
 
 # LDFLAGS - libraries
 : ${LDFLAGS:=""}
+export LDFLAGS
 
 # pkg-config
 : ${PKG_CONFIG_LIBDIR:=""}
 : ${PKG_CONFIG_PATH:=""}
+export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH
 
 # simple path functions
 #   https://github.com/ryanwoodsmall/shell-ish/blob/master/lib/path-functions.sh
