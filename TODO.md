@@ -119,6 +119,7 @@
   - ```: ${cwmakejobs:="$(($(nproc)+1))"}```
 - ```strip``` script command
   - traverse ${cwtop}/software/*/*/bin/ and run ```strip --strip-all``` on any ELF binaries
+  - corresponding ```${cwstrip_recipe}``` stage and ```${rstriptarget}``` recipe var defaulting to _**bin/\***_.
 - compiler opts
   - http://www.productive-cpp.com/hardening-cpp-programs-executable-space-protection-address-space-layout-randomization-aslr/
   - pic/pie/...
