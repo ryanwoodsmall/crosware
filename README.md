@@ -611,6 +611,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - pcc and pcc-libs are now separate
   - will almost certainly have to tinker with ld stuff
 - pciutils (https://github.com/pciutils/pciutils)
+  - _/usr/share/misc/pci.ids_ file (https://github.com/pciutils/pciids)
 - pdsh (https://github.com/chaos/pdsh or https://github.com/grondo/pdsh ?)
 - pigz
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
