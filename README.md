@@ -427,6 +427,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - needs m4
   - likely needed for self-hosting along with...
     - binutils
+    - isl
     - mpfr
     - mpc
 - gnutls
