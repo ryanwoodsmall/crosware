@@ -425,6 +425,10 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - gdb
 - gmplib
   - needs m4
+  - likely needed for self-hosting along with...
+    - binutils
+    - mpfr
+    - mpc
 - gnutls
   - needs nettle, gmplib
   - configure needs ```--with-included-libtasn1 --with-included-unistring --without-p11-kit```
