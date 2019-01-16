@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="369737ce51587f92466041a97ab7d2358c6d9e1b6490b3940eb09fb0a9a6ac88"
-rreqs="make gmp mpfr mpc flex bison"
+rreqs="make gmp mpfr mpc flex bison slibtool"
 
 . "${cwrecipe}/common.sh"
 
