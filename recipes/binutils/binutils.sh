@@ -11,16 +11,7 @@ rreqs="make gmp mpfr mpc flex bison"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts}
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make install ${rlibtool}
-  install -m 0644 ./libiberty/libiberty.a ${ridir}/lib/
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --enable-install-libiberty
   popd >/dev/null 2>&1
 }
 "
