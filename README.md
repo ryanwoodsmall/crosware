@@ -237,6 +237,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - bash (4.x, static)
 - bc (gnu bc, dc)
 - bdb47
+- binutils (bfd, opcodes, libiberty.a; no isl)
 - bison
 - brogue
 - busybox (static)
@@ -688,7 +689,6 @@ make install
 
 # self-hosting
 
-- binutils (gmp, mpc, mpfr)
 - isl?
 
 
