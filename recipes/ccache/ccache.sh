@@ -1,9 +1,9 @@
 rname="ccache"
-rver="3.5.1"
+rver="3.6"
 rdir="${rname}-${rver}"
-rfile="${rdir}a.tar.gz"
+rfile="${rdir}.tar.gz"
 rurl="https://download.samba.org/pub/${rname}/${rfile}"
-rsha256="16cf1b11687083f902ac183ca588c60e8bf1557ba09769fa357d41e29901299b"
+rsha256="a3f2b91a2353b65a863c5901251efe48060ecdebec46b5eaec8ea8e092b9e871"
 rreqs="make"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
