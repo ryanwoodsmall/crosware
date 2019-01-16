@@ -271,6 +271,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - git
 - glib
 - global
+- gmp
 - grep (gnu grep)
 - groff
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
@@ -423,13 +424,6 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - entr (http://entrproject.org/)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
 - gdb
-- gmplib
-  - needs m4
-  - likely needed for self-hosting along with...
-    - binutils
-    - isl
-    - mpfr
-    - mpc
 - gnutls
   - needs nettle, gmplib
   - configure needs ```--with-included-libtasn1 --with-included-unistring --without-p11-kit```
@@ -688,6 +682,14 @@ make install
 - ytalk (http://ytalk.ourproject.org/)
 - support libraries for building the above
 - whatever else seems useful
+
+
+# self-hosting
+
+- binutils (gmp, mpc, mpfr)
+- isl?
+- mpfr
+- mpc
 
 
 # bootstrap notes
