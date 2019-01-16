@@ -320,6 +320,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - mbedtls (polarssl)
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
 - mksh
+- mpfr
 - musl-fts (named muslfts - https://github.com/pullmoll/musl-fts)
 - ncurses
 - netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
@@ -688,7 +689,6 @@ make install
 
 - binutils (gmp, mpc, mpfr)
 - isl?
-- mpfr
 - mpc
 
 
