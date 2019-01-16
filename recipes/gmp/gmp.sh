@@ -11,7 +11,7 @@ rreqs="make sed m4"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts}
+  ./configure ${cwconfigureprefix} --enable-{static,shared}{,=yes} LDFLAGS=\"\${LDFLAGS//-static/}\" CFLAGS=\"-fPIC\" CXXFLAGS=\"-fPIC\"
   popd >/dev/null 2>&1
 }
 "
