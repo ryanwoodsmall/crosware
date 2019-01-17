@@ -16,7 +16,7 @@ rreqs="make toybox busybox byacc"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  local sttop=\"\$(cd \$(dirname \$(which \${CC}))/.. ; pwd)\"
+  local sttop=\"${cwsw}/statictoolchain/current\"
   local starch=\"\$(\${CC} -dumpmachine)\"
   local stbin=\"\${sttop}/bin\"
   local stinc=\"\${sttop}/\${starch}/include\"
