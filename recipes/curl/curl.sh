@@ -70,6 +70,7 @@ function cwmakeinstall_${rname}_mbedtls() {
     --with-mbedtls \
     --with-default-ssl-backend=mbedtls
   make -j${cwmakejobs}
+  mkdir -p ${ridir}/bin
   install -m 0755 src/curl ${ridir}/bin/curl-mbedtls
   popd >/dev/null 2>&1
 }
@@ -91,6 +92,7 @@ function cwmakeinstall_${rname}_wolfssl() {
     --with-cyassl \
     --with-default-ssl-backend=cyassl
   make -j${cwmakejobs}
+  mkdir -p ${ridir}/bin
   install -m 0755 src/curl ${ridir}/bin/curl-wolfssl
   popd >/dev/null 2>&1
 }
