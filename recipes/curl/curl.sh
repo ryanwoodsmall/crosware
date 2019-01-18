@@ -57,7 +57,7 @@ function cwmakeinstall_${rname}() {
 eval "
 function cwmakeinstall_${rname}_mbedtls() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make distclean
+  make distclean || true
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
@@ -78,7 +78,7 @@ function cwmakeinstall_${rname}_mbedtls() {
 eval "
 function cwmakeinstall_${rname}_wolfssl() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make distclean
+  make distclean || true
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
