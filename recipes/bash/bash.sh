@@ -9,34 +9,12 @@ rreqs="make byacc reflex flex bison sed netbsdcurses"
 bpfile="${cwrecipe}/${rname}/${rname}.patches"
 
 . "${cwrecipe}/common.sh"
-
-eval "
-function cwfetch_${rname}() {
-  cwfetchcheck \"${rurl}\" \"${cwdl}/${rname}/${rfile}\" \"${rsha256}\"
-  local p u f s
-  if [ -e \"${bpfile}\" ] ; then
-    for p in \$(cat ${bpfile}) ; do
-      u=\${p%%,*}
-      f=\"${cwdl}/${rname}/\$(basename \${u})\"
-      s=\${p##*,}
-      cwfetchcheck \"\${u}\" \"\${f}\" \"\${s}\"
-    done
-  fi
-  unset f u p s
-}
-"
+. "${cwrecipe}/${rname}/${rname}.sh.common"
 
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  local p
-  if [ -e \"${bpfile}\" ] ; then
-    cut -f1 -d, ${bpfile} | while read -r p ; do
-      p=\"${cwdl}/${rname}/\$(basename \${p})\"
-      patch -p0 < \"\${p}\"
-    done
-  fi
-  unset p
+  cwpatch_${rname}
   ./configure ${cwconfigureprefix} \
     --disable-nls \
     --disable-separate-helpfiles \
@@ -59,12 +37,6 @@ function cwmakeinstall_${rname}() {
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}5\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/sh\"
   popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
 
