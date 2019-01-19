@@ -6,7 +6,7 @@ rurl="https://ftp.gnu.org/gnu/${rname%4}/${rfile}"
 rsha256="d86b3392c1202e8ff5a423b302e6284db7f8f435ea9f39b5b1b20fd3ac36dfcb"
 rreqs="make byacc reflex flex bison sed netbsdcurses"
 # patches file
-bpfile=\"${cwrecipe}/${rname%4}/${rname}.patches\"
+bpfile="${cwrecipe}/${rname%4}/${rname}.patches"
 
 . "${cwrecipe}/common.sh"
 
