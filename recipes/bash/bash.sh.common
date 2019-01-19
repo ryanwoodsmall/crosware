@@ -19,15 +19,16 @@ eval "
 function cwpatch_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   local p
+  local f
   if [ -e \"${bpfile}\" ] ; then
     cwscriptecho \"${rname}: found patchlist file ${bpfile}\"
     cut -f1 -d, ${bpfile} | while read -r p ; do
-      p=\"${cwdl}/${rname}/\$(basename \${p})\"
-      cwscriptecho \"${rname}: applying patch \${p}\"
-      patch -p0 < \"\${p}\"
+      f=\"${cwdl}/${rname}/\$(basename \${p})\"
+      cwscriptecho \"${rname}: applying patch \${f}\"
+      patch -p0 < \"\${f}\"
     done
   fi
-  unset p
+  unset p f
   popd >/dev/null 2>&1
 }
 "
