@@ -24,6 +24,14 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwclean_${rname}() {
+  pushd "${cwbuild}" >/dev/null 2>&1
+  rm -rf "${cwbuild}/${rdir}"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
   echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
