@@ -30,7 +30,7 @@ function cwver_${rname}() {
 eval "
 function cwclean_${rname}() {
   pushd "${cwbuild}" >/dev/null 2>&1
-  rm -rf "${rdir}"
+  rm -rf "${rbdir}"
   popd >/dev/null 2>&1
 }
 "
