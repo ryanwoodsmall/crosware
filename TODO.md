@@ -244,6 +244,7 @@
     - url
     - context (not in bash stuff for now, they are always _-p0_, cannot count on this)
     - sha256sum
+    - need a relative path from the top of **${rdir}**?
     - ???
     - just apply in order
     - need to pick a delimiter
