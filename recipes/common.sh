@@ -1,3 +1,4 @@
+# XXX - rbdir should include /${rname}/ - what will it break? not much...
 : ${rbdir:="${cwbuild}/${rdir}"}
 : ${rtdir:="${cwsw}/${rname}"}
 : ${ridir:="${rtdir}/${rdir}"}
