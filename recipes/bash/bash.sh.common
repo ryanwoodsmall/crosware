@@ -3,6 +3,7 @@ function cwfetch_${rname}() {
   cwfetchcheck \"${rurl}\" \"${cwdl}/${rname}/${rfile}\" \"${rsha256}\"
   local p u f s
   if [ -e \"${bpfile}\" ] ; then
+    cwscriptecho \"${rname}: found patchlist file ${bpfile}\"
     for p in \$(cat ${bpfile}) ; do
       u=\${p%%,*}
       f=\"${cwdl}/${rname}/\$(basename \${u})\"
@@ -19,12 +20,32 @@ function cwpatch_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   local p
   if [ -e \"${bpfile}\" ] ; then
+    cwscriptecho \"${rname}: found patchlist file ${bpfile}\"
     cut -f1 -d, ${bpfile} | while read -r p ; do
       p=\"${cwdl}/${rname}/\$(basename \${p})\"
+      cwscriptecho \"${rname}: applying patch \${p}\"
       patch -p0 < \"\${p}\"
     done
   fi
   unset p
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  cwpatch_${rname}
+  ./configure ${cwconfigureprefix} \
+    --disable-nls \
+    --disable-separate-helpfiles \
+    --enable-readline \
+    --enable-static-link \
+    --without-bash-malloc \
+    --with-curses \
+      CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
+      LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib/ -static\" \
+      LIBS=\"-L${cwsw}/netbsdcurses/current/lib/ -lcurses -lterminfo\"
   popd >/dev/null 2>&1
 }
 "

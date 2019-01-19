@@ -13,24 +13,6 @@ bpfile="${cwrecipe}/${rname%4}/${rname}.patches"
 . "${cwrecipe}/${rname%4}/${rname%4}.sh.common"
 
 eval "
-function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cwpatch_${rname}
-  ./configure ${cwconfigureprefix} \
-    --disable-nls \
-    --disable-separate-helpfiles \
-    --enable-readline \
-    --enable-static-link \
-    --without-bash-malloc \
-    --with-curses \
-      CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
-      LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib/ -static\" \
-      LIBS=\"-L${cwsw}/netbsdcurses/current/lib/ -lcurses -lterminfo\"
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   # ganked from alpine
