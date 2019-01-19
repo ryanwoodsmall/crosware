@@ -100,9 +100,15 @@ function cwlinkdir_${rname}() {
 }
 "
 
-# XXX - noop for now, need cwfetchpatch_${rname} as well?
+# XXX - noop for now
 eval "
 function cwpatch_${rname}() {
+  true
+}
+"
+
+eval "
+function cwfetchpatches_${rname}() {
   true
 }
 "

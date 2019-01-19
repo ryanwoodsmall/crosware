@@ -235,11 +235,10 @@
   - AVOID AS MUCH AS POSSIBLE
     - _sed_ in ```cwconfigure_${rname}``` is easy enough
     - sucks for patch series though
-  - dummy, unreferenced ```cwpatch_${rname}``` for now
+  - dummy, unreferenced ```cwpatch_${rname}``` and ```cwfetchpatches_${rname}``` for now
   - bash/bash4 recipes have working implementations
     - **bash.patches** and **bash4.patches** have comma-separted patch urls and sha256sums
   - really needs to be bundled in ```cwinstall_${rname}```? before configure?
-  - a new ```cwfetchpatches_${rname}``` is probably necessary
   - generalize **recipe.patches** files
     - url
     - context (not in bash stuff for now, they are always _-p0_, cannot count on this)
