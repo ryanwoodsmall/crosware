@@ -1,16 +1,43 @@
 rname="bash4"
-rver="4.4.18"
-rdir="${rname%4}-${rver}"
+rver="4.4.23"
+rdir="${rname%4}-${rver%.*}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname%4}/${rfile}"
-rsha256="604d9eec5e4ed5fd2180ee44dd756ddca92e0b6aa4217bbab2b6227380317f23"
-rreqs="make byacc sed netbsdcurses"
+rsha256="d86b3392c1202e8ff5a423b302e6284db7f8f435ea9f39b5b1b20fd3ac36dfcb"
+rreqs="make byacc reflex flex bison sed netbsdcurses"
+# patches file
+bpfile=\"${cwrecipe}/${rname%4}/${rname}.patches\"
 
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwfetch_${rname}() {
+  cwfetchcheck \"${rurl}\" \"${cwdl}/${rname}/${rfile}\" \"${rsha256}\"
+  local p u f s
+  if [ -e \"${bpfile}\" ] ; then
+    for p in \$(cat ${bpfile}) ; do
+      u=\${p%%,*}
+      f=\"${cwdl}/${rname}/\$(basename \${u})\"
+      s=\${p##*,}
+      cwfetchcheck \"\${u}\" \"\${f}\" \"\${s}\"
+      bplist+=\"\${f} \"
+    done
+  fi
+  unset f u p s
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  local p
+  if [ -e \"${bpfile}\" ] ; then
+    cut -f1 -d, ${bpfile} | while read -r p ; do
+      p=\"${cwdl}/${rname}/\$(basename \${p})\"
+      patch -p0 < \"\${p}\"
+    done
+  fi
+  unset p
   ./configure ${cwconfigureprefix} \
     --disable-nls \
     --disable-separate-helpfiles \
@@ -54,3 +81,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
+
+unset bpfile
