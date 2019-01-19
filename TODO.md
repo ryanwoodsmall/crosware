@@ -241,6 +241,7 @@
   - really needs to be bundled in ```cwinstall_${rname}```? before configure?
   - generalize **recipe.patches** files
     - url
+      - generate filename (for direct-download files) with something like ```basename ${patchfileurl} | xargs basename | tr '[:punct:]' ' ' | sed 's/ /./;s/ /_/g'```
     - context (not in bash stuff for now, they are always _-p0_, cannot count on this)
     - sha256sum
     - need a relative path from the top of **${rdir}**?
