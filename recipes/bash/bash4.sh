@@ -20,7 +20,6 @@ function cwfetch_${rname}() {
       f=\"${cwdl}/${rname}/\$(basename \${u})\"
       s=\${p##*,}
       cwfetchcheck \"\${u}\" \"\${f}\" \"\${s}\"
-      bplist+=\"\${f} \"
     done
   fi
   unset f u p s
