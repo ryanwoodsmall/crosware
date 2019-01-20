@@ -1,3 +1,8 @@
+#
+# need openssh for sftp support
+# append to localoptions.h something like
+#   #define SFTPSERVER_PATH "${cwsw}/openssh/current/libexec/sftp-server"
+#
 rname="dropbear"
 rver="2018.76"
 rdir="${rname}-${rver}"
