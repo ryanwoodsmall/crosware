@@ -1,5 +1,8 @@
 # TODO
 
+- eliminate subshells, **``**, ```$(..)``` where possible
+  - use bash string manipulation in place of tr/sed/awk
+  - speed up sourcing/parsing/execution significantly
 - need to set ```set -o pipefail```? prolly
   - and ```trap...```
   - and use ```... ||:``` as a ```... || true``` shortcut
@@ -248,3 +251,24 @@
     - ???
     - just apply in order
     - need to pick a delimiter
+- easier url download filename generation
+  - url -> filename might look something like:
+```
+#
+# cwurltofilename
+#   receives a url
+#   outputs a filename
+#
+#   XXX - urlencode url before [[:punct:]] -> _ replacement?
+#   XXX - base64 urls/filenames to more uniquely identify output file?
+#
+function cwurltofilename() {
+  local u="${1}"
+  local f="${u##*/}"
+  if [ -z "${f}" ] ; then
+    f="${u}"
+  fi
+  local o="${f//[[:punct:]]/_}.crosware_download"
+  echo "${o}"
+}
+```
