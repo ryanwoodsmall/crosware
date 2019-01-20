@@ -689,7 +689,7 @@ make install
 
 # self-hosting
 
-- isl?
+- isl - 0.15 matches version in musl-cross-make
 
 
 # bootstrap notes
