@@ -669,6 +669,7 @@ env \
 make CPPFLAGS= CXXFLAGS= LDFLAGS='-static' CFLAGS='-Wl,-static -fPIC'
 make install
 ```
+- tini (small init for containers, https://github.com/krallin/tini)
 - tinyscheme
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
