@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gcc.gnu.org/pub/gcc/infrastructure/${rfile}"
 rsha256="8ceebbf4d9a81afa2b4449113cee4b7cb14a687d7a549a963deb5e2a41458b6b"
-rreqs="make gmp mpfr"
+rreqs="make gmp mpfr mpc"
 
 . "${cwrecipe}/common.sh"
 
