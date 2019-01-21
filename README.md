@@ -283,6 +283,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - iperf
   - iperf
   - iperf3
+- isl
 - j7zip
 - jo (https://github.com/jpmens/jo)
 - jq (https://stedolan.github.io/jq/ - with oniguruma regex)
@@ -686,11 +687,6 @@ make install
 - ytalk (http://ytalk.ourproject.org/)
 - support libraries for building the above
 - whatever else seems useful
-
-
-# self-hosting
-
-- isl - 0.15 matches version in musl-cross-make
 
 
 # bootstrap notes
