@@ -11,7 +11,7 @@ rreqs="make gmp"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} --enable-{static,shared}{,=yes} LDFLAGS=\"\${LDFLAGS//-static/}\" CFLAGS=\"-fPIC\" CXXFLAGS=\"-fPIC\"
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts}
   popd >/dev/null 2>&1
 }
 "
