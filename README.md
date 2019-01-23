@@ -111,9 +111,18 @@ To manually remove the Zulu install directory, environment script and installati
 
 #### container
 
-A minimal container suitable for bootstrapping is buildable from: https://github.com/ryanwoodsmall/dockerfiles/tree/master/crosware
+A container suitable for bootstrapping is available:
 
-Build and run with something like:
+- Docker hub: https://cloud.docker.com/repository/docker/ryanwoodsmall/crosware
+- buildable from: https://github.com/ryanwoodsmall/dockerfiles/tree/master/crosware
+
+Run with:
+
+```docker run -it ryanwoodsmall/crosware```
+
+An interactive bash shell session will start, and any crosware C/C++ packages should build and run out of the box.
+
+Build with something like:
 
 ```
 docker build --tag crosware https://raw.githubusercontent.com/ryanwoodsmall/dockerfiles/master/crosware/Dockerfile
