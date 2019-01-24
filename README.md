@@ -447,6 +447,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - gpgme
   - etc.
 - graphviz (http://graphviz.org/)
+- guile (https://www.gnu.org/software/guile/ - needs gmp, libtool, libunistring, pkgconfig, libffi, gc, readline)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
 - iodine (https://github.com/yarrick/iodine)
   - **src/Makefile** needs a ```$(CC) -c``` for the _.c.o_ rule
@@ -552,7 +553,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtirpc
 - libusb (https://github.com/libusb/libusb)
-- libunistring (https://ftp.gnu.org/gnu/libunistring/)
+- libunistring (https://ftp.gnu.org/gnu/libunistring/ - ```--enable-relocatable``` configure opt)
 - libuv (https://github.com/libuv/libuv)
 - libyaml (https://github.com/yaml/libyaml)
 - libz (sortix, zlib fork https://sortix.org/libz/)
