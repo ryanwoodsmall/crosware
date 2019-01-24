@@ -408,6 +408,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
 - brotli (https://github.com/google/brotli)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
+- chibi-scheme (https://github.com/ashinn/chibi-scheme)
 - chicken
 - chrpath
 - cmake
