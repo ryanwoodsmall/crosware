@@ -404,13 +404,9 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
   - hbase (version?)
   - spark (included in sdkman)
-- bigloo
 - bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
 - brotli (https://github.com/google/brotli)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
-- chez (scheme, https://github.com/cisco/ChezScheme - utillinux (uuid), ncurses, disable x11)
-- chibi-scheme (https://github.com/ashinn/chibi-scheme)
-- chicken
 - chrpath
 - cmake
   - configure: ```./bootstrap --prefix=${cwsw}/cmake/$(basename $(pwd)) --no-system-libs --parallel=$(nproc)```
@@ -448,7 +444,6 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - gpgme
   - etc.
 - graphviz (http://graphviz.org/)
-- guile (https://www.gnu.org/software/guile/ - needs gmp, libtool, libunistring, pkgconfig, libffi, gc, readline)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
 - iodine (https://github.com/yarrick/iodine)
   - **src/Makefile** needs a ```$(CC) -c``` for the _.c.o_ rule
@@ -632,7 +627,6 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
 - procps-ng
 - psmisc
-- racket
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
 - redir (https://github.com/troglobit/redir)
@@ -640,6 +634,36 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - rover (https://lecram.github.io/p/rover)
 - rpcbind
 - rvm?
+- scheme stuff:
+  - bigloo
+  - chez (scheme, https://github.com/cisco/ChezScheme - utillinux (uuid), ncurses, disable x11)
+  - chibi-scheme (https://github.com/ashinn/chibi-scheme)
+  - chicken (https://www.call-cc.org)
+  - elk (http://sam.zoy.org/elk)
+  - femtolisp (https://github.com/JeffBezanson/femtolisp)
+  - gambit (https://github.com/gambit/gambit)
+  - gauche (https://github.com/shirok/Gauche and https://practical-scheme.net/gauche/index.html - zlib, gdbm, builtin axtls)
+  - gerbil (https://cons.io/)
+  - guile (https://www.gnu.org/software/guile/ - needs gmp, libtool, libunistring, pkgconfig, libffi, gc, readline)
+  - ikarus (??? https://en.wikipedia.org/wiki/Ikarus_(Scheme_implementation) )
+  - larceny (and petit larceny, http://larcenists.org)
+  - mit/gnu scheme (requires gnu/mit scheme... to build... itself)
+  - mosh (https://github.com/higepon/mosh and http://mosh.monaos.org/files/doc/text/About-txt.html)
+  - oaklisp (https://github.com/barak/oaklisp)
+  - racket
+  - rscheme (http://www.rscheme.org/rs)
+  - s9fes (https://www.t3x.org/s9fes https://github.com/bakul/s9fes and https://github.com/barak/scheme9)
+  - scheme2c (https://github.com/barak/scheme2c)
+  - scheme48 (http://s48.org)
+  - scm (http://people.csail.mit.edu/jaffer/SCM.html)
+  - sigscheme (https://github.com/uim/sigscheme)
+  - siod (http://people.delphiforums.com/gjc//siod.html)
+  - slib (http://people.csail.mit.edu/jaffer/SLIB.html)
+  - stalin (w/debian patches? https://github.com/barak/stalin)
+  - stklos (http://www.stklos.net/)
+  - tinyscheme
+  - vicare (ikarus fork-of-fork, https://github.com/barak/vicare)
+  - ypsilon (http://www.littlewingpinball.net/mediawiki/index.php/Ypsilon)
 - sharutils
 - shells?
   - dash
@@ -648,6 +672,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - loksh (https://github.com/dimkr/loksh)
   - oksh (https://connochaetos.org/oksh/)
   - pdksh (dead, use mksh)
+  - scsh (https://scsh.net)
   - tcsh (and/or standard csh)
   - zsh
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
@@ -660,6 +685,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - star (with pax/spax - http://cdrtools.sourceforge.net/private/star.html - **does not (yet) work on aarch64**)
 - strace
+- subc (https://www.t3x.org/subc/index.html)
 - subversion / svn
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
 - tcc (http://repo.or.cz/w/tinycc.git)
@@ -683,7 +709,6 @@ make CPPFLAGS= CXXFLAGS= LDFLAGS='-static' CFLAGS='-Wl,-static -fPIC'
 make install
 ```
 - tini (small init for containers, https://github.com/krallin/tini)
-- tinyscheme
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - tre (https://github.com/laurikari/tre)
