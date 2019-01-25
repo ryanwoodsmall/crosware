@@ -715,6 +715,7 @@ make install
 - tre (https://github.com/laurikari/tre)
 - tree (http://mama.indstate.edu/users/ice/tree/)
 - tsocks
+- tzdb (https://www.iana.org/time-zones)
 - upx (https://github.com/upx/upx)
 - usbutils (https://github.com/gregkh/usbutils)
 - utalk (http://utalk.ourproject.org/)
