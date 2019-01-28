@@ -33,8 +33,8 @@ function cwmake_${rname}() {
   local d=''
   for d in ${rname}{,-{sh,devtools,doctools,ex-vi}} ; do
     pushd \${d}
-    env CHARSET= make
-    env CHARSET= make install
+    env CHARSET= PATH=\"${cwsw}/byacc/current/bin:\${PATH}\" make
+    env CHARSET= PATH=\"${cwsw}/byacc/current/bin:\${PATH}\" make install
     popd
   done
   popd >/dev/null 2>&1
