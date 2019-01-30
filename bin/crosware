@@ -149,7 +149,7 @@ export CW_USE_JAVA CW_EXT_JAVA
 # same for git, default to jgit.sh
 : ${CW_USE_JGIT:="true"}
 : ${CW_EXT_JGIT:="false"}
-: ${CW_GIT_CMD:="jgit.sh"}
+: ${CW_GIT_CMD:="jgitsh"}
 export CW_USE_JGIT CW_EXT_JGIT CW_GIT_CMD
 # time travel?
 : ${TS:="$(date '+%Y%m%d%H%M%S')"}
@@ -311,6 +311,7 @@ function cwinstall_jgitsh() {
   cwmkdir "${jgitsh_inst_dir}/${jgitsh_ver}/bin"
   rm -f "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_file}"
   install -m 0755 "${cwtmptmp}/${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/"
+  ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_pkgname}"
   ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink}"
   ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink/%.sh/}"
   cwlinkdir "${jgitsh_ver}" "${jgitsh_inst_dir}"
@@ -634,6 +635,7 @@ function cwbootstrap() {
       cwfetchcheck "${jgitsh_url}" "${jgitsh}" "${jgitsh_sha256sum}"
       cwchmod "${cwexecperm}" "${jgitsh}"
       ln -sf "${jgitsh_file}" "${cwtmptmp}/${jgitsh_symlink}"
+      ln -sf "${jgitsh_file}" "${cwtmptmp}/${jgitsh_pkgname}"
       export PATH="${cwtmptmp}:${PATH}"
     fi
   fi
