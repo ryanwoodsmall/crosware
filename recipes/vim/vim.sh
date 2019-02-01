@@ -1,9 +1,9 @@
 rname="vim"
-rver="8.1.0856"
+rver="8.1.0857"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
-rsha256="ec9c8eaef9b43057b5248aebc36f2f0e29ded87184a5c0b1d9a220e7870f1db1"
+rsha256="9d6451c8dc30b3476234419757491abe829c725ce575feafb9135c2a7fd743b1"
 rreqs="make ncurses lua gettexttiny"
 
 . "${cwrecipe}/common.sh"
@@ -19,6 +19,15 @@ function cwconfigure_${rname}() {
     --enable-gui=no \
     --with-lua-prefix=${cwsw}/lua/current \
     --enable-luainterp=yes
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  env PATH=\"${cwsw}/gettexttiny/current/bin:\${PATH}\" \
+    make -j${cwmakejobs}
   popd >/dev/null 2>&1
 }
 "
