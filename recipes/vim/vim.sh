@@ -26,6 +26,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  ( cd src ; make auto/osdef.h )
   env PATH=\"${cwsw}/gettexttiny/current/bin:\${PATH}\" \
     make -j${cwmakejobs}
   popd >/dev/null 2>&1
