@@ -721,6 +721,7 @@ make install
 - utalk (http://utalk.ourproject.org/)
 - vifm (https://github.com/vifm/vifm)
 - vpnc
+- websocketd (go, https://github.com/joewalnes/websocketd)
 - xq (https://github.com/jeffbr13/xq)
 - yq (https://github.com/kislyuk/yq)
 - ytalk (http://ytalk.ourproject.org/)
