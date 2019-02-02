@@ -648,6 +648,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - guile (https://www.gnu.org/software/guile/ - needs gmp, libtool, libunistring, pkgconfig, libffi, gc, readline)
   - ikarus (??? https://en.wikipedia.org/wiki/Ikarus_(Scheme_implementation) )
   - larceny (and petit larceny, http://larcenists.org)
+  - minilisp (https://github.com/rui314/minilisp)
   - mit/gnu scheme (requires gnu/mit scheme... to build... itself)
   - mosh (https://github.com/higepon/mosh and http://mosh.monaos.org/files/doc/text/About-txt.html)
   - oaklisp (https://github.com/barak/oaklisp)
