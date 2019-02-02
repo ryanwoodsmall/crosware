@@ -650,6 +650,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - larceny (and petit larceny, http://larcenists.org)
   - micro-lisp (https://github.com/carld/micro-lisp)
   - minilisp (https://github.com/rui314/minilisp)
+  - minischeme (https://github.com/ignorabimus/minischeme)
   - mit/gnu scheme (requires gnu/mit scheme... to build... itself)
   - mosh (https://github.com/higepon/mosh and http://mosh.monaos.org/files/doc/text/About-txt.html)
   - oaklisp (https://github.com/barak/oaklisp)
