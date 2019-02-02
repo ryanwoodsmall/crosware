@@ -664,6 +664,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - stalin (w/debian patches? https://github.com/barak/stalin)
   - stklos (http://www.stklos.net/)
   - tinyscheme (http://tinyscheme.sourceforge.net/home.html)
+  - tisp (https://github.com/edvb/tisp)
   - vicare (ikarus fork-of-fork, https://github.com/barak/vicare)
   - ypsilon (http://www.littlewingpinball.net/mediawiki/index.php/Ypsilon)
 - sharutils
