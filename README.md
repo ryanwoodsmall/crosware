@@ -542,7 +542,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - uses cmake
   - needs curl, openssl, ssh2
   - configure: ```mkdir b ; cd b ; cmake -DCMAKE_INSTALL_PREFIX:PATH=${cwsw}/libgit2/$(basename $(cd .. ; pwd)) -DBUILD_SHARED_LIBS=OFF ..```
-- libiconv (https://www.gnu.org/software/libiconv/) 
+- libiconv (https://www.gnu.org/software/libiconv/)
 - libidn / libidn2 (https://www.gnu.org/software/libidn/ and https://gitlab.com/libidn/libidn2)
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
 - libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
@@ -650,7 +650,9 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - larceny (and petit larceny, http://larcenists.org)
   - micro-lisp (https://github.com/carld/micro-lisp)
   - minilisp (https://github.com/rui314/minilisp)
-  - minischeme (https://github.com/ignorabimus/minischeme)
+  - minischeme
+    - https://github.com/ignorabimus/minischeme
+    - https://github.com/catseye/minischeme
   - mit/gnu scheme (requires gnu/mit scheme... to build... itself)
   - mosh (https://github.com/higepon/mosh and http://mosh.monaos.org/files/doc/text/About-txt.html)
   - oaklisp (https://github.com/barak/oaklisp)
@@ -665,7 +667,12 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - slib (http://people.csail.mit.edu/jaffer/SLIB.html)
   - stalin (w/debian patches? https://github.com/barak/stalin)
   - stklos (http://www.stklos.net/)
-  - tinyscheme (http://tinyscheme.sourceforge.net/home.html)
+  - tinyscheme
+    - http://tinyscheme.sourceforge.net/home.html
+    - https://github.com/linneman/tinyscheme
+    - https://github.com/sungit/TinyScheme
+    - https://github.com/ignorabimus/tinyscheme
+    - other forks/branches?
   - tisp (https://github.com/edvb/tisp)
   - vicare (ikarus fork-of-fork, https://github.com/barak/vicare)
   - ypsilon (http://www.littlewingpinball.net/mediawiki/index.php/Ypsilon)
