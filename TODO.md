@@ -80,6 +80,9 @@
   - need a ```cwshowenv_${rname}()``` function
     - dumps an installed recipe environment
     - separate out **etc/profile** functions into separate source-able script
+  - manifest
+    - ```${cwtop}/var/manifest/${recipe}```
+    - list of every file with SHA-256 (512?) under ```${cwsw}/${recipe}/current/```
 - recipe/function names
   - need _ instead of -
 - whatprovides functionality
