@@ -697,6 +697,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - sparse (https://sparse.wiki.kernel.org/index.php/Main_Page)
 - splint (https://en.wikipedia.org/wiki/Splint_(programming_tool))
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
+- sslh (https://www.rutschle.net/tech/sslh/README.html and https://www.rutschle.net/tech/sslh/README.html)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - star (with pax/spax - http://cdrtools.sourceforge.net/private/star.html - **does not (yet) work on aarch64**)
 - strace
