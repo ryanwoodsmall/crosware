@@ -236,7 +236,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 
 - **zulu** azul zulu openjdk jvm
 - **jgitsh** standalone jgit shell script
-- **statictoolchain** musl-cross-make static toolchain
+- **statictoolchain** musl-cross-make static toolchain (https://github.com/ryanwoodsmall/musl-misc/blob/master/musl-cross-make-confs/Makefile.arch_indep)
 
 ## working recipes
 
