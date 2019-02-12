@@ -282,6 +282,9 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - glib
 - global
 - gmp
+- go 
+  - static binary archive
+  - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
 - grep (gnu grep)
 - groff
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
@@ -438,22 +441,6 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - gnutls
   - needs nettle, gmplib
   - configure needs ```--with-included-libtasn1 --with-included-unistring --without-p11-kit```
-- go (**chicken/egg problem with source builds on aarch64**)
-  - build in-place in **${cwsw}/go**, renaming extracted **go/** directory per step
-  - build 1.4 bootstrap on x86_64 from **go1.4-bootstrap-20171003.tar.gz**
-    ```env GO_LDFLAGS='-extldflags "-static"' CGO_ENABLED=0 bash make.bash```
-  - build latest 1.x natively with bootstrapped C-based go (1.11.5 below)
-    ```env GOROOT_BOOTSTRAP=${PWD}/../../go1.4-bootstrap-20171003 GO_LDFLAGS='-extldflags "-static"' CGO_ENABLED=0 bash make.bash```
-  - for each arch (amd64, 386, arm, arm64) build a fully static version of the latest (without CGO for now):
-    - ```env GO_LDFLAGS='-extldflags "-static"' CGO_ENABLED=0 GOROOT_BOOTSTRAP=${PWD}/../../go1.11.5-bootstrap GOOS=linux GOARCH=$(ARCH) bash make.bash```
-    - clean up _linux\_amd64_ stuff on 386, arm arm64
-      - **pkg/bootstrap/bin**
-      - **pkg/bootstrap/pkg/linux_amd64**
-      - **pkg/tool/linux_amd64**
-      - **pkg/linux_amd64**
-    - remove **pkg/obj/go-build**
-    - pivot $(ARCH) binaries into place
-      ```rm -f bin/go{,fmt} ; mv bin/linux_$(ARCH)/* bin/ ; rmdir bin/linux_$(ARCH)```
 - gpg
   - gnupg
   - gpgme
