@@ -707,6 +707,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - subc (https://www.t3x.org/subc/index.html)
 - subversion / svn
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
+- suckless
+  - sinit (https://core.suckless.org/sinit/)
 - tcc (http://repo.or.cz/w/tinycc.git)
   - static compilation is _pretty broken_
   - configure/build with something like...
