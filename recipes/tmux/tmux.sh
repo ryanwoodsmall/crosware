@@ -1,3 +1,10 @@
+#
+# can be built with netbsdcurses:
+#  CPPFLAGS=\"-I\${cwsw}/libevent/current/include -I\${cwsw}/netbsdcurses/current/include\"
+#  LDFLAGS=\"-L\${cwsw}/libevent/current/lib -L\${cwsw}/netbsdcurses/current/lib -static\"
+#  LIBS=\"-lcurses -lterminfo\"
+#
+
 rname="tmux"
 rver="2.8"
 rdir="${rname}-${rver}"
