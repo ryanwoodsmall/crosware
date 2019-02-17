@@ -1,9 +1,9 @@
 rname="cppcheck"
-rver="1.84"
+rver="1.87"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/danmar/${rname}/archive/${rfile}"
-rsha256="aaa6293d91505fc6caa6982ca3cd2d949fa1aac603cabad072b705fdda017fc5"
+rsha256="ea7ac1cd2f5c00ecffd596fd0f7281cba44308e565a634fae02b77ecd927c153"
 rreqs="make pcre"
 
 . "${cwrecipe}/common.sh"
