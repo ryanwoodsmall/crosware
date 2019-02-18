@@ -102,6 +102,8 @@
   - fake /bin, /lib, /usr/bin, /usr/include, /usr/lib from static toolchain
   - link in/bind mount
   - add busybox/toybox (and real bash) for a chroot-able environment?
+  - ```sysroot``` command? - create sysroot
+  - ```sysroot-archive``` command? - create a sysroot and archive to **crosware-sysroot.tar.gz** or similar
 - man wrapper
   - busybox (man), less, groff
   - sets PAGER to (real less) ```less -R```
