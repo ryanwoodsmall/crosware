@@ -436,6 +436,20 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - gxemul
   - qemu
   - simh
+    - needs libnl, libpcap
+    - vde would be nice
+    - **find_dev** pcap conflict
+      - ```grep -rl find_dev | xargs sed -i s/find_dev/simh_find_dev/g```
+    - binaries end up in **BIN/** directory
+    - build with something like...
+```
+make \
+  USE_NETWORK=1 \
+  TESTS=0 \
+  GCC="${CC} -I${cwsw}/libpcap/current/include -I${cwsw}/libnl/current/include" \
+  LPATH="${cwsw}/libpcap/current/lib:${cwsw}/libnl/current/lib" \
+  LDFLAGS="-L${cwsw}/libpcap/current/lib -L${cwsw}/libnl/current/lib -lpcap -lnl-3 -lnl-genl-3 -static"
+```
 - entr (http://entrproject.org/)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
 - gdb
@@ -739,6 +753,7 @@ make install
 - upx (https://github.com/upx/upx)
 - usbutils (https://github.com/gregkh/usbutils)
 - utalk (http://utalk.ourproject.org/)
+- vde (virtual distributed ethernet, https://github.com/virtualsquare/vde-2)
 - vifm (https://github.com/vifm/vifm)
 - vpnc
 - websocketd (go, https://github.com/joewalnes/websocketd)
