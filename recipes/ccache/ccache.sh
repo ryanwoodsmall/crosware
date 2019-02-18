@@ -24,10 +24,12 @@ function cwmakeinstall_${rname}() {
   cd \"${ridir}/bin\"
   ln -sf ${rname} \${CC}
   ln -sf ${rname} \${CXX}
-  ln -sf ${rname} gcc
-  ln -sf ${rname} g++
   ln -sf ${rname} cc
   ln -sf ${rname} c++
+  ln -sf ${rname} gcc
+  ln -sf ${rname} g++
+  ln -sf ${rname} musl-gcc
+  ln -sf ${rname} musl-g++
   popd >/dev/null 2>&1
 }
 "
