@@ -577,6 +577,7 @@ make \
   - cmucl (https://www.cons.org/cmucl/)
   - ecl (https://common-lisp.net/project/ecl/)
   - gcl (https://www.gnu.org/software/gcl/)
+  - janet (https://janet-lang.org/ and https://github.com/janet-lang/janet)
   - picolisp (https://picolisp.com/wiki/?home)
     - picolisp (c, lisp)
     - ersatz picolisp (java)
