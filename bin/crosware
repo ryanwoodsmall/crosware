@@ -16,7 +16,11 @@ else
 fi
 
 function cwscriptecho() {
-  echo -e "${scriptname}: ${1}"
+  local scriptmesg=""
+  if [ ! -z "${@}" ] ; then
+    scriptmesg="${1}"
+  fi
+  echo -e "${scriptname}: ${scriptmesg}"
 }
 
 function cwfailexit() {
