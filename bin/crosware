@@ -24,11 +24,11 @@ function cwscriptecho() {
 }
 
 function cwfailexit() {
-  if [ -z "${@}" ] ; then
-    cwscriptecho "error"
-  else
-    cwscriptecho "${1}"
+  local failmesg="error"
+  if [ ! -z "${@}" ] ; then
+    failmesg="${1}"
   fi
+  cwscriptecho "${failmesg}"
   exit 1
 }
 
