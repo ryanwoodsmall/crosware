@@ -19,10 +19,12 @@ function cwscriptecho() {
   echo -e "${scriptname}: ${1}"
 }
 
-# XXX - needs to set a fail message if there isn't one
-#       if [ -z "${@}" ] ; then ...
 function cwfailexit() {
-  cwscriptecho "${1}"
+  if [ -z "${@}" ] ; then
+    cwscriptecho "error"
+  else
+    cwscriptecho "${1}"
+  fi
   exit 1
 }
 
