@@ -972,34 +972,23 @@ function cwlistfuncs() {
 #     at least one function name
 #
 # run a function that we know about
-#
-# XXX - arguments: separate by comma
-# XXX - can use array...
-#     - read/split with something like:
-#         IFS=, read -r -a cwfuncsplit <<< ${cwfunc}
-#     - check with:
-#         if ! $(set | grep -q "^${cwfuncsplit[0]} ") ; then ...
-#     - run with:
-#         eval "${cwfuncsplit[@]}"
-# XXX - or just avoid arrays altogether:
-#         local cwfuncname="${cwfunc%%,*}"
-#         if ! $(set | grep -q "^${cwfuncname} ") ; then
-#           echo "${cwfuncname}: function not found"
-#           continue
-#         fi
-#         eval "${cwfunc//,/ }"
-#         unset cwfuncname
+# arguments can be passed with commas
 #
 function cwrunfunc() {
   cwsourcerecipes
   cwsourceprofile
+  local cwfunc
+  local cwfuncname
   for cwfunc in "${@}" ; do
-    if ! $(set | grep -q "^${cwfunc} ") ; then
-      cwscriptecho "function ${cwfunc} not known"
+    cwfuncname="${cwfunc%%,*}"
+    if ! $(set | grep -q "^${cwfuncname} ") ; then
+      cwscriptecho "function ${cwfuncname} not known"
       continue
     fi
-    ${cwfunc}
+    eval "${cwfunc//,/ }"
   done
+  unset cwfunc
+  unset cwfuncname
 }
 
 #
