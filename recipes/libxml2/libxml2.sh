@@ -1,9 +1,9 @@
 rname="libxml2"
-rver="2.9.8"
+rver="2.9.9"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="ftp://xmlsoft.org/${rname}/${rfile}"
-rsha256="0b74e51595654f958148759cfef0993114ddccccbb6f31aee018f3558e8e2732"
+rsha256="94fb70890143e3c6549f265cee93ec064c80a84c42ad0f23e85ee1fd6540a871"
 rreqs="make xz zlib"
 
 . "${cwrecipe}/common.sh"
