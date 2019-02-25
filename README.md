@@ -79,7 +79,7 @@ A few user environment variables are available to control how crosware checks it
 
 | var         | default | purpose                                        |
 | ----------- | ------- | ---------------------------------------------- |
-| CW_GIT_CMD  | jgit.sh | which "git" command to use for checkout/update |
+| CW_GIT_CMD  | jgitsh  | which "git" command to use for checkout/update |
 | CW_USE_JAVA | true    | use java for bootstrap, jgit                   |
 | CW_EXT_JAVA | false   | use system java instead of zulu recipe         |
 | CW_USE_JGIT | true    | use jgit.sh for checkout/update                |
