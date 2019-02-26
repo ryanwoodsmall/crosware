@@ -269,6 +269,10 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - derby
 - diffutils
 - diction and style (https://www.gnu.org/software/diction/)
+- dockerstatic (static docker binaries from https://download.docker.com/linux/static/stable/)
+  - good enough for remote ```${DOCKER_HOST}``` usage
+  - amd64/arm32v6/arm64v8 only (i.e., no i386)
+  - architecture naming conventions: https://github.com/docker-library/official-images#architectures-other-than-amd64
 - dropbear
 - ed (gnu ed)
 - expat
@@ -418,10 +422,6 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - ddrescue
 - docbook?
-- docker (static binaries from https://download.docker.com/linux/static/stable/)
-  - good enough for remote ```${DOCKER_HOST}``` usage
-  - amd64/arm32v6/arm64v8 only
-  - https://github.com/docker-library/official-images#architectures-other-than-amd64
 - dnsmasq
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
 - duplicity (http://duplicity.nongnu.org/)
