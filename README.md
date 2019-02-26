@@ -244,7 +244,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - autoconf
 - automake
-- bash (4.x, static)
+- bash (5.x, static; bash4 is also available)
 - bc (gnu bc, dc)
 - bdb47
 - binutils (bfd, opcodes, libiberty.a; no isl)
