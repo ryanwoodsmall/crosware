@@ -597,12 +597,14 @@ make \
 - mes (https://www.gnu.org/software/mes/) and m2 stuff (links above)
 - mesalink (https://mesalink.io/ and https://github.com/mesalock-linux/mesalink)
 - meson (http://mesonbuild.com/ - python 3 and ninja)
+- micropython (https://github.com/micropython/micropython)
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
 - moreutils (https://joeyh.name/code/moreutils/)
 - most (https://www.jedsoft.org/most/)
 - mpg123
 - mpg321
+- mruby (https://github.com/mruby/mruby)
 - musl stuff
   - musl-utils
     - should these be in statictoolchain, i.e in https://github.com/ryanwoodsmall/musl-misc?
