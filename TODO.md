@@ -202,6 +202,22 @@
     - check if installed prereq needs upgrade
     - recursively chase down to "root", i.e., until prereq graph is empty (or has only **make**)
     - only do this once - expensive
+    - need a ```cwlistreqs_${rname}``` style function
+    - per-recipe...
+      - ```${rchased[${recipe}]}={0,1}```
+        - for each recipe
+          - list reqs
+            - mark ourself chased
+            - mark reqs unchased
+          - for each req
+            - list reqs
+              - recursively
+              - append to list
+              - chase...
+      - ```${rfound[${rceipe}]}={0,1}```
+        - if we find our own name as found, cycle?
+      - shortest reqs first?
+      - flatten list?
 - need custom **cwclean_${rname}** for recipes where ```${rdir} != ${rbdir}``` and ```${rbdir} != ${cwbuild}/${rdir}```
 - systems where ```/bin/sh``` is not bash...
   - wolfssl autotools-generated configure needs bash?
