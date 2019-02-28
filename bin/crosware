@@ -169,7 +169,8 @@ export TS
 
 # architecture names and support
 supported_arches=( aarch64 armv6l armv7l armv8l i686 x86_64 )
-export karch="$(uname -m)"
+# qemu-x86_64 on k1om reports x86-64, this should be safe for now
+export karch="$(uname -m | tr '-' '_')"
 
 # be somewhat strict about supported architectures
 supported=0

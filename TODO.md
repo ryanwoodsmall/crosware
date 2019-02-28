@@ -273,6 +273,10 @@
     - ???
     - just apply in order
     - need to pick a delimiter
+- cpu translation table
+  - x86-64 (qemu)
+  - armv8l
+  - ...
 - easier url download filename generation
   - url -> filename might look something like:
 ```
