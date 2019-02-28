@@ -552,8 +552,8 @@ make \
 - lftp (https://lftp.tech/)
 - libdeflate (https://sortix.org/libdeflate/)
 - libedit
-  - editline (https://github.com/troglobit/editline or http://troglobit.com/projects/editline/ minix3, no termcap needed!)
-  - editline (https://www.thrysoee.dk/editline/ netbsd, need termcap from a curses)
+  - editline (https://github.com/troglobit/editline or http://troglobit.com/projects/editline/ minix3, no termcap needed)
+  - editline (https://www.thrysoee.dk/editline/ netbsd, need termcap from a curses - netbsdcurses works)
 - libfuse (separate userspace? uses meson?)
 - libgit2
   - uses cmake
@@ -635,6 +635,11 @@ make \
   - "cannot be used as a static library" - what?
   - needs libffi, libtasn1
   - configure ```--without-libffi --without-libtasn1```
+- openssh
+  - with or without openssl support
+  - still requires openssl headers, and requires less fiddling
+  - ```-pie```/```-fPIE``` to ```-fPIC``` in all Makefiles for static
+  - can use libedit (netbsd, not minix) and netbsdcurses
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
 - pax
