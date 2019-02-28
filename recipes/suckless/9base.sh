@@ -38,10 +38,10 @@ function cwconfigure_${rname}() {
   sed -i '/^CC/d' config.mk
   echo "CC = \${CC}" >> config.mk
   echo "PREFIX = ${ridir}" >> config.mk
-  if [[ $(uname -m) =~ x86_64 ]] ; then
+  if [[ ${karch} =~ x86_64 ]] ; then
     sed -i '/^OBJTYPE/d' config.mk
     echo "OBJTYPE = x86_64" >> config.mk
-  elif [[ $(uname -m) =~ a(arch|rm) ]] ; then
+  elif [[ ${karch} =~ a(arch|rm) ]] ; then
     sed -i '/^OBJTYPE/d' config.mk
     echo "OBJTYPE = arm" >> config.mk
   fi
