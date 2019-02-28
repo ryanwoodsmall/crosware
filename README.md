@@ -425,7 +425,6 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - dnsmasq
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
 - duplicity (http://duplicity.nongnu.org/)
-- editline (https://github.com/troglobit/editline)
 - elinks (old, deprecated)
 - ellcc (embedded clang build, http://ellcc.org/)
 - emacs
@@ -553,7 +552,8 @@ make \
 - lftp (https://lftp.tech/)
 - libdeflate (https://sortix.org/libdeflate/)
 - libedit
-- libeditline
+  - editline (https://github.com/troglobit/editline or http://troglobit.com/projects/editline/ minix3, no termcap needed!)
+  - editline (https://www.thrysoee.dk/editline/ netbsd, need termcap from a curses)
 - libfuse (separate userspace? uses meson?)
 - libgit2
   - uses cmake
