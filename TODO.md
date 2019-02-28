@@ -232,7 +232,6 @@
 - evaluation
   - convert all ```${...}``` vars in recipes to ```\${...}``` to force later expansion/evaluation?
   - convert any ```\"...\"``` escapes in **eval** blocks (recipes) to ```'...'```
-- with ```k1om``` qemu x86_64 translation, uname -m returns/karch is set to ```x86-64``` and that is not a supported arch
 - binary packaging?
   - possibly build _.ipk_ files and include **opkg** for binary installation?
   - _.tar_ would suffice
@@ -277,6 +276,8 @@
   - x86-64 (qemu)
   - armv8l
   - ...
+  - with ```k1om``` qemu x86_64 translation, uname -m returns/karch is set to ```x86-64``` and that is not a supported arch
+  - map "uname -m" to supported_arch
 - easier url download filename generation
   - url -> filename might look something like:
 ```
