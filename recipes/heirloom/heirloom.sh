@@ -23,6 +23,12 @@ function cwconfigure_${rname}() {
   | xargs sed -i \"s#/usr/local/${rname}#${ridir}#g\"
   sed -i '/^LEX = /s/LEX.*/LEX=reflex/g' heirloom/build/mk.config
   sed -i '/^YACC = /s/YACC.*/YACC=byacc/g' heirloom/build/mk.config
+  #sed -i '/^LCURS = /s/LCURS.*/LCURS = -lcurses -lterminfo/g' heirloom/build/mk.config
+  #sed -i '/^CPPFLAGS/s/$/ -DTPARM_VARARGS -DUSE_TERMCAP/g' heirloom/build/mk.config
+  #sed -i 's#/ncurses#/netbsdcurses#g' heirloom/build/mk.config
+  #sed -i 's#/ncurses/#/netbsdcurses/#g' heirloom-ex-vi/Makefile
+  #sed -i '/^TERMLIB/s/ncurses/curses/g' heirloom-ex-vi/Makefile
+  #sed -i '/^#LDADD/s/.*/LDADD = -lcurses -lterminfo/g' heirloom-ex-vi/Makefile
   popd >/dev/null 2>&1
 }
 "
@@ -43,7 +49,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  cwscriptecho \"cwmakeinstall_${rname} noop\"
+  true
 }
 "
 
