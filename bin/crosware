@@ -257,22 +257,22 @@ zulu_jdk_arch["x86_64"]="x64"
 
 # zulu jdk version map
 declare -A zulu_jdk_ver
-zulu_jdk_ver["aarch64"]="8.33.0.135-jdk1.8.0_192"
-zulu_jdk_ver["armv6l"]="8.33.0.134-jdk1.8.0_192"
-zulu_jdk_ver["armv7l"]="8.33.0.134-jdk1.8.0_192"
-zulu_jdk_ver["armv8l"]="8.33.0.134-jdk1.8.0_192"
-zulu_jdk_ver["i686"]="8.33.0.1-jdk8.0.192"
-zulu_jdk_ver["x86_64"]="8.33.0.1-jdk8.0.192"
+zulu_jdk_ver["aarch64"]="8.36.0.150-ca-jdk1.8.0_202"
+zulu_jdk_ver["armv6l"]="8.36.0.152-ca-jdk1.8.0_202"
+zulu_jdk_ver["armv7l"]="8.36.0.152-ca-jdk1.8.0_202"
+zulu_jdk_ver["armv8l"]="8.36.0.152-ca-jdk1.8.0_202"
+zulu_jdk_ver["i686"]="8.36.0.5-ca-jdk8.0.202"
+zulu_jdk_ver["x86_64"]="8.36.0.1-ca-jdk8.0.202"
 zulu_ver="${zulu_jdk_ver[${uarch}]}"
 
 # zulu jdk file sha256sum
 declare -A zulu_jdk_sha256sum
-zulu_jdk_sha256sum["aarch64"]="750976bf52d0e5bed6b44799881245027e1cfd8e79dec3db040e985623515512"
-zulu_jdk_sha256sum["armv6l"]="5ca1d484c32d35ae4ded3b137386f00eed57d584d2bf325bf46fdd78f1a0a780"
-zulu_jdk_sha256sum["armv7l"]="5ca1d484c32d35ae4ded3b137386f00eed57d584d2bf325bf46fdd78f1a0a780"
-zulu_jdk_sha256sum["armv8l"]="5ca1d484c32d35ae4ded3b137386f00eed57d584d2bf325bf46fdd78f1a0a780"
-zulu_jdk_sha256sum["i686"]="dc08383e76e2c6e7b02359871bedfd8fc88213b494c3aa9108c259f99795ddf8"
-zulu_jdk_sha256sum["x86_64"]="95a33bfc8de5b88b07d29116edd4485a59182921825e193f68fe494b03ab3523"
+zulu_jdk_sha256sum["aarch64"]="687f61bd32f3895c6ca858e17e4b91fb660d7fef0ff69784a48d78cb9cfa419b"
+zulu_jdk_sha256sum["armv6l"]="9a1e3440f3c587496b14d1ec572f04881af878a22739f2897254deee773c698a"
+zulu_jdk_sha256sum["armv7l"]="9a1e3440f3c587496b14d1ec572f04881af878a22739f2897254deee773c698a"
+zulu_jdk_sha256sum["armv8l"]="9a1e3440f3c587496b14d1ec572f04881af878a22739f2897254deee773c698a"
+zulu_jdk_sha256sum["i686"]="7e881a0560f727fe2ef66cac92ffc152515fca77556d7f6b5efbce05dfab665e"
+zulu_jdk_sha256sum["x86_64"]="a0e6e5ee2853b03f6db299e5a5b6350a07fe495a06491024b7caf95eeed99b15"
 
 # zulu directory, file, and url map
 declare -A zulu_jdk_dir zulu_jdk_file zulu_jdk_url
