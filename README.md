@@ -557,7 +557,7 @@ make \
 - libfuse (separate userspace? uses meson?)
 - libgit2
   - uses cmake
-  - needs curl, openssl, ssh2
+  - needs curl, openssl, libssh2
   - configure: ```mkdir b ; cd b ; cmake -DCMAKE_INSTALL_PREFIX:PATH=${cwsw}/libgit2/$(basename $(cd .. ; pwd)) -DBUILD_SHARED_LIBS=OFF ..```
 - libiconv (https://www.gnu.org/software/libiconv/)
 - libidn / libidn2 (https://www.gnu.org/software/libidn/ and https://gitlab.com/libidn/libidn2)
