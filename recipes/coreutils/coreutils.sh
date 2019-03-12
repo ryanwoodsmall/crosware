@@ -1,9 +1,9 @@
 rname="coreutils"
-rver="8.30"
+rver="8.31"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="e831b3a86091496cdba720411f9748de81507798f6130adeaef872d206e1b057"
+rsha256="ff7a9c918edce6b4f4b2725e3f9b37b0c4d193531cac49a48b56c4d0d3a9e9fd"
 rreqs="make gettexttiny sed"
 
 . "${cwrecipe}/common.sh"
