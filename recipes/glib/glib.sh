@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="http://ftp.gnome.org/pub/gnome/sources/glib/${rver%.*}/${rfile}"
 rsha256="8f43c31767e88a25da72b52a40f3301fefc49a665b56dc10ee7cc9565cbe7481"
-rreqs="gettexttiny libffi make perl pkgconfig python2 zlib autoconf automake libtool slibtool"
+rreqs="gettexttiny libffi make perl pkgconfig python2 zlib autoconf automake libtool slibtool m4"
 
 . "${cwrecipe}/common.sh"
 
@@ -16,7 +16,7 @@ EXTRA_DIST =
 CLEANFILES =
 EOF
   touch INSTALL
-  env PATH=\"${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:${PATH}\" \
+  env PATH=\"${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH}\" \
     autoreconf -fiv -I${cwsw}/libtool/current/share/aclocal -I${cwsw}/pkgconfig/current/share/aclocal
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-pcre=internal \
