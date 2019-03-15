@@ -582,7 +582,7 @@ make \
     - picolisp (c, lisp)
     - ersatz picolisp (java)
   - roswell (https://github.com/roswell/roswell)
-  - sbcl (sbcl.org and https://github.com/sbcl/sbcl)
+  - sbcl (http://sbcl.org and https://github.com/sbcl/sbcl)
 - llvm / clang
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
