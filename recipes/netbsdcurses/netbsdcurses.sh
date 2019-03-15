@@ -21,7 +21,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  cwscriptecho "${rname} configure noop"
+  true
 }
 "
 
