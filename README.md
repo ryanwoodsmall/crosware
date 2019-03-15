@@ -472,6 +472,7 @@ make \
   - c_count (https://invisible-island.net/c_count/c_count.html)
   - cindent (https://invisible-island.net/cindent/cindent.html)
   - cproto (https://invisible-island.net/cproto/cproto.html)
+  - dialog (https://invisible-island.net/dialog/dialog.html)
   - mawk (https://invisible-island.net/mawk/mawk.html)
   - misc_tools (ftp://ftp.invisible-island.net/pub/misc_tools/)
 - java stuff
