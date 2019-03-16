@@ -24,7 +24,7 @@ function cwfetch_${rname}() {
 
 eval "
 function cwextract_${rname}() {
-  cwscriptecho \"cwextract_${rname} noop\"
+  true
 }
 "
 
