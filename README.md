@@ -538,6 +538,7 @@ make \
     - jisql (https://github.com/stdunbar/jisql)
     - sqlshell (scala, sbt - https://github.com/bmc/sqlshell)
 - jed (https://www.jedsoft.org/jed/)
+- joe (https://joe-editor.sourceforge.io/)
 - kerberos
   - heimdal
   - mit
@@ -614,6 +615,7 @@ make \
     - iconv (https://git.alpinelinux.org/cgit/aports/tree/main/musl/iconv.c)
 - mutt
 - nc / ncat / netcat
+- ne (https://github.com/vigna/ne terminal editor)
 - nethack
 - netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
 - nettle
