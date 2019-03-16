@@ -8,25 +8,7 @@ rsha256=""
 rfile=""
 
 . "${cwrecipe}/common.sh"
-
-eval "
-function cwfetch_${rname}() {
-  cwscriptecho \"fetching ${rname} from git at ${rurl}\"
-  pushd \"${cwbuild}\" >/dev/null 2>&1
-  rm -rf \"${rdir}\"
-  \${CW_GIT_CMD} clone \"${rurl}\" \"${rdir}\"
-  cd \"${rdir}\"
-  \${CW_GIT_CMD} checkout \"${rver}\"
-  \${CW_GIT_CMD} log | head -6
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwextract_${rname}() {
-  true
-}
-"
+. "${cwrecipe}/suckless/suckless.sh.common"
 
 eval "
 function cwconfigure_${rname}() {
