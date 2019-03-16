@@ -3,7 +3,7 @@ rver="09e95a2d6f8dbafc6601147b2f5f150355813be6"
 rdir="${rname}-${rver}"
 rurl="https://git.suckless.org/${rname}"
 rprof="${cwetcprofd}/zz_${rname}.sh"
-rreqs="make"
+rreqs="make \${CW_GIT_CMD}"
 rsha256=""
 rfile=""
 

@@ -38,4 +38,21 @@ function cwgenprofd_${rname}() {
 }
 "
 
+eval "
+function cwinstall_${rname}() {
+  cwclean_${rname}
+  cwcheckreqs_${rname}
+  cwfetch_${rname}
+  cwsourceprofile
+  cwextract_${rname}
+  cwconfigure_${rname}
+  cwmake_${rname}
+  cwmakeinstall_${rname}
+  cwlinkdir_${rname}
+  cwgenprofd_${rname}
+  cwmarkinstall_${rname}
+  cwclean_${rname}
+}
+"
+
 # vim: ft=sh
