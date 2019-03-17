@@ -1,5 +1,6 @@
 eval "
 function cwfetch_${rname}() {
+  cwcheckreqs_${rname}
   cwscriptecho \"fetching ${rname} from git at ${rurl}\"
   pushd \"${cwbuild}\" >/dev/null 2>&1
   rm -rf \"${rdir}\"
@@ -35,23 +36,6 @@ function cwconfigure_${rname}() {
 eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
-}
-"
-
-eval "
-function cwinstall_${rname}() {
-  cwclean_${rname}
-  cwcheckreqs_${rname}
-  cwfetch_${rname}
-  cwsourceprofile
-  cwextract_${rname}
-  cwconfigure_${rname}
-  cwmake_${rname}
-  cwmakeinstall_${rname}
-  cwlinkdir_${rname}
-  cwgenprofd_${rname}
-  cwmarkinstall_${rname}
-  cwclean_${rname}
 }
 "
 
