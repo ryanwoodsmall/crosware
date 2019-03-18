@@ -13,11 +13,11 @@
 #
 
 rname="python2"
-rver="2.7.15"
+rver="2.7.16"
 rdir="Python-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.python.org/ftp/python/${rver}/${rfile}"
-rsha256="22d9b1ac5b26135ad2b8c2901a9413537e08749a753356ee913c84dbd2df5574"
+rsha256="f222ef602647eecb6853681156d32de4450a2c39f4de93bd5b20235f2e660ed7"
 rreqs="make bzip2 zlib ncurses readline openssl gdbm sqlite bdb47"
 
 . "${cwrecipe}/common.sh"
