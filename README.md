@@ -412,6 +412,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
   - hbase (version?)
   - spark (included in sdkman)
+- binfmt-support (https://git.savannah.gnu.org/cgit/binfmt-support.git - ???)
 - bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
 - brotli (https://github.com/google/brotli)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
