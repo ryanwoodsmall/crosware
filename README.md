@@ -653,6 +653,7 @@ make \
 - pciutils (https://github.com/pciutils/pciutils)
   - _/usr/share/misc/pci.ids_ file (https://github.com/pciutils/pciids)
 - pdsh (https://github.com/chaos/pdsh or https://github.com/grondo/pdsh ?)
+- picocom (https://github.com/npat-efault/picocom)
 - pigz
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
 - procps-ng
