@@ -689,7 +689,6 @@ make \
   - oaklisp (https://github.com/barak/oaklisp)
   - racket
   - rscheme (http://www.rscheme.org/rs)
-  - s9fes (https://www.t3x.org/s9fes https://github.com/bakul/s9fes and https://github.com/barak/scheme9)
   - scheme2c (https://github.com/barak/scheme2c)
   - scheme48 (http://s48.org)
   - scm (http://people.csail.mit.edu/jaffer/SCM.html)
@@ -732,11 +731,14 @@ make \
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - star (with pax/spax - http://cdrtools.sourceforge.net/private/star.html - **does not (yet) work on aarch64**)
 - strace
-- subc (https://www.t3x.org/subc/index.html)
 - subversion / svn
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
 - suckless
   - sinit (https://core.suckless.org/sinit/)
+- t3x.org stuff (nils holm)
+  - klisp (http://t3x.org/klisp)
+  - s9fes (https://www.t3x.org/s9fes https://github.com/bakul/s9fes and https://github.com/barak/scheme9)
+  - subc (https://www.t3x.org/subc)
 - tcc (http://repo.or.cz/w/tinycc.git)
   - static compilation is _pretty broken_
   - configure/build with something like...
