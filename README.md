@@ -416,6 +416,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
 - brotli (https://github.com/google/brotli)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
+- cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - chrpath
 - cmake
   - configure: ```./bootstrap --prefix=${cwsw}/cmake/$(basename $(pwd)) --no-system-libs --parallel=$(nproc)```
