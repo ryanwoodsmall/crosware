@@ -602,6 +602,18 @@ make \
 - mesalink (https://mesalink.io/ and https://github.com/mesalock-linux/mesalink)
 - meson (http://mesonbuild.com/ - python 3 and ninja)
 - micropython (https://github.com/micropython/micropython)
+  - needs python to build, wonderful
+  - git too
+  - ncurses, readline, etc.
+  - clone repo (single tag, **--depth 1**, **--single-branch**, etc.), i.e., for 1.10:
+    - ```git clone -b v1.10 --depth 1 https://github.com/micropython/micropython.git micropython-1.10```
+  - init submodules with ```git submodule update --force --init```
+  - disable BDB with ```sed -i.ORIG 's/MICROPY_PY_BTREE = 1/MICROPY_PY_BTREE = 0/g' ports/unix/mpconfigport.mk```
+  - need to set CPP for make with ```env CPP="${CC} -E" make V=1```
+  - not static, yet
+    - possibly pass ```LDFLAGS_EXTRA=-static``` to make?
+  - mbedtls instead of axtls?
+    - ```LDFLAGS_EXTRA="-L${cwsw}/mbedtls/current/lib -static" CFLAGS_EXTRA="-I${cwsw}/mbedtls/current/include"```
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
 - moreutils (https://joeyh.name/code/moreutils/)
