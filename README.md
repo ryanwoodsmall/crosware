@@ -607,18 +607,19 @@ make \
     - ```git clone -b v1.10 --depth 1 https://github.com/micropython/micropython.git micropython-1.10```
   - init submodules
     - ```git submodule update --force --init```
-  - build in the **ports/unix** directory
   - disable BDB
-    - ```sed -i '/^MICROPY_PY_BTREE/s/1/0/' mpconfigport.mk```
-  - mbedtls instead of built-in axtls:
-```
-sed -i '/^MICROPY_SSL_AXTLS/s/1/0/' mpconfigport.mk
-sed -i '/^MICROPY_SSL_MBEDTLS/s/0/1/' mpconfigport.mk
-LDFLAGS_EXTRA="-L${cwsw}/mbedtls/current/lib -static" CFLAGS_EXTRA="-I${cwsw}/mbedtls/current/include"
-```
-  - set CPP and build
-    - ```env CPP="${CC} -E" make V=1```
-  - binary will be **micropython**
+    - ```sed -i '/^MICROPY_PY_BTREE/s/1/0/' ports/unix/mpconfigport.mk```
+  - use mbedtls instead of built-in axtls
+    - ```
+      sed -i '/^MICROPY_SSL_AXTLS/s/1/0/' ports/unix/mpconfigport.mk
+      sed -i '/^MICROPY_SSL_MBEDTLS/s/0/1/' ports/unix/mpconfigport.mk
+      ```
+  - set CPP and build (static, mbedtls here)
+    - ```
+      cd ports/unix
+      env CPP="${CC} -E" make V=1 LDFLAGS_EXTRA="-L${cwsw}/mbedtls/current/lib -static" CFLAGS_EXTRA="-I${cwsw}/mbedtls/current/include"
+      ```
+  - binary will be **ports/unix/micropython**
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
 - moreutils (https://joeyh.name/code/moreutils/)
