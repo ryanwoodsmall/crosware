@@ -602,7 +602,7 @@ make \
 - mesalink (https://mesalink.io/ and https://github.com/mesalock-linux/mesalink)
 - meson (http://mesonbuild.com/ - python 3 and ninja)
 - micropython (https://github.com/micropython/micropython)
-  - needs python, git, libffi, make (???)
+  - needs python, git, libffi, pkgconfig, make (???)
   - clone repo (single tag, **--depth 1**, **--single-branch**, etc.); i.e., for 1.10:
     - ```git clone -b v1.10 --depth 1 https://github.com/micropython/micropython.git micropython-1.10```
   - init submodules
