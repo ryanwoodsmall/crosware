@@ -617,7 +617,11 @@ make \
   - set CPP and build (static, mbedtls here)
     - ```
       cd ports/unix
-      env CPP="${CC} -E" make V=1 LDFLAGS_EXTRA="-L${cwsw}/mbedtls/current/lib -static" CFLAGS_EXTRA="-I${cwsw}/mbedtls/current/include"
+      make \
+        V=1 \
+        CPP="gcc -E"
+        LDFLAGS_EXTRA="-L${cwsw}/mbedtls/current/lib -static" \
+        CFLAGS_EXTRA="-I${cwsw}/mbedtls/current/include"
       ```
   - binary will be **ports/unix/micropython**
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
