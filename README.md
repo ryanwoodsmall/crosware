@@ -607,6 +607,8 @@ make \
     - ```git clone -b v1.10 --depth 1 https://github.com/micropython/micropython.git micropython-1.10```
   - init submodules
     - ```git submodule update --force --init```
+  - or do both in one step (same syntax for git/jgit.sh)
+    - ```jgitsh clone https://github.com/micropython/micropython.git mpblah -b v1.10 --recurse-submodules -v```
   - disable BDB
     - ```sed -i '/^MICROPY_PY_BTREE/s/1/0/' ports/unix/mpconfigport.mk```
   - use mbedtls instead of built-in axtls
