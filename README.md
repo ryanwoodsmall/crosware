@@ -619,7 +619,7 @@ make \
       cd ports/unix
       make \
         V=1 \
-        CPP="gcc -E"
+        CPP="${CC} -E"
         LDFLAGS_EXTRA="-L${cwsw}/mbedtls/current/lib -static" \
         CFLAGS_EXTRA="-I${cwsw}/mbedtls/current/include"
       ```
