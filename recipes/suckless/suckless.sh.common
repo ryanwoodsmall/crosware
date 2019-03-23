@@ -7,7 +7,6 @@ function cwfetch_${rname}() {
   \${CW_GIT_CMD} clone \"${rurl}\" \"${rdir}\"
   cd \"${rdir}\"
   \${CW_GIT_CMD} checkout \"${rver}\"
-  \${CW_GIT_CMD} log | head -6
   popd >/dev/null 2>&1
 }
 "
