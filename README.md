@@ -558,6 +558,7 @@ make \
 - libedit
   - editline (https://github.com/troglobit/editline or http://troglobit.com/projects/editline/ minix3, no termcap needed)
   - editline (https://www.thrysoee.dk/editline/ netbsd, need termcap from a curses - netbsdcurses works)
+- libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (separate userspace? uses meson?)
 - libgit2
   - uses cmake
@@ -568,7 +569,7 @@ make \
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
 - libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
 - libressl
-- libsigsegv (https://www.gnu.org/software/libsigsegv/ - clisp)
+- libsigsegv (https://www.gnu.org/software/libsigsegv/)
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtirpc
 - libusb (https://github.com/libusb/libusb)
@@ -577,11 +578,32 @@ make \
 - libyaml (https://github.com/yaml/libyaml)
 - libz (sortix, zlib fork https://sortix.org/libz/)
 - lisp stuff
-  - clisp (https://clisp.sourceforge.io/)
+  - clisp (https://clisp.sourceforge.io/
+    - reqs: libsigsegv, libffcall, readline, ncurses
+    - configure with ```--without-dynamic-modules``` (and? ```--with-dynamic-ffi```)
+    - asm/page.h -> sys/user.h inplace
+    - no concurrent make
+    - stack size (```ulimit -s```) needs to be at least 16k?
+    - _may_ need address randomization disablement? ```setarch linux64 -R make```
+    - trouble getting this working at all, maybe not possible/worth it
   - clozure (https://ccl.clozure.com/)
   - cmucl (https://www.cons.org/cmucl/)
   - ecl (https://common-lisp.net/project/ecl/)
+    - reqs: gmp, libffi, gc, pkgconfig
+    - need an **rlwrap** script for the repl?
+    - configure with
+      - ```--enable-shared=no
+           --enable-soname=no
+           --enable-boehm=system
+           --enable-libatomic=system
+           --enable-gmp=system
+           --with-dffi=system```
+      - may need ```--with-cxx``` (alpine uses it)
+      - ffi includes ```CPPFLAGS="${CPPFLAGS} $(pkg-config --cflags libffi)"```
   - gcl (https://www.gnu.org/software/gcl/)
+    - reqs: m4, configgit, gmp?
+    - needs ```setarch linux64 -R ...``` with proper linux64/linux32 setting before configure, make
+    - not sure if this will work either
   - janet (https://janet-lang.org/ and https://github.com/janet-lang/janet)
   - picolisp (https://picolisp.com/wiki/?home)
     - picolisp (c, lisp)
