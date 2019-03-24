@@ -568,6 +568,7 @@ make \
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
 - libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
 - libressl
+- libsigsegv (https://www.gnu.org/software/libsigsegv/ - clisp)
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtirpc
 - libusb (https://github.com/libusb/libusb)
