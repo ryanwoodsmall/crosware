@@ -591,13 +591,7 @@ make \
   - ecl (https://common-lisp.net/project/ecl/)
     - reqs: gmp, libffi, gc, pkgconfig
     - need an **rlwrap** script for the repl?
-    - configure with
-      - ```--enable-shared=no
-           --enable-soname=no
-           --enable-boehm=system
-           --enable-libatomic=system
-           --enable-gmp=system
-           --with-dffi=system```
+    - configure with ```--enable-shared=no --enable-soname=no --enable-boehm=system --enable-libatomic=system --enable-gmp=system --with-dffi=system```
       - may need ```--with-cxx``` (alpine uses it)
       - ffi includes ```CPPFLAGS="${CPPFLAGS} $(pkg-config --cflags libffi)"```
   - gcl (https://www.gnu.org/software/gcl/)
