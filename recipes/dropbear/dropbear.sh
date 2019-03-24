@@ -4,11 +4,11 @@
 #   #define SFTPSERVER_PATH "${cwsw}/openssh/current/libexec/sftp-server"
 #
 rname="dropbear"
-rver="2018.76"
+rver="2019.77"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://matt.ucc.asn.au/dropbear/releases/${rfile}"
-rsha256="f2fb9167eca8cf93456a5fc1d4faf709902a3ab70dd44e352f3acbc3ffdaea65"
+rsha256="d91f78ebe633be1d071fd1b7e5535b9693794048b019e9f4bea257e1992b458d"
 # need a patch program, try toybox
 rreqs="make toybox zlib"
 
