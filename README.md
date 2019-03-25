@@ -599,6 +599,7 @@ make \
     - needs ```setarch linux64 -R ...``` with proper linux64/linux32 setting before configure, make
     - not sure if this will work either
   - janet (https://janet-lang.org/ and https://github.com/janet-lang/janet)
+  - mankai common lisp (https://common-lisp.net/project/mkcl/)
   - picolisp (https://picolisp.com/wiki/?home)
     - picolisp (c, lisp)
     - ersatz picolisp (java)
