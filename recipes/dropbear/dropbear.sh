@@ -7,7 +7,7 @@ rname="dropbear"
 rver="2019.77"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
-rurl="https://matt.ucc.asn.au/dropbear/releases/${rfile}"
+rurl="https://matt.ucc.asn.au/${rname}/releases/${rfile}"
 rsha256="d91f78ebe633be1d071fd1b7e5535b9693794048b019e9f4bea257e1992b458d"
 # need a patch program, try toybox
 rreqs="make toybox zlib"
@@ -17,16 +17,19 @@ rreqs="make toybox zlib"
 eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"${rurl}\" \"${cwdl}/${rname}/${rfile}\" \"${rsha256}\"
-  cwfetch \"https://raw.githubusercontent.com/ryanwoodsmall/dropbear-misc/master/options/dropbear-${rver}_localoptions.h\" \"${cwdl}/${rname}/dropbear-${rver}_localoptions.h\"
+  cwfetch \"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/options/${rname}-${rver}_localoptions.h\" \"${cwdl}/${rname}/${rname}-${rver}_localoptions.h\"
+  #cwfetch \"https://secure.ucc.asn.au/hg/${rname}/raw-rev/4b01f4826a29\" \"${cwdl}/${rname}/${rname}-cli-chansession.c.patch\"
+  cwfetch \"https://github.com/mkj/${rname}/commit/7bc6280613f5ab4ee86c14c779739070e5784dfe.patch\" \"${cwdl}/${rname}/${rname}-cli-chansession.c.patch\"
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  cat \"${cwdl}/${rname}/dropbear-${rver}_localoptions.h\" > localoptions.h
+  cat \"${cwdl}/${rname}/${rname}-${rver}_localoptions.h\" > localoptions.h
+  patch -p1 < \"${cwdl}/${rname}/${rname}-cli-chansession.c.patch\"
   cwscriptecho 'patching localoptions.h'
-  sed -i \"s#/opt/dropbear#${rtdir}#g\" localoptions.h
+  sed -i \"s#/opt/${rname}#${rtdir}#g\" localoptions.h
   ./configure \
     ${cwconfigureprefix} \
     --disable-lastlog \
