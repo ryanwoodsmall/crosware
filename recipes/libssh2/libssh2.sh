@@ -6,11 +6,11 @@
 #
 
 rname="libssh2"
-rver="1.8.1"
+rver="1.8.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.libssh2.org/download/${rfile}"
-rsha256="40b517f35b1bb869d0075b15125c7a015557f53a5a3a6a8bffb89b69fd70f159"
+rsha256="088307d9f6b6c4b8c13f34602e8ff65d21c2dc4d55284dfe15d502c4ee190d67"
 rreqs="make openssl zlib"
 
 . "${cwrecipe}/common.sh"
