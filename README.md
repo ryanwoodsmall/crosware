@@ -606,6 +606,7 @@ make \
   - roswell (https://github.com/roswell/roswell)
   - sbcl (http://sbcl.org and https://github.com/sbcl/sbcl)
 - llvm / clang
+- lnav (https://github.com/tstack/lnav)
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
 - man stuff
