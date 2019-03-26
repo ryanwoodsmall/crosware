@@ -701,6 +701,13 @@ make \
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
 - procps-ng
 - psmisc
+- python 3.x
+  - as usual, autotools is dumb and requires workaround for stuff that should be set via configure
+  - modify **Modules/Setup.local** as in python2 recipe
+  - _configure_ example ```--with-ensurepip=install --with-dbmliborder=gdbm:bdb --with-system-{expat,ffi} LDFLAGS="${LDFLAGS//-static/}" CPPFLAGS="${CPPFLAGS}" CFLAGS="-fPIC" CXXFLAGS="-fPIC" LIBS='-lssl -lcrypto -lz -lncursesw -lffi -llzma -lexpat'```
+  - _make_ example ```make -j$(($(nproc)*2+1)) CFLAGS=-fPIC CXXFLAGS=-fPIC LDFLAGS="${LDFLAGS//-static/}" LIBS='-lcrypto -lssl -lz -llzma -lncursesw -lffi -llzma -lexpat'```
+  - _make install_ probably needs same opts as make
+  - **uuid.h** (from utillinux) isn't found by configure, great software
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
 - redir (https://github.com/troglobit/redir)
