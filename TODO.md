@@ -308,5 +308,7 @@ function cwurltofilename() {
     - CW_USE_JAVA should be CW_USE_ZULU
     - CW_USE_JGIT should be CW_USE_JGITSH
 
+<!--
 # lol
 # vim: ft=markdown
+-->
