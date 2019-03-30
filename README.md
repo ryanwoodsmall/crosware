@@ -5,7 +5,7 @@ Tools, things, stuff, miscellaneous, detritus, junk, etc., primarily for Chrome 
 
 To bootstrap, using ```/usr/local/crosware``` with initial downloads in ```/usr/local/tmp```:
 
-```
+```shell
 # allow your regular user to write to /usr/local
 sudo chgrp ${GROUPS} /usr/local
 sudo chmod 2775 /usr/local
@@ -22,7 +22,7 @@ which crosware
 
 ## install some packages
 
-```
+```shell
 # install some stuff
 crosware install make busybox toybox
 
@@ -49,7 +49,7 @@ And to re-bootstrap (for any updated zulu, jgitsh, statictoolchain installs):
 
 Run **crosware** without any arguments to see usage; i.e, a (possibly outdated) example:
 
-```
+```shell
 usage: crosware [command]
 
 commands:
@@ -89,7 +89,7 @@ A few user environment variables are available to control how crosware checks it
 
 Alpine (https://alpinelinux.org/) uses musl libc (http://musl-libc.org) and as such cannot use the Zulu JDK as distributed. To bootstrap using the system-supplied OpenJDK from Alpine repos:
 
-```
+```shell
 export CW_EXT_JAVA=true
 apk update
 apk upgrade
@@ -124,15 +124,16 @@ An interactive bash shell session will start, and any crosware C/C++ packages sh
 
 Build with something like:
 
-```
+```shell
 docker build --tag crosware https://raw.githubusercontent.com/ryanwoodsmall/dockerfiles/master/crosware/Dockerfile
 docker run -it crosware
 ```
 
 Inside the container, install **git** to enable updates and list any upgradable packages:
 
-```
-crosware install statictoolchain git
+```shell
+# note: this installs git and it's prereqs from source, it'll might awhile
+crosware install git
 . /usr/local/crosware/etc/profile
 crosware update
 crosware list-upgradable
@@ -237,7 +238,9 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - **zulu** azul zulu openjdk jvm
 - **jgitsh** standalone jgit shell script
 - **statictoolchain** musl-cross-make static toolchain
-  - https://github.com/ryanwoodsmall/musl-misc/blob/master/musl-cross-make-confs/Makefile.arch_indep
+  - now self-hosted on crosware
+    - https://github.com/ryanwoodsmall/musl-misc/blob/master/musl-cross-make-confs/Makefile.arch_indep
+    - https://github.com/ryanwoodsmall/dockerfiles/blob/master/crosware/statictoolchain/files/build-statictoolchain.sh
 
 ## working recipes
 
@@ -443,7 +446,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
       - ```grep -rl find_dev | xargs sed -i s/find_dev/simh_find_dev/g```
     - binaries end up in **BIN/** directory
     - build with something like...
-```
+```shell
 make \
   USE_NETWORK=1 \
   TESTS=0 \
@@ -792,7 +795,8 @@ make \
 - tcc (http://repo.or.cz/w/tinycc.git)
   - static compilation is _pretty broken_
   - configure/build with something like...
-```local triplet="$(which ${CC} | xargs realpath | xargs basename | sed s/-gcc//g)"
+```shell
+local triplet="$(which ${CC} | xargs realpath | xargs basename | sed s/-gcc//g)"
 env \
   CPPFLAGS= \
   CXXFLAGS= \
@@ -830,23 +834,6 @@ make install
 - whatever else seems useful
 
 
-# bootstrap notes
-
-(probably somewhat out of date, see container info above)
-
-Bootstrap recipes that need work (i.e., arch-specific versions installed into /usr/local/tmp/bootstrap, archive, etc.);
-these could be used to create a fully functional build environment/initrd/chroot/container/etc.
-- 9base
-- bash
-- busybox
-- coreutils
-- curl (https, static mbedtls binary is probably best candidate)
-- dropbear
-- git (https/ssh, could replace jgit, not require a jdk?)
-- make
-- openssl
-- sbase
-- statictoolchain
-- toybox
-- ubase
-- utillinux
+<!--
+# vim: ft=markdown
+-->
