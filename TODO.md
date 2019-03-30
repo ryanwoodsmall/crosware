@@ -299,3 +299,14 @@ function cwurltofilename() {
   echo "${o}"
 }
 ```
+- generalize binary prereq check
+  - add ${CW_GIT_CMD} to check if not using jgitsh, i.e. ${CW_USE_JGIT}==false
+- add new var to disable automatic installation of statictoolchain
+  - CW_USE_STATICTOOLCHAIN
+- env var naming
+  - names should reflect recipe/package names
+    - CW_USE_JAVA should be CW_USE_ZULU
+    - CW_USE_JGIT should be CW_USE_JGITSH
+
+# lol
+# vim: ft=markdown
