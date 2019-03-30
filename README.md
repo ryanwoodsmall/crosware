@@ -597,6 +597,8 @@ make \
     - configure with ```--enable-shared=no --enable-soname=no --enable-boehm=system --enable-libatomic=system --enable-gmp=system --with-dffi=system```
       - may need ```--with-cxx``` (alpine uses it)
       - ffi includes ```CPPFLAGS="${CPPFLAGS} $(pkg-config --cflags libffi)"```
+      - compile shared w/system gmp/ffi, included libatomicops/gc? (for armhf/i386 compat, gc isn't happy static there)
+      - CFLAGS/CXXFLAGS need ```-D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR```
   - gcl (https://www.gnu.org/software/gcl/)
     - reqs: m4, configgit, gmp?
     - needs ```setarch linux64 -R ...``` with proper linux64/linux32 setting before configure, make
