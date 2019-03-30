@@ -280,7 +280,7 @@
   - map "uname -m" to supported_arch
 - easier url download filename generation
   - url -> filename might look something like:
-```
+```shell
 #
 # cwurltofilename
 #   receives a url
@@ -309,6 +309,5 @@ function cwurltofilename() {
     - CW_USE_JGIT should be CW_USE_JGITSH
 
 <!--
-# lol
 # vim: ft=markdown
 -->
