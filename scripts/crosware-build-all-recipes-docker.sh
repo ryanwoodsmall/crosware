@@ -22,7 +22,7 @@ for r in $(docker run --rm ${i} ${c} list-available) ; do
   l="/tmp/${n}.out"
   docker kill ${n} || true
   docker rm -f ${n} || true
-  ( time ( docker run --name ${n} ${v} ${i} bash -l ${c} install ${r} ; echo ${?} ) ) 2>&1 | tee ${l}.out
+  ( time ( docker run --name ${n} ${v} ${i} bash -l ${c} install ${r} ; echo ${?} ) ) 2>&1 | tee ${l}
   docker kill ${n} || true
   docker rm -f ${n} || true
 done
