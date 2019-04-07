@@ -132,7 +132,7 @@ docker run -it crosware
 Inside the container, install **git** to enable updates and list any upgradable packages:
 
 ```shell
-# note: this installs git and it's prereqs from source, it'll might awhile
+# note: this installs git and its prereqs from source, it might take awhile
 crosware install git
 . /usr/local/crosware/etc/profile
 crosware update
