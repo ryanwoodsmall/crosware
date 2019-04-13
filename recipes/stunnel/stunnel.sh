@@ -2,7 +2,7 @@ rname="stunnel"
 rver="5.50"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://www.${rname}.org/downloads/${rfile}"
+rurl="ftp://ftp.${rname}.org/${rname}/archive/${rver%%.*}.x/${rfile}"
 rsha256="951d92502908b852a297bd9308568f7c36598670b84286d3e05d4a3a550c0149"
 rreqs="make openssl zlib"
 
