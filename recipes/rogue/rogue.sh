@@ -1,3 +1,6 @@
+#
+# XXX - recipe should use https://github.com/RoguelikeRestorationProject/rogue5.4
+#
 rname="rogue"
 rver="5.4.5"
 rdir="${rname}${rver}"
