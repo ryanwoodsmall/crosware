@@ -465,6 +465,7 @@ make \
   - gpgme
   - etc.
 - graphviz (http://graphviz.org/)
+- hq (https://github.com/rbwinslow/hq)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
 - http-parser (https://github.com/nodejs/http-parser - useful with libgit2?)
 - iodine (https://github.com/yarrick/iodine)
