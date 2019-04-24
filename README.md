@@ -606,6 +606,7 @@ make \
     - not sure if this will work either
   - janet (https://janet-lang.org/ and https://github.com/janet-lang/janet)
   - mankai common lisp (https://common-lisp.net/project/mkcl/)
+  - newlisp (http://www.newlisp.org/ - unnoficial code mirror at https://github.com/kosh04/newlisp)
   - picolisp (https://picolisp.com/wiki/?home)
     - picolisp (c, lisp)
     - ersatz picolisp (java)
