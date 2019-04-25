@@ -11,14 +11,15 @@ rreqs="make ncurses lua gettexttiny"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} \
-    --with-tlib=ncurses \
-    --without-local-dir \
-    --with-features=huge \
-    --without-x \
-    --enable-gui=no \
-    --with-lua-prefix=${cwsw}/lua/current \
-    --enable-luainterp=yes
+  env PATH=${cwsw}/gettexttiny/current/bin:\${PATH} \
+    ./configure ${cwconfigureprefix} \
+      --with-tlib=ncurses \
+      --without-local-dir \
+      --with-features=huge \
+      --without-x \
+      --enable-gui=no \
+      --with-lua-prefix=${cwsw}/lua/current \
+      --enable-luainterp=yes
   popd >/dev/null 2>&1
 }
 "
