@@ -1,3 +1,8 @@
+#
+# XXX - need global terminfo db?
+# XXX - i.e., "make terminfo/terminfo.cdb && cp terminfo/terminfo.cdb ${ridir}/share/"
+#
+
 rname="netbsdcurses"
 rver="0.3.1"
 rdir="netbsd-curses-${rver}"
