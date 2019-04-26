@@ -32,6 +32,7 @@ function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   sed -i.ORIG '/(TERMINFODIR)/ s#TERMINFODIR=#TERMINFO=#g;s#(TERMINFODIR)#(PWD)/terminfo/terminfo#g' GNUmakefile
   sed -i.ORIG '/^screen$/a\\
+screen-256color\\
 tmux\\
 tmux-256color' libterminfo/genterms
   cd nbperf
