@@ -708,7 +708,14 @@ make \
 - picocom (https://github.com/npat-efault/picocom)
 - pigz
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
-- procps-ng
+- procps-ng (https://gitlab.com/procps-ng/procps)
+  - needs autoconf, automake, libtool, ncurses, pkgconfig, slibtool
+  - disable ```man-po``` and ```po``` **SUBDIRS** in _Makefile.am_
+  - ```autoreconf -fiv -I${cwsw}/libtool/current/share/aclocal -I${cwsw}/pkgconfig/current/share/aclocal```
+  - ```./configure ${cwconfigureprefix} ${cwconfigurelibopts} --disable-nls LIBS=-static LDFLAGS="-L${cwsw}/ncurses/current/lib -static"```
+    - ```--disable-modern-top``` for old-style top
+  - ```make install-strip LIBTOOL="${cwsw}/slibtool/current/bin/slibtool-static -all-static"```
+    - slibtool require should make this automatic
 - psmisc
 - python 3.x
   - as usual, autotools is dumb and requires workaround for stuff that should be set via configure
