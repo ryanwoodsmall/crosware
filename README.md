@@ -323,6 +323,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - libpcap
 - libssh2 (openssl, zlib)
 - libtool
+- libunistring (https://ftp.gnu.org/gnu/libunistring/) 
 - libxml2
 - libxslt
 - links (ncurses)
@@ -577,7 +578,6 @@ make \
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtirpc
 - libusb (https://github.com/libusb/libusb)
-- libunistring (https://ftp.gnu.org/gnu/libunistring/ - ```--enable-relocatable``` configure opt)
 - libuv (https://github.com/libuv/libuv)
 - libyaml (https://github.com/yaml/libyaml)
 - libz (sortix, zlib fork https://sortix.org/libz/)
