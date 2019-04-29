@@ -295,6 +295,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
 - grep (gnu grep)
 - groff
+- guile (https://www.gnu.org/software/guile/)
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
 - htop
 - iftop
@@ -741,7 +742,6 @@ make \
   - gambit (https://github.com/gambit/gambit)
   - gauche (https://github.com/shirok/Gauche and https://practical-scheme.net/gauche/index.html - zlib, gdbm, builtin axtls)
   - gerbil (https://cons.io/)
-  - guile (https://www.gnu.org/software/guile/ - needs gmp, libtool, libunistring, pkgconfig, libffi, gc, readline)
   - ikarus (??? https://en.wikipedia.org/wiki/Ikarus_(Scheme_implementation) )
   - larceny (and petit larceny, http://larcenists.org)
   - micro-lisp (https://github.com/carld/micro-lisp)
