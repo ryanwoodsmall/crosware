@@ -1,10 +1,10 @@
 rname="libgpgerror"
-rver="1.32"
+rver="1.36"
 rdir="libgpg-error-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/libgpg-error/${rfile}"
-rsha256="c345c5e73cc2332f8d50db84a2280abfb1d8f6d4f1858b9daa30404db44540ca"
-rreqs="make slibtool"
+rsha256="babd98437208c163175c29453f8681094bcaf92968a15cafb1a276076b33c97c"
+rreqs="make slibtool busybox"
 
 . "${cwrecipe}/common.sh"
 
@@ -15,7 +15,7 @@ function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   sed -i.ORIG '/_gpgrt_logv_printhex.*NULL,.*NULL/ s/NULL,.*NULL/NULL, arg_ptr/g' src/logging.c
   #sed -i 's/va_list arg_ptr;/va_list arg_ptr = {};/g' src/logging.c
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts}
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} AWK='busybox awk'
   popd >/dev/null 2>&1
 }
 "
