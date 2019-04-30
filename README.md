@@ -324,7 +324,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - libpcap
 - libssh2 (openssl, zlib)
 - libtool
-- libunistring (https://ftp.gnu.org/gnu/libunistring/) 
+- libunistring (https://ftp.gnu.org/gnu/libunistring/)
 - libxml2
 - libxslt
 - links (ncurses)
