@@ -7,6 +7,7 @@ rsha256="f29e89cc5de813f45786580101aaee3984a65818631d4ddbda7b32f699b87c2e"
 rreqs="make zlib bzip2 readline"
 
 . "${cwrecipe}/common.sh"
+. "${cwrecipe}/${rname%2}/${rname%2}.sh.common"
 
 eval "
 function cwconfigure_${rname}() {
@@ -19,14 +20,5 @@ function cwconfigure_${rname}() {
     --enable-pcre2grep-libbz2 \
     --enable-pcre2test-libreadline
   popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
-  echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
-  echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
-  echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
 }
 "

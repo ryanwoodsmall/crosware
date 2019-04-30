@@ -7,6 +7,7 @@ rsha256="91e762520003013834ac1adb4a938d53b22a216341c061b0cf05603b290faf6b"
 rreqs="make zlib bzip2 readline"
 
 . "${cwrecipe}/common.sh"
+. "${cwrecipe}/${rname}/${rname}.sh.common"
 
 eval "
 function cwconfigure_${rname}() {
@@ -21,14 +22,5 @@ function cwconfigure_${rname}() {
     --enable-unicode-properties \
     --enable-utf
   popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
-  echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
-  echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
-  echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
 }
 "
