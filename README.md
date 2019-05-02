@@ -618,7 +618,7 @@ make \
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - lua stuff
   - lua2c (https://github.com/davidm/lua2c or a fork?)
-  - terra (https://github.com/zdevito/terra)
+  - terra (https://github.com/zdevito/terra and http://terralang.org/)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
 - man stuff
   - man-pages (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/)
