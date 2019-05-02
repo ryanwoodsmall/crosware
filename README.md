@@ -616,6 +616,9 @@ make \
 - llvm / clang
 - lnav (https://github.com/tstack/lnav)
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
+- lua stuff
+  - lua2c (https://github.com/davidm/lua2c or a fork?)
+  - terra (https://github.com/zdevito/terra)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
 - man stuff
   - man-pages (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/)
