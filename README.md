@@ -712,6 +712,7 @@ make \
 - picocom (https://github.com/npat-efault/picocom)
 - pigz
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
+- prngd (http://prngd.sourceforge.net/ - for lxc? dropbear? old? hmm?)
 - procps-ng (https://gitlab.com/procps-ng/procps)
   - needs autoconf, automake, libtool, ncurses, pkgconfig, slibtool
   - disable ```man-po``` and ```po``` **SUBDIRS** in _Makefile.am_
