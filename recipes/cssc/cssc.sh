@@ -1,9 +1,9 @@
 rname="cssc"
-rver="1.4.0"
+rver="1.4.1"
 rdir="CSSC-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="30146f96c26c2a4c6b742bc8a498993ec6ea9f289becaaf566866488600b2994"
+rsha256="d1bed0c80246ee4cd49d0aa45307c075d0876fe531057bb1c8b28f5330d651ef"
 rreqs="make sed"
 
 . "${cwrecipe}/common.sh"
