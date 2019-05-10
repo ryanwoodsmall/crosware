@@ -578,6 +578,7 @@ make \
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
   - needs slibtool
+  - configure with ```--disable-doc```
 - libtirpc
 - libusb (https://github.com/libusb/libusb)
 - libuv (https://github.com/libuv/libuv)
