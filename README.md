@@ -323,6 +323,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - libnl
 - libpcap
 - libssh2 (openssl, zlib)
+- libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtool
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
 - libxml2
@@ -576,9 +577,6 @@ make \
 - libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
 - libressl
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
-- libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
-  - needs slibtool
-  - configure with ```--disable-doc```
 - libtirpc
 - libusb (https://github.com/libusb/libusb)
 - libuv (https://github.com/libuv/libuv)
