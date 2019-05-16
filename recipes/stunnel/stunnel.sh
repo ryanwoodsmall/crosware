@@ -1,9 +1,9 @@
 rname="stunnel"
-rver="5.53"
+rver="5.54"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="ftp://ftp.${rname}.org/${rname}/archive/${rver%%.*}.x/${rfile}"
-rsha256="80439896ee14269eb70bc8bc669433c7d619018a62c9f9c5c760a24515302585"
+rsha256="5e8588a6c274b46b1d63e1b50f0725f4908dec736f6588eb48d1eb3d20c87902"
 rreqs="make openssl zlib"
 
 . "${cwrecipe}/common.sh"
