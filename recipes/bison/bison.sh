@@ -3,11 +3,11 @@
 #
 
 rname="bison"
-rver="3.3.2"
+rver="3.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="039ee45b61d95e5003e7e8376f9080001b4066ff357bde271b7faace53b9d804"
+rsha256="6f3582cce1bb040fa09cfa238d6ee8643c03c79e34d0d203a7466b8cc1038efa"
 rreqs="make m4 flex perl sed gawk"
 
 . "${cwrecipe}/common.sh"
