@@ -307,6 +307,9 @@ function cwurltofilename() {
   - names should reflect recipe/package names
     - CW_USE_JAVA should be CW_USE_ZULU
     - CW_USE_JGIT should be CW_USE_JGITSH
+- canonical arch?
+  - armv6l/armv7l/armv8l (aarch32hf) are the same
+  - makes zulu/statictoolchain more complicated than need be
 
 <!--
 # vim: ft=markdown
