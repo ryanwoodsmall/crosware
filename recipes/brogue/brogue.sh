@@ -17,6 +17,7 @@ function cwconfigure_${rname}() {
   sed -i \"/^CURSES_LIB/ s# = # = -L${cwsw}/ncurses/current/lib -static #g\" Makefile
   sed -i \"/^SDL_FLAGS/d\" Makefile
   sed -i \"s/^CFLAGS=/CFLAGS=-Wl,-static /g\" Makefile
+  sed -i \"/^LASTTARGET/s/.*/LASTTARGET=curses/g\" Makefile
   popd >/dev/null 2>&1
 }
 "
@@ -24,6 +25,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
+  rm -f bin/brogue
   make curses
   popd >/dev/null 2>&1
 }
@@ -36,6 +38,9 @@ function cwmakeinstall_${rname}() {
   find . -maxdepth 1 ! -type d -exec chmod a-x {} +
   chmod 755 brogue
   rsync -avHS ${rbdir}/. ${ridir}/.
+  rm -rf ${ridir}/bin/*.so*
+  rm -f ${ridir}/src/libtcod*/{samples_c{,pp},hmtool}{,_debug}
+  find ${ridir}/ -type f -name '*.o' -print | xargs rm -f
   popd >/dev/null 2>&1
 }
 "
