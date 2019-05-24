@@ -732,6 +732,7 @@ make \
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
 - redir (https://github.com/troglobit/redir)
+- retro (forth, http://retroforth.org/)
 - rredir (https://github.com/rofl0r/rrredir)
 - rover (https://lecram.github.io/p/rover)
 - rpcbind
