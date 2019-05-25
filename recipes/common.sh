@@ -44,6 +44,12 @@ function cwfetch_${rname}() {
 "
 
 eval "
+function cwlistreqs_${rname}() {
+  echo "${rreqs}"
+}
+"
+
+eval "
 function cwcheckreqs_${rname}() {
   for rreq in ${rreqs} ; do
     if ! \$(cwcheckinstalled \${rreq}) ; then

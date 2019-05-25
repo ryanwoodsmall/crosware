@@ -79,6 +79,7 @@ cwcmds["env"]="dump source-/eval-able ${cwname} etc/profile"
 cwcmds["profile"]="show .profile addition"
 cwcmds["list-recipes"]="list build recipes"
 cwcmds["list-recipe-versions"]="list recipes with version number"
+cwcmds["list-recipe-reqs"]="list recipes their requirements"
 cwcmds["install"]="attempt to build/install a package from a known recipe"
 cwcmds["update"]="attempt to update existing install of ${cwname}"
 cwcmds["list-installed"]="list installed recipes"
@@ -418,6 +419,9 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
     rm -rf \"${cwsw}/\${${cwbootstraprecipe}_pkgname}\"
     rm -f \"${cwetcprofd}/\${${cwbootstraprecipe}_pkgname}.sh\"
     rm -f \"${cwvarinst}/${cwbootstraprecipe}\"
+  }
+  function cwlistreqs_${cwbootstraprecipe}() {
+    echo \"\"
   }
   "
 done
@@ -777,6 +781,16 @@ function cwlistrecipeversions() {
 }
 
 #
+# cwlistrecipereqs
+#
+function cwlistrecipereqs() {
+  cwsourcerecipes
+  for recipe in $(echo ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} | tr ' ' '\n' | sort | xargs echo) ; do
+    echo "${recipe} : $(cwlistreqs_${recipe})"
+  done
+}
+
+#
 # cwinstall
 #
 # build/install some stuff
@@ -1053,6 +1067,9 @@ case "${cmd}" in
     ;;
   list-recipe-versions)
     cwlistrecipeversions
+    ;;
+  list-recipe-reqs)
+    cwlistrecipereqs
     ;;
   list-installed)
     cwlistinstalled
