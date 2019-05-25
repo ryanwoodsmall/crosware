@@ -2,7 +2,9 @@
 # XXX
 #   compile with libgcrypt?
 #   allow linking into curl with openssl/mbedtls/wolfssl?
-#   libgit2 support down the road?
+#   supports mbedtls, as does libgit2
+#   libgit2 support down the road...
+#   slibtool works, necessary?
 #
 
 rname="libssh2"
