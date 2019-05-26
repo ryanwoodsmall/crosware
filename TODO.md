@@ -310,6 +310,11 @@ function cwurltofilename() {
 - canonical arch?
   - armv6l/armv7l/armv8l (aarch32hf) are the same
   - makes zulu/statictoolchain more complicated than need be
+- pkg-config
+  - need to figure out curl, zlib, libcrypt/libssl/openssh, libssh2 interplay
+    - Requires:?
+    - Libs:?
+  - .pc verisons need to be masked w/current
 
 <!--
 # vim: ft=markdown
