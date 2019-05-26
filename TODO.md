@@ -316,6 +316,9 @@ function cwurltofilename() {
     - Libs:?
   - .pc verisons need to be masked w/current
     - s#${ridir}#${rtdir}/current#g
+- limit path to crosware stuff
+  - basically ``env PATH=$(echo ${PATH} | tr ':' '\n' | grep ${cwtop}/ | xargs echo | tr ' ' ':')```
+  - cwpath? cwrestrictedpath?
 
 <!--
 # vim: ft=markdown
