@@ -19,7 +19,7 @@ function cwconfigure_${rname}() {
   find . -type f -name '*.cmake' -print0 | xargs -0 sed -i.ORIG 's#/usr/include#/no/usr/include#g'
   sed -i.ORIG 's#-DCMAKE_BOOTSTRAP=1#-DCMAKE_BOOTSTRAP=1 -DCMAKE_IGNORE_PATH=/usr/include#g' bootstrap
   env CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH= \
-      PATH=\"${cwsw}/bash/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin:${cwsw}/statictoolchain/current/bin\" \
+      PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/bash/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
       ./bootstrap \
         ${cwconfigureprefix} \
         --no-system-libs \
