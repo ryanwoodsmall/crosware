@@ -1,6 +1,7 @@
 #
 # XXX - need to strip cpack/cmake/ctest in bin/?
 # XXX - aarch32 flakiness w/o -static
+# XXX - CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES - Modules/Platform/UnixPaths.cmake
 #
 
 rname="cmake"
