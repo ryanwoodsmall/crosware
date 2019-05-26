@@ -13,7 +13,10 @@ eval "
 function cwconfigure_${rname}() {
   cwmkdir \"${rbdir}\"
   pushd \"${rbdir}\" >/dev/null 2>&1
-  ${cwsw}/cmake/current/bin/cmake .. \
+  env PATH=\"${cwsw}/cmake/current/bin:${cwsw}/pkgconfig/current/bin:\${PATH}\" \
+      PKG_CONFIG_LIBDIR=\"\${PKG_CONFIG_LIBDIR}\" \
+      PKG_CONFIG_PATH=\"\${PKG_CONFIG_PATH}\" \
+  cmake .. \
     -DBUILD_CLAR=OFF \
     -DBUILD_SHARED_LIBS=OFF \
     -DUSE_SSH=ON \
