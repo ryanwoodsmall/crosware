@@ -16,6 +16,7 @@ function cwconfigure_${rname}() {
   cmake .. \
     -DBUILD_CLAR=OFF \
     -DBUILD_SHARED_LIBS=OFF \
+    -DBUILD_STATIC_LIBS=ON \
     -DUSE_SSH=ON \
     -DUSE_HTTPS=ON \
     -DUSE_BUNDLED_ZLIB=OFF \
