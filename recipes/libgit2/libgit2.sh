@@ -13,7 +13,7 @@ eval "
 function cwconfigure_${rname}() {
   cwmkdir \"${rbdir}\"
   pushd \"${rbdir}\" >/dev/null 2>&1
-  cmake .. \
+  ${cwsw}/cmake/current/bin/cmake .. \
     -DBUILD_CLAR=OFF \
     -DBUILD_SHARED_LIBS=OFF \
     -DUSE_SSH=ON \
@@ -34,7 +34,8 @@ function cwconfigure_${rname}() {
     -DOPENSSL_ROOT_DIR=\"${cwsw}/openssl/current\" \
     -DCMAKE_FIND_ROOT_PATH=\"/usr\" \
     -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=\"NEVER\" \
-    -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=\"NEVER\"
+    -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=\"NEVER\" \
+    -DCMAKE_LINK_DEPENDS_NO_SHARED=\"true\"
   sed -i.ORIG '/Requires.private/s/\\.private:/:/g' ${rname}.pc
   sed -i '/^Requires/s/\$/ libcrypto libssl libssh2 zlib/g' ${rname}.pc
   popd >/dev/null 2>&1
