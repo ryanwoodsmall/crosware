@@ -1,3 +1,7 @@
+#
+# XXX - CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES
+#
+
 rname="libgit2"
 rver="0.28.2"
 rdir="${rname}-${rver}"
