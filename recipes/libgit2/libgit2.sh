@@ -24,7 +24,15 @@ function cwconfigure_${rname}() {
     -DCMAKE_INSTALL_PREFIX=\"${ridir}\" \
     -DZLIB_LIBRARY=\"${cwsw}/zlib/current/lib/libz.a\" \
     -DZLIB_INCLUDE_DIR=\"${cwsw}/zlib/current/include\" \
-    -DCMAKE_FIND_LIBRARY_SUFFIXES=\".a\"
+    -DCMAKE_SHARED_LIBRARY_SUFFIX=\".a\" \
+    -DCMAKE_FIND_LIBRARY_SUFFIXES=\".a\" \
+    -DCMAKE_EXE_LINKER_FLAGS=\"-static\" \
+    -DCMAKE_MODULE_LINKER_FLAGS=\"-static\" \
+    -DCMAKE_SHARED_LINKER_FLAGS=\"-static\" \
+    -DCMAKE_PREFIX_PATH=\"${cwsw}/zlib/current:${cwsw}/openssl/current:${cwsw}/libssh2\" \
+    -DCMAKE_IGNORE_PATH=\"/usr/include:/lib:/lib64:/usr/lib:/usr/lib64\"
+  sed -i.ORIG '/Requires.private/s/\\.private:/:/g' ${rname}.pc
+  sed -i '/^Requires/s/\$/ libcrypto libssl libssh2/g' ${rname}.pc
   popd >/dev/null 2>&1
 }
 "
