@@ -23,7 +23,8 @@ function cwconfigure_${rname}() {
     -DUSE_EXT_HTTP_PARSER=OFF \
     -DCMAKE_INSTALL_PREFIX=\"${ridir}\" \
     -DZLIB_LIBRARY=\"${cwsw}/zlib/current/lib/libz.a\" \
-    -DZLIB_INCLUDE_DIR=\"${cwsw}/zlib/current/include\"
+    -DZLIB_INCLUDE_DIR=\"${cwsw}/zlib/current/include\" \
+    -DCMAKE_FIND_LIBRARY_SUFFIXES=\".a\"
   popd >/dev/null 2>&1
 }
 "
