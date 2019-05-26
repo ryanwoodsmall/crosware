@@ -26,6 +26,8 @@ function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   make install_sw
   sed -i '/^Libs:/s/$/ -lz/g' ${ridir}/lib/pkgconfig/*.pc
+  sed -i '/^Requires/s/\$/ zlib/g' ${ridir}/lib/pkgconfig/*.pc
+  sed -i '/^Requires/s/\\.private:/:/g' ${ridir}/lib/pkgconfig/*.pc
   popd >/dev/null 2>&1
 }
 "
