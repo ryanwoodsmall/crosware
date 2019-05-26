@@ -259,6 +259,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - ccache
 - cflow
 - check
+- cmake
 - configgit (gnu config.guess, config.sub updates for musl, aarch64, etc. http://git.savannah.gnu.org/gitweb/?p=config.git;a=summary)
 - coreutils (single static binary with symlinks, no nls/attr/acl/gmp/pcap/selinux)
 - cppcheck
@@ -424,8 +425,6 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - chrpath
-- cmake
-  - configure: ```./bootstrap --prefix=${cwsw}/cmake/$(basename $(pwd)) --no-system-libs --parallel=$(nproc)```
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - ddrescue
