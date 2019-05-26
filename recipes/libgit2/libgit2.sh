@@ -1,7 +1,3 @@
-#
-# XXX - CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES - Modules/Platform/UnixPaths.cmake
-#
-
 rname="libgit2"
 rver="0.28.2"
 rdir="${rname}-${rver}"
