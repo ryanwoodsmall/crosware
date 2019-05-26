@@ -1,5 +1,4 @@
 #
-# XXX - really need to add -lz to libs in .pc files
 # XXX - need to figure out ca certificates
 # XXX - our perl needs to be at front of path for config/make
 #
@@ -26,6 +25,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   make install_sw
+  sed -i '/^Libs:/s/$/ -lz/g' ${ridir}/lib/pkgconfig/*.pc
   popd >/dev/null 2>&1
 }
 "
