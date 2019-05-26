@@ -315,6 +315,7 @@ function cwurltofilename() {
     - Requires:?
     - Libs:?
   - .pc verisons need to be masked w/current
+    - s#${ridir}#${rtdir}/current#g
 
 <!--
 # vim: ft=markdown
