@@ -30,9 +30,13 @@ function cwconfigure_${rname}() {
     -DCMAKE_MODULE_LINKER_FLAGS=\"-static\" \
     -DCMAKE_SHARED_LINKER_FLAGS=\"-static\" \
     -DCMAKE_PREFIX_PATH=\"${cwsw}/zlib/current:${cwsw}/openssl/current:${cwsw}/libssh2\" \
-    -DCMAKE_IGNORE_PATH=\"/usr/include:/lib:/lib64:/usr/lib:/usr/lib64\"
+    -DCMAKE_IGNORE_PATH=\"/usr/include:/lib:/lib64:/usr/lib:/usr/lib64\" \
+    -DOPENSSL_ROOT_DIR=\"${cwsw}/openssl/current\" \
+    -DCMAKE_FIND_ROOT_PATH=\"/usr\" \
+    -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=\"NEVER\" \
+    -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=\"NEVER\"
   sed -i.ORIG '/Requires.private/s/\\.private:/:/g' ${rname}.pc
-  sed -i '/^Requires/s/\$/ libcrypto libssl libssh2/g' ${rname}.pc
+  sed -i '/^Requires/s/\$/ libcrypto libssl libssh2 zlib/g' ${rname}.pc
   popd >/dev/null 2>&1
 }
 "
