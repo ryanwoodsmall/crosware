@@ -319,6 +319,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - libevent (no openssl support yet)
 - libffi
 - libgcrypt
+- libgit2
 - libgpg-error (named libgpgerror)
 - libmetalink (https://github.com/metalink-dev/libmetalink)
 - libnl
@@ -566,10 +567,6 @@ make \
   - editline (https://www.thrysoee.dk/editline/ netbsd, need termcap from a curses - netbsdcurses works)
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (separate userspace? uses meson?)
-- libgit2
-  - uses cmake
-  - needs curl, openssl, libssh2
-  - configure: ```mkdir b ; cd b ; cmake -DCMAKE_INSTALL_PREFIX:PATH=${cwsw}/libgit2/$(basename $(cd .. ; pwd)) -DBUILD_SHARED_LIBS=OFF ..```
 - libiconv (https://www.gnu.org/software/libiconv/)
 - libidn / libidn2 (https://www.gnu.org/software/libidn/ and https://gitlab.com/libidn/libidn2)
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
