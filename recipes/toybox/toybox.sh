@@ -3,11 +3,11 @@
 #
 
 rname="toybox"
-rver="0.8.0"
+rver="0.8.1"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/landley/${rname}/archive/${rfile}"
-rsha256="72330da129a7b81b1e015948d69b0729649e623b820570dd1972ededdd1befc4"
+rsha256="a71cb9e59539437d2c682903a1ac980a431710ee1e5a7ea9a230b78dbb8f1d11"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
