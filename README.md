@@ -797,7 +797,6 @@ make \
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
 - sslh (https://www.rutschle.net/tech/sslh/README.html and https://www.rutschle.net/tech/sslh/README.html)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
-- star (with pax/spax - http://cdrtools.sourceforge.net/private/star.html - **does not (yet) work on aarch64**)
 - strace
 - subversion / svn
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
