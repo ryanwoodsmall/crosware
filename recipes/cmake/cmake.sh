@@ -1,15 +1,14 @@
 #
-# XXX - need to strip cpack/cmake/ctest in bin/?
 # XXX - aarch32 flakiness w/o -static
 # XXX - CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES - Modules/Platform/UnixPaths.cmake
 #
 
 rname="cmake"
-rver="3.14.4"
+rver="3.14.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/Kitware/CMake/releases/download/v${rver}/${rfile}"
-rsha256="00b4dc9b0066079d10f16eed32ec592963a44e7967371d2f5077fd1670ff36d9"
+rsha256="505ae49ebe3c63c595fa5f814975d8b72848447ee13b6613b0f8b96ebda18c06"
 rreqs="make bash busybox toybox"
 
 . "${cwrecipe}/common.sh"
