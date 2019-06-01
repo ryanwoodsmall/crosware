@@ -590,6 +590,9 @@ make \
   - clozure (https://ccl.clozure.com/)
   - cmucl (https://www.cons.org/cmucl/)
   - ecl (https://common-lisp.net/project/ecl/)
+    - shared build works for aarch64/i686/x86_64:
+      - configure with: ```--enable-shared=yes --enable-boehm=included --enable-libatomic=included --enable-gmp=portable --with-dffi=included LDFLAGS= CPPFLAGS= CXXFLAGS='-D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -fPIC' CFLAGS='-D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -fPIC'```
+    - doesn't work on arm
     - reqs: gmp, libffi, gc, pkgconfig
     - need an **rlwrap** script for the repl?
     - configure with ```--enable-shared=no --enable-soname=no --enable-boehm=system --enable-libatomic=system --enable-gmp=system --with-dffi=system```
