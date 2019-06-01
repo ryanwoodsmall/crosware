@@ -833,6 +833,7 @@ make install
 - tree (http://mama.indstate.edu/users/ice/tree/)
 - tsocks
 - tzdb (https://www.iana.org/time-zones)
+- units (https://www.gnu.org/software/units)
 - upx (https://github.com/upx/upx)
 - usbutils (https://github.com/gregkh/usbutils)
 - utalk (http://utalk.ourproject.org/)
