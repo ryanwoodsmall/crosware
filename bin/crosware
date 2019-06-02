@@ -976,6 +976,7 @@ function cwenv() {
 function cwset() {
   cwsourcerecipes
   cwsourceprofile
+  cwgetinstalled
   set
 }
 
