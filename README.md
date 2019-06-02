@@ -282,6 +282,10 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - amd64/arm32v6/arm64v8 only (i.e., no i386)
   - architecture naming conventions: https://github.com/docker-library/official-images#architectures-other-than-amd64
 - dropbear
+- ecl (https://common-lisp.net/project/ecl/)
+  - shared build
+  - works for aarch64/i686/x86_64
+  - does _not_ work on arm (gc? gmp?)
 - ed (gnu ed)
 - expat
 - file
@@ -595,17 +599,6 @@ make \
     - trouble getting this working at all, maybe not possible/worth it
   - clozure (https://ccl.clozure.com/)
   - cmucl (https://www.cons.org/cmucl/)
-  - ecl (https://common-lisp.net/project/ecl/)
-    - shared build works for aarch64/i686/x86_64:
-      - configure with: ```--enable-shared=yes --enable-boehm=included --enable-libatomic=included --enable-gmp=portable --with-dffi=included LDFLAGS= CPPFLAGS= CXXFLAGS='-D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -fPIC' CFLAGS='-D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -fPIC'```
-    - doesn't work on arm
-    - reqs: gmp, libffi, gc, pkgconfig
-    - need an **rlwrap** script for the repl?
-    - configure with ```--enable-shared=no --enable-soname=no --enable-boehm=system --enable-libatomic=system --enable-gmp=system --with-dffi=system```
-      - may need ```--with-cxx``` (alpine uses it)
-      - ffi includes ```CPPFLAGS="${CPPFLAGS} $(pkg-config --cflags libffi)"```
-      - compile shared w/system gmp/ffi, included libatomicops/gc? (for armhf/i386 compat, gc isn't happy static there)
-      - CFLAGS/CXXFLAGS need ```-D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR```
   - gcl (https://www.gnu.org/software/gcl/)
     - reqs: m4, configgit, gmp?
     - needs ```setarch linux64 -R ...``` with proper linux64/linux32 setting before configure, make
