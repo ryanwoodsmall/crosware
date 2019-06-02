@@ -81,26 +81,6 @@ function prepend_pkgconfigpath() {
   export PKG_CONFIG_LIBDIR="${PKG_CONFIG_PATH}"
 }
 
-# remove duplicate entries in a passed environment variable preserving order, i.e.,:
-#   export LDFLAGS="$(remove_dupes ${LDFLAGS})"
-# XXX - needs a delimiter specifier
-function remove_dupes() {
-  local -A aa
-  local -a nv
-  local i=0
-  for a in ${@} ; do
-    aa[${a}]=0
-  done
-  for a in ${@} ; do
-    if [ ${aa[${a}]} != 1 ] ; then
-      aa[${a}]=1
-      nv[${i}]="${a}"
-      i=$((${i}+1))
-    fi
-  done
-  echo "${nv[@]}"
-}
-
 # add our bin dir to our path
 append_path "${cwbindir}"
 
