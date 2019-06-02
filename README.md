@@ -60,13 +60,17 @@ commands:
   list-available : list available recipes which are not installed
   list-funcs : list crosware shell functions
   list-installed : list installed recipes
+  list-recipe-reqs : list recipes their requirements
   list-recipes : list build recipes
   list-recipe-versions : list recipes with version number
   list-upgradable : list installed packages with available upgrades
   profile : show .profile addition
   run-func : run crosware shell function
   set : run 'set' to show full crosware environment
+  show-arch : show kernel and userspace architecture
   show-env : run 'env' to show crosware environment
+  show-karch : show kernel architecture
+  show-uarch : show userspace architecture
   uninstall : uninstall some packages
   update : attempt to update existing install of crosware
   upgrade : uninstall then install a recipe
