@@ -308,7 +308,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - groff
 - guile (https://www.gnu.org/software/guile/)
   - works for aarch64/x86_64
-  - does _not_ work on arm/i686 (gc) 
+  - does _not_ work on arm/i686 (gc)
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
 - htop
 - iftop
