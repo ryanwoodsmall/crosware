@@ -92,6 +92,9 @@ cwcmds["run-func"]="run ${cwname} shell function"
 cwcmds["show-env"]="run 'env' to show ${cwname} environment"
 cwcmds["upgrade"]="uninstall then install a recipe"
 cwcmds["upgrade-all"]="upgrade all packages with different recipe versions"
+cwcmds["show-karch"]="show kernel architecture"
+cwcmds["show-uarch"]="show userspace architecture"
+cwcmds["show-arch"]="show kernel and userspace architecture"
 # XXX - does this need to be an associative array to generate case ..) statements?
 cwcmdaliases=( 'list-upgradeable' )
 cwcmdlist=( $(echo ${!cwcmds[@]} ${cwcmdaliases[@]} | tr ' ' '\n' | sort | xargs echo) )
@@ -1011,6 +1014,24 @@ function cwrunfunc() {
 }
 
 #
+# show architecture(s)
+#
+function cwshowarch() {
+  local t="a"
+  if [ ${#} -ge 1 ] ; then
+    t="${1}"
+  fi
+  if [[ ${t} == k ]] ; then
+    echo "${karch}"
+  elif [[ ${t} == u ]] ; then
+    echo "${uarch}"
+  else
+    echo "k:${karch}"
+    echo "u:${uarch}"
+  fi
+}
+
+#
 # usage
 #
 function cwusage() {
@@ -1095,8 +1116,17 @@ case "${cmd}" in
   run-func)
     cwrunfunc "${@}"
     ;;
+  show-arch)
+    cwshowarch
+    ;;
   show-env)
     cwenv
+    ;;
+  show-karch)
+    cwshowarch "k"
+    ;;
+  show-uarch)
+    cwshowarch "u"
     ;;
   upgrade)
     cwupgrade "${@}"
