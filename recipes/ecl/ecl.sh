@@ -8,10 +8,10 @@ rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
-if [[ ${uarch} =~ ^armv ]] ; then
+if [[ ${karch} =~ ^armv ]] ; then
 eval "
 function cwinstall_${rname}() {
-  cwscriptecho \"recipe ${rname} does not support architecture ${uarch}\"
+  cwscriptecho \"recipe ${rname} does not support architecture ${karch}\"
 }
 "
 fi
