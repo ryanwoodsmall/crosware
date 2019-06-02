@@ -279,7 +279,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - diction and style (https://www.gnu.org/software/diction/)
 - dockerstatic (static docker binaries from https://download.docker.com/linux/static/stable/)
   - good enough for remote ```${DOCKER_HOST}``` usage
-  - amd64/arm32v6/arm64v8 only (i.e., no i386)
+  - amd64/arm32v6/arm64v8 only
+  - does _not_ work on i686
   - architecture naming conventions: https://github.com/docker-library/official-images#architectures-other-than-amd64
 - dropbear
 - ecl (https://common-lisp.net/project/ecl/)
@@ -306,6 +307,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - grep (gnu grep)
 - groff
 - guile (https://www.gnu.org/software/guile/)
+  - works for aarch64/x86_64
+  - does _not_ work on arm/i686 (gc) 
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
 - htop
 - iftop
