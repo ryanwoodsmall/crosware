@@ -287,6 +287,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - file
 - findutils
 - flex
+- gambit (https://github.com/gambit/gambit and http://gambitscheme.org/wiki/index.php/Main_Page)
 - gawk (gnu awk, prepended to $PATH, becomes default awk)
 - gc (working on x86\_64, aarch64; broken on i386, arm)
 - gdbm
@@ -748,7 +749,6 @@ make \
   - chicken (https://www.call-cc.org)
   - elk (http://sam.zoy.org/elk)
   - femtolisp (https://github.com/JeffBezanson/femtolisp)
-  - gambit (https://github.com/gambit/gambit and http://gambitscheme.org/wiki/index.php/Main_Page)
   - gauche (https://github.com/shirok/Gauche and https://practical-scheme.net/gauche/index.html - zlib, gdbm, builtin axtls)
   - gerbil (https://cons.io/)
   - ikarus (??? https://en.wikipedia.org/wiki/Ikarus_(Scheme_implementation) )
