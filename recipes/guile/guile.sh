@@ -8,10 +8,10 @@ rreqs="make sed gawk gmp libtool slibtool pkgconfig libffi gc readline ncurses l
 
 . "${cwrecipe}/common.sh"
 
-if [[ ${uarch} =~ ^(i.86|armv) ]] ; then
+if [[ ${karch} =~ ^(i.86|armv) ]] ; then
 eval "
 function cwinstall_${rname}() {
-  cwscriptecho \"recipe ${rname} does not support architecture ${uarch}\"
+  cwscriptecho \"recipe ${rname} does not support architecture ${karch}\"
 }
 "
 fi
