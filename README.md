@@ -375,6 +375,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - rlwrap
 - rogue
 - rsync
+- scheme48 (http://s48.org)
 - screen
 - sdkman (http://sdkman.io)
 - sed (gnu gsed, prepended to $PATH, becomes default sed)
@@ -763,9 +764,6 @@ make \
   - racket
   - rscheme (http://www.rscheme.org/rs)
   - scheme2c (https://github.com/barak/scheme2c)
-  - scheme48 (http://s48.org)
-    - needs **configgit**
-    - set configure flags to: ```LDFLAGS='-static' CXXFLAGS='-Wl,-static -fPIC' CFLAGS='-Wl,-static -fPIC' CPPFLAGS=''```
   - scm (http://people.csail.mit.edu/jaffer/SCM.html)
   - sigscheme (https://github.com/uim/sigscheme)
   - siod (http://people.delphiforums.com/gjc//siod.html)
