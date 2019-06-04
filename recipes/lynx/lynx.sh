@@ -18,12 +18,12 @@ eval "
 function cwbuild_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   local commonopts=\"--with-ssl=${cwsw}/openssl/current --without-gnutls --enable-widec --with-pkg-config --with-zlib --with-bzlib --disable-idna\"
-  env PATH=\"${cwsw}/pkgconfig/current/bin:${PATH}\" ./configure ${cwconfigureprefix} --with-screen=ncurses \${commonopts} LIBS=\"-lcrypto -lssl -lz\"
+  env PATH=\"${cwsw}/pkgconfig/current/bin:\${PATH}\" ./configure ${cwconfigureprefix} --with-screen=ncurses \${commonopts} LIBS=\"-lcrypto -lssl -lz\"
   make
   make install
   mv \"${ridir}/bin/${rname}\" \"${ridir}/bin/${rname}-ncurses\"
   make clean
-  env PATH=\"${cwsw}/pkgconfig/current/bin:${PATH}\" ./configure ${cwconfigureprefix} --with-screen=slang \${commonopts} LIBS=\"-lcrypto -lssl -lz\"
+  env PATH=\"${cwsw}/pkgconfig/current/bin:\${PATH}\" ./configure ${cwconfigureprefix} --with-screen=slang \${commonopts} LIBS=\"-lcrypto -lssl -lz\"
   make
   make install
   mv \"${ridir}/bin/${rname}\" \"${ridir}/bin/${rname}-slang\"
