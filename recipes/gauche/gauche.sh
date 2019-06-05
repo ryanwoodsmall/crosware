@@ -17,7 +17,7 @@ function cwconfigure_${rname}() {
     LDFLAGS= \
     CPPFLAGS= \
     PKG_CONFIG_LIBDIR= \
-    PKG_CONFIG_PATH= 
+    PKG_CONFIG_PATH=
   popd >/dev/null 2>&1
 }
 "
