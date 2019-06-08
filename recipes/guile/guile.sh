@@ -1,3 +1,16 @@
+#
+# XXX - build against shared gc
+#   remove slibtool req
+#   configure:
+#     ./configure ${cwconfigureprefix} \
+#       LIBS='-L${cwsw}/gc/current/lib -lgc' \
+#       CFLAGS=\"\${CFLAGS//-Wl,-static/} -Wl,-rpath=${cwsw}/gc/current/lib\" \
+#       CXXFLAGS=\"\${CXXFLAGS//-Wl,-static/} -Wl,-rpath=${cwsw}/gc/current/lib\" \
+#       LDFLAGS=\"\${LDFLAGS//-static/}\"
+#   make:
+#     make -j${cwmakejobs} || make -j${cwmakejobs}
+#
+
 rname="guile"
 rver="2.2.4"
 rdir="${rname}-${rver}"
