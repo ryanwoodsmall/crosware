@@ -14,6 +14,15 @@
 #       -DGC_DISABLE_INCREMENTAL
 #       -DHBLKSIZE=#####
 #
+# XXX - shared (ONLY) build configure option changes
+#   --enable-shared{,=yes} \
+#   --enable-static=no \
+#   --disable-static \
+#   --disable-cplusplus \
+#     CFLAGS=\"\${CFLAGS//-Wl,-static/} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -DIGNORE_DYNAMIC_LOADING\" \
+#     CXXFLAGS=\"\${CXXFLAGS//-Wl,-static/} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -DIGNORE_DYNAMIC_LOADING\" \
+#     LDFLAGS=\"\${LDFLAGS//-static/}\"
+#
 
 rname="gc"
 rver="8.0.4"
