@@ -1,6 +1,12 @@
 #
 # XXX - ugly disabling of garbage collection below
 #
+# XXX - build against shared gc?
+#   LIBS='-lssl -lcrypto -lz -latomic_ops -lgc' \
+#   CFLAGS=\"\${CFLAGS//-Wl,-static/} -Wl,-rpath=${cwsw}/gc/current/lib\" \
+#   CXXFLAGS=\"\${CXXFLAGS//-Wl,-static/} -Wl,-rpath=${cwsw}/gc/current/lib\" \
+#   LDFLAGS=\"\${LDFLAGS//-static/}\"
+#
 
 rname="w3m"
 rver="0.5.3-git20190105"
