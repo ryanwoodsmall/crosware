@@ -443,6 +443,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - chrpath
+- cloc (https://github.com/AlDanial/cloc - perl)
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - ddrescue
