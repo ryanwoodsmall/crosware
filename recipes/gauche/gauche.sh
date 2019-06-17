@@ -1,10 +1,10 @@
 rname="gauche"
-rver="0.9.7"
+rver="0.9.8"
 rdir="${rname//g/G}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://github.com/shirok/${rname//g/G}/releases/download/release${rver//./_}/${rfile}"
-rsha256="2d33bd942e3fc2f2dcc8e5217c9130c885a0fd1cb11a1856e619a83a23f336a0"
-rreqs="make"
+rsha256="3eb30d1051d8b48999fe46511c9f6983057735312c9832b7db13f9db140db74b"
+rreqs="make openssl"
 
 . "${cwrecipe}/common.sh"
 
