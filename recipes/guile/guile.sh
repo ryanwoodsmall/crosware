@@ -12,11 +12,11 @@
 #
 
 rname="guile"
-rver="2.2.4"
+rver="2.2.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="d9e8b94af7b206fcf52bec6501b921bd7d0bd7a31fb7e896a35ba8253678e31e"
+rsha256="fc3073f12d43650e643dc0111730b73a9fa11f131b9b72f66d01e82d83e685a7"
 rreqs="make sed gawk gmp libtool slibtool pkgconfig libffi gc readline ncurses libunistring"
 
 . "${cwrecipe}/common.sh"
