@@ -12,7 +12,7 @@ rreqs="busybox"
 eval "
 function cwmakeinstall_${rname}() {
   cwmkdir "${rtdir}"
-  test -e "${ridir}" && mv "${ridir}"{,.PRE-${TS}}
+  test -e "${ridir}" && mv "${ridir}"{,.PRE-\${TS}}
   unzip -o "${cwdl}/${rname}/${rfile}" -d "${rtdir}"
 }
 "
