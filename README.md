@@ -592,6 +592,13 @@ make \
 - libressl
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
 - libtirpc
+- libtom
+  - libtomcrypt
+    - w/libtommath
+    - ```make -j${cwmakejobs} PREFIX="${ridir}" CFLAGS="${CFLAGS} -DUSE_LTM -DLTM_DESC -I${cwsw}/libtommath/current/include" EXTRALIBS="-static -L${cwsw}/libtommath/current/lib -ltommath" bins hashsum ltcrypt sizes constants tv_gen install install_bins```
+  - libtomfloat
+  - libtommath
+  - libtompoly
 - libusb (https://github.com/libusb/libusb)
 - libuv (https://github.com/libuv/libuv)
 - libyaml (https://github.com/yaml/libyaml)
