@@ -595,7 +595,7 @@ make \
 - libtom
   - libtomcrypt
     - w/libtommath
-    - ```make -j${cwmakejobs} PREFIX="${ridir}" CFLAGS="${CFLAGS} -DUSE_LTM -DLTM_DESC -I${cwsw}/libtommath/current/include" EXTRALIBS="-static -L${cwsw}/libtommath/current/lib -ltommath" bins hashsum ltcrypt sizes constants tv_gen install install_bins```
+    - ```make -j${cwmakejobs} PREFIX="${ridir}" CFLAGS="${CFLAGS} -DLTC_CLEAN_STACK -DUSE_LTM -DLTM_DESC -I${cwsw}/libtommath/current/include" EXTRALIBS="-static -L${cwsw}/libtommath/current/lib -ltommath" bins hashsum ltcrypt sizes constants tv_gen install install_bins```
   - libtomfloat
   - libtommath
   - libtompoly
