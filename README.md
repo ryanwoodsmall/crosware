@@ -599,6 +599,7 @@ make \
   - libtomfloat
   - libtommath
   - libtompoly
+  - tomsfastmath
 - libusb (https://github.com/libusb/libusb)
 - libuv (https://github.com/libuv/libuv)
 - libyaml (https://github.com/yaml/libyaml)
