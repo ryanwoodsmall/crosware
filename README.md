@@ -424,6 +424,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - ack (https://beyondgrep.com/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - align (and width, perl scripts, http://kinzler.com/me/align/)
+- aloa (linter - https://github.com/ralfholly/aloa)
 - assemblers?
   - fasm
   - nasm
