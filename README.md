@@ -446,6 +446,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - chrpath
 - cloc (https://github.com/AlDanial/cloc - perl)
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
+- cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - ddrescue
 - docbook?
@@ -856,6 +857,7 @@ make install
 - usbutils (https://github.com/gregkh/usbutils)
 - utalk (http://utalk.ourproject.org/)
 - vde (virtual distributed ethernet, https://github.com/virtualsquare/vde-2)
+- vera / vera++ (bitbucket? github?)
 - vifm (https://github.com/vifm/vifm)
 - vpnc
 - websocketd (go, https://github.com/joewalnes/websocketd)
