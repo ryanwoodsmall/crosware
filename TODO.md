@@ -317,7 +317,7 @@ function cwurltofilename() {
   - .pc verisons need to be masked w/current
     - s#${ridir}#${rtdir}/current#g
 - limit path to crosware stuff
-  - basically ``env PATH=$(echo ${PATH} | tr ':' '\n' | grep ${cwtop}/ | xargs echo | tr ' ' ':')```
+  - basically ```env PATH=$(echo ${PATH} | tr ':' '\n' | grep ${cwtop}/ | xargs echo | tr ' ' ':')```
   - cwpath? cwrestrictedpath?
 - bash needs ```SSH_SOURCE_BASHRC```
   - homebrew formula defines it for macos
