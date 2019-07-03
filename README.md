@@ -842,6 +842,7 @@ env \
 make CPPFLAGS= CXXFLAGS= LDFLAGS='-static' CFLAGS='-Wl,-static -fPIC'
 make install
 ```
+- tidy (https://github.com/htacg/tidy-html5 - cmake)
 - tini (small init for containers, https://github.com/krallin/tini)
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
