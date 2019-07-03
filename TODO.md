@@ -319,6 +319,10 @@ function cwurltofilename() {
 - limit path to crosware stuff
   - basically ``env PATH=$(echo ${PATH} | tr ':' '\n' | grep ${cwtop}/ | xargs echo | tr ' ' ':')```
   - cwpath? cwrestrictedpath?
+- bash needs ```SSH_SOURCE_BASHRC```
+  - homebrew formula defines it for macos
+  - https://lists.gnu.org/archive/html/bug-bash/2007-12/msg00028.html
+- probably need to do a ```checkbashisms``` thing
 
 <!--
 # vim: ft=markdown
