@@ -1,13 +1,9 @@
-#
-# XXX - need ksh88/ksh93 symlinks?
-#
-
 rname="mksh"
-rver="R56c"
+rver="R57"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="http://www.mirbsd.org/MirOS/dist/mir/${rname}/${rfile}"
-rsha256="dd86ebc421215a7b44095dc13b056921ba81e61b9f6f4cdab08ca135d02afb77"
+rsha256="3d101154182d52ae54ef26e1360c95bc89c929d28859d378cc1c84f3439dbe75"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
@@ -42,6 +38,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${ridir}/bin\"
   install -m 0755 \"${rname}\" \"${ridir}/bin/${rname}\"
   ln -sf \"${ridir}/bin/${rname}\" \"${ridir}/bin/ksh\"
+  ln -sf \"${ridir}/bin/${rname}\" \"${ridir}/bin/ksh88\"
   cwmkdir \"${ridir}/share/man/man1\"
   install -m 0444 lksh.1 mksh.1 \"${ridir}/share/man/man1/\"
   cwmkdir \"${ridir}/share/doc/mksh/examples/\"
