@@ -1,6 +1,7 @@
 #
 # XXX - need global terminfo db?
 # XXX - i.e., "make terminfo/terminfo.cdb && cp terminfo/terminfo.cdb ${ridir}/share/"
+# XXX - readline version bundled in install - hacky but ehh
 #
 
 rname="netbsdcurses"
@@ -54,6 +55,20 @@ function cwmakeinstall_${rname}() {
   # LN=echo will disable libncurses symlinks
   make install-static PREFIX="${ridir}" CPPFLAGS='-I./ -I./libterminfo' LDFLAGS='-static' LN='echo'
   rm -f ${ridir}/lib/pkgconfig/ncurses* ${ridir}/lib/pkgconfig/*w.pc
+  # readline
+  cwfetch_readline
+  cwextract \"${cwdl}/readline/readline-\$(cwver_readline).tar.gz\" \"\${PWD}\"
+  cd readline-\$(cwver_readline)/
+  env PATH=\"${ridir}/bin:\${PATH}\" ./configure \
+    ${cwconfigureprefix} \
+    ${cwconfigurelibopts} \
+    --with-curses \
+    ${cwconfigurefpicopts} \
+    CPPFLAGS=\"-I${ridir}/include\" \
+    LDFLAGS=\"-L${ridir}/lib -static\" \
+    LIBS=\"-lcurses -lterminfo\"
+  make -j${cwmakejobs}
+  make install
   popd >/dev/null 2>&1
 }
 "
