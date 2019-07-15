@@ -708,6 +708,7 @@ make \
   - iodbc?
   - unixodbc?
 - openconnect
+- patchelf (https://github.com/NixOS/patchelf - autoconf/automake)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
   - "cannot be used as a static library" - what?
