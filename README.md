@@ -748,6 +748,7 @@ make \
   - _make_ example ```make -j$(($(nproc)*2+1)) CFLAGS=-fPIC CXXFLAGS=-fPIC LDFLAGS="${LDFLAGS//-static/}" LIBS='-lcrypto -lssl -lz -llzma -lncursesw -lffi -llzma -lexpat'```
   - _make install_ probably needs same opts as make
   - **uuid.h** (from utillinux) isn't found by configure, great software
+- quickjs (https://bellard.org/quickjs/)
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
 - redir (https://github.com/troglobit/redir)
