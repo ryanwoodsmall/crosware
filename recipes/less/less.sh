@@ -14,7 +14,7 @@ rname="less"
 rver="530"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
+rurl="http://www.greenwoodsoftware.com/${rname}/${rfile}"
 rsha256="503f91ab0af4846f34f0444ab71c4b286123f0044a4964f1ae781486c617f2e2"
 rreqs="make ncurses sed"
 
