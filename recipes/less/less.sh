@@ -1,3 +1,15 @@
+#
+# to rebuild from autotoolsless github:
+#   reqs:
+#     nroff autoconf automake libtool perl
+#   configure:
+#     find . -name \*.VER | sed 's/\.VER//g' | xargs make -f Makefile.aut funcs.h
+#     grep -ril /usr/bin/perl . | xargs sed -i 's#/usr/bin/perl#/usr/bin/env perl#g'
+#     libtoolize
+#     autoreconf -fiv .
+#     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts}
+#
+
 rname="less"
 rver="530"
 rdir="${rname}-${rver}"
