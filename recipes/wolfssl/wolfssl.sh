@@ -36,6 +36,15 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install ${rlibtool}
+  test -e \"${ridir}/include/wolfssl/options.h\" || cp wolfssl/options.h \"${ridir}/include/wolfssl/\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
   echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
