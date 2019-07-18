@@ -11,11 +11,11 @@
 #
 
 rname="less"
-rver="530"
+rver="550"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.greenwoodsoftware.com/${rname}/${rfile}"
-rsha256="503f91ab0af4846f34f0444ab71c4b286123f0044a4964f1ae781486c617f2e2"
+rsha256="6a53639f08d7ed05b6e104b82c32193f79ac01a3eddb20e114e1c261948bd57b"
 rreqs="make ncurses sed"
 
 . "${cwrecipe}/common.sh"
