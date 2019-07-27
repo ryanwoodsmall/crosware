@@ -19,33 +19,33 @@ cwconfigurefpicopts="CFLAGS=\"\${CFLAGS} -fPIC\" CXXFLAGS=\"\${CXXFLAGS} -fPIC\"
 
 eval "
 function cwname_${rname}() {
-  echo "${rname}"
+  echo \"${rname}\"
 }
 "
 
 eval "
 function cwver_${rname}() {
-  echo "${rver}"
+  echo \"${rver}\"
 }
 "
 
 eval "
 function cwclean_${rname}() {
-  pushd "${cwbuild}" >/dev/null 2>&1
-  rm -rf "${rbdir}"
+  pushd \"${cwbuild}\" >/dev/null 2>&1
+  rm -rf \"${rbdir}\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwfetch_${rname}() {
-  cwfetchcheck "${rurl}" "${cwdl}/${rname}/${rfile}" "${rsha256}"
+  cwfetchcheck \"${rurl}\" \"${cwdl}/${rname}/${rfile}\" \"${rsha256}\"
 }
 "
 
 eval "
 function cwlistreqs_${rname}() {
-  echo "${rreqs}"
+  echo \"${rreqs}\"
 }
 "
 
@@ -62,7 +62,7 @@ function cwcheckreqs_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts}
   popd >/dev/null 2>&1
 }
@@ -86,25 +86,25 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo "\\\# ${rname}" > "${rprof}"
+  echo \"\\\# ${rname}\" > \"${rprof}\"
 }
 "
 
 eval "
 function cwmarkinstall_${rname}() {
-  cwmarkinstall "${rname}" "${rver}"
+  cwmarkinstall \"${rname}\" \"${rver}\"
 }
 "
 
 eval "
 function cwextract_${rname}() {
-  cwextract "${cwdl}/${rname}/${rfile}" "${cwbuild}"
+  cwextract \"${cwdl}/${rname}/${rfile}\" \"${cwbuild}\"
 }
 "
 
 eval "
 function cwlinkdir_${rname}() {
-  cwlinkdir "$(basename ${ridir})" "${rtdir}"
+  cwlinkdir \"$(basename ${ridir})\" \"${rtdir}\"
 }
 "
 
@@ -140,10 +140,10 @@ function cwinstall_${rname}() {
 
 eval "
 function cwuninstall_${rname}() {
-  pushd "${cwsw}" >/dev/null 2>&1
-  rm -rf "${rname}"
-  rm -f "${rprof}"
-  rm -f "${cwvarinst}/${rname}"
+  pushd \"${cwsw}\" >/dev/null 2>&1
+  rm -rf \"${rname}\"
+  rm -f \"${rprof}\"
+  rm -f \"${cwvarinst}/${rname}\"
   popd >/dev/null 2>&1
 }
 "
