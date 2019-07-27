@@ -328,7 +328,7 @@ function cwurltofilename() {
 - ```update-recipe``` command to check/update/build/commit new versions automatically
   - new ```cwrecipe_checkupdate``` per-recipe function
 - ```append_env``` environment wrapper for _profile.d_ files
-- ca certs _ca certs_ _*ca certs*_
+- ca certs _ca certs_ _**ca certs**_
 - mystical single static binary git clone/checkout/fetch/merge client
 
 <!--
