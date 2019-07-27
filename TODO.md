@@ -330,6 +330,11 @@ function cwurltofilename() {
 - ```append_env``` environment wrapper for _profile.d_ files
 - ca certs _ca certs_ _**ca certs**_
 - mystical single static binary git clone/checkout/fetch/merge client
+- locking?
+  - in ```${cwtop}/tmp/crosware.lockfile``` or something?
+  - would need a trap and handler to prevent/cleanup stale lockfiles
+  - semaphore???
+  - what am i doing
 
 <!--
 # vim: ft=markdown
