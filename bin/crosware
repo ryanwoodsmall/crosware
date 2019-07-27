@@ -904,7 +904,7 @@ function cwgetinstalled() {
   cwsourceprofile
   cwsourcerecipes
   for pkgname in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
-    cwinstalled[${pkgname}]="$(cwcheckinstalled ${pkgname} && echo 1 || echo 2)"
+    cwinstalled[${pkgname}]="$(cwcheckinstalled ${pkgname} && echo 1 || echo 0)"
   done
 }
 
@@ -955,7 +955,7 @@ function cwuninstall() {
       cwscriptecho "no uninstall found for ${recipe}"
       continue
     fi
-    if $(cwlistinstalled | grep -q "^${recipe} :") ; then
+    if $(cwcheckinstalled ${recipe}) ; then
       cwscriptecho "uninstalling ${recipe}"
       cwuninstall_${recipe}
     fi
