@@ -433,7 +433,7 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
   "
   cwrecipefiles[${cwbootstraprecipe}]="${cwtop}/bin/crosware"
   cwrecipeversions[${cwbootstraprecipe}]="$(cwver_${cwbootstraprecipe})"
-  cwrecipereqs[${cwbootstraprecipe}]="$(cwlistreqs_${cwbootstraprecipe})"
+  cwrecipereqs[${cwbootstraprecipe}]=""
 done
 
 #
