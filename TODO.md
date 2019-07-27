@@ -329,7 +329,7 @@ function cwurltofilename() {
   - new ```cwrecipe_checkupdate``` per-recipe function
 - ```append_env``` environment wrapper for _profile.d_ files
 - ca certs _ca certs_ _**ca certs**_
-- mystical single static binary git clone/checkout/fetch/merge client
+- mystical single static binary git clone/checkout/fetch/merge/clean client
 - locking?
   - in ```${cwtop}/tmp/crosware.lockfile``` or something?
   - would need a trap and handler to prevent/cleanup stale lockfiles
