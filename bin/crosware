@@ -150,9 +150,10 @@ export cwtmpperm="1777"
 export cwexecperm="775"
 
 # start off with an empty recipe and installed list
-declare -A cwrecipes cwrecipefiles cwrecipeversions cwbootstraprecipes cwinstalled
+declare -A cwrecipes cwrecipefiles cwrecipereqs cwrecipeversions cwbootstraprecipes cwinstalled
 export cwrecipes
 export cwrecipefiles
+export cwrecipereqs
 export cwrecipeversions
 export cwbootstraprecipes
 export cwinstalled
@@ -432,6 +433,7 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
   "
   cwrecipefiles[${cwbootstraprecipe}]="${cwtop}/bin/crosware"
   cwrecipeversions[${cwbootstraprecipe}]="$(cwver_${cwbootstraprecipe})"
+  cwrecipereqs[${cwbootstraprecipe}]="$(cwlistreqs_${cwbootstraprecipe})"
 done
 
 #
@@ -766,10 +768,15 @@ function cwsourcerecipes() {
       cwrecipes["${rname}"]=1
       cwrecipefiles["${rname}"]="${recipefile}"
       cwrecipeversions["${rname}"]="${rver}"
+      if [[ ${rreqs} =~ \{*\} ]] ; then
+        cwrecipereqs["${rname}"]="$(cwlistreqs_${rname})"
+      else
+        cwrecipereqs["${rname}"]="${rreqs}"
+      fi
     fi
     unset rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps rlibtool rconfigureopts rcommonopts
   done
-  unset recipe
+  unset recipefile
   export cwrecipes
 }
 
@@ -809,7 +816,7 @@ function cwlistrecipeversions() {
 function cwlistrecipereqs() {
   cwsourcerecipes
   for recipe in $(echo ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} | tr ' ' '\n' | sort | xargs echo) ; do
-    echo "${recipe} : $(cwlistreqs_${recipe})"
+    echo "${recipe} : ${cwrecipereqs[${recipe}]}"
   done
 }
 
