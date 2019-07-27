@@ -16,6 +16,11 @@ v="-v crosware-downloads:/usr/local/crosware/downloads -v crosware-ccache:/root/
 # build a ccache-enabled base image
 bash <(curl -kLs https://github.com/ryanwoodsmall/dockerfiles/raw/master/crosware/ccache/build.sh)
 
+# use alpine/musl zulu - only on x86_64
+#if [[ ${MACHTYPE} =~ ^x86_64- ]] ; then
+#  docker build --tag ${i} https://github.com/ryanwoodsmall/dockerfiles/raw/master/crosware/zulu/Dockerfile
+#fi
+
 for r in $(docker run --rm ${i} ${c} list-available) ; do
   echo ${r}
   n="crosware-${r}"
