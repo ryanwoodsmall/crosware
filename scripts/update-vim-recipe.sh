@@ -17,6 +17,9 @@
 # - make this generic?
 # - recipe and version number?
 #
+# XXX:
+# - use scripts/update-recipe-file.sh???
+#
 
 set -eu
 

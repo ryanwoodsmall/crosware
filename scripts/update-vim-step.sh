@@ -4,6 +4,9 @@
 # updates vim tag by tag and commit
 # this is cheating
 #
+# XXX:
+# - use scripts/update-recipe-file.sh?
+#
 
 set -eu
 

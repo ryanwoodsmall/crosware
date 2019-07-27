@@ -6,7 +6,8 @@
 #  - recipe version
 #  - recipe file sha256sum
 #
-# XXX - generalize as a verb?
+# XXX:
+#  - generalize as a verb?
 #  - "crosware update-recipe-file recipe 1.2.3 abcdef0123456789...."
 #  - add "crosware upgrade recipe"?
 #  - add git commit?
