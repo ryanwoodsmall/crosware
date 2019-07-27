@@ -323,6 +323,13 @@ function cwurltofilename() {
   - homebrew formula defines it for macos
   - https://lists.gnu.org/archive/html/bug-bash/2007-12/msg00028.html
 - probably need to do a ```checkbashisms``` thing
+- remote version checker for regular urls
+  - feed to update recipe file script
+- ```update-recipe``` command to check/update/build/commit new versions automatically
+  - new ```cwrecipe_checkupdate``` per-recipe function
+- ```append_env``` environment wrapper for _profile.d_ files
+- ca certs _ca certs_ _*ca certs*_
+- mystical single static binary git clone/checkout/fetch/merge client
 
 <!--
 # vim: ft=markdown
