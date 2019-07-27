@@ -150,12 +150,12 @@ export cwtmpperm="1777"
 export cwexecperm="775"
 
 # start off with an empty recipe and installed list
-declare -A cwrecipes cwrecipefiles cwbootstraprecipes cwinstalled
+declare -A cwrecipes cwrecipefiles cwrecipeversions cwbootstraprecipes cwinstalled
 export cwrecipes
 export cwrecipefiles
+export cwrecipeversions
 export cwbootstraprecipes
 export cwinstalled
-# XXX - need cwrecipeversions for memoization?
 
 # and a "user-visible" var whether we want to use an external jvm/jdk
 : ${CW_USE_JAVA:="true"}
@@ -429,8 +429,9 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
   function cwlistreqs_${cwbootstraprecipe}() {
     echo \"\"
   }
-  cwrecipefiles[${cwbootstraprecipe}]=\"${cwtop}/bin/crosware\"
   "
+  cwrecipefiles[${cwbootstraprecipe}]="${cwtop}/bin/crosware"
+  cwrecipeversions[${cwbootstraprecipe}]="$(cwver_${cwbootstraprecipe})"
 done
 
 #
@@ -764,6 +765,7 @@ function cwsourcerecipes() {
     if [ ! -z "${rname}" ] ; then
       cwrecipes["${rname}"]=1
       cwrecipefiles["${rname}"]="${recipefile}"
+      cwrecipeversions["${rname}"]="${rver}"
     fi
     unset rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps rlibtool rconfigureopts rcommonopts
   done
@@ -797,7 +799,7 @@ function cwlistrecipefiles() {
 function cwlistrecipeversions() {
   cwsourcerecipes
   for recipe in $(echo ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} | tr ' ' '\n' | sort | xargs echo) ; do
-    echo "${recipe} : $(cwver_${recipe})"
+    echo "${recipe} : ${cwrecipeversions[${recipe}]}"
   done
 }
 
