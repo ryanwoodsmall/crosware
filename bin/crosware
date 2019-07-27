@@ -795,9 +795,9 @@ function cwlistrecipes() {
 #
 function cwlistrecipefiles() {
   cwsourcerecipes
-  for recipe in $(echo ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} | tr ' ' '\n' | sort | xargs echo) ; do
+  for recipe in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
     echo "${recipe} : ${cwrecipefiles[${recipe}]}"
-  done
+  done | sort
 }
 
 #
@@ -805,9 +805,9 @@ function cwlistrecipefiles() {
 #
 function cwlistrecipeversions() {
   cwsourcerecipes
-  for recipe in $(echo ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} | tr ' ' '\n' | sort | xargs echo) ; do
+  for recipe in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
     echo "${recipe} : ${cwrecipeversions[${recipe}]}"
-  done
+  done | sort
 }
 
 #
@@ -815,9 +815,9 @@ function cwlistrecipeversions() {
 #
 function cwlistrecipereqs() {
   cwsourcerecipes
-  for recipe in $(echo ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} | tr ' ' '\n' | sort | xargs echo) ; do
+  for recipe in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
     echo "${recipe} : ${cwrecipereqs[${recipe}]}"
-  done
+  done | sort
 }
 
 #
@@ -865,16 +865,15 @@ function cwmarkinstall() {
 function cwlistinstalled() {
   local pkgfile=""
   local pkgname=""
-  # XXX - logic should be in cwgetinstalled
-  if [ ! -e "${cwvarinst}" ] ; then
-    cwscriptecho "directory ${cwvarinst} does not exist"
-    return 1
-  fi
-  for pkgfile in $(find ${cwvarinst} -maxdepth 1 -type f ! -name .\* | sort) ; do
-    pkgname="$(basename ${pkgfile})"
-    echo "${pkgname} : $(cat ${pkgfile})"
-    cwinstalled[${pkgname}]=1
-  done
+  local pkgver=""
+  cwgetinstalled
+  for pkgname in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
+    if [ ${cwinstalled[${pkgname}]} -eq 1 ] ; then
+      pkgfile="${cwvarinst}/${pkgname}"
+      pkgver="$(cat ${pkgfile})"
+      echo "${pkgname} : ${pkgver}"
+    fi
+  done | sort
 }
 
 #
@@ -886,12 +885,10 @@ function cwlistinstalled() {
 #
 function cwcheckinstalled() {
   local pkgname="${1}"
-  # XXX - can get rid of this and do ${cwinstalled[${pkgname}]} -eq 1 after cwgetinstalled here
-  if $(cwlistinstalled | grep -q "^${pkgname} :") ; then
+  if [ -e "${cwvarinst}/${pkgname}" ] ; then
     return 0
-  else
-    return 1
   fi
+  return 1
 }
 
 #
@@ -900,13 +897,15 @@ function cwcheckinstalled() {
 #
 function cwgetinstalled() {
   local pkgname=""
+  if [ ! -e "${cwvarinst}" ] ; then
+    cwscriptecho "directory ${cwvarinst} does not exist"
+    return 1
+  fi
   cwsourceprofile
   cwsourcerecipes
   for pkgname in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
-    cwinstalled[${pkgname}]=0
+    cwinstalled[${pkgname}]="$(cwcheckinstalled ${pkgname} && echo 1 || echo 2)"
   done
-  # XXX - as above
-  cwlistinstalled >/dev/null
 }
 
 #
@@ -917,11 +916,11 @@ function cwgetinstalled() {
 function cwlistavailable() {
   local pkgname=""
   cwgetinstalled
-  for pkgname in $(cwlistrecipes) ; do
+  for pkgname in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
     if [ ${cwinstalled[${pkgname}]} -ne 1 ] ; then
       echo "${pkgname}"
     fi
-  done
+  done | sort
 }
 
 #
