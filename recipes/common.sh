@@ -86,7 +86,7 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo \"\\\# ${rname}\" > \"${rprof}\"
+  echo '# ${rname}' > \"${rprof}\"
 }
 "
 
