@@ -2,6 +2,7 @@
 # XXX - need global terminfo db?
 # XXX - i.e., "make terminfo/terminfo.cdb && cp terminfo/terminfo.cdb ${ridir}/share/"
 # XXX - readline version bundled in install - hacky but ehh
+# XXX - bundle libedit?
 #
 
 rname="netbsdcurses"
