@@ -4,7 +4,7 @@ function cwfetch_${rname}() {
   cwscriptecho \"fetching ${rname} from git at ${rurl}\"
   pushd \"${cwbuild}\" >/dev/null 2>&1
   rm -rf \"${rdir}\"
-  \${CW_GIT_CMD} clone \"${rurl}\" \"${rdir}\"
+  \${CW_GIT_CMD} clone --quiet \"${rurl}\" \"${rdir}\"
   cd \"${rdir}\"
   \${CW_GIT_CMD} checkout \"${rver}\"
   popd >/dev/null 2>&1
