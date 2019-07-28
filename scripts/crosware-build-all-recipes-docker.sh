@@ -9,6 +9,26 @@
 #   - docker run --name ${n} ${v} ${i} bash -l -c "${c} list-installed > /tmp/inst.1 ; ${c} install ${r} ; xval=${?} ; ${c} list-intalled > /tmp/inst.2 ; diff -Naur /tmp/inst.{1,2}; exit ${xval}"
 # jesus christ
 #
+# times to rebuild:
+#   for f in /tmp/crosware-*.out ; do
+#     r=${f##/tmp/crosware-}
+#     r=${r%.out}
+#     tail -5 ${f} \
+#     | egrep -v '^(sys|user)' \
+#     | tac \
+#     | xargs echo \
+#     | sed "s#real ##g;s#^#${r}: #g"
+#   done | sort -nk2
+#
+# times rebuilt:
+#   grep -hi 'crosware: setting up ' /tmp/crosware-*.out \
+#   | sort -u \
+#   | while IFS="$(printf '\n')" read -r l ; do
+#       grep -hi "^${l}$" /tmp/crosware-*.out \
+#       | wc -l \
+#       | sed "s#\$# ${l}#g"
+#     done | sort -n
+#
 
 #set -eu
 
