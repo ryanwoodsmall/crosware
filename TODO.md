@@ -334,6 +334,7 @@ function cwurltofilename() {
   - probably need openssl/c_rehash
     - don't require it in recipe, only if not found ```which c_rehash || cwinstall_openssl ; cwsourceprofile```
     - perl script
+    - centos package is openssl-perl, debian is just openssl
   - use alpine c_rehash.c?
     - https://git.alpinelinux.org/ca-certificates/tree/c_rehash.c
     - requires python3?
