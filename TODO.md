@@ -96,7 +96,6 @@
   - ubuntu
 - deleted recipes cannot be uninstalled (i.e, break when moving bison.sh to .OFF)
 - cppflags/ldflags need to have dupes removed
-- need ca certs for links/lynx/etc.
 - setup a sysroot directory structure?
   - perl recipe has a simple example
   - fake /bin, /lib, /usr/bin, /usr/include, /usr/lib from static toolchain
@@ -329,7 +328,16 @@ function cwurltofilename() {
   - new ```cwrecipe_checkupdate``` per-recipe function
 - ```append_env``` environment wrapper for _profile.d_ files
 - ca certs _ca certs_ _**ca certs**_
-- mystical single static binary git clone/checkout/fetch/merge/clean client
+  - need ca certs for curl/git/links/lynx/etc.
+  - central location, shared with openssl/mbedtls/wolfssl
+  - curl default setting
+  - probably need openssl/c_rehash
+    - don't require it in recipe, only if not found ```which c_rehash || cwinstall_openssl ; cwsourceprofile```
+    - perl script
+  - use alpine c_rehash.c?
+    - https://git.alpinelinux.org/ca-certificates/tree/c_rehash.c
+    - requires python3?
+- mystical single static binary git clone/checkout/fetch/merge/clean (opts? --quiet? -b?) client
 - locking?
   - in ```${cwtop}/tmp/crosware.lockfile``` or something?
   - would need a trap and handler to prevent/cleanup stale lockfiles
