@@ -18,14 +18,14 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
-#eval "
-#function cwgenprofd_${rname}() {
-#  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
-#  echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> "${rprof}"
-#  echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> "${rprof}"
-#  echo 'append_cppflags \"-I${rtdir}/current/include\"' >> "${rprof}"
-#}
-#"
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+#  echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
+#  echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
+#  echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
 
 eval "
 function cwconfigure_${rname}() {
