@@ -849,6 +849,7 @@ make install
 ```
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
 - tini (small init for containers, https://github.com/krallin/tini)
+- tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - tre (https://github.com/laurikari/tre)
