@@ -3,6 +3,7 @@
 # XXX - i.e., "make terminfo/terminfo.cdb && cp terminfo/terminfo.cdb ${ridir}/share/"
 # XXX - readline version bundled in install - hacky but ehh
 # XXX - bundle libedit?
+# XXX - bundle slang?
 #
 
 rname="netbsdcurses"
