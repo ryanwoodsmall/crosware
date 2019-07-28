@@ -19,6 +19,13 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwfetch_${rname}() {
+  cwfetchcheck \"${rurl}\" \"${cwdl}/${rname}/${rfile}\" \"${rsha256}\"
+  cwfetch_readline
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
@@ -58,8 +65,14 @@ function cwmakeinstall_${rname}() {
   # LN=echo will disable libncurses symlinks
   make install-static PREFIX="${ridir}" CPPFLAGS='-I./ -I./libterminfo' LDFLAGS='-static' LN='echo'
   rm -f ${ridir}/lib/pkgconfig/ncurses* ${ridir}/lib/pkgconfig/*w.pc
-  # readline
-  cwfetch_readline
+  cwmakeinstall_${rname}_readline
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}_readline() {
+  pushd "${rbdir}" >/dev/null 2>&1
   cwextract \"${cwdl}/readline/readline-\$(cwver_readline).tar.gz\" \"\${PWD}\"
   cd readline-\$(cwver_readline)/
   env PATH=\"${ridir}/bin:\${PATH}\" ./configure \
