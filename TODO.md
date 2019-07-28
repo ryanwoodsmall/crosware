@@ -343,6 +343,42 @@ function cwurltofilename() {
   - would need a trap and handler to prevent/cleanup stale lockfiles
   - semaphore???
   - what am i doing
+- cwtime wrapper
+  - seconds elapsed
+  - useful for cwinstall_ functions
+  - something like...
+```
+#!/bin/bash
+
+set -eu
+
+function test_func() {
+  echo sleeping 3
+  sleep 3
+}
+
+function test_arg() {
+  echo ${#} args
+  for a in "${@}" ; do
+    echo arg ${a}
+  done
+  echo sleeping 5
+  sleep 5
+}
+
+function time_func() {
+  local sts
+  local ets
+  sts="$(date '+%s')"
+  "${@}"
+  ets="$(date '+%s')"
+  echo time elapsed $((${ets}-${sts}))s
+}
+
+time_func test_func
+time_func test_arg 1 two "three four"
+time_func ls -l -A /
+```
 
 <!--
 # vim: ft=markdown
