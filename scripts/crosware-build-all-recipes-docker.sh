@@ -12,14 +12,17 @@
 i="ryanwoodsmall/crosware"
 c="/usr/local/crosware/bin/crosware"
 v="-v crosware-downloads:/usr/local/crosware/downloads -v crosware-ccache:/root/.ccache"
+: ${z:=""}
 
 # build a ccache-enabled base image
 bash <(curl -kLs https://github.com/ryanwoodsmall/dockerfiles/raw/master/crosware/ccache/build.sh)
 
 # use alpine/musl zulu - only on x86_64
-#if [[ ${MACHTYPE} =~ ^x86_64- ]] ; then
-#  docker build --tag ${i} https://github.com/ryanwoodsmall/dockerfiles/raw/master/crosware/zulu/Dockerfile
-#fi
+if [ ! -z "${z}" ] ; then
+  if [[ ${MACHTYPE} =~ ^x86_64- ]] ; then
+    docker build --tag ${i} https://github.com/ryanwoodsmall/dockerfiles/raw/master/crosware/zulu/Dockerfile
+  fi
+fi
 
 for r in $(docker run --rm ${i} ${c} list-available) ; do
   echo ${r}
