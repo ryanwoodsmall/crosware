@@ -42,7 +42,8 @@ function cwmake_${rname}() {
   sed -i.ORIG '/^screen$/a\\
 screen-256color\\
 tmux\\
-tmux-256color' libterminfo/genterms
+tmux-256color\\
+vt220' libterminfo/genterms
   cd nbperf
   make nbperf CPPFLAGS='-I..' LDFLAGS='-static'
   cd ..
