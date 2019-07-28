@@ -5,6 +5,9 @@
 #   - /root/.ccache
 #   - /usr/local/crosware/downloads
 # this should significantly speed up subsequent full rebuilds
+# need to save a list of installed at begin and end of run, like
+#   - docker run --name ${n} ${v} ${i} bash -l -c "${c} list-installed > /tmp/inst.1 ; ${c} install ${r} ; xval=${?} ; ${c} list-intalled > /tmp/inst.2 ; diff -Naur /tmp/inst.{1,2}; exit ${xval}"
+# jesus christ
 #
 
 #set -eu
