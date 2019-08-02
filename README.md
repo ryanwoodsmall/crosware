@@ -520,6 +520,7 @@ make \
   - jline
   - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
   - kotlin (included in sdkman)
+  - libjffi (https://github.com/jnr/jffi)
   - luaj
   - maven (included in sdkman)
   - mina (apache multipurpose infrastructure for network applications: java nio, ftp, sshd, etc.; https://mina.apache.org/)
