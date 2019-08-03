@@ -12,7 +12,7 @@ eval "
 function cwextract_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
   rm -rf \"${rname}\"
-  cwextract \"${cwdl}/${rname}/${rfile}\" \"${cwbuild}\"
+  cwextract \"${rdlfile}\" \"${cwbuild}\"
   mv \"${rname}\" \"${rdir}\"
   popd >/dev/null 2>&1
 }
