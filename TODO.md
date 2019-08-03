@@ -48,11 +48,19 @@
 - recipes
   - rname - recipe name
   - rver - recipe version
-  - rrel - internal release to aid upgrade? - XXX
+  - "release" versions
+    - rrel - internal release to aid upgrade? default to 0! ```: ${rrel:=0}``` - XXX
+    - river - ${rver}-${rrel}, version number plus recipe versioning! ```: ${river:="${rver}-${rrel}"}``` - XXX
+    - ${cwtop}/var/inst contains ${river} for easy recipe version change tracking
+    - not necessary for bootstrap recipes yet, or ever?
+    - install dir needs to reflect installed version? see ridir
   - rbreqs - split rreqs into normal requirements (rreqs) and build requirements
   - rbdir - recipe build dir
   - rtdir - recipe top dir where installs are done
   - ridir - versioned recipe install dir
+    - this may need to be versioned for releases, i.e.: ```${ridir}-${river}```?
+    - do not like this, complicates configure args, and manual, etc. installs
+    - not strictly necessary if upstream/downstream can be easily be computed and stored on install!
   - rprof - profile.d file
   - rdeps / rbdeps? - deps and build deps?
   - rdesc - recipe description?
