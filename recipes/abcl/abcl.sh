@@ -23,7 +23,6 @@ function cwinstall_${rname}() {
   cwfetch_${rname}
   cwcheckreqs_${rname}
   cwsourceprofile
-  cwmkdir \"${rtdir}\"
   cwextract \"${rdlfile}\" \"${rtdir}\"
   echo '#!/bin/sh' > \"${ridir}/${rname}\"
   echo 'rlwrap -C ${rname} java -jar ${rtdir}/current/${rname}.jar \"\${@}\"' >> \"${ridir}/${rname}\"
