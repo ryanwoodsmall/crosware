@@ -1,9 +1,9 @@
 rname="libevent"
-rver="2.1.10-stable"
+rver="2.1.11-stable"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/releases/download/release-${rver}/${rfile}"
-rsha256="e864af41a336bb11dab1a23f32993afe963c1f69618bd9292b89ecf6904845b0"
+rsha256="a65bac6202ea8c5609fd5c7e480e6d25de467ea1917c08290c521752f147283d"
 rreqs="make pkgconfig"
 
 . "${cwrecipe}/common.sh"
