@@ -9,14 +9,6 @@ rreqs="busybox"
 . "${cwrecipe}/common.sh"
 
 eval "
-function cwextract_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
-  unzip -o \"${cwdl}/${rname}/${rfile}\"
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
 function cwconfigure_${rname}() {
   true
 }
@@ -34,8 +26,8 @@ function cwmakeinstall_${rname}() {
   mkdir -p \"${ridir}\"
   rm -f \"${ridir}/JZip.jar\"
   cp dist/J7Zip.jar \"${ridir}\"
-  echo '#!/bin/sh' > "${ridir}/${rname}"
-  echo "java -jar ${ridir}/J7Zip.jar \\\"\\\${@}\\\"" >> \"${ridir}/${rname}\"
+  echo '#!/bin/sh' > \"${ridir}/${rname}\"
+  echo 'java -jar \"${rtdir}/current/J7Zip.jar\" \"\${@}\"' >> \"${ridir}/${rname}\"
   chmod 755 \"${ridir}/${rname}\"
   popd >/dev/null 2>&1
 }
@@ -43,6 +35,6 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current\"' > \"${rprof}\"
 }
 "
