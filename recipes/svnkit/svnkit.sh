@@ -1,9 +1,9 @@
 rname="svnkit"
-rver="1.10.0"
-rurl="https://www.svnkit.com/org.tmatesoft.svn_${rver}.standalone.nojna.zip"
-rfile="$(basename ${rurl})"
+rver="1.10.1"
 rdir="${rname}-${rver}"
-rsha256="e711bee3a8fa2adccf3b1024b9c6e74657e1ed5c04c7e24adebfbc59fb86576a"
+rfile="org.tmatesoft.svn_${rver}.standalone.nojna.zip"
+rurl="https://www.svnkit.com/${rfile}"
+rsha256="5d63a0e18f8751502e933f1a9e735a89fd1a94df19c264605a470c0ec3bbfaff"
 # we need unzip, use the busybox version
 rreqs="busybox"
 
@@ -11,15 +11,14 @@ rreqs="busybox"
 
 eval "
 function cwmakeinstall_${rname}() {
-  cwmkdir "${rtdir}"
-  test -e "${ridir}" && mv "${ridir}"{,.PRE-\${TS}}
-  unzip -o "${cwdl}/${rname}/${rfile}" -d "${rtdir}"
+  cwmkdir \"${rtdir}\"
+  cwextract \"${cwdl}/${rname}/${rfile}\" \"${rtdir}\"
 }
 "
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' >> "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
 
