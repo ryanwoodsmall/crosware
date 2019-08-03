@@ -10,8 +10,8 @@ rreqs=""
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'export DERBY_HOME=\"${rtdir}/current\"' > "${rprof}"
-  echo 'append_path \"\${DERBY_HOME}/bin\"' >> "${rprof}"
+  echo 'export DERBY_HOME=\"${rtdir}/current\"' > \"${rprof}\"
+  echo 'append_path \"\${DERBY_HOME}/bin\"' >> \"${rprof}\"
 }
 "
 
@@ -20,8 +20,8 @@ function cwinstall_${rname}() {
   cwfetch_${rname}
   cwcheckreqs_${rname}
   cwsourceprofile
-  cwmkdir "${rtdir}"
-  cwextract "${cwdl}/${rname}/${rfile}" "${rtdir}"
+  cwmkdir \"${rtdir}\"
+  cwextract \"${rdlfile}\" \"${rtdir}\"
   cwlinkdir_${rname}
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
