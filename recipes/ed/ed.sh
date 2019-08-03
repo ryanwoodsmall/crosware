@@ -9,14 +9,6 @@ rreqs="make lunzip"
 . "${cwrecipe}/common.sh"
 
 eval "
-function cwextract_${rname}() {
-  pushd "${cwbuild}" >/dev/null 2>&1
-  lunzip -dc "${cwdl}/${rname}/${rfile}" | tar -xf -
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} CC=\"\${CC}\" CFLAGS=\"\${CFLAGS}\" CPPFLAGS=\"\${CPPFLAGS}\" LDFLAGS=\"\${LDFLAGS}\"
