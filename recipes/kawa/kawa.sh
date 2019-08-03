@@ -12,7 +12,7 @@ rreqs="busybox"
 eval "
 function cwmakeinstall_${rname}() {
   cwmkdir \"${rtdir}\"
-  cwextract \"${cwdl}/${rname}/${rfile}\" \"${rtdir}\"
+  cwextract \"${rdlfile}\" \"${rtdir}\"
 }
 "
 
