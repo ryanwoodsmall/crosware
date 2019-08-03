@@ -1,8 +1,8 @@
 rname="jython"
 rver="2.7.1"
-rurl="https://repo.maven.apache.org/maven2/org/python/${rname}-installer/${rver}/${rname}-installer-${rver}.jar"
-rfile="$(basename ${rurl})"
 rdir="${rname}-${rver}"
+rfile="${rname}-installer-${rver}.jar"
+rurl="https://repo.maven.apache.org/maven2/org/python/${rname}-installer/${rver}/${rfile}"
 rsha256="6e58dad0b8565b95c6fb14b4bfbf570523d1c5290244cfb33822789fa53b1d25"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rreqs="bash busybox"
@@ -15,7 +15,7 @@ function cwmakeinstall_${rname}() {
   test -e \"${ridir}\" && mv \"${ridir}\"{,.PRE-\${TS}}
   env \
     PATH=\"${cwsw}/bash/current/bin:${cwsw}/busybox/current/bin:\${JAVA_HOME}/bin\" \
-    java -jar \"${cwdl}/${rname}/${rfile}\" -s -t all -d \"${ridir}\"
+    java -jar \"${rdlfile}\" -s -t all -d \"${ridir}\"
 }
 "
 
