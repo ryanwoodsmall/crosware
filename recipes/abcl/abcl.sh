@@ -14,7 +14,7 @@ rreqs="rlwrap"
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current\"' > \"${rprof}\"
 }
 "
 
@@ -23,11 +23,11 @@ function cwinstall_${rname}() {
   cwfetch_${rname}
   cwcheckreqs_${rname}
   cwsourceprofile
-  cwmkdir "${rtdir}"
-  cwextract "${cwdl}/${rname}/${rfile}" "${rtdir}"
-  echo '#!/bin/sh' > "${ridir}/${rname}"
-  echo "rlwrap -C ${rname} java -jar ${ridir}/${rname}.jar \\\"\\\${@}\\\"" >> "${ridir}/${rname}"
-  cwchmod "755" "${ridir}/${rname}"
+  cwmkdir \"${rtdir}\"
+  cwextract \"${rdlfile}\" \"${rtdir}\"
+  echo '#!/bin/sh' > \"${ridir}/${rname}\"
+  echo 'rlwrap -C ${rname} java -jar ${rtdir}/current/${rname}.jar \"\${@}\"' >> \"${ridir}/${rname}\"
+  cwchmod \"755\" \"${ridir}/${rname}\"
   cwlinkdir_${rname}
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
