@@ -56,7 +56,7 @@ function cwmakeinstall_${rname}() {
   make -j${cwmakejobs} install NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
   cwmkdir \"${ridir}/etc\"
   cwmkdir \"${ridir}/share/man\"
-  tar -C \"${ridir}/share/man\" -Jxf \"${cwdl}/${rname}/${rfile//${rname}-${rver}/${rname}-manpages-${rver}}\"
+  cwextract \"${cwdl}/${rname}/${rfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \"${ridir}/share/man\"
   popd >/dev/null 2>&1
 }
 "
