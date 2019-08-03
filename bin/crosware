@@ -104,6 +104,7 @@ cwcmdlist=( $(echo ${!cwcmds[@]} ${cwcmdaliases[@]} | tr ' ' '\n' | sort | xargs
 # common commands
 #
 # extract commands
+export cwuntar="tar -xf"
 export cwuntbz2="tar -jxf"
 export cwuntgz="tar -zxf"
 export cwuntxz="tar -Jxf"
@@ -566,6 +567,8 @@ function cwextract() {
     ${cwuntgz} "${archive}" -C "${tgtdir}"
   elif [[ ${archive} =~ \.t(|ar)(|.)xz$ ]] ; then
     ${cwuntxz} "${archive}" -C "${tgtdir}"
+  elif [[ ${archive} =~ \.t(|ar)(|.)lz$ ]] ; then
+    lunzip -dc "${archive}" | ${cwuntar} - -C "${tgtdir}"
   else
     cwfailexit "archive type of ${archive} not understood"
   fi
