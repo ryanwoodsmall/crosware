@@ -20,7 +20,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwfetch_${rname}() {
-  cwfetchcheck \"${rurl}\" \"${cwdl}/${rname}/${rfile}\" \"${rsha256}\"
+  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
   cwfetch_readline
 }
 "
