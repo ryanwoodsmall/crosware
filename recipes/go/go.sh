@@ -27,7 +27,7 @@ function cwgenprofd_${rname}() {
 
 eval "
 function cwextract_${rname}() {
-  cwextract \"${cwdl}/${rname}/${rfile}\" \"${rtdir}\"
+  cwextract \"${rdlfile}\" \"${rtdir}\"
 }
 "
 
