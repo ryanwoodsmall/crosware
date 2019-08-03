@@ -108,6 +108,7 @@ export cwuntar="tar -xf"
 export cwuntbz2="tar -jxf"
 export cwuntgz="tar -zxf"
 export cwuntxz="tar -Jxf"
+export cwunzip="unzip -o"
 
 #
 # common opts
@@ -569,6 +570,8 @@ function cwextract() {
     ${cwuntxz} "${archive}" -C "${tgtdir}"
   elif [[ ${archive} =~ \.t(|ar)(|.)lz$ ]] ; then
     lunzip -dc "${archive}" | ${cwuntar} - -C "${tgtdir}"
+  elif [[ ${archive} =~ \.zip$ ]] ; then
+    ${cwunzip} "${archive}" -d "${tgtdir}"
   else
     cwfailexit "archive type of ${archive} not understood"
   fi
