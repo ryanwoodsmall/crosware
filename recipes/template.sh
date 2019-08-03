@@ -1,8 +1,9 @@
 rname="name"
 rver="1.2.3"
-rurl="http://fake.url/${rname}/${rname}-${rver}.tar.bz2"
-rfile="$(basename ${rurl})"
-rdir="${rfile//.tar.bz2/}"
+rdir="${rname}-${rver}"
+rfile="${rdir}.tar.bz2"
+rurl="http://fake.url/${rname}/${rfile}"
+rdlfile="${cwdl}/${rname}/${rfile}"
 rsha256="123456..."
 rprof="${cwetcprofd}/${rname}.sh"
 rbdir="${cwbuild}/${rdir}"
@@ -110,7 +111,7 @@ function cwinstall_${rname}() {
   cwfetch_${rname}
   cwcheckreqs_${rname}
   cwsourceprofile
-  cwextract "${cwdl}/${rname}/${rfile}" "${cwbuild}"
+  cwextract "${rdlfile}" "${cwbuild}"
   cwconfigure_${rname}
   cwmake_${rname}
   cwmakeinstall_${rname}

@@ -4,6 +4,7 @@
 : ${rtdir:="${cwsw}/${rname}"}
 : ${ridir:="${rtdir}/${rdir}"}
 : ${rprof:="${cwetcprofd}/${rname}.sh"}
+: ${rdlfile:="${cwdl}/${rname}/${rfile}"}
 : ${rreqs:=""}
 : ${rlibtool:=""}
 : ${rconfigureopts:=""}
@@ -39,7 +40,7 @@ function cwclean_${rname}() {
 
 eval "
 function cwfetch_${rname}() {
-  cwfetchcheck \"${rurl}\" \"${cwdl}/${rname}/${rfile}\" \"${rsha256}\"
+  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
 }
 "
 
@@ -98,7 +99,7 @@ function cwmarkinstall_${rname}() {
 
 eval "
 function cwextract_${rname}() {
-  cwextract \"${cwdl}/${rname}/${rfile}\" \"${cwbuild}\"
+  cwextract \"${rdlfile}\" \"${cwbuild}\"
 }
 "
 
