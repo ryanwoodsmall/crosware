@@ -10,14 +10,14 @@ rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny libssh2 groff b
 
 eval "
 function cwfetch_${rname}() {
-  cwfetchcheck \"${rurl}\" \"${cwdl}/${rname}/${rfile}\" \"${rsha256}\"
-  cwfetchcheck \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \"${cwdl}/${rname}/${rfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \"4e2cfda33d8e86812bfcdb907478d1144412ce472c32edd0219b3c0201c7ee3a\"
+  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
+  cwfetchcheck \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \"4e2cfda33d8e86812bfcdb907478d1144412ce472c32edd0219b3c0201c7ee3a\"
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   env PATH=\"\${cwsw}/curl/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
       --with-curl \
@@ -56,7 +56,7 @@ function cwmakeinstall_${rname}() {
   make -j${cwmakejobs} install NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
   cwmkdir \"${ridir}/etc\"
   cwmkdir \"${ridir}/share/man\"
-  cwextract \"${cwdl}/${rname}/${rfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \"${ridir}/share/man\"
+  cwextract \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \"${ridir}/share/man\"
   popd >/dev/null 2>&1
 }
 "
