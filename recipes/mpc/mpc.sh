@@ -1,9 +1,9 @@
 rname="mpc"
-rver="1.0.3"
+rver="1.1.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="617decc6ea09889fb08ede330917a00b16809b8db88c29c31bfbb49cbf88ecc3"
+rsha256="6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e"
 rreqs="make gmp mpfr"
 
 . "${cwrecipe}/common.sh"
