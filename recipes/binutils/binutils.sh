@@ -1,3 +1,8 @@
+#
+# XXX - this needs custom ld.so stff just like statictoolchain built from musl-cross-make
+# XXX - i.e., https://github.com/ryanwoodsmall/musl-misc/blob/master/musl-cross-make-confs/patches/9999-crosware-ldso_binutils-2.27.diff
+#
+
 rname="binutils"
 rver="2.27"
 rdir="${rname}-${rver}"
