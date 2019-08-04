@@ -1,9 +1,10 @@
 rname="isl"
-rver="0.15"
+rver="0.21"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
-rurl="https://gcc.gnu.org/pub/gcc/infrastructure/${rfile}"
-rsha256="8ceebbf4d9a81afa2b4449113cee4b7cb14a687d7a549a963deb5e2a41458b6b"
+#rurl="https://gcc.gnu.org/pub/gcc/infrastructure/${rfile}"
+rurl="http://isl.gforge.inria.fr/${rfile}"
+rsha256="d18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859"
 rreqs="make gmp mpfr mpc"
 
 . "${cwrecipe}/common.sh"
