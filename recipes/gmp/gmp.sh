@@ -1,9 +1,9 @@
 rname="gmp"
-rver="6.1.1"
+rver="6.1.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="d36e9c05df488ad630fff17edb50051d6432357f9ce04e34a09b3d818825e831"
+rsha256="87b565e89a9a684fe4ebeeddb8399dce2599f9c9049854ca8c0dfbdea0e21912"
 rreqs="make sed m4"
 
 . "${cwrecipe}/common.sh"
