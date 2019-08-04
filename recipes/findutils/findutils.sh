@@ -9,6 +9,15 @@ rreqs="make sed"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix}
+  echo '#include <sys/sysmacros.h>' >> config.h
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
