@@ -1,9 +1,9 @@
 rname="mpfr"
-rver="3.1.4"
+rver="4.0.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="761413b16d749c53e2bfd2b1dfaa3b027b0e793e404b90b5fbaeef60af6517f5"
+rsha256="1d3be708604eae0e42d578ba93b390c2a145f17743a744d8f3f8c2ad5855a38a"
 rreqs="make gmp"
 
 . "${cwrecipe}/common.sh"
