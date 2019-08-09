@@ -54,12 +54,14 @@ usage: crosware [command]
 
 commands:
   bootstrap : bootstrap crosware
+  check-installed : given a package name, check if it's installed
   env : dump source-/eval-able crosware etc/profile
   help : show help
   install : attempt to build/install a package from a known recipe
   list-available : list available recipes which are not installed
   list-funcs : list crosware shell functions
   list-installed : list installed recipes
+  list-recipe-files : list recipes with their source file
   list-recipe-reqs : list recipes their requirements
   list-recipes : list build recipes
   list-recipe-versions : list recipes with version number
