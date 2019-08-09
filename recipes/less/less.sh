@@ -9,6 +9,20 @@
 #     autoreconf -fiv .
 #     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts}
 #
+# with netbsdcurses/toybox instead of gnu sed:
+#  rreqs="make netbsdcurses toybox"
+#  eval "
+#  function cwconfigure_${rname}() {
+#    pushd "${rbdir}" >/dev/null 2>&1
+#    env PATH=\"${cwsw}/toybox/current/bin:\${PATH}\" \
+#      ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+#        CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
+#        LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -static\" \
+#        LIBS=\"-lcurses -lterminfo\"
+#    popd >/dev/null 2>&1
+#  }
+#  "
+#
 
 rname="less"
 rver="551"
