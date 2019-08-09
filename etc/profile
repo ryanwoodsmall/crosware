@@ -16,6 +16,8 @@
 #     - ${...//::/:} doesn't seem to work in dash
 #     - this all sucks
 #
+# XXX - need a short-circuit env var to baile out before profile.d/local.d sourcing
+#
 
 # XXX - probably need realpath in the chain here somewhere
 # get our etc and bin dir
