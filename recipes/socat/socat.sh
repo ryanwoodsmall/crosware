@@ -1,3 +1,10 @@
+#
+# netbsdcurses:
+#  CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include -I${cwsw}/netbsdcurses/current/include/readline\" \
+#  LDFLAGS=\"\${LDFLAGS} -L${cwsw}/netbsdcurses/current/lib -static\" \
+#  LIBS=\"-lreadline -lcurses -lterminfo -lssl -lcrypto -lz\"
+#
+
 rname="socat"
 rver="1.7.3.3"
 rdir="${rname}-${rver}"
