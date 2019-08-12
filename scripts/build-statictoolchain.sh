@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# XXX - does this belong with the crosware project? or musl-misc? or here?
+# build a native statictoolchain package
 #
 
 set -eu
