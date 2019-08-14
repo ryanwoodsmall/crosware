@@ -1,9 +1,9 @@
 rname="libgit2"
-rver="0.28.2"
+rver="0.28.3"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
-rsha256="42b5f1e9b9159d66d86fff0394215c5733b6ef8f9b9d054cdd8c73ad47177fc3"
+rsha256="ee5344730fe11ce7c86646e19c2d257757be293f5a567548d398fb3af8b8e53b"
 rreqs="make zlib pkgconfig openssl libssh2 cmake"
 rbdir="${cwbuild}/${rdir}/build"
 
