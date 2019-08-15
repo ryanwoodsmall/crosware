@@ -9,20 +9,6 @@
 #     autoreconf -fiv .
 #     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts}
 #
-# with netbsdcurses/toybox instead of gnu sed:
-#  rreqs="make netbsdcurses toybox"
-#  eval "
-#  function cwconfigure_${rname}() {
-#    pushd "${rbdir}" >/dev/null 2>&1
-#    env PATH=\"${cwsw}/toybox/current/bin:\${PATH}\" \
-#      ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
-#        CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
-#        LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -static\" \
-#        LIBS=\"-lcurses -lterminfo\"
-#    popd >/dev/null 2>&1
-#  }
-#  "
-#
 
 rname="less"
 rver="551"
@@ -30,9 +16,21 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.greenwoodsoftware.com/${rname}/${rfile}"
 rsha256="ff165275859381a63f19135a8f1f6c5a194d53ec3187f94121ecd8ef0795fe3d"
-rreqs="make ncurses sed"
+rreqs="make netbsdcurses toybox"
 
 . "${cwrecipe}/common.sh"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd "${rbdir}" >/dev/null 2>&1
+  env PATH=\"${cwsw}/toybox/current/bin:\${PATH}\" \
+    ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+      CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
+      LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -static\" \
+      LIBS=\"-lcurses -lterminfo\"
+  popd >/dev/null 2>&1
+}
+"
 
 # XXX - add -R for default pager?
 eval "
