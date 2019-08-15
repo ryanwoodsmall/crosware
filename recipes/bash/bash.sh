@@ -1,5 +1,5 @@
 rname="bash"
-rver="5.0.8"
+rver="5.0.9"
 rdir="${rname}-${rver}"
 rbdir="${cwbuild}/${rname}-${rver%.*}"
 rfile="${rname}-${rver%.*}.tar.gz"
