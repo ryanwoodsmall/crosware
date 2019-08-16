@@ -406,6 +406,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - svnkit
 - texinfo (untested, requires perl)
 - tig
+- tio (https://tio.github.io and https://github.com/tio/tio)
 - tmux
 - toybox (static)
 - unrar
@@ -854,7 +855,6 @@ make install
 - tini (small init for containers, https://github.com/krallin/tini)
 - tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
-- tio (https://tio.github.io and https://github.com/tio/tio)
 - tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - tre (https://github.com/laurikari/tre)
 - tree (http://mama.indstate.edu/users/ice/tree/)
