@@ -1,6 +1,11 @@
 #
 # XXX - provide an update function to rename/move config.sub/config.guess and copy new ones in?
 #
+# XXX - cgit or gitweb?
+#     - cgit for now
+#     - cgit urls easier to escape
+#     - gitweb url is something like http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=${rver}
+#
 
 rname="configgit"
 rver="dd5d5dd697df579a5ebd119a88475b446c07c6b0"
