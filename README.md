@@ -681,6 +681,7 @@ make \
         CFLAGS_EXTRA="-I${cwsw}/mbedtls/current/include"
       ```
   - binary will be **ports/unix/micropython**
+- minit (https://github.com/chazomaticus/minit - small init with startup/shutdown scripts)
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
 - moreutils (https://joeyh.name/code/moreutils/)
