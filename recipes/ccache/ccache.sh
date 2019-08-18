@@ -1,9 +1,9 @@
 rname="ccache"
-rver="3.7.2"
+rver="3.7.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="f312b5714849ddb06e5f0668008707c69541b5e3a921aea16545c19b92c09905"
+rsha256="355955a61562c53c4ec4669e1c92708b0008f50d214b27f07a87cf4a1fa6b01e"
 rreqs="make"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
