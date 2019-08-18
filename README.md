@@ -456,6 +456,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - docbook?
 - dnsmasq
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
+- dumb-init (https://github.com/Yelp/dumb-init)
 - duplicity (http://duplicity.nongnu.org/)
 - elinks (old, deprecated)
 - ellcc (embedded clang build, http://ellcc.org/)
