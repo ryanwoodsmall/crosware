@@ -22,7 +22,7 @@ rreqs="make netbsdcurses toybox"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   env PATH=\"${cwsw}/toybox/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
