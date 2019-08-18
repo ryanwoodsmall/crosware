@@ -406,6 +406,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - svnkit
 - texinfo (untested, requires perl)
 - tig
+- tini (small init for containers, https://github.com/krallin/tini)
 - tio (https://tio.github.io and https://github.com/tio/tio)
 - tmux
 - toybox (static)
@@ -852,7 +853,6 @@ make CPPFLAGS= CXXFLAGS= LDFLAGS='-static' CFLAGS='-Wl,-static -fPIC'
 make install
 ```
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
-- tini (small init for containers, https://github.com/krallin/tini)
 - tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
