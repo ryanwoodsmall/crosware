@@ -933,6 +933,12 @@ function cwlistavailable() {
 #
 # cwlistupgradable
 #
+# XXX - need cwgetupgradable()
+#  get installed
+#  for all installed get recipe version
+#  if inst ver doesn't match, it's upgradble
+#  can be used to recursively chase downstream upgradable reqs
+#
 function cwlistupgradable() {
   cwsourcerecipes
   local recipe=""
