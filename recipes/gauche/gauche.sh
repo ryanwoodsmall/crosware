@@ -27,7 +27,7 @@ function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install ${rlibtool}
   echo '#!/bin/sh' > \"${ridir}/bin/${rname}\"
-  echo 'rlwrap -pBlue -m -M .scm -q\\\" \"${rtdir}/current/bin/gosh\"' >> \"${ridir}/bin/${rname}\"
+  echo 'rlwrap -pBlue -m -M .scm -q\\\" \"${rtdir}/current/bin/gosh\" \"\${@}\"' >> \"${ridir}/bin/${rname}\"
   chmod 755 \"${ridir}/bin/${rname}\"
   popd >/dev/null 2>&1
 }
