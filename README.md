@@ -873,6 +873,7 @@ make install
 - vifm (https://github.com/vifm/vifm)
 - vpnc
 - websocketd (go, https://github.com/joewalnes/websocketd)
+- wolfssh (https://github.com/wolfSSL/wolfssh)
 - xq (https://github.com/jeffbr13/xq)
 - yq (https://github.com/kislyuk/yq)
 - ytalk (http://ytalk.ourproject.org/)
