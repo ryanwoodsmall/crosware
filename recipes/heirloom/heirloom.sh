@@ -11,7 +11,7 @@ rdir="${rname}-project-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/ryanwoodsmall/${rname}-project/archive/${rfile}"
 rsha256="7c9a27fbd80ea4954057750f3cefba7b0962ab1fd6004b49d15d32b98e5c1b13"
-rreqs="make sed ncurses zlib bzip2 ed byacc reflex"
+rreqs="make sed ncurses zlib bzip2 ed byacc reflex mksh"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -43,6 +43,7 @@ function cwmake_${rname}() {
     env CHARSET= PATH=\"${cwsw}/byacc/current/bin:${cwsw}/reflex/current/bin:\${PATH}\" make install
     popd
   done
+  sed -i.ORIG 's/mandoc/man/g' \"${ridir}/etc/default/man\"
   popd >/dev/null 2>&1
 }
 "
