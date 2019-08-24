@@ -4,6 +4,7 @@
 # XXX - readline version bundled in install - hacky but ehh
 # XXX - bundle libedit?
 # XXX - bundle slang?
+# XXX - curses pkg-config files don't set -L or -I?
 #
 
 rname="netbsdcurses"
