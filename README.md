@@ -815,8 +815,9 @@ make \
   - loksh (https://github.com/dimkr/loksh)
     - make, netbsdcurses, pkg-config
     - ```sed -i 's/ncurses/curses terminfo/g' Makefile```
-    - ```env CPPFLAGS="-I${cwsw}/netbsdcurses/current/include" LDFLAGS="-static -L${cwsw}/netbsdcurses/current/lib" PKG_CONFIG_PATH="${cwsw}/netbsdcurses/current/lib/pkgconfig/" make```
-  - oksh (https://connochaetos.org/oksh/ (site dead?) - https://github.com/ibara/oksh)
+    - ```env CPPFLAGS="-I${cwsw}/netbsdcurses/current/include" LDFLAGS="-static -L${cwsw}/netbsdcurses/current/lib" PKG_CONFIG_PATH="${cwsw}/netbsdcurses/current/lib/pkgconfig/" PREFIX=${ridir} make```
+    - ```make install PREFIX=${ridir}```
+  - oksh (https://github.com/ibara/oksh)
     - ```sed -i 's/-lncurses/-lcurses -lterminfo/g' configure ; sed -i 's/ncurses\.h/curses.h/g' configure emacs.c var.c```
     - ```env CFLAGS="-I${cwsw}/netbsdcurses/current/include" LDFLAGS="-L${cwsw}/netbsdcurses/current/lib -lcurses -lterminfo -static" ./configure --prefix=${ridir} --mandir=${ridir}/share/man --enable-{curses,ksh,sh,static}```
     - ```make -j$(nproc) CPPFLAGS=```
