@@ -814,7 +814,6 @@ make \
   - dash
   - es (https://github.com/wryun/es-shell)
   - fish
-  - pdksh (dead, use mksh)
   - scsh (https://scsh.net)
   - tcsh (and/or standard csh)
   - zsh
