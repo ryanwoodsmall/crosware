@@ -817,10 +817,12 @@ make \
     - ```sed -i 's/ncurses/curses terminfo/g' Makefile```
     - ```env CPPFLAGS="-I${cwsw}/netbsdcurses/current/include" LDFLAGS="-static -L${cwsw}/netbsdcurses/current/lib" PKG_CONFIG_PATH="${cwsw}/netbsdcurses/current/lib/pkgconfig/" PREFIX=${ridir} make```
     - ```make install PREFIX=${ridir}```
+    - rename **bin/ksh** to **bin/loksh** and setup **bin/ksh** and **bin/sh** symlinks
   - oksh (https://github.com/ibara/oksh)
     - ```sed -i 's/-lncurses/-lcurses -lterminfo/g' configure ; sed -i 's/ncurses\.h/curses.h/g' configure emacs.c var.c```
-    - ```env CFLAGS="-I${cwsw}/netbsdcurses/current/include" LDFLAGS="-L${cwsw}/netbsdcurses/current/lib -lcurses -lterminfo -static" ./configure --prefix=${ridir} --mandir=${ridir}/share/man --enable-{curses,ksh,sh,static}```
+    - ```env CPPFLAGS= CFLAGS="-I${cwsw}/netbsdcurses/current/include" LDFLAGS="-L${cwsw}/netbsdcurses/current/lib -lcurses -lterminfo -static" ./configure --prefix=${ridir} --mandir=${ridir}/share/man --enable-{curses,ksh,sh,static}```
     - ```make -j$(nproc) CPPFLAGS=```
+    - rename **bin/ksh** to **bin/oksh**, delete **bin/sh** copy and setup **bin/ksh** and **bin/sh** symlinks
   - pdksh (dead, use mksh)
   - scsh (https://scsh.net)
   - tcsh (and/or standard csh)
