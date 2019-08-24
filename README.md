@@ -371,6 +371,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - musl-fts (named muslfts - https://github.com/pullmoll/musl-fts)
 - ncurses
 - netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
+- oksh (https://github.com/ibara/oksh)
 - oniguruma (https://github.com/kkos/oniguruma)
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)
 - openssl
@@ -813,11 +814,6 @@ make \
   - dash
   - es (https://github.com/wryun/es-shell)
   - fish
-  - oksh (https://github.com/ibara/oksh)
-    - ```sed -i 's/-lncurses/-lcurses -lterminfo/g' configure ; sed -i 's/ncurses\.h/curses.h/g' configure emacs.c var.c```
-    - ```env CPPFLAGS= CFLAGS="-I${cwsw}/netbsdcurses/current/include" LDFLAGS="-L${cwsw}/netbsdcurses/current/lib -lcurses -lterminfo -static" ./configure --prefix=${ridir} --mandir=${ridir}/share/man --enable-{curses,ksh,sh,static}```
-    - ```make -j$(nproc) CPPFLAGS=```
-    - rename **bin/ksh** to **bin/oksh**, delete **bin/sh** copy and setup **bin/ksh** and **bin/sh** symlinks
   - pdksh (dead, use mksh)
   - scsh (https://scsh.net)
   - tcsh (and/or standard csh)
