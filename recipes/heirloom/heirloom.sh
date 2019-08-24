@@ -6,12 +6,12 @@
 #   - use zz_00_heirloom.sh to come before 9base?
 #
 rname="heirloom"
-rver="20190804-musl"
+rver="20190823-musl"
 rdir="${rname}-project-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/ryanwoodsmall/${rname}-project/archive/${rfile}"
-rsha256="7c9a27fbd80ea4954057750f3cefba7b0962ab1fd6004b49d15d32b98e5c1b13"
-rreqs="make sed ncurses zlib bzip2 ed byacc reflex mksh"
+rsha256="6fe6d8d185a50cdec7acf1c912d8aa1b47f44d677e7250cac4a43bfbd298a968"
+rreqs="make sed ncurses zlib bzip2 ed byacc reflex mksh busybox"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -43,7 +43,6 @@ function cwmake_${rname}() {
     env CHARSET= PATH=\"${cwsw}/byacc/current/bin:${cwsw}/reflex/current/bin:\${PATH}\" make install
     popd
   done
-  sed -i.ORIG 's/mandoc/man/g' \"${ridir}/etc/default/man\"
   popd >/dev/null 2>&1
 }
 "
