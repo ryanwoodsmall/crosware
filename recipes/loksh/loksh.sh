@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/dimkr/${rname}/archive/${rfile}"
 rsha256="afa6dddfe914a3cb4c2f5c6b9da03d30fb549c8cfb4daeff0472fc103696f7a4"
-rreqs="make netbsdcurses"
+rreqs="make netbsdcurses pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
