@@ -444,6 +444,10 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - spark (included in sdkman)
 - binfmt-support (https://git.savannah.gnu.org/cgit/binfmt-support.git - ???)
 - bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
+- boost (...)
+  - ```./bootstrap.sh --prefix=${ridir} --without-icu ; ./b2 --prefix=${ridir} --layout=system -q link=static install```
+  - it's like a 100MB tgz, 700MB extracted, 900MB during build, 190MB installed
+  - yikes
 - brotli (https://github.com/google/brotli)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
