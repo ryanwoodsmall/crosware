@@ -819,6 +819,7 @@ make \
   - seems to work just fine with static crosware compilation
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
 - sljit (http://sljit.sourceforge.net/)
+- source-highlight (https://www.gnu.org/software/src-highlite/ - boost, eeeeeeeeeeeee)
 - spidermonkey
 - spidernode
 - sparse (https://sparse.wiki.kernel.org/index.php/Main_Page)
