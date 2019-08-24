@@ -813,7 +813,7 @@ make \
   - es (https://github.com/wryun/es-shell)
   - fish
   - loksh (https://github.com/dimkr/loksh)
-  - oksh (https://connochaetos.org/oksh/)
+  - oksh (https://connochaetos.org/oksh/ (site dead?) - https://github.com/ibara/oksh)
   - pdksh (dead, use mksh)
   - scsh (https://scsh.net)
   - tcsh (and/or standard csh)
