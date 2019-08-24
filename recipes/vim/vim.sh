@@ -35,6 +35,19 @@ function cwmake_${rname}() {
 "
 
 eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  local sv
+  sv=\"${rver%.*}\"
+  sv=\"\${sv//./}\"
+  make install ${rlibtool}
+  ln -sf \"${rtdir}/current/share/vim/vim\${sv}/macros/less.sh\" \"${ridir}/bin/vimless\"
+  unset sv
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   # XXX - prepend to prefer our vim/xxd/etc.
   echo 'prepend_path \"${rtdir}/current/bin\"' > \"${rprof}\"
