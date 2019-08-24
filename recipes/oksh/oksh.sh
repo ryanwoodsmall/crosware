@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ibara/${rname}/releases/download/${rdir}/${rfile}"
 rsha256="2adf52ab718249462a41e1172d0bfb8670731daa0618e560be58064cac23a0bd"
-rreqs="make netbsdcurses pkgconfig"
+rreqs="make netbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
