@@ -823,7 +823,10 @@ make \
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
 - sljit (http://sljit.sourceforge.net/)
 - source-highlight (https://www.gnu.org/software/src-highlite/)
-  - boost (yeeee), ctags
+  - OLD 1.x version
+    - i.e., ftp://ftp.gnu.org/gnu/src-highlite/source-highlight-1.11.tar.gz
+    - limited language support, though
+  - 2.x, 3.x require boost (yeeee), ctags
   - ```./configure --prefix=${ridir} --enable-static{,=yes} --enable-shared=no --disable-shared --with-boost-libdir=${cwsw}/boost/current/lib LDFLAGS="${LDFLAGS} -L${cwsw}/boost/current/lib" CXXFLAGS="${CXXFLAGS} -I${cwsw}/boost/current/include"```
   - ```source-highlight --out-format esc256 --output STDOUT --input blah.cpp | less -R```
 - spidermonkey
