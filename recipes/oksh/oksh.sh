@@ -11,7 +11,7 @@ rreqs="make netbsdcurses"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i.ORIG 's/ncurses\.h/curses.h/g' configure emacs.c var.c 
+  sed -i.ORIG 's/ncurses\.h/curses.h/g' configure emacs.c var.c
   sed -i 's/-lncurses/-lcurses -lterminfo/g' configure
   env \
     CPPFLAGS= \
