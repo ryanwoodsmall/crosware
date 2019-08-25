@@ -399,6 +399,10 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - slang
 - slibtool (https://github.com/midipix-project/slibtool)
 - socat
+- source-highlight (https://www.gnu.org/software/src-highlite/)
+  - OLD 1.x version
+  - limited language support, though
+  - see below for notes on newer versions (boost req, yeesh)
 - stunnel
 - sqlite
 - suckless
@@ -823,9 +827,6 @@ make \
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
 - sljit (http://sljit.sourceforge.net/)
 - source-highlight (https://www.gnu.org/software/src-highlite/)
-  - OLD 1.x version
-    - i.e., ftp://ftp.gnu.org/gnu/src-highlite/source-highlight-1.11.tar.gz
-    - limited language support, though
   - 2.x, 3.x require boost (yeeee), ctags
   - ```./configure --prefix=${ridir} --enable-static{,=yes} --enable-shared=no --disable-shared --with-boost-libdir=${cwsw}/boost/current/lib LDFLAGS="${LDFLAGS} -L${cwsw}/boost/current/lib" CXXFLAGS="${CXXFLAGS} -I${cwsw}/boost/current/include"```
   - ```source-highlight --out-format esc256 --output STDOUT --input blah.cpp | less -R```
