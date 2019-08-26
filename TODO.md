@@ -388,6 +388,23 @@ time_func test_func
 time_func test_arg 1 two "three four"
 time_func ls -l -A /
 ```
+- cwgenmeta_rname() and cwcheckmeta_rname()
+  - crosware check-recipe rname
+  - save sha256sum of files in ${ridir} to /var/meta/rname
+  - find ${ridir}/ -type f | sort | xargs sha256sum > /var/meta/rname
+  - if ! -e /var/meta/rname don't run
+- upgrade-all-recursive
+  - on upgrade, chase down rreqs updates and install them if any
+  - cwupgradable[rname]=0 by default
+  - if upgradable, set to 1
+  - check by package
+  - hash is quicker
+  - eliminate expensive calls to get/list installed if possible
+- patch handling...
+  - if ${cwtop}/recipes/${rname}/${rname}.patches, fetch - cwfetchpatches_${rname}, call from cwfetch_${rname}
+  - apply after extract cwconfigure_${rname}, flesh out cwpatch_${rname}
+  - split patch lines on ',' - if ${#s[@]} == 3, last element should be patch level, default to 0
+  - readline is good new dev, bash for existing
 
 <!--
 # vim: ft=markdown
