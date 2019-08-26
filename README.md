@@ -658,10 +658,12 @@ make \
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
 - makeself (https://makeself.io/ and https://github.com/megastep/makeself - bin pkgs? with signing?)
 - man stuff
+  - mandoc (http://mandoc.bsd.lv/)
   - man-pages (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/)
   - man-pages-posix (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/)
   - stick with busybox man+groff+less or use man-db or old standard man?
   - MANPAGER and MANPATH settings
+  - roffit (https://daniel.haxx.se/projects/roffit/)
 - mcpp (http://mcpp.sourceforge.net/)
 - mercurial / hg
   - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```
