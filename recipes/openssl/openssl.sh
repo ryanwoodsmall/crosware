@@ -1,6 +1,8 @@
 #
 # XXX - need to figure out ca certificates
 # XXX - our perl needs to be at front of path for config/make
+# XXX - -DOPENSSL_PIC ???
+# XXX - other "openssl version -a" stuff?
 #
 
 rname="openssl"
