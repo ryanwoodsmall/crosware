@@ -1,3 +1,7 @@
+#
+# XXX - wget2: wolfssl, bison, flex, xz, ...
+#
+
 rname="wget"
 rver="1.20.3"
 rdir="${rname}-${rver}"
