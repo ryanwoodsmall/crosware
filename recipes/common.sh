@@ -52,7 +52,7 @@ function cwlistreqs_${rname}() {
 
 eval "
 function cwcheckreqs_${rname}() {
-  echo \${FUNCNAME[@]} | tr ' ' '\\n' | tail -\$(expr \${#FUNCNAME[@]} - 1) | grep -q \"^\${FUNCNAME}\" && cwfailexit \"loop in \${FUNCNAME}\"
+  cwcheckuniq \"\${FUNCNAME[@]}\"
   for rreq in ${rreqs} ; do
     if ! \$(cwcheckinstalled \${rreq}) ; then
       cwscriptecho \"installing required recipe \${rreq}\"
@@ -126,7 +126,7 @@ function cwfetchpatches_${rname}() {
 
 eval "
 function cwinstall_${rname}() {
-  echo \${FUNCNAME[@]} | tr ' ' '\\n' | tail -\$(expr \${#FUNCNAME[@]} - 1) | grep -q \"^\${FUNCNAME}\" && cwfailexit \"loop in \${FUNCNAME}\"
+  cwcheckuniq \"\${FUNCNAME[@]}\"
   cwclean_${rname}
   cwfetch_${rname}
   cwcheckreqs_${rname}

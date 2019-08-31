@@ -1072,6 +1072,30 @@ function cwshowarch() {
 }
 
 #
+# check uniqueness of space delimited elements (for loop detection)
+#   XXX - leverage uniq?
+#   XXX - better as an array, i.e.:
+#     l=( $(echo ${@}) )
+#     t=${l[0]}
+#     echo ${l} | tr ' ' '\n' | tail -$((${#l[@]}-1)) | grep -q "^${t}$" && fail
+#   *or* tail -$(expr ${#l[@]} - 1)
+#
+function cwcheckuniq() {
+  if [[ x${@} =~ ^x$ ]] ; then
+    return 0
+  fi
+  local a="${@}"
+  shift
+  local r="${@}"
+  local t="${a%%${r}}"
+  #local t="$(echo "${a}" | sed "s#${r}\$##g")"
+  t="${t// }"
+  echo "${r}" | tr ' ' '\n' | grep -q "^${t}$" && cwfailexit "non-unique element '${t}' detected in stack '${a}' - possible cycle"
+  unset a r t
+  return 0
+}
+
+#
 # usage
 #
 function cwusage() {
