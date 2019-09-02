@@ -606,7 +606,8 @@ make \
 - lf (https://github.com/gokcehan/lf - go)
 - lftp (https://lftp.tech/)
 - libdeflate (https://sortix.org/libdeflate/)
-- libdnet (https://github.com/boundary/libdnet)
+- libdnet (https://github.com/boundary/libdnet or up-to-date fork at https://github.com/busterb/libdnet)
+  - mostly want the dnet binary
 - libedit
   - editline (https://github.com/troglobit/editline or http://troglobit.com/projects/editline/ minix3, no termcap needed)
   - editline (https://www.thrysoee.dk/editline/ netbsd, need termcap from a curses - netbsdcurses works)
