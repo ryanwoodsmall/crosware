@@ -373,6 +373,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
   - should replace opennc, which is, uhhhhhhh missing?
+- nmap
 - oksh (https://github.com/ibara/oksh)
 - oniguruma (https://github.com/kkos/oniguruma)
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)
@@ -724,9 +725,6 @@ make \
   - configure libdir=.../lib since lib64 may be set by default
 - nghttp2 (https://github.com/nghttp2/nghttp2)
 - ninja
-- nmap
-  - openssl, zlib, python
-  - ```./configure --prefix=${ridir} --with-ndiff --with-openssl=${cwsw}/openssl/current LIBS='-lssl -lcrypto -lz'```
 - nnn (https://github.com/jarun/nnn)
 - node / npm (ugh)
 - noice (https://git.2f30.org/noice/)
