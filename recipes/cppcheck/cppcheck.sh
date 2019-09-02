@@ -1,9 +1,9 @@
 rname="cppcheck"
-rver="1.88"
+rver="1.89"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/danmar/${rname}/archive/${rfile}"
-rsha256="4aace0420d6aaa900b84b3329c5173c2294e251d2e24d8cba6e38254333dde3f"
+rsha256="37452d378825c7bd78116b4d7073df795fa732207d371ad5348287f811755783"
 rreqs="make pcre"
 
 . "${cwrecipe}/common.sh"
@@ -19,7 +19,7 @@ function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   env PATH=\"${cwsw}/pcre/current/bin:\${PATH}\" make -j${cwmakejobs} \
     PREFIX=\"${ridir}\" \
-    CFGDIR=\"${ridir}/cfg\" \
+    FILESDIR=\"${ridir}/share/${rname}\" \
     HAVE_RULES=yes \
     CC=\"\${CC}\" \
     CXX=\"\${CXX}\" \
@@ -36,7 +36,7 @@ function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   env PATH=\"${cwsw}/pcre/current/bin:\${PATH}\" make install \
     PREFIX=\"${ridir}\" \
-    CFGDIR=\"${ridir}/cfg\"
+    FILESDIR=\"${ridir}/share/${rname}\" \
     HAVE_RULES=yes
   popd >/dev/null 2>&1
 }
