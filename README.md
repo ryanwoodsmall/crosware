@@ -725,6 +725,8 @@ make \
 - nghttp2 (https://github.com/nghttp2/nghttp2)
 - ninja
 - nmap
+  - openssl, zlib, python
+  - ```./configure --prefix=${ridir} --with-ndiff --with-openssl=${cwsw}/openssl/current LIBS='-lssl -lcrypto -lz'```
 - nnn (https://github.com/jarun/nnn)
 - node / npm (ugh)
 - noice (https://git.2f30.org/noice/)
