@@ -371,9 +371,14 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - musl-fts (named muslfts - https://github.com/pullmoll/musl-fts)
 - ncurses
 - netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
+- netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
+  - should replace opennc, which is, uhhhhhhh missing?
 - oksh (https://github.com/ibara/oksh)
 - oniguruma (https://github.com/kkos/oniguruma)
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)
+  - based on upstream 1.89
+  - site regularly goes offline
+  - probably use netcatopenbsd instead
 - openssl
 - p7zip
 - patch (gnu)
@@ -712,13 +717,6 @@ make \
     - iconv (https://git.alpinelinux.org/cgit/aports/tree/main/musl/iconv.c)
 - mutt
 - nc / ncat / netcat
-  - netcat-openbsd from debian (https://salsa.debian.org/debian/netcat-openbsd)
-    - openssl, libbsd, pkgconfig
-    - should replace opennc, which is, uhhhhhhh missing?
-    - needs b64_ntop, i.e., pull in https://github.com/libressl-portable/portable/blob/a7f031ba55ac4a69263000357eb7f6d7fb88101a/apps/nc/compat/base64.c
-    - needs patches run from debian/patches directrory in series order
-    - in6.h inclusion breaks stuff
-    - build with ```gcc -o nc base64.c netcat.c atomicio.c socks.c $(pkg-config --cflags libbsd) $(pkg-config --libs libbsd) -static```
 - ne (https://github.com/vigna/ne terminal editor)
 - nethack
 - netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
