@@ -17,9 +17,19 @@ function cwfetch_${rname}() {
 "
 
 eval "
+function cwconfigure_${rname}() {
+  sed -i.ORIG 's/sdkman_insecure_ssl=false/sdkman_insecure_ssl=true/g' \"${rdlfile}\"
+  sed -i 's/curl /curl --insecure /g' \"${rdlfile}\"
+}
+"
+eval "
 function cwmakeinstall_${rname}() {
   cwmkdir \"${rtdir}\"
   env SDKMAN_DIR=\"${ridir}\" bash \"${rdlfile}\"
+  test -e \"${ridir}/etc/config\" \
+    && grep -q sdkman_insecure_ssl=false \"${ridir}/etc/config\" \
+    && sed -i.ORIG 's/sdkman_insecure_ssl=false/sdkman_insecure_ssl=true/g' \"${ridir}/etc/config\" \
+    || true
 }
 "
 
@@ -34,6 +44,7 @@ function cwinstall_${rname}() {
   cwfetch_${rname}
   cwsourceprofile
   cwcheckreqs_${rname}
+  cwconfigure_${rname}
   cwmakeinstall_${rname}
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
