@@ -712,6 +712,13 @@ make \
     - iconv (https://git.alpinelinux.org/cgit/aports/tree/main/musl/iconv.c)
 - mutt
 - nc / ncat / netcat
+  - netcat-openbsd from debian (https://salsa.debian.org/debian/netcat-openbsd)
+    - openssl, libbsd, pkgconfig
+    - should replace opennc, which is, uhhhhhhh missing?
+    - needs b64_ntop, i.e., pull in https://github.com/libressl-portable/portable/blob/a7f031ba55ac4a69263000357eb7f6d7fb88101a/apps/nc/compat/base64.c
+    - needs patches run from debian/patches directrory in series order
+    - in6.h inclusion breaks stuff
+    - build with ```gcc -o nc base64.c netcat.c atomicio.c socks.c $(pkg-config --cflags libbsd) $(pkg-config --libs libbsd) -static```
 - ne (https://github.com/vigna/ne terminal editor)
 - nethack
 - netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
