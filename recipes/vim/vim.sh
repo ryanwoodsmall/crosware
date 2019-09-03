@@ -1,9 +1,9 @@
 rname="vim"
-rver="8.1.1965"
+rver="8.1.1966"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
-rsha256="a86842ebf99d39c3eed5d2b3d1355b128559ea6ae14fa220b6d7056e5c2110a8"
+rsha256="32a89d059278091235b015f3eb7bd87a82eb36ee088424a4b7794e09759c8c19"
 rreqs="make ncurses lua gettexttiny"
 
 . "${cwrecipe}/common.sh"
