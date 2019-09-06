@@ -422,6 +422,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - tio (https://tio.github.io and https://github.com/tio/tio)
 - tmux
 - toybox (static)
+- tree (http://mama.indstate.edu/users/ice/tree/)
 - unrar
 - unzip
 - util-linux (as utillinux)
@@ -881,7 +882,6 @@ make install
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - tre (https://github.com/laurikari/tre)
-- tree (http://mama.indstate.edu/users/ice/tree/)
 - tsocks
 - tzdb (https://www.iana.org/time-zones)
 - units (https://www.gnu.org/software/units)
