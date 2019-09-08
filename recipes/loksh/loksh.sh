@@ -23,7 +23,7 @@ function cwmake_${rname}() {
     CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
     LDFLAGS=\"-static -L${cwsw}/netbsdcurses/current/lib\" \
     PKG_CONFIG_PATH=\"${cwsw}/netbsdcurses/current/lib/pkgconfig\" \
-    PKG_CONFIG_LIBDIR==\"${cwsw}/netbsdcurses/current/lib/pkgconfig\" \
+    PKG_CONFIG_LIBDIR=\"${cwsw}/netbsdcurses/current/lib/pkgconfig\" \
     PREFIX=\"${ridir}\" \
       make -j${cwmakejobs}
   popd >/dev/null 2>&1
