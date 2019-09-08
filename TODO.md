@@ -347,6 +347,10 @@ function cwurltofilename() {
     - https://git.alpinelinux.org/ca-certificates/tree/c_rehash.c
     - requires python3?
 - mystical single static binary git clone/checkout/fetch/merge/clean (opts? --quiet? -b?) client
+  - libgit2 (recipe in crosware now)
+  - simplify... use? meh?
+    - libulz: https://github.com/rofl0r/libulz
+    - libmowgli: https://github.com/atheme/libmowgli-2
 - locking?
   - in ```${cwtop}/tmp/crosware.lockfile``` or something?
   - would need a trap and handler to prevent/cleanup stale lockfiles
