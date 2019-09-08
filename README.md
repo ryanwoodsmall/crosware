@@ -448,6 +448,39 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - vasm
   - yasm
 - at&t ast (just ksh now?)
+  - **ksh93** _only_
+    - uses meson, so requires python3
+  - old, full code:
+    - does not work at all bulding w/musl
+    - old freebsd/debian/etc. stuff useful?
+      - https://svnweb.freebsd.org/ports?view=revision&revision=480231
+      - https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=887743
+      - https://github.com/att/ast/commit/cbe3543e0616f01973bc2f1f1ee8784be87fa1d6
+    - tksh needs x11, no way
+    - ```git clone https://github.com/att/ast.git ; cd ast ; git checkout 2016-01-10-beta```
+    - totally convoluted build system
+      - iffe -> mamake -> nmake -> stuff?
+    - busybox, mksh, bash, byacc, reflex, flex, bison, gdbm, ???, ...
+    - errors:
+      - error: unknown type name 'off64_t'; did you mean 'off_t'?
+      - error: conflicting types for '_sfio_FILE'
+      - error: storage size of 'st' isn't known
+      - error: dereferencing pointer to incomplete type 'Stat_t' {aka 'struct stat64'}
+    - _GNU_SOURCE, USE_GNU, etc., not working
+    - wip, trying, failing, ...:
+```
+git grep -ril '#.*define.*off64_t' . | xargs sed -i '/define/s/off64_t/off_t/g'
+git grep -ril '#.*undef.*off_t' | xargs sed -i '/undef/s/off_t/off64_t/g'
+time \
+  env -i \
+    PATH=${cwsw}/ccache/current/bin:${cwsw}/mksh/current/bin:${cwsw}/bash/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/byacc/current/bin:${cwsw}/reflex/current/bin:${cwsw}/busybox/current/bin:${cwsw}/bison/current/bin:${cwsw}/flex/current/bin \
+    mksh -x ./bin/package make \
+      CFLAGS= \
+      LDFLAGS= \
+      CPPFLAGS= \
+      CCFLAGS="-D_GNU_SOURCE -D_BSD_SOURCE -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_USE_GNU -D__GLIBC__" 2>&1 | tee /tmp/astbuild.out
+wc -l /tmp/astbuild.out
+```
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
 - bearssl
