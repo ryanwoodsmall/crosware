@@ -1,9 +1,9 @@
 rname="links"
-rver="2.19"
+rver="2.20"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="http://links.twibright.com/download/${rfile}"
-rsha256="70758c7dd9bb70f045407900e0a90f1114947fce832c2f9bdefd5c0158089a0a"
+rsha256="3bddcd4cb2f7647e50e12a59d1c9bda61076f15cde5f5dca6288b58314e6902d"
 rreqs="make libevent zlib openssl xz bzip2 lzlib"
 
 . "${cwrecipe}/common.sh"
