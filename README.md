@@ -509,7 +509,33 @@ wc -l /tmp/astbuild.out
 - dsvpn (https://github.com/jedisct1/dsvpn)
 - dumb-init (https://github.com/Yelp/dumb-init)
 - duplicity (http://duplicity.nongnu.org/)
-- elinks (old, deprecated)
+- elinks (old)
+  - git ver: f86be659718c0cd0a67f88b42f07044c23d0d028
+  - dir: elinks-f86be65
+  - snapshot dl: https://repo.or.cz/elinks.git/snapshot/f86be659718c0cd0a67f88b42f07044c23d0d028.tar.gz
+  - va_copy patch: https://git.alpinelinux.org/aports/plain/main/elinks/musl-va_copy.patch
+  - perl, openssl, zlib, bzip2, expat, xz, autoconf, automake, libtool, m4, gettexttiny, pkgconfig, ...
+  - configure...
+```
+bash autogen.sh || true
+env PATH=${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:${PATH} \
+  autoreconf -fiv \
+    -I${cwsw}/libtool/current/share/aclocal \
+    -I${cwsw}/gettexttiny/current/share/aclocal \
+    -I${cwsw}/pkgconfig/current/share/aclocal \
+    -I./config/m4
+./configure --prefix=${ridir} \
+  --disable-mouse \
+  --disable-sysmouse \
+  --without-gpm \
+  --enable-html-highlight \
+  --enable-{88,256}-colors \
+  --enable-true-color \
+  --with-lzma \
+  --disable-nls \
+    CFLAGS="${CFLAGS} -Wno-pointer-sign"
+grep -ril 'sys/signal\.h' . | egrep -i '\.(c|h)$' | xargs sed -i.ORIG 's#sys/signal\.h#signal.h#g'
+```
 - ellcc (embedded clang build, http://ellcc.org/)
 - emacs
   - 26.1 can be compiled without gnutls
