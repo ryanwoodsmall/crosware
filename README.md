@@ -549,7 +549,6 @@ make \
 - hq (https://github.com/rbwinslow/hq)
 - hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
 - http-parser (https://github.com/nodejs/http-parser - useful with libgit2?)
-- hubbub (https://www.netsurf-browser.org/projects/hubbub/ and https://source.netsurf-browser.org/libhubbub.git/)
 - iodine (https://github.com/yarrick/iodine)
   - **src/Makefile** needs a ```$(CC) -c``` for the _.c.o_ rule
   - build with something like ```make CFLAGS="-I${cwsw}/zlib/current/include -D__GLIBC__=1" LDFLAGS="-L${cwsw}/zlib/current/lib -lz -static" CPPFLAGS= SHELL='bash -x'```
@@ -644,8 +643,6 @@ make \
 - libdeflate (https://sortix.org/libdeflate/)
 - libdnet (https://github.com/boundary/libdnet or up-to-date fork at https://github.com/busterb/libdnet)
   - mostly want the dnet binary
-- libdom (https://www.netsurf-browser.org/projects/libdom/ and https://source.netsurf-browser.org/libdom.git/)
-  - can use libxml2, libhubbub
 - libedit
   - editline (https://github.com/troglobit/editline or http://troglobit.com/projects/editline/ minix3, no termcap needed)
   - editline (https://www.thrysoee.dk/editline/ netbsd, need termcap from a curses - netbsdcurses works)
@@ -762,6 +759,15 @@ make \
 - ne (https://github.com/vigna/ne terminal editor)
 - nethack
 - netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
+- netsurf stuff
+  - netsurf w/framebuffer nsfb? sdl? vnc doesn't seem to work
+  - hubbub (https://www.netsurf-browser.org/projects/hubbub/ and https://source.netsurf-browser.org/libhubbub.git/)
+  - libcss (https://www.netsurf-browser.org/projects/libcss/)
+  - libdom (https://www.netsurf-browser.org/projects/libdom/ and https://source.netsurf-browser.org/libdom.git/)
+    - can use libxml2, libhubbub
+  - libnsfb (https://www.netsurf-browser.org/projects/libnsfb/)
+  - libparserutils (https://www.netsurf-browser.org/projects/libparserutils/)
+  - libwapcaplet (https://www.netsurf-browser.org/projects/libwapcaplet/)
 - nettle
   - configure libdir=.../lib since lib64 may be set by default
 - nghttp2 (https://github.com/nghttp2/nghttp2)
