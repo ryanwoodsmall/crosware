@@ -872,6 +872,7 @@ make \
   - dash
   - es (https://github.com/wryun/es-shell)
   - fish
+  - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
   - rc (muennich's rakitzis fork https://github.com/muennich/rc)
   - scsh (https://scsh.net)
   - tcsh (and/or standard csh)
