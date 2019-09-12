@@ -1,5 +1,9 @@
 #
 # XXX - this is a mess
+# XXX - features...
+# XXX   tre
+# XXX   libdom (hubbub, libxml2)
+# XXX   spidermonkey
 #
 
 rname="elinks"
@@ -13,21 +17,10 @@ rreqs="make perl openssl zlib bzip2 expat xz autoconf automake libtool m4 gettex
 . "${cwrecipe}/common.sh"
 
 eval "
-function cwfetch_${rname}() {
-  local pu='https://git.alpinelinux.org/aports/plain/main/elinks/musl-va_copy.patch'
-  local pf=\"\$(basename \${pu})\"
-  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
-  #cwfetch \"\${pu}\" \"${cwdl}/${rname}/\${pf}\"
-  unset pf pu
-}
-"
-
-eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cat \"${cwsw}/configgit/current/config.guess\" > config/config.guess
   cat \"${cwsw}/configgit/current/config.sub\" > config/config.sub
-  #echo '#define lua_strlen lua_rawlen' >> config.h
   sed -i.ORIG '1i\\
 #define lua_strlen lua_rawlen' src/scripting/lua/hooks.c
   env PATH=\"${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH}\" \
