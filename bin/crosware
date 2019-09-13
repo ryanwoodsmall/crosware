@@ -1079,6 +1079,10 @@ function cwshowarch() {
 #     t=${l[0]}
 #     echo ${l} | tr ' ' '\n' | tail -$((${#l[@]}-1)) | grep -q "^${t}$" && fail
 #   *or* tail -$(expr ${#l[@]} - 1)
+#   XXX - literally doing car/cdr here
+#   XXX - better to count?
+#     i.e., a list with one element selected out of it should be exactly one less than start
+#   XXX - this needs to be way better.
 #
 function cwcheckuniq() {
   if [[ x${@} =~ ^x$ ]] ; then
