@@ -409,6 +409,36 @@ time_func ls -l -A /
   - apply after extract cwconfigure_${rname}, flesh out cwpatch_${rname}
   - split patch lines on ',' - if ${#s[@]} == 3, last element should be patch level, default to 0
   - readline is good new dev, bash for existing
+- cwisancestor / cwisdescendant
+  - cwisancestor a b
+    - if b requires a
+      - return true
+    - return false
+    - cwrequires b a
+  - cwisdescendant a b
+    - if a requires b
+      - return true
+    - return false
+    - cwrequires a b
+- cwrequires a b
+  - receives two package names
+  - if package a requires package b
+    - return true
+  - return false
+- cwupgradereqs / cwupgradedeps
+  - really need graph
+  - at LEAST a full req expansion (probably recursive descent)
+  - requirement ordering matters here too
+  - ugh, hard, particulary in this tarpit i adore
+  - for every upgradable package
+    - for any downstream ancestors
+      - check if upgradable, chase if not
+      - recurse reqs, upgrading if necessary
+    - for upstream descendants
+      - check its downstreams, upgrading recursively
+      - if there are upstreams
+    - too easy to loop forever here, ping ponging between up-/downstream
+    - without ordering, can rebuild multiple recipes way too many times
 
 <!--
 # vim: ft=markdown
