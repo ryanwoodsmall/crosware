@@ -563,6 +563,7 @@ make \
   - mawk (https://invisible-island.net/mawk/mawk.html)
   - misc_tools (ftp://ftp.invisible-island.net/pub/misc_tools/)
 - java stuff
+  - alpine openjdk? 11? 8?
   - ant (included in sdkman)
   - antlr
   - beanshell
@@ -805,6 +806,7 @@ make \
 - picocom (https://github.com/npat-efault/picocom)
 - pigz
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
+- planck (clojurescript repl, https://github.com/planck-repl/planck)
 - prngd (http://prngd.sourceforge.net/ - for lxc? dropbear? old? hmm?)
 - procps-ng (https://gitlab.com/procps-ng/procps)
   - needs autoconf, automake, libtool, ncurses, pkgconfig, slibtool
