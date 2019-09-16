@@ -8,10 +8,10 @@ htudir="/usr/local/bin"
 htubaseurl="https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc"
 htufiles=( hterm-notify.sh hterm-show-file.sh osc52.sh )
 
-echo "${UID}" | grep -q '^0$' || {
-  echo "please run this as root"
-  exit 1
-}
+#echo "${UID}" | grep -q '^0$' || {
+#  echo "please run this as root"
+#  exit 1
+#}
 
 test -e "${htudir}" || {
   mkdir -p "${htudir}" || {
@@ -27,3 +27,5 @@ for htufile in ${htufiles[@]} ; do
   curl -kLs "${htuurl}" | base64 -d > "${htuout}"
   chmod 755 "${htuout}"
 done
+
+ln -sf osc52.sh ${htudir}/clip
