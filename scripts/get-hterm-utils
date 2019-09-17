@@ -28,4 +28,4 @@ for htufile in ${htufiles[@]} ; do
   chmod 755 "${htuout}"
 done
 
-ln -sf osc52.sh ${htudir}/clip
+#ln -sf osc52.sh ${htudir}/clip
