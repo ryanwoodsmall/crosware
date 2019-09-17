@@ -318,6 +318,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - works for aarch64/x86_64
   - does _not_ work on arm/i686 (gc)
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
+- htermutils (https://chromium.googlesource.com/apps/libapps/+/HEAD/hterm/etc/)
 - htop
 - iftop
 - inetutils
