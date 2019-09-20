@@ -876,6 +876,10 @@ make \
   - es (https://github.com/wryun/es-shell)
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
+  - ksh93
+    - loksh/mksh/oksh all provide ksh/ksh88, with mksh being the default ksh88
+    - at&t ast has actively developed ksh93, painful to compile (meson, ninja, ?)
+    - look at cde ksh?
   - rc (muennich's rakitzis fork https://github.com/muennich/rc)
   - scsh (https://scsh.net)
   - tcsh (and/or standard csh)
