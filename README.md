@@ -327,6 +327,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - iperf
   - iperf3
 - isl
+- itsatty (https://github.com/ryanwoodsmall/itsatty)
 - j7zip
 - jo (https://github.com/jpmens/jo)
 - jq (https://stedolan.github.io/jq/ - with oniguruma regex)
