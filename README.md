@@ -819,6 +819,15 @@ make \
   - ```make install-strip LIBTOOL="${cwsw}/slibtool/current/bin/slibtool-static -all-static"```
     - slibtool require should make this automatic
 - psmisc
+- pty tools
+  - updated djb pty/ptyget/ptybandage/ptyrun/...
+  - https://unix.stackexchange.com/questions/249723/how-to-trick-a-command-into-thinking-its-output-is-going-to-a-terminal
+  - http://jdebp.eu./Softwares/djbwares/bernstein-ptyget.html
+  - https://github.com/drudru/pty4 and https://github.com/drudru/ptyget
+  - http://code.dogmap.org./ptyget/
+  - nosh/execline?
+    - http://skarnet.org./software/execline/
+    - http://jdebp.eu./Softwares/nosh/
 - python 3.x
   - as usual, autotools is dumb and requires workaround for stuff that should be set via configure
   - modify **Modules/Setup.local** as in python2 recipe
