@@ -11,7 +11,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.openssl.org/source/${rfile}"
 rsha256="14cb464efe7ac6b54799b34456bd69558a749a4931ecfd9cf9f71d7881cac7bc"
-rreqs="make perl zlib"
+rreqs="make perl zlib cacertificates"
 
 . "${cwrecipe}/common.sh"
 
