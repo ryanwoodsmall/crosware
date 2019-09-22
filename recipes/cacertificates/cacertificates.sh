@@ -26,7 +26,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${cwetc}/ssl/certs\"
   rm -f \"${cwetc}/ssl/cert.pem\"
   rm -f \"${cwetc}/ssl/certs/ca-bundle.crt\"
-  ln -sf \"${ridir}/etc/ssl/cert.pem\" \"${cwetc}/ssl/\"
+  ln -sf \"${rtdir}/current/etc/ssl/cert.pem\" \"${cwetc}/ssl/\"
   ln -sf \"${cwetc}/ssl/cert.pem\" \"${cwetc}/ssl/certs/ca-bundle.crt\"
 }
 "
