@@ -253,7 +253,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - autoconf
 - automake
-- bash (5.x, static; bash4 is also available)
+- bash (5.x, netbsdcurses)
+- bash4 (netbsdcurses)
 - bc (gnu bc, dc)
 - bdb47
 - binutils (bfd, opcodes, libiberty.a; no isl)
@@ -335,10 +336,10 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - jscheme
 - jython
 - kawa (scheme)
-- less
+- less (netbsdcurses)
 - libatomic\_ops (named libatomicops)
 - libbsd
-- libedit (aka editline, https://www.thrysoee.dk/editline/ netbsd, ncurses and netbsdcurses)
+- libedit (https://www.thrysoee.dk/editline/ aka editline, from netbsd - ncurses and netbsdcurses)
 - libevent (no openssl support yet)
 - libffi
 - libgcrypt
@@ -354,7 +355,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - libxml2
 - libxslt
 - links (ncurses)
-- loksh (https://github.com/dimkr/loksh)
+- loksh (https://github.com/dimkr/loksh - netbsdcurses)
 - lua (posix, no readline)
 - lynx (ncurses and slang, ncurses default)
 - lzip
@@ -379,13 +380,13 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
   - should replace opennc, which is, uhhhhhhh missing?
 - nmap
-- oksh (https://github.com/ibara/oksh)
+- oksh (https://github.com/ibara/oksh - netbsdcurses)
 - oniguruma (https://github.com/kkos/oniguruma)
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)
   - based on upstream 1.89
   - site regularly goes offline
   - probably use netcatopenbsd instead
-- openssh
+- openssh (openssl, netbsdcurses libedit)
 - openssl
 - p7zip
 - patch (gnu)
@@ -397,10 +398,10 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - qemacs (https://bellard.org/qemacs/)
 - rc (http://tobold.org/article/rc, https://github.com/rakitzis/rc - needs to be git hash, currently old release)
 - rcs (gnu)
-- readline
+- readline (ncurses and netbsdcurses)
 - reflex (https://invisible-island.net/reflex/reflex.html)
 - rhino
-- rlwrap
+- rlwrap (netbsdcurses)
 - rogue
 - rsync
 - scheme48 (http://s48.org)
@@ -408,7 +409,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - sdkman (http://sdkman.io)
 - sed (gnu gsed, prepended to $PATH, becomes default sed)
 - sisc (scheme)
-- slang
+- slang (ncurses)
 - slibtool (https://github.com/midipix-project/slibtool)
 - socat
 - source-highlight (https://www.gnu.org/software/src-highlite/)
