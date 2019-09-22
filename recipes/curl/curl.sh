@@ -12,7 +12,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
 rsha256="6618234e0235c420a21f4cb4c2dd0badde76e6139668739085a70c4e2fe7a141"
-rreqs="make zlib openssl mbedtls wolfssl libssh2 expat libmetalink"
+rreqs="make zlib openssl mbedtls wolfssl libssh2 expat libmetalink cacertificates"
 
 . "${cwrecipe}/common.sh"
 
