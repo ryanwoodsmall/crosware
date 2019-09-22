@@ -385,6 +385,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - based on upstream 1.89
   - site regularly goes offline
   - probably use netcatopenbsd instead
+- openssh
 - openssl
 - p7zip
 - patch (gnu)
@@ -791,11 +792,6 @@ make \
   - "cannot be used as a static library" - what?
   - needs libffi, libtasn1
   - configure ```--without-libffi --without-libtasn1```
-- openssh
-  - with or without openssl support
-  - still requires openssl headers, and requires less fiddling
-  - ```-pie```/```-fPIE``` to ```-fPIC``` in all Makefiles for static
-  - can use libedit (netbsd, not minix) and netbsdcurses
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
 - pax
