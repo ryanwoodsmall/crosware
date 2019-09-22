@@ -338,6 +338,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - less
 - libatomic\_ops (named libatomicops)
 - libbsd
+- libedit (aka editline, https://www.thrysoee.dk/editline/ netbsd, ncurses)
 - libevent (no openssl support yet)
 - libffi
 - libgcrypt
@@ -648,7 +649,6 @@ make \
   - mostly want the dnet binary
 - libedit
   - editline (https://github.com/troglobit/editline or http://troglobit.com/projects/editline/ minix3, no termcap needed)
-  - editline (https://www.thrysoee.dk/editline/ netbsd, need termcap from a curses - netbsdcurses works)
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (separate userspace? uses meson?)
 - libiconv (https://www.gnu.org/software/libiconv/)
