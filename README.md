@@ -338,7 +338,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - less
 - libatomic\_ops (named libatomicops)
 - libbsd
-- libedit (aka editline, https://www.thrysoee.dk/editline/ netbsd, ncurses)
+- libedit (aka editline, https://www.thrysoee.dk/editline/ netbsd, ncurses and netbsdcurses)
 - libevent (no openssl support yet)
 - libffi
 - libgcrypt

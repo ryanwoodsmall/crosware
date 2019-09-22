@@ -2,7 +2,6 @@
 # XXX - need global terminfo db?
 # XXX - i.e., "make terminfo/terminfo.cdb && cp terminfo/terminfo.cdb ${ridir}/share/"
 # XXX - readline version bundled in install - hacky but ehh
-# XXX - bundle libedit?
 # XXX - bundle slang?
 # XXX - curses pkg-config files don't set -L or -I?
 #
@@ -23,6 +22,15 @@ eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
   cwfetch_readline
+  cwfetch_libedit
+}
+"
+
+eval "
+function cwextract_${rname}() {
+  cwextract \"${rdlfile}\" \"${cwbuild}\"
+  cwextract \"${cwdl}/readline/readline-\$(cwver_readline).tar.gz\" \"${rbdir}\"
+  cwextract \"${cwdl}/libedit/libedit-\$(cwver_libedit).tar.gz\" \"${rbdir}\"
 }
 "
 
@@ -67,6 +75,7 @@ function cwmakeinstall_${rname}() {
   make install-static PREFIX="${ridir}" CPPFLAGS='-I./ -I./libterminfo' LDFLAGS='-static' LN='echo'
   rm -f ${ridir}/lib/pkgconfig/ncurses* ${ridir}/lib/pkgconfig/*w.pc
   cwmakeinstall_${rname}_readline
+  cwmakeinstall_${rname}_libedit
   popd >/dev/null 2>&1
 }
 "
@@ -74,16 +83,36 @@ function cwmakeinstall_${rname}() {
 eval "
 function cwmakeinstall_${rname}_readline() {
   pushd "${rbdir}" >/dev/null 2>&1
-  cwextract \"${cwdl}/readline/readline-\$(cwver_readline).tar.gz\" \"\${PWD}\"
   cd readline-\$(cwver_readline)/
   env PATH=\"${ridir}/bin:\${PATH}\" ./configure \
     ${cwconfigureprefix} \
     ${cwconfigurelibopts} \
     --with-curses \
     ${cwconfigurefpicopts} \
-    CPPFLAGS=\"-I${ridir}/include\" \
-    LDFLAGS=\"-L${ridir}/lib -static\" \
-    LIBS=\"-lcurses -lterminfo\"
+      CPPFLAGS=\"-I${ridir}/include\" \
+      LDFLAGS=\"-L${ridir}/lib -static\" \
+      LIBS=\"-lcurses -lterminfo\" \
+      PKG_CONFIG_LIBDIR= \
+      PKG_CONFIG_PATH=
+  make -j${cwmakejobs}
+  make install
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}_libedit() {
+  pushd "${rbdir}" >/dev/null 2>&1
+  cd libedit-\$(cwver_libedit)/
+  env PATH=\"${ridir}/bin:\${PATH}\" ./configure \
+    ${cwconfigureprefix} \
+    ${cwconfigurelibopts} \
+    ${cwconfigurefpicopts} \
+      CPPFLAGS=\"-I${ridir}/include\" \
+      LDFLAGS=\"-L${ridir}/lib -static\" \
+      LIBS=\"-lcurses -lterminfo\" \
+      PKG_CONFIG_LIBDIR= \
+      PKG_CONFIG_PATH=
   make -j${cwmakejobs}
   make install
   popd >/dev/null 2>&1
