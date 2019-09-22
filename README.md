@@ -263,6 +263,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - busybox (static)
 - byacc
 - bzip2
+- cacertificates (from alpine)
 - ccache
 - cflow
 - check
