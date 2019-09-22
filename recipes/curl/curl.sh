@@ -16,6 +16,20 @@ rreqs="make zlib openssl mbedtls wolfssl libssh2 expat libmetalink"
 
 . "${cwrecipe}/common.sh"
 
+# ugly - multiple configs need this, can't rely on base openssl cwconfigure_curl running
+eval "
+function cwextract_${rname}() {
+  cwextract \"${rdlfile}\" \"${cwbuild}\"
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  #local ossldir=\"\$(${cwsw}/openssl/current/bin/openssl version -d | cut -f2 -d' ' | tr -d '\"')\"
+  local ossldir=\"${cwetc}/ssl\"
+  local cabundle=\"\${ossldir}/cert.pem\"
+  sed -i.ORIG \"s#/etc/ssl/cert#\${ossldir}/cert#g\" configure
+  sed -i \"/ \\/.*\\/ca-.*\\.crt/s# /.*/ca-.*crt# \${cabundle}#g\" configure
+  popd >/dev/null 2>&1
+}
+"
+
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
@@ -27,9 +41,13 @@ function cwconfigure_${rname}() {
     --with-zlib \
     --without-mbedtls \
     --without-cyassl \
+    --without-wolfssl \
     --without-gnutls \
     --with-ssl \
     --with-default-ssl-backend=openssl \
+    --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
+    --with-ca-path=\"${cwetc}/ssl/certs\" \
+    --with-ca-fallback \
       LIBS='-lexpat'
   popd >/dev/null 2>&1
 }
@@ -66,9 +84,12 @@ function cwmakeinstall_${rname}_mbedtls() {
     --without-libssh2 \
     --without-ssl \
     --without-cyassl \
+    --without-wolfssl \
     --without-gnutls \
     --with-mbedtls \
-    --with-default-ssl-backend=mbedtls
+    --with-default-ssl-backend=mbedtls \
+    --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
+    --with-ca-path=\"${cwetc}/ssl/certs\"
   make -j${cwmakejobs}
   mkdir -p ${ridir}/bin
   install -m 0755 src/curl ${ridir}/bin/curl-mbedtls
@@ -90,7 +111,8 @@ function cwmakeinstall_${rname}_wolfssl() {
     --without-mbedtls \
     --without-gnutls \
     --with-cyassl \
-    --with-default-ssl-backend=cyassl
+    --with-default-ssl-backend=cyassl \
+    --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"
   make -j${cwmakejobs}
   mkdir -p ${ridir}/bin
   install -m 0755 src/curl ${ridir}/bin/curl-wolfssl
