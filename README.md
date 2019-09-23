@@ -713,6 +713,7 @@ make \
   - stick with busybox man+groff+less or use man-db or old standard man?
   - MANPAGER and MANPATH settings
   - roffit (https://daniel.haxx.se/projects/roffit/)
+- matrixssl (https://github.com/matrixssl/matrixssl)
 - mcpp (http://mcpp.sourceforge.net/)
 - mercurial / hg
   - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```

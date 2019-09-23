@@ -439,6 +439,9 @@ time_func ls -l -A /
       - if there are upstreams
     - too easy to loop forever here, ping ponging between up-/downstream
     - without ordering, can rebuild multiple recipes way too many times
+- busybox ssl_helper after 1.13.1 is stable
+  - wolfssl: https://git.busybox.net/busybox/tree/networking/ssl_helper-wolfssl/README?h=1_31_stable
+  - matrixssl: https://git.busybox.net/busybox/tree/networking/ssl_helper/README?h=1_31_stable
 
 <!--
 # vim: ft=markdown
