@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="http://links.twibright.com/download/${rfile}"
 rsha256="bb28a72cb72ca275742ef79e92ba468f0707863366bff2704b0ff6ce52790405"
-rreqs="make libevent zlib openssl xz bzip2 lzlib"
+rreqs="make libevent zlib openssl xz bzip2 lzlib cacertificates"
 
 . "${cwrecipe}/common.sh"
 
