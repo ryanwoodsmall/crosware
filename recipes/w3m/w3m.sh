@@ -14,7 +14,7 @@ rdir="${rname}-${rver}"
 rfile="v${rver//-/+}.tar.gz"
 rurl="https://github.com/tats/${rname}/archive/${rfile}"
 rsha256="0467bb5429b75749205a3f57b9f5e8abba49929272aeab6fce94ff17953f0784"
-rreqs="make libatomicops gc gettexttiny ncurses openssl perl pkgconfig zlib"
+rreqs="make libatomicops gc gettexttiny ncurses openssl perl pkgconfig zlib cacertificates"
 
 . "${cwrecipe}/common.sh"
 
