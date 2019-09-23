@@ -1,3 +1,6 @@
+#
+# XXX - strip with install -s? hardly seems worth it
+#
 rname="tini"
 rver="0.18.0"
 rdir="${rname}-${rver}"
