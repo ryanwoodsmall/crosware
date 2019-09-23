@@ -12,7 +12,7 @@ rdir="${rname}-${rver:0:7}"
 rfile="${rver}.tar.gz"
 rurl="https://repo.or.cz/elinks.git/snapshot/${rfile}"
 rsha256="e8b7cbe09b6df5ad4c1cab3395e117a46239c74cb32ef6fce68513a57e00f889"
-rreqs="make perl openssl zlib bzip2 expat xz autoconf automake libtool m4 gettexttiny pkgconfig lua configgit"
+rreqs="make perl openssl zlib bzip2 expat xz autoconf automake libtool m4 gettexttiny pkgconfig lua configgit cacertificates"
 
 . "${cwrecipe}/common.sh"
 
