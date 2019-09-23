@@ -312,10 +312,10 @@ function cwinstall_zulu() {
 #
 
 # XXX - make sure java tmpdir is set
-jgitsh_ver="5.4.2.201908231537-r"
+jgitsh_ver="5.5.0.201909110433-r"
 jgitsh_file="org.eclipse.jgit.pgm-${jgitsh_ver}.sh"
 jgitsh_url="https://repo.eclipse.org/content/groups/releases/org/eclipse/jgit/org.eclipse.jgit.pgm/${jgitsh_ver}/${jgitsh_file}"
-jgitsh_sha256sum="b3fe5614d8d1d5a57b718bc8a631bb5efe660ddc161d2b424533cf761428a2d7"
+jgitsh_sha256sum="309171d2bb0b6a530e5705c37240dbc075584493964a925185cba7de545bce19"
 jgitsh_symlink="jgit.sh"
 jgitsh_pkgname="jgitsh"
 jgitsh_inst_dir="${cwsw}/${jgitsh_pkgname}"
@@ -328,6 +328,7 @@ jgitsh_envs=( "PATH" )
 # jgitsh install function
 function cwinstall_jgitsh() {
   cwfetchcheck "${jgitsh_url}" "${cwtmptmp}/${jgitsh_file}" "${jgitsh_sha256sum}"
+  chmod 775 "${cwtmptmp}/${jgitsh_file}"
   cwmkdir "${jgitsh_inst_dir}/${jgitsh_ver}/bin"
   rm -f "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_file}"
   install -m 0755 "${cwtmptmp}/${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/"
