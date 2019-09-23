@@ -753,6 +753,7 @@ function cwupdate() {
     cwsourceprofile
     cwscriptecho "attempting to fetch/merge in ${cwtop}"
     pushd "${cwtop}" >/dev/null 2>&1 || cwfailexit "could not pushd into ${cwtop}"
+    cwscriptecho "${FUNCNAME[0]} using client ${CW_GIT_CMD}: $(${CW_GIT_CMD} version 2>/dev/null ; true)"
     ${CW_GIT_CMD} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
     ${CW_GIT_CMD} merge "${cworigin}/${cwbranch}" || { popd ; cwfailexit "could not merge ${cworigin}/${cwbranch} in ${cwtop}" ; }
     popd >/dev/null 2>&1
