@@ -8,7 +8,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="69607ce8216c2d1126b7a872db594b3f21e511e660e07ca1f81be96650932abb"
-rreqs="make lunzip openssl zlib pcre2 gettexttiny pkgconfig sed expat libmetalink"
+rreqs="make lunzip openssl zlib pcre2 gettexttiny pkgconfig sed expat libmetalink cacertificates"
 
 . "${cwrecipe}/common.sh"
 
