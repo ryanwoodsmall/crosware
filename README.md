@@ -507,6 +507,14 @@ wc -l /tmp/astbuild.out
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - chrpath
 - cloc (https://github.com/AlDanial/cloc - perl)
+- c/c++ compiler stuff
+  - 8cc (https://github.com/rui314/8cc)
+  - andrew chambers's c (https://github.com/andrewchambers/c)
+  - cproc (https://git.sr.ht/~mcf/cproc and https://github.com/michaelforney/cproc)
+  - lacc (https://github.com/larmel/lacc)
+  - lcc (https://github.com/drh/lcc)
+  - qbe (https://c9x.me/compile/)
+  - scc (http://www.simple-cc.org/)
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
 - cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
@@ -747,6 +755,7 @@ make \
       ```
   - binary will be **ports/unix/micropython**
 - minit (https://github.com/chazomaticus/minit - small init with startup/shutdown scripts)
+- miniyacc (https://c9x.me/yacc/)
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
 - mk (go, https://github.com/dcjones/mk)
 - mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
