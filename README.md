@@ -384,6 +384,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - libparserutils (https://www.netsurf-browser.org/projects/libparserutils/)
   - libwapcaplet (https://www.netsurf-browser.org/projects/libwapcaplet/)
   - libhubbub (https://www.netsurf-browser.org/projects/hubbub/)
+  - libdom (https://www.netsurf-browser.org/projects/libdom/)
 - nmap
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
 - oniguruma (https://github.com/kkos/oniguruma)
@@ -780,18 +781,10 @@ make \
 - nethack
 - netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
 - netsurf stuff
-  - need a build-system install _per package_
-  - make, perl, pkg-config, expat, byacc, flex/reflex, ...
-  - `export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${PREFIX}/lib/pkgconfig`
-  - PREFIX, HOST, VARIANT, NSBUILD,
   - order
-    - libdom
-      - `make install CFLAGS="${CFLAGS} ${CPPFLAGS} $(pkg-config libparserutils libwapcaplet --cflags) -I./include -I./src"`
     - libcss
   - netsurf w/framebuffer nsfb? sdl? vnc doesn't seem to work
   - libcss (https://www.netsurf-browser.org/projects/libcss/)
-  - libdom (https://www.netsurf-browser.org/projects/libdom/)
-    - can use libxml2, libhubbub
   - libnsfb (https://www.netsurf-browser.org/projects/libnsfb/)
 - nettle
   - configure libdir=.../lib since lib64 may be set by default
