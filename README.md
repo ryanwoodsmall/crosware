@@ -382,6 +382,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - should replace opennc, which is, uhhhhhhh missing?
 - netsurf libraries
   - libparserutils (https://www.netsurf-browser.org/projects/libparserutils/)
+  - libwapcaplet (https://www.netsurf-browser.org/projects/libwapcaplet/)
 - nmap
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
 - oniguruma (https://github.com/kkos/oniguruma)
@@ -783,7 +784,6 @@ make \
   - `export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${PREFIX}/lib/pkgconfig`
   - PREFIX, HOST, VARIANT, NSBUILD,
   - order
-    - libwapcaplet
     - libhubbub
     - libdom
       - `make install CFLAGS="${CFLAGS} ${CPPFLAGS} $(pkg-config libparserutils libwapcaplet --cflags) -I./include -I./src"`
@@ -793,8 +793,6 @@ make \
   - libdom (https://www.netsurf-browser.org/projects/libdom/ and https://source.netsurf-browser.org/libdom.git/)
     - can use libxml2, libhubbub
   - libnsfb (https://www.netsurf-browser.org/projects/libnsfb/)
-  - libparserutils (https://www.netsurf-browser.org/projects/libparserutils/)
-  - libwapcaplet (https://www.netsurf-browser.org/projects/libwapcaplet/)
 - nettle
   - configure libdir=.../lib since lib64 may be set by default
 - nghttp2 (https://github.com/nghttp2/nghttp2)
