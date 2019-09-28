@@ -1,0 +1,10 @@
+rname="libcss"
+rver="0.9.0"
+rdir="${rname}-${rver}"
+rfile="${rdir}-src.tar.gz"
+rurl="http://download.netsurf-browser.org/libs/releases/${rfile}"
+rsha256="b98fba7664bd5307cb39a6101098da76f635a97e157b87f45e9ce42ada9089ef"
+rreqs="make pkgconfig perl bison flex byacc reflex expat libparserutils libwapcaplet libhubbub libdom"
+
+. "${cwrecipe}/common.sh"
+. "${cwrecipe}/netsurf/netsurf.sh.common"
