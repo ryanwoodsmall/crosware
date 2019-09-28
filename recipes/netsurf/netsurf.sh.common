@@ -37,10 +37,28 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
+  local nscflags
+  local nsldflags
   pushd \"${rbdir}\" >/dev/null 2>&1
   rm -rf \"${nsad}\"
-  make clean install PREFIX=\"${ridir}\" HOST=\"\$(gcc -dumpmachine)\" VARIANT=\"release\" NSBUILD=\"${ridir}/share/netsurf-buildsystem/makefiles\" TARGET=\"framebuffer\"
+  local l
+  for l in libparserutils libwapcaplet libhubbub libdom ; do
+    nscflags+=\" \$(pkg-config \${l} --cflags 2>/dev/null || true)\"
+    nsldflags+=\" \$(pkg-config \${l} --libs 2>/dev/null || true)\"
+  done
+  unset l
+  echo \"\${nscflags}\"
+  echo \"\${nsldflags}\"
+  make clean install \
+    PREFIX=\"${ridir}\" \
+    HOST=\"\$(gcc -dumpmachine)\" \
+    VARIANT=\"release\" \
+    NSBUILD=\"${ridir}/share/netsurf-buildsystem/makefiles\" \
+    TARGET=\"framebuffer\" \
+    CFLAGS=\"\${CFLAGS} \${CPPFLAGS} \${nscflags} -I./include -I./src\" \
+    LDFLAGS=\"\${LDFLAGS} \${nsldflags}\"
   popd >/dev/null 2>&1
+  unset nscflags nsldflags
 }
 "
 

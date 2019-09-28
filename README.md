@@ -383,6 +383,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - netsurf libraries
   - libparserutils (https://www.netsurf-browser.org/projects/libparserutils/)
   - libwapcaplet (https://www.netsurf-browser.org/projects/libwapcaplet/)
+  - libhubbub (https://www.netsurf-browser.org/projects/hubbub/)
 - nmap
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
 - oniguruma (https://github.com/kkos/oniguruma)
@@ -784,13 +785,12 @@ make \
   - `export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${PREFIX}/lib/pkgconfig`
   - PREFIX, HOST, VARIANT, NSBUILD,
   - order
-    - libhubbub
     - libdom
       - `make install CFLAGS="${CFLAGS} ${CPPFLAGS} $(pkg-config libparserutils libwapcaplet --cflags) -I./include -I./src"`
+    - libcss
   - netsurf w/framebuffer nsfb? sdl? vnc doesn't seem to work
-  - hubbub (https://www.netsurf-browser.org/projects/hubbub/ and https://source.netsurf-browser.org/libhubbub.git/)
   - libcss (https://www.netsurf-browser.org/projects/libcss/)
-  - libdom (https://www.netsurf-browser.org/projects/libdom/ and https://source.netsurf-browser.org/libdom.git/)
+  - libdom (https://www.netsurf-browser.org/projects/libdom/)
     - can use libxml2, libhubbub
   - libnsfb (https://www.netsurf-browser.org/projects/libnsfb/)
 - nettle
