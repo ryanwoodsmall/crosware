@@ -1,3 +1,8 @@
+#
+# common netsurf project stuff, kind of ugly.
+# move from -all .tar.gz to buildsystem-
+# i.e., http://download.netsurf-browser.org/libs/releases/buildsystem-1.8.tar.gz
+#
 
 nsau="http://download.netsurf-browser.org/netsurf/releases/source-full/netsurf-all-3.9.tar.gz"
 nsas="11e384eaf47e65c186da5001f1055a02f2d72ff17b50f403b8392546a2cf65ff"
