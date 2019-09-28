@@ -46,11 +46,11 @@ function cwmakeinstall_${rname}() {
     nscflags+=\" \$(pkg-config \${l} --cflags 2>/dev/null || true)\"
     nsldflags+=\" \$(pkg-config \${l} --libs 2>/dev/null || true)\"
   done
-  unset l
-  mkdir -p \"build-\$(gcc -dumpmachine)-\$(gcc -dumpmachine)-release-lib-static\"
+  local m=\"\$(\${CC} -dumpmachine)\"
+  mkdir -p \"build-\${m}-\${m}-release-lib-static\"
   make install \
     PREFIX=\"${ridir}\" \
-    HOST=\"\$(gcc -dumpmachine)\" \
+    HOST=\"\${m}\" \
     VARIANT=\"release\" \
     NSBUILD=\"${ridir}/share/netsurf-buildsystem/makefiles\" \
     TARGET=\"framebuffer\" \
@@ -58,7 +58,7 @@ function cwmakeinstall_${rname}() {
     LDFLAGS=\"\${LDFLAGS} \${nsldflags}\" #\
     #Q=''
   popd >/dev/null 2>&1
-  unset nscflags nsldflags
+  unset nscflags nsldflags l m
 }
 "
 
