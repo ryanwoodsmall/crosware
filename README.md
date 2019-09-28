@@ -776,6 +776,17 @@ make \
 - nethack
 - netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
 - netsurf stuff
+  - need a build-system install _per package_
+  - make, perl, pkg-config, expat, byacc, flex/reflex, ...
+  - `export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${PREFIX}/lib/pkgconfig`
+  - PREFIX, HOST, VARIANT, NSBUILD,
+  - order
+    - buildsystem
+    - libparserutils
+    - libwapcaplet
+    - libhubbub
+    - libdom
+      - `make install CFLAGS="${CFLAGS} ${CPPFLAGS} $(pkg-config libparserutils libwapcaplet --cflags) -I./include -I./src"`
   - netsurf w/framebuffer nsfb? sdl? vnc doesn't seem to work
   - hubbub (https://www.netsurf-browser.org/projects/hubbub/ and https://source.netsurf-browser.org/libhubbub.git/)
   - libcss (https://www.netsurf-browser.org/projects/libcss/)
