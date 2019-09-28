@@ -370,6 +370,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - zutils
 - m4
 - make
+- mawk (https://invisible-island.net/mawk/mawk.html)
 - mbedtls (polarssl)
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
 - mksh
@@ -580,7 +581,6 @@ make \
   - cindent (https://invisible-island.net/cindent/cindent.html)
   - cproto (https://invisible-island.net/cproto/cproto.html)
   - dialog (https://invisible-island.net/dialog/dialog.html)
-  - mawk (https://invisible-island.net/mawk/mawk.html)
   - misc_tools (ftp://ftp.invisible-island.net/pub/misc_tools/)
 - java stuff
   - alpine openjdk? 11? 8?
