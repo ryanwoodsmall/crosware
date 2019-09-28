@@ -9,6 +9,15 @@ rreqs="make"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+    CFLAGS=\"\${CFLAGS} \${LDFLAGS}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   make install
