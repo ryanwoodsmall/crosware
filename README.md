@@ -532,6 +532,8 @@ wc -l /tmp/astbuild.out
 - dsvpn (https://github.com/jedisct1/dsvpn)
 - dumb-init (https://github.com/Yelp/dumb-init)
 - duplicity (http://duplicity.nongnu.org/)
+- edbrowse (http://edbrowse.org/ and https://github.com/CMB/edbrowse)
+  - cmake, curl, pcre, tidy (cmake), duktape
 - ellcc (embedded clang build, http://ellcc.org/)
 - emacs
   - 26.1 can be compiled without gnutls
