@@ -293,7 +293,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - does _not_ work on arm (gc? gmp?)
 - ed (gnu ed)
 - elinks (http://elinks.or.cz/ from git: https://repo.or.cz/elinks.git)
-  - investiage adding tre, libdom, spidermonkey javascript/ecmascript/js, ...
+  - investiage adding tre, spidermonkey javascript/ecmascript/js, ...
 - expat
 - file
 - findutils

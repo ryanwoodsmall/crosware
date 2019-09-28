@@ -2,7 +2,6 @@
 # XXX - this is a mess
 # XXX - features...
 # XXX   tre
-# XXX   libdom (hubbub, libxml2)
 # XXX   spidermonkey
 #
 
@@ -12,7 +11,7 @@ rdir="${rname}-${rver:0:7}"
 rfile="${rver}.tar.gz"
 rurl="https://repo.or.cz/elinks.git/snapshot/${rfile}"
 rsha256="e8b7cbe09b6df5ad4c1cab3395e117a46239c74cb32ef6fce68513a57e00f889"
-rreqs="make perl openssl zlib bzip2 expat xz autoconf automake libtool m4 gettexttiny pkgconfig lua configgit cacertificates"
+rreqs="make perl openssl zlib bzip2 expat xz autoconf automake libtool m4 gettexttiny pkgconfig lua configgit cacertificates libdom"
 
 . "${cwrecipe}/common.sh"
 
@@ -41,7 +40,10 @@ function cwconfigure_${rname}() {
     --with-lzma \
     --disable-nls \
     --with-lua=\"${cwsw}/lua/current\" \
-      CFLAGS=\"\${CFLAGS} -Wno-pointer-sign\"
+    --with-libdom \
+      CFLAGS=\"\${CFLAGS} -Wno-pointer-sign\" \
+      CPPFLAGS=\"\${CPPFLAGS} \$(pkg-config --cflags libdom libhubbub libwapcaplet)\" \
+      LIBS=\"\$(pkg-config --libs libdom libhubbub libwapcaplet)\"
   grep -ril 'sys/signal\\.h' . \
   | egrep -i '\\.(c|h)$' \
   | xargs sed -i.ORIG 's#sys/signal\\.h#signal.h#g'
