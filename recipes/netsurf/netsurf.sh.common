@@ -1,0 +1,57 @@
+
+nsau="http://download.netsurf-browser.org/netsurf/releases/source-full/netsurf-all-3.9.tar.gz"
+nsas="11e384eaf47e65c186da5001f1055a02f2d72ff17b50f403b8392546a2cf65ff"
+nsaf="${nsau##*/}"
+nsad="${nsaf%%.tar.gz}"
+nsadl="${cwdl}/netsurf/${nsaf}"
+
+eval "
+function cwfetch_${rname}() {
+  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
+  cwfetchcheck \"${nsau}\" \"${nsadl}\" \"${nsas}\"
+}
+"
+
+eval "
+function cwextract_${rname}() {
+  cwextract \"${rdlfile}\" \"${cwbuild}\"
+  cwextract \"${nsadl}\" \"${rbdir}\"
+}
+"
+
+# XXX - oof
+eval "
+function cwconfigure_${rname}() {
+  rm -rf \"${ridir}\"
+  pushd \"${rbdir}/${nsad}/buildsystem\" >/dev/null 2>&1
+  make install PREFIX=\"${ridir}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  true
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  rm -rf \"${nsad}\"
+  make clean install PREFIX=\"${ridir}\" HOST=\"\$(gcc -dumpmachine)\" VARIANT=\"release\" NSBUILD=\"${ridir}/share/netsurf-buildsystem/makefiles\" TARGET=\"framebuffer\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
+  echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"}
+  echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
+}
+"
+
+unset nsau nsas nsaf nsad nsadl
+
+# vim: ft=sh:

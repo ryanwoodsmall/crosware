@@ -380,6 +380,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
   - should replace opennc, which is, uhhhhhhh missing?
+- netsurf libraries
+  - libparserutils (https://www.netsurf-browser.org/projects/libparserutils/)
 - nmap
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
 - oniguruma (https://github.com/kkos/oniguruma)
@@ -781,8 +783,6 @@ make \
   - `export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${PREFIX}/lib/pkgconfig`
   - PREFIX, HOST, VARIANT, NSBUILD,
   - order
-    - buildsystem
-    - libparserutils
     - libwapcaplet
     - libhubbub
     - libdom
