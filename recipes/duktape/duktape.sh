@@ -28,7 +28,8 @@ function cwmake_${rname}() {
   ar rcs lib${rname}d.a src/${rname}d.o
   \${CC} -I./src examples/cmdline/duk_cmdline.c -o duk -L. -l${rname} -static
   \${CC} -I./src examples/cmdline/duk_cmdline.c -g -DDUK_CMDLINE_FANCY -o duk-fancy -L. -l${rname}d -I\"${cwsw}/linenoise/current/include\" -L\"${cwsw}/linenoise/current/lib\" -llinenoise -static
-  strip --strip-all duk
+  \${CC} -I./src examples/eval/eval.c -o duk-eval -L. -l${rname} -static
+  strip --strip-all duk{,-eval}
   popd >/dev/null 2>&1
 }
 "
@@ -43,7 +44,7 @@ function cwmakeinstall_${rname}() {
   unset d
   install -m 644 lib${rname}{,d}.a \"${ridir}/lib/\"
   install -m 644 src/${rname}.h src/duk_config.h \"${ridir}/include/\"
-  install -m 755 duk{,-fancy} \"${ridir}/bin/\"
+  install -m 755 duk{,-{eval,fancy}} \"${ridir}/bin/\"
   echo '#!/usr/bin/env bash' > \"${ridir}/bin/${rname}\"
   echo 'rlwrap \"${rtdir}/current/bin/duk\" \"\${@}\"' >> \"${ridir}/bin/${rname}\"
   chmod 755 \"${ridir}/bin/${rname}\"
