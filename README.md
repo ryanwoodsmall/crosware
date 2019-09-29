@@ -372,6 +372,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - make
 - mawk (https://invisible-island.net/mawk/mawk.html)
 - mbedtls (polarssl)
+- meson (http://mesonbuild.com/)
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
 - mksh
 - mpc
@@ -746,7 +747,6 @@ make \
   - config/build/install with: ```env PATH=${cwsw}/python2/current/bin:${PATH} make <all|install> PREFIX=${ridir} CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS//-static/}" CFLAGS='' CPPFLAGS=''```
 - mes (https://www.gnu.org/software/mes/) and m2 stuff (links above)
 - mesalink (https://mesalink.io/ and https://github.com/mesalock-linux/mesalink)
-- meson (http://mesonbuild.com/ - python 3 and ninja)
 - micropython (https://github.com/micropython/micropython)
   - needs python, git, libffi, pkgconfig, make, mbedtls
   - clone repo (single tag, **--depth 1**, **--single-branch**, etc.); i.e., for 1.10:
