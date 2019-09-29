@@ -628,10 +628,12 @@ make \
   - ...
 - javascript engines
   - colony-compiler (unmaintained - https://github.com/tessel/colony-compiler)
+  - dukluv (https://github.com/creationix/dukluv - libuv+duktape)
   - espruino (https://github.com/espruino/Espruino)
   - iv (https://github.com/Constellation/iv)
   - jerryscript (https://github.com/jerryscript-project/jerryscript and http://jerryscript.net/)
   - jsi (jsish - https://jsish.org/)
+  - mininode (https://github.com/mininode/mininode - embedded node.js compat on duktape, cool not sure how mature)
   - mjs (formerly v7 - https://github.com/cesanta/mjs and https://github.com/cesanta/v7/)
   - mujs (http://mujs.com/ and https://github.com/ccxvii/mujs)
   - quad-wheel (https://code.google.com/archive/p/quad-wheel/)
