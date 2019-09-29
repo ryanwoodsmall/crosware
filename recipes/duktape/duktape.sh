@@ -44,8 +44,9 @@ function cwmake_${rname}() {
     -L. -l${rname} -l${rname}_console -l${rname}_print_alert -l${rname}_module_duktape -l${rname}_logging \
     -I\"${cwsw}/linenoise/current/include\" -L\"${cwsw}/linenoise/current/lib\" -llinenoise \
     -static
+  \${CC} -I./src examples/cmdline/duk_cmdline.c -o duk-min -L. -l${rname} -static
   \${CC} -I./src examples/eval/eval.c -o duk-eval -L. -l${rname} -static
-  strip --strip-all duk{,-eval}
+  strip --strip-all duk{,-{eval,min}}
   popd >/dev/null 2>&1
 }
 "
@@ -54,7 +55,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   local d
-  for d in bin include lib ; do
+  for d in bin include lib polyfills wow ; do
     cwmkdir \"${ridir}/\${d}\"
   done
   unset d
@@ -64,12 +65,16 @@ function cwmakeinstall_${rname}() {
   install -m 644 extras/console/duk_console.h \"${ridir}/include/\"
   install -m 644 extras/print-alert/duk_print_alert.h \"${ridir}/include/\"
   install -m 644 extras/module-duktape/duk_module_duktape.h \"${ridir}/include/\"
-  install -m 755 duk{,-eval} \"${ridir}/bin/\"
+  install -m 644 extras/logging/duk_logging.h \"${ridir}/include/\"
+  install -m 644 polyfills/*.js \"${ridir}/polyfills/\"
+  install -m 644 mandel.js \"${ridir}/wow/\"
+  install -m 755 duk{,-{eval,min}} \"${ridir}/bin/\"
   ln -sf \"${rtdir}/current/bin/duk\" \"${ridir}/bin/${rname}\"
   #echo '#!/usr/bin/env bash' > \"${ridir}/bin/${rname}\"
   #echo 'rlwrap \"${rtdir}/current/bin/duk\" \"\${@}\"' >> \"${ridir}/bin/${rname}\"
   #chmod 755 \"${ridir}/bin/${rname}\"
   popd >/dev/null 2>&1
+  \"${ridir}/bin/duk\" \"${ridir}/wow/mandel.js\"
 }
 "
 
