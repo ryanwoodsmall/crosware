@@ -25,10 +25,12 @@ function cwmake_${rname}() {
   \${CC} -fPIC -Os -c -o extras/console/duk_console.{o,c} -I./src
   \${CC} -fPIC -Os -c -o extras/print-alert/duk_print_alert.{o,c} -I./src
   \${CC} -fPIC -Os -c -o extras/module-duktape/duk_module_duktape.{o,c} -I./src
+  \${CC} -fPIC -Os -c -o extras/logging/duk_logging.{o,c} -I./src
   ar rcs lib${rname}.a src/${rname}.o
-  ar rcs lib${rname}_console.a src/${rname}.o extras/console/duk_console.o
-  ar rcs lib${rname}_print_alert.a src/${rname}.o extras/print-alert/duk_print_alert.o
-  ar rcs lib${rname}_module_duktape.a src/${rname}.o extras/module-duktape/duk_module_duktape.o
+  ar rcs lib${rname}_console.a extras/console/duk_console.o
+  ar rcs lib${rname}_print_alert.a extras/print-alert/duk_print_alert.o
+  ar rcs lib${rname}_module_duktape.a extras/module-duktape/duk_module_duktape.o
+  ar rcs lib${rname}_logging.a extras/logging/duk_logging.o
   \${CC} examples/cmdline/duk_cmdline.c \
     -o duk \
     -g \
@@ -37,8 +39,9 @@ function cwmake_${rname}() {
     -DDUK_CMDLINE_PRINTALERT_SUPPORT \
     -DDUK_CMDLINE_MODULE_SUPPORT \
     -DDUK_CMDLINE_FILEIO \
-    -I./src -I./extras/console -I./extras/print-alert -I./extras/module-duktape \
-    -L. -l${rname} -l${rname}_console -l${rname}_print_alert -l${rname}_module_duktape \
+    -DDUK_CMDLINE_LOGGING_SUPPORT \
+    -I./src -I./extras/console -I./extras/print-alert -I./extras/module-duktape -I./extras/logging \
+    -L. -l${rname} -l${rname}_console -l${rname}_print_alert -l${rname}_module_duktape -l${rname}_logging \
     -I\"${cwsw}/linenoise/current/include\" -L\"${cwsw}/linenoise/current/lib\" -llinenoise \
     -static
   \${CC} -I./src examples/eval/eval.c -o duk-eval -L. -l${rname} -static
