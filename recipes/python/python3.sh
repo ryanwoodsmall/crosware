@@ -2,6 +2,7 @@
 # XXX - enable readline tab completion/history in pythonrc
 # XXX - conditionally set PYTHONSTARTUP in profile.d file
 # XXX - example at https://gist.github.com/ryanwoodsmall/72b60ec679e4a1680c7eb7639694afd1
+# XXX - full shared: add "--enable-shared" and set LDFLAGS=\"\${LDFLAGS//-static/} -Wl,-rpath,${rtdir}/current/lib\"
 #
 rname="python3"
 rver="3.7.4"
