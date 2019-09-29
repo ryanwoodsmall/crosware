@@ -357,6 +357,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
 - libxml2
 - libxslt
+- linenoise (https://github.com/antirez/linenoise)
 - links (ncurses)
 - loksh (https://github.com/dimkr/loksh - netbsdcurses)
 - lua (posix, no readline)
