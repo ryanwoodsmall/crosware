@@ -15,7 +15,7 @@ rreqs="make bzip2 zlib ncurses readline openssl gdbm sqlite bdb47 expat libffi x
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --with-ensurepip=install \
     --with-dbmliborder=gdbm:bdb \
@@ -67,7 +67,7 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
   echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
   echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
   echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
