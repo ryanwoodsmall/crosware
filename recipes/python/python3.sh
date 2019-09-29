@@ -20,8 +20,7 @@ function cwconfigure_${rname}() {
     --with-ensurepip=install \
     --with-dbmliborder=gdbm:bdb \
     --with-system-{expat,ffi} \
-      LDFLAGS=\"\${LDFLAGS//-static/} -L${cwsw}/netbsdcurses/current/lib\" \
-      CPPFLAGS=\"\${CPPFLAGS} -I${cwsw}/netbsdcurses/current/include\" \
+      LDFLAGS=\"\${LDFLAGS//-static/}\" \
       CFLAGS='-fPIC' \
       CXXFLAGS='-fPIC' \
       LIBS='-lssl -lcrypto -lz -lncurses -lncursesw -lffi -llzma -lexpat'
