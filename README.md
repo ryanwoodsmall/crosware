@@ -402,7 +402,9 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - pcre2
 - perl
 - pkg-config (named pkgconfig)
-- python2 (very basic support)
+- python
+  - python2 (very basic support)
+  - python3 (wip)
 - qemacs (https://bellard.org/qemacs/)
 - rc (http://tobold.org/article/rc, https://github.com/rakitzis/rc - needs to be git hash, currently old release)
 - rcs (gnu)
@@ -845,13 +847,6 @@ make \
   - nosh/execline?
     - http://skarnet.org./software/execline/
     - http://jdebp.eu./Softwares/nosh/
-- python 3.x
-  - as usual, autotools is dumb and requires workaround for stuff that should be set via configure
-  - modify **Modules/Setup.local** as in python2 recipe
-  - _configure_ example ```--with-ensurepip=install --with-dbmliborder=gdbm:bdb --with-system-{expat,ffi} LDFLAGS="${LDFLAGS//-static/}" CPPFLAGS="${CPPFLAGS}" CFLAGS="-fPIC" CXXFLAGS="-fPIC" LIBS='-lssl -lcrypto -lz -lncursesw -lffi -llzma -lexpat'```
-  - _make_ example ```make -j$(($(nproc)*2+1)) CFLAGS=-fPIC CXXFLAGS=-fPIC LDFLAGS="${LDFLAGS//-static/}" LIBS='-lcrypto -lssl -lz -llzma -lncursesw -lffi -llzma -lexpat'```
-  - _make install_ probably needs same opts as make
-  - **uuid.h** (from utillinux) isn't found by configure, great software
 - quickjs (https://bellard.org/quickjs/)
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
