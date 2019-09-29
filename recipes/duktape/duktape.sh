@@ -23,15 +23,21 @@ function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   \${CC} -fPIC -Os -c -o src/${rname}.{o,c}
   \${CC} -fPIC -Os -c -o extras/console/duk_console.{o,c} -I./src
+  \${CC} -fPIC -Os -c -o extras/print-alert/duk_print_alert.{o,c} -I./src
+  \${CC} -fPIC -Os -c -o extras/module-duktape/duk_module_duktape.{o,c} -I./src
   ar rcs lib${rname}.a src/${rname}.o
   ar rcs lib${rname}_console.a src/${rname}.o extras/console/duk_console.o
+  ar rcs lib${rname}_print_alert.a src/${rname}.o extras/print-alert/duk_print_alert.o
+  ar rcs lib${rname}_module_duktape.a src/${rname}.o extras/module-duktape/duk_module_duktape.o
   \${CC} examples/cmdline/duk_cmdline.c \
     -o duk \
-    -I./src -I./extras/console \
     -g \
     -DDUK_CMDLINE_FANCY \
     -DDUK_CMDLINE_CONSOLE_SUPPORT \
-    -L. -l${rname} -l${rname}_console \
+    -DDUK_CMDLINE_PRINTALERT_SUPPORT \
+    -DDUK_CMDLINE_MODULE_SUPPORT \
+    -I./src -I./extras/console -I./extras/print-alert -I./extras/module-duktape \
+    -L. -l${rname} -l${rname}_console -l${rname}_print_alert -l${rname}_module_duktape \
     -I\"${cwsw}/linenoise/current/include\" -L\"${cwsw}/linenoise/current/lib\" -llinenoise \
     -static
   \${CC} -I./src examples/eval/eval.c -o duk-eval -L. -l${rname} -static
@@ -48,8 +54,12 @@ function cwmakeinstall_${rname}() {
     cwmkdir \"${ridir}/\${d}\"
   done
   unset d
-  install -m 644 lib${rname}{,_console}.a \"${ridir}/lib/\"
-  install -m 644 src/${rname}.h src/duk_config.h extras/console/duk_console.h \"${ridir}/include/\"
+  install -m 644 lib${rname}*.a \"${ridir}/lib/\"
+  install -m 644 src/${rname}.h \"${ridir}/include/\"
+  install -m 644 src/duk_config.h \"${ridir}/include/\"
+  install -m 644 extras/console/duk_console.h \"${ridir}/include/\"
+  install -m 644 extras/print-alert/duk_print_alert.h \"${ridir}/include/\"
+  install -m 644 extras/module-duktape/duk_module_duktape.h \"${ridir}/include/\"
   install -m 755 duk{,-eval} \"${ridir}/bin/\"
   ln -sf \"${rtdir}/current/bin/duk\" \"${ridir}/bin/${rname}\"
   #echo '#!/usr/bin/env bash' > \"${ridir}/bin/${rname}\"
