@@ -337,6 +337,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - jscheme
 - jython
 - kawa (scheme)
+- ksh93 (https://github.com/att/ast/ via at&t ast)
 - less (netbsdcurses)
 - libatomic\_ops (named libatomicops)
 - libbsd
@@ -374,7 +375,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - mbedtls (polarssl)
 - meson (http://mesonbuild.com/)
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
-- mksh
+- mksh (http://www.mirbsd.org/mksh.htm)
 - mpc
 - mpfr
 - musl-fts (named muslfts - https://github.com/pullmoll/musl-fts)
@@ -466,9 +467,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - nasm
   - vasm
   - yasm
-- at&t ast (just ksh now?)
-  - **ksh93** _only_
-    - uses meson, so requires python3
+- at&t ast
   - old, full code:
     - does not work at all bulding w/musl
     - old freebsd/debian/etc. stuff useful?
@@ -898,10 +897,6 @@ make \
   - es (https://github.com/wryun/es-shell)
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
-  - ksh93
-    - loksh/mksh/oksh all provide ksh/ksh88, with mksh being the default ksh88
-    - at&t ast has actively developed ksh93, painful to compile (meson, ninja, ?)
-    - look at cde ksh?
   - rc (muennich's rakitzis fork https://github.com/muennich/rc)
   - scsh (https://scsh.net)
   - tcsh (and/or standard csh)
