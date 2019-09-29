@@ -1,5 +1,7 @@
 #
 # XXX - options from https://github.com/svaarala/duktape/blob/master/Makefile
+# XXX - DUK_USE_ES6
+# XXX - jxpretty
 #
 
 rname="duktape"
@@ -25,11 +27,13 @@ function cwmake_${rname}() {
   \${CC} -fPIC -Os -c -o extras/console/duk_console.{o,c} -I./src
   \${CC} -fPIC -Os -c -o extras/print-alert/duk_print_alert.{o,c} -I./src
   \${CC} -fPIC -Os -c -o extras/module-duktape/duk_module_duktape.{o,c} -I./src
+  \${CC} -fPIC -Os -c -o extras/module-node/duk_module_node.{o,c} -I./src
   \${CC} -fPIC -Os -c -o extras/logging/duk_logging.{o,c} -I./src
   ar rcs lib${rname}.a src/${rname}.o
   ar rcs lib${rname}_console.a extras/console/duk_console.o
   ar rcs lib${rname}_print_alert.a extras/print-alert/duk_print_alert.o
   ar rcs lib${rname}_module_duktape.a extras/module-duktape/duk_module_duktape.o
+  ar rcs lib${rname}_module_node.a extras/module-node/duk_module_node.o
   ar rcs lib${rname}_logging.a extras/logging/duk_logging.o
   \${CC} examples/cmdline/duk_cmdline.c \
     -o duk \
@@ -65,6 +69,7 @@ function cwmakeinstall_${rname}() {
   install -m 644 extras/console/duk_console.h \"${ridir}/include/\"
   install -m 644 extras/print-alert/duk_print_alert.h \"${ridir}/include/\"
   install -m 644 extras/module-duktape/duk_module_duktape.h \"${ridir}/include/\"
+  install -m 644 extras/module-node/duk_module_node.h \"${ridir}/include/\"
   install -m 644 extras/logging/duk_logging.h \"${ridir}/include/\"
   install -m 644 polyfills/*.js \"${ridir}/polyfills/\"
   install -m 644 mandel.js \"${ridir}/wow/\"
