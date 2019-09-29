@@ -286,7 +286,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - amd64/arm32v6/arm64v8 only
   - does _not_ work on i686
   - architecture naming conventions: https://github.com/docker-library/official-images#architectures-other-than-amd64
-- dropbear
+- dropbear (https://matt.ucc.asn.au/dropbear/dropbear.html and https://dropbear.nl/)
+- duktape (http://duktape.org/ and https://github.com/svaarala/duktape)
 - ecl (https://common-lisp.net/project/ecl/)
   - shared build
   - works for aarch64/i686/x86_64
@@ -626,14 +627,6 @@ make \
   - ...
 - javascript engines
   - colony-compiler (unmaintained - https://github.com/tessel/colony-compiler)
-  - duktape (http://duktape.org/ and https://github.com/svaarala/duktape)
-    - `cc ${CFLAGS} -Os -c -o src/duktape.{o,c}`
-    - `ar rcs libduktape.a src/duktape.o`
-    - `cc ${CFLAGS} -I./src examples/cmdline/duk_cmdline.c -o duk -L. -lduktape -static`
-    - `mkdir -p ${ridir}/{bin,include,lib}`
-    - `install -m 644 libduktape.a ${ridir}/lib/`
-    - `install -m 644 src/duktape.h src/duk_config.h ${ridir}/include`
-    - `install -m 755 duk ${ridir}/bin/`
   - espruino (https://github.com/espruino/Espruino)
   - iv (https://github.com/Constellation/iv)
   - jerryscript (https://github.com/jerryscript-project/jerryscript and http://jerryscript.net/)
