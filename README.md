@@ -387,6 +387,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - libhubbub (https://www.netsurf-browser.org/projects/hubbub/)
   - libdom (https://www.netsurf-browser.org/projects/libdom/)
   - libcss (https://www.netsurf-browser.org/projects/libcss/)
+- ninja (https://ninja-build.org/)
 - nmap
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
 - oniguruma (https://github.com/kkos/oniguruma)
@@ -798,7 +799,6 @@ make \
 - nettle
   - configure libdir=.../lib since lib64 may be set by default
 - nghttp2 (https://github.com/nghttp2/nghttp2)
-- ninja
 - nnn (https://github.com/jarun/nnn)
 - node / npm (ugh)
 - noice (https://git.2f30.org/noice/)
