@@ -30,9 +30,10 @@ function cwmakeinstall_${rname}() {
   env PYTHONPATH=\"\${p3p}\" \
     python3 setup.py install --force --prefix=\"${ridir}\"
   find \${p3p}/ -maxdepth 1 -mindepth 1 -name '${rname}*' | while read -r p ; do
-    ln -sf \"\${p}\" \"${cwsw}/python3/current/lib/python3.7/site-packages/\"
+    ln -sf \"\${p}\" \"\${p3d}/lib/python\${p3v%.*}/site-packages/\"
   done
   popd >/dev/null 2>&1
+  unset p3d p3v p3p
 }
 "
 
