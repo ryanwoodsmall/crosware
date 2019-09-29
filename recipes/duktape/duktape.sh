@@ -36,6 +36,7 @@ function cwmake_${rname}() {
     -DDUK_CMDLINE_CONSOLE_SUPPORT \
     -DDUK_CMDLINE_PRINTALERT_SUPPORT \
     -DDUK_CMDLINE_MODULE_SUPPORT \
+    -DDUK_CMDLINE_FILEIO \
     -I./src -I./extras/console -I./extras/print-alert -I./extras/module-duktape \
     -L. -l${rname} -l${rname}_console -l${rname}_print_alert -l${rname}_module_duktape \
     -I\"${cwsw}/linenoise/current/include\" -L\"${cwsw}/linenoise/current/lib\" -llinenoise \
