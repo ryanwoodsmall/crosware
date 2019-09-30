@@ -393,6 +393,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - libcss (https://www.netsurf-browser.org/projects/libcss/)
 - ninja (https://ninja-build.org/)
 - nmap
+- nvi (via debian, https://salsa.debian.org/debian/nvi)
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
 - oniguruma (https://github.com/kkos/oniguruma)
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)
@@ -800,13 +801,6 @@ make \
 - noice (https://git.2f30.org/noice/)
 - nss (ugh)
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
-- nvi
- - https://sites.google.com/a/bostic.com/keithbostic/vi / https://sites.google.com/a/bostic.com/keithbostic/vi/
- - ?: https://github.com/visrc/nvi
- - alpine git: https://git.alpinelinux.org/aports/tree/testing/nvi?h=master
- - void pkg: https://github.com/void-linux/void-packages/tree/master/srcpkgs/nvi 
- - debian: https://salsa.debian.org/debian/nvi / https://tracker.debian.org/pkg/nvi / https://packages.debian.org/buster/nvi
- - ubuntu: https://packages.ubuntu.com/bionic/nvi
 - nyacc (https://www.nongnu.org/nyacc/ and https://savannah.nongnu.org/projects/nyacc)
 - odbc?
   - iodbc?
