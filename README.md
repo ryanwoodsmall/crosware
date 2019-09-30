@@ -294,7 +294,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - does _not_ work on arm (gc? gmp?)
 - ed (gnu ed)
 - elinks (http://elinks.or.cz/ from git: https://repo.or.cz/elinks.git)
-  - investiage adding tre, spidermonkey javascript/ecmascript/js, ...
+  - investigate adding tre, spidermonkey javascript/ecmascript/js, ...
+- elvis (https://github.com/mbert/elvis)
 - expat
 - file
 - findutils
@@ -542,7 +543,6 @@ wc -l /tmp/astbuild.out
 - edbrowse (http://edbrowse.org/ and https://github.com/CMB/edbrowse)
   - cmake, curl, pcre, tidy (cmake), duktape
 - ellcc (embedded clang build, http://ellcc.org/)
-- elvis (https://github.com/mbert/elvis)
 - emacs
   - 26.1 can be compiled without gnutls
   - needs aslr disabled during dump
