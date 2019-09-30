@@ -54,7 +54,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}/build.unix\" >/dev/null 2>&1
-  make install ${rlibtool}
+  make install-strip ${rlibtool}
   popd >/dev/null 2>&1
 }
 "
