@@ -445,6 +445,20 @@ time_func ls -l -A /
 - default to `-Os` for CC-/CXXFLAGS?
   - optimize for size, not perf
   - need to test
+- test bootstrap/operation with different userspaces
+  - make modular in container build(s)
+    - busybox (default)
+    - toybox
+    - sbase-box/ubase-box
+    - coreutils/util-linux
+    - heirloom
+    - 9base/???
+    - ...
+- bootstrap other distros
+  - deb,rpm busybox workalikes
+  - add apk
+  - reinstall / leaving crosware intact
+  - weird
 
 <!--
 # vim: ft=markdown
