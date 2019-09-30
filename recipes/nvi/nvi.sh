@@ -1,8 +1,6 @@
 #
 # XXX - gitlab instance, not sure SHA-256 will always be the same for archive...
-# XXX - for git archive:
-#  rver="6c331794cf0bc6b609b5cd15c581ac0ea0a30b27"
-#  rurl="https://salsa.debian.org/debian/netcat-openbsd/-/archive/${rver}/${rfile}"
+# XXX - fix symlinks nvi bin, nex/nview symlinks
 #
 
 rname="nvi"
