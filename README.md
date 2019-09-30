@@ -593,6 +593,8 @@ make \
   - dialog (https://invisible-island.net/dialog/dialog.html)
   - misc_tools (ftp://ftp.invisible-island.net/pub/misc_tools/)
   - vile (https://invisible-island.net/vile/)
+    - flex, ncurses, netbsdcurses doesn't work
+    - `./configure --prefix=${ridir} --with-screen=ncurses --with-builtin-filters=all --with-loadable-filters=none LEX=flex`
 - java stuff
   - alpine openjdk? 11? 8?
   - ant (included in sdkman)
