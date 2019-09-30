@@ -11,7 +11,7 @@ rdir="${rname}-debian-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://salsa.debian.org/debian/${rname}/-/archive/debian/${rver}/${rfile}"
 rsha256="2393da32c0c6059ae54c0989c7094a18063e6d36e919d94a251c686be1deb6b4"
-rreqs="make netbsdcurses bdb47"
+rreqs="make netbsdcurses bdb47 configgit"
 
 . "${cwrecipe}/common.sh"
 
@@ -23,6 +23,9 @@ function cwconfigure_${rname}() {
     patch -p1 < debian/patches/\${p}
   done
   unset p
+  rm -f dist/config.{sub,guess}
+  install -m 0755 ${cwsw}/configgit/current/config.sub dist/
+  install -m 0755 ${cwsw}/configgit/current/config.guess dist/
   cd build.unix
   ../dist/configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --program-prefix=n \
