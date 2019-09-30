@@ -592,6 +592,7 @@ make \
   - cproto (https://invisible-island.net/cproto/cproto.html)
   - dialog (https://invisible-island.net/dialog/dialog.html)
   - misc_tools (ftp://ftp.invisible-island.net/pub/misc_tools/)
+  - vile (https://invisible-island.net/vile/)
 - java stuff
   - alpine openjdk? 11? 8?
   - ant (included in sdkman)
