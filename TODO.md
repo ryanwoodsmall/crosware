@@ -442,6 +442,9 @@ time_func ls -l -A /
 - busybox ssl_helper after 1.13.1 is stable
   - wolfssl: https://git.busybox.net/busybox/tree/networking/ssl_helper-wolfssl/README?h=1_31_stable
   - matrixssl: https://git.busybox.net/busybox/tree/networking/ssl_helper/README?h=1_31_stable
+- default to `-Os` for CC-/CXXFLAGS?
+  - optimize for size, not perf
+  - need to test
 
 <!--
 # vim: ft=markdown
