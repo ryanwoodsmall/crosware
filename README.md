@@ -542,6 +542,7 @@ wc -l /tmp/astbuild.out
 - edbrowse (http://edbrowse.org/ and https://github.com/CMB/edbrowse)
   - cmake, curl, pcre, tidy (cmake), duktape
 - ellcc (embedded clang build, http://ellcc.org/)
+- elvis (https://github.com/mbert/elvis)
 - emacs
   - 26.1 can be compiled without gnutls
   - needs aslr disabled during dump
