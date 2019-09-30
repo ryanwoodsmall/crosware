@@ -786,6 +786,7 @@ make \
 - mutt
 - nc / ncat / netcat
 - ne (https://github.com/vigna/ne terminal editor)
+- neatvi (https://github.com/aligrudi/neatvi)
 - nethack
 - netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
 - netsurf stuff
@@ -799,6 +800,13 @@ make \
 - noice (https://git.2f30.org/noice/)
 - nss (ugh)
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
+- nvi
+ - https://sites.google.com/a/bostic.com/keithbostic/vi / https://sites.google.com/a/bostic.com/keithbostic/vi/
+ - ?: https://github.com/visrc/nvi
+ - alpine git: https://git.alpinelinux.org/aports/tree/testing/nvi?h=master
+ - void pkg: https://github.com/void-linux/void-packages/tree/master/srcpkgs/nvi 
+ - debian: https://salsa.debian.org/debian/nvi / https://tracker.debian.org/pkg/nvi / https://packages.debian.org/buster/nvi
+ - ubuntu: https://packages.ubuntu.com/bionic/nvi
 - nyacc (https://www.nongnu.org/nyacc/ and https://savannah.nongnu.org/projects/nyacc)
 - odbc?
   - iodbc?
