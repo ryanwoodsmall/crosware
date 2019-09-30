@@ -11,7 +11,7 @@ rdir="${rname}-debian-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://salsa.debian.org/debian/${rname}/-/archive/debian/${rver}/${rfile}"
 rsha256="2393da32c0c6059ae54c0989c7094a18063e6d36e919d94a251c686be1deb6b4"
-rreqs="make netbsdcurses bdb47 configgit"
+rreqs="make netbsdcurses bdb47 configgit slibtool"
 
 . "${cwrecipe}/common.sh"
 
@@ -38,7 +38,7 @@ function cwconfigure_${rname}() {
     --without-x \
       CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include -I${cwsw}/bdb47/current/include\" \
       LDFLAGS=\"-static -L${cwsw}/netbsdcurses/current/lib -L${cwsw}/bdb47/current/lib\" \
-      LIBS='-lcurses -lterminfo -ldb'
+      LIBS='-lcurses -lterminfo -ldb -static'
   popd >/dev/null 2>&1
 }
 "
