@@ -11,15 +11,18 @@ rreqs="make netbsdcurses"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i.ORIG 's/TLIBS=\"-lcurses\"/TLIBS=\"-lcurses -lterminfo -static\"/g' configure
-  sed -i.ORIG '/^\\t.*CC/s/EXE)\$/EXE) -static/g' Makefile.in
+  sed -i.ORIG \"/^PREFIX=/s#PREFIX=.*#PREFIX=${ridir}#g\" configure instman.sh Makefile.in
+  sed -i 's/TLIBS=\"-lcurses\"/TLIBS=\"-lcurses -lterminfo -static\"/g' configure
+  sed -i '/^\\t.*CC/s/EXE)\$/EXE) -static/g' Makefile.in
   sed -i '/^ALL=/s/\$/ ctags/' Makefile.in
+  sed -i \"s#/etc/${rname}#${ridir}/etc/${rname}#g\" Makefile.in configure
   env CPPFLAGS= LDFLAGS= \
     ./configure ${cwconfigureprefix} \
       --verbose \
       --ioctl=termios \
       --without-{x{,ft},gnome} \
         linux
+  sed -i.ORIG '/PROTOCOL_/s/undef/define/g' config.h
   popd >/dev/null 2>&1
 }
 "
@@ -39,6 +42,10 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cwmkdir \"${ridir}\"
+  cwmkdir \"${ridir}/etc/${rname}\"
+  cwmkdir \"${ridir}/share/man/man.1\"
+  cwmkdir \"${ridir}/share/man/catman.1\"
+  ln -sf \"${ridir}/share/man\" \"${ridir}/share/MAN\"
   make install
   popd >/dev/null 2>&1
 }
