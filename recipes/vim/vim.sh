@@ -42,6 +42,7 @@ function cwmakeinstall_${rname}() {
   sv=\"\${sv//./}\"
   make install ${rlibtool}
   ln -sf \"${rtdir}/current/share/vim/vim\${sv}/macros/less.sh\" \"${ridir}/bin/vimless\"
+  ln -sf \"${rname}\" \"${ridir}/bin/vi\"
   unset sv
   popd >/dev/null 2>&1
 }
