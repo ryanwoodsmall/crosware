@@ -16,9 +16,13 @@ function cwconfigure_${rname}() {
   sed -i '/^\\t.*CC/s/EXE)\$/EXE) -static/g' Makefile.in
   sed -i '/^ALL=/s/\$/ ctags/' Makefile.in
   sed -i \"s#/etc/${rname}#${ridir}/etc/${rname}#g\" Makefile.in configure
-  env CPPFLAGS= LDFLAGS= \
+  mkdir -p \"${ridir}/etc/${rname}\" \"${ridir}/share/man/man.1\" \"${ridir}/share/man/catman.1\"
+  rm -f \"${ridir}/share/MAN\"
+  ln -sf \"${ridir}/share/man\" \"${ridir}/share/MAN\"
+  env CPPFLAGS= LDFLAGS= MANPATH=\"${ridir}/share/man\" \
     ./configure ${cwconfigureprefix} \
       --verbose \
+      --x-includes=\"${cwsw}/statictoolchain/current/\$(gcc -dumpmachine)/include\" \
       --ioctl=termios \
       --without-{x{,ft},gnome} \
         linux
@@ -41,12 +45,19 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}\"
-  cwmkdir \"${ridir}/etc/${rname}\"
-  cwmkdir \"${ridir}/share/man/man.1\"
-  cwmkdir \"${ridir}/share/man/catman.1\"
+  mkdir -p \"${ridir}/etc/${rname}\" \"${ridir}/share/man/man.1\" \"${ridir}/share/man/catman.1\"
+  rm -f \"${ridir}/share/MAN\"
   ln -sf \"${ridir}/share/man\" \"${ridir}/share/MAN\"
   make install
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwclean_${rname}() {
+  pushd \"${cwbuild}\" >/dev/null 2>&1
+  rm -rf \"${rbdir}\"
+  rm -rf \"._${rdir}\"
   popd >/dev/null 2>&1
 }
 "
