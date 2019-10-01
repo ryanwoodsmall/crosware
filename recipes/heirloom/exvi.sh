@@ -2,6 +2,7 @@ rname="exvi"
 rver="20190920-musl"
 rdir="heirloom-project-${rver}"
 rfile="${rver}.tar.gz"
+rdlfile="${cwdl}/heirloom/${rfile}"
 rurl="https://github.com/ryanwoodsmall/heirloom-project/archive/${rfile}"
 rsha256="99d24df8fe99bf26a45f658aca10da19804175c66a4a6dec77bbf789319f0bb5"
 rreqs="make netbsdcurses"
@@ -21,7 +22,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}/heirloom-ex-vi\" >/dev/null 2>&1
-  make CPPFLAGS=\"-I${cwsw}/netbsdcurses/include\"  LDADD=\"-L${cwsw}/netbsdcurses/current/lib -lcurses -lterminfo -static\"
+  make CPPFLAGS=\"-I${cwsw}/netbsdcurses/include\" LDADD=\"-L${cwsw}/netbsdcurses/current/lib -lcurses -lterminfo -static\"
   popd >/dev/null 2>&1
 }
 "
