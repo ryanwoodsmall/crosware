@@ -16,6 +16,7 @@ function cwconfigure_${rname}() {
   sed -i '/^\\t.*CC/s/EXE)\$/EXE) -static/g' Makefile.in
   sed -i '/^ALL=/s/\$/ ctags/' Makefile.in
   sed -i \"s#/etc/${rname}#${ridir}/etc/${rname}#g\" Makefile.in configure
+  sed -i \"s#/usr/local/share/man#${ridir}/share/man#g\" instman.sh
   mkdir -p \"${ridir}/etc/${rname}\" \"${ridir}/share/man/man.1\" \"${ridir}/share/man/catman.1\"
   rm -f \"${ridir}/share/MAN\"
   ln -sf \"${ridir}/share/man\" \"${ridir}/share/MAN\"
@@ -48,7 +49,7 @@ function cwmakeinstall_${rname}() {
   mkdir -p \"${ridir}/etc/${rname}\" \"${ridir}/share/man/man.1\" \"${ridir}/share/man/catman.1\"
   rm -f \"${ridir}/share/MAN\"
   ln -sf \"${ridir}/share/man\" \"${ridir}/share/MAN\"
-  make install
+  make install MANPATH=\"${ridir}/share/man\"
   popd >/dev/null 2>&1
 }
 "
