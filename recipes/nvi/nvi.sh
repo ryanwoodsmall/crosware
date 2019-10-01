@@ -1,6 +1,5 @@
 #
 # XXX - gitlab instance, not sure SHA-256 will always be the same for archive...
-# XXX - fix symlinks nvi bin, nex/nview symlinks
 #
 
 rname="nvi"
