@@ -16,6 +16,8 @@ function cwconfigure_${rname}() {
   sed -i '/^\\t.*CC/s/EXE)\$/EXE) -static/g' Makefile.in
   sed -i '/^ALL=/s/\$/ ctags/' Makefile.in
   sed -i \"s#/etc/${rname}#${ridir}/etc/${rname}#g\" Makefile.in configure
+  sed -i \"s#/usr/include/termcap.h#${cwsw}/netbsdcurses/current/include/termcap.h#g\" configure
+  sed -i \"s#/usr/include#${cwsw}/statictoolchain/current/\$(\${CC} -dumpmachine)/include#g\" configure
   sed -i \"s#/usr/local/share/man#${ridir}/share/man#g\" instman.sh
   mkdir -p \"${ridir}/etc/${rname}\" \"${ridir}/share/man/man.1\" \"${ridir}/share/man/catman.1\"
   rm -f \"${ridir}/share/MAN\"
@@ -23,7 +25,7 @@ function cwconfigure_${rname}() {
   env CPPFLAGS= LDFLAGS= MANPATH=\"${ridir}/share/man\" \
     ./configure ${cwconfigureprefix} \
       --verbose \
-      --x-includes=\"${cwsw}/statictoolchain/current/\$(gcc -dumpmachine)/include\" \
+      --x-includes=\"${cwsw}/statictoolchain/current/\$(\${CC} -dumpmachine)/include\" \
       --ioctl=termios \
       --without-{x{,ft},gnome} \
         linux
