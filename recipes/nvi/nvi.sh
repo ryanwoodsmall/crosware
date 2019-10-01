@@ -52,7 +52,11 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}/build.unix\" >/dev/null 2>&1
+  cwmkdir \"${ridir}/bin\"
+  rm -f ${ridir}/bin/{nex,nvi,nview}
   make install-strip ${rlibtool}
+  ln -sf ${ridir}/bin/{nvi,nex}
+  ln -sf ${ridir}/bin/{nvi,nview}
   popd >/dev/null 2>&1
 }
 "
