@@ -458,6 +458,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - wget
 - wolfssl (cyassl)
 - xmlstarlet (http://xmlstar.sourceforge.net/)
+- xvi (http://martinwguy.github.io/xvi/)
 - xz (https://tukaani.org/xz/)
 - zip
 - zlib
