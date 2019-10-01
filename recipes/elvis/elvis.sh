@@ -68,5 +68,6 @@ function cwclean_${rname}() {
 eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  echo 'alias elvis=\"env TERM=xterm elvis\"' >> \"${rprof}\"
 }
 "
