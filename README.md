@@ -732,7 +732,9 @@ make \
 - lua stuff
   - lua2c (https://github.com/davidm/lua2c or a fork?)
   - terra (https://github.com/zdevito/terra and http://terralang.org/)
-- mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html or https://www.gnu.org/software/mailutils/mailutils.html)
+- mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html)
+  - s-nail (https://www.sdaoden.eu/code.html#s-mailx) - up-to-date w/tls (openssl 1.1+) support
+  - or gnu mailutils (https://www.gnu.org/software/mailutils/mailutils.html)
 - makeself (https://makeself.io/ and https://github.com/megastep/makeself - bin pkgs? with signing?)
 - man stuff
   - mandoc (http://mandoc.bsd.lv/)
