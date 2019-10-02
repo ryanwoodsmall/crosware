@@ -396,6 +396,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - ninja (https://ninja-build.org/)
 - nmap
 - nvi (via debian, https://salsa.debian.org/debian/nvi)
+- nvi179 (bsd4 release from keith bostic, https://sites.google.com/a/bostic.com/keithbostic/vi)
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
 - oniguruma (https://github.com/kkos/oniguruma)
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)
