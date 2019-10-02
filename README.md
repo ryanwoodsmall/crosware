@@ -777,7 +777,30 @@ make \
 - miniyacc (https://c9x.me/yacc/)
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
 - mk (go, https://github.com/dcjones/mk)
-- mg (https://github.com/hboetes/mg _or_? https://github.com/troglobit/mg)
+- mg
+  - https://github.com/hboetes/mg - tracks openbsd, uses libbsd
+```
+export PKG_CONFIG_PATH=${cwsw}/netbsdcurses/current/lib/pkgconfig:${cwsw}/libbsd/current/lib/pkgconfig
+make \
+  clean \
+  install-strip \
+  -f GNUmakefile \
+    prefix=${ridir} \
+    STRIP=$(which strip) \
+    PKG_CONFIG=$(which pkg-config) \
+    CPPFLAGS="-I${cwsw}/netbsdcurses/current/include $(pkg-config --cflags libbsd-overlay)" \
+    LDFLAGS="-L${cwsw}/netbsdcurses/current/lib -L${cwsw}/libbsd/current/lib" \
+    LIBS='-lcurses -lterminfo -lbsd -static' \
+    STATIC=yesplease
+```
+  - https://github.com/troglobit/mg - extra features/portability
+```
+./configure \
+  --prefix=${ridir} \
+    CPPFLAGS="-I${cwsw}/netbsdcurses/current/include" \
+    LDFLAGS="-L${cwsw}/netbsdcurses/current/lib -static" \
+    LIBS="-lcurses -lterminfo"
+```
 - moreutils (https://joeyh.name/code/moreutils/)
 - most (https://www.jedsoft.org/most/)
 - mpg123
