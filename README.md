@@ -942,6 +942,7 @@ make \
 - spidernode
 - sparse (https://sparse.wiki.kernel.org/index.php/Main_Page)
 - splint (https://en.wikipedia.org/wiki/Splint_(programming_tool))
+- spm (https://notabug.org/kl3/spm/ - password manager, fork of tpm)
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
 - sslh (https://www.rutschle.net/tech/sslh/README.html and https://www.rutschle.net/tech/sslh/README.html)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
@@ -979,6 +980,7 @@ make install
 - tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
+- tpm (https://github.com/nmeum/tpm/ - tiny password manager)
 - tre (https://github.com/laurikari/tre)
 - tsocks
 - tzdb (https://www.iana.org/time-zones)
