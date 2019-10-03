@@ -1,10 +1,10 @@
 rname="exvi"
-rver="20190920-musl"
+rver="20191002-musl"
 rdir="heirloom-project-${rver}"
 rfile="${rver}.tar.gz"
 rdlfile="${cwdl}/heirloom/${rfile}"
 rurl="https://github.com/ryanwoodsmall/heirloom-project/archive/${rfile}"
-rsha256="99d24df8fe99bf26a45f658aca10da19804175c66a4a6dec77bbf789319f0bb5"
+rsha256="8d807b20e4bdce9a9c3496d602f350fc2adc3576b314255fedb9ec72ec2e6a80"
 rreqs="make netbsdcurses"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 

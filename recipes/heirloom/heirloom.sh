@@ -6,11 +6,11 @@
 #   - use zz_00_heirloom.sh to come before 9base?
 #
 rname="heirloom"
-rver="20190920-musl"
+rver="20191002-musl"
 rdir="${rname}-project-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/ryanwoodsmall/${rname}-project/archive/${rfile}"
-rsha256="99d24df8fe99bf26a45f658aca10da19804175c66a4a6dec77bbf789319f0bb5"
+rsha256="8d807b20e4bdce9a9c3496d602f350fc2adc3576b314255fedb9ec72ec2e6a80"
 rreqs="make sed ncurses zlib bzip2 ed byacc reflex mksh busybox"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
