@@ -921,13 +921,35 @@ make \
   - ypsilon (http://www.littlewingpinball.net/mediawiki/index.php/Ypsilon)
 - sharutils
 - shells?
-  - dash
+  - dash (http://gondor.apana.org.au/~herbert/dash/ and https://git.kernel.org/pub/scm/utils/dash/dash.git)
+    - files: http://gondor.apana.org.au/~herbert/dash/files/
+    - netbsdcurses/byacc work: ```shell
+./configure \
+  --prefix=${ridir} \
+  --enable-static \
+  --with-libedit \
+    LDFLAGS="-ledit -lcurses -lterminfo -static" \
+    CFLAGS="${CFLAGS} -L${cwsw}/netbsdcurses/current/lib" \
+    CPPFLAGS=-I${cwsw}/netbsdcurses/current/include \
+    LIBS='-ledit -lcurses -lterminfo -static' \
+    YACC=byacc
+```
   - es (https://github.com/wryun/es-shell)
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
   - rc (muennich's rakitzis fork https://github.com/muennich/rc)
   - scsh (https://scsh.net)
   - tcsh (and/or standard csh)
+  - yash (http://yash.osdn.jp/ and https://github.com/magicant/yash)
+    - netbsdcurses works: ```shell
+sed -i.ORIG 's/tinfo curses/curses terminfo/g' configure
+./configure \
+  --prefix=${ridir} \
+    LDFLAGS="-static" \
+    CPPFLAGS= \
+    CC="${CC} ${CFLAGS} -L${cwsw}/netbsdcurses/current/lib -I${cwsw}/netbsdcurses/current/include" \
+    LIBS='-ledit -lcurses -lterminfo -static'
+```
   - zsh
 - shellinabox (https://github.com/shellinabox/shellinabox)
   - needs standard shared/static library configure opts, plus ```--disable-{pam,utmp}```
