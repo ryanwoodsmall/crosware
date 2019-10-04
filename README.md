@@ -923,7 +923,8 @@ make \
 - shells?
   - dash (http://gondor.apana.org.au/~herbert/dash/ and https://git.kernel.org/pub/scm/utils/dash/dash.git)
     - files: http://gondor.apana.org.au/~herbert/dash/files/
-    - netbsdcurses/byacc work: ```shell
+    - netbsdcurses/byacc work:
+```shell
 ./configure \
   --prefix=${ridir} \
   --enable-static \
@@ -941,7 +942,8 @@ make \
   - scsh (https://scsh.net)
   - tcsh (and/or standard csh)
   - yash (http://yash.osdn.jp/ and https://github.com/magicant/yash)
-    - netbsdcurses works: ```shell
+    - netbsdcurses works:
+```shell
 sed -i.ORIG 's/tinfo curses/curses terminfo/g' configure
 ./configure \
   --prefix=${ridir} \
