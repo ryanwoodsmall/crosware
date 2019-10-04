@@ -781,28 +781,27 @@ make \
 - mk (go, https://github.com/dcjones/mk)
 - mg
   - https://github.com/hboetes/mg - tracks openbsd, uses libbsd
-```
-export PKG_CONFIG_PATH=${cwsw}/netbsdcurses/current/lib/pkgconfig:${cwsw}/libbsd/current/lib/pkgconfig
-make \
-  clean \
-  install-strip \
-  -f GNUmakefile \
-    prefix=${ridir} \
-    STRIP=$(which strip) \
-    PKG_CONFIG=$(which pkg-config) \
-    CPPFLAGS="-I${cwsw}/netbsdcurses/current/include $(pkg-config --cflags libbsd-overlay)" \
-    LDFLAGS="-L${cwsw}/netbsdcurses/current/lib -L${cwsw}/libbsd/current/lib" \
-    LIBS='-lcurses -lterminfo -lbsd -static' \
-    STATIC=yesplease
-```
+    - ```
+      export PKG_CONFIG_PATH=${cwsw}/netbsdcurses/current/lib/pkgconfig:${cwsw}/libbsd/current/lib/pkgconfig
+      make -f GNUmakefile \
+        clean \
+        install-strip \
+          prefix=${ridir} \
+          STRIP=$(which strip) \
+          PKG_CONFIG=$(which pkg-config) \
+          CPPFLAGS="-I${cwsw}/netbsdcurses/current/include $(pkg-config --cflags libbsd-overlay)" \
+          LDFLAGS="-L${cwsw}/netbsdcurses/current/lib -L${cwsw}/libbsd/current/lib" \
+          LIBS='-lcurses -lterminfo -lbsd -static' \
+          STATIC=yesplease
+      ```
   - https://github.com/troglobit/mg - extra features/portability
-```
-./configure \
-  --prefix=${ridir} \
-    CPPFLAGS="-I${cwsw}/netbsdcurses/current/include" \
-    LDFLAGS="-L${cwsw}/netbsdcurses/current/lib -static" \
-    LIBS="-lcurses -lterminfo"
-```
+    - ```
+      ./configure \
+        --prefix=${ridir} \
+          CPPFLAGS="-I${cwsw}/netbsdcurses/current/include" \
+          LDFLAGS="-L${cwsw}/netbsdcurses/current/lib -static" \
+          LIBS="-lcurses -lterminfo"
+      ```
 - moreutils (https://joeyh.name/code/moreutils/)
 - most (https://www.jedsoft.org/most/)
 - mpg123
@@ -924,17 +923,17 @@ make \
   - dash (http://gondor.apana.org.au/~herbert/dash/ and https://git.kernel.org/pub/scm/utils/dash/dash.git)
     - files: http://gondor.apana.org.au/~herbert/dash/files/
     - netbsdcurses/byacc work:
-```shell
-./configure \
-  --prefix=${ridir} \
-  --enable-static \
-  --with-libedit \
-    LDFLAGS="-ledit -lcurses -lterminfo -static" \
-    CFLAGS="${CFLAGS} -L${cwsw}/netbsdcurses/current/lib" \
-    CPPFLAGS=-I${cwsw}/netbsdcurses/current/include \
-    LIBS='-ledit -lcurses -lterminfo -static' \
-    YACC=byacc
-```
+      - ```shell
+        ./configure \
+          --prefix=${ridir} \
+          --enable-static \
+          --with-libedit \
+            LDFLAGS="-ledit -lcurses -lterminfo -static" \
+            CFLAGS="${CFLAGS} -L${cwsw}/netbsdcurses/current/lib" \
+            CPPFLAGS=-I${cwsw}/netbsdcurses/current/include \
+            LIBS='-ledit -lcurses -lterminfo -static' \
+            YACC=byacc
+        ```
   - es (https://github.com/wryun/es-shell)
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
@@ -943,15 +942,15 @@ make \
   - tcsh (and/or standard csh)
   - yash (http://yash.osdn.jp/ and https://github.com/magicant/yash)
     - netbsdcurses works:
-```shell
-sed -i.ORIG 's/tinfo curses/curses terminfo/g' configure
-./configure \
-  --prefix=${ridir} \
-    LDFLAGS="-static" \
-    CPPFLAGS= \
-    CC="${CC} ${CFLAGS} -L${cwsw}/netbsdcurses/current/lib -I${cwsw}/netbsdcurses/current/include" \
-    LIBS='-ledit -lcurses -lterminfo -static'
-```
+    - ```shell
+      sed -i.ORIG 's/tinfo curses/curses terminfo/g' configure
+      ./configure \
+        --prefix=${ridir} \
+          LDFLAGS="-static" \
+          CPPFLAGS= \
+          CC="${CC} ${CFLAGS} -L${cwsw}/netbsdcurses/current/lib -I${cwsw}/netbsdcurses/current/include" \
+          LIBS='-ledit -lcurses -lterminfo -static'
+      ```
   - zsh
 - shellinabox (https://github.com/shellinabox/shellinabox)
   - needs standard shared/static library configure opts, plus ```--disable-{pam,utmp}```
