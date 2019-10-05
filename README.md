@@ -572,9 +572,8 @@ make \
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
 - gdb
 - gnutls
-  - `sed -i.ORIG 's/ = examples / = /g' doc/Makefile.in`
-  - needs nettle, gmplib
-  - configure needs ```--with-included-libtasn1 --with-included-unistring --without-p11-kit```
+  - needs nettle, gmplib, libtasn1, libunistring
+  - configure needs ```--without-p11-kit --disable-doc --enable-manpages --with-default-trust-store-file=${cwetc}/ssl/cert.pem```
 - gpg
   - gnupg
   - gpgme
