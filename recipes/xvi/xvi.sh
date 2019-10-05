@@ -1,3 +1,7 @@
+#
+# XXX - arrow keys generate raw chars in insert mode by design, not my fave
+#
+
 rname="xvi"
 rver="2.50.3"
 rdir="${rname}-${rver}"
