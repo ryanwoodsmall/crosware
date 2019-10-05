@@ -547,9 +547,12 @@ wc -l /tmp/astbuild.out
   - cmake, curl, pcre, tidy (cmake), duktape
 - ellcc (embedded clang build, http://ellcc.org/)
 - emacs
-  - 26.1 can be compiled without gnutls
-  - needs aslr disabled during dump
+  - 26.1+ can be compiled without gnutls?
+  - needs aslr disabled during dump?
   - or ```setarch $(uname -m) -R``` prepended to make?
+  - `--without-x --with-xml2 --with-modules`
+  - `LIBGNUTLS_LIBS='-lgnutls -lhogweed -lnettle -lgmp -ltasn1 -lunistring'`
+  - `LIBXML2_LIBS='-lxml2 -lz -lz -llzma'`
 - emulation stuff
   - gxemul
   - qemu
@@ -574,6 +577,7 @@ make \
 - gnutls
   - needs nettle, gmplib, libtasn1, libunistring
   - configure needs ```--without-p11-kit --disable-doc --enable-manpages --with-default-trust-store-file=${cwetc}/ssl/cert.pem```
+  - mini-nettle/mini-gmp?
 - gpg
   - gnupg
   - gpgme
@@ -824,6 +828,7 @@ make \
   - libnsfb (https://www.netsurf-browser.org/projects/libnsfb/)
 - nettle
   - configure libdir=.../lib since lib64 may be set by default
+  - mini-gmp?
 - nghttp2 (https://github.com/nghttp2/nghttp2)
 - nnn (https://github.com/jarun/nnn)
 - node / npm (ugh)
