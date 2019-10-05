@@ -1,5 +1,6 @@
 #
 # XXX - alpine patches: https://git.alpinelinux.org/aports/tree/main/openssh
+# XXX - move config to $cwtop/etc/openssh
 #
 
 rname="openssh"
@@ -32,6 +33,20 @@ function cwuninstall_${rname}() {
   rm -rf ${rname}-* current previous
   rm -f \"${rprof}\"
   rm -f \"${cwvarinst}/${rname}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install
+  install -m 0755 contrib/ssh-copy-id \"${ridir}/bin/\"
+  for md in cat1 man1 ; do
+    test -e \"${ridir}/share/man/\${md}\" \
+    && install -m 0644 contrib/ssh-copy-id.1 \"${ridir}/share/man/\${md}/\" \
+    || true
+  done
   popd >/dev/null 2>&1
 }
 "
