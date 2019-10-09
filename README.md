@@ -260,7 +260,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - binutils (bfd, opcodes, libiberty.a; no isl)
 - bison
 - brogue
-- bsdvis (from netbsd - https://netbsd.gw.com/cgi-bin/man-cgi?vis+1+NetBSD-6.0)
+- bsdvis (from netbsd - https://netbsd.gw.com/cgi-bin/man-cgi?vis+1)
 - busybox (static)
 - byacc
 - bzip2
