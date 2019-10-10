@@ -7,6 +7,7 @@ rsha256="d72ba7261929b85b8880a68c5f4f24a7141cdcd028459e00a2c21a5e03898c43"
 rreqs="libbsd pkgconfig"
 
 . "${cwrecipe}/common.sh"
+. "${cwrecipe}/bsdprogs/bsdprogs.sh.common"
 
 eval "
 function cwfetch_${rname}() {
@@ -16,38 +17,9 @@ function cwfetch_${rname}() {
 "
 
 eval "
-function cwextract_${rname}() {
-  cwmkdir \"${rbdir}\"
-}
-"
-
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
-
-eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   \${CC} -DLIBBSD_NETBSD_VIS ${cwdl}/${rname}/unvis.c -o unvis \$(pkg-config --cflags --libs libbsd-overlay) -static
   popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/bin\"
-  cwmkdir \"${ridir}/share/man/man1\"
-  install -s -m 0755 unvis \"${ridir}/bin/\"
-  install -m 0644 \"${cwdl}/${rname}/unvis.1\" \"${ridir}/share/man/man1/\"
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "

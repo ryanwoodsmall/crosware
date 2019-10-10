@@ -1,0 +1,41 @@
+eval "
+function cwextract_${rname}() {
+  cwmkdir \"${rbdir}\"
+  cat \"${cwdl}/${rname}/${rname#bsd}.c\" > \"${rbdir}/${rname#bsd}.c\"
+}
+"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  sed -i.ORIG s/__dead//g ${rname#bsd}.c || true
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  \${CC} ${rname#bsd}.c -o ${rname#bsd} \$(pkg-config --cflags --libs libbsd-overlay) -static
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  cwmkdir \"${ridir}/bin\"
+  cwmkdir \"${ridir}/share/man/man1\"
+  install -s -m 0755 ${rname#bsd} \"${ridir}/bin/\"
+  install -m 0644 \"${cwdl}/${rname}/${rname#bsd}.1\" \"${ridir}/share/man/man1/\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+
+# vim: set ft=sh:
