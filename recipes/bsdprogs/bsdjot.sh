@@ -10,7 +10,7 @@ rreqs="libbsd pkgconfig"
 
 eval "
 function cwfetch_${rname}() {
-  cwfetchcheck \"http://cvsweb.netbsd.org/bsdweb.cgi/~checkout~/src/usr.bin/jot/jot.c?rev=1.27\" \"${cwdl}/${rname}/jot.c\" \"${rsha256}\"
+  cwfetchcheck \"http://cvsweb.netbsd.org/bsdweb.cgi/~checkout~/src/usr.bin/jot/jot.c?rev=${rver}\" \"${cwdl}/${rname}/jot.c\" \"${rsha256}\"
   cwfetchcheck \"http://cvsweb.netbsd.org/bsdweb.cgi/~checkout~/src/usr.bin/jot/jot.1?rev=1.16\" \"${cwdl}/${rname}/jot.1\" \"39711d1da08196d3f8670949343c177fa0a7d71b5cdb60dcfea917826be8df1b\"
 }
 "
