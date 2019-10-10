@@ -1,3 +1,7 @@
+#
+# XXX - move to netbsdcurses
+#
+
 rname="inetutils"
 rver="1.9.4"
 rdir="${rname}-${rver}"
