@@ -580,6 +580,7 @@ make \
 - entr (http://entrproject.org/)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
 - gdb
+- git-crypt (https://github.com/AGWA/git-crypt)
 - gnutls
   - needs nettle, gmplib, libtasn1, libunistring
   - configure needs ```--without-p11-kit --disable-doc --enable-manpages --with-default-trust-store-file=${cwetc}/ssl/cert.pem```
