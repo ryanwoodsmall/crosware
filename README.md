@@ -887,6 +887,7 @@ make \
 - quickjs (https://bellard.org/quickjs/)
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
+- re2c (http://re2c.org/ and https://github.com/skvadrik/re2c)
 - redir (https://github.com/troglobit/redir)
 - retro (forth, http://retroforth.org/)
 - rredir (https://github.com/rofl0r/rrredir)
