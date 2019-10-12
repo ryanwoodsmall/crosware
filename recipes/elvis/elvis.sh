@@ -19,8 +19,10 @@ function cwconfigure_${rname}() {
   sed -i \"s#/usr/include/termcap.h#${cwsw}/netbsdcurses/current/include/termcap.h#g\" configure
   sed -i \"s#/usr/include#${cwsw}/statictoolchain/current/\$(\${CC} -dumpmachine)/include#g\" configure
   sed -i \"s#/usr/local/share/man#${ridir}/share/man#g\" instman.sh
-  mkdir -p \"${ridir}/etc/${rname}\" \"${ridir}/share/man/man.1\" \"${ridir}/share/man/catman.1\"
-  rm -f \"${ridir}/share/MAN\"
+  rm -f \"${ridir}/share/man\"
+  mkdir -p \"${ridir}/etc/${rname}\" \"${ridir}/share/man/man1\" \"${ridir}/share/man/catman1\"
+  ln -sf ${ridir}/share/man/man{,.}1
+  ln -sf ${ridir}/share/man/catman{,.}1
   ln -sf \"${ridir}/share/man\" \"${ridir}/share/MAN\"
   env CPPFLAGS= LDFLAGS= MANPATH=\"${ridir}/share/man\" \
     ./configure ${cwconfigureprefix} \
@@ -48,9 +50,6 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  mkdir -p \"${ridir}/etc/${rname}\" \"${ridir}/share/man/man.1\" \"${ridir}/share/man/catman.1\"
-  rm -f \"${ridir}/share/MAN\"
-  ln -sf \"${ridir}/share/man\" \"${ridir}/share/MAN\"
   make install MANPATH=\"${ridir}/share/man\"
   popd >/dev/null 2>&1
 }
