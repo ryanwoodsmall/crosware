@@ -1,7 +1,3 @@
-#
-# XXX - wchar/utf-8
-#
-
 rname="mandoc"
 rver="1.14.5"
 rdir="${rname}-${rver}"
@@ -22,6 +18,8 @@ function cwconfigure_${rname}() {
     echo 'CGIBINDIR=\"${ridir}/www/htdocs/cgi-bin\"'
     echo 'BUILD_CGI=1'
     echo 'INSTALL_LIBMANDOC=1'
+    echo 'UTF8_LOCALE=en_US.UTF-8'
+    echo 'HAVE_WCHAR=1'
   } > configure.local
   cat cgi.h.example > cgi.h
   sed -i '/MAN_DIR/s#/man#${cwsw}/manpages/current/share/man#g' cgi.h
