@@ -1,3 +1,7 @@
+#
+# XXX - mandoc with/instead of groff?
+#
+
 rname="git"
 rver="2.23.0"
 rdir="${rname}-${rver}"
