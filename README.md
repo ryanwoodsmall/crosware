@@ -380,6 +380,9 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - zutils
 - m4
 - make
+- manpages, consisting of...
+  - man-pages (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/)
+  - man-pages-posix (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/)
 - mawk (https://invisible-island.net/mawk/mawk.html)
 - mbedtls (polarssl)
 - meson (http://mesonbuild.com/)
@@ -749,8 +752,6 @@ make \
 - makeself (https://makeself.io/ and https://github.com/megastep/makeself - bin pkgs? with signing?)
 - man stuff
   - mandoc (http://mandoc.bsd.lv/)
-  - man-pages (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/)
-  - man-pages-posix (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/)
   - stick with busybox man+groff+less or use man-db or old standard man?
   - MANPAGER and MANPATH settings
   - roffit (https://daniel.haxx.se/projects/roffit/)
