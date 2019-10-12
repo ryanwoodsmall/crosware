@@ -1,5 +1,4 @@
 #
-# XXX - move settings to configure.local
 # XXX - wchar/utf-8
 #
 
@@ -16,13 +15,14 @@ rreqs="make zlib busybox less manpages"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i.ORIG '/env -i make/s/env -i/env/g' configure
-  sed -i '/^PREFIX/s#^PREFIX=.*#PREFIX=${ridir}#g' configure
-  sed -i '/^WWWPREFIX/s#^WWWPREFIX=.*#WWWPREFIX=${ridir}/www#g' configure
-  sed -i '/^BUILD_CGI=/s/BUILD_CGI=.*/BUILD_CGI=1/g' configure
-  sed -i '/^HTDOCDIR=/s#HTDOCDIR=.*#HTDOCDIR=${ridir}/www/htdocs#g' configure
-  sed -i '/^CGIBINDIR=/s#CGIBINDIR=.*#CGIBINDIR=${ridir}/www/htdocs/cgi-bin#g' configure
-  sed -i '/^INSTALL_LIBMANDOC=/s/^INSTALL_LIBMANDOC=.*/INSTALL_LIBMANDOC=1/g' configure
+  {
+    echo 'PREFIX=\"${ridir}\"'
+    echo 'WWWPREFIX=\"${ridir}/www\"'
+    echo 'HTDOCDIR=\"${ridir}/www/htdocs\"'
+    echo 'CGIBINDIR=\"${ridir}/www/htdocs/cgi-bin\"'
+    echo 'BUILD_CGI=1'
+    echo 'INSTALL_LIBMANDOC=1'
+  } > configure.local
   cat cgi.h.example > cgi.h
   sed -i '/MAN_DIR/s#/man#${cwsw}/manpages/current/share/man#g' cgi.h
   env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/less/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
