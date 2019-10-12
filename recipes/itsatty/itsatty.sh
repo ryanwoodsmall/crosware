@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rver}.zip"
 rurl="https://github.com/ryanwoodsmall/${rname}/archive/${rfile}"
 rsha256=""
-rreqs="make"
+rreqs="make socat"
 
 . "${cwrecipe}/common.sh"
 
