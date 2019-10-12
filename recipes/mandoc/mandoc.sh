@@ -50,6 +50,10 @@ function cwmakeinstall_${rname}() {
     install -m 0644 *.\${s} \"${ridir}/man/man\${s}/\"
   done
   unset s
+  cwmkdir \"${cwsw}/manpages/current/share/man\"
+  #echo \"${cwsw}/manpages/current/share/man\" > \"${cwsw}/manpages/current/share/man/manpath.conf\"
+  echo \"/man\" > \"${cwsw}/manpages/current/share/man/manpath.conf\"
+  ln -sf \"${cwsw}/manpages/current/share/man\" \"${ridir}/www/htdocs/man\"
   popd >/dev/null 2>&1
 }
 "
