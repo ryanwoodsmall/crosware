@@ -8,7 +8,7 @@ rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
-local mpv="man-pages-posix-2013-a"
+mpv="man-pages-posix-2013-a"
 
 eval "
 function cwfetch_${rname}() {
