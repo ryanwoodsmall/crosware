@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://mandoc.bsd.lv/snapshots/${rfile}"
 rsha256="8219b42cb56fc07b2aa660574e6211ac38eefdbf21f41b698d3348793ba5d8f7"
-rreqs="make zlib busybox"
+rreqs="make zlib busybox less"
 
 . "${cwrecipe}/common.sh"
 
@@ -14,7 +14,7 @@ function cwconfigure_${rname}() {
   sed -i.ORIG '/env -i make/s/env -i/env/g' configure
   sed -i '/^PREFIX/s#^PREFIX=.*#PREFIX=${ridir}#g' configure
   sed -i '/^WWWPREFIX/s#^WWWPREFIX=.*#WWWPREFIX=${ridir}/www#g' configure
-  env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
+  env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/less/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
     ./configure
   popd >/dev/null 2>&1
 }
@@ -23,7 +23,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
+  env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/less/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
     make CFLAGS=\"\${CFLAGS} \${CPPFLAGS}\" LDFLAGS=\"\${LDFLAGS}\"
   popd >/dev/null 2>&1
 }
@@ -32,7 +32,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
+  env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/less/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
     make install
   popd >/dev/null 2>&1
 }
