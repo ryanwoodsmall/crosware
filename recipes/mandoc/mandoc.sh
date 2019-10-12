@@ -1,3 +1,9 @@
+#
+# XXX - /man directory for cgi
+# XXX - move settings to configure.local
+# XXX - wchar/utf-8
+#
+
 rname="mandoc"
 rver="1.14.5"
 rdir="${rname}-${rver}"
