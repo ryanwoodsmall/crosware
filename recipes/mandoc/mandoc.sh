@@ -9,7 +9,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://mandoc.bsd.lv/snapshots/${rfile}"
 rsha256="8219b42cb56fc07b2aa660574e6211ac38eefdbf21f41b698d3348793ba5d8f7"
-rreqs="make zlib busybox less"
+rreqs="make zlib busybox less manpages"
 
 . "${cwrecipe}/common.sh"
 
