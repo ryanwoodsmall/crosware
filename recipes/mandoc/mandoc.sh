@@ -14,6 +14,10 @@ function cwconfigure_${rname}() {
   sed -i.ORIG '/env -i make/s/env -i/env/g' configure
   sed -i '/^PREFIX/s#^PREFIX=.*#PREFIX=${ridir}#g' configure
   sed -i '/^WWWPREFIX/s#^WWWPREFIX=.*#WWWPREFIX=${ridir}/www#g' configure
+  sed -i '/^BUILD_CGI=/s/BUILD_CGI=.*/BUILD_CGI=1/g' configure
+  sed -i '/^HTDOCDIR=/s#HTDOCDIR=.*#HTDOCDIR=${ridir}/www/htdocs#g' configure
+  sed -i '/^CGIBINDIR=/s#CGIBINDIR=.*#CGIBINDIR=${ridir}/www/htdocs/cgi-bin#g' configure
+  cat cgi.h.example > cgi.h
   env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/less/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
     ./configure
   popd >/dev/null 2>&1
