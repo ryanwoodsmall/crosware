@@ -11,6 +11,7 @@ rreqs="make zlib busybox less manpages"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  sed -i.ORIG '/env -i make/s/env -i/env/g' configure
   {
     echo 'PREFIX=\"${ridir}\"'
     echo 'WWWPREFIX=\"${ridir}/www\"'
