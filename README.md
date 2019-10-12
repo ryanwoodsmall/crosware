@@ -380,6 +380,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - zutils
 - m4
 - make
+- mandoc (http://mandoc.bsd.lv/)
 - manpages, consisting of...
   - man-pages (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/)
   - man-pages-posix (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/)
@@ -751,7 +752,6 @@ make \
   - or gnu mailutils (https://www.gnu.org/software/mailutils/mailutils.html)
 - makeself (https://makeself.io/ and https://github.com/megastep/makeself - bin pkgs? with signing?)
 - man stuff
-  - mandoc (http://mandoc.bsd.lv/)
   - stick with busybox man+groff+less or use man-db or old standard man?
   - MANPAGER and MANPATH settings
   - roffit (https://daniel.haxx.se/projects/roffit/)
