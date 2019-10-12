@@ -1,5 +1,4 @@
 #
-# XXX - /man directory for cgi
 # XXX - move settings to configure.local
 # XXX - wchar/utf-8
 #
@@ -23,7 +22,9 @@ function cwconfigure_${rname}() {
   sed -i '/^BUILD_CGI=/s/BUILD_CGI=.*/BUILD_CGI=1/g' configure
   sed -i '/^HTDOCDIR=/s#HTDOCDIR=.*#HTDOCDIR=${ridir}/www/htdocs#g' configure
   sed -i '/^CGIBINDIR=/s#CGIBINDIR=.*#CGIBINDIR=${ridir}/www/htdocs/cgi-bin#g' configure
+  sed -i '/^INSTALL_LIBMANDOC=/s/^INSTALL_LIBMANDOC=.*/INSTALL_LIBMANDOC=1/g' configure
   cat cgi.h.example > cgi.h
+  sed -i '/MAN_DIR/s#/man#${cwsw}/manpages/current/share/man#g' cgi.h
   env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/less/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
     ./configure
   popd >/dev/null 2>&1
@@ -44,6 +45,12 @@ function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/less/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
     make install
+  local s
+  for s in 1 3 5 7 8 ; do
+    cwmkdir \"${ridir}/man/man\${s}\"
+    install -m 0644 *.\${s} \"${ridir}/man/man\${s}/\"
+  done
+  unset s
   popd >/dev/null 2>&1
 }
 "
