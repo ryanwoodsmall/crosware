@@ -3,25 +3,21 @@
 #
 # lots of bashisms
 #   can likely work with ash/dash with...
-#     - 'function name() {...}' replaced with posix 'name() {...}'
 #     - BASH_SOURCE[0] replaced with $(realpath $_) - must be first command
 #       - or not, $0/$_ isn't consistent across shells, $_ is funky in posix
-#     - something like...
-#       if [ -z "${BASH_VERSION}" ] ; then
-#         : ${cwetcdir:="/usr/local/crosware/etc"}
-#       else
-#         cwetcdir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
-#       fi
-#     - "source" replaced with "."
 #     - ${...//::/:} doesn't seem to work in dash
 #     - this all sucks
 #
-# XXX - need a short-circuit env var to baile out before profile.d/local.d sourcing
+# XXX - need a short-circuit env var to bail out before profile.d/local.d sourcing
 #
 
 # XXX - probably need realpath in the chain here somewhere
 # get our etc and bin dir
-export cwetcdir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
+if [ -z "${BASH_VERSION}" ] ; then
+  export cwetcdir="/usr/local/crosware/etc"
+else
+  export cwetcdir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
+fi
 export cwetc="${cwetcdir}"
 export cwtop="$(cd "${cwetcdir}"/.. && pwd)"
 export cwbindir="${cwtop}/bin"
@@ -92,7 +88,7 @@ profiled="profile.d"
 locald="local.d"
 for d in ${profiled} ${locald} ; do
   for p in ${cwetcdir}/${d}/*.sh ; do
-    test -r "${p}" && source "${p}"
+    test -r "${p}" && . "${p}"
   done
   unset p
 done
