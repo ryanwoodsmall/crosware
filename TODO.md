@@ -459,6 +459,15 @@ time_func ls -l -A /
   - add apk
   - reinstall / leaving crosware intact
   - weird
+- sourcing
+  - use `.` everywhere
+  - https://stackoverflow.com/questions/2683279/how-to-detect-if-a-script-is-being-sourced
+  - `(return 0 2>/dev/null) && sourced=1 || sourced=0`
+- other shells?
+  - ash/dash
+  - ksh88 (mksh/oksh/loksh/...)
+  - ksh93
+  - zsh
 
 <!--
 # vim: ft=markdown
