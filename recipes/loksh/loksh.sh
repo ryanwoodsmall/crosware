@@ -1,9 +1,9 @@
 rname="loksh"
-rver="6.5"
+rver="6.6"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/dimkr/${rname}/archive/${rfile}"
-rsha256="afa6dddfe914a3cb4c2f5c6b9da03d30fb549c8cfb4daeff0472fc103696f7a4"
+rsha256="97a020df82ceebe216c5a306e87360c5e3398d7403347aaff50978446ccb764d"
 rreqs="make netbsdcurses pkgconfig"
 
 . "${cwrecipe}/common.sh"
