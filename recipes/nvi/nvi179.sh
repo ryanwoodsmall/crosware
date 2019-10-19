@@ -43,6 +43,14 @@ function cwmakeinstall_${rname}() {
 "
 
 eval "
+function cwclean_${rname}() {
+  pushd \"${cwbuild}\" >/dev/null 2>&1
+  rm -rf \"${rdir}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
