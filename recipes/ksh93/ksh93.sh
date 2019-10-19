@@ -1,9 +1,13 @@
+#
+# XXX - rename to bare ksh w/o 93? probably not...
+#
+
 rname="ksh93"
 rver="2020.0.0"
-rdir="ast-${rver}"
-rfile="${rver}.zip"
-rurl="https://github.com/att/ast/archive/${rfile}"
-rsha256="b10527459a7d0acd96ff730ad6f4e09e0d2c2b7df2925c0cd533a738fea3a8dc"
+rdir="${rname%%93}-${rver}"
+rfile="${rdir}.tar.xz"
+rurl="https://github.com/att/ast/releases/download/${rver}/${rfile}"
+rsha256="3d6287f9ad13132bf8e57a8eac512b36a63ccce2b1e4531d7a946c5bf2375c63"
 rreqs="meson ninja muslfts"
 
 . "${cwrecipe}/common.sh"
