@@ -1,9 +1,9 @@
 rname="oksh"
-rver="6.5"
+rver="6.6"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ibara/${rname}/releases/download/${rdir}/${rfile}"
-rsha256="2adf52ab718249462a41e1172d0bfb8670731daa0618e560be58064cac23a0bd"
+rsha256="573d56d5eaeb4a89a8e1ff4638bdff7e44a7ebeb8a9a36b121d4c6fa2acd62ff"
 rreqs="make netbsdcurses"
 
 . "${cwrecipe}/common.sh"
