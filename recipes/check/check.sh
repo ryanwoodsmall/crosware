@@ -1,9 +1,9 @@
 rname="check"
-rver="0.12.0"
+rver="0.13.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/libcheck/${rname}/releases/download/${rver}/${rfile}"
-rsha256="464201098bee00e90f5c4bdfa94a5d3ead8d641f9025b560a27755a83b824234"
+rsha256="c4336b31447acc7e3266854f73ec188cdb15554d0edd44739631da174a569909"
 rreqs="make gawk"
 
 . "${cwrecipe}/common.sh"
