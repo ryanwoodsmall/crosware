@@ -321,6 +321,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - go
   - static binary archive
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
+  - gobootstrap recipe with 1.4 bootstrap binaries (i386, amd64, arm, arm 32-bit static for aarch64)
 - grep (gnu grep)
 - groff
 - guile (https://www.gnu.org/software/guile/)
