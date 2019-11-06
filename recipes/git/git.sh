@@ -3,11 +3,11 @@
 #
 
 rname="git"
-rver="2.23.0"
+rver="2.24.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
-rsha256="234fa05b6839e92dc300b2dd78c92ec9c0c8d439f65e1d430a7034f60af16067"
+rsha256="9f71d61973626d8b28c4cdf8e2484b4bf13870ed643fed982d68b2cfd754371b"
 rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny libssh2 groff busybox less cacertificates"
 
 . "${cwrecipe}/common.sh"
@@ -15,7 +15,7 @@ rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny libssh2 groff b
 eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
-  cwfetchcheck \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \"9558433f68ff4229bd55e84c4d26b74e5d3518ab0ec30186253b090ea887946a\"
+  cwfetchcheck \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \"b0c872c16f22942c1cb6c90ec07f395a931f7c2f9fb920d2ec926674265c04a6\"
 }
 "
 
