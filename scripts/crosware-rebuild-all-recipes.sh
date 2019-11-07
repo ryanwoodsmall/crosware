@@ -16,13 +16,13 @@ test -e "${td}/bin/crosware" || {
 cw="${td}/bin/crosware"
 
 ${cw} list-installed | cut -f1 -d: | while read -r r ; do
-  echo ${cw} uninstall ${r}
+  ${cw} uninstall ${r}
 done
 
 ${cw} install statictoolchain ccache
 
 ${cw} list-recipes | while read -r r ; do
+  o="/tmp/${r}.out"
   echo ${r} 1>&2
-  echo ${r} > /tmp/${r}.out
-  ${cw} check-installed ${r} || ( time ( echo ${cw} install ${r} ; echo $? ) ) 2>&1 | tee -a /tmp/${r}.out
-done >/tmp/crosware_rebuild.out 2>&1
+  ${cw} check-installed ${r} || ( time ( ${cw} install ${r} ; echo $? ) ) 2>&1 | tee ${o}
+done >/tmp/crosware_rebuild.out
