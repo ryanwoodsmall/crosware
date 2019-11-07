@@ -7,11 +7,11 @@
 #
 
 rname="curl"
-rver="7.66.0"
+rver="7.67.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
-rsha256="6618234e0235c420a21f4cb4c2dd0badde76e6139668739085a70c4e2fe7a141"
+rsha256="dd5f6956821a548bf4b44f067a530ce9445cc8094fd3e7e3fc7854815858586c"
 rreqs="make zlib openssl mbedtls wolfssl libssh2 expat libmetalink cacertificates"
 
 . "${cwrecipe}/common.sh"
@@ -40,7 +40,6 @@ function cwconfigure_${rname}() {
     --with-libssh2 \
     --with-zlib \
     --without-mbedtls \
-    --without-cyassl \
     --without-wolfssl \
     --without-gnutls \
     --with-ssl \
@@ -83,7 +82,6 @@ function cwmakeinstall_${rname}_mbedtls() {
     --without-libmetalink \
     --without-libssh2 \
     --without-ssl \
-    --without-cyassl \
     --without-wolfssl \
     --without-gnutls \
     --with-mbedtls \
@@ -110,8 +108,8 @@ function cwmakeinstall_${rname}_wolfssl() {
     --without-ssl \
     --without-mbedtls \
     --without-gnutls \
-    --with-cyassl \
-    --with-default-ssl-backend=cyassl \
+    --with-wolfssl \
+    --with-default-ssl-backend=wolfssl \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"
   make -j${cwmakejobs}
   mkdir -p ${ridir}/bin
