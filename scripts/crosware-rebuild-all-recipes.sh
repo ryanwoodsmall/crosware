@@ -15,13 +15,9 @@ test -e "${td}/bin/crosware" || {
 }
 cw="${td}/bin/crosware"
 
-${cw} list-installed | cut -f1 -d: | while read -r r ; do
-  ${cw} uninstall ${r}
-done
+${cw} list-installed | xargs ${cw} uninstall
 
-${cw} install statictoolchain ccache
-
-${cw} list-recipes | while read -r r ; do
+{ echo statictoolchain make ccache ; ${cw} list-recipes ; } | while read -r r ; do
   o="/tmp/${r}.out"
   echo ${r} 1>&2
   ${cw} check-installed ${r} || ( time ( ${cw} install ${r} ; echo $? ) ) 2>&1 | tee ${o}
