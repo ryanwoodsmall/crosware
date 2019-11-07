@@ -23,6 +23,6 @@ ${cw} install statictoolchain ccache
 
 ${cw} list-recipes | while read -r r ; do
   echo ${r} 1>&2
-  echo ${r}
-  ${cw} check-installed ${r} || ( time ( echo ${cw} install ${r} ; echo $? ) ) 2>&1 | tee /tmp/${r}.out
-done > /tmp/crosware_rebuild.out
+  echo ${r} > /tmp/${r}.out
+  ${cw} check-installed ${r} || ( time ( echo ${cw} install ${r} ; echo $? ) ) 2>&1 | tee -a /tmp/${r}.out
+done >/tmp/crosware_rebuild.out 2>&1
