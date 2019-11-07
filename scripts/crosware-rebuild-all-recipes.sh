@@ -9,10 +9,6 @@ function failexit() {
   exit 1
 }
 
-if [ "${#}" -ne 3 ] ; then
-  failexit "$(basename ${BASH_SOURCE[0]}) recipe version.dot.number sha256"
-fi
-
 td="$(cd $(dirname "${BASH_SOURCE[0]}")/.. && pwd)"
 test -e "${td}/bin/crosware" || {
   failexit "could not find crosware top directory"
