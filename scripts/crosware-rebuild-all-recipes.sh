@@ -15,7 +15,7 @@ test -e "${td}/bin/crosware" || {
 }
 cw="${td}/bin/crosware"
 
-${cw} list-installed | xargs ${cw} uninstall
+${cw} list-installed | cut -f1 -d: | xargs ${cw} uninstall
 
 { echo statictoolchain make ccache ; ${cw} list-recipes ; } | while read -r r ; do
   o="/tmp/${r}.out"
