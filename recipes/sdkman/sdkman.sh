@@ -1,3 +1,7 @@
+#
+# XXX - make ${SDKMAN_DIR}/archives a symlink to ${cwtop}/downloads/sdkman
+#
+
 rname="sdkman"
 rver="current"
 rurl="https://get.sdkman.io"
