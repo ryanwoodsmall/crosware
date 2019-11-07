@@ -15,7 +15,7 @@ test -e "${td}/bin/crosware" || {
 }
 cw="${td}/bin/crosware"
 
-${cw} list-installed | while read -r r ; do
+${cw} list-installed | cut -f1 -d: | while read -r r ; do
   echo ${cw} uninstall ${r}
 done
 
