@@ -416,6 +416,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - openssh (openssl, netbsdcurses libedit)
 - openssl
 - p7zip
+- par (http://www.nicemice.net/par/ via debian https://packages.debian.org/buster/text/par)
 - patch (gnu)
 - pcre
 - pcre2
