@@ -1027,6 +1027,7 @@ make install
 - tre (https://github.com/laurikari/tre)
 - tsocks
 - tzdb (https://www.iana.org/time-zones)
+- uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
 - units (https://www.gnu.org/software/units)
 - upx (https://github.com/upx/upx)
 - usbutils (https://github.com/gregkh/usbutils)
