@@ -990,6 +990,9 @@ make \
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
 - suckless
   - sinit (https://core.suckless.org/sinit/)
+- taskwarrior (https://taskwarrior.org/ and https://github.com/GothenburgBitFactory/taskwarrior)
+- taskserver (https://github.com/GothenburgBitFactory/taskserver)
+- timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - t3x.org stuff (nils holm)
   - klisp (http://t3x.org/klisp)
   - s9fes (https://www.t3x.org/s9fes https://github.com/bakul/s9fes and https://github.com/barak/scheme9)
