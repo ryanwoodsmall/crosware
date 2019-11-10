@@ -283,6 +283,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - curl
 - cvs
 - cxref
+- dash (http://gondor.apana.org.au/~herbert/dash/ and https://git.kernel.org/pub/scm/utils/dash/dash.git)
 - derby
 - diffutils
 - diction and style (https://www.gnu.org/software/diction/)
@@ -936,20 +937,6 @@ make \
   - ypsilon (http://www.littlewingpinball.net/mediawiki/index.php/Ypsilon)
 - sharutils
 - shells?
-  - dash (http://gondor.apana.org.au/~herbert/dash/ and https://git.kernel.org/pub/scm/utils/dash/dash.git)
-    - files: http://gondor.apana.org.au/~herbert/dash/files/
-    - netbsdcurses/byacc work:
-      - ```shell
-        ./configure \
-          --prefix=${ridir} \
-          --enable-static \
-          --with-libedit \
-            LDFLAGS="-ledit -lcurses -lterminfo -static" \
-            CFLAGS="${CFLAGS} -L${cwsw}/netbsdcurses/current/lib" \
-            CPPFLAGS=-I${cwsw}/netbsdcurses/current/include \
-            LIBS='-ledit -lcurses -lterminfo -static' \
-            YACC=byacc
-        ```
   - es (https://github.com/wryun/es-shell)
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
