@@ -899,6 +899,7 @@ make \
 - rover (https://lecram.github.io/p/rover)
 - rpcbind
 - rvm?
+- samurai (https://github.com/michaelforney/samurai)
 - scheme stuff:
   - bigloo
   - chez (scheme, https://github.com/cisco/ChezScheme - utillinux (uuid), ncurses, disable x11)
