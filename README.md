@@ -570,7 +570,28 @@ wc -l /tmp/astbuild.out
   - gxemul
   - qemu
   - simh
+    - for static link: `sed -i.ORIG '/LIBEXT = so/s/so/a/g' makefile`
+    - for i1401: `echo >> makefile ; echo 'i1401: ${BIN}i1401${EXE}' >> makefile`
+    - for mkdir: `sed -i 's/ mkdir / mkdir -p /g' makefile`
     - needs libnl, libpcap
+    - can use a fake sysroot...
+```
+mkdir -p sysroot/{lib,include}
+ln -sf ${cwsw}/lib{nl,pcap}/current/lib/*.a sysroot/lib/
+ln -sf ${cwsw}/lib{nl,pcap}/current/include/* sysroot/include/
+```
+    - use with...
+```
+make \
+  CC="${CC} -I. -D_LARGEFILE64_SOURCE -static" \
+  LIBPATH=${PWD}/sysroot/lib \
+  INCPATH=${PWD}/sysroot/include \
+  USE_NETWORK=1 \
+  CFLAGS= \
+  CPPFLAGS= \
+  CXXFLAGS= \
+  LDFLAGS=
+```
     - vde would be nice
     - **find_dev** pcap conflict
       - ```grep -rl find_dev | xargs sed -i s/find_dev/simh_find_dev/g```
