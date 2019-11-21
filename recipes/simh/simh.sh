@@ -1,6 +1,7 @@
 #
 # XXX - uses a github commit, download every time
 # XXX - pcap is super iffy, particulary static, don't bother with it, use a tap/tun device
+# XXX - is busybox necessary?
 #
 
 rname="simh"
