@@ -92,6 +92,7 @@ crosware \
   cd ${zulutop}/${zuludir}/lib/
   ln -sf libz.so{.1,}
 }
+rm -rf ${libzbuilddir}
 
 # install zulu jdk
 crosware \
