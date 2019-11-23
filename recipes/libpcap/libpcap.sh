@@ -1,9 +1,9 @@
 rname="libpcap"
-rver="1.9.0"
+rver="1.9.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.tcpdump.org/release/${rfile}"
-rsha256="2edb88808e5913fdaa8e9c1fcaf272e19b2485338742b5074b9fe44d68f37019"
+rsha256="635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094"
 rreqs="make bison flex libnl"
 
 . "${cwrecipe}/common.sh"
@@ -31,7 +31,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   make install
-  sed -i 's#/\.libs # #g' ${ridir}/bin/pcap-config
+  sed -i 's#/\\.libs # #g' ${ridir}/bin/pcap-config ${ridir}/lib/pkgconfig/libpcap.pc
   popd >/dev/null 2>&1
 }
 "
@@ -41,5 +41,6 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
   echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
   echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
+  #echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
 }
 "
