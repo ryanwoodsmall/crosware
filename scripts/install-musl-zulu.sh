@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 #
-# dirtier version of this
-# https://github.com/ryanwoodsmall/dockerfiles/blob/master/crosware/zulu/Dockerfile
+# dirtier version of this:
+#  https://github.com/ryanwoodsmall/dockerfiles/blob/master/crosware/zulu/Dockerfile
 #
 # XXX - check for musl...
 #
@@ -15,6 +15,10 @@ fi
 if [ "${cwtop}x" == "x" ] ; then
  echo '${cwtop} environment variable not set'
  exit 1
+fi
+if ! $(crosware show-uarch | grep -q '^x86_64$') ; then
+  echo 'x86_64 only'
+  exit 1
 fi
 
 # fail fast from here on out
