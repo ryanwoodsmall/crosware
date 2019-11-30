@@ -5,11 +5,11 @@
 #
 
 rname="duktape"
-rver="2.4.0"
+rver="2.5.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/svaarala/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="86a89307d1633b5cedb2c6e56dc86e92679fc34b05be551722d8cc69ab0771fc"
+rsha256="83d411560a1cd36ea132bd81d8d9885efe9285c6bc6685c4b71e69a0c4329616"
 rreqs="linenoise"
 
 . "${cwrecipe}/common.sh"
