@@ -965,6 +965,7 @@ wc -l /tmp/astbuild.out
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
 - suckless
   - sinit (https://core.suckless.org/sinit/)
+- tab (https://tkatchev.bitbucket.io/tab/)
 - taskwarrior (https://taskwarrior.org/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - taskserver (https://github.com/GothenburgBitFactory/taskserver)
 - timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
