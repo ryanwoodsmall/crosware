@@ -35,7 +35,7 @@ function cwmakeinstall_${rname}() {
   ninja -C build install
   mv \"${ridir}/bin/ksh\" \"${ridir}/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/ksh\"
-  strip --strip-all \"${ridir}/bin/${rname}\"
+  strip --strip-all \"${ridir}/bin/${rname}\" \"${ridir}/bin/shcomp\"
   popd >/dev/null 2>&1
 }
 "
