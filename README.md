@@ -395,6 +395,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - mpfr
 - musl-fts (named muslfts - https://github.com/pullmoll/musl-fts)
 - ncurses
+- neat/litcave stuff (http://litcave.rudi.ir/)
+  - neatvi (https://github.com/aligrudi/neatvi)
 - netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
   - should replace opennc, which is, uhhhhhhh missing?
@@ -817,7 +819,22 @@ wc -l /tmp/astbuild.out
 - mutt
 - nc / ncat / netcat
 - ne (https://github.com/vigna/ne terminal editor)
-- neatvi (https://github.com/aligrudi/neatvi)
+- neat/litcave stuff (http://litcave.rudi.ir/)
+  - neatcc (https://github.com/aligrudi/neatcc)
+  - neatld (https://github.com/aligrudi/neatld)
+  - neatas (https://repo.or.cz/neatas.git)
+  - neatlibc (https://github.com/aligrudi/neatlibc)
+  - neatroff (https://github.com/aligrudi/neatroff)
+    - neatroff_make (https://github.com/aligrudi/neatroff_make)
+  - neateqn (https://github.com/aligrudi/neateqn)
+  - neatpost (https://github.com/aligrudi/neatpost)
+  - neatrefer (https://github.com/aligrudi/neatrefer)
+  - neatmkfn (https://github.com/aligrudi/neatmkfn)
+  - fbpdf (https://github.com/aligrudi/fbpdf)
+  - fbvis (https://repo.or.cz/fbvis.git)
+  - fbff (https://github.com/aligrudi/fbff)
+  - fbpad (https://github.com/aligrudi/fbpad)
+  - fbvnc (https://repo.or.cz/fbvnc.git)
 - nethack
 - netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
 - netsurf stuff
