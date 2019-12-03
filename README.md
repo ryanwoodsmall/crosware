@@ -319,6 +319,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - glib
 - global
 - gmp
+- gnupg (with ntbtls - https://gnupg.org/software/index.html)
 - go
   - static binary archive
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
@@ -586,7 +587,6 @@ wc -l /tmp/astbuild.out
   - configure needs ```--without-p11-kit --disable-doc --enable-manpages --with-default-trust-store-file=${cwetc}/ssl/cert.pem```
   - mini-nettle/mini-gmp?
 - gpg
-  - gnupg
   - gpgme
   - etc.
 - graphviz (http://graphviz.org/)
