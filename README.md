@@ -349,7 +349,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - kawa (scheme)
 - ksh93 (https://github.com/att/ast/ via at&t ast)
 - less (netbsdcurses)
-- libatomic\_ops (named libatomicops)
+- libassuan (https://gnupg.org/software/libassuan/index.html)
+- libatomicops
 - libbsd
 - libedit (https://www.thrysoee.dk/editline/ aka editline, from netbsd - ncurses and netbsdcurses)
 - libevent (no openssl support yet)
