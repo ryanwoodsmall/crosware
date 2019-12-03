@@ -314,7 +314,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - gawk (gnu awk, prepended to $PATH, becomes default awk)
 - gc (working on x86\_64, aarch64; broken on i386, arm)
 - gdbm
-- gettext-tiny (named gettexttiny)
+- gettexttiny
 - git
 - glib
 - global
@@ -395,7 +395,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - mksh (http://www.mirbsd.org/mksh.htm)
 - mpc
 - mpfr
-- musl-fts (named muslfts - https://github.com/pullmoll/musl-fts)
+- muslfts (https://github.com/pullmoll/musl-fts)
 - ncurses
 - neat/litcave stuff (http://litcave.rudi.ir/)
   - neatvi (https://github.com/aligrudi/neatvi)
@@ -428,7 +428,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - pcre
 - pcre2
 - perl
-- pkg-config (named pkgconfig)
+- pinentry (curses via ncurses, tty)
+- pkgconfig
 - python
   - python2 (very basic support)
   - python3 (wip)
