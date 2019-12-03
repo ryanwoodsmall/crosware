@@ -320,6 +320,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - global
 - gmp
 - gnupg (with ntbtls - https://gnupg.org/software/index.html)
+  - gnupg1 (gnupg 1.x - older, smaller gnupg version, with fewer prereqs)
 - go
   - static binary archive
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
