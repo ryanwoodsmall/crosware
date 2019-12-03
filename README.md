@@ -354,9 +354,10 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - libedit (https://www.thrysoee.dk/editline/ aka editline, from netbsd - ncurses and netbsdcurses)
 - libevent (no openssl support yet)
 - libffi
-- libgcrypt
+- libgcrypt (https://gnupg.org/software/libgcrypt/index.html)
 - libgit2
-- libgpg-error (named libgpgerror)
+- libgpgerror (https://gnupg.org/software/libgpg-error/index.html)
+- libksba (https://gnupg.org/software/libksba/index.html)
 - libmetalink (https://github.com/metalink-dev/libmetalink)
 - libnl
 - libpcap
