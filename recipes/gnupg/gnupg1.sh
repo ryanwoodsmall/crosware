@@ -21,7 +21,7 @@ function cwconfigure_${rname}() {
     --with-zlib=\"${cwsw}/zlib/current\" \
       CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
       LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib\" \
-      LIBS='-lreadline -lterminfo -lcurses'
+      LIBS='-lreadline -lterminfo -lcurses -static'
   popd >/dev/null 2>&1
 }
 "
