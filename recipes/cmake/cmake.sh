@@ -5,7 +5,7 @@
 
 #
 # XXX - openssl ugh
-# -- Could NOT find OpenSSL, try to set the path to OpenSSL root folder in the system variable OPENSSL_ROOT_DIR (missing: OPENSSL_CRYPTO_LIBRARY OPENSSL_INCLUDE_DIR) 
+# -- Could NOT find OpenSSL, try to set the path to OpenSSL root folder in the system variable OPENSSL_ROOT_DIR (missing: OPENSSL_CRYPTO_LIBRARY OPENSSL_INCLUDE_DIR)
 # CMake Error at Utilities/cmcurl/CMakeLists.txt:454 (message):
 #  Could not find OpenSSL.  Install an OpenSSL development package or
 #  configure CMake with -DCMAKE_USE_OPENSSL=OFF to build without OpenSSL.
