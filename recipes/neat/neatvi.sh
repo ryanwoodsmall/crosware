@@ -27,6 +27,7 @@ function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cwmkdir \"${ridir}/bin\"
   rm -f \"${ridir}/bin/${rname}\"
+  strip --strip-all vi
   install -m 0755 vi \"${ridir}/bin/${rname}\"
   popd >/dev/null 2>&1
 }
