@@ -80,12 +80,18 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install CC=\"\${CC} -DUSE_MUSL\" ${rlibtool}
+  local c=\"${ridir}/bin/pcc\"
+  local v=\"\$(\${c} --version | awk '{print \$4}')\"
+  local i=\"${ridir}/lib/pcc/\${MACHTYPE}/\${v}/include\"
   cd ${rname}-libs-${rver}
   env CPPFLAGS= LDFLAGS=-static \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
-      CC=\"${ridir}/bin/pcc\"
+      CC=\"\${c}\"
   make -j${cwmakejobs} ${rlibtool}
   make install ${rlibtool}
+  test -e \"\${i}_off\" && mv \"\${i}_off\"{,\${TS}} || true
+  mv \"\${i}\"{,_off}
+  unset c v i
   popd >/dev/null 2>&1
 }
 "
