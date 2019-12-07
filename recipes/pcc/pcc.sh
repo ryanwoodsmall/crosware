@@ -62,7 +62,7 @@ function cwconfigure_${rname}() {
   unset t m c d
   sed -i.ORIG '/define MUSL_DYLIB/s|#define.*|#define MUSL_DYLIB \"${cwsw}/statictoolchain/current/'\$(\${CC} -dumpmachine)'/lib/ld.so\"|g' os/linux/ccconfig.h
   sed -i.ORIG \
-    '/^OBJS = /s/^OBJS = .*/OBJS = crt0.o crt1.o gcrt1.o crti.o crtn.o crtbegin.o crtend.o crtbeginS.o crtendS.o crtbeginT.o crtendT.o/g' \
+    '/^OBJS = /s/^OBJS = .*/OBJS = crt0.o crt1.o gcrt1.o crti.o crtn.o crtbegin.o crtend.o crtbeginS.o crtendS.o crtbeginT.o crtendT.o/g;s/-fpic/-fPIC/g' \
       ${rname}-libs-${rver}/csu/linux/Makefile
   popd >/dev/null 2>&1
 }
