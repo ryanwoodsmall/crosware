@@ -429,6 +429,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - patch (gnu)
 - pcc (http://pcc.ludd.ltu.se/)
   - only x86_64 for now!
+  - kinda painful for static compilation, segfaults, etc.
+  - not sure on `crt?.o` files either
 - pcre
 - pcre2
 - perl
