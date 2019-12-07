@@ -12,16 +12,31 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   local m=\"\$(\${CC} -dumpmachine)\"
-  ./configure ${cwconfigureprefix} \
-    --cc=\"\${CC}\" \
-    --enable-static \
-    --config-musl \
-    --strip-binaries \
-    --sysincludepaths=\"${cwsw}/statictoolchain/current/\${m}/include\" \
-    --libpaths=\"${cwsw}/statictoolchain/current/\${m}/lib\" \
-    --crtprefix=\"${cwsw}/statictoolchain/current/\${m}/lib\" \
-    --elfinterp=\"${cwsw}/statictoolchain/current/\${m}/lib/ld.so\"
-  unset m
+  local v=\"\$(\${CC} --version | head -1 | awk '{print \$NF}')\"
+  local t=\"${cwsw}/statictoolchain/current\"
+  local i=\"\${t}/\${m}/include\"
+  local l=\"\${t}/\${m}/lib\"
+  local s=\"\${l}/ld.so\"
+  local c=\"\${t}/lib/gcc/\${m}/\${v}\"
+  env CPPFLAGS= CXXFLAGS= LDFLAGS='-static' CFLAGS='-Wl,-static -fPIC' \
+    ./configure ${cwconfigureprefix} \
+      --cc=\"\${CC}\" \
+      --enable-static \
+      --config-musl \
+      --strip-binaries \
+      --sysincludepaths=\"\${i}\" \
+      --libpaths=\"\${l}:\${c}\" \
+      --crtprefix=\"\${c}:\${l}\" \
+      --elfinterp=\"\${s}\"
+  unset m v t i l s c
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make CPPFLAGS= CXXFLAGS= LDFLAGS='-static' CFLAGS='-Wl,-static -fPIC'
   popd >/dev/null 2>&1
 }
 "
