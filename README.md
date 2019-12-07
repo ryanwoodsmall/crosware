@@ -466,6 +466,15 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - svnkit
 - texinfo (untested, requires perl)
 - tig
+- tinycc
+  - tcc from gnu guix mirror
+  - https://ftp.gnu.org/pub/gnu/guix/mirror/)
+  - sorta works?
+  - static is broken, like...
+  - default shared lib seems to work?
+  - `tcc -run file.c` seems to work on x86_64
+  - everything else is kinda broken
+  - tcc from git probably a better option
 - tini (small init for containers, https://github.com/krallin/tini)
 - tio (https://tio.github.io and https://github.com/tio/tio)
 - tmux
