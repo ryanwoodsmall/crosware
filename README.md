@@ -427,6 +427,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - p7zip
 - par (http://www.nicemice.net/par/ via debian https://packages.debian.org/buster/text/par)
 - patch (gnu)
+- pcc (http://pcc.ludd.ltu.se/)
+  - only x86_64 for now!
 - pcre
 - pcre2
 - perl
@@ -878,22 +880,6 @@ wc -l /tmp/astbuild.out
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
 - pax
-- pcc (http://pcc.ludd.ltu.se/)
-  - pcc and pcc-libs are now separate
-  - will almost certainly have to tinker with ld stuff
-  - ```
-      ./configure --prefix=${ridir} \
-        --enable-native \
-        --enable-multiarch=no \
-        --with-incdir=${cwsw}/statictoolchain/current/$(gcc -dumpmachine)/include \
-        --with-libdir=${cwsw}/statictoolchain/current/$(gcc -dumpmachine)/lib \
-        --with-linker=${cwsw}/statictoolchain/current/$(gcc -dumpmachine)/lib/ld.so \
-          YACC=byacc \
-          CC=${CC} \
-          CFLAGS=-Wl,-static \
-          LDFLAGS=-static \
-          CPPFLAGS=
-    ```
 - pciutils (https://github.com/pciutils/pciutils)
   - _/usr/share/misc/pci.ids_ file (https://github.com/pciutils/pciids)
 - pdsh (https://github.com/chaos/pdsh or https://github.com/grondo/pdsh ?)
