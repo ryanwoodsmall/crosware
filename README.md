@@ -881,6 +881,19 @@ wc -l /tmp/astbuild.out
 - pcc (http://pcc.ludd.ltu.se/)
   - pcc and pcc-libs are now separate
   - will almost certainly have to tinker with ld stuff
+  - ```
+      ./configure --prefix=${ridir} \
+        --enable-native \
+        --enable-multiarch=no \
+        --with-incdir=${cwsw}/statictoolchain/current/$(gcc -dumpmachine)/include \
+        --with-libdir=${cwsw}/statictoolchain/current/$(gcc -dumpmachine)/lib \
+        --with-linker=${cwsw}/statictoolchain/current/$(gcc -dumpmachine)/lib/ld.so \
+          YACC=byacc \
+          CC=${CC} \
+          CFLAGS=-Wl,-static \
+          LDFLAGS=-static \
+          CPPFLAGS=
+    ```
 - pciutils (https://github.com/pciutils/pciutils)
   - _/usr/share/misc/pci.ids_ file (https://github.com/pciutils/pciids)
 - pdsh (https://github.com/chaos/pdsh or https://github.com/grondo/pdsh ?)
