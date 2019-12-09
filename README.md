@@ -456,6 +456,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - sisc (scheme)
 - slang (ncurses)
 - slibtool (https://github.com/midipix-project/slibtool)
+- slsc (jedsoft "sc" console spreadsheet for slang)
 - socat
 - source-highlight (https://www.gnu.org/software/src-highlite/)
   - OLD 1.x version
