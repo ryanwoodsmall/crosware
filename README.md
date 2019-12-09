@@ -472,6 +472,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - svnkit
 - texinfo (untested, requires perl)
 - tig
+- tini (small init for containers, https://github.com/krallin/tini)
 - tinycc
   - tcc from gnu guix mirror
   - https://ftp.gnu.org/pub/gnu/guix/mirror/)
@@ -481,7 +482,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - `tcc -run file.c` seems to work on x86_64
   - everything else is kinda broken
   - tcc from git probably a better option
-- tini (small init for containers, https://github.com/krallin/tini)
+- tinyscheme (http://tinyscheme.sourceforge.net/home.html)
 - tio (https://tio.github.io and https://github.com/tio/tio)
 - tmux
 - toybox (static)
@@ -949,7 +950,6 @@ wc -l /tmp/astbuild.out
   - stalin (w/debian patches? https://github.com/barak/stalin)
   - stklos (http://www.stklos.net/)
   - tinyscheme
-    - http://tinyscheme.sourceforge.net/home.html
     - https://github.com/linneman/tinyscheme
     - https://github.com/sungit/TinyScheme
     - https://github.com/ignorabimus/tinyscheme
