@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/catseye/${rname}/archive/${rfile}"
 rsha256="879bbf0fcc0b90ca52eda8013a3c8e1eb0fe7356a87247cb230ada18300fc6e2"
-rreqs="make"
+rreqs="make rlwrap"
 
 . "${cwrecipe}/common.sh"
 
