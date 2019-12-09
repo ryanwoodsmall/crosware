@@ -395,6 +395,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - meson (http://mesonbuild.com/)
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
 - mksh (http://www.mirbsd.org/mksh.htm)
+- most (https://www.jedsoft.org/most/)
 - mpc
 - mpfr
 - muslfts (https://github.com/pullmoll/musl-fts)
