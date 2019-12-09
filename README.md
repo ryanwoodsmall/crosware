@@ -923,6 +923,7 @@ wc -l /tmp/astbuild.out
 - rpcbind
 - rvm?
 - samurai (https://github.com/michaelforney/samurai)
+- sc (from debian stuff, https://packages.debian.org/buster/sc)
 - scheme stuff:
   - bigloo
   - chez (scheme, https://github.com/cisco/ChezScheme - utillinux (uuid), ncurses, disable x11)
