@@ -12,6 +12,8 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG s/termcap/ncurses/g configure
+  sed -i s/ncurses5-config/ncurses6-config/g configure
+  sed -i s/ncursesw5-config/ncursesw6-config/g configure
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --without-x \
     --with-slang=\"${cwsw}/slang/current\" \
