@@ -10,7 +10,11 @@ rreqs="make"
 
 eval "
 function cwconfigure_${rname}() {
-  true
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  sed -i.ORIG 's/printf(prompt)/print_prompt()/g' miniscm.c
+  sed -i 's#init.scm#${rtdir}/current/share/${rname}/init.scm#g' miniscm.c
+  echo 'void print_prompt() { printf(prompt); fflush(stdout); }' >> miniscm.c
+  popd >/dev/null 2>&1
 }
 "
 
@@ -25,11 +29,13 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  strip --strip-all miniscm
   cwmkdir \"${ridir}/bin\"
+  cwmkdir \"${ridir}/share/${rname}\"
   install -m 0755 miniscm \"${ridir}/bin/miniscm\"
-  install -m 0644 *.scm \"${ridir}/bin/\"
+  install -m 0644 *.scm \"${ridir}/share/${rname}/\"
   echo '#!/usr/bin/env bash' > \"${ridir}/bin/${rname}\"
-  echo '( cd ${rtdir}/current/bin ; ./miniscm \"\${@}\" )' >> \"${ridir}/bin/${rname}\"
+  echo 'rlwrap -C ${rname} -pRed -m -M .scm -q\\\" \"${rtdir}/current/bin/miniscm\" \"\${@}\"' >> \"${ridir}/bin/${rname}\"
   chmod 755 \"${ridir}/bin/${rname}\"
   popd >/dev/null 2>&1
 }
