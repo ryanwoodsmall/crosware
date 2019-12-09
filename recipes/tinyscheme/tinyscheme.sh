@@ -12,6 +12,8 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG '/^SYS_LIBS=/s/$/ -static/g' makefile
+  sed -i.ORIG '/putstr.*prompt/s/;/;fflush(stdout);/g' scheme.c
+  sed -i 's#init.scm#${rtdir}/current/share/${rname}/init.scm#g' scheme.c
   popd >/dev/null 2>&1
 }
 "
@@ -20,10 +22,11 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cwmkdir \"${ridir}/bin\"
+  cwmkdir \"${ridir}/share/${rname}\"
   install -m 0755 scheme \"${ridir}/bin/${rname}.bin\"
-  install -m 0644 init.scm \"${ridir}/bin/init.scm\"
+  install -m 0644 init.scm \"${ridir}/share/${rname}/init.scm\"
   echo '#!/usr/bin/env bash' > \"${ridir}/bin/${rname}\"
-  echo '( cd ${rtdir}/current/bin ; ./${rname}.bin \"\${@}\" )' >> \"${ridir}/bin/${rname}\"
+  echo 'rlwrap -C ${rname} -pBlue -m -M .scm -q\\\" \"${rtdir}/current/bin/${rname}.bin\" \"\${@}\"' >> \"${ridir}/bin/${rname}\"
   chmod 755 \"${ridir}/bin/${rname}\"
   popd >/dev/null 2>&1
 }
