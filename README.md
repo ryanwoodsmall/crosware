@@ -394,6 +394,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - mbedtls (polarssl)
 - meson (http://mesonbuild.com/)
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
+- minischeme (https://github.com/catseye/minischeme)
 - mksh (http://www.mirbsd.org/mksh.htm)
 - most (https://www.jedsoft.org/most/)
 - mpc
@@ -936,7 +937,6 @@ wc -l /tmp/astbuild.out
   - minilisp (https://github.com/rui314/minilisp)
   - minischeme
     - https://github.com/ignorabimus/minischeme
-    - https://github.com/catseye/minischeme
   - mit/gnu scheme (requires gnu/mit scheme... to build... itself)
   - mosh (https://github.com/higepon/mosh and http://mosh.monaos.org/files/doc/text/About-txt.html)
   - oaklisp (https://github.com/barak/oaklisp)
