@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://sourceforge.net/projects/${rname}/files/${rname}/${rdir}/${rfile}/download"
 rsha256="eac0103494c755192b9e8f10454d9f98f2bbd4d352e046f7b253439a3f991999"
-rreqs="make"
+rreqs="make rlwrap"
 
 . "${cwrecipe}/common.sh"
 
