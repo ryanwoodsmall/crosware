@@ -21,6 +21,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  strip --strip-all scheme
   cwmkdir \"${ridir}/bin\"
   cwmkdir \"${ridir}/share/${rname}\"
   install -m 0755 scheme \"${ridir}/bin/${rname}.bin\"
