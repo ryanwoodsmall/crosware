@@ -877,6 +877,7 @@ wc -l /tmp/astbuild.out
 - odbc?
   - iodbc?
   - unixodbc?
+- oleo (gnu spreadsheet, https://www.gnu.org/software/oleo/oleo.html)
 - openconnect
 - patchelf (https://github.com/NixOS/patchelf - autoconf/automake)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
