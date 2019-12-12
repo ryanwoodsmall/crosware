@@ -830,7 +830,6 @@ wc -l /tmp/astbuild.out
           LIBS="-lcurses -lterminfo"
       ```
 - moreutils (https://joeyh.name/code/moreutils/)
-- most (https://www.jedsoft.org/most/)
 - mpg123
 - mpg321
 - mruby (https://github.com/mruby/mruby)
