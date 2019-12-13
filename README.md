@@ -611,7 +611,6 @@ wc -l /tmp/astbuild.out
 - graphviz (http://graphviz.org/)
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
 - hq (https://github.com/rbwinslow/hq)
-- hterm utils for chrome os (https://chromium.googlesource.com/apps/libapps/+/master/hterm/etc)
 - http-parser (https://github.com/nodejs/http-parser - useful with libgit2?)
 - iodine (https://github.com/yarrick/iodine)
   - **src/Makefile** needs a ```$(CC) -c``` for the _.c.o_ rule
