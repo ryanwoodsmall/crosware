@@ -19,7 +19,7 @@ function cwconfigure_${rname}() {
   sed -i \"s#/usr/include/termcap.h#${cwsw}/netbsdcurses/current/include/termcap.h#g\" configure
   sed -i \"s#/usr/include#${cwsw}/statictoolchain/current/\$(\${CC} -dumpmachine)/include#g\" configure
   sed -i \"s#/usr/local/share/man#${ridir}/share/man#g\" instman.sh
-  rm -f \"${ridir}/share/man\"
+  rm -rf \"${ridir}/share/man\"
   mkdir -p \"${ridir}/etc/${rname}\" \"${ridir}/share/man/man1\" \"${ridir}/share/man/catman1\"
   ln -sf ${ridir}/share/man/man{,.}1
   ln -sf ${ridir}/share/man/catman{,.}1
