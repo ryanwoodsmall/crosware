@@ -1,16 +1,15 @@
 #
-# XXX - need to figure out ca certificates
 # XXX - our perl needs to be at front of path for config/make
 # XXX - -DOPENSSL_PIC ???
 # XXX - other "openssl version -a" stuff?
 #
 
 rname="openssl"
-rver="1.0.2t"
+rver="1.1.1d"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.openssl.org/source/${rfile}"
-rsha256="14cb464efe7ac6b54799b34456bd69558a749a4931ecfd9cf9f71d7881cac7bc"
+rsha256="1e3a91bc1f9dfce01af26026f856e064eab4c8ee0a8f457b5ae30b40b8b711f2"
 rreqs="make perl zlib cacertificates"
 
 . "${cwrecipe}/common.sh"
