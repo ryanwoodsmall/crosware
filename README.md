@@ -1018,6 +1018,7 @@ wc -l /tmp/astbuild.out
 - tre (https://github.com/laurikari/tre)
 - tsocks
 - tzdb (https://www.iana.org/time-zones)
+- udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
 - units (https://www.gnu.org/software/units)
 - upx (https://github.com/upx/upx)
