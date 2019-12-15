@@ -1,9 +1,9 @@
 rname="gauche"
-rver="0.9.8"
+rver="0.9.9"
 rdir="${rname//g/G}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://github.com/shirok/${rname//g/G}/releases/download/release${rver//./_}/${rfile}"
-rsha256="3eb30d1051d8b48999fe46511c9f6983057735312c9832b7db13f9db140db74b"
+rsha256="4ca9325322a7efadb9680d156eb7b53521321c9ca4955c4cbe738bc2e1d7f7fb"
 rreqs="make openssl rlwrap"
 
 . "${cwrecipe}/common.sh"
