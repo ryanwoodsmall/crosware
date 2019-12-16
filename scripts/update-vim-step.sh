@@ -23,6 +23,9 @@ function sz() {
   while $(echo "${v}" | grep -q '^0') ; do
     v="${v#0}"
   done
+  if [ "${v}x" == "x" ] ; then
+    v=1
+  fi
   echo "${v}"
 }
 function pz() {
