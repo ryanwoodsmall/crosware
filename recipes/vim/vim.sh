@@ -1,9 +1,13 @@
+#
+# XXX - disable mouse? ugh
+#
+
 rname="vim"
-rver="8.1.2424"
+rver="8.2.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
-rsha256="8aec5f2c79fe2bc5536c1e6ad9a0396a76e6a4657495eafeeff8816bd2bec2e6"
+rsha256="da8bfa30853e092242d2c62e047c8bfe591da34c5c59335febeb3db7fbcd064e"
 rreqs="make ncurses lua gettexttiny"
 
 . "${cwrecipe}/common.sh"
