@@ -27,7 +27,7 @@ function cwmakeinstall_${rname}() {
   install -m 0755 scheme \"${ridir}/bin/${rname}.bin\"
   install -m 0644 init.scm \"${ridir}/share/${rname}/init.scm\"
   echo '#!/usr/bin/env bash' > \"${ridir}/bin/${rname}\"
-  echo 'rlwrap -C ${rname} -pBlue -m -M .scm -q\\\" \"${rtdir}/current/bin/${rname}.bin\" \"\${@}\"' >> \"${ridir}/bin/${rname}\"
+  echo 'rlwrap -C ${rname} -pYellow -m -M .scm -q\\\" \"${rtdir}/current/bin/${rname}.bin\" \"\${@}\"' >> \"${ridir}/bin/${rname}\"
   chmod 755 \"${ridir}/bin/${rname}\"
   popd >/dev/null 2>&1
 }
