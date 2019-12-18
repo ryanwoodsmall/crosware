@@ -257,7 +257,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - bash4 (netbsdcurses)
 - bc (gnu bc, dc)
 - bdb47
-- binutils (bfd, opcodes, libiberty.a; no isl)
+- binutils (bfd, opcodes, libiberty.a)
 - bison
 - brogue
 - bsd programs
