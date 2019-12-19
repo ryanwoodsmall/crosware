@@ -464,10 +464,14 @@ time_func ls -l -A /
   - https://stackoverflow.com/questions/2683279/how-to-detect-if-a-script-is-being-sourced
   - `(return 0 2>/dev/null) && sourced=1 || sourced=0`
 - other shells?
-  - ash/dash
-  - ksh88 (mksh/oksh/loksh/...)
-  - ksh93
+  - ash
   - zsh
+- configs...
+  - store in `${rtdir}/etc` or the like? (dropear, lynx, ...)
+  - or in `${cwetc}/${rname}` with a subset of known/ignored configs? (ssh, dnsmasq, ...)
+  - central is easier to insure upgrade doesn't wipe config but can lead to broken centralized conf
+  - bundled with app is cleaner but more dangerous
+  - both bad options
 
 <!--
 # vim: ft=markdown
