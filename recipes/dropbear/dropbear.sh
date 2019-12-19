@@ -1,7 +1,7 @@
 #
-# need openssh for sftp support
-# append to localoptions.h something like
+# XXX - need openssh for sftp support - append to localoptions.h something like
 #   #define SFTPSERVER_PATH "${cwsw}/openssh/current/libexec/sftp-server"
+# XXX - move config (keys) to $cwtop/etc/dropbear/
 #
 rname="dropbear"
 rver="2019.78"
