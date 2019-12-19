@@ -288,6 +288,12 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - diffutils
 - diction and style (https://www.gnu.org/software/diction/)
 - dnsmasq (http://www.thekelleys.org.uk/dnsmasq/doc.html)
+  - look at adding...
+    - libnetfilter_conntrack (conntrack)
+    - nettle, hogweed, gmp (DNSSSEC)
+    - idn/idn2 (IDN)
+    - lua? (5.2 only?)
+    - dbus? ubus?
 - dockerstatic (static docker binaries from https://download.docker.com/linux/static/stable/)
   - good enough for remote ```${DOCKER_HOST}``` usage
   - amd64/arm32v6/arm64v8 only
