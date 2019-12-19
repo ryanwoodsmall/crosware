@@ -13,5 +13,6 @@
 !/etc/local.d/empty.sh
 !/etc/local.d/crosware_directory_not_tracked_in_git
 /etc/ssl*
+/etc/dnsmasq*
 /var/inst/*
 !/var/inst/.crosware_directory_not_tracked_in_git

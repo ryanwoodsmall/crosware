@@ -287,6 +287,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - derby
 - diffutils
 - diction and style (https://www.gnu.org/software/diction/)
+- dnsmasq (http://www.thekelleys.org.uk/dnsmasq/doc.html)
 - dockerstatic (static docker binaries from https://download.docker.com/linux/static/stable/)
   - good enough for remote ```${DOCKER_HOST}``` usage
   - amd64/arm32v6/arm64v8 only
@@ -580,7 +581,6 @@ wc -l /tmp/astbuild.out
 - dante (socks proxy client/server https://www.inet.no/dante/)
 - ddrescue
 - docbook?
-- dnsmasq
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
 - dsvpn (https://github.com/jedisct1/dsvpn)
 - dumb-init (https://github.com/Yelp/dumb-init)
