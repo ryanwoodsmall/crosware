@@ -464,8 +464,9 @@ time_func ls -l -A /
   - https://stackoverflow.com/questions/2683279/how-to-detect-if-a-script-is-being-sourced
   - `(return 0 2>/dev/null) && sourced=1 || sourced=0`
 - other shells?
-  - ash
-  - zsh
+  - had other interop here but only `zsh` and `ksh93` have enough juice to play nicely
+  - userspace (i.e., `. ${cwtop}/etc/profile`) might be able to be made to work better with `ash`, `dash`, and `ksh88`
+  - nothing except `bash` is a priority, might not be worth the effort
 - configs...
   - store in `${rtdir}/etc` or the like? (dropear, lynx, ...)
   - or in `${cwetc}/${rname}` with a subset of known/ignored configs? (ssh, dnsmasq, ...)
