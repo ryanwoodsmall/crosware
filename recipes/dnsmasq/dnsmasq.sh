@@ -13,7 +13,7 @@ function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG 's#^PREFIX.*#PREFIX = ${ridir}#g' Makefile
   sed -i.ORIG 's#<sys/poll.h>#<poll.h>#g' src/dnsmasq.h
-  sed -i.ORIG 's#/usr/local/etc/dnsmasq.conf#${cwetc}/${rname}.conf#g' src/config.h
+  sed -i.ORIG 's#/etc/dnsmasq.conf#${cwetc}/${rname}.conf#g' src/config.h
   popd >/dev/null 2>&1
 }
 "
