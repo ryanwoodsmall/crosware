@@ -6,8 +6,6 @@
 - need to set ```set -o pipefail```? prolly
   - and ```trap...```
   - and use ```... ||:``` as a ```... || true``` shortcut
-- need initial package installs as part of bootstrap?
-  - make, sed, gettexttiny, gawk, ...
 - check that we are running as root
   - note on perms if sudo/root is not wanted
 - top directory (/usr/local/crosware)
@@ -37,7 +35,7 @@
   - confusing naming
 - etc/local.d - scriptlets, not tracked in git
 - var/ - track installs/versions
-- update environment without rebootstrap
+- update environment without rebootstrap/resourcing `${cwetc}/profile`
 - profile.d file writer
 - zulu, jgitsh, statictoolchain split out to separate install functions
   - trim down bootstrap/make
