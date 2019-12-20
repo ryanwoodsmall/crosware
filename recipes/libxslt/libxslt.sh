@@ -1,9 +1,9 @@
 rname="libxslt"
-rver="1.1.33"
+rver="1.1.34"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="ftp://xmlsoft.org/${rname}/${rfile}"
-rsha256="8e36605144409df979cab43d835002f63988f3dc94d5d3537c12796db90e38c8"
+rsha256="98b1bd46d6792925ad2dfe9a87452ea2adebf69dcb9919ffd55bf926a7f93f7f"
 rreqs="make libgcrypt libxml2 slibtool xz zlib"
 
 . "${cwrecipe}/common.sh"
