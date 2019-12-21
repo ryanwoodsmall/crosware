@@ -1,9 +1,9 @@
 rname="wolfssl"
-rver="4.2.0"
+rver="4.3.0"
 rdir="${rname}-${rver}-stable"
 rfile="v${rver}-stable.tar.gz"
 rurl="https://github.com/wolfSSL/${rname}/archive/${rfile}"
-rsha256="3562af485c26cd7abe94d9404fbfc0c5c9bceb4aab29b81ebf5e6c2467507e12"
+rsha256="6896f8ad6c44aff3e583006eeee839600848a0e37118ebbb7514eca9409ae08b"
 rreqs="make perl m4 autoconf automake libtool cacertificates"
 
 . "${cwrecipe}/common.sh"
