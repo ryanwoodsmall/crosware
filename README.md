@@ -989,6 +989,7 @@ wc -l /tmp/astbuild.out
   - needs standard shared/static library configure opts, plus ```--disable-{pam,utmp}```
   - seems to work just fine with static crosware compilation
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
+- simplecpp (https://github.com/danmar/simplecpp)
 - sljit (http://sljit.sourceforge.net/)
 - source-highlight (https://www.gnu.org/software/src-highlite/)
   - 2.x, 3.x require boost (yeeee), ctags
@@ -1025,6 +1026,7 @@ wc -l /tmp/astbuild.out
 - tre (https://github.com/laurikari/tre)
 - tsocks
 - tzdb (https://www.iana.org/time-zones)
+- ublinter (https://github.com/danmar/ublinter)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
 - units (https://www.gnu.org/software/units)
