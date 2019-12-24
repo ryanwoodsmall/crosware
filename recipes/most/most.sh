@@ -16,6 +16,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --without-x \
     --with-slang=\"${cwsw}/slang/current\"
+  mkdir -p src/objs
   popd >/dev/null 2>&1
 }
 "
