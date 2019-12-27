@@ -3,11 +3,11 @@
 #
 
 rname="vim"
-rver="8.2.0036"
+rver="8.2.0037"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
-rsha256="08b3ee0b2ebaab5ab5447f7761d686ddbca3d8abd21b20fa9f96707f37bc51e2"
+rsha256="fae00c022b3674abba180854ecb12e4a112f1791eba51876da9d975c851ccdcd"
 rreqs="make ncurses lua gettexttiny"
 
 . "${cwrecipe}/common.sh"
