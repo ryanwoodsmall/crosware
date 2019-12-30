@@ -660,12 +660,16 @@ wc -l /tmp/astbuild.out
   - scala (included in sdkman)
   - xtend
 - java jvm/jdk stuff
+  - adoptopenjdk (https://adoptopenjdk.net/)
   - avian (https://readytalk.github.io/avian/)
   - cacao
+  - corretto (https://github.com/corretto)
+  - dragonwell (https://github.com/alibaba/dragonwell8)
   - jamvm
   - jikes rvm
   - liberica (https://www.bell-sw.com/java.html)
   - maxine (https://github.com/beehive-lab/Maxine-VM)
+  - ojdkbuild (https://github.com/ojdkbuild/ojdkbuild)
   - openj9
   - ...
 - javascript engines
