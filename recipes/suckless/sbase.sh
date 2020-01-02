@@ -1,5 +1,5 @@
 rname="sbase"
-rver="60895834f011acb7ec3d6ef6e35f2daa23007ff9"
+rver="57c9cab8496efa6088998fc84d45a7340ed215fa"
 rdir="${rname}-${rver}"
 rurl="https://git.suckless.org/${rname}"
 rprof="${cwetcprofd}/zz_${rname}.sh"
