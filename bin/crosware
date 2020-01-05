@@ -1038,6 +1038,7 @@ function cwlistfuncs() {
 function cwshowfunc() {
   local funclist
   if [ ${#} -le 0 ] ; then
+    cwscriptecho "warning: this will be really slow..." 1>&2
     funclist="$(cwlistfuncs)"
   else
     funclist="${@}"
