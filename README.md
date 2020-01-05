@@ -71,6 +71,7 @@ commands:
   set : run 'set' to show full crosware environment
   show-arch : show kernel and userspace architecture
   show-env : run 'env' to show crosware environment
+  show-func : show the given function name
   show-karch : show kernel architecture
   show-uarch : show userspace architecture
   uninstall : uninstall some packages

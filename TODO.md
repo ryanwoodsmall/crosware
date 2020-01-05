@@ -471,8 +471,6 @@ time_func ls -l -A /
   - central is easier to insure upgrade doesn't wipe config but can lead to broken centralized conf
   - bundled with app is cleaner but more dangerous
   - both bad options
-- `show-func` command
-  - does what it says, shows the function definition
 
 <!--
 # vim: ft=markdown

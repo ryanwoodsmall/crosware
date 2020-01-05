@@ -90,6 +90,7 @@ cwcmds["list-available"]="list available recipes which are not installed"
 cwcmds["list-upgradable"]="list installed packages with available upgrades"
 cwcmds["list-funcs"]="list ${cwname} shell functions"
 cwcmds["run-func"]="run ${cwname} shell function"
+cwcmds["show-func"]="show the given function name"
 cwcmds["show-env"]="run 'env' to show ${cwname} environment"
 cwcmds["upgrade"]="uninstall then install a recipe"
 cwcmds["upgrade-all"]="upgrade all packages with different recipe versions"
@@ -1013,6 +1014,7 @@ function cwenv() {
 
 #
 # cwset
+#   XXX - ungodly slow, need caching/memoization here
 #
 function cwset() {
   cwsourcerecipes
@@ -1028,6 +1030,23 @@ function cwlistfuncs() {
   cwset \
   | grep -F ' ()' \
   | cut -f1 -d' '
+}
+
+#
+# cwshowfunc
+#
+function cwshowfunc() {
+  local funclist
+  if [ ${#} -le 0 ] ; then
+    funclist="$(cwlistfuncs)"
+  else
+    funclist="${@}"
+  fi
+  for funcname in ${funclist} ; do
+    cwset \
+    | sed -n '/^'"${funcname}"' ()/,/^}$/!d;p'
+  done
+  unset funcname funclist
 }
 
 #
@@ -1188,6 +1207,9 @@ case "${cmd}" in
     ;;
   run-func)
     cwrunfunc "${@}"
+    ;;
+  show-func)
+    cwshowfunc "${@}"
     ;;
   show-arch)
     cwshowarch
