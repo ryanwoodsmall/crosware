@@ -1,5 +1,7 @@
 #
 # XXX - rename to bare ksh w/o 93? probably not...
+# XXX - need VISUAL=emacs ???
+# XXX - EDITOR=???
 #
 
 rname="ksh93"
