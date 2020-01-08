@@ -557,7 +557,12 @@ wc -l /tmp/astbuild.out
 ```
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
-- bearssl
+- bearssl (https://bearssl.org/)
+  - build with something like ```make CC=${CC} LD=${CC} LDFLAGS="${LDFLAGS} -lc -static"```
+  - manual install:
+    - inc/*.h -> include/
+    - build/brssl -> bin/
+    - build/libbearssl.a -> lib/
 - bic (https://github.com/hexagonal-sun/bic - c repl)
 - big data stuff
   - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
