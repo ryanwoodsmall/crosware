@@ -1,6 +1,7 @@
 #
 # - other ssl/tls providers
 #   - gnutls, nss, ...
+#   - bearssl w/7.68.0+
 # - libssh2
 #   - supports one of openssl, mbed, libgcrypt
 #   - mix/match with ssl/tls providers? seems like a bad idea
