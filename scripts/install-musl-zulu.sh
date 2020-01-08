@@ -84,7 +84,7 @@ crosware \
     cwextract,${libzdlfile},${cwbuild}
 {
   cd ${libzbuilddir}/
-  env CPPFLAGS= LDFLAGS= ./configure --enable-shared --disable-static
+  env CFLAGS= CPPFLAGS= LDFLAGS= ./configure --enable-shared --disable-static
   make
   install -m 0755 -D $(realpath libz.so) ${zulutop}/${zuludir}/lib/libz.so.1
 }
