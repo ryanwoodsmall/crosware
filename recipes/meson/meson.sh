@@ -1,3 +1,12 @@
+#
+# XXX
+#  meson 0.53.0 has linker support...
+#  which breaks ksh93 compile with:
+#    meson.build:1:0: ERROR: Unable to determine dynamic linker
+#  no amount of my fiddling can get it to work
+#  frankly this sucks, meson sucks, it all just sucks
+#
+
 rname="meson"
 rver="0.52.1"
 rdir="${rname}-${rver}"
