@@ -8,11 +8,11 @@
 #
 
 rname="curl"
-rver="7.67.0"
+rver="7.68.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
-rsha256="dd5f6956821a548bf4b44f067a530ce9445cc8094fd3e7e3fc7854815858586c"
+rsha256="207f54917dd6a2dc733065ccf18d61bb5bebeaceb5df49cd9445483e8623eeb9"
 rreqs="make zlib openssl mbedtls wolfssl libssh2 expat libmetalink cacertificates"
 
 . "${cwrecipe}/common.sh"
@@ -40,6 +40,7 @@ function cwconfigure_${rname}() {
     --with-libmetalink \
     --with-libssh2 \
     --with-zlib \
+    --without-bearssl \
     --without-mbedtls \
     --without-wolfssl \
     --without-gnutls \
@@ -82,6 +83,7 @@ function cwmakeinstall_${rname}_mbedtls() {
     --with-zlib \
     --without-libmetalink \
     --without-libssh2 \
+    --without-bearssl \
     --without-ssl \
     --without-wolfssl \
     --without-gnutls \
@@ -106,6 +108,7 @@ function cwmakeinstall_${rname}_wolfssl() {
     --with-zlib \
     --without-libmetalink \
     --without-libssh2 \
+    --without-bearssl \
     --without-ssl \
     --without-mbedtls \
     --without-gnutls \
