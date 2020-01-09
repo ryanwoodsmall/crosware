@@ -1,18 +1,9 @@
-#
-# XXX
-#  meson 0.53.0 has linker support...
-#  which breaks ksh93 compile with:
-#    meson.build:1:0: ERROR: Unable to determine dynamic linker
-#  no amount of my fiddling can get it to work
-#  frankly this sucks, meson sucks, it all just sucks
-#
-
 rname="meson"
-rver="0.52.1"
+rver="0.53.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/mesonbuild/meson/releases/download/${rver}/${rfile}"
-rsha256="0c277472e49950a5537e3de3e60c57b80dbf425788470a1a8ed27446128fc035"
+rsha256="035e75993ab6fa6c9ebf902b835c64cf397a763eb8e65c9bb6e1cc9730a9d3f6"
 rreqs="python3 ninja"
 
 . "${cwrecipe}/common.sh"
