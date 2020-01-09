@@ -13,7 +13,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
 rsha256="207f54917dd6a2dc733065ccf18d61bb5bebeaceb5df49cd9445483e8623eeb9"
-rreqs="make zlib openssl mbedtls wolfssl libssh2 expat libmetalink cacertificates"
+rreqs="make zlib openssl mbedtls wolfssl libssh2 expat libmetalink cacertificates bearssl"
 
 . "${cwrecipe}/common.sh"
 
@@ -65,6 +65,7 @@ function cwmakeinstall_${rname}() {
   popd >/dev/null 2>&1
   mv \"${ridir}/bin/${rname}\" \"${ridir}/bin/${rname}-openssl\"
   ln -sf \"${rtdir}/current/bin/${rname}-openssl\" \"${ridir}/bin/${rname}\"
+  cwmakeinstall_${rname}_bearssl
   cwmakeinstall_${rname}_mbedtls
   cwmakeinstall_${rname}_wolfssl
 }
@@ -118,6 +119,30 @@ function cwmakeinstall_${rname}_wolfssl() {
   make -j${cwmakejobs}
   mkdir -p ${ridir}/bin
   install -m 0755 src/curl ${ridir}/bin/curl-wolfssl
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}_bearssl() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make distclean || true
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+    --disable-dependency-tracking \
+    --disable-maintainer-mode \
+    --with-zlib \
+    --without-libmetalink \
+    --without-libssh2 \
+    --without-ssl \
+    --without-mbedtls \
+    --without-gnutls \
+    --without-wolfssl \
+    --with-bearssl \
+    --with-default-ssl-backend=bearssl \
+    --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"
+  make -j${cwmakejobs}
+  mkdir -p ${ridir}/bin
+  install -m 0755 src/curl ${ridir}/bin/curl-bearssl
   popd >/dev/null 2>&1
 }
 "
