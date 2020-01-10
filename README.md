@@ -936,6 +936,9 @@ wc -l /tmp/astbuild.out
 - rredir (https://github.com/rofl0r/rrredir)
 - rover (https://lecram.github.io/p/rover)
 - rpcbind
+- rust (https://www.rust-lang.org/)
+  - bootstrap? (https://guix.gnu.org/blog/2018/bootstrapping-rust/ - guix!)
+  - mrustc (https://github.com/thepowersgang/mrustc - c++)
 - rvm?
 - samurai (https://github.com/michaelforney/samurai)
 - scheme stuff:
