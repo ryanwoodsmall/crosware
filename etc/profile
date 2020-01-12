@@ -11,6 +11,11 @@
 # XXX - need a short-circuit env var to bail out before profile.d/local.d sourcing
 #
 
+#
+# if you just want the functions:
+# . <(for f in $(grep '() {$' /usr/local/crosware/etc/profile | cut -f1 -d'(') ; do sed -n '/^'${f}'() {$/,/^}$/!d;p' /usr/local/crosware/etc/profile ; done)
+#
+
 # XXX - probably need realpath in the chain here somewhere
 # get our etc and bin dir
 if [ -z "${BASH_VERSION}" ] ; then
