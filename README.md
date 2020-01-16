@@ -360,6 +360,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - kawa (scheme)
 - ksh93 (https://github.com/att/ast/ via at&t ast)
 - less (netbsdcurses)
+- lftp (https://lftp.yar.ru/)
 - libassuan (https://gnupg.org/software/libassuan/index.html)
 - libatomicops
 - libbsd
@@ -718,7 +719,6 @@ wc -l /tmp/astbuild.out
     - musl: setup **ldd** symlink to **ld.so**, run ```ldd /path/to/executable```
 - lemon (https://www.hwaci.com/sw/lemon/ https://www.sqlite.org/lemon.html https://sqlite.org/src/doc/trunk/doc/lemon.html)
 - lf (https://github.com/gokcehan/lf - go)
-- lftp (https://lftp.tech/)
 - libdeflate (https://sortix.org/libdeflate/)
 - libdnet (https://github.com/boundary/libdnet or up-to-date fork at https://github.com/busterb/libdnet)
   - mostly want the dnet binary
