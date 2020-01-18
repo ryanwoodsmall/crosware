@@ -691,6 +691,7 @@ wc -l /tmp/astbuild.out
   - mjs (formerly v7 - https://github.com/cesanta/mjs and https://github.com/cesanta/v7/)
   - mujs (http://mujs.com/ and https://github.com/ccxvii/mujs)
   - quad-wheel (https://code.google.com/archive/p/quad-wheel/)
+  - quickjs (https://bellard.org/quickjs/)
   - tiny-js (https://github.com/gfwilliams/tiny-js)
 - jdbc
   - drivers
