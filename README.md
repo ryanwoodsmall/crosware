@@ -339,6 +339,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - guile (https://www.gnu.org/software/guile/)
   - works for aarch64/x86_64
   - does _not_ work on arm/i686 (gc)
+  - guile2 recipe as well, with same caveats
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
   - exvi with netbsdcurses also available as a standalone package
 - htermutils (https://chromium.googlesource.com/apps/libapps/+/HEAD/hterm/etc/)
