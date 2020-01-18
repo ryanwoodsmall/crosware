@@ -746,6 +746,7 @@ wc -l /tmp/astbuild.out
   - tomsfastmath
 - libusb (https://github.com/libusb/libusb)
 - libuv (https://github.com/libuv/libuv)
+- libwebsockets (https://libwebsockets.org/)
 - libyaml (https://github.com/yaml/libyaml)
 - libz (sortix, zlib fork https://sortix.org/libz/)
 - lisp stuff
@@ -1036,6 +1037,7 @@ wc -l /tmp/astbuild.out
 - tpm (https://github.com/nmeum/tpm/ - tiny password manager)
 - tre (https://github.com/laurikari/tre)
 - tsocks
+- ttyd (https://github.com/tsl0922/ttyd - gotty in c, like shellinabox w/xterm.js, libwebsockets, uses cmake)
 - tzdb (https://www.iana.org/time-zones)
 - ublinter (https://github.com/danmar/ublinter)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
