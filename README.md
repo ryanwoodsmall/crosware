@@ -615,13 +615,14 @@ wc -l /tmp/astbuild.out
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
 - gdb
 - git-crypt (https://github.com/AGWA/git-crypt)
+- gpg
+  - gpgme
+  - etc.
 - gnutls
   - needs nettle, gmplib, libtasn1, libunistring
   - configure needs ```--without-p11-kit --disable-doc --enable-manpages --with-default-trust-store-file=${cwetc}/ssl/cert.pem```
   - mini-nettle/mini-gmp?
-- gpg
-  - gpgme
-  - etc.
+- gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - graphviz (http://graphviz.org/)
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
 - hq (https://github.com/rbwinslow/hq)
