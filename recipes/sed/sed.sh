@@ -4,11 +4,11 @@
 #
 
 rname="sed"
-rver="4.7"
+rver="4.8"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="2885768cd0a29ff8d58a6280a270ff161f6a3deb5690b2be6c49f46d4c67bd6a"
+rsha256="f79b0cfea71b37a8eeec8490db6c5f7ae7719c35587f21edb0617f370eeff633"
 rreqs="make busybox toybox"
 
 . "${cwrecipe}/common.sh"
@@ -16,7 +16,7 @@ rreqs="make busybox toybox"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"${cwsw}/toybox/current/bin:\${PATH}\" ./configure ${cwconfigureprefix} --program-prefix=g
+  env PATH=\"${cwsw}/busybox/current/bin:\${PATH}\" ./configure ${cwconfigureprefix} --program-prefix=g
   popd >/dev/null 2>&1
 }
 "
@@ -24,7 +24,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"${cwsw}/toybox/current/bin:\${PATH}\" make -j${cwmakejobs}
+  env PATH=\"${cwsw}/busybox/current/bin:\${PATH}\" make -j${cwmakejobs}
   popd >/dev/null 2>&1
 }
 "
@@ -32,7 +32,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"${cwsw}/toybox/current/bin:\${PATH}\" make install
+  env PATH=\"${cwsw}/busybox/current/bin:\${PATH}\" make install
   ln -sf g${rname} ${ridir}/bin/${rname}
   popd >/dev/null 2>&1
 }
