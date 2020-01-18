@@ -466,6 +466,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - screen
 - sdkman (http://sdkman.io)
 - sed (gnu gsed, prepended to $PATH, becomes default sed)
+- shellinabox (https://github.com/shellinabox/shellinabox)
 - simh (http://simh.trailing-edge.com and https://github.com/simh/simh)
 - sisc (scheme)
 - slang (ncurses)
@@ -997,9 +998,6 @@ wc -l /tmp/astbuild.out
           LIBS='-ledit -lcurses -lterminfo -static'
       ```
   - zsh
-- shellinabox (https://github.com/shellinabox/shellinabox)
-  - needs standard shared/static library configure opts, plus ```--disable-{pam,utmp}```
-  - seems to work just fine with static crosware compilation
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
 - simplecpp (https://github.com/danmar/simplecpp)
 - sljit (http://sljit.sourceforge.net/)
