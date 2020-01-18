@@ -11,16 +11,7 @@
 #     make -j${cwmakejobs} || make -j${cwmakejobs}
 #
 
-rname="guile"
-rver="2.2.6"
-rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
-rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="b33576331465a60b003573541bf3b1c205936a16c407bc69f8419a527bf5c988"
-rreqs="make sed gawk gmp libtool slibtool pkgconfig libffi gc readline ncurses libunistring"
-
-. "${cwrecipe}/common.sh"
-
+# broken static gc on 32b
 if [[ ${karch} =~ ^(i.86|armv) ]] ; then
 eval "
 function cwinstall_${rname}() {
@@ -45,3 +36,5 @@ function cwgenprofd_${rname}() {
   echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
 }
 "
+
+# vim: ft=sh
