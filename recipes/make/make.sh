@@ -1,9 +1,9 @@
 rname="make"
-rver="4.2.1"
+rver="4.3"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.bz2"
+rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="d6e262bf3601b42d2b1e4ef8310029e1dcf20083c5446b4b7aa67081fdffc589"
+rsha256="e05fdde47c5f7ca45cb697e973894ff4f5d79e13b750ed57d7b66d8defc78e19"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
@@ -11,7 +11,12 @@ rreqs=""
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} --disable-load
+  ./configure ${cwconfigureprefix} \
+    --disable-dependency-tracking \
+    --disable-load \
+    --disable-nls \
+    --without-guile \
+      LDFLAGS=-static CPPFLAGS=
   popd >/dev/null 2>&1
 }
 "
@@ -19,7 +24,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  bash ./build.sh
+  env LDFLAGS=-static CPPFLAGS= bash ./build.sh
   popd >/dev/null 2>&1
 }
 "
@@ -27,7 +32,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./make install-binPROGRAMS
+  env LDFLAGS=-static CPPFLAGS= ./make install-binPROGRAMS
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/g${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/gnu${rname}\"
   popd >/dev/null 2>&1
