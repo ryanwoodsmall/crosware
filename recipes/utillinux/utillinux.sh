@@ -1,10 +1,10 @@
 rname="utillinux"
-rver="2.34"
+rver="2.35"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver}/${rfile}"
-rsha256="743f9d0c7252b6db246b659c1e1ce0bd45d8d4508b4dfa427bbb4a3e9b9f62b5"
-rreqs="make zlib ncurses readline gettexttiny slibtool"
+rsha256="b3081b560268c1ec3367e035234e91616fa7923a0afc2b1c80a2a6d8b9dfe2c9"
+rreqs="make zlib ncurses readline gettexttiny slibtool pcre2"
 
 . "${cwrecipe}/common.sh"
 
