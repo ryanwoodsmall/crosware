@@ -1,9 +1,9 @@
-rver="20191002-musl"
+rver="20200123165012-musl"
 rdir="heirloom-project-${rver}"
 rfile="${rver}.tar.gz"
 rdlfile="${cwdl}/heirloom/${rfile}"
 rurl="https://github.com/ryanwoodsmall/heirloom-project/archive/${rfile}"
-rsha256="8d807b20e4bdce9a9c3496d602f350fc2adc3576b314255fedb9ec72ec2e6a80"
+rsha256="3da8a5ac50951748c32cf31dd3002effb16c21f20636f92b58ab304daef3b534"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 # vim: set ft=sh:
