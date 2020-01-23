@@ -5,6 +5,10 @@
 # XXX - profile ordering
 #   - use zz_00_heirloom.sh to come before 9base?
 #
+# XXX - gcc 9 issues
+#   - https://www.illumos.org/issues/11533
+#   - https://github.com/illumos/illumos-gate/commit/356ba08c15b26adbde3440aa89d8b31cd39fc526
+#
 rname="heirloom"
 rreqs="make sed ncurses zlib bzip2 ed byacc reflex mksh busybox"
 
