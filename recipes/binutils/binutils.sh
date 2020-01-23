@@ -1,7 +1,7 @@
 #
 # XXX - this needs custom ld.so stff just like statictoolchain built from musl-cross-make
 # XXX - i.e., https://github.com/ryanwoodsmall/musl-misc/blob/master/musl-cross-make-confs/patches/9999-crosware-ldso_binutils-2.27.diff
-# XXX - 2.33.1 breakage compiling static on arm 32-bit ugh
+# XXX - 2.33.1 breakage compiling static on arm 32-bit ugh?
 #
 
 rname="binutils"
@@ -24,8 +24,10 @@ function cwconfigure_${rname}() {
     --with-mmap \
     --disable-lto \
     --disable-multilib \
-    --disable-host-shared
-    #--enable-install-libiberty \
+    --disable-host-shared \
+    --enable-install-libiberty \
+      CC=\"\${CC} -static --static\" \
+      CXX=\"\${CXX} -static --static\"
     #--with-{boot,stage1}-ldflags=\"\${LDFLAGS}\" \
     #--with-{boot,stage1}-libs=\"-static\"
   popd >/dev/null 2>&1
