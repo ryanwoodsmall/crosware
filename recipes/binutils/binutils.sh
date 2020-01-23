@@ -4,11 +4,11 @@
 #
 
 rname="binutils"
-rver="2.32"
+rver="2.33.1"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.bz2"
+rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="de38b15c902eb2725eac6af21183a5f34ea4634cb0bcef19612b50e5ed31072d"
+rsha256="ab66fc2d1c3ec0359b8e08843c9f33b63e8707efdff5e4cc5c200eae24722cbf"
 rreqs="make gmp mpfr mpc flex bison slibtool isl"
 
 . "${cwrecipe}/common.sh"
