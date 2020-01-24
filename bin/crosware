@@ -351,7 +351,7 @@ function cwinstall_jgitsh() {
 old_static_toolchain_pkgname="static-toolchain"
 statictoolchain_archive_ext="tar.bz2"
 statictoolchain_checksum_ext="sha256"
-statictoolchain_release="201910280416"
+statictoolchain_release="202001230638"
 statictoolchain_base_url="https://github.com/ryanwoodsmall/musl-misc/releases/download"
 statictoolchain_release_url="${statictoolchain_base_url}/${statictoolchain_release}"
 statictoolchain_pkgname="statictoolchain"
@@ -367,7 +367,7 @@ statictoolchain_triplet["i686"]="i686-linux-musl"
 statictoolchain_triplet["x86_64"]="x86_64-linux-musl"
 
 # architecture to version prefix
-statictoolchain_ver="201910280416"
+statictoolchain_ver="${statictoolchain_release}"
 declare -A statictoolchain_prefix
 statictoolchain_prefix["aarch64"]="${statictoolchain_ver}"
 statictoolchain_prefix["armv6l"]="${statictoolchain_ver}"
