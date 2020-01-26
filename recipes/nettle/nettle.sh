@@ -20,7 +20,6 @@ function cwconfigure_${rname}() {
 }
 "
 
-
 eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
