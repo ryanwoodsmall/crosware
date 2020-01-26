@@ -1,5 +1,6 @@
 #
 # XXX - uses separate openssldir in ${cwtop}/etc/libressl
+# XXX - broken on centos 6, ugh
 #
 rname="libressl"
 rver="3.0.2"
