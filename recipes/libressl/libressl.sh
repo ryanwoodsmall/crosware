@@ -18,6 +18,7 @@ function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-asm \
+    --enable-nc \
     --with-openssldir=\"${cwetc}/${rname}\" \
     --with-pic \
       CPPFLAGS= \
