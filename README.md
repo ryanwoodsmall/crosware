@@ -374,6 +374,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - libksba (https://gnupg.org/software/libksba/index.html)
 - libmetalink (https://github.com/metalink-dev/libmetalink)
 - libnl
+- liboop (https://www.lysator.liu.se/liboop/)
 - libpcap
 - libssh2 (openssl, zlib)
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
