@@ -1,6 +1,4 @@
 #
-# XXX - need openssh for sftp support - append to localoptions.h something like
-#   #define SFTPSERVER_PATH "${cwsw}/openssh/current/libexec/sftp-server"
 # XXX - move config (keys) to $cwtop/etc/dropbear/
 #
 rname="dropbear"
@@ -28,6 +26,8 @@ function cwconfigure_${rname}() {
   cat \"${cwdl}/${rname}/${rname}-${rver}_localoptions.h\" > localoptions.h
   cwscriptecho 'patching localoptions.h'
   sed -i \"s#/opt/${rname}#${rtdir}#g\" localoptions.h
+  echo '#undef SFTPSERVER_PATH' >> localoptions.h
+  echo '#define SFTPSERVER_PATH \"${cwsw}/openssh/current/libexec/sftp-server\"' >> localoptions.h
   ./configure \
     ${cwconfigureprefix} \
     --disable-lastlog \
