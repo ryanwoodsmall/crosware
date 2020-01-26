@@ -1,6 +1,8 @@
 #
 # XXX - alpine patches: https://git.alpinelinux.org/aports/tree/main/openssh
 # XXX - move config to $cwtop/etc/openssh
+# XXX - libressl broken on centos 6, assume that kernel 2.x.x is cause?
+# XXX - ugly ugly ugly
 #
 
 rname="openssh"
@@ -9,20 +11,29 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${rfile}"
 rsha256="02f5dbef3835d0753556f973cd57b4c19b6b1f6cd24c03445e23ac77ca1b93ff"
-rreqs="make zlib openssl netbsdcurses"
+rreqs="make zlib netbsdcurses"
+
+# figure out which ssl provider to use
+if $(uname -r | cut -f1 -d. | grep -q '^2$') ; then
+  sslprov='openssl'
+else
+  sslprov='libressl'
+fi
+rreqs+=" ${sslprov}"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} \
-    --without-pie \
-    --with-libedit=\"${cwsw}/netbsdcurses/current\" \
-    --sysconfdir=\"${rtdir}/etc\" \
-      CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/openssl/current/include -I${cwsw}/netbsdcurses/include\" \
-      LDFLAGS=\"-static -L${cwsw}/zlib/current/lib -L${cwsw}/openssl/current/lib -L${cwsw}/netbsdcurses/current/lib\" \
-      LIBS='-lcrypto -lz -lcrypt -ledit -lcurses -lterminfo'
+  env PATH=\"${cwsw}/${sslprov}/current/bin:\${PATH}\" \
+    ./configure ${cwconfigureprefix} \
+      --without-pie \
+      --with-libedit=\"${cwsw}/netbsdcurses/current\" \
+      --sysconfdir=\"${rtdir}/etc\" \
+        CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/${sslprov}/current/include -I${cwsw}/netbsdcurses/include\" \
+        LDFLAGS=\"-static -L${cwsw}/zlib/current/lib -L${cwsw}/${sslprov}/current/lib -L${cwsw}/netbsdcurses/current/lib\" \
+        LIBS='-lcrypto -lz -lcrypt -ledit -lcurses -lterminfo'
   popd >/dev/null 2>&1
 }
 "
@@ -40,7 +51,7 @@ function cwuninstall_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make install
+  env PATH=\"${cwsw}/${sslprov}/current/bin:\${PATH}\" make install
   install -m 0755 contrib/ssh-copy-id \"${ridir}/bin/\"
   for md in cat1 man1 ; do
     test -e \"${ridir}/share/man/\${md}\" \
@@ -57,3 +68,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/sbin\"' >> \"${rprof}\"
 }
 "
+
+unset sslprov
