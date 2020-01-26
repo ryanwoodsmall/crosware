@@ -778,6 +778,10 @@ wc -l /tmp/astbuild.out
 - llvm / clang
 - lnav (https://github.com/tstack/lnav)
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
+- lsh (https://www.lysator.liu.se/~nisse/lsh/)
+  - gnu ssh, w/sftp
+  - needs nettle/gmp/?
+  - can build `sftp-server` separately for use with dropbear
 - lua stuff
   - lua2c (https://github.com/davidm/lua2c or a fork?)
   - terra (https://github.com/zdevito/terra and http://terralang.org/)
