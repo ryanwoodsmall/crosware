@@ -423,6 +423,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - libhubbub (https://www.netsurf-browser.org/projects/hubbub/)
   - libdom (https://www.netsurf-browser.org/projects/libdom/)
   - libcss (https://www.netsurf-browser.org/projects/libcss/)
+- nettle (http://www.lysator.liu.se/~nisse/nettle/ and https://git.lysator.liu.se/nettle/nettle)
 - ninja (https://ninja-build.org/)
 - nmap
 - npth (https://gnupg.org/software/npth/index.html)
@@ -886,9 +887,6 @@ wc -l /tmp/astbuild.out
 - netsurf stuff
   - netsurf w/framebuffer nsfb? sdl? vnc doesn't seem to work
   - libnsfb (https://www.netsurf-browser.org/projects/libnsfb/)
-- nettle
-  - configure libdir=.../lib since lib64 may be set by default
-  - mini-gmp?
 - nghttp2 (https://github.com/nghttp2/nghttp2)
 - nnn (https://github.com/jarun/nnn)
 - node / npm (ugh)
