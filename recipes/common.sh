@@ -25,6 +25,24 @@ function cwname_${rname}() {
 "
 
 eval "
+function cwfile_${rname}() {
+  echo \"${rfile}\"
+}
+"
+
+eval "
+function cwdlfile_${rname}() {
+  echo \"${rdlfile}\"
+}
+"
+
+eval "
+function cwdir_${rname}() {
+  echo \"${rdir}\"
+}
+"
+
+eval "
 function cwver_${rname}() {
   echo \"${rver}\"
 }
