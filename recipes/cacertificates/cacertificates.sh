@@ -24,10 +24,15 @@ function cwextract_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   cwmkdir \"${cwetc}/ssl/certs\"
+  cwmkdir \"${cwetc}/libressl/certs\"
   rm -f \"${cwetc}/ssl/cert.pem\"
+  rm -f \"${cwetc}/libressl/cert.pem\"
   rm -f \"${cwetc}/ssl/certs/ca-bundle.crt\"
+  rm -f \"${cwetc}/libressl/certs/ca-bundle.crt\"
   ln -sf \"${rtdir}/current/etc/ssl/cert.pem\" \"${cwetc}/ssl/\"
+  ln -sf \"${rtdir}/current/etc/ssl/cert.pem\" \"${cwetc}/libressl/\"
   ln -sf \"${cwetc}/ssl/cert.pem\" \"${cwetc}/ssl/certs/ca-bundle.crt\"
+  ln -sf \"${cwetc}/ssl/cert.pem\" \"${cwetc}/libressl/certs/ca-bundle.crt\"
 }
 "
 
