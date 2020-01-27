@@ -259,6 +259,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - bc (gnu bc, dc)
 - bdb47
 - bearssl (https://bearssl.org/)
+- bim (https://github.com/klange/bim - minimal vim-alike)
 - binutils (bfd, opcodes, libiberty.a)
 - bison
 - brogue
@@ -572,7 +573,6 @@ wc -l /tmp/astbuild.out
   - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
   - hbase (version?)
   - spark (included in sdkman)
-- bim (https://github.com/klange/bim - minimal vim-alike)
 - binfmt-support (https://git.savannah.gnu.org/cgit/binfmt-support.git - ???)
 - bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
 - boost (...)
