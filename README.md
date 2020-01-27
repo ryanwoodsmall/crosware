@@ -602,6 +602,7 @@ wc -l /tmp/astbuild.out
 - dsvpn (https://github.com/jedisct1/dsvpn)
 - dumb-init (https://github.com/Yelp/dumb-init)
 - duplicity (http://duplicity.nongnu.org/)
+- e (https://github.com/hellerve/e - simple editor, syntax highlighting, archived?)
 - e2fsprogs (https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v1.45.4/ - usable uuid for python)
 - edbrowse (http://edbrowse.org/ and https://github.com/CMB/edbrowse)
   - cmake, curl, pcre, tidy (cmake), duktape
