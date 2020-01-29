@@ -35,7 +35,7 @@ function cwconfigure_${rname}() {
   env \
     CXXFLAGS= CFLAGS= CC= CXX= LD= AR= STRIP= CPP= AS= CPPFLAGS= LDFLAGS= \
     PATH=\"${cwsw}/ccache/current/bin:${cwsw}/python3/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/bash/current/bin:${cwsw}/busybox/current/bin:${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin\" \
-      meson setup --prefix \"${ridir}\" --default-library static --cross-file cross.ini --native-file native.ini build \"${rbdir}\"
+      \"${cwsw}/meson/current/bin/meson\" setup --prefix \"${ridir}\" --default-library static --cross-file cross.ini --native-file native.ini build \"${rbdir}\"
   popd >/dev/null 2>&1
   unset m
 }
@@ -44,7 +44,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  ninja -C build
+  \"${cwsw}/ninja/current/bin/ninja\" -C build
   popd >/dev/null 2>&1
 }
 "
@@ -53,7 +53,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   rm -f \"${ridir}/bin/ksh*\"
-  ninja -C build install
+  \"${cwsw}/ninja/current/bin/ninja\" -C build install
   mv \"${ridir}/bin/ksh\" \"${ridir}/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/ksh\"
   strip --strip-all \"${ridir}/bin/${rname}\" \"${ridir}/bin/shcomp\"
