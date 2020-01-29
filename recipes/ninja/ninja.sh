@@ -1,9 +1,9 @@
 rname="ninja"
-rver="0ea27d728d34e3e2a1eae6f54dbe6ca0822a0b4a"
+rver="1.10.0"
 rdir="${rname}-${rver}"
-rfile="${rver}.zip"
+rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}-build/${rname}/archive/${rfile}"
-rsha256="8058065a4d6443b3e037798e3feaadb06d2cbdb1585e0b07c00b268aa714b9c4"
+rsha256="3810318b08489435f8efc19c05525e80a993af5a55baa0dfeae0465a9d45f99f"
 rreqs="make python3"
 
 . "${cwrecipe}/common.sh"
@@ -11,7 +11,7 @@ rreqs="make python3"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  python3 ./configure.py --bootstrap
+  \"${cwsw}/python3/current/bin/python3\" ./configure.py --bootstrap
   popd >/dev/null 2>&1
 }
 "
