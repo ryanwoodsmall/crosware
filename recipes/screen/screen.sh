@@ -1,9 +1,9 @@
 rname="screen"
-rver="4.7.0"
+rver="4.8.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="da775328fa783bd2a787d722014dbd99c6093effc11f337827604c2efc5d20c1"
+rsha256="6e11b13d8489925fde25dfb0935bf6ed71f9eb47eff233a181e078fde5655aa1"
 rreqs="make ncurses sed"
 
 . "${cwrecipe}/common.sh"
