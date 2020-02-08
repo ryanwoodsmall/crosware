@@ -20,7 +20,7 @@ source /usr/local/crosware/etc/profile
 echo "installing prerequisites"
 crosware check-installed ccache || crosware install ccache >>${logfile} 2>&1
 source /usr/local/crosware/etc/profile
-for r in binutils git patch diffutils ; do
+for r in patch diffutils binutils git ; do
   echo installing ${r}
   ( time ( crosware check-installed ${r} || crosware install ${r} ) ) >>${logfile} 2>&1
   source /usr/local/crosware/etc/profile
