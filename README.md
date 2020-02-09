@@ -504,6 +504,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - tinyscheme (http://tinyscheme.sourceforge.net/home.html)
 - tio (https://tio.github.io and https://github.com/tio/tio)
 - tmux
+- tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - toybox (static)
 - tree (http://mama.indstate.edu/users/ice/tree/)
 - unrar
@@ -1036,7 +1037,6 @@ wc -l /tmp/astbuild.out
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
 - tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
-- tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - tnftpd (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - tpm (https://github.com/nmeum/tpm/ - tiny password manager)
 - tre (https://github.com/laurikari/tre)
