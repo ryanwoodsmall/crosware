@@ -583,6 +583,7 @@ wc -l /tmp/astbuild.out
 - brotli (https://github.com/google/brotli)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
+- cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
 - chrpath
 - cloc (https://github.com/AlDanial/cloc - perl)
 - c/c++ compiler stuff
