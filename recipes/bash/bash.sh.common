@@ -25,7 +25,7 @@ function cwpatch_${rname}() {
     cut -f1 -d, ${bpfile} | while read -r p ; do
       f=\"${cwdl}/${rname}/\$(basename \${p})\"
       cwscriptecho \"${rname}: applying patch \${f}\"
-      patch -p0 < \"\${f}\"
+      \"${cwsw}/patch/current/bin/patch\" -p0 < \"\${f}\"
     done
   fi
   unset p f
