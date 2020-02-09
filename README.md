@@ -861,6 +861,8 @@ wc -l /tmp/astbuild.out
 - mpg321
 - mruby (https://github.com/mruby/mruby)
 - musl stuff
+  - musl-locales (https://github.com/rilian-la-te/musl-locales - cmake? seriously?)
+  - musl-obstack (https://github.com/pullmoll/musl-obstack and/or https://github.com/void-linux/musl-obstack)
   - musl-utils
     - should these be in statictoolchain, i.e in https://github.com/ryanwoodsmall/musl-misc?
     - getconf (https://git.alpinelinux.org/cgit/aports/tree/main/musl/getconf.c)
