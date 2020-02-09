@@ -11,6 +11,7 @@ rreqs="make slibtool ncurses readline openssl zlib pkgconfig expat"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  grep -ril 'ssh -a -x' . | xargs sed -i.ORIG 's/ssh -a -x/ssh/g'
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-nls \
     --without-gnutls \
