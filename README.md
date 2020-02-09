@@ -458,6 +458,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - python2 (very basic support)
   - python3 (wip)
 - qemacs (https://bellard.org/qemacs/)
+- quickjs (https://bellard.org/quickjs/)
 - rc (http://tobold.org/article/rc, https://github.com/rakitzis/rc - needs to be git hash, currently old release)
 - rcs (gnu)
 - readline (ncurses and netbsdcurses)
@@ -700,7 +701,6 @@ wc -l /tmp/astbuild.out
   - mjs (formerly v7 - https://github.com/cesanta/mjs and https://github.com/cesanta/v7/)
   - mujs (http://mujs.com/ and https://github.com/ccxvii/mujs)
   - quad-wheel (https://code.google.com/archive/p/quad-wheel/)
-  - quickjs (https://bellard.org/quickjs/)
   - tiny-js (https://github.com/gfwilliams/tiny-js)
 - jdbc
   - drivers
@@ -939,7 +939,6 @@ wc -l /tmp/astbuild.out
   - nosh/execline?
     - http://skarnet.org./software/execline/
     - http://jdebp.eu./Softwares/nosh/
-- quickjs (https://bellard.org/quickjs/)
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
 - re2c (http://re2c.org/ and https://github.com/skvadrik/re2c)
