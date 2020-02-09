@@ -519,6 +519,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - xmlstarlet (http://xmlstar.sourceforge.net/)
 - xvi (http://martinwguy.github.io/xvi/)
 - xz (https://tukaani.org/xz/)
+- yash (http://yash.osdn.jp/ and https://github.com/magicant/yash)
 - zip
 - zlib
 
@@ -993,17 +994,6 @@ wc -l /tmp/astbuild.out
   - rc (muennich's rakitzis fork https://github.com/muennich/rc)
   - scsh (https://scsh.net)
   - tcsh (and/or standard csh)
-  - yash (http://yash.osdn.jp/ and https://github.com/magicant/yash)
-    - netbsdcurses works:
-    - ```shell
-      sed -i.ORIG 's/tinfo curses/curses terminfo/g' configure
-      ./configure \
-        --prefix=${ridir} \
-          LDFLAGS="-static" \
-          CPPFLAGS= \
-          CC="${CC} ${CFLAGS} -L${cwsw}/netbsdcurses/current/lib -I${cwsw}/netbsdcurses/current/include" \
-          LIBS='-ledit -lcurses -lterminfo -static'
-      ```
   - zsh
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
 - simplecpp (https://github.com/danmar/simplecpp)
