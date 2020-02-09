@@ -1,9 +1,9 @@
 rname="iperf3"
-rver="3.6"
+rver="3.7"
 rdir="iperf-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/esnet/${rname}/archive/${rfile}"
-rsha256="1ad23f70a8eb4b892a3cbb247cafa956e0f5c7d8b8601b1d9c8031c2a806f23f"
+rsha256="c349924a777e8f0a70612b765e26b8b94cc4a97cc21a80ed260f65e9823c8fc5"
 rreqs="make openssl"
 
 . "${cwrecipe}/common.sh"
