@@ -1037,6 +1037,7 @@ wc -l /tmp/astbuild.out
 - tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
+- tnftpd (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - tpm (https://github.com/nmeum/tpm/ - tiny password manager)
 - tre (https://github.com/laurikari/tre)
 - tsocks
