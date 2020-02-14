@@ -275,6 +275,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - ccache
 - cflow
 - check
+- cloc (https://github.com/AlDanial/cloc)
 - cmake
 - configgit (gnu config.guess, config.sub updates for musl, aarch64, etc. http://git.savannah.gnu.org/gitweb/?p=config.git;a=summary)
 - coreutils (single static binary with symlinks, no nls/attr/acl/gmp/pcap/selinux)
@@ -587,7 +588,6 @@ wc -l /tmp/astbuild.out
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
 - chrpath
-- cloc (https://github.com/AlDanial/cloc - perl)
 - c/c++ compiler stuff
   - 8cc (https://github.com/rui314/8cc)
   - andrew chambers's c (https://github.com/andrewchambers/c)
