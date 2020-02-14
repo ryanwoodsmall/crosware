@@ -951,6 +951,7 @@ wc -l /tmp/astbuild.out
   - bootstrap? (https://guix.gnu.org/blog/2018/bootstrapping-rust/ - guix!)
   - mrustc (https://github.com/thepowersgang/mrustc - c++)
 - rvm?
+- sacc (https://git.fifth.space/sacc/log.html - gopher client)
 - samurai (https://github.com/michaelforney/samurai)
 - scheme stuff:
   - bigloo
