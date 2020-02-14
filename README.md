@@ -325,6 +325,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - gawk (gnu awk, prepended to $PATH, becomes default awk)
 - gc (working on x86\_64, aarch64; broken on i386, arm)
 - gdbm
+- geomyidae (http://r-36.net/scm/geomyidae/ - gopher server)
 - gettexttiny
 - git
 - glib
