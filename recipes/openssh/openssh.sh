@@ -6,11 +6,11 @@
 #
 
 rname="openssh"
-rver="8.1p1"
+rver="8.2p1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${rfile}"
-rsha256="02f5dbef3835d0753556f973cd57b4c19b6b1f6cd24c03445e23ac77ca1b93ff"
+rsha256="43925151e6cf6cee1450190c0e9af4dc36b41c12737619edff8bcebdff64e671"
 rreqs="make zlib netbsdcurses"
 
 # figure out which ssl provider to use
