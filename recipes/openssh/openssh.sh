@@ -2,7 +2,10 @@
 # XXX - alpine patches: https://git.alpinelinux.org/aports/tree/main/openssh
 # XXX - move config to $cwtop/etc/openssh
 # XXX - libressl broken on centos 6, assume that kernel 2.x.x is cause?
+# XXX - libressl broken on chrome os w/kernel 3.8.x as well?
 # XXX - ugly ugly ugly
+# XXX - just go back to openssl for now
+# XXX - revisit later?
 #
 
 rname="openssh"
@@ -13,12 +16,13 @@ rurl="https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${rfile}"
 rsha256="43925151e6cf6cee1450190c0e9af4dc36b41c12737619edff8bcebdff64e671"
 rreqs="make zlib netbsdcurses"
 
-# figure out which ssl provider to use
-if $(uname -r | cut -f1 -d. | grep -q '^2$') ; then
-  sslprov='openssl'
-else
-  sslprov='libressl'
-fi
+## figure out which ssl provider to use
+#if $(uname -r | cut -f1 -d. | grep -q '^2$') ; then
+#  sslprov='openssl'
+#else
+#  sslprov='libressl'
+#fi
+sslprov=openssl
 rreqs+=" ${sslprov}"
 
 . "${cwrecipe}/common.sh"
