@@ -1,8 +1,9 @@
 #
 # XXX - alpine patches: https://git.alpinelinux.org/aports/tree/main/openssh
 # XXX - move config to $cwtop/etc/openssh
-# XXX - libressl broken on centos 6, assume that kernel 2.x.x is cause?
-# XXX - libressl broken on chrome os w/kernel 3.8.x as well?
+# XXX - compilation w/libressl broken on centos 6, assume that kernel 2.x.x is cause?
+# XXX - compilation w/libressl works on centos 7, kernel 3.10.x
+# XXX - compilation w/libressl broken on chrome os w/kernel 3.8.x as well?
 # XXX - ugly ugly ugly
 # XXX - just go back to openssl for now
 # XXX - revisit later?
