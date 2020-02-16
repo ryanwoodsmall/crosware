@@ -1050,7 +1050,7 @@ wc -l /tmp/astbuild.out
 - vpnc
 - websocketd (go, https://github.com/joewalnes/websocketd)
 - wolfssh (https://github.com/wolfSSL/wolfssh)
-- xinetd (https://github.com/xinetd-org/xinetd)
+- xinetd (https://github.com/xinetd-org/xinetd (dead?) or https://github.com/openSUSE/xinetd)
 - xq (https://github.com/jeffbr13/xq)
 - yq (https://github.com/kislyuk/yq)
 - ytalk (http://ytalk.ourproject.org/)
