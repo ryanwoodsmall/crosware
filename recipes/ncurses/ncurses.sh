@@ -1,15 +1,14 @@
 #
 # XXX - need to maintain version symlinks for hard-coded paths to termcap/terminfo files
-# XXX - i.e., 6.1 -> 6.2, 6.2 -> ...
 # XXX - need to track current? ftp://ftp.invisible-island.net/pub/ncurses/current/
 #
 
 rname="ncurses"
-rver="6.1"
+rver="6.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="aa057eeeb4a14d470101eff4597d5833dcef5965331be3528c08d99cebaa0d17"
+rsha256="30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d"
 # cmp, use toybox
 rreqs="make toybox sed"
 
@@ -35,6 +34,10 @@ function cwbuild_${rname}() {
   ./configure ${cwconfigureprefix} --without-shared -without-cxx-shared --enable-widec ${cwconfigurefpicopts}
   make -j${cwmakejobs}
   make install
+  for v in 6.0 6.1 ; do
+    test -e \"${rtdir}/${rname}-\${v}\" || ln -s \"${rtdir}/current\" \"${rtdir}/${rname}-\${v}\"
+  done
+  unset v
   popd >/dev/null 2>&1
 }
 "
