@@ -624,6 +624,7 @@ wc -l /tmp/astbuild.out
   - gxemul
   - qemu
 - entr (http://entrproject.org/)
+- finit (https://github.com/troglobit/finit)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
 - gdb
 - git-crypt (https://github.com/AGWA/git-crypt)
@@ -639,6 +640,7 @@ wc -l /tmp/astbuild.out
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
 - hq (https://github.com/rbwinslow/hq)
 - http-parser (https://github.com/nodejs/http-parser - useful with libgit2?)
+- inadyn (https://github.com/troglobit/inadyn)
 - iodine (https://github.com/yarrick/iodine)
   - **src/Makefile** needs a ```$(CC) -c``` for the _.c.o_ rule
   - build with something like ```make CFLAGS="-I${cwsw}/zlib/current/include -D__GLIBC__=1" LDFLAGS="-L${cwsw}/zlib/current/lib -lz -static" CPPFLAGS= SHELL='bash -x'```
@@ -800,10 +802,12 @@ wc -l /tmp/astbuild.out
   - MANPAGER and MANPATH settings
   - roffit (https://daniel.haxx.se/projects/roffit/)
 - matrixssl (https://github.com/matrixssl/matrixssl)
+- https://github.com/troglobit/merecat)
 - mcpp (http://mcpp.sourceforge.net/)
 - mercurial / hg
   - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```
   - config/build/install with: ```env PATH=${cwsw}/python2/current/bin:${PATH} make <all|install> PREFIX=${ridir} CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS//-static/}" CFLAGS='' CPPFLAGS=''```
+- merecat (https://github.com/troglobit/merecat)
 - mes (https://www.gnu.org/software/mes/) and m2 stuff (links above)
 - mesalink (https://mesalink.io/ and https://github.com/mesalock-linux/mesalink)
 - micropython (https://github.com/micropython/micropython)
@@ -1018,6 +1022,7 @@ wc -l /tmp/astbuild.out
 - subversion / svn
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
 - suckless
+  - quark (https://tools.suckless.org/quark/)
   - sinit (https://core.suckless.org/sinit/)
 - tab (https://tkatchev.bitbucket.io/tab/)
 - taskwarrior (https://taskwarrior.org/ and https://github.com/GothenburgBitFactory/taskwarrior)
@@ -1040,9 +1045,11 @@ wc -l /tmp/astbuild.out
 - tzdb (https://www.iana.org/time-zones)
 - ublinter (https://github.com/danmar/ublinter)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
+- uftpd (https://github.com/troglobit/uftpd)
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
 - units (https://www.gnu.org/software/units)
 - upx (https://github.com/upx/upx)
+- uredir (https://github.com/troglobit/uredir)
 - usbutils (https://github.com/gregkh/usbutils)
 - utalk (http://utalk.ourproject.org/)
 - vde (virtual distributed ethernet, https://github.com/virtualsquare/vde-2)
