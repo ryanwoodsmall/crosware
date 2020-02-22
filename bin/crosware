@@ -313,10 +313,10 @@ function cwinstall_zulu() {
 #
 
 # XXX - make sure java tmpdir is set
-jgitsh_ver="5.6.0.201912101111-r"
+jgitsh_ver="5.6.1.202002131546-r"
 jgitsh_file="org.eclipse.jgit.pgm-${jgitsh_ver}.sh"
 jgitsh_url="https://repo.eclipse.org/content/groups/releases/org/eclipse/jgit/org.eclipse.jgit.pgm/${jgitsh_ver}/${jgitsh_file}"
-jgitsh_sha256sum="bca087c8d44221e382caaa9f7be7a6b726d78b90d3e1e67871094803c5e527d0"
+jgitsh_sha256sum="b1bac242f9213479df9d34b93a1af79281f32a18b7f74f8decc7508c36543ae8"
 jgitsh_symlink="jgit.sh"
 jgitsh_pkgname="jgitsh"
 jgitsh_inst_dir="${cwsw}/${jgitsh_pkgname}"
