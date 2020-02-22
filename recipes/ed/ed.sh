@@ -1,9 +1,9 @@
 rname="ed"
-rver="1.15"
+rver="1.16"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="ad4489c0ad7a108c514262da28e6c2a426946fb408a3977ef1ed34308bdfd174"
+rsha256="cfc07a14ab048a758473ce222e784fbf031485bcd54a76f74acfee1f390d8b2c"
 rreqs="make lunzip"
 
 . "${cwrecipe}/common.sh"
