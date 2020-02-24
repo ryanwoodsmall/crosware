@@ -325,7 +325,6 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - gawk (gnu awk, prepended to $PATH, becomes default awk)
 - gc (working on x86\_64, aarch64; broken on i386, arm)
 - gdbm
-- geomyidae (http://r-36.net/scm/geomyidae/ - gopher server)
 - gettexttiny
 - git
 - glib
@@ -626,6 +625,7 @@ wc -l /tmp/astbuild.out
 - entr (http://entrproject.org/)
 - finit (https://github.com/troglobit/finit)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
+- geomyidae (http://r-36.net/scm/geomyidae/ - gopher server)
 - gdb
 - git-crypt (https://github.com/AGWA/git-crypt)
 - gpg
@@ -635,6 +635,7 @@ wc -l /tmp/astbuild.out
   - needs nettle, gmplib, libtasn1, libunistring
   - configure needs ```--without-p11-kit --disable-doc --enable-manpages --with-default-trust-store-file=${cwetc}/ssl/cert.pem```
   - mini-nettle/mini-gmp?
+- gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - graphviz (http://graphviz.org/)
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
