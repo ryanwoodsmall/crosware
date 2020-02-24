@@ -362,6 +362,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - jython
 - kawa (scheme)
 - ksh93 (https://github.com/att/ast/ via at&t ast)
+  - this is actually ksh2020...
+  - should be renamed as such
 - less (netbsdcurses)
 - lftp (https://lftp.yar.ru/)
 - libassuan (https://gnupg.org/software/libassuan/index.html)
@@ -999,6 +1001,10 @@ wc -l /tmp/astbuild.out
   - es (https://github.com/wryun/es-shell)
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
+  - ksh93 (https://github.com/ksh-community/ksh)
+    - AT&T AST fork
+    - uses old AST build system which is pretty much a non-starter on musl
+    - for now anyway
   - mrsh (https://mrsh.sh/)
   - rc (muennich's rakitzis fork https://github.com/muennich/rc)
   - scsh (https://scsh.net)
