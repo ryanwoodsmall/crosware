@@ -1001,7 +1001,7 @@ wc -l /tmp/astbuild.out
   - es (https://github.com/wryun/es-shell)
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
-  - ksh93 (https://github.com/ksh-community/ksh)
+  - ksh93 (https://github.com/ksh-community/ksh or https://github.com/jelmd/ksh-ast)
     - AT&T AST fork
     - uses old AST build system which is pretty much a non-starter on musl
     - for now anyway
