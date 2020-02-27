@@ -532,6 +532,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 ## recipes to consider
 
 - ack (https://beyondgrep.com/)
+- acl (https://savannah.nongnu.org/projects/acl/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - agner fog's stuff
   - https://www.agner.org/optimize/#objconv
@@ -575,6 +576,7 @@ time \
 wc -l /tmp/astbuild.out
 ```
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
+- attr (https://savannah.nongnu.org/projects/attr/)
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
 - bic (https://github.com/hexagonal-sun/bic - c repl)
 - big data stuff
