@@ -344,6 +344,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - guile2 recipe as well, with same caveats
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
   - exvi with netbsdcurses also available as a standalone package
+- help2man
 - htermutils (https://chromium.googlesource.com/apps/libapps/+/HEAD/hterm/etc/)
 - htop
 - iftop
