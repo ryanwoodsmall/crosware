@@ -8,7 +8,7 @@ rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/landley/${rname}/archive/${rfile}"
 rsha256="9d8a9b00a6c93da5b472d8a4c7d9549339ed050d1578c557a20add100172b0f5"
-rreqs="make"
+rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
