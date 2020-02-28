@@ -20,7 +20,7 @@ echo "start: ${st}" | tee ${out}
 
 ${cw} list-installed | cut -f1 -d: | xargs ${cw} uninstall
 
-for r in statictoolchain make ccache $(${cw} list-recipes) ; do
+for r in statictoolchain ccache $(${cw} list-recipes) ; do
   echo ${r} 1>&2
   ${cw} check-installed ${r} || ( time ( ${cw} install ${r} ; echo $? ) ) 2>&1 | tee /tmp/${r}.out
 done | tee -a ${out}
