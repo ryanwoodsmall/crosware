@@ -404,7 +404,8 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
   - plzip
   - zutils
 - m4
-- make
+- make (gnu)
+  - bootstrapmake (gnu make w/o gnu sed requirement)
 - mandoc (http://mandoc.bsd.lv/)
 - manpages, consisting of...
   - man-pages (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/)
