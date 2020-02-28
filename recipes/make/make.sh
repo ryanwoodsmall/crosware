@@ -16,7 +16,9 @@ function cwconfigure_${rname}() {
     --disable-load \
     --disable-nls \
     --without-guile \
-      LDFLAGS=-static CPPFLAGS=
+      LDFLAGS=-static \
+      CPPFLAGS= \
+      SED=\"${cwsw}/busybox/current/bin/sed\"
   popd >/dev/null 2>&1
 }
 "
@@ -24,7 +26,12 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  env LDFLAGS=-static CPPFLAGS= PATH=\"${cwsw}/busybox/current/bin:\${PATH}\" \"${cwsw}/busybox/current/bin/ash\" ./build.sh
+  env \
+    LDFLAGS=-static \
+    CPPFLAGS= \
+    PATH=\"${cwsw}/busybox/current/bin:\${PATH}\" \
+    SED=\"${cwsw}/busybox/current/bin/sed\" \
+      \"${cwsw}/busybox/current/bin/ash\" ./build.sh
   popd >/dev/null 2>&1
 }
 "
@@ -32,7 +39,12 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  env LDFLAGS=-static CPPFLAGS= PATH=\"${cwsw}/busybox/current/bin:\${PATH}\" ./make install-binPROGRAMS
+  env \
+    LDFLAGS=-static \
+    CPPFLAGS= \
+    PATH=\"${cwsw}/busybox/current/bin:\${PATH}\" \
+    SED=\"${cwsw}/busybox/current/bin/sed\" \
+      ./make install-binPROGRAMS
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/g${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/gnu${rname}\"
   popd >/dev/null 2>&1
