@@ -9,7 +9,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="f79b0cfea71b37a8eeec8490db6c5f7ae7719c35587f21edb0617f370eeff633"
-rreqs="make busybox toybox"
+rreqs="bootstrapmake busybox toybox"
 
 . "${cwrecipe}/common.sh"
 
