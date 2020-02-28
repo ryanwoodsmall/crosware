@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
 rsha256="9b61f7fab2ec15305ee8382b03365503232dfb04b57414e7b0433768d530fa8a"
-rreqs="make"
+rreqs="bootstrapmake"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
