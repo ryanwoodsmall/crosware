@@ -1,6 +1,7 @@
 #
 # XXX - this really needs to be a git commit, release is way out of date
 #       repo: https://github.com/rakitzis/rc
+# XXX - maybe the fork at: https://github.com/muennich/rc
 #
 
 rname="rc"
