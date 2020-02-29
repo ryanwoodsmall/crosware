@@ -532,6 +532,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 
 ## recipes to consider
 
+- 9pro (https://github.com/ftrvxmtrx/9pro)
 - ack (https://beyondgrep.com/)
 - acl (https://savannah.nongnu.org/projects/acl/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
@@ -606,16 +607,21 @@ wc -l /tmp/astbuild.out
       --build-targets=static,cli
     ```
 - brotli (https://github.com/google/brotli)
+- c9 (https://github.com/ftrvxmtrx/c9)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
 - chrpath
 - c/c++ compiler stuff
   - 8cc (https://github.com/rui314/8cc)
+  - 9cc (https://github.com/rui314/9cc)
+  - 9-cc (https://github.com/0intro/9-cc - unix port of plan 9 compiler)
   - andrew chambers's c (https://github.com/andrewchambers/c)
+  - chibicc (https://github.com/rui314/chibicc)
   - cproc (https://git.sr.ht/~mcf/cproc and https://github.com/michaelforney/cproc)
   - lacc (https://github.com/larmel/lacc)
   - lcc (https://github.com/drh/lcc)
+  - plan9-cc (https://github.com/huangguiyang/plan9-cc)
   - qbe (https://c9x.me/compile/)
   - scc (http://www.simple-cc.org/)
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
@@ -767,6 +773,7 @@ wc -l /tmp/astbuild.out
 - libfuse (separate userspace? uses meson?)
 - libiconv (https://www.gnu.org/software/libiconv/)
 - libidn / libidn2 (https://www.gnu.org/software/libidn/ and https://gitlab.com/libidn/libidn2)
+- libixp (https://github.com/0intro/libixp - 9p client/library)
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
 - libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
@@ -1065,6 +1072,7 @@ wc -l /tmp/astbuild.out
 - tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tnftpd (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
+- torgo (https://github.com/as/torgo)
 - tpm (https://github.com/nmeum/tpm/ - tiny password manager)
 - tre (https://github.com/laurikari/tre)
 - tsocks
