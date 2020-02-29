@@ -592,7 +592,8 @@ wc -l /tmp/astbuild.out
   - it's like a 100MB tgz, 700MB extracted, 900MB during build, 190MB installed
   - yikes
 - botan (https://github.com/randombit/botan)
-  - build with something like... ```
+  - build with something like...
+  - ```
     ./configure.py \
       --prefix=${ridir} \
       --cc=gcc \
