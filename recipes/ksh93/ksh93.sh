@@ -1,8 +1,10 @@
 #
 # XXX - rename to bare ksh w/o 93? probably not...
+# XXX - rename to ksh2020? probably
 # XXX - need VISUAL=emacs ???
 # XXX - EDITOR=???
 # XXX - meson is a mess
+# XXX - this is no longer supported. crap
 #
 
 rname="ksh93"
