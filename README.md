@@ -591,6 +591,19 @@ wc -l /tmp/astbuild.out
   - ```./bootstrap.sh --prefix=${ridir} --without-icu ; ./b2 --prefix=${ridir} --layout=system -q link=static install```
   - it's like a 100MB tgz, 700MB extracted, 900MB during build, 190MB installed
   - yikes
+- botan (https://github.com/randombit/botan)
+  - build with something like... ```
+    ./configure.py \
+      --prefix=${ridir} \
+      --cc=gcc \
+      --ar-command=${AR} \
+      --cc-bin=$(which ${CXX}) \
+      --cxxflags="-fPIC -Wl,-static" \
+      --ldflags=-static \
+      --system-cert-bundle=${cwtop}/etc/ssl/cert.pem \
+      --disable-shared-library \
+      --build-targets=static,cli
+    ```
 - brotli (https://github.com/google/brotli)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
