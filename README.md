@@ -579,6 +579,7 @@ wc -l /tmp/astbuild.out
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - attr (https://savannah.nongnu.org/projects/attr/)
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
+- b2sum (https://github.com/dchest/b2sum)
 - bic (https://github.com/hexagonal-sun/bic - c repl)
 - big data stuff
   - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
@@ -755,6 +756,7 @@ wc -l /tmp/astbuild.out
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
 - libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
+- libsodium (https://github.com/jedisct1/libsodium)
 - libtirpc
 - libtom
   - libtomcrypt
