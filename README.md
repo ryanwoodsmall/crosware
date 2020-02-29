@@ -619,6 +619,7 @@ wc -l /tmp/astbuild.out
   - andrew chambers's c (https://github.com/andrewchambers/c)
   - chibicc (https://github.com/rui314/chibicc)
   - cproc (https://git.sr.ht/~mcf/cproc and https://github.com/michaelforney/cproc)
+  - kencc (https://github.com/aryx/fork-kencc)
   - lacc (https://github.com/larmel/lacc)
   - lcc (https://github.com/drh/lcc)
   - plan9-cc (https://github.com/huangguiyang/plan9-cc)
