@@ -1,9 +1,13 @@
+#
+# XXX - aarch64 only has SYS_getdents64, not SYS_getdents - introduced in 05a99f7d7f8e0999994b760bb6337ca10ea0a14b
+#
+
 rname="coreutils"
-rver="8.31"
+rver="8.32"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="ff7a9c918edce6b4f4b2725e3f9b37b0c4d193531cac49a48b56c4d0d3a9e9fd"
+rsha256="4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa"
 rreqs="make gettexttiny sed"
 
 . "${cwrecipe}/common.sh"
@@ -23,6 +27,7 @@ function cwconfigure_${rname}() {
     --without-selinux \
       CPPFLAGS='' \
       LDFLAGS='-static'
+  uname -m | grep -q aarch64 && echo '#define SYS_getdents SYS_getdents64' >> src/ls.h || true
   popd >/dev/null 2>&1
 }
 "
