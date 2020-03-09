@@ -450,6 +450,7 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 - p7zip
 - par (http://www.nicemice.net/par/ via debian https://packages.debian.org/buster/text/par)
 - patch (gnu)
+- patchelf (https://nixos.org/patchelf.html and https://github.com/NixOS/patchelf)
 - pcc (http://pcc.ludd.ltu.se/)
   - only x86_64 for now!
   - kinda painful for static compilation, segfaults, etc.
@@ -941,7 +942,6 @@ wc -l /tmp/astbuild.out
   - unixodbc?
 - oleo (gnu spreadsheet, https://www.gnu.org/software/oleo/oleo.html)
 - openconnect
-- patchelf (https://github.com/NixOS/patchelf - autoconf/automake)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
   - "cannot be used as a static library" - what?
