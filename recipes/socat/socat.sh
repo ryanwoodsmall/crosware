@@ -6,11 +6,11 @@
 #
 
 rname="socat"
-rver="1.7.3.3"
+rver="1.7.3.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="http://www.dest-unreach.org/${rname}/download/${rfile}"
-rsha256="0dd63ffe498168a4aac41d307594c5076ff307aa0ac04b141f8f1cec6594d04a"
+rsha256="972374ca86f65498e23e3259c2ee1b8f9dbeb04d12c2a78c0c9b5d1cb97dfdfc"
 rreqs="make openssl readline zlib"
 
 . "${cwrecipe}/common.sh"
