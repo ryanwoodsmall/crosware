@@ -1,5 +1,5 @@
 rname="dockerstatic"
-rver="19.03.7"
+rver="19.03.8"
 rdir="${rname//static/}-${rver}"
 rbdir="${cwbuild}/docker"
 rfile="${rdir}.tgz"
@@ -9,13 +9,13 @@ rsha256=""
 rburl="https://download.docker.com/linux/static/stable"
 if [[ ${karch} =~ ^aarch64 ]] ; then
   rurl="${rburl}/aarch64/${rfile}"
-  rsha256="730058a50102dbf9278e5d164c385a437016c8c8201d6d19195d9321d0a70ec9"
+  rsha256="b19da81ca82123aa0b9191c1f19c0c2632cc50d5f8c2cdb04e5b5976e3268b3b"
 elif [[ ${karch} =~ ^arm ]] ; then
   rurl="${rburl}/armhf/${rfile}"
-  rsha256="7090e4ea505441e076736d43515f8e2808c32ebb2221b46327ee202fd4997d84"
+  rsha256="b7cb5f0326228413112639fc30583e94d80ac3d9b7cd6636ed01920f0657e99e"
 elif [[ ${karch} =~ ^x86_64 ]] ; then
   rurl="${rburl}/x86_64/${rfile}"
-  rsha256="033e97ae6b31e21c598fd089ea034c08d75dc744ceb787898d63dfc4e45ead03"
+  rsha256="7f4115dc6a3c19c917f8b9664d7b51c904def1c984e082c4600097433323cf6f"
 fi
 unset rburl
 
