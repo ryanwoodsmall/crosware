@@ -633,6 +633,7 @@ wc -l /tmp/astbuild.out
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - dante (socks proxy client/server https://www.inet.no/dante/)
 - ddrescue
+- discount (markdown - https://github.com/Orc/discount)
 - docbook?
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
 - dsvpn (https://github.com/jedisct1/dsvpn)
@@ -760,6 +761,7 @@ wc -l /tmp/astbuild.out
 - kerberos
   - heimdal
   - mit
+- kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
 - ldd
   - driver script
   - run toybox to figure out if musl or glibc and get dyld
