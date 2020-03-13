@@ -9,4 +9,5 @@ vsh \
   --vm_name=termina \
   --target_container=penguin \
   --owner_id="${CROS_USER_ID_HASH}" \
+    -- \
     "${@}"

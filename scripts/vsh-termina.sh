@@ -8,4 +8,5 @@ test -z "${CROS_USER_ID_HASH}" && {
 vsh \
   --vm_name=termina \
   --owner_id="${CROS_USER_ID_HASH}" \
+    -- \
     "${@}"
