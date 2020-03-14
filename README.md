@@ -694,7 +694,6 @@ wc -l /tmp/astbuild.out
   - beanshell
   - ceylon (included in sdkman)
   - clojure (leiningen included in sdkman)
-  - dynjs (dead?)
   - frege (https://github.com/Frege/frege)
   - gradle (included in sdkman)
   - grails (included in sdkman)
@@ -709,7 +708,6 @@ wc -l /tmp/astbuild.out
   - maven (included in sdkman)
   - mina (apache multipurpose infrastructure for network applications: java nio, ftp, sshd, etc.; https://mina.apache.org/)
   - nailgun (https://github.com/facebook/nailgun and http://www.martiansoftware.com/nailgun/)
-  - nodyn (dead)
   - rembulan (jvm lua)
   - ringojs
   - sbt (included in sdkman)
