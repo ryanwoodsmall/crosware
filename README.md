@@ -238,6 +238,10 @@ Newer static musl compilers (GCC 6+) are "done," and should work to compile (sta
 
 - https://github.com/ryanwoodsmall/musl-misc/releases
 
+9p implementations:
+
+- http://9p.cat-v.org/implementations
+
 # recipes
 
 ## bootstrap recipes
