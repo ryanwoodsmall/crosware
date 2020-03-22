@@ -633,6 +633,7 @@ wc -l /tmp/astbuild.out
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - dante (socks proxy client/server https://www.inet.no/dante/)
 - ddrescue
+- diod (https://github.com/chaos/diod - 9p fileserver)
 - discount (markdown - https://github.com/Orc/discount)
 - docbook?
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
@@ -1084,6 +1085,7 @@ wc -l /tmp/astbuild.out
 - ttyd (https://github.com/tsl0922/ttyd - gotty in c, like shellinabox w/xterm.js, libwebsockets, uses cmake)
 - txt2tags (https://github.com/txt2tags/txt2tags)
 - tzdb (https://www.iana.org/time-zones)
+- u9fs (https://github.com/unofficial-mirror/u9fs - 9p filesystem (or one of the forks))
 - ublinter (https://github.com/danmar/ublinter)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
 - uftpd (https://github.com/troglobit/uftpd)
