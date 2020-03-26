@@ -1,9 +1,9 @@
 rname="jython"
-rver="2.7.1"
+rver="2.7.2"
 rdir="${rname}-${rver}"
 rfile="${rname}-installer-${rver}.jar"
 rurl="https://repo.maven.apache.org/maven2/org/python/${rname}-installer/${rver}/${rfile}"
-rsha256="6e58dad0b8565b95c6fb14b4bfbf570523d1c5290244cfb33822789fa53b1d25"
+rsha256="36e40609567ce020a1de0aaffe45e0b68571c278c14116f52e58cc652fb71552"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rreqs="bash busybox"
 
