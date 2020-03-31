@@ -1006,7 +1006,7 @@ wc -l /tmp/astbuild.out
   - elk (http://sam.zoy.org/elk)
   - femtolisp (https://github.com/JeffBezanson/femtolisp)
   - gerbil (https://cons.io/)
-  - ikarus (??? https://en.wikipedia.org/wiki/Ikarus_(Scheme_implementation) )
+  - ikarus (https://en.wikipedia.org/wiki/Ikarus_(Scheme_implementation); https://github.com/lambdaconservatory/ikarus - shared, no static)
   - larceny (and petit larceny, http://larcenists.org)
   - micro-lisp (https://github.com/carld/micro-lisp)
   - minilisp (https://github.com/rui314/minilisp)
