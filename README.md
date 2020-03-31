@@ -1006,7 +1006,11 @@ wc -l /tmp/astbuild.out
   - elk (http://sam.zoy.org/elk)
   - femtolisp (https://github.com/JeffBezanson/femtolisp)
   - gerbil (https://cons.io/)
-  - ikarus (https://en.wikipedia.org/wiki/Ikarus_(Scheme_implementation); https://github.com/lambdaconservatory/ikarus - shared, no static)
+  - ikarus (https://en.wikipedia.org/wiki/Ikarus_(Scheme_implementation))
+    - https://github.com/lambdaconservatory/ikarus
+    - shared, no static
+    - gmp, libffi, pkgconfig, probably configgit
+    - configure with... ```./configure --prefix=${ridir} CPPFLAGS="${CPPFLAGS} $(pkg-config --cflags libffi)" CFLAGS="${CFLAGS//-Wl,-static}" LDFLAGS="${LDFLAGS//-static/}"```
   - larceny (and petit larceny, http://larcenists.org)
   - micro-lisp (https://github.com/carld/micro-lisp)
   - minilisp (https://github.com/rui314/minilisp)
