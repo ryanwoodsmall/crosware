@@ -1,7 +1,7 @@
 #!/bin/bash
 
 envscript="/tmp/transient-environment.sh"
-touch envscript
+touch "${envscript}"
 
 # ssh-agent
 if ! $(ps -U "${USER}" | grep -q 'ssh-agent') ; then
