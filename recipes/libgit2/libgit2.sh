@@ -1,9 +1,9 @@
 rname="libgit2"
-rver="0.99.0"
+rver="1.0.0"
 rdir="${rname}-${rver}"
-rfile="v${rver}.tar.gz"
-rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
-rsha256="174024310c1563097a6613a0d3f7539d11a9a86517cd67ce533849065de08a11"
+rfile="${rdir}.tar.gz"
+rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
+rsha256="6a1fa16a7f6335ce8b2630fbdbb5e57c4027929ebc56fcd1ac55edb141b409b4"
 rreqs="make zlib pkgconfig openssl libssh2 cmake"
 rbdir="${cwbuild}/${rdir}/build"
 
