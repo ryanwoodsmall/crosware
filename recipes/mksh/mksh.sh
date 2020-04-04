@@ -1,9 +1,9 @@
 rname="mksh"
-rver="R57"
+rver="R58"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="http://www.mirbsd.org/MirOS/dist/mir/${rname}/${rfile}"
-rsha256="3d101154182d52ae54ef26e1360c95bc89c929d28859d378cc1c84f3439dbe75"
+rsha256="608beb7b71870b23309ba1da8ca828da0e4540f2b9bd981eb39e04f8b7fc678c"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
