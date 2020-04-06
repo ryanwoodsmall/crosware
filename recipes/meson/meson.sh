@@ -10,7 +10,9 @@ rreqs="python3 ninja"
 
 eval "
 function cwconfigure_${rname}() {
-  true
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  find . -type f -exec touch '{}' +
+  popd >/dev/null 2>&1
 }
 "
 
