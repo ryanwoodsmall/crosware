@@ -82,7 +82,7 @@ function cwmakeinstall_${rname}() {
   make install CC=\"\${CC} -DUSE_MUSL\" ${rlibtool}
   local c=\"${ridir}/bin/pcc\"
   local v=\"\$(\${c} --version | awk '{print \$4}')\"
-  local i=\"${ridir}/lib/pcc/\${MACHTYPE}/\${v}/include\"
+  local i=\"${ridir}/lib/pcc/\$(\${c} -dumpmachine)/\${v}/include\"
   cd ${rname}-libs-${rver}
   env CPPFLAGS= LDFLAGS=-static \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
