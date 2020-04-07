@@ -1,5 +1,11 @@
 # TODO
 
+- musl 1.2.0
+  - some breaking changes on 32-bit arch due to 64-bit time type(s)
+  - Alpine should be going to 1.2.0 in their 3.12.x series
+  - ... so I'm waiting for them to guinea pig and do the hard work
+  - mostly untested by me, but don't foresee any showstoppers
+  - yes I'm lazy
 - eliminate subshells, **``**, ```$(..)``` where possible
   - use bash string manipulation in place of tr/sed/awk
   - speed up sourcing/parsing/execution significantly
@@ -471,6 +477,22 @@ time_func ls -l -A /
   - central is easier to insure upgrade doesn't wipe config but can lead to broken centralized conf
   - bundled with app is cleaner but more dangerous
   - both bad options
+- ssh back into chrome os via `~/.ssh/config`:
+  - requires busybox, dropbear, screen
+  - key auth only
+  - workaround VPN DNS using IPs, etc.
+  - `ssh-keygen` to generate keys, trust in `~/.ssh/authorized_keys` per usual
+  - `ssh-agent` and `ssh-add` to forward generated keys
+  - ```
+    Host jumphost
+      AddKeysToAgent yes
+      ForwardAgent yes
+      Hostname 1.2.3.4
+      EscapeChar @
+      RemoteForward 2222 localhost:2222
+      ProxyCommand sh -c 'cd /tmp ; busybox fuser -4 2222/tcp || screen -dmS ssh dropbear -R -F -E -B -P 2222 -s -a -G chronos-access; busybox nc %h %p'
+    ```
+  - can multiplex with Android adb using **sslh**
 
 <!--
 # vim: ft=markdown
