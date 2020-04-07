@@ -1,9 +1,9 @@
 rname="gettexttiny"
-rver="0.3.1"
+rver="0.3.2"
 rdir="gettext-tiny-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/sabotage-linux/gettext-tiny/archive/${rfile}"
-rsha256="654dcd52f2650476c8822b60bee89c20a0aa7f6a1bf6001701eeacd71a9e388b"
+rsha256="29cc165e27e83d2bb3760118c2368eadab550830d962d758e51bd36eb860f383"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
