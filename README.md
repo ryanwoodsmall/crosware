@@ -1,5 +1,5 @@
 # crosware
-Tools, things, stuff, miscellaneous, detritus, junk, etc., primarily for Chrome OS / Chromium OS. Eventually this will be a development-ish environment for Chrome OS on both ARM and x86 (32-bit and 64-bit for both). It should work on "normal" Linux too (Armbian, CentOS, Debian, Raspbian, Ubuntu - glibc for now since jgit requires a jdk).
+Tools, things, stuff, miscellaneous, detritus, junk, etc., primarily for Chrome OS / Chromium OS. This is be a development-ish environment for Chrome OS on both ARM and x86 (32-bit and 64-bit for both). It should work on "normal" Linux too (Armbian, CentOS, Debian, Raspbian, Ubuntu, etc.).
 
 ## bootstrap
 
@@ -148,16 +148,20 @@ crosware list-upgradable
 
 # notes
 
-Ultimately I'd like this to be a self-hosting virtual distribution of sorts, targeting all variations of 32-/64-bit x86 and ARM on Chrome OS. A static-only GCC compiler using musl-libc (with musl-cross-make) is installed as part of the bootstrap; this sort of precludes things like emacs, but doesn't stop anyone from using a musl toolchain to build a glibc-based shared toolchain. Planning on starting out with shell script-based recipes for configuring/compiling/installing versioned "packages." Initial bootstrap looks something like:
+Ultimately I'd like this to be a self-hosting virtual distribution of sorts, targeting all variations of 32-/64-bit x86 and ARM on Chrome OS. A static-only GCC compiler using musl-libc (with musl-cross-make) is installed as part of the bootstrap; this sort of precludes things like emacs, but doesn't stop anyone from using a musl toolchain to build a glibc-based shared toolchain.
 
-- get a JDK (Azul Zulu OpenJDK)
-- get jgit.sh (standalone)
-- get static bootstrapped compiler
-- checkout rest of project
-- build GNU make
-- build native busybox, toolbox, sed, etc.
-- build a few libs / support (ncurses, openssl, slang, zlib, bzip2, lzma, libevent, pkg-config)
-- build a few packages (curl, vim w/syntax hightlighting, screen, tmux, links, lynx - mostly because I use them)
+My initial bootstrap looks something like:
+
+- scripted, i.e., `crosware bootstrap`:
+  - get a JDK (Azul Zulu OpenJDK)
+  - get jgit.sh (standalone)
+  - get static bootstrapped compiler
+  - checkout rest of project
+- manually install some packages, i.e, `crosware install vim git ...`:
+  - build GNU make
+  - build native busybox, toolbox, sed, etc.
+  - build a few libs / support (ncurses, openssl, slang, zlib, bzip2, lzma, libevent, pkg-config)
+  - build a few packages (curl, vim w/syntax hightlighting, screen, tmux, links, lynx - mostly because I use them)
 
 # environment
 
@@ -198,7 +202,7 @@ And I wrote a little quick/dirty Alpine chroot creator that works on Chrome/Chro
 
 - https://github.com/ryanwoodsmall/shell-ish/blob/master/bin/chralpine.sh
 
-And the musl wiki has some pointers on patches and compatibility:
+The musl wiki has some pointers on patches and compatibility:
 
 - https://wiki.musl-libc.org/compatibility.html#Software-compatibility,-patches-and-build-instructions
 
@@ -234,17 +238,33 @@ Mark Williams Company open sourced Coherent; might be a good source for SUSv3/SU
 
 - http://www.nesssoftware.com/home/mwc/source.php
 
-Newer static musl compilers (GCC 6+) are "done," and should work to compile (static-only) binaries on Chrome OS:
-
-- https://github.com/ryanwoodsmall/musl-misc/releases
-
 9p implementations:
 
 - http://9p.cat-v.org/implementations
 
+Eltanin tools may be useful:
+
+- https://eltan.in.net/?tools/index
+- https://github.com/eltanin-os
+
+## C/C++ compiler
+
+Static musl GCC compiler(s) are done, and should work to compile (static-only, some shared lib support) binaries on Chrome OS:
+
+- https://github.com/ryanwoodsmall/musl-misc/releases
+
+Based on Rich Felker's musl-cross-make:
+
+- https://github.com/richfelker/musl-cross-make
+
 # recipes
 
 ## bootstrap recipes
+
+These recipes are included in the main `bin/crosware` script, as they're the foundation of the tool and are distributed as binaries.
+There are a handful of other binary recipes that are not necessary for bootstrapping.
+The **statictoolchain** recipe could theoretically be pulled into a normal standalone recipe, but is bedrock enough that it fits in the main script.
+A smaller, more supportable, preferably single-binary static Git client would/will hopefully also find its way to the main script for bootstrap purposes.
 
 - **zulu** azul zulu openjdk jvm
 - **jgitsh** standalone jgit shell script
