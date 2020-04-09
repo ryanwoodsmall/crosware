@@ -565,6 +565,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - https://www.agner.org/optimize/#objconv
 - align (and width, perl scripts, http://kinzler.com/me/align/)
 - aloa (linter - https://github.com/ralfholly/aloa)
+- ansicurses (https://github.com/byllgrim/ansicurses)
 - assemblers?
   - fasm
   - nasm
@@ -818,6 +819,7 @@ wc -l /tmp/astbuild.out
   - libtompoly
   - tomsfastmath
 - libusb (https://github.com/libusb/libusb)
+- libutf (https://github.com/cls/libutf)
 - libuv (https://github.com/libuv/libuv)
 - libwebsockets (https://libwebsockets.org/)
 - libyaml (https://github.com/yaml/libyaml)
@@ -935,6 +937,7 @@ wc -l /tmp/astbuild.out
     - getent (https://git.alpinelinux.org/cgit/aports/tree/main/musl/getent.c)
     - iconv (https://git.alpinelinux.org/cgit/aports/tree/main/musl/iconv.c)
 - mutt
+- mvi (https://github.com/byllgrim/mvi)
 - nc / ncat / netcat
 - ne (https://github.com/vigna/ne terminal editor)
 - neat/litcave stuff (http://litcave.rudi.ir/)
@@ -1092,6 +1095,7 @@ wc -l /tmp/astbuild.out
   - quark (https://tools.suckless.org/quark/)
   - sinit (https://core.suckless.org/sinit/)
 - sundown (markdown lib - https://github.com/vmg/sundown)
+- svi (https://github.com/byllgrim/svi)
 - tab (https://tkatchev.bitbucket.io/tab/)
 - taskwarrior (https://taskwarrior.org/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - taskserver (https://github.com/GothenburgBitFactory/taskserver)
