@@ -1,9 +1,9 @@
 rname="tig"
-rver="2.5.0"
+rver="2.5.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/jonas/tig/releases/download/${rdir}/${rfile}"
-rsha256="ff537c67af9201e7e7276ce8a0ff9961e9d9c6a8a78790f5817124bd7755aef4"
+rsha256="500d5d34524f6b856edd5cae01f1404d14f3b51a9a53fd7357f4cebb3d4c9e64"
 rreqs="make ncurses readline git"
 
 . "${cwrecipe}/common.sh"
