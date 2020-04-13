@@ -278,6 +278,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - autoconf
 - automake
+- baseutils (https://github.com/ibara/baseutils - portable openbsd userland, use bsd-headers for sys/cdefs)
 - bash (5.x, netbsdcurses)
 - bash4 (netbsdcurses)
 - bc (gnu bc, dc)
@@ -610,7 +611,6 @@ wc -l /tmp/astbuild.out
 - awk (https://github.com/onetrueawk/awk - the one true awk)
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
 - b2sum (https://github.com/dchest/b2sum)
-- baseutils (https://github.com/ibara/baseutils - portable openbsd userland, use bsd-headers for sys/cdefs)
 - bic (https://github.com/hexagonal-sun/bic - c repl)
 - big data stuff
   - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
