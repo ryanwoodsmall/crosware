@@ -606,8 +606,10 @@ wc -l /tmp/astbuild.out
 ```
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - attr (https://savannah.nongnu.org/projects/attr/)
+- awk (https://github.com/onetrueawk/awk - the one true awk)
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
 - b2sum (https://github.com/dchest/b2sum)
+- baseutils (https://github.com/ibara/baseutils - portable openbsd userland, use bsd-headers for sys/cdefs)
 - bic (https://github.com/hexagonal-sun/bic - c repl)
 - big data stuff
   - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
@@ -633,6 +635,7 @@ wc -l /tmp/astbuild.out
       --build-targets=static,cli
     ```
 - brotli (https://github.com/google/brotli)
+- bsd-headers (https://github.com/bonsai-linux/bsd-headers - from bonsai linux, workaround DECLS for cdefs.h)
 - c9 (https://github.com/ftrvxmtrx/c9)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
@@ -800,6 +803,7 @@ wc -l /tmp/astbuild.out
   - mostly want the dnet binary
 - libedit
   - editline (https://github.com/troglobit/editline or http://troglobit.com/projects/editline/ minix3, no termcap needed)
+- libfetch (https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.3-stable and https://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/net/libfetch/README.html - alpine, netbsd, needs work)
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (separate userspace? uses meson?)
 - libiconv (https://www.gnu.org/software/libiconv/)
@@ -872,6 +876,7 @@ wc -l /tmp/astbuild.out
 - merecat (https://github.com/troglobit/merecat)
 - mes (https://www.gnu.org/software/mes/) and m2 stuff (links above)
 - mesalink (https://mesalink.io/ and https://github.com/mesalock-linux/mesalink)
+- mgksh (https://github.com/ibara/mgksh - static ksh and mg (emacs) from openbsd in a single bin)
 - micropython (https://github.com/micropython/micropython)
   - needs python, git, libffi, pkgconfig, make, mbedtls
   - clone repo (single tag, **--depth 1**, **--single-branch**, etc.); i.e., for 1.10:
@@ -973,6 +978,7 @@ wc -l /tmp/astbuild.out
   - unixodbc?
 - oleo (gnu spreadsheet, https://www.gnu.org/software/oleo/oleo.html)
 - openconnect
+- opengit (https://github.com/khanzf/opengit)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
   - "cannot be used as a static library" - what?
