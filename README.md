@@ -288,6 +288,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - bison
 - bmake (http://www.crufty.net/help/sjg/bmake.html)
 - brogue
+- bsdheaders (https://github.com/bonsai-linux/bsd-headers - from bonsai linux, workaround DECLS for cdefs.h)
 - bsd programs
   - bsdjot (from netbsd - https://netbsd.gw.com/cgi-bin/man-cgi?jot+1)
   - bsdrs (from netbsd - https://netbsd.gw.com/cgi-bin/man-cgi?rs+1)
@@ -635,7 +636,6 @@ wc -l /tmp/astbuild.out
       --build-targets=static,cli
     ```
 - brotli (https://github.com/google/brotli)
-- bsd-headers (https://github.com/bonsai-linux/bsd-headers - from bonsai linux, workaround DECLS for cdefs.h)
 - c9 (https://github.com/ftrvxmtrx/c9)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
