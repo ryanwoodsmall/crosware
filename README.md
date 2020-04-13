@@ -286,6 +286,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - bim (https://github.com/klange/bim - minimal vim-alike)
 - binutils (bfd, opcodes, libiberty.a)
 - bison
+- bmake (http://www.crufty.net/help/sjg/bmake.html)
 - brogue
 - bsd programs
   - bsdjot (from netbsd - https://netbsd.gw.com/cgi-bin/man-cgi?jot+1)
@@ -613,7 +614,6 @@ wc -l /tmp/astbuild.out
   - hbase (version?)
   - spark (included in sdkman)
 - binfmt-support (https://git.savannah.gnu.org/cgit/binfmt-support.git - ???)
-- bmake (and mk, http://www.crufty.net/help/sjg/bmake.html and http://www.crufty.net/help/sjg/mk-files.htm)
 - boost (...)
   - ```./bootstrap.sh --prefix=${ridir} --without-icu ; ./b2 --prefix=${ridir} --layout=system -q link=static install```
   - it's like a 100MB tgz, 700MB extracted, 900MB during build, 190MB installed
