@@ -686,6 +686,7 @@ wc -l /tmp/astbuild.out
 - entr (http://entrproject.org/)
 - finit (https://github.com/troglobit/finit)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
+- gatling (http://www.fefe.de/gatling/ - small web/cgi/ftp/smb server)
 - geomyidae (http://r-36.net/scm/geomyidae/ - gopher server)
 - gdb
 - git-crypt (https://github.com/AGWA/git-crypt)
