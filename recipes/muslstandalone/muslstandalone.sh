@@ -62,7 +62,8 @@ function cwmakeinstall_${rname}() {
   ln -sf musl-gcc \"${ridir}/bin/${statictoolchain_triplet[${karch}]}-gcc\"
   ln -sf libc.so \"${ridir}/lib/ldd\"
   ln -sf \"${rtdir}/current/lib/ldd\" \"${ridir}/bin/musl-ldd\"
-  sed -i.ORIG '/ld-.*\\.so/s# /lib/ld-musl-.* -nostdlib# ${rtdir}/current/lib/libc.so -nostdlib#g' \"${ridir}/lib/musl-gcc.specs\"
+  ln -sf libc.so \"${ridir}/lib/ld.so\"
+  sed -i.ORIG '/ld-.*\\.so/s# /lib/ld-musl-.* -nostdlib# ${rtdir}/current/lib/ld.so -nostdlib#g' \"${ridir}/lib/musl-gcc.specs\"
   popd >/dev/null 2>&1
 }
 "
