@@ -22,7 +22,7 @@ function cwconfigure_${rname}() {
 "
 
 eval "
-function cwconfigure_${rname}() {
+function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make -j${cwmakejobs} ${rlibtool} CFLAGS=\"\${CFLAGS} -Dsigcontext_struct=sigcontext\"
   popd >/dev/null 2>&1
