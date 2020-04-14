@@ -404,6 +404,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libgit2
 - libgpgerror (https://gnupg.org/software/libgpg-error/index.html)
 - libksba (https://gnupg.org/software/libksba/index.html)
+- libmd (https://www.hadrons.org/software/libmd/)
 - libmetalink (https://github.com/metalink-dev/libmetalink)
 - libnl
 - liboop (https://www.lysator.liu.se/liboop/)
@@ -699,6 +700,7 @@ wc -l /tmp/astbuild.out
   - configure needs ```--without-p11-kit --disable-doc --enable-manpages --with-default-trust-store-file=${cwetc}/ssl/cert.pem```
   - mini-nettle/mini-gmp?
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
+- got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - graphviz (http://graphviz.org/)
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
