@@ -28,6 +28,8 @@ function cwmakeinstall_${rname}() {
   ln -sf ${rname} c++
   ln -sf ${rname} gcc
   ln -sf ${rname} g++
+  ln -sf ${rname} musl-cc
+  ln -sf ${rname} musl-c++
   ln -sf ${rname} musl-gcc
   ln -sf ${rname} musl-g++
   popd >/dev/null 2>&1
