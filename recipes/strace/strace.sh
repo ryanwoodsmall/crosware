@@ -11,7 +11,7 @@ rreqs="make"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} --enable-mpers=no
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} --enable-mpers=no CFLAGS=\"\${CFLAGS} -Dsigcontext_struct=sigcontext\"
   popd >/dev/null 2>&1
 }
 "
