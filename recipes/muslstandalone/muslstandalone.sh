@@ -29,7 +29,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} \
     --enable-debug \
     --enable-warnings \
-    --enable-wrapper=all \
+    --enable-wrapper=gcc \
     --enable-shared \
     --enable-static \
       CFLAGS= \
@@ -60,6 +60,9 @@ function cwmakeinstall_${rname}() {
   ln -sf musl-gcc \"${ridir}/bin/musl-cc\"
   ln -sf musl-gcc \"${ridir}/bin/${statictoolchain_triplet[${karch}]}-cc\"
   ln -sf musl-gcc \"${ridir}/bin/${statictoolchain_triplet[${karch}]}-gcc\"
+  ln -sf libc.so \"${ridir}/lib/ldd\"
+  ln -sf \"${rtdir}/current/lib/ldd\" \"${ridir}/bin/musl-ldd\"
+  sed -i.ORIG '/ld-.*\\.so/s# /lib/ld-musl-.* -nostdlib# ${rtdir}/current/lib/libc.so -nostdlib#g' \"${ridir}/lib/musl-gcc.specs\"
   popd >/dev/null 2>&1
 }
 "
