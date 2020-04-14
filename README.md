@@ -449,6 +449,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - mpc
 - mpfr
 - muslfts (https://github.com/pullmoll/musl-fts)
+- muslstandalone (http://musl.libc.org/ - unbundled musl libc and kernel headers with musl-gcc wrapper, possibly different version from statictoolchain)
 - ncurses
 - neat/litcave stuff (http://litcave.rudi.ir/)
   - neatvi (https://github.com/aligrudi/neatvi)
