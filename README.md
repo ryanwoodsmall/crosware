@@ -389,6 +389,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - jscheme
 - jython
 - kawa (scheme)
+- kernelheaders (https://github.com/sabotage-linux/kernel-headers - from sabotage linux)
 - ksh93 (https://github.com/att/ast/ via at&t ast)
   - this is actually ksh2020...
   - should be renamed as such
