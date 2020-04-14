@@ -517,6 +517,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - OLD 1.x version
   - limited language support, though
   - see below for notes on newer versions (boost req, yeesh)
+- strace (https://strace.io/ and https://github.com/strace/strace)
 - stunnel
 - sqlite
 - suckless
@@ -1101,7 +1102,6 @@ wc -l /tmp/astbuild.out
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
 - sslh (https://www.rutschle.net/tech/sslh/README.html and https://www.rutschle.net/tech/sslh/README.html)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
-- strace
 - subversion / svn
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
 - suckless
