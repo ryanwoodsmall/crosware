@@ -55,6 +55,11 @@ function cwmakeinstall_${rname}() {
   cd \$(cwdir_kernelheaders)
   make ARCH=\${a} prefix=\"${ridir}\" install
   unset a
+  ln -sf musl-gcc \"${ridir}/bin/cc\"
+  ln -sf musl-gcc \"${ridir}/bin/gcc\"
+  ln -sf musl-gcc \"${ridir}/bin/musl-cc\"
+  ln -sf musl-gcc \"${ridir}/bin/${statictoolchain_triplet[${karch}]}-cc\"
+  ln -sf musl-gcc \"${ridir}/bin/${statictoolchain_triplet[${karch}]}-gcc\"
   popd >/dev/null 2>&1
 }
 "
