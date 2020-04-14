@@ -689,6 +689,7 @@ wc -l /tmp/astbuild.out
 - finit (https://github.com/troglobit/finit)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
 - gatling (http://www.fefe.de/gatling/ - small web/cgi/ftp/smb server)
+- gcompat (https://github.com/AdelieLinux/gcompat)
 - geomyidae (http://r-36.net/scm/geomyidae/ - gopher server)
 - gdb
 - git-crypt (https://github.com/AGWA/git-crypt)
@@ -826,6 +827,8 @@ wc -l /tmp/astbuild.out
   - libtommath
   - libtompoly
   - tomsfastmath
+- libucontext (https://github.com/kaniini/libucontext)
+- libunwind (http://www.nongnu.org/libunwind/ and http://savannah.nongnu.org/projects/libunwind)
 - libusb (https://github.com/libusb/libusb)
 - libutf (https://github.com/cls/libutf)
 - libuv (https://github.com/libuv/libuv)
