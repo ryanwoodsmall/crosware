@@ -33,7 +33,7 @@ function cwmakeinstall_${rname}() {
   elif [[ ${karch} =~ ^x86_64 ]] ; then
     a=x86_64
   else
-    cwerror \"how did you get here\"
+    cwfailexit \"how did you get here\"
   fi
   make ARCH=\${a} prefix=\"${ridir}\" install
   unset a
