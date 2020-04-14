@@ -8,23 +8,15 @@ rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
-# XXX - ugly, non-working hack to avoid signal/sigcontext redefs on arm64
+# XXX - ugly hack to avoid signal/sigcontext redefs on arm64
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} --enable-mpers=no --disable-gcc-Werror CFLAGS=\"\${CFLAGS} -Dsigcontext_struct=sigcontext\"
-  #if \$(uname -m | grep -q ^aarch64) ; then
-  #  echo '#undefine HAVE_STRUCT_SIGCONTEXT' >> config.h
-  #  echo '#define HAVE_STRUCT_SIGCONTEXT 1' >> config.h
-  #fi
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} ${rlibtool} CFLAGS=\"\${CFLAGS} -Dsigcontext_struct=sigcontext\"
+  if \$(uname -m | grep -q ^aarch64) ; then
+    echo '#undef __ASM_SIGCONTEXT_H' >> config.h
+    echo '#define __ASM_SIGCONTEXT_H 1' >> config.h
+  fi
   popd >/dev/null 2>&1
 }
 "
