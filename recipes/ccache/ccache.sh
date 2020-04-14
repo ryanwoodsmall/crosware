@@ -23,7 +23,9 @@ function cwmakeinstall_${rname}() {
   make install
   cd \"${ridir}/bin\"
   ln -sf ${rname} \${CC}
+  ln -sf ${rname} \${CC//-gcc/-cc}
   ln -sf ${rname} \${CXX}
+  ln -sf ${rname} \${CXX//-g++/-c++}
   ln -sf ${rname} cc
   ln -sf ${rname} c++
   ln -sf ${rname} gcc
