@@ -3,11 +3,11 @@
 #
 
 rname="quickjs"
-rver="20200316"
+rver="20200412"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/horhof/${rname}/archive/${rfile}"
-rsha256="884b4af807882f9e1b07aead79ae1e2d067e27225ea8f2aa03b5bfb09024f484"
+rsha256="99a267894a162fb21cdb95061432910a7c5f0268c7e10b57bebc507586a629a6"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
