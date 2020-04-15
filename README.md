@@ -865,6 +865,7 @@ wc -l /tmp/astbuild.out
   - sbcl (http://sbcl.org and https://github.com/sbcl/sbcl)
 - llvm / clang
 - lnav (https://github.com/tstack/lnav)
+- lobase (https://github.com/Duncaen/lobase)
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - lua stuff
   - lua2c (https://github.com/davidm/lua2c or a fork?)
@@ -983,6 +984,7 @@ wc -l /tmp/astbuild.out
 - nss (ugh)
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - nyacc (https://www.nongnu.org/nyacc/ and https://savannah.nongnu.org/projects/nyacc)
+- obase (https://github.com/leahneukirchen/obase)
 - odbc?
   - iodbc?
   - unixodbc?
