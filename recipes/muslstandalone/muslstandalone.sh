@@ -73,6 +73,6 @@ eval "
 function cwgenprofd_${rname}() {
   echo 'prepend_path \"${rtdir}/ccache/bin\"' > \"${rprof}\"
   echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
-  echo 'export REALGCC=\"${cwsw}/statictoolchain/current/bin/\${CC}\"'
+  echo 'export REALGCC=\"${cwsw}/statictoolchain/current/bin/\${CC}\"' >> \"${rprof}\"
 }
 "
