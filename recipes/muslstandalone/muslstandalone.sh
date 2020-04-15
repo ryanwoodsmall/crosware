@@ -27,6 +27,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
+    --syslibdir=\"${ridir}/lib\" \
     --enable-debug \
     --enable-warnings \
     --enable-wrapper=gcc \
@@ -72,5 +73,6 @@ eval "
 function cwgenprofd_${rname}() {
   echo 'prepend_path \"${rtdir}/ccache/bin\"' > \"${rprof}\"
   echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
+  echo 'export REALGCC=\"${cwsw}/statictoolchain/current/bin/\${CC}\"'
 }
 "
