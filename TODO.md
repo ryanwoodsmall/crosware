@@ -7,6 +7,7 @@
   - mostly untested by me, but don't foresee any showstoppers
   - yes I'm lazy
   - done:
+    - ```muslstandalone``` package added to test C-only builds
     - ```-D__STDC_ISO_10646__=201103L``` for libedit/netbsdcurses wchar???
       - ```201206L``` should be defined in stdc-predef.h as well
       - http://lists.busybox.net/pipermail/buildroot/2016-January/149100.html
