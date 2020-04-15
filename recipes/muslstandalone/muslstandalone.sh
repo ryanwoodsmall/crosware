@@ -26,6 +26,8 @@ function cwextract_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  sed -i.ORIG 's#\\\$ldso#${rtdir}/current/lib/ld.so#g' tools/musl-gcc.specs.sh
+  #diff -Naur tools/musl-gcc.specs.sh{.ORIG,} || true
   ./configure ${cwconfigureprefix} \
     --syslibdir=\"${ridir}/lib\" \
     --enable-debug \
@@ -64,7 +66,8 @@ function cwmakeinstall_${rname}() {
   ln -sf libc.so \"${ridir}/lib/ldd\"
   ln -sf \"${rtdir}/current/lib/ldd\" \"${ridir}/bin/musl-ldd\"
   ln -sf libc.so \"${ridir}/lib/ld.so\"
-  sed -i.ORIG '/ld-.*\\.so/s# /lib/ld-musl-.* -nostdlib# ${rtdir}/current/lib/ld.so -nostdlib#g' \"${ridir}/lib/musl-gcc.specs\"
+  sed -i.ORIG 's#${ridir}#${rtdir}/current#g' \"${ridir}/lib/musl-gcc.specs\"
+  #diff -Naur \"${ridir}/lib/musl-gcc.specs\"{.ORIG,} || true
   popd >/dev/null 2>&1
 }
 "
