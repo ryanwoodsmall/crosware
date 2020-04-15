@@ -1,3 +1,9 @@
+#
+# XXX - lib*.a from statictoolchain... ???
+#   for a in ${cwsw}/statictoolchain/$(${CC} -dumpmachine)/lib/lib*.a ; do
+#     test -e "${ridir}/lib/$(basename ${a})" || ln -s "${a}" "${ridir}/lib/"
+#   done
+#
 rname="muslstandalone"
 rver="1.2.0"
 rdir="musl-${rver}"
