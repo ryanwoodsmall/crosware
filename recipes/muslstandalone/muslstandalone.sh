@@ -1,8 +1,6 @@
 #
-# XXX - lib*.a from statictoolchain... ???
-#   for a in ${cwsw}/statictoolchain/$(${CC} -dumpmachine)/lib/lib*.a ; do
-#     test -e "${ridir}/lib/$(basename ${a})" || ln -s "${a}" "${ridir}/lib/"
-#   done
+# XXX - symlink libraries may not be a great idea, append to .specs instead?
+#   -L/usr/local/crosware/software/statictoolchain/current/lib/$(${CC} -dumpmachine)/lib
 #
 rname="muslstandalone"
 rver="1.2.0"
@@ -33,7 +31,6 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG 's#\\\$ldso#${rtdir}/current/lib/ld.so#g' tools/musl-gcc.specs.sh
-  #diff -Naur tools/musl-gcc.specs.sh{.ORIG,} || true
   ./configure ${cwconfigureprefix} \
     --syslibdir=\"${ridir}/lib\" \
     --enable-debug \
@@ -63,7 +60,6 @@ function cwmakeinstall_${rname}() {
   make install
   cd \$(cwdir_kernelheaders)
   make ARCH=\${a} prefix=\"${ridir}\" install
-  unset a
   ln -sf musl-gcc \"${ridir}/bin/cc\"
   ln -sf musl-gcc \"${ridir}/bin/gcc\"
   ln -sf musl-gcc \"${ridir}/bin/musl-cc\"
@@ -73,7 +69,10 @@ function cwmakeinstall_${rname}() {
   ln -sf \"${rtdir}/current/lib/ldd\" \"${ridir}/bin/musl-ldd\"
   ln -sf libc.so \"${ridir}/lib/ld.so\"
   sed -i.ORIG 's#${ridir}#${rtdir}/current#g' \"${ridir}/lib/musl-gcc.specs\"
-  #diff -Naur \"${ridir}/lib/musl-gcc.specs\"{.ORIG,} || true
+  for a in \$(find \"${cwsw}/statictoolchain/current/\$(\${CC} -dumpmachine)/lib/\" -mindepth 1 -maxdepth 1 | grep '\\.a\$') ; do
+    test -e \"${ridir}/lib/\$(basename \${a})\" || ln -s \"\${a}\" \"${ridir}/lib/\" || true
+  done
+  unset a
   popd >/dev/null 2>&1
 }
 "
