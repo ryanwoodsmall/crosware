@@ -108,6 +108,7 @@ function cwmakeinstall_${rname}_libedit() {
     ${cwconfigureprefix} \
     ${cwconfigurelibopts} \
     ${cwconfigurefpicopts} \
+      CFLAGS=\"\${CFLAGS} -D__STDC_ISO_10646__=201206L\" \
       CPPFLAGS=\"-I${ridir}/include\" \
       LDFLAGS=\"-L${ridir}/lib -static\" \
       LIBS=\"-lcurses -lterminfo\" \
