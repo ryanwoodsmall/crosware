@@ -35,7 +35,7 @@ function cwconfigure_${rname}() {
     --enable-wrapper=gcc \
     --enable-shared \
     --enable-static \
-      CFLAGS= \
+      CFLAGS='-fPIC' \
       CPPFLAGS= \
       CXXFLAGS= \
       LDFLAGS=
