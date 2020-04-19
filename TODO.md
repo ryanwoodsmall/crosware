@@ -498,6 +498,11 @@ time_func ls -l -A /
       ProxyCommand sh -c 'cd /tmp ; busybox fuser -4 2222/tcp || screen -dmS ssh dropbear -R -F -E -B -P 2222 -s -a -G chronos-access; busybox nc %h %p'
     ```
   - can multiplex with Android adb using **sslh**
+- probably need `tar -o` to not restore uid/gid in at least:
+  - `cwuntar`
+  - `cwuntbz2`
+  - `cwuntgz`
+  - `cwuntxz`
 
 <!--
 # vim: ft=markdown
