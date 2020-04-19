@@ -565,7 +565,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 ## recipes to consider
 
 - 9pfs (https://github.com/mischief/9pfs - fuse 9p driver)
-- 9pro (https://github.com/ftrvxmtrx/9pro)
+- 9pro (https://github.com/ftrvxmtrx/9pro - 9p tools for unix)
 - ack (https://beyondgrep.com/)
 - acl (https://savannah.nongnu.org/projects/acl/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
@@ -641,7 +641,7 @@ wc -l /tmp/astbuild.out
       --build-targets=static,cli
     ```
 - brotli (https://github.com/google/brotli)
-- c9 (https://github.com/ftrvxmtrx/c9)
+- c9 (https://github.com/ftrvxmtrx/c9 - small 9p client/server impl)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
