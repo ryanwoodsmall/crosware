@@ -564,6 +564,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 
 ## recipes to consider
 
+- 9pfs (https://github.com/mischief/9pfs - fuse 9p driver)
 - 9pro (https://github.com/ftrvxmtrx/9pro)
 - ack (https://beyondgrep.com/)
 - acl (https://savannah.nongnu.org/projects/acl/)
