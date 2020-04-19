@@ -33,11 +33,11 @@ fi
 
 # version picker
 case "${reqver}" in
-    8) zuluver="8.44.0.11-ca-jdk8.0.242"
-       zulusha="1910df13769824abdf82ce565e3150d6c2fa455f752133b092e5e800caef5f80"
+    8) zuluver="8.46.0.19-ca-jdk8.0.252"
+       zulusha="306ec531eed55c119321dcd9ae7664a110d98955afc571d5d19ad6b69172a705"
        ;;
-   11) zuluver="11.37.17-ca-jdk11.0.6"
-       zulusha="7c97f078d34116e434467026d6740346af79558cc8628f27d36324f8ed67921b"
+   11) zuluver="11.39.15-ca-jdk11.0.7"
+       zulusha="0de7ac5afede2ddeda399f10c9f9df83f91c9b60481ecf304aa5785ed50f36ce"
        ;;
   all) bash "${BASH_SOURCE[0]}" 8
        bash "${BASH_SOURCE[0]}" 11
@@ -110,5 +110,5 @@ done
 cat > ${zuluprofd} << EOF
 export JAVA_HOME="${zulutop}/current"
 export PATH="\${JAVA_HOME}/bin:\${PATH}"
-export _JAVA_OPTIONS="-Djava.io.tmpdir=${cwtmp} -Djava.awt.headless=true"
+export _JAVA_OPTIONS="-Djava.io.tmpdir=${cwtmp} -Djava.awt.headless=true -XX:-UsePerfData"
 EOF
