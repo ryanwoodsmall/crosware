@@ -17,6 +17,11 @@
 - need to set ```set -o pipefail```? prolly
   - and ```trap...```
   - and use ```... ||:``` as a ```... || true``` shortcut
+  - `set -o pipefail` breaks this for some reason (subshell, probably? `grep -q` maybe, works fine w/o -q?):
+    - ```if ! $(set | grep -q "^cwinstall_${recipe} ") ; then ... ; fi```
+  - this works in its stead:
+    - ```set | grep "^cwinstall_${recipe} " >/dev/null 2>&1
+         if [ ${?} -ne 0 ] ; then ... ; fi```
 - check that we are running as root
   - note on perms if sudo/root is not wanted
 - top directory (/usr/local/crosware)
