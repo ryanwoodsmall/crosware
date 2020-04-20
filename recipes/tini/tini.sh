@@ -2,11 +2,11 @@
 # XXX - strip with install -s? hardly seems worth it
 #
 rname="tini"
-rver="0.18.0"
+rver="0.19.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/krallin/${rname}/archive/${rfile}"
-rsha256="1097675352d6317b547e73f9dc7c6839fd0bb0d96dafc2e5c95506bb324049a2"
+rsha256="0fd35a7030052acd9f58948d1d900fe1e432ee37103c5561554408bdac6bbf0d"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
