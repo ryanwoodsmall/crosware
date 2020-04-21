@@ -1,9 +1,9 @@
 rname="oniguruma"
-rver="6.9.4"
+rver="6.9.5"
 rdir="onig-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/kkos/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="4669d22ff7e0992a7e93e116161cac9c0949cd8960d1c562982026726f0e6d53"
+rsha256="2f25cc3165e6da4b12dcabdb6b77c48f436d835e127ec2e3cad7abae9ea8e9a6"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
