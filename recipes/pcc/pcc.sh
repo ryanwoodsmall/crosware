@@ -39,7 +39,7 @@ function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   local s=\"${cwsw}/statictoolchain/current\"
   local t=\"${cwsw}/muslstandalone/current\"
-  local m=\"\$(\${CC} -dumpmachine)\"
+  local m=\"\$(\${t}/bin/musl-gcc -dumpmachine)\"
   local c d
   for c in config.{guess,sub} ; do
     for d in . ${rname}-libs-${rver} ; do
@@ -47,7 +47,7 @@ function cwconfigure_${rname}() {
       install -m 0755 ${cwsw}/configgit/current/\${c} \${d}/\${c}
     done
   done
-  env CPPFLAGS= LDFLAGS=-static \
+  env CPPFLAGS= LDFLAGS=-static CC=\"${cwsw}/muslstandalone/current/bin/musl-gcc\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --disable-stripping \
       --enable-native \
@@ -57,7 +57,7 @@ function cwconfigure_${rname}() {
       --with-linker=\"\${s}/bin/\${m}-ld\" \
       --with-assembler=\"\${s}/bin/\${m}-as\"
         YACC=byacc \
-        CC=\"\${CC} -DUSE_MUSL\" \
+        CC=\"${cwsw}/muslstandalone/current/bin/musl-gcc -DUSE_MUSL\" \
         CFLAGS=\"\${CFLAGS}\" \
         LDFLAGS=-static \
         CPPFLAGS=
@@ -73,7 +73,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} CC=\"\${CC} -DUSE_MUSL\" ${rlibtool}
+  make -j${cwmakejobs} CC=\"${cwsw}/muslstandalone/current/bin/musl-gcc -DUSE_MUSL\" ${rlibtool}
   popd >/dev/null 2>&1
 }
 "
@@ -81,7 +81,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make install CC=\"\${CC} -DUSE_MUSL\" ${rlibtool}
+  make install CC=\"${cwsw}/muslstandalone/current/bin/musl-gcc -DUSE_MUSL\" ${rlibtool}
   local c=\"${ridir}/bin/pcc\"
   local v=\"\$(\${c} --version | awk '{print \$4}')\"
   local i=\"${ridir}/lib/pcc/\$(\${c} -dumpmachine)/\${v}/include\"
