@@ -5,12 +5,12 @@
 #
 
 rname="pcc"
-rver="20191207"
+rver="20200421"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="ftp://pcc.ludd.ltu.se/pub/${rname}/${rfile}"
-rsha256="95b554c148888431f751c7cd120ebdd2c8084300214274f195077b3d668ca91c"
-rreqs="make byacc flex configgit"
+rsha256="48e14118d45bb579fcf4b5b5c7232b10048639d41dd9a333242be42ed409a3d6"
+rreqs="make byacc flex configgit muslstandalone"
 
 . "${cwrecipe}/common.sh"
 
@@ -21,7 +21,7 @@ function cwfetch_${rname}() {
   f=\"${rfile//pcc/pcc-libs}\"
   u=\"${rurl%/*}-libs/\${f}\"
   d=\"${rdlfile%/*}/\${f}\"
-  s=\"ccd064b1efa868128c1734ea45421c98936a93d08affde878ecc06a04c91e8c6\"
+  s=\"b4f159fa349bd25eaf143994e4a66aae2bb800514e4a37562d58f70c6a43b890\"
   cwfetchcheck \"\${u}\" \"\${d}\" \"\${s}\"
   unset f u d s
 }
@@ -37,7 +37,8 @@ function cwextract_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  local t=\"${cwsw}/statictoolchain/current\"
+  local s=\"${cwsw}/statictoolchain/current\"
+  local t=\"${cwsw}/muslstandalone/current\"
   local m=\"\$(\${CC} -dumpmachine)\"
   local c d
   for c in config.{guess,sub} ; do
@@ -51,19 +52,20 @@ function cwconfigure_${rname}() {
       --disable-stripping \
       --enable-native \
       --enable-multiarch=no \
-      --with-incdir=\"\${t}/\${m}/include\" \
-      --with-libdir=\"\${t}/\${m}/lib\" \
-      --with-linker=\"${cwsw}/statictoolchain/current/bin/\${m}-ld\"
+      --with-incdir=\"\${t}/include\" \
+      --with-libdir=\"\${t}/lib\" \
+      --with-linker=\"\${s}/bin/\${m}-ld\" \
+      --with-assembler=\"\${s}/bin/\${m}-as\"
         YACC=byacc \
         CC=\"\${CC} -DUSE_MUSL\" \
         CFLAGS=\"\${CFLAGS}\" \
         LDFLAGS=-static \
         CPPFLAGS=
-  unset t m c d
-  sed -i.ORIG '/define MUSL_DYLIB/s|#define.*|#define MUSL_DYLIB \"${cwsw}/statictoolchain/current/'\$(\${CC} -dumpmachine)'/lib/ld.so\"|g' os/linux/ccconfig.h
+  sed -i.ORIG \"/define MUSL_DYLIB/s|#define.*|#define MUSL_DYLIB \\\"\${t}/lib/ld.so\\\"|g\" os/linux/ccconfig.h
   sed -i.ORIG \
     '/^OBJS = /s/^OBJS = .*/OBJS = crt0.o crt1.o gcrt1.o crti.o crtn.o crtbegin.o crtend.o crtbeginS.o crtendS.o crtbeginT.o crtendT.o/g;s/-fpic/-fPIC/g' \
       ${rname}-libs-${rver}/csu/linux/Makefile
+  unset s t m c d
   popd >/dev/null 2>&1
 }
 "
