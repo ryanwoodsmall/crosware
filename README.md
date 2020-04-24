@@ -616,6 +616,7 @@ wc -l /tmp/astbuild.out
 - awk (https://github.com/onetrueawk/awk - the one true awk)
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
 - b2sum (https://github.com/dchest/b2sum)
+- bashdb (http://bashdb.sourceforge.net/ - bash debugger)
 - bic (https://github.com/hexagonal-sun/bic - c repl)
 - big data stuff
   - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
@@ -1092,6 +1093,7 @@ wc -l /tmp/astbuild.out
   - scsh (https://scsh.net)
   - tcsh (and/or standard csh)
   - zsh
+- shellcheck (https://www.shellcheck.net/ and https://github.com/koalaman/shellcheck - haskell)
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
 - simplecpp (https://github.com/danmar/simplecpp)
 - sljit (http://sljit.sourceforge.net/)
