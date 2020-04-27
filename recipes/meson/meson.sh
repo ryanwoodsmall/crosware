@@ -1,9 +1,9 @@
 rname="meson"
-rver="0.54.0"
+rver="0.54.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/mesonbuild/meson/releases/download/${rver}/${rfile}"
-rsha256="dde5726d778112acbd4a67bb3633ab2ee75d33d1e879a6283a7b4a44c3363c27"
+rsha256="2f76fb4572762be13ee479292610091b4509af5788bcceb391fe222bcd0296dc"
 rreqs="python3 ninja"
 
 . "${cwrecipe}/common.sh"
