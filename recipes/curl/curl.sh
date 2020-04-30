@@ -40,6 +40,7 @@ function cwconfigure_${rname}() {
     --with-libmetalink \
     --with-libssh2 \
     --with-zlib \
+    --without-libidn2 \
     --without-bearssl \
     --without-mbedtls \
     --without-wolfssl \
@@ -82,6 +83,7 @@ function cwmakeinstall_${rname}_mbedtls() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --with-zlib \
+    --without-libidn2 \
     --without-libmetalink \
     --without-libssh2 \
     --without-bearssl \
@@ -107,6 +109,7 @@ function cwmakeinstall_${rname}_wolfssl() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --with-zlib \
+    --without-libidn2 \
     --without-libmetalink \
     --without-libssh2 \
     --without-bearssl \
@@ -131,6 +134,7 @@ function cwmakeinstall_${rname}_bearssl() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --with-zlib \
+    --without-libidn2 \
     --without-libmetalink \
     --without-libssh2 \
     --without-ssl \
