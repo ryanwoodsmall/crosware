@@ -3,7 +3,7 @@
 #
 # show files with multiple versions under downloads/pkg/...
 # XXX - a few packages have multiple files (git, dropbear, manpages, ...)
-# 
+#
 
 if [ -z "${cwtop}" ] ; then
   cwtop="$(realpath $(dirname ${BASH_SOURCE[0]})/..)"
@@ -16,4 +16,4 @@ cd ${cwtop}/downloads ; for i in */ ; do
   | grep -q '^1$' \
     || find $i -type f \
        | egrep -v 'bsd.*/.*\.(c|h|1)$'
-done | sort 
+done | sort
