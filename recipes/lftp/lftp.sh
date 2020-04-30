@@ -15,6 +15,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-nls \
     --without-gnutls \
+    --without-libidn2 \
     --with-expat=\"${cwsw}/expat/current\" \
     --with-openssl=\"${cwsw}/openssl/current\" \
     --with-readline=\"${cwsw}/readline/current\" \
