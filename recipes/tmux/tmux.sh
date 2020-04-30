@@ -6,14 +6,23 @@
 #
 
 rname="tmux"
-rver="3.0a"
+rver="3.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/releases/download/${rver}/${rfile}"
-rsha256="4ad1df28b4afa969e59c08061b45082fdc49ff512f30fc8e43217d7b0e5f8db9"
-rreqs="make libevent ncurses pkgconfig"
+rsha256="979bf38db2c36193de49149aaea5c540d18e01ccc27cf76e2aff5606bd186722"
+rreqs="make libevent ncurses pkgconfig bsdheaders"
 
 . "${cwrecipe}/common.sh"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+    CPPFLAGS=\"\${CPPFLAGS} -I${cwsw}/bsdheaders/current\"
+  popd >/dev/null 2>&1
+}
+"
 
 eval "
 function cwgenprofd_${rname}() {
