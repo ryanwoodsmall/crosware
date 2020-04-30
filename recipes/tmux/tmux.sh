@@ -6,11 +6,11 @@
 #
 
 rname="tmux"
-rver="3.1"
+rver="3.1a"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/releases/download/${rver}/${rfile}"
-rsha256="979bf38db2c36193de49149aaea5c540d18e01ccc27cf76e2aff5606bd186722"
+rsha256="10687cbb02082b8b9e076cf122f1b783acc2157be73021b4bedb47e958f4e484"
 rreqs="make libevent ncurses pkgconfig bsdheaders"
 
 . "${cwrecipe}/common.sh"
