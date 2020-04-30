@@ -324,6 +324,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
     - nettle, hogweed, gmp (DNSSSEC)
       - ```CFLAGS=\"\${CFLAGS} -Wall -W -O2\" LDFLAGS=\"\${LDFLAGS} -static\" COPTS=\"-DHAVE_DNSSEC \${CPPFLAGS}\"```
     - idn/idn2 (IDN)
+      - ```-DHAVE_IDN``` (libidn) ```-DHAVE_IDN2``` (libidn2, needs libunistring)
     - lua? (5.2 only?)
     - dbus? ubus?
 - dockerstatic (static docker binaries from https://download.docker.com/linux/static/stable/)
