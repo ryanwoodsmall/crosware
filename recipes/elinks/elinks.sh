@@ -34,6 +34,7 @@ function cwconfigure_${rname}() {
     --disable-mouse \
     --disable-sysmouse \
     --without-gpm \
+    --without-idn \
     --enable-html-highlight \
     --enable-{88,256}-colors \
     --enable-true-color \
