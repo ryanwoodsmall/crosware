@@ -1,9 +1,9 @@
 rname="dnsmasq"
-rver="2.80"
+rver="2.81"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="http://www.thekelleys.org.uk/${rname}/${rfile}"
-rsha256="cdaba2785e92665cf090646cba6f94812760b9d7d8c8d0cfb07ac819377a63bb"
+rsha256="749ca903537c5197c26444ac24b0dce242cf42595fdfe6b9a5b9e4c7ad32f8fb"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
