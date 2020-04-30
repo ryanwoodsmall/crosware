@@ -17,6 +17,15 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install ${rlibtool}
+  sed -i 's/-lidn2/-lidn2 -lunistring/g' \"${ridir}/lib/pkgconfig/${rname}.pc\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
   echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
