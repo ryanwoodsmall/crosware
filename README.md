@@ -322,6 +322,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - look at adding...
     - libnetfilter_conntrack (conntrack)
     - nettle, hogweed, gmp (DNSSSEC)
+      - ```CFLAGS=\"\${CFLAGS} -Wall -W -O2\" LDFLAGS=\"\${LDFLAGS} -static\" COPTS=\"-DHAVE_DNSSEC \${CPPFLAGS}\"```
     - idn/idn2 (IDN)
     - lua? (5.2 only?)
     - dbus? ubus?
