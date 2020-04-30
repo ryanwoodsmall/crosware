@@ -405,6 +405,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libgcrypt (https://gnupg.org/software/libgcrypt/index.html)
 - libgit2
 - libgpgerror (https://gnupg.org/software/libgpg-error/index.html)
+- libidn (https://www.gnu.org/software/libidn/)
 - libidn2 (https://www.gnu.org/software/libidn/#libidn2)
 - libksba (https://gnupg.org/software/libksba/index.html)
 - libmd (https://www.hadrons.org/software/libmd/)
