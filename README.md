@@ -578,6 +578,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - align (and width, perl scripts, http://kinzler.com/me/align/)
 - aloa (linter - https://github.com/ralfholly/aloa)
 - ansicurses (https://github.com/byllgrim/ansicurses)
+- argp-standalone (http://www.lysator.liu.se/~nisse/misc/ and https://git.alpinelinux.org/aports/tree/main/argp-standalone)
 - assemblers?
   - fasm
   - nasm
