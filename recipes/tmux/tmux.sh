@@ -11,7 +11,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/releases/download/${rver}/${rfile}"
 rsha256="10687cbb02082b8b9e076cf122f1b783acc2157be73021b4bedb47e958f4e484"
-rreqs="make libevent ncurses pkgconfig bsdheaders"
+rreqs="make libevent ncurses pkgconfig bsdheaders byacc"
 
 . "${cwrecipe}/common.sh"
 
