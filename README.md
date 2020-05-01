@@ -798,6 +798,7 @@ wc -l /tmp/astbuild.out
     - jisql (https://github.com/stdunbar/jisql)
     - sqlshell (scala, sbt - https://github.com/bmc/sqlshell)
 - jed (https://www.jedsoft.org/jed/)
+- jitter (http://ageinghacker.net/projects/jitter/ - jit/vm/interpreter thing)
 - joe (https://joe-editor.sourceforge.io/)
 - kerberos
   - heimdal
