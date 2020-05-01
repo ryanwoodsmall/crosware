@@ -680,6 +680,8 @@ wc -l /tmp/astbuild.out
 - duplicity (http://duplicity.nongnu.org/)
 - e (https://github.com/hellerve/e - simple editor, syntax highlighting, archived?)
 - e2fsprogs (https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/ - usable uuid for python)
+  - config opts: `--disable-lto --enable-symlink-install --enable-verbose-makecmds --disable-nls --enable-libuuid --enable-libblkid`
+  - `make install` needs `MKDIR_P='mkdir -p'`
 - edbrowse (http://edbrowse.org/ and https://github.com/CMB/edbrowse)
   - cmake, curl, pcre, tidy (cmake), duktape
 - elfutils (https://sourceware.org/elfutils/)
