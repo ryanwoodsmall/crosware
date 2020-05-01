@@ -682,6 +682,7 @@ wc -l /tmp/astbuild.out
 - e2fsprogs (https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v1.45.4/ - usable uuid for python)
 - edbrowse (http://edbrowse.org/ and https://github.com/CMB/edbrowse)
   - cmake, curl, pcre, tidy (cmake), duktape
+- elfutils (https://sourceware.org/elfutils/)
 - ellcc (embedded clang build, http://ellcc.org/)
 - emacs
   - 26.1+ can be compiled without gnutls?
