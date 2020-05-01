@@ -20,6 +20,7 @@ function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     CPPFLAGS=\"\${CPPFLAGS} -I${cwsw}/bsdheaders/current\"
+  sed -i.ORIG '/options_get.*automatic-rename/s/options_get/options_get_only/g' input.c
   popd >/dev/null 2>&1
 }
 "
