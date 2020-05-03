@@ -1,9 +1,9 @@
 rname="oksh"
-rver="6.6"
+rver="6.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ibara/${rname}/releases/download/${rdir}/${rfile}"
-rsha256="573d56d5eaeb4a89a8e1ff4638bdff7e44a7ebeb8a9a36b121d4c6fa2acd62ff"
+rsha256="bb3e9288dbd8915b9e175727cdb3898970e6c6fece61e6867102b399e215fb04"
 rreqs="make netbsdcurses"
 
 . "${cwrecipe}/common.sh"
@@ -19,6 +19,7 @@ function cwconfigure_${rname}() {
     LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -lcurses -lterminfo -static\" \
       ./configure \
         --prefix=\"${ridir}\" \
+        --bindir=\"${ridir}/bin\" \
         --mandir=\"${ridir}/share/man\" \
         --enable-curses \
         --enable-ksh \
