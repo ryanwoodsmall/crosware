@@ -38,6 +38,7 @@ function cwmakeinstall_${rname}() {
   mv \"${ridir}/bin/ksh\" \"${ridir}/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/ksh\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/sh\"
+  find \"${ridir}/bin/\" -type f | xargs \$(\${CC} -dumpmachine)-strip --strip-all
   popd >/dev/null 2>&1
 }
 "
