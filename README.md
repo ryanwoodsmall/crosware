@@ -321,10 +321,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - dnsmasq (http://www.thekelleys.org.uk/dnsmasq/doc.html)
   - look at adding...
     - libnetfilter_conntrack (conntrack)
-    - nettle, hogweed, gmp (DNSSSEC)
+    - nettle, gmp (DNSSSEC)
       - ```CFLAGS=\"\${CFLAGS} -Wall -W -O2\" LDFLAGS=\"\${LDFLAGS} -static\" COPTS=\"-DHAVE_DNSSEC \${CPPFLAGS}\"```
     - idn/idn2 (IDN)
-      - ```-DHAVE_IDN``` (libidn) ```-DHAVE_IDN2``` (libidn2, needs libunistring)
+      - ```-DHAVE_IDN``` (libidn) ```-DHAVE_LIBIDN2``` (libidn2, libunistring)
     - lua? (5.2 only?)
     - dbus? ubus?
 - dockerstatic (static docker binaries from https://download.docker.com/linux/static/stable/)
