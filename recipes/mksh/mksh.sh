@@ -46,6 +46,7 @@ function cwmakeinstall_${rname}() {
   env CC=\"\${CC}\" LDFLAGS='-static' CFLAGS='-Wl,-static' CPPFLAGS='-DMKSH_BINSHPOSIX -DMKSH_BINSHREDUCED' sh Build.sh -L
   install -m 0755 lksh \"${ridir}/bin/lksh\"
   ln -sf \"${rtdir}/current/bin/lksh\" \"${ridir}/bin/sh\"
+  find \"${ridir}/bin/\" -type f | xargs \$(\${CC} -dumpmachine)-strip --strip-all
   popd >/dev/null 2>&1
 }
 "
