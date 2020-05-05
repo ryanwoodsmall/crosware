@@ -830,7 +830,7 @@ wc -l /tmp/astbuild.out
 - libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
 - libsodium (https://github.com/jedisct1/libsodium)
-- libtirpc
+- libtirpc (https://sourceforge.net/projects/libtirpc/ and http://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary)
 - libtom
   - libtomcrypt
     - w/libtommath
@@ -987,6 +987,7 @@ wc -l /tmp/astbuild.out
 - netsurf stuff
   - netsurf w/framebuffer nsfb? sdl? vnc doesn't seem to work
   - libnsfb (https://www.netsurf-browser.org/projects/libnsfb/)
+- nfs-utils (http://git.linux-nfs.org/?p=steved/nfs-utils.git;a=summary and https://mirrors.edge.kernel.org/pub/linux/utils/nfs-utils/)
 - nghttp2 (https://github.com/nghttp2/nghttp2)
 - nnn (https://github.com/jarun/nnn)
 - node / npm (ugh)
@@ -1043,7 +1044,8 @@ wc -l /tmp/astbuild.out
 - retro (forth, http://retroforth.org/)
 - rredir (https://github.com/rofl0r/rrredir)
 - rover (https://lecram.github.io/p/rover)
-- rpcbind
+- rpcbind (https://sourceforge.net/projects/rpcbind/ and http://git.linux-nfs.org/?p=steved/rpcbind.git;a=summary)
+- rpcsvc-proto (https://github.com/thkukuk/rpcsvc-proto)
 - rust (https://www.rust-lang.org/)
   - bootstrap? (https://guix.gnu.org/blog/2018/bootstrapping-rust/ - guix!)
   - mrustc (https://github.com/thepowersgang/mrustc - c++)
@@ -1151,6 +1153,7 @@ wc -l /tmp/astbuild.out
 - ublinter (https://github.com/danmar/ublinter)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
 - uftpd (https://github.com/troglobit/uftpd)
+- unfs3 (https://unfs3.github.io/ and https://github.com/unfs3/unfs3)
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
 - units (https://www.gnu.org/software/units)
 - upx (https://github.com/upx/upx)
