@@ -289,7 +289,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - bison
 - bmake (http://www.crufty.net/help/sjg/bmake.html)
 - brogue
-- bsdheaders (https://github.com/bonsai-linux/bsd-headers - from bonsai linux, workaround DECLS for cdefs.h)
 - bsd programs
   - bsdjot (from netbsd - https://netbsd.gw.com/cgi-bin/man-cgi?jot+1)
   - bsdrs (from netbsd - https://netbsd.gw.com/cgi-bin/man-cgi?rs+1)
@@ -1170,6 +1169,9 @@ wc -l /tmp/astbuild.out
 - support libraries for building the above
 - whatever else seems useful
 
+## deprecated/broken recipes
+
+- bsdheaders (https://github.com/bonsai-linux/bsd-headers - from bonsai linux, workaround DECLS for cdefs.h)
 
 <!--
 # vim: ft=markdown
