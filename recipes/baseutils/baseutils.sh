@@ -20,8 +20,8 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG 's/make /\$(MAKE) /g' Makefile
-  grep -ril 'sys/cdefs' | xargs sed -i.ORIG 's#sys/cdefs#bsd/sys/cdefs#g'
-  grep -ril 'sys/queue' | xargs sed -i.ORIG 's#sys/queue#bsd/sys/queue#g'
+  grep -ril 'sys/cdefs' . | xargs sed -i.ORIG 's#sys/cdefs#bsd/sys/cdefs#g'
+  grep -ril 'sys/queue' . | xargs sed -i.ORIG 's#sys/queue#bsd/sys/queue#g'
   sed -i.ORIG 's/SIMPLEQ/STAILQ/g' paste/paste.c
   popd >/dev/null 2>&1
 }
