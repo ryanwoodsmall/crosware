@@ -5,7 +5,7 @@ rfile="${rver}.zip"
 #rurl="https://github.com/ibara/${rname}/archive/${rfile}"
 rurl="https://github.com/ryanwoodsmall/${rname}/archive/${rfile}"
 rsha256=""
-rreqs="bmake bsdheaders"
+rreqs="bmake libbsd pkgconfig"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -20,6 +20,9 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG 's/make /\$(MAKE) /g' Makefile
+  grep -ril 'sys/cdefs' | xargs sed -i.ORIG 's#sys/cdefs#bsd/sys/cdefs#g'
+  grep -ril 'sys/queue' | xargs sed -i.ORIG 's#sys/queue#bsd/sys/queue#g'
+  sed -i.ORIG 's/SIMPLEQ/STAILQ/g' paste/paste.c
   popd >/dev/null 2>&1
 }
 "
@@ -30,9 +33,9 @@ function cwmake_${rname}() {
   bmake \
     PREFIX=\"${ridir}\" \
     MANDIR=\"${ridir}/share/man\" \
-    LDFLAGS='-static' \
-    CPPFLAGS= \
-    CC=\"\${CC} -I${cwsw}/bsdheaders/current\"
+    LDFLAGS=\"\$(pkg-config --libs libbsd) -static\" \
+    CPPFLAGS=\"\$(pkg-config --cflags libbsd)\" \
+    CC=\"\${CC} \$(pkg-config --cflags libbsd)\"
   popd >/dev/null 2>&1
 }
 "
@@ -44,9 +47,9 @@ function cwmakeinstall_${rname}() {
     install \
     PREFIX=\"${ridir}\" \
     MANDIR=\"${ridir}/share/man\" \
-    LDFLAGS='-static' \
-    CPPFLAGS= \
-    CC=\"\${CC} -I${cwsw}/bsdheaders/current\"
+    LDFLAGS=\"\$(pkg-config --libs libbsd) -static\" \
+    CPPFLAGS=\"\$(pkg-config --cflags libbsd)\" \
+    CC=\"\${CC} \$(pkg-config --cflags libbsd)\"
   popd >/dev/null 2>&1
 }
 "
