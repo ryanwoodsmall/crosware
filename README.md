@@ -995,13 +995,14 @@ wc -l /tmp/astbuild.out
 - nss (ugh)
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - nyacc (https://www.nongnu.org/nyacc/ and https://savannah.nongnu.org/projects/nyacc)
-- obase (https://github.com/leahneukirchen/obase)
+- obase (https://github.com/leahneukirchen/obase - unmaintained, see outils)
 - odbc?
   - iodbc?
   - unixodbc?
 - oleo (gnu spreadsheet, https://www.gnu.org/software/oleo/oleo.html)
 - openconnect
 - opengit (https://github.com/khanzf/opengit)
+- outils (https://github.com/leahneukirchen/outils)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
   - "cannot be used as a static library" - what?
