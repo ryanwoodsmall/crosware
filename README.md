@@ -807,6 +807,7 @@ wc -l /tmp/astbuild.out
   - heimdal
   - mit
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
+- ksh2020 (https://github.com/ksh2020/ksh - figure out this vs ast ksh93/forks/etc.)
 - ldd
   - driver script
   - run toybox to figure out if musl or glibc and get dyld
