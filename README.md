@@ -807,7 +807,6 @@ wc -l /tmp/astbuild.out
   - heimdal
   - mit
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
-- ksh2020 (https://github.com/ksh2020/ksh - figure out this vs ast ksh93/forks/etc.)
 - ldd
   - driver script
   - run toybox to figure out if musl or glibc and get dyld
@@ -1096,7 +1095,8 @@ wc -l /tmp/astbuild.out
   - es (https://github.com/wryun/es-shell)
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
-  - ksh93 (https://github.com/ksh-community/ksh or https://github.com/jelmd/ksh-ast)
+  - ksh2020 (https://github.com/ksh2020/ksh - figure out this vs ast ksh93/forks/etc.)
+  - ksh93 (https://github.com/ksh-community/ksh or https://github.com/jelmd/ksh)
     - AT&T AST fork
     - uses old AST build system which is pretty much a non-starter on musl
     - for now anyway
