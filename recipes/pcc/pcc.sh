@@ -86,6 +86,7 @@ function cwmakeinstall_${rname}() {
   local c=\"${ridir}/bin/pcc\"
   local v=\"\$(\${c} --version | awk '{print \$4}')\"
   local i=\"${ridir}/lib/pcc/\$(\${c} -dumpmachine)/\${v}/include\"
+  local t
   cd ${rname}-libs-${rver}
   env CPPFLAGS= LDFLAGS=-static \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
@@ -94,7 +95,13 @@ function cwmakeinstall_${rname}() {
   make install ${rlibtool}
   test -e \"\${i}_off\" && mv \"\${i}_off\"{,\${TS}} || true
   mv \"\${i}\"{,_off}
-  unset c v i
+  for c in \$(find \"${cwsw}/muslstandalone/current/\" -type f -name \\*.o) ; do
+    find \"${ridir}/\" -type f -name \$(basename \${c}) | while read -r t ; do
+      mv \${t}{,.ORIG}
+      ln -sf \${c} \${t}
+    done
+  done
+  unset c v i t
   popd >/dev/null 2>&1
 }
 "
