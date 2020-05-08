@@ -48,6 +48,7 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib/ -static\" \
       LIBS=\"-L${cwsw}/netbsdcurses/current/lib/ -lcurses -lterminfo\" \
       YACC=\"${cwsw}/byacc/current/bin/byacc\"
+  echo '#define SSH_SOURCE_BASHRC' >> config-top.h
   popd >/dev/null 2>&1
 }
 "
