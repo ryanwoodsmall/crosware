@@ -480,6 +480,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - probably use netcatopenbsd instead
 - openssh (openssl, netbsdcurses libedit)
 - openssl
+- outils (https://github.com/leahneukirchen/outils - utils from openbsd, including jot/rs/vis/unvis/etc.)
 - p7zip
 - par (http://www.nicemice.net/par/ via debian https://packages.debian.org/buster/text/par)
 - patch (gnu)
@@ -1002,7 +1003,6 @@ wc -l /tmp/astbuild.out
 - oleo (gnu spreadsheet, https://www.gnu.org/software/oleo/oleo.html)
 - openconnect
 - opengit (https://github.com/khanzf/opengit)
-- outils (https://github.com/leahneukirchen/outils)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
   - "cannot be used as a static library" - what?
