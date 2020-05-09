@@ -3,6 +3,7 @@
 # XXX - x86_64 only for now, weird errors on 32-bit arches, aarch64 not supported
 # XXX - pcc-libs patch: https://git.alpinelinux.org/aports/tree/community/pcc-libs/musl-fixes.patch
 # XXX - need to replace .o startup files (crt1.o, crti.o, crtn.o) with the ones from muslstandalone
+# XXX - symlink here, cp may be better?
 #
 
 rname="pcc"
