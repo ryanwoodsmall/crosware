@@ -278,7 +278,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - autoconf
 - automake
-- baseutils (https://github.com/ibara/baseutils - portable openbsd userland, use bsd-headers for sys/cdefs)
+- baseutils (https://github.com/ibara/baseutils - portable openbsd userland)
 - bash (5.x, netbsdcurses)
 - bash4 (netbsdcurses)
 - bc (gnu bc, dc)
