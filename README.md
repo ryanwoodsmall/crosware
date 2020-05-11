@@ -1068,7 +1068,7 @@ wc -l /tmp/astbuild.out
   - chicken (https://www.call-cc.org)
   - elk (http://sam.zoy.org/elk)
   - femtolisp (https://github.com/JeffBezanson/femtolisp)
-  - gerbil (https://cons.io/)
+  - gerbil (https://cons.io/ and https://github.com/vyzo/gerbil)
   - ikarus (https://en.wikipedia.org/wiki/Ikarus_(Scheme_implementation))
     - https://github.com/lambdaconservatory/ikarus
     - shared, no static
