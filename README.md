@@ -1171,6 +1171,8 @@ wc -l /tmp/astbuild.out
 - xq (https://github.com/jeffbr13/xq)
 - yq (https://github.com/kislyuk/yq)
 - ytalk (http://ytalk.ourproject.org/)
+- z3 (https://github.com/Z3Prover/z3)
+  - cppcheck can use/may require this for 2.x+
 - support libraries for building the above
 - whatever else seems useful
 
