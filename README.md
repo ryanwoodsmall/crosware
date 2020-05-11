@@ -489,6 +489,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - only x86_64 for now!
   - kinda painful for static compilation, segfaults, etc.
   - not sure on `crt?.o` files either
+  - uses muslstandalone as libc
 - pcre
 - pcre2
 - perl
@@ -543,6 +544,13 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - `tcc -run file.c` seems to work on x86_64
   - everything else is kinda broken
   - tcc from git probably a better option
+  - uses muslstandalone as libc
+- tinyccmob (https://repo.or.cz/tinycc.git)
+  - more up-to-date tcc from git snapshot
+  - x86_64 "works"-ish
+  - static still has issues
+  - shared seems to work for hello world stuff
+  - uses muslstandalone as libc
 - tinyscheme (http://tinyscheme.sourceforge.net/home.html)
 - tio (https://tio.github.io and https://github.com/tio/tio)
 - tmux
