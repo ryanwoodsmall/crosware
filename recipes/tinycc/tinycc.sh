@@ -4,31 +4,30 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/pub/gnu/guix/mirror/${rfile}"
 rsha256="ab6c999d90768b9cb7911f320f5aaf2461fc71b1d94380dabd4274806fb0bfc2"
-rreqs="make"
+rreqs="make muslstandalone"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  local m=\"\$(\${CC} -dumpmachine)\"
-  local v=\"\$(\${CC} --version | head -1 | awk '{print \$NF}')\"
-  local t=\"${cwsw}/statictoolchain/current\"
-  local i=\"\${t}/\${m}/include\"
-  local l=\"\${t}/\${m}/lib\"
+  local t=\"${cwsw}/muslstandalone/current\"
+  local i=\"\${t}/include\"
+  local l=\"\${t}/lib\"
   local s=\"\${l}/ld.so\"
-  local c=\"\${t}/lib/gcc/\${m}/\${v}\"
   env CPPFLAGS= CXXFLAGS= LDFLAGS='-static' CFLAGS='-Wl,-static -fPIC' \
     ./configure ${cwconfigureprefix} \
       --cc=\"\${CC}\" \
       --enable-static \
       --config-musl \
       --strip-binaries \
+      --extra-cflags=\"\${CFLAGS}\" \
+      --extra-ldflags=\"-static\" \
       --sysincludepaths=\"\${i}\" \
-      --libpaths=\"\${l}:\${c}\" \
-      --crtprefix=\"\${c}:\${l}\" \
+      --libpaths=\"\${l}\" \
+      --crtprefix=\"\${l}\" \
       --elfinterp=\"\${s}\"
-  unset m v t i l s c
+  unset t i l s
   popd >/dev/null 2>&1
 }
 "
