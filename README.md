@@ -1074,6 +1074,8 @@ wc -l /tmp/astbuild.out
     - shared, no static
     - gmp, libffi, pkgconfig, probably configgit
     - configure with... ```./configure --prefix=${ridir} CPPFLAGS="${CPPFLAGS} $(pkg-config --cflags libffi)" CFLAGS="${CFLAGS//-Wl,-static}" LDFLAGS="${LDFLAGS//-static/}"```
+  - ksi (http://ksi.sourceforge.net/)
+    - gmp, gc
   - larceny (and petit larceny, http://larcenists.org)
   - micro-lisp (https://github.com/carld/micro-lisp)
   - minilisp (https://github.com/rui314/minilisp)
@@ -1097,6 +1099,7 @@ wc -l /tmp/astbuild.out
     - https://github.com/ignorabimus/tinyscheme
     - other forks/branches?
   - tisp (https://github.com/edvb/tisp)
+  - umb-scheme
   - vicare (ikarus fork-of-fork, https://github.com/barak/vicare)
   - ypsilon (http://www.littlewingpinball.net/mediawiki/index.php/Ypsilon)
 - sharutils
