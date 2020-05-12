@@ -79,7 +79,7 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'prepend_path \"${rtdir}/ccache/bin\"' > \"${rprof}\"
+  echo 'prepend_path \"${cwsw}/ccache/current/bin\"' > \"${rprof}\"
   echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
   echo 'export REALGCC=\"${cwsw}/statictoolchain/current/bin/\${CC}\"' >> \"${rprof}\"
 }
