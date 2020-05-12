@@ -1,3 +1,8 @@
+#
+# XXX - libdir setting?
+# XXX - use of musl-gcc path precludes ccache
+#
+
 rname="tinyccmob"
 rver="8de7c092f0aecf7d94aa4723ea7da1fc2c9d10c8"
 rdir="${rname//mob/}-${rver:0:7}"
@@ -23,7 +28,7 @@ function cwconfigure_${rname}() {
   local s=\"\${l}/ld.so\"
   env CPPFLAGS= CXXFLAGS= LDFLAGS='-static' CFLAGS='-Wl,-static -fPIC' \
     ./configure ${cwconfigureprefix} \
-      --cc=\"\${CC}\" \
+      --cc=\"${cwsw}/muslstandalone/current/bin/musl-gcc\" \
       --enable-static \
       --config-musl \
       --strip-binaries \
@@ -42,7 +47,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make CPPFLAGS= CXXFLAGS= LDFLAGS='-static' CFLAGS='-Wl,-static -fPIC'
+  make CPPFLAGS= CXXFLAGS= LDFLAGS='-static' CFLAGS='-Wl,-static -fPIC' CC=\"${cwsw}/muslstandalone/current/bin/musl-gcc\"
   popd >/dev/null 2>&1
 }
 "
