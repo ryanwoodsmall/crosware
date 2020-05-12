@@ -4,6 +4,7 @@
 # XXX - pcc-libs patch: https://git.alpinelinux.org/aports/tree/community/pcc-libs/musl-fixes.patch
 # XXX - need to replace .o startup files (crt1.o, crti.o, crtn.o) with the ones from muslstandalone
 # XXX - symlink here, cp may be better?
+# XXX - use of musl-gcc path precludes ccache
 #
 
 rname="pcc"
@@ -49,7 +50,7 @@ function cwconfigure_${rname}() {
       install -m 0755 ${cwsw}/configgit/current/\${c} \${d}/\${c}
     done
   done
-  env CPPFLAGS= LDFLAGS=-static CC=\"${cwsw}/muslstandalone/current/bin/musl-gcc\" \
+  env CPPFLAGS= LDFLAGS=-static CC=\"${cwsw}/muslstandalone/current/bin/musl-gcc -DUSE_MUSL\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --disable-stripping \
       --enable-native \
