@@ -896,6 +896,7 @@ wc -l /tmp/astbuild.out
   - stick with busybox man+groff+less or use man-db or old standard man?
   - MANPAGER and MANPATH settings
   - roffit (https://daniel.haxx.se/projects/roffit/)
+- mandown (https://github.com/Titor8115/mandown - man like markdown, markdown like man?)
 - matrixssl (https://github.com/matrixssl/matrixssl)
 - https://github.com/troglobit/merecat)
 - mcpp (http://mcpp.sourceforge.net/)
