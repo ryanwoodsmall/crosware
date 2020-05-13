@@ -3,11 +3,11 @@
 #
 
 rname="toybox"
-rver="0.8.2"
+rver="0.8.3"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/landley/${rname}/archive/${rfile}"
-rsha256="9d8a9b00a6c93da5b472d8a4c7d9549339ed050d1578c557a20add100172b0f5"
+rsha256="5e5a89888aa04b536a848b701f3abb92eb11ad108f39a41c588247a45412f929"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -27,7 +27,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  make -j${cwmakejobs} CC=\"\${CC}\" HOSTCC=\"\${CC} -static\" CFLAGS=\"\${CFLAGS}\" HOSTCFLAGS=\"\${CFLAGS}\" HOSTLDFLAGS=\"\${LDFLAGS}\"
+  make -j${cwmakejobs} V=1 CC=\"\${CC}\" HOSTCC=\"\${CC} -static\" CFLAGS=\"\${CFLAGS}\" HOSTCFLAGS=\"\${CFLAGS}\" HOSTLDFLAGS=\"\${LDFLAGS}\"
   popd >/dev/null 2>&1
 }
 "
