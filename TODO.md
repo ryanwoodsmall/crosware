@@ -147,8 +147,8 @@
     - wolfssl is smaller than openssl
     - mbedtls is smaller still
 - make jobs may need common cwmakeopts var
-  - ${cwmakejobs}
-  - should be environment-friendly, i.e.:
+  - i.e., `make -j${cwmakejobs}`
+  - environment-friendly, i.e.:
   - ```: ${cwmakejobs:="$(($(nproc)+1))"}```
 - ```strip``` script command
   - traverse ${cwtop}/software/*/*/bin/ and run ```strip --strip-all``` on any ELF binaries

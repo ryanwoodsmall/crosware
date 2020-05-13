@@ -123,7 +123,8 @@ export cwunzip="unzip -o"
 export cwcurlopts="-f -k -L -s"
 # make
 #   -j # of parallel jobs
-export cwmakejobs="$(($(nproc)+1))"
+: ${cwmakejobs:="$(($(nproc)+1))"}
+export cwmakejobs
 
 #
 # where we live
