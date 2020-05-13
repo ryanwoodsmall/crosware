@@ -1,9 +1,9 @@
 rname="ecl"
-rver="16.1.3"
+rver="20.4.24"
 rdir="${rname}-${rver}"
 rfile="${rname}-${rver}.tgz"
 rurl="https://common-lisp.net/project/${rname}/static/files/release/${rfile}"
-rsha256="76a585c616e8fa83a6b7209325a309da5bc0ca68e0658f396f49955638111254"
+rsha256="670838edf258a936b522fdb620da336de7e575aa0d27e34841727252726d0f07"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
@@ -25,6 +25,7 @@ function cwconfigure_${rname}() {
     --enable-libatomic=included \
     --enable-gmp=portable \
     --with-dffi=included \
+    --enable-manual=no \
     CFLAGS='-D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -fPIC' \
     CXXFLAGS='-D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -fPIC' \
     CPPFLAGS= \
