@@ -1172,6 +1172,7 @@ wc -l /tmp/astbuild.out
 - units (https://www.gnu.org/software/units)
 - upx (https://github.com/upx/upx)
 - uredir (https://github.com/troglobit/uredir)
+- u-root (https://github.com/u-root/u-root - go userland w/bootloaders, may be useful!)
 - usbutils (https://github.com/gregkh/usbutils)
 - utalk (http://utalk.ourproject.org/)
 - vde (virtual distributed ethernet, https://github.com/virtualsquare/vde-2)
