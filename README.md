@@ -886,6 +886,7 @@ wc -l /tmp/astbuild.out
 - llvm / clang
 - lnav (https://github.com/tstack/lnav)
 - lobase (https://github.com/Duncaen/lobase)
+- lowzip (https://github.com/svaarala/lowzip)
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - lua stuff
   - lua2c (https://github.com/davidm/lua2c or a fork?)
