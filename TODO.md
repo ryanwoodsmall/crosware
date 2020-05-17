@@ -504,6 +504,20 @@ time_func ls -l -A /
   - `cwuntbz2`
   - `cwuntgz`
   - `cwuntxz`
+- function dispatch table
+  - with default args, etc.
+  - templatize function names
+  - `x|y|z) ... ;;` pipes are parsed before vars...
+    - so can't use like `${x}|${y}|${z}) ... ;;` in case
+  - ```
+    declare -A cwfunctab
+    cwfunctab['install']=cwinstall
+    ...
+    case "${cmd}" in
+      install) ${cwfunctab['install']} "${@}" ;;
+    esac
+    ```
+  - can use a catch-all here with `\*)`
 
 <!--
 # vim: ft=markdown
