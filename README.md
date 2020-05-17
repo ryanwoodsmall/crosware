@@ -451,6 +451,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - most (https://www.jedsoft.org/most/)
 - mpc
 - mpfr
+- mujs (http://mujs.com/ and https://github.com/ccxvii/mujs)
 - muslfts (https://github.com/pullmoll/musl-fts)
 - muslstandalone (http://musl.libc.org/ - unbundled musl libc and kernel headers with musl-gcc wrapper, possibly different version from statictoolchain)
 - ncurses
@@ -790,7 +791,6 @@ wc -l /tmp/astbuild.out
   - jsi (jsish - https://jsish.org/)
   - mininode (https://github.com/mininode/mininode - embedded node.js compat on duktape, cool not sure how mature)
   - mjs (formerly v7 - https://github.com/cesanta/mjs and https://github.com/cesanta/v7/)
-  - mujs (http://mujs.com/ and https://github.com/ccxvii/mujs)
   - quad-wheel (https://code.google.com/archive/p/quad-wheel/)
   - tiny-js (https://github.com/gfwilliams/tiny-js)
 - jdbc
