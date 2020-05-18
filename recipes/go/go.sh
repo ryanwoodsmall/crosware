@@ -5,22 +5,22 @@
 #
 
 rname="go"
-rver="1.14.2"
+rver="1.14.3"
 if [[ ${karch} =~ ^x86_64$ ]] ; then
   rdir="${rname}${rver}-amd64"
-  rsha256="ded4cc7eb90faa2265d4bb20d07449eb0b2ade30c7c45b429ec81ada11b1abdf"
+  rsha256="10b10858cb980e53936e2521854e5d7e7534207bf735abbc39025f7cef39edeb"
 elif [[ ${karch} =~ ^i.86$ ]] ; then
   rdir="${rname}${rver}-386"
-  rsha256="dfe1fe12b5955ff71cdbec45aeed6d191bbdf3cdaaabc863359de3769abbc150"
+  rsha256="dbd255cd197d2f471a833270f93680edff632d2ce43af40bbe20fc6e3a5c278b"
 elif [[ ${karch} =~ ^aarch64 ]] ; then
   rdir="${rname}${rver}-arm64"
-  rsha256="2d91bd23d489fee23c838ac59632e6e90c8f33982edcc122fc596c01bd288c1e"
+  rsha256="795af22e6ed9c27ed7a3666f9447e0e2efb4003407d6467d8c591e9039f83e1d"
 elif [[ ${karch} =~ ^arm ]] ; then
   rdir="${rname}${rver}-arm"
-  rsha256="5840bc85bc8cdfbdf5eae5638735e78527f474e09daa5afa9c15e025df92536e"
+  rsha256="6b9e746405e14e1b13d54ab88f95e409af0387edde3fe64f547d0256d9b34905"
 fi
 rfile="${rdir}.tar.bz2"
-rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/20200410-${rname}${rver}/${rfile}"
+rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/20200517-${rname}${rver}/${rfile}"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
