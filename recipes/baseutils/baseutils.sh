@@ -50,6 +50,7 @@ function cwmakeinstall_${rname}() {
     LDFLAGS=\"\$(pkg-config --libs libbsd) -static\" \
     CPPFLAGS=\"\$(pkg-config --cflags libbsd)\" \
     CC=\"\${CC} \$(pkg-config --cflags libbsd)\"
+  find \"${ridir}/\" -type f -exec chmod u+rw {} +
   popd >/dev/null 2>&1
 }
 "
