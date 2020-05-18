@@ -9,7 +9,7 @@ if [ -z "${cwtop}" ] ; then
   cwtop="$(realpath $(dirname ${BASH_SOURCE[0]})/..)"
 fi
 
-cd ${cwtop}/downloads ; for i in */ ; do
+cd ${cwtop}/downloads ; for i in ${PWD}/*/ ; do
   find $i -maxdepth 1 -mindepth 1 -type f \
   | grep -v '/bash..-...' \
   | wc -l \
