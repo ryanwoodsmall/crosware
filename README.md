@@ -812,6 +812,7 @@ wc -l /tmp/astbuild.out
 - jed (https://www.jedsoft.org/jed/)
 - jitter (http://ageinghacker.net/projects/jitter/ - jit/vm/interpreter thing)
 - joe (https://joe-editor.sourceforge.io/)
+- kakoune (http://kakoune.org/ and https://github.com/mawww/kakoune)
 - kerberos
   - heimdal
   - mit
