@@ -2,7 +2,7 @@ rname="utillinux"
 rver="2.35.2"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
-rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver%.2}/${rfile}"
+rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver%.?}/${rfile}"
 rsha256="21b7431e82f6bcd9441a01beeec3d57ed33ee948f8a5b41da577073c372eb58a"
 rreqs="make zlib ncurses readline gettexttiny slibtool pcre2"
 
@@ -20,6 +20,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-makeinstall-chown \
     --disable-makeinstall-setuid \
+    --disable-nls \
     --disable-pylibmount \
     --enable-line \
     --enable-pg \
