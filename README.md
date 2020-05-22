@@ -456,7 +456,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - ncurses
 - neat/litcave stuff (http://litcave.rudi.ir/)
   - neatvi (https://github.com/aligrudi/neatvi)
-- netbsd-curses (as netbsdcurses, manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
+- netbsdcurses (manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
   - should replace opennc, which is, uhhhhhhh missing?
 - netsurf libraries
@@ -555,7 +555,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - tree (http://mama.indstate.edu/users/ice/tree/)
 - unrar
 - unzip
-- util-linux (as utillinux)
+- utillinux
 - uucp (https://www.airs.com/ian/uucp.html and https://www.gnu.org/software/uucp/)
 - vile (https://invisible-island.net/vile/)
 - vim (with syntax highlighting, which chrome/chromium os vim lacks)
