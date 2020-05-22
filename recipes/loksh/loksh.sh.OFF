@@ -1,9 +1,13 @@
+#
+# XXX - loksh 6.7 moved to meson/lolibc; disabling for now
+#
+
 rname="loksh"
-rver="6.6"
+rver="6.7"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/dimkr/${rname}/archive/${rfile}"
-rsha256="97a020df82ceebe216c5a306e87360c5e3398d7403347aaff50978446ccb764d"
+rsha256="5e921bb740348eab670160f92ec0e959ff35b5ae36db9e9ed3a1b6de3e1d7551"
 rreqs="make netbsdcurses pkgconfig"
 
 . "${cwrecipe}/common.sh"

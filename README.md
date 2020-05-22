@@ -422,7 +422,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libxslt
 - linenoise (https://github.com/antirez/linenoise)
 - links (ncurses)
-- loksh (https://github.com/dimkr/loksh - netbsdcurses)
 - lsh (https://www.lysator.liu.se/~nisse/lsh/ - version 2.0, 2.1 has issues with separate/new nettle)
 - lua (posix, no readline)
 - lynx (ncurses and slang, ncurses default)
@@ -1197,6 +1196,9 @@ wc -l /tmp/astbuild.out
 ## deprecated/broken recipes
 
 - bsdheaders (https://github.com/bonsai-linux/bsd-headers - from bonsai linux, workaround DECLS for cdefs.h)
+  - upstream repo went missing
+- loksh (https://github.com/dimkr/loksh - netbsdcurses)
+  - moved to meson+lolibc, mksh and oksh work fine
 
 <!--
 # vim: ft=markdown
