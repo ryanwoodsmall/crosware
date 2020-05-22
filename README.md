@@ -474,10 +474,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - nvi179 (4bsd release from keith bostic, https://sites.google.com/a/bostic.com/keithbostic/vi)
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
 - oniguruma (https://github.com/kkos/oniguruma)
-- opennc (openbsd netcat http://systhread.net/coding/opennc.php)
-  - based on upstream 1.89
-  - site regularly goes offline
-  - probably use netcatopenbsd instead
 - openssh (openssl, netbsdcurses libedit)
 - openssl
 - outils (https://github.com/leahneukirchen/outils - utils from openbsd, including jot/rs/vis/unvis/etc.)
@@ -1199,6 +1195,9 @@ wc -l /tmp/astbuild.out
   - upstream repo went missing
 - loksh (https://github.com/dimkr/loksh - netbsdcurses)
   - moved to meson+lolibc, mksh and oksh work fine
+- opennc (openbsd netcat http://systhread.net/coding/opennc.php)
+  - site regularly goes offline, use netcatopenbsd instead
+
 
 <!--
 # vim: ft=markdown
