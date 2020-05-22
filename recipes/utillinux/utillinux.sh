@@ -1,16 +1,21 @@
 rname="utillinux"
-rver="2.35.1"
+rver="2.35.2"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
-rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver%.1}/${rfile}"
-rsha256="d9de3edd287366cd908e77677514b9387b22bc7b88f45b83e1922c3597f1d7f9"
+rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver%.2}/${rfile}"
+rsha256="21b7431e82f6bcd9441a01beeec3d57ed33ee948f8a5b41da577073c372eb58a"
 rreqs="make zlib ncurses readline gettexttiny slibtool pcre2"
 
 . "${cwrecipe}/common.sh"
 
+# XXX - something with 2.35.1 to 2.35.2 broke SYS_pidfd_... checks/definitions
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
+  cat include/pidfd-utils.h > include/pidfd-utils.h.ORIG
+  echo '#include <sys/types.h>' > include/pidfd-utils.h
+  cat include/pidfd-utils.h.ORIG >> include/pidfd-utils.h
+  sed -i '/defined.*__linux/s/$/ \\&\\& defined(SYS_pidfd_send_signal)/g' include/pidfd-utils.h
   sed -i.ORIG '/READLINE_LIBS/ s/-lreadline/-lreadline -lncurses -lncursesw/g' configure
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-makeinstall-chown \
