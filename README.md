@@ -1049,6 +1049,7 @@ wc -l /tmp/astbuild.out
   - nosh/execline?
     - http://skarnet.org./software/execline/
     - http://jdebp.eu./Softwares/nosh/
+- pup (https://github.com/ericchiang/pup)
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
 - rawtar (https://github.com/andrewchambers/rawtar)
