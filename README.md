@@ -655,6 +655,7 @@ wc -l /tmp/astbuild.out
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
+- cepl (https://github.com/alyptik/cepl)
 - chrpath
 - c/c++ compiler stuff
   - 8cc (https://github.com/rui314/8cc)
@@ -837,6 +838,7 @@ wc -l /tmp/astbuild.out
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
 - libslz (http://www.libslz.org/)
 - libsodium (https://github.com/jedisct1/libsodium)
+- libtap (https://github.com/zorgnax/libtap)
 - libtirpc (https://sourceforge.net/projects/libtirpc/ and http://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary)
 - libtom
   - libtomcrypt
@@ -1048,6 +1050,7 @@ wc -l /tmp/astbuild.out
     - http://jdebp.eu./Softwares/nosh/
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
+- rawtar (https://github.com/andrewchambers/rawtar)
 - re2c (http://re2c.org/ and https://github.com/skvadrik/re2c)
 - redir (https://github.com/troglobit/redir)
 - retro (forth, http://retroforth.org/)
