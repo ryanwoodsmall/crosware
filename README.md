@@ -675,6 +675,7 @@ wc -l /tmp/astbuild.out
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
 - cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
+- curl caextract (https://curl.haxx.se/docs/caextract.html - replace/augment cacertificates?)
 - dante (socks proxy client/server https://www.inet.no/dante/)
 - ddrescue
 - diod (https://github.com/chaos/diod - 9p fileserver)
