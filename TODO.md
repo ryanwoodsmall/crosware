@@ -518,6 +518,11 @@ time_func ls -l -A /
     esac
     ```
   - can use a catch-all here with `\*)`
+- "epoch" for packages
+  - changes (for most recipes) when compilers are updated
+  - main epoch stored in `/bin/crosware` or `/etc/profile` or `/recipes/common.sh`
+  - `/var/epoch/recipe` stores installed recipe epoch
+  - packages without deps (java, go, bin jars, etc.) have separate epoch
 
 <!--
 # vim: ft=markdown
