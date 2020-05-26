@@ -888,7 +888,9 @@ wc -l /tmp/astbuild.out
 - lowzip (https://github.com/svaarala/lowzip)
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - lua stuff
+  - elua (http://www.eluaproject.net/ and https://github.com/elua/elua)
   - lua2c (https://github.com/davidm/lua2c or a fork?)
+  - luajit (https://luajit.org/)
   - terra (https://github.com/zdevito/terra and http://terralang.org/)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html)
   - s-nail (https://www.sdaoden.eu/code.html#s-mailx) - up-to-date w/tls (openssl 1.1+) support
