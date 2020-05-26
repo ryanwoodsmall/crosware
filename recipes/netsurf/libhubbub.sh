@@ -1,9 +1,9 @@
 rname="libhubbub"
-rver="0.3.6"
+rver="0.3.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}-src.tar.gz"
 rurl="http://download.netsurf-browser.org/libs/releases/${rfile}"
-rsha256="d756c795c1a0e08beec4acd68364ac4477960d62fffa3b60da05f5a7763f7bf4"
+rsha256="9e7ae253e6c9069e757eb9ad4e4846f38b4db52c0ca0151446a9fa4a977735b6"
 rreqs="make pkgconfig perl bison flex byacc reflex expat libparserutils libwapcaplet"
 
 . "${cwrecipe}/common.sh"
