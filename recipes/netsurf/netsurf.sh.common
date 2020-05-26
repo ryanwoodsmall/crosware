@@ -4,8 +4,8 @@
 # i.e., http://download.netsurf-browser.org/libs/releases/buildsystem-1.8.tar.gz
 #
 
-nsau="http://download.netsurf-browser.org/netsurf/releases/source-full/netsurf-all-3.9.tar.gz"
-nsas="11e384eaf47e65c186da5001f1055a02f2d72ff17b50f403b8392546a2cf65ff"
+nsau="http://download.netsurf-browser.org/netsurf/releases/source-full/netsurf-all-3.10.tar.gz"
+nsas="495adf6b6614ce36fca6c605f7c321f9cb4a3df838043158122678ce2b3325b7"
 nsaf="${nsau##*/}"
 nsad="${nsaf%%.tar.gz}"
 nsadl="${cwdl}/netsurf/${nsaf}"
