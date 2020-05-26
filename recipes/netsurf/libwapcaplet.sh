@@ -1,9 +1,9 @@
 rname="libwapcaplet"
-rver="0.4.2"
+rver="0.4.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}-src.tar.gz"
 rurl="http://download.netsurf-browser.org/libs/releases/${rfile}"
-rsha256="063d248ab3f206808c414934a105f6cb6426e2f0baf3bdd20a712179ecfa5cba"
+rsha256="9b2aa1dd6d6645f8e992b3697fdbd87f0c0e1da5721fa54ed29b484d13160c5c"
 rreqs="make pkgconfig perl bison flex byacc reflex expat libparserutils"
 
 . "${cwrecipe}/common.sh"
