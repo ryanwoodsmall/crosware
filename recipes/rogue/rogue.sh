@@ -1,12 +1,14 @@
 #
-# XXX - recipe should use https://github.com/RoguelikeRestorationProject/rogue5.4
+# XXX - uses a fork of https://github.com/RoguelikeRestorationProject/rogue5.4
+# XXX - https://github.com/nealey/rogue has a makefile, no autotools
+# XXX - git snapshot, sha256sum may change, need to tag
 #
 rname="rogue"
-rver="5.4.5"
+rver="5.4-9d0dcccc8ec82454bd4d4310f4638985a4726d83"
 rdir="${rname}${rver}"
-rfile="${rdir}a-src.tar.gz"
-rurl="http://rogue.rogueforge.net/files/rogue5.4/${rfile}"
-rsha256="6d38e38f95a291e7854162227e7d2de28b51dfbda761707a190c2d7f629cf4a6"
+rfile="${rver##*-}.zip"
+rurl="https://github.com/ryanwoodsmall/${rname}${rver%%-*}/archive/${rfile}"
+rsha256="6f9a7e03fe9ee6ffdb3be3f0bb7adab73d52e4041cae36a548dfb9718cf5ce3f"
 rreqs="make ncurses configgit"
 
 . "${cwrecipe}/common.sh"
