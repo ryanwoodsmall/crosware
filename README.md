@@ -651,6 +651,11 @@ wc -l /tmp/astbuild.out
       --build-targets=static,cli
     ```
 - brotli (https://github.com/google/brotli)
+- brogue stuff
+  - brogue (https://github.com/tsadok/brogue)
+  - broguece (https://github.com/tmewett/BrogueCE)
+  - brogue-linux (https://github.com/CubeTheThird/brogue-linux)
+  - gbrogue (https://github.com/gbelo/gBrogue)
 - c9 (https://github.com/ftrvxmtrx/c9 - small 9p client/server impl)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)

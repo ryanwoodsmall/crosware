@@ -1,3 +1,6 @@
+#
+# XXX - update to 1.7.5? dl doesn't seem to work
+#
 rname="brogue"
 rver="1.7.4"
 rdir="${rname}-${rver}"
