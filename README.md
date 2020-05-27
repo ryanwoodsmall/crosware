@@ -1165,6 +1165,7 @@ wc -l /tmp/astbuild.out
 - tcc (http://repo.or.cz/w/tinycc.git)
   - static compilation is _pretty broken_
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
+- tinyemu (https://bellard.org/tinyemu/ - risc-v, x86 w/kvm?)
 - tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tnftpd (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
