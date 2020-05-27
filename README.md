@@ -879,6 +879,7 @@ wc -l /tmp/astbuild.out
     - needs ```setarch linux64 -R ...``` with proper linux64/linux32 setting before configure, make
     - not sure if this will work either
   - janet (https://janet-lang.org/ and https://github.com/janet-lang/janet)
+  - le-lisp (http://christian.jullien.free.fr/lelisp/)
   - mankai common lisp (https://common-lisp.net/project/mkcl/)
   - newlisp (http://www.newlisp.org/ - unnoficial code mirror at https://github.com/kosh04/newlisp)
     - needs libffi, ncurses, readline
