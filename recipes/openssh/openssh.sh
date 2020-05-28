@@ -63,6 +63,9 @@ function cwmakeinstall_${rname}() {
     && install -m 0644 contrib/ssh-copy-id.1 \"${ridir}/share/man/\${md}/\" \
     || true
   done
+  ln -sf \"${rtdir}/current/bin/ssh\" \"${ridir}/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/scp\" \"${ridir}/bin/${rname}-scp\"
+  ln -sf \"${rtdir}/current/bin/sftp\" \"${ridir}/bin/${rname}-sftp\"
   popd >/dev/null 2>&1
 }
 "
