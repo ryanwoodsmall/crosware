@@ -1,13 +1,9 @@
-#
-# XXX - use github mirror? https://github.com/magicant/yash/releases
-#
-
 rname="yash"
-rver="2.49"
+rver="2.50"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
-rurl="https://osdn.net/dl/${rname}/${rfile}"
-rsha256="66eaf11d6c749165a7503801691759ae151e4eae00785875e121db2e9c219c72"
+rurl="https://github.com/magicant/${rname}/releases/download/${rver}/${rfile}"
+rsha256="b6e0e2e607ab449947178da227fa739db4b13c8af9dfe8116b834964b980e24b"
 rreqs="make netbsdcurses"
 
 . "${cwrecipe}/common.sh"
