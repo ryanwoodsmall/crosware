@@ -771,6 +771,7 @@ wc -l /tmp/astbuild.out
   - ringojs
   - sbt (included in sdkman)
   - scala (included in sdkman)
+  - teavm (https://github.com/konsoletyper/teavm - java bytecode to javascript)
   - xtend
 - java jvm/jdk stuff
   - adoptopenjdk (https://adoptopenjdk.net/)
