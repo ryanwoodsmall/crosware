@@ -753,12 +753,14 @@ wc -l /tmp/astbuild.out
   - beanshell
   - ceylon (included in sdkman)
   - clojure (leiningen included in sdkman)
+  - ecj (separate compiler from eclipse? native code w/graal, gcj, etc.?)
   - frege (https://github.com/Frege/frege)
   - gradle (included in sdkman)
   - grails (included in sdkman)
   - groovy (included in sdkman)
   - hg4j and client wrapper (https://github.com/nathansgreen/hg4j)
   - java-repl
+  - jikes (dead but useful?)
   - jline
   - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
   - kotlin (included in sdkman)
