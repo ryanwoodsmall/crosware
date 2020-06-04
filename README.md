@@ -733,6 +733,9 @@ wc -l /tmp/astbuild.out
 - hoedown (markdown lib - https://github.com/hoedown/hoedown)
 - hq (https://github.com/rbwinslow/hq)
 - http-parser (https://github.com/nodejs/http-parser - useful with libgit2?)
+- ibara's good portable/bsd stuff
+  - m4 (https://github.com/ibara/m4)
+  - yacc (https://github.com/ibara/yacc)
 - inadyn (https://github.com/troglobit/inadyn)
 - iodine (https://github.com/yarrick/iodine)
   - **src/Makefile** needs a ```$(CC) -c``` for the _.c.o_ rule
