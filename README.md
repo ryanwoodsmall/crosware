@@ -722,6 +722,7 @@ wc -l /tmp/astbuild.out
 - geomyidae (http://r-36.net/scm/geomyidae/ - gopher server)
 - gdb
 - git-crypt (https://github.com/AGWA/git-crypt)
+- gojq (https://github.com/itchyny/gojq)
 - gpg
   - gpgme
   - etc.
