@@ -929,6 +929,7 @@ wc -l /tmp/astbuild.out
 - mes (https://www.gnu.org/software/mes/) and m2 stuff (links above)
 - mesalink (https://mesalink.io/ and https://github.com/mesalock-linux/mesalink)
 - mgksh (https://github.com/ibara/mgksh - static ksh and mg (emacs) from openbsd in a single bin)
+- mkcert (https://github.com/FiloSottile/mkcert)
 - micropython (https://github.com/micropython/micropython)
   - needs python, git, libffi, pkgconfig, make, mbedtls
   - clone repo (single tag, **--depth 1**, **--single-branch**, etc.); i.e., for 1.10:
@@ -1160,6 +1161,7 @@ wc -l /tmp/astbuild.out
 - splint (https://en.wikipedia.org/wiki/Splint_(programming_tool))
 - spm (https://notabug.org/kl3/spm/ - password manager, fork of tpm)
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
+- srv (https://github.com/joshuarli/srv)
 - sslh (https://www.rutschle.net/tech/sslh/README.html and https://www.rutschle.net/tech/sslh/README.html)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - subversion / svn
