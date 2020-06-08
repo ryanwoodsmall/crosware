@@ -1,5 +1,8 @@
 #
 # this is cheating
+# XXX - move to https://mirrors.edge.kernel.org/alpine/v3.12/main/x86_64/ca-certificates-bundle-20191127-r3.apk
+# XXX - ca-certificates.crt vs cert.pem
+# XXX - move to curl cacert https://curl.haxx.se/docs/caextract.html
 #
 rname="cacertificates"
 rver="20191127-r2"
