@@ -2,11 +2,11 @@
 # this is cheating
 #
 rname="cacertificates"
-rver="20191127-r1"
+rver="20191127-r2"
 rdir="${rname}-${rver}"
 rfile="ca-certificates-cacert-${rver}.apk"
 rurl="https://mirrors.edge.kernel.org/alpine/v3.11/main/x86_64/${rfile}"
-rsha256="afe7a07b6fb65b78658d9034e418bf1091bc37f3f5f55ae939c7de37df472356"
+rsha256="e9d272387a2e1d633c280868290b6b4f445bddaef01ff2edcb8aca6700662f89"
 rreqs=""
 rdlfile="${cwdl}/${rname}/${rfile}.tar.gz"
 
