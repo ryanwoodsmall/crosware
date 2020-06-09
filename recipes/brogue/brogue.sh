@@ -1,12 +1,9 @@
-#
-# XXX - update to 1.7.5? dl doesn't seem to work
-#
 rname="brogue"
-rver="1.7.4"
+rver="1.7.5"
 rdir="${rname}-${rver}"
-rfile="${rdir}-linux-i386.tbz2"
-rurl="https://sites.google.com/site/broguegame/${rfile}\?attredirects=0\&d=1"
-rsha256="9e313521c4004566ab1518402393f5bd1cc14df097a283c2cc614998b9097e26"
+rfile="${rdir}-linux-amd64.tbz2"
+rurl="https://sites.google.com/site/broguegame/${rfile}?attredirects=0&d=1"
+rsha256="a74ff18139564c597d047cfb167f74ab1963dd8608b6fb2e034e7635d6170444"
 rreqs="make ncurses rsync"
 
 . "${cwrecipe}/common.sh"
@@ -21,6 +18,9 @@ function cwconfigure_${rname}() {
   sed -i \"/^SDL_FLAGS/d\" Makefile
   sed -i \"s/^CFLAGS=/CFLAGS=-Wl,-static /g\" Makefile
   sed -i \"/^LASTTARGET/s/.*/LASTTARGET=curses/g\" Makefile
+  cat src/brogue/Rogue.h > src/brogue/Rogue.h.ORIG
+  echo '#include <stdint.h>' > src/brogue/Rogue.h
+  cat src/brogue/Rogue.h.ORIG >> src/brogue/Rogue.h
   popd >/dev/null 2>&1
 }
 "
