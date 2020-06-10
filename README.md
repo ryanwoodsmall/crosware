@@ -1151,6 +1151,7 @@ wc -l /tmp/astbuild.out
 - simplecpp (https://github.com/danmar/simplecpp)
 - sljit (http://sljit.sourceforge.net/)
 - sloccount (https://dwheeler.com/sloccount/)
+- snarf (https://www.xach.com/snarf/ - old but small, still useful?)
 - source-highlight (https://www.gnu.org/software/src-highlite/)
   - 2.x, 3.x require boost (yeeee), ctags
   - ```./configure --prefix=${ridir} --enable-static{,=yes} --enable-shared=no --disable-shared --with-boost-libdir=${cwsw}/boost/current/lib LDFLAGS="${LDFLAGS} -L${cwsw}/boost/current/lib" CXXFLAGS="${CXXFLAGS} -I${cwsw}/boost/current/include"```
