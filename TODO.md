@@ -1,5 +1,8 @@
 # TODO
 
+- most functions should be moved out of `bin/crosware`
+  - `etc/functions/cwfuncname.sh` is logical home
+  - easier to test, branch, etc.
 - musl 1.2.0
   - some breaking changes on 32-bit arch due to 64-bit time type(s)
   - Alpine should be going to 1.2.0 in their 3.12.x series
