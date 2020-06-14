@@ -3,11 +3,11 @@
 #       https://common-lisp.net/project/armedbear/doc/abcl-install-with-java.html#linux
 #
 rname="abcl"
-rver="1.6.1"
+rver="1.7.0"
 rdir="${rname}-bin-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://common-lisp.net/project/armedbear/releases/${rver}/${rfile}"
-rsha256="076e1b60c7c0e74c3223a2e378184b8699d5cf7f6125831e3319d8a2b4ca5a6f"
+rsha256="6d9e2a38a8cb618aefaeaa92a67973d6405f1ccc6b0352049b41ec6d6ce30c9c"
 rreqs="rlwrap"
 
 . "${cwrecipe}/common.sh"
