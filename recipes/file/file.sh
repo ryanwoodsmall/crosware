@@ -1,9 +1,9 @@
 rname="file"
-rver="5.38"
+rver="5.39"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="ftp://ftp.astron.com/pub/${rname}/${rfile}"
-rsha256="593c2ffc2ab349c5aea0f55fedfe4d681737b6b62376a9b3ad1e77b2cc19fa34"
+rsha256="f05d286a76d9556243d0cb05814929c2ecf3a5ba07963f8f70bfaaa70517fad1"
 rreqs="make zlib bzip2 xz"
 
 . "${cwrecipe}/common.sh"
