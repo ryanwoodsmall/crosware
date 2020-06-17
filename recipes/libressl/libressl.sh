@@ -3,11 +3,11 @@
 # XXX - broken on centos 6, ugh
 #
 rname="libressl"
-rver="3.1.2"
+rver="3.1.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${rfile}"
-rsha256="f88a2f7ea617149a34e40c022d9912963f00eaa6109af421317525e6c978d892"
+rsha256="c76b0316acf612ecb62f5cb014a20d972a663bd9e40abf952a86f3b998b69fa0"
 rreqs="make cacertificates"
 # prefer openssl for now
 rprof="${cwetcprofd}/zz_${rname}.sh"
