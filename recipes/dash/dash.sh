@@ -14,6 +14,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --enable-static \
     --with-libedit \
+    --disable-silent-rules \
       CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
       CFLAGS=\"\${CFLAGS} -L${cwsw}/netbsdcurses/current/lib\" \
       LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -ledit -lcurses -lterminfo -static\" \
