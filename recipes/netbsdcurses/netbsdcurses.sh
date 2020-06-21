@@ -4,6 +4,8 @@
 # XXX - readline version bundled in install - hacky but ehh
 # XXX - bundle slang?
 # XXX - curses pkg-config files don't set -L or -I?
+# XXX - include... all terms? in compiled lib? hmm
+# XXX - need TERM* environment vars?
 #
 
 rname="netbsdcurses"
@@ -59,7 +61,29 @@ function cwmake_${rname}() {
 screen-256color\\
 tmux\\
 tmux-256color\\
-vt220' libterminfo/genterms
+ansi+enq\\
+ansi+rca\\
+ansi+pp\\
+ansi+tabs\\
+dec+sl\\
+vt220\\
+vt220-w\\
+vt220-8bit\\
+vt220+keypad\\
+vt320\\
+vt340\\
+vt400\\
+vt420\\
+vt420f\\
+vt420pc\\
+vt420pcdos\\
+vt510\\
+vt510pc\\
+vt510pcdos\\
+vt520\\
+vt525\\
+vt520ansi' libterminfo/genterms
+  diff -Naur libterminfo/genterms{.ORIG,} || true
   cd nbperf
   make nbperf CPPFLAGS='-I..' LDFLAGS='-static'
   cd ..
@@ -74,6 +98,9 @@ function cwmakeinstall_${rname}() {
   # LN=echo will disable libncurses symlinks
   make install-static PREFIX="${ridir}" CPPFLAGS='-I./ -I./libterminfo' LDFLAGS='-static' LN='echo'
   rm -f ${ridir}/lib/pkgconfig/ncurses* ${ridir}/lib/pkgconfig/*w.pc
+  make terminfo/terminfo.cdb
+  cwmkdir \"${ridir}/share\"
+  install -m 644 terminfo/terminfo.cdb \"${ridir}/share/\"
   cwmakeinstall_${rname}_readline
   cwmakeinstall_${rname}_libedit
   popd >/dev/null 2>&1
