@@ -1,11 +1,23 @@
 #
 # XXX - need global terminfo db?
 # XXX - i.e., "make terminfo/terminfo.cdb && cp terminfo/terminfo.cdb ${ridir}/share/"
+# XXX - need TERM* environment vars?
 # XXX - readline version bundled in install - hacky but ehh
 # XXX - bundle slang?
 # XXX - curses pkg-config files don't set -L or -I?
 # XXX - include... all terms? in compiled lib? hmm
-# XXX - need TERM* environment vars?
+# XXX - include all terms with a scriptlet like...
+#   sed -n '/^TERMLIST="$/,/^"$/d;p' libterminfo/genterms > libterminfo/genterms.NEW
+#   sed -i '/^echo$/a\
+#   TERMLIST=|\
+#   |' libterminfo/genterms.NEW
+#   egrep -v '^(#|$|\t)' terminfo/terminfo | grep '|' | cut -f1 -d'|' | sort -u | while read -r t ; do
+#     sed -i "/^TERMLIST=|/a\
+#     ${t}" libterminfo/genterms.NEW
+#   done
+#   sed -i 's/|/"/g' libterminfo/genterms.NEW
+#   cat libterminfo/genterms.NEW > libterminfo/genterms
+#   chmod 755 libterminfo/genterms
 #
 
 rname="netbsdcurses"
