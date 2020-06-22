@@ -36,6 +36,7 @@ function cwconfigure_${rname}() {
       --without-pie \
       --with-libedit=\"${cwsw}/netbsdcurses/current\" \
       --sysconfdir=\"${rtdir}/etc\" \
+      --with-privsep-path=\"${cwtmp}/empty\" \
         CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/${sslprov}/current/include -I${cwsw}/netbsdcurses/include\" \
         LDFLAGS=\"-static -L${cwsw}/zlib/current/lib -L${cwsw}/${sslprov}/current/lib -L${cwsw}/netbsdcurses/current/lib\" \
         LIBS='-lcrypto -lz -lcrypt -ledit -lcurses -lterminfo'
