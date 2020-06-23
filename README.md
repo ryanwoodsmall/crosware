@@ -911,6 +911,7 @@ wc -l /tmp/astbuild.out
   - lua2c (https://github.com/davidm/lua2c or a fork?)
   - luajit (https://luajit.org/)
   - terra (https://github.com/zdevito/terra and http://terralang.org/)
+- lz4 (https://github.com/lz4/lz4)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html)
   - s-nail (https://www.sdaoden.eu/code.html#s-mailx) - up-to-date w/tls (openssl 1.1+) support
   - or gnu mailutils (https://www.gnu.org/software/mailutils/mailutils.html)
@@ -1213,10 +1214,12 @@ wc -l /tmp/astbuild.out
 - websocketd (go, https://github.com/joewalnes/websocketd)
 - wolfssh (https://github.com/wolfSSL/wolfssh)
 - xq (https://github.com/jeffbr13/xq)
+- xxhash (https://github.com/Cyan4973/xxHash)
 - yq (https://github.com/kislyuk/yq)
 - ytalk (http://ytalk.ourproject.org/)
 - z3 (https://github.com/Z3Prover/z3)
   - cppcheck can use/may require this for 2.x+
+- zstd (https://github.com/facebook/zstd)
 - support libraries for building the above
 - whatever else seems useful
 
