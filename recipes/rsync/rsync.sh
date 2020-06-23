@@ -1,8 +1,16 @@
+#
+# XXX - for rsync 3.2.x...
+#   - lz4
+#   - openssl
+#   - xxhash
+#   - zstd
+#
+
 rname="rsync"
 rver="3.1.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://download.samba.org/pub/${rname}/${rfile}"
+rurl="https://download.samba.org/pub/${rname}/src/${rfile}"
 rsha256="55cc554efec5fdaad70de921cd5a5eeb6c29a95524c715f3bbf849235b0800c0"
 rreqs="make perl"
 
