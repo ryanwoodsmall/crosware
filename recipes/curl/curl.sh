@@ -5,14 +5,16 @@
 # - libssh2
 #   - supports one of openssl, mbed, libgcrypt
 #   - mix/match with ssl/tls providers? seems like a bad idea
+# - wolfssh support
+#   - --with-wolfssh
 #
 
 rname="curl"
-rver="7.70.0"
+rver="7.71.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
-rsha256="a50bfe62ad67a24f8b12dd7fd655ac43a0f0299f86ec45b11354f25fbb5829d0"
+rsha256="600f00ac2481a89548a4141ddf983fd9386165e1960bac91d0a1c81dca5dd341"
 rreqs="make zlib openssl mbedtls wolfssl libssh2 expat libmetalink cacertificates bearssl"
 
 . "${cwrecipe}/common.sh"
