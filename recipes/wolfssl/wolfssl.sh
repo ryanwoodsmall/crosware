@@ -42,7 +42,6 @@ function cwconfigure_${rname}() {
     --enable-curve25519 \
     --enable-curve448 \
     --enable-des3 \
-    --enable-dhdefaultparams \
     --enable-dsa \
     --enable-dtls \
     --enable-ecccustcurves \
