@@ -1,14 +1,14 @@
 #
-# XXX - move config (keys) to $cwtop/etc/dropbear/
+# XXX - move config (keys) to $cwtop/etc/dropbear/ ??? .gitignore might get ugly
 # XXX - sftp-server is messy
 #
 rname="dropbear"
-rver="2020.79"
+rver="2020.80"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 #rurl="https://matt.ucc.asn.au/${rname}/releases/${rfile}"
 rurl="https://dropbear.nl/mirror/releases/${rfile}"
-rsha256="084f00546b1610a3422a0773e2c04cbe1a220d984209e033b548b49f379cc441"
+rsha256="d927941b91f2da150b2033f1a88b6a47999bf0afb1493a73e9216cffdb5d7949"
 # need a patch program, try toybox
 rreqs="make toybox zlib configgit"
 
