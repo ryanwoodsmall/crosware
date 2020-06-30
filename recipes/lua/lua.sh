@@ -1,3 +1,7 @@
+#
+# XXX - lua 5.4.0
+#
+
 rname="lua"
 rver="5.3.5"
 rdir="${rname}-${rver}"
