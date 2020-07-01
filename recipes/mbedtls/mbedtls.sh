@@ -1,5 +1,9 @@
 #
-# XXX - need to require and enable zlib? probably not?
+# XXX - need to require and enable zlib? probably not? deprecated?
+# XXX - 2.23.x lts needs some changes to _not_ require python3...
+#  cat programs/Makefile > programs/Makefile.ORIG
+#  sed -i '/^\\tpsa\\/key_ladder_demo.*\\$/d' programs/Makefile
+#  sed -i '/^\\tpsa\\/psa_constant_name.*\\$/d' programs/Makefile
 #
 
 rname="mbedtls"
