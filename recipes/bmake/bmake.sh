@@ -1,9 +1,9 @@
 rname="bmake"
-rver="20200625"
+rver="20200629"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.crufty.net/ftp/pub/sjg/${rfile}"
-rsha256="7febcf10ec7752cff8ce6abc0131ddace7125a4df07517c372a9d37a2f5c9b69"
+rsha256="45d79202320a3a2d03dbb0fe87ecfd87751cb5db7b4e5c3abfcf5c85c8d7b5b3"
 rreqs=""
 rbdir="${cwbuild}/${rdir}/build"
 
