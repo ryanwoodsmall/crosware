@@ -704,6 +704,7 @@ wc -l /tmp/astbuild.out
   - cmake, curl, pcre, tidy (cmake), duktape
 - elfutils (https://sourceware.org/elfutils/)
 - ellcc (embedded clang build, http://ellcc.org/)
+- elvm (https://github.com/shinh/elvm)
 - emacs
   - 26.1+ can be compiled without gnutls?
   - needs aslr disabled during dump?
