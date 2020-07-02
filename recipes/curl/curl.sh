@@ -7,6 +7,7 @@
 #   - mix/match with ssl/tls providers? seems like a bad idea
 # - wolfssh support
 #   - --with-wolfssh
+# - ipv6 not being enabled?
 #
 
 rname="curl"
