@@ -8,8 +8,6 @@
 # - wolfssh support
 #   - --with-wolfssh
 # - enable libidn2?
-# - ipv6 not being enabled?
-#   --enable-ipv6
 #
 
 rname="curl"
@@ -42,6 +40,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
+    --enable-ipv6 \
     --with-libmetalink \
     --with-libssh2 \
     --with-zlib \
@@ -87,6 +86,7 @@ function cwmakeinstall_${rname}_mbedtls() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
+    --enable-ipv6 \
     --with-zlib \
     --without-libidn2 \
     --without-libmetalink \
@@ -113,6 +113,7 @@ function cwmakeinstall_${rname}_wolfssl() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
+    --enable-ipv6 \
     --with-zlib \
     --without-libidn2 \
     --without-libmetalink \
@@ -138,6 +139,7 @@ function cwmakeinstall_${rname}_bearssl() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
+    --enable-ipv6 \
     --with-zlib \
     --without-libidn2 \
     --without-libmetalink \
