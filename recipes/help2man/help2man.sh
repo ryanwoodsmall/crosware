@@ -1,9 +1,9 @@
 rname="help2man"
-rver="1.47.15"
+rver="1.47.16"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/pub/gnu/${rname}/${rfile}"
-rsha256="c25a35b30eceb315361484b0ff1f81c924e8ee5c8881576f1ee762f001dbcd1c"
+rsha256="3ef8580c5b86e32ca092ce8de43df204f5e6f714b0cd32bc6237e6cd0f34a8f4"
 rreqs="make perl"
 
 . "${cwrecipe}/common.sh"
