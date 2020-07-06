@@ -1,5 +1,7 @@
 # TODO
 
+- `cwurl_${rname}` for each recipe
+  - dump the `${rurl}` for easy reference
 - most functions should be moved out of `bin/crosware`
   - `etc/functions/cwfuncname.sh` is logical home
   - easier to test, branch, etc.
