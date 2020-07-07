@@ -681,6 +681,7 @@ wc -l /tmp/astbuild.out
   - plan9-cc (https://github.com/huangguiyang/plan9-cc)
   - qbe (https://c9x.me/compile/)
   - scc (http://www.simple-cc.org/)
+  - tendra (https://bitbucket.org/asmodai/tendra/src/default/ https://en.wikipedia.org/wiki/TenDRA_Compiler)
 - cmark (commonmark markddown - https://github.com/commonmark/cmark)
   - cmark-gfm (github fork - https://github.com/github/cmark-gfm)
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
