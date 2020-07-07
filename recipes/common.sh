@@ -9,6 +9,7 @@
 : ${rlibtool:=""}
 : ${rconfigureopts:=""}
 : ${rcommonopts:=""}
+: ${rurl:=""}
 
 if [[ ${rlibtool} == "" && ${rreqs} =~ slibtool ]] ; then
   rlibtool="LIBTOOL='${cwsw}/slibtool/current/bin/slibtool-static -all-static'"
@@ -45,6 +46,12 @@ function cwdir_${rname}() {
 eval "
 function cwver_${rname}() {
   echo \"${rver}\"
+}
+"
+
+eval "
+function cwurl_${rname}() {
+  echo \"${rurl}\"
 }
 "
 

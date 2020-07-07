@@ -1,7 +1,12 @@
 # TODO
 
-- `cwurl_${rname}` for each recipe
+- `cwurl_${rname}` for bootstrap recipes
   - dump the `${rurl}` for easy reference
+  - general case done
+  - still need to normalize for...
+    - jgitsh
+    - statictoolchain
+    - zulu
 - most functions should be moved out of `bin/crosware`
   - `etc/functions/cwfuncname.sh` is logical home
   - easier to test, branch, etc.
