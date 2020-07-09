@@ -1,5 +1,8 @@
 # TODO
 
+- `crosware version`
+  - output git commit, via `git rev-parse HEAD`
+  - git or jgitsh should work
 - `cwurl_${rname}` for bootstrap recipes
   - dump the `${rurl}` for easy reference
   - general case done
