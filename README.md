@@ -1135,6 +1135,7 @@ wc -l /tmp/astbuild.out
   - umb-scheme
   - vicare (ikarus fork-of-fork, https://github.com/barak/vicare)
   - ypsilon (http://www.littlewingpinball.net/mediawiki/index.php/Ypsilon)
+- sed-bin (https://github.com/lhoursquentin/sed-bin - posix sed to c??? cool)
 - sharutils
 - shells?
   - es (https://github.com/wryun/es-shell)
