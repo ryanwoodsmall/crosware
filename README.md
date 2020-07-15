@@ -629,6 +629,7 @@ wc -l /tmp/astbuild.out
 - awk (https://github.com/onetrueawk/awk - the one true awk)
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
 - b2sum (https://github.com/dchest/b2sum)
+- babashka (https://github.com/borkdude/babashka - clojure+shell?)
 - bashdb (http://bashdb.sourceforge.net/ - bash debugger)
 - bic (https://github.com/hexagonal-sun/bic - c repl)
 - big data stuff
