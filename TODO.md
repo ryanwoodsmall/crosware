@@ -254,6 +254,7 @@
         - if we find our own name as found, cycle?
       - shortest reqs first?
       - flatten list?
+    - would `tsort` (coreutils, heirloom, sbase) come in handy here?
 - need custom **cwclean_${rname}** for recipes where ```${rdir} != ${rbdir}``` and ```${rbdir} != ${cwbuild}/${rdir}```
 - systems where ```/bin/sh``` is not bash...
   - wolfssl autotools-generated configure needs bash?
