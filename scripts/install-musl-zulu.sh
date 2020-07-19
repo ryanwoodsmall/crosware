@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
 #
-# dirtier version of this:
-#  https://github.com/ryanwoodsmall/dockerfiles/blob/master/crosware/zulu/Dockerfile
-#
-# XXX - check for musl...
+# XXX - check for musl
+# XXX - use patchelf to set dynamic loader
+# XXX - remove {,/usr}/lib{,64} directory/symlink creation
 #
 
 # only run if we're have valid crosware
