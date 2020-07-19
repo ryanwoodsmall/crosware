@@ -33,11 +33,11 @@ fi
 
 # version picker
 case "${reqver}" in
-    8) zuluver="8.46.0.19-ca-jdk8.0.252"
-       zulusha="306ec531eed55c119321dcd9ae7664a110d98955afc571d5d19ad6b69172a705"
+    8) zuluver="8.48.0.49-ca-jdk8.0.262"
+       zulusha="30beabacc420f74f99d545fd78a10b9d0791747417d528c7d478a0f439f0b590"
        ;;
-   11) zuluver="11.39.15-ca-jdk11.0.7"
-       zulusha="0de7ac5afede2ddeda399f10c9f9df83f91c9b60481ecf304aa5785ed50f36ce"
+   11) zuluver="11.41.23-ca-jdk11.0.8"
+       zulusha="bd54bb1690ff7cd88f8b50aa089cd2e55911a62a18b096f43f0cf36fb0caec30"
        ;;
   all) bash "${BASH_SOURCE[0]}" 8
        bash "${BASH_SOURCE[0]}" 11
