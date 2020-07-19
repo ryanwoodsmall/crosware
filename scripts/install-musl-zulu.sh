@@ -4,6 +4,7 @@
 # XXX - check for musl
 # XXX - use patchelf to set dynamic loader
 # XXX - remove {,/usr}/lib{,64} directory/symlink creation
+# XXX - use alpine openjdk 8/11 .apk packages instead
 #
 
 # only run if we're have valid crosware
