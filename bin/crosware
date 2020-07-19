@@ -1106,6 +1106,8 @@ function cwshowarch() {
 #   XXX - better to count?
 #     i.e., a list with one element selected out of it should be exactly one less than start
 #   XXX - this needs to be way better.
+#   XXX - this *only* works on the top element
+#   XXX - i.e., it's a stack, and if there are dupes in {n-1,0}, they won't be detected
 #
 function cwcheckuniq() {
   if [[ x${@} =~ ^x$ ]] ; then
