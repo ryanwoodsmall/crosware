@@ -1083,6 +1083,7 @@ wc -l /tmp/astbuild.out
 - re2c (http://re2c.org/ and https://github.com/skvadrik/re2c)
 - redir (https://github.com/troglobit/redir)
 - relational-pipes (https://relational-pipes.globalcode.info/)
+- remake (http://bashdb.sourceforge.net/remake/ and https://github.com/rocky/remake)
 - retro (forth, http://retroforth.org/)
 - rredir (https://github.com/rofl0r/rrredir)
 - rover (https://lecram.github.io/p/rover)
