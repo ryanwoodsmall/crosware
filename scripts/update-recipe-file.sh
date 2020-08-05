@@ -4,7 +4,7 @@
 # update a recipe.sh file given:
 #  - recipe name
 #  - recipe version
-#  - recipe file sha256sum
+#  - (optionally) recipe file sha256sum
 #
 # XXX:
 #  - generalize as a verb?
