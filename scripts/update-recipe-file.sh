@@ -44,6 +44,7 @@ if [ "${rs}x" == "x" ] ; then
 fi
 if ! $(echo -n "${rs}" | wc -c | grep -q '^64$') ; then
   echo "${rs} doesn't look right..."
+  exit 1
 fi
 
 rd="${td}/recipes"
