@@ -10,6 +10,11 @@
     - jgitsh
     - statictoolchain
     - zulu
+- `cwrecipefile_${rname}` function
+  - return recipe filename with full path
+  - i.e., `crosware run-func cwrecipefile_bash` should return `/usr/local/crosware/recipes/bash/bash.sh`
+  - could be useful with `scripts/update-recipe-file.sh`
+  - or making `update-recipe-file` a verb with a recipe and version passed in
 - most functions should be moved out of `bin/crosware`
   - `etc/functions/cwfuncname.sh` is logical home
   - easier to test, branch, etc.
