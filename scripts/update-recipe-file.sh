@@ -43,8 +43,7 @@ if [ "${rs}x" == "x" ] ; then
   rs="$(curl -kLs "${ru}" | sha256sum | awk '{print $1}')"
 fi
 if ! $(echo -n "${rs}" | wc -c | grep -q '^64$') ; then
-  echo "${rs} doesn't look right..."
-  exit 1
+  failexit "${rs} doesn't look right..."
 fi
 
 rd="${td}/recipes"
