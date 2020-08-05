@@ -20,18 +20,32 @@ function failexit() {
   exit 1
 }
 
-if [ "${#}" -ne 3 ] ; then
-  failexit "$(basename ${BASH_SOURCE[0]}) recipe version.dot.number sha256"
+if [ "${#}" -lt 2 ] ; then
+  failexit "$(basename ${BASH_SOURCE[0]}) recipe version.dot.number [sha256]"
 fi
 
 rn="${1}"
 rv="${2}"
-rs="${3}"
+rs=""
+if [ "${#}" -ge 3 ] ; then
+  rs="${3}"
+fi
 
 td="$(cd $(dirname "${BASH_SOURCE[0]}")/.. && pwd)"
-test -e "${td}/bin/crosware" || {
+cw="${td}/bin/crosware"
+test -e "${cw}" || {
   failexit "could not find crosware top directory"
 }
+if [ "${rs}x" == "x" ] ; then
+  echo "no sha256sum passed, attempting to figure one out"
+  ov="$(${cw} run-func cwver_${rn})"
+  ru="$(${cw} run-func cwurl_${rn} | sed "s/${ov}/${rv}/g")"
+  rs="$(curl -kLs "${ru}" | sha256sum | awk '{print $1}')"
+fi
+if ! $(echo -n "${rs}" | wc -c | grep -q '^64$') ; then
+  echo "${rs} doesn't look right..."
+fi
+
 rd="${td}/recipes"
 echo "top directory is ${td}"
 echo "recipe directory is ${rd}"
