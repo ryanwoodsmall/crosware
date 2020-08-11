@@ -96,7 +96,7 @@ function cwmakeinstall_${rname}() {
       CC=\"\${c}\"
   make -j${cwmakejobs} ${rlibtool}
   make install ${rlibtool}
-  test -e \"\${i}_off\" && mv \"\${i}_off\"{,\${TS}} || true
+  test -e \"\${i}_off\" && mv \"\${i}_off\"{,.\${TS}} || true
   mv \"\${i}\"{,_off}
   for c in \$(find \"${cwsw}/muslstandalone/current/\" -type f -name \\*.o) ; do
     find \"${ridir}/\" -type f -name \$(basename \${c}) | while read -r t ; do
