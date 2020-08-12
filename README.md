@@ -1169,6 +1169,7 @@ wc -l /tmp/astbuild.out
 - sparse (https://sparse.wiki.kernel.org/index.php/Main_Page)
 - splint (https://en.wikipedia.org/wiki/Splint_(programming_tool))
 - spm (https://notabug.org/kl3/spm/ - password manager, fork of tpm)
+- sprite (https://github.com/ibara/sprite - curses sprite editor, libpng export support!)
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
 - srv (https://github.com/joshuarli/srv)
 - sslh (https://www.rutschle.net/tech/sslh/README.html and https://www.rutschle.net/tech/sslh/README.html)
