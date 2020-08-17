@@ -1,9 +1,9 @@
 rname="libgcrypt"
-rver="1.8.5"
+rver="1.8.6"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="3b4a2a94cb637eff5bdebbcaf46f4d95c4f25206f459809339cdada0eb577ac3"
+rsha256="0cba2700617b99fc33864a0c16b1fa7fdf9781d9ed3509f5d767178e5fd7b975"
 rreqs="make libgpgerror slibtool"
 
 . "${cwrecipe}/common.sh"
