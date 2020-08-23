@@ -509,6 +509,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - screen
 - sdkman (http://sdkman.io)
 - sed (gnu gsed, prepended to $PATH, becomes default sed)
+- sharutils (https://www.gnu.org/software/sharutils/)
 - shellinabox (https://github.com/shellinabox/shellinabox)
 - simh (http://simh.trailing-edge.com and https://github.com/simh/simh)
 - sisc (scheme)
@@ -1139,7 +1140,6 @@ wc -l /tmp/astbuild.out
   - vicare (ikarus fork-of-fork, https://github.com/barak/vicare)
   - ypsilon (http://www.littlewingpinball.net/mediawiki/index.php/Ypsilon)
 - sed-bin (https://github.com/lhoursquentin/sed-bin - posix sed to c??? cool)
-- sharutils
 - shells?
   - es (https://github.com/wryun/es-shell)
   - fish
