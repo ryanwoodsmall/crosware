@@ -1,9 +1,9 @@
 rname="libgpgerror"
-rver="1.38"
+rver="1.39"
 rdir="libgpg-error-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/libgpg-error/${rfile}"
-rsha256="d8988275aa69d7149f931c10442e9e34c0242674249e171592b430ff7b3afd02"
+rsha256="4a836edcae592094ef1c5a4834908f44986ab2b82e0824a0344b49df8cdb298f"
 rreqs="make slibtool busybox"
 
 . "${cwrecipe}/common.sh"
