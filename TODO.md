@@ -555,6 +555,10 @@ time_func ls -l -A /
   - memoize upgrade status
   - separate from upgrade state
   - if an upgrade is requested, we want to run it once regardless of necessity
+  - `cwupgradable[${rname}]` hash
+    - 1 if upgradable
+    - 0 if not, or upgraded
+    - some overlap with `cwupgraded[${rname}]`
 
 <!--
 # vim: ft=markdown
