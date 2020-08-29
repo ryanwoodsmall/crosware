@@ -155,13 +155,14 @@ export cwtmpperm="1777"
 export cwexecperm="775"
 
 # start off with an empty recipe and installed list
-declare -A cwrecipes cwrecipefiles cwrecipereqs cwrecipeversions cwbootstraprecipes cwinstalled
+declare -A cwrecipes cwrecipefiles cwrecipereqs cwrecipeversions cwbootstraprecipes cwinstalled cwupgraded
 export cwrecipes
 export cwrecipefiles
 export cwrecipereqs
 export cwrecipeversions
 export cwbootstraprecipes
 export cwinstalled
+export cwupgraded
 
 # and a "user-visible" var whether we want to use an external jvm/jdk
 : ${CW_USE_JAVA:="true"}
@@ -992,7 +993,9 @@ function cwupgrade() {
       cwscriptecho "no upgrade found for ${upgrade}"
       continue
     fi
-    cwupgrade_${upgrade}
+    if [ ${cwupgraded[${upgrade}]} -eq 0 ] ; then
+      cwupgrade_${upgrade}
+    fi
   done
 }
 
@@ -1157,6 +1160,14 @@ if [[ ! ${cwcmdlist[@]} =~ ${cmd} ]] ; then
   cwfailexit "command ${cmd} not found"
 fi
 shift
+
+# build hash of stuff with upgrade state so we don't run them multiple times
+if [[ ${cmd} =~ ^upgrad ]] ; then
+  for r in ${@} $(cwlistupgradable | awk -F: '{print $1}') ; do
+    cwupgraded[${r}]=0
+  done
+  unset r
+fi
 
 #
 # execute our given command
