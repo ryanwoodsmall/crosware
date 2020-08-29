@@ -985,10 +985,14 @@ function cwuninstall() {
 # uninstall and install recipes
 #
 function cwupgrade() {
+  cwsourcerecipes
   local upgrade=""
   for upgrade in "${@}" ; do
-    cwuninstall "${upgrade}"
-    cwinstall "${upgrade}"
+    if ! $(set | grep -q "^cwupgrade_${upgrade} ") ; then
+      cwscriptecho "no upgrade found for ${upgrade}"
+      continue
+    fi
+    cwupgrade_${upgrade}
   done
 }
 

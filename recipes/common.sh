@@ -176,3 +176,10 @@ function cwuninstall_${rname}() {
   popd >/dev/null 2>&1
 }
 "
+
+eval "
+function cwupgrade_${rname}() {
+  cwuninstall_${rname}
+  cwinstall_${rname}
+}
+"
