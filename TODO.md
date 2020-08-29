@@ -550,6 +550,11 @@ time_func ls -l -A /
   - dependents
   - actually need a graph here?
   - hard
+- `check-upgradable`
+  - command to see if a package needs an upgrade
+  - memoize upgrade status
+  - separate from upgrade state
+  - if an upgrade is requested, we want to run it once regardless of necessity
 
 <!--
 # vim: ft=markdown
