@@ -542,10 +542,14 @@ time_func ls -l -A /
   - main epoch stored in `/bin/crosware` or `/etc/profile` or `/recipes/common.sh`
   - `/var/epoch/recipe` stores installed recipe epoch
   - packages without deps (java, go, bin jars, etc.) have separate epoch
-- downstream upgrades...
+- downstream upgrades... - **DONE???**
   - not a full graph
   - on `crosware upgrade recipe` or `crosware upgrade-all`...
     - `local r ; cwlistreqs_${rname} | while read -r r ; do cwlistupgradable | grep -q "^${r} : " && cwupgrade_${r} || true ; done ; unset r`
+- upstream upgrades
+  - dependents
+  - actually need a graph here?
+  - hard
 
 <!--
 # vim: ft=markdown
