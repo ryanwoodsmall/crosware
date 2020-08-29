@@ -1162,6 +1162,8 @@ fi
 shift
 
 # build hash of stuff with upgrade state so we don't run them multiple times
+# XXX - this breaks `crosware run-func cwupgrade_blah`
+# XXX - need memoization of installed packages and recipes
 if [[ ${cmd} =~ ^upgrad ]] ; then
   for r in ${@} $(cwlistupgradable | awk -F: '{print $1}') ; do
     cwupgraded[${r}]=0

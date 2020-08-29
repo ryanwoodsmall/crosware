@@ -559,6 +559,9 @@ time_func ls -l -A /
     - 1 if upgradable
     - 0 if not, or upgraded
     - some overlap with `cwupgraded[${rname}]`
+- `cwsourcerecipes` should be run once
+  - safe to run/idempotent on subsequent runs
+  - speed things up?
 
 <!--
 # vim: ft=markdown
