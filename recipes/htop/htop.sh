@@ -1,9 +1,9 @@
 rname="htop"
-rver="2.2.0"
+rver="3.0.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="http://hisham.hm/${rname}/releases/${rver}/${rfile}"
-rsha256="d9d6826f10ce3887950d709b53ee1d8c1849a70fa38e91d5896ad8cbc6ba3c57"
+rurl="https://bintray.com/${rname}/source/download_file?file_path=${rfile}"
+rsha256="80366282a11058a8ef55756a659de72804404fa1f644c210a4b7c45b6c9fde3d"
 rreqs="make ncurses python3"
 
 . "${cwrecipe}/common.sh"
@@ -11,7 +11,7 @@ rreqs="make ncurses python3"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  sed -i.ORIG 's/ python/ python3/g' scripts/MakeHeader.py
+  sed -i.ORIG \"s|/usr/bin/env python.*|${cwsw}/python3/current/bin/python3|g\" scripts/MakeHeader.py
   ./configure ${cwconfigureprefix} CC=\"\${CC} \${CFLAGS} \${LDFLAGS}\"
   popd >/dev/null 2>&1
 }
