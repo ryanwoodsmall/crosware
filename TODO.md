@@ -562,6 +562,20 @@ time_func ls -l -A /
 - `cwsourcerecipes` should be run once
   - safe to run/idempotent on subsequent runs
   - speed things up?
+- common function instrumentation
+  - help find hotspots/redundancy
+  - "heavy" functions to start with, "opt-in"
+  - ```
+    declare -A cwfunccounts
+    for f in cwsourceprofile cwsourcerecipes ... ; do
+      cwfunccounts[${f}]=0
+    done
+    ...
+    function cwsourcerecipes() {
+      cwfunccounts[${FUNCNAME[@]}]=$((${cwfunccounts[${FUNCNAME[@]}]}+1))
+      ...
+    }
+    ```
 
 <!--
 # vim: ft=markdown
