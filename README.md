@@ -922,12 +922,10 @@ wc -l /tmp/astbuild.out
   - or gnu mailutils (https://www.gnu.org/software/mailutils/mailutils.html)
 - makeself (https://makeself.io/ and https://github.com/megastep/makeself - bin pkgs? with signing?)
 - man stuff
-  - stick with busybox man+groff+less or use man-db or old standard man?
-  - MANPAGER and MANPATH settings
+  - MANPATH settings
   - roffit (https://daniel.haxx.se/projects/roffit/)
 - mandown (https://github.com/Titor8115/mandown - man like markdown, markdown like man?)
 - matrixssl (https://github.com/matrixssl/matrixssl)
-- https://github.com/troglobit/merecat)
 - mcpp (http://mcpp.sourceforge.net/)
 - mercurial / hg
   - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```
