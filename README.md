@@ -662,6 +662,7 @@ wc -l /tmp/astbuild.out
   - broguece (https://github.com/tmewett/BrogueCE)
   - brogue-linux (https://github.com/CubeTheThird/brogue-linux)
   - gbrogue (https://github.com/gbelo/gBrogue)
+- bsdgames (debian - https://packages.debian.org/buster/bsdgames)
 - c9 (https://github.com/ftrvxmtrx/c9 - small 9p client/server impl)
   - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
   - https://git.sr.ht/~ft/c9
@@ -836,6 +837,7 @@ wc -l /tmp/astbuild.out
   - heimdal
   - mit
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
+- larn (short roguelike https://en.wikipedia.org/wiki/Larn_(video_game) - maintained/modern https://github.com/atsb/RL_M)
 - ldd
   - driver script
   - run toybox to figure out if musl or glibc and get dyld
