@@ -17,7 +17,7 @@ function cwconfigure_${rname}() {
     --disable-nls \
     --without-libcurl \
     --with-bzip2=\"${cwsw}/bzip2/current\" \
-    --with-readline=\"${cwsw}/readline/current\" \
+    --with-readline=\"${cwsw}/netbsdcurses/current\" \
     --with-zlib=\"${cwsw}/zlib/current\" \
       CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
       LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib\" \
