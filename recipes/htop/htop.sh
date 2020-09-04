@@ -1,9 +1,9 @@
 rname="htop"
-rver="3.0.0"
+rver="3.0.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://bintray.com/${rname}/source/download_file?file_path=${rfile}"
-rsha256="80366282a11058a8ef55756a659de72804404fa1f644c210a4b7c45b6c9fde3d"
+rsha256="e9dbf91e621216e7baab6b72ae2251b57e9d3c7b20682a826f627b618eb0fe1b"
 rreqs="make ncurses python3"
 
 . "${cwrecipe}/common.sh"
