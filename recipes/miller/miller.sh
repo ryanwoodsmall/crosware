@@ -1,9 +1,9 @@
 rname="miller"
-rver="5.9.0"
+rver="5.9.1"
 rdir="mlr-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/johnkerl/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="06d995667f48a59818979c1ca6d4192f784796f8612550e1a2b24d63a0802856"
+rsha256="fb531efe5759b99935ce420c8ad763099cf11c2db8d32e8524753f4271454b57"
 rreqs="make sed flex"
 
 . "${cwrecipe}/common.sh"
