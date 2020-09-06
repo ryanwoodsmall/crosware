@@ -12,6 +12,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   # sed -i.ORIG 's/-Werror=format=. //g' glib/configure
+  sed -i 's/-Werror=missing-include-dirs//g' glib/configure
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-internal-glib --with-system-library-path='/lib:/lib64:/usr/lib:/usr/lib64'
   popd >/dev/null 2>&1
 }
