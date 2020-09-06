@@ -1,5 +1,6 @@
 #
 # XXX - 20200902 breaks on some tests, at least with musl: opt-ignore opt-keep-going sh-dots export ...
+# XXX - ugh
 #
 
 rname="bmake"
