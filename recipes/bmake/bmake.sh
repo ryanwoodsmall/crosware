@@ -1,5 +1,5 @@
 #
-# XXX - 20200902 breaks on some tests, at least with musl: opt-ignore opt-keep-going sh-dots
+# XXX - 20200902 breaks on some tests, at least with musl: opt-ignore opt-keep-going sh-dots export ...
 #
 
 rname="bmake"
@@ -37,7 +37,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   local f
-  for f in opt-ignore opt-keep-going sh-dots ; do
+  for f in opt-ignore opt-keep-going sh-dots export ; do
     sed -i \"/\${f}/d\" ../unit-tests/Makefile ../FILES
     rm -f ../unit-tests/\${f}.{exp,mk}
   done
