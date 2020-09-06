@@ -1,3 +1,8 @@
+#
+# XXX - 20200902 breaks on some tests, at least with musl: opt-ignore opt-keep-going sh-dots
+# XXX - disable all tests with "sed -i 's/Bmake test/true/g' ../boot-strap" but, ugh, don't
+#
+
 rname="bmake"
 rver="20200710"
 rdir="${rname}-${rver}"
