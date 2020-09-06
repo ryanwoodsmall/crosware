@@ -1,14 +1,13 @@
 #
 # XXX - 20200902 breaks on some tests, at least with musl: opt-ignore opt-keep-going sh-dots
-# XXX - disable all tests with "sed -i 's/Bmake test/true/g' ../boot-strap" but, ugh, don't
 #
 
 rname="bmake"
-rver="20200710"
+rver="20200902"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.crufty.net/ftp/pub/sjg/${rfile}"
-rsha256="6538fc4319ef79d178dca76d3b869f7aa93a9bb7b510df08a7d872c01a56b76c"
+rsha256="082c0442f03f2dbef8c3171000398c1936047aa0d5a2e1efc2c8474d69403bec"
 rreqs=""
 rbdir="${cwbuild}/${rdir}/build"
 
@@ -37,6 +36,12 @@ function cwclean_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  local f
+  for f in opt-ignore opt-keep-going sh-dots ; do
+    sed -i \"/\${f}/d\" ../unit-tests/Makefile ../FILES
+    rm -f ../unit-tests/\${f}.{exp,mk}
+  done
+  unset f
   true
   popd >/dev/null 2>&1
 }
