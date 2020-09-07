@@ -2,6 +2,7 @@
 # XXX - ldflags/cppflags disabled for now
 # XXX - official mirror?
 # XXX - gitlab mirror? https://gitlab.com/felix.s-git-mirrors/quickjs
+# XXX - official github mirror, no tags? https://github.com/bellard/quickjs
 #
 
 rname="quickjs"
