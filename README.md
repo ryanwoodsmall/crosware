@@ -1223,6 +1223,7 @@ wc -l /tmp/astbuild.out
 - vera / vera++ (bitbucket? github?)
 - vifm (https://github.com/vifm/vifm)
 - vpnc
+- wasmer (https://github.com/wasmerio/wasmer - cross-platform webassembly binaries everywhere)
 - websocketd (go, https://github.com/joewalnes/websocketd)
 - wolfssh (https://github.com/wolfSSL/wolfssh)
 - xq (https://github.com/jeffbr13/xq)
