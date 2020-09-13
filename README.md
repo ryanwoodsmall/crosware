@@ -850,6 +850,7 @@ wc -l /tmp/astbuild.out
 - lemon (https://www.hwaci.com/sw/lemon/ https://www.sqlite.org/lemon.html https://sqlite.org/src/doc/trunk/doc/lemon.html)
 - levee (https://github.com/Orc/levee)
 - lf (https://github.com/gokcehan/lf - go)
+- libconfig (https://hyperrealm.github.io/libconfig/ and https://github.com/hyperrealm/libconfig)
 - libdeflate (https://sortix.org/libdeflate/)
 - libdnet (https://github.com/boundary/libdnet or up-to-date fork at https://github.com/busterb/libdnet)
   - mostly want the dnet binary
