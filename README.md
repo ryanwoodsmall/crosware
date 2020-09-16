@@ -958,6 +958,22 @@ wc -l /tmp/astbuild.out
     - `-rpath` settings?
     - lot of questions here
     - criminy...
+  - needs:
+    - python3
+    - gcc needs mpc/mpfr/gmp/isl
+    - zlib?
+    - ...
+  - links:
+    - http://www.linuxfromscratch.org/lfs/view/7.7/chapter05/gcc-pass1.html
+    - http://www.linuxfromscratch.org/blfs/view/10.0-systemd/general/llvm.html
+    - https://github.com/ziglang/zig/wiki/How-to-build-LLVM,-libclang,-and-liblld-from-source#posix
+    - https://llvm.org/docs/GettingStarted.html
+    - https://clang.llvm.org/get_started.html
+    - https://libcxx.llvm.org/docs/BuildingLibcxx.html
+    - https://compiler-rt.llvm.org/
+    - https://stackoverflow.com/questions/46905464/how-to-enable-a-llvm-backend
+    - https://releases.llvm.org/download.html
+    - https://reviews.llvm.org/D34910
 - lnav (https://github.com/tstack/lnav)
 - lobase (https://github.com/Duncaen/lobase)
 - lowzip (https://github.com/svaarala/lowzip)
