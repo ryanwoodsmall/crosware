@@ -912,6 +912,52 @@ wc -l /tmp/astbuild.out
   - roswell (https://github.com/roswell/roswell)
   - sbcl (http://sbcl.org and https://github.com/sbcl/sbcl)
 - llvm / clang
+  - this is "complicated," to put it nicely
+  - something like...
+    - build musl static+shared
+    - build gcc shared; something like:
+      ```
+      env C{XX,}FLAGS=-fPIC \
+          LDFLAGS= \
+          CPPFLAGS= \
+          ../configure \
+            --enable-languages=c,c++ \
+            --prefix=${rbdir}/llvm-stage0 \
+            --disable-multilib \
+            --disable-lto \
+            --disable-libsanitizer \
+            --disable-libgomp \
+            --host=$(${CC} -dumpmachine) \
+            --with-native-system-header-dir=${cwsw}/statictoolchain/current/$(${CC} -dumpmachine)/include
+      # may need: --without-headers ...
+      ```
+    - build llvm with new gcc; something like:
+      ```
+      env CPPFLAGS= \
+          LDFLAGS= \
+          C{XX,}FLAGS=-fPIC \
+          CC=${rbdir}/llvm-stage0/bin/gcc \
+          CXX=${rbdir}/llvm-stage0/bin/g++ \
+          cmake .. \
+            -D{CMAKE_INSTALL_PREFIX,CMAKE_PREFIX_PATH}=${rbdir}/llvm-stage0 \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DLLVM_ENABLE_LIBXML2=OFF \
+            -DCMAKE_CXX_LINK_FLAGS="-Wl,-rpath,${rbdir}/llvm-stage0/lib -L${rbdir}/llvm-stage0/lib" \
+            -DLLVM_TARGETS_TO_BUILD=X86
+      ```
+    - build lld with new gcc
+    - build clang with new gcc
+    - build libc++/libc++abi/compiler-rt with clang?/new gcc?
+    - build final dedicated musl with clang?/new gcc?
+    - build llvm with clang
+    - build lld with clang
+    - build libc++/libc++abi/libcompiler-rt with clang
+    - build clang with clang
+    - final build of all of the above with clang?
+    - dynamic linker?
+    - `-rpath` settings?
+    - lot of questions here
+    - criminy...
 - lnav (https://github.com/tstack/lnav)
 - lobase (https://github.com/Duncaen/lobase)
 - lowzip (https://github.com/svaarala/lowzip)
