@@ -878,6 +878,7 @@ wc -l /tmp/astbuild.out
   - libtompoly
   - tomsfastmath
 - libucontext (https://github.com/kaniini/libucontext)
+- libudev-zero (https://github.com/illiliti/libudev-zero)
 - libunwind (http://www.nongnu.org/libunwind/ and http://savannah.nongnu.org/projects/libunwind)
 - libusb (https://github.com/libusb/libusb)
 - libutf (https://github.com/cls/libutf)
