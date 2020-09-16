@@ -959,9 +959,11 @@ wc -l /tmp/astbuild.out
     - lot of questions here
     - criminy...
   - needs:
+    - cmake
     - python3
     - gcc needs mpc/mpfr/gmp/isl
     - zlib?
+    - ninja (supposedly faster than make)
     - ...
   - links:
     - http://www.linuxfromscratch.org/lfs/view/7.7/chapter05/gcc-pass1.html
