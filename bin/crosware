@@ -437,6 +437,10 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
   function cwlistreqs_${cwbootstraprecipe}() {
     echo \"\"
   }
+  function cwupgrade_${cwbootstraprecipe}() {
+    cwuninstall_${cwbootstraprecipe}
+    cwinstall_${cwbootstraprecipe}
+  }
   "
   cwrecipefiles[${cwbootstraprecipe}]="${cwtop}/bin/crosware"
   cwrecipeversions[${cwbootstraprecipe}]="$(cwver_${cwbootstraprecipe})"
