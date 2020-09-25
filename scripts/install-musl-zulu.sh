@@ -2,9 +2,19 @@
 
 #
 # XXX - check for musl
-# XXX - use patchelf to set dynamic loader
+# XXX - use patchelf (and file) to set dynamic loader
+#   find $cwtop/../zulu/ -type f -exec realpath {} + \
+#   | xargs $cwsw/file/current/bin/file \
+#   | tr -s ' ' \
+#   | grep 'ELF.*interpreter' \
+#   | cut -f1 -d: \
+#   | while read -r f ; do
+#       echo $f
+#       p=$cwsw/patchelf/current/bin/patchelf
+#       $p --set-interpreter /usr/local/crosware/software/statictoolchain/current/x86_64-linux-musl/lib/ld-musl-x86_64.so.1 $f
+#     done
 # XXX - remove {,/usr}/lib{,64} directory/symlink creation
-# XXX - use alpine openjdk 8/11 .apk packages instead
+# XXX - use alpine openjdk 8/11 .apk packages instead - may work on other arches!
 #
 
 # only run if we're have valid crosware
