@@ -3,19 +3,21 @@
 #
 
 rname="loksh"
-rver="6.7"
+rver="6.7.3"
 rdir="${rname}-${rver}"
-rfile="${rver}.tar.gz"
-rurl="https://github.com/dimkr/${rname}/archive/${rfile}"
-rsha256="5e921bb740348eab670160f92ec0e959ff35b5ae36db9e9ed3a1b6de3e1d7551"
-rreqs="make netbsdcurses pkgconfig"
+rfile="${rdir}.tar.xz"
+rurl="https://github.com/dimkr/${rname}/releases/download/${rver}/${rfile}"
+rsha256="4cd602feda5342d19c29d0d2143f9a1bd54822e270cfc9e51e6d60616e452010"
+rreqs="ncurses pkgconfig python3 meson ninja git"
+rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i 's/ncurses/curses terminfo/g' Makefile
+  env PATH=\"${cwsw}/{python3,meson,ninja}/current/bin:\${PATH}\" \
+    \"${cwsw}/meson/current/bin/meson\" setup --prefix=\"${ridir}\" build \"${rbdir}\"
   popd >/dev/null 2>&1
 }
 "
@@ -23,13 +25,8 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  env \
-    CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
-    LDFLAGS=\"-static -L${cwsw}/netbsdcurses/current/lib\" \
-    PKG_CONFIG_PATH=\"${cwsw}/netbsdcurses/current/lib/pkgconfig\" \
-    PKG_CONFIG_LIBDIR=\"${cwsw}/netbsdcurses/current/lib/pkgconfig\" \
-    PREFIX=\"${ridir}\" \
-      make -j${cwmakejobs}
+  env PATH=\"${cwsw}/{python3,meson,ninja}/current/bin:\${PATH}\" \
+    \"${cwsw}/ninja/current/bin/ninja\" -C build
   popd >/dev/null 2>&1
 }
 "
@@ -38,7 +35,8 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   find ${ridir}/bin/ ! -type d | grep 'sh$' | xargs rm -f
-  make install PREFIX=\"${ridir}\"
+  env PATH=\"${cwsw}/{python3,meson,ninja}/current/bin:\${PATH}\" \
+    \"${cwsw}/ninja/current/bin/ninja\" -C build install
   mv \"${ridir}/bin/ksh\" \"${ridir}/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/ksh\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/sh\"
