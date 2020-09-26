@@ -5,6 +5,7 @@ rfile="${rdir}.tar.gz"
 rurl="https://github.com/ibara/${rname}/releases/download/${rdir}/${rfile}"
 rsha256="2f5e6f5e49b91a8dfc92ae3b8bb502e4012db8e4ce0e9cb269794f558ace31aa"
 rreqs="make netbsdcurses"
+rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
