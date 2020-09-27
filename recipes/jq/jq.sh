@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/stedolan/${rname}/releases/download/${rdir}/${rfile}"
 rsha256="5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72"
-rreqs="make byacc flex oniguruma"
+rreqs="make byacc flex oniguruma configgit"
 
 . "${cwrecipe}/common.sh"
 
