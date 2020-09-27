@@ -9,6 +9,9 @@ elif [[ ${karch} =~ ^i.86$ ]] ; then
 elif [[ ${karch} =~ ^a ]] ; then
   rdir="go${rver}-arm"
   rsha256="a2ba394bb21a28a33fbb9884891132a6cfb29283104f552c998e351993be0c76"
+else
+  rdir="none"
+  rsha256="none"
 fi
 rfile="${rdir}.tar.bz2"
 rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/20191102-go1.13.4/${rfile}"
@@ -31,6 +34,9 @@ function cwextract_${rname}() {
 
 eval "
 function cwinstall_${rname}() {
+  if [[ ${karch} =~ ^riscv ]] ; then
+    cwscriptecho \"architecture not supported for recipe\"
+  fi
   cwfetch_${rname}
   cwsourceprofile
   cwextract_${rname}
