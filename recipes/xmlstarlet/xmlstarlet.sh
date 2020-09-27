@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://sourceforge.net/projects/xmlstar/files/${rname}/${rver}/${rfile}/download"
 rsha256="15d838c4f3375332fd95554619179b69e4ec91418a3a5296e7c631b7ed19e7ca"
-rreqs="make libgcrypt libgpgerror libxml2 libxslt xz zlib"
+rreqs="make libgcrypt libgpgerror libxml2 libxslt xz zlib configgit"
 
 . "${cwrecipe}/common.sh"
 
