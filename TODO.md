@@ -576,14 +576,6 @@ time_func ls -l -A /
       ...
     }
     ```
-- need a function to replace all **config.guess** and **config.sub** files if `configgit` is required
-  - similar to `slibtool` but probably called automatically from `cwconfigure_rname`
-    ```
-    function cwconfigure_${rname} {
-      cwfixupconfig_${rname}
-      ...
-    }
-    ```
 
 <!--
 # vim: ft=markdown
