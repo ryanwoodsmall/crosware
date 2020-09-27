@@ -11,8 +11,6 @@ rreqs="make configgit rlwrap"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  cat \"${cwsw}/configgit/current/config.guess\" > config.guess
-  cat \"${cwsw}/configgit/current/config.sub\" > config.sub
   ./configure ${cwconfigureprefix} \
     CFLAGS='-Wl,-static -fPIC' \
     CXXFLAGS='-Wl,-static -fPIC' \
