@@ -8,6 +8,8 @@ set -eu
 
 export TS="$(date '+%Y%m%d%H%M')"
 
+: ${EXTRA_MAKE_ARGS:=""}
+
 st="$(date)"
 
 logfile="/tmp/musl-cross-make.out"
@@ -46,7 +48,7 @@ echo "getting Makefile.arch_indep"
 curl -fkLO https://raw.githubusercontent.com/ryanwoodsmall/musl-misc/master/musl-cross-make-confs/Makefile.arch_indep
 
 echo "building compiler"
-( date ; time ( make -f Makefile.arch_indep ; echo $? ) ; date ) >>${logfile} 2>&1
+( date ; time ( make -f Makefile.arch_indep ${EXTRA_MAKE_ARGS} ; echo $? ) ; date ) >>${logfile} 2>&1
 
 et="$(date)"
 echo "finished: ${et}" >>${logfile}
