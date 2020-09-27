@@ -15,12 +15,6 @@ rreqs="make gmp liboop netbsdcurses zlib configgit"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  for c in config.{guess,sub} ; do
-    for t in \$(find . -name \${c}) ; do
-      cp \"${cwsw}/configgit/current/\${c}\" \"\${t}\"
-      chmod 755 \"\${t}\"
-    done
-  done
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --disable-assembler \
     --disable-gss \
