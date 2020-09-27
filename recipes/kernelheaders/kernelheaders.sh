@@ -1,3 +1,7 @@
+#
+# XXX - no risc-v 64-bit (riscv64) support yet...
+#
+
 rname="kernelheaders"
 rver="4.19.88"
 rdir="kernel-headers-${rver}"
