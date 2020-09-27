@@ -11,8 +11,6 @@ rreqs="make netbsdcurses configgit"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  cat \"${cwsw}/configgit/current/config.guess\" > buildaux/config.guess
-  cat \"${cwsw}/configgit/current/config.sub\" > buildaux/config.sub
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} ${cwconfigurelibopts} \
     --disable-ssl \
     --enable-editcomplete \
