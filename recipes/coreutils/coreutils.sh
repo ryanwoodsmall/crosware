@@ -27,7 +27,7 @@ function cwconfigure_${rname}() {
     --without-selinux \
       CPPFLAGS='' \
       LDFLAGS='-static'
-  uname -m | grep -q aarch64 && echo '#define SYS_getdents SYS_getdents64' >> src/ls.h || true
+  uname -m | egrep -q '(aarch|riscv)64' && echo '#define SYS_getdents SYS_getdents64' >> src/ls.h || true
   popd >/dev/null 2>&1
 }
 "
