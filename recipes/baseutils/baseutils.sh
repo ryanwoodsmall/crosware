@@ -1,3 +1,7 @@
+#
+# XXX - no riscv64 machine support in arch/uname (yet)
+#
+
 rname="baseutils"
 rver="c94996162fd53f817fee09e424150a88bdf8677a"
 rdir="baseutils-${rver}"
@@ -23,6 +27,9 @@ function cwconfigure_${rname}() {
   grep -ril 'sys/cdefs' . | xargs sed -i.ORIG 's#sys/cdefs#bsd/sys/cdefs#g'
   grep -ril 'sys/queue' . | xargs sed -i.ORIG 's#sys/queue#bsd/sys/queue#g'
   sed -i.ORIG 's/SIMPLEQ/STAILQ/g' paste/paste.c
+  if [[ ${karch} =~ riscv64 ]] ; then
+    sed -i.ORIG '/-C arch/d;/-C uname/d' Makefile
+  fi
   popd >/dev/null 2>&1
 }
 "
