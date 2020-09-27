@@ -20,9 +20,6 @@ function cwconfigure_${rname}() {
     patch -p1 < debian/patches/\${p}
   done
   unset p
-  rm -f dist/config.{sub,guess}
-  install -m 0755 ${cwsw}/configgit/current/config.sub dist/
-  install -m 0755 ${cwsw}/configgit/current/config.guess dist/
   cd build.unix
   ../dist/configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --program-prefix=n \
