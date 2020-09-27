@@ -5,7 +5,7 @@ rbdir="${cwbuild}/${rname%4}-${rver%.*}"
 rfile="${rname%4}-${rver%.*}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname%4}/${rfile}"
 rsha256="d86b3392c1202e8ff5a423b302e6284db7f8f435ea9f39b5b1b20fd3ac36dfcb"
-rreqs="make byacc sed netbsdcurses patch"
+rreqs="make byacc sed netbsdcurses patch configgit"
 # patches file
 bpfile="${cwrecipe}/${rname%4}/${rname}.patches"
 
