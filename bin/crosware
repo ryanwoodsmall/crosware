@@ -182,7 +182,7 @@ export TS
 #
 
 # architecture names and support
-supported_arches=( aarch64 armv6l armv7l armv8l i686 x86_64 )
+supported_arches=( aarch64 armv6l armv7l armv8l i686 x86_64 riscv64 )
 # qemu-x86_64 on k1om reports x86-64, this should be safe for now
 export karch="$(uname -m | tr '-' '_')"
 
@@ -268,6 +268,7 @@ zulu_jdk_arch["armv7l"]="${zulu_jdk_arch['armv6l']}"
 zulu_jdk_arch["armv8l"]="${zulu_jdk_arch['armv6l']}"
 zulu_jdk_arch["i686"]="i686"
 zulu_jdk_arch["x86_64"]="x64"
+zulu_jdk_arch["riscv64"]="none"
 
 # zulu jdk version map
 declare -A zulu_jdk_ver
@@ -277,6 +278,7 @@ zulu_jdk_ver["armv7l"]="${zulu_jdk_ver['armv6l']}"
 zulu_jdk_ver["armv8l"]="${zulu_jdk_ver['armv6l']}"
 zulu_jdk_ver["i686"]="8.48.0.53-ca-jdk8.0.265"
 zulu_jdk_ver["x86_64"]="8.48.0.53-ca-jdk8.0.265"
+zulu_jdk_ver["riscv64"]="none"
 zulu_ver="${zulu_jdk_ver[${uarch}]}"
 
 # zulu jdk file sha256sum
@@ -287,6 +289,7 @@ zulu_jdk_sha256sum["armv7l"]="${zulu_jdk_sha256sum['armv6l']}"
 zulu_jdk_sha256sum["armv8l"]="${zulu_jdk_sha256sum['armv6l']}"
 zulu_jdk_sha256sum["i686"]="4ec1407cd2af589331558a3f4be225725f8ed2be4c2c75a8453222ff1a66c3fa"
 zulu_jdk_sha256sum["x86_64"]="ed32513524b32a83b3b388831c69d1884df5675bd5069c6d1485fd1a060be209"
+zulu_jdk_sha256sum["riscv64"]="none"
 
 # zulu directory, file, and url map
 declare -A zulu_jdk_dir zulu_jdk_file zulu_jdk_url
@@ -367,6 +370,7 @@ statictoolchain_triplet["armv7l"]="${statictoolchain_triplet['armv6l']}"
 statictoolchain_triplet["armv8l"]="${statictoolchain_triplet['armv6l']}"
 statictoolchain_triplet["i686"]="i686-linux-musl"
 statictoolchain_triplet["x86_64"]="x86_64-linux-musl"
+statictoolchain_triplet["riscv64"]="riscv64-linux-musl"
 
 # architecture to version prefix
 statictoolchain_ver="${statictoolchain_release}"
@@ -377,6 +381,7 @@ statictoolchain_prefix["armv7l"]="${statictoolchain_ver}"
 statictoolchain_prefix["armv8l"]="${statictoolchain_ver}"
 statictoolchain_prefix["i686"]="${statictoolchain_ver}"
 statictoolchain_prefix["x86_64"]="${statictoolchain_ver}"
+statictoolchain_prefix["riscv64"]="${statictoolchain_ver}"
 
 # architecture to filename, urls, sha256 file, dir, ...
 declare -A statictoolchain_file statictoolchain_checksum statictoolchain_checksum_file statictoolchain_file_url statictoolchain_checksum_url statictoolchain_dir
