@@ -157,6 +157,7 @@ function cwinstall_${rname}() {
   cwcheckreqs_${rname}
   cwsourceprofile
   cwextract_${rname}
+  cwfixupconfig_${rname}
   cwconfigure_${rname}
   cwmake_${rname}
   cwmakeinstall_${rname}
@@ -220,6 +221,7 @@ if [[ ${rreqs} =~ configgit ]] ; then
     local c l
     for c in config.{guess,sub} ; do
       for l in \$(find . -name \${c}) ; do
+        cwscriptecho \"- \${l}\"
         cat \"${cwsw}/configgit/current/\${c}\" > \"\${l}\"
       done
     done
