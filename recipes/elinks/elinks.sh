@@ -18,8 +18,6 @@ rreqs="make perl openssl zlib bzip2 expat xz autoconf automake libtool m4 gettex
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  cat \"${cwsw}/configgit/current/config.guess\" > config/config.guess
-  cat \"${cwsw}/configgit/current/config.sub\" > config/config.sub
   sed -i.ORIG '1i\\
 #define lua_strlen lua_rawlen' src/scripting/lua/hooks.c
   env PATH=\"${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH}\" \
