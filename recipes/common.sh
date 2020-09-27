@@ -211,3 +211,26 @@ function cwupgradereqs_${rname}() {
   unset u
 }
 "
+
+if [[ ${rreqs} =~ configgit ]] ; then
+  eval "
+  function cwfixupconfig_${rname}() {
+    cwscriptecho \"fixing up config files\"
+    pushd \"${rbdir}\" >/dev/null 2>&1
+    local c l
+    for c in config.{guess,sub} ; do
+      for l in \$(find . -name \${c}) ; do
+        cat \"${cwsw}/configgit/current/\${c}\" > \"\${l}\"
+      done
+    done
+    unset c l
+    popd >/dev/null 2>&1
+  }
+  "
+else
+  eval "
+  function cwfixupconfig_${rname}() {
+    true
+  }
+  "
+fi
