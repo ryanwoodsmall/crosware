@@ -16,10 +16,6 @@ rreqs="make ncurses configgit"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  mv config.guess{,.ORIG}
-  mv config.sub{,.ORIG}
-  install -m 0755 ${cwsw}/configgit/current/config.sub config.sub
-  install -m 0755 ${cwsw}/configgit/current/config.guess config.guess
   ./configure ${cwconfigureprefix} \
     --enable-wizardmode \
     --enable-scorefile=${rtdir}/rogue.scr \
