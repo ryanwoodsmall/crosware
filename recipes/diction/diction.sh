@@ -11,12 +11,6 @@ rreqs="make configgit gettexttiny"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  local c=''
-  for c in config.{guess,sub} ; do
-    mv \${c}{,.ORIG}
-    install -m 0755 ${cwsw}/configgit/current/\${c} \${c}
-  done
-  unset c
   ./configure ${cwconfigureprefix} CC=\"\${CC}\" CFLAGS=-Wl,-static LDFLAGS=-static
   popd >/dev/null 2>&1
 }
