@@ -12,10 +12,6 @@ eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   cd config
-  mv config.sub{,.ORIG}
-  mv config.guess{,.ORIG}
-  install -m 0755 ${cwsw}/configgit/current/config.sub config.sub
-  install -m 0755 ${cwsw}/configgit/current/config.guess config.guess
   cd ..
   sed -i.ORIG 's/GNUC/GNUC_OFF/g' src/lexi.c
   sed -i.ORIG '/SUBDIRS/ s/doc//g' Makefile.in Makefile.am
