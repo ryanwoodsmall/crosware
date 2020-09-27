@@ -12,9 +12,6 @@ rbdir="${cwbuild}/${rdir}/build"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  rm -f config.{guess,sub}
-  install -m 0755 ${cwsw}/configgit/current/config.sub ./
-  install -m 0755 ${cwsw}/configgit/current/config.guess ./
   sed -i.ORIG 's/VI.pm)$/VI.pm || true/g' Makefile.in
   env \
     CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
