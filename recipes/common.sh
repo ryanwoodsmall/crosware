@@ -222,6 +222,7 @@ if [[ ${rreqs} =~ configgit ]] ; then
     for c in config.{guess,sub} ; do
       for l in \$(find . -name \${c}) ; do
         cwscriptecho \"- \${l}\"
+        chmod 755 \"\${l}\"
         cat \"${cwsw}/configgit/current/\${c}\" > \"\${l}\"
       done
     done
