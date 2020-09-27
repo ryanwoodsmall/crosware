@@ -1,3 +1,7 @@
+#
+# XXX - can't use cwfixupconfig_${rname} here due to weird layout of dist/build/etc.
+#
+
 rname="bdb47"
 rver="4.7.25.NC"
 rdir="db-${rver}"
