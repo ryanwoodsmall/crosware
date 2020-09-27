@@ -37,12 +37,6 @@ function cwextract_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  for c in config.{guess,sub} ; do
-    for t in \$(find . -name \${c}) ; do
-      cp \"${cwsw}/configgit/current/\${c}\" \"\${t}\"
-      chmod 755 \"\${t}\"
-    done
-  done
   cat \"${cwdl}/${rname}/${rname}-${rver}_localoptions.h\" > localoptions.h
   cwscriptecho 'patching localoptions.h'
   sed -i \"s#/opt/${rname}#${rtdir}#g\" localoptions.h
