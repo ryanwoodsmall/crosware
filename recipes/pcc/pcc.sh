@@ -45,12 +45,6 @@ function cwconfigure_${rname}() {
   local t=\"${cwsw}/muslstandalone/current\"
   local m=\"\$(\${t}/bin/musl-gcc -dumpmachine)\"
   local c d
-  for c in config.{guess,sub} ; do
-    for d in . ${rname}-libs-${rver} ; do
-      rm -f \${d}/\${c}
-      install -m 0755 ${cwsw}/configgit/current/\${c} \${d}/\${c}
-    done
-  done
   env CPPFLAGS= LDFLAGS=-static CC=\"${cwsw}/muslstandalone/current/bin/musl-gcc -DUSE_MUSL\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --disable-stripping \
