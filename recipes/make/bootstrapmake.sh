@@ -4,7 +4,7 @@ rdir="${rname//bootstrap/}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://ftp.gnu.org/gnu/${rname//bootstrap/}/${rfile}"
 rsha256="d6e262bf3601b42d2b1e4ef8310029e1dcf20083c5446b4b7aa67081fdffc589"
-rreqs=""
+rreqs="configgit"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
