@@ -19,6 +19,9 @@ elif [[ ${karch} =~ ^aarch64 ]] ; then
 elif [[ ${karch} =~ ^arm ]] ; then
   rdir="${rname}${rver}-arm"
   rsha256="e00a69622b161c9281cb4b4e0c2d2901d0bab4dd7be7346558e735e565925401"
+elif [[ ${karch} =~ ^riscv64 ]] ; then
+  rdir="${rname}${rver}-riscv64"
+  rsha256="ba319e611008911e7442404c253ad9588749c64d1d59829967411febc811edce"
 fi
 rfile="${rdir}.tar.bz2"
 rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/20200912-${rname}${rver}/${rfile}"
