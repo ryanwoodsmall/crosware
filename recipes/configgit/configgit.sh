@@ -1,5 +1,6 @@
 #
 # XXX - provide an update function to rename/move config.sub/config.guess and copy new ones in?
+#       cwfixupconfig_${rname}()
 #
 # XXX - cgit or gitweb?
 #     - cgit for now
