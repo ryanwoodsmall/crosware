@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="ftp://sourceware.org/pub/${rname}/${rfile}"
 rsha256="d06ebb8e1d9a22d19e38d63fdb83954253f39bedc5d46232a05645685722ca37"
-rreqs="make"
+rreqs="make configgit"
 
 . "${cwrecipe}/common.sh"
 
