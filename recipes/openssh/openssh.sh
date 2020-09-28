@@ -15,7 +15,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${rfile}"
 rsha256="5a01d22e407eb1c05ba8a8f7c654d388a13e9f226e4ed33bd38748dafa1d2b24"
-rreqs="make zlib netbsdcurses"
+rreqs="make zlib netbsdcurses groff"
 
 ## figure out which ssl provider to use
 #if $(uname -r | cut -f1 -d. | grep -q '^2$') ; then
