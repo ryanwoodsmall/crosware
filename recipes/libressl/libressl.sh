@@ -8,7 +8,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${rfile}"
 rsha256="414c149c9963983f805a081db5bd3aec146b5f82d529bb63875ac941b25dcbb6"
-rreqs="make cacertificates"
+rreqs="make cacertificates configgit"
 # prefer openssl for now
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
