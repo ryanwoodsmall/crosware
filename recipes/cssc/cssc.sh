@@ -4,7 +4,7 @@ rdir="CSSC-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="d1bed0c80246ee4cd49d0aa45307c075d0876fe531057bb1c8b28f5330d651ef"
-rreqs="make sed"
+rreqs="make sed configgit"
 
 . "${cwrecipe}/common.sh"
 
