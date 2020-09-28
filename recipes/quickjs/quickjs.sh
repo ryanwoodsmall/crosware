@@ -3,6 +3,7 @@
 # XXX - official mirror?
 # XXX - gitlab mirror? https://gitlab.com/felix.s-git-mirrors/quickjs
 # XXX - official github mirror, no tags? https://github.com/bellard/quickjs
+# XXX - undefined atomic_... errors on riscv64: https://github.com/riscv/riscv-gnu-toolchain/issues/183
 #
 
 rname="quickjs"
