@@ -18,6 +18,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+    --disable-nls \
     --with-system-zlib \
     --with-static-standard-libraries \
     --with-pic \
