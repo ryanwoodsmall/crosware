@@ -8,7 +8,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="849d96f136effdef69548a940e3e0ec0624fc0c81265296987986a0dd36ded37"
-rreqs="make sed ncurses readline"
+rreqs="make sed ncurses readline configgit"
 
 . "${cwrecipe}/common.sh"
 
