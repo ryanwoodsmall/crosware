@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="6985c538143c1208dcb1ac42cedad6ff52e267b47e5f970183a3e75125b43c2e"
-rreqs="make gmp mpfr"
+rreqs="make gmp mpfr configgit"
 
 . "${cwrecipe}/common.sh"
 
