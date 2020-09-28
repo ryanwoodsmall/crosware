@@ -1,9 +1,9 @@
 rname="grep"
-rver="3.4"
+rver="3.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="58e6751c41a7c25bfc6e9363a41786cff3ba5709cf11d5ad903cf7cce31cc3fb"
+rsha256="b82ac77707c2ab945520c8404c9fa9f890f7791a62cf2103cf6238acad87a44a"
 rreqs="make pcre sed"
 
 . "${cwrecipe}/common.sh"
@@ -11,7 +11,7 @@ rreqs="make pcre sed"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} --program-prefix=g
+  ./configure ${cwconfigureprefix} --program-prefix=g --disable-nls
   popd >/dev/null 2>&1
 }
 "
