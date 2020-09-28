@@ -12,10 +12,10 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
-  CPPFLAGS=\"-I${cwsw}/libevent/current/include -I${cwsw}/netbsdcurses/current/include\" \
-  LDFLAGS=\"-L${cwsw}/libevent/current/lib -L${cwsw}/netbsdcurses/current/lib -static\" \
-  LIBS=\"-lcurses -lterminfo\" \
-  YACC=byacc
+    CPPFLAGS=\"-I${cwsw}/libevent/current/include -I${cwsw}/netbsdcurses/current/include\" \
+    LDFLAGS=\"-L${cwsw}/libevent/current/lib -L${cwsw}/netbsdcurses/current/lib -static\" \
+    LIBS=\"-lcurses -lterminfo\" \
+    YACC=byacc
   popd >/dev/null 2>&1
 }
 "
