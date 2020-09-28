@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
 rsha256="1393abd9adcf0762d34798dc34fdcf4d0d22a8410721e76f1e3afcd1daa4e2d1"
-rreqs="make slibtool"
+rreqs="make slibtool configgit"
 
 . "${cwrecipe}/common.sh"
 
