@@ -11,7 +11,7 @@ rreqs="make sed flex bison ncurses readline gettexttiny"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --enable-libgdbm-compat
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --enable-libgdbm-compat --disable-nls
   popd >/dev/null 2>&1
 }
 "
