@@ -35,7 +35,8 @@ function cwextract_${rname}() {
 eval "
 function cwinstall_${rname}() {
   if [[ ${karch} =~ ^riscv ]] ; then
-    cwscriptecho \"architecture not supported for recipe\"
+    cwscriptecho \"architecture ${karch} not supported for recipe\"
+    return
   fi
   cwfetch_${rname}
   cwsourceprofile
