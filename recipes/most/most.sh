@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.jedsoft.org/releases/${rname}/${rfile}"
 rsha256="db805d1ffad3e85890802061ac8c90e3c89e25afb184a794e03715a3ed190501"
-rreqs="make slang"
+rreqs="make slang configgit"
 
 . "${cwrecipe}/common.sh"
 
