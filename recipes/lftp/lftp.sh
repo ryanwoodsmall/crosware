@@ -1,9 +1,10 @@
 rname="lftp"
-rver="4.9.1"
+rver="4.9.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
-rurl="http://lftp.yar.ru/ftp/${rfile}"
-rsha256="5969fcaefd102955dd882f3bcd8962198bc537224749ed92f206f415207a024b"
+#rurl="http://lftp.yar.ru/ftp/${rfile}"
+rurl="https://sources.voidlinux.org/${rdir}/${rfile}"
+rsha256="c517c4f4f9c39bd415d7313088a2b1e313b2d386867fe40b7692b83a20f0670d"
 rreqs="make slibtool ncurses readline openssl zlib pkgconfig expat"
 
 . "${cwrecipe}/common.sh"
