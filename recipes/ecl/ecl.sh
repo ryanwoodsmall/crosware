@@ -1,3 +1,7 @@
+#
+# XXX - no riscv64 support yet due to gc
+#
+
 rname="ecl"
 rver="20.4.24"
 rdir="${rname}-${rver}"
@@ -8,7 +12,7 @@ rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
-if [[ ${karch} =~ ^armv ]] ; then
+if [[ ${karch} =~ ^(armv|riscv64) ]] ; then
 eval "
 function cwinstall_${rname}() {
   cwscriptecho \"recipe ${rname} does not support architecture ${karch}\"
