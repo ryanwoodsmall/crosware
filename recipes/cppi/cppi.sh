@@ -9,6 +9,14 @@ rreqs="make sed flex"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} --disable-nls
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
