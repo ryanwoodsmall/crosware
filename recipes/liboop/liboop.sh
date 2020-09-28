@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://ftp.lysator.liu.se/pub/${rname}/${rfile}"
 rsha256="56af16ad65e7397dadc8268e37ff6f67431db390c60c75e21a33e12b0e0d17e0"
-rreqs="make netbsdcurses"
+rreqs="make netbsdcurses configgit"
 
 . "${cwrecipe}/common.sh"
 
