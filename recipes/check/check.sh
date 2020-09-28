@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/libcheck/${rname}/releases/download/${rver}/${rfile}"
 rsha256="a8de4e0bacfb4d76dd1c618ded263523b53b85d92a146d8835eb1a52932fa20a"
-rreqs="make gawk"
+rreqs="make gawk configgit"
 
 . "${cwrecipe}/common.sh"
 
