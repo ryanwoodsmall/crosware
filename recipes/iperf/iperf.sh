@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://sourceforge.net/projects/iperf2/files/${rfile}"
 rsha256="c88adec966096a81136dda91b4bd19c27aae06df4d45a7f547a8e50d723778ad"
-rreqs="make"
+rreqs="make configgit"
 
 . "${cwrecipe}/common.sh"
 
