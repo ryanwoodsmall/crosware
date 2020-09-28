@@ -40,7 +40,7 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwinstall_${rname}() {
-  if [[ ${karch} =~ ^i.86 ]] ; then
+  if [[ ${karch} =~ ^(i.86|riscv64) ]] ; then
     cwscriptecho \"${rname} does not support ${karch}\"
     return
   fi
