@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
 rsha256="a5e4e5c66a99b6039fa7ee3741ac80f3f6c4cff47dc9e0ff1692ae73e13751ca"
-rreqs="make"
+rreqs="make configgit"
 
 . "${cwrecipe}/common.sh"
 
