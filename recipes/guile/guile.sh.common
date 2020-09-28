@@ -10,9 +10,11 @@
 #   make:
 #     make -j${cwmakejobs} || make -j${cwmakejobs}
 #
+# XXX - no gc on riscv64
+#
 
 # broken static gc on 32b
-if [[ ${karch} =~ ^(i.86|armv) ]] ; then
+if [[ ${karch} =~ ^(i.86|armv|riscv64) ]] ; then
 eval "
 function cwinstall_${rname}() {
   cwscriptecho \"recipe ${rname} does not support architecture ${karch}\"
