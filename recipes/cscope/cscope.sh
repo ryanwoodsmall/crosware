@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://prdownloads.sourceforge.net/${rname}/${rfile}"
 rsha256="4889d091f05aa0845384b1e4965aa31d2b20911fb2c001b2cdcffbcb7212d3af"
-rreqs="make ncurses bison flex"
+rreqs="make ncurses bison flex configgit"
 
 . "${cwrecipe}/common.sh"
 
