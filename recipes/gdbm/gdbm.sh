@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="86e613527e5dba544e73208f42b78b7c022d4fa5a6d5498bf18c8d6f745b91dc"
-rreqs="make sed flex bison ncurses readline gettexttiny"
+rreqs="make sed flex bison ncurses readline gettexttiny configgit"
 
 . "${cwrecipe}/common.sh"
 
