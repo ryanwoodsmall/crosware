@@ -30,6 +30,7 @@ function cwconfigure_${rname}() {
   sed -i '/^PROGS.*test_fib/s/PROGS/DISABLED_/g' Makefile
   sed -i '/^PROGS=/s/run-test262//g' Makefile
   sed -i \"/^CFLAGS_OPT=/s/-O2/-O2 \${CFLAGS}/g\" Makefile
+  sed -i 's/-lpthread/-lpthread -latomic/g' Makefile
   popd >/dev/null 2>&1
 }
 "
