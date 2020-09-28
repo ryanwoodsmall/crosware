@@ -1,3 +1,7 @@
+#
+# XXX - no gc on riscv64 yet
+#
+
 rname="gauche"
 rver="0.9.9"
 rdir="${rname//g/G}-${rver}"
@@ -7,6 +11,14 @@ rsha256="4ca9325322a7efadb9680d156eb7b53521321c9ca4955c4cbe738bc2e1d7f7fb"
 rreqs="make openssl rlwrap"
 
 . "${cwrecipe}/common.sh"
+
+if [[ ${karch} =~ ^riscv64 ]] ; then
+eval "
+function cwinstall_${rname}() {
+  cwscriptecho \"recipe ${rname} does not support architecture ${karch}\"
+}
+"
+fi
 
 eval "
 function cwconfigure_${rname}() {
