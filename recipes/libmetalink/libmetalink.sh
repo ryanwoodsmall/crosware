@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/metalink-dev/${rname}/releases/download/release-${rver}/${rfile}"
 rsha256="86312620c5b64c694b91f9cc355eabbd358fa92195b3e99517504076bf9fe33a"
-rreqs="make sed expat"
+rreqs="make sed expat configgit"
 
 . "${cwrecipe}/common.sh"
 
