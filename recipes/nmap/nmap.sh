@@ -12,6 +12,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure --prefix=\"${ridir}\" \
+    --disable-nls \
     --with-ndiff \
     --with-openssl=\"${cwsw}/openssl/current\" \
     --with-libdnet=included \
