@@ -16,6 +16,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
+    --disable-nls \
     --with-ssl=openssl \
     --with-metalink \
     --with-openssl=yes \
