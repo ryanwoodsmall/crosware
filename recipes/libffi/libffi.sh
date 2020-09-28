@@ -1,9 +1,9 @@
 rname="libffi"
-rver="3.2.1"
+rver="3.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="ftp://sourceware.org/pub/${rname}/${rfile}"
-rsha256="d06ebb8e1d9a22d19e38d63fdb83954253f39bedc5d46232a05645685722ca37"
+rsha256="72fba7922703ddfa7a028d513ac15a85c8d54c8d67f55fa5a4802885dc652056"
 rreqs="make configgit"
 
 . "${cwrecipe}/common.sh"
