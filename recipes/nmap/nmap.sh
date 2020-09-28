@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://nmap.org/dist/${rfile}"
 rsha256="fcfa5a0e42099e12e4bf7a68ebe6fde05553383a682e816a7ec9256ab4773faa"
-rreqs="make openssl python2 zlib slibtool"
+rreqs="make openssl python2 zlib slibtool configgit"
 
 . "${cwrecipe}/common.sh"
 
