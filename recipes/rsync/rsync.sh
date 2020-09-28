@@ -7,11 +7,11 @@
 #
 
 rname="rsync"
-rver="3.2.2"
+rver="3.2.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://download.samba.org/pub/${rname}/src/${rfile}"
-rsha256="644bd3841779507665211fd7db8359c8a10670c57e305b4aab61b4e40037afa8"
+rsha256="becc3c504ceea499f4167a260040ccf4d9f2ef9499ad5683c179a697146ce50e"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
