@@ -23,6 +23,8 @@
 #     CXXFLAGS=\"\${CXXFLAGS//-Wl,-static/} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -DIGNORE_DYNAMIC_LOADING\" \
 #     LDFLAGS=\"\${LDFLAGS//-static/}\"
 #
+# XXX - riscv64 __data_start issue: https://github.com/ivmai/bdwgc/issues/294
+#
 
 rname="gc"
 rver="8.0.4"
