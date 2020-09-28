@@ -4,7 +4,7 @@ rdir="libatomic_ops-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ivmai/libatomic_ops/releases/download/v${rver}/${rfile}"
 rsha256="587edf60817f56daf1e1ab38a4b3c729b8e846ff67b4f62a6157183708f099af"
-rreqs="make"
+rreqs="make configgit"
 
 . "${cwrecipe}/common.sh"
 
