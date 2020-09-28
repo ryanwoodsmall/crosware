@@ -3,11 +3,11 @@
 #
 
 rname="loksh"
-rver="6.7.3"
+rver="6.7.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/dimkr/${rname}/releases/download/${rver}/${rfile}"
-rsha256="4cd602feda5342d19c29d0d2143f9a1bd54822e270cfc9e51e6d60616e452010"
+rsha256="c9232571689154a229242b61bde58d6c564cb1316ee5e2bd479e10df1f89c987"
 rreqs="ncurses pkgconfig python3 meson ninja git"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
