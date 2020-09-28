@@ -11,7 +11,7 @@ rreqs="make sed configgit"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix}
+  ./configure ${cwconfigureprefix} --disable-nls
   echo '#include <sys/sysmacros.h>' >> config.h
   popd >/dev/null 2>&1
 }
