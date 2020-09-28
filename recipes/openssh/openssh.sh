@@ -46,6 +46,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwuninstall_${rname}() {
+  test -e \"${rtdir}\" || return
   pushd \"${rtdir}\" >/dev/null 2>&1
   rm -rf ${rname}-* current previous
   rm -f \"${rprof}\"
