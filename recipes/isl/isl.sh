@@ -5,7 +5,7 @@ rfile="${rdir}.tar.bz2"
 #rurl="https://gcc.gnu.org/pub/gcc/infrastructure/${rfile}"
 rurl="http://isl.gforge.inria.fr/${rfile}"
 rsha256="d18ca11f8ad1a39ab6d03d3dcb3365ab416720fcb65b42d69f34f51bf0a0e859"
-rreqs="make gmp mpfr mpc"
+rreqs="make gmp mpfr mpc configgit"
 
 . "${cwrecipe}/common.sh"
 
