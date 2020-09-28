@@ -14,6 +14,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} \
     --disable-extensions \
     --disable-mpfr \
+    --disable-nls \
     --without-readline
   popd >/dev/null 2>&1
 }
