@@ -15,6 +15,8 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} \
     --with-jobdir=\"${cwtop}/var/spool/at/atjobs\" \
     --with-atspool=\"${cwtop}/var/spool/at/atspool\" \
+    --with-daemon_username=\"\${USER}\" \
+    --with-daemon_groupname=\"\${GROUPS[0]}\" \
       YACC=\"${cwsw}/byacc/current/bin/byacc\" \
       LIBS=-lrefl
   cat parsetime.y > parsetime.y.ORIG
