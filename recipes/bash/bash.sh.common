@@ -1,42 +1,6 @@
 eval "
-function cwfetch_${rname}() {
-  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
-  local p u f s
-  if [ -e \"${bpfile}\" ] ; then
-    cwscriptecho \"${rname}: found patchlist file ${bpfile}\"
-    for p in \$(cat ${bpfile}) ; do
-      u=\${p%%,*}
-      f=\"${cwdl}/${rname}/\$(basename \${u})\"
-      s=\${p##*,}
-      cwfetchcheck \"\${u}\" \"\${f}\" \"\${s}\"
-    done
-  fi
-  unset f u p s
-}
-"
-
-eval "
-function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  local p
-  local f
-  if [ -e \"${bpfile}\" ] ; then
-    cwscriptecho \"${rname}: found patchlist file ${bpfile}\"
-    cut -f1 -d, ${bpfile} | while read -r p ; do
-      f=\"${cwdl}/${rname}/\$(basename \${p})\"
-      cwscriptecho \"${rname}: applying patch \${f}\"
-      \"${cwsw}/patch/current/bin/patch\" -p0 < \"\${f}\"
-    done
-  fi
-  unset p f
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  cwpatch_${rname}
   ./configure ${cwconfigureprefix} \
     --disable-nls \
     --disable-separate-helpfiles \
