@@ -1254,6 +1254,7 @@ wc -l /tmp/astbuild.out
   - really only useful in container?
   - ```
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+      --disable-log-server \
       --disable-nls \
       --with-env-editor \
       --without-pam \
