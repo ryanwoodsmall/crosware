@@ -1306,6 +1306,7 @@ wc -l /tmp/astbuild.out
 - vpnc
 - wasmer (https://github.com/wasmerio/wasmer - cross-platform webassembly binaries everywhere)
 - websocketd (go, https://github.com/joewalnes/websocketd)
+- websockify (https://github.com/novnc/websockify)
 - wolfssh (https://github.com/wolfSSL/wolfssh)
 - xq (https://github.com/jeffbr13/xq)
 - xxhash (https://github.com/Cyan4973/xxHash)
