@@ -24,6 +24,7 @@ function cwconfigure_${rname}() {
   #sed -i '/INSTALL.*etcdir/d' Makefile.in
   ./configure ${cwconfigureprefix} \
     --with-etcdir=\"${cwtop}/var/etc\" \
+    --runstatedir=\"${cwtop}/var/run\" \
     --with-jobdir=\"${cwtop}/var/spool/at/atjobs\" \
     --with-atspool=\"${cwtop}/var/spool/at/atspool\" \
     --with-daemon_username=\"\${u}\" \
