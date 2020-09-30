@@ -1248,6 +1248,7 @@ wc -l /tmp/astbuild.out
 - suckless
   - quark (https://tools.suckless.org/quark/)
   - sinit (https://core.suckless.org/sinit/)
+- sudo (https://www.sudo.ws/)
 - sundown (markdown lib - https://github.com/vmg/sundown)
 - svi (https://github.com/byllgrim/svi)
 - tab (https://tkatchev.bitbucket.io/tab/)
