@@ -718,6 +718,11 @@ wc -l /tmp/astbuild.out
 - emulation stuff
   - gxemul
   - qemu
+    - glib (ugh), pixman, python
+    - sys/signal.h -> signal.h
+    - sys/poll.h -> poll.h
+    - https://git.alpinelinux.org/aports/tree/community/qemu
+    - https://bugs.gentoo.org/714106
 - entr (http://entrproject.org/)
 - eris (https://github.com/nealey/eris - small web server)
 - finit (https://github.com/troglobit/finit)
