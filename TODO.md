@@ -298,22 +298,31 @@
   - graph would come in handy here, again
   - this sort of relies on a downstream requirement tracker and ability to rebuild dependents
 - recipe patching
+  - patch handling...
+    - working but needs tweaks
+    - if `${cwtop}/recipes/${rname}/${rname}.patches` exists, fetch - `cwfetchpatches_${rname}`, call from `cwinstall_${rname}`
+    - apply after `cwextract_${rname}`, before `cwconfigure_${rname}`, flesh out `cwpatch_${rname}` cw_...
+    - split patch lines on ','
+    - last element **must** be patch level
+    - `s=$(echo ${line} | tr , ' ') ; if [ ${#s[@]} == 3 ] ; c=${s[2]} ; else c=0 ; fi`
+      - just pass the dang context
+    - readline is good new dev, bash for existing
   - AVOID AS MUCH AS POSSIBLE
     - _sed_ in ```cwconfigure_${rname}``` is easy enough
     - sucks for patch series though
   - dummy, unreferenced ```cwpatch_${rname}``` and ```cwfetchpatches_${rname}``` for now
   - bash/bash4 recipes have working implementations
-    - **bash.patches** and **bash4.patches** have comma-separted patch urls and sha256sums
+    - **bash.patches** and **bash4.patches** have comma-separted patch urls and sha256sums and context
   - really needs to be bundled in ```cwinstall_${rname}```? before configure?
   - generalize **recipe.patches** files
     - url
       - generate filename (for direct-download files) with something like ```basename ${patchfileurl} | xargs basename | tr '[:punct:]' ' ' | sed 's/ /./;s/ /_/g'```
-    - context (not in bash stuff for now, they are always _-p0_, cannot count on this)
+      - make filename just `${sha256sum}.patch`??? - XXX may make sense...
     - sha256sum
     - need a relative path from the top of **${rdir}**?
-    - ???
     - just apply in order
     - need to pick a delimiter
+      - `,`
 - cpu translation table
   - x86-64 (qemu)
   - armv8l
@@ -433,11 +442,6 @@ time_func ls -l -A /
   - check by package
   - hash is quicker
   - eliminate expensive calls to get/list installed if possible
-- patch handling...
-  - if ${cwtop}/recipes/${rname}/${rname}.patches, fetch - cwfetchpatches_${rname}, call from cwfetch_${rname}
-  - apply after extract cwconfigure_${rname}, flesh out cwpatch_${rname}
-  - split patch lines on ',' - if ${#s[@]} == 3, last element should be patch level, default to 0
-  - readline is good new dev, bash for existing
 - cwisancestor / cwisdescendant
   - cwisancestor a b
     - if b requires a
