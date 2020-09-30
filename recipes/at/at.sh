@@ -23,6 +23,7 @@ function cwconfigure_${rname}() {
   sed -i \"/INSTALL/s/-o root/-o \${UID}/g\" Makefile.in
   #sed -i '/INSTALL.*etcdir/d' Makefile.in
   sed -i.ORIG 's,PIDDIR=/var/run,PIDDIR=${cwtop}/var/run,g' configure
+  sed -i 's,/var/spool/cron,${cwtop}/var/spool/cron,g' configure
   ./configure ${cwconfigureprefix} \
     --localstatedir=\"${cwtop}/var\" \
     --runstatedir=\"${cwtop}/var/run\" \
@@ -33,9 +34,9 @@ function cwconfigure_${rname}() {
     --with-daemon_groupname=\"\${g}\" \
       YACC=\"${cwsw}/byacc/current/bin/byacc\" \
       LIBS=-lrefl
-  cat parsetime.y > parsetime.y.ORIG
-  echo '#define is_leap_year(y) ((y) % 4 == 0 && ((y) % 100 != 0 || (y) % 400 == 0))' >> parsetime.y
-  sed -i.ORIG 's/__isleap/is_leap_year/g' parsetime.y
+  #cat parsetime.y > parsetime.y.ORIG
+  #echo '#define is_leap_year(y) ((y) % 4 == 0 && ((y) % 100 != 0 || (y) % 400 == 0))' >> parsetime.y
+  #sed -i.ORIG 's/__isleap/is_leap_year/g' parsetime.y
   unset u g
   popd >/dev/null 2>&1
 }
