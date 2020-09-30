@@ -21,3 +21,5 @@
 !/var/spool/crosware_directory_not_tracked_in_git
 /var/etc/*
 !/var/etc/crosware_directory_not_tracked_in_git
+/var/run/*
+!/var/run/crosware_directory_not_tracked_in_git
