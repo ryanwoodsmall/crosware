@@ -137,27 +137,69 @@ function cwlinkdir_${rname}() {
 }
 "
 
-# XXX - noop for now
-eval "
-function cwpatch_${rname}() {
-  true
-}
-"
-
-eval "
-function cwfetchpatches_${rname}() {
-  true
-}
-"
+if [ ! -e "${rpfile}" ] ; then
+  eval "
+  function cwfetchpatches_${rname}() {
+    true
+  }
+  "
+  eval "
+  function cwpatch_${rname}() {
+    true
+  }
+  "
+else
+  eval "
+  function cwfetchpatches_${rname}() {
+    local p
+    local f
+    local c
+    local l
+    local s
+    cwscriptecho \"${rname}: found patchlist file ${rpfile}\"
+    cat \"${rpfile}\" | while IFS=\"\$(printf '\n')\" read -r l ; do
+      c=\"\$(echo \"\${l}\" | awk -F, '{print \$NF}')\"
+      s=\"\$(echo \"\${l}\" | awk -F, '{print \$(NF-1)}')\"
+      p=\"\$(echo \"\${l}\" | sed \"s/,\${s},\${c}//g\")\"
+      f=\"${cwdl}/${rname}/\$(basename \${p})\"
+      cwfetchcheck \"\${p}\" \"\${f}\" \"\${s}\"
+    done
+    unset p f c l s
+  }
+  "
+  eval "
+  function cwpatch_${rname}() {
+    pushd \"${rbdir}\" >/dev/null 2>&1
+    local p
+    local f
+    local c
+    local l
+    local s
+    cwscriptecho \"${rname}: found patchlist file ${rpfile}\"
+    cat \"${rpfile}\" | while IFS=\"\$(printf '\n')\" read -r l ; do
+      c=\"\$(echo \"\${l}\" | awk -F, '{print \$NF}')\"
+      s=\"\$(echo \"\${l}\" | awk -F, '{print \$(NF-1)}')\"
+      p=\"\$(echo \"\${l}\" | sed \"s/,\${s},\${c}//g\")\"
+      f=\"${cwdl}/${rname}/\$(basename \${p})\"
+      cwscriptecho \"${rname}: applying patch \${f} with strip level \${c}\"
+      patch -p\${c} < \"\${f}\"
+    done
+    unset p f c l s
+    popd >/dev/null 2>&1
+  }
+  "
+fi
 
 eval "
 function cwinstall_${rname}() {
   cwcheckuniq \"\${FUNCNAME[@]}\"
   cwclean_${rname}
   cwfetch_${rname}
+  cwfetchpatches_${rname}
   cwcheckreqs_${rname}
   cwsourceprofile
   cwextract_${rname}
+  cwpatch_${rname}
   cwfixupconfig_${rname}
   cwconfigure_${rname}
   cwmake_${rname}
