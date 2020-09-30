@@ -1255,6 +1255,7 @@ wc -l /tmp/astbuild.out
   - ```
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
       --disable-nls \
+      --with-env-editor \
       --without-pam \
       --without-skey \
       --sysconfdir=${cwtop}/var/etc \
