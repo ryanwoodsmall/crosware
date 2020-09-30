@@ -14,6 +14,7 @@ function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG 's/-o root -g root/-g root -o root/g' Makefile.in
   sed -i \"/INSTALL/s/-g root -o root/-g \${GROUPS[0]} -o \${UID}/g\" Makefile.in
+  sed -i \"/INSTALL/s/-o root/-o \${UID}/g\" Makefile.in
   #sed -i '/INSTALL.*etcdir/d' Makefile.in
   ./configure ${cwconfigureprefix} \
     --with-etcdir=\"${cwtop}/var/etc\" \
