@@ -10,6 +10,7 @@
 : ${rconfigureopts:=""}
 : ${rcommonopts:=""}
 : ${rurl:=""}
+: ${rpfile:="${cwdl}/${rname}/${rname}.patches"}
 
 if [[ ${rlibtool} == "" && ${rreqs} =~ slibtool ]] ; then
   rlibtool="LIBTOOL='${cwsw}/slibtool/current/bin/slibtool-static -all-static'"
