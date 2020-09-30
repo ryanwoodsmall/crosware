@@ -14,8 +14,9 @@ function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG 's/-o root -g root/-g root -o root/g' Makefile.in
   sed -i \"/INSTALL/s/-g root -o root/-g \${GROUPS[0]} -o \${UID}/g\" Makefile.in
-  sed -i '/INSTALL.*etcdir/d' Makefile.in
+  #sed -i '/INSTALL.*etcdir/d' Makefile.in
   ./configure ${cwconfigureprefix} \
+    --with-etcdir=\"${cwtop}/var/etc\" \
     --with-jobdir=\"${cwtop}/var/spool/at/atjobs\" \
     --with-atspool=\"${cwtop}/var/spool/at/atspool\" \
     --with-daemon_username=\"\${UID}\" \
