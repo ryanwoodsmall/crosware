@@ -1249,6 +1249,19 @@ wc -l /tmp/astbuild.out
   - quark (https://tools.suckless.org/quark/)
   - sinit (https://core.suckless.org/sinit/)
 - sudo (https://www.sudo.ws/)
+  - require `slibtool` for static build
+  - configuration, ugh
+  - really only useful in container?
+  - ```
+    ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+      --disable-nls \
+      --without-pam \
+      --without-skey \
+      --sysconfdir=${cwtop}/var/etc \
+      --localstatedir=${cwtop}/var \
+      --disable-shared-libutil \
+      --enable-static-sudoers
+    ```
 - sundown (markdown lib - https://github.com/vmg/sundown)
 - svi (https://github.com/byllgrim/svi)
 - tab (https://tkatchev.bitbucket.io/tab/)
