@@ -1,3 +1,6 @@
+#
+# XXX - hideous uid/user figuring
+#
 rname="at"
 rver="3.1.23"
 rdir="${rname}-${rver}"
@@ -12,6 +15,9 @@ rreqs="make byacc reflex configgit"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  local u g
+  u=\$(cut -f1,3 -d: /etc/passwd | grep \${UID}\$ | cut -f1 -d: | head -1)
+  g=\$(cut -f1,3 -d: /etc/group | grep \${GROUPS[0]}\$ | cut -f1 -d: | head -1)
   sed -i.ORIG 's/-o root -g root/-g root -o root/g' Makefile.in
   sed -i \"/INSTALL/s/-g root -o root/-g \${GROUPS[0]} -o \${UID}/g\" Makefile.in
   sed -i \"/INSTALL/s/-o root/-o \${UID}/g\" Makefile.in
@@ -20,13 +26,14 @@ function cwconfigure_${rname}() {
     --with-etcdir=\"${cwtop}/var/etc\" \
     --with-jobdir=\"${cwtop}/var/spool/at/atjobs\" \
     --with-atspool=\"${cwtop}/var/spool/at/atspool\" \
-    --with-daemon_username=\"\${UID}\" \
-    --with-daemon_groupname=\"\${GROUPS[0]}\" \
+    --with-daemon_username=\"\${u}\" \
+    --with-daemon_groupname=\"\${g}\" \
       YACC=\"${cwsw}/byacc/current/bin/byacc\" \
       LIBS=-lrefl
   cat parsetime.y > parsetime.y.ORIG
   echo '#define is_leap_year(y) ((y) % 4 == 0 && ((y) % 100 != 0 || (y) % 400 == 0))' >> parsetime.y
   sed -i.ORIG 's/__isleap/is_leap_year/g' parsetime.y
+  unset u g
   popd >/dev/null 2>&1
 }
 "
