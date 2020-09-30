@@ -2,11 +2,11 @@
 # XXX - hideous uid/user figuring
 #
 rname="at"
-rver="3.1.23"
+rver="3.2.1"
 rdir="${rname}-${rver}"
 rfile="${rname}_${rver}.orig.tar.gz"
-rurl="http://ftp.debian.org/debian/pool/main/a/${rname}/${rfile}"
-rsha256="97450aa954aaa8a70218cc8e61a33df9fee9f86527e9f861de302fb7a3c81710"
+rurl="http://software.calhariz.com/${rname}/${rfile}"
+rsha256="aabe6e5cb6dd19fe9fb25c2747492f2db38762b95ea41b86f949609c39fb55c4"
 rreqs="make byacc reflex configgit"
 
 . "${cwrecipe}/common.sh"
