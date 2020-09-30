@@ -356,6 +356,9 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - gdbm
 - gettexttiny
 - git
+- glib (https://wiki.gnome.org/Projects/GLib)
+  - old version
+  - new version requires meson, ninja, thus python3
 - global
 - gmp
 - gnupg (with ntbtls - https://gnupg.org/software/index.html)
@@ -1343,11 +1346,6 @@ wc -l /tmp/astbuild.out
 
 - bsdheaders (https://github.com/bonsai-linux/bsd-headers - from bonsai linux, workaround DECLS for cdefs.h)
   - upstream repo went missing
-- glib (https://wiki.gnome.org/Projects/GLib)
-  - old version
-  - used for opennc, which was broken and supplanted by libressl's nc
-  - new version requires meson, ninja, thus python3
-  - disabling for now, may revisit later
 - loksh (https://github.com/dimkr/loksh - netbsdcurses)
   - moved to meson+lolibc, mksh and oksh work fine
 - opennc (openbsd netcat http://systhread.net/coding/opennc.php)

@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="http://ftp.gnome.org/pub/gnome/sources/glib/${rver%.*}/${rfile}"
 rsha256="8f43c31767e88a25da72b52a40f3301fefc49a665b56dc10ee7cc9565cbe7481"
-rreqs="gettexttiny libffi make perl pkgconfig python2 zlib autoconf automake libtool slibtool m4"
+rreqs="gettexttiny libffi make perl pkgconfig python3 zlib autoconf automake libtool slibtool m4 configgit"
 
 . "${cwrecipe}/common.sh"
 
@@ -24,7 +24,7 @@ EOF
     --disable-gtk-doc \
     --disable-compile-warnings \
     --disable-fam \
-    --with-python=\"${cwsw}/python2/current/bin/python2.7\"
+    --with-python=\"${cwsw}/python3/current/bin/python3\"
   popd >/dev/null 2>&1
 }
 "
