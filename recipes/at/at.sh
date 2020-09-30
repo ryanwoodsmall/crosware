@@ -22,6 +22,7 @@ function cwconfigure_${rname}() {
   sed -i \"/INSTALL/s/-g root -o root/-g \${GROUPS[0]} -o \${UID}/g\" Makefile.in
   sed -i \"/INSTALL/s/-o root/-o \${UID}/g\" Makefile.in
   #sed -i '/INSTALL.*etcdir/d' Makefile.in
+  sed -i.ORIG 's,PIDDIR=/var/run,PIDDIR=${cwtop}/var/run,g' configure
   ./configure ${cwconfigureprefix} \
     --localstatedir=\"${cwtop}/var\" \
     --runstatedir=\"${cwtop}/var/run\" \
