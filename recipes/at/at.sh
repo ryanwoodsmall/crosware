@@ -12,10 +12,11 @@ rreqs="make byacc reflex configgit"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  sed -i.ORIG \"/INSTALL/s/-g root -o root/-g \${GROUPS[0]} -o \${UID}/g\" Makefile.in
   ./configure ${cwconfigureprefix} \
     --with-jobdir=\"${cwtop}/var/spool/at/atjobs\" \
     --with-atspool=\"${cwtop}/var/spool/at/atspool\" \
-    --with-daemon_username=\"\${USER}\" \
+    --with-daemon_username=\"\${UID}\" \
     --with-daemon_groupname=\"\${GROUPS[0]}\" \
       YACC=\"${cwsw}/byacc/current/bin/byacc\" \
       LIBS=-lrefl
