@@ -18,9 +18,12 @@ function cwconfigure_${rname}() {
   cat include/pidfd-utils.h.ORIG >> include/pidfd-utils.h
   sed -i '/defined.*__linux/s/$/ \\&\\& defined(SYS_pidfd_send_signal)/g' include/pidfd-utils.h
   sed -i.ORIG '/READLINE_LIBS/ s/-lreadline/-lreadline -lncurses -lncursesw/g' configure
+  local pcp=\"${cwsw}/ncurses/current/lib/pkgconfig:\${PKG_CONFIG_PATH}\"
+  local pcl=\"${cwsw}/ncurses/current/lib/pkgconfig:\${PKG_CONFIG_LIBDIR}\"
   env \
-    PKG_CONFIG_PATH=\"${cwsw}/ncurses/current/lib/pkgconfig:\${PKG_CONFIG_PATH}\" \
-    PKG_CONFIG_LIBDIR=\"${cwsw}/ncurses/current/lib/pkgconfig:\${PKG_CONFIG_LIBDIR}\" \
+    PKG_CONFIG_PATH=\"\${pcp}\" \
+    PKG_CONFIG_LIBDIR=\"\${pcl}\" \
+    PATH=\"${cwsw}/ncurses/current/bin:\${PATH}\" \
       ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
         --disable-makeinstall-chown \
         --disable-makeinstall-setuid \
@@ -37,6 +40,7 @@ function cwconfigure_${rname}() {
         --without-systemd \
           LIBS='-lreadline -lncurses -lncursesw' \
           LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\"
+  unset pcp pcl
   popd >/dev/null 2>&1
 }
 "
