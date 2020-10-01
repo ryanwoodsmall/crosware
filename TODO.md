@@ -580,6 +580,10 @@ time_func ls -l -A /
       ...
     }
     ```
+- username/primary group getters
+  - `at` recipe has basic version
+  - given `${UID}`, get the `${USER}`
+  - given `${UID}`, get the primary `${GID}` (`${GROUPS[0]}`?), and get the `${GROUPNAME}`
 
 <!--
 # vim: ft=markdown
