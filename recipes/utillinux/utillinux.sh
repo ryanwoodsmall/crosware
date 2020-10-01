@@ -19,8 +19,8 @@ function cwconfigure_${rname}() {
   sed -i '/defined.*__linux/s/$/ \\&\\& defined(SYS_pidfd_send_signal)/g' include/pidfd-utils.h
   sed -i.ORIG '/READLINE_LIBS/ s/-lreadline/-lreadline -lncurses -lncursesw/g' configure
   env \
-    PKG_CONFIG_PATH=\"${cwsw}/software/ncurses/current/lib/pkgconfig:\${PKG_CONFIG_PATH}\"
-    PKG_CONFIG_LIBDIR=\"${cwsw}/software/ncurses/current/lib/pkgconfig:\${PKG_CONFIG_LIBDIR}\"
+    PKG_CONFIG_PATH=\"${cwsw}/software/ncurses/current/lib/pkgconfig:\${PKG_CONFIG_PATH}\" \
+    PKG_CONFIG_LIBDIR=\"${cwsw}/software/ncurses/current/lib/pkgconfig:\${PKG_CONFIG_LIBDIR}\" \
       ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
         --disable-makeinstall-chown \
         --disable-makeinstall-setuid \
