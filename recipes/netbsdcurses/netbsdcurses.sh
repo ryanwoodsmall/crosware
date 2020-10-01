@@ -30,8 +30,8 @@ function cwfetch_${rname}() {
 eval "
 function cwextract_${rname}() {
   cwextract \"${rdlfile}\" \"${cwbuild}\"
-  cwextract \"${cwdl}/readline/readline-\$(cwver_readline).tar.gz\" \"${rbdir}\"
-  cwextract \"${cwdl}/libedit/libedit-\$(cwver_libedit).tar.gz\" \"${rbdir}\"
+  cwextract \"\$(cwdlfile_readline)\" \"${rbdir}\"
+  cwextract \"\$(cwdlfile_libedit)\" \"${rbdir}\"
 }
 "
 
@@ -92,7 +92,7 @@ function cwmakeinstall_${rname}() {
 eval "
 function cwmakeinstall_${rname}_readline() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  cd readline-\$(cwver_readline)/
+  cd \"\$(cwdir_readline)\"
   env PATH=\"${ridir}/bin:\${PATH}\" ./configure \
     ${cwconfigureprefix} \
     ${cwconfigurelibopts} \
@@ -112,7 +112,7 @@ function cwmakeinstall_${rname}_readline() {
 eval "
 function cwmakeinstall_${rname}_libedit() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  cd libedit-\$(cwver_libedit)/
+  cd \"\$(cwdir_libedit)\"
   env PATH=\"${ridir}/bin:\${PATH}\" ./configure \
     ${cwconfigureprefix} \
     ${cwconfigurelibopts} \
