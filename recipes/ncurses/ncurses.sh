@@ -31,7 +31,7 @@ function cwbuild_${rname}() {
     --without-shared \
     --without-cxx-shared \
     --enable-pc-files \
-    --with-pkg-config-libdir=${ridir}/lib \
+    --with-pkg-config-libdir=${ridir}/lib/pkgconfig \
     --with-pkg-config=${cwsw}/pkgconfig/current/bin/pkg-config \
       ${cwconfigurefpicopts}
   make -j${cwmakejobs}
@@ -41,7 +41,7 @@ function cwbuild_${rname}() {
     --without-shared \
     --without-cxx-shared \
     --enable-pc-files \
-    --with-pkg-config-libdir=${ridir}/lib \
+    --with-pkg-config-libdir=${ridir}/lib/pkgconfig \
     --with-pkg-config=${cwsw}/pkgconfig/current/bin/pkg-config \
     --enable-widec \
       ${cwconfigurefpicopts}
