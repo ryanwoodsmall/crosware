@@ -21,6 +21,7 @@ function cwgenprofd_${rname}() {
   echo 'append_cppflags \"-I${rtdir}/current/include\"' >> "${rprof}"
   echo 'append_cppflags \"-I${rtdir}/current/include/${rname}\"' >> "${rprof}"
   echo 'append_cppflags \"-I${rtdir}/current/include/${rname}w\"' >> "${rprof}"
+  echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
 }
 "
 
