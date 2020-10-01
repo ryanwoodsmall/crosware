@@ -10,7 +10,7 @@ rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d"
 # cmp, use toybox
-rreqs="make toybox sed"
+rreqs="make toybox sed pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
@@ -27,11 +27,24 @@ function cwgenprofd_${rname}() {
 eval "
 function cwbuild_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} --without-shared -without-cxx-shared --enable-pc-files ${cwconfigurefpicopts}
+  ./configure ${cwconfigureprefix} \
+    --without-shared \
+    --without-cxx-shared \
+    --enable-pc-files \
+    --with-pkg-config-libdir=${ridir}/lib \
+    --with-pkg-config=${cwsw}/pkgconfig/current/bin/pkg-config \
+      ${cwconfigurefpicopts}
   make -j${cwmakejobs}
   make install
   make clean
-  ./configure ${cwconfigureprefix} --without-shared -without-cxx-shared --enable-pc-files --enable-widec ${cwconfigurefpicopts}
+  ./configure ${cwconfigureprefix} \
+    --without-shared \
+    --without-cxx-shared \
+    --enable-pc-files \
+    --with-pkg-config-libdir=${ridir}/lib \
+    --with-pkg-config=${cwsw}/pkgconfig/current/bin/pkg-config \
+    --enable-widec \
+      ${cwconfigurefpicopts}
   make -j${cwmakejobs}
   make install
   for v in 6.0 6.1 ; do
