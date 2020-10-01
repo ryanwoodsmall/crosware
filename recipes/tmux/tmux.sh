@@ -15,7 +15,9 @@ function cwconfigure_${rname}() {
     CPPFLAGS=\"-I${cwsw}/libevent/current/include -I${cwsw}/netbsdcurses/current/include\" \
     LDFLAGS=\"-L${cwsw}/libevent/current/lib -L${cwsw}/netbsdcurses/current/lib -static\" \
     LIBS=\"-lcurses -lterminfo\" \
-    YACC=byacc
+    YACC=byacc \
+    PKG_CONFIG_LIBDIR= \
+    PKG_CONFIG_PATH=
   popd >/dev/null 2>&1
 }
 "
