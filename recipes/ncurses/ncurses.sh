@@ -27,11 +27,11 @@ function cwgenprofd_${rname}() {
 eval "
 function cwbuild_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} --without-shared -without-cxx-shared ${cwconfigurefpicopts}
+  ./configure ${cwconfigureprefix} --without-shared -without-cxx-shared --enable-pc-files ${cwconfigurefpicopts}
   make -j${cwmakejobs}
   make install
   make clean
-  ./configure ${cwconfigureprefix} --without-shared -without-cxx-shared --enable-widec ${cwconfigurefpicopts}
+  ./configure ${cwconfigureprefix} --without-shared -without-cxx-shared --enable-pc-files --enable-widec ${cwconfigurefpicopts}
   make -j${cwmakejobs}
   make install
   for v in 6.0 6.1 ; do
