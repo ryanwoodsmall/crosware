@@ -493,6 +493,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - pcre2
 - perl
 - pinentry (curses via ncurses, tty)
+- pixman (http://www.pixman.org/ and https://www.cairographics.org/releases/)
 - pkgconfig
 - python
   - python2 (very basic support)
@@ -1132,20 +1133,6 @@ wc -l /tmp/astbuild.out
   - _/usr/share/misc/pci.ids_ file (https://github.com/pciutils/pciids)
 - pdsh (https://github.com/chaos/pdsh or https://github.com/grondo/pdsh ?)
 - picocom (https://github.com/npat-efault/picocom)
-- pixman (http://www.pixman.org/ and https://www.cairographics.org/releases/)
-  - ```
-    ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
-      --disable-gtk \
-      --disable-libpng \
-      --disable-mmx \
-      --disable-sse2 \
-      --disable-ssse3 \
-      --disable-vmx \
-      --disable-arm-simd \
-      --disable-arm-neon \
-      --disable-arm-iwmmxt \
-      --disable-arm-iwmmxt2
-    ```
 - pigz
 - plan9port (without x11; necessary? already have stripped down suckless 9base)
 - planck (clojurescript repl, https://github.com/planck-repl/planck)
