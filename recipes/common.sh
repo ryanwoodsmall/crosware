@@ -158,6 +158,9 @@ else
     local s
     cwscriptecho \"${rname}: found patchlist file ${rpfile}\"
     cat \"${rpfile}\" | while IFS=\"\$(printf '\n')\" read -r l ; do
+      if [[ \${l} =~ ^# ]] ; then
+        continue
+      fi
       c=\"\$(echo \"\${l}\" | awk -F, '{print \$NF}')\"
       s=\"\$(echo \"\${l}\" | awk -F, '{print \$(NF-1)}')\"
       p=\"\$(echo \"\${l}\" | sed \"s/,\${s},\${c}//g\")\"
@@ -177,6 +180,9 @@ else
     local s
     cwscriptecho \"${rname}: found patchlist file ${rpfile}\"
     cat \"${rpfile}\" | while IFS=\"\$(printf '\n')\" read -r l ; do
+      if [[ \${l} =~ ^# ]] ; then
+        continue
+      fi
       c=\"\$(echo \"\${l}\" | awk -F, '{print \$NF}')\"
       s=\"\$(echo \"\${l}\" | awk -F, '{print \$(NF-1)}')\"
       p=\"\$(echo \"\${l}\" | sed \"s/,\${s},\${c}//g\")\"
