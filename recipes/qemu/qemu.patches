@@ -1,0 +1,15 @@
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/0006-linux-user-signal.c-define-__SIGRTMIN-MAX-for-non-GN.patch,6d9c75b3efcc00d8ec363f8d0ca2d21975dd91f1c81cc752c6ead1bc4dc99fe7,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/0001-linux-user-fix-build-with-musl-on-aarch64.patch,f9449b25e3708d0060120c4f25a0219e7820c40ffac3585be7ea4ae2fc4b1f64,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/musl-F_SHLCK-and-F_EXLCK.patch,ec5e2bd34636c47f464c6b9efd01e487a7b81602c8b598df6efe8d8ceed0c2e5,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/fix-sigevent-and-sigval_t.patch,5bd5723873af643406b250641e7eaa248ce728b8caf8e761e219728f59ce6072,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/xattr_size_max.patch,a0c21e70495ac249e3dfcba7420eebe044c6cccc5a8bdc5b635d89ca2e2eac7f,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/ncurses.patch,f24b9492f208d386edc5a7a5222906e4816733348e0c557c09ce813bbd80be92,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/ignore-signals-33-and-64-to-allow-golang-emulation.patch,d093d1261760ac5d60419cf5ba4a180f3b216931d700c792cddd24fe0076e865,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/0001-linux-user-fix-build-with-musl-on-ppc64le.patch,762e83603aabbb8ca9bfa02bd24c73c9989edfc924313c0afc15f5374509ab3f,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/MAP_SYNC-fix.patch,1d51cfa710ff595ebe284afeef61fe95b1988dfb36d0a5865e8c71f0d42d649e,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/fix-sockios-header.patch,1414f75dad68465eb8a315ee38900a702f0ee8f2dd63e2d92a6890018ea85e40,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/test-crypto-ivgen-skip-essiv.patch,c9f9520977bbf4b420ced45b799c54260989d938055af07ebd305abc72c5b112,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/guest-agent-shutdown.patch,f099b44a6fa8d50b494e2ae1aefa9561414ee7a5d6c8ba8814bc01d8e8a72bf3,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/0001-virtio-host-input-use-safe-64-bit-time-accessors-for.patch,ba282d5870254f36fac2f390b1b4c7a695c88fe10b4e900701f5a6a4efd35a01,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/0002-virtio-user-input-use-safe-64-bit-time-accessors-for.patch,bc776e4ecfec56ebcd794a80f3297179f7479c386c46ef72b019e9f051e08383,1
+https://github.com/alpinelinux/aports/raw/8ffc0fe905f21e472724f58b101d61271a6571ff/community/qemu/0001-usb-fix-setup_len-init.patch,0809e5351ebea5c17e52b3f4724e4506c0fd32bb75dbc69287f8708e63139531,1

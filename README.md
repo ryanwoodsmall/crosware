@@ -499,6 +499,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - python2 (very basic support)
   - python3 (wip)
 - qemacs (https://bellard.org/qemacs/)
+- qemuuser (https://www.qemu.org/ - linux userspace only for now)
 - quickjs (https://bellard.org/quickjs/)
 - rc (http://tobold.org/article/rc, https://github.com/rakitzis/rc - needs to be git hash, currently old release)
 - rcs (gnu)
@@ -721,14 +722,6 @@ wc -l /tmp/astbuild.out
   - `LIBXML2_LIBS='-lxml2 -lz -lz -llzma'`
 - emulation stuff
   - gxemul
-  - qemu
-    - glib (ugh), pixman, python
-    - sys/signal.h -> signal.h
-    - sys/poll.h -> poll.h
-    - https://git.alpinelinux.org/aports/tree/community/qemu
-    - https://bugs.gentoo.org/714106
-    - `./configure --prefix=\"${ridir}\" --static --disable-pie --enable-linux-user --disable-system --disable-docs`
-    - `make -j$(nproc) CPP="${CC} -E"`
 - entr (http://entrproject.org/)
 - eris (https://github.com/nealey/eris - small web server)
 - finit (https://github.com/troglobit/finit)
