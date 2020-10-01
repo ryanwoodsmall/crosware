@@ -1,3 +1,8 @@
+#
+# XXX - rename to qemu-${ARCH}-static like debian/ubuntu
+# XXX - register: https://raw.githubusercontent.com/qemu/qemu/master/scripts/qemu-binfmt-conf.sh
+#
+
 rname="qemuuser"
 rver="5.1.0"
 rdir="${rname%%user}-${rver}"
