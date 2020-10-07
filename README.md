@@ -1195,6 +1195,7 @@ wc -l /tmp/astbuild.out
   - oaklisp (https://github.com/barak/oaklisp)
   - racket
   - rscheme (http://www.rscheme.org/rs)
+  - s7 (https://ccrma.stanford.edu/software/snd/snd/s7.html)
   - scheme2c (https://github.com/barak/scheme2c)
   - scm (http://people.csail.mit.edu/jaffer/SCM.html)
   - sigscheme (https://github.com/uim/sigscheme)
