@@ -1,0 +1,45 @@
+#!/bin/bash
+#
+# simple path functions
+#   https://github.com/ryanwoodsmall/shell-ish/blob/master/lib/path-functions.sh
+#
+append_path() {
+  if $(echo ${PATH} | tr ':' '\n' | grep -q -- "^${1}$") ; then
+    return
+  fi
+  export PATH="${PATH}:${1}"
+}
+prepend_path() {
+  export PATH="${1}:${PATH}"
+}
+append_cppflags() {
+  if $(echo ${CPPFLAGS} | tr ' ' '\n' | grep -q -- "^${1}$") ; then
+    return
+  fi
+  export CPPFLAGS="${CPPFLAGS} ${1}"
+}
+prepend_cppflags() {
+  export CPPFLAGS="${1} ${CPPFLAGS}"
+}
+append_ldflags() {
+  if $(echo ${LDFLAGS} | tr ' ' '\n' | grep -q -- "^${1}$") ; then
+    return
+  fi
+  export LDFLAGS="${LDFLAGS} ${1}"
+}
+prepend_ldflags() {
+  export LDFLAGS="${1} ${LDFLAGS}"
+}
+append_pkgconfigpath() {
+  if $(echo ${PKG_CONFIG_PATH} | tr ':' '\n' | grep -q -- "^${1}$") ; then
+    return
+  fi
+  export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:${1}"
+  export PKG_CONFIG_PATH="${PKG_CONFIG_PATH//::/:}"
+  export PKG_CONFIG_LIBDIR="${PKG_CONFIG_PATH}"
+}
+prepend_pkgconfigpath() {
+  export PKG_CONFIG_PATH="${1}:${PKG_CONFIG_PATH}"
+  export PKG_CONFIG_PATH="${PKG_CONFIG_PATH//::/:}"
+  export PKG_CONFIG_LIBDIR="${PKG_CONFIG_PATH}"
+}

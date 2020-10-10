@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# top-level crosware stuff
+: ${cwetcdir:="/usr/local/crosware/etc"}
+export cwetc="${cwetcdir}"
+export cwtop="$(cd "${cwetcdir}"/.. && pwd)"
+export cwbindir="${cwtop}/bin"
+export cwsw="${cwtop}/software"
+
+# CPPFLAGS - includes
+: ${CPPFLAGS:=""}
+export CPPFLAGS
+
+# LDFLAGS - libraries
+: ${LDFLAGS:=""}
+export LDFLAGS
+
+# pkg-config
+: ${PKG_CONFIG_LIBDIR:=""}
+: ${PKG_CONFIG_PATH:=""}
+export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH
