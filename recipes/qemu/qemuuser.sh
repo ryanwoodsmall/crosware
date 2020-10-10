@@ -36,7 +36,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} ${rlibtool} CPP=\"\${CC}\"
+  make -j${cwmakejobs} ${rlibtool} CPP=\"\${CC} -E\"
   popd >/dev/null 2>&1
 }
 "
