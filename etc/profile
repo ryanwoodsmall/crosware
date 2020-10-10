@@ -19,8 +19,26 @@ else
   export cwetcdir="$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)"
 fi
 
+# top-level vars and path functions
 . "${cwetcdir}/vars"
 . "${cwetcdir}/functions"
+
+# dev/compilation environment vars
+#
+# XXX - should these be tested/set in their associated append_/prepend_ functions?
+#
+# CPPFLAGS - includes
+: ${CPPFLAGS:=""}
+export CPPFLAGS
+
+# LDFLAGS - libraries
+: ${LDFLAGS:=""}
+export LDFLAGS
+
+# pkg-config
+: ${PKG_CONFIG_LIBDIR:=""}
+: ${PKG_CONFIG_PATH:=""}
+export PKG_CONFIG_LIBDIR PKG_CONFIG_PATH
 
 # add our bin dir to our path
 append_path "${cwbindir}"
