@@ -918,6 +918,7 @@ wc -l /tmp/astbuild.out
   - sbcl (http://sbcl.org and https://github.com/sbcl/sbcl)
 - llvm / clang
   - this is "complicated," to put it nicely
+    - opens up rust, emscripten, zig, etc.
   - something like...
     - build musl static+shared
     - build gcc shared; something like:
