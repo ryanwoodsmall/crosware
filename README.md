@@ -777,6 +777,7 @@ wc -l /tmp/astbuild.out
   - groovy (included in sdkman)
   - hg4j and client wrapper (https://github.com/nathansgreen/hg4j)
   - java-repl
+  - jbang (https://www.jbang.dev/ - in sdkman)
   - jikes (dead but useful?)
   - jline
   - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
