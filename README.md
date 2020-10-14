@@ -636,6 +636,7 @@ wc -l /tmp/astbuild.out
 - b2sum (https://github.com/dchest/b2sum)
 - babashka (https://github.com/borkdude/babashka - clojure+shell?)
 - bashdb (http://bashdb.sourceforge.net/ - bash debugger)
+- basher (https://github.com/basherpm/basher - bash script package manager)
 - bic (https://github.com/hexagonal-sun/bic - c repl)
 - big data stuff
   - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
@@ -660,6 +661,7 @@ wc -l /tmp/astbuild.out
       --disable-shared-library \
       --build-targets=static,cli
     ```
+- bpkg (http://www.bpkg.sh/ and https://github.com/bpkg/bpkg - bash package manager)
 - brotli (https://github.com/google/brotli)
 - brogue stuff
   - brogue (https://github.com/tsadok/brogue)
