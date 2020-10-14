@@ -1231,7 +1231,8 @@ wc -l /tmp/astbuild.out
     - AT&T AST fork
     - uses old AST build system which is pretty much a non-starter on musl
     - for now anyway
-  - mrsh (https://mrsh.sh/)
+  - mrsh (https://mrsh.sh/ - https://git.sr.ht/~emersion/mrsh and https://github.com/emersion/mrsh)
+    - imrsh (https://git.sr.ht/~sircmpwn/imrsh - interactive mrsh)
   - rc (muennich's rakitzis fork https://github.com/muennich/rc)
   - scsh (https://scsh.net)
   - sh (https://github.com/mvdan/sh - shell parser/formatter in go)
