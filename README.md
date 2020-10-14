@@ -1014,6 +1014,7 @@ wc -l /tmp/astbuild.out
 - mesalink (https://mesalink.io/ and https://github.com/mesalock-linux/mesalink)
 - mgksh (https://github.com/ibara/mgksh - static ksh and mg (emacs) from openbsd in a single bin)
 - mkcert (https://github.com/FiloSottile/mkcert)
+- micro (https://micro-editor.github.io/ and https://github.com/zyedidia/micro - go terminal editor)
 - micropython (https://github.com/micropython/micropython)
   - needs python, git, libffi, pkgconfig, make, mbedtls
   - clone repo (single tag, **--depth 1**, **--single-branch**, etc.); i.e., for 1.10:
@@ -1232,6 +1233,7 @@ wc -l /tmp/astbuild.out
   - mrsh (https://mrsh.sh/)
   - rc (muennich's rakitzis fork https://github.com/muennich/rc)
   - scsh (https://scsh.net)
+  - sh (https://github.com/mvdan/sh - shell parser/formatter in go)
   - tcsh (and/or standard csh)
   - zsh
 - shellcheck (https://www.shellcheck.net/ and https://github.com/koalaman/shellcheck - haskell)
