@@ -643,6 +643,7 @@ wc -l /tmp/astbuild.out
   - hbase (version?)
   - spark (included in sdkman)
 - binfmt-support (https://git.savannah.gnu.org/cgit/binfmt-support.git - ???)
+- blake2 (https://github.com/BLAKE2/BLAKE2)
 - boost (...)
   - ```./bootstrap.sh --prefix=${ridir} --without-icu ; ./b2 --prefix=${ridir} --layout=system -q link=static install```
   - it's like a 100MB tgz, 700MB extracted, 900MB during build, 190MB installed
