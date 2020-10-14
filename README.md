@@ -672,6 +672,7 @@ wc -l /tmp/astbuild.out
 - c9 (https://github.com/ftrvxmtrx/c9 - small 9p client/server impl)
   - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
   - https://git.sr.ht/~ft/c9
+- build-scripts (https://github.com/noloader/Build-Scripts - useful versions, packaging, etc. stuff)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
