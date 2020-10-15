@@ -58,7 +58,7 @@ function cwconfigure_${rname}() {
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
     --with-ca-fallback \
-      LIBS='-lexpat'
+      LIBS='-L${cwsw}/expat/current/lib -lexpat'
   popd >/dev/null 2>&1
 }
 "
