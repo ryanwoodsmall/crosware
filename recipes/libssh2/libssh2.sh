@@ -24,7 +24,7 @@ function cwconfigure_${rname}() {
   #sed -i.ORIG '/Libs: /s/$/ -lssl -lcrypto -lz/g' libssh2.pc
   sed -i.ORIG 's/Requires.private/Requires/g' libssh2.pc
   sed -i.ORIG 's#${ridir}#${rtdir}/current#g' libssh2.pc
-  sed -i.ORIG '/^Libs:/s|\$| -L${cwsw}/openssl/curren/lib -lssl -lcrypto -L${cwsw}/zlib/current/lib -lz|g' libssh2.pc
+  sed -i.ORIG '/^Libs:/s|\$| -L${cwsw}/openssl/current/lib -lssl -lcrypto -L${cwsw}/zlib/current/lib -lz|g' libssh2.pc
   grep -ril '<sys/poll.h>' . | xargs sed -i.ORIG 's#<sys/poll.h>#<poll.h>#g'
   popd >/dev/null 2>&1
 }
