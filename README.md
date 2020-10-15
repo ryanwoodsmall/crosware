@@ -670,10 +670,11 @@ wc -l /tmp/astbuild.out
   - brogue-linux (https://github.com/CubeTheThird/brogue-linux)
   - gbrogue (https://github.com/gbelo/gBrogue)
 - bsdgames (debian - https://packages.debian.org/buster/bsdgames)
+- build-scripts (https://github.com/noloader/Build-Scripts - useful versions, packaging, etc. stuff)
 - c9 (https://github.com/ftrvxmtrx/c9 - small 9p client/server impl)
   - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
   - https://git.sr.ht/~ft/c9
-- build-scripts (https://github.com/noloader/Build-Scripts - useful versions, packaging, etc. stuff)
+- c-ares (https://github.com/c-ares/c-ares)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
@@ -1108,6 +1109,8 @@ wc -l /tmp/astbuild.out
   - libnsfb (https://www.netsurf-browser.org/projects/libnsfb/)
 - nfs-utils (http://git.linux-nfs.org/?p=steved/nfs-utils.git;a=summary and https://mirrors.edge.kernel.org/pub/linux/utils/nfs-utils/)
 - nghttp2 (https://github.com/nghttp2/nghttp2)
+- nghttp3 (https://github.com/ngtcp2/nghttp3)
+- ngtcp2 (https://github.com/ngtcp2/ngtcp2)
 - nnn (https://github.com/jarun/nnn)
 - node / npm (ugh)
 - noice (https://git.2f30.org/noice/)
