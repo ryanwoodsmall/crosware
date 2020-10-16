@@ -1229,6 +1229,7 @@ wc -l /tmp/astbuild.out
   - ypsilon (http://www.littlewingpinball.net/mediawiki/index.php/Ypsilon)
 - sc-im (https://github.com/andmarti1424/sc-im - sc spreadsheet improved)
 - sed-bin (https://github.com/lhoursquentin/sed-bin - posix sed to c??? cool)
+- selfdock (https://github.com/anordal/selfdock - container alike)
 - shells?
   - es (https://github.com/wryun/es-shell)
   - fish
