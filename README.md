@@ -736,6 +736,8 @@ wc -l /tmp/astbuild.out
 - geomyidae (http://r-36.net/scm/geomyidae/ - gopher server)
 - gdb
 - git-crypt (https://github.com/AGWA/git-crypt)
+- gmni (https://sr.ht/~sircmpwn/gmni/ and https://git.sr.ht/~sircmpwn/gmni - gemini client)
+- gmnisrv (https://sr.ht/~sircmpwn/gmnisrv/ and https://git.sr.ht/~sircmpwn/gmnisrv - gemini server)
 - gojq (https://github.com/itchyny/gojq)
 - gpg
   - gpgme
@@ -847,6 +849,7 @@ wc -l /tmp/astbuild.out
 - kerberos
   - heimdal
   - mit
+- kineto (https://sr.ht/~sircmpwn/kineto/ and https://git.sr.ht/~sircmpwn/kineto - gemini to http gateway/proxy)
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
 - larn (short roguelike https://en.wikipedia.org/wiki/Larn_(video_game) - maintained/modern https://github.com/atsb/RL_M)
 - ldd
@@ -1181,6 +1184,7 @@ wc -l /tmp/astbuild.out
 - rw (https://sortix.org/rw/)
 - sacc (https://git.fifth.space/sacc/log.html - gopher client)
 - samurai (https://github.com/michaelforney/samurai)
+- scdoc (https://sr.ht/~sircmpwn/scdoc/ and https://git.sr.ht/~sircmpwn/scdoc - simple man page generator)
 - scheme stuff:
   - bigloo
   - chez (scheme, https://github.com/cisco/ChezScheme - utillinux (uuid), ncurses, disable x11)
