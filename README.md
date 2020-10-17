@@ -1125,6 +1125,7 @@ wc -l /tmp/astbuild.out
 - odbc?
   - iodbc?
   - unixodbc?
+- odhcploc (http://odhcploc.sourceforge.net/ - dhcp locater)
 - oleo (gnu spreadsheet, https://www.gnu.org/software/oleo/oleo.html)
 - openconnect
 - opengit (https://github.com/khanzf/opengit)
