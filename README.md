@@ -1236,10 +1236,12 @@ wc -l /tmp/astbuild.out
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
   - ksh2020 (https://github.com/ksh2020/ksh - figure out this vs ast ksh93/forks/etc.)
+  - ksh93 (https://github.com/ksh93/ksh - actually fixing things in ksh93u)
   - ksh93 (https://github.com/ksh-community/ksh or https://github.com/jelmd/ksh)
     - AT&T AST fork
     - uses old AST build system which is pretty much a non-starter on musl
     - for now anyway
+    - no updates whatsoever, this isn't a serious fork
   - mrsh (https://mrsh.sh/ - https://git.sr.ht/~emersion/mrsh and https://github.com/emersion/mrsh)
     - imrsh (https://git.sr.ht/~sircmpwn/imrsh - interactive mrsh)
   - rc (muennich's rakitzis fork https://github.com/muennich/rc)
