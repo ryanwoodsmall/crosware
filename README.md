@@ -1134,6 +1134,7 @@ wc -l /tmp/astbuild.out
   - "cannot be used as a static library" - what?
   - needs libffi, libtasn1
   - configure ```--without-libffi --without-libtasn1```
+- otools (https://github.com/CarbsLinux/otools - carbs linux openbsd ports)
 - parenj / parenjs
 - pass (https://www.passwordstore.org/)
 - pax
