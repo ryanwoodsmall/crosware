@@ -576,6 +576,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - yash (http://yash.osdn.jp/ and https://github.com/magicant/yash)
 - zip
 - zlib
+- zstd (https://github.com/facebook/zstd)
 
 ## recipes to consider
 
@@ -1347,7 +1348,6 @@ wc -l /tmp/astbuild.out
 - ytalk (http://ytalk.ourproject.org/)
 - z3 (https://github.com/Z3Prover/z3)
   - cppcheck can use/may require this for 2.x+
-- zstd (https://github.com/facebook/zstd)
 - support libraries for building the above
 - whatever else seems useful
 
