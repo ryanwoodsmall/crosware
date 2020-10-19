@@ -37,7 +37,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  bmake \
+  \"${cwsw}/bmake/current/bin/bmake\" \
     PREFIX=\"${ridir}\" \
     MANDIR=\"${ridir}/share/man\" \
     LDFLAGS=\"\$(pkg-config --libs libbsd) -static\" \
@@ -50,7 +50,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  bmake \
+  \"${cwsw}/bmake/current/bin/bmake\" \
     install \
     PREFIX=\"${ridir}\" \
     MANDIR=\"${ridir}/share/man\" \
