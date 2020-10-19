@@ -574,6 +574,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - xinetd (https://github.com/openSUSE/xinetd forked from https://github.com/xinetd-org/xinetd)
 - xmlstarlet (http://xmlstar.sourceforge.net/)
 - xvi (http://martinwguy.github.io/xvi/)
+- xxhash (https://github.com/Cyan4973/xxHash)
 - xz (https://tukaani.org/xz/)
 - yash (http://yash.osdn.jp/ and https://github.com/magicant/yash)
 - zip
@@ -1344,7 +1345,6 @@ wc -l /tmp/astbuild.out
 - wolfssh (https://github.com/wolfSSL/wolfssh)
 - xq (https://github.com/jeffbr13/xq)
 - xserver-sixel (https://github.com/saitoha/xserver-sixel)
-- xxhash (https://github.com/Cyan4973/xxHash)
 - yq (https://github.com/kislyuk/yq)
 - ytalk (http://ytalk.ourproject.org/)
 - z3 (https://github.com/Z3Prover/z3)
