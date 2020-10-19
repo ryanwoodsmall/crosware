@@ -21,6 +21,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install
+  strip --strip-all \"${ridir}/bin/${rname}\"
   cd \"${ridir}/bin\"
   ln -sf ${rname} \${CC}
   ln -sf ${rname} \${CC//-gcc/-cc}
