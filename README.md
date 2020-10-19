@@ -694,6 +694,7 @@ wc -l /tmp/astbuild.out
   - kencc (https://github.com/aryx/fork-kencc)
   - lacc (https://github.com/larmel/lacc)
   - lcc (https://github.com/drh/lcc)
+  - mazucc (https://github.com/jserv/MazuCC)
   - plan9-cc (https://github.com/huangguiyang/plan9-cc)
   - qbe (https://c9x.me/compile/)
   - scc (http://www.simple-cc.org/)
