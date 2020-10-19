@@ -12,6 +12,7 @@
 # - enable c-ares resolver?
 # - add libressl build
 # - add ngtcp2+nghttp3 (experimental, really needs openssl?)
+# - zstd support?
 #
 
 rname="curl"
@@ -49,6 +50,7 @@ function cwconfigure_${rname}() {
     --with-libssh2 \
     --with-zlib \
     --without-libidn2 \
+    --without-zstd \
     --without-bearssl \
     --without-mbedtls \
     --without-wolfssl \
@@ -93,6 +95,7 @@ function cwmakeinstall_${rname}_mbedtls() {
     --enable-ipv6 \
     --with-zlib \
     --without-libidn2 \
+    --without-zstd \
     --without-libmetalink \
     --without-libssh2 \
     --without-bearssl \
@@ -120,6 +123,7 @@ function cwmakeinstall_${rname}_wolfssl() {
     --enable-ipv6 \
     --with-zlib \
     --without-libidn2 \
+    --without-zstd \
     --without-libmetalink \
     --without-libssh2 \
     --without-bearssl \
@@ -146,6 +150,7 @@ function cwmakeinstall_${rname}_bearssl() {
     --enable-ipv6 \
     --with-zlib \
     --without-libidn2 \
+    --without-zstd \
     --without-libmetalink \
     --without-libssh2 \
     --without-ssl \
