@@ -4,11 +4,11 @@
 #
 
 rname="bmake"
-rver="20200902"
+rver="20201010"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.crufty.net/ftp/pub/sjg/${rfile}"
-rsha256="082c0442f03f2dbef8c3171000398c1936047aa0d5a2e1efc2c8474d69403bec"
+rsha256="6e1261b3b194d3a92770fc73772bff052c47eada98952a0b19c4e5b7f1fe5515"
 rreqs=""
 rbdir="${cwbuild}/${rdir}/build"
 
@@ -37,10 +37,11 @@ function cwclean_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  sed -i.ORIG '/{/!s/op_test/echo op_test/g' ../boot-strap
   local f
   for f in opt-ignore opt-keep-going sh-dots export ; do
-    sed -i \"/\${f}/d\" ../unit-tests/Makefile ../FILES
-    rm -f ../unit-tests/\${f}.{exp,mk}
+    echo sed -i \"/\${f}/d\" ../unit-tests/Makefile ../FILES
+    echo rm -f ../unit-tests/\${f}.{exp,mk}
   done
   unset f
   true
