@@ -4,17 +4,10 @@ rdir="${rname%4}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname%4}/${rname%4}/releases/download/v${rver}/${rfile}"
 rsha256="ac97af86679028ebc8555c99318352588ff50f515fc3a7f8ed21a8ad367e3d45"
-rreqs="cmake make"
+rreqs="cmake make zstd"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
-
-eval "
-function cwfetch_${rname}() {
-  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
-  cwfetch_zstd
-}
-"
 
 eval "
 function cwconfigure_${rname}() {
@@ -22,7 +15,8 @@ function cwconfigure_${rname}() {
   cp \$(cwdlfile_zstd) .
   cmake . \
     -DCMAKE_INSTALL_PREFIX=\"${ridir}\" \
-    -DZSTD_FROM_INTERNET=ON \
+    -DZSTD_INCLUDE_DIR=\"${cwsw}/zstd/current/include\" \
+    -DZSTD_LIBRARY=\"${cwsw}/zstd/current/lib/libzstd.a\" \
     -DBUILD_SHARED_LIBS=OFF \
     -DENABLE_TESTING=0
   popd >/dev/null 2>&1
