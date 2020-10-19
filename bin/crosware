@@ -795,7 +795,7 @@ function cwsourcerecipes() {
         cwrecipereqs["${rname}"]="${rreqs}"
       fi
     fi
-    unset rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps rlibtool rconfigureopts rcommonopts rdlfile rpfile
+    unset cwconfigureprefix rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps rlibtool rconfigureopts rcommonopts rdlfile rpfile
   done
   unset recipefile
   export cwrecipes
