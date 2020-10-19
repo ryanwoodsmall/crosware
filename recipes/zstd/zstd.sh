@@ -26,7 +26,7 @@ function cwmake_${rname}() {
   make -j${cwmakejobs} ${rlibtool} \
     {PREFIX,prefix}=\"${ridir}\" \
     LDFLAGS='-static' \
-    CPPFLAGS= \
+    CPPFLAGS=-DXXH_NAMESPACE=ZSTD_ \
     PKG_CONFIG_LIBDIR= \
     PKG_CONFIG_PATH=
   popd >/dev/null 2>&1
@@ -39,7 +39,7 @@ function cwmakeinstall_${rname}() {
   make install ${rlibtool} \
     {PREFIX,prefix}=\"${ridir}\" \
     LDFLAGS='-static' \
-    CPPFLAGS= \
+    CPPFLAGS=-DXXH_NAMESPACE=ZSTD_ \
     PKG_CONFIG_LIBDIR= \
     PKG_CONFIG_PATH=
   popd >/dev/null 2>&1
