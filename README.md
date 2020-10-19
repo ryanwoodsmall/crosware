@@ -1345,8 +1345,8 @@ wc -l /tmp/astbuild.out
 - vifm (https://github.com/vifm/vifm)
 - vpnc
 - wasmer (https://github.com/wasmerio/wasmer - cross-platform webassembly binaries everywhere)
-- webcat (https://git.sr.ht/~rumpelsepp/webcat)
-- websocat (https://github.com/vi/websocat)
+- webcat (https://git.sr.ht/~rumpelsepp/webcat - go, see https://rumpelsepp.org/blog/ssh-through-websocket/)
+- websocat (https://github.com/vi/websocat - rust)
 - websocketd (go, https://github.com/joewalnes/websocketd)
 - websockify (https://github.com/novnc/websockify)
 - wolfssh (https://github.com/wolfSSL/wolfssh)
