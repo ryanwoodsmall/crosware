@@ -12,7 +12,6 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  cp \$(cwdlfile_zstd) .
   cmake . \
     -DCMAKE_INSTALL_PREFIX=\"${ridir}\" \
     -DZSTD_INCLUDE_DIR=\"${cwsw}/zstd/current/include\" \
