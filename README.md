@@ -597,6 +597,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - ansicurses (https://github.com/byllgrim/ansicurses)
 - argp-standalone (http://www.lysator.liu.se/~nisse/misc/ and https://git.alpinelinux.org/aports/tree/main/argp-standalone)
 - aria2 (https://github.com/aria2/aria2 and https://aria2.github.io/)
+- arr (https://github.com/leahneukirchen/arr)
 - assemblers?
   - fasm
   - nasm
@@ -1122,6 +1123,7 @@ wc -l /tmp/astbuild.out
 - node / npm (ugh)
 - noice (https://git.2f30.org/noice/)
 - notcurses (https://github.com/dankamongmen/notcurses)
+- nq (https://github.com/leahneukirchen/nq)
 - nss (ugh)
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - nyacc (https://www.nongnu.org/nyacc/ and https://savannah.nongnu.org/projects/nyacc)
@@ -1189,6 +1191,7 @@ wc -l /tmp/astbuild.out
   - mrustc (https://github.com/thepowersgang/mrustc - c++)
 - rvm?
 - rw (https://sortix.org/rw/)
+- rwc (https://github.com/leahneukirchen/rwc)
 - sacc (https://git.fifth.space/sacc/log.html - gopher client)
 - samurai (https://github.com/michaelforney/samurai)
 - scdoc (https://sr.ht/~sircmpwn/scdoc/ and https://git.sr.ht/~sircmpwn/scdoc - simple man page generator)
@@ -1345,6 +1348,7 @@ wc -l /tmp/astbuild.out
 - websocketd (go, https://github.com/joewalnes/websocketd)
 - websockify (https://github.com/novnc/websockify)
 - wolfssh (https://github.com/wolfSSL/wolfssh)
+- xe (https://github.com/leahneukirchen/xe)
 - xq (https://github.com/jeffbr13/xq)
 - xserver-sixel (https://github.com/saitoha/xserver-sixel)
 - yq (https://github.com/kislyuk/yq)
