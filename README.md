@@ -299,7 +299,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - byacc
 - bzip2
 - cacertificates (from alpine)
-- ccache
+- ccache - version 3.x, autotools
+  - ccache4 - now requires cmake, keep them separate for now
 - cflow
 - check
 - cloc (https://github.com/AlDanial/cloc)
