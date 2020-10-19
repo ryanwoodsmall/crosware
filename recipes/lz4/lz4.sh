@@ -11,7 +11,8 @@ rreqs="make"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  true
+  sed -i.ORIG 's/ln -s/ln -sf/g' Makefile.inc
+  sed -i 's/ln -sff/ln -sf/g' Makefile.inc
   popd >/dev/null 2>&1
 }
 "
