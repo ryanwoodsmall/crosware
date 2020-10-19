@@ -1175,6 +1175,7 @@ wc -l /tmp/astbuild.out
 - rawtar (https://github.com/andrewchambers/rawtar)
 - re2c (http://re2c.org/ and https://github.com/skvadrik/re2c)
 - redir (https://github.com/troglobit/redir)
+- redo-c (https://github.com/leahneukirchen/redo-c - djb's redo concept implemented in c instead of python)
 - regx (https://github.com/wd5gnr/regx - regx and litgrep, literate regex)
 - relational-pipes (https://relational-pipes.globalcode.info/)
 - remake (http://bashdb.sourceforge.net/remake/ and https://github.com/rocky/remake)
