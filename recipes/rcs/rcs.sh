@@ -1,20 +1,12 @@
 rname="rcs"
-rver="5.9.4"
+rver="5.10.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="063d5a0d7da1821754b80c639cdae2c82b535c8ff4131f75dc7bbf0cd63a5dff"
-rreqs="make sed gettexttiny ed diffutils configgit"
+rsha256="3a0d9f958c7ad303e475e8634654974edbe6deb3a454491f3857dc1889bac5c5"
+rreqs="make sed gettexttiny ed diffutils"
 
 . "${cwrecipe}/common.sh"
-
-eval "
-function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} CFLAGS=\"\${CFLAGS} -std=c99\"
-  popd >/dev/null 2>&1
-}
-"
 
 eval "
 function cwgenprofd_${rname}() {
