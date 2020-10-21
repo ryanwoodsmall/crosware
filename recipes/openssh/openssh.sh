@@ -59,6 +59,9 @@ function cwuninstall_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  local b
+  local d
+  local s
   env PATH=\"${cwsw}/${sslprov}/current/bin:\${PATH}\" make install
   install -m 0755 contrib/ssh-copy-id \"${ridir}/bin/\"
   for md in cat1 man1 ; do
@@ -66,9 +69,16 @@ function cwmakeinstall_${rname}() {
     && install -m 0644 contrib/ssh-copy-id.1 \"${ridir}/share/man/\${md}/\" \
     || true
   done
+  rm -f ${ridir}/*bin/${rname}{,-*} || true
+  for s in \$(find ${ridir}/{,s}bin/ -mindepth 1 -maxdepth 1 ! -type d) ; do
+    b=\"\$(basename \${s})\"
+    d=\"\$(basename \$(dirname \${s}))\"
+    ln -sf \"${rtdir}/current/\${d}/\${b}\" \"${ridir}/\${d}/${rname}-\${b}\"
+  done
   ln -sf \"${rtdir}/current/bin/ssh\" \"${ridir}/bin/${rname}\"
-  ln -sf \"${rtdir}/current/bin/scp\" \"${ridir}/bin/${rname}-scp\"
-  ln -sf \"${rtdir}/current/bin/sftp\" \"${ridir}/bin/${rname}-sftp\"
+  unset b
+  unset d
+  unset s
   popd >/dev/null 2>&1
 }
 "
