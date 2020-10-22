@@ -423,6 +423,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtool
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
+- libuv (https://github.com/libuv/libuv)
 - libxml2
 - libxslt
 - linenoise (https://github.com/antirez/linenoise)
@@ -903,7 +904,6 @@ wc -l /tmp/astbuild.out
 - libunwind (http://www.nongnu.org/libunwind/ and http://savannah.nongnu.org/projects/libunwind)
 - libusb (https://github.com/libusb/libusb)
 - libutf (https://github.com/cls/libutf)
-- libuv (https://github.com/libuv/libuv)
 - libwebsockets (https://libwebsockets.org/)
 - libyaml (https://github.com/yaml/libyaml)
 - libz (sortix, zlib fork https://sortix.org/libz/)
