@@ -11,11 +11,11 @@
 #
 
 rname="less"
-rver="551"
+rver="563"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.greenwoodsoftware.com/${rname}/${rfile}"
-rsha256="ff165275859381a63f19135a8f1f6c5a194d53ec3187f94121ecd8ef0795fe3d"
+rsha256="ce5b6d2b9fc4442d7a07c93ab128d2dff2ce09a1d4f2d055b95cf28dd0dc9a9a"
 rreqs="make netbsdcurses busybox toybox"
 
 . "${cwrecipe}/common.sh"
