@@ -404,6 +404,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libatomicops
 - libbsd
 - libedit (https://www.thrysoee.dk/editline/ aka editline, from netbsd - ncurses and netbsdcurses)
+- libev (http://software.schmorp.de/pkg/libev.html)
 - libevent (no openssl support yet)
 - libffi
 - libgcrypt (https://gnupg.org/software/libgcrypt/index.html)
@@ -876,7 +877,6 @@ wc -l /tmp/astbuild.out
 - libeconf (https://github.com/openSUSE/libeconf)
 - libedit
   - editline (https://github.com/troglobit/editline or http://troglobit.com/projects/editline/ minix3, no termcap needed)
-- libev (http://software.schmorp.de/pkg/libev.html)
 - libfetch (https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.3-stable and https://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/net/libfetch/README.html - alpine, netbsd, needs work)
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
