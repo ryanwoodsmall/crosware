@@ -757,6 +757,7 @@ wc -l /tmp/astbuild.out
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - graphviz (http://graphviz.org/)
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
+- hitch (https://hitch-tls.org/ - libev tls proxy)
 - hoedown (markdown lib - https://github.com/hoedown/hoedown)
 - hq (https://github.com/rbwinslow/hq)
 - http-parser (https://github.com/nodejs/http-parser - useful with libgit2?)
@@ -875,6 +876,7 @@ wc -l /tmp/astbuild.out
 - libeconf (https://github.com/openSUSE/libeconf)
 - libedit
   - editline (https://github.com/troglobit/editline or http://troglobit.com/projects/editline/ minix3, no termcap needed)
+- libev (http://software.schmorp.de/pkg/libev.html)
 - libfetch (https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.3-stable and https://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/net/libfetch/README.html - alpine, netbsd, needs work)
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
