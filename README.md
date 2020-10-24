@@ -1264,6 +1264,7 @@ wc -l /tmp/astbuild.out
   - scsh (https://scsh.net)
   - sh (https://github.com/mvdan/sh - shell parser/formatter in go)
   - tcsh (and/or standard csh)
+  - xs (https://github.com/TieDyedDevil/XS - rc+es+scheme/lisp)
   - zsh
 - shellcheck (https://www.shellcheck.net/ and https://github.com/koalaman/shellcheck - haskell)
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
