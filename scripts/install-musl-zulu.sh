@@ -43,14 +43,14 @@ fi
 
 # version picker
 case "${reqver}" in
-    8) zuluver="8.48.0.53-ca-jdk8.0.265"
-       zulusha="9aa6f4792973b22cd13cf457903f997d444b28f693700e2fc57ac3dd7bd53481"
+    8) zuluver="8.50.0.21-ca-jdk8.0.272"
+       zulusha="796965db6a735b786d836d390061f32640e247891c4f68a3ce5e02e4784869d4"
        ;;
-   11) zuluver="11.41.23-ca-jdk11.0.8"
-       zulusha="bd54bb1690ff7cd88f8b50aa089cd2e55911a62a18b096f43f0cf36fb0caec30"
+   11) zuluver="11.43.21-ca-jdk11.0.9"
+       zulusha="48824903612a01464750fcae9d059ebeb7fd4c3a3a7a53e28ff40bb5679d5ab0"
        ;;
-  all) bash "${BASH_SOURCE[0]}" 8
-       bash "${BASH_SOURCE[0]}" 11
+  all) bash "${BASH_SOURCE[0]}" 11
+       bash "${BASH_SOURCE[0]}" 8
        exit 0
        ;;
     *) echo "${BASH_SOURCE[0]} [8|11|all]"
@@ -86,11 +86,16 @@ libzbuilddir="${cwbuild}/${libzdir}"
 crosware check-installed make || crosware install make
 . "${cwtop}/etc/profile"
 
+# download everything
+crosware \
+  run-func \
+    cwfetchcheck,${libzurl},${libzdlfile},${libzsha} \
+    cwfetchcheck,${zuluurl},${zuludlfile},${zulusha}
+
 # build and install a sortix libz.so
 rm -rf ${libzbuilddir}
 crosware \
   run-func \
-    cwfetchcheck,${libzurl},${libzdlfile},${libzsha} \
     cwextract,${libzdlfile},${cwbuild}
 {
   cd ${libzbuilddir}/
@@ -107,7 +112,6 @@ rm -rf ${libzbuilddir}
 # install zulu jdk
 crosware \
   run-func \
-    cwfetchcheck,${zuluurl},${zuludlfile},${zulusha} \
     cwextract,${zuludlfile},${zulutop} \
     cwlinkdir,${zuludir},${zulutop}
 
