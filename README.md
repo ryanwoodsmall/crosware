@@ -857,6 +857,11 @@ wc -l /tmp/astbuild.out
 - kakoune (http://kakoune.org/ and https://github.com/mawww/kakoune)
 - kerberos
   - heimdal
+    - for static musl libraries, **heimdal** likely needs to be built with:
+      - libedit (external, or with its _\-D_ workaround); readline may flake out
+      - all DB drivers turned off
+      - ncurses, openssl, ?
+    - see: http://lists.busybox.net/pipermail/buildroot/2017-July/198737.html
   - mit
 - kineto (https://sr.ht/~sircmpwn/kineto/ and https://git.sr.ht/~sircmpwn/kineto - gemini to http gateway/proxy)
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
@@ -1346,6 +1351,8 @@ wc -l /tmp/astbuild.out
 - vera / vera++ (bitbucket? github?)
 - vifm (https://github.com/vifm/vifm)
 - vpnc
+  - **vpnc-script** needs to ignore unknown "via ??? ???" output from ```ip route```
+  - **config.c** needs proper **vpnc-script** and **default.conf** paths
 - wasmer (https://github.com/wasmerio/wasmer - cross-platform webassembly binaries everywhere)
 - webcat (https://git.sr.ht/~rumpelsepp/webcat - go, see https://rumpelsepp.org/blog/ssh-through-websocket/)
 - websocat (https://github.com/vi/websocat - rust)

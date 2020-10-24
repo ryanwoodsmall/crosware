@@ -1,2 +1,0 @@
-- **vpnc-script** needs to ignore unknown "via ??? ???" output from ```ip route```
-- **config.c** needs proper **vpnc-script** and **default.conf** paths
