@@ -1,9 +1,9 @@
 rname="tmux"
-rver="3.1b"
+rver="3.1c"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/releases/download/${rver}/${rfile}"
-rsha256="d93f351d50af05a75fe6681085670c786d9504a5da2608e481c47cf5e1486db9"
+rsha256="918f7220447bef33a1902d4faff05317afd9db4ae1c9971bef5c787ac6c88386"
 rreqs="make libevent netbsdcurses pkgconfig byacc"
 
 . "${cwrecipe}/common.sh"
