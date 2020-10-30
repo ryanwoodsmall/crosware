@@ -3,12 +3,12 @@
 # XXX - sftp-server is messy
 #
 rname="dropbear"
-rver="2020.80"
+rver="2020.81"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 #rurl="https://matt.ucc.asn.au/${rname}/releases/${rfile}"
 rurl="https://dropbear.nl/mirror/releases/${rfile}"
-rsha256="d927941b91f2da150b2033f1a88b6a47999bf0afb1493a73e9216cffdb5d7949"
+rsha256="48235d10b37775dbda59341ac0c4b239b82ad6318c31568b985730c788aac53b"
 # need a patch program, try toybox
 rreqs="make toybox zlib configgit"
 
