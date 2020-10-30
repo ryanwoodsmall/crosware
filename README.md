@@ -24,7 +24,7 @@ which crosware
 
 ```shell
 # install some stuff
-crosware install make busybox toybox
+crosware install busybox toybox
 
 # update environment
 source /usr/local/crosware/etc/profile
