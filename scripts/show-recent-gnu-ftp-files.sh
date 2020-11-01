@@ -9,7 +9,7 @@
 set -eu
 
 ftpgnuls="https://ftp.gnu.org/ls-lrRt.txt.gz"
-month="$(date '+%b')"
+: ${month:="$(date '+%b')"}
 
 curl -kLs "${ftpgnuls}" \
 | gzip -dc \
