@@ -1,9 +1,9 @@
 rname="oksh"
-rver="6.7.1"
+rver="6.8"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ibara/${rname}/releases/download/${rdir}/${rfile}"
-rsha256="2f5e6f5e49b91a8dfc92ae3b8bb502e4012db8e4ce0e9cb269794f558ace31aa"
+rsha256="8adacad0d1510415084c3166d3725d166089cc510f27a01faca32e4a14e9fc0b"
 rreqs="make netbsdcurses"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
@@ -26,6 +26,7 @@ function cwconfigure_${rname}() {
         --enable-ksh \
         --enable-sh \
         --enable-static
+  echo '#include <sys/ttydefaults.h>' >> portable.h
   popd >/dev/null 2>&1
 }
 "
