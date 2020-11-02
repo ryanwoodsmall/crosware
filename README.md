@@ -710,6 +710,7 @@ wc -l /tmp/astbuild.out
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
 - curl caextract (https://curl.haxx.se/docs/caextract.html - replace/augment cacertificates?)
 - dante (socks proxy client/server https://www.inet.no/dante/)
+- dasel (https://github.com/TomWright/dasel - data selector like jq, yq - go)
 - ddrescue
 - diod (https://github.com/chaos/diod - 9p fileserver)
 - discount (markdown - https://github.com/Orc/discount)
