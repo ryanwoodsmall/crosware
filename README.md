@@ -1010,6 +1010,7 @@ wc -l /tmp/astbuild.out
     - https://reviews.llvm.org/D34910
 - lnav (https://github.com/tstack/lnav)
 - lobase (https://github.com/Duncaen/lobase)
+- long-shebang (https://github.com/shlevy/long-shebang)
 - lowzip (https://github.com/svaarala/lowzip)
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - lua stuff
@@ -1205,6 +1206,7 @@ wc -l /tmp/astbuild.out
 - rwc (https://github.com/leahneukirchen/rwc)
 - sacc (https://git.fifth.space/sacc/log.html - gopher client)
 - samurai (https://github.com/michaelforney/samurai)
+- sbang (https://github.com/spack/sbang)
 - scdoc (https://sr.ht/~sircmpwn/scdoc/ and https://git.sr.ht/~sircmpwn/scdoc - simple man page generator)
 - scheme stuff:
   - bigloo
