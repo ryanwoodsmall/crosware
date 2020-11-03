@@ -174,6 +174,7 @@ Environment stuff to figure out how to handle:
 - ```CPP``` (working)
 - ```CPPFLAGS``` (working)
 - ```CXX``` (working)
+- ```INFOPATH```
 - ```LDFLAGS``` (working)
 - ```MANPAGER``` (working)
 - ```MANPATH```
