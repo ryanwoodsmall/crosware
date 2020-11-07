@@ -8,14 +8,15 @@ rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
-mpv="man-pages-posix-2013-a"
+mpv="man-pages-posix-2017-a"
+mpd="${mpv%-a}"
 
 eval "
 function cwfetch_${rname}() {
   local mpp='man-pages-posix/${mpv}.tar.xz'
   local mpf=\"\${mpp##*/}\"
   cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
-  cwfetchcheck \"${rurl%/*}/\${mpp}\" \"${cwdl}/${rname}/\${mpf}\" \"19633a5c75ff7deab35b1d2c3d5b7748e7bd4ef4ab598b647bb7e7f60b90a808\"
+  cwfetchcheck \"${rurl%/*}/\${mpp}\" \"${cwdl}/${rname}/\${mpf}\" \"ce67bb25b5048b20dad772e405a83f4bc70faf051afa289361c81f9660318bc3\"
   unset mpp mpf
 }
 "
@@ -43,10 +44,10 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install prefix=\"${ridir}\"
-  cd ${mpv}
+  cd ${mpd}
   make install prefix=\"${ridir}\"
   popd >/dev/null 2>&1
 }
 "
 
-unset mpv
+unset mpv mpd
