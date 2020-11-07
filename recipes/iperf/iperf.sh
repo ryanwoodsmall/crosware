@@ -3,7 +3,7 @@ rver="2.0.14a"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://sourceforge.net/projects/iperf2/files/${rfile}"
-rsha256="f74cb9e386bba7dff88a57459972a17be7499e908abfb663ff4efc6002e10ffe"
+rsha256="e9f600c79dd508e670c28a330fd48938f090a33aaab48b4071c2e843c000ce39"
 rreqs="make configgit"
 
 . "${cwrecipe}/common.sh"
