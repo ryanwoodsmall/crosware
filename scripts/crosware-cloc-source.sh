@@ -22,10 +22,11 @@ which cloc >/dev/null 2>&1 || {
 }
 
 echo 'crosware source:'
+cwsi="${cwtop}/tmp/crosware_cloc_ignored.out"
 cloc \
   --lang-no-ext='Bourne Again Shell' \
   --force-lang='Bourne Again Shell',sh{,.common} \
-  --ignored=/tmp/crosware_cloc_ignored.out \
+  --ignored="${cwsi}" \
     "${cwtop}/bin/" \
     "${cwtop}/etc/profile" \
     "${cwtop}/recipes/"
