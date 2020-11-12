@@ -504,6 +504,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - python
   - python2 (very basic support)
   - python3 (wip)
+- qalc (https://qalculate.github.io/ - libqalculate and cli/text interface)
 - qemacs (https://bellard.org/qemacs/)
 - qemuuser (https://www.qemu.org/ - linux userspace only for now)
 - quickjs (https://bellard.org/quickjs/)
