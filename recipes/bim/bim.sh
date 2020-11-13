@@ -1,3 +1,7 @@
+#
+# XXX - fix themes getting copied twice
+#
+
 rname="bim"
 rver="2.6.2"
 rdir="${rname}-${rver}"
