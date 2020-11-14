@@ -1,7 +1,3 @@
-#
-# XXX - fix themes getting copied twice
-#
-
 rname="bim"
 rver="2.6.2"
 rdir="${rname}-${rver}"
@@ -24,10 +20,9 @@ function cwconfigure_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make install ${rlibtool}
+  make install
   \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname}\"
-  cwmkdir \"${ridir}/themes\"
-  install -m 0644 themes/* \"${ridir}/themes/\"
+  ln -sf \"${rtdir}/current/share/${rname}/themes\" \"${ridir}/themes\"
   popd >/dev/null 2>&1
 }
 "
