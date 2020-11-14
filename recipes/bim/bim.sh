@@ -22,6 +22,7 @@ function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install
   \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname}\"
+  rm -rf \"${ridir}/themes\"
   ln -sf \"${rtdir}/current/share/${rname}/themes\" \"${ridir}/themes\"
   popd >/dev/null 2>&1
 }
