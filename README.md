@@ -1368,6 +1368,7 @@ wc -l /tmp/astbuild.out
 - websocat (https://github.com/vi/websocat - rust)
 - websocketd (go, https://github.com/joewalnes/websocketd)
 - websockify (https://github.com/novnc/websockify)
+- whatshell.sh (https://www.in-ulm.de/~mascheck/various/whatshell/ and https://www.in-ulm.de/~mascheck/various/whatshell/whatshell.sh)
 - wolfssh (https://github.com/wolfSSL/wolfssh)
 - xe (https://github.com/leahneukirchen/xe)
 - xq (https://github.com/jeffbr13/xq)
