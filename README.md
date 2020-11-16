@@ -1040,6 +1040,8 @@ wc -l /tmp/astbuild.out
 - mgksh (https://github.com/ibara/mgksh - static ksh and mg (emacs) from openbsd in a single bin)
 - mkcert (https://github.com/FiloSottile/mkcert)
 - micro (https://micro-editor.github.io/ and https://github.com/zyedidia/micro - go terminal editor)
+- micro_httpd (http://acme.com/software/micro_httpd/)
+- micro_inetd (http://acme.com/software/micro_inetd/)
 - micropython (https://github.com/micropython/micropython)
   - needs python, git, libffi, pkgconfig, make, mbedtls
   - clone repo (single tag, **--depth 1**, **--single-branch**, etc.); i.e., for 1.10:
