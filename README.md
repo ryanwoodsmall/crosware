@@ -341,6 +341,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - works for aarch64/i686/x86_64
   - does _not_ work on arm (gc? gmp?)
 - ed (gnu ed)
+- editline (https://github.com/troglobit/editline)
 - elinks (http://elinks.or.cz/ from git: https://repo.or.cz/elinks.git)
   - investigate adding tre, spidermonkey javascript/ecmascript/js, ...
 - elvis (https://github.com/mbert/elvis)
@@ -888,8 +889,6 @@ wc -l /tmp/astbuild.out
 - libdnet (https://github.com/boundary/libdnet or up-to-date fork at https://github.com/busterb/libdnet)
   - mostly want the dnet binary
 - libeconf (https://github.com/openSUSE/libeconf)
-- libedit
-  - editline (https://github.com/troglobit/editline or http://troglobit.com/projects/editline/ minix3, no termcap needed)
 - libfetch (https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.3-stable and https://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/net/libfetch/README.html - alpine, netbsd, needs work)
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
