@@ -1,9 +1,9 @@
 rname="lz4"
-rver="1.9.2"
+rver="1.9.3"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
-rsha256="658ba6191fa44c92280d4aa2c271b0f4fbc0e34d249578dd05e50e76d0e5efcc"
+rsha256="030644df4611007ff7dc962d981f390361e6c97a34e5cbc393ddfbe019ffe2c1"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
