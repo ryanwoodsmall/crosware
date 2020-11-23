@@ -43,8 +43,8 @@ fi
 
 # version picker
 case "${reqver}" in
-    8) zuluver="8.50.0.21-ca-jdk8.0.272"
-       zulusha="796965db6a735b786d836d390061f32640e247891c4f68a3ce5e02e4784869d4"
+    8) zuluver="8.50.0.51-ca-jdk8.0.275"
+       zulusha="48b196996fee80de05f514df9764160aebc75f13e8388329065820a11d7d1abd"
        ;;
    11) zuluver="11.43.55-ca-jdk11.0.9.1"
        zulusha="89cfac2a64f0a820917c65d490bef270bcb066ad7f042a36153d24c3098bc5cd"
