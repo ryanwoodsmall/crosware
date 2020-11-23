@@ -1295,6 +1295,7 @@ wc -l /tmp/astbuild.out
 - sprite (https://github.com/ibara/sprite - curses sprite editor, libpng export support!)
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
 - srv (https://github.com/joshuarli/srv)
+- sshuttle (https://github.com/sshuttle/sshuttle)
 - sslh (https://www.rutschle.net/tech/sslh/README.html and https://www.rutschle.net/tech/sslh/README.html)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - subversion / svn
