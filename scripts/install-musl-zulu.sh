@@ -46,8 +46,8 @@ case "${reqver}" in
     8) zuluver="8.50.0.21-ca-jdk8.0.272"
        zulusha="796965db6a735b786d836d390061f32640e247891c4f68a3ce5e02e4784869d4"
        ;;
-   11) zuluver="11.43.21-ca-jdk11.0.9"
-       zulusha="48824903612a01464750fcae9d059ebeb7fd4c3a3a7a53e28ff40bb5679d5ab0"
+   11) zuluver="11.43.55-ca-jdk11.0.9.1"
+       zulusha="89cfac2a64f0a820917c65d490bef270bcb066ad7f042a36153d24c3098bc5cd"
        ;;
   all) bash "${BASH_SOURCE[0]}" 11
        bash "${BASH_SOURCE[0]}" 8
