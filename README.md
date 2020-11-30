@@ -1206,6 +1206,7 @@ wc -l /tmp/astbuild.out
 - rust (https://www.rust-lang.org/)
   - bootstrap? (https://guix.gnu.org/blog/2018/bootstrapping-rust/ - guix!)
   - mrustc (https://github.com/thepowersgang/mrustc - c++)
+  - rustup (https://rustup.rs/)
 - rvm?
 - rw (https://sortix.org/rw/)
 - rwc (https://github.com/leahneukirchen/rwc)
