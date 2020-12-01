@@ -1374,6 +1374,7 @@ wc -l /tmp/astbuild.out
 - websockify (https://github.com/novnc/websockify)
 - whatshell.sh (https://www.in-ulm.de/~mascheck/various/whatshell/ and https://www.in-ulm.de/~mascheck/various/whatshell/whatshell.sh)
 - wolfssh (https://github.com/wolfSSL/wolfssh)
+- wrp (https://github.com/tenox7/wrp - web rendering proxy)
 - xe (https://github.com/leahneukirchen/xe)
 - xq (https://github.com/jeffbr13/xq)
 - xserver-sixel (https://github.com/saitoha/xserver-sixel)
