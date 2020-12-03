@@ -1,3 +1,8 @@
+#
+# XXX - enable /etc stuff config-top.h with...
+#  #define SYS_BASHRC "/etc/bash.bashrc"
+#  #define SYS_BASH_LOGOUT "/etc/bash.bash_logout"
+#
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
