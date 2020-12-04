@@ -9,6 +9,11 @@
 #     autoreconf -fiv .
 #     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts}
 #
+# XXX - add -F to not page on <$LINES?
+# XXX - add -I to search case insensitively?
+# XXX - add -R for default pager?
+# XXX - add -X to leave content on screen after exit?
+#
 
 rname="less"
 rver="563"
@@ -33,7 +38,6 @@ function cwconfigure_${rname}() {
 }
 "
 
-# XXX - add -R for default pager?
 eval "
 function cwgenprofd_${rname}() {
   echo 'prepend_path \"${rtdir}/current/bin\"' > \"${rprof}\"
