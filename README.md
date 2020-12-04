@@ -1350,6 +1350,7 @@ wc -l /tmp/astbuild.out
 - tzdb (https://www.iana.org/time-zones)
 - u9fs (https://github.com/unofficial-mirror/u9fs - 9p filesystem (or one of the forks))
   - https://github.com/sevki/u9fs - can turn off rhosts auth? need ~rpc bits otherwise
+- uacme (https://github.com/ndilieto/uacme)
 - ublinter (https://github.com/danmar/ublinter)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
 - uftpd (https://github.com/troglobit/uftpd)
