@@ -1177,7 +1177,11 @@ fi
 #
 cmd="${1}"
 if [[ ! ${cwcmdlist[@]} =~ ${cmd} ]] ; then
-  cwfailexit "command ${cmd} not found"
+  if [[ ${cmd} =~ ^(--help|-h)$ ]] ; then
+    cmd="help"
+  else
+    cwfailexit "command ${cmd} not found"
+  fi
 fi
 shift
 
