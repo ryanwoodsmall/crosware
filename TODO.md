@@ -584,6 +584,12 @@ time_func ls -l -A /
   - `at` recipe has basic version
   - given `${UID}`, get the `${USER}`
   - given `${UID}`, get the primary `${GID}` (`${GROUPS[0]}`?), and get the `${GROUPNAME}`
+- help/usage per command
+  - ```
+    $ crosware help install
+    install a crosware recipe
+    usage: crosware install <pkgname1> [<pkgname2> <...>]
+    ```
 
 <!--
 # vim: ft=markdown
