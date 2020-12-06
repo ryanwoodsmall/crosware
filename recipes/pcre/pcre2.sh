@@ -1,9 +1,9 @@
 rname="pcre2"
-rver="10.35"
+rver="10.36"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://ftp.pcre.org/pub/${rname//2/}/${rfile}"
-rsha256="9ccba8e02b0ce78046cdfb52e5c177f0f445e421059e43becca4359c669d4613"
+rsha256="a9ef39278113542968c7c73a31cfcb81aca1faa64690f400b907e8ab6b4a665c"
 rreqs="make zlib bzip2 readline"
 
 . "${cwrecipe}/common.sh"
