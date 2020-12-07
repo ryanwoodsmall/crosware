@@ -282,7 +282,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - automake
 - baseutils (https://github.com/ibara/baseutils - portable openbsd userland)
 - bash (5.x, netbsdcurses)
-- bash4 (netbsdcurses)
+  - bash4 (netbsdcurses)
+  - bash50 (netbsdcurses)
 - bc (gnu bc, dc)
 - bdb47
 - bearssl (https://bearssl.org/)
