@@ -1,8 +1,3 @@
-#
-# XXX - enable /etc stuff config-top.h with...
-#  #define SYS_BASHRC "/etc/bash.bashrc"
-#  #define SYS_BASH_LOGOUT "/etc/bash.bash_logout"
-#
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
@@ -18,6 +13,8 @@ function cwconfigure_${rname}() {
       LIBS=\"-L${cwsw}/netbsdcurses/current/lib/ -lcurses -lterminfo\" \
       YACC=\"${cwsw}/byacc/current/bin/byacc\"
   echo '#define SSH_SOURCE_BASHRC' >> config-top.h
+  echo '#define SYS_BASHRC \"/etc/bash.bashrc\"' >> config-top.h
+  echo '#define SYS_BASH_LOGOUT \"/etc/bash.bash_logout\"' >> config-top.h
   popd >/dev/null 2>&1
 }
 "
