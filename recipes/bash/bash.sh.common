@@ -13,6 +13,7 @@ function cwconfigure_${rname}() {
       LIBS=\"-L${cwsw}/netbsdcurses/current/lib/ -lcurses -lterminfo\" \
       YACC=\"${cwsw}/byacc/current/bin/byacc\"
   echo '#define SSH_SOURCE_BASHRC' >> config-top.h
+  echo '#define NON_INTERACTIVE_LOGIN_SHELLS' >> config-top.h
   echo '#define SYS_BASHRC \"/etc/bash.bashrc\"' >> config-top.h
   echo '#define SYS_BASH_LOGOUT \"/etc/bash.bash_logout\"' >> config-top.h
   popd >/dev/null 2>&1
