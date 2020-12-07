@@ -17,6 +17,7 @@ function cwmakeinstall_${rname}() {
   make strip
   cwmkdir \"${ridir}/bin\"
   install -m 0755 bash \"${ridir}/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname%50}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}-${rver}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}-${rver%.*}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/sh\"
