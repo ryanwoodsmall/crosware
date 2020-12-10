@@ -20,14 +20,21 @@ function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG '1i\\
 #define lua_strlen lua_rawlen' src/scripting/lua/hooks.c
-  env PATH=\"${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH}\" \
-    bash autogen.sh || true
-  env PATH=\"${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH}\" \
-    autoreconf -fiv \
-      -I\"${cwsw}/libtool/current/share/aclocal\" \
-      -I\"${cwsw}/gettexttiny/current/share/aclocal\" \
-      -I\"${cwsw}/pkgconfig/current/share/aclocal\" \
-      -I./config/m4
+  cat configure.in > configure.in.ORIG
+  ln -sf configure.{in,ac}
+  echo 'AM_GNU_GETTEXT_REQUIRE_VERSION([0.0])' >> configure.in
+  sed -i '/HAVE_ALLOCA/d' configure.in
+  export OLDPATH=\"\${PATH}\"
+  export PATH=\"${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH}\"
+  autoupdate || true
+  bash autogen.sh || true
+  autoreconf -fiv \
+    -I\"${cwsw}/automake/current/share/aclocal\" \
+    -I\"${cwsw}/libtool/current/share/aclocal\" \
+    -I\"${cwsw}/gettexttiny/current/share/aclocal\" \
+    -I\"${cwsw}/pkgconfig/current/share/aclocal\" \
+    -I./config/m4
+  autoheader
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --disable-mouse \
     --disable-sysmouse \
@@ -49,6 +56,17 @@ function cwconfigure_${rname}() {
   sed -i.ORIG 's/^#define VA_COPY.*/#define VA_COPY va_copy/g' src/util/snprintf.h
   cd ./. && autoheader
   cd . && CONFIG_FILES= CONFIG_HEADERS=config.h /bin/sh ./config.status
+  export PATH=\"\${OLDPATH}\"
+  unset OLDPATH
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  env PATH=\"${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH}\" \
+    make -j${cwmakejobs} ${rlibtool}
   popd >/dev/null 2>&1
 }
 "
