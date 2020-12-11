@@ -5,11 +5,11 @@
 #
 
 rname="openssl"
-rver="1.1.1h"
+rver="1.1.1i"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.openssl.org/source/${rfile}"
-rsha256="5c9ca8774bd7b03e5784f26ae9e9e6d749c9da2438545077e6b3d755a06595d9"
+rsha256="e8be6a35fe41d10603c3cc635e93289ed00bf34b79671a3a4de64fcee00d5242"
 rreqs="make perl zlib cacertificates"
 
 . "${cwrecipe}/common.sh"
