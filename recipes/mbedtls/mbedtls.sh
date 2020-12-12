@@ -8,11 +8,11 @@
 #
 
 rname="mbedtls"
-rver="2.16.8"
+rver="2.16.9"
 rdir="${rname}-${rname}-${rver}"
 rfile="${rname}-${rver}.tar.gz"
 rurl="https://github.com/ARMmbed/${rname}/archive/${rfile}"
-rsha256="047b4067f21a72947dd1dffd7c3f106ad8e52d85877b77df558296458f6030a3"
+rsha256="b7ca99ee10551b5b13242b7effebefd2a5cc38c287e5f5be1267d51ee45effe3"
 rreqs="make cacertificates"
 
 . "${cwrecipe}/common.sh"
