@@ -1,9 +1,9 @@
 rname="bim"
-rver="2.6.2"
+rver="2.7.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/klange/${rname}/archive/${rfile}"
-rsha256="0a8b10e0d01066646b5d897535af40c4809fc647baba5ce08f7e9ee0ddd4863f"
+rsha256="5648c0f06266b3ea39f121e1dc560dc408c2360161ed4260013be0c655dad374"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
