@@ -1,9 +1,9 @@
 rname="yash"
-rver="2.50"
+rver="2.51"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/magicant/${rname}/releases/download/${rver}/${rfile}"
-rsha256="b6e0e2e607ab449947178da227fa739db4b13c8af9dfe8116b834964b980e24b"
+rsha256="6f15e68eeb63fd42e91c3ce75eccf325f2c938fa1dc248e7213af37c043aeaf8"
 rreqs="make netbsdcurses"
 
 . "${cwrecipe}/common.sh"
