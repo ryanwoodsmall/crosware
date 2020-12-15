@@ -1,5 +1,6 @@
 #
-# XXX - gitlab instance, not sure SHA-256 will always be the same for archive...
+# XXX - debian gitlab instance, not sure SHA-256 will always be the same for archive...
+# XXX - pull bundle from repo? https://repo.or.cz/nvi.git
 #
 
 rname="nvi"
