@@ -1,9 +1,9 @@
 rname="zstd"
-rver="1.4.5"
+rver="1.4.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/facebook/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="98e91c7c6bf162bf90e4e70fdbc41a8188b9fa8de5ad840c401198014406ce9e"
+rsha256="192cbb1274a9672cbcceaf47b5c4e9e59691ca60a357f1d4a8b2dfa2c365d757"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
@@ -23,7 +23,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} ${rlibtool} \
+  make \
     {PREFIX,prefix}=\"${ridir}\" \
     LDFLAGS='-static' \
     CPPFLAGS=-DXXH_NAMESPACE=ZSTD_ \
@@ -36,7 +36,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make install ${rlibtool} \
+  make install \
     {PREFIX,prefix}=\"${ridir}\" \
     LDFLAGS='-static' \
     CPPFLAGS=-DXXH_NAMESPACE=ZSTD_ \
