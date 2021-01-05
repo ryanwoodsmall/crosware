@@ -89,7 +89,10 @@ eval "
 function cwmakeinstall_sftpserver_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cd \"\$(cwdir_nettle)\"
-  ./configure --prefix=\"${rbdir}/sftp-server\" ${cwconfigurelibopts} \
+  ./configure \
+    ${cwconfigurelibopts} \
+    --prefix=\"${rbdir}/sftp-server\" \
+    --libdir=\"${rbdir}/sftp-server/lib\" \
     --disable-assembler \
     --disable-documentation \
     --disable-openssl \
