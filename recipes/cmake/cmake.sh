@@ -1,6 +1,7 @@
 #
 # XXX - aarch32 flakiness w/o -static
 # XXX - CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES - Modules/Platform/UnixPaths.cmake
+# XXX - CMAKE_INSTALL_LIBDIR - https://cmake.org/cmake/help/v3.0/module/GNUInstallDirs.html
 #
 
 #
