@@ -3,7 +3,7 @@ rver="1.33.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="http://${rname}.net/downloads/${rfile}"
-rsha256="57af7883eee2bed2b56bcc6938439df2c09675ee33ae58e4ea545444cdb910a4"
+rsha256="d568681c91a85edc6710770cebc1e80e042ad74d305b5c2e6d57a5f3de3b8fbd"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
