@@ -1,6 +1,3 @@
-#
-# XXX - funky int64/uint64 formatting stuff on 32-bit. ugh
-#
 rname="socat"
 rver="1.7.4.0"
 rdir="${rname}-${rver}"
@@ -25,12 +22,6 @@ function cwconfigure_${rname}() {
       LIBS=\"-lreadline -lcurses -lterminfo -lssl -lcrypto -lz\"
   echo '#define NETDB_INTERNAL (-1)' >> compat.h
   sed -i 's#netinet/if_ether#linux/if_ether#g' sysincludes.h
-  if [[ ${uarch} =~ ^(i.86|armv) ]] ; then
-    cat config.h > config.h.ORIG
-    sed -i '/HAVE_BASIC_UINT64_T/s/ 8 / 6 /g' config.h
-    sed -i '/HAVE_BASIC_INT64_T/s/ 7 / 5 /g' config.h
-    diff -Naur config.h{.ORIG,} || true
-  fi
   popd >/dev/null 2>&1
 }
 "
