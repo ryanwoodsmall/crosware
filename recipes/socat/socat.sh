@@ -1,3 +1,8 @@
+#
+# XXX - offical 32-bit fix...
+#   http://www.dest-unreach.org/socat/download/compat.h 4ac8368fa0f6dc687c7e89ff940d780050ec6510e0a0bffe457be4fb55c271d9
+#
+
 rname="socat"
 rver="1.7.4.0"
 rdir="${rname}-${rver}"
