@@ -1,14 +1,9 @@
-#
-# XXX - offical 32-bit fix...
-#   http://www.dest-unreach.org/socat/download/compat.h 4ac8368fa0f6dc687c7e89ff940d780050ec6510e0a0bffe457be4fb55c271d9
-#
-
 rname="socat"
-rver="1.7.4.0"
+rver="1.7.4.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="http://www.dest-unreach.org/${rname}/download/${rfile}"
-rsha256="c8273b30e933be0ad8d509ae75e19ecedf1a60081bb942ed36f2dd8950de3d58"
+rsha256="3faca25614e89123dff5045680549ecef519d02e331aaf3c4f5a8f6837c675e9"
 rreqs="make openssl netbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
