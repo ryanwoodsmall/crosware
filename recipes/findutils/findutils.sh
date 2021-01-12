@@ -1,10 +1,10 @@
 rname="findutils"
-rver="4.6.0"
+rver="4.7.0"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.gz"
+rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="ded4c9f73731cd48fec3b6bdaccce896473b6d8e337e9612e16cf1431bb1169d"
-rreqs="make sed configgit"
+rsha256="c5fefbdf9858f7e4feb86f036e1247a54c79fc2d8e4b7064d5aaa1f47dfa789a"
+rreqs="make busybox sed configgit"
 
 . "${cwrecipe}/common.sh"
 
