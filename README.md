@@ -691,6 +691,7 @@ wc -l /tmp/astbuild.out
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
+- cembed (https://github.com/rxi/cembed - embed files in a c header - useful for tinyscheme/minischeme library in single binary???)
 - cepl (https://github.com/alyptik/cepl)
 - chrpath
 - c/c++ compiler stuff
@@ -746,7 +747,6 @@ wc -l /tmp/astbuild.out
   - gxemul (http://gavare.se/gxemul/)
 - entr (http://entrproject.org/)
 - eris (https://github.com/nealey/eris - small web server)
-- fe (https://github.com/rxi/fe - tiny embeddable language)
 - finit (https://github.com/troglobit/finit)
 - firejail (https://github.com/netblue30/firejail)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
@@ -923,6 +923,7 @@ wc -l /tmp/astbuild.out
 - libyaml (https://github.com/yaml/libyaml)
 - libz (sortix, zlib fork https://sortix.org/libz/)
 - lisp stuff
+  - aria (https://github.com/rxi/aria - tiny embeddable language)
   - clisp (https://clisp.sourceforge.io/
     - reqs: libsigsegv, libffcall, readline, ncurses
     - configure with ```--without-dynamic-modules``` (and? ```--with-dynamic-ffi```)
@@ -933,6 +934,7 @@ wc -l /tmp/astbuild.out
     - trouble getting this working at all, maybe not possible/worth it
   - clozure (https://ccl.clozure.com/)
   - cmucl (https://www.cons.org/cmucl/)
+  - fe (https://github.com/rxi/fe - tiny embeddable language)
   - gcl (https://www.gnu.org/software/gcl/)
     - reqs: m4, configgit, gmp?
     - needs ```setarch linux64 -R ...``` with proper linux64/linux32 setting before configure, make
