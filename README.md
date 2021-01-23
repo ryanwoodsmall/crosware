@@ -49,7 +49,7 @@ And to re-bootstrap (for any updated zulu, jgitsh, statictoolchain installs):
 
 Run **crosware** without any arguments to see usage; i.e, a (possibly outdated) example:
 
-```shell
+<pre>
 usage: crosware [command]
 
 commands:
@@ -78,7 +78,7 @@ commands:
   update : attempt to update existing install of crosware
   upgrade : uninstall then install a recipe
   upgrade-all : upgrade all packages with different recipe versions
-```
+</pre>
 
 #### use external or disable java and jgit
 
