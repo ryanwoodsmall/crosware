@@ -939,6 +939,7 @@ wc -l /tmp/astbuild.out
     - not sure if this will work either
   - janet (https://janet-lang.org/ and https://github.com/janet-lang/janet)
   - le-lisp (http://christian.jullien.free.fr/lelisp/)
+  - lisp500 (http://web.archive.org/web/20070722203906/https://www.modeemi.fi/~chery/lisp500/)
   - mankai common lisp (https://common-lisp.net/project/mkcl/)
   - newlisp (http://www.newlisp.org/ - unnoficial code mirror at https://github.com/kosh04/newlisp)
     - needs libffi, ncurses, readline
