@@ -746,6 +746,7 @@ wc -l /tmp/astbuild.out
   - gxemul (http://gavare.se/gxemul/)
 - entr (http://entrproject.org/)
 - eris (https://github.com/nealey/eris - small web server)
+- fe (https://github.com/rxi/fe - tiny embeddable language)
 - finit (https://github.com/troglobit/finit)
 - firejail (https://github.com/netblue30/firejail)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
