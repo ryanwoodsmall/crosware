@@ -1,3 +1,7 @@
+#
+# XXX - add fortunes from https://github.com/9fans/plan9port/raw/master/lib/fortunes to ${ridir}/lib
+#
+
 rname="9base"
 rver="63916da7bd6d73d9a405ce83fc4ca34845667cce"
 rdir="${rname}-${rver}"
