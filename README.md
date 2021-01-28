@@ -693,6 +693,13 @@ wc -l /tmp/astbuild.out
 - cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
 - cembed (https://github.com/rxi/cembed - embed files in a c header - useful for tinyscheme/minischeme library in single binary???)
 - cepl (https://github.com/alyptik/cepl)
+- ching (https://github.com/floren/ching - i ching from bsd)
+  - needs nroff (heirloom or groff)
+  - ```
+    sed -i.ORIG s,/usr/local,${ridir},g Makefile phx/pathnames.h ching.sh
+    sed -i s,${ridir}/games,${ridir}/bin,g Makefile phx/pathnames.h ching.sh
+    make CC="${CC} -static -Wl,-static"
+    ```
 - chrpath
 - c/c++ compiler stuff
   - 8cc (https://github.com/rui314/8cc)
