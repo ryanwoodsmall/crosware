@@ -593,7 +593,7 @@ time_func ls -l -A /
 - niceties
   - `bash` and `dash` bind mounts to kill annoying security
   - `sysctl kernel.dmesg_restrict=0` to enable dmesg
-  - `TERM` is funky with copy/paste in vim on xterm-256color?
+  - `TERM` is funky with copy/paste in vim on xterm-256color? use screen-256color as workaround
   - google is doing everything they can to make this shit unusable
 
 <!--
