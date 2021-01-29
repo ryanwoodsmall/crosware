@@ -732,6 +732,7 @@ wc -l /tmp/astbuild.out
 - docbook?
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
 - dsvpn (https://github.com/jedisct1/dsvpn)
+- dtach (https://github.com/crigler/dtach - simpler detachable screenalike)
 - dumb-init (https://github.com/Yelp/dumb-init)
 - duplicity (http://duplicity.nongnu.org/)
 - e (https://github.com/hellerve/e - simple editor, syntax highlighting, archived?)
