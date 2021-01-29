@@ -1,7 +1,3 @@
-#
-# XXX - add fortunes from https://github.com/9fans/plan9port/raw/master/lib/fortunes to ${ridir}/lib
-#
-
 rname="9base"
 rver="63916da7bd6d73d9a405ce83fc4ca34845667cce"
 rdir="${rname}-${rver}"
@@ -17,6 +13,8 @@ rfile=""
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  cwmkdir \"${ridir}/lib\"
+  cwfetch \"https://github.com/9fans/plan9port/raw/master/lib/fortunes\" \"${ridir}/lib/fortunes\"
   grep -ril /usr/local/plan9 . \
   | grep -v '\.git' \
   | xargs sed -i "s#/usr/local/plan9#${ridir}#g"
