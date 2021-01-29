@@ -590,6 +590,11 @@ time_func ls -l -A /
     install a crosware recipe
     usage: crosware install <pkgname1> [<pkgname2> <...>]
     ```
+- niceties
+  - `bash` and `dash` bind mounts to kill annoying security
+  - `sysctl kernel.dmesg_restrict=0` to enable dmesg
+  - `TERM` is funky with copy/paste in vim on xterm-256color?
+  - google is doing everything they can to make this shit unusable
 
 <!--
 # vim: ft=markdown
