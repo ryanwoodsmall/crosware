@@ -1,9 +1,9 @@
 rname="ccache4"
-rver="4.1"
+rver="4.2"
 rdir="${rname%4}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname%4}/${rname%4}/releases/download/v${rver}/${rfile}"
-rsha256="cdeefb827b3eef3b42b5454858123881a4a90abbd46cc72cf8c20b3bd039deb7"
+rsha256="dbf139ff32031b54cb47f2d7983269f328df14b5a427882f89f7721e5c411b7e"
 rreqs="cmake make zstd"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
