@@ -16,11 +16,11 @@
 #
 
 rname="curl"
-rver="7.74.0"
+rver="7.75.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
-rsha256="0f4d63e6681636539dc88fa8e929f934cd3a840c46e0bf28c73be11e521b77a5"
+rsha256="50552d4501c178e4cc68baaecc487f466a3d6d19bbf4e50a01869effb316d026"
 rreqs="make zlib openssl mbedtls wolfssl libssh2 expat libmetalink cacertificates bearssl"
 
 . "${cwrecipe}/common.sh"
@@ -49,6 +49,7 @@ function cwconfigure_${rname}() {
     --with-libmetalink \
     --with-libssh2 \
     --with-zlib \
+    --without-hyper \
     --without-libidn2 \
     --without-zstd \
     --without-bearssl \
@@ -94,6 +95,7 @@ function cwmakeinstall_${rname}_mbedtls() {
     --disable-maintainer-mode \
     --enable-ipv6 \
     --with-zlib \
+    --without-hyper \
     --without-libidn2 \
     --without-zstd \
     --without-libmetalink \
@@ -122,6 +124,7 @@ function cwmakeinstall_${rname}_wolfssl() {
     --disable-maintainer-mode \
     --enable-ipv6 \
     --with-zlib \
+    --without-hyper \
     --without-libidn2 \
     --without-zstd \
     --without-libmetalink \
@@ -149,6 +152,7 @@ function cwmakeinstall_${rname}_bearssl() {
     --disable-maintainer-mode \
     --enable-ipv6 \
     --with-zlib \
+    --without-hyper \
     --without-libidn2 \
     --without-zstd \
     --without-libmetalink \
