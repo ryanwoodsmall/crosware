@@ -3,11 +3,11 @@
 #
 
 rname="ecl"
-rver="20.4.24"
+rver="21.2.1"
 rdir="${rname}-${rver}"
 rfile="${rname}-${rver}.tgz"
 rurl="https://common-lisp.net/project/${rname}/static/files/release/${rfile}"
-rsha256="670838edf258a936b522fdb620da336de7e575aa0d27e34841727252726d0f07"
+rsha256="b15a75dcf84b8f62e68720ccab1393f9611c078fcd3afdd639a1086cad010900"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
