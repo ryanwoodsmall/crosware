@@ -1398,6 +1398,7 @@ wc -l /tmp/astbuild.out
 - ytalk (http://ytalk.ourproject.org/)
 - z3 (https://github.com/Z3Prover/z3)
   - cppcheck can use/may require this for 2.x+
+- zord (https://github.com/devshane/zork - it's zork dude)
 - support libraries for building the above
 - whatever else seems useful
 
