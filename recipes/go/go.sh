@@ -6,28 +6,28 @@
 #
 
 rname="go"
-rver="1.15.7"
+rver="1.15.8"
 if [[ ${karch} =~ ^x86_64$ ]] ; then
   rdir="${rname}${rver}-amd64"
-  rsha256="5bde49a4f44d73cbb5ccdd817095e50fa58a8f58352e8bd49be48d91db681208"
+  rsha256="c780b0d288ef01f1fecac3cacc588caa8ffd0fa6c13546ea3ff56b67f4629833"
 elif [[ ${karch} =~ ^i.86$ ]] ; then
   rdir="${rname}${rver}-386"
-  rsha256="c0a2aa00a744078eb926677156b5c2ac354448616b861e6194230bd1b3bc98d3"
+  rsha256="52f5614811b72cfc44e4a8c242f8b0ee4155bc8b703bcf1a3473d89512cb8631"
 elif [[ ${karch} =~ ^aarch64 ]] ; then
   rdir="${rname}${rver}-arm64"
-  rsha256="36537dfa19a242b64925f9dc2daab22a375cd934db4fabdde182e93a969cf9dc"
+  rsha256="c816da1bc842d8bb6db99197cc8a3549beb631168b4c7c51052d4a19ba91b2a5"
 elif [[ ${karch} =~ ^arm ]] ; then
   rdir="${rname}${rver}-arm"
-  rsha256="d7759b38cde243e1c20a7d268ea074e016264bc67b7ddf048eecaca04f66bfc3"
+  rsha256="0f8945b3fa716d52fa8446624533055be49bdb03cd0b457dd4177c7d8f44c135"
 elif [[ ${karch} =~ ^riscv64 ]] ; then
   rdir="${rname}${rver}-riscv64"
-  rsha256="0b24548011f5c8d48e1b5398ad0f7918b846affff1029d5981d25443cde54d38"
+  rsha256="ede02e9049382490fe481fd81812f467770f82d55a4905d2ef810c99facdaee6"
 else
   rdir="none"
   rsha256="none"
 fi
 rfile="${rdir}.tar.bz2"
-rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/20210122-${rname}${rver}/${rfile}"
+rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/20210205-${rname}${rver}/${rfile}"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
