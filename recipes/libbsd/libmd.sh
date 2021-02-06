@@ -1,9 +1,9 @@
 rname="libmd"
-rver="1.0.2"
+rver="1.0.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://libbsd.freedesktop.org/releases/${rfile}"
-rsha256="dc66b8278f82e7e1bf774fbd4bc83a0348e8f27afa185b2c2779cfcb3da25013"
+rsha256="5a02097f95cc250a3f1001865e4dbba5f1d15554120f95693c0541923c52af4a"
 rreqs="make"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
