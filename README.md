@@ -1390,6 +1390,7 @@ wc -l /tmp/astbuild.out
 - websockify (https://github.com/novnc/websockify)
 - whatshell.sh (https://www.in-ulm.de/~mascheck/various/whatshell/ and https://www.in-ulm.de/~mascheck/various/whatshell/whatshell.sh)
 - wolfssh (https://github.com/wolfSSL/wolfssh)
+- wordgrinder (https://github.com/davidgiven/wordgrinder - word processor)
 - wrp (https://github.com/tenox7/wrp - web rendering proxy)
 - xe (https://github.com/leahneukirchen/xe)
 - xq (https://github.com/jeffbr13/xq)
