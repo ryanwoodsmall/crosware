@@ -15,5 +15,5 @@ cd ${cwtop}/downloads ; for i in ${PWD}/*/ ; do
   | wc -l \
   | grep -q '^1$' \
     || find $i -type f \
-       | egrep -v 'bsd.*/.*\.(c|h|1)$'
+       | egrep -v '(bsd.*|drobpear|inetutils)/.*\.(c|h|1)$'
 done | sort
