@@ -722,6 +722,9 @@ wc -l /tmp/astbuild.out
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
 - cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
+  - would be useful to provide gcc with glibc support for more "native" builds
+  - base on centos 7? rhel 8? debian 10? ubuntu 20 lts?
+  - could be used to bootstrap llvm/clang and bootstrap rust?
 - cryanc (https://github.com/classilla/cryanc - crypto ancienne, tls for old platformcs)
 - curl caextract (https://curl.haxx.se/docs/caextract.html - replace/augment cacertificates?)
 - dante (socks proxy client/server https://www.inet.no/dante/)
@@ -1221,6 +1224,7 @@ wc -l /tmp/astbuild.out
 - rust (https://www.rust-lang.org/)
   - bootstrap? (https://guix.gnu.org/blog/2018/bootstrapping-rust/ - guix!)
   - mrustc (https://github.com/thepowersgang/mrustc - c++)
+  - rust-gcc (https://rust-gcc.github.io/ and https://github.com/Rust-GCC/gccrs)
   - rustup (https://rustup.rs/)
 - rvm?
 - rw (https://sortix.org/rw/)
