@@ -1360,6 +1360,7 @@ wc -l /tmp/astbuild.out
 - tre (https://github.com/laurikari/tre)
 - tsocks
 - ttyd (https://github.com/tsl0922/ttyd - gotty in c, like shellinabox w/xterm.js, libwebsockets, uses cmake)
+- ttynvt (https://gitlab.com/lars-thrane-as/ttynvt - network virtual terminal, needs fuse)
 - twtxt stuff
   - htwtxt (https://github.com/plomlompom/htwtxt - twtxt server)
   - twtxt (https://github.com/buckket/twtxt - minimal text based microblogging)
