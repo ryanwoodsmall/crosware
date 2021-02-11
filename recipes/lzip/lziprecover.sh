@@ -1,9 +1,9 @@
 rname="lziprecover"
-rver="1.21"
+rver="1.22"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://download.savannah.gnu.org/releases/lzip/${rname}/${rfile}"
-rsha256="a2317bd6da78d49d8f9aadd00bd93c2dac7b280b26fbf900563e90efd0179c24"
+rsha256="fd958a0975f7729c44f3b784e566891f736c3dc68374dbd2149ee692a16d0862"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
