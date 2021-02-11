@@ -1,9 +1,9 @@
 rname="pdlzip"
-rver="1.10"
+rver="1.11"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://download.savannah.gnu.org/releases/lzip/${rname}/${rfile}"
-rsha256="c1545fbea02c8c127ee97f0a7f8c0bcb076f2d8cb0ad902720dddcead5517750"
+rsha256="43c5dfc8fd6595e750be290fe69c659904ff85ffd6f55b70918a1e2efc40eff5"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
