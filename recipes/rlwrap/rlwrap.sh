@@ -1,5 +1,6 @@
 #
 # XXX - void sources has it too... https://sources.voidlinux.org/rlwrap-0.44/rlwrap-0.44.tar.gz
+# XXX - fossies: https://fossies.org/linux/privat/rlwrap-0.45.tar.gz/
 #
 
 rname="rlwrap"
