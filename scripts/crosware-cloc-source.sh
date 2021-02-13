@@ -33,7 +33,7 @@ cloc \
 
 echo
 cwso="${cwtop}/tmp/crosware.set.out"
-test "${cwso}" && cat "${cwso}" > "${cwso}.old"
+test -e "${cwso}" && cat "${cwso}" > "${cwso}.old"
 "${cw}" set > "${cwso}"
 echo 'crosware set expanded:'
 cloc \
