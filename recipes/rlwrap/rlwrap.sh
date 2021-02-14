@@ -21,6 +21,7 @@ function cwconfigure_${rname}() {
     CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include -I${cwsw}/netbsdcurses/current/include/readline\" \
     LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -static\" \
     LIBS=\"-lreadline -lcurses -lterminfo\"
+  which pod2man || sed -i.ORIG 's/pod2man/echo pod2man/g' filters/Makefile
   popd >/dev/null 2>&1
 }
 "
