@@ -35,6 +35,10 @@ function cwmakeinstall_${rname}() {
     rm -f \"${ridir}/bin/\${n}\"
     ln -s \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/\${n}\"
   done
+  for n in n{ex,vi{,ew}} ; do
+    rm -f \"${ridir}/bin/\${n}\"
+    ln -s \"${rtdir}/current/bin/\${n}${rver//./}\" \"${ridir}/bin/\${n}\"
+  done
   popd >/dev/null 2>&1
 }
 "
