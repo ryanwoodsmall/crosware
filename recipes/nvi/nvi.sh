@@ -52,8 +52,8 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${ridir}/bin\"
   rm -f ${ridir}/bin/{nex,nvi,nview}
   make install-strip ${rlibtool}
-  ln -sf ${ridir}/bin/{nvi,nex}
-  ln -sf ${ridir}/bin/{nvi,nview}
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/nex\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/nview\"
   popd >/dev/null 2>&1
 }
 "
