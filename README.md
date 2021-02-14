@@ -1276,6 +1276,7 @@ wc -l /tmp/astbuild.out
   - vicare (ikarus fork-of-fork, https://github.com/barak/vicare)
   - ypsilon (http://www.littlewingpinball.net/mediawiki/index.php/Ypsilon)
 - sc-im (https://github.com/andmarti1424/sc-im - sc spreadsheet improved)
+- sdbm (https://github.com/jaydg/sdbm - dbm/ndbm alike, updated for modern systems)
 - sed-bin (https://github.com/lhoursquentin/sed-bin - posix sed to c??? cool)
 - selfdock (https://github.com/anordal/selfdock - container alike)
 - shells?
