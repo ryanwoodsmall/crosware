@@ -11,7 +11,7 @@ rdir="netcat-openbsd-debian-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://salsa.debian.org/debian/netcat-openbsd/-/archive/debian/${rver}/${rfile}"
 rsha256="ef58398dbeb2ab290e30b45870e8967c8a1484ce5092daaad8c68ca2e0a9321a"
-rreqs="make libbsd pkgconfig"
+rreqs="make libbsd pkgconfig libmd"
 
 . "${cwrecipe}/common.sh"
 
@@ -39,7 +39,7 @@ eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   env PATH=\"${cwsw}/pkgconfig/current/bin:\${PATH}\" \
-    \${CC} -o ${rname} base64.c netcat.c atomicio.c socks.c \$(pkg-config --cflags libbsd) \$(pkg-config --libs libbsd) -static
+    \${CC} -o ${rname} base64.c netcat.c atomicio.c socks.c \$(pkg-config --cflags libbsd) \$(pkg-config --libs libbsd) -L${cwsw}/libmd/current/lib -lmd -static
   \$(\${CC} -dumpmachine)-strip --strip-all ${rname}
   popd >/dev/null 2>&1
 }
