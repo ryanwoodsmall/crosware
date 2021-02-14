@@ -1,3 +1,7 @@
+#
+# XXX - safe to enable pkg-config bits *only*?
+#
+
 rname="libmd"
 rver="1.0.3"
 rdir="${rname}-${rver}"
