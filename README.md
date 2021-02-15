@@ -681,7 +681,7 @@ wc -l /tmp/astbuild.out
   - broguece (https://github.com/tmewett/BrogueCE)
   - brogue-linux (https://github.com/CubeTheThird/brogue-linux)
   - gbrogue (https://github.com/gbelo/gBrogue)
-- bsd-coreutils (https://github.com/Projeto-Pindorama/bsd-coreutils - bsd stuff, fork of lobase?)
+- bsd-coreutils (https://github.com/Projeto-Pindorama/bsd-coreutils - bsd stuff, fork of lobase-old?)
 - bsdgames (debian - https://packages.debian.org/buster/bsdgames)
 - bsd-headers (http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/musl - oe/yocto)
 - build-scripts (https://github.com/noloader/Build-Scripts - useful versions, packaging, etc. stuff)
@@ -1032,6 +1032,7 @@ wc -l /tmp/astbuild.out
     - https://reviews.llvm.org/D34910
 - lnav (https://github.com/tstack/lnav)
 - lobase (https://github.com/Duncaen/lobase)
+  - lobase-old (https://github.com/ataraxialinux/lobase-old - fork? bsd stuff)
 - long-shebang (https://github.com/shlevy/long-shebang)
 - lowzip (https://github.com/svaarala/lowzip)
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
