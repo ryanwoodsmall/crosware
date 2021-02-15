@@ -681,6 +681,7 @@ wc -l /tmp/astbuild.out
   - broguece (https://github.com/tmewett/BrogueCE)
   - brogue-linux (https://github.com/CubeTheThird/brogue-linux)
   - gbrogue (https://github.com/gbelo/gBrogue)
+- bsd-coreutils (https://github.com/Projeto-Pindorama/bsd-coreutils - bsd stuff, fork of lobase?)
 - bsdgames (debian - https://packages.debian.org/buster/bsdgames)
 - bsd-headers (http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/musl - oe/yocto)
 - build-scripts (https://github.com/noloader/Build-Scripts - useful versions, packaging, etc. stuff)
@@ -1168,6 +1169,7 @@ wc -l /tmp/astbuild.out
   - unixodbc?
 - odhcploc (http://odhcploc.sourceforge.net/ - dhcp locater)
 - oleo (gnu spreadsheet, https://www.gnu.org/software/oleo/oleo.html)
+- openbsd-libz (https://github.com/ataraxialinux/openbsd-libz)
 - openconnect
 - opengit (https://github.com/khanzf/opengit)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
