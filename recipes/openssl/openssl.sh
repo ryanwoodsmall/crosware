@@ -1,7 +1,7 @@
 #
 # XXX - our perl needs to be at front of path for config/make
-# XXX - -DOPENSSL_PIC ???
 # XXX - other "openssl version -a" stuff?
+# XXX - 1.1.1j disables threads/pic with -static in LDFLAGS. WHY? COME ON
 #
 
 rname="openssl"
@@ -17,8 +17,9 @@ rreqs="make perl zlib cacertificates"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
+  sed -i.ORIG '/if.*eq.*-static/s/-static/-blahblahblah/g' Configure
   env PATH=\"${cwsw}/perl/current/bin:\${PATH}\" \
-    ./config --prefix=${ridir} --openssldir=${cwetc}/ssl no-asm no-shared zlib no-zlib-dynamic \${CFLAGS} \${LDFLAGS} \${CPPFLAGS} -fPIC
+    ./config --prefix=${ridir} --openssldir=${cwetc}/ssl no-asm no-shared zlib no-zlib-dynamic \${CFLAGS} \${LDFLAGS} \${CPPFLAGS} -fPIC -DOPENSSL_PIC -DOPENSSL_THREADS
   popd >/dev/null 2>&1
 }
 "
