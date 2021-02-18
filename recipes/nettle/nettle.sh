@@ -1,9 +1,9 @@
 rname="nettle"
-rver="3.7"
+rver="3.7.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="f001f64eb444bf13dd91bceccbc20acbc60c4311d6e2b20878452eb9a9cec75a"
+rsha256="156621427c7b00a75ff9b34b770b95d34f80ef7a55c3407de94b16cbf436c42e"
 rreqs="make gmp"
 
 . "${cwrecipe}/common.sh"
