@@ -5,11 +5,11 @@
 # XXX - full shared: add "--enable-shared" and set LDFLAGS=\"\${LDFLAGS//-static/} -Wl,-rpath,${rtdir}/current/lib\"
 #
 rname="python3"
-rver="3.7.9"
+rver="3.7.10"
 rdir="Python-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.python.org/ftp/python/${rver}/${rfile}"
-rsha256="91923007b05005b5f9bd46f3b9172248aea5abc1543e8a636d59e629c3331b01"
+rsha256="f8d82e7572c86ec9d55c8627aae5040124fd2203af400c383c821b980306ee6b"
 rreqs="make bzip2 zlib ncurses readline openssl gdbm sqlite bdb47 expat libffi xz utillinux pkgconfig"
 
 . "${cwrecipe}/common.sh"
