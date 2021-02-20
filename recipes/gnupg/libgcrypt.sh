@@ -1,18 +1,9 @@
-#
-# XXX - 1.9.0 insecure, 1.9.1 (a SECURITY fix) introduced something (ungated FEATURES?) that breaks compilation
-#  keccak.c: In function 'keccak_init':
-#  keccak.c:907:23: error: 'HWF_INTEL_FAST_SHLD' undeclared (first use in this function)
-#    907 |   else if (features & HWF_INTEL_FAST_SHLD)
-#        |                       ^~~~~~~~~~~~~~~~~~~
-#  keccak.c:907:23: note: each undeclared identifier is reported only once for each function it appears in
-#
-
 rname="libgcrypt"
-rver="1.8.7"
+rver="1.9.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="03b70f028299561b7034b8966d7dd77ef16ed139c43440925fe8782561974748"
+rsha256="b2c10d091513b271e47177274607b1ffba3d95b188bbfa8797f948aec9053c5a"
 rreqs="make libgpgerror slibtool configgit"
 
 . "${cwrecipe}/common.sh"
