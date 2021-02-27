@@ -1,9 +1,9 @@
 rname="libedit"
-rver="20191231-3.1"
+rver="20210216-3.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.thrysoee.dk/editline/${rfile}"
-rsha256="dbb82cb7e116a5f8025d35ef5b4f7d4a3cdd0a3909a146a39112095a2d229071"
+rsha256="2283f741d2aab935c8c52c04b57bf952d02c2c02e651172f8ac811f77b1fc77a"
 rreqs="make ncurses"
 
 . "${cwrecipe}/common.sh"
