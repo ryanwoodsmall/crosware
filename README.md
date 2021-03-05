@@ -461,6 +461,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - most (https://www.jedsoft.org/most/)
 - mpc
 - mpfr
+- mtm (https://github.com/deadpixi/mtm - micro terminal multiplexer)
 - mujs (http://mujs.com/ and https://github.com/ccxvii/mujs)
 - muslfts (https://github.com/pullmoll/musl-fts)
 - muslstandalone (http://musl.libc.org/ - unbundled musl libc and kernel headers with musl-gcc wrapper, possibly different version from statictoolchain)
@@ -1119,7 +1120,6 @@ wc -l /tmp/astbuild.out
 - mpg123
 - mpg321
 - mruby (https://github.com/mruby/mruby)
-- mtm (https://github.com/deadpixi/mtm - micro terminal multiplexer)
 - multimarkdown (https://github.com/fletcher/MultiMarkdown-6)
 - musl stuff
   - musl-locales (https://github.com/rilian-la-te/musl-locales - cmake? seriously?)
