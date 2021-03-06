@@ -78,7 +78,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   # LN=echo will disable libncurses symlinks
-  make install-static PREFIX=\"${ridir}\" CPPFLAGS='-I./ -I./libterminfo' LDFLAGS='-static' LN='echo'
+  make install-static install-manpages PREFIX=\"${ridir}\" CPPFLAGS='-I./ -I./libterminfo' LDFLAGS='-static' LN='echo'
   rm -f ${ridir}/lib/pkgconfig/ncurses* ${ridir}/lib/pkgconfig/*w.pc
   make terminfo/terminfo.cdb
   cwmkdir \"${ridir}/share\"
