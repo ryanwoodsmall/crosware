@@ -30,6 +30,7 @@ function cwconfigure_${rname}() {
   if [[ ${karch} =~ riscv64 ]] ; then
     sed -i.ORIG '/-C arch/d;/-C uname/d' Makefile
   fi
+  sed -i 's/-o maketab/-o maketab -static/g' awk/Makefile
   popd >/dev/null 2>&1
 }
 "
