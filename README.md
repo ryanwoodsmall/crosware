@@ -703,6 +703,7 @@ wc -l /tmp/astbuild.out
     make CC="${CC} -static -Wl,-static"
     ```
 - chrpath
+- cjson (https://github.com/DaveGamble/cJSON)
 - c/c++ compiler stuff
   - 8cc (https://github.com/rui314/8cc)
   - 9cc (https://github.com/rui314/9cc)
@@ -1117,6 +1118,9 @@ wc -l /tmp/astbuild.out
           LIBS="-lcurses -lterminfo"
       ```
 - moreutils (https://joeyh.name/code/moreutils/)
+- mosquitto (https://github.com/eclipse/mosquitto and https://mosquitto.org/ - mqtt broker & pub/sub client)
+  - tls (openssl) and cjson necessary for minimal secure functionality
+  - c-ares (for SRV records) and libwebsockets for full functionality
 - mpg123
 - mpg321
 - mruby (https://github.com/mruby/mruby)
