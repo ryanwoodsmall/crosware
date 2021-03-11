@@ -17,7 +17,7 @@ function cwmakeinstall_${rname}() {
   make install
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}-${rver%.*}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}-${rver%%.*}\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}5\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}${rver%%.*}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/sh\"
   popd >/dev/null 2>&1
 }
