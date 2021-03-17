@@ -6,22 +6,22 @@
 #
 
 rname="go"
-rver="1.15.10"
+rver="1.16.2"
 if [[ ${karch} =~ ^x86_64$ ]] ; then
   rdir="${rname}${rver}-amd64"
-  rsha256="a2269fe394bcb14c9275d6d81c48471078459a99f6752ce401069ccde90b32a6"
+  rsha256="9b49e32728ef37f28d697a454f18756326e092ff00d51e231c4516b8ec0b174a"
 elif [[ ${karch} =~ ^i.86$ ]] ; then
   rdir="${rname}${rver}-386"
-  rsha256="6989ce738f8d01ae966f5681d1340bb0464dae26633bde06cd8a6ca9114f06ec"
+  rsha256="db5987760d2eb87bc7e24b960e197187ca5eda49ef5d3351af338d9e73726e22"
 elif [[ ${karch} =~ ^aarch64 ]] ; then
   rdir="${rname}${rver}-arm64"
-  rsha256="a1b2becaa643e96fe98a76221479a8f775ff6fd7bbbcb9b4c8825a82ebdecac1"
+  rsha256="94b98442b1f38aaa023b3a5839c39a92b558f8bd2c43d41cdfbb5a4cfc8c44c4"
 elif [[ ${karch} =~ ^arm ]] ; then
   rdir="${rname}${rver}-arm"
-  rsha256="5ba6991c8c10a29e7d8de0bd08e51ea1e5b90544956851872f0326baef532ffd"
+  rsha256="8620c46d3e810f5d1773f0495a0c65020f59740b07c585a6032691bb2d520612"
 elif [[ ${karch} =~ ^riscv64 ]] ; then
   rdir="${rname}${rver}-riscv64"
-  rsha256="b9c715395d50fe4f86cc21f5a4740b75245d481118b3bc544fcf060313a92f12"
+  rsha256="ac2b4b71e890053fb0ad31bbde8da5c95c6edfb3b058ae962cc0b7ac9370486f"
 else
   rdir="none"
   rsha256="none"
