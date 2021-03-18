@@ -19,6 +19,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} \
     --with-included-popt \
     --with-included-zlib \
+    --enable-ipv6 \
     --enable-lz4 \
     --enable-xxhash \
     --enable-zstd \
