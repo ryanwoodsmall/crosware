@@ -20,7 +20,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  env PATH=\"${cwsw}/netbsdcurses/current/bin:\${PATH} \
+  env PATH=\"${cwsw}/netbsdcurses/current/bin:\${PATH}\" \
     make \
       CC=\"\${CC} -I${cwsw}/netbsdcurses/current/include -L${cwsw}/netbsdcurses/current/lib\" \
       LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -static\"
@@ -31,7 +31,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  env PATH=\"${cwsw}/netbsdcurses/current/bin:\${PATH} \
+  env PATH=\"${cwsw}/netbsdcurses/current/bin:\${PATH}\" \
     make \
       install \
       CC=\"\${CC} -I${cwsw}/netbsdcurses/current/include -L${cwsw}/netbsdcurses/current/lib\" \
