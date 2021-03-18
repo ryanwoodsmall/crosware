@@ -277,6 +277,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 ## working recipes
 
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
+- abduco (https://www.brain-dump.org/projects/abduco/ and https://github.com/martanne/abduco)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - autoconf
 - automake
