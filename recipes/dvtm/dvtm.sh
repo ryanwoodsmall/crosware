@@ -36,6 +36,8 @@ function cwmakeinstall_${rname}() {
       install \
       CC=\"\${CC} -I${cwsw}/netbsdcurses/current/include -L${cwsw}/netbsdcurses/current/lib\" \
       LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -lcurses -lterminfo -static\"
+  cwmkdir \"${ridir}/share/terminfo\"
+  install -m 0644 ${rname}.info \"${ridir}/share/terminfo/${rname}.info\"
   popd >/dev/null 2>&1
 }
 "
