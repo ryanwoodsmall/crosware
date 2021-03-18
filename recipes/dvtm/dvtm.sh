@@ -1,3 +1,7 @@
+#
+# XXX - netbsdcurses is iffy here, need to test with default ncurses
+#
+
 rname="dvtm"
 rver="0.15"
 rdir="${rname}-${rver}"
