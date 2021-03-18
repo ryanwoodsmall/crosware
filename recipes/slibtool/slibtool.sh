@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/midipix-project/${rname}/archive/${rfile}"
 rsha256="0fefc07ca7e0e3164278f2c59a9a9682d0dcb18c2ea51556afd32a928c698dad"
-rreqs="make"
+rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
