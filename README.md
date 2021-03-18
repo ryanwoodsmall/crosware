@@ -742,6 +742,7 @@ wc -l /tmp/astbuild.out
 - dtach (https://github.com/crigler/dtach - simpler detachable screenalike)
 - dumb-init (https://github.com/Yelp/dumb-init)
 - duplicity (http://duplicity.nongnu.org/)
+- dvtm (https://www.brain-dump.org/projects/dvtm/ and https://github.com/martanne/dvtm/)
 - e (https://github.com/hellerve/e - simple editor, syntax highlighting, archived?)
 - e2fsprogs (https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/ - usable uuid for python)
   - config opts: `--disable-lto --enable-symlink-install --enable-verbose-makecmds --disable-nls --enable-libuuid --enable-libblkid`
