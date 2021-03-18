@@ -1,6 +1,7 @@
 #
 # XXX - for rsync 3.2.x...
-#   - openssl
+#     - openssl
+# XXX - workaround ipv6 thing, via: https://git.alpinelinux.org/aports/tree/main/rsync/APKBUILD
 #
 
 rname="rsync"
@@ -25,7 +26,8 @@ function cwconfigure_${rname}() {
     --enable-zstd \
     --disable-openssl \
     --disable-asm \
-    --disable-simd
+    --disable-simd \
+      CFLAGS=\"\${CFLAGS} -DINET6\"
   popd >/dev/null 2>&1
 }
 "
