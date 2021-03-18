@@ -8,7 +8,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa"
-rreqs="make gettexttiny sed"
+rreqs="make gettexttiny sed attr acl"
 
 . "${cwrecipe}/common.sh"
 
@@ -17,16 +17,16 @@ function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   sed -i.ORIG s/stdbuf_supported=yes/stdbuf_supported=no/g configure
   env FORCE_UNSAFE_CONFIGURE=1 ./configure ${cwconfigureprefix} \
-    --disable-acl \
     --disable-libcap \
     --disable-nls \
-    --disable-xattr \
+    --enable-acl \
     --enable-single-binary=symlinks \
+    --enable-xattr \
     --without-gmp \
     --without-openssl \
     --without-selinux \
-      CPPFLAGS='' \
-      LDFLAGS='-static'
+      CPPFLAGS='-I${cwsw}/acl/current/include -I${cwsw}/attr/current/include' \
+      LDFLAGS='-L${cwsw}/acl/current/lib -L${cwsw}/attr/current/lib -static'
   uname -m | egrep -q '(aarch|riscv)64' && echo '#define SYS_getdents SYS_getdents64' >> src/ls.h || true
   popd >/dev/null 2>&1
 }
