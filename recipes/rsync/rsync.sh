@@ -10,7 +10,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://download.samba.org/pub/${rname}/src/${rfile}"
 rsha256="becc3c504ceea499f4167a260040ccf4d9f2ef9499ad5683c179a697146ce50e"
-rreqs="make lz4 xxhash zstd"
+rreqs="make lz4 xxhash zstd attr acl"
 
 . "${cwrecipe}/common.sh"
 
@@ -20,8 +20,10 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} \
     --with-included-popt \
     --with-included-zlib \
+    --enable-acl-support \
     --enable-ipv6 \
     --enable-lz4 \
+    --enable-xattr-support \
     --enable-xxhash \
     --enable-zstd \
     --disable-openssl \
