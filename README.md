@@ -279,6 +279,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - abduco (https://www.brain-dump.org/projects/abduco/ and https://github.com/martanne/abduco)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
+- attr (https://savannah.nongnu.org/projects/attr/)
 - autoconf
 - automake
 - baseutils (https://github.com/ibara/baseutils - portable openbsd userland)
@@ -646,7 +647,6 @@ time \
       CCFLAGS="-D_GNU_SOURCE -D_BSD_SOURCE -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_USE_GNU -D__GLIBC__" 2>&1 | tee /tmp/astbuild.out
 wc -l /tmp/astbuild.out
 ```
-- attr (https://savannah.nongnu.org/projects/attr/)
 - awk (https://github.com/onetrueawk/awk - the one true awk)
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
 - b2sum (https://github.com/dchest/b2sum)
