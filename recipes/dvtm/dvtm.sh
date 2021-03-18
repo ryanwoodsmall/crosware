@@ -6,7 +6,7 @@ rname="dvtm"
 rver="0.15"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://github.com/martanne/dvtm/releases/download/v${rver}/${rfile}"
+rurl="https://github.com/martanne/${rname}/releases/download/v${rver}/${rfile}"
 rsha256="8f2015c05e2ad82f12ae4cf12b363d34f527a4bbc8c369667f239e4542e1e510"
 rreqs="make abduco netbsdcurses"
 
