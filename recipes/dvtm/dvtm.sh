@@ -37,6 +37,7 @@ function cwmakeinstall_${rname}() {
       LDFLAGS=\"-L${cwsw}/ncurses/current/lib -lncursesw -static\"
   cwmkdir \"${ridir}/share/terminfo\"
   install -m 0644 ${rname}.info \"${ridir}/share/terminfo/${rname}.info\"
+  \"${cwsw}/ncurses/current/bin/tic\" -s -x ${rname}.info
   popd >/dev/null 2>&1
 }
 "
