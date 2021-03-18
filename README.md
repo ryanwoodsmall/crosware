@@ -338,6 +338,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - architecture naming conventions: https://github.com/docker-library/official-images#architectures-other-than-amd64
 - dropbear (https://matt.ucc.asn.au/dropbear/dropbear.html and https://dropbear.nl/)
 - duktape (http://duktape.org/ and https://github.com/svaarala/duktape)
+- dvtm (https://www.brain-dump.org/projects/dvtm/ and https://github.com/martanne/dvtm/)
 - ecl (https://common-lisp.net/project/ecl/)
   - shared build
   - works for aarch64/i686/x86_64
@@ -742,7 +743,6 @@ wc -l /tmp/astbuild.out
 - dtach (https://github.com/crigler/dtach - simpler detachable screenalike)
 - dumb-init (https://github.com/Yelp/dumb-init)
 - duplicity (http://duplicity.nongnu.org/)
-- dvtm (https://www.brain-dump.org/projects/dvtm/ and https://github.com/martanne/dvtm/)
 - e (https://github.com/hellerve/e - simple editor, syntax highlighting, archived?)
 - e2fsprogs (https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/ - usable uuid for python)
   - config opts: `--disable-lto --enable-symlink-install --enable-verbose-makecmds --disable-nls --enable-libuuid --enable-libblkid`
