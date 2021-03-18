@@ -1,9 +1,14 @@
+#
+# XXX - git-svn mirror more reliablabe that sourceforge at this point?
+# XXX - https://github.com/snipsnipsnip/tinyscheme
+#
+
 rname="tinyscheme"
-rver="1.41"
+rver="1.42"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://sourceforge.net/projects/${rname}/files/${rname}/${rdir}/${rfile}/download"
-rsha256="eac0103494c755192b9e8f10454d9f98f2bbd4d352e046f7b253439a3f991999"
+rsha256="17b0b1bffd22f3d49d5833e22a120b339039d2cfda0b46d6fc51dd2f01b407ad"
 rreqs="make rlwrap"
 
 . "${cwrecipe}/common.sh"
