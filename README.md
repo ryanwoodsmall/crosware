@@ -337,6 +337,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - does _not_ work on i686
   - architecture naming conventions: https://github.com/docker-library/official-images#architectures-other-than-amd64
 - dropbear (https://matt.ucc.asn.au/dropbear/dropbear.html and https://dropbear.nl/)
+- dtach (https://github.com/crigler/dtach and http://dtach.sourceforge.net/ - simpler detachable screenalike)
 - duktape (http://duktape.org/ and https://github.com/svaarala/duktape)
 - dvtm (https://www.brain-dump.org/projects/dvtm/ and https://github.com/martanne/dvtm/)
 - ecl (https://common-lisp.net/project/ecl/)
@@ -740,7 +741,6 @@ wc -l /tmp/astbuild.out
 - docbook?
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
 - dsvpn (https://github.com/jedisct1/dsvpn)
-- dtach (https://github.com/crigler/dtach - simpler detachable screenalike)
 - dumb-init (https://github.com/Yelp/dumb-init)
 - duplicity (http://duplicity.nongnu.org/)
 - e (https://github.com/hellerve/e - simple editor, syntax highlighting, archived?)
