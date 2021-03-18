@@ -278,6 +278,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - abduco (https://www.brain-dump.org/projects/abduco/ and https://github.com/martanne/abduco)
+- acl (https://savannah.nongnu.org/projects/acl/)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - attr (https://savannah.nongnu.org/projects/attr/)
 - autoconf
@@ -600,7 +601,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
   - https://git.sr.ht/~ft/9pro
 - ack (https://beyondgrep.com/)
-- acl (https://savannah.nongnu.org/projects/acl/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - agner fog's stuff
   - https://www.agner.org/optimize/#objconv
