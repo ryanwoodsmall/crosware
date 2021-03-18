@@ -8,7 +8,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://download.savannah.nongnu.org/releases/${rname}/${rfile}"
 rsha256="5ead72b358ec709ed00bbf7a9eaef1654baad937c001c044fe8b74c57f5324e7"
-rreqs="make slibtool"
+rreqs="bootstrapmake slibtool"
 
 . "${cwrecipe}/common.sh"
 
