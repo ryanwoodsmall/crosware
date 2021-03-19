@@ -1,5 +1,16 @@
 # TODO
 
+- move **FLAGS** vars to `CW_` prefix?
+  - avoid polluting environment?
+  - explicitly set i.e. `LDFLAGS="${CW_LDFLAGS}"` or similar in builds for configure/make commands
+  - complicates things but leaves running environment cleaner
+  - flags vars:
+    - CFLAGS
+    - CPPFLAGS
+    - CXXFLAGS
+    - LDFLAGS
+    - PKG_CONFIG_LIBDIR
+    - PKG_CONFIG_PATH
 - `crosware version`
   - output git commit, via `git rev-parse HEAD`
   - git or jgitsh should work
