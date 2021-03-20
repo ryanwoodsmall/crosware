@@ -1,3 +1,8 @@
+#
+# XXX - change to bootstrapmake
+# XXX - require attr and add: --enable-xattr to configure
+#
+
 rname="patch"
 rver="2.7.6"
 rdir="${rname}-${rver}"
