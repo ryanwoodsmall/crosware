@@ -11,6 +11,12 @@
     - LDFLAGS
     - PKG_CONFIG_LIBDIR
     - PKG_CONFIG_PATH
+- `cw{{c,cpp,cxx,ld}flags,pkgconfig}_${rname}` functions
+  - generated dynamically based on prereqs
+  - recursive, so... slow
+  - similar to recursive `cheupgradereqs_${rname}`
+  - would further cleanup environment - could be turned off completely
+  - makes integration with other build systems/tools cleaner...
 - `crosware version`
   - output git commit, via `git rev-parse HEAD`
   - git or jgitsh should work
