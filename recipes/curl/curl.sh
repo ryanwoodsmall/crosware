@@ -135,7 +135,8 @@ function cwmakeinstall_${rname}_wolfssl() {
     --without-gnutls \
     --with-wolfssl \
     --with-default-ssl-backend=wolfssl \
-    --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"
+    --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
+    --with-ca-path=\"${cwetc}/ssl/certs\"
   make -j${cwmakejobs}
   mkdir -p ${ridir}/bin
   install -m 0755 src/curl ${ridir}/bin/curl-wolfssl
@@ -163,7 +164,8 @@ function cwmakeinstall_${rname}_bearssl() {
     --without-wolfssl \
     --with-bearssl \
     --with-default-ssl-backend=bearssl \
-    --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"
+    --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
+    --with-ca-path=\"${cwetc}/ssl/certs\"
   make -j${cwmakejobs}
   mkdir -p ${ridir}/bin
   install -m 0755 src/curl ${ridir}/bin/curl-bearssl
