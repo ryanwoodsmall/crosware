@@ -1,7 +1,6 @@
 #
 # - other ssl/tls providers
 #   - gnutls, nss, ...
-#   - bearssl w/7.68.0+
 # - libssh2
 #   - supports one of openssl, mbed, libgcrypt
 #   - mix/match with ssl/tls providers? seems like a bad idea
@@ -10,7 +9,6 @@
 # - enable libidn2?
 # - enable http w/nghttp2
 # - enable c-ares resolver?
-# - add libressl build
 # - add ngtcp2+nghttp3 (experimental, really needs openssl?)
 # - zstd support?
 #
@@ -21,7 +19,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
 rsha256="50552d4501c178e4cc68baaecc487f466a3d6d19bbf4e50a01869effb316d026"
-rreqs="make zlib openssl mbedtls wolfssl libssh2 expat libmetalink cacertificates bearssl"
+rreqs="make zlib openssl libressl bearssl mbedtls wolfssl libssh2 expat libmetalink cacertificates"
 
 . "${cwrecipe}/common.sh"
 
@@ -77,6 +75,7 @@ function cwmakeinstall_${rname}() {
   popd >/dev/null 2>&1
   mv \"${ridir}/bin/${rname}\" \"${ridir}/bin/${rname}-openssl\"
   ln -sf \"${rtdir}/current/bin/${rname}-openssl\" \"${ridir}/bin/${rname}\"
+  cwmakeinstall_${rname}_libressl
   cwmakeinstall_${rname}_bearssl
   cwmakeinstall_${rname}_mbedtls
   cwmakeinstall_${rname}_wolfssl
@@ -86,6 +85,39 @@ function cwmakeinstall_${rname}() {
 #
 # XXX - ugly
 #
+eval "
+function cwmakeinstall_${rname}_libressl() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make distclean || true
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+    --disable-dependency-tracking \
+    --disable-maintainer-mode \
+    --enable-ipv6 \
+    --with-zlib \
+    --without-hyper \
+    --without-libidn2 \
+    --without-zstd \
+    --without-libmetalink \
+    --without-libssh2 \
+    --without-bearssl \
+    --with-ssl \
+    --without-wolfssl \
+    --without-gnutls \
+    --without-mbedtls \
+    --with-default-ssl-backend=openssl \
+    --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
+    --with-ca-path=\"${cwetc}/ssl/certs\" \
+      LDFLAGS=\"-L${cwsw}/zlib/current/lib -L${cwsw}/libressl/current/lib -static\" \
+      CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/libressl/current/include\" \
+      PKG_CONFIG_PATH= \
+      PKG_CONFIG_LIBDIR=
+  make -j${cwmakejobs}
+  mkdir -p ${ridir}/bin
+  install -m 0755 src/curl ${ridir}/bin/curl-libressl
+  popd >/dev/null 2>&1
+}
+"
+
 eval "
 function cwmakeinstall_${rname}_mbedtls() {
   pushd \"${rbdir}\" >/dev/null 2>&1
