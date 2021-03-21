@@ -443,6 +443,9 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
   function cwlistreqs_${cwbootstraprecipe}() {
     echo \"\"
   }
+  function cwreqs_${cwbootstraprecipe}() {
+    echo \"\"
+  }
   function cwupgrade_${cwbootstraprecipe}() {
     cwuninstall_${cwbootstraprecipe}
     cwinstall_${cwbootstraprecipe}
@@ -791,7 +794,7 @@ function cwsourcerecipes() {
       cwrecipefiles["${rname}"]="${recipefile}"
       cwrecipeversions["${rname}"]="${rver}"
       if [[ ${rreqs} =~ \{*\} ]] ; then
-        cwrecipereqs["${rname}"]="$(cwlistreqs_${rname})"
+        cwrecipereqs["${rname}"]="$(cwreqs_${rname})"
       else
         cwrecipereqs["${rname}"]="${rreqs}"
       fi

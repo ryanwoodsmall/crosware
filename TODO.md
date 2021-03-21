@@ -1,5 +1,6 @@
 # TODO
 
+- remove renamed `cwlistreqs_${rname}` functions (now `cwreqs_${rname}`)
 - move **FLAGS** vars to `CW_` prefix?
   - avoid polluting environment?
   - explicitly set i.e. `LDFLAGS="${CW_LDFLAGS}"` or similar in builds for configure/make commands
@@ -260,7 +261,6 @@
     - check if installed prereq needs upgrade
     - recursively chase down to "root", i.e., until prereq graph is empty (or has only **make**)
     - only do this once - expensive
-    - need a ```cwlistreqs_${rname}``` style function
     - per-recipe...
       - ```${rchased[${recipe}]}={0,1}```
         - for each recipe
@@ -566,7 +566,7 @@ time_func ls -l -A /
 - downstream upgrades... - **DONE???**
   - not a full graph
   - on `crosware upgrade recipe` or `crosware upgrade-all`...
-    - `local r ; cwlistreqs_${rname} | while read -r r ; do cwlistupgradable | grep -q "^${r} : " && cwupgrade_${r} || true ; done ; unset r`
+    - `local r ; cwreqs_${rname} | while read -r r ; do cwlistupgradable | grep -q "^${r} : " && cwupgrade_${r} || true ; done ; unset r`
 - upstream upgrades
   - dependents
   - actually need a graph here?

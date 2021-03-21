@@ -71,8 +71,14 @@ function cwfetch_${rname}() {
 "
 
 eval "
-function cwlistreqs_${rname}() {
+function cwreqs_${rname}() {
   echo \"${rreqs}\"
+}
+"
+
+eval "
+function cwlistreqs_${rname}() {
+  cwreqs_${rname}
 }
 "
 
