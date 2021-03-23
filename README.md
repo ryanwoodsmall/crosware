@@ -915,6 +915,7 @@ wc -l /tmp/astbuild.out
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
 - libiconv (https://www.gnu.org/software/libiconv/)
 - libixp (https://github.com/0intro/libixp - 9p client/library)
+  - https://github.com/bwhmather/libixp - updated recently?
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
 - libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
@@ -1382,7 +1383,9 @@ wc -l /tmp/astbuild.out
 - tzdb (https://www.iana.org/time-zones)
 - u9fs (https://github.com/unofficial-mirror/u9fs - 9p filesystem (or one of the forks))
   - https://github.com/sevki/u9fs - can turn off rhosts auth? need ~rpc bits otherwise
-  - https://github.com/Plan9-Archive/u9fs - ???
+  - https://github.com/Plan9-Archive/u9fs - recently updated, works without rhosts stuff
+  - no auth serve w/busybox or toybox: `tcpsvd -E -v 0.0.0.0 564 ./u9fs -D -z -a none -u username /path/to/share`
+  - access from remote host w/plan 9 from user space: `9p -a 'tcp!hostname.domain.name!564' ls /`
 - uacme (https://github.com/ndilieto/uacme)
 - ublinter (https://github.com/danmar/ublinter)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
