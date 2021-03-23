@@ -1,9 +1,9 @@
 rname="libassuan"
-rver="2.5.4"
+rver="2.5.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="c080ee96b3bd519edd696cfcebdecf19a3952189178db9887be713ccbcb5fbf0"
+rsha256="8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4"
 rreqs="make libgpgerror slibtool configgit"
 
 . "${cwrecipe}/common.sh"
