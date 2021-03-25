@@ -18,7 +18,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
 rsha256="50552d4501c178e4cc68baaecc487f466a3d6d19bbf4e50a01869effb316d026"
-rreqs="make zlib openssl libressl bearssl mbedtls wolfssl libssh2 expat libmetalink cacertificates nghttp2"
+rreqs="make zlib openssl libressl bearssl mbedtls wolfssl libssh2 expat libmetalink cacertificates nghttp2 pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
