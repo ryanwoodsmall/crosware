@@ -7,7 +7,6 @@
 # - wolfssh support
 #   - --with-wolfssh
 # - enable libidn2?
-# - enable http w/nghttp2
 # - enable c-ares resolver?
 # - add ngtcp2+nghttp3 (experimental, really needs openssl?)
 # - zstd support?
