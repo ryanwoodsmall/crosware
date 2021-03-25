@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://bellard.org/${rname}/${rfile}"
 rsha256="be8351f2121819b3172fcedce5cb1826fa12c87da1b7ed98f269d3e802a05555"
-rreqs="make curl openssl libssh2 zlib"
+rreqs="make curl openssl libssh2 zlib nghttp2"
 
 . "${cwrecipe}/common.sh"
 
@@ -22,7 +22,7 @@ function cwconfigure_${rname}() {
   sed -i \"/^CFLAGS=/s|\\$| \${CPPFLAGS}|g\" Makefile
   sed -i \"/^LDFLAGS=/s|=|=\${LDFLAGS}|g\" Makefile
   sed -i 's|^bindir=.*|bindir=${ridir}/bin|g' Makefile
-  sed -i 's/-lcrypto/-lssh2 -lssl -lcrypto -lz/g' Makefile
+  sed -i 's/-lcrypto/-lcurl -lnghttp2 -lssh2 -lssl -lcrypto -lz/g' Makefile
   popd >/dev/null 2>&1
 }
 "
