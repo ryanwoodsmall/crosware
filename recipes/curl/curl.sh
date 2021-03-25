@@ -19,7 +19,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
 rsha256="50552d4501c178e4cc68baaecc487f466a3d6d19bbf4e50a01869effb316d026"
-rreqs="make zlib openssl libressl bearssl mbedtls wolfssl libssh2 expat libmetalink cacertificates"
+rreqs="make zlib openssl libressl bearssl mbedtls wolfssl libssh2 expat libmetalink cacertificates nghttp2"
 
 . "${cwrecipe}/common.sh"
 
@@ -46,6 +46,7 @@ function cwconfigure_${rname}() {
     --enable-ipv6 \
     --with-libmetalink \
     --with-libssh2 \
+    --with-nghttp2 \
     --with-zlib \
     --without-hyper \
     --without-libidn2 \
@@ -93,6 +94,7 @@ function cwmakeinstall_${rname}_libressl() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --enable-ipv6 \
+    --with-nghttp2 \
     --with-zlib \
     --without-hyper \
     --without-libidn2 \
@@ -109,8 +111,8 @@ function cwmakeinstall_${rname}_libressl() {
     --with-ca-path=\"${cwetc}/ssl/certs\" \
       LDFLAGS=\"-L${cwsw}/zlib/current/lib -L${cwsw}/libressl/current/lib -static\" \
       CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/libressl/current/include\" \
-      PKG_CONFIG_PATH= \
-      PKG_CONFIG_LIBDIR=
+      PKG_CONFIG_PATH=\"${cwsw}/nghttp2/current/lib/pkgconfig\" \
+      PKG_CONFIG_LIBDIR=\"${cwsw}/nghttp2/current/lib/pkgconfig\"
   make -j${cwmakejobs}
   mkdir -p ${ridir}/bin
   install -m 0755 src/curl ${ridir}/bin/curl-libressl
@@ -126,6 +128,7 @@ function cwmakeinstall_${rname}_mbedtls() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --enable-ipv6 \
+    --with-nghttp2 \
     --with-zlib \
     --without-hyper \
     --without-libidn2 \
@@ -155,6 +158,7 @@ function cwmakeinstall_${rname}_wolfssl() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --enable-ipv6 \
+    --with-nghttp2 \
     --with-zlib \
     --without-hyper \
     --without-libidn2 \
@@ -184,6 +188,7 @@ function cwmakeinstall_${rname}_bearssl() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --enable-ipv6 \
+    --with-nghttp2 \
     --with-zlib \
     --without-hyper \
     --without-libidn2 \
