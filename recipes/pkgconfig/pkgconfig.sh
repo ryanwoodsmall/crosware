@@ -4,7 +4,7 @@ rdir="pkg-config-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://pkg-config.freedesktop.org/releases/${rfile}"
 rsha256="6fc69c01688c9458a57eb9a1664c9aba372ccda420a02bf4429fe610e7e7d591"
-rreqs="make configgit"
+rreqs="bootstrapmake configgit"
 
 . "${cwrecipe}/common.sh"
 
