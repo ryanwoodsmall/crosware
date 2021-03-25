@@ -483,6 +483,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libdom (https://www.netsurf-browser.org/projects/libdom/)
   - libcss (https://www.netsurf-browser.org/projects/libcss/)
 - nettle (http://www.lysator.liu.se/~nisse/nettle/ and https://git.lysator.liu.se/nettle/nettle)
+- nghttp2 (https://github.com/nghttp2/nghttp2)
 - ninja (https://ninja-build.org/)
 - nmap
 - npth (https://gnupg.org/software/npth/index.html)
@@ -1162,7 +1163,6 @@ wc -l /tmp/astbuild.out
   - netsurf w/framebuffer nsfb? sdl? vnc doesn't seem to work
   - libnsfb (https://www.netsurf-browser.org/projects/libnsfb/)
 - nfs-utils (http://git.linux-nfs.org/?p=steved/nfs-utils.git;a=summary and https://mirrors.edge.kernel.org/pub/linux/utils/nfs-utils/)
-- nghttp2 (https://github.com/nghttp2/nghttp2)
 - nghttp3 (https://github.com/ngtcp2/nghttp3)
 - ngtcp2 (https://github.com/ngtcp2/ngtcp2)
 - nnn (https://github.com/jarun/nnn)
