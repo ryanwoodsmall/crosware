@@ -724,6 +724,7 @@ wc -l /tmp/astbuild.out
   - qbe (https://c9x.me/compile/)
   - scc (http://www.simple-cc.org/)
   - tendra (https://bitbucket.org/asmodai/tendra/src/default/ https://en.wikipedia.org/wiki/TenDRA_Compiler)
+- cgpt (google source only?)
 - cmark (commonmark markddown - https://github.com/commonmark/cmark)
   - cmark-gfm (github fork - https://github.com/github/cmark-gfm)
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
@@ -1219,6 +1220,7 @@ wc -l /tmp/astbuild.out
     - http://skarnet.org./software/execline/
     - http://jdebp.eu./Softwares/nosh/
 - pup (https://github.com/ericchiang/pup)
+- pv (https://github.com/icetee/pv - pipeviewer)
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
 - rawtar (https://github.com/andrewchambers/rawtar)
