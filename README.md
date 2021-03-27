@@ -364,7 +364,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - gc (working on x86\_64, aarch64; broken on i386, arm)
 - gdbm
 - gettexttiny
-- git
+- git - built with curl+openssl
+  - gitlibressl - built with libressl+curl
 - glib (https://wiki.gnome.org/Projects/GLib)
   - old version
   - new version requires meson, ninja, thus python3
