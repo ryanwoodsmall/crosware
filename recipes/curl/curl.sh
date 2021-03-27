@@ -88,8 +88,22 @@ function cwmakeinstall_${rname}_openssl() {
 #
 # XXX - ugly
 #
+
+#
+# XXX - we build a dedicated curl as part of libressl, just use it if it's the same version
+# XXX - options could get out of whack here
+# XXX - might be better to just run cwupgrade_libressl and use it if no version match???
+#
 eval "
 function cwmakeinstall_${rname}_libressl() {
+  if [ -e \"${cwsw}/libressl/current/bin/curl-config\" ] ; then
+    if [[ \$(${cwsw}/libressl/current/bin/curl-config --version | cut -f2 -d' ') =~ ^${rver}$ ]] ; then
+      cwmkdir \"${ridir}/bin\"
+      rm -f  \"${ridir}/bin/curl-libressl\"
+      install -m 0755 \"\$(realpath ${cwsw}/libressl/current/bin/curl-libressl)\" \"${ridir}/bin/curl-libressl\"
+      return
+    fi
+  fi
   pushd \"${rbdir}\" >/dev/null 2>&1
   make distclean || true
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
