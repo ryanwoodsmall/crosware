@@ -83,7 +83,7 @@ function cwmakeinstall_${rname}_curl() {
     --enable-ipv6 \
     --with-libssh2 \
     --with-nghttp2 \
-    --with-ssl \
+    --with-ssl=\"${ridir}\" \
     --with-zlib \
     --without-hyper \
     --without-libidn2 \
@@ -116,6 +116,7 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
 }
 "
+
 #  echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
 #  echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
 #  echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
