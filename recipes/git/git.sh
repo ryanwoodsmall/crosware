@@ -64,6 +64,7 @@ function cwmakeinstall_${rname}() {
   make -j${cwmakejobs} install NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
   cwmkdir \"${ridir}/etc\"
   cwextract \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \"${ridir}/share/man\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}libressl\"
   popd >/dev/null 2>&1
 }
 "
