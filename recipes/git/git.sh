@@ -1,13 +1,14 @@
 #
 # XXX - mandoc with/instead of groff?
+# XXX - add html docs?
 #
 
 rname="git"
-rver="2.31.0"
+rver="2.31.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
-rsha256="e8f162cbdb3283e13cd7388d864ed23485f1b046a19e969f12ed2685fb789a40"
+rsha256="9f61417a44d5b954a5012b6f34e526a3336dcf5dd720e2bb7ada92ad8b3d6680"
 rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny libssh2 groff busybox less cacertificates nghttp2"
 
 . "${cwrecipe}/common.sh"
@@ -15,7 +16,10 @@ rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny libssh2 groff b
 eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
-  cwfetchcheck \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \"185ddcbc31ae6b8d33c3ab78f6022ee6cc79dd867c1b2e5c3767821124e780ec\"
+  cwfetchcheck \
+    \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \
+    \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \
+    \"5d0d443c57155da2f201584d4c8c5ad10a0a24ff3af3a7a77cdc8f56dddac702\"
 }
 "
 
