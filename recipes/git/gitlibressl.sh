@@ -23,7 +23,7 @@ function cwconfigure_${rname}() {
       --with-curl \
       --with-expat \
       --with-libpcre2 \
-      --with-openssl \
+      --with-openssl=\"${cwsw}/libressl/current\" \
       --with-perl=\"${cwsw}/perl/current/bin/perl\" \
       --without-iconv \
       --without-python \
