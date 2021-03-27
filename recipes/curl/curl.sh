@@ -54,7 +54,7 @@ function cwconfigure_${rname}() {
     --without-mbedtls \
     --without-wolfssl \
     --without-gnutls \
-    --with-ssl \
+    --with-ssl=\"${cwsw}/openssl/current\" \
     --with-default-ssl-backend=openssl \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
@@ -118,7 +118,7 @@ function cwmakeinstall_${rname}_libressl() {
     --without-libmetalink \
     --without-libssh2 \
     --without-bearssl \
-    --with-ssl \
+    --with-ssl=\"${cwsw}/libressl/current\" \
     --without-wolfssl \
     --without-gnutls \
     --without-mbedtls \
