@@ -131,10 +131,27 @@
     - libs...
     - inclues...
   - custom/pre/post functions
+  - ```cwupgradepost_${rname}```
+    - default to `true`
+    - per-recipe, can call ```cwupgradedeps_${rname}``` to get upstreams who require us
+    - i.e., openssl -> curl -> git wouldn't pick up libssh2 until after curl is compiled based on alpha
+    - need that _graph_
+    - this is mapreduce. ah. ahhh
+  - ```cwupgradedeps_${rname}```
+    - relies on ordering to rebuild things, not do double upgrades, etc...
+    - ```
+      for r in ${!cwrecipereqs[@]} ; do
+        if $(echo ${cwrecipereqs[${r}]} | tr ' ' '\n' | grep -q "^${rname}$") ; then
+          cwupgrade_${r}
+        fi
+      done
+      ```
+    - **REALLY NEED THAT GRAPH TO MAKE THIS EFFICIENT**
   - ```cwupgrade_${rname} function```
-    - move from bin/crosware?
-    - uninstall/reinstall by default
+    - uninstall/reinstall by default, checking downstream reqs to upgrade
     - cwreinstall_... as well? alias/wrapper?
+      - reinstall implemented as a global that calls `cwuninstall ${rname} ; cwinstall ${rname}` w/o upgrades
+      - could be moved to cwreinstall_${rname} doing the same to customize per recipe
   - ${cwconfigureprefix} leaks through
     - need to unset with r* vars
   - need a ```cwshowenv_${rname}()``` function
