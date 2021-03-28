@@ -579,7 +579,12 @@ time_func ls -l -A /
   - changes (for most recipes) when compilers are updated
   - main epoch stored in `/bin/crosware` or `/etc/profile` or `/recipes/common.sh`
   - `/var/epoch/recipe` stores installed recipe epoch
-  - packages without deps (java, go, bin jars, etc.) have separate epoch
+  - packages without deps (java, go, bin jars, etc.) have separate epoch?
+  - "release" per recipe
+    - default to epoch
+    - forces a big rebuild on compiler+libc update
+    - can be set per package, in `common.sh` ... `: ${rrelease:="${cwepoch}"}`
+    - in `${rname}.sh` ... `rrelease="${cwepoch}-0"`
 - downstream upgrades... - **DONE???**
   - not a full graph
   - on `crosware upgrade recipe` or `crosware upgrade-all`...
