@@ -1,3 +1,7 @@
+#
+# XXX - libressl variant?
+#
+
 rname="tinyemu"
 rver="2019-12-21"
 rdir="${rname}-${rver}"
