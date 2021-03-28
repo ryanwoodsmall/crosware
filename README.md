@@ -67,6 +67,7 @@ commands:
   list-recipe-versions : list recipes with version number
   list-upgradable : list installed packages with available upgrades
   profile : show .profile addition
+  reinstall : given package names, uinstall then install them without chasing upgrades
   run-func : run crosware shell function
   set : run 'set' to show full crosware environment
   show-arch : show kernel and userspace architecture

@@ -98,6 +98,7 @@ cwcmds["show-karch"]="show kernel architecture"
 cwcmds["show-uarch"]="show userspace architecture"
 cwcmds["show-arch"]="show kernel and userspace architecture"
 cwcmds["check-installed"]="given a package name, check if it's installed"
+cwcmds["reinstall"]="given package names, uinstall then install them without chasing upgrades"
 # XXX - does this need to be an associative array to generate case ..) statements?
 cwcmdaliases=( 'list-upgradeable' )
 cwcmdlist=( $(echo ${!cwcmds[@]} ${cwcmdaliases[@]} | tr ' ' '\n' | sort | xargs echo) )
@@ -1025,6 +1026,23 @@ function cwupgradeall() {
 }
 
 #
+# cwreinstall
+#
+# uninstall and reinstall a recipe without chasing down upgrades
+# - does this need to be a cwreinstall_${rname} for customization?
+#
+function cwreinstall() {
+  cwsourcerecipes
+  local reinstall=""
+  for reinstall in "${@}" ; do
+    cwscriptecho "reinstalling ${reinstall}"
+    cwuninstall "${reinstall}"
+    cwinstall "${reinstall}"
+  done
+  unset reinstall
+}
+
+#
 # cwenv
 #
 function cwenv() {
@@ -1207,6 +1225,8 @@ fi
 # execute our given command
 #
 # XXX - commands will have additional arguments, i.e., package name for install, etc.
+# XXX - these cases need to be sorted... getting out of control. but i am LAZY
+#
 case "${cmd}" in
   bootstrap)
     cwbootstrap
@@ -1284,6 +1304,9 @@ case "${cmd}" in
     ;;
   check-installed)
     cwcheckinstalled "${@}"
+    ;;
+  reinstall)
+    cwreinstall "${@}"
     ;;
   help)
     cwusage
