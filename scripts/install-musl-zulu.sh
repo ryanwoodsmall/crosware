@@ -43,19 +43,16 @@ fi
 
 # version picker
 case "${reqver}" in
-    8) zuluver="8.52.0.23-ca-jdk8.0.282"
-       zulusha="51ba720f61e473ca6b31d9677d9b786eca510c593032d1c54f772ee7dda7b9c0"
-       ;;
-   11) zuluver="11.45.27-ca-jdk11.0.10"
-       zulusha="efc94aa65985153c4400a86bcbb8d86031040fd0a8f6883739f569c3a01219f8"
-       ;;
-  all) bash "${BASH_SOURCE[0]}" 11
-       bash "${BASH_SOURCE[0]}" 8
-       exit 0
-       ;;
-    *) echo "${BASH_SOURCE[0]} [8|11|all]"
-       exit 1
-       ;;
+  8|11) zuluver="$(awk -F'"' '/^rver=/{print $2}' ${cwtop}/recipes/zulu/zulu${reqver}musl.sh)"
+        zulusha="$(awk -F'"' '/^rsha256=/{print $2}' ${cwtop}/recipes/zulu/zulu${reqver}musl.sh)"
+        ;;
+   all) bash "${BASH_SOURCE[0]}" 11
+        bash "${BASH_SOURCE[0]}" 8
+        exit 0
+        ;;
+     *) echo "${BASH_SOURCE[0]} [8|11|all]"
+        exit 1
+        ;;
 esac
 
 # crosware vars
