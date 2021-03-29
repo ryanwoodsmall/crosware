@@ -1,0 +1,58 @@
+rdir="zulu${rver}-linux_musl_x64"
+rfile="${rdir}.tar.gz"
+rurl="https://cdn.azul.com/zulu/bin/${rfile}"
+rreqs="libz patchelf toybox"
+rprof="${cwetcprofd}/zz_${rname}.sh"
+
+. "${cwrecipe}/common.sh"
+
+if [[ ! ${uarch} =~ ^x86_64$ ]] ; then
+eval "
+function cwinstall_${rname}() {
+  cwscriptecho \"${rname} not supported on ${uarch}\"
+}
+"
+fi
+
+eval "
+function cwextract_${rname}() {
+  cwextract \"${rdlfile}\" \"${rtdir}\"
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  true
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  true
+}
+"
+
+eval "
+function cwconfigure_${rname}() {
+  local l=\"${cwsw}/statictoolchain/current/\$(\${CC} -dumpmachine)/lib/ld.so\"
+  local z=\"\$(realpath ${cwsw}/libz/current/lib/libz.so)\"
+  local f
+  for f in \$(find ${ridir}/ -type f -exec toybox file {} + | grep ':.*ELF' | cut -f1 -d: | grep -v '\\.so') ; do
+    cwscriptecho \"patching \${f}\"
+    patchelf --set-interpreter \"\${l}\" \"\${f}\"
+  done
+  rm -f \"${ridir}/lib/libz.so.1\" \"${ridir}/lib/libz.so\"
+  cp -a \"\${z}\" \"${ridir}/lib/libz.so.1\"
+  ln -sf \"libz.so.1\" \"${ridir}/lib/libz.so\"
+  unset l z f
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'export JAVA_HOME=\"${rtdir}/current\"' > \"${rprof}\"
+  echo 'prepend_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
+}
+"
+
+# vim: ft=sh:
