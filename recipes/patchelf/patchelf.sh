@@ -15,6 +15,15 @@ rreqs="make"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install ${rlibtool}
+  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
