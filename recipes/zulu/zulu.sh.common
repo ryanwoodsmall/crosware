@@ -52,6 +52,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwgenprofd_${rname}() {
   echo 'export JAVA_HOME=\"${rtdir}/current\"' > \"${rprof}\"
+  echo 'export _JAVA_OPTIONS=\"-Djava.io.tmpdir=${cwtmp} -Djava.awt.headless=true -XX:-UsePerfData\"' >> \"${rprof}\"
   echo 'prepend_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
 }
 "
