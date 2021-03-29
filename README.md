@@ -436,6 +436,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libuv (https://github.com/libuv/libuv)
 - libxml2
 - libxslt
+- libz (sortix, zlib fork https://sortix.org/libz/)
 - linenoise (https://github.com/antirez/linenoise)
 - links (ncurses)
 - loksh (https://github.com/dimkr/loksh)
@@ -943,7 +944,6 @@ wc -l /tmp/astbuild.out
 - libutf (https://github.com/cls/libutf)
 - libwebsockets (https://libwebsockets.org/)
 - libyaml (https://github.com/yaml/libyaml)
-- libz (sortix, zlib fork https://sortix.org/libz/)
 - lisp stuff
   - aria (https://github.com/rxi/aria - tiny embeddable language)
   - clisp (https://clisp.sourceforge.io/
