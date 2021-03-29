@@ -3,6 +3,7 @@ rfile="${rdir}.tar.gz"
 rurl="https://cdn.azul.com/zulu/bin/${rfile}"
 rreqs="libz patchelf toybox"
 rprof="${cwetcprofd}/zz_${rname}.sh"
+rdlfile="${cwdl}/zulu/${rfile}"
 
 . "${cwrecipe}/common.sh"
 
