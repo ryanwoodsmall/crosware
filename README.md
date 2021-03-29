@@ -1125,6 +1125,7 @@ wc -l /tmp/astbuild.out
           LIBS="-lcurses -lterminfo"
       ```
 - moreutils (https://joeyh.name/code/moreutils/)
+- moscow ml (https://github.com/kfl/mosml)
 - mosquitto (https://github.com/eclipse/mosquitto and https://mosquitto.org/ - mqtt broker & pub/sub client)
   - tls (openssl) and cjson necessary for minimal secure functionality
   - c-ares (for SRV records) and libwebsockets for full functionality
