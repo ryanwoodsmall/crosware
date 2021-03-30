@@ -315,6 +315,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - coreutils (single static binary with symlinks, no nls/attr/acl/gmp/pcap/selinux)
 - cppcheck
 - cppi
+- cryanc (https://github.com/classilla/cryanc - crypto ancienne, tls for old platforms, provides "carl" binary with client+proxy)
 - cscope
 - cssc (gnu sccs)
 - ctags (exuberant ctags for now, universal ctags a better choice?)
@@ -739,7 +740,6 @@ wc -l /tmp/astbuild.out
   - would be useful to provide gcc with glibc support for more "native" builds
   - base on centos 7? rhel 8? debian 10? ubuntu 20 lts?
   - could be used to bootstrap llvm/clang and bootstrap rust?
-- cryanc (https://github.com/classilla/cryanc - crypto ancienne, tls for old platformcs)
 - curl caextract (https://curl.haxx.se/docs/caextract.html - replace/augment cacertificates?)
 - dante (socks proxy client/server https://www.inet.no/dante/)
 - dasel (https://github.com/TomWright/dasel - data selector like jq, yq - go)
