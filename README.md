@@ -1375,6 +1375,7 @@ wc -l /tmp/astbuild.out
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
 - tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
+- tlse (https://github.com/eduardsui/tlse - c tls impl using libtomcrypt)
 - tnftpd (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - torgo (https://github.com/as/torgo)
 - tpm (https://github.com/nmeum/tpm/ - tiny password manager)
