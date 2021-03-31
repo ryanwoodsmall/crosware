@@ -634,6 +634,10 @@ time_func ls -l -A /
   - `sysctl kernel.dmesg_restrict=0` to enable dmesg
   - `TERM` is funky with copy/paste in vim on xterm-256color? use screen-256color as workaround
   - google is doing everything they can to make this shit unusable
+- libressl variants of openssl packages
+  - mbedtls, wolfssl, bearssl too, for anything that supports it/them?
+  - see "bundling" of curl, libssh2 w/libressl
+  - gnutls? what else?
 
 <!--
 # vim: ft=markdown
