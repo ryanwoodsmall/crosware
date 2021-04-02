@@ -11,6 +11,7 @@ rurl="http://www.crufty.net/ftp/pub/sjg/${rfile}"
 rsha256="dabb91a36701141057b12b0d3f24e1ec1eaee3eb149303a7dac662e15837ea5c"
 rreqs=""
 rbdir="${cwbuild}/${rdir}/build"
+rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
@@ -71,6 +72,9 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  rm -f \"${cwetcprofd}/${rname}.sh\"
+  echo 'append_path \"${cwsw}/make/current/bin\"' > \"${rprof}\"
+  echo 'append_path \"${cwsw}/bootstrapmake/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
 }
 "
