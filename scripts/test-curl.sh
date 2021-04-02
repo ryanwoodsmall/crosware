@@ -35,12 +35,16 @@ else
   fi
 fi
 
+rec=0
 for i in $(realpath ${cwsw}/curl/current/bin/curl-*{ssl,tls}* | sort -u) ; do
+  echo "--"
   echo "${i}"
   echo "url: ${url}"
   "${i}" --version
   "${i}" ${copts} "${url}"
-  echo "${?}"
+  ec="${?}"
+  ((rec+=ec))
+  echo "${ec}"
   echo "--"
-  echo
 done
+exit $((${rec}%256))
