@@ -788,8 +788,7 @@ wc -l /tmp/astbuild.out
   - etc.
 - gnutls
   - needs nettle, gmplib, libtasn1, libunistring
-  - configure needs ```--without-p11-kit --disable-doc --enable-manpages --with-default-trust-store-file=${cwetc}/ssl/cert.pem```
-  - mini-nettle/mini-gmp?
+  - configure needs ```--without-p11-kit --disable-doc --enable-manpages --with-default-trust-store-file=${cwetc}/ssl/cert.pem --disable-hardware-acceleration --disable-nls --disable-padlock --enable-sha1-support --enable-ssl3-support```
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
 - got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
