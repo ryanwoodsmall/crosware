@@ -15,6 +15,12 @@ function cwgenprofd_${rname}() {
 "
 
 eval "
+function cwextract_${rname}() {
+  true
+}
+"
+
+eval "
 function cwinstall_${rname}() {
   cwfetch_${rname}
   cwcheckreqs_${rname}
