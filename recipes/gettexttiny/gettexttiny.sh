@@ -36,6 +36,5 @@ eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
   echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
-  echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
 }
 "
