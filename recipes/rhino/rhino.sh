@@ -9,6 +9,12 @@ rreqs="rlwrap"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwextract_${rname}() {
+  true
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current\"' > \"${rprof}\"
 }
