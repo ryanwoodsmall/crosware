@@ -10,6 +10,12 @@ rreqs="bash busybox"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwextract_${rname}() {
+  true
+}
+"
+
+eval "
 function cwmakeinstall_${rname}() {
   unset JYTHON_HOME
   test -e \"${ridir}\" && mv \"${ridir}\"{,.PRE-\${TS}}
