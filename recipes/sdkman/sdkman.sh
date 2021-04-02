@@ -15,6 +15,12 @@ rreqs="busybox unzip zip cacertificates"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwextract_${rname}() {
+  true
+}
+"
+
+eval "
 function cwfetch_${rname}() {
   cwfetch \"${rurl}\" \"${rdlfile}\"
 }
