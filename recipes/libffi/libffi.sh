@@ -2,7 +2,7 @@ rname="libffi"
 rver="3.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="ftp://sourceware.org/pub/${rname}/${rfile}"
+rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
 rsha256="72fba7922703ddfa7a028d513ac15a85c8d54c8d67f55fa5a4802885dc652056"
 rreqs="make configgit"
 
