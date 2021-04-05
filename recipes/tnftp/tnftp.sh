@@ -2,7 +2,7 @@ rname="tnftp"
 rver="20200705"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="ftp://ftp.netbsd.org/pub/NetBSD/misc/${rname}/${rfile}"
+rurl="https://ftp.netbsd.org/pub/NetBSD/misc/${rname}/${rfile}"
 rsha256="ba4a92b693d04179664524eef0801c8eed4447941c9855f377f98f119f221c03"
 rreqs="make netbsdcurses configgit"
 
