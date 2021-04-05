@@ -121,7 +121,10 @@ export cwunzip="unzip -o"
 #   -k accept insecure certs
 #   -L follow redirects
 #   -s for silent downloads?
-export cwcurlopts="-f -k -L -s"
+: ${cwcurl:="curl"}
+export cwcurl
+: ${cwcurlopts:="-f -k -L -s"}
+export cwcurlopts
 # make
 #   -j # of parallel jobs
 : ${cwmakejobs:="$(($(nproc)+1))"}
@@ -515,7 +518,7 @@ function cwfetch() {
   local targetdir="$(dirname "${targetfile}")"
   cwmkdir "${targetdir}"
   cwscriptecho "downloading ${downloadurl} to ${targetfile}"
-  curl ${cwcurlopts} -o "${targetfile}" "${downloadurl}"
+  ${cwcurl} ${cwcurlopts} -o "${targetfile}" "${downloadurl}"
   if [ "${?}" -eq 0 ] ; then
     cwscriptecho "successfully downloaded ${downloadurl} to ${targetfile}"
     return 0
