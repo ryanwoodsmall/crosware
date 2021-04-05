@@ -12,7 +12,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   chmod -R u+w .
-  curl -kLsO https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/bb_config_script.sh
+  ${cwcurl} -kLsO https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/bb_config_script.sh
   sed -i.ORIG 's/^make/#make/g;s/^test/#test/g' bb_config_script.sh
   make defconfig HOSTCC=\"\${CC} -static\"
   bash bb_config_script.sh -m -s
