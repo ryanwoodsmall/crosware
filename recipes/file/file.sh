@@ -1,9 +1,9 @@
 rname="file"
-rver="5.39"
+rver="5.40"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="ftp://ftp.astron.com/pub/${rname}/${rfile}"
-rsha256="f05d286a76d9556243d0cb05814929c2ecf3a5ba07963f8f70bfaaa70517fad1"
+rsha256="167321f43c148a553f68a0ea7f579821ef3b11c27b8cbe158e4df897e4a5dd57"
 rreqs="make zlib bzip2 xz"
 
 . "${cwrecipe}/common.sh"
@@ -19,7 +19,8 @@ function cwconfigure_${rname}() {
 eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
-  echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
   echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
+  echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
+  echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
 }
 "
