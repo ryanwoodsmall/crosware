@@ -1,5 +1,9 @@
 # TODO
 
+- `cwftpfetch` - detect ftp:// downloads and use `busybox wget -O /path/to/file.download ftp://site.tld/pub/file.download`
+  - google deprecated FTP in chrome, which is theirs...
+  - but also disabled it in curl, which is just great
+  - ugh, sick of this crap
 - remove renamed `cwlistreqs_${rname}` functions (now `cwreqs_${rname}`)
 - move **FLAGS** vars to `CW_` prefix?
   - avoid polluting environment?
