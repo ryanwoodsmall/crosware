@@ -15,7 +15,7 @@ rreqs="bootstrapmake"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  curl -kLsO https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/${rname}_config_script.sh
+  ${cwcurl} -kLsO https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/${rname}_config_script.sh
   sed -i.ORIG 's/^make/#make/g;s/^test/#test/g' ${rname}_config_script.sh
   make defconfig HOSTCC=\"\${CC} -static\"
   bash ${rname}_config_script.sh -m -s
