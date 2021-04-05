@@ -2,7 +2,7 @@ rname="file"
 rver="5.40"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="ftp://ftp.astron.com/pub/${rname}/${rfile}"
+rurl="https://astron.com/pub/${rname}/${rfile}"
 rsha256="167321f43c148a553f68a0ea7f579821ef3b11c27b8cbe158e4df897e4a5dd57"
 rreqs="make zlib bzip2 xz"
 
