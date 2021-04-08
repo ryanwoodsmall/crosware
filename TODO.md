@@ -1,5 +1,8 @@
 # TODO
 
+- `staticfiles` recipe
+  - capture stuff under e.g. **/etc/** from other (alpine/busybox:musl/centos/ubuntu/debian) distros
+  - would make container construction much more robust
 - `cwftpfetch` - detect ftp:// downloads and use `busybox wget -O /path/to/file.download ftp://site.tld/pub/file.download`
   - google deprecated FTP in chrome, which is theirs...
   - but also disabled it in curl, which is just great
