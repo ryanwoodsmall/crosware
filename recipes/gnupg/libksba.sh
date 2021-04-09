@@ -1,9 +1,9 @@
 rname="libksba"
-rver="1.5.0"
+rver="1.5.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="ae4af129216b2d7fdea0b5bf2a788cd458a79c983bb09a43f4d525cc87aba0ba"
+rsha256="b0f4c65e4e447d9a2349f6b8c0e77a28be9531e4548ba02c545d1f46dc7bf921"
 rreqs="make libgpgerror slibtool configgit"
 
 . "${cwrecipe}/common.sh"
