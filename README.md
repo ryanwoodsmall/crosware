@@ -1421,6 +1421,7 @@ wc -l /tmp/astbuild.out
 - wolfssh (https://github.com/wolfSSL/wolfssh)
 - wordgrinder (https://github.com/davidgiven/wordgrinder - word processor)
 - wrp (https://github.com/tenox7/wrp - web rendering proxy)
+- wren (https://wren.io/ and https://github.com/wren-lang/wren)
 - wsServer (https://theldus.github.io/wsServer/ and https://github.com/Theldus/wsServer - websocket server in c)
 - xe (https://github.com/leahneukirchen/xe)
 - xq (https://github.com/jeffbr13/xq)
