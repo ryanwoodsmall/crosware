@@ -52,6 +52,7 @@ function cwconfigure_${rname}() {
     --without-zstd \
     --without-bearssl \
     --without-mbedtls \
+    --without-wolfssh \
     --without-wolfssl \
     --without-gnutls \
     --with-ssl=\"${cwsw}/openssl/current\" \
@@ -119,6 +120,7 @@ function cwmakeinstall_${rname}_libressl() {
     --without-libssh2 \
     --without-bearssl \
     --with-ssl=\"${cwsw}/libressl/current\" \
+    --without-wolfssh \
     --without-wolfssl \
     --without-gnutls \
     --without-mbedtls \
@@ -153,6 +155,7 @@ function cwmakeinstall_${rname}_mbedtls() {
     --without-libssh2 \
     --without-bearssl \
     --without-ssl \
+    --without-wolfssh \
     --without-wolfssl \
     --without-gnutls \
     --with-mbedtls \
@@ -185,7 +188,8 @@ function cwmakeinstall_${rname}_wolfssl() {
     --without-ssl \
     --without-mbedtls \
     --without-gnutls \
-    --with-wolfssl \
+    --with-wolfssh=\"${cwsw}/wolfssl/current\" \
+    --with-wolfssl=\"${cwsw}/wolfssl/current\" \
     --with-default-ssl-backend=wolfssl \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
     --with-ca-path=\"${cwetc}/ssl/certs\"
@@ -214,6 +218,7 @@ function cwmakeinstall_${rname}_bearssl() {
     --without-ssl \
     --without-mbedtls \
     --without-gnutls \
+    --without-wolfssh \
     --without-wolfssl \
     --with-bearssl \
     --with-default-ssl-backend=bearssl \
