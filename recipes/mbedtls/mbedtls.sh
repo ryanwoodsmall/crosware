@@ -5,6 +5,8 @@
 #  cat programs/Makefile > programs/Makefile.ORIG
 #  sed -i '/^\\tpsa\\/key_ladder_demo.*\\$/d' programs/Makefile
 #  sed -i '/^\\tpsa\\/psa_constant_name.*\\$/d' programs/Makefile
+# XXX - is threading right?
+#  see alpine: https://git.alpinelinux.org/aports/tree/main/mbedtls/APKBUILD
 #
 
 rname="mbedtls"
@@ -21,6 +23,9 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG \"s#^DESTDIR=.*#DESTDIR=${ridir}#g\" Makefile
+  cat include/mbedtls/config.h > include/mbedtls/config.h.ORIG
+  sed -i '/define MBEDTLS_THREADING_C/s,//,,g' include/mbedtls/config.h
+  sed -i '/define MBEDTLS_THREADING_PTHREAD/s,//,,g' include/mbedtls/config.h
   popd >/dev/null 2>&1
 }
 "
