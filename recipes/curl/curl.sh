@@ -13,11 +13,11 @@
 #
 
 rname="curl"
-rver="7.76.0"
+rver="7.76.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
-rsha256="e29bfe3633701590d75b0071bbb649ee5ca4ca73f00649268bd389639531c49a"
+rsha256="7a8e184d7d31312c4ebf6a8cb59cd757e61b2b2833a9ed4f9bf708066e7695e9"
 rreqs="make zlib openssl libressl bearssl mbedtls wolfssl libssh2 expat libmetalink cacertificates nghttp2 pkgconfig"
 
 . "${cwrecipe}/common.sh"
