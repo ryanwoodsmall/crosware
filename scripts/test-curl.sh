@@ -3,6 +3,8 @@
 #
 # test currently installed curl version for https interop
 #
+# XXX - test http/2? https://github.com/curl/curl/issues/6825
+#
 
 if [ -z "${cwsw}" ] ; then
   echo "is this crosware?" 1>&2
