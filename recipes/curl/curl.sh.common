@@ -1,0 +1,38 @@
+eval "
+function cwextract_${rname}() {
+  cwextract_curl
+}
+"
+
+eval "
+function cwclean_${rname}() {
+  cwclean_curl
+}
+"
+
+eval "
+function cwfetch_${rname}() {
+  cwfetch_curl
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  true
+}
+"
+
+eval "
+function cwconfigure_${rname}() {
+  true
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  rm -f \"${cwetcprofd}/${rname}.sh\"
+  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+}
+"
+
+# vim: ft=sh:
