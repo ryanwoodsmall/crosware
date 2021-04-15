@@ -421,6 +421,7 @@ function cwinstall_statictoolchain() {
   cwlinkdir "${statictoolchain_dir[${karch}]}" "${statictoolchain_inst_dir}"
   cwexpandenv "${statictoolchain_pkgname}" "${cwetcprofd}/${statictoolchain_pkgname}.sh"
   cwmarkinstall "${statictoolchain_pkgname}" "${statictoolchain_prefix[${karch}]}"
+  rm -rf "${cwsw}/${old_static_toolchain_pkgname}"
 }
 
 #
@@ -732,14 +733,9 @@ function cwbootstrap() {
     cwscriptecho "removing temporary zulu jdk directory"
     rm -rf "${zulujdkdir}"
   fi
-  # if we have an old "static-toolchain" setup, move it out of the way
+  # if we have an old "static-toolchain" setup remove it
   if [ -e "${cwsw}/${old_static_toolchain_pkgname}" ] ; then
-    if [ ! -L "${cwsw}/${old_static_toolchain_pkgname}" ] ; then
-      mv ${cwsw}/${old_static_toolchain_pkgname}{,.PRE-${TS}}
-    fi
-  # make sure we have a static-toolchain -> statictoolchain symlink just in case
-  else
-    ln -sf ${cwsw}/${statictoolchain_pkgname} ${cwsw}/${old_static_toolchain_pkgname}
+    rm -rf "${cwsw}/${old_static_toolchain_pkgname}"
   fi
   if [ -e "${cwvarinst}/${old_static_toolchain_pkgname}" ] ; then
     rm -f ${cwvarinst}/${old_static_toolchain_pkgname}
