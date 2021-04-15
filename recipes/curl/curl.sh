@@ -6,13 +6,18 @@
 #   - copy of libssh2 bundled with libressl recipe (with own curl)
 #   - other providers use libssh2libgcrypt
 #     - requires libgcrypt, which needs libgpgerror
-#     - libssh2 w/libgcrypt needs '-u user: --key id_rsa --pubkey id_rsa.pub' options?
+#     - libssh2 w/libgcrypt needs '--key id_rsa --pubkey id_rsa.pub' options?
 #     - https://www.zufallsheld.de/2020/06/07/debugging-issues-libcurl-pubkey-authentication/
 # - enable libidn2?
 # - enable c-ares resolver?
 # - add ngtcp2+nghttp3 (experimental, really needs openssl (with patches)? gnutls?)
 # - zstd support?
 # - brotli?
+# - XXX - split these out into full subpackages?
+#   - curlbearssl, curllibressl (kill bundled libressl curl?), curlmbedtls, curlwolfssl?
+#   - seems wise?
+#   - need a programmatic recipe macro generator for common configs
+#   - bearssl, mbedtls, wolfssl all very similar
 #
 
 rname="curl"
