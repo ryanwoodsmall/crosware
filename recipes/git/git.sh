@@ -12,6 +12,7 @@ rsha256="9f61417a44d5b954a5012b6f34e526a3336dcf5dd720e2bb7ada92ad8b3d6680"
 rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny libssh2 groff busybox less cacertificates nghttp2"
 
 . "${cwrecipe}/common.sh"
+. "${cwrecipe}/${rname}/${rname}.sh.common"
 
 eval "
 function cwfetch_${rname}() {
@@ -46,14 +47,6 @@ function cwconfigure_${rname}() {
   grep -ril sys/poll\\.h ${rbdir}/ \
   | grep \\.h\$ \
   | xargs sed -i.ORIG 's#sys/poll\.h#poll.h#g'
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
   popd >/dev/null 2>&1
 }
 "

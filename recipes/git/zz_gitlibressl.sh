@@ -1,5 +1,5 @@
 rname="gitlibressl"
-rver="2.31.1"
+rver="$(cwver_git)"
 rdir="${rname%libressl}-${rver}"
 rfile="${rdir}.tar.xz"
 rdlfile="${cwdl}/${rname%libressl}/${rfile}"
@@ -8,6 +8,7 @@ rsha256=""
 rreqs="make zlib libressl expat pcre2 perl cacertificates nghttp2"
 
 . "${cwrecipe}/common.sh"
+. "${cwrecipe}/${rname%libressl}/${rname%libressl}.sh.common"
 
 eval "
 function cwfetch_${rname}() {
@@ -41,14 +42,6 @@ function cwconfigure_${rname}() {
   grep -ril sys/poll\\.h ${rbdir}/ \
   | grep \\.h\$ \
   | xargs sed -i.ORIG 's#sys/poll\.h#poll.h#g'
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
   popd >/dev/null 2>&1
 }
 "
