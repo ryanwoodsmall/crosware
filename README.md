@@ -431,6 +431,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libpcap
 - libressl (https://www.libressl.org/)
 - libssh2 (openssl, zlib)
+  - libssh2libgcrypt (gcrypt, zlib)
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtool
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
