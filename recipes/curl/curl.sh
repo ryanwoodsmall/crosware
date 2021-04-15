@@ -76,10 +76,10 @@ function cwconfigure_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   cwmakeinstall_${rname}_openssl
-  cwmakeinstall_${rname}_libressl
-  cwmakeinstall_${rname}_bearssl
-  cwmakeinstall_${rname}_mbedtls
-  cwmakeinstall_${rname}_wolfssl
+  #cwmakeinstall_${rname}_libressl
+  #cwmakeinstall_${rname}_bearssl
+  #cwmakeinstall_${rname}_mbedtls
+  #cwmakeinstall_${rname}_wolfssl
 }
 "
 
@@ -98,51 +98,12 @@ function cwmakeinstall_${rname}_openssl() {
 # XXX - ugly
 #
 
-#
-# XXX - we build a dedicated curl as part of libressl, just use it if it's the same version
-# XXX - options could get out of whack here
-# XXX - might be better to just run cwupgrade_libressl and use it if no version match???
-#
 eval "
 function cwmakeinstall_${rname}_libressl() {
-  if [ -e \"${cwsw}/libressl/current/bin/curl-config\" ] ; then
-    if [[ \$(${cwsw}/libressl/current/bin/curl-config --version | cut -f2 -d' ') =~ ^${rver}$ ]] ; then
-      cwmkdir \"${ridir}/bin\"
-      rm -f  \"${ridir}/bin/curl-libressl\"
-      install -m 0755 \"\$(realpath ${cwsw}/libressl/current/bin/curl-libressl)\" \"${ridir}/bin/curl-libressl\"
-      return
-    fi
-  fi
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make distclean || true
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
-    --disable-dependency-tracking \
-    --disable-maintainer-mode \
-    --enable-ipv6 \
-    --with-libssh2=\"${cwsw}/libressl/current\" \
-    --with-nghttp2=\"${cwsw}/nghttp2/current\" \
-    --with-zlib=\"${cwsw}/zlib/current\" \
-    --without-hyper \
-    --without-libidn2 \
-    --without-zstd \
-    --without-libmetalink \
-    --without-bearssl \
-    --with-ssl=\"${cwsw}/libressl/current\" \
-    --without-wolfssh \
-    --without-wolfssl \
-    --without-gnutls \
-    --without-mbedtls \
-    --with-default-ssl-backend=openssl \
-    --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
-    --with-ca-path=\"${cwetc}/ssl/certs\" \
-      LDFLAGS=\"-L${cwsw}/zlib/current/lib -L${cwsw}/libressl/current/lib -static\" \
-      CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/libressl/current/include\" \
-      PKG_CONFIG_PATH=\"${cwsw}/nghttp2/current/lib/pkgconfig\" \
-      PKG_CONFIG_LIBDIR=\"${cwsw}/nghttp2/current/lib/pkgconfig\"
-  make -j${cwmakejobs}
-  mkdir -p ${ridir}/bin
-  install -m 0755 src/curl ${ridir}/bin/curl-libressl
-  popd >/dev/null 2>&1
+  cwcheckinstalled ${rname}libressl || cwinstall_${rname}libressl
+  cwscriptecho \"installing ${rname}-libressl binary in ${ridir}/bin\"
+  cwmkdir \"${ridir}/bin\"
+  install -m 0755 \"${cwsw}/${rname}libressl/current/bin/${rname}-libressl\" \"${ridir}/bin/curl-libressl\"
 }
 "
 
