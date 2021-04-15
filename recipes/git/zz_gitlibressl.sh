@@ -45,21 +45,3 @@ function cwconfigure_${rname}() {
   popd >/dev/null 2>&1
 }
 "
-
-eval "
-function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} install NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
-  ln -sf \"${rtdir}/current/bin/${rname%libressl}\" \"${ridir}/bin/${rname}\"
-  cwmkdir \"${ridir}/etc\"
-  cwextract \"${rdlfile//${rname%libressl}-${rver}/${rname%libressl}-manpages-${rver}}\" \"${ridir}/share/man\"
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir%libressl}/current/bin\"' > \"${rprof}\"
-  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
-}
-"
