@@ -188,7 +188,7 @@ function cwmakeinstall_${rname}_wolfssl() {
     --without-ssl \
     --without-mbedtls \
     --without-gnutls \
-    --with-wolfssh=\"${cwsw}/wolfssl/current\" \
+    --without-wolfssh \
     --with-wolfssl=\"${cwsw}/wolfssl/current\" \
     --with-default-ssl-backend=wolfssl \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
