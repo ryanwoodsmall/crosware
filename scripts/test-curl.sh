@@ -38,7 +38,7 @@ else
 fi
 
 rec=0
-for i in $(realpath ${cwsw}/curl/current/bin/curl-*{ssl,tls}* | sort -u) ; do
+for i in $(realpath ${cwsw}/curl*/current/bin/curl-*{ssl,tls} | sort -u) ; do
   echo "--"
   echo "${i}"
   echo "url: ${url}"
