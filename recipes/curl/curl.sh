@@ -2,14 +2,17 @@
 # - other ssl/tls providers
 #   - gnutls, nss, ...
 # - libssh2
-#   - supports one of openssl, mbed, libgcrypt
-#   - mix/match with ssl/tls providers? seems like a bad idea
-# - wolfssh support
-#   - --with-wolfssh
+#   - main package supports openssl
+#   - copy of libssh2 bundled with libressl recipe (with own curl)
+#   - other providers use libssh2libgcrypt
+#     - requires libgcrypt, which needs libgpgerror
+#     - libssh2 w/libgcrypt needs '-u user: --key id_rsa --pubkey id_rsa.pub' options?
+#     - https://www.zufallsheld.de/2020/06/07/debugging-issues-libcurl-pubkey-authentication/
 # - enable libidn2?
 # - enable c-ares resolver?
-# - add ngtcp2+nghttp3 (experimental, really needs openssl?)
+# - add ngtcp2+nghttp3 (experimental, really needs openssl (with patches)? gnutls?)
 # - zstd support?
+# - brotli?
 #
 
 rname="curl"
@@ -18,7 +21,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
 rsha256="7a8e184d7d31312c4ebf6a8cb59cd757e61b2b2833a9ed4f9bf708066e7695e9"
-rreqs="make zlib openssl libressl bearssl mbedtls wolfssl libssh2 expat libmetalink cacertificates nghttp2 pkgconfig"
+rreqs="make zlib openssl libressl bearssl mbedtls wolfssl libssh2 expat libmetalink cacertificates nghttp2 pkgconfig libgpgerror libgcrypt libssh2libgcrypt"
 
 . "${cwrecipe}/common.sh"
 
@@ -43,10 +46,10 @@ function cwconfigure_${rname}() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --enable-ipv6 \
-    --with-libmetalink \
-    --with-libssh2 \
-    --with-nghttp2 \
-    --with-zlib \
+    --with-libmetalink=\"${cwsw}/libmetalink/current\" \
+    --with-libssh2=\"${cwsw}/libssh2/current\" \
+    --with-nghttp2=\"${cwsw}/nghttp2/current\" \
+    --with-zlib=\"${cwsw}/zlib/current\" \
     --without-hyper \
     --without-libidn2 \
     --without-zstd \
@@ -111,13 +114,13 @@ function cwmakeinstall_${rname}_libressl() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --enable-ipv6 \
-    --with-nghttp2 \
-    --with-zlib \
+    --with-libssh2=\"${cwsw}/libressl/current\" \
+    --with-nghttp2=\"${cwsw}/nghttp2/current\" \
+    --with-zlib=\"${cwsw}/zlib/current\" \
     --without-hyper \
     --without-libidn2 \
     --without-zstd \
     --without-libmetalink \
-    --without-libssh2 \
     --without-bearssl \
     --with-ssl=\"${cwsw}/libressl/current\" \
     --without-wolfssh \
@@ -146,22 +149,26 @@ function cwmakeinstall_${rname}_mbedtls() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --enable-ipv6 \
-    --with-nghttp2 \
-    --with-zlib \
+    --with-libssh2=\"${cwsw}/libssh2libgcrypt/current\" \
+    --with-nghttp2=\"${cwsw}/nghttp2/current\" \
+    --with-zlib=\"${cwsw}/zlib/current\" \
     --without-hyper \
     --without-libidn2 \
     --without-zstd \
     --without-libmetalink \
-    --without-libssh2 \
     --without-bearssl \
     --without-ssl \
     --without-wolfssh \
     --without-wolfssl \
     --without-gnutls \
-    --with-mbedtls \
+    --with-mbedtls=\"${cwsw}/mbedtls/current\" \
     --with-default-ssl-backend=mbedtls \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
-    --with-ca-path=\"${cwetc}/ssl/certs\"
+    --with-ca-path=\"${cwetc}/ssl/certs\" \
+      CPPFLAGS=\"$(echo -I${cwsw}/{mbedtls,zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/include)\" \
+      LDFLAGS=\"$(echo -L${cwsw}/{mbedtls,zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib) -static\" \
+      PKG_CONFIG_LIBDIR=\"$(echo ${cwsw}/{mbedtls,zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\" \
+      PKG_CONFIG_PATH=\"$(echo ${cwsw}/{mbedtls,zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\"
   make -j${cwmakejobs}
   mkdir -p ${ridir}/bin
   install -m 0755 src/curl ${ridir}/bin/curl-mbedtls
@@ -177,13 +184,13 @@ function cwmakeinstall_${rname}_wolfssl() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --enable-ipv6 \
-    --with-nghttp2 \
-    --with-zlib \
+    --with-libssh2=\"${cwsw}/libssh2libgcrypt/current\" \
+    --with-nghttp2=\"${cwsw}/nghttp2/current\" \
+    --with-zlib=\"${cwsw}/zlib/current\" \
     --without-hyper \
     --without-libidn2 \
     --without-zstd \
     --without-libmetalink \
-    --without-libssh2 \
     --without-bearssl \
     --without-ssl \
     --without-mbedtls \
@@ -192,7 +199,11 @@ function cwmakeinstall_${rname}_wolfssl() {
     --with-wolfssl=\"${cwsw}/wolfssl/current\" \
     --with-default-ssl-backend=wolfssl \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
-    --with-ca-path=\"${cwetc}/ssl/certs\"
+    --with-ca-path=\"${cwetc}/ssl/certs\" \
+      CPPFLAGS=\"$(echo -I${cwsw}/{wolfssl,zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/include)\" \
+      LDFLAGS=\"$(echo -L${cwsw}/{wolfssl,zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib) -static\" \
+      PKG_CONFIG_LIBDIR=\"$(echo ${cwsw}/{wolfssl,zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\" \
+      PKG_CONFIG_PATH=\"$(echo ${cwsw}/{wolfssl,zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\"
   make -j${cwmakejobs}
   mkdir -p ${ridir}/bin
   install -m 0755 src/curl ${ridir}/bin/curl-wolfssl
@@ -208,22 +219,26 @@ function cwmakeinstall_${rname}_bearssl() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --enable-ipv6 \
-    --with-nghttp2 \
-    --with-zlib \
+    --with-libssh2=\"${cwsw}/libssh2libgcrypt/current\" \
+    --with-nghttp2=\"${cwsw}/nghttp2/current\" \
+    --with-zlib=\"${cwsw}/zlib/current\" \
     --without-hyper \
     --without-libidn2 \
     --without-zstd \
     --without-libmetalink \
-    --without-libssh2 \
     --without-ssl \
     --without-mbedtls \
     --without-gnutls \
     --without-wolfssh \
     --without-wolfssl \
-    --with-bearssl \
+    --with-bearssl=\"${cwsw}/bearssl/current\" \
     --with-default-ssl-backend=bearssl \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
-    --with-ca-path=\"${cwetc}/ssl/certs\"
+    --with-ca-path=\"${cwetc}/ssl/certs\" \
+      CPPFLAGS=\"$(echo -I${cwsw}/{bearssl,zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/include)\" \
+      LDFLAGS=\"$(echo -L${cwsw}/{bearssl,zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib) -static\" \
+      PKG_CONFIG_LIBDIR=\"$(echo ${cwsw}/{bearssl,zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\" \
+      PKG_CONFIG_PATH=\"$(echo ${cwsw}/{bearssl,zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\"
   make -j${cwmakejobs}
   mkdir -p ${ridir}/bin
   install -m 0755 src/curl ${ridir}/bin/curl-bearssl
