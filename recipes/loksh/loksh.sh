@@ -12,7 +12,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  env PATH=\"$(echo -n ${cwsw}/{python3,meson,ninja}/current/bin | tr ' ' ':'):\${PATH}\" \
+  env PATH=\"\$(echo -n ${cwsw}/{python3,meson,ninja}/current/bin | tr ' ' ':'):\${PATH}\" \
     \"${cwsw}/meson/current/bin/meson\" setup --prefix=\"${ridir}\" build \"${rbdir}\"
   popd >/dev/null 2>&1
 }
@@ -21,7 +21,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  env PATH=\"$(echo -n ${cwsw}/{python3,meson,ninja}/current/bin | tr ' ' ':'):\${PATH}\" \
+  env PATH=\"\$(echo -n ${cwsw}/{python3,meson,ninja}/current/bin | tr ' ' ':'):\${PATH}\" \
     \"${cwsw}/ninja/current/bin/ninja\" -C build
   popd >/dev/null 2>&1
 }
@@ -31,7 +31,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   find ${ridir}/bin/ ! -type d | grep 'sh$' | xargs rm -f
-  env PATH=\"$(echo -n ${cwsw}/{python3,meson,ninja}/current/bin | tr ' ' ':'):\${PATH}\" \
+  env PATH=\"\$(echo -n ${cwsw}/{python3,meson,ninja}/current/bin | tr ' ' ':'):\${PATH}\" \
     \"${cwsw}/ninja/current/bin/ninja\" -C build install
   mv \"${ridir}/bin/ksh\" \"${ridir}/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/ksh\"
