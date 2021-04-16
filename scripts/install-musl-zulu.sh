@@ -74,8 +74,8 @@ cwtmp="$(cd ${cwtop}/../tmp && pwd)"
 : ${zuludldir:="${cwdl}/zulu"}
 : ${zuludlfile:="${zuludldir}/${zulufile}"}
 
-# we need make, file, libz, and patchelf
-for req in make file libz patchelf ; do
+# we need file, libz, and patchelf
+for req in file libz patchelf ; do
   crosware check-installed ${req} || crosware install ${req}
 done
 . "${cwtop}/etc/profile"
