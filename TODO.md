@@ -661,6 +661,14 @@ time_func ls -l -A /
   - mbedtls, wolfssl, bearssl too, for anything that supports it/them?
   - see "bundling" of curl, libssh2 w/libressl
   - gnutls? what else?
+- `recipes/overrides/recipe.sh`
+  - locally override settings
+  - rurl, rver, etc.
+  - normal flow: recipe.sh -> common.sh -> recipe.sh.common
+  - would have to include at top of common.sh
+  - separate out vars/settings and functions?
+  - functions could then be included at bottom of common.sh or recipe.sh.common
+  - no one size solution here for var+function override
 
 <!--
 # vim: ft=markdown
