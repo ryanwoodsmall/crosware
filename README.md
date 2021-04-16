@@ -1189,6 +1189,7 @@ wc -l /tmp/astbuild.out
 - openbsd-libz (https://github.com/ataraxialinux/openbsd-libz)
 - openconnect
 - opengit (https://github.com/khanzf/opengit)
+- openresolv (http://roy.marples.name/projects/openresolv/ - resolvconf implementation)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
   - "cannot be used as a static library" - what?
