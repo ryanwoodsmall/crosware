@@ -1,20 +1,9 @@
 #!/usr/bin/env bash
-
 #
-# XXX - check for musl
-# XXX - use patchelf (and file) to set dynamic loader
-#   find $cwtop/../zulu/ -type f -exec realpath {} + \
-#   | xargs $cwsw/file/current/bin/file \
-#   | tr -s ' ' \
-#   | grep 'ELF.*interpreter' \
-#   | cut -f1 -d: \
-#   | while read -r f ; do
-#       echo $f
-#       p=$cwsw/patchelf/current/bin/patchelf
-#       $p --set-interpreter /usr/local/crosware/software/statictoolchain/current/x86_64-linux-musl/lib/ld-musl-x86_64.so.1 $f
-#     done
-# XXX - remove {,/usr}/lib{,64} directory/symlink creation
-# XXX - use alpine openjdk 8/11 .apk packages instead - may work on other arches!
+# install musl-based zulu jdk "out of tree"
+#
+# XXX - use alpine openjdk 8/11 .apk packages instead - may work on other arches? ssl/nss/x11?
+# XXX - should zuluver/zulusha be overridable from environment?
 #
 
 # only run if we're have valid crosware
@@ -70,41 +59,20 @@ zuluurl="${zulucdn}/${zulufile}"
 zuludldir="${cwdl}/zulu"
 zuludlfile="${zuludldir}/${zulufile}"
 
-# libz vars
-libzdir="libz-1.2.8.2015.12.26"
-libzfile="${libzdir}.tar.gz"
-libzurl="https://sortix.org/libz/release/${libzfile}"
-libzsha="abcc2831b7a0e891d0875fa852e9b9510b420d843d3d20aad010f65493fe4f7b"
-libzdldir="${cwdl}/libz"
-libzdlfile="${libzdldir}/${libzfile}"
-libzbuilddir="${cwbuild}/${libzdir}"
-
-# we need make
-crosware check-installed make || crosware install make
+# we need make, file, libz, and patchelf
+for req in make file libz patchelf ; do
+  crosware check-installed ${req} || crosware install ${req}
+done
 . "${cwtop}/etc/profile"
 
 # download everything
 crosware \
   run-func \
-    cwfetchcheck,${libzurl},${libzdlfile},${libzsha} \
     cwfetchcheck,${zuluurl},${zuludlfile},${zulusha}
 
-# build and install a sortix libz.so
-rm -rf ${libzbuilddir}
-crosware \
-  run-func \
-    cwextract,${libzdlfile},${cwbuild}
-{
-  cd ${libzbuilddir}/
-  env CFLAGS= CPPFLAGS= LDFLAGS= ./configure --enable-shared --disable-static
-  make
-  install -m 0755 -D $(realpath libz.so) ${zulutop}/${zuludir}/lib/libz.so.1
-}
-{
-  cd ${zulutop}/${zuludir}/lib/
-  ln -sf libz.so{.1,}
-}
-rm -rf ${libzbuilddir}
+# install sortix libz.so in jdk lib dir
+install -m 0755 -D $(realpath ${cwsw}/libz/current/lib/libz.so) ${zulutop}/${zuludir}/lib/libz.so.1
+ln -sf libz.so.1 ${zulutop}/${zuludir}/lib/libz.so
 
 # install zulu jdk
 crosware \
@@ -112,10 +80,15 @@ crosware \
     cwextract,${zuludlfile},${zulutop} \
     cwlinkdir,${zuludir},${zulutop}
 
-# we (conditionally) need some symlinks for libc.so
-for l in {/usr,}/lib{,64} ; do
-  test -e ${l} || ln -s ${cwsw}/statictoolchain/current/$(gcc -dumpmachine)/lib ${l}
-done
+# patchelf any ELF binaries
+find ${zulutop}/${zuludir} -type f -exec ${cwsw}/file/current/bin/file {} + \
+| grep 'ELF.*executable' \
+| cut -f1 -d: \
+| sort \
+| while read -r i ; do
+    echo patching ${i}
+    ${cwsw}/patchelf/current/bin/patchelf --set-interpreter ${cwsw}/statictoolchain/current/$(${cwsw}/statictoolchain/current/bin/gcc -dumpmachine)/lib/libc.so ${i}
+  done
 
 # write out the profile
 cat > ${zuluprofd} << EOF
