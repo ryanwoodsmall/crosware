@@ -44,6 +44,8 @@ function cwmakeinstall_${rname}() {
   rm -f \"${ridir}/bin/curl-${rprovider}\" \"${ridir}/bin/${rname%${rprovider}}-${rprovider}-config\"
   mv \"${ridir}/bin/${rname%${rprovider}}\" \"${ridir}/bin/curl-${rprovider}\"
   mv \"${ridir}/bin/${rname%${rprovider}}-config\" \"${ridir}/bin/curl-${rprovider}-config\"
+  cwmkdir \"${ridir}/devbin\"
+  ln -sf \"${rtdir}/current/bin/curl-${rprovider}-config\" \"${ridir}/devbin/curl-config\"
   popd >/dev/null 2>&1
 }
 "
