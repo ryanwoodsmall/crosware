@@ -805,6 +805,26 @@ wc -l /tmp/astbuild.out
   - haproxy (http://www.haproxy.org/)
   - hiawatha (https://www.hiawatha-webserver.org/)
   - lighttpd (https://www.lighttpd.net/)
+    - requires: bzip2, zlib, pcre, mbedtls, pkgconfig, libbsd
+    - can build with: libev, libxml, utillinux, gdbm, attr, zstd, brotli, sqlite, xxhash, lua
+    - build w/mbedtls (supports openssl/boringssl/libressl/gnutls/nettle/wolfssl as well)
+      ```
+      ./configure \
+        --prefix=${ridir} \
+        --with-{pcre,zlib,mbedtls,bzip2} \
+          CC="${CC} $(pkg-config --cflags --libs libbsd)" \
+          CPPFLAGS="$(echo -I${cwsw}/{bzip2,zlib,pcre,mbedtls}/current/include)" \
+          LDFLAGS="$(echo -L${cwsw}/{bzip2,zlib,pcre,mbedtls}/current/lib)" \
+          CFLAGS=-fPIC \
+          CXXFLAGS=-fPIC
+      grep -ril 'sys/queue\.h' . \
+      | xargs sed -i.ORIG 's,sys/queue,bsd/sys/queue,g'
+      ```
+    - other lighttpd projects:
+      - fcgi-cgi (https://redmine.lighttpd.net/projects/fcgi-cgi/repository - run cgi scripts with fastcgi)
+      - fcgi-debug (https://redmine.lighttpd.net/projects/fcgi-debug/repository)
+      - scgi-cgi (https://redmine.lighttpd.net/projects/scgi-cgi/repository - run cgi scripts in scgi)
+      - spawn-fcgi (https://redmine.lighttpd.net/projects/spawn-fcgi/repository)
   - mongoose (https://github.com/cesanta/mongoose)
   - monkey (http://monkey-project.com/)
   - nginx (https://nginx.org/)
