@@ -19,11 +19,11 @@ function cwfetch_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  env PATH=\"${cwsw}/libressl/current/bin:${cwsw}/perl/current/bin:\${PATH}\" \
+  env PATH=\"${cwsw}/libressl/current/bin:${cwsw}/curllibressl/current/devbin:${cwsw}/perl/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
-      --with-curl \
-      --with-expat \
-      --with-libpcre2 \
+      --with-curl=\"${cwsw}/curllibressl/current\" \
+      --with-expat=\"${cwsw}/expat/current\" \
+      --with-libpcre2=\"${cwsw}/pcre2/current\" \
       --with-openssl=\"${cwsw}/libressl/current\" \
       --with-perl=\"${cwsw}/perl/current/bin/perl\" \
       --without-iconv \
@@ -42,6 +42,15 @@ function cwconfigure_${rname}() {
   grep -ril sys/poll\\.h ${rbdir}/ \
   | grep \\.h\$ \
   | xargs sed -i.ORIG 's#sys/poll\.h#poll.h#g'
+  popd >/dev/null 2>&1
+}
+"
+
+
+eval "
+function cwmake_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  env PATH=\"${cwsw}/curllibressl/current/devbin:\${PATH}\" make -j${cwmakejobs} NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
   popd >/dev/null 2>&1
 }
 "
