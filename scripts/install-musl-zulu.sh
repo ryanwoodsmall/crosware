@@ -3,7 +3,6 @@
 # install musl-based zulu jdk "out of tree"
 #
 # XXX - use alpine openjdk 8/11 .apk packages instead - may work on other arches? ssl/nss/x11?
-# XXX - should zuluver/zulusha be overridable from environment?
 #
 
 # only run if we're have valid crosware
@@ -32,16 +31,32 @@ fi
 
 # version picker
 case "${reqver}" in
-  8|11) zuluver="$(awk -F'"' '/^rver=/{print $2}' ${cwtop}/recipes/zulu/zulu${reqver}musl.sh)"
-        zulusha="$(awk -F'"' '/^rsha256=/{print $2}' ${cwtop}/recipes/zulu/zulu${reqver}musl.sh)"
-        ;;
-   all) bash "${BASH_SOURCE[0]}" 11
-        bash "${BASH_SOURCE[0]}" 8
-        exit 0
-        ;;
-     *) echo "${BASH_SOURCE[0]} [8|11|all]"
-        exit 1
-        ;;
+    8|11) zuluver="$(awk -F'"' '/^rver=/{print $2}' ${cwtop}/recipes/zulu/zulu${reqver}musl.sh)"
+          zulusha="$(awk -F'"' '/^rsha256=/{print $2}' ${cwtop}/recipes/zulu/zulu${reqver}musl.sh)"
+          ;;
+     all) bash "${BASH_SOURCE[0]}" 11
+          bash "${BASH_SOURCE[0]}" 8
+          exit 0
+          ;;
+  custom) : ${zuluver:=""}
+          : ${zulusha:=""}
+          if [ ${#} -ge 3 ] ; then
+            if [ -z "${zuluver}" ] ; then
+              zuluver="${2}"
+            fi
+            if [ -z "${zulusha}" ] ; then
+              zulusha="${3}"
+            fi
+          fi
+          if [[ -z "${zuluver}" || -z "${zulusha}" ]] ; then
+            echo "${BASH_SOURCE[0]} custom [[zuluver] [zulusha]]: 'zuluver' and 'zulusha' must be passed or environment variables must be set"
+            echo "  env zulusha=a1b2c3... zuluver=1.2.3-ca-jdk99.0.0 ${BASH_SOURCE[0]} custom"
+            exit 1
+          fi
+          ;;
+       *) echo "${BASH_SOURCE[0]} [8|11|all|custom]"
+          exit 1
+          ;;
 esac
 
 # crosware vars
@@ -50,14 +65,14 @@ cwdl="${cwtop}/downloads"
 cwtmp="$(cd ${cwtop}/../tmp && pwd)"
 
 # zulu vars
-zulucdn="https://cdn.azul.com/zulu/bin"
-zulutop="/usr/local/zulu"
-zuluprofd="${cwetc}/local.d/zulumusl.sh"
-zuludir="zulu${zuluver}-linux_musl_x64"
-zulufile="${zuludir}.tar.gz"
-zuluurl="${zulucdn}/${zulufile}"
-zuludldir="${cwdl}/zulu"
-zuludlfile="${zuludldir}/${zulufile}"
+: ${zulucdn:="https://cdn.azul.com/zulu/bin"}
+: ${zulutop:="/usr/local/zulu"}
+: ${zuluprofd:="${cwetc}/local.d/zulumusl.sh"}
+: ${zuludir:="zulu${zuluver}-linux_musl_x64"}
+: ${zulufile:="${zuludir}.tar.gz"}
+: ${zuluurl:="${zulucdn}/${zulufile}"}
+: ${zuludldir:="${cwdl}/zulu"}
+: ${zuludlfile:="${zuludldir}/${zulufile}"}
 
 # we need make, file, libz, and patchelf
 for req in make file libz patchelf ; do
