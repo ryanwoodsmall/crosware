@@ -799,6 +799,16 @@ wc -l /tmp/astbuild.out
 - hoedown (markdown lib - https://github.com/hoedown/hoedown)
 - hq (https://github.com/rbwinslow/hq)
 - http-parser (https://github.com/nodejs/http-parser - useful with libgit2?)
+- http servers/proxies/load balancers/etc.
+  - apache (https://httpd.apache.org/ - httpd, needs apr, apr-util)
+  - cherokee (http://cherokee-project.com/)
+  - haproxy (http://www.haproxy.org/)
+  - hiawatha (https://www.hiawatha-webserver.org/)
+  - lighttpd (https://www.lighttpd.net/)
+  - mongoose (https://github.com/cesanta/mongoose)
+  - monkey (http://monkey-project.com/)
+  - nginx (https://nginx.org/)
+  - openresty (https://openresty.org/)
 - ibara's good portable/bsd stuff
   - m4 (https://github.com/ibara/m4)
   - yacc (https://github.com/ibara/yacc)
