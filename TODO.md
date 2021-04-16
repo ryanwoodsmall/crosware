@@ -585,13 +585,29 @@ time_func ls -l -A /
 - "epoch" for packages
   - changes (for most recipes) when compilers are updated
   - main epoch stored in `/bin/crosware` or `/etc/profile` or `/recipes/common.sh`
-  - `/var/epoch/recipe` stores installed recipe epoch
+    - `: ${cwepoch:=""}` then set based on compiler date if `test -z`
+    - track `${cwoldepochs[@]}` (1 2 3 ...) and `${cwallepochs[@]}` (c 1 2 3 ...)
+    - `epoch` command - current epoch
+    - `show-epochs` command - dump `${cwallepochs[@]}` in "current : old1 old2 old3 ..." format
+  - `/var/epoch/recipe` stores installed recipe epoch?
   - packages without deps (java, go, bin jars, etc.) have separate epoch?
   - "release" per recipe
     - default to epoch
     - forces a big rebuild on compiler+libc update
     - can be set per package, in `common.sh` ... `: ${rrelease:="${cwepoch}"}`
     - in `${rname}.sh` ... `rrelease="${cwepoch}-0"`
+  - could silently store and manipulate epoch in inst file?
+    - delimeter? `|` here
+    - recipe **abc** version _1.2.3_ at epoch 202104200609
+    - `/var/inst/abc` has...
+    - **1.2.3|202104200609**
+    - installed version is just recipe version
+    - epoch if blank defaults to current epoch
+    - can signify that package tracks i.e. compiler or not
+      - statictoolchain still a manual upgrade though, nothing REQUIRES requires it...
+    - `${repochreq}` - recipe var to signify epoch required, default to true
+    - upgrade, version check, version write, etc., will need to reflect this
+    - can be considered in-memory? kind of ugly. ugly elegance
 - downstream upgrades... - **DONE???**
   - not a full graph
   - on `crosware upgrade recipe` or `crosware upgrade-all`...
