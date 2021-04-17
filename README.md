@@ -619,8 +619,15 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - https://git.sr.ht/~ft/9pro
 - ack (https://beyondgrep.com/)
 - acme labs (http://www.acme.com/software/ - SO MUCH GOOD STUFF)
+  - db (http://www.acme.com/software/db/ - gdbm? ndbm/sdbm/dbm?)
+  - http_get (http://www.acme.com/software/http_get/ - openssl support)
+  - http_post (http://www.acme.com/software/http_post/ - openssl support)
+  - js_httpd (http://www.acme.com/software/js_httpd/)
+  - lam (http://www.acme.com/software/lam/)
   - mini_httpd (http://www.acme.com/software/mini_httpd/)
   - mini_sendmail (http://www.acme.com/software/mini_sendmail/)
+  - mudecode (http://www.acme.com/software/mudecode/)
+  - thttpd (http://www.acme.com/software/thttpd/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - agner fog's stuff
   - https://www.agner.org/optimize/#objconv
