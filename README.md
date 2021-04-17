@@ -617,6 +617,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
   - https://git.sr.ht/~ft/9pro
 - ack (https://beyondgrep.com/)
+- acme labs stuff
+  - mini_sendmail (http://www.acme.com/software/mini_sendmail/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - agner fog's stuff
   - https://www.agner.org/optimize/#objconv
