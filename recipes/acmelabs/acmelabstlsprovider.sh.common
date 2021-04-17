@@ -53,6 +53,12 @@ function cwmakeinstall_${rname}() {
     ln -sf \"${rtdir}/current/bin/${rprogname}\" \"${ridir}/bin/${rprogname/http/https}-${rprovider}\"
     ln -sf \"${rtdir}/current/bin/${rprogname}\" \"${ridir}/bin/${rprogname/http/https}\"
   fi
+  if [[ ${rprogname} =~ ^mini_ ]] ; then
+    cwmkdir \"${ridir}/share/scripts\"
+    cwmkdir \"${ridir}/share/cert\"
+    cp scripts/* \"${ridir}/share/scripts/\"
+    cp mini_httpd.cnf \"${ridir}/share/cert/\"
+  fi
   popd >/dev/null 2>&1
 }
 "
