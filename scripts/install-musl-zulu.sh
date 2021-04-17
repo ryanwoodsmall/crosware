@@ -102,7 +102,7 @@ find ${zulutop}/${zuludir} -type f -exec ${cwsw}/file/current/bin/file {} + \
 | sort \
 | while read -r i ; do
     echo patching ${i}
-    ${cwsw}/patchelf/current/bin/patchelf --set-interpreter ${cwsw}/statictoolchain/current/$(${cwsw}/statictoolchain/current/bin/gcc -dumpmachine)/lib/libc.so ${i}
+    ${cwsw}/patchelf/current/bin/patchelf --set-interpreter ${cwsw}/statictoolchain/current/$(${cwsw}/statictoolchain/current/bin/gcc -dumpmachine)/lib/ld.so ${i}
   done
 
 # write out the profile
