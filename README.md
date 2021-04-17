@@ -802,6 +802,7 @@ wc -l /tmp/astbuild.out
 - graphviz (http://graphviz.org/)
 - gsasl/libgsasl (https://www.gnu.org/software/gsasl/)
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
+- gss (https://www.gnu.org/software/gss/)
 - hitch (https://hitch-tls.org/ - libev tls proxy)
 - hoedown (markdown lib - https://github.com/hoedown/hoedown)
 - hq (https://github.com/rbwinslow/hq)
@@ -925,6 +926,7 @@ wc -l /tmp/astbuild.out
       - ncurses, openssl, ?
     - see: http://lists.busybox.net/pipermail/buildroot/2017-July/198737.html
   - mit
+  - shishi (https://www.gnu.org/software/shishi/)
 - kineto (https://sr.ht/~sircmpwn/kineto/ and https://git.sr.ht/~sircmpwn/kineto - gemini to http gateway/proxy)
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
 - larn (short roguelike https://en.wikipedia.org/wiki/Larn_(video_game) - maintained/modern https://github.com/atsb/RL_M)
