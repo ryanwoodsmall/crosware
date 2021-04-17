@@ -812,6 +812,7 @@ wc -l /tmp/astbuild.out
   - lighttpd (https://www.lighttpd.net/)
     - requires: bzip2, zlib, pcre, mbedtls, pkgconfig, libbsd
     - can build with: libev, libxml, utillinux, gdbm, attr, zstd, brotli, sqlite, xxhash, lua
+    - uuid is e2fsprogs - not utillinux i think
     - build w/mbedtls (supports openssl/boringssl/libressl/gnutls/nettle/wolfssl as well)
       ```
       ./configure \
