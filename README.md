@@ -285,6 +285,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - microinetd (http://acme.com/software/micro_inetd/)
   - microproxy (http://acme.com/software/micro_proxy/)
   - subproxy (http://www.acme.com/software/sub_proxy/)
+  - thttpd (http://www.acme.com/software/thttpd/)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - attr (https://savannah.nongnu.org/projects/attr/)
 - autoconf
@@ -627,7 +628,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - mini_httpd (http://www.acme.com/software/mini_httpd/)
   - mini_sendmail (http://www.acme.com/software/mini_sendmail/)
   - mudecode (http://www.acme.com/software/mudecode/)
-  - thttpd (http://www.acme.com/software/thttpd/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - agner fog's stuff
   - https://www.agner.org/optimize/#objconv
