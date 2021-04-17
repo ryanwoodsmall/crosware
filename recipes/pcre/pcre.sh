@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://ftp.pcre.org/pub/${rname}/${rfile}"
 rsha256="19108658b23b3ec5058edc9f66ac545ea19f9537234be1ec62b714c84399366d"
-rreqs="make zlib bzip2"
+rreqs="make zlib bzip2 slibtool"
 
 . "${cwrecipe}/common.sh"
 . "${cwrecipe}/${rname}/${rname}.sh.common"
