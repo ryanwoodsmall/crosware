@@ -288,7 +288,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
     - httppostlibressl (libressl https support)
     - httppostopenssl (openssl https support)
   - microhttpd (http://acme.com/software/micro_httpd/)
-  - microhttpd (http://acme.com/software/micro_httpd/)
   - microinetd (http://acme.com/software/micro_inetd/)
   - microproxy (http://acme.com/software/micro_proxy/)
   - minihttpd (http://www.acme.com/software/mini_httpd/)
