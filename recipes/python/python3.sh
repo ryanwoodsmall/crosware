@@ -3,6 +3,7 @@
 # XXX - conditionally set PYTHONSTARTUP in profile.d file
 # XXX - example at https://gist.github.com/ryanwoodsmall/72b60ec679e4a1680c7eb7639694afd1
 # XXX - full shared: add "--enable-shared" and set LDFLAGS=\"\${LDFLAGS//-static/} -Wl,-rpath,${rtdir}/current/lib\"
+# XXX - uuid support is in e2fsprogs
 #
 rname="python3"
 rver="3.7.10"
