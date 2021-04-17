@@ -1442,6 +1442,22 @@ wc -l /tmp/astbuild.out
   - no auth serve w/busybox or toybox: `tcpsvd -E -v 0.0.0.0 564 ./u9fs -D -z -a none -u username /path/to/share`
   - access from remote host w/plan 9 from user space: `9p -a 'tcp!hostname.domain.name!564' ls /`
 - uacme (https://github.com/ndilieto/uacme - standalone acme/let's encrypt client in c, with curl+openssl/gnutls/mbedtls support)
+  - mbedtls is something like...
+  - ```
+    env PATH=${cwsw}/curlmbedtls/current/devbin:${PATH} \
+      ./configure \
+        --prefix=${ridir} \
+        --disable-docs \
+        --with-libcurl=${cwsw}/curlmbedtls/current \
+        --with-mbedtls=${cwsw}/mbedtls/current \
+        --without-openssl \
+        --without-gnutls \
+          CPPFLAGS="$(echo -I${cwsw}/{curlmbedtls,zlib,nghttp2,libssh2libgcrypt,libgcrypt,libgpgerror,mbedtls}/current/include)" \
+          LDFLAGS="$(echo -L${cwsw}/{curlmbedtls,zlib,nghttp2,libssh2libgcrypt,libgcrypt,libgpgerror,mbedtls}/current/lib) -static" \
+          LIBS='-lcurl -lssh2 -lgcrypt -lgpg-error -lnghttp2 -lz -lmbedx509 -lmbedtls -lmbedcrypto -static' \
+          PKG_CONFIG_LIBDIR= \
+          PKG_CONFIG_PATH=
+    ```
 - ublinter (https://github.com/danmar/ublinter)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
 - uftpd (https://github.com/troglobit/uftpd)
