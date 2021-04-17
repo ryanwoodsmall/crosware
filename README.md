@@ -281,6 +281,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - abduco (https://www.brain-dump.org/projects/abduco/ and https://github.com/martanne/abduco)
 - acl (https://savannah.nongnu.org/projects/acl/)
 - acme labs programs (via http://www.acme.com/software/)
+  - httpget (http://www.acme.com/software/http_get/)
   - microhttpd (http://acme.com/software/micro_httpd/)
   - microinetd (http://acme.com/software/micro_inetd/)
   - microproxy (http://acme.com/software/micro_proxy/)

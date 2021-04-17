@@ -4,9 +4,16 @@
 
 : ${rver:="14Aug2014"}
 local r="${rname}"
-r="${r/micro/micro_}"
-r="${r/mini/mini_}"
-r="${r/sub/sub_}"
+# XXX - this could be a sed but it loses fidelity and spawns a process
+if [[ ${rname} =~ ^micro ]] ; then
+  r=${r/micro/micro_}
+elif [[ ${rname} =~ ^mini ]] ; then
+  r=${r/mini/mini_}
+elif [[ ${rname} =~ ^sub ]] ; then
+  r=${r/sub/sub_}
+elif [[ ${rname} =~ ^http ]] ; then
+  r=${r/http/http_}
+fi
 if [[ ${r} =~ ^mini ]] ; then
   rdir="${r}-${rver}"
 else
