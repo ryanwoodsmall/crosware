@@ -1,0 +1,69 @@
+rbase="${rname%${rprovider}}"
+
+if [[ ${rname} =~ ^mini ]] ; then
+  rprogname=${rbase/mini/mini_}
+elif [[ ${rname} =~ ^http ]] ; then
+  rprogname=${rbase/http/http_}
+fi
+
+rver="$(cwver_${rbase})"
+rdir="$(cwdir_${rbase})"
+rfile="$(cwfile_${rbase})"
+rdlfile="$(cwdlfile_${rbase})"
+rurl="$(cwurl_${rbase})"
+rreqs="make ${rprovider} zlib"
+rsha256=""
+
+. "${cwrecipe}/common.sh"
+
+local f
+for f in clean extract fetch ; do
+  eval "
+  function cw${f}_${rname}() {
+    cw${f}_${rbase}
+  }
+  "
+done
+unset f
+
+eval "
+function cwconfigure_${rname}() {
+  cwconfigure_${rbase}
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  sed -i 's,$(cwidir_${rbase}),${ridir},g' Makefile
+  sed -i '/^#SSL_DEFS/s,^#,,g' Makefile
+  sed -i '/^#SSL_LIBS/s,^#,,g' Makefile
+  sed -i '/^#SSL_INC/s,^#,,g' Makefile
+  sed -i '/^SSL_INC/s,=,= -I${cwsw}/zlib/current/include,g' Makefile
+  sed -i 's,-lssl.*-lcrypto,-lssl -lcrypto -L${cwsw}/zlib/current/lib -lz,g' Makefile
+  sed -i 's,^#SSL_TREE.*,SSL_TREE = ${cwsw}/${rprovider}/current,g' Makefile
+  sed -i '/^LDFLAGS/s,-static,-s \$(SSL_LIBS) \$(SYSV_LIBS) -static,g' Makefile
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  egrep '^(BIN|MAN)DIR' Makefile | cut -f2 -d= | xargs mkdir -p
+  make install ${rlibtool}
+  ln -sf \"${rtdir}/current/bin/${rprogname}\" \"${ridir}/bin/${rprogname}-${rprovider}\"
+  if [[ ${rprogname} =~ ^http_ ]] ; then
+    ln -sf \"${rtdir}/current/bin/${rprogname}\" \"${ridir}/bin/${rprogname}-${rprovider}\"
+    ln -sf \"${rtdir}/current/bin/${rprogname}\" \"${ridir}/bin/${rprogname/http/https}-${rprovider}\"
+    ln -sf \"${rtdir}/current/bin/${rprogname}\" \"${ridir}/bin/${rprogname/http/https}\"
+  fi
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${cwsw}/${rbase}/current/bin\"' >> "${rprof}"
+}
+"
+
+unset rprovider rbase rprogname
+
+# vim: ft=sh:
