@@ -2,6 +2,29 @@
 # XXX - move config (keys) to $cwtop/etc/dropbear/ ??? .gitignore might get ugly
 # XXX - sftp-server is messy
 #
+# dropbear supports dss, ecdsa, ed25519, and rsa keys
+#
+# generate a bunch of test keys in multiple formats
+#   for t in $(dropbearkey -h 2>&1 | sed -n '/^-t/,/^-f/!d;/^-/d;p') ; do
+#     e=''
+#     d=${cwtop}/tmp/id_dropbear.${t}
+#     s=${d//dropbear/openssh}
+#     echo ${t} : ${d} : ${a}
+#     test ${t} == rsa && e='-s 4096'
+#     test ${t} == ecdsa && e='-s 521'
+#     dropbearkey -t ${t} ${e} -f ${d}
+#     dropbearkey -y -f ${d} | egrep -v '^(Public key.*:|Fingerprint:)' > ${s}_pub
+#     dropbearconvert dropbear openssh ${d} ${s}
+#     echo
+#   done
+#
+# key conversion/pubkey reclamation between openssh/dropbear is something like...
+#   dropbearconvert openssh dropbear ~/.ssh/id_rsa ~/.ssh/id_dropbear
+#
+# convert dropbear rsa key to openssh and write a pub key
+#   dropbearconvert dropbear openssh ~/.ssh/id_dropbear ~/.ssh/id_rsa
+#   dropbearkey -y -f ~/.ssh/id_dropbear | egrep -v '^(Public key.*:|Fingerprint:)' > ~/.ssh/id_rsa.pub
+#
 rname="dropbear"
 rver="2020.81"
 rdir="${rname}-${rver}"
