@@ -348,6 +348,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - dtach (https://github.com/crigler/dtach and http://dtach.sourceforge.net/ - simpler detachable screenalike)
 - duktape (http://duktape.org/ and https://github.com/svaarala/duktape)
 - dvtm (https://www.brain-dump.org/projects/dvtm/ and https://github.com/martanne/dvtm/)
+- e2fsprogs (https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/ and http://e2fsprogs.sourceforge.net/ and https://github.com/tytso/e2fsprogs)
 - ecl (https://common-lisp.net/project/ecl/)
   - shared build
   - works for aarch64/i686/x86_64
@@ -759,9 +760,6 @@ wc -l /tmp/astbuild.out
 - dumb-init (https://github.com/Yelp/dumb-init)
 - duplicity (http://duplicity.nongnu.org/)
 - e (https://github.com/hellerve/e - simple editor, syntax highlighting, archived?)
-- e2fsprogs (https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/ - usable uuid for python)
-  - config opts: `--disable-lto --enable-symlink-install --enable-verbose-makecmds --disable-nls --enable-libuuid --enable-libblkid`
-  - `make install` needs `MKDIR_P='mkdir -p'`
 - edbrowse (http://edbrowse.org/ and https://github.com/CMB/edbrowse)
   - cmake, curl, pcre, tidy (cmake), duktape
 - elfutils (https://sourceware.org/elfutils/)
