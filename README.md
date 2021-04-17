@@ -561,7 +561,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - limited language support, though
   - see below for notes on newer versions (boost req, yeesh)
 - strace (https://strace.io/ and https://github.com/strace/strace)
-- stunnel
+- stunnel (https://www.stunnel.org/ - openssl)
+  - stunnellibressl (libressl build)
 - sqlite
 - suckless
   - 9base (https://tools.suckless.org/9base)
