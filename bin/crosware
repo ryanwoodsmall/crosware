@@ -168,6 +168,12 @@ export cwbootstraprecipes
 export cwinstalled
 export cwupgraded
 
+# stuff we'll use for optimizing slow functions, not reading the same files over and over, etc.
+declare -A cwprofhash
+export cwprofhash
+export cwrecipessourced=0
+export cwprofileinit=0
+
 # and a "user-visible" var whether we want to use an external jvm/jdk
 : ${CW_USE_JAVA:="true"}
 : ${CW_EXT_JAVA:="false"}
@@ -779,9 +785,8 @@ function cwupdate() {
 
 #
 # cwsourcerecipes
-#   and sentinel for memoization
+#   sentinel for memoization: cwrecipessourced
 #
-cwrecipessourced=0
 function cwsourcerecipes() {
   cwchecktop
   if [ ! -e ${cwrecipe} ] ; then
