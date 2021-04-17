@@ -9,6 +9,16 @@
 #  see alpine: https://git.alpinelinux.org/aports/tree/main/mbedtls/APKBUILD
 # XXX - generate a self-signed cert for like localhost?
 #  https://tls.mbed.org/kb/how-to/generate-a-self-signed-certificate
+# XXX - options?
+#  - MBEDTLS_SSL_SRV_SUPPORT_SSLV2_CLIENT_HELLO
+#  - MBEDTLS_SSL_SRV_RESPECT_CLIENT_PREFERENCE
+#  - MBEDTLS_SSL_PROTO_SSL3
+#  - MBEDTLS_ARIA_C
+#  - MBEDTLS_CMAC_C
+#  - MBEDTLS_ECJPAKE_C
+#  - MBEDTLS_NIST_KW_C
+#  - MBEDTLS_MD2_C
+#  - MBEDTLS_MD4_C
 #
 
 rname="mbedtls"
@@ -28,6 +38,10 @@ function cwconfigure_${rname}() {
   cat include/mbedtls/config.h > include/mbedtls/config.h.ORIG
   sed -i '/define MBEDTLS_THREADING_C/s,//,,g' include/mbedtls/config.h
   sed -i '/define MBEDTLS_THREADING_PTHREAD/s,//,,g' include/mbedtls/config.h
+  sed -i '/define MBEDTLS_X509_ALLOW_UNSUPPORTED_CRITICAL_EXTENSION/s,//,,g' include/mbedtls/config.h
+  sed -i '/define MBEDTLS_X509_ALLOW_EXTENSIONS_NON_V3/s,//,,g' include/mbedtls/config.h
+  sed -i '/define MBEDTLS_TLS_DEFAULT_ALLOW_SHA1_IN_CERTIFICATES/s,//,,g' include/mbedtls/config.h
+  sed -i '/define MBEDTLS_ENABLE_WEAK_CIPHERSUITES/s,//,,g' include/mbedtls/config.h
   popd >/dev/null 2>&1
 }
 "
