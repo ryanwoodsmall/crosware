@@ -1,5 +1,13 @@
 # TODO
 
+- allow underscores in recipe names?
+  - i.e., `something_special`
+  - would make parsing easier for variants
+    - special per-recipe handling in ${rname}.sh.common
+    - i.e., curl w/bearssl+mbedtls+wolfssl function template templates but generalized
+  - not a bad idea
+- `${rrealname}`
+  - recipe var for when rname is ugly and reinplace ${..//../..} is too ugly?
 - `staticfiles` recipe
   - capture stuff under e.g. **/etc/** from other (alpine/busybox:musl/centos/ubuntu/debian) distros
   - would make container construction much more robust
