@@ -443,6 +443,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libxml2
 - libxslt
 - libz (sortix, zlib fork https://sortix.org/libz/)
+- lighttpd (https://www.lighttpd.net/ - mbedtls)
 - linenoise (https://github.com/antirez/linenoise)
 - links (ncurses)
 - loksh (https://github.com/dimkr/loksh)
@@ -809,23 +810,10 @@ wc -l /tmp/astbuild.out
   - cherokee (http://cherokee-project.com/)
   - haproxy (http://www.haproxy.org/)
   - hiawatha (https://www.hiawatha-webserver.org/)
-  - lighttpd (https://www.lighttpd.net/)
-    - requires: bzip2, zlib, pcre, mbedtls, pkgconfig, libbsd
+  - lighttpd
+    - `lighttpdbig` package with webdav+lua+dbi+sqlite+openssl+...
     - can build with: libev, libxml, utillinux, gdbm, attr, zstd, brotli, sqlite, xxhash, lua
     - uuid is e2fsprogs - not utillinux i think
-    - build w/mbedtls (supports openssl/boringssl/libressl/gnutls/nettle/wolfssl as well)
-      ```
-      ./configure \
-        --prefix=${ridir} \
-        --with-{pcre,zlib,mbedtls,bzip2} \
-          CC="${CC} $(pkg-config --cflags --libs libbsd)" \
-          CPPFLAGS="$(echo -I${cwsw}/{bzip2,zlib,pcre,mbedtls}/current/include)" \
-          LDFLAGS="$(echo -L${cwsw}/{bzip2,zlib,pcre,mbedtls}/current/lib)" \
-          CFLAGS=-fPIC \
-          CXXFLAGS=-fPIC
-      grep -ril 'sys/queue\.h' . \
-      | xargs sed -i.ORIG 's,sys/queue,bsd/sys/queue,g'
-      ```
     - other lighttpd projects:
       - fcgi-cgi (https://redmine.lighttpd.net/projects/fcgi-cgi/repository - run cgi scripts with fastcgi)
       - fcgi-debug (https://redmine.lighttpd.net/projects/fcgi-debug/repository)
