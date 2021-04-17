@@ -575,6 +575,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - shared seems to work for hello world stuff
   - uses muslstandalone as libc
 - tinyemu (https://bellard.org/tinyemu/ - risc-v 32/64, risc-v 128 on x86_64/aarch64, x86 w/kvm on x86_64/i686; no sdl)
+- tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyscheme (http://tinyscheme.sourceforge.net/home.html)
 - tio (https://tio.github.io and https://github.com/tio/tio)
 - tmux
@@ -1404,7 +1405,6 @@ wc -l /tmp/astbuild.out
 - tcc (http://repo.or.cz/w/tinycc.git)
   - static compilation is _pretty broken_
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
-- tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tlse (https://github.com/eduardsui/tlse - c tls impl using libtomcrypt)
 - tnftpd (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
