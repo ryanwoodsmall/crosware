@@ -57,6 +57,12 @@ function cwurl_${rname}() {
 "
 
 eval "
+function cwprof_${rname}() {
+  echo \"${rprof}\"
+}
+"
+
+eval "
 function cwclean_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
   rm -rf \"${rbdir}\"
