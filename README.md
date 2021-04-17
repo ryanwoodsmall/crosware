@@ -800,6 +800,7 @@ wc -l /tmp/astbuild.out
 - got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - graphviz (http://graphviz.org/)
+- gsasl/libgsasl (https://www.gnu.org/software/gsasl/)
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
 - hitch (https://hitch-tls.org/ - libev tls proxy)
 - hoedown (markdown lib - https://github.com/hoedown/hoedown)
@@ -951,6 +952,7 @@ wc -l /tmp/astbuild.out
 - libixp (https://github.com/0intro/libixp - 9p client/library)
   - https://github.com/bwhmather/libixp - updated recently?
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
+- libntlm (https://www.nongnu.org/libntlm/)
 - libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
 - libsixel (https://github.com/saitoha/libsixel)
