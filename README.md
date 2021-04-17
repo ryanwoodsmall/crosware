@@ -282,6 +282,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - acl (https://savannah.nongnu.org/projects/acl/)
 - acme labs programs (via http://www.acme.com/software/)
   - httpget (http://www.acme.com/software/http_get/)
+    - httpgetlibressl (libressl https support)
     - httpgetopenssl (openssl https support)
   - httppost (http://www.acme.com/software/http_post/)
     - httppostopenssl (openssl https support)
