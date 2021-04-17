@@ -617,7 +617,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
   - https://git.sr.ht/~ft/9pro
 - ack (https://beyondgrep.com/)
-- acme labs stuff
+- acme labs (http://www.acme.com/software/ - SO MUCH GOOD STUFF)
+  - mini_httpd (http://www.acme.com/software/mini_httpd/)
   - mini_sendmail (http://www.acme.com/software/mini_sendmail/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - agner fog's stuff
@@ -793,6 +794,7 @@ wc -l /tmp/astbuild.out
 - gpg
   - gpgme
   - etc.
+- gnulib (https://www.gnu.org/software/gnulib - probably needed to repackage for older gnu projects - shishi, gss, gsasl, ...)
 - gnutls
   - needs nettle, gmplib, libtasn1, libunistring
   - configure needs ```--without-p11-kit --disable-doc --enable-manpages --with-default-trust-store-file=${cwetc}/ssl/cert.pem --disable-hardware-acceleration --disable-nls --disable-padlock --enable-sha1-support --enable-ssl3-support```
