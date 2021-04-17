@@ -39,6 +39,9 @@ function cwconfigure_${rname}() {
   cwmkdir \"${ridir}/bin\"
   ln -sf ${rname%libressl} \"${ridir}/bin/${rname}\"
   ln -sf ${rname%libressl} \"${ridir}/bin/${rname%libressl}-libressl\"
+  if [[ ${karch} =~ ^arm ]] ; then
+    sed -i.ORIG s/Gethostbyname/gethostbyname/g xio-ip.c
+  fi
   popd >/dev/null 2>&1
 }
 "
