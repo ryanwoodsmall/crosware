@@ -45,6 +45,18 @@ function cwdir_${rname}() {
 "
 
 eval "
+function cwtdir_${rname}() {
+  echo \"${rtdir}\"
+}
+"
+
+eval "
+function cwidir_${rname}() {
+  echo \"${ridir}\"
+}
+"
+
+eval "
 function cwver_${rname}() {
   echo \"${rver}\"
 }
