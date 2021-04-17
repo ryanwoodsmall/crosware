@@ -752,7 +752,23 @@ function cwbootstrap() {
 }
 
 #
+# cwoldsourceprofile
+#   keep this around
+#   put it back in action by append below cwsourceprofile...
+#     function cwsourceprofile() { cwoldsourceprofile ; }
+#
+function cwoldsourceprofile() {
+  cwchecktop
+  if [ ! -e "${cwetcprofile}" ] ; then
+    cwscriptecho "${cwetcprofile} does not exist"
+    return 1
+  fi
+  source "${cwetcprofile}"
+}
+
+#
 # cwsourceprofile
+#   uses cwprofileinit, cwrecipessourced, and cwprofhash
 #
 function cwsourceprofile() {
   cwchecktop
@@ -760,7 +776,41 @@ function cwsourceprofile() {
     cwscriptecho "${cwetcprofile} does not exist"
     return 1
   fi
-  source "${cwetcprofile}"
+  local f
+  local r
+  local s
+  if [ ${cwprofileinit} -eq 0 ] ; then
+    source "${cwetcprofile}"
+    if [ ${cwrecipessourced} -eq 0 ] ; then
+      return
+    else
+      for r in ${!cwrecipes[@]} ; do
+        f="$(cwprof_${r})"
+        if [ -e "${f}" ] ; then
+          cwprofhash["${f}"]="$(sha256sum "${f}" | awk '{print $1}')"
+        else
+          cwprofhash["${f}"]=0
+        fi
+      done
+      export cwprofileinit=1
+      return
+    fi
+  fi
+  for f in ${!cwprofhash[@]} ; do
+    s=0
+    if [ -e "${f}" ] ; then
+      s="$(sha256sum "${f}" | awk '{print $1}')"
+      if [ ! "${s}" == "${cwprofhash[${f}]}" ] ; then
+        source "${f}"
+        cwprofhash["${f}"]="${s}"
+      fi
+    else
+      if [ ! "${s}" == "${cwprofhash[${f}]}" ] ; then
+        cwprofhash["${f}"]="${s}"
+      fi
+    fi
+  done
+  unset f r s
 }
 
 #
