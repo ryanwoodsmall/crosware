@@ -1,3 +1,6 @@
+#
+# override ${rproviderreqs} in recipe, like so: rproviderreqs="gnutls,gcrypt,gpgerror,nettle"
+#
 rver="$(cwver_curl)"
 rdir="$(cwdir_curl)"
 rfile="$(cwfile_curl)"
@@ -6,6 +9,7 @@ rurl="$(cwurl_curl)"
 rsha256=""
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rprovider="${rname#curl}"
+: ${rproviderreqs:="${rprovider}"}
 
 . "${cwrecipe}/common.sh"
 . "${cwrecipe}/${rname%${rprovider}}/${rname%${rprovider}}.sh.common"
@@ -35,10 +39,10 @@ function cwmakeinstall_${rname}() {
     --with-default-ssl-backend=${rprovider} \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{${rprovider},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/include)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{${rprovider},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib) -static\" \
-      PKG_CONFIG_LIBDIR=\"\$(echo ${cwsw}/{${rprovider},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\" \
-      PKG_CONFIG_PATH=\"\$(echo ${cwsw}/{${rprovider},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\"
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib) -static\" \
+      PKG_CONFIG_LIBDIR=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\" \
+      PKG_CONFIG_PATH=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\"
   make -j${cwmakejobs} ${rlibtool}
   make install ${rlibtool}
   rm -f \"${ridir}/bin/curl-${rprovider}\" \"${ridir}/bin/${rname%${rprovider}}-${rprovider}-config\"
@@ -50,6 +54,6 @@ function cwmakeinstall_${rname}() {
 }
 "
 
-unset rprovider sslproviders othersslproviders
+unset rprovider sslproviders othersslproviders rproviderreqs
 
 # vim: ft=sh:
