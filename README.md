@@ -280,6 +280,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - abduco (https://www.brain-dump.org/projects/abduco/ and https://github.com/martanne/abduco)
 - acl (https://savannah.nongnu.org/projects/acl/)
+- acme labs programs (via http://www.acme.com/software/)
+  - micro_httpd (http://acme.com/software/micro_httpd/)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - attr (https://savannah.nongnu.org/projects/attr/)
 - autoconf
@@ -1104,7 +1106,6 @@ wc -l /tmp/astbuild.out
 - mgksh (https://github.com/ibara/mgksh - static ksh and mg (emacs) from openbsd in a single bin)
 - mkcert (https://github.com/FiloSottile/mkcert)
 - micro (https://micro-editor.github.io/ and https://github.com/zyedidia/micro - go terminal editor)
-- micro_httpd (http://acme.com/software/micro_httpd/)
 - micro_inetd (http://acme.com/software/micro_inetd/)
 - micropython (https://github.com/micropython/micropython)
   - needs python, git, libffi, pkgconfig, make, mbedtls

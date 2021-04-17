@@ -1,0 +1,44 @@
+#
+# override version in recipe, this is default at time of writing (20210416)
+#
+
+: ${rver:="14Aug2014"}
+rdir="${rname}_${rver}"
+rfile="${rdir}.tar.gz"
+rurl="http://www.acme.com/software/${rname}/${rfile}"
+rreqs="bootstrapmake"
+
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwextract_${rname}() {
+  pushd \"${cwbuild}\" >/dev/null 2>&1
+  rm -rf \"${rname}\" \"${rdir}\"
+  cwextract \"${rdlfile}\" \"${cwbuild}\"
+  mv \"${rname}\" \"${rdir}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  cat Makefile > Makefile.ORIG
+  sed -i \"s,^CC.*,CC = \${CC},g\" Makefile
+  sed -i 's,^BINDIR.*,BINDIR = ${ridir}/bin,g' Makefile
+  sed -i 's,^LDFLAGS.*,LDFLAGS = -static,g' Makefile
+  sed -i '/^MANDIR/s,/usr/local/man/man,${ridir}/share/man/man,g' Makefile
+  grep ^MANDIR Makefile | cut -f2 -d= | xargs mkdir -p ${ridir}/bin
+  rm -rf \"${ridir}/sbin\"
+  ln -sf bin \"${ridir}/sbin\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+
+# vim: ft=sh:
