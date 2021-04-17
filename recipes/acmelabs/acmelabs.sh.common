@@ -3,9 +3,10 @@
 #
 
 : ${rver:="14Aug2014"}
-rdir="${rname}_${rver}"
+local r="${rname//micro/micro_}"
+rdir="${r}_${rver}"
 rfile="${rdir}.tar.gz"
-rurl="http://www.acme.com/software/${rname}/${rfile}"
+rurl="http://www.acme.com/software/${r}/${rfile}"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -13,9 +14,9 @@ rreqs="bootstrapmake"
 eval "
 function cwextract_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
-  rm -rf \"${rname}\" \"${rdir}\"
+  rm -rf \"${r}\" \"${rdir}\"
   cwextract \"${rdlfile}\" \"${cwbuild}\"
-  mv \"${rname}\" \"${rdir}\"
+  mv \"${r}\" \"${rdir}\"
   popd >/dev/null 2>&1
 }
 "
@@ -37,8 +38,11 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
+  rm -f \"${cwetcprofd}/${r}.sh\"
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
+
+unset r
 
 # vim: ft=sh:
