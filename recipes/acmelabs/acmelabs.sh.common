@@ -3,7 +3,9 @@
 #
 
 : ${rver:="14Aug2014"}
-local r="${rname//micro/micro_}"
+local r="${rname}"
+r="${r/micro/micro_}"
+r="${r/sub/sub_}"
 rdir="${r}_${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.acme.com/software/${r}/${rfile}"
