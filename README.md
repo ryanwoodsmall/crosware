@@ -285,6 +285,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
     - httpgetlibressl (libressl https support)
     - httpgetopenssl (openssl https support)
   - httppost (http://www.acme.com/software/http_post/)
+    - httppostlibressl (libressl https support)
     - httppostopenssl (openssl https support)
   - microhttpd (http://acme.com/software/micro_httpd/)
   - microinetd (http://acme.com/software/micro_inetd/)
