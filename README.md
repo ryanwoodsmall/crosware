@@ -284,6 +284,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - microhttpd (http://acme.com/software/micro_httpd/)
   - microinetd (http://acme.com/software/micro_inetd/)
   - microproxy (http://acme.com/software/micro_proxy/)
+  - minisendmail (http://www.acme.com/software/mini_sendmail/)
   - subproxy (http://www.acme.com/software/sub_proxy/)
   - thttpd (http://www.acme.com/software/thttpd/)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
@@ -626,7 +627,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - js_httpd (http://www.acme.com/software/js_httpd/)
   - lam (http://www.acme.com/software/lam/)
   - mini_httpd (http://www.acme.com/software/mini_httpd/)
-  - mini_sendmail (http://www.acme.com/software/mini_sendmail/)
   - mudecode (http://www.acme.com/software/mudecode/)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - agner fog's stuff
