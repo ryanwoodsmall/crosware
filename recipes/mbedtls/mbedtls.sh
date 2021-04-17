@@ -7,6 +7,8 @@
 #  sed -i '/^\\tpsa\\/psa_constant_name.*\\$/d' programs/Makefile
 # XXX - is threading right?
 #  see alpine: https://git.alpinelinux.org/aports/tree/main/mbedtls/APKBUILD
+# XXX - generate a self-signed cert for like localhost?
+#  https://tls.mbed.org/kb/how-to/generate-a-self-signed-certificate
 #
 
 rname="mbedtls"
