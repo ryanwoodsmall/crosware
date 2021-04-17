@@ -950,6 +950,8 @@ wc -l /tmp/astbuild.out
 - levee (https://github.com/Orc/levee)
 - lf (https://github.com/gokcehan/lf - go)
 - libconfig (https://hyperrealm.github.io/libconfig/ and https://github.com/hyperrealm/libconfig)
+- libdbi (https://github.com/balabit/libdbi)
+- libdbi-drivers (https://github.com/balabit/libdbi-drivers)
 - libdeflate (https://sortix.org/libdeflate/)
 - libdnet (https://github.com/boundary/libdnet or up-to-date fork at https://github.com/busterb/libdnet)
   - mostly want the dnet binary
