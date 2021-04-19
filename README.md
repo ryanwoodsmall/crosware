@@ -689,6 +689,7 @@ wc -l /tmp/astbuild.out
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
 - b2sum (https://github.com/dchest/b2sum)
 - babashka (https://github.com/borkdude/babashka - clojure+shell?)
+- barebox (https://www.barebox.org/)
 - bashdb (http://bashdb.sourceforge.net/ - bash debugger)
 - basher (https://github.com/basherpm/basher - bash script package manager)
 - bic (https://github.com/hexagonal-sun/bic - c repl)
