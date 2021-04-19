@@ -431,6 +431,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libassuan (https://gnupg.org/software/libassuan/index.html)
 - libatomicops
 - libbsd
+- libcap (https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/)
 - libconfig (https://hyperrealm.github.io/libconfig/ and https://github.com/hyperrealm/libconfig)
 - libedit (https://www.thrysoee.dk/editline/ aka editline, from netbsd - ncurses and netbsdcurses)
 - libev (http://software.schmorp.de/pkg/libev.html)
