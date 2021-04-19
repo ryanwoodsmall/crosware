@@ -1413,7 +1413,6 @@ wc -l /tmp/astbuild.out
 - tab (https://tkatchev.bitbucket.io/tab/)
 - taskwarrior (https://taskwarrior.org/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - taskserver (https://github.com/GothenburgBitFactory/taskserver)
-- timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - t3x.org stuff (nils holm)
   - klisp (http://t3x.org/klisp)
   - s9fes (https://www.t3x.org/s9fes https://github.com/bakul/s9fes and https://github.com/barak/scheme9)
@@ -1421,6 +1420,8 @@ wc -l /tmp/astbuild.out
 - tcc (http://repo.or.cz/w/tinycc.git)
   - static compilation is _pretty broken_
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
+- timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
+- tinc (https://www.tinc-vpn.org/)
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh)
 - tlse (https://github.com/eduardsui/tlse - c tls impl using libtomcrypt)
 - tnftpd (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
