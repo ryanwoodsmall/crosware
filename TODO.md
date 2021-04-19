@@ -252,9 +252,24 @@
 - cwgenrecipe list
   - generate an .md with recipe names, versions, sites, etc.
 - replace etc/profile append/prepend function subshells with ```if [[ ${1} =~ ${FLAGS} ]]```
+  - XXX - this is getting _slow_ with lots of installed recipes
   - speeds up processing of environment by ~2x
   - does not work for CPPFLAGS/LDFLAGS? becaues of -I or -L? or...?
   - looks like an early vs late eval thing when pattern matching using ```if [[ ... =~ ... ]]```?
+  - maybe try this...
+  - ```
+    # p is CPPFLAGS,LDFLAGS,PATH,PKG_CONFIG_LIBDIR,PKG_CONFIG_PATH
+    : ${d:=" "}
+    if [ ${#} -ge 2 ] ; then
+      d="${2}"
+    fi
+    t="${d}${p}${d}"
+    if [[ ${1} =~ ${p} ]] ; then
+      return
+    fi
+    p+="${d}${1}"
+    export p
+    ```
 - ```run-command``` function?
   - run a command in the crosware environment
   - useful for pkg-config, etc.
