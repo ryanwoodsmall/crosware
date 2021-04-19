@@ -6,6 +6,9 @@
     - special per-recipe handling in ${rname}.sh.common
     - i.e., curl w/bearssl+mbedtls+wolfssl function template templates but generalized
   - not a bad idea
+  - ```${rname}_${provider}``` : recipe provider normalization
+    - for i.e. netbsdcurses or ncurses, libressl or openssl, etc.
+    - last element split on _ is considered to be a provider - automatic reqs, special handling, etc.
 - `${rrealname}`
   - recipe var for when rname is ugly and reinplace ${..//../..} is too ugly?
 - `staticfiles` recipe
