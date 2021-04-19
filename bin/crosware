@@ -1176,12 +1176,18 @@ function cwshowfunc() {
 function cwrunfunc() {
   cwsourcerecipes
   cwsourceprofile
+  #cwgetfuncs
   local cwfunc
   local cwfuncname
   for cwfunc in "${@}" ; do
     cwfuncname="${cwfunc%%,*}"
     # XXX - this check is too slow...
     #if ! $(set | grep -q "^${cwfuncname} ") ; then
+    #  cwscriptecho "function ${cwfuncname} not known"
+    #  continue
+    #fi
+    # XXX - use new cwgetfuncs()/cwlistfuncs() and check existence
+    #if ! $(cwlistfuncs | grep -q "^${cwfuncname}$") ; then
     #  cwscriptecho "function ${cwfuncname} not known"
     #  continue
     #fi
