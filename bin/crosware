@@ -173,10 +173,12 @@ declare -A cwprofhash
 export cwprofhash
 export cwrecipessourced=0
 export cwprofileinit=0
+export cwfunctionssourced=0
 
-# messages
-declare -a cwmessages
+# lists: messages, functions, etc.
+declare -a cwmessages cwfunctions
 export cwmessages=()
+export cwfunctions=()
 
 # and a "user-visible" var whether we want to use an external jvm/jdk
 : ${CW_USE_JAVA:="true"}
@@ -1127,12 +1129,22 @@ function cwset() {
 }
 
 #
+# cwgetfuncs
+#
+function cwgetfuncs() {
+  if [ ${cwfunctionssourced} -eq 1 ] ; then
+    return
+  fi
+  cwfunctions=( $(cwset | grep -F ' ()' | cut -f1 -d' ') )
+  cwfunctionssourced=1
+}
+
+#
 # cwlistfuncs
 #
 function cwlistfuncs() {
-  cwset \
-  | grep -F ' ()' \
-  | cut -f1 -d' '
+  cwgetfuncs
+  cwshowarray cwfunctions
 }
 
 #
@@ -1273,15 +1285,23 @@ function cwpusharray() {
 }
 
 #
-# cwshowmessages
-#  show the cwmessages array
+# cwshowarray
+#  show an array, or cwmessages array by default
+#  receives array name and optional prefix
 #
-function cwshowmessages() {
-  local a n l i m
+# XXX - previously did a cwscriptecho
+#
+function cwshowarray() {
+  local a p n l i m
   if [ ${#} -lt 1 ] ; then
     a="cwmessages"
   else
     a="${1}"
+  fi
+  if [ ${#} -ge 2 ] ; then
+    p="${2}: "
+  else
+    p=''
   fi
   n=$(eval echo "\${#${a}[@]}")
   if [ ${n} -eq 0 ] ; then
@@ -1290,9 +1310,17 @@ function cwshowmessages() {
   l=$((${n}-1))
   for i in $(seq 0 ${l}) ; do
     m=$(eval echo "\${${a}[${i}]}")
-    cwscriptecho "${m}"
+    echo "${p}${m}"
   done
-  unset a n l i m
+  unset a p n l i m
+}
+
+#
+# cwshowmessages
+#  show the cwmessages array
+#
+function cwshowmessages() {
+  cwshowarray cwmessages "${cwname}"
 }
 
 #############################################
