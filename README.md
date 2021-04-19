@@ -431,6 +431,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libassuan (https://gnupg.org/software/libassuan/index.html)
 - libatomicops
 - libbsd
+- libconfig (https://hyperrealm.github.io/libconfig/ and https://github.com/hyperrealm/libconfig)
 - libedit (https://www.thrysoee.dk/editline/ aka editline, from netbsd - ncurses and netbsdcurses)
 - libev (http://software.schmorp.de/pkg/libev.html)
 - libevent (no openssl support yet)
@@ -958,7 +959,6 @@ wc -l /tmp/astbuild.out
 - lemon (https://www.hwaci.com/sw/lemon/ https://www.sqlite.org/lemon.html https://sqlite.org/src/doc/trunk/doc/lemon.html)
 - levee (https://github.com/Orc/levee)
 - lf (https://github.com/gokcehan/lf - go)
-- libconfig (https://hyperrealm.github.io/libconfig/ and https://github.com/hyperrealm/libconfig)
 - libdbi (https://github.com/balabit/libdbi)
 - libdbi-drivers (https://github.com/balabit/libdbi-drivers)
 - libdeflate (https://sortix.org/libdeflate/)
