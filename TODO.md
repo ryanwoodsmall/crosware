@@ -129,9 +129,10 @@
     - do not like this, complicates configure args, and manual, etc. installs
     - not strictly necessary if upstream/downstream can be easily be computed and stored on install!
   - rprof - profile.d file
+  - rsite - url for recipe
+  - rmessage - generic message to push into an array shown at end of run
   - rdeps / rbdeps? - deps and build deps?
   - rdesc - recipe description?
-  - rsite - url for recipe
   - rlicense - license
   - rcommonconfigureopts - recipes that have a common set of options (curl, ncurses, lynx) can bundle these here
   - rconfigureopts - can set here instead of defining custom *cwconfigure_*

@@ -10,6 +10,8 @@
 : ${rconfigureopts:=""}
 : ${rcommonopts:=""}
 : ${rurl:=""}
+: ${rsite:=""}
+: ${rmessage:=}
 : ${rpfile:="${cwrecipe}/${rname}/${rname}.patches"}
 
 if [[ ${rlibtool} == "" && ${rreqs} =~ slibtool ]] ; then
@@ -71,6 +73,18 @@ function cwurl_${rname}() {
 eval "
 function cwprof_${rname}() {
   echo \"${rprof}\"
+}
+"
+
+eval "
+function cwsite_${rname}() {
+  echo \"${rsite}\"
+}
+"
+
+eval "
+function cwmessage_${rname}() {
+  echo \"${rmessage}\"
 }
 "
 
@@ -238,6 +252,9 @@ function cwinstall_${rname}() {
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
   cwclean_${rname}
+  if [ ! -z \"${rmessage}\" ] ; then
+    cwpusharray cwmessages \"${rname}: ${rmessage}\"
+  fi
 }
 "
 
