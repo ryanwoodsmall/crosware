@@ -571,6 +571,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - stunnel (https://www.stunnel.org/ - openssl)
   - stunnellibressl (libressl build)
 - sqlite
+- sslh (https://www.rutschle.net/tech/sslh/README.html and https://www.rutschle.net/tech/sslh/README.html)
 - suckless
   - 9base (https://tools.suckless.org/9base)
   - sbase (https://core.suckless.org/sbase)
@@ -1384,7 +1385,6 @@ wc -l /tmp/astbuild.out
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
 - srv (https://github.com/joshuarli/srv)
 - sshuttle (https://github.com/sshuttle/sshuttle)
-- sslh (https://www.rutschle.net/tech/sslh/README.html and https://www.rutschle.net/tech/sslh/README.html)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - subversion / svn
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
