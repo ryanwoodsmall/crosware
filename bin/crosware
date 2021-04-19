@@ -773,10 +773,17 @@ function cwoldsourceprofile() {
 }
 
 #
-# cwsourceprofile
+# cwnewsourceprofile
 #   uses cwprofileinit, cwrecipessourced, and cwprofhash
 #
-function cwsourceprofile() {
+# XXX - performance consistency is spotty here
+#  slow machines (disk mostly, but also cpu) won't notice much of a speed gain - they're just slow
+#  fast machines (ditto) will suffer on first run without caching, afterward will be consistent
+#  sha256sum actually measures faster than stat here, guessing because of fs cache
+#  somewhat complicated implementation here too
+#  hmm
+#
+function cwnewsourceprofile() {
   cwchecktop
   if [ ! -e "${cwetcprofile}" ] ; then
     cwscriptecho "${cwetcprofile} does not exist"
@@ -817,6 +824,14 @@ function cwsourceprofile() {
     fi
   done
   unset f r s
+}
+
+#
+# cwsourceprofile
+#  call an implementation of cwsourceprofile
+#
+function cwsourceprofile() {
+  cwnewsourceprofile
 }
 
 #
