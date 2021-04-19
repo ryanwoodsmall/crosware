@@ -16,12 +16,12 @@
 #
 
 rname="less"
-rver="563"
+rver="581"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="http://www.greenwoodsoftware.com/${rname}/${rfile}"
 rurl="https://ftp.gnu.org/pub/gnu/${rname}/${rfile}"
-rsha256="ce5b6d2b9fc4442d7a07c93ab128d2dff2ce09a1d4f2d055b95cf28dd0dc9a9a"
+rsha256="1d077f83fe7867e0ecfd278eab3122326b21c22c9161366189c38e09b96a2c65"
 rreqs="make netbsdcurses busybox toybox"
 
 . "${cwrecipe}/common.sh"
