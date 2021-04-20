@@ -1,3 +1,7 @@
+#
+# XXX - libbsd support, add USELIBBSD=1 - doesn't seem to require libmd?
+#
+
 rname="sslh"
 rver="1.21c"
 rdir="${rname}-${rver}"
