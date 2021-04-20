@@ -44,8 +44,8 @@ function cwconfigure_${rname}() {
   sed -i 's,^LDFLAGS.*,LDFLAGS = -static,g' Makefile
   sed -i '/^MANDIR/s,/usr/local/man/man,${ridir}/share/man/man,g' Makefile
   sed -i '/^MANDIR/s,/usr/local/man,${ridir}/share/man,g' Makefile
-  grep ^MANDIR Makefile | cut -f2 -d= | xargs mkdir -p ${ridir}/bin
   rm -rf \"${ridir}/sbin\" \"${ridir}/share/man\"
+  grep ^MANDIR Makefile | cut -f2 -d= | xargs mkdir -p ${ridir}/bin
   ln -sf bin \"${ridir}/sbin\"
   popd >/dev/null 2>&1
 }
