@@ -1311,6 +1311,7 @@ function cwpusharray() {
 #  receives array name and optional prefix
 #
 # XXX - previously did a cwscriptecho
+# XXX - `for i in $(eval echo \${!${a}[@]}) ; do ... ; done` for index may be clearer
 #
 function cwshowarray() {
   local a p n l i m
