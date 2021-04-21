@@ -1011,6 +1011,7 @@ wc -l /tmp/astbuild.out
   - clozure (https://ccl.clozure.com/)
   - cmucl (https://www.cons.org/cmucl/)
   - fe (https://github.com/rxi/fe - tiny embeddable language)
+  - forthlisp (https://github.com/schani/forthlisp - small lisp in forth)
   - gcl (https://www.gnu.org/software/gcl/)
     - reqs: m4, configgit, gmp?
     - needs ```setarch linux64 -R ...``` with proper linux64/linux32 setting before configure, make
