@@ -2,6 +2,8 @@
 # XXX - config from c8 stream: https://git.centos.org/rpms/nginx/blob/c8-stream-1.18/f/SPECS/nginx.spec
 # XXX - --with-pcre-opt=\"--enable-jit --enable-pcre8 --enable-pcre16 --enable-pcre32 --enable-unicode-properties --enable-utf\" \
 # XXX - no pcre jit on riscv64
+# XXX - probably need to remove static bits for dynamic modules
+# XXX - njs: http://nginx.org/en/docs/njs/index.html and http://nginx.org/en/docs/njs/install.html
 #
 
 rname="nginx"
@@ -47,28 +49,28 @@ function cwconfigure_${rname}() {
       --with-perl=\"${cwsw}/perl/current/bin/perl\" \
       --with-pcre=\"${rbdir}/\$(cwdir_pcre)\" \
       --with-zlib=\"${rbdir}/\$(cwdir_zlib)\" \
-      --with-http_ssl_module \
-      --with-http_v2_module \
-      --with-http_realip_module \
-      --with-stream_ssl_preread_module \
+      --with-compat \
       --with-http_addition_module \
-      --with-http_sub_module \
+      --with-http_auth_request_module \
       --with-http_dav_module \
+      --with-http_degradation_module \
       --with-http_flv_module \
-      --with-http_mp4_module \
       --with-http_gunzip_module \
       --with-http_gzip_static_module \
+      --with-http_mp4_module \
       --with-http_random_index_module \
+      --with-http_realip_module \
       --with-http_secure_link_module \
-      --with-http_degradation_module \
       --with-http_slice_module \
+      --with-http_ssl_module \
       --with-http_stub_status_module \
-      --with-http_perl_module \
-      --with-http_auth_request_module \
+      --with-http_sub_module \
+      --with-http_v2_module \
       --with-mail \
       --with-mail_ssl_module \
       --with-stream \
-      --with-stream_ssl_module
+      --with-stream_ssl_module \
+      --with-stream_ssl_preread_module
   popd >/dev/null 2>&1
 }
 "
