@@ -3,7 +3,6 @@
 # XXX - --with-pcre-opt=\"--enable-jit --enable-pcre8 --enable-pcre16 --enable-pcre32 --enable-unicode-properties --enable-utf\" \
 # XXX - no pcre jit on riscv64
 # XXX - probably need to remove static bits for dynamic modules
-# XXX - njs: http://nginx.org/en/docs/njs/index.html and http://nginx.org/en/docs/njs/install.html
 #
 
 rname="nginx"
@@ -22,6 +21,7 @@ function cwfetch_${rname}() {
   cwfetch_openssl
   cwfetch_pcre
   cwfetch_zlib
+  cwfetch_njs
 }
 "
 
@@ -31,6 +31,7 @@ function cwextract_${rname}() {
   cwextract \"\$(cwdlfile_openssl)\" \"${rbdir}\"
   cwextract \"\$(cwdlfile_pcre)\" \"${rbdir}\"
   cwextract \"\$(cwdlfile_zlib)\" \"${rbdir}\"
+  cwextract \"\$(cwdlfile_njs)\" \"${rbdir}\"
 }
 "
 
@@ -41,6 +42,7 @@ function cwconfigure_${rname}() {
   sed -i.ORIG 's/-march=armv7-a/-march=armv7-a -static/g' \"\$(cwdir_openssl)/config\"
   env PATH=\"${cwsw}/perl/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+      --add-module=\"${rbdir}/\$(cwdir_njs)/nginx\" \
       --with-cc=\"\$(which \${CC})\" \
       --with-cc-opt=\"-fPIC -Wl,-static\" \
       --with-ld-opt=\"-static\" \
@@ -78,7 +80,12 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} ${rlibtool} CC=\"\${CC}\" CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
+  local extopts=''
+  if [[ ${karch} =~ ^arm ]] ; then
+    extopts='NJS_CFLAGS=-static'
+  fi
+  make -j${cwmakejobs} ${rlibtool} CC=\"\${CC}\" CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH= \${extopts}
+  unset extopts
   popd >/dev/null 2>&1
 }
 "
@@ -87,6 +94,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install ${rlibtool} CC=\"\${CC}\" CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
+  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/sbin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
