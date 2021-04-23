@@ -509,6 +509,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libcss (https://www.netsurf-browser.org/projects/libcss/)
 - nettle (http://www.lysator.liu.se/~nisse/nettle/ and https://git.lysator.liu.se/nettle/nettle)
 - nghttp2 (https://github.com/nghttp2/nghttp2)
+- nginx (https://nginx.org/)
 - ninja (https://ninja-build.org/)
 - nmap
 - npth (https://gnupg.org/software/npth/index.html)
@@ -845,7 +846,6 @@ wc -l /tmp/astbuild.out
       - spawn-fcgi (https://redmine.lighttpd.net/projects/spawn-fcgi/repository)
   - mongoose (https://github.com/cesanta/mongoose)
   - monkey (http://monkey-project.com/)
-  - nginx (https://nginx.org/)
   - openresty (https://openresty.org/)
 - ibara's good portable/bsd stuff
   - m4 (https://github.com/ibara/m4)
