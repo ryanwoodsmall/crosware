@@ -510,6 +510,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - nettle (http://www.lysator.liu.se/~nisse/nettle/ and https://git.lysator.liu.se/nettle/nettle)
 - nghttp2 (https://github.com/nghttp2/nghttp2)
 - nginx (https://nginx.org/)
+  - njs (http://nginx.org/en/docs/njs/index.html - nginx javascript cli tool)
 - ninja (https://ninja-build.org/)
 - nmap
 - npth (https://gnupg.org/software/npth/index.html)
