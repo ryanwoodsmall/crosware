@@ -1117,6 +1117,7 @@ wc -l /tmp/astbuild.out
 - mandown (https://github.com/Titor8115/mandown - man like markdown, markdown like man?)
 - matrixssl (https://github.com/matrixssl/matrixssl)
 - mcpp (http://mcpp.sourceforge.net/)
+- memcached (https://memcached.org/ and https://github.com/memcached/memcached - libevent, can use openssl)
 - mercurial / hg
   - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```
   - config/build/install with: ```env PATH=${cwsw}/python2/current/bin:${PATH} make <all|install> PREFIX=${ridir} CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS//-static/}" CFLAGS='' CPPFLAGS=''```
@@ -1284,6 +1285,7 @@ wc -l /tmp/astbuild.out
 - rawtar (https://github.com/andrewchambers/rawtar)
 - re2c (http://re2c.org/ and https://github.com/skvadrik/re2c)
 - redir (https://github.com/troglobit/redir)
+- redis (https://github.com/redis/redis and https://redis.io - tls, jemalloc, etc., options)
 - redo-c (https://github.com/leahneukirchen/redo-c - djb's redo concept implemented in c instead of python)
 - regx (https://github.com/wd5gnr/regx - regx and litgrep, literate regex)
 - relational-pipes (https://relational-pipes.globalcode.info/)
