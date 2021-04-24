@@ -11,7 +11,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://nginx.org/download/${rfile}"
 rsha256="e8d0290ff561986ad7cd6c33307e12e11b137186c4403a6a5ccdb4914c082d88"
-rreqs="make perl slibtool"
+rreqs="make perl slibtool pcre"
 
 . "${cwrecipe}/common.sh"
 
