@@ -8,7 +8,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${rfile}"
 rsha256="798a65fd61d385e09d559810cdfa46512f8def5919264cfef241a7b086ce7cfe"
-rreqs="make cacertificates configgit zlib nghttp2 pkgconfig"
+rreqs="make cacertificates configgit zlib"
 # prefer openssl for now
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
