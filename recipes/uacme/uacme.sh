@@ -1,36 +1,25 @@
-#
-# XXX - mbedtls - default since it's smallest support tls provider
-# XXX - supports openssl and gnutls as well - need variants
-# XXX - libressl 3.2.x doesn't work out of the box
-#
-
 rname="uacme"
 rver="1.7"
 rdir="${rname}-upstream-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/ndilieto/${rname}/archive/refs/tags/upstream/${rfile}"
 rsha256="32ca99851194cadb16c05f3c5d32892b0b93fc247321de2b560fa0f667e6cf04"
-rreqs="make curlmbedtls mbedtls nghttp2 zlib libssh2libgcrypt libgcrypt libgpgerror pkgconfig"
+rreqs="make curl zlib openssl libssh2 expat libmetalink cacertificates nghttp2 pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  env PATH=\"${cwsw}/curlmbedtls/current/devbin:\${PATH}\" \
+  env PATH=\"${cwsw}/curl/current/bin:\${PATH}\" \
     ./configure \
       ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --disable-docs \
-      --with-libcurl=\"${cwsw}/curlmbedtls/current\" \
-      --with-mbedtls=\"${cwsw}/mbedtls/current\" \
-      --without-openssl \
+      --with-libcurl=\"${cwsw}/curl/current\" \
+      --with-openssl=\"${cwsw}/openssl/current\" \
       --without-gnutls \
-        CPPFLAGS=\"\$(echo -I${cwsw}/{curlmbedtls,zlib,nghttp2,libssh2libgcrypt,libgcrypt,libgpgerror,mbedtls}/current/include)\" \
-        LDFLAGS=\"\$(echo -L${cwsw}/{curlmbedtls,zlib,nghttp2,libssh2libgcrypt,libgcrypt,libgpgerror,mbedtls}/current/lib) -static\" \
-        LIBS='-lcurl -lssh2 -lgcrypt -lgpg-error -lnghttp2 -lz -lmbedx509 -lmbedtls -lmbedcrypto -static' \
-        PKG_CONFIG=\"${cwsw}/pkgconfig/current/bin/pkg-config\" \
-        PKG_CONFIG_LIBDIR= \
-        PKG_CONFIG_PATH=
+      --without-mbedtls \
+        LIBS='-lcurl -lssh2 -lnghttp2 -lz -lmetalink -lexpat -lssl -lcrypto -static'
   popd >/dev/null 2>&1
 }
 "

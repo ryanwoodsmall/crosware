@@ -608,7 +608,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - toybox (static)
 - tree (http://mama.indstate.edu/users/ice/tree/)
-- uacme (https://github.com/ndilieto/uacme - standalone acme/letsencrypt client in c, curl+mbedtls)
+- uacme (https://github.com/ndilieto/uacme - standalone acme/letsencrypt client in c, curl+openssl)
 - unrar
 - unzip
 - utillinux
