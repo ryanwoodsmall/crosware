@@ -402,6 +402,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - works for aarch64/x86_64
   - does _not_ work on arm/i686 (gc)
   - guile2 recipe as well, with same caveats
+- haproxy (http://www.haproxy.org/ - openssl+pcre+zlib)
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
   - exvi with netbsdcurses also available as a standalone package
 - help2man
@@ -834,7 +835,6 @@ wc -l /tmp/astbuild.out
 - http servers/proxies/load balancers/etc.
   - apache (https://httpd.apache.org/ - httpd, needs apr, apr-util)
   - cherokee (http://cherokee-project.com/)
-  - haproxy (http://www.haproxy.org/)
   - hiawatha (https://www.hiawatha-webserver.org/)
   - lighttpd
     - `lighttpdbig` package with webdav+lua+dbi+sqlite+openssl+...
