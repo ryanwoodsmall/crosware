@@ -71,6 +71,7 @@ function cwconfigure_${rname}() {
       --with-mail \
       --with-mail_ssl_module \
       --with-stream \
+      --with-stream_realip_module \
       --with-stream_ssl_module \
       --with-stream_ssl_preread_module
   popd >/dev/null 2>&1
