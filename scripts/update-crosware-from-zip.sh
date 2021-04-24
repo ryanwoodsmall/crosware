@@ -32,4 +32,6 @@ rm -f "${zipfile}"
 curl -kLo "${zipfile}" "${zipurl}" 
 unzip "${zipfile}"
 ( cd "${extdir}" ; tar -cf - . | ( cd "${cwtop}" ; tar -xvf - ) )
+rm -f "${zipfile}"
+rm -rf "${extdir}"
 popd
