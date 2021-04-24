@@ -1,13 +1,14 @@
 #
 # XXX - mbedtls - default since it's smallest support tls provider
 # XXX - supports openssl and gnutls as well - need variants
+# XXX - libressl 3.2.x doesn't work out of the box
 #
 
 rname="uacme"
 rver="1.7"
 rdir="${rname}-upstream-${rver}"
 rfile="${rver}.tar.gz"
-rurl="https://github.com/ndilieto/${rname}/archive/refs/tags/upstream/1.7.tar.gz"
+rurl="https://github.com/ndilieto/${rname}/archive/refs/tags/upstream/${rfile}"
 rsha256="32ca99851194cadb16c05f3c5d32892b0b93fc247321de2b560fa0f667e6cf04"
 rreqs="make curlmbedtls mbedtls nghttp2 zlib libssh2libgcrypt libgcrypt libgpgerror pkgconfig"
 
@@ -16,7 +17,7 @@ rreqs="make curlmbedtls mbedtls nghttp2 zlib libssh2libgcrypt libgcrypt libgpger
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  env PATH=${cwsw}/curlmbedtls/current/devbin:\${PATH} \
+  env PATH=\"${cwsw}/curlmbedtls/current/devbin:\${PATH}\" \
     ./configure \
       ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --disable-docs \
