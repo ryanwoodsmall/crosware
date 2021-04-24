@@ -19,7 +19,19 @@ function cwconfigure_${rname}() {
       --with-openssl=\"${cwsw}/openssl/current\" \
       --without-gnutls \
       --without-mbedtls \
-        LIBS='-lcurl -lssh2 -lnghttp2 -lz -lmetalink -lexpat -lssl -lcrypto -static'
+        LIBS='-lcurl -lssh2 -lnghttp2 -lz -lmetalink -lexpat -lssl -lcrypto -static' \
+        PKG_CONFIG=\"${cwsw}/pkgconfig/current/bin/pkg-config\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install ${rlibtool}
+  ln -sf \"${rname}\" \"${ridir}/bin/${rname}-openssl\"
+  ln -sf \"ualpn\" \"${ridir}/bin/ualpn-openssl\"
+  \$(\${CC} -dumpmachine)-strip \"${ridir}/bin/${rname}\" \"${ridir}/bin/ualpn\"
   popd >/dev/null 2>&1
 }
 "
