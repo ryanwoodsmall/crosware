@@ -1,3 +1,7 @@
+#
+# XXX - make this look more like curl, w/${rproviderreqs} and maybe ${rproviderlibs} for LIBS='-lblah -lgah ...'
+#
+
 rbase="${rname%${rprovider}}"
 rver="$(cwver_${rbase})"
 rdir="$(cwdir_${rbase})"
