@@ -848,6 +848,8 @@ wc -l /tmp/astbuild.out
   - mongoose (https://github.com/cesanta/mongoose)
   - monkey (http://monkey-project.com/)
   - openresty (https://openresty.org/)
+  - pen (http://siag.nu/pen/)
+  - pound (https://www.apsis.ch/pound.html)
 - ibara's good portable/bsd stuff
   - m4 (https://github.com/ibara/m4)
   - yacc (https://github.com/ibara/yacc)
