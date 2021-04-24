@@ -12,7 +12,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG 's,-lpthread,-lpthread -latomic,g' Makefile
-  sed -i 's/-Wl,-Bdynamic//g' Makefile
+  sed -i 's/-Wl,-Bdynamic/-Wl,-static -static/g' Makefile
   popd >/dev/null 2>&1
 }
 "
