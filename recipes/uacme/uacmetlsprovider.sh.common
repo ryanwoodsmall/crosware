@@ -1,0 +1,41 @@
+rbase="${rname%${rprovider}}"
+rver="$(cwver_${rbase})"
+rdir="$(cwdir_${rbase})"
+rfile="$(cwfile_${rbase})"
+rdlfile="$(cwdlfile_${rbase})"
+rurl="$(cwurl_${rbase})"
+rprof="${cwetcprofd}/zz_${rname}.sh"
+rsha256=""
+
+. "${cwrecipe}/common.sh"
+
+local f
+for f in clean extract fetch ; do
+  eval "
+  function cw${f}_${rname}() {
+    cw${f}_${rbase}
+  }
+  "
+done
+unset f
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install ${rlibtool}
+  ln -sf \"${rbase}\" \"${ridir}/bin/${rbase}-${rprovider}\"
+  ln -sf \"ualpn\" \"${ridir}/bin/ualpn-${rprovider}\"
+  \$(\${CC} -dumpmachine)-strip \"${ridir}/bin/${rbase}\" \"${ridir}/bin/ualpn\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+
+unset rbase
+
+# vim: set ft=sh:

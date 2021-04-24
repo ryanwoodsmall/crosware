@@ -609,6 +609,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - toybox (static)
 - tree (http://mama.indstate.edu/users/ice/tree/)
 - uacme (https://github.com/ndilieto/uacme - standalone acme/letsencrypt client in c, curl+openssl)
+  - uacmembedtls (curl+mbedtls)
 - unrar
 - unzip
 - utillinux
@@ -1457,7 +1458,7 @@ wc -l /tmp/astbuild.out
   - no auth serve w/busybox or toybox: `tcpsvd -E -v 0.0.0.0 564 ./u9fs -D -z -a none -u username /path/to/share`
   - access from remote host w/plan 9 from user space: `9p -a 'tcp!hostname.domain.name!564' ls /`
 - uacme (https://github.com/ndilieto/uacme)
-  - other providers: openssl (libressl, boringssl?), gnutls
+  - other providers: gnutls; libressl doesn't seem to work out of the box
 - ublinter (https://github.com/danmar/ublinter)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
 - uftpd (https://github.com/troglobit/uftpd)
