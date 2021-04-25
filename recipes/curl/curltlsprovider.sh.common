@@ -42,7 +42,8 @@ function cwmakeinstall_${rname}() {
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib) -static\" \
       PKG_CONFIG_LIBDIR=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\" \
-      PKG_CONFIG_PATH=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\"
+      PKG_CONFIG_PATH=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\" \
+      ${rcommonopts}
   make -j${cwmakejobs} ${rlibtool}
   make install ${rlibtool}
   rm -f \"${ridir}/bin/curl-${rprovider}\" \"${ridir}/bin/${rname%${rprovider}}-${rprovider}-config\"

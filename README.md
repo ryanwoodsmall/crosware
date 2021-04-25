@@ -335,7 +335,12 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - cscope
 - cssc (gnu sccs)
 - ctags (exuberant ctags for now, universal ctags a better choice?)
-- curl
+- curl (https://curl.se/ - openssl)
+  - curlbearssl
+  - curlgnutls
+  - curllibressl
+  - curlmbedtls
+  - curlwolfssl
 - cvs
 - cxref
 - dash (http://gondor.apana.org.au/~herbert/dash/ and https://git.kernel.org/pub/scm/utils/dash/dash.git)
