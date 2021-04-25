@@ -205,6 +205,26 @@
   - sets PAGER to (real less) ```less -R```
   - MANPATH?
 - need a fallback mirror
+  - generalized way of handling a _list_ of mirrors
+  - `cwmirrorfetch` and `cwmirrorfetchcheck`
+    - `cwmirrorfetch`: url, path, mirrorlist (semicolon-delimited)
+    - `cwmirrorfetchcheck`: url, path, sha-256, mirrorlist (semicolon-delimited)
+  - `cwmirrorfetchcheck` is safe to just naively run over the full list of mirrors since it'll short-circuit on file existence+sha256sum match
+  - `cwmirrorfetch` needs some idempotency safety-baked in?
+  - ```
+    function cwmirrorfetch() {
+      local u="${1}"
+      local f="${2}"
+      local l="${3}"
+      local m s
+      for m in ${l//;/ } ; do
+        s+="cwfetch \"${m}\" \"${f}\" || "
+      done
+      s+="cwfailexit 'failed to download ${f} from mirrors'"
+      cwfetch "${u}" "${f}" || eval "${s}"
+      unset u f l m s
+    }
+    ```
 - XXX - unset recipe vars should be a list
 - XXX - cwinstall() should likely use associative array to only do a single install
   - i.e., ```crosware install make m4 make flex make``` should only install the make recipe *once*
