@@ -616,6 +616,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - tree (http://mama.indstate.edu/users/ice/tree/)
 - uacme (https://github.com/ndilieto/uacme - standalone acme/letsencrypt client in c, curl+openssl)
   - uacmembedtls (curl+mbedtls)
+  - uacmegnutls (curl+gnutls)
 - unrar
 - unzip
 - utillinux
@@ -1460,8 +1461,7 @@ wc -l /tmp/astbuild.out
   - https://github.com/Plan9-Archive/u9fs - recently updated, works without rhosts stuff
   - no auth serve w/busybox or toybox: `tcpsvd -E -v 0.0.0.0 564 ./u9fs -D -z -a none -u username /path/to/share`
   - access from remote host w/plan 9 from user space: `9p -a 'tcp!hostname.domain.name!564' ls /`
-- uacme (https://github.com/ndilieto/uacme)
-  - other providers: gnutls; libressl doesn't seem to work out of the box
+- uacme - libressl doesn't seem to work out of the box, patch?
 - ublinter (https://github.com/danmar/ublinter)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
 - uftpd (https://github.com/troglobit/uftpd)
