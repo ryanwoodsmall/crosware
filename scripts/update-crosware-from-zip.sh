@@ -29,7 +29,7 @@ fi
 pushd "${cwtmp}"
 rm -rf "${extdir}"
 rm -f "${zipfile}"
-curl -kLo "${zipfile}" "${zipurl}" 
+curl -kLo "${zipfile}" "${zipurl}"
 unzip "${zipfile}"
 ( cd "${extdir}" ; tar -cf - . | ( cd "${cwtop}" ; tar -xvf - ) )
 rm -f "${zipfile}"
