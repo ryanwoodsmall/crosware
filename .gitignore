@@ -15,6 +15,7 @@
 /etc/ssl*
 /etc/libressl*
 /etc/dnsmasq*
+/etc/gnutls*
 /var/inst/*
 !/var/inst/.crosware_directory_not_tracked_in_git
 /var/spool/*

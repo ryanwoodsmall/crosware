@@ -392,6 +392,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - gmp
 - gnupg (with ntbtls - https://gnupg.org/software/index.html)
   - gnupg1 (gnupg 1.x - older, smaller gnupg version, with fewer prereqs)
+- gnutls (https://gnutls.org/)
 - go
   - static binary archive
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
@@ -821,9 +822,6 @@ wc -l /tmp/astbuild.out
   - gpgme
   - etc.
 - gnulib (https://www.gnu.org/software/gnulib - probably needed to repackage for older gnu projects - shishi, gss, gsasl, ...)
-- gnutls
-  - needs nettle, gmplib, libtasn1, libunistring
-  - configure needs ```--without-p11-kit --disable-doc --enable-manpages --with-default-trust-store-file=${cwetc}/ssl/cert.pem --disable-hardware-acceleration --disable-nls --disable-padlock --enable-sha1-support --enable-ssl3-support```
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
 - got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
