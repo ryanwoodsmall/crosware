@@ -1,6 +1,5 @@
 eval "
 function cwfetch_${rname}() {
-  cwsourceprofile
   cwcheckreqs_${rname}
   cwsourceprofile
   cwscriptecho \"fetching ${rname} from git at ${rurl}\"
