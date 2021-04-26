@@ -468,6 +468,9 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
     cwuninstall_${cwbootstraprecipe}
     cwinstall_${cwbootstraprecipe}
   }
+  function cwprof_${cwbootstraprecipe}() {
+    echo \"${cwetcprofd}/${cwbootstraprecipe}.sh\"
+  }
   "
   cwrecipefiles[${cwbootstraprecipe}]="${cwtop}/bin/crosware"
   cwrecipeversions[${cwbootstraprecipe}]="$(cwver_${cwbootstraprecipe})"
@@ -798,7 +801,7 @@ function cwnewsourceprofile() {
     if [ ${cwrecipessourced} -eq 0 ] ; then
       return
     else
-      for r in ${!cwrecipes[@]} ; do
+      for r in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
         f="$(cwprof_${r})"
         if [ -e "${f}" ] ; then
           cwprofhash["${f}"]="$(sha256sum "${f}" | awk '{print $1}')"
