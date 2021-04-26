@@ -166,6 +166,10 @@
       done
       ```
     - **REALLY NEED THAT GRAPH TO MAKE THIS EFFICIENT**
+    - crawl all recipes and check reqs
+    - would love a hash of recipes to reqs (list) here
+    - call from cwupgrade?
+    - needs to be unconditional, really need a stack of all downstreams gathered, uniq'ed, and built once
   - ```cwupgrade_${rname} function```
     - uninstall/reinstall by default, checking downstream reqs to upgrade
     - cwreinstall_... as well? alias/wrapper?
