@@ -1,5 +1,9 @@
 # TODO
 
+- add `rinfo` to recipes
+  - free-form string
+  - can be used to generate recipe list
+  - separate out from README.md
 - allow underscores in recipe names?
   - i.e., `something_special`
   - would make parsing easier for variants
