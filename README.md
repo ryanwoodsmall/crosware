@@ -738,6 +738,7 @@ wc -l /tmp/astbuild.out
   - gbrogue (https://github.com/gbelo/gBrogue)
 - bsd-coreutils (https://github.com/Projeto-Pindorama/bsd-coreutils - bsd stuff, fork of lobase-old?)
 - bsdgames (debian - https://packages.debian.org/buster/bsdgames)
+  - nbsdgames (https://github.com/abakh/nbsdgames - new bsd games)
 - bsd-headers (http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/musl - oe/yocto)
 - build-scripts (https://github.com/noloader/Build-Scripts - useful versions, packaging, etc. stuff)
 - c9 (https://github.com/ftrvxmtrx/c9 - small 9p client/server impl)
