@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# (re)create crosware .git dir 
+# (re)create crosware .git dir
 #
 
 set -eu
