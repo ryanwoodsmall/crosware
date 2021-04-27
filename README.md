@@ -1233,6 +1233,7 @@ wc -l /tmp/astbuild.out
   - fbvnc (https://repo.or.cz/fbvnc.git)
 - nethack
 - netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
+- nets (https://github.com/lkundrak/nets - network serial port)
 - netsurf stuff
   - netsurf w/framebuffer nsfb? sdl? vnc doesn't seem to work
   - libnsfb (https://www.netsurf-browser.org/projects/libnsfb/)
@@ -1404,6 +1405,7 @@ wc -l /tmp/astbuild.out
 - spm (https://notabug.org/kl3/spm/ - password manager, fork of tpm)
 - sprite (https://github.com/ibara/sprite - curses sprite editor, libpng export support!)
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
+- sredird (https://github.com/msantos/sredird - network serial port redirector)
 - srv (https://github.com/joshuarli/srv)
 - sshuttle (https://github.com/sshuttle/sshuttle)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
@@ -1465,6 +1467,7 @@ wc -l /tmp/astbuild.out
   - access from remote host w/plan 9 from user space: `9p -a 'tcp!hostname.domain.name!564' ls /`
 - uacme - libressl doesn't seem to work out of the box, patch?
 - ublinter (https://github.com/danmar/ublinter)
+- ubridge (https://github.com/GNS3/ubridge - udp, ethernet, tap, etc. userspace bridge controller)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
 - uftpd (https://github.com/troglobit/uftpd)
 - unfs3 (https://unfs3.github.io/ and https://github.com/unfs3/unfs3)
