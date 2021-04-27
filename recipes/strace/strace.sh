@@ -1,9 +1,9 @@
 rname="strace"
-rver="5.11"
+rver="5.12"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="ffe340b10c145a0f85734271e9cce56457d23f21a7ea5931ab32f8cf4e793879"
+rsha256="29171edf9d252f89c988a4c340dfdec662f458cb8c63d85431d64bab5911e7c4"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
