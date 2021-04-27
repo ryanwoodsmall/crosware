@@ -1494,6 +1494,7 @@ wc -l /tmp/astbuild.out
 - xe (https://github.com/leahneukirchen/xe)
 - xq (https://github.com/jeffbr13/xq)
 - xserver-sixel (https://github.com/saitoha/xserver-sixel)
+- ynetd (https://github.com/johnsonjh/ynetd and https://yx7.cc/code/ - minimal tcp/inetd server)
 - yq (https://github.com/kislyuk/yq)
 - ytalk (http://ytalk.ourproject.org/)
 - z3 (https://github.com/Z3Prover/z3)
