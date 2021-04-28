@@ -966,6 +966,7 @@ wc -l /tmp/astbuild.out
     - see: http://lists.busybox.net/pipermail/buildroot/2017-July/198737.html
   - mit
   - shishi (https://www.gnu.org/software/shishi/)
+- keyutils (http://people.redhat.com/~dhowells/keyutils/)
 - kineto (https://sr.ht/~sircmpwn/kineto/ and https://git.sr.ht/~sircmpwn/kineto - gemini to http gateway/proxy)
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
 - larn (short roguelike https://en.wikipedia.org/wiki/Larn_(video_game) - maintained/modern https://github.com/atsb/RL_M)
@@ -1013,6 +1014,7 @@ wc -l /tmp/astbuild.out
 - libunwind (http://www.nongnu.org/libunwind/ and http://savannah.nongnu.org/projects/libunwind)
 - libusb (https://github.com/libusb/libusb)
 - libutf (https://github.com/cls/libutf)
+- libverto (https://github.com/npmccallum/libverto - main loop/async library, used by mit kerberos)
 - libwebsockets (https://libwebsockets.org/)
 - libyaml (https://github.com/yaml/libyaml)
 - lisp stuff
