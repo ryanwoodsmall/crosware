@@ -10,6 +10,14 @@ rbdir="${cwbuild}/${rdir}/libraries/lib${rname}"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwclean_${rname}() {
+  pushd \"${cwbuild}\" >/dev/null 2>&1
+  rm -rf \"${rdir}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cat Makefile > Makefile.ORIG
