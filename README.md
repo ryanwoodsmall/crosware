@@ -956,8 +956,12 @@ wc -l /tmp/astbuild.out
   - heimdal
     - for static musl libraries, **heimdal** likely needs to be built with:
       - libedit (external, or with its _\-D_ workaround); readline may flake out
-      - all DB drivers turned off
-      - ncurses, openssl, ?
+      - all DB drivers turned off?
+      - openssl, or leave default builtin hcrypto based on libtommath stuff?
+      - bdb: `- --with-berkeley-db --disable-heimdal-documentation`
+      - definitely ncurses
+      - replace sys/errno.h with errno.h
+      - replace sys/poll.h with poll.h
     - see: http://lists.busybox.net/pipermail/buildroot/2017-July/198737.html
   - mit
   - shishi (https://www.gnu.org/software/shishi/)
