@@ -468,6 +468,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - lighttpd (https://www.lighttpd.net/ - mbedtls)
 - linenoise (https://github.com/antirez/linenoise)
 - links (ncurses)
+- lmdb (https://github.com/LMDB/lmdb and https://symas.com/lmdb/ - lighting memory-mapped database, dummy profile.d for now)
 - loksh (https://github.com/dimkr/loksh)
 - lsh (https://www.lysator.liu.se/~nisse/lsh/ - version 2.0, 2.1 has issues with separate/new nettle)
 - lua (posix, no readline)
@@ -1113,7 +1114,6 @@ wc -l /tmp/astbuild.out
     - https://stackoverflow.com/questions/46905464/how-to-enable-a-llvm-backend
     - https://releases.llvm.org/download.html
     - https://reviews.llvm.org/D34910
-- lmdb (https://github.com/LMDB/lmdb)
 - lnav (https://github.com/tstack/lnav)
 - lobase (https://github.com/Duncaen/lobase)
   - lobase (https://github.com/ataraxialinux/lobase - fork, updated)
