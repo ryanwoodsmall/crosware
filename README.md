@@ -959,6 +959,7 @@ wc -l /tmp/astbuild.out
       - all DB drivers turned off?
       - openssl, or leave default builtin hcrypto based on libtommath stuff?
       - bdb: `- --with-berkeley-db --disable-heimdal-documentation`
+      - gdbm, sqlite
       - definitely ncurses
       - replace sys/errno.h with errno.h
       - replace sys/poll.h with poll.h
