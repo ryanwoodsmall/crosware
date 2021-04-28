@@ -6,7 +6,7 @@ rname="lsh"
 rver="2.0.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://ftp.gnu.org/pub/gnu/lsh/lsh-2.0.4.tar.gz"
+rurl="https://ftp.gnu.org/pub/gnu/${rname}/${rfile}"
 rsha256="614b9d63e13ad3e162c82b6405d1f67713fc622a8bc11337e72949d613713091"
 rreqs="make gmp liboop netbsdcurses zlib configgit"
 
