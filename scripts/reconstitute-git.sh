@@ -40,14 +40,14 @@ cat >"${c}.new"<<EOF
 [remote "origin"]
 |url = ${giturl}
 |fetch = +refs/heads/*:refs/remotes/origin/*
-[branch "master"]
+[branch "${gitbranch}"]
 |remote = origin
-|merge = refs/heads/master
+|merge = refs/heads/${gitbranch}
 EOF
 tr '|' '\t' < "${c}.new" > "${c}"
 rm -f "${c}.new"
 "${gitcmd}" fetch origin
 "${gitcmd}" reset "origin/${gitbranch}" --hard
-"${gitcmd}" checkout master
+"${gitcmd}" checkout "${gitbranch}"
 "${gitcmd}" status
 popd >/dev/null 2>&1
