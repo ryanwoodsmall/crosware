@@ -1,9 +1,9 @@
 rname="guile"
-rver="3.0.5"
+rver="3.0.6"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="2d76fb023d2366126a5fac04704f9bd843846b80cccba6da5d752318b03350f1"
+rsha256="e2bd83c2077d721356e7579ca33097a13a20e2b7eda6c2362ee1166fbc845d28"
 rreqs="make sed gawk gmp libtool slibtool pkgconfig libffi gc readline ncurses libunistring"
 
 . "${cwrecipe}/common.sh"
