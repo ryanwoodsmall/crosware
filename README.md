@@ -424,6 +424,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - isl
 - itsatty (https://github.com/ryanwoodsmall/itsatty)
 - j7zip
+- janet (https://janet-lang.org/ and https://github.com/janet-lang/janet)
 - jo (https://github.com/jpmens/jo)
 - jq (https://stedolan.github.io/jq/ - with oniguruma regex)
 - jruby
@@ -1037,7 +1038,6 @@ wc -l /tmp/astbuild.out
     - reqs: m4, configgit, gmp?
     - needs ```setarch linux64 -R ...``` with proper linux64/linux32 setting before configure, make
     - not sure if this will work either
-  - janet (https://janet-lang.org/ and https://github.com/janet-lang/janet)
   - le-lisp (http://christian.jullien.free.fr/lelisp/)
   - lisp500 (http://web.archive.org/web/20070722203906/https://www.modeemi.fi/~chery/lisp500/)
   - mankai common lisp (https://common-lisp.net/project/mkcl/)
