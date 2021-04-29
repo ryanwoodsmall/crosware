@@ -1,3 +1,7 @@
+#
+# XXX - probably need to override CFLAGS, -O{s,1,2,3,...} seems to break
+#
+
 rname="slibtool"
 rver="0.5.28"
 rdir="${rname}-${rver}"
