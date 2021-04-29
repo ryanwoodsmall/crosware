@@ -71,8 +71,9 @@ function cwconfigure_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   cwmakeinstall_${rname}_openssl
-  #cwmakeinstall_${rname}_libressl
   #cwmakeinstall_${rname}_bearssl
+  #cwmakeinstall_${rname}_gnutls
+  #cwmakeinstall_${rname}_libressl
   #cwmakeinstall_${rname}_mbedtls
   #cwmakeinstall_${rname}_wolfssl
 }
@@ -89,7 +90,7 @@ function cwmakeinstall_${rname}_openssl() {
 }
 "
 
-for s in bearssl libressl mbedtls wolfssl ; do
+for s in bearssl gnutls libressl mbedtls wolfssl ; do
 eval "
 function cwmakeinstall_${rname}_${s}() {
   cwcheckinstalled ${rname}${s} || cwinstall_${rname}${s}
