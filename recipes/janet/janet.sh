@@ -1,3 +1,7 @@
+#
+# XXX - maybe install shared lib .so(s) in ${ridir}/dl? need something similar for lua?
+#
+
 rname="janet"
 rver="1.15.5"
 rdir="${rname}-${rver}"
