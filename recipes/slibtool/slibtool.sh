@@ -1,5 +1,6 @@
 #
 # XXX - probably need to override CFLAGS, -O{s,1,2,3,...} seems to break
+# XXX - CFLAGS_CMDLINE='-Wl,-static -fPIC' need to be specified in make/make install
 #
 
 rname="slibtool"
