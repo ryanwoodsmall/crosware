@@ -1,5 +1,8 @@
 # TODO
 
+- rss links for source releases
+  - would make tracking updates significantly easier
+  - github, gitlab, etc.
 - add `rinfo` to recipes
   - free-form string
   - can be used to generate recipe list
