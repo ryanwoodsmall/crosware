@@ -528,6 +528,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - nvi (via debian, https://salsa.debian.org/debian/nvi)
 - nvi179 (4bsd release from keith bostic, https://sites.google.com/a/bostic.com/keithbostic/vi)
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
+- onetrueawk (https://github.com/onetrueawk/awk - the one true awk)
 - oniguruma (https://github.com/kkos/oniguruma)
 - openssh (openssl, netbsdcurses libedit)
 - openssl
@@ -701,7 +702,6 @@ time \
       CCFLAGS="-D_GNU_SOURCE -D_BSD_SOURCE -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_USE_GNU -D__GLIBC__" 2>&1 | tee /tmp/astbuild.out
 wc -l /tmp/astbuild.out
 ```
-- awk (https://github.com/onetrueawk/awk - the one true awk)
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
 - b2sum (https://github.com/dchest/b2sum)
 - babashka (https://github.com/borkdude/babashka - clojure+shell?)
