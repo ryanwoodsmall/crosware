@@ -702,6 +702,7 @@ time \
       CCFLAGS="-D_GNU_SOURCE -D_BSD_SOURCE -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_USE_GNU -D__GLIBC__" 2>&1 | tee /tmp/astbuild.out
 wc -l /tmp/astbuild.out
 ```
+- awka (http://awka.sourceforge.net/index.html - generate c from awk and compile)
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
 - b2sum (https://github.com/dchest/b2sum)
 - babashka (https://github.com/borkdude/babashka - clojure+shell?)
@@ -989,12 +990,14 @@ wc -l /tmp/astbuild.out
 - libdnet (https://github.com/boundary/libdnet or up-to-date fork at https://github.com/busterb/libdnet)
   - mostly want the dnet binary
 - libeconf (https://github.com/openSUSE/libeconf)
+- libfawk (http://repo.hu/projects/libfawk/ - awk like function language/vm/library)
 - libfetch (https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.3-stable and https://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/net/libfetch/README.html - alpine, netbsd, needs work)
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
 - libiconv (https://www.gnu.org/software/libiconv/)
 - libixp (https://github.com/0intro/libixp - 9p client/library)
   - https://github.com/bwhmather/libixp - updated recently?
+- libmawk (http://repo.hu/projects/libmawk/ - embeddable mawk library fork)
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
 - libntlm (https://www.nongnu.org/libntlm/)
 - libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
