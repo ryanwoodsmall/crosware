@@ -21,6 +21,7 @@ function cwconfigure_${rname}() {
   cat makefile > makefile.ORIG
   sed -i 's/-o maketab/-o maketab -static -Wl,-static/g' makefile
   sed -i 's/gcc/\$(CC)/g' makefile
+  sed -i 's/-lm/-lm -static/g' makefile
   popd >/dev/null 2>&1
 }
 "
@@ -28,7 +29,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make YACC=\"${cwsw}/byacc/current/bin/byacc -d -b awkgram\" {HOST,}CC=\"\${CC} -Wl,-static\"
+  make YACC=\"${cwsw}/byacc/current/bin/byacc -d -b awkgram\" {HOST,}CC=\"\${CC} -Wl,-static\" CPPFLAGS= LDFLAGS=-static
   popd >/dev/null 2>&1
 }
 "
