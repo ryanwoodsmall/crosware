@@ -1507,6 +1507,7 @@ wc -l /tmp/astbuild.out
 - wrp (https://github.com/tenox7/wrp - web rendering proxy)
 - wren (https://wren.io/ and https://github.com/wren-lang/wren)
 - wsServer (https://theldus.github.io/wsServer/ and https://github.com/Theldus/wsServer - websocket server in c)
+- x509cert (https://git.sr.ht/~mcf/x509cert and https://github.com/michaelforney/x509cert - bearssl cert/request utility)
 - xe (https://github.com/leahneukirchen/xe)
 - xq (https://github.com/jeffbr13/xq)
 - xserver-sixel (https://github.com/saitoha/xserver-sixel)
