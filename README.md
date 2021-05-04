@@ -1043,6 +1043,8 @@ wc -l /tmp/astbuild.out
     - not sure if this will work either
   - le-lisp (http://christian.jullien.free.fr/lelisp/)
   - librep (https://github.com/SawfishWM/librep - embeddable lisp)
+    - gdbm, gmp, libffi, makeinfo, ncurses, readline
+    - **requires** shared lib
   - lisp500 (http://web.archive.org/web/20070722203906/https://www.modeemi.fi/~chery/lisp500/)
   - mankai common lisp (https://common-lisp.net/project/mkcl/)
   - newlisp (http://www.newlisp.org/ - unnoficial code mirror at https://github.com/kosh04/newlisp)
