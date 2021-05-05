@@ -1,9 +1,9 @@
 rname="neatvi"
-rver="07"
+rver="08"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/aligrudi/${rname}/archive/${rfile}"
-rsha256="f35939b5095152af9e8e76dd03ef4f52d14453a70a92430dd3e92964dcca53a1"
+rsha256="a861714d97e5b2d28698b7b7e13e393bb94a381def68d260a0e2908ee3d48591"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
