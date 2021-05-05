@@ -3,7 +3,7 @@
 #
 
 rname="htermutils"
-rver="2b42e027b1d123eb4fdd4debb62a79ad471af212"
+rver="7caa0788bdf94c399092c069ab79aaf2874222f2"
 rdir="${rname}-${rver}"
 rfile="etc.tar.gz"
 rurl="https://chromium.googlesource.com/apps/libapps/+archive/${rver}/hterm/${rfile}"
