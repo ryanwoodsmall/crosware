@@ -630,6 +630,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - w3m (https://github.com/tats/w3m)
 - wget
 - wolfssl (cyassl)
+- x509cert (https://git.sr.ht/~mcf/x509cert and https://github.com/michaelforney/x509cert - bearssl cert/request utility)
 - xinetd (https://github.com/openSUSE/xinetd forked from https://github.com/xinetd-org/xinetd)
 - xmlstarlet (http://xmlstar.sourceforge.net/)
 - xvi (http://martinwguy.github.io/xvi/)
@@ -1510,7 +1511,6 @@ wc -l /tmp/astbuild.out
 - wrp (https://github.com/tenox7/wrp - web rendering proxy)
 - wren (https://wren.io/ and https://github.com/wren-lang/wren)
 - wsServer (https://theldus.github.io/wsServer/ and https://github.com/Theldus/wsServer - websocket server in c)
-- x509cert (https://git.sr.ht/~mcf/x509cert and https://github.com/michaelforney/x509cert - bearssl cert/request utility)
 - xe (https://github.com/leahneukirchen/xe)
 - xq (https://github.com/jeffbr13/xq)
 - xserver-sixel (https://github.com/saitoha/xserver-sixel)
