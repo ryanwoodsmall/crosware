@@ -465,6 +465,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
 - libuv (https://github.com/libuv/libuv)
 - libxml2
+- libxo (https://github.com/Juniper/libxo and http://juniper.github.io/libxo/libxo-manual.html - html/json/xml output lib and xo cli)
 - libxslt
 - libz (sortix, zlib fork https://sortix.org/libz/)
 - lighttpd (https://www.lighttpd.net/ - mbedtls)
