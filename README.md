@@ -1018,6 +1018,7 @@ wc -l /tmp/astbuild.out
   - libtommath
   - libtompoly
   - tomsfastmath
+- libucl (https://github.com/vstakhov/libucl - universal configuration language parser library)
 - libucontext (https://github.com/kaniini/libucontext)
 - libudev-zero (https://github.com/illiliti/libudev-zero)
 - libunwind (http://www.nongnu.org/libunwind/ and http://savannah.nongnu.org/projects/libunwind)
