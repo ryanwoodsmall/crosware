@@ -19,6 +19,11 @@ function cwconfigure_${rname}() {
   sed -i.ORIG '/DESTDIR.*etc/s,/etc/,${ridir}/etc/,g' Makefile
   sed -i.ORIG 's/-lpthread.*//g;s/-lcjson/-lcjson -lpthread -lssl -lcrypto -lcares/g' apps/mosquitto_ctrl/Makefile
   sed -i.ORIG 's,^prefix.*,prefix=${ridir},g;s,--strip-program=.*,,g' config.mk
+  sed -i 's/^WITH_DOCS:.*/WITH_DOCS:=no/g' config.mk
+  sed -i 's/^WITH_SHARED_LIBRARIES:.*/WITH_SHARED_LIBRARIES:=no/g' config.mk
+  sed -i 's/^WITH_SRV:.*/WITH_SRV:=yes/g' config.mk
+  sed -i 's/^WITH_STATIC_LIBRARIES:.*/WITH_STATIC_LIBRARIES:=yes/g' config.mk
+  sed -i 's/^WITH_STRIP:.*/WITH_STRIP:=yes/g' config.mk
   popd >/dev/null 2>&1
 }
 "
@@ -27,11 +32,6 @@ eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make \
-    WITH_DOCS=no \
-    WITH_SHARED_LIBRARIES=no \
-    WITH_SRV=yes \
-    WITH_STATIC_LIBRARIES=yes \
-    WITH_STRIP=yes \
     CPPFLAGS=\"\$(echo -I${cwsw}/{openssl,cares,cjson}/current/include)\" \
     {LOCAL_,}LDFLAGS=\"\$(echo -L${cwsw}/{openssl,cares,cjson}/current/lib) -static\"
   popd >/dev/null 2>&1
@@ -42,11 +42,6 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install \
-    WITH_DOCS=no \
-    WITH_SHARED_LIBRARIES=no \
-    WITH_SRV=yes \
-    WITH_STATIC_LIBRARIES=yes \
-    WITH_STRIP=yes \
     CPPFLAGS=\"\$(echo -I${cwsw}/{openssl,cares,cjson}/current/include)\" \
     {LOCAL_,}LDFLAGS=\"\$(echo -L${cwsw}/{openssl,cares,cjson}/current/lib) -static\"
   popd >/dev/null 2>&1
