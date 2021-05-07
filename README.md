@@ -325,6 +325,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - ccache4 - now requires cmake, keep them separate for now
 - cflow
 - check
+- cjson (https://github.com/DaveGamble/cJSON)
 - cloc (https://github.com/AlDanial/cloc)
 - cmake
 - configgit (gnu config.guess, config.sub updates for musl, aarch64, etc. http://git.savannah.gnu.org/gitweb/?p=config.git;a=summary)
@@ -766,7 +767,6 @@ wc -l /tmp/astbuild.out
     make CC="${CC} -static -Wl,-static"
     ```
 - chrpath
-- cjson (https://github.com/DaveGamble/cJSON)
 - c/c++ compiler stuff
   - 8cc (https://github.com/rui314/8cc)
   - 9cc (https://github.com/rui314/9cc)
