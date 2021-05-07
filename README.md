@@ -321,6 +321,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - byacc
 - bzip2
 - cacertificates (from alpine)
+- cares (https://github.com/c-ares/c-ares and https://c-ares.haxx.se/ - c-ares, asynch dns, must explicitly opt-in)
 - ccache - version 3.x, autotools
   - ccache4 - now requires cmake, keep them separate for now
 - cflow
@@ -753,7 +754,6 @@ wc -l /tmp/astbuild.out
 - c9 (https://github.com/ftrvxmtrx/c9 - small 9p client/server impl)
   - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
   - https://git.sr.ht/~ft/c9
-- c-ares (https://github.com/c-ares/c-ares)
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
