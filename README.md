@@ -501,6 +501,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
 - minischeme (https://github.com/catseye/minischeme)
 - mksh (http://www.mirbsd.org/mksh.htm)
+- mosquitto (https://github.com/eclipse/mosquitto and https://mosquitto.org/ - mqtt broker & pub/sub client)
 - most (https://www.jedsoft.org/most/)
 - mpc
 - mpfr
@@ -1216,9 +1217,6 @@ wc -l /tmp/astbuild.out
       ```
 - moreutils (https://joeyh.name/code/moreutils/)
 - moscow ml (https://github.com/kfl/mosml)
-- mosquitto (https://github.com/eclipse/mosquitto and https://mosquitto.org/ - mqtt broker & pub/sub client)
-  - tls (openssl) and cjson necessary for minimal secure functionality
-  - c-ares (for SRV records) and libwebsockets for full functionality
 - mpg123
 - mpg321
 - mruby (https://github.com/mruby/mruby)
