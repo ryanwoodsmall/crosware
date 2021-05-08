@@ -10,7 +10,7 @@ rfile="${rname}-${rver}.tar.bz2"
 #rurl="https://nixos.org/releases/${rname}/${rname}-${rver}/${rfile}"
 rurl="https://github.com/NixOS/${rname}/releases/download/${rver}/${rfile}"
 rsha256="699a31cf52211cf5ad6e35a8801eb637bc7f3c43117140426400d67b7babd792"
-rreqs="make"
+rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
