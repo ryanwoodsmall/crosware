@@ -1233,6 +1233,7 @@ wc -l /tmp/astbuild.out
     - iconv (https://git.alpinelinux.org/cgit/aports/tree/main/musl/iconv.c)
 - mutt
 - mvi (https://github.com/byllgrim/mvi)
+- nanomsg (https://github.com/nanomsg/nanomsg and https://nanomsg.org/)
 - nc / ncat / netcat
 - ne (https://github.com/vigna/ne terminal editor)
 - neat/litcave stuff (http://litcave.rudi.ir/)
@@ -1521,6 +1522,7 @@ wc -l /tmp/astbuild.out
 - ytalk (http://ytalk.ourproject.org/)
 - z3 (https://github.com/Z3Prover/z3)
   - cppcheck can use/may require this for 2.x+
+- zeromq (https://github.com/zeromq/libzmq and https://zeromq.org/)
 - zlib-ng (https://github.com/zlib-ng/zlib-ng - fork with "next-get" vector support)
 - zork (https://github.com/devshane/zork - it's zork dude)
 - support libraries for building the above
