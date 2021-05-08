@@ -1,8 +1,3 @@
-#
-# XXX - make default variant insecure TLS-less for speed compiling/testing/wrapping?
-# XXX - libressl variant
-#
-
 rname="mosquitto"
 rver="2.0.10"
 rdir="${rname}-${rver}"
