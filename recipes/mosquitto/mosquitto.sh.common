@@ -1,0 +1,38 @@
+rver="$(cwver_mosquitto)"
+rdir="$(cwdir_mosquitto)"
+rfile="$(cwfile_mosquitto)"
+rdlfile="$(cwdlfile_mosquitto)"
+rurl="$(cwurl_mosquitto)"
+rsha256=""
+rprof="${cwetcprofd}/zz_${rname}.sh"
+
+. "${cwrecipe}/common.sh"
+
+local f
+for f in clean extract fetch ; do
+  eval "
+  function cw${f}_${rname}() {
+    cw${f}_mosquitto
+  }
+  "
+done
+unset f
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  cwconfigure_mosquitto
+  sed -i 's,^prefix.*,prefix=${ridir},g' config.mk
+  sed -i 's,${cwsw}/mosquitto,${rtdir},g' Makefile
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/sbin\"' > \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
+}
+"
+
+# vim: ft=sh:

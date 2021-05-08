@@ -502,6 +502,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - minischeme (https://github.com/catseye/minischeme)
 - mksh (http://www.mirbsd.org/mksh.htm)
 - mosquitto (https://github.com/eclipse/mosquitto and https://mosquitto.org/ - mqtt broker & pub/sub client - openssl/cjson/c-ares)
+  - mosquittolibressl (libressl/cjson/c-ares)
 - most (https://www.jedsoft.org/most/)
 - mpc
 - mpfr
