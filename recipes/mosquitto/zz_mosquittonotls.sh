@@ -1,5 +1,5 @@
 rname="mosquittonotls"
-rreqs="make cares cjson"
+rreqs="bootstrapmake cares cjson"
 
 . "${cwrecipe}/${rname%notls}/${rname%notls}.sh.common"
 
