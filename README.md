@@ -507,6 +507,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - most (https://www.jedsoft.org/most/)
 - mpc
 - mpfr
+- mqtt-c (https://github.com/LiamBindle/MQTT-C)
 - mtm (https://github.com/deadpixi/mtm - micro terminal multiplexer)
 - mujs (http://mujs.com/ and https://github.com/ccxvii/mujs)
 - muslfts (https://github.com/pullmoll/musl-fts)
@@ -1510,6 +1511,7 @@ wc -l /tmp/astbuild.out
 - websocketd (go, https://github.com/joewalnes/websocketd)
 - websockify (https://github.com/novnc/websockify)
 - whatshell.sh (https://www.in-ulm.de/~mascheck/various/whatshell/ and https://www.in-ulm.de/~mascheck/various/whatshell/whatshell.sh)
+- wolfmqtt (https://github.com/wolfSSL/wolfMQTT)
 - wolfssh (https://github.com/wolfSSL/wolfssh)
 - wordgrinder (https://github.com/davidgiven/wordgrinder - word processor)
 - wrp (https://github.com/tenox7/wrp - web rendering proxy)
