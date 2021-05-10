@@ -1,9 +1,9 @@
 rname="x509cert"
-rver="64155493ee8c97eea89a92f53ce56e57ff0aeb46"
+rver="0.1"
 rdir="${rname}-${rver}"
-rfile="${rver}.zip"
-rurl="https://github.com/michaelforney/${rname}/archive/${rfile}"
-rsha256=""
+rfile="${rdir}.tar.gz"
+rurl="https://github.com/michaelforney/${rname}/releases/download/${rver}/${rfile}"
+rsha256="a9f1e9b827f2b79d7f98e42b684ed7d57d537a811ca0d1b39dafee25828fe175"
 rreqs="make bearssl"
 
 . "${cwrecipe}/common.sh"
@@ -38,11 +38,8 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  rm -f ${ridir}/include/*.{h,ORIG}
   make install
   \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname}\"
-  mv \"${ridir}/include/asn1.h\" \"${ridir}/include/${rname}_asn1.h\"
-  sed -i '/^#include/s/asn1/${rname}_asn1/g' \"${ridir}/include/${rname}.h\"
   popd >/dev/null 2>&1
 }
 "
