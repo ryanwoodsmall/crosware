@@ -6,11 +6,11 @@
 #
 
 rname="distcc"
-rver="3.3.5"
+rver="3.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="7a8e45a3a2601b7d5805c7d5b24918e3ad84b6b5cc9153133f432fdcc6dce518"
+rsha256="2b99edda9dad9dbf283933a02eace6de7423fe5650daa4a728c950e5cd37bd7d"
 rreqs="bootstrapmake"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
