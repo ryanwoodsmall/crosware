@@ -1454,6 +1454,7 @@ wc -l /tmp/astbuild.out
     ```
 - sundown (markdown lib - https://github.com/vmg/sundown)
 - svi (https://github.com/byllgrim/svi)
+- sysklogd (https://github.com/troglobit/sysklogd - bsd syslog on linux, newer rfc compliant)
 - tab (https://tkatchev.bitbucket.io/tab/)
 - taskwarrior (https://taskwarrior.org/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - taskserver (https://github.com/GothenburgBitFactory/taskserver)
