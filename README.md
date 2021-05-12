@@ -633,6 +633,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - uacmegnutls (curl+gnutls)
 - unrar
 - unzip
+- uredir (https://github.com/troglobit/uredir)
 - utillinux
 - uucp (https://www.airs.com/ian/uucp.html and https://www.gnu.org/software/uucp/)
 - vile (https://invisible-island.net/vile/)
@@ -1497,7 +1498,6 @@ wc -l /tmp/astbuild.out
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
 - units (https://www.gnu.org/software/units)
 - upx (https://github.com/upx/upx)
-- uredir (https://github.com/troglobit/uredir)
 - u-root (https://github.com/u-root/u-root - go userland w/bootloaders, may be useful!)
 - usbutils (https://github.com/gregkh/usbutils)
 - utalk (http://utalk.ourproject.org/)
