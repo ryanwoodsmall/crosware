@@ -464,6 +464,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libssh2libgcrypt (gcrypt, zlib)
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtool
+- libuev (https://github.com/troglobit/libuev)
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
 - libuv (https://github.com/libuv/libuv)
 - libxml2
