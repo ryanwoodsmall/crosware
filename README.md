@@ -565,6 +565,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - rc (http://tobold.org/article/rc, https://github.com/rakitzis/rc - needs to be git hash, currently old release)
 - rcs (gnu)
 - readline (ncurses and netbsdcurses)
+- redir (https://github.com/troglobit/redir)
 - reflex (https://invisible-island.net/reflex/reflex.html)
 - rhino
 - rlwrap (netbsdcurses)
@@ -1322,7 +1323,6 @@ wc -l /tmp/astbuild.out
 - ranger (https://ranger.github.io - python)
 - rawtar (https://github.com/andrewchambers/rawtar)
 - re2c (http://re2c.org/ and https://github.com/skvadrik/re2c)
-- redir (https://github.com/troglobit/redir)
 - redis (https://github.com/redis/redis and https://redis.io - tls, jemalloc, etc., options)
 - redo-c (https://github.com/leahneukirchen/redo-c - djb's redo concept implemented in c instead of python)
 - regx (https://github.com/wd5gnr/regx - regx and litgrep, literate regex)
