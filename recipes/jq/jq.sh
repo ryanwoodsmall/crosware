@@ -11,7 +11,7 @@ rreqs="make byacc flex oniguruma configgit"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  env PATH=\"${cwsw}/bison/current/bin:${cwsw}/flex/current/bin:\${PATH}\" \
+  env PATH=\"${cwsw}/bison/current/bin:${cwsw}/byacc/current/bin:${cwsw}/flex/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
       --disable-docs \
       --disable-maintainer-mode \
