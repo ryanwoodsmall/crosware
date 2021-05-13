@@ -444,6 +444,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libbsd
 - libcap (https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/)
 - libconfig (https://hyperrealm.github.io/libconfig/ and https://github.com/hyperrealm/libconfig)
+- libconfuse (https://github.com/libconfuse/libconfuse)
 - libedit (https://www.thrysoee.dk/editline/ aka editline, from netbsd - ncurses and netbsdcurses)
 - libev (http://software.schmorp.de/pkg/libev.html)
 - libevent (no openssl support yet)
