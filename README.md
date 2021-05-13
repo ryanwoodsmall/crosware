@@ -502,6 +502,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - meson (http://mesonbuild.com/)
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
 - minischeme (https://github.com/catseye/minischeme)
+- minisnmpd (https://github.com/troglobit/mini-snmpd and https://troglobit.com/projects/mini-snmpd/)
 - mksh (http://www.mirbsd.org/mksh.htm)
 - mosquitto (https://github.com/eclipse/mosquitto and https://mosquitto.org/ - mqtt broker & pub/sub client - openssl/cjson/c-ares)
   - mosquittolibressl (libressl/cjson/c-ares)
