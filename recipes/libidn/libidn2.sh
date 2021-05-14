@@ -1,9 +1,9 @@
 rname="libidn2"
-rver="2.3.0"
+rver="2.3.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/libidn/${rfile}"
-rsha256="e1cb1db3d2e249a6a3eb6f0946777c2e892d5c5dc7bd91c74394fc3a01cab8b5"
+rsha256="8af684943836b8b53965d5f5b6714ef13c26c91eaa36ce7d242e3d21f5d40f2d"
 rreqs="make libunistring"
 
 . "${cwrecipe}/common.sh"
