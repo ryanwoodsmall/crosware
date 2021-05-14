@@ -1196,6 +1196,7 @@ wc -l /tmp/astbuild.out
         CFLAGS_EXTRA="-I${cwsw}/mbedtls/current/include"
       ```
   - binary will be **ports/unix/micropython**
+- microsocks (https://github.com/rofl0r/microsocks)
 - minit (https://github.com/chazomaticus/minit - small init with startup/shutdown scripts)
 - miniyacc (https://c9x.me/yacc/)
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
@@ -1333,7 +1334,9 @@ wc -l /tmp/astbuild.out
 - relational-pipes (https://relational-pipes.globalcode.info/)
 - remake (http://bashdb.sourceforge.net/remake/ and https://github.com/rocky/remake)
 - retro (forth, http://retroforth.org/)
-- rredir (https://github.com/rofl0r/rrredir)
+- rrredir (https://github.com/rofl0r/rrredir)
+- rocksock-http (https://github.com/rofl0r/rocksock-httpd)
+- rocksocks5 (https://github.com/rofl0r/rocksocks5)
 - rover (https://lecram.github.io/p/rover)
 - rpcbind (https://sourceforge.net/projects/rpcbind/ and http://git.linux-nfs.org/?p=steved/rpcbind.git;a=summary)
 - rpcsvc-proto (https://github.com/thkukuk/rpcsvc-proto)
