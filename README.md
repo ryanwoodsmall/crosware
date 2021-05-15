@@ -500,6 +500,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - mawk (https://invisible-island.net/mawk/mawk.html)
 - mbedtls (polarssl)
 - meson (http://mesonbuild.com/)
+- microsocks (https://github.com/rofl0r/microsocks)
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
 - minischeme (https://github.com/catseye/minischeme)
 - minisnmpd (https://github.com/troglobit/mini-snmpd and https://troglobit.com/projects/mini-snmpd/)
@@ -1197,7 +1198,6 @@ wc -l /tmp/astbuild.out
         CFLAGS_EXTRA="-I${cwsw}/mbedtls/current/include"
       ```
   - binary will be **ports/unix/micropython**
-- microsocks (https://github.com/rofl0r/microsocks)
 - minit (https://github.com/chazomaticus/minit - small init with startup/shutdown scripts)
 - miniyacc (https://c9x.me/yacc/)
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
