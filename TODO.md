@@ -1,5 +1,15 @@
 # TODO
 
+- `cwneedupgrade_${rname}` function
+  - recipes responsible for checking themselves if they need an upgrade
+  - then chasing recursively
+  - could simplify `cwupgradereqs_${rname}`?
+  - should be faster and may lead to fewer recursive loops during req upgrade checks
+  - almost like message passing to a recipe
+    - hey if you need to be upgraded, go for it, tell your friends, i'll wait
+    - otherwise, thanks, take it easy, you can go
+    - and then "hey already saw you, thanks for checking in"
+  - as always, would benefit from a (fast) graph here!
 - rss links for source releases
   - would make tracking updates significantly easier
   - github, gitlab, etc.
