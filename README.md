@@ -573,6 +573,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - rhino
 - rlwrap (netbsdcurses)
 - rogue
+- rrredir (https://github.com/rofl0r/rrredir)
 - rsync
 - sc (from debian, https://packages.debian.org/buster/sc)
 - scheme48 (http://s48.org)
@@ -1334,7 +1335,6 @@ wc -l /tmp/astbuild.out
 - relational-pipes (https://relational-pipes.globalcode.info/)
 - remake (http://bashdb.sourceforge.net/remake/ and https://github.com/rocky/remake)
 - retro (forth, http://retroforth.org/)
-- rrredir (https://github.com/rofl0r/rrredir)
 - rocksock-http (https://github.com/rofl0r/rocksock-httpd)
 - rocksocks5 (https://github.com/rofl0r/rocksocks5)
 - rover (https://lecram.github.io/p/rover)
