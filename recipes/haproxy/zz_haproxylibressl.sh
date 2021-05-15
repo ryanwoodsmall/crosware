@@ -21,6 +21,7 @@ for f in fetch clean configure ; do
   }
   "
 done
+unset f
 
 eval "
 function cwmake_${rname}() {
