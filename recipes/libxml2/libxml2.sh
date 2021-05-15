@@ -1,11 +1,11 @@
 rname="libxml2"
-rver="2.9.10"
+rver="2.9.11"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="ftp://xmlsoft.org/${rname}/${rfile}"
 #rurl="https://sources.voidlinux.org/${rdir}/${rfile}"
 rurl="http://xmlsoft.org/sources/${rfile}"
-rsha256="aafee193ffb8fe0c82d4afef6ef91972cbaf5feea100edc2f262750611b4be1f"
+rsha256="886f696d5d5b45d780b2880645edf9e0c62a4fd6841b853e824ada4e02b4d331"
 rreqs="make xz zlib"
 
 . "${cwrecipe}/common.sh"
