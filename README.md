@@ -412,6 +412,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - does _not_ work on arm/i686 (gc)
   - guile2 recipe as well, with same caveats
 - haproxy (http://www.haproxy.org/ - openssl+pcre+zlib)
+  - haproxylibressl (libressl+pcre+zlib)
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
   - exvi with netbsdcurses also available as a standalone package
 - help2man
