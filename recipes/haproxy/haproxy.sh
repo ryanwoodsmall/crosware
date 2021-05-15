@@ -1,3 +1,7 @@
+#
+# XXX - 2.4.0 is new lts
+#
+
 rname="haproxy"
 rver="2.2.14"
 rdir="${rname}-${rver}"
