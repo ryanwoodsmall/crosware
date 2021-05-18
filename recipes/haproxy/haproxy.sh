@@ -1,13 +1,9 @@
-#
-# XXX - 2.4.0 is new lts
-#
-
 rname="haproxy"
-rver="2.2.14"
+rver="2.4.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.haproxy.org/download/${rver%.*}/src/${rfile}"
-rsha256="6a9b702f04b07786f3e5878de8172a727acfdfdbc1cefe1c7a438df372f2fb61"
+rsha256="0a6962adaf5a1291db87e3eb4ddf906a72fed535dbd2255b164b7d8394a53640"
 rreqs="make openssl pcre2 zlib lua"
 
 . "${cwrecipe}/common.sh"
