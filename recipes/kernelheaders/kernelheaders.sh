@@ -1,5 +1,6 @@
 #
 # XXX - no risc-v 64-bit (riscv64) support yet...
+# XXX - move to alpine-ish setup? https://git.alpinelinux.org/aports/tree/main/linux-headers?h=master
 #
 
 rname="kernelheaders"
