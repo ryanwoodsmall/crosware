@@ -4,12 +4,12 @@
 #
 
 rname="rlwrap"
-rver="0.45"
+rver="0.45.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="https://github.com/hanslub42/${rname}/releases/download/${rver}/${rfile}"
 rurl="https://github.com/ryanwoodsmall/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="6b2d0bbffc0ce08392ec1caa95d8c2ad2369f270c301c523eb0beb20d2a94d63"
+rsha256="57d81c3a402f5bcde711bdcbb16c3f5f5a8c5a6ad6536165cd3d101b44f7b82a"
 rreqs="make netbsdcurses configgit"
 
 . "${cwrecipe}/common.sh"
