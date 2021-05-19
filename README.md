@@ -832,7 +832,7 @@ wc -l /tmp/astbuild.out
 - emulation stuff
   - axpbox (https://github.com/lenticularis39/axpbox - alpha)
   - gxemul (http://gavare.se/gxemul/)
-- entr (http://entrproject.org/)
+- entr (http://entrproject.org/ and https://github.com/eradman/entr)
 - eris (https://github.com/nealey/eris - small web server)
 - finit (https://github.com/troglobit/finit)
 - firejail (https://github.com/netblue30/firejail)
