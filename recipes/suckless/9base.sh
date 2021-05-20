@@ -11,10 +11,20 @@ rreqs="bootstrapmake"
 . "${cwrecipe}/suckless/suckless.sh.common"
 
 eval "
+function cwfetch_${rname}() {
+  local fv='dc60de7b64948e89832f03181e6db799060036b8'
+  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
+  cwfetchcheck \"${rurl//${rfile}/fortunes-\${fv}}\" \"${rdlfile//${rfile}/fortunes-\${fv}}\" \"c826764ff7cf53b1e4a4a7f4cb90aafad957d782e3eccc1bce31bdd0b61480b7\"
+  ln -sf \"${rdlfile//${rfile}/fortunes-\${fv}}\" \"${rdlfile//${rfile}/fortunes}\"
+  unset fv
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cwmkdir \"${ridir}/lib\"
-  cwfetch \"https://github.com/9fans/plan9port/raw/master/lib/fortunes\" \"${ridir}/lib/fortunes\"
+  install -m 0644 \"\$(realpath ${rdlfile//${rfile}/fortunes})\" \"${ridir}/lib/fortunes\"
   grep -ril /usr/local/plan9 . \
   | grep -v '\.git' \
   | xargs sed -i "s#/usr/local/plan9#${ridir}#g"
