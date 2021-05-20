@@ -1475,6 +1475,7 @@ wc -l /tmp/astbuild.out
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
 - timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - tinc (https://www.tinc-vpn.org/)
+- tiny-curl (https://curl.se/tiny/ - curl but smaller, focus on http(s))
 - tlse (https://github.com/eduardsui/tlse - c tls impl using libtomcrypt)
 - tnftpd (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - torgo (https://github.com/as/torgo)
