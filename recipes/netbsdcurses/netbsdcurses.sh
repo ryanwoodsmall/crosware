@@ -8,11 +8,11 @@
 #
 
 rname="netbsdcurses"
-rver="0.3.1"
+rver="0.3.2"
 rdir="netbsd-curses-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/sabotage-linux/netbsd-curses/archive/${rfile}"
-rsha256="bebaf1656440409b0b0e40b5a336c97dcd142e2368b47840a353040fe34d987f"
+rsha256="9d3ebd651e5f70b87b1327b01cbd7e0c01a0f036b4c1371f653b7704b11daf23"
 rreqs="make"
 # we want this to come after ncurses
 rprof="${cwetcprofd}/zz_${rname}.sh"
@@ -67,9 +67,9 @@ eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cd nbperf
-  make nbperf CPPFLAGS='-I..' LDFLAGS='-static'
+  make nbperf CPPFLAGS='-I.. -DTERMINFO_COMPILE -DTERMINFO_DB -DTERMINFO_COMPAT' LDFLAGS='-static'
   cd ..
-  make -j${cwmakejobs} all-static PREFIX=\"${ridir}\" CPPFLAGS='-I./ -I./libterminfo' LDFLAGS='-static'
+  make -j${cwmakejobs} all-static PREFIX=\"${ridir}\" CPPFLAGS='-I./ -I./libterminfo -DTERMINFO_COMPILE -DTERMINFO_DB -DTERMINFO_COMPAT' LDFLAGS='-static'
   popd >/dev/null 2>&1
 }
 "
