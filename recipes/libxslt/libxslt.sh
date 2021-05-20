@@ -6,7 +6,7 @@ rfile="${rdir}.tar.gz"
 #rurl="https://sources.voidlinux.org/${rdir}/${rfile}"
 rurl="http://xmlsoft.org/sources/${rfile}"
 rsha256="98b1bd46d6792925ad2dfe9a87452ea2adebf69dcb9919ffd55bf926a7f93f7f"
-rreqs="make libgcrypt libxml2 slibtool xz zlib"
+rreqs="make libgcrypt libxml2 slibtool xz zlib pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
@@ -17,7 +17,9 @@ function cwconfigure_${rname}() {
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
       --with-libxml-prefix=\"${cwsw}/libxml2/current\" \
       --without-python \
-        LIBS='-llzma -lz'
+        LIBS='-llzma -lz' \
+        LIBXML_CFLAGS=\"\$(pkg-config --cflags liblzma zlib libxml-2.0)\" \
+        LIBXML_LIBS=\"\$(pkg-config --libs liblzma zlib libxml-2.0)\"
   popd >/dev/null 2>&1
 }
 "
