@@ -1,8 +1,14 @@
-eval "
-function cwfetch_${rname}() {
-  cwfetch_${rname}_git
-}
-"
+#eval "
+#function cwfetch_${rname}() {
+#  cwfetch_${rname}_git
+#}
+#"
+
+#eval "
+#function cwextract_${rname}() {
+#  true
+#}
+#"
 
 eval "
 function cwfetch_${rname}_git() {
@@ -15,12 +21,6 @@ function cwfetch_${rname}_git() {
   cd \"${rdir}\"
   \${CW_GIT_CMD} checkout \"${rver}\"
   popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwextract_${rname}() {
-  true
 }
 "
 
