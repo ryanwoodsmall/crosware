@@ -1,11 +1,17 @@
 eval "
 function cwfetch_${rname}() {
+  cwfetch_${rname}_git
+}
+"
+
+eval "
+function cwfetch_${rname}_git() {
   cwcheckreqs_${rname}
   cwsourceprofile
   cwscriptecho \"fetching ${rname} from git at ${rurl}\"
   pushd \"${cwbuild}\" >/dev/null 2>&1
   rm -rf \"${rdir}\"
-  \${CW_GIT_CMD} clone --quiet \"${rurl}\" \"${rdir}\"
+  \${CW_GIT_CMD} clone --quiet \"https://git.suckless.org/${rname}\" \"${rdir}\"
   cd \"${rdir}\"
   \${CW_GIT_CMD} checkout \"${rver}\"
   popd >/dev/null 2>&1
@@ -25,10 +31,10 @@ function cwconfigure_${rname}() {
   sed -i '/^CC/d' config.mk
   sed -i '/^AR/d' config.mk
   sed -i '/^LDFLAGS/d' config.mk
-  echo "CC = \${CC}" >> config.mk
-  echo "AR = \${AR}" >> config.mk
-  echo "LDFLAGS = \${LDFLAGS}" >> config.mk
-  echo "PREFIX = ${ridir}" >> config.mk
+  echo \"CC = \${CC}\" >> config.mk
+  echo \"AR = \${AR}\" >> config.mk
+  echo \"LDFLAGS = \${LDFLAGS}\" >> config.mk
+  echo \"PREFIX = ${ridir}\" >> config.mk
   echo '#include <sys/sysmacros.h>' >> util.h
   popd >/dev/null 2>&1
 }
