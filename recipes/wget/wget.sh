@@ -1,6 +1,7 @@
 #
 # XXX - wget2: wolfssl, bison, flex, xz, ...
 # XXX - libressl variant
+# XXX - gnutls variant
 #
 
 rname="wget"
