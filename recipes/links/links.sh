@@ -1,3 +1,7 @@
+#
+# XXX - libressl variant
+#
+
 rname="links"
 rver="2.22"
 rdir="${rname}-${rver}"
