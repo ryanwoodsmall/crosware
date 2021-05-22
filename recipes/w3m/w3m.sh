@@ -7,6 +7,8 @@
 #   CXXFLAGS=\"\${CXXFLAGS//-Wl,-static/} -Wl,-rpath=${cwsw}/gc/current/lib\" \
 #   LDFLAGS=\"\${LDFLAGS//-static/}\"
 #
+# XXX - libressl variant
+#
 
 rname="w3m"
 rver="0.5.3-git20210102"
