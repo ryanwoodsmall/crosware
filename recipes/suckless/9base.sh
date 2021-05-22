@@ -5,7 +5,7 @@ rfile="${rdir}.tar.gz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rsha256="8adfe39b52fb9c23bd4b575e0a64e158aef4259f7ca6b53d9b40708b5284085e"
-rreqs="bootstrapmake"
+rreqs="bootstrapmake sbase"
 
 . "${cwrecipe}/common.sh"
 . "${cwrecipe}/suckless/suckless.sh.common"
@@ -34,6 +34,12 @@ function cwconfigure_${rname}() {
   grep -v '^#' \"\$(realpath ${rdlfile//${rfile}/${rname}})\" | grep -v '^\$' >> \"${ridir}/bin/${rname}\"
   chmod 755 \"${ridir}/bin/${rname}\"
   ln -sf \"${rname}\" \"${ridir}/bin/9\"
+  echo '#!/bin/sh' > \"${ridir}/bin/mc\"
+  echo 'sbase-box cols \"\$@\"' >> \"${ridir}/bin/mc\"
+  chmod 755 \"${ridir}/bin/mc\"
+  echo '#!/bin/sh' > \"${ridir}/bin/lc\"
+  echo '${rname} ls -p \"\$@\" | ${rname} mc' >> \"${ridir}/bin/lc\"
+  chmod 755 \"${ridir}/bin/lc\"
   grep -ril /usr/local/plan9 . \
   | grep -v '\.git' \
   | xargs sed -i "s#/usr/local/plan9#${ridir}#g"
