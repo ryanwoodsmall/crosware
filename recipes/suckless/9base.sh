@@ -13,10 +13,13 @@ rreqs="bootstrapmake"
 eval "
 function cwfetch_${rname}() {
   local fv='dc60de7b64948e89832f03181e6db799060036b8'
+  local nv='9e8366c25e77fb33de5ed76cbbcd44dcc8604fde'
   cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
   cwfetchcheck \"${rurl//${rfile}/fortunes-\${fv}}\" \"${rdlfile//${rfile}/fortunes-\${fv}}\" \"c826764ff7cf53b1e4a4a7f4cb90aafad957d782e3eccc1bce31bdd0b61480b7\"
+  cwfetchcheck \"${rurl//${rfile}/${rname}-\${nv}}\" \"${rdlfile//${rfile}/${rname}-\${nv}}\" \"9cdae14e5167255cf203b88cfcad5800c09daa4fb3fad2ad32b7c77c3b6d1b8b\"
   ln -sf \"${rdlfile//${rfile}/fortunes-\${fv}}\" \"${rdlfile//${rfile}/fortunes}\"
-  unset fv
+  ln -sf \"${rdlfile//${rfile}/${rname}-\${nv}}\" \"${rdlfile//${rfile}/${rname}}\"
+  unset fv nv
 }
 "
 
@@ -24,7 +27,13 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cwmkdir \"${ridir}/lib\"
+  cwmkdir \"${ridir}/bin\"
   install -m 0644 \"\$(realpath ${rdlfile//${rfile}/fortunes})\" \"${ridir}/lib/fortunes\"
+  echo '#!/bin/sh' > \"${ridir}/bin/${rname}\"
+  echo 'PLAN9=\${PLAN9:-${ridir}}' >> \"${ridir}/bin/${rname}\"
+  grep -v '^#' \"\$(realpath ${rdlfile//${rfile}/${rname}})\" | grep -v '^\$' >> \"${ridir}/bin/${rname}\"
+  chmod 755 \"${ridir}/bin/${rname}\"
+  ln -sf \"${rname}\" \"${ridir}/bin/9\"
   grep -ril /usr/local/plan9 . \
   | grep -v '\.git' \
   | xargs sed -i "s#/usr/local/plan9#${ridir}#g"
