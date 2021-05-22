@@ -1,7 +1,3 @@
-#
-# XXX - 2.4.0 is new lts
-#
-
 rname="haproxylibressl"
 rver="$(cwver_haproxy)"
 rdir="$(cwdir_haproxy)"
