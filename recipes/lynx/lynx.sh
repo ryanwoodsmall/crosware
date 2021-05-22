@@ -1,3 +1,7 @@
+#
+# XXX - libressl variant
+#
+
 rname="lynx"
 rver="2.8.9rel.1"
 rdir="${rname}${rver}"
