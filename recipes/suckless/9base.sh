@@ -13,13 +13,19 @@ rreqs="bootstrapmake sbase"
 eval "
 function cwfetch_${rname}() {
   local fv='dc60de7b64948e89832f03181e6db799060036b8'
-  local nv='9e8366c25e77fb33de5ed76cbbcd44dcc8604fde'
+  local nv='54e49ccfaf48fba913c3471867e19ebf774c1dc5'
+  local lv='54e49ccfaf48fba913c3471867e19ebf774c1dc5'
+  local mv='54e49ccfaf48fba913c3471867e19ebf774c1dc5'
   cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
   cwfetchcheck \"${rurl//${rfile}/fortunes-\${fv}}\" \"${rdlfile//${rfile}/fortunes-\${fv}}\" \"c826764ff7cf53b1e4a4a7f4cb90aafad957d782e3eccc1bce31bdd0b61480b7\"
-  cwfetchcheck \"${rurl//${rfile}/${rname}-\${nv}}\" \"${rdlfile//${rfile}/${rname}-\${nv}}\" \"9cdae14e5167255cf203b88cfcad5800c09daa4fb3fad2ad32b7c77c3b6d1b8b\"
+  cwfetchcheck \"${rurl//${rfile}/lc-\${lv}}\" \"${rdlfile//${rfile}/lc-\${lv}}\" \"025e787e514a83e3f70e06c5dc8e675b8cb3af69a4037490bfcd75d7a9cc370d\"
+  cwfetchcheck \"${rurl//${rfile}/mc-\${mv}}\" \"${rdlfile//${rfile}/mc-\${mv}}\" \"fd3d52ce7d588ffcfef55f2d15b8243a9e050bd35b65aeb14511acb58065555e\"
+  cwfetchcheck \"${rurl//${rfile}/${rname}-\${nv}}\" \"${rdlfile//${rfile}/${rname}-\${nv}}\" \"534c549c99900390760950cde419c319c7b1a3f7dce28f817d1acfb223daa331\"
   ln -sf \"${rdlfile//${rfile}/fortunes-\${fv}}\" \"${rdlfile//${rfile}/fortunes}\"
+  ln -sf \"${rdlfile//${rfile}/lc-\${lv}}\" \"${rdlfile//${rfile}/lc}\"
+  ln -sf \"${rdlfile//${rfile}/mc-\${mv}}\" \"${rdlfile//${rfile}/mc}\"
   ln -sf \"${rdlfile//${rfile}/${rname}-\${nv}}\" \"${rdlfile//${rfile}/${rname}}\"
-  unset fv nv
+  unset fv nv lv mv
 }
 "
 
@@ -29,13 +35,10 @@ function cwconfigure_${rname}() {
   cwmkdir \"${ridir}/lib\"
   cwmkdir \"${ridir}/bin\"
   install -m 0644 \"\$(realpath ${rdlfile//${rfile}/fortunes})\" \"${ridir}/lib/fortunes\"
-  echo '#!/bin/sh' | tee \"${ridir}/bin/${rname}\" \"${ridir}/bin/mc\" \"${ridir}/bin/lc\"
-  echo 'PLAN9=\${PLAN9:-${ridir}}' >> \"${ridir}/bin/${rname}\"
-  grep -v '^#' \"\$(realpath ${rdlfile//${rfile}/${rname}})\" | grep -v '^\$' >> \"${ridir}/bin/${rname}\"
-  echo 'sbase-box cols \"\$@\"' >> \"${ridir}/bin/mc\"
-  echo '${rname} ls -p \"\$@\" | ${rname} mc' >> \"${ridir}/bin/lc\"
-  chmod 755 \"${ridir}/bin/${rname}\" \"${ridir}/bin/mc\" \"${ridir}/bin/lc\"
-  sed -i '/{@}/s,^,exec ,g' \"${ridir}/bin/${rname}\"
+  install -m 0755 \"\$(realpath ${rdlfile//${rfile}/lc})\" \"${ridir}/bin/lc\"
+  install -m 0755 \"\$(realpath ${rdlfile//${rfile}/mc})\" \"${ridir}/bin/mc\"
+  install -m 0755 \"\$(realpath ${rdlfile//${rfile}/${rname}})\" \"${ridir}/bin/${rname}\"
+  sed -i 's,/opt/9base,${ridir},g' \"${ridir}/bin/${rname}\"
   ln -sf \"${rname}\" \"${ridir}/bin/9\"
   grep -ril /usr/local/plan9 . \
   | grep -v '\.git' \
