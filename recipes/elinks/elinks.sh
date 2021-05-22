@@ -3,6 +3,7 @@
 # XXX - features...
 # XXX   tre
 # XXX   spidermonkey
+# XXX - libressl variant
 #
 
 rname="elinks"
