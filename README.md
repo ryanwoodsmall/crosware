@@ -567,7 +567,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - qemacs (https://bellard.org/qemacs/)
 - qemuuser (https://www.qemu.org/ - linux userspace only for now)
 - quickjs (https://bellard.org/quickjs/)
-- rc
+- rc (https://github.com/rakitzis/rc - netbsdcurses+readline, fork of tobold+rakitzis rc, basic Makefile)
   - rc174 (http://tobold.org/article/rc, https://github.com/rakitzis/rc - ncurses+readline, needs to be git hash, old release)
 - rcs (gnu)
 - readline (ncurses and netbsdcurses)
