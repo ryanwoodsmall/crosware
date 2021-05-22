@@ -14,7 +14,7 @@ eval "
 function cwfetch_${rname}_git() {
   cwcheckreqs_${rname}
   cwsourceprofile
-  cwscriptecho \"fetching ${rname} from git at ${rurl}\"
+  cwscriptecho \"fetching ${rname} from git at https://git.suckless.org/${rname}\"
   pushd \"${cwbuild}\" >/dev/null 2>&1
   rm -rf \"${rdir}\"
   \${CW_GIT_CMD} clone --quiet \"https://git.suckless.org/${rname}\" \"${rdir}\"
