@@ -16,11 +16,11 @@
 #
 
 rname="curl"
-rver="7.76.1"
+rver="7.77.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
-rsha256="7a8e184d7d31312c4ebf6a8cb59cd757e61b2b2833a9ed4f9bf708066e7695e9"
+rsha256="6c0c28868cb82593859fc43b9c8fdb769314c855c05cf1b56b023acf855df8ea"
 rreqs="make zlib openssl libssh2 expat libmetalink cacertificates nghttp2 pkgconfig"
 
 . "${cwrecipe}/common.sh"
@@ -58,7 +58,7 @@ function cwconfigure_${rname}() {
     --without-wolfssh \
     --without-wolfssl \
     --without-gnutls \
-    --with-ssl=\"${cwsw}/openssl/current\" \
+    --with-openssl=\"${cwsw}/openssl/current\" \
     --with-default-ssl-backend=openssl \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
     --with-ca-path=\"${cwetc}/ssl/certs\" \

@@ -14,14 +14,16 @@ rprovider="${rname#curl}"
 . "${cwrecipe}/common.sh"
 . "${cwrecipe}/${rname%${rprovider}}/${rname%${rprovider}}.sh.common"
 
-sslproviders=( bearssl gnutls mbedtls ssl wolfssl )
+sslproviders=( bearssl gnutls mbedtls openssl wolfssl )
 othersslproviders=( $(echo ${sslproviders[@]} | tr ' ' '\n' | grep -v "^${rprovider}$") )
 
+# XXX - ugh - https://github.com/curl/curl/pull/7133
 eval "
 function cwmakeinstall_${rname}() {
   cwclean_${rname}
   cwextract_${rname}
   pushd \"${rbdir}\" >/dev/null 2>&1
+  sed -i.ORIG '/SSL_HOST_NAME/s,const,,g' lib/vtls/bearssl.c || true
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \

@@ -32,7 +32,7 @@ function cwmakeinstall_${rname}() {
     --without-wolfssl \
     --without-gnutls \
     --without-mbedtls \
-    --with-ssl=\"${cwsw}/libressl/current\" \
+    --with-openssl=\"${cwsw}/libressl/current\" \
     --with-default-ssl-backend=openssl \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
