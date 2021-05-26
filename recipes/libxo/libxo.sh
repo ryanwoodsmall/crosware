@@ -3,11 +3,11 @@
 #
 
 rname="libxo"
-rver="1.4.0"
+rver="1.5.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/Juniper/${rname}/releases/download/${rver}/${rfile}"
-rsha256="aa842d9374bc0c640d9526abdeb6f1dc75c1a14e892eafd3c9e0ee2e8dfc1c43"
+rsha256="b2ed5a23a5d70750114ecdc109e2a76d6c674453ef265bff22f80ae81a84fa8c"
 rreqs="make libbsd libmd configgit"
 
 . "${cwrecipe}/common.sh"
