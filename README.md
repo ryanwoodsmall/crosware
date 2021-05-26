@@ -1300,6 +1300,7 @@ wc -l /tmp/astbuild.out
 - pax
 - pciutils (https://github.com/pciutils/pciutils)
   - _/usr/share/misc/pci.ids_ file (https://github.com/pciutils/pciids)
+- perl-cross (https://github.com/arsv/perl-cross)
 - pdsh (https://github.com/chaos/pdsh or https://github.com/grondo/pdsh ?)
 - picocom (https://github.com/npat-efault/picocom)
 - pigz
