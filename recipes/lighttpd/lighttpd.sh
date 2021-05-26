@@ -1,3 +1,23 @@
+#
+# XXX - should default be openssl instead of mbedtls?
+#  - idea is for "smallest viable secure/featured web server"
+#  - so maybe not
+# XXX - variants...
+#  - openssl
+#  - libressl
+#  - wolfssl
+#  - gnutls
+#  - nettle
+# XXX - features...
+#  - lua
+#  - xml
+#  - zstd
+#  - brotli
+#  - sqlite
+#  - gdbm
+#  - memcached
+#
+
 rname="lighttpd"
 rver="1.4.59"
 rdir="${rname}-${rver}"
