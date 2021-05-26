@@ -1,9 +1,9 @@
 rname="gnutls"
-rver="3.6.15"
+rver="3.6.16"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.gnupg.org/ftp/gcrypt/${rname}/v${rver%.*}/${rfile}"
-rsha256="0ea8c3283de8d8335d7ae338ef27c53a916f15f382753b174c18b45ffd481558"
+rsha256="1b79b381ac283d8b054368b335c408fedcb9b7144e0c07f531e3537d4328f3b3"
 rreqs="make sed byacc nettle gmp libtasn1 libunistring pkgconfig slibtool"
 
 . "${cwrecipe}/common.sh"
