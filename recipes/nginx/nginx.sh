@@ -3,14 +3,15 @@
 # XXX - --with-pcre-opt=\"--enable-jit --enable-pcre8 --enable-pcre16 --enable-pcre32 --enable-unicode-properties --enable-utf\" \
 # XXX - no pcre jit on riscv64
 # XXX - probably need to remove static bits for dynamic modules
+# XXX - libressl variant
 #
 
 rname="nginx"
-rver="1.19.10"
+rver="1.20.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://nginx.org/download/${rfile}"
-rsha256="e8d0290ff561986ad7cd6c33307e12e11b137186c4403a6a5ccdb4914c082d88"
+rsha256="e462e11533d5c30baa05df7652160ff5979591d291736cfa5edb9fd2edb48c49"
 rreqs="make perl slibtool pcre"
 
 . "${cwrecipe}/common.sh"
@@ -81,12 +82,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  local extopts=''
-  if [[ ${karch} =~ ^arm ]] ; then
-    extopts='NJS_CFLAGS=-static'
-  fi
-  make -j${cwmakejobs} ${rlibtool} CC=\"\${CC}\" CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH= \${extopts}
-  unset extopts
+  make -j${cwmakejobs} ${rlibtool} CC=\"\${CC}\" CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH= NJS_CFLAGS=-static
   popd >/dev/null 2>&1
 }
 "
