@@ -1484,6 +1484,7 @@ wc -l /tmp/astbuild.out
 - tpm (https://github.com/nmeum/tpm/ - tiny password manager)
 - tre (https://github.com/laurikari/tre)
 - tsocks
+- ttinfo (https://github.com/troglobit/ttinfo)
 - ttyd (https://github.com/tsl0922/ttyd - gotty in c, like shellinabox w/xterm.js, libwebsockets, uses cmake)
 - ttynvt (https://gitlab.com/lars-thrane-as/ttynvt - network virtual terminal, needs fuse)
 - twtxt stuff
