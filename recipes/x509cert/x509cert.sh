@@ -1,9 +1,9 @@
 rname="x509cert"
-rver="0.2"
+rver="0.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/michaelforney/${rname}/releases/download/${rver}/${rfile}"
-rsha256="071406f52d099738fbe7d6e652d774cacd19c4ea23cb940a89d93f79d2981c6e"
+rsha256="8317ec09b6f207f18a9e7309e18c7c384a432033164aef169c6d8019c3cc50cb"
 rreqs="make bearssl"
 
 . "${cwrecipe}/common.sh"
