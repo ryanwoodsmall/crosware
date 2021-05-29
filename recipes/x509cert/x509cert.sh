@@ -1,3 +1,14 @@
+#
+# XXX - gen an rsa cert w/dropbearkey+dropbearconvert+x509cert
+#   dropbearkey -t rsa -f key.dropbear -s 2048
+#   dropbearconvert dropbear openssl key.{dropbear,openssl}
+#   cat key.openssl | tee key.pem
+#   x509cert -a $(hostname) -a altname.domain.com key.pem CN=$(hostname) | tee cert.pem /tmp/cert.pem
+# XXX - ecdsa key is something like
+#   dropbearkey -t ecdsa -f key.dropbear -s 521
+# XXX - occasionally get a "failed to compute RSA public exponent" - bearssl?
+#
+
 rname="x509cert"
 rver="0.3"
 rdir="${rname}-${rver}"
