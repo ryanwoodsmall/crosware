@@ -16,6 +16,12 @@
 #  - sqlite
 #  - gdbm
 #  - memcached
+#  - uuid
+#  - webdav
+# XXX - webdav needs
+#  - xml: --with-libxml (libxml2)
+#  - uuid: --with-uuid (e2fsprogs)
+#  - sqlite: --with-sqlite (sqlite)
 #
 
 rname="lighttpd"
