@@ -768,6 +768,7 @@ wc -l /tmp/astbuild.out
   - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
   - https://git.sr.ht/~ft/c9
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
+- cadaver (http://www.webdav.org/cadaver/ - cli webdav client, uses neon?)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
 - cembed (https://github.com/rxi/cembed - embed files in a c header - useful for tinyscheme/minischeme library in single binary???)
