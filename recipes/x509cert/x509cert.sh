@@ -1,12 +1,14 @@
 #
+# XXX - regularly get a "failed to compute RSA public exponent" - bearssl?
 # XXX - gen an rsa cert w/dropbearkey+dropbearconvert+x509cert
-#   dropbearkey -t rsa -f key.dropbear -s 2048
-#   dropbearconvert dropbear openssl key.{dropbear,openssl}
-#   cat key.openssl | tee key.pem
-#   x509cert -a $(hostname) -a altname.domain.com key.pem CN=$(hostname) | tee cert.pem /tmp/cert.pem
+#   rm -f ${cwtop}/tmp/{key,cert}.{dropbear,pem}
+#   dropbearkey -t rsa -f ${cwtop}/tmp/key.dropbear -s 2048
+#   dropbearconvert dropbear openssl ${cwtop}/tmp/key.{dropbear,pem}
+#   x509cert -a $(hostname) -d $((100*366*24*60*60)) ${cwtop}/tmp/key.pem CN=$(hostname) | tee ${cwtop}/tmp/cert.pem
+# XXX - mbedtls gen_key is
+#   mbedtls_gen_key format=pem type=rsa rsa_keysize=2048 filename=${cwtop}/tmp/key.pem
 # XXX - ecdsa key is something like
 #   dropbearkey -t ecdsa -f key.dropbear -s 521
-# XXX - occasionally get a "failed to compute RSA public exponent" - bearssl?
 #
 
 rname="x509cert"
