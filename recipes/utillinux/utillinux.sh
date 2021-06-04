@@ -1,11 +1,11 @@
 rname="utillinux"
-rver="2.36.2"
+rver="2.37"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
-rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver%.?}/${rfile}"
-#rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver}/${rfile}"
-rsha256="f7516ba9d8689343594356f0e5e1a5f0da34adfbc89023437735872bb5024c5f"
-rreqs="make zlib ncurses readline gettexttiny slibtool pcre2"
+#rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver%.?}/${rfile}"
+rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver}/${rfile}"
+rsha256="bd07b7e98839e0359842110525a3032fdb8eaf3a90bedde3dd1652d32d15cce5"
+rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
@@ -20,6 +20,7 @@ function cwconfigure_${rname}() {
   sed -i.ORIG '/READLINE_LIBS/ s/-lreadline/-lreadline -lncurses -lncursesw/g' configure
   env PATH=\"${cwsw}/ncurses/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+      --disable-asciidoc \
       --disable-makeinstall-chown \
       --disable-makeinstall-setuid \
       --disable-nls \
@@ -34,7 +35,8 @@ function cwconfigure_${rname}() {
       --without-smack \
       --without-systemd \
         LIBS='-lreadline -lncurses -lncursesw' \
-        LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\"
+        LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\" \
+        PCRE2_POSIX_LIBS=\"\$(pkg-config --libs libpcre2-posix libpcre2-8)\"
   popd >/dev/null 2>&1
 }
 "
