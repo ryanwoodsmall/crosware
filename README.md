@@ -836,6 +836,7 @@ wc -l /tmp/astbuild.out
   - gxemul (http://gavare.se/gxemul/)
 - entr (http://entrproject.org/ and https://github.com/eradman/entr)
 - eris (https://github.com/nealey/eris - small web server)
+- fcgiwrap (https://github.com/gnosek/fcgiwrap - standard cgi to fcgi socket wrapper, useful with nginx?)
 - finit (https://github.com/troglobit/finit)
 - firejail (https://github.com/netblue30/firejail)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
