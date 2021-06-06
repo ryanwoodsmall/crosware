@@ -567,7 +567,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - qemacs (https://bellard.org/qemacs/)
 - qemuuser (https://www.qemu.org/ - linux userspace only for now)
 - quickjs (https://bellard.org/quickjs/)
-- rc (https://github.com/rakitzis/rc - netbsdcurses+readline, fork of tobold+rakitzis rc, basic Makefile)
+- rc (https://github.com/muennich/rc - netbsdcurses+readline, fork of tobold+rakitzis rc, basic Makefile)
   - rc174 (http://tobold.org/article/rc, https://github.com/rakitzis/rc - ncurses+readline, needs to be git hash, old release)
 - rcs (gnu)
 - readline (ncurses and netbsdcurses)
@@ -1418,7 +1418,7 @@ wc -l /tmp/astbuild.out
     - no updates whatsoever, this isn't a serious fork
   - mrsh (https://mrsh.sh/ - https://git.sr.ht/~emersion/mrsh and https://github.com/emersion/mrsh)
     - imrsh (https://git.sr.ht/~sircmpwn/imrsh - interactive mrsh)
-  - rc (muennich's rakitzis fork https://github.com/muennich/rc)
+  - rc (https://github.com/siebenmann/rc - chris siebenmann's rc fork - tobold/rakitzis rc with updates)
   - scsh (https://scsh.net)
   - sh (https://github.com/mvdan/sh - shell parser/formatter in go)
   - tcsh (and/or standard csh)
