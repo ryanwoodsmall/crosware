@@ -17,6 +17,8 @@
 #  - gdbm
 #  - memcached
 #  - uuid
+#  - libev
+#  - attr
 #  - webdav
 # XXX - webdav needs
 #  - xml: --with-libxml (libxml2)
