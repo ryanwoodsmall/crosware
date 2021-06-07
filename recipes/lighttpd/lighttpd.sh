@@ -19,8 +19,11 @@
 #  - uuid
 #  - libev
 #  - attr
+#  - explicit --enable-lfs
+#  - explicit --enable-ipv6
 #  - webdav
 # XXX - webdav needs
+#  - --with-webdav-locks --with-webdav-props
 #  - xml: --with-libxml (libxml2)
 #  - uuid: --with-uuid (e2fsprogs)
 #  - sqlite: --with-sqlite (sqlite)
