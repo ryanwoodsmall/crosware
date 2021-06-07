@@ -473,7 +473,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libxo (https://github.com/Juniper/libxo and http://juniper.github.io/libxo/libxo-manual.html - html/json/xml output lib and xo cli)
 - libxslt
 - libz (sortix, zlib fork https://sortix.org/libz/)
-- lighttpd (https://www.lighttpd.net/ - mbedtls)
+- lighttpd (https://www.lighttpd.net/ - mbedtls - ssl/tls, webdav support)
 - linenoise (https://github.com/antirez/linenoise)
 - links (ncurses)
 - lmdb (https://github.com/LMDB/lmdb and https://symas.com/lmdb/ - lighting memory-mapped database, dummy profile.d for now)
@@ -869,9 +869,8 @@ wc -l /tmp/astbuild.out
   - cherokee (http://cherokee-project.com/)
   - hiawatha (https://www.hiawatha-webserver.org/)
   - lighttpd
-    - `lighttpdbig` package with webdav+lua+dbi+sqlite+openssl+...
-    - can build with: libev, libxml, utillinux, gdbm, attr, zstd, brotli, sqlite, xxhash, lua
-    - uuid is e2fsprogs - not utillinux i think
+    - `lighttpdbig` package with lua+dbi+sqlite+openssl+...
+    - can build with: gdbm, zstd, brotli, xxhash, lua, memcache, ...
     - other lighttpd projects:
       - fcgi-cgi (https://redmine.lighttpd.net/projects/fcgi-cgi/repository - run cgi scripts with fastcgi)
       - fcgi-debug (https://redmine.lighttpd.net/projects/fcgi-debug/repository)
