@@ -1168,6 +1168,7 @@ wc -l /tmp/astbuild.out
 - mandown (https://github.com/Titor8115/mandown - man like markdown, markdown like man?)
 - matrixssl (https://github.com/matrixssl/matrixssl)
 - mcpp (http://mcpp.sourceforge.net/)
+- mdnsd (https://github.com/troglobit/mdnsd - multicast dns daemon, mdsresponder, mdns-sd, etc.)
 - memcached (https://memcached.org/ and https://github.com/memcached/memcached - libevent, can use openssl)
 - mercurial / hg
   - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```
