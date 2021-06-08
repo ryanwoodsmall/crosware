@@ -1,9 +1,14 @@
+#
+# XXX - libressl variant
+# XXX - fix hard-coded python scripts
+#
+
 rname="nmap"
-rver="7.90"
+rver="7.91"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://nmap.org/dist/${rfile}"
-rsha256="5557c3458275e8c43e1d0cfa5dad4e71dd39e091e2029a293891ad54098a40e8"
+rsha256="18cc4b5070511c51eb243cdd2b0b30ff9b2c4dc4544c6312f75ce3a67a593300"
 rreqs="make openssl python2 zlib slibtool configgit"
 
 . "${cwrecipe}/common.sh"
