@@ -500,6 +500,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - man-pages-posix (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/)
 - mawk (https://invisible-island.net/mawk/mawk.html)
 - mbedtls (polarssl)
+- mdnsd (https://github.com/troglobit/mdnsd - multicast dns daemon, mdsresponder, mdns-sd, etc.)
 - meson (http://mesonbuild.com/)
 - microsocks (https://github.com/rofl0r/microsocks)
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
@@ -1168,7 +1169,6 @@ wc -l /tmp/astbuild.out
 - mandown (https://github.com/Titor8115/mandown - man like markdown, markdown like man?)
 - matrixssl (https://github.com/matrixssl/matrixssl)
 - mcpp (http://mcpp.sourceforge.net/)
-- mdnsd (https://github.com/troglobit/mdnsd - multicast dns daemon, mdsresponder, mdns-sd, etc.)
 - memcached (https://memcached.org/ and https://github.com/memcached/memcached - libevent, can use openssl)
 - mercurial / hg
   - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```
