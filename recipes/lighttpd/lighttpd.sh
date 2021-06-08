@@ -9,6 +9,7 @@
 #  - gnutls
 #  - nettle
 # XXX - features...
+#  - libev "no longer recommended" - https://redmine.lighttpd.net/projects/lighttpd/wiki/Server_event-handlerDetails
 #  - lua
 #  - zstd
 #  - brotli
@@ -24,7 +25,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://download.lighttpd.net/${rname}/releases-${rver%.*}.x/${rfile}"
 rsha256="fb953db273daef08edb6e202556cae8a3d07eed6081c96bd9903db957d1084d5"
-rreqs="make zlib bzip2 pcre mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr libev"
+rreqs="make zlib bzip2 pcre mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr"
 
 . "${cwrecipe}/common.sh"
 
@@ -34,10 +35,10 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --enable-{ipv6,lfs} \
     --with-webdav-{locks,props} \
-    --with-{pcre,zlib,mbedtls,bzip2,attr,libev,libxml,sqlite,uuid} \
+    --with-{pcre,zlib,mbedtls,bzip2,attr,libxml,sqlite,uuid} \
       CC=\"\${CC} \$(pkg-config --cflags --libs libbsd)\" \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{bzip2,zlib,pcre,mbedtls,libxml2,sqlite,e2fsprogs,attr,libev}/current/include)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{bzip2,zlib,pcre,mbedtls,libxml2,sqlite,e2fsprogs,attr,libev}/current/lib)\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{bzip2,zlib,pcre,mbedtls,libxml2,sqlite,e2fsprogs,attr}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{bzip2,zlib,pcre,mbedtls,libxml2,sqlite,e2fsprogs,attr}/current/lib)\" \
       CFLAGS=-fPIC \
       CXXFLAGS=-fPIC
   grep -ril 'sys/queue\\.h' . \
