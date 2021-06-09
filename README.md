@@ -680,6 +680,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - https://www.agner.org/optimize/#objconv
 - align (and width, perl scripts, http://kinzler.com/me/align/)
 - aloa (linter - https://github.com/ralfholly/aloa)
+- althttpd (https://sqlite.org/althttpd/doc/trunk/althttpd.md - sqlite web server, xinetd+stunnel)
 - ansicurses (https://github.com/byllgrim/ansicurses)
 - argp-standalone (http://www.lysator.liu.se/~nisse/misc/ and https://git.alpinelinux.org/aports/tree/main/argp-standalone)
 - aria2 (https://github.com/aria2/aria2 and https://aria2.github.io/)
