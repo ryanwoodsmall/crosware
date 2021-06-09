@@ -312,6 +312,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - bison
 - bmake (http://www.crufty.net/help/sjg/bmake.html)
 - brogue
+- brotli (https://github.com/google/brotli)
 - bsd programs
   - bsdjot (from netbsd - https://netbsd.gw.com/cgi-bin/man-cgi?jot+1)
   - bsdrs (from netbsd - https://netbsd.gw.com/cgi-bin/man-cgi?rs+1)
@@ -755,7 +756,6 @@ wc -l /tmp/astbuild.out
       --build-targets=static,cli
     ```
 - bpkg (http://www.bpkg.sh/ and https://github.com/bpkg/bpkg - bash package manager)
-- brotli (https://github.com/google/brotli)
 - brogue stuff
   - brogue (https://github.com/tsadok/brogue)
   - broguece (https://github.com/tmewett/BrogueCE)
