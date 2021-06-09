@@ -50,6 +50,7 @@ function cwconfigure_${rname}() {
     --with-libssh2=\"${cwsw}/libssh2/current\" \
     --with-nghttp2=\"${cwsw}/nghttp2/current\" \
     --with-zlib=\"${cwsw}/zlib/current\" \
+    --without-brotli \
     --without-hyper \
     --without-libidn2 \
     --without-zstd \

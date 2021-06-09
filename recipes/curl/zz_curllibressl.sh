@@ -23,6 +23,7 @@ function cwmakeinstall_${rname}() {
     --with-libssh2=\"${cwsw}/libressl/current\" \
     --with-nghttp2=\"${cwsw}/nghttp2/current\" \
     --with-zlib=\"${cwsw}/zlib/current\" \
+    --without-brotli \
     --without-hyper \
     --without-libidn2 \
     --without-zstd \
