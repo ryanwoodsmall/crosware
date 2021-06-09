@@ -1267,6 +1267,7 @@ wc -l /tmp/astbuild.out
   - fbff (https://github.com/aligrudi/fbff)
   - fbpad (https://github.com/aligrudi/fbpad)
   - fbvnc (https://repo.or.cz/fbvnc.git)
+- neon (https://notroj.github.io/neon/ and https://github.com/notroj/neon)
 - nethack
 - netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
 - nets (https://github.com/lkundrak/nets - network serial port)
