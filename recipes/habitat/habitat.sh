@@ -59,7 +59,6 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
   echo ': \${HAB_LICENSE:=\"accept\"}' >> \"${rprof}\"
   echo ': \${HAB_BINLINK_DIR:=\"${rtdir}/current/bin\"}' >> \"${rprof}\"
-  echo ': \${BINLINK_DIR:=\"${rtdir}/current/bin\"}' >> \"${rprof}\"
-  export HAB_LICENSE HAB_BINLINK_DIR BINLINK_DIR
+  echo 'export HAB_LICENSE HAB_BINLINK_DIR' >> \"${rprof}\"
 }
 "
