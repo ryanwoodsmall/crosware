@@ -1,0 +1,65 @@
+#
+# XXX - probably need to require go and build on riscv64?
+# XXX - amd64 binaries are dynamic (glibc)? why???
+# XXX - gotta build this...
+# XXX - except custom go build fails on tls/ssl
+# XXX - ugh
+#
+
+rname="nebula"
+rver="1.4.0"
+rdir="${rname}-${rver}"
+rbfile="${rname}-linux"
+rfile=""
+rburl="https://github.com/slackhq/${rname}/releases/download/v${rver}"
+rurl="${rburl}"
+rsha256=""
+rreqs=""
+
+if [[ ${karch} =~ ^aarch64 ]] ; then
+  rfile="${rbfile}-arm64.tar.gz"
+  rsha256="afb51679da0dfe56df588dc30d16d4bf9baceb166c4ed09b8fa71c12a70c33c0"
+elif [[ ${karch} =~ ^arm ]] ; then
+  rfile="${rbfile}-arm-6.tar.gz"
+  rsha256="898e0bae70563047a59d472528c25e319b212698e18327806626382c27d29d3b"
+elif [[ ${karch} =~ ^x86_64 ]] ; then
+  rfile="${rbfile}-amd64.tar.gz"
+  rsha256="d1ef37ca4d676f00df0ec83911cc2d9f1e70edc70651589210f9e97c68891b9b"
+elif [[ ${karch} =~ ^i.86 ]] ; then
+  rfile="${rbfile}-386.tar.gz"
+  rsha256="01b6b12db8227416e50c9d3dac59dd1b86faebf918978a4a03adb0a03c648fab"
+elif [[ ${karch} =~ ^riscv64 ]] ; then
+  eval "
+  function cwinstall_${rname}() {
+    cwscriptecho \"recipe ${rname} does not support architecture ${karch}\"
+  }
+  "
+fi
+rurl="${rburl}/${rfile}"
+unset rburl rbfile
+
+. "${cwrecipe}/common.sh"
+
+for f in clean extract make configure ; do
+  eval "
+  function cw${f}_${rname}() {
+    true
+  }
+  "
+done
+unset f
+
+eval "
+function cwmakeinstall_${rname}() {
+  cwmkdir \"${ridir}/bin\"
+  cd \"${ridir}/bin\"
+  tar -zxf \"${rdlfile}\"
+  chmod 0755 ${rname}{,-cert}
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
