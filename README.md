@@ -414,7 +414,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - guile2 recipe as well, with same caveats
 - habitat (https://community.chef.io/tools/chef-habitat)
   - single static `hab` binary
-  - useful for bootstrapping?
 - haproxy (http://www.haproxy.org/ - openssl+pcre+zlib)
   - haproxylibressl (libressl+pcre+zlib)
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
