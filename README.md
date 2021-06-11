@@ -524,6 +524,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - ncurses
 - neat/litcave stuff (http://litcave.rudi.ir/)
   - neatvi (https://github.com/aligrudi/neatvi)
+- nebula (https://github.com/slackhq/nebula - mesh network overlay/vpn)
 - netbsdcurses (manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
   - should replace opennc, which is, uhhhhhhh missing?
@@ -1269,7 +1270,6 @@ wc -l /tmp/astbuild.out
   - fbff (https://github.com/aligrudi/fbff)
   - fbpad (https://github.com/aligrudi/fbpad)
   - fbvnc (https://repo.or.cz/fbvnc.git)
-- nebula (https://github.com/slackhq/nebula - mesh network overlay/vpn, uber cool, two static binaries)
 - neon (https://notroj.github.io/neon/ and https://github.com/notroj/neon)
 - nethack
 - netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
