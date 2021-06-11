@@ -5,30 +5,29 @@
 # XXX - date should be moved to version?
 #
 
-
 rname="go"
-rver="1.16.3"
+rver="1.16.5"
 if [[ ${karch} =~ ^x86_64$ ]] ; then
   rdir="${rname}${rver}-amd64"
-  rsha256="43f78c3a0105ebf11cbd8d5e43c9d25922c1a247f92d8c2c9650facda8cb2119"
+  rsha256="cf579280ecd2b6eb84d4afa06026829fb3fcf2f184eddb2e43ac4ddc18393bdc"
 elif [[ ${karch} =~ ^i.86$ ]] ; then
   rdir="${rname}${rver}-386"
-  rsha256="9fa37c1f916bb1b20e5cd127f087440ea7187e5910530f169fa32eff8b20e429"
+  rsha256="05a3892dd9567106e76ec766c58a36418288a55b32d7c8f0d9b47e350767bc8a"
 elif [[ ${karch} =~ ^aarch64 ]] ; then
   rdir="${rname}${rver}-arm64"
-  rsha256="24cb4bf3c3809d10fc825d72f795b8c8b5492c8b0dc7be593d6d3da2cbdb6498"
+  rsha256="afc9e7ec80130228db7bf8a86679b3710f422dbf004fe1b437aaa9cae817a835"
 elif [[ ${karch} =~ ^arm ]] ; then
   rdir="${rname}${rver}-arm"
-  rsha256="1724b154e7eea51b6a27178ff222523c6706adde8e541ea868425443e381cc03"
+  rsha256="ef1bbc3d4bf7b443198556d2c764818fba12ca4d2230b94ce839d34a83e48bd6"
 elif [[ ${karch} =~ ^riscv64 ]] ; then
   rdir="${rname}${rver}-riscv64"
-  rsha256="7f52600a63470ee2d6c4ab75c49839fd68c055df793f573abd804a43004507c5"
+  rsha256="a5d104c3cb6b01958c87e29a07d3ba1d64a2403d9224485a9150370abcdb8959"
 else
   rdir="none"
   rsha256="none"
 fi
 rfile="${rdir}.tar.bz2"
-rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/20210406-${rname}${rver}/${rfile}"
+rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/20210611-${rname}${rver}/${rfile}"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
