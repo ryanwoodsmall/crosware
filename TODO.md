@@ -738,6 +738,9 @@ time_func ls -l -A /
   - separate out vars/settings and functions?
   - functions could then be included at bottom of common.sh or recipe.sh.common
   - no one size solution here for var+function override
+- python stuff...
+  - use venv with copies to encapsulate programs that require python
+  - pyinstaller to generate binaries?
 
 <!--
 # vim: ft=markdown
