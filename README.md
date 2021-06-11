@@ -412,6 +412,9 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - works for aarch64/x86_64
   - does _not_ work on arm/i686 (gc)
   - guile2 recipe as well, with same caveats
+- habitat (https://community.chef.io/tools/chef-habitat)
+  - single static `hab` binary
+  - useful for bootstrapping?
 - haproxy (http://www.haproxy.org/ - openssl+pcre+zlib)
   - haproxylibressl (libressl+pcre+zlib)
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
