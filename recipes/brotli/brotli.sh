@@ -38,7 +38,7 @@ function cwmakeinstall_${rname}() {
   install -m 0644 c/include/${rname}/*.h \"${ridir}/include/${rname}/\"
   for l in scripts/lib${rname}{common,dec,enc}*.pc.in ; do
     cat \${l} > \"${ridir}/lib/pkgconfig/\$(basename \${l%%.in})\"
-  done 
+  done
   sed -i 's,@prefix@,${rtdir}/current,g' ${ridir}/lib/pkgconfig/*.pc
   sed -i 's,@exec_prefix@,${rtdir}/current,g' ${ridir}/lib/pkgconfig/*.pc
   sed -i 's,@includedir@,${rtdir}/current/include,g' ${ridir}/lib/pkgconfig/*.pc
