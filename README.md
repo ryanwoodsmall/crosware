@@ -296,6 +296,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - minisendmail (http://www.acme.com/software/mini_sendmail/)
   - subproxy (http://www.acme.com/software/sub_proxy/)
   - thttpd (http://www.acme.com/software/thttpd/)
+- acme-dns (https://github.com/joohoi/acme-dns - REST/ACME DNS in go)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - attr (https://savannah.nongnu.org/projects/attr/)
 - autoconf
