@@ -741,6 +741,7 @@ time_func ls -l -A /
 - python stuff...
   - use venv with copies to encapsulate programs that require python
   - pyinstaller to generate binaries?
+  - pyinstaller needs shared python
 
 <!--
 # vim: ft=markdown
