@@ -24,7 +24,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install
-  ln -sf \"${ridir}/bin/xml\" \"${ridir}/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/xml\" \"${ridir}/bin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
