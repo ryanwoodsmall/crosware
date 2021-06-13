@@ -30,7 +30,7 @@ function cwsourcerecipes() {
 }
 
 # return unique elements passed, preserving order
-#   unused in this implementation but useful? 
+#   unused in this implementation but useful?
 #   simplified version of https://github.com/ryanwoodsmall/shell-ish/blob/master/examples/uniqueify.bash
 function cwuniqueargs() {
   declare -A seen
@@ -88,7 +88,8 @@ function cwexpandreq() {
       break
     fi
   done
-  echo "${!qs[@]}"
+  cwrecipeexpandedreqs[${r}]="${!qs[@]}"
+  echo "${cwrecipeexpandedreqs[${r}]}"
 }
 
 function cwexpandreqs() {
@@ -99,6 +100,22 @@ function cwexpandreqs() {
     cwrecipeexpandedreqs[${r}]="$(cwexpandreq ${r})"
   done
   cwrecipereqsexpanded=1
+}
+
+function cwshowtransitives() {
+  test ${#} -lt 1 && { echo '' ; return ; } || true
+  cwsourcerecipes
+  local r="${1}"
+  cwrecipeexists "${r}" || { echo '' ; return ; } || true
+  cwexpandreqs
+  declare -A qs
+  for q in ${cwrecipeexpandedreqs[${r}]} ; do
+    qs[${q}]=1
+  done
+  for q in ${cwrecipereqs[${r}]} ; do
+    unset qs[${q}]
+  done
+  echo "${!qs[@]}"
 }
 
 # fake out our associative arrays
@@ -126,16 +143,22 @@ ls="$(for r in ${rs} ; do echo "${cwrecipereqcount[${r}]} ${r}" ; done | sort -n
 #  <(for r in ${rs} ; do echo "${cwrecipereqcount[${r}]} : ${r} : ${cwrecipereqs[${r}]}" ; done | sort -n) \
 #  <(for r in ${ls} ; do echo "${cwrecipereqcount[${r}]} : ${r} : ${cwrecipereqs[${r}]}" ; done)
 
-if [ ${#} -lt 1 ] ; then
+if [[ ${#} -eq 0 ]] ; then
+  cwexpandreqs
+  for r in ${rs} ; do
+    echo "${r} : ${cwrecipeexpandedreqs[${r}]}"
+  done
+elif [[ ${@} =~ -t ]] ; then
   cwexpandreqs
   for r in ${ls} ; do
     echo "${r} : ${cwrecipereqs[${r}]}"
     echo "  $(cwcountargs ${cwrecipereqs[${r}]}) : $(echo ${cwrecipereqs[${r}]} | tr ' ' '\n' | sort | paste -d' ' -s -)"
     echo "  $(cwcountargs ${cwrecipeexpandedreqs[${r}]}) : $(echo ${cwrecipeexpandedreqs[${r}]} | tr ' ' '\n' | sort | paste -d' ' -s -)"
+    echo "  $(cwcountargs $(cwshowtransitives ${r})) : $(cwshowtransitives ${r} | tr ' ' '\n' | sort | paste -d' ' -s -)"
     echo
   done
 else
   for i in ${@} ; do
-    cwexpandreq "${i}"
+    echo "${i} : $(cwexpandreq ${i})"
   done
 fi
