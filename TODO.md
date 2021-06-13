@@ -742,6 +742,10 @@ time_func ls -l -A /
   - use venv with copies to encapsulate programs that require python
   - pyinstaller to generate binaries?
   - pyinstaller needs shared python
+- stop special casing ${cwbootstraprecipes[@]}
+  - var is necessary for e.g. generating functions
+  - but bootstrap recipes can be included in ${cwrecipes[@]}
+  - avoid forgetting them when building out new functions that act on all recipes
 
 <!--
 # vim: ft=markdown
