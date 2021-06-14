@@ -1,9 +1,13 @@
+#
+# XXX - gnutls variant?
+#
+
 rname="gnupg"
-rver="2.2.27"
+rver="2.2.28"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="34e60009014ea16402069136e0a5f63d9b65f90096244975db5cea74b3d02399"
+rsha256="6ff891fc7583a9c3fb9f097ee0d1de0a12469d4b53997e7ba5064950637dfaec"
 rreqs="make libgpgerror libgcrypt libksba libassuan npth ntbtls sqlite readline ncurses slibtool zlib bzip2 pkgconfig pinentry configgit"
 
 . "${cwrecipe}/common.sh"
@@ -14,6 +18,7 @@ function cwconfigure_${rname}() {
   env PATH=\"${cwsw}/libgpgerror/current/bin:${cwsw}/libgcrypt/current/bin:${cwsw}/libassuan/current/bin:${cwsw}/libksba/current/bin:${cwsw}/npth/current/bin:${cwsw}/ntbtls/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
       --disable-ccid-driver \
+      --disable-dirmngr \
       --disable-gnutls \
       --disable-ldap \
       --disable-nls \
