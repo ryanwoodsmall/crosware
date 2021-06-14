@@ -1,3 +1,7 @@
+#
+# XXX - prefer 1.8.x LTS?
+#
+
 rname="libgcrypt"
 rver="1.9.3"
 rdir="${rname}-${rver}"
