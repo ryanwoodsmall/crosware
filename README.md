@@ -1438,6 +1438,9 @@ wc -l /tmp/astbuild.out
 - simplecpp (https://github.com/danmar/simplecpp)
 - sljit (http://sljit.sourceforge.net/)
 - sloccount (https://dwheeler.com/sloccount/)
+- smarden stuff
+  - ipsvd (http://smarden.org/ipsvd/ - can use matrixssl?)
+  - runit (http://smarden.org/runit/)
 - snarf (https://www.xach.com/snarf/ - old but small, still useful?)
 - source-highlight (https://www.gnu.org/software/src-highlite/)
   - 2.x, 3.x require boost (yeeee), ctags
