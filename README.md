@@ -1533,7 +1533,9 @@ wc -l /tmp/astbuild.out
 - vpnc
   - **vpnc-script** needs to ignore unknown "via ??? ???" output from ```ip route```
   - **config.c** needs proper **vpnc-script** and **default.conf** paths
+- wasm3 (https://github.com/wasm3/wasm3)
 - wasmer (https://github.com/wasmerio/wasmer - cross-platform webassembly binaries everywhere)
+- wasmtime (https://github.com/bytecodealliance/wasmtime and https://github.com/bytecodealliance/wasmtime)
 - webcat (https://git.sr.ht/~rumpelsepp/webcat - go, see https://rumpelsepp.org/blog/ssh-through-websocket/)
 - websocat (https://github.com/vi/websocat - rust)
 - websocketd (go, https://github.com/joewalnes/websocketd)
