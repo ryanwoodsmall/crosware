@@ -85,6 +85,10 @@ function cwexpandreq() {
   cwsourcerecipes
   local r="${1}"
   cwrecipeexists "${r}" || { echo '' ; return ; } || true
+  if [ ${cwrecipeexpanded[${r}]} -eq 1 ] ; then
+    echo "${cwrecipeexpandedreqs[${r}]}"
+    return
+  fi
   local sl=0
   local el=0
   declare -A qs
@@ -105,6 +109,8 @@ function cwexpandreq() {
   done
   cwrecipeexpandedreqs[${r}]="${!qs[@]}"
   echo "${cwrecipeexpandedreqs[${r}]}"
+  cwrecipeexpanded[${r}]=1
+  export cwrecipeexpandedreqs cwrecipeexpanded
 }
 
 function cwexpandreqs() {
@@ -113,6 +119,7 @@ function cwexpandreqs() {
   fi
   for r in ${!cwrecipes[@]} ; do
     cwrecipeexpandedreqs[${r}]="$(cwexpandreq ${r})"
+    export cwrecipeexpandedreqs
   done
   cwrecipereqsexpanded=1
 }
@@ -134,7 +141,7 @@ function cwshowtransitives() {
 }
 
 # fake out our associative arrays
-declare -A cwrecipes cwrecipereqs cwrecipereqcount cwrecipeexpandedreqs
+declare -A cwrecipes cwrecipereqs cwrecipereqcount cwrecipeexpandedreqs cwrecipeexpanded
 cwrecipereqsexpanded=0
 for rr in $(crosware list-recipe-reqs | sed 's/ : /:/g;s/ /|/g' | tr -s ' ') ; do
   q=''
@@ -145,6 +152,7 @@ for rr in $(crosware list-recipe-reqs | sed 's/ : /:/g;s/ /|/g' | tr -s ' ') ; d
   cwrecipes[${r}]=1
   cwrecipereqs[${r}]="${q}"
   cwrecipereqcount[${r}]="$(cwcountargs ${q})"
+  cwrecipeexpanded[${r}]=0
 done
 
 # recipe list sorted by name
@@ -174,6 +182,6 @@ elif [[ ${@} =~ -t ]] ; then
   done
 else
   for i in ${@} ; do
-    echo "${i} : $(cwexpandreq ${i})"
+    cwexpandreq ${i} | xargs echo "${i} :"
   done
 fi
