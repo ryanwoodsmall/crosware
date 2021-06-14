@@ -51,6 +51,21 @@ function cwcountargs() {
   echo "${#}"
 }
 
+function cwreverseargs() {
+  if [ ${#} -eq 0 ] ; then
+    echo ''
+    return
+  elif [ ${#} -eq 1 ] ; then
+    echo "${1}"
+    return
+  fi
+  declare -a rev
+  for i in $(seq $((${#}-1)) -1 0) ; do
+    rev[${i}]="${1}"
+    shift
+  done
+  echo "${rev[@]}"
+}
 
 function cwrecipeexists() {
   test ${#} -lt 1 && return 1 || true
