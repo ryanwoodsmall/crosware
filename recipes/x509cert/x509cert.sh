@@ -2,7 +2,7 @@
 # XXX - gen an rsa key+cert with bearssl+x509cert
 #   rm -f ${cwtop}/tmp/bearssl.{key,crt}
 #   brssl skey -gen rsa:2048 -rawpem ${cwtop}/tmp/bearssl.key
-#   x509cert -a $(hostname) -d $((100*366*24*60*60)) ${cwtop}/tmp/bearssl.key CN=$(hostname) | ${cwtop}/tmp/bearssl.crt
+#   x509cert -a $(hostname) -d $((100*366*24*60*60)) ${cwtop}/tmp/bearssl.key CN=$(hostname) | tee ${cwtop}/tmp/bearssl.crt
 # XXX - regularly get a "failed to compute RSA public exponent" - bearssl works?
 #   dropbearkey (tomcrypt) and mbedtls both exhibit this, cannot reliably reproduce yet
 # XXX - gen an rsa cert w/dropbearkey+dropbearconvert+x509cert
