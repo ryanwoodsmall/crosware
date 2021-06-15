@@ -887,6 +887,7 @@ wc -l /tmp/astbuild.out
   - openresty (https://openresty.org/)
   - pen (http://siag.nu/pen/)
   - pound (https://www.apsis.ch/pound.html)
+    - cmake, NO!
 - ibara's good portable/bsd stuff
   - m4 (https://github.com/ibara/m4)
   - yacc (https://github.com/ibara/yacc)
@@ -1254,6 +1255,7 @@ wc -l /tmp/astbuild.out
 - mutt
 - mvi (https://github.com/byllgrim/mvi)
 - nanomsg (https://github.com/nanomsg/nanomsg and https://nanomsg.org/)
+  - cmake, no.
 - nc / ncat / netcat
 - ne (https://github.com/vigna/ne terminal editor)
 - neat/litcave stuff (http://litcave.rudi.ir/)
