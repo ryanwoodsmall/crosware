@@ -746,6 +746,9 @@ time_func ls -l -A /
   - var is necessary for e.g. generating functions
   - but bootstrap recipes can be included in ${cwrecipes[@]}
   - avoid forgetting them when building out new functions that act on all recipes
+- generalized "patching" with a filename and regex
+  - wrap sed but don't require `sed -i` support (i.e., allow sbase/9base)
+  - same for `awk` and `ed` and ...?
 
 <!--
 # vim: ft=markdown
