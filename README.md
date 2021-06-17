@@ -420,6 +420,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
   - exvi with netbsdcurses also available as a standalone package
 - help2man
+- hitch (https://hitch-tls.org/ - openssl+libev tls proxy)
 - htermutils (https://chromium.googlesource.com/apps/libapps/+/HEAD/hterm/etc/)
 - htop
 - iftop
@@ -866,7 +867,6 @@ wc -l /tmp/astbuild.out
 - gsasl/libgsasl (https://www.gnu.org/software/gsasl/)
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
 - gss (https://www.gnu.org/software/gss/)
-- hitch (https://hitch-tls.org/ - libev tls proxy)
 - hoedown (markdown lib - https://github.com/hoedown/hoedown)
 - hq (https://github.com/rbwinslow/hq)
 - http-parser (https://github.com/nodejs/http-parser - useful with libgit2?)
