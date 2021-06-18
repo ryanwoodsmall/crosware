@@ -2,7 +2,7 @@
 rfile="${rdir}.tar.gz"
 : ${rdlfile:="${cwdl}/${rname%??}/${rfile}"}
 rurl="https://www.lua.org/ftp/${rfile}"
-rreqs="bootstrapmake"
+: ${rreqs:="bootstrapmake"}
 
 . "${cwrecipe}/common.sh"
 
@@ -10,7 +10,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   sed -i.ORIG \"s#^INSTALL_TOP=.*#INSTALL_TOP= ${ridir}#g\" Makefile
-  sed -i.ORIG \"s#^CC= gcc #CC= \${CC} #g\" src/Makefile
+  sed -i.ORIG \"/^CC=/s#gcc# \${CC} -DLUA_USE_DLOPEN #g\" src/Makefile
   sed -i.ORIG '/#define LUA_ROOT/s,^.*,#define LUA_ROOT \"${ridir}\",g' src/luaconf.h
   popd >/dev/null 2>&1
 }
