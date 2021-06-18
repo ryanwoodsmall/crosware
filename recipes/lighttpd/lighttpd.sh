@@ -10,11 +10,10 @@
 #  - nettle
 # XXX - features...
 #  - libev "no longer recommended" - https://redmine.lighttpd.net/projects/lighttpd/wiki/Server_event-handlerDetails
-#  - lua
 #  - gdbm
 #  - memcached
 # XXX - explicitly disable stuff?
-#  - --without-{krb5,openssl,wolfssl,nettle,gnutls,nss,ldap,pam,fam,gdbm,lua,sasl,libev}
+#  - --without-{krb5,openssl,wolfssl,nettle,gnutls,nss,ldap,pam,fam,gdbm,sasl,libev}
 #
 
 rname="lighttpd"
@@ -23,22 +22,25 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://download.lighttpd.net/${rname}/releases-${rver%.*}.x/${rfile}"
 rsha256="fb953db273daef08edb6e202556cae8a3d07eed6081c96bd9903db957d1084d5"
-rreqs="make zlib bzip2 pcre mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr brotli zstd xxhash"
+rreqs="make zlib bzip2 pcre mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr brotli zstd xxhash lua54"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
-    --enable-{ipv6,lfs} \
-    --with-webdav-{locks,props} \
-    --with-{pcre,zlib,mbedtls,bzip2,attr,libxml,sqlite,uuid,brotli,zstd,xxhash} \
-      CC=\"\${CC} \$(pkg-config --cflags --libs libbsd)\" \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{bzip2,zlib,pcre,mbedtls,libxml2,sqlite,e2fsprogs,attr,brotli,zstd,xxhash}/current/include)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{bzip2,zlib,pcre,mbedtls,libxml2,sqlite,e2fsprogs,attr,brotli,zstd,xxhash}/current/lib)\" \
-      CFLAGS=-fPIC \
-      CXXFLAGS=-fPIC
+  env PATH=\"${cwsw}/lua54/current/bin:\${PATH}\" \
+    ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+      --enable-{ipv6,lfs} \
+      --with-webdav-{locks,props} \
+      --with-{pcre,zlib,mbedtls,bzip2,attr,libxml,sqlite,uuid,brotli,zstd,xxhash,lua} \
+        CC=\"\${CC} \$(pkg-config --cflags --libs libbsd)\" \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{bzip2,zlib,pcre,mbedtls,libxml2,sqlite,e2fsprogs,attr,brotli,zstd,xxhash,lua54}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{bzip2,zlib,pcre,mbedtls,libxml2,sqlite,e2fsprogs,attr,brotli,zstd,xxhash,lua54}/current/lib)\" \
+        CFLAGS=-fPIC \
+        CXXFLAGS=-fPIC \
+        LUA_CFLAGS=\"-I${cwsw}/lua54/current/include\" \
+        LUA_LIBS=\"-L${cwsw}/lua54/current/libs -llua\"
   grep -ril 'sys/queue\\.h' . \
   | xargs sed -i.ORIG 's,sys/queue,bsd/sys/queue,g'
   popd >/dev/null 2>&1
