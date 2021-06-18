@@ -1,5 +1,7 @@
 #
 # XXX - lua 5.4.0
+# XXX - disable readline, remove ncurses reqs
+# XXX - or move to netbsdcurses?
 #
 
 rname="lua"

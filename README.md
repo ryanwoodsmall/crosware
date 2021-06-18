@@ -1162,10 +1162,10 @@ wc -l /tmp/astbuild.out
 - lowzip (https://github.com/svaarala/lowzip)
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - lua stuff
-  - lua versions 5.1, 5.2, ... 5.4
+  - lua versions
     - settle on a version, 5.3 is at least "done?"
     - haproxy, lighttpd, etc., seem to support 5.1
-    - add/keep `lua51` similar to python2?
+    - `lua5{1,2,3,4}` all compilable/installable/available but not default - opt-in
   - elua (http://www.eluaproject.net/ and https://github.com/elua/elua)
   - lua2c (https://github.com/davidm/lua2c or a fork?)
   - luajit (https://luajit.org/)
