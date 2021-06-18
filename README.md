@@ -487,6 +487,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - lua (http://www.lua.org/ - 5.x release, may change! posix, no readline)
   - lua54 (posix, barebones)
   - lua53 (posix, barebones)
+  - lua52 (posix, barebones)
 - lynx (ncurses and slang, ncurses default)
 - lz4 (https://github.com/lz4/lz4)
 - lzip
