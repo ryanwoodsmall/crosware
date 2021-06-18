@@ -1,7 +1,7 @@
 : ${rdir:="${rname%??}-${rver}"}
-rfile="${rdir}.tar.gz"
+: ${rfile:="${rdir}.tar.gz"}
 : ${rdlfile:="${cwdl}/${rname%??}/${rfile}"}
-rurl="https://www.lua.org/ftp/${rfile}"
+: ${rurl:="https://www.lua.org/ftp/${rfile}"}
 : ${rreqs:="bootstrapmake"}
 
 . "${cwrecipe}/common.sh"
