@@ -1,0 +1,30 @@
+#
+# XXX - rdir assumes lu## is the name, make overridable with : ${rdir:=...
+#
+
+rdir="${rname%??}-${rver}"
+rfile="${rdir}.tar.gz"
+rurl="https://www.lua.org/ftp/${rfile}"
+rreqs="bootstrapmake"
+
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd "${rbdir}" >/dev/null 2>&1
+  sed -i.ORIG \"s#^INSTALL_TOP=.*#INSTALL_TOP= ${ridir}#g\" Makefile
+  sed -i.ORIG \"s#^CC= gcc #CC= \${CC} #g\" src/Makefile
+  sed -i.ORIG '/#define LUA_ROOT/s,^.*,#define LUA_ROOT \"${ridir}\",g' src/luaconf.h
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  pushd "${rbdir}" >/dev/null 2>&1
+  make -j${cwmakejobs} linux MYCFLAGS=\"\${CFLAGS}\" MYLDFLAGS=\"-static\" LDFLAGS=-static CPPFLAGS=
+  popd >/dev/null 2>&1
+}
+"
+
+# vim: set ft=sh:
