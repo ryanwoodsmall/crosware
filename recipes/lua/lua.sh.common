@@ -1,9 +1,6 @@
-#
-# XXX - rdir assumes lu## is the name, make overridable with : ${rdir:=...
-#
-
-rdir="${rname%??}-${rver}"
+: ${rdir:="${rname%??}-${rver}"}
 rfile="${rdir}.tar.gz"
+: ${rdlfile:="${cwdl}/${rname%??}/${rfile}"}
 rurl="https://www.lua.org/ftp/${rfile}"
 rreqs="bootstrapmake"
 
@@ -22,7 +19,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  make -j${cwmakejobs} linux MYCFLAGS=\"\${CFLAGS}\" MYLDFLAGS=\"-static\" LDFLAGS=-static CPPFLAGS=
+  make -j${cwmakejobs} posix MYCFLAGS=\"\${CFLAGS}\" MYLDFLAGS=\"-static\" LDFLAGS=-static CPPFLAGS=
   popd >/dev/null 2>&1
 }
 "

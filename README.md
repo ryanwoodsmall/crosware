@@ -486,6 +486,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - lsh (https://www.lysator.liu.se/~nisse/lsh/ - version 2.0, 2.1 has issues with separate/new nettle)
 - lua (http://www.lua.org/ - 5.x release, may change! posix, no readline)
   - lua54 (posix, barebones)
+  - lua53 (posix, barebones)
 - lynx (ncurses and slang, ncurses default)
 - lz4 (https://github.com/lz4/lz4)
 - lzip
