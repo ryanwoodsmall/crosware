@@ -1,9 +1,9 @@
 rname="haproxy"
-rver="2.4.0"
+rver="2.4.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.haproxy.org/download/${rver%.*}/src/${rfile}"
-rsha256="0a6962adaf5a1291db87e3eb4ddf906a72fed535dbd2255b164b7d8394a53640"
+rsha256="1b2458b05e923d70cdc00a2c8e5579c2fcde9df16bbed8955f3f3030df14e62e"
 rreqs="make openssl pcre2 zlib lua"
 
 . "${cwrecipe}/common.sh"
