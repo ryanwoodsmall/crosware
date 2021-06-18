@@ -864,6 +864,7 @@ wc -l /tmp/astbuild.out
 - got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - graphviz (http://graphviz.org/)
+- gron (https://github.com/tomnomnom/gron - greppable json, in go)
 - gsasl/libgsasl (https://www.gnu.org/software/gsasl/)
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
 - gss (https://www.gnu.org/software/gss/)
