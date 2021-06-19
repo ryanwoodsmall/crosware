@@ -26,3 +26,4 @@
 !/var/run/crosware_directory_not_tracked_in_git
 /cgi-bin/
 /core
+/*.core
