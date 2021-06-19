@@ -649,6 +649,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - uacme (https://github.com/ndilieto/uacme - standalone acme/letsencrypt client in c, curl+openssl)
   - uacmembedtls (curl+mbedtls)
   - uacmegnutls (curl+gnutls)
+- u9fs (https://github.com/Plan9-Archive/u9fs - userspace 9p server, recently updated, works without rhosts stuff)
+  - no auth serve w/busybox or toybox: `tcpsvd -E -v 0.0.0.0 564 ./u9fs -D -z -a none -u username /path/to/share`
+  - access from remote host w/plan 9 from user space: `9p -a 'tcp!hostname.domain.name!564' ls /`
+  - libixp recipe provides `ixpc` 9p client
 - unrar
 - unzip
 - uredir (https://github.com/troglobit/uredir)
@@ -1520,9 +1524,6 @@ wc -l /tmp/astbuild.out
 - tzdb (https://www.iana.org/time-zones)
 - u9fs (https://github.com/unofficial-mirror/u9fs - 9p filesystem (or one of the forks))
   - https://github.com/sevki/u9fs - can turn off rhosts auth? need ~rpc bits otherwise
-  - https://github.com/Plan9-Archive/u9fs - recently updated, works without rhosts stuff
-  - no auth serve w/busybox or toybox: `tcpsvd -E -v 0.0.0.0 564 ./u9fs -D -z -a none -u username /path/to/share`
-  - access from remote host w/plan 9 from user space: `9p -a 'tcp!hostname.domain.name!564' ls /`
 - uacme - libressl doesn't seem to work out of the box, patch?
 - ublinter (https://github.com/danmar/ublinter)
 - ubridge (https://github.com/GNS3/ubridge - udp, ethernet, tap, etc. userspace bridge controller)
