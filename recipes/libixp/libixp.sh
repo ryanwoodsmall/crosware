@@ -1,3 +1,8 @@
+#
+# XXX - ixpc segfaults on a ryzen9 3900x randomly, in debian and under docker?
+# XXX - SIGSEGV in asctime_r/strlen/strdup in a container - crosware, alpine, centos:7
+#
+
 rname="libixp"
 rver="a7c1a33b2faace644b4adb7ea84bbd600e335048"
 rdir="${rname}-${rver}"
