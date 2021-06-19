@@ -460,6 +460,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libgpgerror (https://gnupg.org/software/libgpg-error/index.html)
 - libidn (https://www.gnu.org/software/libidn/)
 - libidn2 (https://www.gnu.org/software/libidn/#libidn2)
+- libixp (https://github.com/0intro/libixp - ixpc - 9p client/library)
 - libksba (https://gnupg.org/software/libksba/index.html)
 - libmd (https://www.hadrons.org/software/libmd/)
 - libmetalink (https://github.com/metalink-dev/libmetalink)
@@ -1026,8 +1027,8 @@ wc -l /tmp/astbuild.out
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
 - libiconv (https://www.gnu.org/software/libiconv/)
-- libixp (https://github.com/0intro/libixp - 9p client/library)
-  - https://github.com/bwhmather/libixp - updated recently?
+- libixp
+  - https://github.com/bwhmather/libixp - fork updated recently?
 - libmawk (http://repo.hu/projects/libmawk/ - embeddable mawk library fork)
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
 - libntlm (https://www.nongnu.org/libntlm/)
