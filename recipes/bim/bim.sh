@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/klange/${rname}/archive/${rfile}"
 rsha256="5648c0f06266b3ea39f121e1dc560dc408c2360161ed4260013be0c655dad374"
-rreqs="make"
+rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
