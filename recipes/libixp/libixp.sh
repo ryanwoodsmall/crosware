@@ -31,6 +31,16 @@ function cwmake_${rname}() {
 "
 
 eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install
+  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/ixpc\"
+  ln -sf \"${rtdir}/current/bin/ixpc\" \"${ridir}/bin/9p\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
