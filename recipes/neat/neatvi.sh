@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/aligrudi/${rname}/archive/${rfile}"
 rsha256="a861714d97e5b2d28698b7b7e13e393bb94a381def68d260a0e2908ee3d48591"
-rreqs="make"
+rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
