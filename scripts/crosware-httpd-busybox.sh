@@ -3,6 +3,8 @@
 # start busybox httpd at the crosware root on port 18080 by default
 #
 
+set -eu
+
 : ${cwtop:="/usr/local/crosware"}
 : ${httpport:="18080"}
 : ${httproot:="${cwtop}"}
