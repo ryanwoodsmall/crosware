@@ -40,7 +40,7 @@ function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install
   \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/ixpc\"
-  ln -sf \"${rtdir}/current/bin/ixpc\" \"${ridir}/bin/9p\"
+  rm -f  \"${ridir}/bin/9p\" || true
   cwmkdir \"${ridir}/share/man/man1\"
   cwmkdir \"${ridir}/share/man/man3\"
   install -m 0644 man/*.1 \"${ridir}/share/man/man1/\"
