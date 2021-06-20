@@ -572,6 +572,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - pinentry (curses via ncurses, tty)
 - pixman (http://www.pixman.org/ and https://www.cairographics.org/releases/)
 - pkgconfig
+- plan9port (https://github.com/9fans/plan9port - without x11; suckless 9base available and much smaller)
 - python
   - python2 (very basic support)
   - python3 (wip)
@@ -1327,7 +1328,6 @@ wc -l /tmp/astbuild.out
 - pdsh (https://github.com/chaos/pdsh or https://github.com/grondo/pdsh ?)
 - picocom (https://github.com/npat-efault/picocom)
 - pigz
-- plan9port (without x11; necessary? already have stripped down suckless 9base)
 - planck (clojurescript repl, https://github.com/planck-repl/planck)
 - poke (http://www.jemarch.net/poke.html - gnu binary data editor/language)
 - premake (https://github.com/premake/premake-core and https://premake.github.io/ - lua build tool, brotli supports it?)
