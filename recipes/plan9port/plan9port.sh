@@ -1,3 +1,8 @@
+#
+# XXX - pthread workaround - musl? only needed on arm? applicable/supportable everywhere?
+# XXX - without: "mc: cannot use LinuxThreads as pthread library; see /usr/local/crosware/software/plan9port/current/src/libthread/README.Linux"
+#
+
 rname="plan9port"
 rver="70cc6e5ba7798b315c3fb3aae19620a01604a459"
 rdir="${rname}-${rver}"
@@ -39,6 +44,9 @@ function cwconfigure_${rname}() {
   echo WSYSTYPE=nowsys > LOCAL.config
   echo CC9=\${CC} >> LOCAL.config
   echo CC9FLAGS=-Wl,-static >> LOCAL.config
+  if [[ ${karch} =~ ^arm ]] ; then
+    sed -i.ORIG '/</s,1024,0,g' src/libthread/pthread.c
+  fi
   popd >/dev/null 2>&1
 }
 "
