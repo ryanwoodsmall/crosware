@@ -845,6 +845,8 @@ function cwsourceprofile() {
 #
 # cwupdate
 #
+# XXX - may be best to split up to cwupdate_zip and cwupdate_git
+#
 function cwupdate() {
   cwchecktop
   cwscriptecho "it looks like ${cwtop} already exists, attempting update"
