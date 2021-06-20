@@ -654,7 +654,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - u9fs (https://github.com/Plan9-Archive/u9fs - userspace 9p server, recently updated, works without rhosts stuff)
   - no auth serve w/busybox or toybox: `tcpsvd -E -v 0.0.0.0 564 ./u9fs -D -z -a none -u username /path/to/share`
   - access from remote host w/plan 9 from user space: `9p -a 'tcp!hostname.domain.name!564' ls /`
-  - libixp recipe provides `ixpc` 9p client
+  - **plan9port9p** recipe provides `9p` client
+  - **libixp** recipe provides `ixpc` 9p client
 - unrar
 - unzip
 - uredir (https://github.com/troglobit/uredir)
