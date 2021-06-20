@@ -749,6 +749,7 @@ time_func ls -l -A /
 - generalized "patching" with a filename and regex
   - wrap sed but don't require `sed -i` support (i.e., allow sbase/9base)
   - same for `awk` and `ed` and ...?
+- `cwsourcemirror` top-level var to avoid duplication
 
 <!--
 # vim: ft=markdown
