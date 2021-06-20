@@ -573,7 +573,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - pixman (http://www.pixman.org/ and https://www.cairographics.org/releases/)
 - pkgconfig
 - plan9port (https://github.com/9fans/plan9port - without x11; suckless 9base available and much smaller)
-  - plan9port9p (9p, 9pserve standlone binaries from plan9port)
+  - plan9port9p (9p, 9pserve standalone binaries from plan9port)
 - python
   - python2 (very basic support)
   - python3 (wip)
