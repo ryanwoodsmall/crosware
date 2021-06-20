@@ -99,6 +99,7 @@ cwcmds["show-uarch"]="show userspace architecture"
 cwcmds["show-arch"]="show kernel and userspace architecture"
 cwcmds["check-installed"]="given a package name, check if it's installed"
 cwcmds["reinstall"]="uninstall then install given packages without chasing upgrades"
+cwcmds["update-upgrade-all"]="update crosware and upgrade out-of-date recipes"
 # XXX - does this need to be an associative array to generate case ..) statements?
 cwcmdaliases=( 'list-upgradeable' )
 cwcmdlist=( $(echo ${!cwcmds[@]} ${cwcmdaliases[@]} | tr ' ' '\n' | sort | xargs echo) )
@@ -1128,6 +1129,16 @@ function cwreinstall() {
 }
 
 #
+# cwupdateupgradeall
+#
+# update and rexec to upgrade any out-of-date recipes
+#
+function cwupdateupgradeall() {
+  cwupdate
+  exec "${cwtop}/bin/crosware" upgrade-all
+}
+
+#
 # cwenv
 #
 function cwenv() {
@@ -1474,6 +1485,9 @@ case "${cmd}" in
     ;;
   reinstall)
     cwreinstall "${@}"
+    ;;
+  update-upgrade-all)
+    cwupdateupgradeall
     ;;
   help)
     cwusage
