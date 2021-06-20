@@ -1,7 +1,3 @@
-#
-# XXX - make ${SDKMAN_DIR}/archives a symlink to ${cwtop}/downloads/sdkman
-#
-
 rname="sdkman"
 rver="current"
 rurl="https://get.sdkman.io"
@@ -40,12 +36,16 @@ function cwmakeinstall_${rname}() {
     && grep -q sdkman_insecure_ssl=false \"${ridir}/etc/config\" \
     && sed -i.ORIG 's/sdkman_insecure_ssl=false/sdkman_insecure_ssl=true/g' \"${ridir}/etc/config\" \
     || true
+  rmdir \"${ridir}/archives\" || true
+  test -e \"${ridir}/archives\" && mv ${ridir}/archives{,.PRE-\${TS}} || true
+  ln -sf \"${cwdl}/${rname}\" \"${ridir}/archives\"
 }
 "
 
 eval "
 function cwgenprofd_${rname}() {
   echo 'export SDKMAN_DIR=\"${ridir}\"' > \"${rprof}\"
+  echo '. \"\${SDKMAN_DIR}/bin/sdkman-init.sh\"' >> \"${rprof}\"
 }
 "
 
