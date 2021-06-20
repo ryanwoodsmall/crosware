@@ -1,6 +1,7 @@
 #
-# XXX - pthread workaround - musl? only needed on arm? applicable/supportable everywhere?
+# XXX - pthread workaround - musl-specific?
 # XXX - without: "mc: cannot use LinuxThreads as pthread library; see /usr/local/crosware/software/plan9port/current/src/libthread/README.Linux"
+# XXX - in-place build; INSTALL -b/INSTALL -c may be a better fit here - build in ${cwtop}/builds/, then tar/untar in ${cwtop}/software/${rname}
 #
 
 rname="plan9port"
@@ -33,6 +34,7 @@ function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG 's,^PATH=,PATH=${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/busybox/current/bin:${cwsw}/toybox/current/bin:,g' INSTALL
   sed -i.ORIG '/^LDFLAGS/s/=/=-static/g' src/mkhdr
+  sed -i.ORIG '/</s,1024,0,g' src/libthread/pthread.c
   grep -ril 'sys/termios\.h' . | xargs sed -i.ORIG 's,sys/termios\.h,termios.h,g' || true
   find src/cmd -name mk\* -exec grep -l 'LD -o' {} + | xargs sed -i.ORIG 's,LD ,LD \$LDFLAGS ,g' || true
   if ! \$(which perl >/dev/null 2>&1) ; then
@@ -44,9 +46,6 @@ function cwconfigure_${rname}() {
   echo WSYSTYPE=nowsys > LOCAL.config
   echo CC9=\${CC} >> LOCAL.config
   echo CC9FLAGS=-Wl,-static >> LOCAL.config
-  if [[ ${karch} =~ ^arm ]] ; then
-    sed -i.ORIG '/</s,1024,0,g' src/libthread/pthread.c
-  fi
   popd >/dev/null 2>&1
 }
 "
