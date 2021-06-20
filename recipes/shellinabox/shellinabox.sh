@@ -1,6 +1,27 @@
 #
 # XXX - gen self-signed cert with https://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.cmc.doc/task_apionprem_gernerate_self_signed_openSSL.html
+# XXX - libressl variant
+# XXX - couple with sslh for regular ssh+https/tls on same port
 # XXX - add wrapper script for startup with ssh to localhost
+#
+#  #!/usr/bin/env bash
+#  siabtop="${cwsw}/shellinabox/current"
+#  siabcss="${siabtop}/share/shellinabox/css"
+#  siabport=4200
+#  siabuser="${USER:-ryan}"
+#  siabgroup="${USER:-ryan}"
+#  sshport=2222
+#  mkdir -p "${siabtop}/cert"
+#  ${siabtop}/bin/shellinaboxd \
+#    --user-css="Normal:+${siabcss}/white-on-black.css,Reverse:-${siabcss}/black-on-white.css" \
+#    --port=${siabport} \
+#    --user=${siabuser} \
+#    --service=/siab/ssh/localhost:${siabuser}:${siabgroup}:HOME:"/usr/bin/ssh -l ${siabuser} -p ${sshport} -o PubkeyAuthentication=no localhost" \
+#    --cert="${siabtop}/cert" \
+#    --localhost-only \
+#    --background="${cwtop}/tmp/shellinabox.pid" \
+#    --disable-ssl-menu \
+#      >>"${cwtop}/tmp/shellinabox.log" 2>&1
 #
 
 rname="shellinabox"
