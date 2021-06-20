@@ -277,6 +277,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 
 ## working recipes
 
+- 9pro (https://git.sr.ht/~ft/9pro - 9p tools for unix)
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - abduco (https://www.brain-dump.org/projects/abduco/ and https://github.com/martanne/abduco)
 - acl (https://savannah.nongnu.org/projects/acl/)
@@ -684,9 +685,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 ## recipes to consider
 
 - 9pfs (https://github.com/mischief/9pfs - fuse 9p driver)
-- 9pro (https://github.com/ftrvxmtrx/9pro - 9p tools for unix)
-  - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
-  - https://git.sr.ht/~ft/9pro
 - ack (https://beyondgrep.com/)
 - acme labs (http://www.acme.com/software/ - SO MUCH GOOD STUFF)
   - db (http://www.acme.com/software/db/ - gdbm? ndbm/sdbm/dbm?)
