@@ -2,6 +2,7 @@
 # XXX - gen self-signed cert with https://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.cmc.doc/task_apionprem_gernerate_self_signed_openSSL.html
 # XXX - libressl variant
 # XXX - couple with sslh for regular ssh+https/tls on same port
+# XXX - gen keys, inbuilt impl seems a little finnicky
 # XXX - add wrapper script for startup with ssh to localhost
 #
 #  #!/usr/bin/env bash
