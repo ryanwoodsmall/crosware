@@ -45,7 +45,6 @@ function cwmakeinstall_${rname}() {
 eval "
 function cwgenprofd_${rname}() {
   echo 'export SDKMAN_DIR=\"${ridir}\"' > \"${rprof}\"
-  echo '. \"\${SDKMAN_DIR}/bin/sdkman-init.sh\"' >> \"${rprof}\"
 }
 "
 
