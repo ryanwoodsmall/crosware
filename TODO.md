@@ -753,6 +753,20 @@ time_func ls -l -A /
 - `unsafe_source` in etc/functions
   - checks if `set -eu` is in effect
   - if it is, save state, toggle off, source, toggle back on
+  - ```
+    # posixy
+    unsafe_source() {
+      echo $- | grep -q u && u=1 || u=0
+      echo $- | grep -q e && e=1 || e=0
+      set +eu
+      # XXX - need a "|| true" here? shouldn't...
+      . "${1}"
+      test ${e} -eq 1 && set -e || true
+      test ${u} -eq 1 && set -u || true
+    }
+    ```
+  - probably need `toggle_safe_on` and `toggle_safe_off`
+  - but don't really want that...
 
 <!--
 # vim: ft=markdown
