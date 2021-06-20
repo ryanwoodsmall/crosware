@@ -473,6 +473,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libssh2libgcrypt (gcrypt, zlib)
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtool
+- libucontext (https://github.com/kaniini/libucontext - glibc compat ucontext, opt-in)
 - libuev (https://github.com/troglobit/libuev)
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
 - libuv (https://github.com/libuv/libuv)
@@ -1053,7 +1054,6 @@ wc -l /tmp/astbuild.out
   - libtompoly
   - tomsfastmath
 - libucl (https://github.com/vstakhov/libucl - universal configuration language parser library)
-- libucontext (https://github.com/kaniini/libucontext)
 - libudev-zero (https://github.com/illiliti/libudev-zero)
 - libunwind (http://www.nongnu.org/libunwind/ and http://savannah.nongnu.org/projects/libunwind)
 - libusb (https://github.com/libusb/libusb)
