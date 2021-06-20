@@ -190,6 +190,9 @@ export CW_USE_JAVA CW_EXT_JAVA
 : ${CW_EXT_JGIT:="false"}
 : ${CW_GIT_CMD:="jgitsh"}
 export CW_USE_JGIT CW_EXT_JGIT CW_GIT_CMD
+# update methods, prefer git, fallback to zip
+: ${CW_UPDATE_USE_GIT:=1}
+: ${CW_UPDATE_USE_ZIP:=1}
 # time travel?
 : ${TS:="$(date '+%Y%m%d%H%M%S')"}
 export TS
@@ -845,17 +848,39 @@ function cwsourceprofile() {
 function cwupdate() {
   cwchecktop
   cwscriptecho "it looks like ${cwtop} already exists, attempting update"
-  if [ ! -e "${cwtop}/.git" ] ; then
-    cwfailexit "${cwtop} doesn't appear to be a git clone"
+  local zipscript="${cwtop}/scripts/update-crosware-from-zip.sh"
+  if [ ${CW_UPDATE_USE_GIT} -eq 1 ] ; then
+    if [ ! -e "${cwtop}/.git" ] ; then
+      cwscriptecho "${cwtop} doesn't appear to be a git clone"
+      if [ ${CW_UPDATE_USE_ZIP} -eq 1 ] ; then
+        cwscriptecho "falling back to zip"
+        bash "${zipscript}"
+      fi
+      return
+    else
+      cwsourceprofile
+      if ! $(which ${CW_GIT_CMD} >/dev/null 2>&1) ; then
+        cwscriptecho "git client ${CW_GIT_CMD} not found"
+        if [ ${CW_UPDATE_USE_ZIP} -eq 1 ] ; then
+          cwscriptecho "falling back to zip"
+          bash "${zipscript}"
+        fi
+        return
+      fi
+      cwscriptecho "attempting to update using a git client"
+      cwscriptecho "attempting to fetch/merge in ${cwtop}"
+      pushd "${cwtop}" >/dev/null 2>&1 || cwfailexit "could not pushd into ${cwtop}"
+      cwscriptecho "${FUNCNAME[0]} using client ${CW_GIT_CMD}: $(${CW_GIT_CMD} version 2>/dev/null ; true)"
+      ${CW_GIT_CMD} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
+      ${CW_GIT_CMD} merge "${cworigin}/${cwbranch}" || { popd ; cwfailexit "could not merge ${cworigin}/${cwbranch} in ${cwtop}" ; }
+      popd >/dev/null 2>&1
+      cwchmod "${cwtmpperm}" "${cwtmp}"
+    fi
+  elif [ ${CW_UPDATE_USE_ZIP} -eq 1 ] ; then
+    cwscriptecho "attempting to update using a zip file via ${zipscript}"
+    bash "${zipscript}"
   else
-    cwsourceprofile
-    cwscriptecho "attempting to fetch/merge in ${cwtop}"
-    pushd "${cwtop}" >/dev/null 2>&1 || cwfailexit "could not pushd into ${cwtop}"
-    cwscriptecho "${FUNCNAME[0]} using client ${CW_GIT_CMD}: $(${CW_GIT_CMD} version 2>/dev/null ; true)"
-    ${CW_GIT_CMD} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
-    ${CW_GIT_CMD} merge "${cworigin}/${cwbranch}" || { popd ; cwfailexit "could not merge ${cworigin}/${cwbranch} in ${cwtop}" ; }
-    popd >/dev/null 2>&1
-    cwchmod "${cwtmpperm}" "${cwtmp}"
+    cwscriptecho "don't know how to update"
   fi
 }
 
