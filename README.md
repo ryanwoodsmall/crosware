@@ -1562,6 +1562,10 @@ wc -l /tmp/astbuild.out
 - websocat (https://github.com/vi/websocat - rust)
 - websocketd (go, https://github.com/joewalnes/websocketd)
 - websockify (https://github.com/novnc/websockify)
+- werc (http://werc.cat-v.org/ - suckless wikiblogthing)
+  - useful awk stuff: `md2html.awk`, `urldecode.awk`, and `urlencode.awk`
+  - can be coaxed to work with busybox httpd but is unpleasant
+  - mini_httpd, thttpd, or lighttpd probably better options
 - whatshell.sh (https://www.in-ulm.de/~mascheck/various/whatshell/ and https://www.in-ulm.de/~mascheck/various/whatshell/whatshell.sh)
 - wolfmqtt (https://github.com/wolfSSL/wolfMQTT)
 - wolfssh (https://github.com/wolfSSL/wolfssh)
