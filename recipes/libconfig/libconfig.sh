@@ -1,9 +1,9 @@
 rname="libconfig"
-rver="1.7.2"
+rver="1.7.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://hyperrealm.github.io/${rname}/dist/${rfile}"
-rsha256="7c3c7a9c73ff3302084386e96f903eb62ce06953bb1666235fac74363a16fad9"
+rsha256="545166d6cac037744381d1e9cc5a5405094e7bfad16a411699bcff40bbb31ee7"
 rreqs="make configgit"
 
 . "${cwrecipe}/common.sh"
