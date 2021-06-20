@@ -750,6 +750,9 @@ time_func ls -l -A /
   - wrap sed but don't require `sed -i` support (i.e., allow sbase/9base)
   - same for `awk` and `ed` and ...?
 - `cwsourcemirror` top-level var to avoid duplication
+- update methodolgy
+  - "update from zip" is already coded up
+  - need to ad a `${CW_UPDATE_USE_ZIP}` or some such to make cwupdate use it?
 
 <!--
 # vim: ft=markdown
