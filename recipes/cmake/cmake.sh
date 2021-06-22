@@ -13,11 +13,11 @@
 #
 
 rname="cmake"
-rver="3.20.4"
+rver="3.20.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/Kitware/CMake/releases/download/v${rver}/${rfile}"
-rsha256="87a4060298f2c6bb09d479de1400bc78195a5b55a65622a7dceeb3d1090a1b16"
+rsha256="12c8040ef5c6f1bc5b8868cede16bb7926c18980f59779e299ab52cbc6f15bb0"
 rreqs="make bash busybox toybox"
 
 . "${cwrecipe}/common.sh"
