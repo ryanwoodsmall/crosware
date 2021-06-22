@@ -861,7 +861,7 @@ function cwupdate() {
       return
     else
       cwsourceprofile
-      if ! $(which ${CW_GIT_CMD} >/dev/null 2>&1) ; then
+      if ! $(hash ${CW_GIT_CMD} >/dev/null 2>&1) ; then
         cwscriptecho "git client ${CW_GIT_CMD} not found"
         if [ ${CW_UPDATE_USE_ZIP} -eq 1 ] ; then
           cwscriptecho "falling back to zip"
