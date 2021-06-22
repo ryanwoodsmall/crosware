@@ -767,6 +767,12 @@ time_func ls -l -A /
     ```
   - probably need `toggle_safe_on` and `toggle_safe_off`
   - but don't really want that...
+- "register recipe"
+  - on source of a recipe file, the recipe performs all array/hash manipulation itself
+  - sort of inversion-of-controlish
+  - would allow external recipes in e.g etc/local.d/recipename.sh without needing direct support
+  - and would reduce manual work
+  - could be used with unsafe_source too, failing softly/quietly/non-fatally?
 
 <!--
 # vim: ft=markdown
