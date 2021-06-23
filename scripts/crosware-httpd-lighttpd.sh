@@ -79,9 +79,9 @@ server.modules += ("mod_cgi")
 
 server.modules += ("mod_webdav")
 \$HTTP["url"] =~ "^/tmp($|/)" {
-    webdav.activate = "enable" 
+    webdav.activate = "enable"
     webdav.is-readonly = "disable"
-    webdav.sqlite-db-name = "${cwtop}/tmp/lighttpd_webdav.db" 
+    webdav.sqlite-db-name = "${cwtop}/tmp/lighttpd_webdav.db"
 }
 
 mimetype.assign += (".png"  => "image/png")
