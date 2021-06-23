@@ -440,6 +440,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - jruby
 - jscheme
 - jython
+- k3s (https://k3s.io/ and https://github.com/k3s-io/k3s)
 - kawa (scheme)
 - kernelheaders (https://github.com/sabotage-linux/kernel-headers - from sabotage linux)
 - ksh93 (https://github.com/att/ast/ via at&t ast)
