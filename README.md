@@ -440,12 +440,13 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - jruby
 - jscheme
 - jython
-- k3s (https://k3s.io/ and https://github.com/k3s-io/k3s)
+- k3s (https://k3s.io/ and https://github.com/k3s-io/k3s - small k8s distribution)
 - kawa (scheme)
 - kernelheaders (https://github.com/sabotage-linux/kernel-headers - from sabotage linux)
 - ksh93 (https://github.com/att/ast/ via at&t ast)
   - this is actually ksh2020...
   - should be renamed as such
+- kubernetes (binaries)
 - less (netbsdcurses)
 - lftp (https://lftp.yar.ru/)
 - libassuan (https://gnupg.org/software/libassuan/index.html)
