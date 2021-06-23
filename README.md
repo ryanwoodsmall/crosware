@@ -1014,6 +1014,7 @@ wc -l /tmp/astbuild.out
   - mit
   - shishi (https://www.gnu.org/software/shishi/)
 - keyutils (http://people.redhat.com/~dhowells/keyutils/)
+- kind (https://kind.sigs.k8s.io/ - k8s in docker, pure go)
 - kineto (https://sr.ht/~sircmpwn/kineto/ and https://git.sr.ht/~sircmpwn/kineto - gemini to http gateway/proxy)
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
 - larn (short roguelike https://en.wikipedia.org/wiki/Larn_(video_game) - maintained/modern https://github.com/atsb/RL_M)
@@ -1229,6 +1230,7 @@ wc -l /tmp/astbuild.out
         CFLAGS_EXTRA="-I${cwsw}/mbedtls/current/include"
       ```
   - binary will be **ports/unix/micropython**
+- minikube (https://minikube.sigs.k8s.io/)
 - minit (https://github.com/chazomaticus/minit - small init with startup/shutdown scripts)
 - miniyacc (https://c9x.me/yacc/)
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
