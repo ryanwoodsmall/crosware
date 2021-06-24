@@ -839,7 +839,13 @@ function cwnewsourceprofile() {
 #  call an implementation of cwsourceprofile
 #
 function cwsourceprofile() {
-  cwnewsourceprofile
+  local defaultimpl="new"
+  : ${CW_PROFILE_IMPL:="${defaultimpl}"}
+  if [[ ! ${CW_PROFILE_IMPL} =~ ^(old|new)$ ]] ; then
+    CW_PROFILE_IMPL="${defaultimpl}"
+  fi
+  export CW_PROFILE_IMPL
+  cw${CW_PROFILE_IMPL}sourceprofile
 }
 
 #
