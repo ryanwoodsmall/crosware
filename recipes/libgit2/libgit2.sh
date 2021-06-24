@@ -1,3 +1,7 @@
+#
+# XXX - mbedtls variant
+#
+
 rname="libgit2"
 rver="1.1.0"
 rdir="${rname}-${rver}"
