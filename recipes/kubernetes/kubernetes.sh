@@ -1,8 +1,4 @@
 #
-# XXX - update checker https://storage.googleapis.com/kubernetes-release/release/stable.txt
-# XXX - download/check w:
-#   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-#   curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
 # XXX - kubelet is glibc, probably need to compile? ugh?
 #
 
@@ -75,6 +71,12 @@ function cwmakeinstall_${rname}() {
     n=\"\$(basename \${p})\"
     install -m 0755 \"\${p}\" \"${ridir}/bin/\${n}\"
   done
+}
+"
+
+eval "
+function cwlatestver_${rname}() {
+  ${cwcurl} ${cwcurlopts} \"https://storage.googleapis.com/kubernetes-release/release/stable.txt\" | sed s/^v//
 }
 "
 
