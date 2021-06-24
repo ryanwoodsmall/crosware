@@ -773,6 +773,9 @@ time_func ls -l -A /
   - would allow external recipes in e.g etc/local.d/recipename.sh without needing direct support
   - and would reduce manual work
   - could be used with unsafe_source too, failing softly/quietly/non-fatally?
+- ```cwlatestver_${rname}```
+  - dump latest version number using some probably custom checker
+  - can be used with `update-recipe-file.sh` for somewhat automatic updates
 
 <!--
 # vim: ft=markdown
