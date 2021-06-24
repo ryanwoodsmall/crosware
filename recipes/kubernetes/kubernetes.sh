@@ -76,7 +76,7 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwlatestver_${rname}() {
-  ${cwcurl} ${cwcurlopts} \"https://storage.googleapis.com/kubernetes-release/release/stable.txt\" | sed s/^v//
+  ${cwcurl} ${cwcurlopts} \"https://storage.googleapis.com/kubernetes-release/release/stable.txt\" | sed s/^v// | xargs echo
 }
 "
 
