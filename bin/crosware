@@ -1255,6 +1255,23 @@ function cwrunfunc() {
 }
 
 #
+# cwdebug
+#   recieves:
+#     function/command and arguments
+#
+# run a function gated with a debug flag toggle
+# XXX - corresponding CW_DEBUG var?
+# XXX - should $- be checked for initial state of x flag?
+#
+function cwdebug() {
+  cwsourcerecipes
+  cwsourceprofile
+  set -x
+  eval "${@}"
+  set +x
+}
+
+#
 # show architecture(s)
 #
 function cwshowarch() {
