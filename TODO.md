@@ -776,6 +776,11 @@ time_func ls -l -A /
 - ```cwlatestver_${rname}```
   - dump latest version number using some probably custom checker
   - can be used with `update-recipe-file.sh` for somewhat automatic updates
+- **golang** recipes
+  - `GOCACHE` and `GOMODCACHE` settings/overrides
+  - multiarch standardization
+  - see minikube, nebula for source
+  - see kubernetes, k3s for bin
 
 <!--
 # vim: ft=markdown
