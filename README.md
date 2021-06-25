@@ -859,6 +859,7 @@ wc -l /tmp/astbuild.out
   - gxemul (http://gavare.se/gxemul/)
 - entr (http://entrproject.org/ and https://github.com/eradman/entr)
 - eris (https://github.com/nealey/eris - small web server)
+- etcd (https://etcd.io/ and https://github.com/etcd-io/etcd)
 - fcgiwrap (https://github.com/gnosek/fcgiwrap - standard cgi to fcgi socket wrapper, useful with nginx?)
 - finit (https://github.com/troglobit/finit)
 - firecracker (https://github.com/firecracker-microvm/firecracker - rust, but there are static bins for aarch64/x86_64)
