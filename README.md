@@ -443,6 +443,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - k3s (https://k3s.io/ and https://github.com/k3s-io/k3s - small k8s distribution)
 - kawa (scheme)
 - kernelheaders (https://github.com/sabotage-linux/kernel-headers - from sabotage linux)
+- kind (https://kind.sigs.k8s.io/ - k8s in docker, pure go)
 - ksh93 (https://github.com/att/ast/ via at&t ast)
   - this is actually ksh2020...
   - should be renamed as such
@@ -1015,7 +1016,6 @@ wc -l /tmp/astbuild.out
   - mit
   - shishi (https://www.gnu.org/software/shishi/)
 - keyutils (http://people.redhat.com/~dhowells/keyutils/)
-- kind (https://kind.sigs.k8s.io/ - k8s in docker, pure go)
 - kineto (https://sr.ht/~sircmpwn/kineto/ and https://git.sr.ht/~sircmpwn/kineto - gemini to http gateway/proxy)
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
 - larn (short roguelike https://en.wikipedia.org/wiki/Larn_(video_game) - maintained/modern https://github.com/atsb/RL_M)
