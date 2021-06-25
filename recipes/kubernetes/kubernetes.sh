@@ -1,5 +1,9 @@
 #
 # XXX - kubelet is glibc, probably need to compile? ugh?
+# XXX - k8s builds seem relatively straightforward...
+#
+# dev doc:
+#   https://github.com/kubernetes/community/blob/master/contributors/devel/development.md
 #
 
 rname="kubernetes"
