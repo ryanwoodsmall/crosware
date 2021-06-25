@@ -382,6 +382,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - elinks (http://elinks.or.cz/ from git: https://repo.or.cz/elinks.git)
   - investigate adding tre, spidermonkey javascript/ecmascript/js, ...
 - elvis (https://github.com/mbert/elvis)
+- etcd (https://etcd.io/ and https://github.com/etcd-io/etcd)
 - expat
 - file
 - findutils
@@ -859,7 +860,6 @@ wc -l /tmp/astbuild.out
   - gxemul (http://gavare.se/gxemul/)
 - entr (http://entrproject.org/ and https://github.com/eradman/entr)
 - eris (https://github.com/nealey/eris - small web server)
-- etcd (https://etcd.io/ and https://github.com/etcd-io/etcd)
 - fcgiwrap (https://github.com/gnosek/fcgiwrap - standard cgi to fcgi socket wrapper, useful with nginx?)
 - finit (https://github.com/troglobit/finit)
 - firecracker (https://github.com/firecracker-microvm/firecracker - rust, but there are static bins for aarch64/x86_64)
