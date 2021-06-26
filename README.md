@@ -797,6 +797,7 @@ wc -l /tmp/astbuild.out
 - cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
 - cembed (https://github.com/rxi/cembed - embed files in a c header - useful for tinyscheme/minischeme library in single binary???)
 - cepl (https://github.com/alyptik/cepl)
+- chelf (https://github.com/Gottox/chelf)
 - ching (https://github.com/floren/ching - i ching from bsd)
   - needs nroff (heirloom or groff)
   - ```
@@ -1273,6 +1274,7 @@ wc -l /tmp/astbuild.out
     - getconf (https://git.alpinelinux.org/cgit/aports/tree/main/musl/getconf.c)
     - getent (https://git.alpinelinux.org/cgit/aports/tree/main/musl/getent.c)
     - iconv (https://git.alpinelinux.org/cgit/aports/tree/main/musl/iconv.c)
+  - muslstack (https://github.com/yaegashi/muslstack)
 - mutt
 - mvi (https://github.com/byllgrim/mvi)
 - nanomsg (https://github.com/nanomsg/nanomsg and https://nanomsg.org/)
