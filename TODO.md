@@ -778,6 +778,7 @@ time_func ls -l -A /
   - can be used with `update-recipe-file.sh` for somewhat automatic updates
 - **golang** recipes
   - `GOCACHE` and `GOMODCACHE` settings/overrides
+  - `GOPATH` too?
   - multiarch standardization
   - see minikube, nebula for source
   - see kubernetes, k3s for bin
