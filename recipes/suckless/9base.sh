@@ -59,6 +59,16 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install ${rlibtool}
+  rm -f \"${ridir}/bin/9yacc\"
+  mv \"${ridir}/bin/yacc\" \"${ridir}/bin/9yacc\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'export PLAN9=\"${rtdir}/current\"' > \"${rprof}\"
   echo 'append_path \"\${PLAN9}/bin\"' >> \"${rprof}\"
