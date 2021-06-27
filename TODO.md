@@ -781,6 +781,8 @@ time_func ls -l -A /
   - multiarch standardization
   - see minikube, nebula for source
   - see kubernetes, k3s for bin
+  - setting in **recipes/common.sh**:
+    - something like : `${cwgobuild:="env GOCACHE=${rbdir}/gocache GOMODCACHE=${rbdir}/gomodcache ${cwsw}/go/current/bin/go build -ldflags='-s -w'"}`
 
 <!--
 # vim: ft=markdown
