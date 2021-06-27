@@ -73,6 +73,10 @@ function cwmakeinstall_${rname}() {
 eval "
 function cwgenprofd_${rname}() {
   echo 'export PLAN9=\"${rtdir}/current\"' > \"${rprof}\"
+  echo 'append_path \"${cwsw}/bison/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/byacc/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/flex/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/reflex/current/bin\"' >> \"${rprof}\"
   echo 'append_path \"\${PLAN9}/bin\"' >> \"${rprof}\"
 }
 "
