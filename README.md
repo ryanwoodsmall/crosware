@@ -396,6 +396,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - gc (working on x86\_64, aarch64; broken on i386, arm)
 - gdbm
 - gettexttiny
+- ghostunnel (https://github.com/ghostunnel/ghostunnel - stunnel-ish in go, with mutual tls auth)
 - git - built with curl+openssl
   - gitlibressl - built with libressl+curl
 - glib (https://wiki.gnome.org/Projects/GLib)
