@@ -425,6 +425,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - exvi with netbsdcurses also available as a standalone package
 - help2man
 - hitch (https://hitch-tls.org/ - openssl+libev tls proxy)
+- hittpd (https://github.com/leahneukirchen/hittpd - small http server with http-parser library)
 - htermutils (https://chromium.googlesource.com/apps/libapps/+/HEAD/hterm/etc/)
 - htop
 - iftop
