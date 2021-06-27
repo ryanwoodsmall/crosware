@@ -65,6 +65,11 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  echo -n '' > \"${rprof}\"
+  echo 'append_path \"${cwsw}/bison/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/byacc/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/flex/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/reflex/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
 }
 "
