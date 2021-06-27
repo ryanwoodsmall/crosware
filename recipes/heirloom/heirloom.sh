@@ -59,6 +59,8 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${cwsw}/byacc/current/bin\"' >> \"${rprof}\"
   echo 'append_path \"${cwsw}/flex/current/bin\"' >> \"${rprof}\"
   echo 'append_path \"${cwsw}/reflex/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/make/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/bootstrapmake/current/bin\"' >> \"${rprof}\"
   echo 'append_path \"${rtdir}/current/5bin/posix2001\"' >> \"${rprof}\"
   echo 'append_path \"${rtdir}/current/5bin/posix\"' >> \"${rprof}\"
   echo 'append_path \"${rtdir}/current/ucb\"' >> \"${rprof}\"
