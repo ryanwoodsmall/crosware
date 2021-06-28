@@ -614,8 +614,9 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - slang (ncurses)
 - slibtool (https://github.com/midipix-project/slibtool)
 - slsc (jedsoft "sc" console spreadsheet for slang)
-- socat (http://www.dest-unreach.org/socat/ - openssl)
-  - socatlibressl (libressl)
+- socat (http://www.dest-unreach.org/socat/ - openssl, netbsdcurses, readline)
+  - socatlibressl (libressl, netbsdcurses, readline)
+  - socatminimal (no tls/ssl, no readline - socket, port, file, etc. *only*)
 - source-highlight (https://www.gnu.org/software/src-highlite/)
   - OLD 1.x version
   - limited language support, though
