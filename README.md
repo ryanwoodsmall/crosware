@@ -830,7 +830,9 @@ wc -l /tmp/astbuild.out
   - cmark-gfm (github fork - https://github.com/github/cmark-gfm)
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
 - cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
-- cronolog (https://github.com/fordmason/cronolog - maybe a fork? svlogd from busybox can do _some_ of the same thing?)
+- cronolog (https://github.com/fordmason/cronolog)
+  - maybe a fork? (https://github.com/pbiering/cronolog seems active)
+  - svlogd from busybox can do _some_ of the same thing?)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
   - would be useful to provide gcc with glibc support for more "native" builds
   - base on centos 7? rhel 8? debian 10? ubuntu 20 lts?
