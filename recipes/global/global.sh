@@ -1,9 +1,9 @@
 rname="global"
-rver="6.6.5"
+rver="6.6.6"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="9c3730bd9e975d94231f3402d5526b79c0b23cc665d624c9829c948dfad37b83"
+rsha256="758078afff98d4c051c58785c7ada3ed1977fabb77f8897ff657b71cc62d4d5d"
 rreqs="make ncurses sed"
 
 . "${cwrecipe}/common.sh"
