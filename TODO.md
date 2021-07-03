@@ -784,6 +784,7 @@ time_func ls -l -A /
   - see kubernetes, k3s for bin
   - setting in **recipes/common.sh**:
     - something like : `${cwgobuild:="env GOCACHE=${rbdir}/gocache GOMODCACHE=${rbdir}/gomodcache ${cwsw}/go/current/bin/go build -ldflags='-s -w'"}`
+- bootstrap recipes need `cwgenprofd` wrappers
 
 <!--
 # vim: ft=markdown
