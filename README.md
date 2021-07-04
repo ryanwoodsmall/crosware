@@ -611,6 +611,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - shellinabox (https://github.com/shellinabox/shellinabox)
 - simh (http://simh.trailing-edge.com and https://github.com/simh/simh)
 - sisc (scheme)
+- sish (https://github.com/antoniomika/sish - go tunnel tool)
 - slang (ncurses)
 - slibtool (https://github.com/midipix-project/slibtool)
 - slsc (jedsoft "sc" console spreadsheet for slang)
