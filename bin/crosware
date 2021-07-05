@@ -473,7 +473,10 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
     cwinstall_${cwbootstraprecipe}
   }
   function cwprof_${cwbootstraprecipe}() {
-    echo \"${cwetcprofd}/${cwbootstraprecipe}.sh\"
+    echo \"${cwetcprofd}/\${${cwbootstraprecipe}_pkgname}.sh\"
+  }
+  function cwgenprofd_${cwbootstraprecipe}() {
+    cwexpandenv \"\${${cwbootstraprecipe}_pkgname}\" \"${cwetcprofd}/\${${cwbootstraprecipe}_pkgname}.sh\"
   }
   "
   cwrecipefiles[${cwbootstraprecipe}]="${cwtop}/bin/crosware"
