@@ -159,6 +159,7 @@
   - ropts - gate off common functions with _nomake_, _nomakeinstall_, etc.
   - rarches - list of supported arches, default all
   - rold - list of old versions to clean up recipes that do not fully remove rdir?
+  - rext - ${rfile} extension - .tar.gz, etc. - would make (de-)construction easier
   - need to set sane default r* values in common.sh with ```: ${rblah:="blah.setting"}```
   - unset vals after parse so there is no bleed through?
   - generic profile.d generator
