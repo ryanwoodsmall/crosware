@@ -71,6 +71,17 @@ function cwmakeinstall_${rname}() {
 "
 
 eval "
+function cwlatestver_${rname}() {
+  ${cwcurl} ${cwcurlopts} \"${rurl%${rfile}}\" \
+  | cut -f2 -d'\"' \
+  | grep '^${rname}-' \
+  | sed 's/^${rname}-//g' \
+  | cut -f1 -d. \
+  | tail -1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   rm -f \"${cwetcprofd}/${rname}.sh\"
   echo 'append_path \"${cwsw}/make/current/bin\"' > \"${rprof}\"
