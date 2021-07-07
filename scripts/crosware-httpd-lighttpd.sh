@@ -6,7 +6,7 @@
 set -eu
 
 : ${cwtop:="/usr/local/crosware"}
-: ${httpport:="18080"}
+: ${httpport:="18081"}
 : ${httpsport:="18443"}
 : ${httproot:="${cwtop}"}
 : ${lighttpd_key:="${cwtop}/tmp/lighttpd_key.pem"}
