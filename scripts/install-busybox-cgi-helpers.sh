@@ -37,6 +37,20 @@ set
 EOF
 chmod 755 env.cgi
 
+# tar.cgi serves a .tar of common git files, new/updated recipes, etc.
+scriptecho "installing ${cgidir}/tar.cgi"
+cat >tar.cgi<<EOF
+#!/usr/bin/env bash
+. /usr/local/crosware/etc/vars
+: \${g:="git"}
+cd "\${cwtop}"
+gitfiles="\$(\${g} grep -il . 2>/dev/null || true)"
+echo "Content-type: application/x-tar"
+echo
+tar -cf - \${gitfiles} bin/ recipes/ scripts/
+EOF
+chmod 755 tar.cgi
+
 # get and extract busybox
 scriptecho "fetching busybox"
 bbver="$(crosware run-func cwver_busybox)"
