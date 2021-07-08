@@ -1,6 +1,7 @@
 #
 # XXX - name contains +, which is urlencoded to %2B
 # XXX - don't like + in dir/file names
+# XXX - json of channels - "stable" here: https://update.k3s.io/v1-release/channels
 #
 
 rname="k3s"
