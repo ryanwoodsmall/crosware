@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# start lighttpd http+https at the crosware root on ports 18080 and 18443
+# start lighttpd http+https at the crosware root on ports 18081 and 18443
 #
 
 set -eu
