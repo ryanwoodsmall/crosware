@@ -27,12 +27,6 @@ rreqs="make bearssl"
 . "${cwrecipe}/common.sh"
 
 eval "
-function cwfetch_${rname}() {
-  cwfetch \"${rurl}\" \"${rdlfile}\"
-}
-"
-
-eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG 's,^PREFIX=.*,PREFIX=${ridir},g' Makefile
