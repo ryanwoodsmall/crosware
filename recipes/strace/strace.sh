@@ -13,9 +13,10 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} --enable-mpers=no --disable-gcc-Werror CFLAGS=\"\${CFLAGS} -Dsigcontext_struct=sigcontext\"
+  touch config.h
   if \$(uname -m | grep -q ^aarch64) ; then
-    echo '#undef __ASM_SIGCONTEXT_H' >> config.h
-    echo '#define __ASM_SIGCONTEXT_H 1' >> config.h
+    echo '#undef __ASM_SIGCONTEXT_H' >> src/config.h
+    echo '#define __ASM_SIGCONTEXT_H 1' >> src/config.h
   fi
   popd >/dev/null 2>&1
 }
