@@ -538,6 +538,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - mujs (http://mujs.com/ and https://github.com/ccxvii/mujs)
 - muslfts (https://github.com/pullmoll/musl-fts)
 - muslstandalone (http://musl.libc.org/ - unbundled musl libc and kernel headers with musl-gcc wrapper, possibly different version from statictoolchain)
+- nbsdgames (https://github.com/abakh/nbsdgames - new bsd games)
 - ncurses
 - neat/litcave stuff (http://litcave.rudi.ir/)
   - neatvi (https://github.com/aligrudi/neatvi)
@@ -790,7 +791,6 @@ wc -l /tmp/astbuild.out
   - gbrogue (https://github.com/gbelo/gBrogue)
 - bsd-coreutils (https://github.com/Projeto-Pindorama/bsd-coreutils - bsd stuff, fork of lobase-old?)
 - bsdgames (debian - https://packages.debian.org/buster/bsdgames)
-  - nbsdgames (https://github.com/abakh/nbsdgames - new bsd games)
 - bsd-headers (http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/musl - oe/yocto)
 - build-scripts (https://github.com/noloader/Build-Scripts - useful versions, packaging, etc. stuff)
 - c9 (https://github.com/ftrvxmtrx/c9 - small 9p client/server impl)
