@@ -35,7 +35,6 @@ function cwmakeinstall_${rname}() {
     --without-hyper \
     --without-libidn2 \
     --without-zstd \
-    --without-libmetalink \
     --without-wolfssh \
     $(echo ${othersslproviders[@]} | tr ' ' '\n' | sed 's/^/--without-/g' | xargs echo) \
     --with-${rprovider}=\"${cwsw}/${rprovider}/current\" \

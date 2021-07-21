@@ -16,12 +16,12 @@
 #
 
 rname="curl"
-rver="7.77.0"
+rver="7.78.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.haxx.se/download/${rfile}"
-rsha256="6c0c28868cb82593859fc43b9c8fdb769314c855c05cf1b56b023acf855df8ea"
-rreqs="make zlib openssl libssh2 expat libmetalink cacertificates nghttp2 pkgconfig"
+rsha256="98530b317dc95ccb324bbe4f834f07bb642fbc393b794ddf3434f246a71ea44a"
+rreqs="make zlib openssl libssh2 cacertificates nghttp2 pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
@@ -46,7 +46,6 @@ function cwconfigure_${rname}() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --enable-ipv6 \
-    --with-libmetalink=\"${cwsw}/libmetalink/current\" \
     --with-libssh2=\"${cwsw}/libssh2/current\" \
     --with-nghttp2=\"${cwsw}/nghttp2/current\" \
     --with-zlib=\"${cwsw}/zlib/current\" \
@@ -63,8 +62,7 @@ function cwconfigure_${rname}() {
     --with-default-ssl-backend=openssl \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
-    --with-ca-fallback \
-      LIBS='-L${cwsw}/expat/current/lib -lexpat'
+    --with-ca-fallback
   popd >/dev/null 2>&1
 }
 "

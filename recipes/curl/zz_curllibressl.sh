@@ -27,7 +27,6 @@ function cwmakeinstall_${rname}() {
     --without-hyper \
     --without-libidn2 \
     --without-zstd \
-    --without-libmetalink \
     --without-bearssl \
     --without-wolfssh \
     --without-wolfssl \
