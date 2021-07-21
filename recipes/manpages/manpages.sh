@@ -30,7 +30,9 @@ function cwextract_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  true
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  sed -i.ORIG '/INSTALL/s/-T//g' Makefile
+  popd >/dev/null 2>&1
 }
 "
 
