@@ -12,7 +12,7 @@ rreqs="make"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} --enable-mpers=no --disable-gcc-Werror CFLAGS=\"\${CFLAGS} -Dsigcontext_struct=sigcontext\"
+  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} --enable-mpers=no --disable-gcc-Werror CFLAGS=\"\${CFLAGS} -Dsigcontext_struct=sigcontext\"
   if \$(uname -m | grep -q ^aarch64) ; then
     echo '#undef __ASM_SIGCONTEXT_H' >> config.h
     echo '#define __ASM_SIGCONTEXT_H 1' >> config.h
