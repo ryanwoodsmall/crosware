@@ -229,6 +229,7 @@ Mes (and m2) might be useful at some point.
   - https://github.com/oriansj/mescc-tools-seed
   - https://github.com/oriansj/mescc-tools
   - https://github.com/oriansj/stage0
+  - https://github.com/oriansj/bootstrap-seeds
 - https://lists.gnu.org/archive/html/guile-user/2016-06/msg00061.html
 - https://lists.gnu.org/archive/html/guile-user/2017-07/msg00089.html
 - http://lists.gnu.org/archive/html/info-gnu/2018-08/msg00006.html
