@@ -1,3 +1,8 @@
+#
+# XXX - curl ripped out metalink support; wget 1.x still has it - disable/remove?
+# XXX - https://github.com/curl/curl/pull/7176
+#
+
 rname="libmetalink"
 rver="0.1.3"
 rdir="${rname}-${rver}"
