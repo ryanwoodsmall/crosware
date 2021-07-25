@@ -6,11 +6,11 @@
 # XXX - uuid support is in e2fsprogs
 #
 rname="python3"
-rver="3.7.10"
+rver="3.7.11"
 rdir="Python-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.python.org/ftp/python/${rver}/${rfile}"
-rsha256="f8d82e7572c86ec9d55c8627aae5040124fd2203af400c383c821b980306ee6b"
+rsha256="ddb4196ab5c4f69e895920a422cb60d42b46e2de2b173ce7fd57f1435459a734"
 rreqs="make bzip2 zlib ncurses readline openssl gdbm sqlite bdb47 expat libffi xz utillinux pkgconfig"
 
 . "${cwrecipe}/common.sh"
