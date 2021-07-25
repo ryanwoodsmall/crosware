@@ -1,9 +1,9 @@
 rname="inetutils"
-rver="2.0"
+rver="2.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="e573d566e55393940099862e7f8994164a0ed12f5a86c3345380842bdc124722"
+rsha256="01b9a4bc73a47e63f6e8a07b76122d9ad2a2e46ebf14870e9c91d660b5647a22"
 rreqs="make sed netbsdcurses configgit"
 
 . "${cwrecipe}/common.sh"
