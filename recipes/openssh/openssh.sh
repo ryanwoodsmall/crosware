@@ -7,6 +7,7 @@
 # XXX - ugly ugly ugly
 # XXX - just go back to openssl for now
 # XXX - revisit later?
+# XXX - libressl variant - most tooling is here already...
 #
 
 rname="openssh"
