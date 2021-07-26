@@ -885,14 +885,16 @@ wc -l /tmp/astbuild.out
 - git-crypt (https://github.com/AGWA/git-crypt)
 - gmni (https://sr.ht/~sircmpwn/gmni/ and https://git.sr.ht/~sircmpwn/gmni - gemini client)
 - gmnisrv (https://sr.ht/~sircmpwn/gmnisrv/ and https://git.sr.ht/~sircmpwn/gmnisrv - gemini server)
-- gojq (https://github.com/itchyny/gojq)
-- gpg
-  - gpgme
-  - etc.
 - gnulib (https://www.gnu.org/software/gnulib - probably needed to repackage for older gnu projects - shishi, gss, gsasl, ...)
+- go-git (https://github.com/go-git/go-git)
+  - pure go, might make for a decent no-frills clone/fetch/merge client?
+- gojq (https://github.com/itchyny/gojq)
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
 - got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
+- gpg
+  - gpgme
+  - etc.
 - graphviz (http://graphviz.org/)
 - gron (https://github.com/tomnomnom/gron - greppable json, in go)
 - gsasl/libgsasl (https://www.gnu.org/software/gsasl/)
