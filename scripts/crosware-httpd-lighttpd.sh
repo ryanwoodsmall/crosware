@@ -2,6 +2,11 @@
 #
 # start lighttpd http+https at the crosware root on ports 18081 and 18443
 #
+# XXX - functionize: gen_key and gen_cert
+# XXX - need a way to check cert validity and regen.
+#     - openssl examples using `-checkend`...
+#     - https://stackoverflow.com/questions/21297853/how-to-determine-ssl-cert-expiration-date-from-a-pem-encoded-certificate
+#
 
 set -eu
 
