@@ -1389,6 +1389,8 @@ wc -l /tmp/astbuild.out
 - re2c (http://re2c.org/ and https://github.com/skvadrik/re2c)
 - redis (https://github.com/redis/redis and https://redis.io - tls, jemalloc, etc., options)
 - redo-c (https://github.com/leahneukirchen/redo-c - djb's redo concept implemented in c instead of python)
+- redsocks (http://darkk.net.ru/redsocks/ and https://github.com/darkk/redsocks - transparent proxy redirection)
+  - redsocks2 fork(https://github.com/semigodking/redsocks - more features? mbedtls?)
 - regx (https://github.com/wd5gnr/regx - regx and litgrep, literate regex)
 - relational-pipes (https://relational-pipes.globalcode.info/)
 - remake (http://bashdb.sourceforge.net/remake/ and https://github.com/rocky/remake)
