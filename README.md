@@ -1549,6 +1549,7 @@ wc -l /tmp/astbuild.out
 - tnftpd (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - torgo (https://github.com/as/torgo)
 - tpm (https://github.com/nmeum/tpm/ - tiny password manager)
+- transocks (http://transocks.sourceforge.net/ - transparent socks, needs dante/nec socks libs)
 - tre (https://github.com/laurikari/tre)
 - tsocks
 - ttinfo (https://github.com/troglobit/ttinfo)
