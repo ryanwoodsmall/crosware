@@ -36,12 +36,12 @@ function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cd src
   for l in 9 9pclient auth authsrv bio ip mux ndb thread ; do
-    ( cd lib\${l}/ ; env PLAN9=\"${rbdir}\" PATH=\"\${PATH}:${rbdir}/bin\" \"${cwsw}/9base/current/bin/mk\" CC9=\"\${CC}\" )
+    ( cd lib\${l}/ ; env PLAN9=\"${rbdir}\" PATH=\"${rbdir}/bin:\${PATH}\" \"${cwsw}/9base/current/bin/mk\" CC9=\"\${CC}\" )
   done
   cd cmd
-  env PLAN9=\"${rbdir}\" PATH=\"\${PATH}:${rbdir}/bin\" \"${cwsw}/9base/current/bin/mk\" 9p.install CC9=\"\${CC}\"
+  env PLAN9=\"${rbdir}\" PATH=\"${rbdir}/bin:\${PATH}\" \"${cwsw}/9base/current/bin/mk\" 9p.install CC9=\"\${CC}\"
   cd 9pfuse
-  env PLAN9=\"${rbdir}\" PATH=\"\${PATH}:${rbdir}/bin\" \"${cwsw}/9base/current/bin/mk\" 9pfuse.install CC9=\"\${CC}\"
+  env PLAN9=\"${rbdir}\" PATH=\"${rbdir}/bin:\${PATH}\" \"${cwsw}/9base/current/bin/mk\" 9pfuse.install CC9=\"\${CC}\"
   popd >/dev/null 2>&1
 }
 "
