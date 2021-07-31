@@ -532,7 +532,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - most (https://www.jedsoft.org/most/)
 - mpc
 - mpfr
-- mqtt-c (https://github.com/LiamBindle/MQTT-C)
 - mtm (https://github.com/deadpixi/mtm - micro terminal multiplexer)
 - mujs (http://mujs.com/ and https://github.com/ccxvii/mujs)
 - muslfts (https://github.com/pullmoll/musl-fts)
@@ -1274,6 +1273,7 @@ wc -l /tmp/astbuild.out
       ```
 - moreutils (https://joeyh.name/code/moreutils/)
 - moscow ml (https://github.com/kfl/mosml)
+- mqtt-c (https://github.com/LiamBindle/MQTT-C)
 - mpg123
 - mpg321
 - mruby (https://github.com/mruby/mruby)
