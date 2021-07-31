@@ -1304,6 +1304,8 @@ wc -l /tmp/astbuild.out
   - neatpost (https://github.com/aligrudi/neatpost)
   - neatrefer (https://github.com/aligrudi/neatrefer)
   - neatmkfn (https://github.com/aligrudi/neatmkfn)
+  - neatvi
+    - kyx0r fork with lots of features (https://github.com/kyx0r/neatvi)
   - fbpdf (https://github.com/aligrudi/fbpdf)
   - fbvis (https://repo.or.cz/fbvis.git)
   - fbff (https://github.com/aligrudi/fbff)
