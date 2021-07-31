@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.oberhumer.com/opensource/${rname}/download/${rfile}"
 rsha256="c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072"
-rreqs="make"
+rreqs="make slibtool"
 
 . "${cwrecipe}/common.sh"
 
