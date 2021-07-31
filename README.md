@@ -567,6 +567,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - openssh (openssl, netbsdcurses libedit)
 - openssl
 - openvpn (https://openvpn.net/community-downloads/ and https://github.com/OpenVPN/openvpn - openssl, zlib, lz4, lzo)
+  - openvpnmbedtls (mbedtls, lz4, lzo)
 - outils (https://github.com/leahneukirchen/outils - utils from openbsd, including jot/rs/vis/unvis/etc.)
 - p7zip
 - par (http://www.nicemice.net/par/ via debian https://packages.debian.org/buster/text/par)
