@@ -785,6 +785,13 @@ time_func ls -l -A /
   - see kubernetes, k3s for bin
   - setting in **recipes/common.sh**:
     - something like : `${cwgobuild:="env GOCACHE=${rbdir}/gocache GOMODCACHE=${rbdir}/gomodcache ${cwsw}/go/current/bin/go build -ldflags='-s -w'"}`
+- **openssl** versions
+  - old programs only support older stuff/APIs, even though they're out of support
+  - add `openssl110`, `openssl102`, `openssl100`, `openssl098`, etc.
+  - move main recipe to `openssl111` or have a separate one? (**lua**-recipe-like)
+  - makes openssl 3+ easier in the future?
+  - same for **mbedtls**, **libressl**, **gnutls**, etc., and other tls providers?
+  - same issue for `lua##` and `python#` and the like...
 
 <!--
 # vim: ft=markdown
