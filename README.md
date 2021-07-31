@@ -1550,8 +1550,9 @@ wc -l /tmp/astbuild.out
 - torgo (https://github.com/as/torgo)
 - tpm (https://github.com/nmeum/tpm/ - tiny password manager)
 - transocks (http://transocks.sourceforge.net/ - transparent socks, needs dante/nec socks libs)
+  - transocks_ev (http://oss.tiggerswelt.net/transocks_ev/README - libevent transparent socks-5 with iptables)
 - tre (https://github.com/laurikari/tre)
-- tsocks
+- tsocks (http://tsocks.sourceforge.net/)
 - ttdnsd (http://www.mulliner.org/collin/ttdnsd.php - tor tcp dns daemon, can work with socks, udp+tcp, etc. to relay dns)
 - ttinfo (https://github.com/troglobit/ttinfo)
 - ttyd (https://github.com/tsl0922/ttyd - gotty in c, like shellinabox w/xterm.js, libwebsockets, uses cmake)
