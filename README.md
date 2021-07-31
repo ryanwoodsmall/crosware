@@ -592,7 +592,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - python
   - python2 (very basic support)
   - python3 (wip)
-- qalc (https://qalculate.github.io/ - libqalculate and cli/text interface)
 - qemacs (https://bellard.org/qemacs/)
 - qemuuser (https://www.qemu.org/ - linux userspace only for now)
 - quickjs (https://bellard.org/quickjs/)
@@ -1383,6 +1382,7 @@ wc -l /tmp/astbuild.out
     - http://jdebp.eu./Softwares/nosh/
 - pup (https://github.com/ericchiang/pup)
 - pv (https://github.com/icetee/pv - pipeviewer)
+- qalc (https://qalculate.github.io/ - libqalculate and cli/text interface)
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
 - rawtar (https://github.com/andrewchambers/rawtar)
