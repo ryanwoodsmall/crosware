@@ -500,6 +500,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - lua51 (posix, barebones)
 - lynx (ncurses and slang, ncurses default)
 - lz4 (https://github.com/lz4/lz4)
+- lzo (http://www.oberhumer.com/opensource/lzo)
 - lzip
   - clzip
   - lunzip
@@ -1197,7 +1198,6 @@ wc -l /tmp/astbuild.out
   - lua2c (https://github.com/davidm/lua2c or a fork?)
   - luajit (https://luajit.org/)
   - terra (https://github.com/zdevito/terra and http://terralang.org/)
-- lzo (http://www.oberhumer.com/opensource/lzo)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html)
   - s-nail (https://www.sdaoden.eu/code.html#s-mailx) - up-to-date w/tls (openssl 1.1+) support
   - or gnu mailutils (https://www.gnu.org/software/mailutils/mailutils.html)
