@@ -1017,6 +1017,7 @@ wc -l /tmp/astbuild.out
 - jed (https://www.jedsoft.org/jed/)
 - jitter (http://ageinghacker.net/projects/jitter/ - jit/vm/interpreter thing)
 - joe (https://joe-editor.sourceforge.io/)
+- json-rpc-shell (https://git.janouch.name/p/json-rpc-shell)
 - k3d (https://github.com/rancher/k3d and https://k3d.io - k3s in docker)
 - kakoune (http://kakoune.org/ and https://github.com/mawww/kakoune)
 - kerberos
