@@ -766,6 +766,7 @@ wc -l /tmp/astbuild.out
   - hbase (version?)
   - spark (included in sdkman)
 - binfmt-support (https://git.savannah.gnu.org/cgit/binfmt-support.git - ???)
+- bitlbee (https://github.com/bitlbee/bitlbee and https://www.bitlbee.org/ - irc/social network/etc. gateway, supports libpurple)
 - blake2 (https://github.com/BLAKE2/BLAKE2)
 - boost (...)
   - ```./bootstrap.sh --prefix=${ridir} --without-icu ; ./b2 --prefix=${ridir} --layout=system -q link=static install```
@@ -1623,6 +1624,7 @@ wc -l /tmp/astbuild.out
   - cppcheck can use/may require this for 2.x+
 - zeromq (https://github.com/zeromq/libzmq and https://zeromq.org/)
 - zlib-ng (https://github.com/zlib-ng/zlib-ng - fork with "next-get" vector support)
+- znc (https://github.com/znc/znc and https://wiki.znc.in/ZNC - irc bouncer)
 - zork (https://github.com/devshane/zork - it's zork dude)
 - support libraries for building the above
 - whatever else seems useful
