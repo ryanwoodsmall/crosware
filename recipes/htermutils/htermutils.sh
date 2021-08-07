@@ -8,7 +8,7 @@ rdir="${rname}-${rver}"
 rfile="etc.tar.gz"
 rurl="https://chromium.googlesource.com/apps/libapps/+archive/${rver}/hterm/${rfile}"
 rsha256=""
-rreqs="busybox"
+rreqs=""
 
 . "${cwrecipe}/common.sh"
 
