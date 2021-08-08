@@ -427,6 +427,9 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - exvi with netbsdcurses also available as a standalone package
 - help2man
 - hitch (https://hitch-tls.org/ - openssl+libev tls proxy)
+- hsqldb (http://hsqldb.org/ - java hypersql database, followup to hypersonicsql, with `sqltool` client)
+  - http://www.hsqldb.org/doc/2.0/guide/running-chapt.html
+  - http://www.hsqldb.org/doc/2.0/guide/listeners-chapt.html
 - htermutils (https://chromium.googlesource.com/apps/libapps/+/HEAD/hterm/etc/)
 - htop
 - iftop
@@ -1002,7 +1005,6 @@ wc -l /tmp/astbuild.out
 - jdbc
   - drivers
     - derby (included in derby.jar)
-    - hsqldb (http://hsqldb.org/)
     - mariadb (https://mariadb.com/kb/en/library/about-mariadb-connector-j/)
     - mssql (https://github.com/Microsoft/mssql-jdbc)
     - mysql (https://dev.mysql.com/downloads/connector/j/)
