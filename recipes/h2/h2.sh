@@ -54,6 +54,7 @@ function cwmakeinstall_${rname}() {
   echo '#!/usr/bin/env bash' | tee -a \"\${h2server}\" \"\${h2shell}\" >/dev/null 2>&1
   echo ': \${CLASSPATH:=\"\"}' | tee -a \"\${h2server}\" \"\${h2shell}\" >/dev/null 2>&1
   echo 'export CLASSPATH=\"${rtdir}/current/jar/${rname}.jar:\${CLASSPATH}\"' | tee -a \"\${h2server}\" \"\${h2shell}\" >/dev/null 2>&1
+  echo 'cd \"${cwtmp}\"' >> \"\${h2server}\"
   echo 'java org.${rname}.tools.Server \$(echo -{web,tcp,pg}{,AllowOthers}) -ifNotExists \"\${@}\"' >> \"\${h2server}\"
   echo 'java org.${rname}.tools.Shell \"\${@}\"' >> \"\${h2shell}\"
   chmod 755 \"\${h2server}\" \"\${h2shell}\"
