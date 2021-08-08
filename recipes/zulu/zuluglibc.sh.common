@@ -1,0 +1,67 @@
+jarch="none"
+if [[ ${uarch} =~ ^aarch64 ]] ; then
+  jarch="aarch64"
+elif [[ ${uarch} =~ ^arm ]] ; then
+  jarch="aarch32hf"
+elif [[ ${uarch} =~ ^i.86 ]] ; then
+  jarch="i686"
+elif [[ ${uarch} =~ ^x86_64 ]] ; then
+  jarch="x64"
+fi
+
+: ${rdir:="zulu${rver}-linux_${jarch}"}
+: ${rfile:="${rdir}.tar.gz"}
+if [[ ${uarch} =~ ^a ]] ; then
+  : ${rurl:="https://cdn.azul.com/zulu-embedded/bin/${rfile}"}
+else
+  : ${rurl:="https://cdn.azul.com/zulu/bin/${rfile}"}
+fi
+: ${rprof:="${cwetcprofd}/zz_${rname}.sh"}
+: ${rdlfile:="${cwdl}/zulu/${rfile}"}
+: ${rreqs:=""}
+
+. "${cwrecipe}/common.sh"
+
+if [[ ${uarch} =~ ^(o|r) ]] ; then
+eval "
+function cwinstall_${rname}() {
+  cwscriptecho \"${rname} not supported on ${uarch}\"
+}
+"
+fi
+
+eval "
+function cwextract_${rname}() {
+  cwextract \"${rdlfile}\" \"${rtdir}\"
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  true
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  true
+}
+"
+
+eval "
+function cwconfigure_${rname}() {
+  true
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'export JAVA_HOME=\"${rtdir}/current\"' > \"${rprof}\"
+  echo 'export _JAVA_OPTIONS=\"-Djava.io.tmpdir=${cwtmp} -Djava.awt.headless=true -XX:-UsePerfData\"' >> \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
+}
+"
+
+unset jarch
+
+# vim: ft=sh:

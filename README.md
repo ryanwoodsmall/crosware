@@ -698,8 +698,9 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - zlib
 - zstd (https://github.com/facebook/zstd)
 - zulu - built-in glibc-based for bootstrapping (chrome os, centos, debian, ubuntu, ...)
-  - zulu8musl - zulu 8 jdk built against musl libc
-  - zulu11musl - zulu 11 jdk built against musl libc
+  - zulu11glibc - zulu 11 jdk
+  - zulu8musl - zulu 8 jdk built against musl libc (x86_64 only)
+  - zulu11musl - zulu 11 jdk built against musl libc (x86_64 only)
 
 ## recipes to consider
 
