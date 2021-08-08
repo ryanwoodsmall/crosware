@@ -418,6 +418,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - works for aarch64/x86_64
   - does _not_ work on arm/i686 (gc)
   - guile2 recipe as well, with same caveats
+- h2 (http://www.h2database.com/ and https://github.com/h2database/h2database - java embedded/client-server db with postgres compat mode)
 - habitat (https://community.chef.io/tools/chef-habitat)
   - single static `hab` binary
 - haproxy (http://www.haproxy.org/ - openssl+pcre+zlib)
@@ -1001,7 +1002,6 @@ wc -l /tmp/astbuild.out
 - jdbc
   - drivers
     - derby (included in derby.jar)
-    - h2 (http://www.h2database.com/html/main.html)
     - hsqldb (http://hsqldb.org/)
     - mariadb (https://mariadb.com/kb/en/library/about-mariadb-connector-j/)
     - mssql (https://github.com/Microsoft/mssql-jdbc)
