@@ -11,7 +11,7 @@ rver="1.7.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}-linux-amd64.tbz2"
 #rurl="https://sites.google.com/site/broguegame/${rfile}?attredirects=0&d=1"
-rurl="https://gist.github.com/ryanwoodsmall/cd0e5f1fc66741647d6c04e323ffbdc1/raw/f82e301f05a8b9e61ea23608bfba29b35942bdc9/${rfile}"
+rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rsha256="a74ff18139564c597d047cfb167f74ab1963dd8608b6fb2e034e7635d6170444"
 rreqs="make ncurses rsync"
 
