@@ -4,12 +4,12 @@
 #
 
 rname="derby"
-rver="10.15.1.3"
+rver="10.15.2.0"
 rdir="db-${rname}-${rver}-bin"
 rfile="${rdir}.tar.gz"
 #rurl="http://www-us.apache.org/dist//db/${rname}/db-${rname}-${rver}/${rfile}"
 rurl="https://archive.apache.org/dist/db/derby/db-${rname}-${rver}/${rfile}"
-rsha256="eedb0293fea8b7d9cc813371c34935661e42ea8270e72fedd0ffe2a6a29c61ad"
+rsha256="ac51246a2d9eef70cecd6562075b30aa9953f622cbd2cd3551bc3d239dc6f02a"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
