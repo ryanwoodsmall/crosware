@@ -21,6 +21,7 @@ function cwinstall_${rname}() {
   cwcheckreqs_${rname}
   cwsourceprofile
   cwextract \"${rdlfile}\" \"${rtdir}\"
+  chmod 644 ${ridir}/bin/*.bat
   cwlinkdir_${rname}
   cwgenprofd_${rname}
   cwmarkinstall_${rname}
