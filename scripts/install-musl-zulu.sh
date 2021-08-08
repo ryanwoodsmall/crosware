@@ -22,9 +22,9 @@ fi
 # fail fast from here on out
 set -eu
 
-# default to jdk 8
+# default to jdk 11
 if [ ${#} -lt 1 ] ; then
-  reqver=8
+  reqver=11
 else
   reqver="${1}"
 fi
@@ -34,8 +34,8 @@ case "${reqver}" in
     8|11) zuluver="$(awk -F'"' '/^rver=/{print $2}' ${cwtop}/recipes/zulu/zulu${reqver}musl.sh)"
           zulusha="$(awk -F'"' '/^rsha256=/{print $2}' ${cwtop}/recipes/zulu/zulu${reqver}musl.sh)"
           ;;
-     all) bash "${BASH_SOURCE[0]}" 11
-          bash "${BASH_SOURCE[0]}" 8
+     all) bash "${BASH_SOURCE[0]}" 8
+          bash "${BASH_SOURCE[0]}" 11
           exit 0
           ;;
   custom) : ${zuluver:=""}
