@@ -27,8 +27,11 @@ function cwmakeinstall_${rname}() {
   local p
   make install ${rlibtool}
   cwmkdir \"${ridir}/bin\"
-  for p in src/tools/a{country,dig,host} ; do
-    install -m 0755 \${p} \"${ridir}/bin/\$(basename \${p})\"
+  cwmkdir \"${ridir}/share/man/man1\"
+  for p in a{country,dig,host} ; do
+    install -m 0755 src/tools/\${p} \"${ridir}/bin/\${p}\"
+    \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/\${p}\"
+    install -m 0644 docs/\${p}.1 \"${ridir}/share/man/man1/\${p}.1\"
   done
   popd >/dev/null 2>&1
 }
@@ -36,7 +39,8 @@ function cwmakeinstall_${rname}() {
 
 #eval "
 #function cwgenprofd_${rname}() {
-#  echo 'append_cppflags \"-I${rtdir}/current/include\"' > \"${rprof}\"
+#  echo 'append_path \"-I${rtdir}/current/bin\"' > \"${rprof}\"
+#  echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
 #  echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
 #  echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
 #}
