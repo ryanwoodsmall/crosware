@@ -1,9 +1,9 @@
 rname="cares"
-rver="1.17.1"
+rver="1.17.2"
 rdir="c-ares-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://github.com/c-ares/c-ares/releases/download/${rname}-${rver//./_}/c-ares-1.17.1.tar.gz"
-rsha256="d73dd0f6de824afd407ce10750ea081af47eba52b8a6cb307d220131ad93fc40"
+rurl="https://github.com/c-ares/c-ares/releases/download/${rname}-${rver//./_}/${rfile}"
+rsha256="4803c844ce20ce510ef0eb83f8ea41fa24ecaae9d280c468c582d2bb25b3913d"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -17,6 +17,19 @@ function cwconfigure_${rname}() {
       CPPFLAGS= \
       PKG_CONFIG_LIBDIR= \
       PKG_CONFIG_PATH=
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  local p
+  make install ${rlibtool}
+  cwmkdir \"${ridir}/bin\"
+  for p in src/tools/a{country,dig,host} ; do
+    install -m 0755 \${p} \"${ridir}/bin/\$(basename \${p})\"
+  done
   popd >/dev/null 2>&1
 }
 "
