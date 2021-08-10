@@ -37,11 +37,12 @@ function cwmakeinstall_${rname}() {
 }
 "
 
-#eval "
-#function cwgenprofd_${rname}() {
-#  echo 'append_path \"-I${rtdir}/current/bin\"' > \"${rprof}\"
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+
 #  echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
 #  echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
 #  echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
-#}
-#"
