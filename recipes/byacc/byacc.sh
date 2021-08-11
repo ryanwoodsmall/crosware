@@ -3,7 +3,7 @@ rver="20210808"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://invisible-mirror.net/archives/${rname}/${rfile}"
-rsha256="f3b0edd584a426da0ee1676e4ed7484e62f777c31ea33acf4c89d65e32c75cea"
+rsha256="f158529be9d0594263c7f11a87616a49ea23e55ac63691252a2304fbbc7d3a83"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
