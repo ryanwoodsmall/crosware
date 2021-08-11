@@ -1288,6 +1288,7 @@ wc -l /tmp/astbuild.out
 - mpg321
 - mruby (https://github.com/mruby/mruby)
 - multimarkdown (https://github.com/fletcher/MultiMarkdown-6)
+- mupdf (https://mupdf.com/ and https://github.com/ArtifexSoftware/mupdf - muraster, mutool build without X11/GL)
 - musl stuff
   - musl-locales (https://github.com/rilian-la-te/musl-locales - cmake? seriously?)
   - musl-obstack (https://github.com/pullmoll/musl-obstack and/or https://github.com/void-linux/musl-obstack)
