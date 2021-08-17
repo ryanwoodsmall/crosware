@@ -1,10 +1,10 @@
 rname="stunnel"
-rver="5.59"
+rver="5.60"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="ftp://ftp.${rname}.org/${rname}/archive/${rver%%.*}.x/${rfile}"
 rurl="https://www.usenix.org.uk/mirrors/${rname}/archive/${rver%%.*}.x/${rfile}"
-rsha256="137776df6be8f1701f1cd590b7779932e123479fb91e5192171c16798815ce9f"
+rsha256="c45d765b1521861fea9b03b425b9dd7d48b3055128c0aec673bba5ef9b8f787d"
 rreqs="make openssl zlib toybox perl"
 
 . "${cwrecipe}/common.sh"
