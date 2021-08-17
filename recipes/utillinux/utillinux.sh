@@ -1,10 +1,10 @@
 rname="utillinux"
-rver="2.37.1"
+rver="2.37.2"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver%.?}/${rfile}"
 #rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver}/${rfile}"
-rsha256="8e4bd42053b726cf86eb4d13a73bc1d9225a2c2e1a2e0d2a891f1020f83e6b76"
+rsha256="6a0764c1aae7fb607ef8a6dd2c0f6c47d5e5fd27aa08820abaad9ec14e28e9d9"
 rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig"
 
 . "${cwrecipe}/common.sh"
@@ -40,6 +40,18 @@ function cwconfigure_${rname}() {
   popd >/dev/null 2>&1
 }
 "
+
+#eval "
+#function cwmakeinstall_${rname}() {
+#  pushd \"${rbdir}\" >/dev/null 2>&1
+#  make install ${rlibtool}
+#  for m in {1..9} ; do
+#    test \$(find . -type f -name \\*.\${m} | wc -l) -gt 0 && mkdir -p \"${ridir}/share/man/man\${m}\" || continue
+#    find . -type f -name \\*.\${m} -exec install -m 0644 {} \"${ridir}/share/man/man\${m}/\" \\;
+#  done
+#  popd >/dev/null 2>&1
+#}
+#"
 
 eval "
 function cwgenprofd_${rname}() {
