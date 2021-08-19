@@ -1,0 +1,11 @@
+[Unit]
+Description=crosware dropbear ssh server
+After=network.target
+
+[Service]
+ExecStart=/usr/local/crosware/software/dropbear/current/sbin/dropbear -R -F
+PIDFile=/var/run/dropbear.pid
+
+[Install]
+WantedBy=multi-user.target
+Alias=dropbear.service
