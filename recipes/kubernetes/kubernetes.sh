@@ -1,4 +1,5 @@
 #
+# XXX - need a version policy, i.e. "within one version of k3s?"
 # XXX - kubelet is glibc, probably need to compile? ugh?
 # XXX - k8s builds seem relatively straightforward...
 #
