@@ -2,10 +2,11 @@
 # XXX - name contains +, which is urlencoded to %2B
 # XXX - don't like + in dir/file names
 # XXX - json of channels - "stable" here: https://update.k3s.io/v1-release/channels
+# XXX - package for airgap images? k3s-airgap-images-${ARCH}.tar{,.{gz,zst}}
 #
 
 rname="k3s"
-rver="1.21.3_${rname}1"
+rver="1.21.4_${rname}1"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
@@ -14,17 +15,17 @@ rburl="https://github.com/k3s-io/k3s/releases/download/v${rver//_/%2B}"
 if [[ ${karch} =~ ^aarch64 ]] ; then
   rfile="${rname}-arm64"
   rurl="${rburl}/${rfile}"
-  rsha256="fc1a8ebcfb16bcaaa1cc3865e39bc384e3d61bbcecc530ce7b915eac6f25a19d"
+  rsha256="b7f8c026c5346b3e894d731f1dc2490cd7281687549f34c28a849f58c62e3e48"
   rdlfile="${cwdl}/${rname}/${rfile}_${rver}"
 elif [[ ${karch} =~ ^arm ]] ; then
   rfile="${rname}-armhf"
   rurl="${rburl}/${rfile}"
-  rsha256="344e0774d43cc22fe9ba46ec77a6bf6ea6f520afed24dda11636639e3ca87525"
+  rsha256="208bef525bf968b6b55a2fcb358cf626464e978c99111a1c444f6fad3dd44e06"
   rdlfile="${cwdl}/${rname}/${rfile}_${rver}"
 elif [[ ${karch} =~ ^x86_64 ]] ; then
   rfile="${rname}"
   rurl="${rburl}/${rfile}"
-  rsha256="c257e119158feee992dc4397be00490103f0dde5af4b014e8d0f17f9db35ef00"
+  rsha256="47e686ad5390670da79a467ba94399d72e472364bc064a20fecd3937a8d928b5"
   rdlfile="${cwdl}/${rname}/${rfile}-amd64_${rver}"
 fi
 unset rburl
