@@ -715,6 +715,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - js_httpd (http://www.acme.com/software/js_httpd/)
   - lam (http://www.acme.com/software/lam/)
   - mudecode (http://www.acme.com/software/mudecode/)
+- acme.sh (https://github.com/acmesh-official/acme.sh - shell cert client with openssl+curl+wget)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - agner fog's stuff
   - https://www.agner.org/optimize/#objconv
