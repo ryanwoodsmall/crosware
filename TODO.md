@@ -792,6 +792,9 @@ time_func ls -l -A /
   - makes openssl 3+ easier in the future?
   - same for **mbedtls**, **libressl**, **gnutls**, etc., and other tls providers?
   - same issue for `lua##` and `python#` and the like...
+- `openssl-cert-wrapper` (doesn't exist)
+  - enough rsa/x509/ecc (via mbedtls, bearssl/x509cert, px5g, gnutls, dropbear, plan9port, lsh, ...) for key/cert generation
+  - for acme.sh and other tools that require openssl for key and cert generation
 
 <!--
 # vim: ft=markdown
