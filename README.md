@@ -380,7 +380,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - works for aarch64/i686/x86_64
   - does _not_ work on arm (gc? gmp?)
 - ed (gnu ed)
-- editline (https://github.com/troglobit/editline)
 - elinks (http://elinks.or.cz/ from git: https://repo.or.cz/elinks.git)
   - investigate adding tre, spidermonkey javascript/ecmascript/js, ...
 - elvis (https://github.com/mbert/elvis)
@@ -485,7 +484,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtool
 - libucontext (https://github.com/kaniini/libucontext - glibc compat ucontext, opt-in)
-- libuev (https://github.com/troglobit/libuev)
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
 - libuv (https://github.com/libuv/libuv)
 - libxml2
@@ -524,13 +522,11 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - man-pages-posix (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/)
 - mawk (https://invisible-island.net/mawk/mawk.html)
 - mbedtls (polarssl)
-- mdnsd (https://github.com/troglobit/mdnsd - multicast dns daemon, mdsresponder, mdns-sd, etc.)
 - meson (http://mesonbuild.com/)
 - microsocks (https://github.com/rofl0r/microsocks)
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
 - minikube (https://minikube.sigs.k8s.io/)
 - minischeme (https://github.com/catseye/minischeme)
-- minisnmpd (https://github.com/troglobit/mini-snmpd and https://troglobit.com/projects/mini-snmpd/)
 - mksh (http://www.mirbsd.org/mksh.htm)
 - mosquitto (https://github.com/eclipse/mosquitto and https://mosquitto.org/ - mqtt broker & pub/sub client - openssl/cjson/c-ares)
   - mosquittolibressl (libressl/cjson/c-ares)
@@ -604,7 +600,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - rc174 (http://tobold.org/article/rc, https://github.com/rakitzis/rc - ncurses+readline, needs to be git hash, old release)
 - rcs (gnu)
 - readline (ncurses and netbsdcurses)
-- redir (https://github.com/troglobit/redir)
 - reflex (https://invisible-island.net/reflex/reflex.html)
 - rhino
 - rlwrap (netbsdcurses)
@@ -669,6 +664,13 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - toybox (static)
 - tree (http://mama.indstate.edu/users/ice/tree/)
+- troglobit stuff
+  - editline (https://github.com/troglobit/editline)
+  - libuev (https://github.com/troglobit/libuev)
+  - mdnsd (https://github.com/troglobit/mdnsd - multicast dns daemon, mdsresponder, mdns-sd, etc.)
+  - minisnmpd (https://github.com/troglobit/mini-snmpd and https://troglobit.com/projects/mini-snmpd/)
+  - redir (https://github.com/troglobit/redir)
+  - uredir (https://github.com/troglobit/uredir)
 - uacme (https://github.com/ndilieto/uacme - standalone acme/letsencrypt client in c, curl+openssl)
   - uacmembedtls (curl+mbedtls)
   - uacmegnutls (curl+gnutls)
@@ -679,7 +681,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - **libixp** recipe provides `ixpc` 9p client
 - unrar
 - unzip
-- uredir (https://github.com/troglobit/uredir)
 - utillinux
 - uucp (https://www.airs.com/ian/uucp.html and https://www.gnu.org/software/uucp/)
 - vile (https://invisible-island.net/vile/)
@@ -881,7 +882,6 @@ wc -l /tmp/astbuild.out
 - entr (http://entrproject.org/ and https://github.com/eradman/entr)
 - eris (https://github.com/nealey/eris - small web server)
 - fcgiwrap (https://github.com/gnosek/fcgiwrap - standard cgi to fcgi socket wrapper, useful with nginx?)
-- finit (https://github.com/troglobit/finit)
 - firecracker (https://github.com/firecracker-microvm/firecracker - rust, but there are static bins for aarch64/x86_64)
   - firectl (https://github.com/firecracker-microvm/firectl - firecracker vm control, go)
   - firecracker-containerd (https://github.com/firecracker-microvm/firecracker-containerd)
@@ -936,7 +936,6 @@ wc -l /tmp/astbuild.out
 - ibara's good portable/bsd stuff
   - m4 (https://github.com/ibara/m4)
   - yacc (https://github.com/ibara/yacc)
-- inadyn (https://github.com/troglobit/inadyn)
 - incron (https://github.com/ar-/incron - cron for filesystem events)
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - invisible-island (thomas e. dickey) stuff
@@ -1225,7 +1224,6 @@ wc -l /tmp/astbuild.out
 - mercurial / hg
   - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```
   - config/build/install with: ```env PATH=${cwsw}/python2/current/bin:${PATH} make <all|install> PREFIX=${ridir} CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS//-static/}" CFLAGS='' CPPFLAGS=''```
-- merecat (https://github.com/troglobit/merecat)
 - mes (https://www.gnu.org/software/mes/) and m2 stuff (links above)
 - mesalink (https://mesalink.io/ and https://github.com/mesalock-linux/mesalink)
 - mgksh (https://github.com/ibara/mgksh - static ksh and mg (emacs) from openbsd in a single bin)
@@ -1502,7 +1500,6 @@ wc -l /tmp/astbuild.out
 - smarden stuff
   - ipsvd (http://smarden.org/ipsvd/ - can use matrixssl?)
   - runit (http://smarden.org/runit/)
-- smcroute (https://github.com/troglobit/smcroute and https://troglobit.com/projects/smcroute/)
 - snarf (https://www.xach.com/snarf/ - old but small, still useful?)
 - source-highlight (https://www.gnu.org/software/src-highlite/)
   - 2.x, 3.x require boost (yeeee), ctags
@@ -1542,7 +1539,6 @@ wc -l /tmp/astbuild.out
     ```
 - sundown (markdown lib - https://github.com/vmg/sundown)
 - svi (https://github.com/byllgrim/svi)
-- sysklogd (https://github.com/troglobit/sysklogd - bsd syslog on linux, newer rfc compliant)
 - tab (https://tkatchev.bitbucket.io/tab/)
 - tack (https://github.com/davidgiven/ack and http://tack.sourceforge.net/ - the amsterdam compiler kit)
 - taskwarrior (https://taskwarrior.org/ and https://github.com/GothenburgBitFactory/taskwarrior)
@@ -1564,9 +1560,17 @@ wc -l /tmp/astbuild.out
 - transocks (http://transocks.sourceforge.net/ - transparent socks, needs dante/nec socks libs)
   - transocks_ev (http://oss.tiggerswelt.net/transocks_ev/README - libevent transparent socks-5 with iptables)
 - tre (https://github.com/laurikari/tre)
+- troglobit stuff
+  - finit (https://github.com/troglobit/finit)
+  - inadyn (https://github.com/troglobit/inadyn)
+  - merecat (https://github.com/troglobit/merecat)
+  - mg (https://github.com/troglobit/mg - see mg stuff above...)
+  - smcroute (https://github.com/troglobit/smcroute and https://troglobit.com/projects/smcroute/)
+  - sysklogd (https://github.com/troglobit/sysklogd - bsd syslog on linux, newer rfc compliant)
+  - ttinfo (https://github.com/troglobit/ttinfo)
+  - uftpd (https://github.com/troglobit/uftpd)
 - tsocks (http://tsocks.sourceforge.net/)
 - ttdnsd (http://www.mulliner.org/collin/ttdnsd.php - tor tcp dns daemon, can work with socks, udp+tcp, etc. to relay dns)
-- ttinfo (https://github.com/troglobit/ttinfo)
 - ttyd (https://github.com/tsl0922/ttyd - gotty in c, like shellinabox w/xterm.js, libwebsockets, uses cmake)
 - ttynvt (https://gitlab.com/lars-thrane-as/ttynvt - network virtual terminal, needs fuse)
 - twtxt stuff
@@ -1582,7 +1586,6 @@ wc -l /tmp/astbuild.out
 - ublinter (https://github.com/danmar/ublinter)
 - ubridge (https://github.com/GNS3/ubridge - udp, ethernet, tap, etc. userspace bridge controller)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
-- uftpd (https://github.com/troglobit/uftpd)
 - unfs3 (https://unfs3.github.io/ and https://github.com/unfs3/unfs3)
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
 - units (https://www.gnu.org/software/units)
