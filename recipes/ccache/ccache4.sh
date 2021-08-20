@@ -1,9 +1,13 @@
+#
+# XXX - redis backend requires redis (duhhh) and hiredis
+#
+
 rname="ccache4"
-rver="4.3"
+rver="4.4"
 rdir="${rname%4}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname%4}/${rname%4}/releases/download/v${rver}/${rfile}"
-rsha256="b9789c42e52c73e99428f311a34def9ffec3462736439afd12dbacc7987c1533"
+rsha256="61a993d62216aff35722a8d0e8ffef9b677fc3f6accd8944ffc2a6db98fb3142"
 rreqs="cmake make zstd"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
@@ -17,6 +21,7 @@ function cwconfigure_${rname}() {
     -DZSTD_INCLUDE_DIR=\"${cwsw}/zstd/current/include\" \
     -DZSTD_LIBRARY=\"${cwsw}/zstd/current/lib/libzstd.a\" \
     -DBUILD_SHARED_LIBS=OFF \
+    -DREDIS_STORAGE_BACKEND=OFF \
     -DENABLE_TESTING=0
   popd >/dev/null 2>&1
 }
