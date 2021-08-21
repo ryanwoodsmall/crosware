@@ -855,6 +855,7 @@ wc -l /tmp/astbuild.out
   - could be used to bootstrap llvm/clang and bootstrap rust?
 - curl caextract (https://curl.haxx.se/docs/caextract.html - replace/augment cacertificates?)
 - curlie (https://github.com/rs/curlie and https://curlie.io/ - curl features with httpie-alike in go)
+- cwerg (https://github.com/robertmuth/Cwerg - compiler back-end for arm 32- and 64-bit)
 - dante (socks proxy client/server https://www.inet.no/dante/)
 - dasel (https://github.com/TomWright/dasel - data selector like jq, yq - go)
 - ddrescue
