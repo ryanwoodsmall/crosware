@@ -47,7 +47,7 @@ cd "\${cwtop}"
 gitfiles="\$(\${g} grep -il . 2>/dev/null || true)"
 echo "Content-type: application/x-tar"
 echo
-tar -cf - \${gitfiles} bin/ recipes/ scripts/
+tar -cf - \${gitfiles} bin/ recipes/ scripts/ etc/functions etc/profile etc/vars
 EOF
 chmod 755 tar.cgi
 
