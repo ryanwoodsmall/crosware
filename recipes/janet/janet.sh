@@ -1,6 +1,7 @@
 #
 # XXX - maybe install shared lib .so(s) in ${ridir}/dl? need something similar for lua?
 # XXX - jpm moved to separate project in 1.17.x: https://github.com/janet-lang/jpm
+# XXX - jpm probably needs to be a commit hash with a 'git' wrapper for rev-parse HEAD and get-url on install
 #
 
 rname="janet"
