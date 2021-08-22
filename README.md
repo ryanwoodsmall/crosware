@@ -481,6 +481,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libressl (https://www.libressl.org/)
 - libssh2 (openssl, zlib)
   - libssh2libgcrypt (gcrypt, zlib)
+  - libssh2mbedtls (mbedtls, zlib)
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtool
 - libucontext (https://github.com/kaniini/libucontext - glibc compat ucontext, opt-in)
