@@ -718,6 +718,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - mudecode (http://www.acme.com/software/mudecode/)
 - acme.sh (https://github.com/acmesh-official/acme.sh - shell cert client with openssl+curl+wget)
   - see `openssl-cert-wrapper` idea in [TODO.md](TODO.md)
+  - lots of dns updates in there too...
+    - dyn, freedns, etc. update script: https://github.com/acmesh-official/acme.sh/blob/master/dnsapi/dns_freedns.sh
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - agner fog's stuff
   - https://www.agner.org/optimize/#objconv
