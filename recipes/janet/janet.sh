@@ -1,16 +1,29 @@
 #
 # XXX - maybe install shared lib .so(s) in ${ridir}/dl? need something similar for lua?
+# XXX - jpm moved to separate project in 1.17.x: https://github.com/janet-lang/jpm
 #
 
 rname="janet"
-rver="1.16.1"
+rver="1.17.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/janet-lang/${rname}/archive/refs/tags/${rfile}"
-rsha256="ed9350ad7f0270e67f18a78dae4910b9534f19cd3f20f7183b757171e8cc79a5"
+rsha256="45126be7274e0a298dcbe356b5310bd9328c94eb3a562316813fa9774ca34bcc"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
+
+: ${jpm_ver:="master"}
+: ${jpm_dir:="jpm-${jpm_ver}"}
+: ${jpm_file:="${jpm_dir}.zip"}
+: ${jpm_dlfile:="${cwdl}/${rname}/${jpm_file}"}
+
+eval "
+function cwfetch_${rname}() {
+  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
+  cwfetch \"https://github.com/${rname}-lang/jpm/archive/refs/heads/${jpm_ver}.zip\" \"${jpm_dlfile}\"
+}
+"
 
 eval "
 function cwconfigure_${rname}() {
@@ -40,16 +53,24 @@ function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install ${rlibtool} CPPFLAGS= LDFLAGS=-static PKG_CONFIG_LDFLAGS= PKG_CONFIG_PATH=
   \$(\${CC} -dumpmachine)-strip \"${ridir}/bin/${rname}\"
+  rm -rf \"${jpm_dir}\"
+  unzip \"${jpm_dlfile}\"
+  cd \"${jpm_dir}\"
+  env JANET_PREFIX=\"${ridir}\" PATH=\"${ridir}/bin:\${PATH}\" \"${ridir}/bin/${rname}\" cli.janet install --offline
   sed -i \"s,${ridir},${rtdir}/current,g\" \"${ridir}/bin/jpm\"
+  cd -
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  echo 'export JANET_PREFIX=\"${rtdir}/current\"' > \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
   echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
   echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
   echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
 }
 "
+
+unset jpm_ver jpm_dir jpm_file jpm_dlfile
