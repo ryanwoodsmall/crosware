@@ -667,6 +667,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - tree (http://mama.indstate.edu/users/ice/tree/)
 - troglobit stuff
   - editline (https://github.com/troglobit/editline)
+  - inadyn (https://github.com/troglobit/inadyn - dynamic dns updater, openssl)
   - libuev (https://github.com/troglobit/libuev)
   - mdnsd (https://github.com/troglobit/mdnsd - multicast dns daemon, mdsresponder, mdns-sd, etc.)
   - minisnmpd (https://github.com/troglobit/mini-snmpd and https://troglobit.com/projects/mini-snmpd/)
@@ -1569,7 +1570,6 @@ wc -l /tmp/astbuild.out
 - tre (https://github.com/laurikari/tre)
 - troglobit stuff
   - finit (https://github.com/troglobit/finit)
-  - inadyn (https://github.com/troglobit/inadyn)
   - merecat (https://github.com/troglobit/merecat)
   - mg (https://github.com/troglobit/mg - see mg stuff above...)
   - smcroute (https://github.com/troglobit/smcroute and https://troglobit.com/projects/smcroute/)
