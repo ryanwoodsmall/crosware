@@ -1,5 +1,5 @@
 rname="curlgnutls"
-rreqs="make zlib gnutls libtasn1 libunistring nettle gmp cacertificates nghttp2 pkgconfig libgpgerror libgcrypt libssh2libgcrypt"
-rproviderreqs="gnutls,libtasn1,libunistring,nettle,gmp"
+rreqs="gnutls libtasn1 libunistring nettle gmp"
+rproviderreqs="${rreqs// /,}"
 rcommonopts="LIBS='-lgnutls -ltasn1 -lunistring -lhogweed -lgmp -lnettle'"
 . "${cwrecipe}/${rname%gnutls}/${rname%gnutls}tlsprovider.sh.common"

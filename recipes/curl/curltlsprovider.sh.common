@@ -10,6 +10,20 @@ rsha256=""
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rprovider="${rname#curl}"
 : ${rproviderreqs:="${rprovider}"}
+: ${libssh2provider:="libssh2libgcrypt"}
+
+# common reqs
+rreqs="${rreqs} make zlib cacertificates nghttp2 pkgconfig"
+
+# libssh2 provider
+# XXX - captures a bit more info than rreqs="${rreqs} ${libssh2provider}"
+# XXX - include reqs in rproviderreqs? rproviderreqs="${rproviderreqs},${rreqs// /,}"
+# XXX - wolfssl with wolfssh - works but libssh2 seems more reliable
+if [[ ${libssh2provider} =~ libssh2libgcrypt ]] ; then
+  rreqs="${rreqs} libgpgerror libgcrypt libssh2libgcrypt"
+elif [[ ${libssh2provider} =~ libssh2mbedtls ]] ; then
+  rreqs="${rreqs} libssh2mbedtls"
+fi
 
 . "${cwrecipe}/common.sh"
 . "${cwrecipe}/${rname%${rprovider}}/${rname%${rprovider}}.sh.common"
@@ -28,7 +42,7 @@ function cwmakeinstall_${rname}() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --enable-ipv6 \
-    --with-libssh2=\"${cwsw}/libssh2libgcrypt/current\" \
+    --with-libssh2=\"${cwsw}/${libssh2provider}/current\" \
     --with-nghttp2=\"${cwsw}/nghttp2/current\" \
     --with-zlib=\"${cwsw}/zlib/current\" \
     --without-brotli \
@@ -41,10 +55,10 @@ function cwmakeinstall_${rname}() {
     --with-default-ssl-backend=${rprovider} \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/include)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib) -static\" \
-      PKG_CONFIG_LIBDIR=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\" \
-      PKG_CONFIG_PATH=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,libssh2libgcrypt}/current/lib/pkgconfig | tr ' ' ':')\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/lib) -static\" \
+      PKG_CONFIG_LIBDIR=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/lib/pkgconfig | tr ' ' ':')\" \
+      PKG_CONFIG_PATH=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/lib/pkgconfig | tr ' ' ':')\" \
       ${rcommonopts}
   make -j${cwmakejobs} ${rlibtool}
   make install ${rlibtool}
@@ -57,6 +71,6 @@ function cwmakeinstall_${rname}() {
 }
 "
 
-unset rprovider sslproviders othersslproviders rproviderreqs
+unset rprovider sslproviders othersslproviders rproviderreqs libssh2provider
 
 # vim: ft=sh:
