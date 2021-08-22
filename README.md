@@ -1297,6 +1297,7 @@ wc -l /tmp/astbuild.out
 - mpg123
 - mpg321
 - mruby (https://github.com/mruby/mruby)
+- muacme (https://github.com/jirutka/muacme - uacme wrapper with busybox/openrc/knot knsupdate/kdig)
 - multimarkdown (https://github.com/fletcher/MultiMarkdown-6)
 - muon (https://github.com/annacrombie/muon - meson in c)
 - mupdf (https://mupdf.com/ and https://github.com/ArtifexSoftware/mupdf - muraster, mutool build without X11/GL)
