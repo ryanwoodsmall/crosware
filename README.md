@@ -1064,6 +1064,7 @@ wc -l /tmp/astbuild.out
 - lemon (https://www.hwaci.com/sw/lemon/ https://www.sqlite.org/lemon.html https://sqlite.org/src/doc/trunk/doc/lemon.html)
 - levee (https://github.com/Orc/levee)
 - lf (https://github.com/gokcehan/lf - go)
+- libarchive (https://github.com/libarchive/libarchive and https://www.libarchive.org/ - libarchive.a, bsdtar/bsdcpio/bsdcat)
 - libdash (https://github.com/mgree/libdash - shell as a library, ast, etc.)
 - libdbi (https://github.com/balabit/libdbi)
 - libdbi-drivers (https://github.com/balabit/libdbi-drivers)
