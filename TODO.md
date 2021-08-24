@@ -795,6 +795,12 @@ time_func ls -l -A /
 - `openssl-cert-wrapper` (doesn't exist)
   - enough rsa/x509/ecc (via mbedtls, bearssl/x509cert, px5g, gnutls, dropbear, plan9port, lsh, ...) for key/cert generation
   - for acme.sh and other tools that require openssl for key and cert generation
+- hard to support recipes
+  - need an ongoing update strategy for stuff that is necessary but a pain to update/slow build/etc. or that i don't personally use
+    - perl
+    - qemu
+    - glib
+    - python python python
 
 <!--
 # vim: ft=markdown
