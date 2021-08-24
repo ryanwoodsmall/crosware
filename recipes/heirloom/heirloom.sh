@@ -1,7 +1,4 @@
 #
-# XXX - build
-#   - netbsdcurses works: set proper -I and -L, add '-DTPARM_VARARGS -DUSE_TERMCAP' to CPPFLAGS, set LCURS to '-lcurses -lterminfo'
-#
 # XXX - profile ordering
 #   - use zz_00_heirloom.sh to come before 9base?
 #
@@ -10,7 +7,7 @@
 #   - https://github.com/illumos/illumos-gate/commit/356ba08c15b26adbde3440aa89d8b31cd39fc526
 #
 rname="heirloom"
-rreqs="make sed ncurses zlib bzip2 ed byacc reflex mksh busybox"
+rreqs="make sed netbsdcurses zlib bzip2 ed byacc reflex mksh busybox"
 
 . "${cwrecipe}/heirloom/heirloom.sh.common"
 . "${cwrecipe}/common.sh"
@@ -22,12 +19,12 @@ function cwconfigure_${rname}() {
   | xargs sed -i \"s#/usr/local/${rname}#${ridir}#g\"
   sed -i '/^LEX = /s/LEX.*/LEX=reflex/g' heirloom/build/mk.config
   sed -i '/^YACC = /s/YACC.*/YACC=byacc/g' heirloom/build/mk.config
-  #sed -i '/^LCURS = /s/LCURS.*/LCURS = -lcurses -lterminfo/g' heirloom/build/mk.config
-  #sed -i '/^CPPFLAGS/s/$/ -DTPARM_VARARGS -DUSE_TERMCAP/g' heirloom/build/mk.config
-  #sed -i 's#/ncurses#/netbsdcurses#g' heirloom/build/mk.config
-  #sed -i 's#/ncurses/#/netbsdcurses/#g' heirloom-ex-vi/Makefile
-  #sed -i '/^TERMLIB/s/ncurses/curses/g' heirloom-ex-vi/Makefile
-  #sed -i '/^#LDADD/s/.*/LDADD = -lcurses -lterminfo/g' heirloom-ex-vi/Makefile
+  sed -i '/^LCURS = /s/LCURS.*/LCURS = -lcurses -lterminfo/g' heirloom/build/mk.config
+  sed -i '/^CPPFLAGS/s/$/ -DTPARM_VARARGS -DUSE_TERMCAP/g' heirloom/build/mk.config
+  sed -i 's#/ncurses#/netbsdcurses#g' heirloom/build/mk.config
+  sed -i 's#/ncurses/#/netbsdcurses/#g' heirloom-ex-vi/Makefile
+  sed -i '/^TERMLIB/s/ncurses/curses/g' heirloom-ex-vi/Makefile
+  sed -i '/^#LDADD/s/.*/LDADD = -lcurses -lterminfo/g' heirloom-ex-vi/Makefile
   popd >/dev/null 2>&1
 }
 "
