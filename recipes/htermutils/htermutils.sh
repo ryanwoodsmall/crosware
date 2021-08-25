@@ -1,5 +1,6 @@
 #
 # XXX - gitiles instance, sha256 inconsistent
+# XXX - xclip wrapper for i.e. pass?
 #
 
 rname="htermutils"
