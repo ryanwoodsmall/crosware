@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://www.netfilter.org/pub/${rname}/${rfile}"
 rsha256="ecff2218754be318bce3c3a5d1775bab93bf4168b2c4aac465785de5655fbd69"
-rreqs="bootstrapmake pkgconfig slibtool libmnl libnetfilteracct"
+rreqs="bootstrapmake pkgconfig slibtool configgit libmnl libnetfilteracct"
 
 . "${cwrecipe}/common.sh"
 
