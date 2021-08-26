@@ -550,6 +550,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - should replace opennc, which is, uhhhhhhh missing?
 - netfilter.org stuff
   - libmnl (https://www.netfilter.org/projects/libmnl/)
+  - libnetfilterconntrack (https://www.netfilter.org/projects/libnetfilter_conntrack/)
   - libnfnetlink (https://www.netfilter.org/projects/libnfnetlink/)
   - libnftnl (https://www.netfilter.org/projects/libnftnl/)
 - netsurf libraries
