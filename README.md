@@ -1354,8 +1354,8 @@ wc -l /tmp/astbuild.out
   - fbvnc (https://repo.or.cz/fbvnc.git)
 - neon (https://notroj.github.io/neon/ and https://github.com/notroj/neon)
 - netfilter.org stuff
-  - ipset (https://www.netfilter.org/projects/ipset/index.html)
-  - ulogd (https://www.netfilter.org/projects/ulogd/index.html)
+  - ipset (https://www.netfilter.org/projects/ipset/)
+  - ulogd (https://www.netfilter.org/projects/ulogd/)
   - xtables-addons
 - nethack
 - netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
