@@ -554,6 +554,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libnetfilterconntrack (https://www.netfilter.org/projects/libnetfilter_conntrack/)
   - libnfnetlink (https://www.netfilter.org/projects/libnfnetlink/)
   - libnftnl (https://www.netfilter.org/projects/libnftnl/)
+  - nftables (https://www.netfilter.org/projects/nftables/)
 - netsurf libraries
   - libparserutils (https://www.netsurf-browser.org/projects/libparserutils/)
   - libwapcaplet (https://www.netsurf-browser.org/projects/libwapcaplet/)
