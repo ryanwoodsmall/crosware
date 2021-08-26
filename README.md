@@ -1346,6 +1346,17 @@ wc -l /tmp/astbuild.out
   - fbpad (https://github.com/aligrudi/fbpad)
   - fbvnc (https://repo.or.cz/fbvnc.git)
 - neon (https://notroj.github.io/neon/ and https://github.com/notroj/neon)
+- netfilter.org stuff
+  - libnetfilter_acct (https://www.netfilter.org/projects/libnetfilter_acct/index.html)
+  - libnetfilter_log (https://www.netfilter.org/projects/libnetfilter_log/index.html)
+  - libnetfilter_queue (https://www.netfilter.org/projects/libnetfilter_queue/index.html)
+  - libnetfilter_cttimeout (https://www.netfilter.org/projects/libnetfilter_cttimeout/index.html)
+  - libnetfilter_cthelper (https://www.netfilter.org/projects/libnetfilter_cthelper/index.html)
+  - conntrack-tools (https://www.netfilter.org/projects/conntrack-tools/index.html)
+  - nfacct (https://www.netfilter.org/projects/nfacct/index.html)
+  - ipset (https://www.netfilter.org/projects/ipset/index.html)
+  - ulogd (https://www.netfilter.org/projects/ulogd/index.html)
+  - xtables-addons
 - nethack
 - netkit (finger, etc. use rhel/centos srpm? http://www.hcs.harvard.edu/~dholland/computers/netkit.html and https://wiki.linuxfoundation.org/networking/netkit)
 - nets (https://github.com/lkundrak/nets - network serial port)
