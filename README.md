@@ -548,6 +548,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - netbsdcurses (manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
   - should replace opennc, which is, uhhhhhhh missing?
+- netfilter.org stuff
+  - libmnl (https://www.netfilter.org/projects/libmnl/)
 - netsurf libraries
   - libparserutils (https://www.netsurf-browser.org/projects/libparserutils/)
   - libwapcaplet (https://www.netsurf-browser.org/projects/libwapcaplet/)
