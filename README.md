@@ -551,6 +551,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - netfilter.org stuff
   - iptables (https://www.netfilter.org/projects/iptables/)
   - libmnl (https://www.netfilter.org/projects/libmnl/)
+  - libnetfilteracct (https://www.netfilter.org/projects/libnetfilter_acct/)
   - libnetfilterconntrack (https://www.netfilter.org/projects/libnetfilter_conntrack/)
   - libnfnetlink (https://www.netfilter.org/projects/libnfnetlink/)
   - libnftnl (https://www.netfilter.org/projects/libnftnl/)
@@ -1347,7 +1348,6 @@ wc -l /tmp/astbuild.out
   - fbvnc (https://repo.or.cz/fbvnc.git)
 - neon (https://notroj.github.io/neon/ and https://github.com/notroj/neon)
 - netfilter.org stuff
-  - libnetfilter_acct (https://www.netfilter.org/projects/libnetfilter_acct/index.html)
   - libnetfilter_log (https://www.netfilter.org/projects/libnetfilter_log/index.html)
   - libnetfilter_queue (https://www.netfilter.org/projects/libnetfilter_queue/index.html)
   - libnetfilter_cttimeout (https://www.netfilter.org/projects/libnetfilter_cttimeout/index.html)
