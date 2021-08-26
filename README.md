@@ -549,7 +549,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - netbsdcurses (manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
   - should replace opennc, which is, uhhhhhhh missing?
-- netfilter.org stuff
+- netfilter.org stuff (WIP!!!)
+  - conntracktools (https://www.netfilter.org/projects/conntrack-tools/)
   - iptables (https://www.netfilter.org/projects/iptables/)
   - libmnl (https://www.netfilter.org/projects/libmnl/)
   - libnetfilteracct (https://www.netfilter.org/projects/libnetfilter_acct/)
@@ -1353,8 +1354,6 @@ wc -l /tmp/astbuild.out
   - fbvnc (https://repo.or.cz/fbvnc.git)
 - neon (https://notroj.github.io/neon/ and https://github.com/notroj/neon)
 - netfilter.org stuff
-  - conntrack-tools (https://www.netfilter.org/projects/conntrack-tools/index.html)
-    - needs libtirpc, along with libnetfilter_{conntrack,cttimeout,cthelper,queue}, and ???
   - ipset (https://www.netfilter.org/projects/ipset/index.html)
   - ulogd (https://www.netfilter.org/projects/ulogd/index.html)
   - xtables-addons
