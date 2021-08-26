@@ -1,3 +1,7 @@
+#
+# XXX - dynamic support for modules?
+#
+
 rname="iptables"
 rver="1.8.7"
 rdir="${rname}-${rver}"
