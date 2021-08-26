@@ -1,5 +1,6 @@
 #
 # XXX - gnutls variant?
+# XXX - netbsdcurses?
 #
 
 rname="gnupg"
