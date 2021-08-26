@@ -574,6 +574,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - outils (https://github.com/leahneukirchen/outils - utils from openbsd, including jot/rs/vis/unvis/etc.)
 - p7zip
 - par (http://www.nicemice.net/par/ via debian https://packages.debian.org/buster/text/par)
+- pass (https://www.passwordstore.org/)
 - patch (gnu)
 - patchelf (https://nixos.org/patchelf.html and https://github.com/NixOS/patchelf)
 - pcc (http://pcc.ludd.ltu.se/)
@@ -1370,7 +1371,6 @@ wc -l /tmp/astbuild.out
   - configure ```--without-libffi --without-libtasn1```
 - otools (https://github.com/CarbsLinux/otools - carbs linux openbsd ports)
 - parenj / parenjs
-- pass (https://www.passwordstore.org/)
 - pax
 - pciutils (https://github.com/pciutils/pciutils)
   - _/usr/share/misc/pci.ids_ file (https://github.com/pciutils/pciids)
