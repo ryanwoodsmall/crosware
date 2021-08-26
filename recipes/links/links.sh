@@ -19,6 +19,5 @@ function cwconfigure_${rname}() {
 eval "
 function cwgenprofd_${rname}() {
   echo 'prepend_path \"${rtdir}/current/bin\"' > "${rprof}"
-  echo 'alias links=\"links -ssl.certificates 0\"' >> "${rprof}"
 }
 "
