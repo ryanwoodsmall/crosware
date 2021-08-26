@@ -483,6 +483,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libssh2libgcrypt (gcrypt, zlib)
   - libssh2mbedtls (mbedtls, zlib)
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
+- libtirpc (https://sourceforge.net/projects/libtirpc/ and http://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary)
 - libtool
 - libucontext (https://github.com/kaniini/libucontext - glibc compat ucontext, opt-in)
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
@@ -1104,7 +1105,6 @@ wc -l /tmp/astbuild.out
 - libslz (http://www.libslz.org/)
 - libsodium (https://github.com/jedisct1/libsodium)
 - libtap (https://github.com/zorgnax/libtap)
-- libtirpc (https://sourceforge.net/projects/libtirpc/ and http://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary)
 - libtom
   - libtomcrypt
     - w/libtommath
