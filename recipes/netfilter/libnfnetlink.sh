@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://www.netfilter.org/pub/${rname}/${rfile}"
 rsha256="f270e19de9127642d2a11589ef2ec97ef90a649a74f56cf9a96306b04817b51a"
-rreqs="bootstrapmake"
+rreqs="bootstrapmake configgit"
 rpfile="${cwrecipe}/netfilter/${rname}.patches"
 
 . "${cwrecipe}/common.sh"
