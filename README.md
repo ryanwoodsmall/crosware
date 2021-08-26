@@ -553,6 +553,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libmnl (https://www.netfilter.org/projects/libmnl/)
   - libnetfilteracct (https://www.netfilter.org/projects/libnetfilter_acct/)
   - libnetfilterconntrack (https://www.netfilter.org/projects/libnetfilter_conntrack/)
+  - libnetfiltercttimeout (https://www.netfilter.org/projects/libnetfilter_cttimeout/)
   - libnfnetlink (https://www.netfilter.org/projects/libnfnetlink/)
   - libnftnl (https://www.netfilter.org/projects/libnftnl/)
   - nfacct (https://www.netfilter.org/projects/nfacct/index.html)
@@ -1351,7 +1352,6 @@ wc -l /tmp/astbuild.out
 - netfilter.org stuff
   - libnetfilter_log (https://www.netfilter.org/projects/libnetfilter_log/index.html)
   - libnetfilter_queue (https://www.netfilter.org/projects/libnetfilter_queue/index.html)
-  - libnetfilter_cttimeout (https://www.netfilter.org/projects/libnetfilter_cttimeout/index.html)
   - libnetfilter_cthelper (https://www.netfilter.org/projects/libnetfilter_cthelper/index.html)
   - conntrack-tools (https://www.netfilter.org/projects/conntrack-tools/index.html)
   - ipset (https://www.netfilter.org/projects/ipset/index.html)
