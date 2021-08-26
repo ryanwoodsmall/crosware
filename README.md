@@ -554,6 +554,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libnetfilteracct (https://www.netfilter.org/projects/libnetfilter_acct/)
   - libnetfilterconntrack (https://www.netfilter.org/projects/libnetfilter_conntrack/)
   - libnetfiltercttimeout (https://www.netfilter.org/projects/libnetfilter_cttimeout/)
+  - libnetfilterqueue (https://www.netfilter.org/projects/libnetfilter_queue/)
   - libnfnetlink (https://www.netfilter.org/projects/libnfnetlink/)
   - libnftnl (https://www.netfilter.org/projects/libnftnl/)
   - nfacct (https://www.netfilter.org/projects/nfacct/index.html)
@@ -1351,7 +1352,6 @@ wc -l /tmp/astbuild.out
 - neon (https://notroj.github.io/neon/ and https://github.com/notroj/neon)
 - netfilter.org stuff
   - libnetfilter_log (https://www.netfilter.org/projects/libnetfilter_log/index.html)
-  - libnetfilter_queue (https://www.netfilter.org/projects/libnetfilter_queue/index.html)
   - libnetfilter_cthelper (https://www.netfilter.org/projects/libnetfilter_cthelper/index.html)
   - conntrack-tools (https://www.netfilter.org/projects/conntrack-tools/index.html)
     - needs libtirpc, along with libnetfilter_{conntrack,cttimeout,cthelper,queue}, and ???
