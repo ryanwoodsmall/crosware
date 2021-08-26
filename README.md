@@ -549,6 +549,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
   - should replace opennc, which is, uhhhhhhh missing?
 - netfilter.org stuff
+  - iptables (https://www.netfilter.org/projects/iptables/)
   - libmnl (https://www.netfilter.org/projects/libmnl/)
   - libnetfilterconntrack (https://www.netfilter.org/projects/libnetfilter_conntrack/)
   - libnfnetlink (https://www.netfilter.org/projects/libnfnetlink/)
