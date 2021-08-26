@@ -555,6 +555,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libnetfilterconntrack (https://www.netfilter.org/projects/libnetfilter_conntrack/)
   - libnfnetlink (https://www.netfilter.org/projects/libnfnetlink/)
   - libnftnl (https://www.netfilter.org/projects/libnftnl/)
+  - nfacct (https://www.netfilter.org/projects/nfacct/index.html)
   - nftables (https://www.netfilter.org/projects/nftables/)
 - netsurf libraries
   - libparserutils (https://www.netsurf-browser.org/projects/libparserutils/)
@@ -1353,7 +1354,6 @@ wc -l /tmp/astbuild.out
   - libnetfilter_cttimeout (https://www.netfilter.org/projects/libnetfilter_cttimeout/index.html)
   - libnetfilter_cthelper (https://www.netfilter.org/projects/libnetfilter_cthelper/index.html)
   - conntrack-tools (https://www.netfilter.org/projects/conntrack-tools/index.html)
-  - nfacct (https://www.netfilter.org/projects/nfacct/index.html)
   - ipset (https://www.netfilter.org/projects/ipset/index.html)
   - ulogd (https://www.netfilter.org/projects/ulogd/index.html)
   - xtables-addons
