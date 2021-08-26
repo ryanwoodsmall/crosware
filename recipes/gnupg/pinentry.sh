@@ -1,9 +1,9 @@
 rname="pinentry"
-rver="1.1.1"
+rver="1.2.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="cd12a064013ed18e2ee8475e669b9f58db1b225a0144debdb85a68cecddba57f"
+rsha256="10072045a3e043d0581f91cd5676fcac7ffee957a16636adedaa4f583a616470"
 rreqs="make slibtool libgpgerror libassuan ncurses pkgconfig configgit"
 
 . "${cwrecipe}/common.sh"
