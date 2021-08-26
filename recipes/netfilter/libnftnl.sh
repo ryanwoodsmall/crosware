@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://www.netfilter.org/pub/${rname}/${rfile}"
 rsha256="90b01fddfe9be8c3245c3ba5ff5a4424a8df708828f92b2b361976b658c074f5"
-rreqs="bootstrapmake libmnl"
+rreqs="bootstrapmake pkgconfig libmnl"
 
 . "${cwrecipe}/common.sh"
 
