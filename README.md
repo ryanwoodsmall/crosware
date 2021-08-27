@@ -1105,6 +1105,7 @@ wc -l /tmp/astbuild.out
 - libsixel (https://github.com/saitoha/libsixel)
 - libslz (http://www.libslz.org/)
 - libsodium (https://github.com/jedisct1/libsodium)
+- libsysdev (https://github.com/idunham/libsysdev)
 - libtap (https://github.com/zorgnax/libtap)
 - libtom
   - libtomcrypt
