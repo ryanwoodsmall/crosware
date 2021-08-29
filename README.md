@@ -1070,6 +1070,7 @@ wc -l /tmp/astbuild.out
   - shishi (https://www.gnu.org/software/shishi/)
 - keyutils (http://people.redhat.com/~dhowells/keyutils/)
 - kineto (https://sr.ht/~sircmpwn/kineto/ and https://git.sr.ht/~sircmpwn/kineto - gemini to http gateway/proxy)
+- klipse (https://github.com/viebel/klipse - js-based multi-language code snippet evaluation framework)
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
 - larn (short roguelike https://en.wikipedia.org/wiki/Larn_(video_game) - maintained/modern https://github.com/atsb/RL_M)
 - ldd
@@ -1141,6 +1142,7 @@ wc -l /tmp/astbuild.out
     - reqs: m4, configgit, gmp?
     - needs ```setarch linux64 -R ...``` with proper linux64/linux32 setting before configure, make
     - not sure if this will work either
+  - jscl (https://github.com/jscl-project/jscl and https://jscl-project.github.io/ - javascript common lisp)
   - le-lisp (http://christian.jullien.free.fr/lelisp/)
   - librep (https://github.com/SawfishWM/librep - embeddable lisp)
     - gdbm, gmp, libffi, makeinfo, ncurses, readline
@@ -1461,6 +1463,7 @@ wc -l /tmp/astbuild.out
 - scdoc (https://sr.ht/~sircmpwn/scdoc/ and https://git.sr.ht/~sircmpwn/scdoc - simple man page generator)
 - scheme stuff:
   - bigloo
+  - biwascheme (https://github.com/biwascheme/biwascheme and https://www.biwascheme.org/ - scheme in javascript)
   - chez (scheme, https://github.com/cisco/ChezScheme - utillinux (uuid), ncurses, disable x11)
   - chibi-scheme (https://github.com/ashinn/chibi-scheme)
   - chicken (https://www.call-cc.org)
@@ -1664,6 +1667,7 @@ wc -l /tmp/astbuild.out
 - xe (https://github.com/leahneukirchen/xe)
 - xq (https://github.com/jeffbr13/xq)
 - xserver-sixel (https://github.com/saitoha/xserver-sixel)
+- yaegi (https://github.com/traefik/yaegi - go interpreter in go!)
 - yq (https://github.com/kislyuk/yq)
 - ytalk (http://ytalk.ourproject.org/)
 - z3 (https://github.com/Z3Prover/z3)
