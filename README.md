@@ -1601,6 +1601,7 @@ wc -l /tmp/astbuild.out
   - finit (https://github.com/troglobit/finit)
   - merecat (https://github.com/troglobit/merecat)
   - mg (https://github.com/troglobit/mg - see mg stuff above...)
+  - mping (https://github.com/troglobit/mping - multicast ping)
   - smcroute (https://github.com/troglobit/smcroute and https://troglobit.com/projects/smcroute/)
   - sysklogd (https://github.com/troglobit/sysklogd - bsd syslog on linux, newer rfc compliant)
   - ttinfo (https://github.com/troglobit/ttinfo)
