@@ -5,11 +5,11 @@
 #
 
 rname="janet"
-rver="1.17.0"
+rver="1.17.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/janet-lang/${rname}/archive/refs/tags/${rfile}"
-rsha256="45126be7274e0a298dcbe356b5310bd9328c94eb3a562316813fa9774ca34bcc"
+rsha256="c9357192c4d0d24f08a02aecd14df9dc52174696334e4a2576c0252c27866cb7"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -57,7 +57,7 @@ function cwmakeinstall_${rname}() {
   rm -rf \"${jpm_dir}\"
   unzip \"${jpm_dlfile}\"
   cd \"${jpm_dir}\"
-  env JANET_PREFIX=\"${ridir}\" PATH=\"${ridir}/bin:\${PATH}\" \"${ridir}/bin/${rname}\" cli.janet install --offline
+  env {JANET_,}PREFIX=\"${ridir}\" PATH=\"${ridir}/bin:\${PATH}\" \"${ridir}/bin/${rname}\" bootstrap.janet
   sed -i \"s,${ridir},${rtdir}/current,g\" \"${ridir}/bin/jpm\"
   cd -
   popd >/dev/null 2>&1
