@@ -732,6 +732,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 ## recipes to consider
 
 - 9pfs (https://github.com/mischief/9pfs - fuse 9p driver)
+- abs (https://www.abs-lang.org/ and https://github.com/abs-lang/abs - shell like interpreter in go)
 - ack (https://beyondgrep.com/)
 - acme labs (http://www.acme.com/software/ - SO MUCH GOOD STUFF)
   - db (http://www.acme.com/software/db/ - gdbm? ndbm/sdbm/dbm?)
