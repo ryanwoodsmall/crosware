@@ -1,9 +1,9 @@
 rname="njs"
-rver="0.6.1"
+rver="0.6.2"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/nginx/${rname}/archive/refs/tags/${rfile}"
-rsha256="179b0e342bc6d6c3526b048ed272371e38ae8e061c3e596a305cb254a1299850"
+rsha256="109ee42b05344f050f5ead28a68c52e8e671e1625eb6a1f765b1db5c3bcef2b9"
 rreqs="make pcre netbsdcurses"
 
 . "${cwrecipe}/common.sh"
