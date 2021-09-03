@@ -1,9 +1,9 @@
 rname="gdbm"
-rver="1.20"
+rver="1.21"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="3aeac05648b3482a10a2da986b9f3a380a29ad650be80b9817a435fb8114a292"
+rsha256="b0b7dbdefd798de7ddccdd8edf6693a30494f7789777838042991ef107339cc2"
 rreqs="make sed flex bison ncurses readline gettexttiny configgit"
 
 . "${cwrecipe}/common.sh"
