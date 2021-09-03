@@ -1529,6 +1529,7 @@ wc -l /tmp/astbuild.out
   - tcsh (and/or standard csh)
   - xs (https://github.com/TieDyedDevil/XS - rc+es+scheme/lisp)
   - zsh
+- shellbench (https://github.com/shellspec/shellbench)
 - shellcheck (https://www.shellcheck.net/ and https://github.com/koalaman/shellcheck - haskell)
 - shit (https://git.sr.ht/~sircmpwn/shit - shell git???)
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
