@@ -8,6 +8,8 @@ function cwconfigure_${rname}() {
     --enable-static-link \
     --without-bash-malloc \
     --with-curses \
+      CFLAGS=\"\${CFLAGS} -O2 -pipe\" \
+      CXXFLAGS=\"\${CXXFLAGS} -O2 -pipe\" \
       CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
       LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib/ -static\" \
       LIBS=\"-L${cwsw}/netbsdcurses/current/lib/ -lcurses -lterminfo\" \
