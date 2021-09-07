@@ -13,7 +13,7 @@ rreqs="mbedtls"
 
 . "${cwrecipe}/common.sh"
 
-for f in clean extract configure ; do
+for f in extract configure ; do
   eval "
   function cw${f}_${rname}() {
     true
