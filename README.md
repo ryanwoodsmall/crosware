@@ -300,6 +300,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - subproxy (http://www.acme.com/software/sub_proxy/)
   - thttpd (http://www.acme.com/software/thttpd/)
 - acme-dns (https://github.com/joohoi/acme-dns - REST/ACME DNS in go)
+- age (https://github.com/FiloSottile/age - age encryption tool in go)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - attr (https://savannah.nongnu.org/projects/attr/)
 - autoconf
@@ -744,7 +745,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - lots of dns updates in there too...
     - dyn, freedns, etc. update script: https://github.com/acmesh-official/acme.sh/blob/master/dnsapi/dns_freedns.sh
 - ag (the silver searcher https://geoff.greer.fm/ag/)
-- age (https://github.com/FiloSottile/age - age encryption tool in go)
 - agner fog's stuff
   - https://www.agner.org/optimize/#objconv
 - align (and width, perl scripts, http://kinzler.com/me/align/)
