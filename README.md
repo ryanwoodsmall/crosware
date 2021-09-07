@@ -1019,6 +1019,11 @@ wc -l /tmp/astbuild.out
   - jamvm
   - jikes rvm
   - liberica (https://www.bell-sw.com/java.html)
+    - 64-bit intel/arm and some 32-bit support
+    - source downloads from main page, might be easier to rebuild than zulu/upstream?
+    - jdk/jre (https://bell-sw.com/pages/downloads/ - supports musl/alpine)
+    - embedded jdk (https://bell-sw.com/pages/downloads-embedded/)
+    - native image kit (https://bell-sw.com/pages/downloads/native-image-kit/ - graal, supports musl/alpine, language plugins, ...)
   - maxine (https://github.com/beehive-lab/Maxine-VM)
   - ojdkbuild (https://github.com/ojdkbuild/ojdkbuild)
   - openj9
