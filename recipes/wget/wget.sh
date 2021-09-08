@@ -5,11 +5,11 @@
 #
 
 rname="wget"
-rver="1.21.1"
+rver="1.21.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="db9bbe5347e6faa06fc78805eeb808b268979455ead9003a608569c9d4fc90ad"
+rsha256="1727a330a86acacb3e57615ce268f5f29978bf7adec4abe6a30d370207bc91b3"
 rreqs="make lunzip openssl zlib pcre2 gettexttiny pkgconfig sed expat libmetalink cacertificates"
 
 . "${cwrecipe}/common.sh"
