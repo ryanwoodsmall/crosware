@@ -25,7 +25,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwclean_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
-  chmod -R u+rw \"${rbdir}/\" || true
+  test -e \"${rbdir}\" && chmod -R u+rw \"${rbdir}/\" || true
   rm -rf \"${rbdir}\"
   popd >/dev/null 2>&1
 }
@@ -37,6 +37,7 @@ function cwmake_${rname}() {
   : \${GOCACHE=\"${rbdir}/gocache\"}
   : \${GOMODCACHE=\"${rbdir}/gomodcache\"}
   mkdir -p build
+  local p
   for p in ${rname}{,-keygen} ; do
     env \
       CGO_ENABLED=0 \
@@ -45,6 +46,7 @@ function cwmake_${rname}() {
       PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
         go build -x -ldflags '-s -w -extldflags \"-s -static\"' -o build/ \"${rbdir}/cmd/\${p}\"
   done
+  unset p
   popd >/dev/null 2>&1
 }
 "
@@ -53,14 +55,15 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cwmkdir \"${ridir}/bin\"
-  install -m 0755 build/${rname} \"${ridir}/bin/${rname}\"
-  install -m 0755 build/${rname}-keygen \"${ridir}/bin/${rname}-keygen\"
   cwmkdir \"${ridir}/share/man/man1\"
-  install -m 0644 doc/${rname}.1 \"${ridir}/share/man/man1/${rname}.1\"
-  install -m 0644 doc/${rname}-keygen.1 \"${ridir}/share/man/man1/${rname}-keygen.1\"
   cwmkdir \"${ridir}/share/doc\"
-  install -m 0644 doc/${rname}.1.html \"${ridir}/share/doc/${rname}.1.html\"
-  install -m 0644 doc/${rname}-keygen.1.html \"${ridir}/share/doc/${rname}-keygen.1.html\"
+  local p
+  for p in ${rname}{,-keygen} ; do
+    install -m 0755 build/\${p} \"${ridir}/bin/\${p}\"
+    install -m 0644 doc/\${p}.1 \"${ridir}/share/man/man1/\${p}.1\"
+    install -m 0644 doc/\${p}.1.html \"${ridir}/share/doc/\${p}.1.html\"
+  done
+  unset p
   popd >/dev/null 2>&1
 }
 "
