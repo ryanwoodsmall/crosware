@@ -71,7 +71,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} CC=\"${cwsw}/muslstandalone/current/bin/musl-gcc -DUSE_MUSL\" ${rlibtool}
+  make -j${cwmakejobs} CC=\"${cwsw}/muslstandalone/current/bin/musl-gcc -DUSE_MUSL\" YACC=byacc ${rlibtool}
   popd >/dev/null 2>&1
 }
 "
