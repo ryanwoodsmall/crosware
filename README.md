@@ -314,7 +314,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - bearssl (https://bearssl.org/)
 - bim (https://github.com/klange/bim - minimal vim-alike)
 - binutils (bfd, opcodes, libiberty.a)
-- bison
+- bison (https://www.gnu.org/software/bison/ and http://savannah.gnu.org/projects/bison/ and http://git.savannah.gnu.org/cgit/bison.git)
+  - bison37 (older version before some possible posix-mandated breaking changes)
 - bmake (http://www.crufty.net/help/sjg/bmake.html)
 - brogue
 - brotli (https://github.com/google/brotli)
