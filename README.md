@@ -1466,6 +1466,7 @@ wc -l /tmp/astbuild.out
 - rvm?
 - rw (https://sortix.org/rw/)
 - rwc (https://github.com/leahneukirchen/rwc)
+- rx (https://github.com/crcx/rx - forth(-ish) userspace!)
 - sacc (https://git.fifth.space/sacc/log.html - gopher client)
 - samurai (https://github.com/michaelforney/samurai)
 - sbang (https://github.com/spack/sbang)
