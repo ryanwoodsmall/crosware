@@ -1,9 +1,9 @@
 rname="jansson"
-rver="2.13.1"
+rver="2.14"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
-rurl="https://digip.org/${rname}/releases/${rfile}"
-rsha256="ee90a0f879d2b7b7159124ff22b937a2a9a8c36d3bb65d1da7dd3f04370a10bd"
+rurl="https://github.com/akheron/${rname}/releases/download/v${rver}/${rfile}"
+rsha256="fba956f27c6ae56ce6dfd52fbf9d20254aad42821f74fa52f83957625294afb9"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
