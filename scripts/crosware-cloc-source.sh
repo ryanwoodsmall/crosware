@@ -14,12 +14,14 @@ test -e "${cw}" || {
   exit 1
 }
 
-export PATH="${PATH}:${cwtop}/software/cloc/current/bin"
+export PATH="${PATH}:${cwtop}/software/cloc/current/bin:${cwtop}/software/perl/current/bin"
 
-which cloc >/dev/null 2>&1 || {
-  echo 'cloc not found'
-  exit 1
-}
+for p in cloc perl ; do
+  hash ${p} >/dev/null 2>&1 || {
+    echo "${p} not found"
+    exit 1
+  }
+done
 
 echo 'crosware source:'
 cwsi="${cwtop}/tmp/crosware_cloc_ignored.out"
@@ -29,6 +31,8 @@ cloc \
   --ignored="${cwsi}" \
     "${cwtop}/bin/" \
     "${cwtop}/etc/profile" \
+    "${cwtop}/etc/functions" \
+    "${cwtop}/etc/vars" \
     "${cwtop}/recipes/"
 
 echo
