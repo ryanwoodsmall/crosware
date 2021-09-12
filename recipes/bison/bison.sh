@@ -1,13 +1,9 @@
-#
-# XXX - --enable-relocatable configure option?
-#
-
 rname="bison"
-rver="3.8"
+rver="3.8.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="1e0a14a8bf52d878e500c33d291026b9ebe969c27b3998d4b4285ab6dbce4527"
+rsha256="31fc602488aad6bdecf0ccc556e0fc72fc57cdc595cf92398f020e0cf4980f15"
 rreqs="make m4 flex perl sed gawk"
 
 . "${cwrecipe}/common.sh"
