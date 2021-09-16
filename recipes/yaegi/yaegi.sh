@@ -1,9 +1,9 @@
 rname="yaegi"
-rver="0.9.23"
+rver="0.10.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/traefik/${rname}/archive/refs/tags/${rfile}"
-rsha256="52394e495b36b87d67f40b9104889da3e50eda5dfe5dc5b9eb2795e40c4be135"
+rsha256="3eaf52702e8cde067951b67a48c011370dfd335a21e9ae93e60df0174132634f"
 rreqs="go cacertificates"
 
 . "${cwrecipe}/common.sh"
