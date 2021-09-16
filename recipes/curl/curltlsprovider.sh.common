@@ -38,6 +38,7 @@ function cwmakeinstall_${rname}() {
   cwextract_${rname}
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG '/SSL_HOST_NAME/s,const,,g' lib/vtls/bearssl.c || true
+  sed -i.ORIG '/ERR_clear_error/d' lib/vtls/wolfssl.c || true
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
