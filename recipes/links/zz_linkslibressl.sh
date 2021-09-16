@@ -28,6 +28,7 @@ function cwconfigure_${rname}() {
     PKG_CONFIG_PATH=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       ./configure ${cwconfigureprefix} \
         --with-ssl=\"${cwsw}/libressl/current\" \
+        --with-ipv6 \
         --disable-ssl-pkgconfig \
         --disable-graphics \
         --without-x
