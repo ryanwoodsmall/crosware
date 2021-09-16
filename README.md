@@ -1132,6 +1132,7 @@ wc -l /tmp/astbuild.out
 - libusb (https://github.com/libusb/libusb)
 - libutf (https://github.com/cls/libutf)
 - libverto (https://github.com/npmccallum/libverto - main loop/async library, used by mit kerberos)
+- libwaive (https://github.com/dimkr/libwaive - tame/pledge-like seccomp perms waiver)
 - libwebsockets (https://libwebsockets.org/)
 - libyaml (https://github.com/yaml/libyaml)
 - lisp stuff
