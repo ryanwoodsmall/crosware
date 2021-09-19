@@ -1490,6 +1490,7 @@ wc -l /tmp/astbuild.out
   - ksi (http://ksi.sourceforge.net/)
     - gmp, gc
   - larceny (and petit larceny, http://larcenists.org)
+  - loko (https://scheme.fail/)
   - micro-lisp (https://github.com/carld/micro-lisp)
   - minilisp (https://github.com/rui314/minilisp)
   - minischeme
