@@ -26,7 +26,9 @@ function cwconfigure_${rname}() {
       --with-mantype=man \
         CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/${sslprov}/current/include -I${cwsw}/netbsdcurses/include\" \
         LDFLAGS=\"-static -L${cwsw}/zlib/current/lib -L${cwsw}/${sslprov}/current/lib -L${cwsw}/netbsdcurses/current/lib\" \
-        LIBS='-lcrypto -lz -lcrypt -ledit -lcurses -lterminfo'
+        LIBS='-lcrypto -lz -lcrypt -ledit -lcurses -lterminfo' \
+        PKG_CONFIG_LIBDIR= \
+        PKG_CONFIG_PATH=
   popd >/dev/null 2>&1
 }
 "
