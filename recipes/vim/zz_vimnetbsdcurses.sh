@@ -6,7 +6,7 @@ rdlfile="$(cwdlfile_vim)"
 rurl="$(cwurl_vim)"
 rsha256=""
 rprof="${cwetcprofd}/zz_${rname}.sh"
-rreqs="make lua netbsdcurses gettexttiny"
+rreqs="make lua netbsdcurses gettexttiny libsodium"
 
 . "${cwrecipe}/common.sh"
 
@@ -31,8 +31,8 @@ function cwconfigure_${rname}() {
       --enable-gui=no \
       --with-lua-prefix=${cwsw}/lua/current \
       --enable-luainterp=yes \
-        CPPFLAGS=\"\$(echo -I${cwsw}/{lua,netbsdcurses}/current/include)\" \
-        LDFLAGS=\"\$(echo -L${cwsw}/{lua,netbsdcurses}/current/lib) -static\" \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{lua,netbsdcurses,libsodium}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{lua,netbsdcurses,libsodium}/current/lib) -static\" \
         LIBS='-lcurses -lterminfo' \
         PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1

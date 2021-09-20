@@ -8,7 +8,7 @@ rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
 rsha256="bf9f41f8804addf7c875fba32f68ad1588f8f9697fc9b8d51857b6b22f87f570"
-rreqs="make ncurses lua gettexttiny attr acl"
+rreqs="make ncurses lua gettexttiny attr acl libsodium"
 
 . "${cwrecipe}/common.sh"
 
