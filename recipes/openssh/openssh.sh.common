@@ -1,0 +1,71 @@
+: ${sslprov:='openssl'}
+rreqs+=" ${sslprov}"
+
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  env PATH=\"${cwsw}/${sslprov}/current/bin:\${PATH}\" \
+    ./configure ${cwconfigureprefix} \
+      --without-pie \
+      --with-libedit=\"${cwsw}/netbsdcurses/current\" \
+      --sysconfdir=\"${rtdir}/etc\" \
+      --with-privsep-path=\"${cwtmp}/empty\" \
+      --with-mantype=man \
+        CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/${sslprov}/current/include -I${cwsw}/netbsdcurses/include\" \
+        LDFLAGS=\"-static -L${cwsw}/zlib/current/lib -L${cwsw}/${sslprov}/current/lib -L${cwsw}/netbsdcurses/current/lib\" \
+        LIBS='-lcrypto -lz -lcrypt -ledit -lcurses -lterminfo'
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwuninstall_${rname}() {
+  test -e \"${rtdir}\" || return
+  pushd \"${rtdir}\" >/dev/null 2>&1
+  rm -rf ${rname%${sslprov}}-* current previous
+  rm -f \"${rprof}\"
+  rm -f \"${cwvarinst}/${rname%${sslprov}}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  local b
+  local d
+  local s
+  env PATH=\"${cwsw}/${sslprov}/current/bin:\${PATH}\" make install
+  install -m 0755 contrib/ssh-copy-id \"${ridir}/bin/\"
+  for md in cat1 man1 ; do
+    test -e \"${ridir}/share/man/\${md}\" \
+    && install -m 0644 contrib/ssh-copy-id.1 \"${ridir}/share/man/\${md}/\" \
+    || true
+  done
+  rm -f ${ridir}/*bin/${rname%${sslprov}}{,-*} || true
+  for s in \$(find ${ridir}/{,s}bin/ -mindepth 1 -maxdepth 1 ! -type d) ; do
+    b=\"\$(basename \${s})\"
+    d=\"\$(basename \$(dirname \${s}))\"
+    ln -sf \"${rtdir}/current/\${d}/\${b}\" \"${ridir}/\${d}/${rname%${sslprov}}-\${b}\"
+  done
+  ln -sf \"${rtdir}/current/bin/ssh\" \"${ridir}/bin/${rname%${sslprov}}\"
+  ln -sf \"${rtdir}/current/bin/ssh\" \"${ridir}/bin/${rname%${sslprov}}-${sslprov}\"
+  unset b
+  unset d
+  unset s
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/sbin\"' >> \"${rprof}\"
+}
+"
+
+unset sslprov
+
+# vim: set ft=sh:
