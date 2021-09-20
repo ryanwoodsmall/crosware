@@ -585,7 +585,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
 - onetrueawk (https://github.com/onetrueawk/awk - the one true awk)
 - oniguruma (https://github.com/kkos/oniguruma)
-- openssh (openssl, netbsdcurses libedit)
+- openssh (openssl, netbsdcurses, libedit)
+  - opensshlibressl (libressl, netbsdcurses, libedit)
 - openssl
 - openvpn (https://openvpn.net/community-downloads/ and https://github.com/OpenVPN/openvpn - openssl, zlib, lz4, lzo)
   - openvpnlibressl (libressl, lz4, lzo)

@@ -3,6 +3,17 @@ rreqs+=" ${sslprov}"
 
 . "${cwrecipe}/common.sh"
 
+if [[ ! "${sslprov}" == openssl ]] ; then
+  for f in clean fetch extract ; do
+  eval "
+  function cw${f}_${rname}() {
+    cw${f}_${rname%${sslprov}}
+  }
+  "
+  done
+  unset f
+fi
+
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
