@@ -485,6 +485,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libssh2 (openssl, zlib)
   - libssh2libgcrypt (gcrypt, zlib)
   - libssh2mbedtls (mbedtls, zlib)
+- libsodium (https://github.com/jedisct1/libsodium)
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtirpc (https://sourceforge.net/projects/libtirpc/ and http://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary)
 - libtool
@@ -1116,8 +1117,6 @@ wc -l /tmp/astbuild.out
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
 - libsixel (https://github.com/saitoha/libsixel)
 - libslz (http://www.libslz.org/)
-- libsodium (https://github.com/jedisct1/libsodium)
-  - vim can use sodium for... something?
 - libsysdev (https://github.com/idunham/libsysdev)
 - libtap (https://github.com/zorgnax/libtap)
 - libtom
