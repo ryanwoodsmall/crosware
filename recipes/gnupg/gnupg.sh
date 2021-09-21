@@ -4,11 +4,11 @@
 #
 
 rname="gnupg"
-rver="2.2.30"
+rver="2.2.31"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="cc636d6e22a673993d94814c09be469df2ce27a0c66b1cab39bbab1786cf2184"
+rsha256="03eda09e8f9eaebab602057f3a8b908022a73999f5a31e580b12fcdf01fbebaf"
 rreqs="make libgpgerror libgcrypt libksba libassuan npth ntbtls sqlite readline ncurses slibtool zlib bzip2 pkgconfig pinentry configgit"
 
 . "${cwrecipe}/common.sh"
