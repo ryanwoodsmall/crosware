@@ -6,7 +6,7 @@
 #
 
 rname="k3s"
-rver="1.21.4_${rname}1"
+rver="1.21.5_${rname}1"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
@@ -15,17 +15,17 @@ rburl="https://github.com/k3s-io/k3s/releases/download/v${rver//_/%2B}"
 if [[ ${karch} =~ ^aarch64 ]] ; then
   rfile="${rname}-arm64"
   rurl="${rburl}/${rfile}"
-  rsha256="b7f8c026c5346b3e894d731f1dc2490cd7281687549f34c28a849f58c62e3e48"
+  rsha256="4eae388302e79f443e5478214fa86684d34e0b8d5f36a1849b6e8bcd40229279"
   rdlfile="${cwdl}/${rname}/${rfile}_${rver}"
 elif [[ ${karch} =~ ^arm ]] ; then
   rfile="${rname}-armhf"
   rurl="${rburl}/${rfile}"
-  rsha256="208bef525bf968b6b55a2fcb358cf626464e978c99111a1c444f6fad3dd44e06"
+  rsha256="bf11dcc1692072932f823010fbbd30a4c66f3e45540e759a2ede29dcbfeca1ab"
   rdlfile="${cwdl}/${rname}/${rfile}_${rver}"
 elif [[ ${karch} =~ ^x86_64 ]] ; then
   rfile="${rname}"
   rurl="${rburl}/${rfile}"
-  rsha256="47e686ad5390670da79a467ba94399d72e472364bc064a20fecd3937a8d928b5"
+  rsha256="e75ad28942d7e2db228fd71fdc3b37977e64aa059dbc09cc419e5b0459db471e"
   rdlfile="${cwdl}/${rname}/${rfile}-amd64_${rver}"
 fi
 unset rburl
