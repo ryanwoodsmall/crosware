@@ -80,10 +80,11 @@ cwcmds["profile"]="show .profile addition"
 cwcmds["list-recipes"]="list build recipes"
 cwcmds["list-recipe-files"]="list recipes with their source file"
 cwcmds["list-recipe-versions"]="list recipes with version number"
-cwcmds["list-recipe-reqs"]="list recipes their requirements"
+cwcmds["list-recipe-reqs"]="list recipes with their requirements"
 cwcmds["install"]="attempt to build/install a package from a known recipe"
 cwcmds["update"]="attempt to update existing install of ${cwname}"
 cwcmds["list-installed"]="list installed recipes"
+cwcmds["list-installed-reqs"]="list installed recipes with their requirements"
 cwcmds["uninstall"]="uninstall some packages"
 cwcmds["set"]="run 'set' to show full ${cwname} environment"
 cwcmds["list-available"]="list available recipes which are not installed"
@@ -1026,6 +1027,23 @@ function cwlistinstalled() {
 }
 
 #
+# cwlistinstalledreqs
+#
+function cwlistinstalledreqs() {
+  local pkgfile=""
+  local pkgname=""
+  local pkgreqs=""
+  cwgetinstalled
+  for pkgname in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
+    if [ ${cwinstalled[${pkgname}]} -eq 1 ] ; then
+      pkgfile="${cwvarinst}/${pkgname}"
+      pkgreqs="${cwrecipereqs[${pkgname}]}"
+      echo "${pkgname} : ${pkgreqs}"
+    fi
+  done | sort
+}
+
+#
 # cwcheckinstalled
 #   receives:
 #     recipe package name
@@ -1491,6 +1509,9 @@ case "${cmd}" in
     ;;
   list-installed)
     cwlistinstalled
+    ;;
+  list-installed-reqs)
+    cwlistinstalledreqs
     ;;
   list-available)
     cwlistavailable
