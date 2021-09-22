@@ -1036,14 +1036,18 @@ wc -l /tmp/astbuild.out
 - javascript stuff
   - colony-compiler (unmaintained - https://github.com/tessel/colony-compiler)
   - dukluv (https://github.com/creationix/dukluv - libuv+duktape)
+  - engine262 (https://github.com/engine262/engine262 - js in js)
+  - escargot (https://github.com/Samsung/escargot)
   - espruino (https://github.com/espruino/Espruino)
   - esvu (https://github.com/devsnek/esvu)
+  - goja (https://github.com/dop251/goja - go js)
   - iv (https://github.com/Constellation/iv)
   - jerryscript (https://github.com/jerryscript-project/jerryscript and http://jerryscript.net/)
   - jsi (jsish - https://jsish.org/)
   - jsvu (https://github.com/GoogleChromeLabs/jsvu)
   - mininode (https://github.com/mininode/mininode - embedded node.js compat on duktape, cool not sure how mature)
   - mjs (formerly v7 - https://github.com/cesanta/mjs and https://github.com/cesanta/v7/)
+  - otto (https://github.com/robertkrimen/otto - go js)
   - quad-wheel (https://code.google.com/archive/p/quad-wheel/)
   - tiny-js (https://github.com/gfwilliams/tiny-js)
 - jdbc
