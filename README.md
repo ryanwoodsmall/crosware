@@ -755,6 +755,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - align (and width, perl scripts, http://kinzler.com/me/align/)
 - aloa (linter - https://github.com/ralfholly/aloa)
 - althttpd (https://sqlite.org/althttpd/doc/trunk/althttpd.md - sqlite web server, xinetd+stunnel)
+- amfora (https://github.com/makeworld-the-better-one/amfora - go gemini client)
 - ansicurses (https://github.com/byllgrim/ansicurses)
 - argp-standalone (http://www.lysator.liu.se/~nisse/misc/ and https://git.alpinelinux.org/aports/tree/main/argp-standalone)
 - aria2 (https://github.com/aria2/aria2 and https://aria2.github.io/)
@@ -811,6 +812,7 @@ wc -l /tmp/astbuild.out
 - binfmt-support (https://git.savannah.gnu.org/cgit/binfmt-support.git - ???)
 - bitlbee (https://github.com/bitlbee/bitlbee and https://www.bitlbee.org/ - irc/social network/etc. gateway, supports libpurple)
 - blake2 (https://github.com/BLAKE2/BLAKE2)
+- bombadillo (https://bombadillo.colorfield.space/ - go gopher, gemini, finger, etc. client)
 - boost (...)
   - ```./bootstrap.sh --prefix=${ridir} --without-icu ; ./b2 --prefix=${ridir} --layout=system -q link=static install```
   - it's like a 100MB tgz, 700MB extracted, 900MB during build, 190MB installed
