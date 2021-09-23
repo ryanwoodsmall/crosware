@@ -20,6 +20,10 @@ function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG '/gets is a/d' lib/stdio.in.h
   ./configure ${cwconfigureprefix} --disable-nls
+  cat lib/sigsegv.c > lib/sigsegv.c.ORIG
+  echo '#include <config.h>' > lib/sigsegv.c
+  echo '#include <sys/reg.h>' >> lib/sigsegv.c
+  cat lib/sigsegv.c.ORIG >> lib/sigsegv.c
   popd >/dev/null 2>&1
 }
 "
