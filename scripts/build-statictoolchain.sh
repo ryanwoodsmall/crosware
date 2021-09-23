@@ -9,6 +9,7 @@ set -eu
 export TS="$(date '+%Y%m%d%H%M')"
 
 : ${EXTRA_MAKE_ARGS:=""}
+export EXTRA_MAKE_ARGS="${EXTRA_MAKE_ARGS} TS=${TS}"
 
 st="$(date)"
 
