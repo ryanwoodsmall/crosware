@@ -40,7 +40,7 @@ eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make \
-    CC=\"\${CC} \${CFLAGS} -I${cwsw}/netbsdcurses/current/include -L${cwsw}/netbsdcurses/current/lib\" \
+    CC=\"\${CC} \${CFLAGS} -fcommon -I${cwsw}/netbsdcurses/current/include -L${cwsw}/netbsdcurses/current/lib\" \
     CPPFLAGS= \
     LDFLAGS=-static
   popd >/dev/null 2>&1
