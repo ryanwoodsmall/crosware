@@ -547,6 +547,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - muslfts (https://github.com/pullmoll/musl-fts)
 - muslstandalone (http://musl.libc.org/ - unbundled musl libc and kernel headers with musl-gcc wrapper, possibly different version from statictoolchain)
   - musl11 (musl 1.1.x for compat)
+  - musl12 (musl 1.2.x with `oldmalloc` for compat)
 - nbsdgames (https://github.com/abakh/nbsdgames - new bsd games)
 - ncurses
 - neat/litcave stuff (http://litcave.rudi.ir/)
