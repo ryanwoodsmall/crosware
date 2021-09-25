@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -eu
 : ${cwtop:="/usr/local/crosware"}
 export PATH="$(echo $PATH | tr ':' '\n' | grep -v "${cwtop}/" | paste -s -d: -)"
 for e in CFLAGS CPPFLAGS CXXFLAGS LDFLAGS PKG_CONFIG_LIBDIR PKG_CONFIG_PATH ; do
