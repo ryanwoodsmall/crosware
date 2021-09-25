@@ -1,5 +1,5 @@
 : ${rreqs:=""}
-rreqs+=" make zlib netbsdcurses musl12"
+rreqs+=" make zlib netbsdcurses"
 
 : ${sslprov:='openssl'}
 rreqs+=" ${sslprov}"
@@ -20,21 +20,14 @@ fi
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  local REALGCC=\"${cwsw}/statictoolchain/current/bin/\${CC}\"
-  if [ -e \"${cwsw}/ccache/current/bin/\${CC}\" ] ; then
-    REALGCC=\"${cwsw}/ccache/current/bin/\${CC}\"
-  fi
   env \
     PATH=\"${cwsw}/${sslprov}/current/bin:\${PATH}\" \
-    REALGCC=\"\${REALGCC}\" \
     ./configure ${cwconfigureprefix} \
       --without-pie \
       --with-libedit=\"${cwsw}/netbsdcurses/current\" \
       --sysconfdir=\"${rtdir}/etc\" \
       --with-privsep-path=\"${cwtmp}/empty\" \
       --with-mantype=man \
-        REALGCC=\"\${REALGCC}\" \
-        CC=\"${cwsw}/musl12/current/bin/musl-gcc\" \
         CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/${sslprov}/current/include -I${cwsw}/netbsdcurses/include\" \
         LDFLAGS=\"-static -L${cwsw}/zlib/current/lib -L${cwsw}/${sslprov}/current/lib -L${cwsw}/netbsdcurses/current/lib\" \
         LIBS='-lcrypto -lz -lcrypt -ledit -lcurses -lterminfo' \
@@ -46,7 +39,9 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwuninstall_${rname}() {
-  test -e \"${rtdir}\" || return
+  if [ ! -e \"${rtdir}\" ] ; then
+    return
+  fi
   pushd \"${rtdir}\" >/dev/null 2>&1
   rm -rf ${rname%${sslprov}}-* current previous
   rm -f \"${rprof}\"
