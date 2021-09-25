@@ -380,7 +380,7 @@ function cwinstall_jgitsh() {
 old_static_toolchain_pkgname="static-toolchain"
 statictoolchain_archive_ext="tar.bz2"
 statictoolchain_checksum_ext="sha256"
-statictoolchain_release="202109232345"
+statictoolchain_release="202109250959"
 statictoolchain_base_url="https://github.com/ryanwoodsmall/musl-misc/releases/download"
 statictoolchain_release_url="${statictoolchain_base_url}/${statictoolchain_release}"
 statictoolchain_pkgname="statictoolchain"
