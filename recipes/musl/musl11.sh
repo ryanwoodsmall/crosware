@@ -6,6 +6,7 @@ rurl="http://musl.libc.org/releases/${rfile}"
 rsha256="1370c9a812b2cf2a7d92802510cca0058cc37e66a7bedd70051f0a34015022a3"
 rreqs="bootstrapmake"
 rprof="${cwetcprofd}/zz_${rname}.sh"
+rpfile="${cwrecipe}/${rname%11}/${rname}.patches"
 
 . "${cwrecipe}/common.sh"
 
