@@ -160,6 +160,9 @@
   - rarches - list of supported arches, default all
   - rold - list of old versions to clean up recipes that do not fully remove rdir?
   - rext - ${rfile} extension - .tar.gz, etc. - would make (de-)construction easier
+  - rlibdir / rincdir - use for cwgenprofd_ and encode in functions for reflection
+    - could help separate out dev deps from bin/progs
+    - much slimmed down CPPFLAGS/LDFLAGS on recipes where it's custom
   - need to set sane default r* values in common.sh with ```: ${rblah:="blah.setting"}```
   - unset vals after parse so there is no bleed through?
   - generic profile.d generator
