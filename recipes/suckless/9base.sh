@@ -42,17 +42,17 @@ function cwconfigure_${rname}() {
   ln -sf \"${rname}\" \"${ridir}/bin/9\"
   grep -ril /usr/local/plan9 . \
   | grep -v '\.git' \
-  | xargs sed -i "s#/usr/local/plan9#${ridir}#g"
+  | xargs sed -i \"s#/usr/local/plan9#${ridir}#g\"
   sed -i '/^PREFIX/d' config.mk
   sed -i '/^CC/d' config.mk
-  echo "CC = \${CC}" >> config.mk
-  echo "PREFIX = ${ridir}" >> config.mk
+  echo \"CC = \${CC} -fcommon\" >> config.mk
+  echo \"PREFIX = ${ridir}\" >> config.mk
   if [[ ${karch} =~ x86_64 ]] ; then
     sed -i '/^OBJTYPE/d' config.mk
-    echo "OBJTYPE = x86_64" >> config.mk
+    echo \"OBJTYPE = x86_64\" >> config.mk
   elif [[ ${karch} =~ a(arch|rm) ]] ; then
     sed -i '/^OBJTYPE/d' config.mk
-    echo "OBJTYPE = arm" >> config.mk
+    echo \"OBJTYPE = arm\" >> config.mk
   fi
   popd >/dev/null 2>&1
 }
