@@ -8,12 +8,12 @@
 #
 
 rname="pcc"
-rver="20210420"
+rver="20210917"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 #rurl="ftp://pcc.ludd.ltu.se/pub/${rname}/${rfile}"
 rurl="http://pcc.ludd.ltu.se/ftp/pub/${rname}/${rfile}"
-rsha256="e114e3d2e54624a402575ddab76530677bb6f6f1f70c5aac8a4aafb96d604c6c"
+rsha256="3f3521733d323105f777b384cced7b8e759e6a6d97f06aa4ad8930bc1e547880"
 rreqs="make byacc flex configgit muslstandalone"
 
 . "${cwrecipe}/common.sh"
@@ -25,7 +25,7 @@ function cwfetch_${rname}() {
   f=\"${rfile//pcc/pcc-libs}\"
   u=\"${rurl%/*}-libs/\${f}\"
   d=\"${rdlfile%/*}/\${f}\"
-  s=\"55770634640883d8bb52989a15ea4f7bf349153b2f9fceb725e2922ae2467178\"
+  s=\"8391fbdfdababd2f315d233373607482c0218a82368046a21f879944d2c3e0e4\"
   cwfetchcheck \"\${u}\" \"\${d}\" \"\${s}\"
   unset f u d s
 }
