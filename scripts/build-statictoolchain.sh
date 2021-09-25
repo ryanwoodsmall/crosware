@@ -57,7 +57,7 @@ cd ${mcmd}
 
 echo "getting Makefile.arch_indep"
 curl -fkLO https://raw.githubusercontent.com/ryanwoodsmall/musl-misc/master/musl-cross-make-confs/Makefile.arch_indep
-#sed -i.TS '/git.*version/d' Makefile.arch_indep
+#sed -i."$(date +%Y%m%d%H%M%S)" '/git.*version/d' Makefile.arch_indep
 
 echo "building compiler"
 ( date ; time ( make -f Makefile.arch_indep ${EXTRA_MAKE_ARGS} ; echo $? ) ; date ) >>${logfile} 2>&1
