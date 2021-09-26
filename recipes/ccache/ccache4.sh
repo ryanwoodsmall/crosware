@@ -35,21 +35,12 @@ function cwmakeinstall_${rname}() {
   make install
   strip --strip-all \"${ridir}/bin/\${c}\"
   cd \"${ridir}/bin\"
-  ln -sf \${c} \${CPP}
-  ln -sf \${c} \${CC}
-  ln -sf \${c} \${CC//-gcc/-cc}
-  ln -sf \${c} \${CXX}
-  ln -sf \${c} \${CXX//-g++/-c++}
-  ln -sf \${c} cpp
-  ln -sf \${c} cc
-  ln -sf \${c} c++
-  ln -sf \${c} gcc
-  ln -sf \${c} g++
-  ln -sf \${c} musl-cpp
-  ln -sf \${c} musl-cc
-  ln -sf \${c} musl-c++
-  ln -sf \${c} musl-gcc
-  ln -sf \${c} musl-g++
+  for p in cc cpp c++ gcc g++ ; do
+    for a in ${statictoolchain_triplet[@]} musl ; do
+      ln -sf \${c} \${a}-\${p}
+    done
+    ln -sf \${c} \${p}
+  done
   unset c
   popd >/dev/null 2>&1
 }
