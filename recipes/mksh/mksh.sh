@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="http://www.mirbsd.org/MirOS/dist/mir/${rname}/${rfile}"
 rsha256="77ae1665a337f1c48c61d6b961db3e52119b38e58884d1c89684af31f87bc506"
-rreqs="make"
+rreqs=""
 
 . "${cwrecipe}/common.sh"
 
