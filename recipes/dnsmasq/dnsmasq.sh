@@ -2,11 +2,11 @@
 # XXX - libidn/libidn2 stuff
 #
 rname="dnsmasq"
-rver="2.85"
+rver="2.86"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="http://www.thekelleys.org.uk/${rname}/${rfile}"
-rsha256="ad98d3803df687e5b938080f3d25c628fe41c878752d03fbc6199787fee312fa"
+rsha256="28d52cfc9e2004ac4f85274f52b32e1647b4dbc9761b82e7de1e41c49907eb08"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
