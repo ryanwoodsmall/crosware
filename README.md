@@ -425,6 +425,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - single static `hab` binary
 - haproxy (http://www.haproxy.org/ - openssl+pcre+zlib)
   - haproxylibressl (libressl+pcre+zlib)
+- hboetesmg (https://github.com/hboetes/mg - micro gnuemacs, libbsd+netbsdcurses)
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
   - exvi with netbsdcurses also available as a standalone package
 - help2man
@@ -1311,21 +1312,6 @@ wc -l /tmp/astbuild.out
 - miniyacc (https://c9x.me/yacc/)
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
 - mk (go, https://github.com/dcjones/mk)
-- mg
-  - https://github.com/hboetes/mg - tracks openbsd, uses libbsd
-    - ```
-      export PKG_CONFIG_PATH=${cwsw}/netbsdcurses/current/lib/pkgconfig:${cwsw}/libbsd/current/lib/pkgconfig
-      make -f GNUmakefile \
-        clean \
-        install-strip \
-          prefix=${ridir} \
-          STRIP=$(which strip) \
-          PKG_CONFIG=$(which pkg-config) \
-          CPPFLAGS="-I${cwsw}/netbsdcurses/current/include $(pkg-config --cflags libbsd-overlay)" \
-          LDFLAGS="-L${cwsw}/netbsdcurses/current/lib -L${cwsw}/libbsd/current/lib" \
-          LIBS='-lcurses -lterminfo -lbsd -static' \
-          STATIC=yesplease
-      ```
 - moreutils (https://joeyh.name/code/moreutils/)
 - moscow ml (https://github.com/kfl/mosml)
 - mqtt-c (https://github.com/LiamBindle/MQTT-C)
@@ -1616,7 +1602,6 @@ wc -l /tmp/astbuild.out
 - troglobit stuff
   - finit (https://github.com/troglobit/finit)
   - merecat (https://github.com/troglobit/merecat)
-  - mg (https://github.com/troglobit/mg - see mg stuff above...)
   - mping (https://github.com/troglobit/mping - multicast ping)
   - smcroute (https://github.com/troglobit/smcroute and https://troglobit.com/projects/smcroute/)
   - sysklogd (https://github.com/troglobit/sysklogd - bsd syslog on linux, newer rfc compliant)
