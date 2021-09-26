@@ -531,6 +531,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - mawk (https://invisible-island.net/mawk/mawk.html)
 - mbedtls (polarssl)
 - meson (http://mesonbuild.com/)
+- mg (https://github.com/troglobit/mg - micro gnuemacs, netbsdcurses)
 - microsocks (https://github.com/rofl0r/microsocks)
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
 - minikube (https://minikube.sigs.k8s.io/)
@@ -1324,14 +1325,6 @@ wc -l /tmp/astbuild.out
           LDFLAGS="-L${cwsw}/netbsdcurses/current/lib -L${cwsw}/libbsd/current/lib" \
           LIBS='-lcurses -lterminfo -lbsd -static' \
           STATIC=yesplease
-      ```
-  - https://github.com/troglobit/mg - extra features/portability
-    - ```
-      ./configure \
-        --prefix=${ridir} \
-          CPPFLAGS="-I${cwsw}/netbsdcurses/current/include" \
-          LDFLAGS="-L${cwsw}/netbsdcurses/current/lib -static" \
-          LIBS="-lcurses -lterminfo"
       ```
 - moreutils (https://joeyh.name/code/moreutils/)
 - moscow ml (https://github.com/kfl/mosml)
