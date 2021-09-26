@@ -1,3 +1,8 @@
+#
+# XXX - ncurses variant
+# XXX - no curses variant with --without-curses
+#
+
 rname="mg"
 rver="3.4"
 rdir="${rname}-${rver}"
