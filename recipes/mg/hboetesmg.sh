@@ -37,18 +37,17 @@ function cwmakeinstall_${rname}() {
   local m='mg'
   local n=\"${rname%mg}\"
   local f=\"${rtdir}/current/bin/mg\"
-  env \
-    make -f GNUmakefile \
-      clean \
-      install-strip \
-        prefix=\"${ridir}\" \
-        CC=\"\${CC} -I${cwsw}/netbsdcurses/current/include \$(\${p} --cflags libbsd-overlay) -DHAVE_PTY_H\" \
-        CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
-        INSTALL=install \
-        LDFLAGS=\"-static\" \
-        PKG_CONFIG=\"\${p}\" \
-        STATIC=yesplease \
-        STRIP=\"\$(\${CC} -dumpmachine)-strip\"
+  make -f GNUmakefile \
+    clean \
+    install-strip \
+      prefix=\"${ridir}\" \
+      CC=\"\${CC} -I${cwsw}/netbsdcurses/current/include \$(\${p} --cflags libbsd-overlay) -DHAVE_PTY_H\" \
+      CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
+      INSTALL=install \
+      LDFLAGS=\"-static\" \
+      PKG_CONFIG=\"\${p}\" \
+      STATIC=yesplease \
+      STRIP=\"\$(\${CC} -dumpmachine)-strip\"
   ln -sf \"\${f}\" \"${ridir}/bin/${rname}\"
   ln -sf \"\${f}\" \"${ridir}/bin/\${m}-\${n}\"
   ln -sf \"\${f}\" \"${ridir}/bin/\${n}-\${m}\"
