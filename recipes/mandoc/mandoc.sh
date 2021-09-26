@@ -1,9 +1,9 @@
 rname="mandoc"
-rver="1.14.5"
+rver="1.14.6"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://mandoc.bsd.lv/snapshots/${rfile}"
-rsha256="8219b42cb56fc07b2aa660574e6211ac38eefdbf21f41b698d3348793ba5d8f7"
+rsha256="8bf0d570f01e70a6e124884088870cbed7537f36328d512909eb10cd53179d9c"
 rreqs="make zlib busybox less manpages"
 
 . "${cwrecipe}/common.sh"
