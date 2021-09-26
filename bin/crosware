@@ -1210,6 +1210,7 @@ function cwset() {
   cwsourcerecipes
   cwsourceprofile
   cwgetinstalled
+  echo '#!/usr/bin/env bash'
   set
 }
 
