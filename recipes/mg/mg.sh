@@ -1,6 +1,5 @@
 #
 # XXX - ncurses variant
-# XXX - no curses variant with --without-curses
 #
 
 rname="mg"
