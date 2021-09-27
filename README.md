@@ -1626,6 +1626,7 @@ wc -l /tmp/astbuild.out
 - ublinter (https://github.com/danmar/ublinter)
 - ubridge (https://github.com/GNS3/ubridge - udp, ethernet, tap, etc. userspace bridge controller)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
+- uemacs (https://git.kernel.org/pub/scm/editors/uemacs/uemacs.git/ - micro-emacs)
 - unfs3 (https://unfs3.github.io/ and https://github.com/unfs3/unfs3)
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
 - units (https://www.gnu.org/software/units)
