@@ -1487,6 +1487,7 @@ wc -l /tmp/astbuild.out
   - mit/gnu scheme (requires gnu/mit scheme... to build... itself)
   - mosh (https://github.com/higepon/mosh and http://mosh.monaos.org/files/doc/text/About-txt.html)
   - oaklisp (https://github.com/barak/oaklisp)
+  - otus lisp (https://github.com/yuriy-chumak/ol - ol, small purely functional scheme)
   - racket
   - rscheme (http://www.rscheme.org/rs)
   - s7 (https://ccrma.stanford.edu/software/snd/snd/s7.html)
