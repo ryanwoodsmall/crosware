@@ -533,7 +533,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - mbedtls (polarssl)
 - meson (http://mesonbuild.com/)
 - mg (https://github.com/troglobit/mg - micro gnuemacs, netbsdcurses)
-  mgminimal (no curses/terminfo/termcap, optimized for size)
+  - mgminimal (no curses/terminfo/termcap, optimized for size)
 - microsocks (https://github.com/rofl0r/microsocks)
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
 - minikube (https://minikube.sigs.k8s.io/)
