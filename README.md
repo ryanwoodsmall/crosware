@@ -1432,6 +1432,7 @@ wc -l /tmp/astbuild.out
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
 - rawtar (https://github.com/andrewchambers/rawtar)
+- rclone (https://rclone.org and https://github.com/rclone/rclone - rsync for cloud/sftp/etc., go, union mounts?)
 - re2c (http://re2c.org/ and https://github.com/skvadrik/re2c)
 - redis (https://github.com/redis/redis and https://redis.io - tls, jemalloc, etc., options)
 - redo-c (https://github.com/leahneukirchen/redo-c - djb's redo concept implemented in c instead of python)
