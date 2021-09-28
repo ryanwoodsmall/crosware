@@ -1,10 +1,10 @@
 rname="wolfssl"
 rver="4.8.1"
 rdir="${rname}-${rver}-stable"
-rfile="v${rver}-stable.tar.gz"
-rurl="https://github.com/wolfSSL/${rname}/archive/${rfile}"
-rsha256="50db45f348f47e00c93dd244c24108220120cb3cc9d01434789229c32937c444"
-rreqs="make perl m4 autoconf automake libtool cacertificates"
+rfile="${rdir}.tar.xz"
+rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
+rsha256="19c3a18f60e4d8122be4b89d97e3a6b4e8d8608e1bc210be3a91d1ed6b9488b6"
+rreqs="make cacertificates"
 
 . "${cwrecipe}/common.sh"
 
@@ -13,8 +13,6 @@ function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   touch wolfssl/wolfcrypt/fips.h
   touch cyassl/ctaocrypt/fips.h
-  env PATH=${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH} libtoolize
-  env PATH=${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH} autoreconf -fiv -I${cwsw}/libtool/current/share/aclocal
   sed -i '/^#!/s#/bin/sh#/usr/bin/env bash#g' configure
   bash ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-asm \
