@@ -3,11 +3,11 @@
 #
 
 rname="libgit2"
-rver="1.2.0"
+rver="1.3.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="701a5086a968a46f25e631941b99fc23e4755ca2c56f59371ce1d94b9a0cc643"
+rsha256="192eeff84596ff09efb6b01835a066f2df7cd7985e0991c79595688e6b36444e"
 rreqs="make zlib pkgconfig openssl libssh2 cmake"
 rbdir="${cwbuild}/${rdir}/build"
 
