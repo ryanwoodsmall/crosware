@@ -70,7 +70,8 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'export PLAN9=\"${rtdir}/current\"' > \"${rprof}\"
+  echo 'append_path \"${cwsw}/plan9port/current/bin\"' > \"${rprof}\"
+  echo 'export PLAN9=\"${rtdir}/current\"' >> \"${rprof}\"
   echo 'append_path \"\${PLAN9}/bin\"' >> \"${rprof}\"
 }
 "
