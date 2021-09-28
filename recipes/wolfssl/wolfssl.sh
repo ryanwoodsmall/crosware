@@ -4,7 +4,7 @@ rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rsha256="19c3a18f60e4d8122be4b89d97e3a6b4e8d8608e1bc210be3a91d1ed6b9488b6"
-rreqs="make cacertificates"
+rreqs="make cacertificates configgit"
 
 . "${cwrecipe}/common.sh"
 
