@@ -4,10 +4,10 @@
 #
 
 rname="px5g"
-rver="19.07"
+rver="21.02"
 rdir="${rname}-${rver}"
-rfile="${rname}.c"
-rurl="https://github.com/openwrt/openwrt/raw/openwrt-${rver}/package/utils/${rname}/${rfile}"
+rfile="${rname}-mbedtls.c"
+rurl="https://github.com/openwrt/openwrt/raw/openwrt-${rver}/package/utils/${rname}-mbedtls/${rfile}"
 rsha256="cb42a8c59896bb87e46d5e521d7c5a99362b149e15ffa7ca6e3dc87376bc0964"
 rreqs="mbedtls"
 
