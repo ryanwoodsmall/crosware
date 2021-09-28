@@ -37,6 +37,8 @@ function cwmakeinstall_${rname}() {
   \$(\${CC} -dumpmachine)-strip --strip-all \"${rname}\"
   cwmkdir \"${ridir}/bin\"
   install -m 0755 \"${rname}\" \"${ridir}/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}mbedtls\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}-mbedtls\"
   popd >/dev/null 2>&1
 }
 "
