@@ -27,11 +27,11 @@
 #
 
 rname="gc"
-rver="8.0.4"
+rver="8.0.6"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ivmai/bdwgc/releases/download/v${rver}/${rfile}"
-rsha256="436a0ddc67b1ac0b0405b61a9675bca9e075c8156f4debd1d06f3a56c7cd289d"
+rsha256="3b4914abc9fa76593596773e4da671d7ed4d5390e3d46fbf2e5f155e121bea11"
 rreqs="make libatomicops pkgconfig configgit"
 
 . "${cwrecipe}/common.sh"
