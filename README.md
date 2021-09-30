@@ -1269,6 +1269,7 @@ wc -l /tmp/astbuild.out
   - s-nail (https://www.sdaoden.eu/code.html#s-mailx) - up-to-date w/tls (openssl 1.1+) support
   - or gnu mailutils (https://www.gnu.org/software/mailutils/mailutils.html)
 - makeself (https://makeself.io/ and https://github.com/megastep/makeself - bin pkgs? with signing?)
+- makesure (https://github.com/xonixx/makesure - make-like goal/task runner in shell and awk)
 - man stuff
   - MANPATH settings
   - roffit (https://daniel.haxx.se/projects/roffit/)
