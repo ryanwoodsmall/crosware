@@ -1,9 +1,9 @@
 rname="bootstrapmake"
 rver="4.2.1"
 rdir="${rname//bootstrap/}-${rver}"
-rfile="${rdir}.tar.bz2"
+rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname//bootstrap/}/${rfile}"
-rsha256="d6e262bf3601b42d2b1e4ef8310029e1dcf20083c5446b4b7aa67081fdffc589"
+rsha256="e40b8f018c1da64edd1cc9a6fce5fa63b2e707e404e20cad91fbae337c98a5b7"
 rreqs="configgit"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
