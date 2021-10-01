@@ -804,12 +804,16 @@ time_func ls -l -A /
     - `CC="${CC} -D__BEGIN_DECLS='' -D__END_DECLS=''"`
     - `CXX="${CXX} -D__BEGIN_DECLS='extern "C" {' -D__END_DECLS='}'"
   - figure out quoting.
+- `binonly/` directories for busybox, toybox, ccache, sbase, ubase, dropbear, ...
+  - symlink for primary binary as a cleaner alternative for adding a recipe to path
+  - explicitly run with `boxbinary program -options arguments`
 - hard to support recipes
   - need an ongoing update strategy for stuff that is necessary but a pain to update/slow build/etc. or that i don't personally use
     - perl
     - qemu
     - glib
     - python python python
+    - cmake
 
 <!--
 # vim: ft=markdown
