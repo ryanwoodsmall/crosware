@@ -5,7 +5,7 @@ rfile="${rdir}.tar.xz"
 rdlfile="${cwdl}/${rname%libressl}/${rfile}"
 rurl="https://www.kernel.org/pub/software/scm/${rname%libressl}}/${rfile}"
 rsha256=""
-rreqs="make zlib libressl expat pcre2 perl cacertificates nghttp2 curllibressl"
+rreqs="make zlib libressl expat pcre2 perl cacertificates nghttp2 curllibressl opensshlibressl"
 
 . "${cwrecipe}/common.sh"
 . "${cwrecipe}/${rname%libressl}/${rname%libressl}.sh.common"
