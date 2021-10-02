@@ -39,13 +39,13 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwuninstall_${rname}() {
+  rm -f \"${rprof}\"
+  rm -f \"${cwvarinst}/${rname}\"
   if [ ! -e \"${rtdir}\" ] ; then
     return
   fi
   pushd \"${rtdir}\" >/dev/null 2>&1
   rm -rf ${rname%${sslprov}}-* current previous
-  rm -f \"${rprof}\"
-  rm -f \"${cwvarinst}/${rname%${sslprov}}\"
   popd >/dev/null 2>&1
 }
 "
