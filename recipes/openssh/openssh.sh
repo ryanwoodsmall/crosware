@@ -8,6 +8,8 @@
 #   PubkeyAcceptedKeyTypes +ssh-rsa
 #   HostKeyAlgorithms +ssh-rsa
 #
+# XXX - https://gist.github.com/ryanwoodsmall/1bd42c1323d23b77845fef30afcc2d46
+#
 
 rname="openssh"
 rver="8.8p1"
