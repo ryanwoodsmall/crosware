@@ -1,9 +1,9 @@
 rname="libuev"
-rver="2.3.2"
+rver="2.4.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/troglobit/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="af31ffe1058a2ff6c56fee26ec8749688704d297189b6a898380a601efefbec9"
+rsha256="31f1aa4f492ba4f6a5dd6b19968ae6a732968dc05cae6575930560b6cee1f5ef"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
