@@ -1539,6 +1539,9 @@ wc -l /tmp/astbuild.out
 - shit (https://git.sr.ht/~sircmpwn/shit - shell git???)
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
 - simplecpp (https://github.com/danmar/simplecpp)
+- skarnet stuff
+  - dnsfunnel (https://skarnet.org/software/dnsfunnel/ - dns cache fanout to udp)
+  - nsss (https://skarnet.org/software/nsss/ - nscd/nss ish implementation)
 - sljit (http://sljit.sourceforge.net/)
 - sloccount (https://dwheeler.com/sloccount/)
 - smarden stuff
