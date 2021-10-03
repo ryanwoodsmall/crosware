@@ -16,7 +16,7 @@ function cwconfigure_${rname}() {
     --with-libedit \
     --disable-silent-rules \
       CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
-      CFLAGS=\"\${CFLAGS} -L${cwsw}/netbsdcurses/current/lib\" \
+      CFLAGS=\"\${CFLAGS} -O2 -L${cwsw}/netbsdcurses/current/lib\" \
       LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -ledit -lcurses -lterminfo -static\" \
       LIBS=\"-ledit -lcurses -lterminfo -static\" \
       YACC=byacc
