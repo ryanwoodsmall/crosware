@@ -17,11 +17,11 @@
 #
 
 rname="lighttpd"
-rver="1.4.59"
+rver="1.4.60"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://download.lighttpd.net/${rname}/releases-${rver%.*}.x/${rfile}"
-rsha256="fb953db273daef08edb6e202556cae8a3d07eed6081c96bd9903db957d1084d5"
+rsha256="4bb1dd859e541a3131e5be101557d2e1195b4129d3a849a3a6fbd21fe1c946f0"
 rreqs="make zlib bzip2 pcre mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr brotli zstd xxhash lua54"
 
 . "${cwrecipe}/common.sh"
@@ -43,6 +43,17 @@ function cwconfigure_${rname}() {
         LUA_LIBS=\"-L${cwsw}/lua54/current/libs -llua\"
   grep -ril 'sys/queue\\.h' . \
   | xargs sed -i.ORIG 's,sys/queue,bsd/sys/queue,g'
+  cat >>config.h<<EOF
+#undef __BEGIN_DECLS
+#undef __END_DECLS
+#ifdef __cplusplus
+# define __BEGIN_DECLS extern \"C\" {
+# define __END_DECLS }
+#else
+# define __BEGIN_DECLS
+# define __END_DECLS
+#endif
+EOF
   popd >/dev/null 2>&1
 }
 "
