@@ -1654,6 +1654,7 @@ wc -l /tmp/astbuild.out
   - wasi (https://github.com/bytecodealliance/wasi and https://github.com/WebAssembly/WASI)
   - wasi-libc https://github.com/WebAssembly/wasi-libc)
   - wasm3 (https://github.com/wasm3/wasm3)
+  - wasmedge (https://github.com/WasmEdge/WasmEdge - wasm runtime from cncf)
   - wasmer (https://github.com/wasmerio/wasmer - cross-platform webassembly binaries everywhere)
   - wasmtime (https://github.com/bytecodealliance/wasmtime and https://github.com/bytecodealliance/wasmtime)
   - wasmtime-cpp (https://github.com/bytecodealliance/wasmtime-cpp)
