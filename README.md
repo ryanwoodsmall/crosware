@@ -1348,9 +1348,11 @@ wc -l /tmp/astbuild.out
   - neatroff (https://github.com/aligrudi/neatroff)
     - neatroff_make (https://github.com/aligrudi/neatroff_make)
   - neateqn (https://github.com/aligrudi/neateqn)
+  - neatpop3 (https://github.com/aligrudi/neatpop3)
   - neatpost (https://github.com/aligrudi/neatpost)
   - neatrefer (https://github.com/aligrudi/neatrefer)
   - neatmkfn (https://github.com/aligrudi/neatmkfn)
+  - neatsmtp (https://github.com/aligrudi/neatsmtp)
   - neatvi
     - kyx0r fork with lots of features (https://github.com/kyx0r/neatvi)
   - fbpdf (https://github.com/aligrudi/fbpdf)
