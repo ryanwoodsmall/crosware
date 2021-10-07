@@ -758,6 +758,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - agner fog's stuff
   - https://www.agner.org/optimize/#objconv
+- aho (https://github.com/djanderson/aho - git (local-only) in awk - cool!)
 - align (and width, perl scripts, http://kinzler.com/me/align/)
 - aloa (linter - https://github.com/ralfholly/aloa)
 - althttpd (https://sqlite.org/althttpd/doc/trunk/althttpd.md - sqlite web server, xinetd+stunnel)
