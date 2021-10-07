@@ -1140,6 +1140,7 @@ wc -l /tmp/astbuild.out
   - libtommath
   - libtompoly
   - tomsfastmath
+- libuargp (https://github.com/xhebox/libuargp - argp-standalone alternative)
 - libucl (https://github.com/vstakhov/libucl - universal configuration language parser library)
 - libudev-zero (https://github.com/illiliti/libudev-zero)
 - libunwind (http://www.nongnu.org/libunwind/ and http://savannah.nongnu.org/projects/libunwind)
