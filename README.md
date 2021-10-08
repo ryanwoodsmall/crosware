@@ -646,7 +646,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - shellish (https://github.com/ryanwoodsmall/shell-ish - some random texts from my script bucket)
 - simh (http://simh.trailing-edge.com and https://github.com/simh/simh)
 - sisc (scheme)
-- sish (https://github.com/antoniomika/sish - go tunnel tool)
 - slang (ncurses)
 - slibtool (https://github.com/midipix-project/slibtool)
 - slsc (jedsoft "sc" console spreadsheet for slang)
@@ -1547,6 +1546,7 @@ wc -l /tmp/astbuild.out
 - shit (https://git.sr.ht/~sircmpwn/shit - shell git???)
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
 - simplecpp (https://github.com/danmar/simplecpp)
+- sish (https://github.com/antoniomika/sish - go tunnel tool)
 - skarnet stuff
   - dnsfunnel (https://skarnet.org/software/dnsfunnel/ - dns cache fanout to udp)
   - nsss (https://skarnet.org/software/nsss/ - nscd/nss ish implementation)
