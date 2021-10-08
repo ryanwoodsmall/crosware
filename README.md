@@ -934,6 +934,9 @@ wc -l /tmp/astbuild.out
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
 - frontabse (http://openbsd.stanleylieber.com/frontbase - 9base fork?)
 - gatling (http://www.fefe.de/gatling/ - small web/cgi/ftp/smb server)
+- gcc - other versions, builds, etc.
+  - `gcc9`, `gcc10`, `gcc11` - default musl, useful for testing new versions
+  - `gcc#glibc` - for gcc+glibc libc/libgcc_s/etc. (jdk, graalvm, ...)
 - gcompat (https://code.foxkit.us/adelie/gcompat and https://github.com/AdelieLinux/gcompat)
 - geomyidae (http://r-36.net/scm/geomyidae/ - gopher server)
 - gdb
