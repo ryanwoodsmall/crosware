@@ -3,6 +3,7 @@
 # install musl-based zulu jdk "out of tree"
 #
 # XXX - use alpine openjdk .apk packages instead - may work on other arches? ssl/nss/x11?
+# XXX - aarch64 support for zulu17musl+
 #
 
 # only run if we're have valid crosware
