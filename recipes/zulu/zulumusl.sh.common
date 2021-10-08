@@ -1,18 +1,26 @@
-rdir="zulu${rver}-linux_musl_x64"
-rfile="${rdir}.tar.gz"
-rurl="https://cdn.azul.com/zulu/bin/${rfile}"
+: ${rdir:="zulu${rver}-linux_musl_x64"}
+: ${rfile:="${rdir}.tar.gz"}
+: ${rurl:="https://cdn.azul.com/zulu/bin/${rfile}"}
 rreqs="libz patchelf toybox"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rdlfile="${cwdl}/zulu/${rfile}"
 
 . "${cwrecipe}/common.sh"
 
-if [[ ! ${uarch} =~ ^x86_64$ ]] ; then
 eval "
-function cwinstall_${rname}() {
-  cwscriptecho \"${rname} not supported on ${uarch}\"
+function cwinstall_${rname}_unsupported() {
+  cwscriptecho \"${rname} not supported on ${karch}\"
 }
 "
+
+if [ ${mver} -lt 17 ] ; then
+  if [[ ! ${karch} =~ ^x86_64$ ]] ; then
+    eval "function cwinstall_${rname}() { cwinstall_${rname}_unsupported ; }"
+  fi
+else
+  if [[ ! ${karch} =~ ^(x86_64|aarch64)$ ]] ; then
+    eval "function cwinstall_${rname}() { cwinstall_${rname}_unsupported ; }"
+  fi
 fi
 
 eval "
