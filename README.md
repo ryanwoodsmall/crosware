@@ -643,6 +643,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - sed (gnu gsed, prepended to $PATH, becomes default sed)
 - sharutils (https://www.gnu.org/software/sharutils/)
 - shellinabox (https://github.com/shellinabox/shellinabox)
+- shellish (https://github.com/ryanwoodsmall/shell-ish - some random texts from my script bucket)
 - simh (http://simh.trailing-edge.com and https://github.com/simh/simh)
 - sisc (scheme)
 - sish (https://github.com/antoniomika/sish - go tunnel tool)
