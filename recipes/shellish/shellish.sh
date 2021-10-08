@@ -35,7 +35,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${ridir}/bin\"
   pushd \"${ridir}\" >/dev/null 2>&1
   local p
-  for p in dingsleep ht nll trl tru ; do
+  for p in chode dingsleep ht nll trl tru ; do
     ln -sf \"${rtdir}/current/${rdir}/bin/\${p}\" \"${ridir}/bin/\${p}\"
   done
   unset p
