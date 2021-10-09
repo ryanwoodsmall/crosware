@@ -1,9 +1,9 @@
 rname="tnftp"
-rver="20200705"
+rver="20210827"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.netbsd.org/pub/NetBSD/misc/${rname}/${rfile}"
-rsha256="ba4a92b693d04179664524eef0801c8eed4447941c9855f377f98f119f221c03"
+rsha256="101901e90b656c223ec8106370dd0d783fb63d26aa6f0b2a75f40e86a9f06ea2"
 rreqs="make netbsdcurses configgit"
 
 . "${cwrecipe}/common.sh"
