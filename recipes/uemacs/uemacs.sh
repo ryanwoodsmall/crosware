@@ -36,6 +36,9 @@ function cwmakeinstall_${rname}() {
     V=1 \
     BINDIR=\"${ridir}/bin\" \
     LIBDIR=\"${ridir}/lib\"
+  ln -sf em \"${ridir}/bin/${rname}\"
+  ln -sf em \"${ridir}/bin/microemacs\"
+  ln -sf em \"${ridir}/bin/micro-emacs\"
   popd >/dev/null 2>&1
 }
 "
