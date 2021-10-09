@@ -704,14 +704,15 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - minisnmpd (https://github.com/troglobit/mini-snmpd and https://troglobit.com/projects/mini-snmpd/)
   - redir (https://github.com/troglobit/redir)
   - uredir (https://github.com/troglobit/uredir)
-- uacme (https://github.com/ndilieto/uacme - standalone acme/letsencrypt client in c, curl+openssl)
-  - uacmembedtls (curl+mbedtls)
-  - uacmegnutls (curl+gnutls)
 - u9fs (https://github.com/Plan9-Archive/u9fs - userspace 9p server, recently updated, works without rhosts stuff)
   - no auth serve w/busybox or toybox: `tcpsvd -E -v 0.0.0.0 564 ./u9fs -D -z -a none -u username /path/to/share`
   - access from remote host w/plan 9 from user space: `9p -a 'tcp!hostname.domain.name!564' ls /`
   - **plan9port9p** recipe provides `9p` client
   - **libixp** recipe provides `ixpc` 9p client
+- uacme (https://github.com/ndilieto/uacme - standalone acme/letsencrypt client in c, curl+openssl)
+  - uacmembedtls (curl+mbedtls)
+  - uacmegnutls (curl+gnutls)
+- uemacs (https://git.kernel.org/pub/scm/editors/uemacs/uemacs.git/ - micro-emacs)
 - unrar
 - unzip
 - utillinux
@@ -1643,7 +1644,6 @@ wc -l /tmp/astbuild.out
 - ubridge (https://github.com/GNS3/ubridge - udp, ethernet, tap, etc. userspace bridge controller)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
 - ueforth (https://github.com/flagxor/eforth - small forth for linux, plus esp32forth for wifi+bt mcu)
-- uemacs (https://git.kernel.org/pub/scm/editors/uemacs/uemacs.git/ - micro-emacs)
 - unfs3 (https://unfs3.github.io/ and https://github.com/unfs3/unfs3)
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
 - units (https://www.gnu.org/software/units)
