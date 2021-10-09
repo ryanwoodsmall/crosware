@@ -984,7 +984,16 @@ wc -l /tmp/astbuild.out
   - pound (https://www.apsis.ch/pound.html)
     - cmake, NO!
 - ibara's good portable/bsd stuff
+  - libterminfo (https://github.com/ibara/libterminfo - standalone terminfo, netbsdcurses-style)
   - m4 (https://github.com/ibara/m4)
+  - make (https://github.com/ibara/make)
+  - mg (https://github.com/ibara/mg)
+  - mgksh (https://github.com/ibara/mgksh - static ksh and mg (emacs) from openbsd in a single bin)
+  - nbc (https://github.com/ibara/nbc - netbsd bc)
+  - ocsh (https://github.com/ibara/ocsh - openbsd csh)
+  - oed (https://github.com/ibara/oed - openbsd ed)
+  - sprite (https://github.com/ibara/sprite - curses sprite editor, libpng export support!)
+  - tac (https://github.com/ibara/tac)
   - yacc (https://github.com/ibara/yacc)
 - incron (https://github.com/ar-/incron - cron for filesystem events)
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
@@ -1290,7 +1299,7 @@ wc -l /tmp/astbuild.out
   - config/build/install with: ```env PATH=${cwsw}/python2/current/bin:${PATH} make <all|install> PREFIX=${ridir} CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS//-static/}" CFLAGS='' CPPFLAGS=''```
 - mes (https://www.gnu.org/software/mes/) and m2 stuff (links above)
 - mesalink (https://mesalink.io/ and https://github.com/mesalock-linux/mesalink)
-- mgksh (https://github.com/ibara/mgksh - static ksh and mg (emacs) from openbsd in a single bin)
+- mg3a (https://github.com/paaguti/mg3a)
 - mkcert (https://github.com/FiloSottile/mkcert)
 - micro (https://micro-editor.github.io/ and https://github.com/zyedidia/micro - go terminal editor)
 - micropython (https://github.com/micropython/micropython)
@@ -1567,7 +1576,6 @@ wc -l /tmp/astbuild.out
 - sparse (https://sparse.wiki.kernel.org/index.php/Main_Page)
 - splint (https://en.wikipedia.org/wiki/Splint_(programming_tool))
 - spm (https://notabug.org/kl3/spm/ - password manager, fork of tpm)
-- sprite (https://github.com/ibara/sprite - curses sprite editor, libpng export support!)
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
 - sredird (https://github.com/msantos/sredird - network serial port redirector)
 - srv (https://github.com/joshuarli/srv)
