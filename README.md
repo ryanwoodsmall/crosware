@@ -700,6 +700,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
     - inadynlibressl (libressl)
   - libuev (https://github.com/troglobit/libuev)
   - mdnsd (https://github.com/troglobit/mdnsd - multicast dns daemon, mdsresponder, mdns-sd, etc.)
+  - mg (see above)
   - minisnmpd (https://github.com/troglobit/mini-snmpd and https://troglobit.com/projects/mini-snmpd/)
   - redir (https://github.com/troglobit/redir)
   - uredir (https://github.com/troglobit/uredir)
@@ -1617,6 +1618,7 @@ wc -l /tmp/astbuild.out
 - tre (https://github.com/laurikari/tre)
 - troglobit stuff
   - finit (https://github.com/troglobit/finit)
+  - libite (https://github.com/troglobit/libite - sys/queue, sys/tree interfaces in lite/)
   - merecat (https://github.com/troglobit/merecat)
   - mping (https://github.com/troglobit/mping - multicast ping)
   - smcroute (https://github.com/troglobit/smcroute and https://troglobit.com/projects/smcroute/)
