@@ -3,11 +3,11 @@
 #
 
 rname="mtm"
-rver="1.2.0"
+rver="1.2.1"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/deadpixi/${rname}/archive/${rfile}"
-rsha256="68f753f743fcd3d87f269011d4bbd3fed59cfcad710d7c7db98844e3e675c196"
+rsha256="2ae05466ef44efa7ddb4bce58efc425617583d9196b72e80ec1090bd77df598c"
 rreqs="make ncurses"
 
 . "${cwrecipe}/common.sh"
@@ -34,7 +34,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cwmkdir \"${ridir}/bin\"
-  cwmkdir \"${ridir}/man/man1\"
+  cwmkdir \"${ridir}/share/man/man1\"
   cwmkdir \"${ridir}/share/terminfo\"
   make install DESTDIR=\"${ridir}\"
   install -m 0644 ${rname}.ti \"${ridir}/share/terminfo/${rname}.ti\"
