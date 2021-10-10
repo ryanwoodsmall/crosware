@@ -225,6 +225,17 @@
   - add busybox/toybox (and real bash) for a chroot-able environment?
   - ```sysroot``` command? - create sysroot
   - ```sysroot-archive``` command? - create a sysroot and archive to **crosware-sysroot.tar.gz** or similar
+  - user space selection "busybox" "toybox+busybox" etc.
+    - stackable with preference i.e, prefer toybox over busybox
+    - busybox, toybox, sbase, ubase, suckless (sbase+ubase), coreutils, utillinux, gnu (coreutils+utillinux), heirloom (svr4/posix), bsd (baseutils+outils)
+  - add in bash and curl and ... bins, make sure tar/gzip/bzip2/unzip are available to reconstitute crosware in a sysroot from a .zip
+  - shell configuration
+    - bash is always available as `bin/bash`
+    - symlink to `bin/sh`
+    - ash, bash, dash, jsh (heirloom), ksh93, loksh, mksh, oksh, yash
+  - make configuration - gmake, bmake, heirloom
+  - ccache, cc (gcc, tcc, pcc, ...), etc.
+  - plan9 bits - plan9port, 9base
 - man wrapper
   - busybox (man), less, groff
   - sets PAGER to (real less) ```less -R```
