@@ -54,12 +54,16 @@ function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install ${rlibtool} CPPFLAGS= LDFLAGS=-static PKG_CONFIG_LDFLAGS= PKG_CONFIG_PATH=
   \$(\${CC} -dumpmachine)-strip \"${ridir}/bin/${rname}\"
-  rm -rf \"${jpm_dir}\"
-  unzip \"${jpm_dlfile}\"
-  cd \"${jpm_dir}\"
-  env {JANET_,}PREFIX=\"${ridir}\" PATH=\"${ridir}/bin:\${PATH}\" \"${ridir}/bin/${rname}\" bootstrap.janet
-  sed -i \"s,${ridir},${rtdir}/current,g\" \"${ridir}/bin/jpm\"
-  cd -
+  if hash git >/dev/null 2>&1 ; then
+    rm -rf \"${jpm_dir}\"
+    unzip \"${jpm_dlfile}\"
+    cd \"${jpm_dir}\"
+    env {JANET_,}PREFIX=\"${ridir}\" PATH=\"${ridir}/bin:\${PATH}\" \"${ridir}/bin/${rname}\" bootstrap.janet
+    sed -i \"s,${ridir},${rtdir}/current,g\" \"${ridir}/bin/jpm\"
+    cd -
+  else
+    cwscriptecho \"'git' not found - not installing jpm\"
+  fi
   popd >/dev/null 2>&1
 }
 "
