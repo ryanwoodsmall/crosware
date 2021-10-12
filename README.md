@@ -1536,6 +1536,7 @@ wc -l /tmp/astbuild.out
 - sc-im (https://github.com/andmarti1424/sc-im - sc spreadsheet improved)
 - sdbm (https://github.com/jaydg/sdbm - dbm/ndbm alike, updated for modern systems)
 - se (http://se-editor.org/ - screen editor)
+  - https://github.com/screen-editor/se
   - or http://svn.so-much-stuff.com/svn/trunk/cvs/trunk/local.d/se.d/
   - or http://web.archive.org/web/20150929083830/http://www.gifford.co.uk/~coredump/se.htm
 - sed-bin (https://github.com/lhoursquentin/sed-bin - posix sed to c??? cool)
