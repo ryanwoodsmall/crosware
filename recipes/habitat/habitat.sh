@@ -4,11 +4,11 @@
 #
 
 rname="habitat"
-rver="1.6.373.20210901000503"
+rver="1.6.400.20211011210704"
 rdir="${rname}-${rver}"
 rfile="core-hab-${rver%.*}-${rver##*.}-x86_64-linux.hart"
 rurl="https://bldr.habitat.sh/v1/depot/pkgs/core/hab/${rver%.*}/${rver##*.}/download?target=x86_64-linux"
-rsha256="d0a29edefb82ffac4adacab9f67c4b35852577d5e07bf52539a66bf2af632ab0"
+rsha256="11e4790b5a4a84c42f3a5eefc3d4109b8f84981091c32dccf8c28c03994edf98"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
