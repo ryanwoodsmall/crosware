@@ -641,6 +641,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - sdkman (http://sdkman.io)
 - sed (gnu gsed, prepended to $PATH, becomes default sed)
 - sharutils (https://www.gnu.org/software/sharutils/)
+- shellbench (https://github.com/shellspec/shellbench)
 - shellinabox (https://github.com/shellinabox/shellinabox)
 - shellish (https://github.com/ryanwoodsmall/shell-ish - some random texts from my script bucket)
 - simh (http://simh.trailing-edge.com and https://github.com/simh/simh)
@@ -1555,7 +1556,6 @@ wc -l /tmp/astbuild.out
   - tcsh (and/or standard csh)
   - xs (https://github.com/TieDyedDevil/XS - rc+es+scheme/lisp)
   - zsh
-- shellbench (https://github.com/shellspec/shellbench)
 - shellcheck (https://www.shellcheck.net/ and https://github.com/koalaman/shellcheck - haskell)
 - shit (https://git.sr.ht/~sircmpwn/shit - shell git???)
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
