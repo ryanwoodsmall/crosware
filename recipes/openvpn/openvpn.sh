@@ -1,9 +1,9 @@
 rname="openvpn"
-rver="2.5.3"
+rver="2.5.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://swupdate.openvpn.org/community/releases/${rfile}"
-rsha256="fb6a9943c603a1951ca13e9267653f8dd650c02f84bccd2b9d20f06a4c9c9a7e"
+rsha256="56c0dcd27ab938c4ad07469c86eb8b7408ef64c3e68f98497db8c03f11792436"
 rreqs="make openssl zlib lzo lz4 pkgconfig"
 
 . "${cwrecipe}/common.sh"
