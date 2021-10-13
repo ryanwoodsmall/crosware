@@ -1557,6 +1557,7 @@ wc -l /tmp/astbuild.out
   - rc (https://github.com/siebenmann/rc - chris siebenmann's rc fork - tobold/rakitzis rc with updates)
   - scsh (https://scsh.net)
   - sh (https://github.com/mvdan/sh - shell parser/formatter in go)
+  - smoosh (http://shell.cs.pomona.edu/ and https://github.com/mgree/smoosh - very posix shell with formal mechnanism, in ocaml)
   - tcsh (and/or standard csh)
   - xs (https://github.com/TieDyedDevil/XS - rc+es+scheme/lisp)
   - zsh
