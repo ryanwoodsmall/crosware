@@ -300,6 +300,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - minisendmail (http://www.acme.com/software/mini_sendmail/)
   - subproxy (http://www.acme.com/software/sub_proxy/)
   - thttpd (http://www.acme.com/software/thttpd/)
+- ag (https://geoff.greer.fm/ag/ and https://github.com/ggreer/the_silver_searcher - the silver searcher, fast grep/ack-like)
 - age (https://github.com/FiloSottile/age - age encryption tool in go)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - attr (https://savannah.nongnu.org/projects/attr/)
