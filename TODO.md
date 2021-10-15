@@ -825,6 +825,11 @@ time_func ls -l -A /
     - glib
     - python python python
     - cmake
+- arch-specific recipes
+  - `${cwtop}/recipes/${karch}/${rname}/${rname}.sh`
+  - simplify single-arch layouts
+  - could use symlinks for multi-arch but not ALL arches
+  - hmm
 
 <!--
 # vim: ft=markdown
