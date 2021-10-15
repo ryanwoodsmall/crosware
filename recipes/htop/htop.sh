@@ -1,11 +1,10 @@
 rname="htop"
-rver="3.1.0"
+rver="3.1.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-#rurl="https://bintray.com/${rname}/source/download_file?file_path=${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="9b90697c091b2981c9123530e46a93d45d4277c22200fdaee41cd2e73ebe0420"
-rreqs="make ncurses"
+rsha256="619b5147537d9abbd45be864fb8f7f0b70d17d2fcf23c0578032995d7d4d5007"
+rreqs="make ncurses configgit"
 
 . "${cwrecipe}/common.sh"
 
