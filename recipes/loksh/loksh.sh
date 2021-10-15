@@ -1,9 +1,9 @@
 rname="loksh"
-rver="6.9"
+rver="7.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/dimkr/${rname}/releases/download/${rver}/${rfile}"
-rsha256="1633048cd5f1270c5fa28ab49d9cb9f7e8305ab6880601b0c15b88ecb92450f9"
+rsha256="413275c9a259629bbdb4ce97c610c45bc14a589f73cd51571ed82eec58e45840"
 rreqs="ncurses pkgconfig python3 meson ninja git"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
