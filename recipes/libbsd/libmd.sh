@@ -3,11 +3,11 @@
 #
 
 rname="libmd"
-rver="1.0.3"
+rver="1.0.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://libbsd.freedesktop.org/releases/${rfile}"
-rsha256="5a02097f95cc250a3f1001865e4dbba5f1d15554120f95693c0541923c52af4a"
+rsha256="f51c921042e34beddeded4b75557656559cf5b1f2448033b4c1eec11c07e530f"
 rreqs="make"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
