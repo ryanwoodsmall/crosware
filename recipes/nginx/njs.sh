@@ -1,9 +1,13 @@
+#
+# XXX - openssl support added in 0.7.0 (libressl?)
+#
+
 rname="njs"
-rver="0.6.2"
+rver="0.7.0"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/nginx/${rname}/archive/refs/tags/${rfile}"
-rsha256="109ee42b05344f050f5ead28a68c52e8e671e1625eb6a1f765b1db5c3bcef2b9"
+rsha256="3f0fe7d77600a9c54000ce101dd51f44811964502641ae505e38c1bbf595e6f1"
 rreqs="make pcre netbsdcurses"
 
 . "${cwrecipe}/common.sh"

@@ -4,6 +4,7 @@
 # XXX - no pcre jit on riscv64
 # XXX - probably need to remove static bits for dynamic modules
 # XXX - libressl variant
+# XXX - njs 0.7.0+ openssl support?
 #
 
 rname="nginx"
