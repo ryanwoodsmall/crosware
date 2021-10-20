@@ -962,6 +962,7 @@ wc -l /tmp/astbuild.out
   - etc.
 - graphviz (http://graphviz.org/)
 - gron (https://github.com/tomnomnom/gron - greppable json, in go)
+  - gron.awk (https://github.com/xonixx/gron.awk - gron, in awk,,,)
 - gsasl/libgsasl (https://www.gnu.org/software/gsasl/)
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
 - gss (https://www.gnu.org/software/gss/)
