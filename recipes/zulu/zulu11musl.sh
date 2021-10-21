@@ -1,7 +1,7 @@
-rver="11.50.19-ca-jdk11.0.12"
+rver="11.52.13-ca-jdk11.0.13"
 mver="${rver%%.*}"
 rname="zulu${mver}musl"
-rsha256="231073c8c07c8aa4044abcfabe28e28ee9f5eec513a5da59e87d1f6ea41fa7f8"
+rsha256="194400dafe8892f86ab00922304e4df5ac77c14c3de7c91901aa4f6eb5c8a7c9"
 
 . "${cwrecipe}/${rname%${mver}musl}/${rname//${mver}musl/musl}.sh.common"
 
