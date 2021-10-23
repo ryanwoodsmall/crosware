@@ -12,7 +12,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} --disable-load
+  ./configure ${cwconfigureprefix} --disable-load CPPFLAGS= LDFLAGS='-static -s'
   popd >/dev/null 2>&1
 }
 "
