@@ -15,7 +15,7 @@ for prereq in ${prereqs[@]} ; do
 done
 
 if [ ${#} -ne 1 ] ; then
-  vmax="$(curl -kLs "https://github.com/vim/vim/releases" \
+  vmax="$(curl -kLs "https://github.com/vim/vim/tags" \
   | xmllint --format --html - 2>/dev/null \
   | awk -F'"' '/\/vim\/vim\/releases\/tag\//{print $2}' \
   | head -1 \
