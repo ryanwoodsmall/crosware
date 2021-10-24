@@ -8,14 +8,13 @@ set -o pipefail
 declare -a curls provs
 curls=( $(find ${cwsw}/curl*/current/bin/curl-*{ssl,tls} | sort) )
 
-declare -A tls curltls tlsver tlsfeat tlsprot feat prot
+declare -A tls tlsver feat prot
 
 for c in ${curls[@]} ; do
   v=()
   b="$(basename $c)"
   p="${b##curl-}"
   tls["${p}"]="${c}"
-  curltls["${c}"]="${p}"
   readarray -t v < <(${c} --version)
   for i in ${!v[@]} ; do
     line="${v[${i}]}"
@@ -23,13 +22,11 @@ for c in ${curls[@]} ; do
       tlsver["${p}"]="${line}"
     elif [[ "${line}" =~ ^Features: ]] ; then
       line="${line##Features:}"
-      tlsfeat["${p}"]=" ${line} "
       for f in ${line} ; do
         feat["${f}"]+=" ${p}"
       done
     elif [[ "${line}" =~ ^Protocols: ]] ; then
       line="${line##Protocols:}"
-      tlsprot["${p}"]=" ${line} "
       for r in ${line} ; do
         prot["${r}"]+=" ${p}"
       done
