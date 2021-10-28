@@ -1,11 +1,8 @@
 #
-# XXX - gnutls variant
 # XXX - netbsdcurses? same problem as rogue, WINDOW underdefined? __STDC_ISO_10646__?
 # XXX - openbsd ports patches may be of use: http://cvsweb.openbsd.org/cgi-bin/cvsweb/ports/www/retawq/
-# XXX - without pkgconfig?
-#   sed -i '/pkg-config --cflags openssl/s,\`.*\`,-I${cwsw}/openssl/current/include,g' tool/tlsmode
-#   sed -i '/pkg-config --libs openssl/s,\`.*\`,-I${cwsw}/openssl/current/libs -lssl -lcrypto,g' tool/tlsmode
 # XXX - quit with capital Q, lowercase q is unmapped: http://retawq.sourceforge.net/docu/key.html
+#
 
 rname="retawq"
 rver="0.2.6c"

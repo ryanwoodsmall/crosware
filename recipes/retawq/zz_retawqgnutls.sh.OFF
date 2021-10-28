@@ -1,0 +1,58 @@
+#
+# XXX - broken with current gnutls:
+#   resource.c:(.text+0x2fc0): undefined reference to `gnutls_certificate_type_set_priority'
+#
+
+rname="retawqgnutls"
+rver="$(cwver_retawq)"
+rdir="$(cwdir_retawq)"
+rfile="$(cwfile_retawq)"
+rdlfile="$(cwdlfile_retawq)"
+rurl="$(cwurl_retawq)"
+rprof="${cwetcprofd}/zz_${rname}.sh"
+rsha256=""
+rreqs="make ncurses gnutls zlib libtasn1 libunistring nettle gmp"
+
+. "${cwrecipe}/common.sh"
+
+for f in fetch clean extract make ; do
+  eval "
+  function cw${f}_${rname}() {
+    cw${f}_${rname%%gnutls}
+  }
+  "
+done
+unset f
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  chmod -R u+rw .
+  sed -i.ORIG /RAND_egd/d resource.c
+  sed -i.ORIG '/pkg-config/s,openssl,openssl zlib,g' tool/tlsmode
+  ./configure \
+    --path-prefix=\"${ridir}\" \
+    --set-tg=ncurses \
+    --set-tls=1 \
+      CPPFLAGS= \
+      PKG_CONFIG_{LIBDIR,PATH}= \
+      CC=\"\${CC} \${CFLAGS} \$(echo -I${cwsw}/{ncurses,gnutls,zlib,libtasn1,libunistring,nettle,gmp}/current/include -L${cwsw}/{ncurses,gnutls,zlib,libtasn1,libunistring,nettle,gmp}/current/lib) -I${cwsw}/ncurses/current/include/ncurses\" \
+      LDFLAGS='-static -s' \
+      LIBS='-lgnutls -ltasn1 -lunistring -lhogweed -lgmp -lnettle -lz -static'
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  cwmakeinstall_${rname%%gnutls}
+  ln -sf \"${rname%%gnutls}\" \"${ridir}/bin/${rname}\"
+  ln -sf \"${rname%%gnutls}\" \"${ridir}/bin/${rname%%gnutls}-${rname##retawq}\"
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
