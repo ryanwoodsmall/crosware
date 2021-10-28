@@ -633,7 +633,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - rcs (gnu)
 - readline (ncurses and netbsdcurses)
 - reflex (https://invisible-island.net/reflex/reflex.html)
-- retawq (http://retawq.sourceforge.net/ - text-mode windowed network/web browser)
+- retawq (http://retawq.sourceforge.net/ - text-mode windowed network/web browser, ncurses and openssl)
+  - retawqlibressl (ncurses, libressl)
 - rhino
 - rlwrap (netbsdcurses)
 - rogue
