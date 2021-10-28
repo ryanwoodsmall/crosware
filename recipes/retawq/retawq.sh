@@ -21,6 +21,9 @@ function cwconfigure_${rname}() {
   sed -i.ORIG /RAND_egd/d resource.c
   sed -i.ORIG '/pkg-config/s,openssl,openssl zlib,g' tool/tlsmode
   ./configure \
+    --disable-textmodemouse \
+    --enable-ipv6 \
+    --enable-local-cgi \
     --path-prefix=\"${ridir}\" \
     --set-tg=ncurses \
     --set-tls=2 \
