@@ -1471,6 +1471,7 @@ wc -l /tmp/astbuild.out
 - regx (https://github.com/wd5gnr/regx - regx and litgrep, literate regex)
 - relational-pipes (https://relational-pipes.globalcode.info/)
 - remake (http://bashdb.sourceforge.net/remake/ and https://github.com/rocky/remake)
+- retawq (http://retawq.sourceforge.net/ - text-mode windowed network/web browser)
 - retro (forth, http://retroforth.org/)
 - rocksock-http (https://github.com/rofl0r/rocksock-httpd)
 - rocksocks5 (https://github.com/rofl0r/rocksocks5)
