@@ -1459,6 +1459,7 @@ wc -l /tmp/astbuild.out
 - pup (https://github.com/ericchiang/pup)
 - pv (https://github.com/icetee/pv - pipeviewer)
 - qalc (https://qalculate.github.io/ - libqalculate and cli/text interface)
+- quictls (https://github.com/quictls/openssl - openssl (3+?) patched with quic support, for ngtcp2+nghttp3)
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
 - rawtar (https://github.com/andrewchambers/rawtar)
