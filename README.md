@@ -560,7 +560,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - nebula (https://github.com/slackhq/nebula - mesh network overlay/vpn)
 - netbsdcurses (manual CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
-  - should replace opennc, which is, uhhhhhhh missing?
 - netfilter.org stuff (WIP!!!)
   - conntracktools (https://www.netfilter.org/projects/conntrack-tools/)
   - iptables (https://www.netfilter.org/projects/iptables/)
@@ -594,6 +593,9 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
 - onetrueawk (https://github.com/onetrueawk/awk - the one true awk)
 - oniguruma (https://github.com/kkos/oniguruma)
+- opennc (openbsd netcat - formerly http://systhread.net/coding/opennc.php)
+  - see netcatopenbbsd for bsd netcat as packaged by debian
+  - see libressl for tls-enabled `nc` command
 - openssh (openssl, netbsdcurses, libedit)
   - opensshlibressl (libressl, netbsdcurses, libedit)
 - openssl
@@ -1727,8 +1729,6 @@ wc -l /tmp/astbuild.out
 
 - bsdheaders (https://github.com/bonsai-linux/bsd-headers - from bonsai linux, workaround DECLS for cdefs.h)
   - upstream repo went missing
-- opennc (openbsd netcat http://systhread.net/coding/opennc.php)
-  - site regularly goes offline, use netcatopenbsd instead
 
 
 <!--
