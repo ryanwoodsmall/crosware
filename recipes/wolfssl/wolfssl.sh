@@ -1,9 +1,13 @@
+#
+# XXX - --enable-aesgcm-stream --enable-ed25519-stream --enable-ed448-stream
+#
+
 rname="wolfssl"
-rver="4.8.1"
+rver="5.0.0"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="19c3a18f60e4d8122be4b89d97e3a6b4e8d8608e1bc210be3a91d1ed6b9488b6"
+rsha256="1356d8f93a3bd9b86c12bc7b88277bdfcfa260aa41a7959682fe725b1d3440aa"
 rreqs="make cacertificates configgit"
 
 . "${cwrecipe}/common.sh"
