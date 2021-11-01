@@ -1,6 +1,7 @@
 #
 # XXX - need to maintain version symlinks for hard-coded paths to termcap/terminfo files
 # XXX - need to track current? ftp://ftp.invisible-island.net/pub/ncurses/current/
+# XXX - ncurses 6.3 needs PKG_CONFIG_{LIBDIR,PATH} workarounds, breaks rogue...
 #
 
 rname="ncurses"
