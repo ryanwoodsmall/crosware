@@ -936,6 +936,7 @@ wc -l /tmp/astbuild.out
   - axpbox (https://github.com/lenticularis39/axpbox - alpha)
   - gxemul (http://gavare.se/gxemul/)
 - eris (https://github.com/nealey/eris - small web server)
+- faasd (https://github.com/openfaas/faasd - openfaas but smaller? needs runc, etc.)
 - fcgiwrap (https://github.com/gnosek/fcgiwrap - standard cgi to fcgi socket wrapper, useful with nginx?)
 - firecracker (https://github.com/firecracker-microvm/firecracker - rust, but there are static bins for aarch64/x86_64)
   - firectl (https://github.com/firecracker-microvm/firectl - firecracker vm control, go)
