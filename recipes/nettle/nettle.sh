@@ -1,3 +1,7 @@
+#
+# XXX - mini-gmp variant - no gmp, bootstrapmake - see dropbear for example
+#
+
 rname="nettle"
 rver="3.7.3"
 rdir="${rname}-${rver}"
