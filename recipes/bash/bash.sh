@@ -1,3 +1,7 @@
+#
+# XXX - version history, not sure where else to link this: https://mywiki.wooledge.org/BashFAQ/061
+#
+
 rname="bash"
 rver="5.1.8"
 rdir="${rname}-${rver%.*}"
