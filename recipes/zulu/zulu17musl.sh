@@ -1,10 +1,10 @@
 # default is x86_64
-rver="17.28.13-ca-jdk17.0.0"
-rsha256="4de9984e98e6b41d494d2e41b73dbbfc6696f1a5ab83058d569f4e9c3832165b"
+rver="17.30.15-ca-jdk17.0.1"
+rsha256="02764bb49dc7e1a01bfa3b99ba7cc20ca8403dc41e914d1a5ae43a32eb25f7b1"
 # per-arch override rver/rdir/rfile/rurl/rsha256 here
 if [[ ${karch} =~ aarch64 ]] ; then
   rdir="zulu${rver}-linux_musl_aarch64"
-  rsha256="a3d149f99fc11a7b95c4dd9fc368f779f9262d010c893f44bc0807ef7a98d2eb"
+  rsha256="74e9ffa86b8cf7757501794b847133502f33d916ce07a07171317bcf97c646f1"
 fi
 mver="${rver%%.*}"
 rname="zulu${mver}musl"
