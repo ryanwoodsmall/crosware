@@ -1,9 +1,9 @@
 rname="iperf"
-rver="2.0.13"
+rver="2.0.14a"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://sourceforge.net/projects/iperf2/files/${rfile}"
-rsha256="c88adec966096a81136dda91b4bd19c27aae06df4d45a7f547a8e50d723778ad"
+rsha256="4c8605b012addb7173ccde8348d7c5a701740295238ff5048992c38534c6a798"
 rreqs="make configgit"
 
 . "${cwrecipe}/common.sh"
