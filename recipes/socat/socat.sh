@@ -1,9 +1,9 @@
 rname="socat"
-rver="1.7.4.1"
+rver="1.7.4.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="http://www.dest-unreach.org/${rname}/download/${rfile}"
-rsha256="3faca25614e89123dff5045680549ecef519d02e331aaf3c4f5a8f6837c675e9"
+rsha256="6690a9f9990457b505097a272bbf2cbf4cc35576176f76646e3524b0e91c1763"
 rreqs="make openssl netbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
