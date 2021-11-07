@@ -11,7 +11,7 @@ rreqs="make wolfssl configgit"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --enable-all \
     --with-wolfssl=\"${cwsw}/wolfssl/current\" \
       CPPFLAGS= \
