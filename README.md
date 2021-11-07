@@ -730,7 +730,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - vimnetbsdcurses (netbsdcurses)
 - w3m (https://github.com/tats/w3m)
 - wget
-- wolfssl (cyassl)
+- wolfssh (https://www.wolfssl.com/products/wolfssh/ and https://github.com/wolfSSL/wolfssh - ssh lib and examples for wolfssl)
+- wolfssl (https://www.wolfssl.com/ and https://github.com/wolfSSL/wolfssl - formerly cyassl)
 - x509cert (https://git.sr.ht/~mcf/x509cert and https://github.com/michaelforney/x509cert - bearssl cert/request utility)
 - xinetd (https://github.com/openSUSE/xinetd forked from https://github.com/xinetd-org/xinetd)
 - xmlstarlet (http://xmlstar.sourceforge.net/)
@@ -1708,7 +1709,6 @@ wc -l /tmp/astbuild.out
   - mini_httpd, thttpd, or lighttpd probably better options
 - whatshell.sh (https://www.in-ulm.de/~mascheck/various/whatshell/ and https://www.in-ulm.de/~mascheck/various/whatshell/whatshell.sh)
 - wolfmqtt (https://github.com/wolfSSL/wolfMQTT)
-- wolfssh (https://github.com/wolfSSL/wolfssh)
 - wordgrinder (https://github.com/davidgiven/wordgrinder - word processor)
 - wrp (https://github.com/tenox7/wrp - web rendering proxy)
 - wren (https://wren.io/ and https://github.com/wren-lang/wren)
