@@ -31,6 +31,8 @@ function cwmakeinstall_${rname}() {
     install -m 0755 \"\${i}\" \"${ridir}/bin/${rname}-\${n}\"
   done
   unset i n
+  sed -i 's,${ridir},${rtdir}/current,g' \"${ridir}/bin/${rname}-config\"
+  sed -i 's,-lwolfssl,-L${cwsw}/wolfssl/current/lib -lwolfssl,g' \"${ridir}/bin/${rname}-config\"
   popd >/dev/null 2>&1
 }
 "
