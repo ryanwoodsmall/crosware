@@ -46,6 +46,8 @@ function cwmakeinstall_${rname}() {
   rm -rf \"${ridir}/keys\"
   mkdir -p \"${ridir}/keys\"
   ( cd keys ; tar -cf - .) | ( cd \"${ridir}/keys/\" ; tar -xf - )
+  sed -i 's,${ridir},${rtdir}/current,g' \"${ridir}/bin/${rname}-config\"
+  sed -i 's,-lwolfssl,-L${cwsw}/wolfssl/current/lib -lwolfssl,g' \"${ridir}/bin/${rname}-config\"
   popd >/dev/null 2>&1
 }
 "
