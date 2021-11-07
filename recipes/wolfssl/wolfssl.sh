@@ -122,6 +122,7 @@ function cwmakeinstall_${rname}() {
   rm -rf \"${ridir}/certs\"
   mkdir \"${ridir}/certs\"
   ( cd certs ; tar -cf - . ) | ( cd \"${ridir}/certs/\" ; tar -xf - )
+  sed -i 's,${ridir},${rtdir}/current,g' \"${ridir}/bin/${rname}-config\"
   popd >/dev/null 2>&1
 }
 "
