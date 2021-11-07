@@ -911,6 +911,7 @@ wc -l /tmp/astbuild.out
   - base on centos 7? rhel 8? debian 10? ubuntu 20 lts?
   - could be used to bootstrap llvm/clang and bootstrap rust?
 - curlie (https://github.com/rs/curlie and https://curlie.io/ - curl features with httpie-alike in go)
+- cwebsocket (https://github.com/jeremyhahn/cwebsocket - c websocket client/server)
 - cwerg (https://github.com/robertmuth/Cwerg - compiler back-end for arm 32- and 64-bit)
 - dante (socks proxy client/server https://www.inet.no/dante/)
 - dasel (https://github.com/TomWright/dasel - data selector like jq, yq - go)
@@ -1179,6 +1180,7 @@ wc -l /tmp/astbuild.out
 - libutf (https://github.com/cls/libutf)
 - libverto (https://github.com/npmccallum/libverto - main loop/async library, used by mit kerberos)
 - libwaive (https://github.com/dimkr/libwaive - tame/pledge-like seccomp perms waiver)
+- libwebsock (https://github.com/payden/libwebsock)
 - libwebsockets (https://libwebsockets.org/)
 - libyaml (https://github.com/yaml/libyaml)
 - lisp stuff
