@@ -19,6 +19,7 @@
 #  - MBEDTLS_NIST_KW_C
 #  - MBEDTLS_MD2_C
 #  - MBEDTLS_MD4_C
+# XXX - mbedtls 3.x...
 #
 
 rname="mbedtls"
