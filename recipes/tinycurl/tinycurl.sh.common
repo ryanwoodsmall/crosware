@@ -1,0 +1,59 @@
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  sed -i.ORIG '/ERR_clear_error/d' lib/vtls/wolfssl.c
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
+    --disable-dependency-tracking \
+    --disable-manual \
+    --enable-ipv6 \
+    --without-{libssh2,openssl,gnutls,mbedtls,bearssl,rusttls,nss} \
+    --with-wolfssl \
+    --with-wolfssh \
+    --with-default-ssl-backend=wolfssl \
+    --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
+    --with-ca-path=\"${cwetc}/ssl/certs\" \
+    --with-zlib \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{wolfssl,wolfssh,zlib}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{wolfssl,wolfssh,zlib}/current/lib) -static -s\" \
+      PKG_CONFIG_{LIBDIR,PATH}=
+  popd >/dev/null 2>&1
+}
+"
+
+# XXX - shouldn't be necessary but no perl breaks the lib->docs->tool build?
+eval "
+function cwmake_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make -j${cwmakejobs} ${rlibtool} || make -j${cwmakejobs} ${rlibtool}
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  rm -f ${ridir}/bin/{tiny-,}curl{,-config} || true
+  make install ${rlibtool}
+  mv \"${ridir}/bin/curl\" \"${ridir}/bin/tiny-curl\"
+  mv \"${ridir}/bin/curl-config\" \"${ridir}/bin/tiny-curl-config\"
+  ln -sf tiny-curl \"${ridir}/bin/${rname}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+
+# vim: ft=sh

@@ -1,0 +1,8 @@
+rname="tinycurl"
+rver="7.79.1"
+rdir="${rname//yc/y-c}-${rver}"
+rfile="${rdir}.tar.gz"
+rurl="https://curl.se/tiny/${rfile}"
+rsha256="a32d74d1e1a67e2bfc5aee07f82fc05c7a6ec676e8b4515355c731122066af81"
+rreqs="make wolfssl wolfssh zlib"
+. "${cwrecipe}/${rname}/${rname}.sh.common"

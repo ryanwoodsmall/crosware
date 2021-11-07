@@ -692,6 +692,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - static still has issues
   - shared seems to work for hello world stuff
   - uses muslstandalone as libc
+- tinycurl (https://curl.se/tiny/ - curl but smaller, focus on http(s) - wolfssl, wolfssh, zlib)
 - tinyemu (https://bellard.org/tinyemu/ - risc-v 32/64, risc-v 128 on x86_64/aarch64, x86 w/kvm on x86_64/i686; no sdl)
 - tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyscheme (http://tinyscheme.sourceforge.net/home.html)
@@ -1636,7 +1637,6 @@ wc -l /tmp/astbuild.out
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
 - timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - tinc (https://www.tinc-vpn.org/)
-- tiny-curl (https://curl.se/tiny/ - curl but smaller, focus on http(s))
 - tlse (https://github.com/eduardsui/tlse - c tls impl using libtomcrypt)
 - tnftpd (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - torgo (https://github.com/as/torgo)
