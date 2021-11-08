@@ -1166,6 +1166,7 @@ wc -l /tmp/astbuild.out
 - libslz (http://www.libslz.org/)
 - libsysdev (https://github.com/idunham/libsysdev)
 - libtap (https://github.com/zorgnax/libtap)
+- libtls-bearssl (https://github.com/michaelforney/libtls-bearssl)
 - libtom
   - libtomcrypt
     - w/libtommath
