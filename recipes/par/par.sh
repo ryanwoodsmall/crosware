@@ -1,3 +1,7 @@
+#
+# XXX - move to upstream? http://www.nicemice.net/par/
+#
+
 rname="par"
 rver="1.52"
 rdir="${rname}-${rver}.orig"
