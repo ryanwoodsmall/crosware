@@ -5,6 +5,7 @@
 # XXX - readline version bundled in install - hacky but ehh
 # XXX - bundle slang?
 # XXX - curses pkg-config files don't set -L or -I?
+# XXX - oasis version? https://github.com/oasislinux/netbsd-curses
 #
 
 rname="netbsdcurses"
