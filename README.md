@@ -1723,6 +1723,7 @@ wc -l /tmp/astbuild.out
 - wrp (https://github.com/tenox7/wrp - web rendering proxy)
 - wren (https://wren.io/ and https://github.com/wren-lang/wren)
 - wsServer (https://theldus.github.io/wsServer/ and https://github.com/Theldus/wsServer - websocket server in c)
+- wsupp-libc (https://github.com/arsv/wsupp-libc - small wpa supplicant alike?)
 - xe (https://github.com/leahneukirchen/xe)
 - xq (https://github.com/jeffbr13/xq)
 - xserver-sixel (https://github.com/saitoha/xserver-sixel)
