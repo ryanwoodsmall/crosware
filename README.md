@@ -604,7 +604,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - openvpnmbedtls (mbedtls, lz4, lzo)
 - outils (https://github.com/leahneukirchen/outils - utils from openbsd, including jot/rs/vis/unvis/etc.)
 - p7zip
-- par (http://www.nicemice.net/par/ via debian https://packages.debian.org/buster/text/par)
+- par (http://www.nicemice.net/par/ and https://bitbucket.org/amc-nicemice/par/src/master/)
 - pass (https://www.passwordstore.org/)
 - patch (gnu)
 - patchelf (https://nixos.org/patchelf.html and https://github.com/NixOS/patchelf)
