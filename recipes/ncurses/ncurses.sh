@@ -1,15 +1,15 @@
 #
 # XXX - need to maintain version symlinks for hard-coded paths to termcap/terminfo files
-# XXX - need to track current? ftp://ftp.invisible-island.net/pub/ncurses/current/
-# XXX - ncurses 6.3 needs PKG_CONFIG_{LIBDIR,PATH} workarounds, breaks rogue...
+# XXX - need to track current? http://invisible-mirror.net/archives/ncurses/current/
 #
 
 rname="ncurses"
-rver="6.2"
+rver="6.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
+#rurl="http://invisible-mirror.net/archives/${rname}/${rfile}"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d"
+rsha256="97fc51ac2b085d4cde31ef4d2c3122c21abc217e9090a43a30fc5ec21684e059"
 # cmp, use toybox
 rreqs="make toybox sed pkgconfig"
 
@@ -35,7 +35,8 @@ function cwbuild_${rname}() {
     --enable-pc-files \
     --with-pkg-config-libdir=${ridir}/lib/pkgconfig \
     --with-pkg-config=${cwsw}/pkgconfig/current/bin/pkg-config \
-      ${cwconfigurefpicopts}
+      ${cwconfigurefpicopts} \
+        PKG_CONFIG_{LIBDIR,PATH}=\"${ridir}/lib/pkgconfig\"
   make -j${cwmakejobs}
   make install
   make clean
@@ -46,10 +47,11 @@ function cwbuild_${rname}() {
     --with-pkg-config-libdir=${ridir}/lib/pkgconfig \
     --with-pkg-config=${cwsw}/pkgconfig/current/bin/pkg-config \
     --enable-widec \
-      ${cwconfigurefpicopts}
+      ${cwconfigurefpicopts} \
+        PKG_CONFIG_{LIBDIR,PATH}=\"${ridir}/lib/pkgconfig\"
   make -j${cwmakejobs}
   make install
-  for v in 6.0 6.1 ; do
+  for v in 6.0 6.1 6.2 ; do
     test -e \"${rtdir}/${rname}-\${v}\" || ln -s \"${rtdir}/current\" \"${rtdir}/${rname}-\${v}\"
   done
   unset v
