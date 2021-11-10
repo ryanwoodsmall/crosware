@@ -6,6 +6,8 @@
 # XXX - bundle slang?
 # XXX - curses pkg-config files don't set -L or -I?
 # XXX - oasis version? https://github.com/oasislinux/netbsd-curses
+# XXX - install curses_private.h - see rogue
+# XXX - define _curx and _cury
 #
 
 rname="netbsdcurses"
