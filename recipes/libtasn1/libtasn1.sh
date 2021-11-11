@@ -1,9 +1,9 @@
 rname="libtasn1"
-rver="4.17.0"
+rver="4.18.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="ece7551cea7922b8e10d7ebc70bc2248d1fdd73351646a2d6a8d68a9421c45a5"
+rsha256="4365c154953563d64c67a024b607d1ee75c6db76e0d0f65709ea80a334cd1898"
 rreqs="make sed slibtool gettexttiny byacc pkgconfig"
 
 . "${cwrecipe}/common.sh"
