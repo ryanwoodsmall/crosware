@@ -11,6 +11,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 rprovider="${rname#curl}"
 : ${rproviderreqs:="${rprovider}"}
 : ${libssh2provider:="libssh2libgcrypt"}
+: ${rcppflags:=""}
 
 # common reqs
 rreqs="${rreqs} make zlib cacertificates nghttp2 pkgconfig"
@@ -38,7 +39,6 @@ function cwmakeinstall_${rname}() {
   cwextract_${rname}
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG '/SSL_HOST_NAME/s,const,,g' lib/vtls/bearssl.c || true
-  sed -i.ORIG '/ERR_clear_error/d' lib/vtls/wolfssl.c || true
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
@@ -56,7 +56,7 @@ function cwmakeinstall_${rname}() {
     --with-default-ssl-backend=${rprovider} \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/include)\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/include) ${rcppflags}\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/lib) -static\" \
       PKG_CONFIG_LIBDIR=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/lib/pkgconfig | tr ' ' ':')\" \
       PKG_CONFIG_PATH=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/lib/pkgconfig | tr ' ' ':')\" \
@@ -72,6 +72,6 @@ function cwmakeinstall_${rname}() {
 }
 "
 
-unset rprovider sslproviders othersslproviders rproviderreqs libssh2provider
+unset rprovider sslproviders othersslproviders rproviderreqs libssh2provider rcppflags
 
 # vim: ft=sh:
