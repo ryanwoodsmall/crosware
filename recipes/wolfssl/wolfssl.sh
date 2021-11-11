@@ -20,11 +20,11 @@ function cwconfigure_${rname}() {
   sed -i '/^#!/s#/bin/sh#/usr/bin/env bash#g' configure
   bash ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --enable-examples \
+    --enable-opensslall \
+    --enable-opensslextra \
     --disable-asm \
     --disable-fips \
-    --disable-opensslall \
     --disable-opensslcoexist \
-    --disable-opensslextra \
     --enable-aesccm \
     --enable-aesctr \
     --enable-aeskeywrap \
@@ -130,8 +130,5 @@ function cwmakeinstall_${rname}() {
 eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
-  echo 'append_ldflags \"-L${rtdir}/current/lib\"' >> \"${rprof}\"
-  echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
-  echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
 }
 "
