@@ -24,6 +24,14 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwpatch_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  sed -i.ORIG '/^LDFLAGS/s,\$, -s -w,g' Makefile
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwclean_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
   test -e \"${rbdir}\" && chmod -R u+w \"${rbdir}\" || true
@@ -36,6 +44,7 @@ eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   env PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+    CGO_ENABLED=0 \
     make BUILD_NUMBER=\"${rver}\" GOPATH=\"${rbdir}/build\"
   popd >/dev/null 2>&1
 }
