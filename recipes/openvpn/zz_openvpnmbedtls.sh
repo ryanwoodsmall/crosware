@@ -37,7 +37,7 @@ eval "
 function cwmakeinstall_${rname}() {
   local t=\"${rname//openvpn/}\"
   pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmakeinstall_openvpn
+  make install
   rm -f \"${ridir}/sbin/${rname}\"
   rm -f \"${ridir}/sbin/openvpn-\${t}\"
   ln -sf \"${rtdir}/current/sbin/openvpn\" \"${ridir}/sbin/${rname}\"
