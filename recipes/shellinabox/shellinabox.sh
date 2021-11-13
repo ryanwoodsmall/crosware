@@ -24,6 +24,19 @@
 #    --disable-ssl-menu \
 #      >>"${cwtop}/tmp/shellinabox.log" 2>&1
 #
+# cgi mode: https://github.com/shellinabox/shellinabox/blob/master/shellinabox/cgi-mode-example.sh
+#
+#  #!/bin/bash
+#  cwtop="/usr/local/crosware"
+#  cwsw="${cwtop}/software"
+#  siab="${cwsw}/shellinabox/current"
+#  "${siab}/bin/shellinaboxd" \
+#    --cgi \
+#    --disable-ssl \
+#    --no-beep \
+#    --service "/:$(id -u):$(id -g):HOME:/bin/bash" \
+#    --user-css="Normal:+${siab}/share/shellinabox/css/white-on-black.css,Reverse:-${siab}/share/shellinabox/css/black-on-white.css"
+#
 
 rname="shellinabox"
 rver="2.20"
