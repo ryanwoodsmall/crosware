@@ -41,18 +41,6 @@ function cwconfigure_${rname}() {
 }
 "
 
-#eval "
-#function cwmakeinstall_${rname}() {
-#  pushd \"${rbdir}\" >/dev/null 2>&1
-#  make install ${rlibtool}
-#  for m in {1..9} ; do
-#    test \$(find . -type f -name \\*.\${m} | wc -l) -gt 0 && mkdir -p \"${ridir}/share/man/man\${m}\" || continue
-#    find . -type f -name \\*.\${m} -exec install -m 0644 {} \"${ridir}/share/man/man\${m}/\" \\;
-#  done
-#  popd >/dev/null 2>&1
-#}
-#"
-
 eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
