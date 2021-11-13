@@ -42,9 +42,11 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  cwmakeinstall_${rname%%libressl}
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install
   ln -sf \"${rname%%libressl}\" \"${ridir}/bin/${rname}\"
   ln -sf \"${rname%%libressl}\" \"${ridir}/bin/${rname%%libressl}-${rname##retawq}\"
+  popd >/dev/null 2>&1
 }
 "
 
