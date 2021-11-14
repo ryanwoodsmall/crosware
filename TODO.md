@@ -644,7 +644,7 @@ time_func ls -l -A /
       Hostname 1.2.3.4
       EscapeChar @
       RemoteForward 2222 localhost:2222
-      ProxyCommand sh -c 'cd /tmp ; busybox fuser -4 2222/tcp || screen -dmS ssh dropbear -R -F -E -B -P 2222 -s -a -G chronos-access; busybox nc %h %p'
+      ProxyCommand sh -c 'cd /tmp ; busybox fuser -4 2222/tcp || screen -dmS ssh dropbear -m -R -F -E -B -P 2222 -s -a -G chronos-access; busybox nc %h %p'
     ```
   - can multiplex with Android adb using **sslh**
 - probably need `tar -o` to not restore uid/gid in at least:

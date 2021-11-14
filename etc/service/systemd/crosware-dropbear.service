@@ -3,7 +3,7 @@ Description=crosware dropbear ssh server
 After=network.target
 
 [Service]
-ExecStart=/usr/local/crosware/software/dropbear/current/sbin/dropbear -R -F
+ExecStart=/usr/local/crosware/software/dropbear/current/sbin/dropbear -R -F -m
 PIDFile=/var/run/dropbear.pid
 
 [Install]
