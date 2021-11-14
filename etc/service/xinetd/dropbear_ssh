@@ -1,0 +1,15 @@
+#ssh stream tcp nowait root /usr/sbin/dropbear dropbear -i -R
+# set type = UNLISTED to run on an off port
+# formerly: https://gist.githubusercontent.com/ryanwoodsmall/8f97863414abed70a724b6c78c6e3853/raw/ec76aec77440375a0a5c363f3d582d3203cc2a01/etc_xinetd.d_ssh
+
+service ssh
+{
+ socket_type = stream
+ protocol = tcp
+ wait = no
+ port = 22
+ user = root
+ server = /usr/sbin/dropbear
+ server_args = -m -i -R
+ disable = no
+}
