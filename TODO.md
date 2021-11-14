@@ -830,6 +830,10 @@ time_func ls -l -A /
   - simplify single-arch layouts
   - could use symlinks for multi-arch but not ALL arches
   - hmm
+- `${CW_ARCH}` - override bash-detected arch
+  - karch / uarch - 32- and 64-bit intermingling
+  - cross-install
+  - hmm
 
 <!--
 # vim: ft=markdown
