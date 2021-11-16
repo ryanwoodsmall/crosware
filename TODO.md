@@ -834,6 +834,12 @@ time_func ls -l -A /
   - karch / uarch - 32- and 64-bit intermingling
   - cross-install
   - hmm
+- sequestered "package" builds in a container
+  - could run as usual with caches/etc. BUT just tar the whole thing (`${cwsw}`, var/inst, etc/profile.d, ...) up and extract
+  - easy in-place FULL-ish upgrades
+  - "full" build container with vim/git/lynx/links/tmux/screen/...
+  - snapshot git hash of repo for state/tracking
+  - sysroot idea would come in super duper handy here - avoid necessity for docker/runc/lxc/podman/...?
 
 <!--
 # vim: ft=markdown
