@@ -1,9 +1,13 @@
+#
+# XXX - this will become miller5 when miller 6.x (in go?) is released/ready/packaged
+#
+
 rname="miller"
-rver="5.10.2"
-rdir="mlr-${rver}"
+rver="5.10.3"
+rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/johnkerl/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="4f41ff06c1fbf524127574663873ba83bb3f4e3eb31e29faf5c2ef3fc6595cb4"
+rsha256="bbab4555c2bc207297554b0593599ea2cd030a48ad1350d00e003620e8d3c0ea"
 rreqs="make sed flex"
 
 . "${cwrecipe}/common.sh"
