@@ -8,11 +8,11 @@
 #
 
 rname="nginx"
-rver="1.20.1"
+rver="1.20.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://nginx.org/download/${rfile}"
-rsha256="e462e11533d5c30baa05df7652160ff5979591d291736cfa5edb9fd2edb48c49"
+rsha256="958876757782190a1653e14dc26dfc7ba263de310e04c113e11e97d1bef45a42"
 rreqs="make perl slibtool pcre"
 
 . "${cwrecipe}/common.sh"
