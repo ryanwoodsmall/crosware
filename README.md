@@ -461,6 +461,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - this is actually ksh2020...
   - should be renamed as such
 - kubernetes (binaries)
+- kuroko (https://kuroko-lang.github.io/ and https://github.com/kuroko-lang/kuroko - small python-like dynamic language)
 - less (netbsdcurses)
 - lftp (https://lftp.yar.ru/)
 - libassuan (https://gnupg.org/software/libassuan/index.html)
