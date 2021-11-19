@@ -313,7 +313,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - bc (gnu bc, dc)
 - bdb47
 - bearssl (https://bearssl.org/)
-- bim (https://github.com/klange/bim - minimal vim-alike)
+- bim (https://github.com/klange/bim - minimal vim-alike, pure-C version 2.x)
+  - bim3 (kuroko-based editor)
 - binutils (bfd, opcodes, libiberty.a)
 - bison (https://www.gnu.org/software/bison/ and http://savannah.gnu.org/projects/bison/ and http://git.savannah.gnu.org/cgit/bison.git)
   - bison37 (older version before some possible posix-mandated breaking changes)
