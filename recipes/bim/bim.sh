@@ -18,12 +18,21 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwmake_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make CPPFLAGS= LDFLAGS=-static
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install
   \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname}\"
   rm -rf \"${ridir}/themes\"
   ln -sf \"${rtdir}/current/share/${rname}/themes\" \"${ridir}/themes\"
+  ln -sf \"${rname}\" \"${ridir}/bin/${rname}${rver%%.*}\"
   popd >/dev/null 2>&1
 }
 "
