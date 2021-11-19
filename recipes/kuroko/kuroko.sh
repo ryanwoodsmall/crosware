@@ -25,7 +25,7 @@ function cwpatch_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  env CPPFLAGS= LDFLAGS= CFLAGS=-fPIC make
+  env CPPFLAGS= LDFLAGS= CFLAGS='-Wl,-rpath,${rtdir}/current/lib -fPIC' make
   popd >/dev/null 2>&1
 }
 "
