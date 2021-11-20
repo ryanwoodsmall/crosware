@@ -2,7 +2,7 @@ rname="pcre"
 rver="8.45"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
-rurl="https://ftp.pcre.org/pub/${rname}/${rfile}"
+rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rsha256="4dae6fdcd2bb0bb6c37b5f97c33c2be954da743985369cddac3546e3218bffb8"
 rreqs="make zlib bzip2 slibtool"
 
