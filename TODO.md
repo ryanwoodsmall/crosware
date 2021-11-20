@@ -840,6 +840,14 @@ time_func ls -l -A /
   - "full" build container with vim/git/lynx/links/tmux/screen/...
   - snapshot git hash of repo for state/tracking
   - sysroot idea would come in super duper handy here - avoid necessity for docker/runc/lxc/podman/...?
+- `cwreinplace "pattern" "file1" ... "fileN"`
+  - encapsulate `sed -i` - some seds don't rewrite inplace!
+  - or `cwreinplacefile` with separate `cwreinplace` doing the sed?
+  - create file backup with `.crosware_ORIG` extension
+  - create new file with `.crosware_NEW` extension
+  - swap `.crosware_NEW` file contents to original filename with `cat`
+  - remove `.crosware_{ORIG,NEW}` files?
+  - could get _very_ ugly with patterns containing quotes, escapes, backtracking, etc.
 
 <!--
 # vim: ft=markdown
