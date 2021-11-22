@@ -1,9 +1,9 @@
 rname="unrar"
-rver="6.0.7"
+rver="6.1.2"
 rdir="${rname}"
 rfile="${rname}src-${rver}.tar.gz"
 rurl="https://www.rarlab.com/rar/${rfile}"
-rsha256="a7029942006cbcced3f3b7322ec197683f8e7be408972ca08099b196c038f518"
+rsha256="3e96421f568e438af6dcdaef717c48eb93b825d97058ebcb173b9bfc57807be3"
 rreqs="make"
 ridir="${cwsw}/${rname}/${rname}-${rver}"
 
