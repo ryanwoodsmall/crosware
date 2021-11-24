@@ -1723,6 +1723,7 @@ wc -l /tmp/astbuild.out
 - whatshell.sh (https://www.in-ulm.de/~mascheck/various/whatshell/ and https://www.in-ulm.de/~mascheck/various/whatshell/whatshell.sh)
 - wordgrinder (https://github.com/davidgiven/wordgrinder - word processor)
 - wrp (https://github.com/tenox7/wrp - web rendering proxy)
+  - docker container build instead?
 - wren (https://wren.io/ and https://github.com/wren-lang/wren)
 - wsServer (https://theldus.github.io/wsServer/ and https://github.com/Theldus/wsServer - websocket server in c)
 - wsupp-libc (https://github.com/arsv/wsupp-libc - small wpa supplicant alike?)
