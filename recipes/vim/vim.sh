@@ -3,11 +3,11 @@
 #
 
 rname="vim"
-rver="8.2.3661"
+rver="8.2.3662"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
-rsha256="97100b928ff3c3cf36ca2eba7c656332db1e7ae1ff358ad6da07b15011b4c11d"
+rsha256="2534566468d05ebe707195955238fd49bc44cfacbe3498ecc012f4376bf9d5ad"
 rreqs="make ncurses lua gettexttiny attr acl libsodium"
 
 . "${cwrecipe}/common.sh"
