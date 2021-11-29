@@ -1739,6 +1739,7 @@ wc -l /tmp/astbuild.out
 - zeromq (https://github.com/zeromq/libzmq and https://zeromq.org/)
 - zlib-ng (https://github.com/zlib-ng/zlib-ng - fork with "next-get" vector support)
 - znc (https://github.com/znc/znc and https://wiki.znc.in/ZNC - irc bouncer)
+- zon (https://github.com/Aygath/zon - date/time with sunrise/sunset info)
 - zork (https://github.com/devshane/zork - it's zork dude)
 - support libraries for building the above
 - whatever else seems useful
