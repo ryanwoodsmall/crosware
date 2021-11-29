@@ -1633,6 +1633,7 @@ wc -l /tmp/astbuild.out
       --enable-static-sudoers
     ```
 - sundown (markdown lib - https://github.com/vmg/sundown)
+- sunwait (sunrise/sundown calculator/figurer - https://github.com/risacher/sunwait)
 - svi (https://github.com/byllgrim/svi)
 - tab (https://tkatchev.bitbucket.io/tab/)
 - tack (https://github.com/davidgiven/ack and http://tack.sourceforge.net/ - the amsterdam compiler kit)
