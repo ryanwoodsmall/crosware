@@ -1156,6 +1156,7 @@ wc -l /tmp/astbuild.out
 - libfetch (https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.3-stable and https://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/net/libfetch/README.html - alpine, netbsd, needs work)
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
+- libhdate (https://sourceforge.net/projects/libhdate/ - hebrew calendar w/hcal and hdate programs with sunrise/sunset/etc. info)
 - libiconv (https://www.gnu.org/software/libiconv/)
 - libixp
   - https://github.com/bwhmather/libixp - fork updated recently?
