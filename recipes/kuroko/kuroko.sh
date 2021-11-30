@@ -1,9 +1,9 @@
 rname="kuroko"
-rver="1.1.2"
+rver="1.2.2"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}-lang/${rname}/archive/refs/tags/${rfile}"
-rsha256="77b224c19a59a488e0e12bb27be9414a5d18a756719cc6924fefd2dfce57cfbd"
+rsha256="a151057555382993ac6df5108be0608da106d5c2531f4f071208c8ccc07d9531"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
