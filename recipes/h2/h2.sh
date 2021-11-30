@@ -1,3 +1,11 @@
+#
+# XXX - postgresql mode seems to work best with version 8.1 jdbc
+# XXX - https://jdbc.postgresql.org/download/postgresql-8.1-415.jdbc3.jar
+# XXX - example jdbc url below...
+#
+#  jdbc:postgresql://localhost:5435/~/tmppg;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+#
+
 rname="h2"
 rver="2.0.202"
 rdir="${rname}-${rver}"
