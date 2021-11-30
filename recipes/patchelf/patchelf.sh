@@ -4,12 +4,12 @@
 #
 
 rname="patchelf"
-rver="0.13.1"
-rdir="${rname}-${rver}.20211127.72b6d44"
+rver="0.14"
+rdir="${rname}-${rver}.19700101.dirty"
 rfile="${rname}-${rver}.tar.bz2"
 #rurl="https://nixos.org/releases/${rname}/${rname}-${rver}/${rfile}"
 rurl="https://github.com/NixOS/${rname}/releases/download/${rver}/${rfile}"
-rsha256="39e8aeccd7495d54df094d2b4a7c08010ff7777036faaf24f28e07777d1598e2"
+rsha256="bfdf9d01d2b7d6209774a98df9902b6106d99929754623f815dbb86e995d37ef"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
