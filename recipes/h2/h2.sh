@@ -1,10 +1,11 @@
 rname="h2"
-rver="1.4.200"
+rver="2.0.202"
 rdir="${rname}-${rver}"
 rbdir="${cwbuild}/${rname}"
-rfile="${rname}-2019-10-14.zip"
-rurl="https://h2database.com/${rfile}"
-rsha256="a72f319f1b5347a6ee9eba42718e69e2ae41e2f846b3475f9292f1e3beb59b01"
+rfile="${rname}-2021-11-25.zip"
+#rurl="https://h2database.com/${rfile}"
+rurl="https://github.com/h2database/h2database/releases/download/version-${rver}/${rfile}"
+rsha256="cd863f2b2877be1bcb4d2419cfc799a8ae07a96c19a9760807fe778387736750"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
@@ -54,7 +55,8 @@ function cwmakeinstall_${rname}() {
   echo '#!/usr/bin/env bash' | tee -a \"\${h2server}\" \"\${h2shell}\" >/dev/null 2>&1
   echo ': \${CLASSPATH:=\"\"}' | tee -a \"\${h2server}\" \"\${h2shell}\" >/dev/null 2>&1
   echo 'export CLASSPATH=\"${rtdir}/current/jar/${rname}.jar:\${CLASSPATH}\"' | tee -a \"\${h2server}\" \"\${h2shell}\" >/dev/null 2>&1
-  echo 'cd \"${cwtmp}\"' >> \"\${h2server}\"
+  echo 'mkdir -p \"${cwtmp}/${rname}\"' >> \"\${h2server}\"
+  echo 'cd \"${cwtmp}/${rname}\"' >> \"\${h2server}\"
   echo 'java org.${rname}.tools.Server \$(echo -{web,tcp,pg}{,AllowOthers}) -ifNotExists \"\${@}\"' >> \"\${h2server}\"
   echo 'java org.${rname}.tools.Shell \"\${@}\"' >> \"\${h2shell}\"
   chmod 755 \"\${h2server}\" \"\${h2shell}\"
