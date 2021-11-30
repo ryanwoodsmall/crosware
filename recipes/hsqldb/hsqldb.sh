@@ -53,7 +53,8 @@ function cwmakeinstall_${rname}() {
   echo '#!/usr/bin/env bash' | tee -a \"\${hsqldbserver}\" \"\${hsqldbshell}\" \"\${hsqldbwebserver}\" >/dev/null 2>&1
   echo ': \${CLASSPATH:=\"\"}' | tee -a \"\${hsqldbserver}\" \"\${hsqldbshell}\" \"\${hsqldbwebserver}\" >/dev/null 2>&1
   echo 'export CLASSPATH=\"${rtdir}/current/jar/${rname}.jar:\${CLASSPATH}\"' | tee -a \"\${hsqldbserver}\" \"\${hsqldbshell}\" \"\${hsqldbwebserver}\" >/dev/null 2>&1
-  echo 'cd \"${cwtmp}\"' | tee -a \"\${hsqldbserver}\" \"\${hsqldbwebserver}\" >/dev/null 2>&1
+  echo 'mkdir -p \"${cwtmp}/${rname}\"' | tee -a \"\${hsqldbserver}\" \"\${hsqldbwebserver}\" >/dev/null 2>&1
+  echo 'cd \"${cwtmp}/${rname}\"' | tee -a \"\${hsqldbserver}\" \"\${hsqldbwebserver}\" >/dev/null 2>&1
   echo 'java org.${rname}.server.Server \"\${@}\"' >> \"\${hsqldbserver}\"
   echo 'java org.${rname}.server.WebServer \"\${@}\"' >> \"\${hsqldbwebserver}\"
   echo 'java -jar \"${rtdir}/current/jar/sqltool.jar\" \"\${@}\"' >> \"\${hsqldbshell}\"
