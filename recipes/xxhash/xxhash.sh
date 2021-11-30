@@ -1,9 +1,9 @@
 rname="xxhash"
-rver="0.8.0"
+rver="0.8.1"
 rdir="${rname/h/H}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/Cyan4973/${rname}/archive/${rfile}"
-rsha256="7054c3ebd169c97b64a92d7b994ab63c70dd53a06974f1f630ab782c28db0f4f"
+rsha256="3bb6b7d6f30c591dd65aaaff1c8b7a5b94d81687998ca9400082c739a690436c"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
