@@ -4,11 +4,11 @@
 #
 
 rname="nmap"
-rver="7.91"
+rver="7.92"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://nmap.org/dist/${rfile}"
-rsha256="18cc4b5070511c51eb243cdd2b0b30ff9b2c4dc4544c6312f75ce3a67a593300"
+rsha256="a5479f2f8a6b0b2516767d2f7189c386c1dc858d997167d7ec5cfc798c7571a1"
 rreqs="make openssl python2 zlib slibtool configgit"
 
 . "${cwrecipe}/common.sh"
