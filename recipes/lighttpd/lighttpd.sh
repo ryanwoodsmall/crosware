@@ -22,21 +22,21 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://download.lighttpd.net/${rname}/releases-${rver%.*}.x/${rfile}"
 rsha256="36cf483cf34a06f7c75c724a4237d8779b0d88ce208a1742763793d317114ab7"
-rreqs="make zlib bzip2 pcre mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr brotli zstd xxhash lua54"
+rreqs="make zlib bzip2 pcre2 mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr brotli zstd xxhash lua54"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  env PATH=\"${cwsw}/lua54/current/bin:\${PATH}\" \
+  env PATH=\"${cwsw}/lua54/current/bin:${cwsw}/pcre2/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --enable-{ipv6,lfs} \
       --with-webdav-{locks,props} \
-      --with-{pcre,zlib,mbedtls,bzip2,attr,libxml,sqlite,uuid,brotli,zstd,xxhash,lua} \
+      --with-{pcre2,zlib,mbedtls,bzip2,attr,libxml,sqlite,uuid,brotli,zstd,xxhash,lua} \
         CC=\"\${CC} \$(pkg-config --cflags --libs libbsd)\" \
-        CPPFLAGS=\"\$(echo -I${cwsw}/{bzip2,zlib,pcre,mbedtls,libxml2,sqlite,e2fsprogs,attr,brotli,zstd,xxhash,lua54}/current/include)\" \
-        LDFLAGS=\"\$(echo -L${cwsw}/{bzip2,zlib,pcre,mbedtls,libxml2,sqlite,e2fsprogs,attr,brotli,zstd,xxhash,lua54}/current/lib)\" \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{bzip2,zlib,pcre2,mbedtls,libxml2,sqlite,e2fsprogs,attr,brotli,zstd,xxhash,lua54}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{bzip2,zlib,pcre2,mbedtls,libxml2,sqlite,e2fsprogs,attr,brotli,zstd,xxhash,lua54}/current/lib)\" \
         CFLAGS=-fPIC \
         CXXFLAGS=-fPIC \
         LUA_CFLAGS=\"-I${cwsw}/lua54/current/include\" \
