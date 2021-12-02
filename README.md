@@ -1489,6 +1489,7 @@ wc -l /tmp/astbuild.out
     - mbedtls (polarssl) doesn't seem to work?
     - openssl too new...
     - libressl seems to work
+- reeva (https://github.com/ReevaJS/reeva - javascript engine for the jvm in kotlin)
 - regx (https://github.com/wd5gnr/regx - regx and litgrep, literate regex)
 - relational-pipes (https://relational-pipes.globalcode.info/)
 - remake (http://bashdb.sourceforge.net/remake/ and https://github.com/rocky/remake)
