@@ -1724,6 +1724,9 @@ wc -l /tmp/astbuild.out
   - can be coaxed to work with busybox httpd but is unpleasant
   - mini_httpd, thttpd, or lighttpd probably better options
 - whatshell.sh (https://www.in-ulm.de/~mascheck/various/whatshell/ and https://www.in-ulm.de/~mascheck/various/whatshell/whatshell.sh)
+- wolfssl osp (https://github.com/wolfSSL/osp - "open source project" ports for wolfssl)
+  - stunnel, socat, etc.
+  - nice...
 - wordgrinder (https://github.com/davidgiven/wordgrinder - word processor)
 - wrp (https://github.com/tenox7/wrp - web rendering proxy)
   - docker container build instead?
