@@ -1,3 +1,7 @@
+#
+# XXX - separate out static-only recipe?
+#
+
 rname="kuroko"
 rver="1.2.2"
 rdir="${rname}-${rver}"
