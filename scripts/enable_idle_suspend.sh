@@ -12,7 +12,7 @@ fi
 
 d="/var/lib/power_manager"
 for f in {,un}plugged_{dim,off,suspend}_ms ignore_external_policy disable_idle_suspend ; do
-  if [ -e "${f}" ] ; then
-    rm -f "${f}"
+  if [ -e "${d}/${f}" ] ; then
+    rm -f "${d}/${f}"
   fi
 done
