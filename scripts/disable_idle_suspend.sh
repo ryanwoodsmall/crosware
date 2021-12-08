@@ -14,7 +14,10 @@ f="/var/lib/power_manager/disable_idle_suspend"
 d="$(dirname ${f})"
 test -e "${d}" || mkdir -p "${d}"
 touch "${f}"
+echo 1 > "${f}"
 
 u="power"
 g="power"
 chown ${u}:${g} "${f}"
+
+initctl restart powerd
