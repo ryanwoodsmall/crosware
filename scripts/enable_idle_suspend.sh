@@ -10,7 +10,9 @@ if [[ ${UID} != 0 ]] ; then
   exit 1
 fi
 
-f="/var/lib/power_manager/disable_idle_suspend"
-if [ -e "${f}" ] ; then
-  rm -f "${f}"
-fi
+d="/var/lib/power_manager"
+for f in {,un}plugged_{dim,off,suspend}_ms ignore_external_policy disable_idle_suspend ; do
+  if [ -e "${f}" ] ; then
+    rm -f "${f}"
+  fi
+done
