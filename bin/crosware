@@ -471,6 +471,7 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
     echo \"\"
   }
   function cwupgrade_${cwbootstraprecipe}() {
+    cwscriptecho \"upgrading ${cwbootstraprecipe}\"
     cwuninstall_${cwbootstraprecipe}
     cwinstall_${cwbootstraprecipe}
   }
