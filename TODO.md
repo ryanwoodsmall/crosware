@@ -848,6 +848,17 @@ time_func ls -l -A /
   - swap `.crosware_NEW` file contents to original filename with `cat`
   - remove `.crosware_{ORIG,NEW}` files?
   - could get _very_ ugly with patterns containing quotes, escapes, backtracking, etc.
+- `cwupgrade_downstreams`
+  - does what it says
+    - for anything that requires a package...
+    - check that it's installed
+    - if it is, run `cwupgrade_${downstream}`
+  - opt-in **only**
+    - default to `true`
+    - `rupgradedownstreams` flag
+    - avoids problem of like a `make` upgrade rebuilding _literally  everything_
+    - also avoids a full graph or map/reduce thing, should be simpler/faster
+  - run at end of `cwupgrade_${recipe}`
 
 <!--
 # vim: ft=markdown
