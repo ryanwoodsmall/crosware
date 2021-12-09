@@ -3,11 +3,11 @@
 #
 
 rname="kuroko"
-rver="1.2.2"
+rver="1.2.3"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}-lang/${rname}/archive/refs/tags/${rfile}"
-rsha256="a151057555382993ac6df5108be0608da106d5c2531f4f071208c8ccc07d9531"
+rsha256="70fddeeb64af15975f57bdbc23f60041205e537ce74c347a5cbe9bb10660b6d2"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
