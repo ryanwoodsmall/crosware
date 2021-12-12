@@ -4,6 +4,7 @@
 # XXX - netbsdcurses has issues
 # XXX - need a mirror in github?
 # XXX - /usr/bin/ssh path is hardcoded in lib/dial.c as GOT_DIAL_PATH_SSH with execv used by default
+# XXX - would a git<->http(s) proxy be possible with libgit2? hmm...
 #
 
 rname="got"
