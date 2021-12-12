@@ -1,6 +1,7 @@
 #
 # XXX - mandoc with/instead of groff?
 # XXX - add html docs?
+# XXX - cool git proxy stuff: https://gitolite.com/git-over-proxy.html
 #
 # git will use whatever "ssh" command is in the $PATH
 # this can break with dropbear's dbclient -> ssh symlink
