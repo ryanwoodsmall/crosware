@@ -3,6 +3,7 @@
 # XXX - openssl variant
 # XXX - netbsdcurses has issues
 # XXX - need a mirror in github?
+# XXX - /usr/bin/ssh path is hardcoded in lib/dial.c as GOT_DIAL_PATH_SSH with execv used by default
 #
 
 rname="got"
@@ -14,6 +15,16 @@ rsha256="5887573b7687c2786985ab0f684db160a88092b048bc8c4dcfd6c76a1dda2fe2"
 rreqs="make byacc zlib pkgconfig libressl e2fsprogs ncurses libmd libbsd"
 
 . "${cwrecipe}/common.sh"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  cat lib/dial.c > lib/dial.c.ORIG
+  sed -i s,/usr/bin/ssh,ssh,g lib/dial.c
+  sed -i s,execv,execvp,g lib/dial.c
+  popd >/dev/null 2>&1
+}
+"
 
 eval "
 function cwconfigure_${rname}() {
