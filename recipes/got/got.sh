@@ -1,5 +1,6 @@
 #
 # XXX - default to libressl since this is a portable version of an openbsd project!
+# XXX - should this switch to default openssl, with libressl variant like... everything else?
 # XXX - netbsdcurses has issues
 # XXX - need a mirror in github?
 # XXX - /usr/bin/ssh path is hardcoded in lib/dial.c as GOT_DIAL_PATH_SSH with execv used by default
