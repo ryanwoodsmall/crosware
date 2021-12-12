@@ -969,6 +969,19 @@ wc -l /tmp/astbuild.out
 - gojq (https://github.com/itchyny/gojq)
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
 - got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like)
+  - portable: https://gameoftrees.org/portable.html
+  - supports git, ssh, git+ssh protocols - no http/https
+  - has a tig-like `tog` program, nice!
+  - requires...
+    - pkgconfig
+    - byacc (or bison)
+    - e2fsprogs (or utilinux?) - libuuid
+    - zlib
+    - libmd - manual addition to PKG_CONFIG_{LIBDIR,PATH}
+    - ncurses - `LIBS='-lpanelw -lncursesw'` in configure
+      - netbsdcurses doesn't want to seem to work without some prodding
+    - libbsd
+    - libressl (or openssl) - libcrypto
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - gpg
   - gpgme
