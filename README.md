@@ -418,6 +418,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
   - gobootstrap recipe with 1.4 bootstrap binaries (i386, amd64, arm, arm 32-bit static for aarch64)
 - got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like, libressl)
+  - gotopenssl recipe provided as well
   - portable: https://gameoftrees.org/portable.html
   - supports git, ssh, git+ssh protocols - no http/https
   - has a tig-like `tog` program, nice!
