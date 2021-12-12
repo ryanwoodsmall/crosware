@@ -417,6 +417,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - static binary archive
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
   - gobootstrap recipe with 1.4 bootstrap binaries (i386, amd64, arm, arm 32-bit static for aarch64)
+- got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like)
+  - portable: https://gameoftrees.org/portable.html
+  - supports git, ssh, git+ssh protocols - no http/https
+  - has a tig-like `tog` program, nice!
 - grep (gnu grep)
 - groff
 - guile (https://www.gnu.org/software/guile/)
@@ -968,20 +972,6 @@ wc -l /tmp/astbuild.out
   - pure go, might make for a decent no-frills clone/fetch/merge client?
 - gojq (https://github.com/itchyny/gojq)
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
-- got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like)
-  - portable: https://gameoftrees.org/portable.html
-  - supports git, ssh, git+ssh protocols - no http/https
-  - has a tig-like `tog` program, nice!
-  - requires...
-    - pkgconfig
-    - byacc (or bison)
-    - e2fsprogs (or utilinux?) - libuuid
-    - zlib
-    - libmd - manual addition to PKG_CONFIG_{LIBDIR,PATH}
-    - ncurses - `LIBS='-lpanelw -lncursesw'` in configure
-      - netbsdcurses doesn't want to seem to work without some prodding
-    - libbsd
-    - libressl (or openssl) - libcrypto
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - gpg
   - gpgme
