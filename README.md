@@ -1499,6 +1499,7 @@ wc -l /tmp/astbuild.out
 - relational-pipes (https://relational-pipes.globalcode.info/)
 - remake (http://bashdb.sourceforge.net/remake/ and https://github.com/rocky/remake)
 - retro (forth, http://retroforth.org/)
+- reverse-ssh (https://github.com/Fahrj/reverse-ssh - reverse ssh/shell in go)
 - rocksock-http (https://github.com/rofl0r/rocksock-httpd)
 - rocksocks5 (https://github.com/rofl0r/rocksocks5)
 - rover (https://lecram.github.io/p/rover)
