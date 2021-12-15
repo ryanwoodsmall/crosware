@@ -5,11 +5,11 @@
 #
 
 rname="hitch"
-rver="1.7.0"
+rver="1.7.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://hitch-tls.org/source/${rfile}"
-rsha256="c97ef8f1e115156640c40dfdfe9662d5f6d57a796fccad3bbad198ec797ce5c4"
+rsha256="dcd65cbec6287c622a5a317d5f37e1ea5526daa93fb4db28f4206fc9911a1785"
 rreqs="make openssl libev pkgconfig zlib"
 
 . "${cwrecipe}/common.sh"
