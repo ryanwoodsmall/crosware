@@ -16,3 +16,5 @@ for f in {,un}plugged_{dim,off,suspend}_ms ignore_external_policy disable_idle_s
     rm -f "${d}/${f}"
   fi
 done
+
+restart powerd
