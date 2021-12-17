@@ -1114,6 +1114,7 @@ wc -l /tmp/astbuild.out
     - sqlshell (scala, sbt - https://github.com/bmc/sqlshell)
 - jed (https://www.jedsoft.org/jed/)
 - jitter (http://ageinghacker.net/projects/jitter/ - jit/vm/interpreter thing)
+- jobflow (https://github.com/rofl0r/jobflow - small gnu parallel alike in c)
 - joe (https://joe-editor.sourceforge.io/)
 - json-rpc-shell (https://git.janouch.name/p/json-rpc-shell)
 - JSON.sh (https://github.com/dominictarr/JSON.sh - json parser in shell/bash)
