@@ -1,5 +1,6 @@
 #
 # XXX - --enable-aesgcm-stream --enable-ed25519-stream --enable-ed448-stream
+# XXX - replace pem/key/etc. with host-specific stuff at build time with mbedtls/bearssl/x509cert/px5g/...?
 #
 
 rname="wolfssl"
