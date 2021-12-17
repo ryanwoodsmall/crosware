@@ -3,20 +3,26 @@
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  if [[ ${rname} =~ bearssl ]] ; then
+    extra='--with-bearssl --with-default-ssl-backend=bearssl --without-mbedtls --without-libssh2 --without-wolfssl --without-wolfssh'
+  elif [[ ${rname} =~ mbedtls ]] ; then
+    extra='--with-mbedtls --with-default-ssl-backend=mbedtls --with-libssh2 --without-bearssl --without-wolfssl --without-wolfssh'
+  else
+    extra='--with-wolfssl --with-default-ssl-backend=wolfssl --with-wolfssh --without-bearssl --without-mbedtls --without-libssh2'
+  fi
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-dependency-tracking \
     --disable-manual \
     --enable-ipv6 \
-    --without-{libssh2,openssl,gnutls,mbedtls,bearssl,rusttls,nss} \
-    --with-wolfssl \
-    --with-wolfssh \
-    --with-default-ssl-backend=wolfssl \
+    \${extra} \
+    --without-{openssl,gnutls,rusttls,nss} \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
     --with-zlib \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{wolfssl,wolfssh,zlib}/current/include)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{wolfssl,wolfssh,zlib}/current/lib) -static -s\" \
-      PKG_CONFIG_{LIBDIR,PATH}=
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
+  unset extra
   popd >/dev/null 2>&1
 }
 "
@@ -38,6 +44,8 @@ function cwmakeinstall_${rname}() {
   mv \"${ridir}/bin/curl\" \"${ridir}/bin/tiny-curl\"
   mv \"${ridir}/bin/curl-config\" \"${ridir}/bin/tiny-curl-config\"
   ln -sf tiny-curl \"${ridir}/bin/${rname}\"
+  ln -sf tiny-curl \"${ridir}/bin/${rname}-${rver}\"
+  ln -sf tiny-curl \"${ridir}/bin/tiny-curl-${rver}\"
   popd >/dev/null 2>&1
 }
 "
