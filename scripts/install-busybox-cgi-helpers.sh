@@ -37,6 +37,20 @@ set
 EOF
 chmod 755 env.cgi
 
+# env.awk - same but awk
+scriptecho "installing ${cgidir}/env.awk"
+cat >env.awk<<EOF
+#!${cwsw}/busybox/current/bin/awk -f
+BEGIN {
+    printf("Status: 200 OK\\n");
+    printf("Content-type: text/plain\\n\\n");
+    for ( key in ENVIRON ) {
+        print key " : " ENVIRON[key] | "sort";
+    }
+}
+EOF
+chmod 755 env.awk
+
 # tar.cgi serves a .tar of common git files, new/updated recipes, etc.
 scriptecho "installing ${cgidir}/tar.cgi"
 cat >tar.cgi<<EOF
