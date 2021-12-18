@@ -649,7 +649,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - rlwrap (netbsdcurses)
 - rogue
 - rrredir (https://github.com/rofl0r/rrredir)
-- rsync
+- rsync (https://rsync.samba.org/)
+  - rsyncminimal (fewer deps, smaller, but lower performance)
 - sc (from debian, https://packages.debian.org/buster/sc)
 - scheme48 (http://s48.org)
 - screen
