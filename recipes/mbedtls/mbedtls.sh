@@ -1,12 +1,5 @@
 #
-# XXX - 2.16.12 is the last release of the 2.16 lts branch!!!
-# XXX - 2.28.x is new lts as of 202112
-# XXX - need to require and enable zlib? probably not? deprecated?
-# XXX - alpine still tracking 2.16.x, maybe stick with that
-# XXX - 2.23.x lts needs some changes to _not_ require python3...
-#  cat programs/Makefile > programs/Makefile.ORIG
-#  sed -i '/^\\tpsa\\/key_ladder_demo.*\\$/d' programs/Makefile
-#  sed -i '/^\\tpsa\\/psa_constant_name.*\\$/d' programs/Makefile
+# XXX - alpine still tracking 2.16.x
 # XXX - is threading right?
 #  see alpine: https://git.alpinelinux.org/aports/tree/main/mbedtls/APKBUILD
 # XXX - generate a self-signed cert for like localhost?
@@ -25,11 +18,11 @@
 #
 
 rname="mbedtls"
-rver="2.16.12"
+rver="2.28.0"
 rdir="${rname}-${rname}-${rver}"
 rfile="${rname}-${rver}.tar.gz"
 rurl="https://github.com/ARMmbed/${rname}/archive/${rfile}"
-rsha256="0afb4a4ce5b771f2fb86daee786362fbe48285f05b73cd205f46a224ec031783"
+rsha256="f644248f23cf04315cf9bb58d88c4c9471c16ca0533ecf33f86fb7749a3e5fa6"
 rreqs="make cacertificates"
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
