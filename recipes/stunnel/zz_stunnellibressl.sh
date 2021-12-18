@@ -9,7 +9,8 @@ rver="5.51"
 rdir="${rname%libressl}-${rver}"
 rfile="${rdir}.tar.gz"
 rdlfile="${cwdl}/${rname%libressl}/${rfile}"
-rurl="https://www.usenix.org.uk/mirrors/${rname%libressl}/archive/${rver%%.*}.x/${rfile}"
+#rurl="https://www.usenix.org.uk/mirrors/${rname%libressl}/archive/${rver%%.*}.x/${rfile}"
+rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname%libressl}/${rfile}"
 rsha256="77437cdd1aef1a621824bb3607e966534642fe90c69f4d2279a9da9fa36c3253"
 rreqs="make libressl"
 rpfile="${cwrecipe}/${rname%libressl}/${rname}.patches"
@@ -19,10 +20,12 @@ rpfile="${cwrecipe}/${rname%libressl}/${rname}.patches"
 eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
+  n=\"${rname%libressl}\"
   cwfetchcheck \
-    \"https://gitweb.gentoo.org/repo/gentoo.git/plain/net-misc/stunnel/files/stunnel-5.51-libressl.patch?id=5a85fb190b37206caed168691ad569c5c63932f7\" \
-    \"${cwdl}/${rname%libressl}/stunnel-5.51-libressl.patch\" \
+    \"https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/\${n}/\${n}-${rver}-libressl.patch\" \
+    \"${cwdl}/\${n}/\${n}-${rver}-libressl.patch\" \
     \"8033ab3012b7e3e2b614e674b1fab06cab1a5674070217db5711c2eab8e6427e\"
+  unset n
 }
 "
 
