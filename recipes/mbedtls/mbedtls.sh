@@ -1,4 +1,6 @@
 #
+# XXX - 2.16.12 is the last release of the 2.16 lts branch!!!
+# XXX - 2.28.x is new lts as of 202112
 # XXX - need to require and enable zlib? probably not? deprecated?
 # XXX - alpine still tracking 2.16.x, maybe stick with that
 # XXX - 2.23.x lts needs some changes to _not_ require python3...
