@@ -32,30 +32,7 @@ rurl="https://github.com/ARMmbed/${rname}/archive/${rfile}"
 rsha256="0afb4a4ce5b771f2fb86daee786362fbe48285f05b73cd205f46a224ec031783"
 rreqs="make cacertificates"
 
-. "${cwrecipe}/common.sh"
-
-eval "
-function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i.ORIG \"s#^DESTDIR=.*#DESTDIR=${ridir}#g\" Makefile
-  cat include/mbedtls/config.h > include/mbedtls/config.h.ORIG
-  sed -i '/define MBEDTLS_THREADING_C/s,//,,g' include/mbedtls/config.h
-  sed -i '/define MBEDTLS_THREADING_PTHREAD/s,//,,g' include/mbedtls/config.h
-  sed -i '/define MBEDTLS_X509_ALLOW_UNSUPPORTED_CRITICAL_EXTENSION/s,//,,g' include/mbedtls/config.h
-  sed -i '/define MBEDTLS_X509_ALLOW_EXTENSIONS_NON_V3/s,//,,g' include/mbedtls/config.h
-  sed -i '/define MBEDTLS_TLS_DEFAULT_ALLOW_SHA1_IN_CERTIFICATES/s,//,,g' include/mbedtls/config.h
-  sed -i '/define MBEDTLS_ENABLE_WEAK_CIPHERSUITES/s,//,,g' include/mbedtls/config.h
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} no_test CC=\"\${CC}\" CFLAGS=\"\${CFLAGS}\" LDFLAGS=\"-static\"
-  popd >/dev/null 2>&1
-}
-"
+. "${cwrecipe}/${rname}/${rname}.sh.common"
 
 eval "
 function cwgenprofd_${rname}() {
