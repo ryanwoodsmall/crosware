@@ -1,3 +1,6 @@
+: ${rreqs:=""}
+rreqs+=" make cacertificates zlib"
+
 . "${cwrecipe}/common.sh"
 
 eval "
@@ -46,6 +49,7 @@ function cwmakeinstall_${rname}() {
   ln -sf tiny-curl \"${ridir}/bin/${rname}\"
   ln -sf tiny-curl \"${ridir}/bin/${rname}-${rver}\"
   ln -sf tiny-curl \"${ridir}/bin/tiny-curl-${rver}\"
+  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/tiny-curl\"
   popd >/dev/null 2>&1
 }
 "

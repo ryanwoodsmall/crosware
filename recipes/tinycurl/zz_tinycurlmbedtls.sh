@@ -5,7 +5,7 @@ rfile="$(cwfile_tinycurl)"
 rdlfile="$(cwdlfile_tinycurl)"
 rurl="$(cwurl_tinycurl)"
 rsha256=""
-rreqs="make mbedtls libssh2mbedtls zlib"
+rreqs="mbedtls libssh2mbedtls"
 
 . "${cwrecipe}/tinycurl/tinycurl.sh.common"
 

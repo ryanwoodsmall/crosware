@@ -5,7 +5,7 @@ rfile="$(cwfile_tinycurl772)"
 rdlfile="$(cwdlfile_tinycurl772)"
 rurl="$(cwurl_tinycurl772)"
 rsha256=""
-rreqs="make bearssl zlib"
+rreqs="bearssl"
 
 . "${cwrecipe}/tinycurl/tinycurl.sh.common"
 
