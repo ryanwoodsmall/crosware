@@ -14,6 +14,8 @@ function cwpatch_${rname}() {
   cat Makefile > Makefile.ORIG
   sed -i '/^LIBRARIES/s,^LIBRARIES.*,LIBRARIES=lib${rname}.a,g' Makefile
   sed -i '/ln.*LIB_SH/s, ln , echo ln ,g' Makefile
+  sed -i 's,-march=,-mtune=,g' Makefile
+  sed -i 's,-O3,-Os,g' Makefile
   popd >/dev/null 2>&1
 }
 "
@@ -31,6 +33,7 @@ function cwmake_${rname}() {
     PREFIX=\"${ridir}\" \
     LIBRARY_REL=lib \
     ARGON2_VERSION=\"${rver}\" \
+    OPTTARGET=generic \
     PC_EXTRA_LIBS= \
     LDFLAGS=-static \
     CPPFLAGS= \
@@ -46,6 +49,7 @@ function cwmakeinstall_${rname}() {
     PREFIX=\"${ridir}\" \
     LIBRARY_REL=lib \
     ARGON2_VERSION=\"${rver}\" \
+    OPTTARGET=generic \
     PC_EXTRA_LIBS=
   sed -i 's,^prefix=.*,prefix=${rtdir}/current,g' \"${ridir}/lib/pkgconfig/lib${rname}.pc\"
   \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname}\"
