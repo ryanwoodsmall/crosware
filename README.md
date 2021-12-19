@@ -302,6 +302,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - thttpd (http://www.acme.com/software/thttpd/)
 - ag (https://geoff.greer.fm/ag/ and https://github.com/ggreer/the_silver_searcher - the silver searcher, fast grep/ack-like)
 - age (https://github.com/FiloSottile/age - age encryption tool in go)
+- argon2 (https://github.com/P-H-C/phc-winner-argon2 - password hashing program and libargon2 library)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - attr (https://savannah.nongnu.org/projects/attr/)
 - autoconf
