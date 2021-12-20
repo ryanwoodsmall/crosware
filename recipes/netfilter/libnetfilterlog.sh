@@ -1,10 +1,10 @@
 rname="libnetfilterlog"
-rver="1.0.1"
+rver="1.0.2"
 rdir="${rname//rl/r_l}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://www.netfilter.org/pub/${rname//rl/r_l}/${rfile}"
-rsha256="74e0fe75753dba3ac114531b5e73240452c789a3f3adccf5c51217da1d933b21"
-rreqs="bootstrapmake configgit pkgconfig libnfnetlink"
+rsha256="e3f408575614d849e4726b45e90c7ebb0e6744b04859555a9ce6ec40744ffeea"
+rreqs="bootstrapmake configgit pkgconfig libnfnetlink libmnl"
 
 . "${cwrecipe}/common.sh"
 
