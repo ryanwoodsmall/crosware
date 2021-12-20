@@ -1,3 +1,18 @@
+#
+# XXX - cli supports editline/libedit (default), readline, and linenoise
+# XXX - linenoise has no external deps...
+# XXX - editline needs editline/history.h, netbsdcurses can be coaxed:
+#   eval "
+#   function cwpatch_${rname}() {
+#     pushd \"${rbdir}\" >/dev/null 2>&1
+#     mkdir -p include/editline
+#     ln -sf \"${cwsw}/netbsdcurses/current/include/editline/readline.h\" include/editline/
+#     ln -sf readline.h include/editline/history.h
+#     popd >/dev/null 2>&1
+#   }
+#   "
+#
+
 rname="nftables"
 rver="1.0.1"
 rdir="${rname}-${rver}"
