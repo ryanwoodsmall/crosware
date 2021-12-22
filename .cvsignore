@@ -1,3 +1,4 @@
+.git/**
 downloads/**/**
 etc/local.d/**
 etc/profile.d/**
