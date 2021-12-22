@@ -27,3 +27,4 @@
 /cgi-bin/
 /core
 /*.core
+/.got/**
