@@ -1,0 +1,7 @@
+downloads/**/**
+etc/local.d/**
+etc/profile.d/**
+etc/**ssl/**
+software/**/**
+var/etc/**
+var/inst/**
