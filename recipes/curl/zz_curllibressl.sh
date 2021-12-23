@@ -5,7 +5,7 @@ rfile="$(cwfile_curl)"
 rdlfile="$(cwdlfile_curl)"
 rurl="$(cwurl_curl)"
 rsha256=""
-rreqs="make zlib libressl cacertificates nghttp2 pkgconfig"
+rreqs="make zlib libressl cacertificates nghttp2 pkgconfig libssh2libressl"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -20,7 +20,7 @@ function cwmakeinstall_${rname}() {
     --disable-dependency-tracking \
     --disable-maintainer-mode \
     --enable-ipv6 \
-    --with-libssh2=\"${cwsw}/libressl/current\" \
+    --with-libssh2=\"${cwsw}/libssh2libressl/current\" \
     --with-nghttp2=\"${cwsw}/nghttp2/current\" \
     --with-zlib=\"${cwsw}/zlib/current\" \
     --without-brotli \
