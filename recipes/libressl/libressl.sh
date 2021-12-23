@@ -1,7 +1,6 @@
 #
 # XXX - uses separate openssldir in ${cwtop}/etc/libressl
 # XXX - broken on centos 6, ugh
-# XXX - move libssh2 bits to libssh2libressl?
 #
 rname="libressl"
 rver="3.4.2"
@@ -14,20 +13,6 @@ rreqs="make cacertificates configgit zlib"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
-
-eval "
-function cwfetch_${rname}() {
-  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
-  cwfetch_libssh2
-}
-"
-
-eval "
-function cwextract_${rname}() {
-  cwextract \"${rdlfile}\" \"${cwbuild}\"
-  cwextract \"\$(cwdlfile_libssh2)\" \"${rbdir}\"
-}
-"
 
 eval "
 function cwconfigure_${rname}() {
@@ -50,23 +35,6 @@ function cwmakeinstall_${rname}() {
   make install ${rlibtool}
   mv \"${ridir}/bin/openssl\" \"${ridir}/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/openssl\"
-  cwmakeinstall_${rname}_libssh2
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmakeinstall_${rname}_libssh2() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cd \$(cwdir_libssh2)
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
-    --with-libssl-prefix=\"${ridir}\" \
-    --with-libz \
-    --with-pic \
-      LDFLAGS=\"-L${ridir}/lib -L${cwsw}/zlib/current/lib -static\" \
-      CPPFLAGS=\"-I${ridir}/include -I${cwsw}/zlib/current/include\"
-  make -j${cwmakejobs} ${rlibtool}
-  make install ${rlibtool}
   popd >/dev/null 2>&1
 }
 "
