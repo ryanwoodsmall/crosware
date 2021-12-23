@@ -496,6 +496,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libressl (https://www.libressl.org/)
 - libssh2 (openssl, zlib)
   - libssh2libgcrypt (gcrypt, zlib)
+  - libssh2libressl (libressl, zlib)
   - libssh2mbedtls (mbedtls, zlib)
 - libsodium (https://github.com/jedisct1/libsodium)
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
