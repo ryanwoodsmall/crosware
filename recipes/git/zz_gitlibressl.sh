@@ -5,7 +5,7 @@ rfile="${rdir}.tar.xz"
 rdlfile="${cwdl}/${rname%libressl}/${rfile}"
 rurl="https://www.kernel.org/pub/software/scm/${rname%libressl}}/${rfile}"
 rsha256=""
-rreqs="make zlib libressl expat pcre2 perl cacertificates nghttp2 curllibressl opensshlibressl mandoc"
+rreqs="make zlib libressl expat pcre2 perl cacertificates nghttp2 curllibressl libssh2libressl opensshlibressl mandoc"
 
 . "${cwrecipe}/common.sh"
 . "${cwrecipe}/${rname%libressl}/${rname%libressl}.sh.common"
@@ -33,8 +33,8 @@ function cwconfigure_${rname}() {
         CXX=\"\${CXX}\" \
         CFLAGS=\"\${CFLAGS}\" \
         CXXFLAGS=\"\${CXXFLAGS}\" \
-        LDFLAGS=\"\$(echo -L${cwsw}/{libressl,zlib,nghttp2,expat,pcre2,curllibressl}/current/lib -static)\" \
-        CPPFLAGS=\"\$(echo -I${cwsw}/{libressl,zlib,nghttp2,expat,pcre2,curllibressl}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{libressl,zlib,nghttp2,expat,pcre2,curllibressl,libssh2libressl}/current/lib -static)\" \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{libressl,zlib,nghttp2,expat,pcre2,curllibressl,libssh2libressl}/current/include)\" \
         LIBS='-lcurl -lnghttp2 -lssh2 -lssl -lcrypto -lz -lexpat' \
         PKG_CONFIG_LIBDIR= \
         PKG_CONFIG_PATH=
