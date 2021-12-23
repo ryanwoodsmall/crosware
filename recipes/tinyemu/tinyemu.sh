@@ -1,5 +1,6 @@
 #
 # XXX - libressl variant?
+# XXX - move to tinycurlmbedtls?
 #
 
 rname="tinyemu"
