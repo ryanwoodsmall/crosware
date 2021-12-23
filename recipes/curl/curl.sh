@@ -70,11 +70,6 @@ function cwconfigure_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   cwmakeinstall_${rname}_openssl
-  #cwmakeinstall_${rname}_bearssl
-  #cwmakeinstall_${rname}_gnutls
-  #cwmakeinstall_${rname}_libressl
-  #cwmakeinstall_${rname}_mbedtls
-  #cwmakeinstall_${rname}_wolfssl
 }
 "
 
@@ -88,18 +83,6 @@ function cwmakeinstall_${rname}_openssl() {
   popd >/dev/null 2>&1
 }
 "
-
-for s in bearssl gnutls libressl mbedtls wolfssl ; do
-eval "
-function cwmakeinstall_${rname}_${s}() {
-  cwcheckinstalled ${rname}${s} || cwinstall_${rname}${s}
-  cwscriptecho \"installing ${rname}-${s} binary in ${ridir}/bin\"
-  cwmkdir \"${ridir}/bin\"
-  install -m 0755 \"${cwsw}/${rname}${s}/current/bin/${rname}-${s}\" \"${ridir}/bin/curl-${s}\"
-}
-"
-done
-unset s
 
 eval "
 function cwgenprofd_${rname}() {
