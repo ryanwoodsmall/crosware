@@ -1,6 +1,7 @@
 #
 # XXX - uses separate openssldir in ${cwtop}/etc/libressl
 # XXX - broken on centos 6, ugh
+# XXX - move libssh2 bits to libssh2libressl?
 #
 rname="libressl"
 rver="3.4.2"
