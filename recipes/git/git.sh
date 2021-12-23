@@ -1,5 +1,4 @@
 #
-# XXX - mandoc with/instead of groff?
 # XXX - add html docs?
 # XXX - cool git proxy stuff: https://gitolite.com/git-over-proxy.html
 #
@@ -33,7 +32,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
 rsha256="3a0755dd1cfab71a24dd96df3498c29cd0acd13b04f3d08bf933e81286db802c"
-rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny libssh2 groff busybox less cacertificates nghttp2 openssh"
+rreqs="make bzip2 zlib openssl curl expat pcre2 perl gettexttiny libssh2 busybox less cacertificates nghttp2 openssh mandoc"
 
 . "${cwrecipe}/common.sh"
 . "${cwrecipe}/${rname}/${rname}.sh.common"
