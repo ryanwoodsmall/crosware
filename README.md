@@ -964,6 +964,7 @@ wc -l /tmp/astbuild.out
   - firecracker-containerd (https://github.com/firecracker-microvm/firecracker-containerd)
 - firejail (https://github.com/netblue30/firejail)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
+- fq (https://github.com/wader/fq - like jq for binaries in go)
 - frontabse (http://openbsd.stanleylieber.com/frontbase - 9base fork?)
 - gatling (http://www.fefe.de/gatling/ - small web/cgi/ftp/smb server)
 - gcc - other versions, builds, etc.
@@ -979,7 +980,7 @@ wc -l /tmp/astbuild.out
 - gnulib (https://www.gnu.org/software/gnulib - probably needed to repackage for older gnu projects - shishi, gss, gsasl, ...)
 - go-git (https://github.com/go-git/go-git)
   - pure go, might make for a decent no-frills clone/fetch/merge client?
-- gojq (https://github.com/itchyny/gojq)
+- gojq (https://github.com/itchyny/gojq - jq in go)
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - gpg
@@ -1752,6 +1753,7 @@ wc -l /tmp/astbuild.out
 - xq (https://github.com/jeffbr13/xq)
 - xserver-sixel (https://github.com/saitoha/xserver-sixel)
 - yq (https://github.com/kislyuk/yq)
+  - and other yq, in go (https://github.com/mikefarah/yq)
 - ytalk (http://ytalk.ourproject.org/)
 - z3 (https://github.com/Z3Prover/z3)
   - cppcheck can use/may require this for 2.x+
