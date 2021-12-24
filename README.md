@@ -444,6 +444,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - http://www.hsqldb.org/doc/2.0/guide/listeners-chapt.html
 - htermutils (https://chromium.googlesource.com/apps/libapps/+/HEAD/hterm/etc/)
 - htop
+- ibaramg (https://github.com/ibara/mg - openbsd mg editor)
 - iftop
 - inetutils
 - indent
