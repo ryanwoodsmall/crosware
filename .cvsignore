@@ -1,8 +1,13 @@
 .git/**
+builds/**/**
+cgi-bin/**
 downloads/**/**
 etc/local.d/**
 etc/profile.d/**
 etc/**ssl/**
 software/**/**
+tmp/**
 var/etc/**
 var/inst/**
+var/run/**
+var/spool/**
