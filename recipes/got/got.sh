@@ -13,6 +13,6 @@ rdir="${rname}-portable-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://gameoftrees.org/releases/portable/${rfile}"
 rsha256="5887573b7687c2786985ab0f684db160a88092b048bc8c4dcfd6c76a1dda2fe2"
-rreqs="libressl"
+rreqs="libressl opensshlibressl"
 
 . "${cwrecipe}/got/got.sh.common"

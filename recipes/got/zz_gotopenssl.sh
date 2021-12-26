@@ -6,7 +6,7 @@ rdlfile="$(cwdlfile_got)"
 rurl="$(cwurl_got)"
 rsha256=""
 rprof="${cwetcprofd}/zz_${rname}.sh"
-rreqs="openssl"
+rreqs="openssl openssh"
 
 . "${cwrecipe}/got/got.sh.common"
 
