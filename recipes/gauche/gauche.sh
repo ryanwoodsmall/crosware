@@ -3,11 +3,11 @@
 #
 
 rname="gauche"
-rver="0.9.10"
+rver="0.9.11"
 rdir="${rname//g/G}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://github.com/shirok/${rname//g/G}/releases/download/release${rver//./_}/${rfile}"
-rsha256="0f39df1daec56680b542211b085179cb22e8220405dae15d9d745c56a63a2532"
+rsha256="395e4ffcea496c42a5b929a63f7687217157c76836a25ee4becfcd5f130f38e4"
 rreqs="make openssl rlwrap"
 
 . "${cwrecipe}/common.sh"
