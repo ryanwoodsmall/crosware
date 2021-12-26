@@ -33,7 +33,7 @@ function cwconfigure_${rname}() {
     --disable-xattr-support \
     --disable-xxhash \
     --disable-zstd \
-      CFLAGS=\"\${CFLAGS} -DINET6\" \
+      CFLAGS=\"\${CFLAGS} -DINET6 -Os\" \
       LDFLAGS=-static \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
