@@ -859,6 +859,9 @@ time_func ls -l -A /
     - avoids problem of like a `make` upgrade rebuilding _literally  everything_
     - also avoids a full graph or map/reduce thing, should be simpler/faster
   - run at end of `cwupgrade_${recipe}`
+- `${cwoptimze:="-Os"}`
+  - don't do optimization by default, except per-recipe
+  - make that an overridable, global var (size opt by inherited default)
 
 <!--
 # vim: ft=markdown
