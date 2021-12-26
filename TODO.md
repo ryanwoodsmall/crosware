@@ -862,6 +862,9 @@ time_func ls -l -A /
 - `${cwoptimze:="-Os"}`
   - don't do optimization by default, except per-recipe
   - make that an overridable, global var (size opt by inherited default)
+- `${cwskipfetchcheck:="FALSE"}` or similar
+  - explicitly be able to skip a fetch check with ugly default
+  - would allow local build of new compilers without having to upload to github
 
 <!--
 # vim: ft=markdown
