@@ -5,6 +5,7 @@
 # XXX - probably need to remove static bits for dynamic modules
 # XXX - libressl variant
 # XXX - njs 0.7.0+ openssl support?
+# XXX - pcre2 support in 1.21.5+, njs 0.7.1+ support pcre2
 #
 
 rname="nginx"

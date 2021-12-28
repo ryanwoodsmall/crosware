@@ -1,5 +1,6 @@
 #
 # XXX - openssl support added in 0.7.0 (libressl?)
+# XXX - pcre2 support added in 0.7.1
 #
 
 rname="njs"
