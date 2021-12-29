@@ -1,0 +1,36 @@
+: ${rreqs:=""}
+rreqs="make pcre2 netbsdcurses ${rreqs}"
+
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  ./configure \
+    --cc-opt=\"\${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+    --ld-opt=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\"
+  sed -i.ORIG 's/-lreadline/-lreadline -lcurses -lterminfo/g' build/Makefile
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  \$(\${CC} -dumpmachine)-strip --strip-all build/njs
+  cwmkdir \"${ridir}/bin\"
+  rm -f \"${ridir}/bin/njs\" \"${ridir}/bin/${rname}\"
+  install -m 0755 build/njs \"${ridir}/bin/njs\"
+  test -e \"${ridir}/bin/${rname}\" || ln -sf njs \"${ridir}/bin/${rname}\"
+  popd >/dev/null 2>&1
+}
+"
+
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+
+# vim: ft=sh:
