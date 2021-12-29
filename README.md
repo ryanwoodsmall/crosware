@@ -596,6 +596,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - nginx (https://nginx.org/)
   - njs (http://nginx.org/en/docs/njs/index.html - nginx javascript cli tool, with https support via libressl)
   - njsopenssl (njs built against openssl)
+  - njsminimal (njs without https support)
 - ninja (https://ninja-build.org/)
 - nmap
 - npth (https://gnupg.org/software/npth/index.html)
