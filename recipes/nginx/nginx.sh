@@ -4,17 +4,15 @@
 # XXX - no pcre jit on riscv64
 # XXX - probably need to remove static bits for dynamic modules
 # XXX - libressl variant
-# XXX - njs 0.7.0+ openssl support?
-# XXX - pcre2 support in 1.21.5+, njs 0.7.1+ support pcre2
 #
 
 rname="nginx"
-rver="1.20.2"
+rver="1.21.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://nginx.org/download/${rfile}"
-rsha256="958876757782190a1653e14dc26dfc7ba263de310e04c113e11e97d1bef45a42"
-rreqs="make perl slibtool pcre"
+rsha256="b20f3bf533a518a6f0f3a7967dfeed872d268d31e4cc121a0001329602ddcfbb"
+rreqs="make perl slibtool pcre2"
 
 . "${cwrecipe}/common.sh"
 
@@ -22,7 +20,7 @@ eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
   cwfetch_openssl
-  cwfetch_pcre
+  cwfetch_pcre2
   cwfetch_zlib
   cwfetch_njs
 }
@@ -32,7 +30,7 @@ eval "
 function cwextract_${rname}() {
   cwextract \"${rdlfile}\" \"${cwbuild}\"
   cwextract \"\$(cwdlfile_openssl)\" \"${rbdir}\"
-  cwextract \"\$(cwdlfile_pcre)\" \"${rbdir}\"
+  cwextract \"\$(cwdlfile_pcre2)\" \"${rbdir}\"
   cwextract \"\$(cwdlfile_zlib)\" \"${rbdir}\"
   cwextract \"\$(cwdlfile_njs)\" \"${rbdir}\"
 }
@@ -52,7 +50,7 @@ function cwconfigure_${rname}() {
       --with-openssl=\"${rbdir}/\$(cwdir_openssl)\" \
       --with-openssl-opt=\"--openssldir=${cwetc}/ssl no-asm no-shared no-zlib no-zlib-dynamic -fPIC -DOPENSSL_PIC -DOPENSSL_THREADS -static\" \
       --with-perl=\"${cwsw}/perl/current/bin/perl\" \
-      --with-pcre=\"${rbdir}/\$(cwdir_pcre)\" \
+      --with-pcre=\"${rbdir}/\$(cwdir_pcre2)\" \
       --with-zlib=\"${rbdir}/\$(cwdir_zlib)\" \
       --with-compat \
       --with-http_addition_module \
