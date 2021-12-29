@@ -1,15 +1,14 @@
 #
-# XXX - openssl support added in 0.7.0 (libressl?)
-# XXX - pcre2 support added in 0.7.1
+# XXX - openssl variant (perl, hmm)
 #
 
 rname="njs"
-rver="0.7.0"
+rver="0.7.1"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/nginx/${rname}/archive/refs/tags/${rfile}"
-rsha256="3f0fe7d77600a9c54000ce101dd51f44811964502641ae505e38c1bbf595e6f1"
-rreqs="make pcre netbsdcurses"
+rsha256="f5493b444ef54f1edba85c7adcbb1132e61c36d47de8f7a8d351965cad6d5486"
+rreqs="make pcre2 netbsdcurses libressl"
 
 . "${cwrecipe}/common.sh"
 
@@ -17,8 +16,8 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure \
-    --cc-opt=\"\${CFLAGS} \$(echo -I${cwsw}/{pcre,netbsdcurses}/current/include)\" \
-    --ld-opt=\"\$(echo -L${cwsw}/{pcre,netbsdcurses}/current/lib) -static\"
+    --cc-opt=\"\${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+    --ld-opt=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\"
   sed -i.ORIG 's/-lreadline/-lreadline -lcurses -lterminfo/g' build/Makefile
   popd >/dev/null 2>&1
 }
