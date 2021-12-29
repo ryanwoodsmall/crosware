@@ -4,11 +4,11 @@
 #
 
 rname="wolfssl"
-rver="5.0.0"
+rver="5.1.0"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="1356d8f93a3bd9b86c12bc7b88277bdfcfa260aa41a7959682fe725b1d3440aa"
+rsha256="4de1c24fd2bdfc67fdfcb243970734e612895308e88858ec3d94499c85879acc"
 rreqs="make cacertificates configgit slibtool toybox"
 
 . "${cwrecipe}/common.sh"
