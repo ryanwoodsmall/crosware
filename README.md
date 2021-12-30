@@ -714,6 +714,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
     - tinycurl772bearssl (bearssl, zlib, nghttp2)
     - tinycurl772libressl (libressl, libssh2, zlib, nghttp2)
     - tinycurl772mbedtls (mbedtls, libssh2, zlib, nghttp2)
+    - tinycurl772openssl (openssl, libssh2, zlib, nghttp2)
 - tinyemu (https://bellard.org/tinyemu/ - risc-v 32/64, risc-v 128 on x86_64/aarch64, x86 w/kvm on x86_64/i686; no sdl)
 - tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyscheme (http://tinyscheme.sourceforge.net/home.html)
