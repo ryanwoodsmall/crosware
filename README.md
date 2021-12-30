@@ -706,12 +706,13 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - static still has issues
   - shared seems to work for hello world stuff
   - uses muslstandalone as libc
-- tinycurl (https://curl.se/tiny/ - curl but smaller, focus on http(s) - wolfssl, wolfssh, zlib)
-  - tinycurlbearssl (bearssl, zlib)
-  - tinycurlmbedtls (mbedtls, libssh2, zlib)
-  - tinycurl772 (older version - wolfssl, wolfssh, zlib)
-    - tinycurl772bearssl (bearssl, zlib)
-    - tinycurl772mbedtls (mbedtls, libssh2, zlib)
+- tinycurl (https://curl.se/tiny/ - curl but smaller, focus on http(s) - wolfssl, wolfssh, zlib, nghttp2)
+  - tinycurlbearssl (bearssl, zlib, nghttp2)
+  - tinycurllibressl (libressl, libssh2, zlib, nghttp2)
+  - tinycurlmbedtls (mbedtls, libssh2, zlib, nghttp2)
+  - tinycurl772 (older version - wolfssl, wolfssh, zlib, nghttp2)
+    - tinycurl772bearssl (bearssl, zlib, nghttp2)
+    - tinycurl772mbedtls (mbedtls, libssh2, zlib, nghttp2)
 - tinyemu (https://bellard.org/tinyemu/ - risc-v 32/64, risc-v 128 on x86_64/aarch64, x86 w/kvm on x86_64/i686; no sdl)
 - tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
 - tinyscheme (http://tinyscheme.sourceforge.net/home.html)
