@@ -710,6 +710,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - tinycurlbearssl (bearssl, zlib, nghttp2)
   - tinycurllibressl (libressl, libssh2, zlib, nghttp2)
   - tinycurlmbedtls (mbedtls, libssh2, zlib, nghttp2)
+  - tinycurlopenssl (openssl, libssh2, zlib, nghttp2)
   - tinycurl772 (older version - wolfssl, wolfssh, zlib, nghttp2)
     - tinycurl772bearssl (bearssl, zlib, nghttp2)
     - tinycurl772libressl (libressl, libssh2, zlib, nghttp2)
