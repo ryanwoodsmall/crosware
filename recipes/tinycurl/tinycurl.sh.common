@@ -1,5 +1,5 @@
 : ${rreqs:=""}
-rreqs+=" make cacertificates zlib pkgconfig nghttp2"
+rreqs+=" make cacertificates zlib pkgconfig nghttp2 cares"
 
 . "${cwrecipe}/common.sh"
 
@@ -20,6 +20,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-dependency-tracking \
     --disable-manual \
+    --enable-ares=\"${cwsw}/cares/current\" \
     --enable-ipv6 \
     \${extra} \
     --without-{gnutls,rusttls,nss} \
@@ -55,6 +56,9 @@ function cwmakeinstall_${rname}() {
   ln -sf tiny-curl \"${ridir}/bin/${rname}-${rver}\"
   ln -sf tiny-curl \"${ridir}/bin/tiny-curl-${rver}\"
   \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/tiny-curl\"
+  cwmkdir \"${ridir}/devbin\"
+  ln -sf \"${rtdir}/current/bin/tiny-curl\" \"${ridir}/devbin/curl\"
+  ln -sf \"${rtdir}/current/bin/tiny-curl-config\" \"${ridir}/devbin/curl-config\"
   popd >/dev/null 2>&1
 }
 "
