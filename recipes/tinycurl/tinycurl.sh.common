@@ -1,5 +1,5 @@
 : ${rreqs:=""}
-rreqs+=" make cacertificates zlib"
+rreqs+=" make cacertificates zlib pkgconfig nghttp2"
 
 . "${cwrecipe}/common.sh"
 
@@ -7,11 +7,11 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   if [[ ${rname} =~ bearssl ]] ; then
-    extra='--with-bearssl --with-default-ssl-backend=bearssl --without-mbedtls --without-libssh2 --without-wolfssl --without-wolfssh'
+    extra=\"\$(echo --with-bearssl --with-default-ssl-backend=bearssl --without-{libssh2,mbedtls,wolfssl,wolfssh})\"
   elif [[ ${rname} =~ mbedtls ]] ; then
-    extra='--with-mbedtls --with-default-ssl-backend=mbedtls --with-libssh2 --without-bearssl --without-wolfssl --without-wolfssh'
+    extra=\"\$(echo --with-mbedtls --with-default-ssl-backend=mbedtls --with-libssh2 --without-{bearssl,wolfssl,wolfssh})\"
   else
-    extra='--with-wolfssl --with-default-ssl-backend=wolfssl --with-wolfssh --without-bearssl --without-mbedtls --without-libssh2'
+    extra=\"\$(echo --with-wolfssl --with-default-ssl-backend=wolfssl --with-wolfssh --without-{bearssl,mbedtls,libssh2})\"
   fi
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-dependency-tracking \
@@ -21,6 +21,7 @@ function cwconfigure_${rname}() {
     --without-{openssl,gnutls,rusttls,nss} \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
+    --with-nghttp2=\"${cwsw}/nghttp2/current\" \
     --with-zlib \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
