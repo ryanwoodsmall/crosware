@@ -104,6 +104,7 @@ function cwpatch_${rname}() {
   cat wolfssl/test.h > wolfssl/test.h.ORIG
   sed -i 's,\./certs/,certs/,g' wolfssl/test.h
   sed -i 's,\"certs/,\"${rtdir}/current/certs/,g' wolfssl/test.h
+  sed -i.ORIG 's,\"certs/ocsp,\"${rtdir}/current/certs/ocsp,g' examples/server/server.c
   popd >/dev/null 2>&1
 }
 "
@@ -113,7 +114,7 @@ function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install ${rlibtool}
   test -e \"${ridir}/include/wolfssl/options.h\" || cp wolfssl/options.h \"${ridir}/include/wolfssl/\"
-  mkdir -p \"${ridir}/bin\"
+  cwmkdir \"${ridir}/bin\"
   for i in \$(find examples/ -type f -exec \"${cwsw}/toybox/current/bin/toybox\" file {} + | awk -F: '/ELF.*executable/{print \$1}') ; do
     n=\"\$(basename \${i})\"
     install -m 0755 \"\${i}\" \"${ridir}/bin/${rname}-\${n}\"
@@ -121,7 +122,7 @@ function cwmakeinstall_${rname}() {
   done
   unset i n
   rm -rf \"${ridir}/certs\"
-  mkdir \"${ridir}/certs\"
+  cwmkdir \"${ridir}/certs\"
   ( cd certs ; tar -cf - . ) | ( cd \"${ridir}/certs/\" ; tar -xf - )
   sed -i 's,${ridir},${rtdir}/current,g' \"${ridir}/bin/${rname}-config\"
   popd >/dev/null 2>&1
