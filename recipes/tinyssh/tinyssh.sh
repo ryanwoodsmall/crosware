@@ -1,9 +1,9 @@
 rname="tinyssh"
-rver="20210601"
+rver="20220101"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/janmojzis/${rname}/archive/refs/tags/${rfile}"
-rsha256="2a051437878998c7782d9d38ef13e5e7a76435ae6b9c3e9ec492c3a567bd6314"
+rsha256="b68e5b8d1f72304d70b25b53dd221cdc0a25730695bf4e8e08e27ece9dcb499d"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
