@@ -2,8 +2,8 @@
 # XXX - need global terminfo db?
 # XXX - i.e., "make terminfo/terminfo.cdb && cp terminfo/terminfo.cdb ${ridir}/share/"
 # XXX - need TERM* environment vars?
-# XXX - readline version bundled in install - hacky but ehh
-# XXX - bundle slang?
+# XXX - readline, libedit, slang bundled in install - hacky but ehh
+# XXX - split out to {readline,libedit,slang}netbsdcurses? maybe not worth it...
 # XXX - curses pkg-config files don't set -L or -I?
 # XXX - oasis version? https://github.com/oasislinux/netbsd-curses
 # XXX - install curses_private.h - see rogue
@@ -27,6 +27,7 @@ function cwfetch_${rname}() {
   cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
   cwfetch_readline
   cwfetch_libedit
+  cwfetch_slang
 }
 "
 
@@ -35,6 +36,7 @@ function cwextract_${rname}() {
   cwextract \"${rdlfile}\" \"${cwbuild}\"
   cwextract \"\$(cwdlfile_readline)\" \"${rbdir}\"
   cwextract \"\$(cwdlfile_libedit)\" \"${rbdir}\"
+  cwextract \"\$(cwdlfile_slang)\" \"${rbdir}\"
 }
 "
 
@@ -88,6 +90,7 @@ function cwmakeinstall_${rname}() {
   install -m 644 terminfo/terminfo.cdb \"${ridir}/share/\"
   cwmakeinstall_${rname}_readline
   cwmakeinstall_${rname}_libedit
+  cwmakeinstall_${rname}_slang
   popd >/dev/null 2>&1
 }
 "
@@ -128,6 +131,26 @@ function cwmakeinstall_${rname}_libedit() {
       PKG_CONFIG_PATH=
   make -j${cwmakejobs}
   make install
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}_slang() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  cd \"\$(cwdir_slang)\"
+  sed -i.ORIG \"s/TERMCAP=-ltermcap/TERMCAP='-lcurses -lterminfo'/g\" configure
+  env PATH=\"${ridir}/bin:\${PATH}\" ./configure \
+    ${cwconfigureprefix} \
+    ${cwconfigurelibopts} \
+    ${cwconfigurefpicopts} \
+      CPPFLAGS=\"-I${ridir}/include\" \
+      LDFLAGS=\"-L${ridir}/lib -static\" \
+      LIBS=\"-lcurses -lterminfo\" \
+      PKG_CONFIG_LIBDIR= \
+      PKG_CONFIG_PATH=
+  make -j${cwmakejobs} static
+  make install-static
   popd >/dev/null 2>&1
 }
 "
