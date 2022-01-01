@@ -556,6 +556,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - mosquittolibressl (libressl/cjson/c-ares)
   - mosquittonotls (insecure/cjson/c-ares - no tls/ssl, INSECURE, plaintext, small, blah blah blah)
 - most (https://www.jedsoft.org/most/)
+  - mostnetbsdcurses (built with netbsdcurses terminfo and bundled slang)
 - mpc
 - mpfr
 - mtm (https://github.com/deadpixi/mtm - micro terminal multiplexer)
