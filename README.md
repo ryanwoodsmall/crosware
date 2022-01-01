@@ -721,7 +721,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - tinyscheme (http://tinyscheme.sourceforge.net/home.html)
 - tinyssh (https://tinyssh.org and https://github.com/janmojzis/tinyssh - small, pubkey/ed25519, ssh server only)
 - tio (https://tio.github.io and https://github.com/tio/tio)
-- tmux
+- tmux (https://github.com/tmux/tmux - terminal multiplexer)
+- tmuxmisc (https://github.com/ryanwoodsmall/tmux-misc - couple of scripts i use)
 - tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - toybox (static)
 - tree (http://mama.indstate.edu/users/ice/tree/)
