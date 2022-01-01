@@ -1,9 +1,9 @@
 rname="cflow"
-rver="1.6"
+rver="1.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="d5392a6d8a63ba2f41df9f88b51f97bc0452c5262762a3c27e0412a6c03c06db"
+rsha256="9e278b10ea420a1ab7ecccd8335fc31fb1921e91ab99d77e33df0729e19dca3b"
 rreqs="make sed"
 
 . "${cwrecipe}/common.sh"
