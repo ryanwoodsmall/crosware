@@ -502,6 +502,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libsodium (https://github.com/jedisct1/libsodium)
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtirpc (https://sourceforge.net/projects/libtirpc/ and http://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary)
+- libtom
+  - libtommath (https://www.libtom.net/LibTomMath/ and https://github.com/libtom/libtommath)
 - libtool
 - libucontext (https://github.com/kaniini/libucontext - glibc compat ucontext, opt-in)
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
@@ -1196,8 +1198,6 @@ wc -l /tmp/astbuild.out
 - libtls-bearssl (https://github.com/michaelforney/libtls-bearssl)
 - libtom
   - libtomcrypt
-    - w/libtommath
-    - ```make -j${cwmakejobs} PREFIX="${ridir}" CFLAGS="${CFLAGS} -DLTC_CLEAN_STACK -DUSE_LTM -DLTM_DESC -I${cwsw}/libtommath/current/include" EXTRALIBS="-static -L${cwsw}/libtommath/current/lib -ltommath" bins hashsum ltcrypt sizes constants tv_gen test timing install install_bins```
   - libtomfloat
   - libtommath
   - libtompoly
