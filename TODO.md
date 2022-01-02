@@ -865,6 +865,11 @@ time_func ls -l -A /
 - `${cwskipfetchcheck:="FALSE"}` or similar
   - explicitly be able to skip a fetch check with ugly default
   - would allow local build of new compilers without having to upload to github
+- `rtriggerdownstream="function1 function2 ..."`
+  - and `cwtriggerdownstreams_${rname}()`
+  - implicitly call some functions after `cwmakeinstall_${rname}()`
+  - e.g. libressl, openssl updates trigger cacertificates, caextract reinstalls
+  - might require a bit of `cwcheckuniq` finesse? for `cwreinstall`? hmm
 
 <!--
 # vim: ft=markdown
