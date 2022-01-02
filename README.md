@@ -503,6 +503,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtirpc (https://sourceforge.net/projects/libtirpc/ and http://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary)
 - libtom
+  - libtomcrypt (https://www.libtom.net/LibTomCrypt/ and https://github.com/libtom/libtomcrypt)
   - libtommath (https://www.libtom.net/LibTomMath/ and https://github.com/libtom/libtommath)
 - libtool
 - libucontext (https://github.com/kaniini/libucontext - glibc compat ucontext, opt-in)
@@ -1197,9 +1198,7 @@ wc -l /tmp/astbuild.out
 - libtap (https://github.com/zorgnax/libtap)
 - libtls-bearssl (https://github.com/michaelforney/libtls-bearssl)
 - libtom
-  - libtomcrypt
   - libtomfloat
-  - libtommath
   - libtompoly
   - tomsfastmath
 - libuargp (https://github.com/xhebox/libuargp - argp-standalone alternative)
