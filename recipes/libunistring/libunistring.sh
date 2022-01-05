@@ -1,9 +1,9 @@
 rname="libunistring"
-rver="0.9.10"
+rver="1.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7"
+rsha256="5bab55b49f75d77ed26b257997e919b693f29fd4a1bc22e0e6e024c246c72741"
 rreqs="make sed slibtool"
 
 . "${cwrecipe}/common.sh"
