@@ -1,9 +1,9 @@
 rname="libuv"
-rver="1.42.0"
+rver="1.43.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
-rsha256="371e5419708f6aaeb8656671f89400b92a9bba6443369af1bb70bcd6e4b3c764"
+rsha256="9e27825a55279de69a7c43e42d509fd1337c9bece2547c761e91a1592e91cc4d"
 rreqs="make libtool autoconf automake slibtool"
 
 . "${cwrecipe}/common.sh"
