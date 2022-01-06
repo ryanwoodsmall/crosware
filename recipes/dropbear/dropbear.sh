@@ -1,6 +1,6 @@
 #
 # XXX - move config (keys) to $cwtop/etc/dropbear/ ??? .gitignore might get ugly
-# XXX - sftp-server is messy
+# XXX - sftp-server is messy - split out into a standalone recipe?
 #
 # dropbear supports dss, ecdsa, ed25519, and rsa keys
 #
