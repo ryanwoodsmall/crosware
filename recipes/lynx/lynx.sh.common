@@ -1,0 +1,79 @@
+: ${rreqs:=""}
+rreqs="${rreqs} make bzip2 zlib pkgconfig cacertificates"
+
+. "${cwrecipe}/common.sh"
+
+if [[ ! ${rname} == lynx ]] ; then
+  for f in fetch clean extract make ; do
+    eval "
+    function cw${f}_${rname}() {
+      cw${f}_lynx
+    }
+    "
+  done
+  unset f
+fi
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  local e=''
+  local libs=''
+  if [[ ${rname} =~ slang ]] ; then
+    e+=' --with-screen=slang'
+    if [[ ${rname} =~ netbsdcurses ]] ; then
+      libs+=' -lslang -lcurses -lterminfo'
+    fi
+  elif [[ ${rname} =~ netbsdcurses ]] ; then
+    e+=' --with-screen=curses'
+    libs+=' -lcurses -lterminfo'
+  else
+    e+=' --with-screen=ncurses'
+  fi
+  if [[ ${rname} =~ libressl ]] ; then
+    e+=' --with-ssl=${cwsw}/libressl/current'
+    libs+=' -lcrypto -lssl -lz'
+  else
+    e+=' --with-ssl=${cwsw}/openssl/current'
+    libs+=' -lcrypto -lssl -lz'
+  fi
+  env PATH=\"${cwsw}/pkgconfig/current/bin:\${PATH}\" \
+    ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+      --without-gnutls \
+      --enable-widec \
+      --with-zlib \
+      --with-bzlib \
+      --with-pkg-config \
+      --disable-idna \
+      \${e} \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+        LIBS=\"\${libs}\"
+  unset e libs
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  rm -f ${ridir}/bin/lynx*
+  make install ${rlibtool}
+  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/lynx\"
+  test -e \"${ridir}/bin/${rname}\" || ln -sf \"${rtdir}/current/bin/lynx\" \"${ridir}/bin/${rname}\"
+  sed -i.DEFAULT 's/#ACCEPT_ALL_COOKIES:FALSE/ACCEPT_ALL_COOKIES:TRUE/g' \"${ridir}/etc/lynx.cfg\"
+  sed -i 's/#FORCE_SSL_PROMPT:PROMPT/FORCE_SSL_PROMPT:yes/g' \"${ridir}/etc/lynx.cfg\"
+  sed -i 's/#FORCE_COOKIE_PROMPT:PROMPT/FORCE_COOKIE_PROMPT:yes/g' \"${ridir}/etc/lynx.cfg\"
+  sed -i 's/#NO_PAUSE:FALSE/NO_PAUSE:TRUE/g' \"${ridir}/etc/lynx.cfg\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+
+# vim: ft=sh:

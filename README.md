@@ -525,7 +525,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - lua53 (posix, barebones)
   - lua52 (posix, barebones)
   - lua51 (posix, barebones)
-- lynx (ncurses and slang, ncurses default)
+- lynx (https://lynx.invisible-island.net/ - openssl, ncurses)
 - lz4 (https://github.com/lz4/lz4)
 - lzo (http://www.oberhumer.com/opensource/lzo)
 - lzip
