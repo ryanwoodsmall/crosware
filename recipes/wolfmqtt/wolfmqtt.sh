@@ -1,9 +1,9 @@
 rname="wolfmqtt"
-rver="1.10.0"
+rver="1.11.0"
 rdir="${rname//mqtt/MQTT}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="ce301bf00326d1c54ec1d55ff02a2856451ccc3d07b1e0864d9d53ae33026e59"
+rsha256="6a3b7c87f03fc226f05654583d2f5e362281373b54084ea643053b966f5b3c55"
 rreqs="make wolfssl configgit toybox"
 
 . "${cwrecipe}/common.sh"
