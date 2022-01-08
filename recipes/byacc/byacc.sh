@@ -1,9 +1,9 @@
 rname="byacc"
-rver="20211224"
+rver="20220101"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://invisible-mirror.net/archives/${rname}/${rfile}"
-rsha256="7bc42867a095df2189618b64497016298818e88e513fca792cb5adc9a68ebfb8"
+rsha256="a796ce90e960bf18d256eba534b9bd1e394d394a141ee63f530cab1074615b67"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
