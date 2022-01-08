@@ -1167,6 +1167,7 @@ wc -l /tmp/astbuild.out
 - kineto (https://sr.ht/~sircmpwn/kineto/ and https://git.sr.ht/~sircmpwn/kineto - gemini to http gateway/proxy)
 - klipse (https://github.com/viebel/klipse - js-based multi-language code snippet evaluation framework)
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
+- ksh-openbsd (https://github.com/levaidaniel/ksh-openbsd - another ksh port)
 - larn (short roguelike https://en.wikipedia.org/wiki/Larn_(video_game) - maintained/modern https://github.com/atsb/RL_M)
 - ldd
   - driver script
