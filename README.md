@@ -664,6 +664,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - rhino
 - rlwrap (netbsdcurses)
 - rogue
+- rpcsvcproto (https://github.com/thkukuk/rpcsvc-proto - contains rpcgen)
 - rrredir (https://github.com/rofl0r/rrredir)
 - rsync (https://rsync.samba.org/)
   - rsyncminimal (fewer deps, smaller, but lower performance)
@@ -1529,7 +1530,6 @@ wc -l /tmp/astbuild.out
 - rocksocks5 (https://github.com/rofl0r/rocksocks5)
 - rover (https://lecram.github.io/p/rover)
 - rpcbind (https://sourceforge.net/projects/rpcbind/ and http://git.linux-nfs.org/?p=steved/rpcbind.git;a=summary)
-- rpcsvc-proto (https://github.com/thkukuk/rpcsvc-proto)
 - rust (https://www.rust-lang.org/)
   - bootstrap? (https://guix.gnu.org/blog/2018/bootstrapping-rust/ - guix!)
   - mrustc (https://github.com/thepowersgang/mrustc - c++)
