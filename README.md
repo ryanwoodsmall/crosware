@@ -682,6 +682,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - sisc (scheme)
 - slang (ncurses)
 - slibtool (https://github.com/midipix-project/slibtool)
+- slip tools (full slattach, etc.)?
+- slirp???
 - slsc (jedsoft "sc" console spreadsheet for slang)
 - socat (http://www.dest-unreach.org/socat/ - openssl, netbsdcurses, readline)
   - socatlibressl (libressl, netbsdcurses, readline)
