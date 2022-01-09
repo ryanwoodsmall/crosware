@@ -1,3 +1,7 @@
+#
+# XXX - eap-tls support, openssl conflicting with md5/sha#/... headers
+#
+
 rname="ppp"
 rver="2.4.9"
 rdir="${rname}-${rver}"
