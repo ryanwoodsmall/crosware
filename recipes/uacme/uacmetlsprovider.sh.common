@@ -30,6 +30,15 @@ function cwmakeinstall_${rname}() {
   ln -sf \"${rbase}\" \"${ridir}/bin/${rbase}-${rprovider}\"
   ln -sf \"ualpn\" \"${ridir}/bin/ualpn-${rprovider}\"
   \$(\${CC} -dumpmachine)-strip \"${ridir}/bin/${rbase}\" \"${ridir}/bin/ualpn\"
+  cwmkdir \"${ridir}/share/man/man1\"
+  cwmkdir \"${ridir}/share/doc/txt\"
+  cwmkdir \"${ridir}/share/doc/html\"
+  for p in uacme ualpn ; do
+    install -m 644 \${p}.1 \"${ridir}/share/man/man1/\${p}.1\"
+    install -m 644 \${p}.1.txt \"${ridir}/share/doc/txt/\${p}.1.txt\"
+    install -m 644 docs/\${p}.html \"${ridir}/share/doc/html/\${p}.html\"
+  done
+  unset p
   popd >/dev/null 2>&1
 }
 "

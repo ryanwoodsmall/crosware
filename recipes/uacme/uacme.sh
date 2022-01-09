@@ -32,6 +32,15 @@ function cwmakeinstall_${rname}() {
   ln -sf \"${rname}\" \"${ridir}/bin/${rname}-openssl\"
   ln -sf \"ualpn\" \"${ridir}/bin/ualpn-openssl\"
   \$(\${CC} -dumpmachine)-strip \"${ridir}/bin/${rname}\" \"${ridir}/bin/ualpn\"
+  cwmkdir \"${ridir}/share/man/man1\"
+  cwmkdir \"${ridir}/share/doc/txt\"
+  cwmkdir \"${ridir}/share/doc/html\"
+  for p in uacme ualpn ; do
+    install -m 644 \${p}.1 \"${ridir}/share/man/man1/\"
+    install -m 644 \${p}.1.txt \"${ridir}/share/doc/txt/\"
+    install -m 644 docs/\${p}.html \"${ridir}/share/doc/html/\"
+  done
+  unset p
   popd >/dev/null 2>&1
 }
 "
