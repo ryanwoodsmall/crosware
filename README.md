@@ -957,7 +957,8 @@ wc -l /tmp/astbuild.out
 - dehydrated (https://github.com/dehydrated-io/dehydrated - shell acme/letsencrypt client)
 - diod (https://github.com/chaos/diod - 9p fileserver)
 - discount (markdown - https://github.com/Orc/discount)
-- dnscrypt-wrapper (https://github.com/cofyc/dnscrypt-wrapper - libsodium+libevent dnscrypt wrapper/proxy, use with unbound?)
+- dnscrypt-proxy (https://github.com/DNSCrypt/dnscrypt-proxy - doh in go)
+- dnscrypt-wrapper (https://github.com/cofyc/dnscrypt-wrapper - libbsd+libsodium+libevent dnscrypt wrapper/proxy, use with unbound?)
 - docbook?
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
 - dsvpn (https://github.com/jedisct1/dsvpn)
@@ -1455,6 +1456,7 @@ wc -l /tmp/astbuild.out
   - nsd can be made to work with uacme for DNS-01 challenges, needed for wildcard certs
   - nsd (https://github.com/NLnetLabs/nsd and https://nlnetlabs.nl/projects/nsd/about/ - authoritative dns server)
   - unbound (https://github.com/NLnetLabs/unbound and https://nlnetlabs.nl/projects/unbound/about/ - caching/recurisve dns resolver)
+    - `dohclient` looks interesting too
 - nnn (https://github.com/jarun/nnn)
 - node / npm (ugh)
 - noice (https://git.2f30.org/noice/)
