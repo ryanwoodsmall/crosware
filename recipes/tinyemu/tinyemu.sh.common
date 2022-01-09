@@ -1,0 +1,56 @@
+: ${rreqs:=""}
+rreqs="${rreqs} make zlib nghttp2"
+
+. "${cwrecipe}/common.sh"
+
+if [[ ! ${rname} == tinyemu ]] ; then
+  for f in clean fetch extract make ; do
+    eval "
+    function cw${f}_${rname}() {
+      cw${f}_tinyemu
+    }
+    "
+  done
+  unset f
+fi
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  cat Makefile > Makefile.ORIG
+  sed -i '/^CONFIG_SDL=.*/d' Makefile
+  if [[ ${karch} =~ ^(aarch|armv) ]] ; then
+    sed -i '/^CONFIG_X86EMU=.*/d' Makefile
+  fi
+  if [[ ${uarch} =~ ^(i.86|armv) ]] ; then
+    sed -i '/^CONFIG_INT128=.*/d' Makefile
+  fi
+  sed -i \"/^CFLAGS=/s|\\$| \$(echo -I${cwsw}/{${rreqs// /,}}/current/include)|g\" Makefile
+  sed -i \"/^LDFLAGS=/s|=|=\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static|g\" Makefile
+  sed -i 's|^bindir=.*|bindir=${ridir}/bin|g' Makefile
+  sed -i 's/-lcrypto/-lcurl -lnghttp2 -lssh2 -lssl -lcrypto -lz/g' Makefile
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  cwmkdir \"${ridir}/bin\"
+  make install
+  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/temu\"
+  ln -sf \"${rtdir}/current/bin/temu\" \"${ridir}/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/temu\" \"${ridir}/bin/${rname//tiny/riscv}\"
+  ln -sf \"${rtdir}/current/bin/temu\" \"${ridir}/bin/tinyemu\"
+  ln -sf \"${rtdir}/current/bin/temu\" \"${ridir}/bin/riscvemu\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+
+# vim: ft=sh:
