@@ -22,7 +22,7 @@ function cwpatch_${rname}() {
   sed -i 's/-lpcap/-lpcap -lnl-3 -lnl-genl-3/g' pppd/Makefile.linux
   cat configure > configure.ORIG
   sed -i '/^DESTDIR=/s,=.*,=${ridir},g' configure
-  sed -i '/^SYSCONF=/s,=.*,${ridir}/etc,g' configure
+  sed -i '/^SYSCONF=/s,=.*,=${ridir}/etc,g' configure
   popd >/dev/null 2>&1
 }
 "
