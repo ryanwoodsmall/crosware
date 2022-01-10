@@ -41,7 +41,7 @@ function cwmake_${rname}() {
   make \
     CC=\"\${CC} \${CFLAGS}\" \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
-    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib -static)\" 
+    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib -static)\"
   popd >/dev/null 2>&1
 }
 "
@@ -52,7 +52,7 @@ function cwmakeinstall_${rname}() {
   make install \
     CC=\"\${CC} \${CFLAGS}\" \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
-    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib -static)\" 
+    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib -static)\"
   rm -rf \"${ridir}/etc/ppp\"
   cwmkdir \"${ridir}/etc/ppp\"
   ( cd etc.ppp ; tar cf - . ) | ( cd \"${ridir}/etc/ppp\" ; tar xvf - )
