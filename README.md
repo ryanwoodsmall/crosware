@@ -900,6 +900,7 @@ wc -l /tmp/astbuild.out
 - bsd-coreutils (https://github.com/Projeto-Pindorama/bsd-coreutils - bsd stuff, fork of lobase-old?)
 - bsdgames (debian - https://packages.debian.org/buster/bsdgames)
 - bsd-headers (http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/musl - oe/yocto)
+- btyacc (https://www.siber.com/btyacc/ - 2.x and 3.x)
 - build-scripts (https://github.com/noloader/Build-Scripts - useful versions, packaging, etc. stuff)
 - c9 (https://github.com/ftrvxmtrx/c9 - small 9p client/server impl)
   - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
