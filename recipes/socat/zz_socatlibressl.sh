@@ -42,6 +42,7 @@ function cwconfigure_${rname}() {
   if [[ ${karch} =~ ^arm ]] ; then
     sed -i.ORIG s/Gethostbyname/gethostbyname/g xio-ip.c
   fi
+  echo '#undef HAVE_GETPROTOBYNUMBER_R' >> config.h
   popd >/dev/null 2>&1
 }
 "

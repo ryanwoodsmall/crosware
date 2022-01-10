@@ -1,9 +1,9 @@
 rname="socat"
-rver="1.7.4.2"
+rver="1.7.4.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="http://www.dest-unreach.org/${rname}/download/${rfile}"
-rsha256="6690a9f9990457b505097a272bbf2cbf4cc35576176f76646e3524b0e91c1763"
+rsha256="d47318104415077635119dfee44bcfb41de3497374a9a001b1aff6e2f0858007"
 rreqs="make openssl netbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
@@ -22,6 +22,7 @@ function cwconfigure_${rname}() {
       LIBS=\"-lreadline -lcurses -lterminfo -lssl -lcrypto -lz\"
   echo '#define NETDB_INTERNAL (-1)' >> compat.h
   sed -i 's#netinet/if_ether#linux/if_ether#g' sysincludes.h
+  echo '#undef HAVE_GETPROTOBYNUMBER_R' >> config.h
   popd >/dev/null 2>&1
 }
 "
