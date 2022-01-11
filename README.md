@@ -1781,6 +1781,7 @@ wc -l /tmp/astbuild.out
 - xe (https://github.com/leahneukirchen/xe)
 - xq (https://github.com/jeffbr13/xq)
 - xserver-sixel (https://github.com/saitoha/xserver-sixel)
+- yggdrasil (https://github.com/yggdrasil-network/yggdrasil-go - opportunistic ipv6 mesh network in go)
 - yq (https://github.com/kislyuk/yq)
   - and other yq, in go (https://github.com/mikefarah/yq)
 - ytalk (http://ytalk.ourproject.org/)
