@@ -1,7 +1,22 @@
-#!/usr/bin/env bash
-# XXX - ver/url/file/etc. from "tig" - see vimnetbsdcurses
-# XXX - require git/gitlibressl?
+rname="tignetbsdcurses"
+rver="$(cwver_tig)"
+rdir="$(cwdir_tig)"
+rfile="$(cwfile_tig)"
+rdlfile="$(cwdlfile_tig)"
+rurl="$(cwurl_tig)"
+rsha256=""
 rreqs="make netbsdcurses pkgconfig"
+
+. "${cwrecipe}/common.sh"
+
+for f in fetch clean extract ; do
+  eval "
+  function cw${f}_${rname}() {
+    cw${f}_tig
+  }
+  "
+done
+unset f
 
 eval "
 function cwpatch_${rname}() {
@@ -25,5 +40,11 @@ function cwconfigure_${rname}() {
     CURSES_LIBS='-lreadline -lcurses -lterminfo' \
     PKG_CONFIG_{PATH,LIBDIR}=\"${cwsw}/netbsdcurses/current/lib/pkgconfig\"
   popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
 "

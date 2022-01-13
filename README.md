@@ -703,7 +703,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - ubase (https://core.suckless.org/ubase)
 - svnkit
 - texinfo (untested, requires perl)
-- tig
+- tig (https://github.com/jonas/tig - console git repo pager/browser/ui, ncurses)
+  - tignetbsdcurses (same, netbsdcurses with builtin termcap)
 - tini (small init for containers, https://github.com/krallin/tini)
 - tinycc
   - tcc from gnu guix mirror
