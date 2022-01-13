@@ -5,7 +5,7 @@ rfile="$(cwfile_tig)"
 rdlfile="$(cwdlfile_tig)"
 rurl="$(cwurl_tig)"
 rsha256=""
-rreqs="make netbsdcurses pkgconfig"
+rreqs="make netbsdcurses pkgconfig pcre2"
 
 . "${cwrecipe}/common.sh"
 
@@ -33,12 +33,22 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
-    CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
-    LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -static\" \
-    LIBS=\"-lreadline -lcurses -lterminfo\" \
-    CURSES_CFLAGS=\"-I${cwsw}/netbsdcurses/current/include -L${cwsw}/netbsdcurses/current/lib\" \
-    CURSES_LIBS='-lreadline -lcurses -lterminfo' \
-    PKG_CONFIG_{PATH,LIBDIR}=\"${cwsw}/netbsdcurses/current/lib/pkgconfig\"
+    --with-pcre \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{netbsdcurses,pcre2}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{netbsdcurses,pcre2}/current/lib) -static\" \
+      LIBS=\"-lreadline -lcurses -lterminfo\" \
+      CURSES_CFLAGS=\"-I${cwsw}/netbsdcurses/current/include -L${cwsw}/netbsdcurses/current/lib\" \
+      CURSES_LIBS='-lreadline -lcurses -lterminfo' \
+      PKG_CONFIG_{PATH,LIBDIR}=\"\$(echo ${cwsw}/{netbsdcurses,pcre2}/current/lib/pkgconfig | tr ' ' ':')\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install
+  ln -sf tig \"${ridir}/bin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
