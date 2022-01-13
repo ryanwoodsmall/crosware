@@ -1176,6 +1176,7 @@ wc -l /tmp/astbuild.out
 - klipse (https://github.com/viebel/klipse - js-based multi-language code snippet evaluation framework)
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
 - ksh-openbsd (https://github.com/levaidaniel/ksh-openbsd - another ksh port)
+- kvmtool (https://github.com/kvmtool/kvmtool - standalone native kvm frontend w/o qemu?)
 - larn (short roguelike https://en.wikipedia.org/wiki/Larn_(video_game) - maintained/modern https://github.com/atsb/RL_M)
 - ldd
   - driver script
