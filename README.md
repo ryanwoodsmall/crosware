@@ -1198,8 +1198,9 @@ wc -l /tmp/astbuild.out
 - libeconf (https://github.com/openSUSE/libeconf)
 - libfawk (http://repo.hu/projects/libfawk/ - awk like function language/vm/library)
 - libfetch (https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.3-stable and https://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/net/libfetch/README.html - alpine, netbsd, needs work)
-  - https://github.com/Gottox/libfetch - newer combo of netbsd/freebsd versions?
-  - https://github.com/jrmarino/fetch-freebsd - freebsd version with portability enhancements, cmake though
+  - https://github.com/Gottox/libfetch - newer combo of netbsd/freebsd versions? no fetchReqHTTP
+  - https://github.com/jrmarino/fetch-freebsd - freebsd version with portability enhancements, cmake though - has fetchReqHTTP
+  - https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.8-stable - _old_ alpine port against netbsd libfetch? no fetchReqHTTP
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
 - libhdate (https://sourceforge.net/projects/libhdate/ - hebrew calendar w/hcal and hdate programs with sunrise/sunset/etc. info)
@@ -1481,6 +1482,8 @@ wc -l /tmp/astbuild.out
 - openbsd-libz (https://github.com/ataraxialinux/openbsd-libz)
 - openconnect
 - opengit (https://github.com/khanzf/opengit)
+  - requires libfetch with fetchReqHTTP support, at a minimum
+  - bmake, libbsd?
 - openresolv (http://roy.marples.name/projects/openresolv/ - resolvconf implementation)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
