@@ -47,6 +47,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${ridir}/share/man/man3\"
   install -m 755 fetch \"${ridir}/bin/fetch\"
   install -m 644 fetch.h \"${ridir}/include/fetch.h\"
+  install -m 644 fetch-estream.h \"${ridir}/include/fetch-estream.h\"
   install -m 644 libfetch.a \"${ridir}/lib/libfetch.a\"
   install -m 644 fetch.3 \"${ridir}/share/man/man3/fetch.3\"
   install -m 644 fetch.1 \"${ridir}/share/man/man1/fetch.1\"
