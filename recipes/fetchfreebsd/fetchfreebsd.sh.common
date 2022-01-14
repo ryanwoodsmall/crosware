@@ -1,5 +1,5 @@
 : ${rreqs:=""}
-rreqs="${rreqs} make"
+rreqs="${rreqs} busybox"
 
 . "${cwrecipe}/common.sh"
 
@@ -7,8 +7,8 @@ eval "
 function cwpatch_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cat common.c > common.c.ORIG
-  sed -i 's|\"/usr/local/etc/ssl/cert.pem\"|\"${cwtop}/etc/ssl/cert.pem\"|' common.c
-  sed -i 's|\"/etc/ssl/cert.pem\"|\"${cwtop}/etc/ssl/cert.pem\"|' common.c
+  busybox sed -i 's|\"/usr/local/etc/ssl/cert.pem\"|\"${cwtop}/etc/ssl/cert.pem\"|' common.c
+  busybox sed -i 's|\"/etc/ssl/cert.pem\"|\"${cwtop}/etc/ssl/cert.pem\"|' common.c
   popd >/dev/null 2>&1
 }
 "
@@ -16,8 +16,8 @@ function cwpatch_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  sh generate_errors.sh http .
-  sh generate_errors.sh ftp .
+  busybox ash generate_errors.sh http .
+  busybox ash generate_errors.sh ftp .
   popd >/dev/null 2>&1
 }
 "
