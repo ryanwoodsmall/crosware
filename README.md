@@ -392,6 +392,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - entr (http://entrproject.org/ and https://github.com/eradman/entr)
 - etcd (https://etcd.io/ and https://github.com/etcd-io/etcd)
 - expat
+- fetchfreebsd (https://github.com/jrmarino/fetch-freebsd - freebsd fetch program/fetch.h header/libfetch.a lib, openssl, custom compilation instead of cmake)
+  - fetchfreebsdlibressl (same with libressl)
 - file
 - findutils
 - flex
@@ -1199,7 +1201,6 @@ wc -l /tmp/astbuild.out
 - libfawk (http://repo.hu/projects/libfawk/ - awk like function language/vm/library)
 - libfetch (https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.3-stable and https://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/net/libfetch/README.html - alpine, netbsd, needs work)
   - https://github.com/Gottox/libfetch - newer combo of netbsd/freebsd versions? no fetchReqHTTP
-  - https://github.com/jrmarino/fetch-freebsd - freebsd version with portability enhancements, cmake though - has fetchReqHTTP
   - https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.8-stable - _old_ alpine port against netbsd libfetch? no fetchReqHTTP
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)

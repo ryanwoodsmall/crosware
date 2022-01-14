@@ -1,0 +1,8 @@
+rname="fetchfreebsd"
+rver="12.0.9"
+rdir="fetch-freebsd-${rver}"
+rfile="v${rver}.tar.gz"
+rurl="https://github.com/jrmarino/fetch-freebsd/archive/refs/tags/${rfile}"
+rsha256="d9fc592137117e013028e7f098339f01843cee22ac9432abb0e743fc04a62a83"
+rreqs="openssl"
+. "${cwrecipe}/${rname}/${rname}.sh.common"

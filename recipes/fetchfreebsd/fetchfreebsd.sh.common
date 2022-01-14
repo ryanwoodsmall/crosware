@@ -1,0 +1,66 @@
+: ${rreqs:=""}
+rreqs="${rreqs} make"
+
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  cat common.c > common.c.ORIG
+  sed -i 's|\"/usr/local/etc/ssl/cert.pem\"|\"${cwtop}/etc/ssl/cert.pem\"|' common.c
+  sed -i 's|\"/etc/ssl/cert.pem\"|\"${cwtop}/etc/ssl/cert.pem\"|' common.c
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  sh generate_errors.sh http .
+  sh generate_errors.sh ftp .
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  local includes=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\"
+  local libs=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -lssl -lcrypto -static\"
+  for f in common estream estream-printf fetch file ftp http ; do
+    \${CC} -c \${CFLAGS} -I. \${includes} \${f}.c -o \${f}.o
+  done
+  ar r libfetch.a *.o
+  ranlib libfetch.a
+  \${CC} \${CFLAGS} -I. \${includes} main.c -o fetch -L. -lfetch \${libs}
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  cwmkdir \"${ridir}/bin\"
+  cwmkdir \"${ridir}/include\"
+  cwmkdir \"${ridir}/lib\"
+  cwmkdir \"${ridir}/share/man/man1\"
+  cwmkdir \"${ridir}/share/man/man3\"
+  install -m 755 fetch \"${ridir}/bin/fetch\"
+  install -m 644 fetch.h \"${ridir}/include/fetch.h\"
+  install -m 644 libfetch.a \"${ridir}/lib/libfetch.a\"
+  install -m 644 fetch.3 \"${ridir}/share/man/man3/fetch.3\"
+  install -m 644 fetch.1 \"${ridir}/share/man/man1/fetch.1\"
+  ln -sf fetch \"${ridir}/bin/${rname%%libressl}\"
+  ln -sf fetch \"${ridir}/bin/${rname}\"
+  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/fetch\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+
+# vim: ft=sh:
