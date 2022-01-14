@@ -30,7 +30,7 @@ function cwmake_${rname}() {
   for f in common estream estream-printf fetch file ftp http ; do
     \${CC} -c \${CFLAGS} -I. \${includes} \${f}.c -o \${f}.o
   done
-  ar r libfetch.a *.o
+  busybox ar r libfetch.a *.o
   ranlib libfetch.a
   \${CC} \${CFLAGS} -I. \${includes} main.c -o fetch -L. -lfetch \${libs}
   popd >/dev/null 2>&1
