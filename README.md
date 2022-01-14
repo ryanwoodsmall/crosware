@@ -1199,6 +1199,7 @@ wc -l /tmp/astbuild.out
 - libfawk (http://repo.hu/projects/libfawk/ - awk like function language/vm/library)
 - libfetch (https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.3-stable and https://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/net/libfetch/README.html - alpine, netbsd, needs work)
   - https://github.com/Gottox/libfetch - newer combo of netbsd/freebsd versions?
+  - https://github.com/jrmarino/fetch-freebsd - freebsd version with portability enhancements, cmake though
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
 - libhdate (https://sourceforge.net/projects/libhdate/ - hebrew calendar w/hcal and hdate programs with sunrise/sunset/etc. info)
