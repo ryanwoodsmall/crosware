@@ -1483,8 +1483,20 @@ wc -l /tmp/astbuild.out
 - openbsd-libz (https://github.com/ataraxialinux/openbsd-libz)
 - openconnect
 - opengit (https://github.com/khanzf/opengit)
-  - requires libfetch with fetchReqHTTP support, at a minimum
-  - bmake, libbsd?
+  - bmake, libbsd, libmd, zlib, pkgconfig, fetchfreebsd{,libressl}, openssl/libressl
+  - compiles with this but doesn't work...
+  - ```
+    sed -i.ORIG '/Unsure/s,^.*,#include <sha.h>,g' lib/common.h
+    grep -ril __unused . | xargs sed -i.ORIG s/__unused//g
+    sed -i.ORIG '/}.*__packed;/s, __packed,,g' lib/index.h
+    echo '#include <sha.h>' >> src/hash-object.h
+    # src/Makefile needs LDADD fixups for libs
+    bmake clean
+    bmake \
+      CC="${CC} -I${PWD} $(pkg-config --{cflags,libs} libbsd-overlay) ${CFLAGS}" \
+      CFLAGS="-I${PWD} $(pkg-config --cflags libbsd-overlay) $(echo -I${cwsw}/{libressl,libbsd,libmd,fetchfreebsdlibressl,zlib}/current/include)" \
+      LDFLAGS="$(pkg-config --libs libbsd-overlay) $(echo -L${cwsw}/{libressl,libbsd,libmd,fetchfreebsdlibressl,zlib}/current/lib) -static"
+    ```
 - openresolv (http://roy.marples.name/projects/openresolv/ - resolvconf implementation)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
