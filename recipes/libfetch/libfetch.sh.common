@@ -1,0 +1,35 @@
+: ${rreqs:=""}
+rreqs="${rreqs} make"
+
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwconfigure_${rname}() {
+  true
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make libfetch.a \
+    CC=\"\${CC} \${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+    CPPFLAGS= \
+    LDFLAGS= \
+    PKG_CONFIG_{LIBDIR,PATH}=
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  cwmkdir \"${ridir}/include\"
+  cwmkdir \"${ridir}/lib\"
+  install -m 644 fetch.h \"${ridir}/include/fetch.h\"
+  install -m 644 libfetch.a \"${ridir}/lib/libfetch.a\"
+  popd >/dev/null 2>&1
+}
+"
+
+# vim: ft=sh:

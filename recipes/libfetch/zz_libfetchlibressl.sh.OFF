@@ -1,0 +1,18 @@
+rname="libfetchlibressl"
+rver="$(cwver_libfetch)"
+rdir="$(cwdir_libfetch)"
+rfile="$(cwfile_libfetch)"
+rdlfile="$(cwdlfile_libfetch)"
+rurl="$(cwurl_libfetch)"
+rsha256=""
+rreqs="libressl"
+
+. "${cwrecipe}/libfetch/libfetch.sh.common"
+
+for f in fetch clean extract ; do
+  eval "
+  function cw${f}_${rname}() {
+    cw${f}_libfetch
+  }
+  "
+done

@@ -1,0 +1,12 @@
+#
+# XXX - github zip, signature may change???
+# XXX - no fetchReqHTTP? may be too old, looks like ~2019+
+#
+rname="libfetch"
+rver="23c14de6428a5f3aa88ad7947776bfe2adc5518f"
+rdir="${rname}-${rver}"
+rfile="${rver}.zip"
+rurl="https://github.com/Gottox/${rname}/archive/${rfile}"
+rsha256="f06292b876de0e7e876650da15f046d9cd46c6ac1799d253a35db16171eb8678"
+rreqs="openssl"
+. "${cwrecipe}/${rname}/${rname}.sh.common"
