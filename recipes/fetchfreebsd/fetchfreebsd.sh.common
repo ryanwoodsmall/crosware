@@ -1,5 +1,5 @@
 : ${rreqs:=""}
-rreqs="${rreqs} busybox"
+rreqs="${rreqs} busybox cacertificates"
 
 . "${cwrecipe}/common.sh"
 
