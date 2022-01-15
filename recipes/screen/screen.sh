@@ -20,6 +20,18 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwmakeinstall_${rname}() {
+  pushd "${rbdir}" >/dev/null 2>&1
+  make install
+  echo 'hardstatus alwayslastline \"%Lw\"' >> etc/screenrc
+  cwmkdir \"${ridir}/etc\"
+  install -m 0644 etc/screenrc \"${ridir}/etc/screenrc\"
+  install -m 0644 etc/etcscreenrc \"${ridir}/etc/etcscreenrc\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
