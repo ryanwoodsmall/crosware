@@ -1483,6 +1483,7 @@ wc -l /tmp/astbuild.out
 - openbsd-libz (https://github.com/ataraxialinux/openbsd-libz)
 - openconnect
 - opengit (https://github.com/khanzf/opengit)
+  - original gist: https://gist.github.com/ryanwoodsmall/2cbce4664f13b95ec7b0385fcee0b957
   - bmake, libbsd, libmd, zlib, pkgconfig, fetchfreebsd{,libressl}, openssl/libressl
   - compiles with this but doesn't work...
   - ```
