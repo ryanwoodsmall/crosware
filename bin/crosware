@@ -486,7 +486,7 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
   }
   function cwupgradedeps_${cwbootstraprecipe}() { true ; }
   function cwupgradereqs_${cwbootstraprecipe}() { true ; }
-  function cwupgradewithreqs_${cwbootstraprecipe}() { cwupgrade_${cwbootstraprecipe} ; }
+  function cwupgradewithdeps_${cwbootstraprecipe}() { cwupgrade_${cwbootstraprecipe} ; }
   function cwprof_${cwbootstraprecipe}() {
     echo \"${cwetcprofd}/\${${cwbootstraprecipe}_pkgname}.sh\"
   }
