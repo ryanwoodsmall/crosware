@@ -64,6 +64,7 @@ commands:
   list-installed-reqs : list installed recipes with their requirements
   list-recipe-files : list recipes with their source file
   list-recipe-reqs : list recipes with their requirements
+  list-recipe-reqs-expanded : list recipes with their expanded requirements
   list-recipes : list build recipes
   list-recipe-versions : list recipes with version number
   list-upgradable : list installed packages with available upgrades
