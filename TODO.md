@@ -177,20 +177,6 @@
     - i.e., openssl -> curl -> git wouldn't pick up libssh2 until after curl is compiled based on alpha
     - need that _graph_
     - this is mapreduce. ah. ahhh
-  - ```cwupgradedeps_${rname}```
-    - relies on ordering to rebuild things, not do double upgrades, etc...
-    - ```
-      for r in ${!cwrecipereqs[@]} ; do
-        if $(echo ${cwrecipereqs[${r}]} | tr ' ' '\n' | grep -q "^${rname}$") ; then
-          cwupgrade_${r}
-        fi
-      done
-      ```
-    - **REALLY NEED THAT GRAPH TO MAKE THIS EFFICIENT**
-    - crawl all recipes and check reqs
-    - would love a hash of recipes to reqs (list) here
-    - call from cwupgrade?
-    - needs to be unconditional, really need a stack of all downstreams gathered, uniq'ed, and built once
   - ```cwupgrade_${rname} function```
     - uninstall/reinstall by default, checking downstream reqs to upgrade
     - cwreinstall_... as well? alias/wrapper?
@@ -560,13 +546,6 @@ time_func ls -l -A /
   - save sha256sum of files in ${ridir} to /var/meta/rname
   - find ${ridir}/ -type f | sort | xargs sha256sum > /var/meta/rname
   - if ! -e /var/meta/rname don't run
-- upgrade-all-recursive
-  - on upgrade, chase down rreqs updates and install them if any
-  - cwupgradable[rname]=0 by default
-  - if upgradable, set to 1
-  - check by package
-  - hash is quicker
-  - eliminate expensive calls to get/list installed if possible
 - cwisancestor / cwisdescendant
   - cwisancestor a b
     - if b requires a
@@ -584,19 +563,8 @@ time_func ls -l -A /
     - return true
   - return false
 - cwupgradereqs / cwupgradedeps
-  - really need graph
-  - at LEAST a full req expansion (probably recursive descent)
-  - requirement ordering matters here too
-  - ugh, hard, particulary in this tarpit i adore
-  - for every upgradable package
-    - for any downstream ancestors
-      - check if upgradable, chase if not
-      - recurse reqs, upgrading if necessary
-    - for upstream descendants
-      - check its downstreams, upgrading recursively
-      - if there are upstreams
-    - too easy to loop forever here, ping ponging between up-/downstream
-    - without ordering, can rebuild multiple recipes way too many times
+  - done-ish, `cwupgradereqs_${rname}` and `cwupgradedeps_${rname}`
+  - upgrading deps could cause a world of hurt on `make`, `bootstrapmake`, etc.
 - busybox ssl_helper after 1.13.1 is stable
   - wolfssl: https://git.busybox.net/busybox/tree/networking/ssl_helper-wolfssl/README?h=1_31_stable
   - matrixssl: https://git.busybox.net/busybox/tree/networking/ssl_helper/README?h=1_31_stable
@@ -692,14 +660,6 @@ time_func ls -l -A /
     - `${repochreq}` - recipe var to signify epoch required, default to true
     - upgrade, version check, version write, etc., will need to reflect this
     - can be considered in-memory? kind of ugly. ugly elegance
-- downstream upgrades... - **DONE???**
-  - not a full graph
-  - on `crosware upgrade recipe` or `crosware upgrade-all`...
-    - `local r ; cwreqs_${rname} | while read -r r ; do cwlistupgradable | grep -q "^${r} : " && cwupgrade_${r} || true ; done ; unset r`
-- upstream upgrades
-  - dependents
-  - actually need a graph here?
-  - hard
 - `check-upgradable`
   - command to see if a package needs an upgrade
   - memoize upgrade status
@@ -849,6 +809,7 @@ time_func ls -l -A /
   - remove `.crosware_{ORIG,NEW}` files?
   - could get _very_ ugly with patterns containing quotes, escapes, backtracking, etc.
 - `cwupgrade_downstreams`
+  - use `cwupgradereqs_${rname}` and `cwupgradedeps_${rname}`
   - does what it says
     - for anything that requires a package...
     - check that it's installed
