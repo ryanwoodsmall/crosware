@@ -1190,9 +1190,21 @@ function cwgetallrecipes() {
 #   set a recipe as upgradable
 #
 function cwsetupgradble() {
-  local r="${1}"
-  cwupgraded["${r}"]=0
-  cwtoupgrade["${r}"]=1
+  for r in "${@}" ; do
+    cwupgraded["${r}"]=0
+    cwtoupgrade["${r}"]=1
+  done
+}
+
+#
+# cwmarkupgraded
+#   toggle upgraded stats for recipe
+#
+function cwmarkupgraded() {
+  for r in "${@}" ; do
+    cwupgraded["${r}"]=1
+    cwtoupgrade["${r}"]=0
+  done
 }
 
 #
@@ -1202,8 +1214,7 @@ function cwsetupgradble() {
 function cwmarkupgradable() {
   test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
   for recipe in $(cwgetallrecipes) ; do
-    cwupgraded["${recipe}"]=1
-    cwtoupgrade["${recipe}"]=0
+    cwmarkupgraded "${recipe}"
   done
   for recipe in $(cwgetallrecipes) ; do
     cwcheckinstalled "${recipe}" || continue
