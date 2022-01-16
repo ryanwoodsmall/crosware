@@ -67,6 +67,7 @@ commands:
   list-recipe-reqs : list recipes with their requirements
   list-recipe-reqs-expanded : list recipes with their expanded requirements
   list-recipes : list build recipes
+  list-recipe-transitive-reqs : list recipes with only transitive requirements
   list-recipe-versions : list recipes with version number
   list-upgradable : list installed packages with available upgrades
   profile : show .profile addition

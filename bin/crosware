@@ -83,6 +83,7 @@ cwcmds["list-recipe-files"]="list recipes with their source file"
 cwcmds["list-recipe-versions"]="list recipes with version number"
 cwcmds["list-recipe-reqs"]="list recipes with their requirements"
 cwcmds["list-recipe-reqs-expanded"]="list recipes with their expanded requirements"
+cwcmds["list-recipe-transitive-reqs"]="list recipes with only transitive requirements"
 cwcmds["install"]="attempt to build/install a package from a known recipe"
 cwcmds["update"]="attempt to update existing install of ${cwname}"
 cwcmds["list-installed"]="list installed recipes"
@@ -1461,7 +1462,18 @@ function cwgetrecipetransitivereqs() {
   done
   for q in ${!qs[@]} ; do
     test "${qs[${q}]}" -eq 1 || echo "${q}"
-  done | sort
+  done | sort | xargs echo
+}
+
+#
+# list transitive reqs for a recipe
+# XXX - slowwwwwww
+#
+function cwlistrecipetransitivereqs() {
+  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  for recipe in $(cwnormalizeargs ${!cwrecipes[@]} ${!cwbootstraprecipes[@]}) ; do
+    echo "${recipe} : $(cwgetrecipetransitivereqs ${recipe})"
+  done
 }
 
 #
@@ -1483,7 +1495,7 @@ function cwgetrecipedeps() {
 }
 
 #
-# list all expanded reqs for all recipes
+# list all deps for all recipes
 #
 function cwlistrecipedeps() {
   test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
@@ -1647,6 +1659,9 @@ case "${cmd}" in
     ;;
   list-recipe-reqs-expanded)
     cwlistrecipereqsexp
+    ;;
+  list-recipe-transitive-reqs)
+    cwlistrecipetransitivereqs
     ;;
   list-installed)
     cwlistinstalled
