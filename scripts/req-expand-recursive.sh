@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-#
-# XXX - memoization, slow
-#
 
 set -eu
 set -o pipefail
@@ -14,62 +11,66 @@ fi
 . /usr/local/crosware/etc/vars
 . ${cwtop}/etc/functions
 
+declare -a a
 declare -A q
 declare -A e
-declare -A x
+declare -A m
 
-#f="${cwtop}/tmp/reqs.out"
-#readarray -t a < ${f}
 readarray -t a < <(crosware list-recipe-reqs)
 
 function uniqueify() {
-  echo "${@}" | tr ' ' '\n' | sort -u | xargs echo -n
+  echo "${@}" | tr ' ' '\n' | sort -u | xargs echo
 }
 
 for i in ${!a[@]} ; do
   l="${a[${i}]}"
-  r="${a[${i}]}"
-  r="${r// /}"
+  r="${l// /}"
   r="${r%%:*}"
   d="${l##${r} : }"
   d="$(uniqueify ${d})"
   q["${r}"]="${d}"
+  e["${r}"]="${d}"
+  m["${r}"]=0
 done
 
 function reqcount() {
-  local r="${1}"
-  local c=0
-  local d="$(uniqueify ${q[${r}]})"
-  local i
-  d="${d# }"
-  d="${d% }"
-  for i in ${d} ; do
-    ((c++))
-  done
-  echo "${c}"
+  echo ${#}
 }
 
 function expandreqs() {
   local r="${1}"
+  if [ "${m[${r}]}" -eq 1 ] ; then
+    return
+  fi
+  if [ $(reqcount ${q[${r}]}) -eq 0 ] ; then
+    m["${r}"]=1
+    return
+  fi
   local o="${2}"
   local n
-  for d in ${q[${r}]} ; do
-    q["${r}"]="$(uniqueify ${q[${r}]} ${q[${d}]})"
+  for d in ${e[${r}]} ; do
+    if [ ${m[${d}]} -ne 1 ] ; then
+      if [ $(reqcount ${q[${d}]}) -ge 1 ] ; then
+        expandreqs "${d}" "$(reqcount ${q[${d}]})"
+      fi
+    fi
+    m["${d}"]=1
   done
-  n="$(reqcount ${r})"
-  if [[ $o != $n ]] ; then
+  for d in ${e[${r}]} ; do
+    e["${r}"]+=" ${e[${d}]}"
+  done
+  e["${r}"]="$(uniqueify ${e[${r}]})"
+  n="$(reqcount ${e[${r}]})"
+  if [[ ${o} != ${n} ]] ; then
     expandreqs "${r}" "${n}"
   fi
+  m["${r}"]=1
 }
 
-#for r in $(echo ${!q[@]} | tr ' ' '\n' | sort) ; do
-#  echo "${r} : $(reqcount ${r}) : '${q[${r}]}'"
-#done
-
 for r in $(echo ${!q[@]} | tr ' ' '\n' | sort) ; do
-  c="$(reqcount ${r})"
+  c="$(reqcount ${q[${r}]})"
   echo -n "${r} : ${c} : ${q[${r}]} : "
   expandreqs "${r}" "${c}"
-  n="$(reqcount ${r})"
-  echo  "${n} : ${q[${r}]}"
+  n="$(reqcount ${e[${r}]})"
+  echo  "${n} : ${e[${r}]}"
 done
