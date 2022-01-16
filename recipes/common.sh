@@ -316,8 +316,8 @@ function cwupgradewithdeps_${rname}() {
   cwuninstall_${rname}
   cwscriptecho \"installing ${rname}\"
   cwinstall_${rname}
-  cwupgradedeps_${rname}
   cwmarkupgraded ${rname}
+  cwupgradedeps_${rname}
 }
 "
 
