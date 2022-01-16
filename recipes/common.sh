@@ -160,6 +160,7 @@ function cwgenprofd_${rname}() {
 eval "
 function cwmarkinstall_${rname}() {
   cwmarkinstall \"${rname}\" \"${rver}\"
+  cwmarkupgraded \"${rname}\"
 }
 "
 
@@ -286,7 +287,8 @@ function cwupgradereqs_${rname}() {
   local r
   for r in ${rreqs} ; do
     cwcheckinstalled \${r} || cwinstall_\${r}
-    cwcheckupgradable \${r} && cwupgrade_\${r}
+    cwcheckupgradable \${r} && cwupgrade_\${r} || true
+    cwmarkedupgradable \${r} && cwupgrade_\${r} || true
   done
   unset r
 }
@@ -296,11 +298,12 @@ eval "
 function cwupgradedeps_${rname}() {
   cwscriptecho \"upgrading any installed deps for ${rname}\"
   local deps=\"\$(cwgetinstalleddeps ${rname})\"
+  local d
   for d in \${deps[@]} ; do
     cwsetupgradble \${d} || true
   done
   for d in \${deps[@]} ; do
-    test \${cwtoupgrade[\"\${d}\"]} -eq 1 && cwupgrade_\${d} || true
+    cwmarkedupgradable \${d} && cwupgrade_\${d} || true
   done
 }
 "

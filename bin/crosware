@@ -1123,10 +1123,8 @@ function cwlistupgradable() {
 #   get a list of upgradable packages
 function cwgetupgradable() {
   cwmarkupgradable
-  for r in ${!cwtoupgrade[@]} ; do
-    if [ "${cwtoupgrade[${r}]}" -eq 1 ] ; then
-      echo "${r}"
-    fi
+  for r in ${!cwrecipes[@]} ; do
+    cwmarkedupgradable "${r}" && echo "${r}" || true
   done | sort | xargs echo
 }
 
@@ -1208,6 +1206,17 @@ function cwmarkupgraded() {
 }
 
 #
+# cwmarkedupgradable
+#   return upgrade marking status of a recipe
+#
+function cwmarkedupgradable() {
+  local r="${1}"
+  local c=1
+  test "${cwtoupgrade[${r}]}" -eq 1 && c=0 || true
+  return ${c}
+}
+
+#
 # cwmarkupgradable
 #   iterate through recipes, if installed, mark version discrepancies
 #
@@ -1266,9 +1275,7 @@ function cwupgrade() {
     cwsetupgradble "${upgrade}"
   done
   for upgrade in "${@}" ; do
-    if [ ${cwupgraded[${upgrade}]} -eq 0 ] ; then
-      cwupgrade_${upgrade}
-    fi
+    cwmarkedupgradable ${upgrade} && cwupgrade_${upgrade} || true
   done
 }
 
@@ -1298,8 +1305,8 @@ function cwupgradewithdeps() {
   done
   cwscriptecho "upgrading ${@} and installed deps"
   local l="$(cwnormalizeargs ${@} ${ds[@]})"
-  for r in ${l} ; do
-    test "${cwtoupgrade[${r}]}" -eq 1 && cwupgrade_${r} || true
+  for r in ${@} $(cwnormalizeargs ${ds[@]}) ; do
+    cwmarkedupgradable ${r} && cwupgrade_${r} || true
   done
 }
 
@@ -1545,6 +1552,7 @@ function cwcontains() {
 # normalize argument list
 # - trim duplicates
 # - sort
+# XXX - might be better to preserve order?
 #
 function cwnormalizeargs() {
   echo "${@}" \
