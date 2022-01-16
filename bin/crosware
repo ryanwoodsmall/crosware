@@ -1429,14 +1429,6 @@ function cwexpandreqs() {
 function cwgetexpandedreqs() {
   local r="${1}"
   test "${cwrecipereqsexpanded[${r}]}" -eq 1 || cwexpandreqs "${r}" "$(cwcountargs ${cwrecipeexpreqs[${r}]})"
-}
-
-#
-# show expanded reqs for a recipe
-#
-function cwshowexpandedreqs() {
-  local r="${1}"
-  test "${cwrecipereqsexpanded[${r}]}" -eq 1 || cwgetexpandedreqs "${r}"
   echo "${cwrecipeexpreqs[${r}]}"
 }
 
@@ -1446,7 +1438,7 @@ function cwshowexpandedreqs() {
 function cwlistrecipereqsexp() {
   test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
   for recipe in $(cwnormalizeargs ${!cwrecipes[@]} ${!cwbootstraprecipes[@]}) ; do
-    test "${cwrecipereqsexpanded[${recipe}]}" -eq 1 || cwgetexpandedreqs "${recipe}"
+    test "${cwrecipereqsexpanded[${recipe}]}" -eq 1 || cwgetexpandedreqs "${recipe}" >/dev/null 2>&1
     echo "${recipe} : ${cwrecipeexpreqs[${recipe}]}"
   done
 }
