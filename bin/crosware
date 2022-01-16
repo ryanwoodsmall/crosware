@@ -23,6 +23,10 @@ function cwscriptecho() {
   echo -e "${scriptname}: ${scriptmesg}"
 }
 
+function cwstderrecho() {
+  cwscriptecho "${@}" 1>&2
+}
+
 function cwfailexit() {
   local failmesg="error"
   if [ ! -z "${@}" ] ; then
@@ -164,7 +168,7 @@ export cwtmpperm="1777"
 export cwexecperm="775"
 
 # start off with an empty recipe and installed list
-declare -A cwrecipes cwrecipefiles cwrecipereqs cwrecipeexpreqs cwrecipereqsexpanded cwrecipeversions cwbootstraprecipes cwinstalled cwupgraded
+declare -A cwrecipes cwrecipefiles cwrecipereqs cwrecipeexpreqs cwrecipereqsexpanded cwrecipeversions cwbootstraprecipes cwinstalled cwupgraded cwtoupgrade
 export cwrecipes
 export cwrecipefiles
 export cwrecipereqs
@@ -174,6 +178,7 @@ export cwrecipeversions
 export cwbootstraprecipes
 export cwinstalled
 export cwupgraded
+export cwtoupgrade
 
 # stuff we'll use for optimizing slow functions, not reading the same files over and over, etc.
 declare -A cwprofhash
@@ -817,7 +822,7 @@ function cwnewsourceprofile() {
     if [ ${cwrecipessourced} -eq 0 ] ; then
       return
     else
-      for r in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
+      for r in $(cwgetallrecipes) ; do
         f="$(cwprof_${r})"
         if [ -e "${f}" ] ; then
           cwprofhash["${f}"]="$(sha256sum "${f}" | awk '{print $1}')"
@@ -931,6 +936,8 @@ function cwsourcerecipes() {
       fi
       cwrecipeexpreqs["${rname}"]="$(cwnormalizeargs ${cwrecipereqs[${rname}]})"
       cwrecipereqsexpanded["${rname}"]=0
+      cwupgraded["${rname}"]=1
+      cwtoupgrade["${rname}"]=0
     fi
     unset cwconfigureprefix rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps rlibtool rconfigureopts rcommonopts rdlfile rpfile rsite rmessage
   done
@@ -944,7 +951,7 @@ function cwsourcerecipes() {
 #
 function cwlistrecipes() {
   cwsourcerecipes
-  for recipe in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
+  for recipe in $(cwgetallrecipes) ; do
     echo "${recipe}"
   done | sort
 }
@@ -954,7 +961,7 @@ function cwlistrecipes() {
 #
 function cwlistrecipefiles() {
   cwsourcerecipes
-  for recipe in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
+  for recipe in $(cwgetallrecipes) ; do
     echo "${recipe} : ${cwrecipefiles[${recipe}]}"
   done | sort
 }
@@ -964,7 +971,7 @@ function cwlistrecipefiles() {
 #
 function cwlistrecipeversions() {
   cwsourcerecipes
-  for recipe in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
+  for recipe in $(cwgetallrecipes) ; do
     echo "${recipe} : ${cwrecipeversions[${recipe}]}"
   done | sort
 }
@@ -974,7 +981,7 @@ function cwlistrecipeversions() {
 #
 function cwlistrecipereqs() {
   cwsourcerecipes
-  for recipe in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
+  for recipe in $(cwgetallrecipes) ; do
     echo "${recipe} : ${cwrecipereqs[${recipe}]}"
   done | sort
 }
@@ -1026,7 +1033,7 @@ function cwlistinstalled() {
   local pkgname=""
   local pkgver=""
   cwgetinstalled
-  for pkgname in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
+  for pkgname in $(cwgetallrecipes) ; do
     if [ ${cwinstalled[${pkgname}]} -eq 1 ] ; then
       pkgfile="${cwvarinst}/${pkgname}"
       pkgver="$(cat ${pkgfile})"
@@ -1043,7 +1050,7 @@ function cwlistinstalledreqs() {
   local pkgname=""
   local pkgreqs=""
   cwgetinstalled
-  for pkgname in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
+  for pkgname in $(cwgetallrecipes) ; do
     if [ ${cwinstalled[${pkgname}]} -eq 1 ] ; then
       pkgfile="${cwvarinst}/${pkgname}"
       pkgreqs="${cwrecipereqs[${pkgname}]}"
@@ -1079,7 +1086,7 @@ function cwgetinstalled() {
   fi
   cwsourceprofile
   cwsourcerecipes
-  for pkgname in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
+  for pkgname in $(cwgetallrecipes) ; do
     cwinstalled[${pkgname}]="$(cwcheckinstalled ${pkgname} && echo 1 || echo 0)"
   done
 }
@@ -1092,7 +1099,7 @@ function cwgetinstalled() {
 function cwlistavailable() {
   local pkgname=""
   cwgetinstalled
-  for pkgname in ${!cwrecipes[@]} ${!cwbootstraprecipes[@]} ; do
+  for pkgname in $(cwgetallrecipes) ; do
     if [ ${cwinstalled[${pkgname}]} -ne 1 ] ; then
       echo "${pkgname}"
     fi
@@ -1101,27 +1108,27 @@ function cwlistavailable() {
 
 #
 # cwlistupgradable
-#
-# XXX - need cwgetupgradable()
-#  get installed
-#  for all installed get recipe version
-#  if inst ver doesn't match, it's upgradble
 #  can be used to recursively chase downstream upgradable reqs
 #
 function cwlistupgradable() {
-  cwsourcerecipes
-  local recipe=""
-  declare -A installedrecipe
-  for installed in $(cwlistinstalled | sed "s/ : /|/g") ; do
-    installedrecipe["${installed%%|*}"]="${installed#*|}"
-  done
-  for recipe in $(echo ${!installedrecipe[@]} | tr ' ' '\n' | sort) ; do
-    local rv="$(cwver_${recipe})"
-    local iv="${installedrecipe[${recipe}]}"
-    if [[ $rv != $iv ]] ; then
-      echo $recipe : $iv : $rv
+  cwmarkupgradable
+  for r in $(cwgetupgradable) ; do
+    i="$(cwgetinstalledversion ${r})"
+    n="$(cwver_${r})"
+    echo "${r} : ${i} : ${n}"
+  done | sort
+}
+
+#
+# cwgetupgradable
+#   get a list of upgradable packages
+function cwgetupgradable() {
+  cwmarkupgradable
+  for r in ${!cwtoupgrade[@]} ; do
+    if [ "${cwtoupgrade[${r}]}" -eq 1 ] ; then
+      echo "${r}"
     fi
-  done
+  done | sort | xargs echo
 }
 
 #
@@ -1145,6 +1152,71 @@ function cwuninstall() {
 }
 
 #
+# cwgetinstalledversion
+#   return installed verison of a recipe
+#
+function cwgetinstalledversion() {
+  local r="${1}"
+  local v="${r}-ERROR_NOT_INSTALLED"
+  local f="${cwvarinst}/${r}"
+  if [ -e "${f}" ] ; then
+    v="$(cat ${f})"
+  fi
+  echo "${v}"
+}
+
+#
+# cwgetallrecipes
+#   returns all recipes
+#
+function cwgetallrecipes() {
+  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  cwnormalizeargs ${!cwrecipes[@]} ${!cwbootstraprecipes[@]}
+}
+
+#
+# cwsetupgradable
+#   set a recipe as upgradable
+#
+function cwsetupgradble() {
+  local r="${1}"
+  cwupgraded["${r}"]=0
+  cwtoupgrade["${r}"]=1
+}
+
+#
+# cwmarkupgradable
+#   iterate through recipes, if installed, mark version discrepancies
+#
+function cwmarkupgradable() {
+  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  for recipe in $(cwgetallrecipes) ; do
+    cwcheckinstalled "${recipe}" || continue
+    i="$(cwgetinstalledversion ${recipe})"
+    n="$(cwver_${recipe})"
+    if [ ! "${i}" == "${n}" ] ; then
+      cwsetupgradble "${recipe}"
+    fi
+  done
+}
+
+#
+# cwcheckupgradable
+#   check if a recipe is upgradable
+#
+function cwcheckupgradable() {
+  local r="${1}"
+  local c=1
+  cwcheckinstalled "${r}" || return "${c}"
+  local i="$(cwgetinstalledversion ${r})"
+  local n="$(cwver_${r})"
+  if [ ! "${i}" == "${n}" ] ; then
+    c=0
+  fi
+  return "${c}"
+}
+
+#
 # cwupgrade
 #
 # uninstall and install recipes
@@ -1152,6 +1224,9 @@ function cwuninstall() {
 function cwupgrade() {
   cwsourcerecipes
   local upgrade=""
+  for upgrade in "${@}" ; do
+    cwsetupgradble "${upgrade}"
+  done
   for upgrade in "${@}" ; do
     if ! $(set | grep -q "^cwupgrade_${upgrade} ") ; then
       cwscriptecho "no upgrade found for ${upgrade}"
@@ -1169,9 +1244,11 @@ function cwupgrade() {
 # upgrade all packages that we can
 #
 function cwupgradeall() {
-  local upgradable=""
-  for upgradable in $(cwlistupgradable | cut -f1 -d' ') ; do
-    cwupgrade "${upgradable}"
+  cwmarkupgradable
+  for r in $(cwgetupgradable) ; do
+    if [ "${cwtoupgrade[${r}]}" -eq 1 ] ; then
+      cwupgrade "${r}"
+    fi
   done
 }
 
@@ -1437,7 +1514,7 @@ function cwgetexpandedreqs() {
 #
 function cwlistrecipereqsexp() {
   test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
-  for recipe in $(cwnormalizeargs ${!cwrecipes[@]} ${!cwbootstraprecipes[@]}) ; do
+  for recipe in $(cwgetallrecipes) ; do
     test "${cwrecipereqsexpanded[${recipe}]}" -eq 1 || cwgetexpandedreqs "${recipe}" >/dev/null 2>&1
     echo "${recipe} : ${cwrecipeexpreqs[${recipe}]}"
   done
@@ -1470,7 +1547,7 @@ function cwgetrecipetransitivereqs() {
 #
 function cwlistrecipetransitivereqs() {
   test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
-  for recipe in $(cwnormalizeargs ${!cwrecipes[@]} ${!cwbootstraprecipes[@]}) ; do
+  for recipe in $(cwgetallrecipes) ; do
     echo "${recipe} : $(cwgetrecipetransitivereqs ${recipe})"
   done
 }
@@ -1483,7 +1560,7 @@ function cwgetrecipedeps() {
   local r="${1}"
   local -A ds
   test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
-  for recipe in $(cwnormalizeargs ${!cwrecipes[@]} ${!cwbootstraprecipes[@]}) ; do
+  for recipe in $(cwgetallrecipes) ; do
     if [[ " ${cwrecipereqs[${recipe}]} " =~ " ${r} " ]] ; then
       ds["${recipe}"]=1
     fi
@@ -1498,7 +1575,7 @@ function cwgetrecipedeps() {
 #
 function cwlistrecipedeps() {
   test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
-  for recipe in $(cwnormalizeargs ${!cwrecipes[@]} ${!cwbootstraprecipes[@]}) ; do
+  for recipe in $(cwgetallrecipes) ; do
     d="$(cwgetrecipedeps ${recipe})"
     echo "${recipe} : ${d}"
   done
@@ -1602,20 +1679,6 @@ if [[ ! ${cwcmdlist[@]} =~ ${cmd} ]] ; then
   fi
 fi
 shift
-
-# build hash of stuff with upgrade state so we don't run them multiple times
-# XXX - this breaks `crosware run-func cwupgrade_blah`
-# XXX - need memoization of installed packages and recipes
-# XXX - move this to cwsourcerecipes()
-# XXX - check ${#cwupgraded[@]} for zero-length before running cwlistupgradable
-# XXX - ${cmd} needs to be check there too though...
-# XXX - ugh
-if [[ ${cmd} =~ ^upgrad ]] ; then
-  for r in ${@} $(cwlistupgradable | awk -F: '{print $1}') ; do
-    cwupgraded[${r}]=0
-  done
-  unset r
-fi
 
 #
 # execute our given command

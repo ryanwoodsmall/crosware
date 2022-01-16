@@ -276,7 +276,8 @@ function cwupgrade_${rname}() {
   cwuninstall_${rname}
   cwscriptecho \"installing ${rname}\"
   cwinstall_${rname}
-  cwupgraded[${rname}]=1
+  cwupgraded[\"${rname}\"]=1
+  cwtoupgrade[\"${rname}\"]=0
 }
 "
 
@@ -284,22 +285,11 @@ eval "
 function cwupgradereqs_${rname}() {
   cwscriptecho \"checking req upgrades for ${rname}\"
   local r
-  declare -A u
   for r in ${rreqs} ; do
-    u[\${r}]=0
-  done
-  for r in \$(cwlistupgradable | tr -d ' ' | cut -f1 -d:) ; do
-    u[\${r}]=1
-  done
-  for r in ${rreqs} ; do
-    if [ \${u[\${r}]} -eq 1 ] ; then
-      if [ \${cwupgraded[\${r}]} -eq 0 ] ; then
-        cwupgrade_\${r}
-      fi
-    fi
+    cwcheckinstalled \${r} || cwinstall_\${r}
+    cwcheckupgradable \${r} && cwupgrade_\${r}
   done
   unset r
-  unset u
 }
 "
 
