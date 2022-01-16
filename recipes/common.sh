@@ -294,6 +294,7 @@ function cwupgradereqs_${rname}() {
 }
 "
 
+# XXX - call cwupgradedeps_${d} recursively? could get very hairy
 eval "
 function cwupgradedeps_${rname}() {
   cwscriptecho \"upgrading any installed deps for ${rname}\"
