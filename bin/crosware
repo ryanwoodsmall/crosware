@@ -931,7 +931,6 @@ function cwsourcerecipes() {
       fi
       cwrecipeexpreqs["${rname}"]="$(cwnormalizeargs ${cwrecipereqs[${rname}]})"
       cwrecipereqsexpanded["${rname}"]=0
-      cwupgraded["${rname}"]=0
     fi
     unset cwconfigureprefix rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps rlibtool rconfigureopts rcommonopts rdlfile rpfile rsite rmessage
   done
