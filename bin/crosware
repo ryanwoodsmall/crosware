@@ -1426,7 +1426,7 @@ function cwexpandreqs() {
 #
 function cwgetexpandedreqs() {
   local r="${1}"
-  cwexpandreqs "${r}" "$(cwcountargs ${cwrecipeexpreqs[${r}]})"
+  test "${cwrecipereqsexpanded[${r}]}" -eq 1 || cwexpandreqs "${r}" "$(cwcountargs ${cwrecipeexpreqs[${r}]})"
 }
 
 #
@@ -1444,9 +1444,30 @@ function cwshowexpandedreqs() {
 function cwlistrecipereqsexp() {
   test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
   for recipe in $(cwnormalizeargs ${!cwrecipes[@]} ${!cwbootstraprecipes[@]}) ; do
-    cwgetexpandedreqs "${recipe}"
+    test "${cwrecipereqsexpanded[${recipe}]}" -eq 1 || cwgetexpandedreqs "${recipe}"
     echo "${recipe} : ${cwrecipeexpreqs[${recipe}]}"
   done
+}
+
+#
+# get recipe transitive reqs
+# - compares declared vs. expanded recipe reqs and shows the differences
+# - couple of short circuits to speed up repeated calls
+#
+function cwgetrecipetransitivereqs() {
+  local r="${1}"
+  local -A qs
+  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  test "${cwrecipereqsexpanded[${r}]}" -eq 1 || cwexpandreqs "${r}" "$(cwcountargs ${cwrecipeexpreqs[${r}]})"
+  for q in ${cwrecipeexpreqs[${r}]} ; do
+    qs["${q}"]=0
+  done
+  for q in ${cwrecipereqs[${r}]} ; do
+    qs["${q}"]=1
+  done
+  for q in ${!qs[@]} ; do
+    test "${qs[${q}]}" -eq 1 || echo "${q}"
+  done | sort
 }
 
 #
