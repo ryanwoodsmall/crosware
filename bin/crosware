@@ -1368,6 +1368,18 @@ function cwcountargs() {
 }
 
 #
+# normalize argument list
+# - trim duplicates
+# - sort
+#
+function cwnormalizeargs() {
+  echo "${@}" \
+  | tr ' ' '\n' \
+  | sort -u \
+  | xargs echo
+}
+
+#
 # usage
 #
 function cwusage() {
