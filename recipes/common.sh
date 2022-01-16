@@ -276,8 +276,7 @@ function cwupgrade_${rname}() {
   cwuninstall_${rname}
   cwscriptecho \"installing ${rname}\"
   cwinstall_${rname}
-  cwupgraded[\"${rname}\"]=1
-  cwtoupgrade[\"${rname}\"]=0
+  cwmarkupgraded ${rname}
 }
 "
 
@@ -290,6 +289,32 @@ function cwupgradereqs_${rname}() {
     cwcheckupgradable \${r} && cwupgrade_\${r}
   done
   unset r
+}
+"
+
+eval "
+function cwupgradedeps_${rname}() {
+  cwscriptecho \"upgrading any installed deps for ${rname}\"
+  local deps=\"\$(cwgetinstalleddeps ${rname})\"
+  for d in \${deps[@]} ; do
+    cwsetupgradble \${d} || true
+  done
+  for d in \${deps[@]} ; do
+    test \${cwtoupgrade[\"\${d}\"]} -eq 1 && cwupgrade_\${d} || true
+  done
+}
+"
+
+eval "
+function cwupgradewithdeps_${rname}() {
+  cwscriptecho \"upgrading ${rname} and any installed deps\"
+  cwupgradereqs_${rname}
+  cwscriptecho \"uninstalling ${rname}\"
+  cwuninstall_${rname}
+  cwscriptecho \"installing ${rname}\"
+  cwinstall_${rname}
+  cwupgradedeps_${rname}
+  cwmarkupgraded ${rname}
 }
 "
 
