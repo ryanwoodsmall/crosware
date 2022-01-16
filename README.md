@@ -84,6 +84,8 @@ commands:
   update-upgrade-all : update crosware and upgrade out-of-date recipes
   upgrade : uninstall then install a recipe
   upgrade-all : upgrade all packages with different recipe versions
+  upgrade-all-with-deps : upgrade all out-of-date packages and installed dependents
+  upgrade-with-deps : upgrade a package and installed depdendents
 </pre>
 
 #### use external or disable java and jgit

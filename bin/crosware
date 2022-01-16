@@ -16,10 +16,7 @@ else
 fi
 
 function cwscriptecho() {
-  local scriptmesg=""
-  if [ ! -z "${@}" ] ; then
-    scriptmesg="${1}"
-  fi
+  local scriptmesg="${@}"
   echo -e "${scriptname}: ${scriptmesg}"
 }
 
@@ -102,6 +99,8 @@ cwcmds["show-func"]="show the given function name"
 cwcmds["show-env"]="run 'env' to show ${cwname} environment"
 cwcmds["upgrade"]="uninstall then install a recipe"
 cwcmds["upgrade-all"]="upgrade all packages with different recipe versions"
+cwcmds["upgrade-all-with-deps"]="upgrade all out-of-date packages and installed dependents"
+cwcmds["upgrade-with-deps"]="upgrade a package and installed depdendents"
 cwcmds["show-karch"]="show kernel architecture"
 cwcmds["show-uarch"]="show userspace architecture"
 cwcmds["show-arch"]="show kernel and userspace architecture"
@@ -1166,6 +1165,18 @@ function cwgetinstalledversion() {
 }
 
 #
+# cwgetinstalleddeps
+#   returns installed depdendents for a recipe
+#
+function cwgetinstalleddeps() {
+  for r in "${@}" ; do
+    for d in $(cwgetrecipedeps ${r}) ; do
+      cwcheckinstalled ${d} && echo ${d} || continue
+    done
+  done | sort -u | xargs echo
+}
+
+#
 # cwgetallrecipes
 #   returns all recipes
 #
@@ -1191,6 +1202,10 @@ function cwsetupgradble() {
 function cwmarkupgradable() {
   test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
   for recipe in $(cwgetallrecipes) ; do
+    cwupgraded["${recipe}"]=1
+    cwtoupgrade["${recipe}"]=0
+  done
+  for recipe in $(cwgetallrecipes) ; do
     cwcheckinstalled "${recipe}" || continue
     i="$(cwgetinstalledversion ${recipe})"
     n="$(cwver_${recipe})"
@@ -1198,6 +1213,18 @@ function cwmarkupgradable() {
       cwsetupgradble "${recipe}"
     fi
   done
+}
+
+#
+# cwupgradespending
+#   returns if any upgrades are available
+#
+function cwupgradespending() {
+  local r=1
+  if [ ! -z "$(cwgetupgradable)" ] ; then
+    r=0
+  fi
+  return ${r}
 }
 
 #
@@ -1228,10 +1255,6 @@ function cwupgrade() {
     cwsetupgradble "${upgrade}"
   done
   for upgrade in "${@}" ; do
-    if ! $(set | grep -q "^cwupgrade_${upgrade} ") ; then
-      cwscriptecho "no upgrade found for ${upgrade}"
-      continue
-    fi
     if [ ${cwupgraded[${upgrade}]} -eq 0 ] ; then
       cwupgrade_${upgrade}
     fi
@@ -1244,12 +1267,47 @@ function cwupgrade() {
 # upgrade all packages that we can
 #
 function cwupgradeall() {
-  cwmarkupgradable
-  for r in $(cwgetupgradable) ; do
-    if [ "${cwtoupgrade[${r}]}" -eq 1 ] ; then
-      cwupgrade "${r}"
-    fi
+  cwscriptecho "upgrading any out of date recipes"
+  cwupgrade $(cwgetupgradable)
+}
+
+#
+# cwupgradewithdeps
+#   upgrade a recipe and any installed deps
+#
+function cwupgradewithdeps() {
+  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  local -a ds=()
+  for r in "${@}" ; do
+    cwsetupgradble "${r}"
+    for d in $(cwgetinstalleddeps ${r}) ; do
+      cwsetupgradble "${d}"
+      ds+=( ${d} )
+    done
   done
+  cwscriptecho "upgrading ${@} and installed deps"
+  local l="$(cwnormalizeargs ${@} ${ds[@]})"
+  for r in ${l} ; do
+    test "${cwtoupgrade[${r}]}" -eq 1 && cwupgrade_${r} || true
+  done
+}
+
+#
+# cwupgradeallwithdeps
+#   upgrade all dependecies, requirements, and depdendents
+#
+# XXX - needs to be recursive and/or track state, ugh
+#
+function cwupgradeallwithdeps() {
+  cwscriptecho "upgrading any out of date recipes and their installed deps"
+  # XXX - generalize this - recipe "types"? build-only? "rdontrebuilddeps" flag in recipe?
+  : ${CW_UPGRADE_ALL_WITH_DEPS_IGNORED:="bash bison bootstrapmake bmake busybox byacc cacertificates ccache cmake configgit flex less mandoc make rlwrap reflex sed sbase toybox ubase"}
+  local l="$(cwgetupgradable)"
+  for r in ${l} ; do
+    cwcontains ${r} ${CW_UPGRADE_ALL_WITH_DEPS_IGNORED} && continue || true
+    l+=" $(cwgetinstalleddeps ${r})"
+  done
+  cwupgrade $(cwnormalizeargs ${l})
 }
 
 #
@@ -1451,6 +1509,25 @@ function cwcheckuniq() {
 #
 function cwcountargs() {
   echo "${#}"
+}
+
+#
+# return if a string contains something
+#   needle haystack
+#
+function cwcontains() {
+  local r=1
+  local -A h
+  local n="${1}"
+  shift
+  h["${n}"]=0
+  for e in ${@} ; do
+    h["${e}"]=1
+  done
+  if [ "${h[${n}]}" -eq 1 ] ;then
+    r=0
+  fi
+  return ${r}
 }
 
 #
@@ -1772,6 +1849,12 @@ case "${cmd}" in
     ;;
   upgrade-all)
     cwupgradeall
+    ;;
+  upgrade-with-deps)
+    cwupgradewithdeps "${@}"
+    ;;
+  upgrade-all-with-deps)
+    cwupgradeallwithdeps
     ;;
   check-installed)
     cwcheckinstalled "${@}"
