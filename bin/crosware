@@ -482,12 +482,19 @@ for cwbootstraprecipe in ${!cwbootstraprecipes[@]} ; do
     cwscriptecho \"upgrading ${cwbootstraprecipe}\"
     cwuninstall_${cwbootstraprecipe}
     cwinstall_${cwbootstraprecipe}
+    cwmarkupgraded ${cwbootstraprecipe}
   }
+  function cwupgradedeps_${cwbootstraprecipe}() { true ; }
+  function cwupgradereqs_${cwbootstraprecipe}() { true ; }
+  function cwupgradewithreqs_${cwbootstraprecipe}() { cwupgrade_${cwbootstraprecipe} ; }
   function cwprof_${cwbootstraprecipe}() {
     echo \"${cwetcprofd}/\${${cwbootstraprecipe}_pkgname}.sh\"
   }
   function cwgenprofd_${cwbootstraprecipe}() {
     cwexpandenv \"\${${cwbootstraprecipe}_pkgname}\" \"${cwetcprofd}/\${${cwbootstraprecipe}_pkgname}.sh\"
+  }
+  function cwmarkinstall_${cwbootstraprecipe}() {
+    cwmarkinstall \"${cwbootstraprecipe}\" \"\$(cwver_${cwbootstraprecipe})\"
   }
   "
   cwrecipefiles[${cwbootstraprecipe}]="${cwtop}/bin/crosware"
@@ -935,8 +942,7 @@ function cwsourcerecipes() {
       fi
       cwrecipeexpreqs["${rname}"]="$(cwnormalizeargs ${cwrecipereqs[${rname}]})"
       cwrecipereqsexpanded["${rname}"]=0
-      cwupgraded["${rname}"]=1
-      cwtoupgrade["${rname}"]=0
+      cwmarkupgraded "${rname}"
     fi
     unset cwconfigureprefix rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps rlibtool rconfigureopts rcommonopts rdlfile rpfile rsite rmessage
   done
@@ -1111,11 +1117,13 @@ function cwlistavailable() {
 #
 function cwlistupgradable() {
   cwmarkupgradable
+  local r
   for r in $(cwgetupgradable) ; do
     i="$(cwgetinstalledversion ${r})"
     n="$(cwver_${r})"
     echo "${r} : ${i} : ${n}"
   done | sort
+  unset r
 }
 
 #
@@ -1123,9 +1131,11 @@ function cwlistupgradable() {
 #   get a list of upgradable packages
 function cwgetupgradable() {
   cwmarkupgradable
-  for r in ${!cwrecipes[@]} ; do
+  local r
+  for r in $(cwgetallrecipes) ; do
     cwmarkedupgradable "${r}" && echo "${r}" || true
   done | sort | xargs echo
+  unset r
 }
 
 #
@@ -1167,11 +1177,13 @@ function cwgetinstalledversion() {
 #   returns installed depdendents for a recipe
 #
 function cwgetinstalleddeps() {
+  local r
   for r in "${@}" ; do
     for d in $(cwgetrecipedeps ${r}) ; do
       cwcheckinstalled ${d} && echo ${d} || continue
     done
   done | sort -u | xargs echo
+  unset r
 }
 
 #
@@ -1188,10 +1200,12 @@ function cwgetallrecipes() {
 #   set a recipe as upgradable
 #
 function cwsetupgradble() {
+  local r
   for r in "${@}" ; do
     cwupgraded["${r}"]=0
     cwtoupgrade["${r}"]=1
   done
+  unset r
 }
 
 #
@@ -1199,10 +1213,12 @@ function cwsetupgradble() {
 #   toggle upgraded stats for recipe
 #
 function cwmarkupgraded() {
+  local r
   for r in "${@}" ; do
     cwupgraded["${r}"]=1
     cwtoupgrade["${r}"]=0
   done
+  unset r
 }
 
 #
@@ -1222,6 +1238,7 @@ function cwmarkedupgradable() {
 #
 function cwmarkupgradable() {
   test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  local recipe
   for recipe in $(cwgetallrecipes) ; do
     cwmarkupgraded "${recipe}"
   done
@@ -1233,6 +1250,7 @@ function cwmarkupgradable() {
       cwsetupgradble "${recipe}"
     fi
   done
+  unset recipe
 }
 
 #
@@ -1271,12 +1289,15 @@ function cwcheckupgradable() {
 function cwupgrade() {
   cwsourcerecipes
   local upgrade=""
+  local s=""
   for upgrade in "${@}" ; do
     cwsetupgradble "${upgrade}"
   done
-  for upgrade in "${@}" ; do
+  cwcontains "${statictoolchain_pkgname}" "${@}" && s="${statictoolchain_pkgname}" || true
+  for upgrade in ${s} ${@} ; do
     cwmarkedupgradable ${upgrade} && cwupgrade_${upgrade} || true
   done
+  unset upgrade s
 }
 
 #
@@ -1296,6 +1317,8 @@ function cwupgradeall() {
 function cwupgradewithdeps() {
   test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
   local -a ds=()
+  local l r
+  local s=""
   for r in "${@}" ; do
     cwsetupgradble "${r}"
     for d in $(cwgetinstalleddeps ${r}) ; do
@@ -1304,10 +1327,12 @@ function cwupgradewithdeps() {
     done
   done
   cwscriptecho "upgrading ${@} and installed deps"
-  local l="$(cwnormalizeargs ${@} ${ds[@]})"
-  for r in ${@} $(cwnormalizeargs ${ds[@]}) ; do
+  l="$(cwnormalizeargs ${ds[@]})"
+  cwcontains "${statictoolchain_pkgname}" ${@} ${l} && s="${statictoolchain_pkgname}" || true
+  for r in ${s} ${@} ${l} ; do
     cwmarkedupgradable ${r} && cwupgrade_${r} || true
   done
+  unset l r s
 }
 
 #
@@ -1321,11 +1346,13 @@ function cwupgradeallwithdeps() {
   # XXX - generalize this - recipe "types"? build-only? "rdontrebuilddeps" flag in recipe?
   : ${CW_UPGRADE_ALL_WITH_DEPS_IGNORED:="bash bison bootstrapmake bmake busybox byacc cacertificates ccache cmake configgit flex less mandoc make rlwrap reflex sed sbase toybox ubase"}
   local l="$(cwgetupgradable)"
+  local r
   for r in ${l} ; do
     cwcontains ${r} ${CW_UPGRADE_ALL_WITH_DEPS_IGNORED} && continue || true
     l+=" $(cwgetinstalleddeps ${r})"
   done
   cwupgrade $(cwnormalizeargs ${l})
+  unset l r
 }
 
 #
