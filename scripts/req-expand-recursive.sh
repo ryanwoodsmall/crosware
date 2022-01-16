@@ -16,7 +16,7 @@ declare -A q
 declare -A e
 declare -A m
 
-readarray -t a < <(crosware list-recipe-reqs)
+readarray -t a < <(${cwtop}/bin/crosware list-recipe-reqs)
 
 function uniqueify() {
   echo "${@}" | tr ' ' '\n' | sort -u | xargs echo
