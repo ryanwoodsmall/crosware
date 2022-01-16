@@ -62,6 +62,7 @@ commands:
   list-funcs : list crosware shell functions
   list-installed : list installed recipes
   list-installed-reqs : list installed recipes with their requirements
+  list-recipe-deps : list recipes with their declared dependencies
   list-recipe-files : list recipes with their source file
   list-recipe-reqs : list recipes with their requirements
   list-recipe-reqs-expanded : list recipes with their expanded requirements

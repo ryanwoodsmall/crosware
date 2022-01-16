@@ -78,6 +78,7 @@ cwcmds["bootstrap"]="bootstrap ${cwname}"
 cwcmds["env"]="dump source-/eval-able ${cwname} etc/profile"
 cwcmds["profile"]="show .profile addition"
 cwcmds["list-recipes"]="list build recipes"
+cwcmds["list-recipe-deps"]="list recipes with their declared dependencies"
 cwcmds["list-recipe-files"]="list recipes with their source file"
 cwcmds["list-recipe-versions"]="list recipes with version number"
 cwcmds["list-recipe-reqs"]="list recipes with their requirements"
@@ -929,6 +930,7 @@ function cwsourcerecipes() {
       fi
       cwrecipeexpreqs["${rname}"]="$(cwnormalizeargs ${cwrecipereqs[${rname}]})"
       cwrecipereqsexpanded["${rname}"]=0
+      cwupgraded["${rname}"]=0
     fi
     unset cwconfigureprefix rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps rlibtool rconfigureopts rcommonopts rdlfile rpfile rsite rmessage
   done
@@ -1471,6 +1473,35 @@ function cwgetrecipetransitivereqs() {
 }
 
 #
+# get (declared) deps of a recipe
+# XXX - memoize?
+#
+function cwgetrecipedeps() {
+  local r="${1}"
+  local -A ds
+  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  for recipe in $(cwnormalizeargs ${!cwrecipes[@]} ${!cwbootstraprecipes[@]}) ; do
+    if [[ " ${cwrecipereqs[${recipe}]} " =~ " ${r} " ]] ; then
+      ds["${recipe}"]=1
+    fi
+  done
+  for d in ${!ds[@]} ; do
+    echo "${d}"
+  done | sort | xargs echo
+}
+
+#
+# list all expanded reqs for all recipes
+#
+function cwlistrecipedeps() {
+  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  for recipe in $(cwnormalizeargs ${!cwrecipes[@]} ${!cwbootstraprecipes[@]}) ; do
+    d="$(cwgetrecipedeps ${recipe})"
+    echo "${recipe} : ${d}"
+  done
+}
+
+#
 # usage
 #
 function cwusage() {
@@ -1609,6 +1640,9 @@ case "${cmd}" in
     ;;
   list-recipes)
     cwlistrecipes
+    ;;
+  list-recipe-deps)
+    cwlistrecipedeps
     ;;
   list-recipe-files)
     cwlistrecipefiles
