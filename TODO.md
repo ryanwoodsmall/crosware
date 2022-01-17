@@ -831,6 +831,9 @@ time_func ls -l -A /
   - implicitly call some functions after `cwmakeinstall_${rname}()`
   - e.g. libressl, openssl updates trigger cacertificates, caextract reinstalls
   - might require a bit of `cwcheckuniq` finesse? for `cwreinstall`? hmm
+- save/set/restore `CFLAGS/CPPFLAGS/CXXFLAGS/LDFLAGS/PKG_CONFIG_{LIBDIR,PATH}`
+  - add to main script
+  - completely sequester environment...
 
 <!--
 # vim: ft=markdown
