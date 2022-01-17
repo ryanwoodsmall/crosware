@@ -748,6 +748,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - tmux (https://github.com/tmux/tmux - terminal multiplexer)
 - tmuxmisc (https://github.com/ryanwoodsmall/tmux-misc - couple of scripts i use)
 - tnftp (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
+- tnftpd (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/ and https://en.wikipedia.org/wiki/Tnftp - formerly lukemftp)
 - toybox (static)
 - tree (http://mama.indstate.edu/users/ice/tree/)
 - troglobit stuff
@@ -1721,7 +1722,6 @@ wc -l /tmp/astbuild.out
 - timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - tinc (https://www.tinc-vpn.org/)
 - tlse (https://github.com/eduardsui/tlse - c tls impl using libtomcrypt)
-- tnftpd (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/)
 - torgo (https://github.com/as/torgo)
 - tpm (https://github.com/nmeum/tpm/ - tiny password manager)
 - transocks (http://transocks.sourceforge.net/ - transparent socks, needs dante/nec socks libs)
