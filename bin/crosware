@@ -916,6 +916,13 @@ function cwupdate() {
 }
 
 #
+# cwcheckrecipessourced
+#   yeaup
+function cwcheckrecipessourced() {
+  test "${cwrecipessourced}" -eq 1
+}
+
+#
 # cwsourcerecipes
 #   sentinel for memoization: cwrecipessourced
 #
@@ -955,7 +962,7 @@ function cwsourcerecipes() {
 # cwlistrecipes
 #
 function cwlistrecipes() {
-  cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   for recipe in $(cwgetallrecipes) ; do
     echo "${recipe}"
   done | sort
@@ -965,7 +972,7 @@ function cwlistrecipes() {
 # cwlistrecipefiles
 #
 function cwlistrecipefiles() {
-  cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   for recipe in $(cwgetallrecipes) ; do
     echo "${recipe} : ${cwrecipefiles[${recipe}]}"
   done | sort
@@ -975,7 +982,7 @@ function cwlistrecipefiles() {
 # cwlistrecipeversions
 #
 function cwlistrecipeversions() {
-  cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   for recipe in $(cwgetallrecipes) ; do
     echo "${recipe} : ${cwrecipeversions[${recipe}]}"
   done | sort
@@ -985,7 +992,7 @@ function cwlistrecipeversions() {
 # cwlistrecipereqs
 #
 function cwlistrecipereqs() {
-  cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   for recipe in $(cwgetallrecipes) ; do
     echo "${recipe} : ${cwrecipereqs[${recipe}]}"
   done | sort
@@ -999,7 +1006,7 @@ function cwlistrecipereqs() {
 function cwinstall() {
   local recipestobuild=()
   cwsourceprofile
-  cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   for recipe in "${@}" ; do
     if ! $(set | grep -q "^cwinstall_${recipe} ") ; then
       cwfailexit "recipe ${recipe} not found"
@@ -1090,7 +1097,7 @@ function cwgetinstalled() {
     return 1
   fi
   cwsourceprofile
-  cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   for pkgname in $(cwgetallrecipes) ; do
     cwinstalled[${pkgname}]="$(cwcheckinstalled ${pkgname} && echo 1 || echo 0)"
   done
@@ -1144,7 +1151,7 @@ function cwgetupgradable() {
 # uninstall some recipes
 #
 function cwuninstall() {
-  cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   local recipe=""
   for recipe in "${@}" ; do
     if ! $(set | grep -q "^cwuninstall_${recipe} ") ; then
@@ -1191,7 +1198,7 @@ function cwgetinstalleddeps() {
 #   returns all recipes
 #
 function cwgetallrecipes() {
-  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   cwnormalizeargs ${!cwrecipes[@]} ${!cwbootstraprecipes[@]}
 }
 
@@ -1237,7 +1244,7 @@ function cwmarkedupgradable() {
 #   iterate through recipes, if installed, mark version discrepancies
 #
 function cwmarkupgradable() {
-  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   local recipe
   for recipe in $(cwgetallrecipes) ; do
     cwmarkupgraded "${recipe}"
@@ -1287,7 +1294,7 @@ function cwcheckupgradable() {
 # uninstall and install recipes
 #
 function cwupgrade() {
-  cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   local upgrade=""
   local s=""
   for upgrade in "${@}" ; do
@@ -1315,7 +1322,7 @@ function cwupgradeall() {
 #   upgrade a recipe and any installed deps
 #
 function cwupgradewithdeps() {
-  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   local -a ds=()
   local l r
   local s=""
@@ -1362,7 +1369,7 @@ function cwupgradeallwithdeps() {
 # - does this need to be a cwreinstall_${rname} for customization?
 #
 function cwreinstall() {
-  cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   local reinstall=""
   for reinstall in "${@}" ; do
     cwscriptecho "reinstalling ${reinstall}"
@@ -1386,7 +1393,7 @@ function cwupdateupgradeall() {
 # cwenv
 #
 function cwenv() {
-  cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   cwsourceprofile
   env
 }
@@ -1396,7 +1403,7 @@ function cwenv() {
 #   XXX - ungodly slow, need caching/memoization here
 #
 function cwset() {
-  cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   cwsourceprofile
   cwgetinstalled
   echo '#!/usr/bin/env bash'
@@ -1449,7 +1456,7 @@ function cwshowfunc() {
 # arguments can be passed with commas
 #
 function cwrunfunc() {
-  cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   cwsourceprofile
   #cwgetfuncs
   local cwfunc
@@ -1482,7 +1489,7 @@ function cwrunfunc() {
 # XXX - should $- be checked for initial state of x flag?
 #
 function cwdebug() {
-  cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   cwsourceprofile
   set -x
   eval "${@}"
@@ -1593,7 +1600,7 @@ function cwnormalizeargs() {
 # - recursive, expensive so memoize
 #
 function cwexpandreqs() {
-  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   local r="${1}"
   if [ "${cwrecipereqsexpanded[${r}]}" -eq 1 ] ; then
     return
@@ -1636,7 +1643,7 @@ function cwgetexpandedreqs() {
 # list all expanded reqs for all recipes
 #
 function cwlistrecipereqsexp() {
-  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   for recipe in $(cwgetallrecipes) ; do
     test "${cwrecipereqsexpanded[${recipe}]}" -eq 1 || cwgetexpandedreqs "${recipe}" >/dev/null 2>&1
     echo "${recipe} : ${cwrecipeexpreqs[${recipe}]}"
@@ -1651,7 +1658,7 @@ function cwlistrecipereqsexp() {
 function cwgetrecipetransitivereqs() {
   local r="${1}"
   local -A qs
-  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   test "${cwrecipereqsexpanded[${r}]}" -eq 1 || cwexpandreqs "${r}" "$(cwcountargs ${cwrecipeexpreqs[${r}]})"
   for q in ${cwrecipeexpreqs[${r}]} ; do
     qs["${q}"]=0
@@ -1669,7 +1676,7 @@ function cwgetrecipetransitivereqs() {
 # XXX - slowwwwwww
 #
 function cwlistrecipetransitivereqs() {
-  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   for recipe in $(cwgetallrecipes) ; do
     echo "${recipe} : $(cwgetrecipetransitivereqs ${recipe})"
   done
@@ -1682,7 +1689,7 @@ function cwlistrecipetransitivereqs() {
 function cwgetrecipedeps() {
   local r="${1}"
   local -A ds
-  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   for recipe in $(cwgetallrecipes) ; do
     if [[ " ${cwrecipereqs[${recipe}]} " =~ " ${r} " ]] ; then
       ds["${recipe}"]=1
@@ -1697,7 +1704,7 @@ function cwgetrecipedeps() {
 # list all deps for all recipes
 #
 function cwlistrecipedeps() {
-  test "${cwrecipessourced}" -eq 1 || cwsourcerecipes
+  cwcheckrecipessourced || cwsourcerecipes
   for recipe in $(cwgetallrecipes) ; do
     d="$(cwgetrecipedeps ${recipe})"
     echo "${recipe} : ${d}"
