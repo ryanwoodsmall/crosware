@@ -1,11 +1,11 @@
 rname="stunnel"
-rver="5.61"
+rver="5.62"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="ftp://ftp.${rname}.org/${rname}/archive/${rver%%.*}.x/${rfile}"
 #rurl="https://www.usenix.org.uk/mirrors/${rname}/archive/${rver%%.*}.x/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="91ea0ca6482d8f7e7d971ee64ab4f86a2817d038a372f0893e28315ef2015d7a"
+rsha256="9cf5bb949022aa66c736c1326554cca27d0641605a6370274edc4951eb5bd339"
 rreqs="make openssl zlib toybox perl"
 
 . "${cwrecipe}/common.sh"
