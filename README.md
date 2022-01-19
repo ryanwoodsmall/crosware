@@ -1511,6 +1511,7 @@ wc -l /tmp/astbuild.out
   - needs libffi, libtasn1
   - configure ```--without-libffi --without-libtasn1```
 - otools (https://github.com/CarbsLinux/otools - carbs linux openbsd ports)
+- p9 (https://github.com/hugelgupf/p9 - go 9p client/server, with p9ufs server bin)
 - parenj / parenjs
 - pax
 - pciutils (https://github.com/pciutils/pciutils)
