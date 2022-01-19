@@ -85,6 +85,7 @@ commands:
   upgrade : uninstall then install a recipe
   upgrade-all : upgrade all packages with different recipe versions
   upgrade-all-with-deps : upgrade all out-of-date packages and installed dependents
+  upgrade-deps : upgrade any installed deps of a package
   upgrade-with-deps : upgrade a package and installed depdendents
 </pre>
 
