@@ -11,3 +11,4 @@ var/etc/**
 var/inst/**
 var/run/**
 var/spool/**
+**/*.swp

@@ -100,6 +100,7 @@ cwcmds["show-env"]="run 'env' to show ${cwname} environment"
 cwcmds["upgrade"]="uninstall then install a recipe"
 cwcmds["upgrade-all"]="upgrade all packages with different recipe versions"
 cwcmds["upgrade-all-with-deps"]="upgrade all out-of-date packages and installed dependents"
+cwcmds["upgrade-deps"]="upgrade any installed deps of a package"
 cwcmds["upgrade-with-deps"]="upgrade a package and installed depdendents"
 cwcmds["show-karch"]="show kernel architecture"
 cwcmds["show-uarch"]="show userspace architecture"
@@ -1348,6 +1349,7 @@ function cwupgradewithdeps() {
 #
 function cwupgradeallwithdeps() {
   cwscriptecho "upgrading any out of date recipes and their installed deps"
+  cwcheckrecipessourced || cwsourcerecipes
   # XXX - generalize this - recipe "types"? build-only? "rdontrebuilddeps" flag in recipe?
   : ${CW_UPGRADE_ALL_WITH_DEPS_IGNORED:="bash bison bootstrapmake bmake busybox byacc cacertificates ccache cmake configgit flex less mandoc make rlwrap reflex sed sbase toybox ubase"}
   local l="$(cwgetupgradable)"
@@ -1358,6 +1360,20 @@ function cwupgradeallwithdeps() {
   done
   cwupgrade $(cwnormalizeargs ${l})
   unset l r
+}
+
+#
+# cwupgradedeps
+#   upgrade all installed dependents of a given packeg
+#
+function cwupgradedeps() {
+  cwcheckrecipessourced || cwsourcerecipes
+  local r
+  for r in ${@} ; do
+    cwscriptecho "upgrading any installed dependents of ${r}"
+    cwupgradedeps_${r}
+  done
+  unset r
 }
 
 #
@@ -1900,6 +1916,9 @@ case "${cmd}" in
     ;;
   upgrade-all)
     cwupgradeall
+    ;;
+  upgrade-deps)
+    cwupgradedeps "${@}"
     ;;
   upgrade-with-deps)
     cwupgradewithdeps "${@}"
