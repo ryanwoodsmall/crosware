@@ -1123,7 +1123,7 @@ function cwlistavailable() {
 #  can be used to recursively chase downstream upgradable reqs
 #
 function cwlistupgradable() {
-  cwmarkupgradable
+  cwcheckrecipessourced || cwsourcerecipes
   local r
   for r in $(cwgetupgradable) ; do
     i="$(cwgetinstalledversion ${r})"
@@ -1137,6 +1137,7 @@ function cwlistupgradable() {
 # cwgetupgradable
 #   get a list of upgradable packages
 function cwgetupgradable() {
+  cwcheckrecipessourced || cwsourcerecipes
   cwmarkupgradable
   local r
   for r in $(cwgetallrecipes) ; do
@@ -1251,11 +1252,7 @@ function cwmarkupgradable() {
   done
   for recipe in $(cwgetallrecipes) ; do
     cwcheckinstalled "${recipe}" || continue
-    i="$(cwgetinstalledversion ${recipe})"
-    n="$(cwver_${recipe})"
-    if [ ! "${i}" == "${n}" ] ; then
-      cwsetupgradble "${recipe}"
-    fi
+    cwcheckupgradable "${recipe}" && cwsetupgradble "${recipe}" || true
   done
   unset recipe
 }
@@ -1277,6 +1274,7 @@ function cwupgradespending() {
 #   check if a recipe is upgradable
 #
 function cwcheckupgradable() {
+  cwcheckrecipessourced || cwsourcerecipes
   local r="${1}"
   local c=1
   cwcheckinstalled "${r}" || return "${c}"
