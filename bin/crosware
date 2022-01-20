@@ -1368,12 +1368,14 @@ function cwupgradeallwithdeps() {
 #
 function cwupgradedeps() {
   cwcheckrecipessourced || cwsourcerecipes
+  local l=""
   local r
+  cwscriptecho "upgrading any installed dependents of ${@}"
   for r in ${@} ; do
-    cwscriptecho "upgrading any installed dependents of ${r}"
-    cwupgradedeps_${r}
+    l+=" $(cwgetinstalleddeps ${r})"
   done
-  unset r
+  cwupgrade $(cwnormalizeargs ${l})
+  unset l r
 }
 
 #
