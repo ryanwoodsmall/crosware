@@ -775,6 +775,8 @@ time_func ls -l -A /
     - `CC="${CC} -D__BEGIN_DECLS='' -D__END_DECLS=''"`
     - `CXX="${CXX} -D__BEGIN_DECLS='extern "C" {' -D__END_DECLS='}'"
   - figure out quoting.
+  - function for prepending headers?
+    - given a file, undef/define the DECLS at the top of the file
 - `binonly/` directories for busybox, toybox, ccache, sbase, ubase, dropbear, ...
   - symlink for primary binary as a cleaner alternative for adding a recipe to path
   - explicitly run with `boxbinary program -options arguments`
@@ -846,6 +848,19 @@ time_func ls -l -A /
   - array or hash of top-level directories
     - easier dir creation
     - setup basic `etc/profile{,.d}/`, `bin/`, `tmp/`, `var/`, ...
+- build shared library from static
+  - should work fine as long as `-fPIC`
+  - given a `/path/to/lib.a` and `/path/to/lib.so`...
+    - ```
+      mkdir tmpdir
+      pushd tmpdir
+      ar t ${alib} | xargs rm -f
+      ar x ${alib}
+      cc -fPIC -shared $(ar t ${alib} | xargs echo) -o ${slib}
+      ar t ${alib} | xargs rm -f
+      popd
+      rm -rf tmpdir
+      ```
 
 <!--
 # vim: ft=markdown
