@@ -848,19 +848,6 @@ time_func ls -l -A /
   - array or hash of top-level directories
     - easier dir creation
     - setup basic `etc/profile{,.d}/`, `bin/`, `tmp/`, `var/`, ...
-- build shared library from static
-  - should work fine as long as `-fPIC`
-  - given a `/path/to/lib.a` and `/path/to/lib.so`...
-    - ```
-      mkdir tmpdir
-      pushd tmpdir
-      ar t ${alib} | xargs rm -f
-      ar x ${alib}
-      cc -fPIC -shared $(ar t ${alib} | xargs echo) -o ${slib}
-      ar t ${alib} | xargs rm -f
-      popd
-      rm -rf tmpdir
-      ```
 
 <!--
 # vim: ft=markdown

@@ -1806,6 +1806,38 @@ function cwshowmessages() {
   cwshowarray cwmessages "${cwname}"
 }
 
+#
+# cwcreatesharedlib
+#   given a lib.a create a lib.so
+#
+# XXX - soname, version probably need to be set
+#
+function cwcreatesharedlib() {
+  : ${CC:="gcc"}
+  local extdir="${cwtmp}/${TS}_sharedlib_${$}_${RANDOM}"
+  local olist=""
+  local alib="${1}"
+  local solib="${2}"
+  local solibdir="$(dirname ${solib})"
+  if [[ ! ${solibdir} =~ ${cwtop} ]] ; then
+    cwfailexit "not creating a shared lib outside of ${cwtop}"
+  fi
+  cwscriptecho "creating ${solib} from ${alib}"
+  cwmkdir "${solibdir}"
+  rm -rf "${extdir}"
+  cwmkdir "${extdir}"
+  pushd "${extdir}" >/dev/null 2>&1
+  cwscriptecho "extracting ${alib} in ${PWD}"
+  ar x "${alib}"
+  olist="$(ar t ${alib} | xargs echo)"
+  cwscriptecho "creating ${solib} from object list: ${olist}"
+  "${CC}" -fPIC -shared ${olist} -o "${solib}"
+  popd >/dev/null 2>&1
+  cwscriptecho "shared library saved to ${solib}"
+  cwscriptecho "cleaning up"
+  rm -rf "${extdir}"
+}
+
 #############################################
 # program actually starts... here... maybe. #
 #############################################
