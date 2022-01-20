@@ -270,6 +270,11 @@ fi
 export uarch="${bash_arch}"
 
 #
+# a marker to start the end of environment vars/beginning of functions in set output
+#
+export zzz_crosware_cut_here_zzz='### CROSWARE_CUT_HERE ###'
+
+#
 # bootstrap vars
 #
 
