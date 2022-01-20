@@ -37,8 +37,9 @@ function cwconfigure_${rname}() {
         CC=\"\${CC} \$(pkg-config --cflags --libs libbsd)\" \
         CPPFLAGS=\"\$(echo -I${cwsw}/{bzip2,zlib,pcre2,mbedtls,libxml2,sqlite,e2fsprogs,attr,brotli,zstd,xxhash,lua54}/current/include)\" \
         LDFLAGS=\"\$(echo -L${cwsw}/{bzip2,zlib,pcre2,mbedtls,libxml2,sqlite,e2fsprogs,attr,brotli,zstd,xxhash,lua54}/current/lib)\" \
-        CFLAGS=-fPIC \
-        CXXFLAGS=-fPIC \
+        LIBS=\"\$(echo -L${cwsw}/{brotli,mbedtls}/current/lib -l{brotli,mbedx509,mbedtls,mbedcrypto})\" \
+        CFLAGS=\"-fPIC -Wl,-rpath,${rtdir}/current/lib\" \
+        CXXFLAGS=\"-fPIC -Wl,-rpath,${rtdir}/current/lib\" \
         LUA_CFLAGS=\"-I${cwsw}/lua54/current/include\" \
         LUA_LIBS=\"-L${cwsw}/lua54/current/libs -llua\"
   grep -ril 'sys/queue\\.h' . \
