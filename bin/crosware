@@ -1815,8 +1815,8 @@ function cwshowmessages() {
 function cwcreatesharedlib() {
   : ${CC:="gcc"}
   local extdir="${cwtmp}/${TS}_sharedlib_${$}_${RANDOM}"
-  local olist=""
   local alib="${1}"
+  local olist="$(ar t ${alib} | xargs echo)"
   local solib="${2}"
   local solibdir="$(dirname ${solib})"
   if [[ ! ${solibdir} =~ ${cwtop} ]] ; then
@@ -1829,7 +1829,6 @@ function cwcreatesharedlib() {
   pushd "${extdir}" >/dev/null 2>&1
   cwscriptecho "extracting ${alib} in ${PWD}"
   ar x "${alib}"
-  olist="$(ar t ${alib} | xargs echo)"
   cwscriptecho "creating ${solib} from object list: ${olist}"
   "${CC}" -fPIC -shared ${olist} -o "${solib}"
   popd >/dev/null 2>&1
