@@ -834,6 +834,18 @@ time_func ls -l -A /
 - save/set/restore `CFLAGS/CPPFLAGS/CXXFLAGS/LDFLAGS/PKG_CONFIG_{LIBDIR,PATH}`
   - add to main script
   - completely sequester environment...
+- "aggregate" script
+  - essentially:
+    - main `bin/crosware` script
+    - output of `set` starting with functions
+    - set recipes sourced
+    - set functions sourced
+    - disable `cwchecktop` - return true
+  - function marker in `set` output
+    - for easier detection and to know where to cut environment vars
+  - array or hash of top-level directories
+    - easier dir creation
+    - setup basic `etc/profile{,.d}/`, `bin/`, `tmp/`, `var/`, ...
 
 <!--
 # vim: ft=markdown
