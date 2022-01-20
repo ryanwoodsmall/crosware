@@ -1826,6 +1826,7 @@ function cwcreatesharedlib() {
   cwmkdir "${solibdir}"
   rm -rf "${extdir}"
   cwmkdir "${extdir}"
+  rm -f "${solib}"
   pushd "${extdir}" >/dev/null 2>&1
   cwscriptecho "extracting ${alib} in ${PWD}"
   ar x "${alib}"
