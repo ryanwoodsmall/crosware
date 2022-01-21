@@ -1,9 +1,9 @@
 rname="mdnsd"
-rver="0.10"
+rver="0.11"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/troglobit/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="6acba0e412b79cf383346194c21c7607844fed87b4ff909d52e2c2d366505552"
+rsha256="285fbb58eef25002726cf662a5621f1de93226f38dd949700d2a409294523a9a"
 rreqs="make slibtool"
 
 . "${cwrecipe}/common.sh"
