@@ -1,9 +1,9 @@
 rname="zstd"
-rver="1.5.1"
+rver="1.5.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/facebook/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="e28b2f2ed5710ea0d3a1ecac3f6a947a016b972b9dd30242369010e5f53d7002"
+rsha256="7c42d56fac126929a6a85dbc73ff1db2411d04f104fae9bdea51305663a83fd0"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
