@@ -47,7 +47,8 @@
     - LDFLAGS
     - PKG_CONFIG_LIBDIR
     - PKG_CONFIG_PATH
-- `cw{{c,cpp,cxx,ld}flags,pkgconfig}_${rname}` functions
+- `cw{{c,cpp,cxx,ld}flags,pkgconfig,rpath}...${rname}` functions
+  - or just a single `cwdevenv_${rname}` - more straightforward, less extensible?
   - generated dynamically based on prereqs
   - recursive, so... slow
   - similar to recursive `cheupgradereqs_${rname}`
@@ -848,6 +849,18 @@ time_func ls -l -A /
   - array or hash of top-level directories
     - easier dir creation
     - setup basic `etc/profile{,.d}/`, `bin/`, `tmp/`, `var/`, ...
+- shared-static concept
+  - creation of .so from .a is simple-ish, if _everything_ is PIC
+  - basically take an archive lib, extract, compile .o files to shared object (done)
+  - drop the lib.so into the _sequestered installation dir_ of the _target recipe_
+    - i.e., copy up; a-requires-b-requires-c, so libs (at least) for c end up in b and both end up in a
+  - set the `-rpath` appropriately and force include with `LIBS='-lblah'`
+    - rpath would probably have to be recursive into downstream reqs
+    - add to `cw{{c{,pp,xx},ld}flags,pkgconf}_${rname}` functions
+  - only _external_ shared object is libc.so...
+    - and that could be overcome with some `patchelf` magic
+  - allows dynamic modules and/or _fully-encapsulated pacakge directories with ALL lib dependencies_ that could be composed
+  - not reproducible builds by any means... but could be used as a base
 
 <!--
 # vim: ft=markdown
