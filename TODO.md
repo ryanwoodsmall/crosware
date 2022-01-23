@@ -861,6 +861,13 @@ time_func ls -l -A /
     - and that could be overcome with some `patchelf` magic
   - allows dynamic modules and/or _fully-encapsulated pacakge directories with ALL lib dependencies_ that could be composed
   - not reproducible builds by any means... but could be used as a base
+- use `stat` to detect if rebuild needed?
+  - installation state files in `var/inst/` should be relatively static
+  - e.g., a-requires-b-requires-c
+    - if `var/inst/b` is newer than `var/inst/a`, upgrade it
+    - recursive...???
+  - could also force rebuild by touching file and running like `upgrade-out-of-date`
+  - very touchy, messing around with installation files could lead to full rebuild
 
 <!--
 # vim: ft=markdown
