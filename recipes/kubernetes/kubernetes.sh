@@ -8,7 +8,7 @@
 #
 
 rname="kubernetes"
-rver="1.22.6"
+rver="1.23.0"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
@@ -45,6 +45,7 @@ function cwfetch_${rname}() {
   kubeprogs+=' kube-aggregator '
   kubeprogs+=' kube-apiserver '
   kubeprogs+=' kube-controller-manager '
+  kubeprogs+=' kube-log-runner '
   kubeprogs+=' kube-proxy '
   kubeprogs+=' kube-scheduler '
   kubeprogs+=' kubeadm '
