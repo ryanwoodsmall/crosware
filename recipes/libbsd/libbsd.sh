@@ -3,11 +3,11 @@
 #
 
 rname="libbsd"
-rver="0.11.3"
+rver="0.11.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://libbsd.freedesktop.org/releases/${rfile}"
-rsha256="ff95cf8184151dacae4247832f8d4ea8800fa127dbd15033ecfe839f285b42a1"
+rsha256="570abb5c9cdf33a91a3f7748a3771f715079b5ee886221edbdedab45f88d5037"
 rreqs="make libmd"
 
 . "${cwrecipe}/common.sh"
