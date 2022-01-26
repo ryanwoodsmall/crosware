@@ -1,15 +1,18 @@
 rname="utillinux"
-rver="2.37.2"
+rver="2.37.3"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver%.?}/${rfile}"
 #rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver}/${rfile}"
-rsha256="6a0764c1aae7fb607ef8a6dd2c0f6c47d5e5fd27aa08820abaad9ec14e28e9d9"
+rsha256="590c592e58cd6bf38519cb467af05ce6a1ab18040e3e3418f24bcfb2f55f9776"
 rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
 # XXX - something with 2.35.1 to 2.35.2 broke SYS_pidfd_... checks/definitions
+# XXX - ugh
+# sed -i.ORIG '/MANPAGES.*raw\.8/d' disk-utils/Makemodule.am
+# touch -d 1970-01-01 disk-utils/Makemodule.am
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
@@ -18,6 +21,7 @@ function cwconfigure_${rname}() {
   cat include/pidfd-utils.h.ORIG >> include/pidfd-utils.h
   sed -i '/defined.*__linux/s/$/ \\&\\& defined(SYS_pidfd_send_signal)/g' include/pidfd-utils.h
   sed -i.ORIG '/READLINE_LIBS/ s/-lreadline/-lreadline -lncurses -lncursesw/g' configure
+  sed -i.ORIG 's/raw\.8/mkfs.8/g' Makefile.in
   env PATH=\"${cwsw}/ncurses/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
       --disable-asciidoc \
