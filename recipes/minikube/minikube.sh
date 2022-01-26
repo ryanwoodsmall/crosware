@@ -1,14 +1,14 @@
 rname="minikube"
-rver="1.24.0"
+rver="1.25.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/kubernetes/${rname}/archive/refs/tags/${rfile}"
-rsha256="df8e273468163341ff28721c8774a380df9b9d5a8e45eb3cbbcb485552d1a1c2"
+rsha256="406fb9682616a42b56f745648a632399fdc0586f9d06f529764efa43d67ccd8f"
 rreqs="bootstrapmake go"
 
 # XXX - ugh
 if ! hash git >/dev/null 2>&1 ; then
-  rreqs+=" gitlibressl "
+  rreqs+=" git "
 fi
 
 . "${cwrecipe}/common.sh"
