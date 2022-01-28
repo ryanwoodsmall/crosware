@@ -1,4 +1,5 @@
 #
+# XXX - shadow *only* - think of this as a localhost-only sudo (i.e., no PAM, no crap, harder to break)
 # XXX - need a way to automatically setuid to root
 # XXX - would require sudo? ugh?
 # XXX - if [[ ! $(stat -c '%U' $(which doas)) == root ]] ; then sudo chown root $(which doas) ; sudo chmod u+s $(which doas) ; fi
