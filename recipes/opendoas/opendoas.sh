@@ -13,7 +13,7 @@ rfile="${rdir}.tar.gz"
 rurl="https://github.com/Duncaen/OpenDoas/releases/download/v${rver}/${rfile}"
 rsha256="28dca29adec5f4336465812d9e2243f599e62a78903de71c24f0cd6fe667edac"
 rreqs="make byacc"
-rmessage="bin/doas requires setuid root; try: 'sudo chown root \${cwsw}/opendoas/current/bin/doas ; sudo chmod u+s \${cwsw}/opendoas/current/bin/doas'"
+rmessage="bin/doas requires setuid root; try: 'pushd ${cwsw}/opendoas/current/bin/ ; sudo chown root doas ; sudo chmod u+s doas ; popd'"
 
 . "${cwrecipe}/common.sh"
 
