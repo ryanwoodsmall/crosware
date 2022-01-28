@@ -625,6 +625,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
 - onetrueawk (https://github.com/onetrueawk/awk - the one true awk)
 - oniguruma (https://github.com/kkos/oniguruma)
+- opendoas (https://github.com/Duncaen/OpenDoas - much simpler "doas" sudo replacement)
 - opennc (openbsd netcat - formerly http://systhread.net/coding/opennc.php)
   - see netcatopenbbsd for bsd netcat as packaged by debian
   - see libressl for tls-enabled `nc` command
