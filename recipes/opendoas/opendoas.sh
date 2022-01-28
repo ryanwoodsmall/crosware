@@ -55,7 +55,8 @@ function cwmakeinstall_${rname}() {
   echo 'permit nopass root' | tee -a \"\${dc}\"
   echo 'permit nopass :wheel' | tee -a \"\${dc}\"
   echo 'permit nopass chronos' | tee -a \"\${dc}\"
-  echo \"permit nopass \$(cwgetuser)\" | tee -a \"\${dc}\"
+  grep -q \"permit nopass \$(cwgetuser)\" \"\${dc}\" \
+  || { echo \"permit nopass \$(cwgetuser)\" | tee -a \"\${dc}\" ; }
   chmod -R g+rw \"${ridir}/\"
   find \"${ridir}/\" -type d -exec chmod 2775 {} +
   unset dc
