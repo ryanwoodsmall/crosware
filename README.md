@@ -973,6 +973,12 @@ wc -l /tmp/astbuild.out
 - discount (markdown - https://github.com/Orc/discount)
 - dnscrypt-proxy (https://github.com/DNSCrypt/dnscrypt-proxy - doh in go)
 - dnscrypt-wrapper (https://github.com/cofyc/dnscrypt-wrapper - libbsd+libsodium+libevent dnscrypt wrapper/proxy, use with unbound?)
+- doas
+  - opendoas already in
+  - looks fine as well: https://github.com/slicer69/doas
+    - has `vidoas` editor wrapper
+    - PAM only though?
+    - rip off vidoas into opendoas?
 - docbook?
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
 - dsvpn (https://github.com/jedisct1/dsvpn)
