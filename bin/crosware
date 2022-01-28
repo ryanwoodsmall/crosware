@@ -1807,6 +1807,54 @@ function cwshowmessages() {
 }
 
 #
+# cwgetuser
+#   get primary user
+#
+function cwgetuser() {
+  id \
+  | tr ' ' '\n' \
+  | grep ^uid= \
+  | cut -f2 -d'(' \
+  | tr -d ')'
+}
+
+#
+# cwgetuid
+#   get primary group id
+#
+function cwgetuid() {
+  id \
+  | tr ' ' '\n' \
+  | grep ^uid= \
+  | cut -f1 -d'(' \
+  | cut -f2 -d=
+}
+
+#
+# cwgetgroup
+#   get primary group
+#
+function cwgetgroup() {
+  id \
+  | tr ' ' '\n' \
+  | grep ^gid= \
+  | cut -f2 -d'(' \
+  | tr -d ')'
+}
+
+#
+# cwgetgid
+#   get primary group id
+#
+function cwgetgid() {
+  id \
+  | tr ' ' '\n' \
+  | grep ^gid= \
+  | cut -f1 -d'(' \
+  | cut -f2 -d=
+}
+
+#
 # cwcreatesharedlib
 #   given a lib.a create a lib.so
 #
