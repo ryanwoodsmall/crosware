@@ -861,6 +861,9 @@ time_func ls -l -A /
     - and that could be overcome with some `patchelf` magic
   - allows dynamic modules and/or _fully-encapsulated pacakge directories with ALL lib dependencies_ that could be composed
   - not reproducible builds by any means... but could be used as a base
+  - also look into combining multiple `lib.a` static libs into a single "uber lib"
+    - a shared lib created out of this could be like `librname-reqs.so` or something
+    - insane
 - use `stat` to detect if rebuild needed?
   - installation state files in `var/inst/` should be relatively static
   - e.g., a-requires-b-requires-c
