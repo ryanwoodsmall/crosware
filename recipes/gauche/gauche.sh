@@ -1,5 +1,5 @@
 #
-# XXX - dbm - ndbm? odbm? would bdb work? sdbm? gdbm brings in perl via bison i think
+# XXX - dbm - ndbm via sdbm; add odbm? gdbm brings in perl via bison i think, so, no
 # XXX - dedicated slib
 # XXX - no gc on riscv64 yet
 # XXX - broken on arm 32-bit...
@@ -16,7 +16,7 @@ rdir="${rname//g/G}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://github.com/shirok/${rname//g/G}/releases/download/release${rver//./_}/${rfile}"
 rsha256="395e4ffcea496c42a5b929a63f7687217157c76836a25ee4becfcd5f130f38e4"
-rreqs="make libressl mbedtls zlib"
+rreqs="make libressl mbedtls zlib sdbm"
 
 . "${cwrecipe}/common.sh"
 
@@ -36,6 +36,7 @@ function cwconfigure_${rname}() {
     --enable-multibyte=utf-8 \
     --enable-threads=pthreads \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
+    --with-dbm=ndbm \
     --with-local=\"\$(echo ${cwsw}/{${rreqs// /,}}/current | tr ' ' ':')\" \
     --with-tls=axtls,mbedtls \
     --with-zlib=\"${cwsw}/zlib/current\" \
