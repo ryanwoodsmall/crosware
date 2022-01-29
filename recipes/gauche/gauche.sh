@@ -56,7 +56,7 @@ function cwmakeinstall_${rname}() {
   make install ${rlibtool}
   echo '#!/bin/sh' > \"${ridir}/bin/${rname}\"
   echo 'export GAUCHE_READ_EDIT=yes' >> \"${ridir}/bin/${rname}\"
-  echo 'env GAUCHE_READ_EDIT=yes gosh \"\${@}\"' >> \"${ridir}/bin/${rname}\"
+  echo 'env GAUCHE_READ_EDIT=yes \"${rtdir}/current/bin/gosh\" \"\${@}\"' >> \"${ridir}/bin/${rname}\"
   chmod 755 \"${ridir}/bin/${rname}\"
   popd >/dev/null 2>&1
 }
