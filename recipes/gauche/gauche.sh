@@ -1,5 +1,6 @@
 #
 # XXX - no gc on riscv64 yet
+# XXX - add explicit mbedtls+axtls support
 #
 
 rname="gauche"
@@ -8,7 +9,7 @@ rdir="${rname//g/G}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://github.com/shirok/${rname//g/G}/releases/download/release${rver//./_}/${rfile}"
 rsha256="395e4ffcea496c42a5b929a63f7687217157c76836a25ee4becfcd5f130f38e4"
-rreqs="make openssl rlwrap"
+rreqs="make libressl rlwrap"
 
 . "${cwrecipe}/common.sh"
 
@@ -39,7 +40,8 @@ function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   make install ${rlibtool}
   echo '#!/bin/sh' > \"${ridir}/bin/${rname}\"
-  echo 'rlwrap -pBlue -m -M .scm -q\\\" \"${rtdir}/current/bin/gosh\" \"\${@}\"' >> \"${ridir}/bin/${rname}\"
+  echo 'export GAUCHE_READ_EDIT=yes' >> \"${ridir}/bin/${rname}\"
+  echo 'env GAUCHE_READ_EDIT=yes gosh' >> \"${ridir}/bin/${rname}\"
   chmod 755 \"${ridir}/bin/${rname}\"
   popd >/dev/null 2>&1
 }
