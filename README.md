@@ -1117,7 +1117,6 @@ wc -l /tmp/astbuild.out
   - teavm (https://github.com/konsoletyper/teavm - java bytecode to javascript)
   - xtend
 - java jvm/jdk stuff
-  - adoptopenjdk (https://adoptopenjdk.net/)
   - avian (https://readytalk.github.io/avian/)
   - cacao
   - corretto (https://github.com/corretto)
@@ -1132,7 +1131,8 @@ wc -l /tmp/astbuild.out
     - native image kit (https://bell-sw.com/pages/downloads/native-image-kit/ - graal, supports musl/alpine, language plugins, ...)
   - maxine (https://github.com/beehive-lab/Maxine-VM)
   - ojdkbuild (https://github.com/ojdkbuild/ojdkbuild)
-  - openj9
+  - openj9 (ibm, eclipse?)
+  - temurin (https://adoptium.net/ - eclipse; adoptium, formerly adoptopenjdk)
   - ...
 - javascript stuff
   - colony-compiler (unmaintained - https://github.com/tessel/colony-compiler)
