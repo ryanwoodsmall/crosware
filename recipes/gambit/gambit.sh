@@ -1,9 +1,9 @@
 rname="gambit"
-rver="4.9.3"
+rver="4.9.4"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
-rsha256="a5e4e5c66a99b6039fa7ee3741ac80f3f6c4cff47dc9e0ff1692ae73e13751ca"
+rsha256="19fb44a65b669234f6c0467cdc3dbe2e2c95a442f38e4638e7d89c90e247bd08"
 rreqs="make configgit"
 
 . "${cwrecipe}/common.sh"
