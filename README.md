@@ -800,9 +800,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - zulu - built-in recipe, glibc-based for bootstrapping (chrome os, centos, debian, ubuntu, ...)
   - zulu8glibc - zulu 8 jdk
   - zulu11glibc - zulu 11 jdk
+  - zulu17glibc - zulu 17 jdk
   - zulu8musl - zulu 8 jdk built against musl libc (x86_64 only)
   - zulu11musl - zulu 11 jdk built against musl libc (x86_64 only)
-  - zulu17musl - zulu 17 jdk built against musl libc (x86_64 only)
+  - zulu17musl - zulu 17 jdk built against musl libc (x86_64, aarch64 only)
 
 ## recipes to consider
 

@@ -1,3 +1,9 @@
+majver="${rname}"
+majver="${majver%glibc}"
+majver="${majver#zulu}"
+
+burl="https://cdn.azul.com/zulu"
+
 jarch="none"
 if [[ ${uarch} =~ ^aarch64 ]] ; then
   jarch="aarch64"
@@ -11,10 +17,16 @@ fi
 
 : ${rdir:="zulu${rver}-linux_${jarch}"}
 : ${rfile:="${rdir}.tar.gz"}
-if [[ ${uarch} =~ ^a ]] ; then
-  : ${rurl:="https://cdn.azul.com/zulu-embedded/bin/${rfile}"}
+if [[ ${uarch} =~ ^arm ]] ; then
+  : ${rurl:="${burl}-embedded/bin/${rfile}"}
+elif [[ ${uarch} =~ ^aarch ]] ; then
+  if [[ ${majver} < 17 ]] ; then
+    : ${rurl:="${burl}-embedded/bin/${rfile}"}
+  else
+    : ${rurl:="${burl}/bin/${rfile}"}
+  fi
 else
-  : ${rurl:="https://cdn.azul.com/zulu/bin/${rfile}"}
+  : ${rurl:="${burl}/bin/${rfile}"}
 fi
 : ${rprof:="${cwetcprofd}/zz_${rname}.sh"}
 : ${rdlfile:="${cwdl}/zulu/${rfile}"}
@@ -62,6 +74,6 @@ function cwgenprofd_${rname}() {
 }
 "
 
-unset jarch
+unset jarch majver burl
 
 # vim: ft=sh:
