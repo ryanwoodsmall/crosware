@@ -871,6 +871,15 @@ time_func ls -l -A /
     - recursive...???
   - could also force rebuild by touching file and running like `upgrade-out-of-date`
   - very touchy, messing around with installation files could lead to full rebuild
+- function to fetch static `bash`, `busybox`, `curl` and `toybox` binaries
+  - new command
+  - https://github.com/ryanwoodsmall/static-binaries
+  - setup a temporary `bin/` dir with a userspace in `/usr/local/tmp` or `/usr/local/crosware/tmp`
+  - override local binaries for bootstrap purposes
+  - position before bin req check (i.e., can grab busybox and setup `xz` and `bzip2` symlinks)
+  - possibly automatically
+  - really just need curl
+  - to do safe-ish, would need checksums
 
 <!--
 # vim: ft=markdown
