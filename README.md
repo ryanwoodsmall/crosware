@@ -681,6 +681,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - sc (from debian, https://packages.debian.org/buster/sc)
 - scheme48 (http://s48.org)
 - screen
+- sdbm (https://github.com/jaydg/sdbm - dbm/ndbm alike, updated for modern systems, with ndbm.h and libndbm.a symlinks)
 - sdkman (http://sdkman.io)
 - sed (gnu gsed, prepended to $PATH, becomes default sed)
 - sharutils (https://www.gnu.org/software/sharutils/)
@@ -1639,7 +1640,6 @@ wc -l /tmp/astbuild.out
   - vicare (ikarus fork-of-fork, https://github.com/barak/vicare)
   - ypsilon (http://www.littlewingpinball.net/mediawiki/index.php/Ypsilon)
 - sc-im (https://github.com/andmarti1424/sc-im - sc spreadsheet improved)
-- sdbm (https://github.com/jaydg/sdbm - dbm/ndbm alike, updated for modern systems)
 - se (http://se-editor.org/ - screen editor)
   - https://github.com/screen-editor/se
   - or http://svn.so-much-stuff.com/svn/trunk/cvs/trunk/local.d/se.d/
