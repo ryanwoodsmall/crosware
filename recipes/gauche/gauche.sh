@@ -1,6 +1,13 @@
 #
+# XXX - dbm - ndbm? odbm? would bdb work? sdbm? gdbm brings in perl via bison i think
+# XXX - dedicated slib
 # XXX - no gc on riscv64 yet
-# XXX - add explicit mbedtls+axtls support
+# XXX - broken on arm 32-bit...
+#   (cd util; make default)
+#   make[2]: Entering directory '/usr/local/crosware/builds/Gauche-0.9.11/ext/util'
+#   "../../src/gosh" -ftest "../../src/precomp" -e -P -o util--match ../../libsrc/util/match.scm
+#   "list.c", line 798 (Scm__GetExtendedPairDescriptor): Assertion failed: (z->hiddenTag&0x7) == 0x7
+#   make[2]: *** [Makefile:26: util--match.c] Error 1
 #
 
 rname="gauche"
@@ -9,11 +16,11 @@ rdir="${rname//g/G}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://github.com/shirok/${rname//g/G}/releases/download/release${rver//./_}/${rfile}"
 rsha256="395e4ffcea496c42a5b929a63f7687217157c76836a25ee4becfcd5f130f38e4"
-rreqs="make libressl rlwrap"
+rreqs="make libressl mbedtls zlib"
 
 . "${cwrecipe}/common.sh"
 
-if [[ ${karch} =~ ^riscv64 ]] ; then
+if [[ ${karch} =~ ^(arm|riscv64) ]] ; then
 eval "
 function cwinstall_${rname}() {
   cwscriptecho \"recipe ${rname} does not support architecture ${karch}\"
@@ -25,12 +32,19 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
-    CFLAGS='-fPIC' \
-    CXXFLAGS='-fPIC' \
-    LDFLAGS= \
-    CPPFLAGS= \
-    PKG_CONFIG_LIBDIR= \
-    PKG_CONFIG_PATH=
+    --enable-ipv6 \
+    --enable-multibyte=utf-8 \
+    --enable-threads=pthreads \
+    --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
+    --with-local=\"\$(echo ${cwsw}/{${rreqs// /,}}/current | tr ' ' ':')\" \
+    --with-tls=axtls,mbedtls \
+    --with-zlib=\"${cwsw}/zlib/current\" \
+      CFLAGS='-fPIC' \
+      CXXFLAGS='-fPIC' \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      PKG_CONFIG_LIBDIR= \
+      PKG_CONFIG_PATH=
   popd >/dev/null 2>&1
 }
 "
