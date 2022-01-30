@@ -406,8 +406,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - gambit (https://github.com/gambit/gambit and http://gambitscheme.org/wiki/index.php/Main_Page)
 - gauche (https://github.com/shirok/Gauche and https://practical-scheme.net/gauche/index.html)
   - shared build
-  - all options disabled
-  - investigate zlib/gdbm and tls/ssl/...
+  - sdbm (ndbm) kv/hash, zlib, mbedtls, libressl for `openssl` command
 - gawk (gnu awk, prepended to $PATH, becomes default awk)
 - gc (working on x86\_64, aarch64; broken on i386, arm)
 - gdbm
