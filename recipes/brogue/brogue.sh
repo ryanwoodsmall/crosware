@@ -1,6 +1,7 @@
 #
 # XXX - sites.google sucks
 # XXX - move to arch brogue-ce?
+# XXX - netbsdcurses...
 #
 # https://aur.archlinux.org/packages/brogue/?comments=all
 # https://aur.archlinux.org/packages/brogue/?setlang=nb&comments=all&O=10&PP=10
@@ -13,7 +14,11 @@ rfile="${rdir}-linux-amd64.tbz2"
 #rurl="https://sites.google.com/site/broguegame/${rfile}?attredirects=0&d=1"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rsha256="a74ff18139564c597d047cfb167f74ab1963dd8608b6fb2e034e7635d6170444"
-rreqs="make ncurses rsync"
+rreqs="make ncurses"
+
+if ! command -v rsync ; then
+  rreqs="${rreqs} rsyncminimal"
+fi
 
 . "${cwrecipe}/common.sh"
 
