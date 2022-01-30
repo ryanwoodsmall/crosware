@@ -4,11 +4,11 @@
 #
 
 rname="nvi"
-rver="1.81.6-15"
+rver="1.81.6-16"
 rdir="${rname}-debian-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://salsa.debian.org/debian/${rname}/-/archive/debian/${rver}/${rfile}"
-rsha256="2393da32c0c6059ae54c0989c7094a18063e6d36e919d94a251c686be1deb6b4"
+rsha256="de5278be023eb932bbfe62b0333764842c65aedb2f44b8cc824761acf1801dd1"
 rreqs="make netbsdcurses bdb47 configgit slibtool"
 
 . "${cwrecipe}/common.sh"
