@@ -16,7 +16,7 @@ rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname
 rsha256="a74ff18139564c597d047cfb167f74ab1963dd8608b6fb2e034e7635d6170444"
 rreqs="make ncurses"
 
-if ! command -v rsync ; then
+if ! command -v rsync >/dev/null 2>&1 ; then
   rreqs="${rreqs} rsyncminimal"
 fi
 
