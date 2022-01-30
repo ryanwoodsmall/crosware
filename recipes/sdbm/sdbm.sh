@@ -1,3 +1,9 @@
+#
+# URLs:
+# - up-to-date fork used here: https://github.com/jaydg/sdbm
+# - original: https://github.com/davidar/sdbm
+#
+
 rname="sdbm"
 rver="8199251b4dbf882adcc175e07985da442a47796b"
 rdir="${rname}-${rver}"
