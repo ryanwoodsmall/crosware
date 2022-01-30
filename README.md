@@ -404,6 +404,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - findutils
 - flex
 - gambit (https://github.com/gambit/gambit and http://gambitscheme.org/wiki/index.php/Main_Page)
+  - look at openssl/libressl
 - gauche (https://github.com/shirok/Gauche and https://practical-scheme.net/gauche/index.html)
   - shared build
   - sdbm (ndbm) kv/hash, zlib, mbedtls, libressl for `openssl` command
