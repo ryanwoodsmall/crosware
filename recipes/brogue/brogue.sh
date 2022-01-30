@@ -2,6 +2,7 @@
 # XXX - sites.google sucks
 # XXX - move to arch brogue-ce?
 # XXX - netbsdcurses...
+# XXX - could easily replace rsync with '( cd $rbdir ; tar -cf - . ) | ( cd $ridir ; tar -xf - )'
 #
 # https://aur.archlinux.org/packages/brogue/?comments=all
 # https://aur.archlinux.org/packages/brogue/?setlang=nb&comments=all&O=10&PP=10
