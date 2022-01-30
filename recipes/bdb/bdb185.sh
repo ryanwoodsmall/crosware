@@ -26,6 +26,7 @@ function cwextract_${rname}() {
   tar -zxf \"${rname}/${rdir}.tar.gz\"
   cp ${rname}/*.patch \"${rbdir}\"
   rm -rf \"${rname}/\"
+  chmod -R u+rw \"${rbdir}\"
   unset bb
   popd >/dev/null 2>&1
 }
