@@ -1,5 +1,10 @@
 #
 # XXX - can't use cwfixupconfig_${rname} here due to weird layout of dist/build/etc.
+# XXX - ndbm.h/dbm.h compat with something like:
+#   #undef DB_DBM_HSEARCH
+#   #define DB_DBM_HSEARCH 1
+#   #include <db.h>
+# XXX - configure macros can't find dbm_open, dbminit, etc., but they're wrapped
 #
 
 rname="bdb47"
@@ -31,6 +36,15 @@ eval "
 function cwclean_${rname}() {
   pushd "${cwbuild}" >/dev/null 2>&1
   rm -rf "${cwbuild}/${rdir}"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install ${rlibtool}
+  chmod -R u+rw \"${ridir}/\"
   popd >/dev/null 2>&1
 }
 "
