@@ -318,7 +318,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - bash4 (netbsdcurses)
   - bash50 (netbsdcurses)
 - bc (gnu bc, dc)
-- bdb47
+- bdb185 (berkeley db 1.85)
+- bdb47 (berkeley db 4.x)
 - bearssl (https://bearssl.org/)
 - bim (https://github.com/klange/bim - minimal vim-alike, pure-C version 2.x)
   - bim3 (kuroko-based editor)
