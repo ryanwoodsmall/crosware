@@ -3,11 +3,11 @@
 #
 
 rname="sslh"
-rver="1.21c"
+rver="1.22c"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/yrutschle/${rname}/archive/refs/tags/${rfile}"
-rsha256="2e457e59592f8e523cade8d9302b0fdc87f8ea0322beb674dd7f067547a93ea9"
+rsha256="ec5f6998f90b2849d113f2617db7ceca5281fbe4ef55fcd185789d390c09eb04"
 rreqs="make pcre libconfig libcap"
 
 . "${cwrecipe}/common.sh"
