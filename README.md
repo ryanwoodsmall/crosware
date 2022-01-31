@@ -523,6 +523,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libxslt
 - libz (sortix, zlib fork https://sortix.org/libz/)
 - lighttpd (https://www.lighttpd.net/ - mbedtls - ssl/tls, webdav support)
+  - lighttpdminimal (zlib, pcre2, libbsd - not tls, webdav, etc.)
 - linenoise (https://github.com/antirez/linenoise)
 - links (http://links.twibright.com/ - openssl)
   - linkslibressl (libressl)
