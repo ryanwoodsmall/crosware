@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://hyperrealm.github.io/${rname}/dist/${rfile}"
 rsha256="545166d6cac037744381d1e9cc5a5405094e7bfad16a411699bcff40bbb31ee7"
-rreqs="make configgit"
+rreqs="make configgit slibtool"
 
 . "${cwrecipe}/common.sh"
 
