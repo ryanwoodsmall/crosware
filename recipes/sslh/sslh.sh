@@ -8,7 +8,7 @@ rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/yrutschle/${rname}/archive/refs/tags/${rfile}"
 rsha256="ec5f6998f90b2849d113f2617db7ceca5281fbe4ef55fcd185789d390c09eb04"
-rreqs="make pcre libconfig libcap"
+rreqs="make pcre2 libconfig libcap"
 
 . "${cwrecipe}/common.sh"
 
