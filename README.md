@@ -776,6 +776,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - uacmembedtls (curl+mbedtls)
   - uacmegnutls (curl+gnutls)
 - uemacs (https://git.kernel.org/pub/scm/editors/uemacs/uemacs.git/ - micro-emacs)
+- unfs3 (https://unfs3.github.io/ and https://github.com/unfs3/unfs3)
 - unrar
 - unzip
 - utillinux
@@ -1767,7 +1768,6 @@ wc -l /tmp/astbuild.out
 - ubridge (https://github.com/GNS3/ubridge - udp, ethernet, tap, etc. userspace bridge controller)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
 - ueforth (https://github.com/flagxor/eforth - small forth for linux, plus esp32forth for wifi+bt mcu)
-- unfs3 (https://unfs3.github.io/ and https://github.com/unfs3/unfs3)
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
 - units (https://www.gnu.org/software/units)
 - upx (https://github.com/upx/upx)
