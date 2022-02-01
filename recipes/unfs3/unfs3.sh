@@ -1,7 +1,7 @@
 #
 # XXX - move to official github? https://github.com/unfs3/unfs3
 # XXX - tcp seems sketchy? udp works?
-# XXX - start with: unfsd -d -e ${cwtop}/tmp/exports -i /tmp/unfsd.pid -u -n 2049 -m 2049
+# XXX - start with: unfsd -d -e ${cwtop}/tmp/exports -i /tmp/unfsd.pid -u -n 2049 -m 2049 -p
 #
 
 rname="unfs3"
