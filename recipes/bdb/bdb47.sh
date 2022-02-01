@@ -5,6 +5,8 @@
 #   #define DB_DBM_HSEARCH 1
 #   #include <db.h>
 # XXX - configure macros can't find dbm_open, dbminit, etc., but they're wrapped
+# XXX - add agpl 6.x+? oracle download chicken/egg
+# XXX - but: https://fossies.org/linux/misc/db-18.1.40.tar.gz/
 #
 
 rname="bdb47"
