@@ -918,6 +918,9 @@ wc -l /tmp/astbuild.out
 - bsd-headers (http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/musl - oe/yocto)
 - btyacc (https://www.siber.com/btyacc/ - 2.x and 3.x)
 - build-scripts (https://github.com/noloader/Build-Scripts - useful versions, packaging, etc. stuff)
+- buricco stuff
+  - lc-subset (https://github.com/buricco/lc-subset - userspace tools, mostly from scratch, mostly unix-like)
+  - lunaris (https://github.com/buricco/lunaris - linux distro with svr4 feel)
 - c9 (https://github.com/ftrvxmtrx/c9 - small 9p client/server impl)
   - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
   - https://git.sr.ht/~ft/c9
