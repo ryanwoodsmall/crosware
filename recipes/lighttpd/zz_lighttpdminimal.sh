@@ -49,6 +49,7 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/sbin\"' > \"${rprof}\"
+  echo 'append_path \"${cwsw}/lighttpd/current/sbin\"' > \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/sbin\"' >> \"${rprof}\"
 }
 "
