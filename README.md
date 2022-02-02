@@ -833,6 +833,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - althttpd (https://sqlite.org/althttpd/doc/trunk/althttpd.md - sqlite web server, xinetd+stunnel)
 - amfora (https://github.com/makeworld-the-better-one/amfora - go gemini client)
 - ansicurses (https://github.com/byllgrim/ansicurses)
+- arachsys stuff
+  - init (https://github.com/arachsys/init - bsd-ish init with a lot of nice utils - uevent, syslog, etc.)
+  - skd (https://github.com/arachsys/skd - socket daemon, inetd-like - bind to a udp/tcp port/socket, run something)
+  - tinyacme (https://github.com/arachsys/tinyacme - go, acme listener/proxy/redirectory, tls-alpn-01!!!)
 - argp-standalone (http://www.lysator.liu.se/~nisse/misc/ and https://git.alpinelinux.org/aports/tree/main/argp-standalone)
 - aria2 (https://github.com/aria2/aria2 and https://aria2.github.io/)
 - arr (https://github.com/leahneukirchen/arr)
