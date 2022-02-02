@@ -880,6 +880,12 @@ time_func ls -l -A /
   - possibly automatically
   - really just need curl
   - to do safe-ish, would need checksums
+- `${cwtop}/etc/functions.d/*.sh`
+  - local functions override
+  - `${cwtop}/etc/local.d/*.sh` get pulled into interactive environment
+  - functions.d are for script usage
+  - dump a full "local" recipe in a single file
+  - aye
 
 <!--
 # vim: ft=markdown
