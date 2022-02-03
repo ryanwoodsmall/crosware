@@ -1,3 +1,11 @@
+#
+# XXX - simple ptp tunnel over dtls
+#   server:
+#     px5g selfsigned -newkey rsa:2048 -keyout server.key -out server.crt -subj /CN=server
+#     socat -d -d openssl-dtls-server:8444,cert=server.crt,key=server.key,cafile=client.crt,fork,reuseaddr tun:192.168.123.1/24,tun-name=tun0,iff-up
+#   client:
+#     px5g selfsigned -newkey rsa:2048 -keyout client.key -out client.crt -subj /CN=client
+#     socat -d -d openssl-dtls-client:server:8444,cert=client.crt,key=client.key,cafile=server.crt tun:192.168.123.2/24,tun-name=tun0,iff-up
 rname="socat"
 rver="1.7.4.3"
 rdir="${rname}-${rver}"
