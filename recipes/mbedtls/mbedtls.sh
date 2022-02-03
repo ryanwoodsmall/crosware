@@ -4,6 +4,9 @@
 #  see alpine: https://git.alpinelinux.org/aports/tree/main/mbedtls/APKBUILD
 # XXX - generate a self-signed cert for like localhost?
 #  https://tls.mbed.org/kb/how-to/generate-a-self-signed-certificate
+#  https://tls.mbed.org/kb/how-to/generate-a-certificate-request-csr
+#  https://wiki.archlinux.org/title/Mbed_TLS
+#    mbedtls_cert_write selfsign=1 issuer_key=private_key issuer_name=subject not_before=YYYYMMDDHHMMSS not_after=YYYYMMDDHHMMSS is_ca=1 max_pathlen=0 output_file=file
 # XXX - options?
 #  - MBEDTLS_SSL_SRV_SUPPORT_SSLV2_CLIENT_HELLO
 #  - MBEDTLS_SSL_SRV_RESPECT_CLIENT_PREFERENCE
