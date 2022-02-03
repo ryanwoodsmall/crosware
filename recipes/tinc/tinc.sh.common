@@ -1,0 +1,39 @@
+: ${rreqs:=""}
+rreqs="${rreqs} make zlib lzo"
+
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  local ssl=\"${rname#tinc}\"
+  test -z \"\${ssl}\" && ssl=openssl || true
+  ./configure ${cwconfigureprefix} \
+    --with-openssl=\"${cwsw}/\${ssl}/current\" \
+    --with-lzo=\"${cwsw}/lzo/current\" \
+    --with-zlib=\"${cwsw}/zlib/current\" \
+      LDFLAGS=-static \
+      CPPFLAGS= \
+      PKG_CONFIG_{LIBDIR,PATH}=
+  unset ssl
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install ${rlibtool}
+  cwmkdir \"${ridir}/share/doc/sample-config\"
+  ( cd doc/sample-config ; tar -cf - . ) | ( cd \"${ridir}/share/doc/sample-config\" ; tar -xf - )
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/sbin\"' > \"${rprof}\"
+}
+"
+
+# vim: ft=sh:

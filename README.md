@@ -718,6 +718,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - texinfo (untested, requires perl)
 - tig (https://github.com/jonas/tig - console git repo pager/browser/ui, ncurses)
   - tignetbsdcurses (same, netbsdcurses with builtin termcap)
+- tinc (https://www.tinc-vpn.org/)
 - tini (small init for containers, https://github.com/krallin/tini)
 - tinycc
   - tcc from gnu guix mirror
@@ -1742,7 +1743,6 @@ wc -l /tmp/astbuild.out
 - tcpredirect (https://github.com/chengyingyuan/tcpredirect - keyed redirect/proxying?)
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
 - timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
-- tinc (https://www.tinc-vpn.org/)
 - tlse (https://github.com/eduardsui/tlse - c tls impl using libtomcrypt)
 - torgo (https://github.com/as/torgo)
 - tpm (https://github.com/nmeum/tpm/ - tiny password manager)
