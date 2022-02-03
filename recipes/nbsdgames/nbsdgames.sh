@@ -1,9 +1,9 @@
 rname="nbsdgames"
-rver="4.1.2"
+rver="5"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/abakh/${rname}/archive/refs/tags/${rfile}"
-rsha256="b4ba777791274af7db13d2827b254cf998a757468e119c6ee106ccbeafcd04c1"
+rsha256="ca81d8b854a7bf9685bbc58aabc1a24cd617cadb7e9ddac64a513d2c8ddb2e6c"
 rreqs="make netbsdcurses"
 
 . "${cwrecipe}/common.sh"
