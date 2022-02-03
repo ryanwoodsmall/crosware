@@ -714,6 +714,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - sbase (https://core.suckless.org/sbase)
   - ubase (https://core.suckless.org/ubase)
 - svnkit
+- tetrisbsd (https://github.com/sirjofri/tetris-bsd)
 - texinfo (untested, requires perl)
 - tig (https://github.com/jonas/tig - console git repo pager/browser/ui, ncurses)
   - tignetbsdcurses (same, netbsdcurses with builtin termcap)
