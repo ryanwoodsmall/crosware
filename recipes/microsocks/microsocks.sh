@@ -1,9 +1,9 @@
 rname="microsocks"
-rver="1.0.2"
+rver="1.0.3"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/rofl0r/${rname}/archive/refs/tags/${rfile}"
-rsha256="5ece77c283e71f73b9530da46302fdb4f72a0ae139aa734c07fe532407a6211a"
+rsha256="6801559b6f8e17240ed8eef17a36eea8643412b5a7476980fd4e24b02a021b82"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
