@@ -718,7 +718,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - texinfo (untested, requires perl)
 - tig (https://github.com/jonas/tig - console git repo pager/browser/ui, ncurses)
   - tignetbsdcurses (same, netbsdcurses with builtin termcap)
-- tinc (https://www.tinc-vpn.org/)
+- tinc (https://www.tinc-vpn.org/ - meshed routing compressed/encrypted vpn, openssl+zlib+lzo)
+  - tinclibressl (same, with libressl instead of openssl)
 - tini (small init for containers, https://github.com/krallin/tini)
 - tinycc
   - tcc from gnu guix mirror

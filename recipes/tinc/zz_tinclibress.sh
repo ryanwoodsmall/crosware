@@ -1,0 +1,10 @@
+rname="tinclibressl"
+rver="$(cwver_tinc)"
+rdir="$(cwdir_tinc)"
+rfile="$(cwfile_tinc)"
+rdlfile="$(cwdlfile_tinc)"
+rurl="$(cwurl_tinc)"
+rsha256=""
+rreqs="libressl"
+
+. "${cwrecipe}/tinc/tinc.sh.common"

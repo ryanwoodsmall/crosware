@@ -3,6 +3,16 @@ rreqs="${rreqs} make zlib lzo"
 
 . "${cwrecipe}/common.sh"
 
+if [ ! -z "${rname#tinc}" ] ; then
+  for f in clean fetch extract make ; do
+    eval "
+    function cw${f}_${rname}() {
+      cw${f}_tinc
+    }
+    "
+  done
+fi
+
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
@@ -26,6 +36,7 @@ function cwmakeinstall_${rname}() {
   make install ${rlibtool}
   cwmkdir \"${ridir}/share/doc/sample-config\"
   ( cd doc/sample-config ; tar -cf - . ) | ( cd \"${ridir}/share/doc/sample-config\" ; tar -xf - )
+  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/sbin/tincd\"
   popd >/dev/null 2>&1
 }
 "
