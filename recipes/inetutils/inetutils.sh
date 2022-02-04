@@ -1,3 +1,20 @@
+#
+# catch-all syslog
+#   *.* /var/log/messages
+# docker syslog container
+#   docker run -d --restart always --name syslogd -p 514:514/udp syslogd -r -n --ipany -B 514 -f /path/to/syslog.conf
+# docker host config daemon.json snippet
+#   {
+#     "log-driver": "syslog",
+#     "log-opts": {
+#       "syslog-address": "udp://1.2.3.4:514",
+#       "syslog-facility": "daemon",
+#       "mode": "non-blocking",
+#       "tag": "hostname01:{{.Name}}"
+#     }
+#   }
+#
+
 rname="inetutils"
 rver="2.2"
 rdir="${rname}-${rver}"
