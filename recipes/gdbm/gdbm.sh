@@ -1,17 +1,27 @@
+#
+# XXX - netbsdcurses+readline?
+#
+
 rname="gdbm"
-rver="1.22"
+rver="1.23"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="f366c823a6724af313b6bbe975b2809f9a157e5f6a43612a72949138d161d762"
-rreqs="make sed flex bison ncurses readline gettexttiny configgit"
+rsha256="74b1081d21fff13ae4bd7c16e5d6e504a4c26f7cde1dca0d963a484174bbcacd"
+rreqs="make sed configgit"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --enable-libgdbm-compat --disable-nls
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+    --disable-nls \
+    --enable-libgdbm-compat \
+    --without-readline \
+      LDFLAGS='-static -s' \
+      CPPFLAGS= \
+      PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
 "
