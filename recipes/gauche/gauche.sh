@@ -1,5 +1,5 @@
 #
-# XXX - dbm - ndbm via sdbm; add odbm? gdbm brings in perl via bison i think, so, no
+# XXX - dbm - gdbm is used for gdbm/ndbm/odbm; sdbm supports ndbm, and bdb supports ndbm/odbm
 # XXX - dedicated slib
 # XXX - no gc on riscv64 yet
 # XXX - broken on arm 32-bit...
@@ -16,7 +16,7 @@ rdir="${rname//g/G}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://github.com/shirok/${rname//g/G}/releases/download/release${rver//./_}/${rfile}"
 rsha256="395e4ffcea496c42a5b929a63f7687217157c76836a25ee4becfcd5f130f38e4"
-rreqs="make libressl mbedtls zlib sdbm"
+rreqs="make libressl mbedtls zlib gdbm"
 
 . "${cwrecipe}/common.sh"
 
@@ -36,7 +36,7 @@ function cwconfigure_${rname}() {
     --enable-multibyte=utf-8 \
     --enable-threads=pthreads \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
-    --with-dbm=ndbm \
+    --with-dbm=gdbm,ndbm,odbm \
     --with-local=\"\$(echo ${cwsw}/{${rreqs// /,}}/current | tr ' ' ':')\" \
     --with-tls=axtls,mbedtls \
     --with-zlib=\"${cwsw}/zlib/current\" \
@@ -44,6 +44,7 @@ function cwconfigure_${rname}() {
       CXXFLAGS='-fPIC' \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LIBS='-lgdbm_compat -lgdbm' \
       PKG_CONFIG_LIBDIR= \
       PKG_CONFIG_PATH=
   popd >/dev/null 2>&1
