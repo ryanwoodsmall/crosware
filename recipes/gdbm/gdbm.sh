@@ -1,14 +1,10 @@
-#
-# XXX - netbsdcurses+readline?
-#
-
 rname="gdbm"
 rver="1.23"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="74b1081d21fff13ae4bd7c16e5d6e504a4c26f7cde1dca0d963a484174bbcacd"
-rreqs="make sed configgit"
+rreqs="make sed configgit netbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
@@ -18,9 +14,10 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-nls \
     --enable-libgdbm-compat \
-    --without-readline \
-      LDFLAGS='-static -s' \
-      CPPFLAGS= \
+    --with-readline \
+      LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -static -s\" \
+      CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
+      LIBS='-lreadline -lcurses -lterminfo -static -s' \
       PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
