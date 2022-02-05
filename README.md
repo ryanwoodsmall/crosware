@@ -587,7 +587,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - musl11 (musl 1.1.x for compat)
   - musl12 (musl 1.2.x with `oldmalloc` for compat)
 - n2n (https://github.com/ntop/n2n and https://www.ntop.org/products/n2n/ - peer-to-peer vpn with edge and supernodes for nat traversal - openssl/zstd/libcap/libpcap)
-  - n2nlibressl (libressl and zstd only)
+  - n2nlibressl (libressl and zstd only, no libcap or libpcap)
+  - n2nminimal (no optional features)
 - nbsdgames (https://github.com/abakh/nbsdgames - new bsd games)
 - ncurses
 - neat/litcave stuff (http://litcave.rudi.ir/)
