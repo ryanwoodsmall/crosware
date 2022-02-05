@@ -66,6 +66,8 @@ function cwconfigure_${rname}() {
     --enable-ocspstapling \
     --enable-ocspstapling2 \
     --enable-oldnames \
+    --enable-openssh \
+    --enable-openvpn \
     --enable-pkcallbacks \
     --enable-pkcs7 \
     --enable-pkcs11 \
@@ -80,11 +82,13 @@ function cwconfigure_${rname}() {
     --enable-savesession \
     --enable-scep \
     --enable-scrypt \
+    --enable-sessioncerts \
     --enable-session-ticket \
     --enable-sni \
     --enable-srp \
     --enable-ssh \
     --enable-sslv3 \
+    --enable-stunnel \
     --enable-tls13 \
     --enable-tlsv10 \
     --enable-tlsx \
