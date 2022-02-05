@@ -700,6 +700,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - socat (http://www.dest-unreach.org/socat/ - openssl, netbsdcurses, readline)
   - socatlibressl (libressl, netbsdcurses, readline)
   - socatminimal (no tls/ssl, no readline - socket, port, file, etc. *only*)
+  - socatwolfssl (https://github.com/wolfSSL/osp - from wolfssl open source project ports with readline support)
 - source-highlight (https://www.gnu.org/software/src-highlite/)
   - OLD 1.x version
   - limited language support, though
