@@ -3,6 +3,7 @@
 # XXX - --enable-haproxy bumps OPENSSL_VERSION_NUMBER _but_ requires openssl bin for renegotiation stuff. ugh
 # XXX - stunnel patch from osp applies but doesn't seem to work, old version
 # XXX - openvpn upstream requires master and has a number of conflicts with OPENSSL_VERSION_NUMBER/undefined functions
+# XXX - apache httpd applies cleanly, but segfaults on request; needs expat/pcre
 # XXX - need to test nginx osp patch
 # XXX - libssh2 patch is clean and build works, older version
 # XXX - openssh osp requires some finagling but works, at least ssh/sftp clients
