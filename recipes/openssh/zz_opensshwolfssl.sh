@@ -67,7 +67,6 @@ function cwconfigure_${rname}() {
       LIBS='-lwolfssl -lz -lcrypt -ledit -lcurses -lterminfo -static -s' \
       PKG_CONFIG_LIBDIR= \
       PKG_CONFIG_PATH=
-  sed -i 's/-lssh/-lwolfssl -lssh/g' Makefile
   popd >/dev/null 2>&1
 }
 "
