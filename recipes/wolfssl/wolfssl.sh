@@ -2,6 +2,9 @@
 # XXX - --enable-aesgcm-stream --enable-ed25519-stream --enable-ed448-stream
 # XXX - replace pem/key/etc. with host-specific stuff at build time with mbedtls/bearssl/x509cert/px5g/...?
 # XXX - --enable-haproxy bumps OPENSSL_VERSION_NUMBER _but_ requires openssl bin for renegotiation stuff. ugh
+# XXX - stunnel patch from osp applies but doesn't seem to work
+# XXX - socat patch is fine, builds clean
+# XXX - openssh requires some finagling but works, at least ssh/sftp clients
 #
 
 rname="wolfssl"
