@@ -3,6 +3,11 @@ rreqs+=" make cacertificates zlib pkgconfig nghttp2 cares"
 
 . "${cwrecipe}/common.sh"
 
+# XXX - add new versions here
+pn="${rname}"
+pn="${pn#tinycurl772}"
+pn="${pn#tinycurl}"
+
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
@@ -45,6 +50,18 @@ function cwmake_${rname}() {
 }
 "
 
+# XXX - just need to call super here
+if [ ! -z "${pn}" ] ; then
+  for f in fetch clean extract make ; do
+    eval "
+    function cw${f}_${rname}() {
+      cw${f}_${rname%${pn}}
+    }
+    "
+  done
+  unset f
+fi
+
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
@@ -68,5 +85,7 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
+
+unset pn
 
 # vim: ft=sh
