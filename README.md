@@ -633,6 +633,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - see libressl for tls-enabled `nc` command
 - openssh (openssl, netbsdcurses, libedit)
   - opensshlibressl (libressl, netbsdcurses, libedit)
+  - opensshwolfssl (patches from wolfssl osp project - netbsdcurses, libedit)
 - openssl
 - openvpn (https://openvpn.net/community-downloads/ and https://github.com/OpenVPN/openvpn - openssl, zlib, lz4, lzo)
   - openvpnlibressl (libressl, lz4, lzo)
