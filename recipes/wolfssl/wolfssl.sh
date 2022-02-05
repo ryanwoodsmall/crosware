@@ -1,6 +1,7 @@
 #
 # XXX - --enable-aesgcm-stream --enable-ed25519-stream --enable-ed448-stream
 # XXX - replace pem/key/etc. with host-specific stuff at build time with mbedtls/bearssl/x509cert/px5g/...?
+# XXX - --enable-haproxy bumps OPENSSL_VERSION_NUMBER _but_ requires openssl bin for renegotiation stuff. ugh
 #
 
 rname="wolfssl"
@@ -33,6 +34,7 @@ function cwconfigure_${rname}() {
     --enable-arc4 \
     --enable-alpn \
     --enable-atomicuser \
+    --enable-bind \
     --enable-blake2 \
     --enable-blake2s \
     --enable-camellia \
@@ -61,6 +63,7 @@ function cwconfigure_${rname}() {
     --enable-mcast \
     --enable-md2 \
     --enable-md4 \
+    --enable-nginx \
     --enable-nullcipher \
     --enable-ocsp \
     --enable-ocspstapling \
