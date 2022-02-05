@@ -1,3 +1,7 @@
+#
+# XXX - issues with dtls, don't use this
+#
+
 rname="socatwolfssl"
 rver="1.7.4.1"
 rdir="wolfssl-osp-socat-${rver}"

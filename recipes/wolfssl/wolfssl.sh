@@ -5,9 +5,9 @@
 # XXX - openvpn upstream requires master and has a number of conflicts with OPENSSL_VERSION_NUMBER/undefined functions
 # XXX - apache httpd applies cleanly, but segfaults on request; needs expat/pcre
 # XXX - need to test nginx osp patch
+# XXX - socat osp patch is fine, builds clean, but dtls+tun crashes passing traffic
 # XXX - libssh2 patch is clean and build works, older version
 # XXX - openssh osp requires some finagling but works, at least ssh/sftp clients
-# XXX - socat osp patch is fine, builds clean
 #
 
 rname="wolfssl"
