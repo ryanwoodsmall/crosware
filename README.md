@@ -1229,6 +1229,7 @@ wc -l /tmp/astbuild.out
 - libdnet (https://github.com/boundary/libdnet or up-to-date fork at https://github.com/busterb/libdnet)
   - mostly want the dnet binary
 - libeconf (https://github.com/openSUSE/libeconf)
+- libest (https://github.com/cisco/libest - "enrollment over secure transport" cert distribution, https://en.wikipedia.org/wiki/Enrollment_over_Secure_Transport)
 - libfawk (http://repo.hu/projects/libfawk/ - awk like function language/vm/library)
 - libfetch (https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.3-stable and https://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/net/libfetch/README.html - alpine, netbsd, needs work)
   - https://github.com/Gottox/libfetch - newer combo of netbsd/freebsd versions? no fetchReqHTTP
