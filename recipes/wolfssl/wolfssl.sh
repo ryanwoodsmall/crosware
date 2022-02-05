@@ -1,10 +1,12 @@
 #
-# XXX - --enable-aesgcm-stream --enable-ed25519-stream --enable-ed448-stream
 # XXX - replace pem/key/etc. with host-specific stuff at build time with mbedtls/bearssl/x509cert/px5g/...?
 # XXX - --enable-haproxy bumps OPENSSL_VERSION_NUMBER _but_ requires openssl bin for renegotiation stuff. ugh
-# XXX - stunnel patch from osp applies but doesn't seem to work
-# XXX - socat patch is fine, builds clean
-# XXX - openssh requires some finagling but works, at least ssh/sftp clients
+# XXX - stunnel patch from osp applies but doesn't seem to work, old version
+# XXX - openvpn upstream requires master and has a number of conflicts with OPENSSL_VERSION_NUMBER/undefined functions
+# XXX - need to test nginx osp patch
+# XXX - libssh2 patch is clean and build works, older version
+# XXX - openssh osp requires some finagling but works, at least ssh/sftp clients
+# XXX - socat osp patch is fine, builds clean
 #
 
 rname="wolfssl"
@@ -31,8 +33,11 @@ function cwconfigure_${rname}() {
     --disable-fips \
     --disable-opensslcoexist \
     --enable-aesccm \
+    --enable-aescfb \
     --enable-aesctr \
+    --enable-aesgcm-stream \
     --enable-aeskeywrap \
+    --enable-aesofb \
     --enable-anon \
     --enable-arc4 \
     --enable-alpn \
@@ -55,6 +60,9 @@ function cwconfigure_${rname}() {
     --enable-ecccustcurves \
     --enable-eccencrypt \
     --enable-ed25519 \
+    --enable-ed25519-stream \
+    --enable-ed448 \
+    --enable-ed448-stream \
     --enable-fpecc \
     --enable-hc128 \
     --enable-hkdf \
@@ -62,6 +70,7 @@ function cwconfigure_${rname}() {
     --enable-indef \
     --enable-jobserver=no \
     --enable-keygen \
+    --enable-libssh2 \
     --enable-maxfragment \
     --enable-mcast \
     --enable-md2 \
@@ -101,6 +110,7 @@ function cwconfigure_${rname}() {
     --enable-trustedca \
     --enable-truncatedhmac \
     --enable-x963kdf \
+    --enable-xchacha \
       CFLAGS=\"\${CFLAGS}\" \
       LDFLAGS=-static \
       CPPFLAGS=
