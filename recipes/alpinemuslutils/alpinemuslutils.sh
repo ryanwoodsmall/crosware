@@ -3,7 +3,7 @@ rver="3.15.0"
 rdir="${rname}-${rver}"
 rfile="getconf.c"
 rurl="https://raw.githubusercontent.com/alpinelinux/aports/v${rver}/main/musl/${rfile}"
-rsha256="d87d0cbb3690ae2c5d8cc218349fd8278b93855dd625deaf7ae50e320aad247c"
+rsha256=""
 rreqs=""
 
 . "${cwrecipe}/common.sh"
