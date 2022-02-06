@@ -69,9 +69,11 @@ sed -i "s#^rver=.*#rver=\"${rv}\"#" "${rf}"
 echo "setting value of 'rsha256' in ${rf} to ${rs}"
 sed -i "s#^rsha256=.*#rsha256=\"${rs}\"#" "${rf}"
 
-echo "git diff:"
-echo
-git diff
+if $(command -v git &>/dev/null) ; then
+  echo "git diff:"
+  echo
+  git diff
+fi
 echo
 
 echo "git commit command:"
