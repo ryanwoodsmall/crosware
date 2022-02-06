@@ -23,8 +23,8 @@ function cwfetch_${rname}() {
   dlshasums+=( ['getent.c']='002c1a216f6bed0f816ab1cfebde94a0b127193ef410c36b2190599983e015b8' )
   dlshasums+=( ['iconv.c']='f79a2930a2e5bb0624321589edf8b889d1e9b603e01e6b7ae214616605b3fdd7' )
   for f in \${dlfiles[@]} ; do
-    dlurl=\"${rurl%%${rfile}}\${f}\"
-    dlfile=\"${rdlfile%%${rfile}}\${f}\"
+    dlurl=\"${rurl%${rfile}}\${f}\"
+    dlfile=\"${rdlfile%${rfile}}\${f}\"
     cwfetchcheck \"\${dlurl}\" \"\${dlfile}\" \"\${dlshasums[\${f}]}\"
   done
   unset f dlfiles dlshasums dlurl dlfile
@@ -36,8 +36,9 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${ridir}/bin\"
   for p in getconf getent iconv ; do
     cwscriptecho \"compiling alpine-\${p} from \${p}.c\"
-    \${CC} \${CFLAGS} \"${rdlfile%%${rfile}}\${p}.c\" -o \"${ridir}/bin/alpine-\${p}\" -static
+    \${CC} \${CFLAGS} \"${rdlfile%${rfile}}\${p}.c\" -o \"${ridir}/bin/alpine-\${p}\" -static
   done
+  ln -sf alpine-getconf \"${ridir}/bin/getconf\"
   ln -sf alpine-getent \"${ridir}/bin/getent\"
   unset p
 }
