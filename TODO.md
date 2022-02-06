@@ -891,6 +891,13 @@ time_func ls -l -A /
   - cert directory too?
   - would make generating system-independent binaries easier
   - i.e., `/etc/ssl/...` paths on debian, etc.
+- file serializer
+  - basically read `uuencode < file | base64`
+  - would help with amalgamation idea
+  - read into a variable, linear or array?
+  - reconstitute from driver script
+  - like a very limited version of shar
+  - would have to do regular var for posix...
 
 <!--
 # vim: ft=markdown
