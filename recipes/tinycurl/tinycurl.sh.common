@@ -33,6 +33,8 @@ function cwconfigure_${rname}() {
     --with-ca-path=\"${cwetc}/ssl/certs\" \
     --with-nghttp2=\"${cwsw}/nghttp2/current\" \
     --with-zlib \
+      CC=\"\${CC} -Os\" \
+      CFLAGS=\"-Os -Wl,-s \${CFLAGS}\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
