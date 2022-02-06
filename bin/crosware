@@ -63,7 +63,12 @@ set -eu
 prereqs=( 'bzip2' 'curl' 'gzip' 'nproc' 'sha256sum' 'tar' )
 for prereq in ${prereqs[@]} ; do
   hash "${prereq}" >/dev/null 2>&1 || {
-    cwfailexit "${prereq} not found"
+    cwscriptecho "${prereq} not found"
+    cwscriptecho "you can download static busybox and curl binaries here:"
+    cwscriptecho ""
+    cwscriptecho "  https://github.com/ryanwoodsmall/static-binaries"
+    cwscriptecho ""
+    cwfailexit "exiting"
   }
 done
 
