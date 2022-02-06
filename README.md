@@ -1041,6 +1041,9 @@ wc -l /tmp/astbuild.out
 - gdb
 - ghostunnel (https://github.com/ghostunnel/ghostunnel - stunnel-ish in go, with mutual tls auth)
 - git-crypt (https://github.com/AGWA/git-crypt)
+- github tools
+  - cli (https://github.com/cli/cli and https://cli.github.com/ - gh command in go with release management...)
+  - hub (https://github.com/github/hub and https://hub.github.com - git wrapper)
 - gmni (https://sr.ht/~sircmpwn/gmni/ and https://git.sr.ht/~sircmpwn/gmni - gemini client)
 - gmnisrv (https://sr.ht/~sircmpwn/gmnisrv/ and https://git.sr.ht/~sircmpwn/gmnisrv - gemini server)
 - gnulib (https://www.gnu.org/software/gnulib - probably needed to repackage for older gnu projects - shishi, gss, gsasl, ...)
