@@ -1,8 +1,3 @@
-#
-# XXX - probably need to override CFLAGS, -O{s,1,2,3,...} seems to break
-# XXX - CFLAGS_CMDLINE='-Wl,-static -fPIC' need to be specified in make/make install
-#
-
 rname="slibtool"
 rver="0.5.28"
 rdir="${rname}-${rver}"
@@ -16,7 +11,26 @@ rreqs="bootstrapmake"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} --all-static
+  env \
+    CXXFLAGS='-Wl,-static -fPIC' \
+    CFLAGS='-Wl,-static -fPIC' \
+      ./configure ${cwconfigureprefix} --all-static
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make -j${cwmakejobs} CFLAGS_CMDLINE='-Wl,-static -fPIC'
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install CFLAGS_CMDLINE='-Wl,-static -fPIC'
   popd >/dev/null 2>&1
 }
 "
