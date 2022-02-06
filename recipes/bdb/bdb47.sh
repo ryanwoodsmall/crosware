@@ -5,6 +5,8 @@
 #   #define DB_DBM_HSEARCH 1
 #   #include <db.h>
 # XXX - configure macros can't find dbm_open, dbminit, etc., but they're wrapped
+# XXX - centos 6 used 4.7.25, which is why i went with this version
+# XXX - centos 7 uses 5.3.21, rhel 8 uses 5.3.28
 # XXX - add agpl 6.x+? oracle download chicken/egg
 # XXX - but: https://fossies.org/linux/misc/db-18.1.40.tar.gz/
 #
