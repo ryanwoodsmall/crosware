@@ -14,7 +14,7 @@
 #   got commit -m blah
 #   got send
 #   # do changes in git
-#   got fetch -a -t -v origin
+#   got fetch -a -t origin
 #   got update -b origin/master
 #   got rebase master
 #   # edit
