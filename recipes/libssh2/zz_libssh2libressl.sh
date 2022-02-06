@@ -22,8 +22,10 @@ function cwconfigure_${rname}() {
     --with-libssl-prefix=\"${cwsw}/libressl/current\" \
     --with-libz \
     --with-pic \
+      CC=\"\${CC} -Os\" \
+      CFLAGS=\"-Os -Wl,-s \${CFLAGS}\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{libressl,zlib}/current/include)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{libressl,zlib}/current/lib) -static\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{libressl,zlib}/current/lib) -static -s\" \
       LIBS=\"-lz -static\" \
       PKG_CONFIG_{LIBDIR,PATH}=
   sed -i 's/Requires.private/Requires/g' libssh2.pc
