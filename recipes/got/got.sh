@@ -28,6 +28,10 @@ rdir="${rname}-portable-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://gameoftrees.org/releases/portable/${rfile}"
 rsha256="efcddacbf61d192b06f51de6b6152e2e34df776c6a760782e85102249be5b98f"
-rreqs="libressl opensshlibressl"
+rreqs="libressl"
+
+if ! $(command -v ssh &>/dev/null) ; then
+  rreqs="${rreqs} opensshlibressl"
+fi
 
 . "${cwrecipe}/got/got.sh.common"
