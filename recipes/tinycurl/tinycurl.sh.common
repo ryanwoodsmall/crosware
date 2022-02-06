@@ -20,7 +20,7 @@ function cwconfigure_${rname}() {
   elif [[ ${rname} =~ openssl ]] ; then
     extra=\"\$(echo --with-openssl --with-default-ssl-backend=openssl --with-libssh2 --without-{bearssl,mbedtls,wolfssl,wolfssh})\"
   else
-    extra=\"\$(echo --with-wolfssl --with-default-ssl-backend=wolfssl --with-wolfssh --without-{bearssl,mbedtls,openssl,libssh2})\"
+    extra=\"\$(echo --with-wolfssl --with-default-ssl-backend=wolfssl --with-libssh2 --without-{bearssl,mbedtls,openssl,wolfssh})\"
   fi
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-dependency-tracking \
