@@ -18,7 +18,9 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} no_test CC=\"\${CC}\" CFLAGS=\"\${CFLAGS}\" LDFLAGS=\"-static\"
+  make -j${cwmakejobs} no_test CC=\"\${CC} -Os\" CFLAGS=\"-Os -Wl,-s \${CFLAGS}\" LDFLAGS=\"-static -s\"
   popd >/dev/null 2>&1
 }
 "
+
+# vim: ft=sh:
