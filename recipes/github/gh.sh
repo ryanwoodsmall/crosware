@@ -19,6 +19,15 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwclean_${rname}() {
+  pushd \"${cwbuild}\" >/dev/null 2>&1
+  chmod -R u+rw \"${rbdir}\" || true
+  rm -rf \"${rbdir}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwpatch_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG 's,/usr/local,${ridir},g' Makefile
