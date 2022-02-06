@@ -308,6 +308,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - thttpd (http://www.acme.com/software/thttpd/)
 - ag (https://geoff.greer.fm/ag/ and https://github.com/ggreer/the_silver_searcher - the silver searcher, fast grep/ack-like)
 - age (https://github.com/FiloSottile/age - age encryption tool in go)
+- alpinemuslutils (https://github.com/alpinelinux/aports/tree/master/main/musl - getconf, getent, iconv from alpine's musl)
 - argon2 (https://github.com/P-H-C/phc-winner-argon2 - password hashing program and libargon2 library)
 - at (http://ftp.debian.org/debian/pool/main/a/at/)
 - attr (https://savannah.nongnu.org/projects/attr/)
@@ -1450,10 +1451,9 @@ wc -l /tmp/astbuild.out
   - musl-locales (https://github.com/rilian-la-te/musl-locales - cmake? seriously?)
   - musl-obstack (https://github.com/pullmoll/musl-obstack and/or https://github.com/void-linux/musl-obstack)
   - musl-utils
+    - getconf, getent, iconv
+    - currently in **alpinemuslutils** recipe as `alpine-{getconf,getent,iconv}`
     - should these be in statictoolchain, i.e in https://github.com/ryanwoodsmall/musl-misc?
-    - getconf (https://git.alpinelinux.org/cgit/aports/tree/main/musl/getconf.c)
-    - getent (https://git.alpinelinux.org/cgit/aports/tree/main/musl/getent.c)
-    - iconv (https://git.alpinelinux.org/cgit/aports/tree/main/musl/iconv.c)
   - muslstack (https://github.com/yaegashi/muslstack)
 - mutt
 - mvi (https://github.com/byllgrim/mvi)
