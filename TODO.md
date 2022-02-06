@@ -886,6 +886,11 @@ time_func ls -l -A /
   - functions.d are for script usage
   - dump a full "local" recipe in a single file
   - aye
+- make cert bundle path configurable
+  - default to `${cwtop}/etc/ssl/cert.pem`
+  - cert directory too?
+  - would make generating system-independent binaries easier
+  - i.e., `/etc/ssl/...` paths on debian, etc.
 
 <!--
 # vim: ft=markdown
