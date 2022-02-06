@@ -416,6 +416,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - gettexttiny
 - git - built with curl+openssl
   - gitlibressl - built with libressl+curl
+- github tools
+  - hub (https://github.com/github/hub and https://hub.github.com - git wrapper)
 - glib (https://wiki.gnome.org/Projects/GLib)
   - old version
   - new version requires meson, ninja, thus python3
@@ -1043,7 +1045,6 @@ wc -l /tmp/astbuild.out
 - git-crypt (https://github.com/AGWA/git-crypt)
 - github tools
   - cli (https://github.com/cli/cli and https://cli.github.com/ - gh command in go with release management...)
-  - hub (https://github.com/github/hub and https://hub.github.com - git wrapper)
 - gmni (https://sr.ht/~sircmpwn/gmni/ and https://git.sr.ht/~sircmpwn/gmni - gemini client)
 - gmnisrv (https://sr.ht/~sircmpwn/gmnisrv/ and https://git.sr.ht/~sircmpwn/gmnisrv - gemini server)
 - gnulib (https://www.gnu.org/software/gnulib - probably needed to repackage for older gnu projects - shishi, gss, gsasl, ...)
