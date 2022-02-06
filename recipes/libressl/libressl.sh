@@ -22,6 +22,8 @@ function cwconfigure_${rname}() {
     --enable-nc \
     --with-openssldir=\"${cwetc}/${rname}\" \
     --with-pic \
+      CC=\"\${CC} -Os\" \
+      CFLAGS=\"-Os \${CFLAGS}\" \
       CPPFLAGS= \
       LDFLAGS=-static
   popd >/dev/null 2>&1
