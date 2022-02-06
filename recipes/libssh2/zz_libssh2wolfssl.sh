@@ -14,8 +14,10 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-crypto=wolfssl \
     --with-wolfssl=\"${cwsw}/wolfssl/current\" \
+      CC=\"\${CC} -Os\" \
+      CFLAGS=\"-Os -Wl,-s \${CFLAGS}\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{wolfssl,zlib}/current/include)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{wolfssl,zlib}/current/lib) -static\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{wolfssl,zlib}/current/lib) -static -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{wolfssl,zlib}/current/lib/pkgconfig | tr ' ' ':')\"
   sed -i 's/Requires.private/Requires/g' libssh2.pc
   sed -i 's#${ridir}#${rtdir}/current#g' libssh2.pc
