@@ -1,3 +1,7 @@
+#
+# XXX - dev branch has miniupnp and/or libnatpmp support for hole punching/nat traversal/etc.
+#
+
 rname="n2n"
 rver="3.1.0"
 rdir="${rname}-${rver}"
