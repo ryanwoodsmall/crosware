@@ -6,6 +6,10 @@ rurl="https://github.com/cli/cli/archive/refs/tags/${rfile}"
 rsha256="4e9d1cbcdd2346cab5b7fc176cd57c07ed3628a0241fad8a48fe4df6a354b120"
 rreqs="go bootstrapmake"
 
+if ! $(command -v git &>/dev/null) ; then
+  rreqs="${rreqs} git"
+fi
+
 . "${cwrecipe}/common.sh"
 
 eval "
@@ -48,6 +52,7 @@ function cwmakeinstall_${rname}() {
     GOMODCACHE=\"\${GOMODCACHE}\" \
     PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
       make install prefix=\"${ridir}\"
+  chmod -R u+rw .
   popd >/dev/null 2>&1
 }
 "
