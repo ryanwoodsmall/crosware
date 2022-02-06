@@ -2,11 +2,13 @@
 # - other ssl/tls providers
 #   - gnutls, nss, ...
 # - libssh2
+#   - doesn't support some newer elliptic curve stuff yet...
+#   - ... libssh does, but needs cmake, so no way
 #   - main package supports openssl
 #   - copy of libssh2 bundled with libressl recipe
 #   - other providers use libssh2libgcrypt
 #     - requires libgcrypt, which needs libgpgerror
-#     - libssh2 w/libgcrypt needs '--key id_rsa --pubkey id_rsa.pub' options?
+#     - libssh2 w/libgcrypt OR mbedtls need '--key id_rsa --pubkey id_rsa.pub' options
 #     - https://www.zufallsheld.de/2020/06/07/debugging-issues-libcurl-pubkey-authentication/
 # - enable libidn2?
 # - enable c-ares resolver?
@@ -80,6 +82,7 @@ function cwmakeinstall_${rname}_openssl() {
   make install
   mv \"${ridir}/bin/${rname}\" \"${ridir}/bin/${rname}-openssl\"
   ln -sf \"${rtdir}/current/bin/${rname}-openssl\" \"${ridir}/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname}-openssl\" \"${ridir}/bin/${rname}openssl\"
   popd >/dev/null 2>&1
 }
 "

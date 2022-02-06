@@ -45,6 +45,7 @@ function cwmakeinstall_${rname}() {
   rm -f \"${ridir}/bin/curl-${rname#curl}\" \"${ridir}/bin/${rname%libressl}-libressl-config\"
   mv \"${ridir}/bin/${rname%libressl}\" \"${ridir}/bin/curl-${rname#curl}\"
   mv \"${ridir}/bin/${rname%libressl}-config\" \"${ridir}/bin/curl-${rname#curl}-config\"
+  test -e \"${ridir}/bin/${rname}\" || ln -sf \"curl-${rname#curl}\" \"${ridir}/bin/${rname}\"
   cwmkdir \"${ridir}/devbin\"
   ln -sf \"${rtdir}/current/bin/curl-${rname#curl}-config\" \"${ridir}/devbin/curl-config\"
   popd >/dev/null 2>&1
