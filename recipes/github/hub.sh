@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/github/${rname}/archive/refs/tags/${rfile}"
 rsha256="e19e0fdfd1c69c401e1c24dd2d4ecf3fd9044aa4bd3f8d6fd942ed1b2b2ad21a"
-rreqs="go"
+rreqs="go make groff utillinux mandoc"
 
 if ! $(command -v git &>/dev/null) ; then
   rreqs="${rreqs} git"
@@ -19,17 +19,35 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwclean_${rname}() {
+  pushd \"${cwbuild}\" >/dev/null 2>&1
+  chmod -R u+rw \"${rbdir}\" || true
+  rm -rf \"${rbdir}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  sed -i.ORIG 's,/usr/local,${ridir},g' script/install.sh
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   : \${GOCACHE=\"${rbdir}/gocache\"}
   : \${GOMODCACHE=\"${rbdir}/gomodcache\"}
-  mkdir -p build
   env \
+    PATH=\"${cwsw}/groff/current/bin:${cwsw}/utillinux/current/bin:\${PATH}\" \
+    LANG=C \
     CGO_ENABLED=0 \
     GOCACHE=\"\${GOCACHE}\" \
     GOMODCACHE=\"\${GOMODCACHE}\" \
     PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-      \"${cwsw}/go/current/bin/go\" build -x -ldflags '-s -w -extldflags \"-s -static\"' -o build/
+      make
   popd >/dev/null 2>&1
 }
 "
@@ -37,10 +55,18 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/bin\"
-  cwmkdir \"${ridir}/share\"
-  install -m 0755 build/${rname} \"${ridir}/bin/${rname}\"
-  ( cd share/ ; tar -cf - . ) | ( cd \"${ridir}/share\" ; tar -xf - )
+  : \${GOCACHE=\"${rbdir}/gocache\"}
+  : \${GOMODCACHE=\"${rbdir}/gomodcache\"}
+  sed -i.ORIG s,groff,${cwsw}/groff/current/bin/groff,g Makefile
+  sed -i.ORIG s,col,${cwsw}/utillinux/current/bin/col,g Makefile
+  env \
+    PATH=\"${cwsw}/groff/current/bin:${cwsw}/utillinux/current/bin:\${PATH}\" \
+    LANG=C \
+    CGO_ENABLED=0 \
+    GOCACHE=\"\${GOCACHE}\" \
+    GOMODCACHE=\"\${GOMODCACHE}\" \
+    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+      make install
   popd >/dev/null 2>&1
 }
 "
@@ -48,5 +74,6 @@ function cwmakeinstall_${rname}() {
 eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  echo 'alias hub=\"env MANPATH=${cwsw}/hub/current/share/man ${cwsw}/hub/current/bin/hub\"' >> \"${rprof}\"
 }
 "
