@@ -21,8 +21,10 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-crypto=mbedtls \
     --with-libmbedcrypto-prefix=\"${cwsw}/mbedtls/current\" \
+      CC=\"\${CC} -Os\" \
+      CFLAGS=\"-Os -Wl,-s \${CFLAGS}\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{mbedtls,zlib}/current/include)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{mbedtls,zlib}/current/lib) -static\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{mbedtls,zlib}/current/lib) -static -s\" \
       LIBS=\"-lmbedx509 -lmbedtls -lmbedcrypto -lz -static\"
   sed -i 's/Requires.private/Requires/g' libssh2.pc
   sed -i 's#${ridir}#${rtdir}/current#g' libssh2.pc
