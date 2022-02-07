@@ -1,9 +1,9 @@
 rname="ntbtls"
-rver="0.2.0"
+rver="0.3.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="649fe74a311d13e43b16b26ebaa91665ddb632925b73902592eac3ed30519e17"
+rsha256="d1d9c86fc31e8154657a4c01ec6da17628c75c0ea5d43388956305e3067c7d46"
 rreqs="make slibtool libgpgerror libgcrypt libksba zlib configgit"
 
 . "${cwrecipe}/common.sh"
