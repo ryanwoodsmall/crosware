@@ -150,7 +150,11 @@ function cwuninstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  echo 'append_path \"${cwsw}/openssh/current/bin\"' > \"${rprof}\"
+  echo 'append_path \"${cwsw}/openssh/current/sbin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/opensshlibressl/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/opensshlibressl/current/sbin\"' >> \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
   echo 'append_path \"${rtdir}/current/sbin\"' >> \"${rprof}\"
 }
 "
