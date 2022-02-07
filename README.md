@@ -1797,6 +1797,7 @@ wc -l /tmp/astbuild.out
 - usbutils (https://github.com/gregkh/usbutils)
 - utalk (http://utalk.ourproject.org/)
 - uwebsockets (https://github.com/uNetworking/uWebSockets - c++ lib that supports openssl/wolfssl)
+- vcluster (https://github.com/loft-sh/vcluster and https://www.vcluster.com - k8s inside a k8s namespace, cluster virtualization)
 - vde (virtual distributed ethernet, https://github.com/virtualsquare/vde-2)
 - vera / vera++ (bitbucket? github?)
 - vifm (https://github.com/vifm/vifm)
