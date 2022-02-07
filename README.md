@@ -1197,6 +1197,8 @@ wc -l /tmp/astbuild.out
 - joe (https://joe-editor.sourceforge.io/)
 - json-rpc-shell (https://git.janouch.name/p/json-rpc-shell)
 - JSON.sh (https://github.com/dominictarr/JSON.sh - json parser in shell/bash)
+- k0s (https://github.com/k0sproject/k0s and https://docs.k0sproject.io/ - lens' small k8s distribution)
+- k0sctl (https://github.com/k0sproject/k0sctl - bootstrapping/management for k0s nodes)
 - k3d (https://github.com/rancher/k3d and https://k3d.io - k3s in docker)
 - kakoune (http://kakoune.org/ and https://github.com/mawww/kakoune)
 - kerberos
@@ -1214,6 +1216,7 @@ wc -l /tmp/astbuild.out
   - mit
   - shishi (https://www.gnu.org/software/shishi/)
 - keyutils (http://people.redhat.com/~dhowells/keyutils/)
+- kine (https://github.com/k3s-io/kine - "kine is not etcd" - etcd api to rdbms w/sqlite, mysql, postgres, dqlite)
 - kineto (https://sr.ht/~sircmpwn/kineto/ and https://git.sr.ht/~sircmpwn/kineto - gemini to http gateway/proxy)
 - klipse (https://github.com/viebel/klipse - js-based multi-language code snippet evaluation framework)
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
