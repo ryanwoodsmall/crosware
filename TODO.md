@@ -898,6 +898,7 @@ time_func ls -l -A /
   - reconstitute from driver script
   - like a very limited version of shar
   - would have to do regular var for posix...
+- add shar support to cwextract
 
 <!--
 # vim: ft=markdown
