@@ -485,6 +485,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - kuroko (https://kuroko-lang.github.io/ and https://github.com/kuroko-lang/kuroko - small python-like dynamic language)
 - less (netbsdcurses)
 - lftp (https://lftp.yar.ru/)
+- libarchive (https://github.com/libarchive/libarchive and https://www.libarchive.org/ - libarchive.a, bsdtar/bsdcpio/bsdcat)
 - libassuan (https://gnupg.org/software/libassuan/index.html)
 - libatomicops
 - libbsd
@@ -1233,7 +1234,6 @@ wc -l /tmp/astbuild.out
 - lemon (https://www.hwaci.com/sw/lemon/ https://www.sqlite.org/lemon.html https://sqlite.org/src/doc/trunk/doc/lemon.html)
 - levee (https://github.com/Orc/levee)
 - lf (https://github.com/gokcehan/lf - go)
-- libarchive (https://github.com/libarchive/libarchive and https://www.libarchive.org/ - libarchive.a, bsdtar/bsdcpio/bsdcat)
 - libdash (https://github.com/mgree/libdash - shell as a library, ast, etc.)
 - libdbi (https://github.com/balabit/libdbi)
 - libdbi-drivers (https://github.com/balabit/libdbi-drivers)
