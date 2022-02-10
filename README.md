@@ -485,7 +485,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - kuroko (https://kuroko-lang.github.io/ and https://github.com/kuroko-lang/kuroko - small python-like dynamic language)
 - less (netbsdcurses)
 - lftp (https://lftp.yar.ru/)
-- libarchive (https://github.com/libarchive/libarchive and https://www.libarchive.org/ - libarchive.a, bsdtar/bsdcpio/bsdcat)
+- libarchive (https://github.com/libarchive/libarchive and https://www.libarchive.org/ - libarchive.a, bsdtar/bsdcpio/bsdcat, gz/bz2/lzo/lz4/lzma/iso9660 fs/... support)
 - libassuan (https://gnupg.org/software/libassuan/index.html)
 - libatomicops
 - libbsd
