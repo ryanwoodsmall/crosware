@@ -1,3 +1,7 @@
+#
+# XXX - tree 2.x.x available, need to test against pass: http://mama.indstate.edu/users/ice/tree/changes.html
+#
+
 rname="tree"
 rver="1.8.0"
 rdir="${rname}-${rver}"
