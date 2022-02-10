@@ -1259,6 +1259,8 @@ wc -l /tmp/astbuild.out
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
 - libsixel (https://github.com/saitoha/libsixel)
 - libslz (http://www.libslz.org/)
+- libsodium stuff
+  - lots of good stuff on this list: https://doc.libsodium.org/libsodium_users
 - libsysdev (https://github.com/idunham/libsysdev)
 - libtap (https://github.com/zorgnax/libtap)
 - libtls-bearssl (https://github.com/michaelforney/libtls-bearssl)
