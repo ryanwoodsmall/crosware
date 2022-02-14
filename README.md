@@ -1231,6 +1231,7 @@ wc -l /tmp/astbuild.out
   - depending on dynamic linker...
     - glibc: ```LD_TRACE_LOADED_OBJECTS=1 /path/to/linker.so /path/to/executable```
     - musl: setup **ldd** symlink to **ld.so**, run ```ldd /path/to/executable```
+- lego (https://github.com/go-acme/lego - let's encrypt, go)
 - lemon (https://www.hwaci.com/sw/lemon/ https://www.sqlite.org/lemon.html https://sqlite.org/src/doc/trunk/doc/lemon.html)
 - levee (https://github.com/Orc/levee)
 - lf (https://github.com/gokcehan/lf - go)
