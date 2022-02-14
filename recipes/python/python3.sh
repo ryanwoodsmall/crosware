@@ -6,8 +6,9 @@
 # XXX - uuid support is in e2fsprogs
 # XXX - move to libressl to avoid perl dep in openssl?
 # XXX - shared build should enable venv to work
-# XXX - "minimal" variant: libressl (no perl prereq), netbsdcurses+readline, ndbm (via bdb), sqlite, libffi
+# XXX - "minimal" variant: libressl (no perl prereq), netbsdcurses+readline, dbm/gdbm/ndbm (via gdbm), sqlite, libffi, ...
 # XXX - sabotage patch for netbsd-curses https://github.com/sabotage-linux/sabotage/blob/06a4a815/KEEP/python2710-curses.patch
+# XXX - standalone builds, crib?: https://github.com/indygreg/python-build-standalone
 #
 rname="python3"
 rver="3.7.12"
