@@ -2,6 +2,9 @@
 # XXX - separate out conf into ${cwtop}/etc/opkg?
 # XXX - provide a binary archive so opkg itself doesn't have to be bootstrapped...
 # XXX - libsolv support - it needs cmake though, ugh
+# XXX - state directory - var/opkg?
+# XXX - local repo?
+# XXX - per recipe cw{create,install}binpkg_${rname}
 #
 
 rname="opkg"
