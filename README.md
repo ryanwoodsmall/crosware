@@ -1547,6 +1547,19 @@ wc -l /tmp/astbuild.out
       LDFLAGS="$(pkg-config --libs libbsd-overlay) $(echo -L${cwsw}/{libressl,libbsd,libmd,fetchfreebsdlibressl,zlib}/current/lib) -static"
     ```
 - openresolv (http://roy.marples.name/projects/openresolv/ - resolvconf implementation)
+- opkg (https://git.yoctoproject.org/opkg - .ipk packages, needs libarchive (and req libs), curl (with openssl/libressl) and gnupg/gpgme)
+  - example... (with tinycurllibressl as curl provider)
+    - ```
+      env PATH="${cwsw}/tinycurllibressl/current/devbin:${PATH}" \
+        ./configure \
+          --prefix="${ridir}" \
+          --with-static-libopkg \
+          --enable-{xz,bzip2,lz4,zstd,sha256,curl,ssl-curl,gpg} \
+            CC="${CC} -Wl,-s" \
+            CFLAGS="${CFLAGS} -Wl,-s" \
+            CPPFLAGS= LDFLAGS='-static -s' \
+            PKG_CONFIG_{LIBDIR,PATH}="$(echo ${cwsw}/{libarchive,tinycurllibressl,libressl,gpgme}/current/lib/pkgconfig | tr ' ' ':')"
+      ```
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
   - "cannot be used as a static library" - what?
