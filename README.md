@@ -1038,6 +1038,7 @@ wc -l /tmp/astbuild.out
 - fq (https://github.com/wader/fq - like jq for binaries in go)
 - frontabse (http://openbsd.stanleylieber.com/frontbase - 9base fork?)
 - gatling (http://www.fefe.de/gatling/ - small web/cgi/ftp/smb server)
+- garage (https://git.deuxfleurs.fr/Deuxfleurs/garage and https://garagehq.deuxfleurs.fr/ - distributed s3 object store in rust)
 - gcc - other versions, builds, etc.
   - `gcc9`, `gcc10`, `gcc11` - default musl, useful for testing new versions
   - `gcc#glibc` - for gcc+glibc libc/libgcc_s/etc. (jdk, graalvm, ...)
