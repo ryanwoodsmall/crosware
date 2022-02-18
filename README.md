@@ -648,6 +648,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - openvpn (https://openvpn.net/community-downloads/ and https://github.com/OpenVPN/openvpn - openssl, zlib, lz4, lzo)
   - openvpnlibressl (libressl, lz4, lzo)
   - openvpnmbedtls (mbedtls, lz4, lzo)
+- opkg (https://git.yoctoproject.org/opkg - WIP .ipk package manager, libarchive/curl/openssl/gnupg/gpgme)
 - outils (https://github.com/leahneukirchen/outils - utils from openbsd, including jot/rs/vis/unvis/etc.)
 - p7zip
 - par (http://www.nicemice.net/par/ and https://bitbucket.org/amc-nicemice/par/src/master/)
@@ -1547,20 +1548,6 @@ wc -l /tmp/astbuild.out
       LDFLAGS="$(pkg-config --libs libbsd-overlay) $(echo -L${cwsw}/{libressl,libbsd,libmd,fetchfreebsdlibressl,zlib}/current/lib) -static"
     ```
 - openresolv (http://roy.marples.name/projects/openresolv/ - resolvconf implementation)
-- opkg (https://git.yoctoproject.org/opkg - .ipk packages, needs libarchive (and req libs), curl (with openssl/libressl) and gnupg/gpgme)
-  - example... (with tinycurllibressl as curl provider)
-    - ```
-      env PATH="${cwsw}/tinycurllibressl/current/devbin:${PATH}" \
-        ./configure \
-          --prefix="${ridir}" \
-          --with-static-libopkg \
-          --enable-{xz,bzip2,lz4,zstd,sha256,curl,ssl-curl,gpg} \
-            CC="${CC} -Wl,-s" \
-            CFLAGS="${CFLAGS} -Wl,-s" \
-            LDFLAGS='-static -s' \
-            PKG_CONFIG_{LIBDIR,PATH}="$(echo ${cwsw}/{libarchive,tinycurllibressl,libressl,gpgme}/current/lib/pkgconfig | tr ' ' ':')" \
-            CPPFLAGS=
-      ```
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
   - "cannot be used as a static library" - what?
