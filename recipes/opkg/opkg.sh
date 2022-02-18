@@ -5,6 +5,8 @@
 # XXX - state directory - var/opkg?
 # XXX - local repo?
 # XXX - per recipe cw{create,install}binpkg_${rname}
+# XXX - compression type?
+# XXX - gpg signing/distribution?
 #
 
 rname="opkg"
