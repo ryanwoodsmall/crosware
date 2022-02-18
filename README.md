@@ -427,6 +427,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - gnupg (with ntbtls - https://gnupg.org/software/index.html)
   - gnupg1 (gnupg 1.x - older, smaller gnupg version, with fewer prereqs)
 - gnutls (https://gnutls.org/)
+- gpgme (https://gnupg.org/software/gpgme/index.html - gnupg access library)
 - go
   - static binary archive
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
@@ -1056,7 +1057,6 @@ wc -l /tmp/astbuild.out
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - gpg
-  - gpgme
   - etc.
 - graphviz (http://graphviz.org/)
 - gron (https://github.com/tomnomnom/gron - greppable json, in go)
