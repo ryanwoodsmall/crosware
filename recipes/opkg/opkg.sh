@@ -7,6 +7,7 @@
 # XXX - per recipe cw{create,install}binpkg_${rname}
 # XXX - compression type?
 # XXX - gpg signing/distribution?
+# XXX - building packages by hand: https://raymii.org/s/tutorials/Building_IPK_packages_by_hand.html
 #
 
 rname="opkg"
