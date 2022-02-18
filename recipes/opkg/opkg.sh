@@ -32,6 +32,16 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwmakeinstall_${rname}() {
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  make install ${rlibtool}
+  cwmkdir \"${ridir}/etc/opkg\"
+  touch \"${ridir}/etc/opkg/default.conf\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
