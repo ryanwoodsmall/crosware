@@ -1557,8 +1557,9 @@ wc -l /tmp/astbuild.out
           --enable-{xz,bzip2,lz4,zstd,sha256,curl,ssl-curl,gpg} \
             CC="${CC} -Wl,-s" \
             CFLAGS="${CFLAGS} -Wl,-s" \
-            CPPFLAGS= LDFLAGS='-static -s' \
-            PKG_CONFIG_{LIBDIR,PATH}="$(echo ${cwsw}/{libarchive,tinycurllibressl,libressl,gpgme}/current/lib/pkgconfig | tr ' ' ':')"
+            LDFLAGS='-static -s' \
+            PKG_CONFIG_{LIBDIR,PATH}="$(echo ${cwsw}/{libarchive,tinycurllibressl,libressl,gpgme}/current/lib/pkgconfig | tr ' ' ':')" \
+            CPPFLAGS=
       ```
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
