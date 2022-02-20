@@ -1,9 +1,9 @@
 rname="tio"
-rver="1.34"
+rver="1.35"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="ec5f659fcab6ebab5ff3aa8737d67809441e6f69f62fc8f38ab11986908254e1"
+rsha256="1309ecde7675f4e97cf363a8ab96ff668e14ab3f2176a15b6d626731251c9d09"
 rreqs="meson"
 
 . "${cwrecipe}/common.sh"
