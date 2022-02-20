@@ -1548,6 +1548,7 @@ wc -l /tmp/astbuild.out
       LDFLAGS="$(pkg-config --libs libbsd-overlay) $(echo -L${cwsw}/{libressl,libbsd,libmd,fetchfreebsdlibressl,zlib}/current/lib) -static"
     ```
 - openresolv (http://roy.marples.name/projects/openresolv/ - resolvconf implementation)
+- openvi (https://github.com/johnsonjh/OpenVi - portable openbsd vi)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
   - "cannot be used as a static library" - what?
