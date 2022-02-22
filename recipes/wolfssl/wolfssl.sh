@@ -11,11 +11,11 @@
 #
 
 rname="wolfssl"
-rver="5.1.1"
+rver="5.2.0"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="7dbcb7cf0338ab96e8086d3cd5d0280cedb3646e28bf5d61cc112a4e9b1a7251"
+rsha256="c2919203ce789a429340fe1580c2f65868b95c51ea7619649f3e8808de6ee846"
 rreqs="make cacertificates configgit slibtool toybox"
 
 . "${cwrecipe}/common.sh"
@@ -39,6 +39,7 @@ function cwconfigure_${rname}() {
     --enable-aesgcm-stream \
     --enable-aeskeywrap \
     --enable-aesofb \
+    --enable-aessiv \
     --enable-anon \
     --enable-arc4 \
     --enable-alpn \
@@ -65,11 +66,11 @@ function cwconfigure_${rname}() {
     --enable-ed448 \
     --enable-ed448-stream \
     --enable-fpecc \
-    --enable-hc128 \
     --enable-hkdf \
-    --enable-idea \
+    --enable-hmac \
     --enable-indef \
     --enable-jobserver=no \
+    --enable-kdf \
     --enable-keygen \
     --enable-libssh2 \
     --enable-maxfragment \
@@ -90,7 +91,6 @@ function cwconfigure_${rname}() {
     --enable-pkcs12 \
     --enable-psk \
     --enable-pwdbased \
-    --enable-rabbit \
     --enable-renegotiation-indication \
     --enable-ripemd \
     --enable-rsapss \
@@ -100,8 +100,10 @@ function cwconfigure_${rname}() {
     --enable-scrypt \
     --enable-sessioncerts \
     --enable-session-ticket \
+    --enable-siphash \
     --enable-sni \
     --enable-srp \
+    --enable-srtp \
     --enable-ssh \
     --enable-sslv3 \
     --enable-stunnel \
