@@ -8,6 +8,9 @@
 # XXX - compression type?
 # XXX - gpg signing/distribution?
 # XXX - building packages by hand: https://raymii.org/s/tutorials/Building_IPK_packages_by_hand.html
+# XXX - workstation repo: https://jumpnowtek.com/yocto/Using-your-build-workstation-as-a-remote-package-repository.html
+# XXX - private repo: https://jumpnowtek.com/yocto/Managing-a-private-opkg-repository.html
+# XXX - opkg presentation: https://elinux.org/images/2/24/Opkg_debians_little_cousin.pdf
 #
 
 rname="opkg"
