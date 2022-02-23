@@ -832,6 +832,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - abs (https://www.abs-lang.org/ and https://github.com/abs-lang/abs - shell like interpreter in go)
 - ack (https://beyondgrep.com/)
 - acme-dns (https://github.com/joohoi/acme-dns - REST/ACME DNS in go)
+  - acme-dns-client (https://github.com/acme-dns/acme-dns-client - go)
 - acme labs (http://www.acme.com/software/ - SO MUCH GOOD STUFF)
   - db (http://www.acme.com/software/db/ - gdbm? ndbm/sdbm/dbm?)
   - js_httpd (http://www.acme.com/software/js_httpd/)
