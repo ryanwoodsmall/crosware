@@ -12,11 +12,11 @@
 #
 
 rname="openssh"
-rver="8.8p1"
+rver="8.9p1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${rfile}"
-rsha256="4590890ea9bb9ace4f71ae331785a3a5823232435161960ed5fc86588f331fe9"
+rsha256="fd497654b7ab1686dac672fb83dfb4ba4096e8b5ffcdaccd262380ae58bec5e7"
 
 sslprov="openssl"
 
