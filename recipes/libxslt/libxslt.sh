@@ -7,7 +7,7 @@ rfile="${rdir}.tar.xz"
 #rurl="http://xmlsoft.org/sources/${rfile}"
 rurl="https://download.gnome.org/sources/${rname}/${rver%.*}/${rfile}"
 rsha256="8247f33e9a872c6ac859aa45018bc4c4d00b97e2feac9eebc10c93ce1f34dd79"
-rreqs="make libgcrypt libxml2 slibtool xz zlib pkgconfig"
+rreqs="make libgpgerror libgcrypt libxml2 slibtool xz zlib pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
@@ -16,8 +16,10 @@ function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
   env PATH=\"${cwsw}/libxml2/current/bin:${cwsw}/libgcrypt/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+      --with-crypto \
       --with-libxml-prefix=\"${cwsw}/libxml2/current\" \
       --without-python \
+      --without-plugins \
         LIBS='-llzma -lz' \
         LIBXML_CFLAGS=\"\$(pkg-config --cflags liblzma zlib libxml-2.0)\" \
         LIBXML_LIBS=\"\$(pkg-config --libs liblzma zlib libxml-2.0)\"
