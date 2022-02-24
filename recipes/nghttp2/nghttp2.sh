@@ -7,11 +7,11 @@
 #
 
 rname="nghttp2"
-rver="1.46.0"
+rver="1.47.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="1a68cc4a5732afb735baf50aaac3cb3a6771e49f744bd5db6c49ab5042f12a43"
+rsha256="68271951324554c34501b85190f22f2221056db69f493afc3bbac8e7be21e7cc"
 rreqs="make busybox slibtool"
 
 . "${cwrecipe}/common.sh"
