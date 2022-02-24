@@ -1283,6 +1283,7 @@ wc -l /tmp/astbuild.out
 - libwaive (https://github.com/dimkr/libwaive - tame/pledge-like seccomp perms waiver)
 - libwebsock (https://github.com/payden/libwebsock)
 - libwebsockets (https://libwebsockets.org/)
+- libxcrypt (https://github.com/besser82/libxcrypt - use with openssh for more auth methods? may need perl?)
 - libyaml (https://github.com/yaml/libyaml)
 - lisp stuff
   - aria (https://github.com/rxi/aria - tiny embeddable language)
