@@ -842,6 +842,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - see `openssl-cert-wrapper` idea in [TODO.md](TODO.md)
   - lots of dns updates in there too...
     - dyn, freedns, etc. update script: https://github.com/acmesh-official/acme.sh/blob/master/dnsapi/dns_freedns.sh
+- acmetool (https://github.com/hlandau/acmetool - acme tool in go)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - agner fog's stuff
   - https://www.agner.org/optimize/#objconv
