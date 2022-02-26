@@ -1,7 +1,9 @@
 #
 # XXX - move to official github? https://github.com/unfs3/unfs3
 # XXX - tcp seems sketchy? udp works?
+# XXX - write an exports file: echo '/usr/local/crosware 0.0.0.0/0(ro)' | tee ${cwtop}/tmp/exports
 # XXX - start with: unfsd -d -e ${cwtop}/tmp/exports -i /tmp/unfsd.pid -u -n 2049 -m 2049 -p -s
+# XXX - mount with: mount -t nfs -o udp,rw,port=2049,mountport=2049 10.11.12.13:/usr/local/crosware /mnt/tmp
 #
 
 rname="unfs3"
