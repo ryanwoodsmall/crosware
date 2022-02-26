@@ -1731,6 +1731,7 @@ wc -l /tmp/astbuild.out
 - srv (https://github.com/joshuarli/srv)
 - sshuttle (https://github.com/sshuttle/sshuttle)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
+- starlark-go (https://github.com/google/starlark-go - starlark, python-like configuration language in go w/interpreter)
 - subversion / svn
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
 - suckless
