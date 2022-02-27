@@ -3,11 +3,11 @@
 #
 
 rname="libgit2"
-rver="1.4.1"
+rver="1.4.2"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="fccd371a271133e29d002dd207490d22a0c9b06992b874b8edb8366532a94f54"
+rsha256="901c2b4492976b86477569502a41c31b274b69adc177149c02099ea88404ef19"
 rreqs="make zlib pkgconfig openssl libssh2 cmake"
 rbdir="${cwbuild}/${rdir}/build"
 
@@ -16,9 +16,12 @@ rbdir="${cwbuild}/${rdir}/build"
 eval "
 function cwconfigure_${rname}() {
   cwmkdir \"${rbdir}\"
+  local extra=''
+  test -z \"\$(which -a python python2 python3)\" && extra='-DBUILD_TESTS=OFF' || true
   pushd \"${rbdir}\" >/dev/null 2>&1
   env PATH=\"${cwsw}/cmake/current/bin:${cwsw}/pkgconfig/current/bin:\${PATH}\" \
     cmake .. \
+      \${extra} \
       -DBUILD_CLAR=OFF \
       -DBUILD_SHARED_LIBS=OFF \
       -DUSE_SSH=ON \
@@ -31,6 +34,7 @@ function cwconfigure_${rname}() {
       -DZLIB_INCLUDE_DIR=\"${cwsw}/zlib/current/include\"
   sed -i.ORIG '/Requires.private/s/\\.private:/:/g' ${rname}.pc
   sed -i '/^Requires/s/\$/ libcrypto libssl libssh2 zlib/g' ${rname}.pc
+  unset extra
   popd >/dev/null 2>&1
 }
 "
