@@ -14,6 +14,11 @@
 #  - memcached
 # XXX - explicitly disable stuff?
 #  - --without-{krb5,openssl,wolfssl,nettle,gnutls,nss,ldap,pam,fam,gdbm,sasl,libev}
+# XXX - quick/dirty md5 htdigest passwords without htdigest from apache httpd:
+#  - echo "user:realm:$(echo -n user:realm:password | md5sum | awk '{print $1}')"
+#  - need to cut the first 32 chars for the digest?
+#  - keep user+realm short!
+#  - https://github.com/apache/httpd/blob/trunk/support/htdigest.c
 #
 
 rname="lighttpd"
