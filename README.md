@@ -505,7 +505,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libixp (https://github.com/0intro/libixp - ixpc - 9p client/library)
 - libksba (https://gnupg.org/software/libksba/index.html)
 - libmd (https://www.hadrons.org/software/libmd/)
-- libmetalink (https://github.com/metalink-dev/libmetalink)
 - libnl
 - liboop (https://www.lysator.liu.se/liboop/)
 - libpcap
@@ -1869,10 +1868,12 @@ wc -l /tmp/astbuild.out
 - support libraries for building the above
 - whatever else seems useful
 
-## deprecated/broken recipes
+## deprecated/broken/disabled recipes
 
 - bsdheaders (https://github.com/bonsai-linux/bsd-headers - from bonsai linux, workaround DECLS for cdefs.h)
   - upstream repo went missing
+- libmetalink (https://github.com/metalink-dev/libmetalink)
+  - supported only in wget, which tries to bring in gpgme and its assorted deps; easier to remove for now
 
 
 <!--
