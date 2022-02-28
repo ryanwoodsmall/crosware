@@ -899,6 +899,11 @@ time_func ls -l -A /
   - like a very limited version of shar
   - would have to do regular var for posix...
 - add shar support to cwextract
+- split out `cwgenprofd_...` into an "shower" and a "writer"
+  - would make buildtime `CPPFLAGS/LDFLAGS/PKG_CONFIG_{LIBDIR,PATH}` more dynamic
+  - could pull FLAGS out of the runtime environment completely
+  - better sequestration, smaller environment, less screwing with include/lib dirs on real systems
+  - semi- dev/bin split, not sure i like that
 
 <!--
 # vim: ft=markdown
