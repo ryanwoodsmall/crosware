@@ -982,6 +982,7 @@ wc -l /tmp/astbuild.out
 - cgpt (google source only?)
 - cmark (commonmark markddown - https://github.com/commonmark/cmark)
   - cmark-gfm (github fork - https://github.com/github/cmark-gfm)
+- compcert (https://github.com/AbsInt/CompCert and https://compcert.org - formally verified c compiler)
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
   - firm (https://pp.ipd.kit.edu/firm/ - related?)
 - cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
