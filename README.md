@@ -1524,6 +1524,7 @@ wc -l /tmp/astbuild.out
 - notcurses (https://github.com/dankamongmen/notcurses)
 - nq (https://github.com/leahneukirchen/nq)
 - nss (ugh)
+- nuitka (https://github.com/Nuitka/Nuitka and https://nuitka.net - python compiler using cpython)
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - nyacc (https://www.nongnu.org/nyacc/ and https://savannah.nongnu.org/projects/nyacc)
 - obase (https://github.com/leahneukirchen/obase - unmaintained, see outils)
