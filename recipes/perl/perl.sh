@@ -4,11 +4,11 @@
 #
 
 rname="perl"
-rver="5.30.3"
+rver="5.32.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.cpan.org/src/5.0/${rfile}"
-rsha256="32e04c8bb7b1aecb2742a7f7ac0eabac100f38247352a73ad7fa104e39e7406f"
+rsha256="03b693901cd8ae807231b1787798cf1f2e0b8a56218d07b7da44f784a7caeb2c"
 rreqs="make toybox busybox byacc"
 
 . "${cwrecipe}/common.sh"
