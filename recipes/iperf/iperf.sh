@@ -1,3 +1,10 @@
+#
+# XXX - 2.1.5 / 2.1.6 - breaks with gettcpinfo
+#   gettcpinfo.c: In function 'gettcpinfo':
+#   gettcpinfo.c:101:42: error: expected declaration or statement at end of input
+#     101 | inline void gettcpinfo (int sock, struct ReportStruct *sample) {
+#
+
 rname="iperf"
 rver="2.1.4"
 rdir="${rname}-${rver}"
