@@ -388,6 +388,7 @@
   - convert any ```\"...\"``` escapes in **eval** blocks (recipes) to ```'...'```
 - binary packaging?
   - possibly build _.ipk_ files and include **opkg** for binary installation?
+    - epoch <-> release for opkg?
   - _.tar_ would suffice
   - hosting, ugh, signing, ugh, verification, ugh, ugh,
     - local only _package/_ directory
@@ -637,6 +638,7 @@ time_func ls -l -A /
   - can use a catch-all here with `\*)`
 - "epoch" for packages
   - changes (for most recipes) when compilers are updated
+    - releases for **opkg** _.ipk_ files too?
   - main epoch stored in `/bin/crosware` or `/etc/profile` or `/recipes/common.sh`
     - `: ${cwepoch:=""}` then set based on compiler date if `test -z`
     - track `${cwoldepochs[@]}` (1 2 3 ...) and `${cwallepochs[@]}` (c 1 2 3 ...)
