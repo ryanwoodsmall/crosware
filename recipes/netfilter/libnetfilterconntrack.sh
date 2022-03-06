@@ -1,9 +1,9 @@
 rname="libnetfilterconntrack"
-rver="1.0.8"
+rver="1.0.9"
 rdir="${rname//rc/r_c}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://www.netfilter.org/pub/${rname//rc/r_c}/${rfile}"
-rsha256="0cd13be008923528687af6c6b860f35392d49251c04ee0648282d36b1faec1cf"
+rsha256="67bd9df49fe34e8b82144f6dfb93b320f384a8ea59727e92ff8d18b5f4b579a8"
 rreqs="bootstrapmake pkgconfig libmnl libnfnetlink"
 
 . "${cwrecipe}/common.sh"
