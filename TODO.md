@@ -907,6 +907,9 @@ time_func ls -l -A /
 - `cwoldversions_${rname}`
   - setup symlinks to oldversions for e.g. forcing `pkg-config` or `${rname}-config` script reification
   - similar to **ncurses**
+- `cwpostinstall_${rname}`
+  - function to run after `cwmakeinstall_`
+  - or end of `cwinstall_`?
 
 <!--
 # vim: ft=markdown
