@@ -1,9 +1,9 @@
 rname="libcap"
-rver="2.52"
+rver="2.53"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/${rfile}"
-rsha256="a2faacd55ae5959db1b0c695f91f256ac4c5e6b10acaeaeaf508ea1ee887fa97"
+rsha256="9546b7e5358a67a6a4fb0f51715b628efdeff00ee0e629666847ed7de3c63571"
 rreqs="make perl attr"
 
 . "${cwrecipe}/common.sh"
