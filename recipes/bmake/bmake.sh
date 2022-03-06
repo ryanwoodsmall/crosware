@@ -4,11 +4,11 @@
 #
 
 rname="bmake"
-rver="20220214"
+rver="20220303"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.crufty.net/ftp/pub/sjg/${rfile}"
-rsha256="e5b0af84ed3bdfde202973deb4d449cbd00cc523bac56fb13427f21d16b17edc"
+rsha256="793754b93fec97a0cf6cade0b0ad597bb7ea5057fd24311d4a562432df3e91cb"
 rreqs=""
 rbdir="${cwbuild}/${rdir}/build"
 rprof="${cwetcprofd}/zz_${rname}.sh"
