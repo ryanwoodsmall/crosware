@@ -1,9 +1,9 @@
 rname="libpcap"
-rver="1.9.1"
+rver="1.10.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.tcpdump.org/release/${rfile}"
-rsha256="635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094"
+rsha256="8d12b42623eeefee872f123bd0dc85d535b00df4d42e865f993c40f7bfc92b1e"
 rreqs="make bison flex libnl"
 
 . "${cwrecipe}/common.sh"
