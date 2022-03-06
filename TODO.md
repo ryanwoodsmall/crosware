@@ -904,6 +904,9 @@ time_func ls -l -A /
   - could pull FLAGS out of the runtime environment completely
   - better sequestration, smaller environment, less screwing with include/lib dirs on real systems
   - semi- dev/bin split, not sure i like that
+- `cwoldversions_${rname}`
+  - setup symlinks to oldversions for e.g. forcing `pkg-config` or `${rname}-config` script reification
+  - similar to **ncurses**
 
 <!--
 # vim: ft=markdown
