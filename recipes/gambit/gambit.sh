@@ -1,3 +1,7 @@
+#
+# XXX - need a "make modules" in here?
+#
+
 rname="gambit"
 rver="4.9.4"
 rdir="${rname}-${rver}"
@@ -12,10 +16,11 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
-    CFLAGS='-Wl,-static -fPIC' \
-    CXXFLAGS='-Wl,-static -fPIC' \
-    LDFLAGS='-static' \
-    CPPFLAGS=''
+    CFLAGS=-fPIC \
+    CXXFLAGS=-fPIC \
+    LDFLAGS= \
+    CPPFLAGS= \
+    PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
 "
