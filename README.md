@@ -1059,6 +1059,7 @@ wc -l /tmp/astbuild.out
   - pure go, might make for a decent no-frills clone/fetch/merge client?
 - gojq (https://github.com/itchyny/gojq - jq in go)
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
+- go-toml (https://github.com/pelletier/go-toml - go toml library with jsontoml/tomljson/tomll programs)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - gpg
   - etc.
