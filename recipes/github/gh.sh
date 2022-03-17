@@ -1,9 +1,9 @@
 rname="gh"
-rver="2.5.2"
+rver="2.6.0"
 rdir="cli-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/cli/cli/archive/refs/tags/${rfile}"
-rsha256="cbf22fea4574047ca3a356ee4ef629d62b872f4c4ff4e4b78fe4f89ca431858e"
+rsha256="e5dda0f214f31b523a58ed227bb837695110c2a89e24e7d3e306d017b42002a4"
 rreqs="go bootstrapmake"
 
 if ! $(command -v git &>/dev/null) ; then
@@ -21,7 +21,9 @@ function cwconfigure_${rname}() {
 eval "
 function cwclean_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
-  chmod -R u+rw \"${rbdir}\" || true
+  if [ -e \"${rbdir}\" ] ; then
+     chmod -R u+rw \"${rbdir}\" || true
+  fi
   rm -rf \"${rbdir}\"
   popd >/dev/null 2>&1
 }
