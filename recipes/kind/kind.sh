@@ -1,9 +1,9 @@
 rname="kind"
-rver="0.11.1"
+rver="0.12.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/kubernetes-sigs/${rname}/archive/refs/tags/${rfile}"
-rsha256="95ce0e7b01c00be149e5bd777936cef3f79ba7f1f3e5872e7ed60595858a2491"
+rsha256="cd1d09921b3c8a0f58c6423e5706be0c6e556f0c3d2b9e62f42be59263b209bb"
 rreqs="bootstrapmake go"
 
 . "${cwrecipe}/common.sh"
