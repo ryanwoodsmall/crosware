@@ -11,11 +11,11 @@
 # XXX - standalone builds, crib?: https://github.com/indygreg/python-build-standalone
 #
 rname="python3"
-rver="3.7.12"
+rver="3.7.13"
 rdir="Python-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.python.org/ftp/python/${rver}/${rfile}"
-rsha256="f77bf7fb47839f213e5cbf7827281078ea90de7e72b44f10d7ef385ea8c43210"
+rsha256="99f106275df8899c3e8cb9d7c01ce686c202ef275953301427194693de5bef84"
 rreqs="make bzip2 zlib ncurses readline openssl gdbm sqlite bdb47 expat libffi xz utillinux pkgconfig"
 
 . "${cwrecipe}/common.sh"
