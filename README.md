@@ -462,6 +462,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - iftop
 - inetutils
 - indent
+- inih (https://github.com/benhoyt/inih - .ini file parser in C, using ninja+meson)
 - iperf
   - iperf
   - iperf3
