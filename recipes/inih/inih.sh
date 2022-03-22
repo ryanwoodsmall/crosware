@@ -12,7 +12,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   env PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:\${PATH}\" \
-    \"${cwsw}/meson/current/bin/meson\" --prefix=\"${ridir}\" -Ddefault_library=static build
+    \"${cwsw}/meson/current/bin/meson\" --prefix=\"${ridir}\" --libdir=\"${ridir}/lib\" -Ddefault_library=static build
   popd >/dev/null 2>&1
 }
 "
