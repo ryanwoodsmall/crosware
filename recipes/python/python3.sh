@@ -9,7 +9,7 @@
 # XXX - "minimal" variant: libressl (no perl prereq), netbsdcurses+readline, dbm/gdbm/ndbm (via gdbm), sqlite, libffi, ...
 # XXX - sabotage patch for netbsd-curses https://github.com/sabotage-linux/sabotage/blob/06a4a815/KEEP/python2710-curses.patch
 # XXX - standalone builds, crib?: https://github.com/indygreg/python-build-standalone
-# XXX - meson cruft is ugly, need real separation
+# XXX - ninja/meson cruft is ugly, need real separation
 #
 rname="python3"
 rver="3.7.13"
@@ -68,12 +68,15 @@ function cwmakeinstall_${rname}() {
     CFLAGS='-fPIC' \
     CXXFLAGS='-fPIC' \
     LDFLAGS=\"\${LDFLAGS//-static/}\"
-  if \$(cwcheckinstalled meson) ; then
-    cwlinkdir_${rname}
-    cwgenprofd_${rname}
-    cwmarkinstall_${rname}
-    cwinstall_meson
-  fi
+  for p in ninja meson ; do
+    if \$(cwcheckinstalled \${p}) ; then
+      cwlinkdir_${rname}
+      cwgenprofd_${rname}
+      cwmarkinstall_${rname}
+      cwinstall_\${p}
+    fi
+  done
+  unset p
   popd >/dev/null 2>&1
 }
 "
