@@ -1565,6 +1565,7 @@ wc -l /tmp/astbuild.out
 - otools (https://github.com/CarbsLinux/otools - carbs linux openbsd ports)
 - p9 (https://github.com/hugelgupf/p9 - go 9p client/server, with p9ufs server bin)
 - parenj / parenjs
+- partcl (https://github.com/zserge/partcl and https://zserge.com/posts/tcl-interpreter/ - a small tcl interpreter)
 - pax
 - pciutils (https://github.com/pciutils/pciutils)
   - _/usr/share/misc/pci.ids_ file (https://github.com/pciutils/pciids)
