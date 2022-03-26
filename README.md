@@ -990,6 +990,7 @@ wc -l /tmp/astbuild.out
 - cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
 - cronolog (https://github.com/fordmason/cronolog)
   - maybe a fork? (https://github.com/pbiering/cronolog seems active)
+  - another one? (https://github.com/FireBurn/cronolog)
   - svlogd from busybox can do _some_ of the same thing?)
 - crosstool-ng toolchain (gcc, a libc, binutils, etc. ?)
   - would be useful to provide gcc with glibc support for more "native" builds
