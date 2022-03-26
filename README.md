@@ -1124,7 +1124,8 @@ wc -l /tmp/astbuild.out
   - alpine openjdk? 11? 8?
   - ant (included in sdkman)
   - antlr
-  - ceylon (included in sdkman)
+  - ballerina (https://ballerina.io and https://github.com/ballerina-platform/ballerina-lang - included in sdkman)
+  - ceylon (https://ceylon-lang.org and https://github.com/eclipse/ceylon)
   - clojure (leiningen included in sdkman)
   - ecj (separate compiler from eclipse? native code w/graal, gcj, etc.?)
   - frege (https://github.com/Frege/frege)
@@ -1132,6 +1133,7 @@ wc -l /tmp/astbuild.out
   - grails (included in sdkman)
   - groovy (included in sdkman)
   - hg4j and client wrapper (https://github.com/nathansgreen/hg4j)
+  - ivy (https://ant.apache.org/ivy/)
   - java-repl
   - jbang (https://www.jbang.dev/ - in sdkman)
   - jikes (dead but useful?)
