@@ -321,6 +321,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - bc (gnu bc, dc)
 - bdb185 (berkeley db 1.85)
 - bdb47 (berkeley db 4.x)
+- beanshell2 (https://github.com/beanshell/beanshell and https://beanshell.github.io - java scripting, leaving beanshell open for 3.x...)
 - bearssl (https://bearssl.org/)
 - bim (https://github.com/klange/bim - minimal vim-alike, pure-C version 2.x)
   - bim3 (kuroko-based editor)
@@ -1123,7 +1124,6 @@ wc -l /tmp/astbuild.out
   - alpine openjdk? 11? 8?
   - ant (included in sdkman)
   - antlr
-  - beanshell
   - ceylon (included in sdkman)
   - clojure (leiningen included in sdkman)
   - ecj (separate compiler from eclipse? native code w/graal, gcj, etc.?)
