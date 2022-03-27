@@ -1776,6 +1776,7 @@ wc -l /tmp/astbuild.out
 - tcc (http://repo.or.cz/w/tinycc.git)
   - static compilation is _pretty broken_
 - tcpredirect (https://github.com/chengyingyuan/tcpredirect - keyed redirect/proxying?)
+- tea (https://gitea.com/gitea/tea - gitea cli)
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
 - timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - tlse (https://github.com/eduardsui/tlse - c tls impl using libtomcrypt)
