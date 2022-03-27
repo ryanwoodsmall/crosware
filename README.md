@@ -730,6 +730,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - sbase (https://core.suckless.org/sbase)
   - ubase (https://core.suckless.org/ubase)
 - svnkit
+- tea (https://gitea.com/gitea/tea - gitea cli)
 - tetrisbsd (https://github.com/sirjofri/tetris-bsd)
 - texinfo (untested, requires perl)
 - tig (https://github.com/jonas/tig - console git repo pager/browser/ui, ncurses)
@@ -1776,7 +1777,6 @@ wc -l /tmp/astbuild.out
 - tcc (http://repo.or.cz/w/tinycc.git)
   - static compilation is _pretty broken_
 - tcpredirect (https://github.com/chengyingyuan/tcpredirect - keyed redirect/proxying?)
-- tea (https://gitea.com/gitea/tea - gitea cli)
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
 - timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - tlse (https://github.com/eduardsui/tlse - c tls impl using libtomcrypt)
