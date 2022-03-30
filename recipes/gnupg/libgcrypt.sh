@@ -1,13 +1,9 @@
-#
-# XXX - prefer 1.8.x LTS?
-#
-
 rname="libgcrypt"
-rver="1.9.4"
+rver="1.8.9"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="ea849c83a72454e3ed4267697e8ca03390aee972ab421e7df69dfe42b65caaf7"
+rsha256="2bda4790aa5f0895d3407cf7bf6bd7727fd992f25a45a63d92fef10767fa3769"
 rreqs="make libgpgerror slibtool configgit"
 
 . "${cwrecipe}/common.sh"
