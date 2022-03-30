@@ -1,10 +1,14 @@
+#
+# XXX - something like this should work for figuring url...
+#  echo "${rver}" | grep -q '.*\..*\..*' && sver="${rver%.?}" || sver="${rver}"
+#
 rname="utillinux"
-rver="2.37.4"
+rver="2.38"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
-rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver%.?}/${rfile}"
-#rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver}/${rfile}"
-rsha256="634e6916ad913366c3536b6468e7844769549b99a7b2bf80314de78ab5655b83"
+#rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver%.?}/${rfile}"
+rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver}/${rfile}"
+rsha256="6d111cbe4d55b336db2f1fbeffbc65b89908704c01136371d32aa9bec373eb64"
 rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig"
 
 . "${cwrecipe}/common.sh"
