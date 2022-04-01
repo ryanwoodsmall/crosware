@@ -26,12 +26,12 @@
 #   dropbearkey -y -f ~/.ssh/id_dropbear | egrep -v '^(Public key.*:|Fingerprint:)' > ~/.ssh/id_rsa.pub
 #
 rname="dropbear"
-rver="2020.81"
+rver="2022.82"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 #rurl="https://matt.ucc.asn.au/${rname}/releases/${rfile}"
 rurl="https://dropbear.nl/mirror/releases/${rfile}"
-rsha256="48235d10b37775dbda59341ac0c4b239b82ad6318c31568b985730c788aac53b"
+rsha256="3a038d2bbc02bf28bbdd20c012091f741a3ec5cbe460691811d714876aad75d1"
 # need a patch program, try toybox
 rreqs="make toybox zlib configgit"
 
