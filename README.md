@@ -831,6 +831,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 
 ## recipes to consider
 
+- 3mux (https://github.com/aaronjanse/3mux - tmux-like multiplex in go)
 - 9pfs (https://github.com/mischief/9pfs - fuse 9p driver)
 - abs (https://www.abs-lang.org/ and https://github.com/abs-lang/abs - shell like interpreter in go)
 - ack (https://beyondgrep.com/)
