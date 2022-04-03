@@ -967,6 +967,7 @@ wc -l /tmp/astbuild.out
     ```
 - chrpath
 - c/c++ compiler stuff
+  - lots of links to compilers/transpilers/interpreters/... that interact with/output C: https://github.com/dbohdan/compilers-targeting-c
   - 8cc (https://github.com/rui314/8cc)
   - 9cc (https://github.com/rui314/9cc)
   - 9-cc (https://github.com/0intro/9-cc - unix port of plan 9 compiler)
