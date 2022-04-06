@@ -8,7 +8,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="ce30acdf4a41bc5bb30dd955e9eaa75fa216b4e3deb08889ed32433c7b3b97ce"
-rreqs="make gettexttiny sed attr acl"
+rreqs="make gettexttiny sed attr acl perl"
 
 . "${cwrecipe}/common.sh"
 
@@ -22,7 +22,7 @@ function cwconfigure_${rname}() {
     --enable-acl \
     --enable-single-binary=symlinks \
     --enable-xattr \
-    --without-gmp \
+    --without-libgmp \
     --without-openssl \
     --without-selinux \
       CPPFLAGS='-I${cwsw}/acl/current/include -I${cwsw}/attr/current/include' \
