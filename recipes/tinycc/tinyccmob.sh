@@ -4,7 +4,7 @@
 #
 
 rname="tinyccmob"
-rver="d33b1894273444eda8d87d9f54acdeb21ba37ce6"
+rver="750f0a3e3f11c1a442f00f017c2548a8f63e0b9f"
 rdir="${rname//mob/}-${rver:0:7}"
 rfile="${rver}.tar.gz"
 rurl="https://repo.or.cz/tinycc.git/snapshot/${rfile}"
