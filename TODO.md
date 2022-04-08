@@ -912,6 +912,10 @@ time_func ls -l -A /
 - `cwpostinstall_${rname}`
   - function to run after `cwmakeinstall_`
   - or end of `cwinstall_`?
+- remove unused functions from recipes
+  - basically just do `undef -f ${func}`?
+  - or `true` them out so they're _there_ but don't do anything?
+  - `rundeffunctions` per-recipe setting or similar?
 
 <!--
 # vim: ft=markdown
