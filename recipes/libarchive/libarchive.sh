@@ -9,11 +9,11 @@
 #
 
 rname="libarchive"
-rver="3.6.0"
+rver="3.6.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="df283917799cb88659a5b33c0a598f04352d61936abcd8a48fe7b64e74950de7"
+rsha256="5a411aceb978f43e626f0c2d1812ddd8807b645ed892453acabd532376c148e6"
 rreqs="make expat zlib bzip2 lz4 lzo zstd mbedtls xz libmd attr acl e2fsprogs libbsd pkgconfig"
 
 . "${cwrecipe}/common.sh"
