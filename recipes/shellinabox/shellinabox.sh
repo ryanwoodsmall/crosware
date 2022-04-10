@@ -34,7 +34,7 @@
 #    --cgi \
 #    --disable-ssl \
 #    --no-beep \
-#    --service "/:$(id -u):$(id -g):HOME:/bin/bash" \
+#    --service="/:$(id -u):$(id -g):HOME:/bin/bash" \
 #    --user-css="Normal:+${siab}/share/shellinabox/css/white-on-black.css,Reverse:-${siab}/share/shellinabox/css/black-on-white.css"
 #
 
