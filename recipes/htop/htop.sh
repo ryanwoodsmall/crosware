@@ -1,3 +1,8 @@
+#
+# XXX - netbsdcurses looks painful?
+# XXX - https://github.com/hishamhm/htop/issues/643
+#
+
 rname="htop"
 rver="3.1.2"
 rdir="${rname}-${rver}"
