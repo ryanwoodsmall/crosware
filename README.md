@@ -1593,6 +1593,7 @@ wc -l /tmp/astbuild.out
     - ```--disable-modern-top``` for old-style top
   - ```make install-strip LIBTOOL="${cwsw}/slibtool/current/bin/slibtool-static -all-static"```
     - slibtool require should make this automatic
+- proot (https://proot-me.github.io/ and https://github.com/proot-me/proot - userspace containerizing/unprivileged reproducible environments+builds)
 - psmisc
 - pty tools
   - updated djb pty/ptyget/ptybandage/ptyrun/...
