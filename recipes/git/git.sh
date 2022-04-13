@@ -27,11 +27,11 @@
 #
 
 rname="git"
-rver="2.35.1"
+rver="2.35.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
-rsha256="d768528e6443f65a203036266f1ca50f9d127ba89751e32ead37117ed9191080"
+rsha256="c73d0c4fa5dcebdb2ccc293900952351cc5fb89224bb133c116305f45ae600f3"
 rreqs="make bzip2 zlib openssl curl expat pcre2 perl libssh2 busybox less cacertificates nghttp2 openssh mandoc"
 
 . "${cwrecipe}/common.sh"
@@ -43,7 +43,7 @@ function cwfetch_${rname}() {
   cwfetchcheck \
     \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \
     \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \
-    \"e4e3a751f2c05959222c3ea2f0f09481700eca8f915d1398bb270eb6846c3803\"
+    \"a0e9baa54d66ac7d3648cf1f1b5af3585fcf25fa010921cb1a8d532da85d6ee8\"
 }
 "
 
