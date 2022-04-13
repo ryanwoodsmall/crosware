@@ -1690,6 +1690,7 @@ wc -l /tmp/astbuild.out
   - umb-scheme
   - vicare (ikarus fork-of-fork, https://github.com/barak/vicare)
   - ypsilon (http://www.littlewingpinball.net/mediawiki/index.php/Ypsilon)
+  - zuo (https://github.com/mflatt/zuo - small scheme, moving to be a part of racket; useful for bootstrapping?)
 - sc-im (https://github.com/andmarti1424/sc-im - sc spreadsheet improved)
 - se (http://se-editor.org/ - screen editor)
   - https://github.com/screen-editor/se
