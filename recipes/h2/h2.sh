@@ -7,13 +7,13 @@
 #
 
 rname="h2"
-rver="2.1.210"
+rver="2.1.212"
 rdir="${rname}-${rver}"
 rbdir="${cwbuild}/${rname}"
-rfile="${rname}-2022-01-17.zip"
+rfile="${rname}-2022-04-09.zip"
 #rurl="https://h2database.com/${rfile}"
 rurl="https://github.com/h2database/h2database/releases/download/version-${rver}/${rfile}"
-rsha256="f3a82b598526270b60ea60d439e21bd290bacc2d18d262512bb9b37748055691"
+rsha256="013cc5765d1033edc8e792024aed7d91b169a7f3b2c52c6dc78a866a0a761f57"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
