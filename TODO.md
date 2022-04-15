@@ -916,6 +916,11 @@ time_func ls -l -A /
   - basically just do `undef -f ${func}`?
   - or `true` them out so they're _there_ but don't do anything?
   - `rundeffunctions` per-recipe setting or similar?
+- function overrides
+  - basically save old name to new function, override function name with body calling new function
+    - save original: `. <(declare -f orig_func | sed 's/^orig_func/function orig_func_real/g')`
+    - declare new: `function orig_func() { echo 'calling orig_func_real' ; orig_func_real "${@}" ; echo 'called orig_func_real' ; }`
+  - that's it
 
 <!--
 # vim: ft=markdown
