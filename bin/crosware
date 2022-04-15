@@ -1564,6 +1564,32 @@ function cwshowarch() {
 #           cwfailexit 'dupe...'
 #         fi
 #         unset a q r t u
+#   XXX - not just top hash....
+#         function cwcheckuniq() {
+#           declare -A u=()
+#           for e in "${@}" ; do
+#             u["${e}"]=0
+#           done
+#           for e in "${@}" ; do
+#             ((u[${e}]++))
+#             if [[ ${u[${e}]} > 1 ]] ; then
+#               cwfailexit "non-unique element '${e}' detected in stack '${@}' - possible cycle"
+#             fi
+#           done
+#         }
+#   XXX - or argument/hash counting...
+#         function cwcheckuniq() {
+#           declare -A u=()
+#           for e in "${@}" ; do
+#             u["${e}"]=1
+#           done
+#           c="${#u[@]}"
+#           # or: c="$(($(echo ${u[@]} | tr ' ' '+')))"
+#           # or: c="$(for e in ${!u[@]} ; do echo ${e} ; done | wc -l)"
+#           if [ ${c} -ne ${#} ] ; then
+#             cwfailexit "non-unique element detected in stack '${@}' - possible cycle"
+#           fi
+#         }
 #
 function cwcheckuniq() {
   if [[ x${@} =~ ^x$ ]] ; then
