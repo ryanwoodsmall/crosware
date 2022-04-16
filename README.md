@@ -1208,6 +1208,7 @@ wc -l /tmp/astbuild.out
     - jisql (https://github.com/stdunbar/jisql)
     - sqlshell (scala, sbt - https://github.com/bmc/sqlshell)
 - jed (https://www.jedsoft.org/jed/)
+- jimtcl (https://github.com/msteveb/jimtcl and http://jim.tcl.tk/ - small tcl implementation)
 - jitter (http://ageinghacker.net/projects/jitter/ - jit/vm/interpreter thing)
 - jobflow (https://github.com/rofl0r/jobflow - small gnu parallel alike in c)
 - joe (https://joe-editor.sourceforge.io/)
