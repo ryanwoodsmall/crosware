@@ -1,9 +1,9 @@
 rname="pcre2"
-rver="10.39"
+rver="10.40"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://github.com/PhilipHazel/${rname}/releases/download/${rname}-${rver}/${rfile}"
-rsha256="0f03caf57f81d9ff362ac28cd389c055ec2bf0678d277349a1a4bee00ad6d440"
+rsha256="14e4b83c4783933dc17e964318e6324f7cae1bc75d8f3c79bc6969f00c159d68"
 rreqs="make zlib bzip2"
 
 . "${cwrecipe}/common.sh"
