@@ -1773,6 +1773,7 @@ wc -l /tmp/astbuild.out
 - svi (https://github.com/byllgrim/svi)
 - tab (https://tkatchev.bitbucket.io/tab/)
 - tack (https://github.com/davidgiven/ack and http://tack.sourceforge.net/ - the amsterdam compiler kit)
+- taggins (https://github.com/bromanbro/taggins - easy, extended attr filesystem user.tags for files)
 - taskwarrior (https://taskwarrior.org/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - taskserver (https://github.com/GothenburgBitFactory/taskserver)
 - t3x.org stuff (nils holm)
