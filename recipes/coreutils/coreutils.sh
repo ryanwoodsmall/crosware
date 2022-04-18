@@ -3,11 +3,11 @@
 #
 
 rname="coreutils"
-rver="9.0"
+rver="9.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="ce30acdf4a41bc5bb30dd955e9eaa75fa216b4e3deb08889ed32433c7b3b97ce"
+rsha256="61a1f410d78ba7e7f37a5a4f50e6d1320aca33375484a3255eddf17a38580423"
 rreqs="make gettexttiny sed attr acl perl"
 
 . "${cwrecipe}/common.sh"
