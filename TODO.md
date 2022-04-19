@@ -924,6 +924,7 @@ time_func ls -l -A /
   - override from profile, only for the `crosware` program...
     - ```
         # place in i.e. /usr/local/crosware/etc/local.d/zz_localoverrides.sh
+        # "declare -F newfunc &>/dev/null || . <(declare -f oldfunc | sed s,oldfunc,newfunc,g)" should be effectively idempotent too...
         if [[ "${BASH_SOURCE[$((${#BASH_SOURCE[@]}-1))]}" == "${cwtop}/bin/crosware" ]] ; then
           : ${CWOVERRIDES:=0}
           if [[ ${CWOVERRIDES} == 0 ]] ; then
