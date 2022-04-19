@@ -1,5 +1,6 @@
 #
 # XXX - tree 2.x.x available, need to test against pass: http://mama.indstate.edu/users/ice/tree/changes.html
+# XXX - moving to gitlab: https://gitlab.com/OldManProgrammer/unix-tree
 #
 
 rname="tree"
