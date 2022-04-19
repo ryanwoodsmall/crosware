@@ -921,7 +921,18 @@ time_func ls -l -A /
     - save original: `. <(declare -f orig_func | sed 's/^orig_func/function orig_func_real/g')`
     - declare new: `function orig_func() { echo 'calling orig_func_real' ; orig_func_real "${@}" ; echo 'called orig_func_real' ; }`
   - that's it
-
+  - override from profile, only for the `crosware` program...
+    - ```
+        # place in i.e. /usr/local/crosware/etc/local.d/zz_localoverrides.sh
+        : ${CWOVERRIDES:=0}
+        if [[ "${BASH_SOURCE[$((${#BASH_SOURCE[@]}-1))]}" == "${cwtop}/bin/crosware" ]] ; then
+          if [ ${CWOVERRIDES} -eq 0 ] ; then
+            . <(declare -f cwinstall_alpinemuslutils | sed s,cwinstall_alpinemuslutils,cwinstalldefault_alpinemuslutils,g)
+            eval "function cwinstall_alpinemuslutils() { cwscriptecho hello from a function override : \${FUNCNAME[0]} ; cwinstalldefault_alpinemuslutils ; }"
+            CWOVERRIDES=1
+          fi
+        fi
+      ```
 <!--
 # vim: ft=markdown
 -->
