@@ -933,6 +933,10 @@ time_func ls -l -A /
           fi
         fi
       ```
+  - support `${cwtop}/recipes/blah/blah.sh.overrides` or similar during recipe parcing?
+    - .gitignore, allow local function overrides
+    - easy but could be ugly
+
 <!--
 # vim: ft=markdown
 -->
