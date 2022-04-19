@@ -924,9 +924,9 @@ time_func ls -l -A /
   - override from profile, only for the `crosware` program...
     - ```
         # place in i.e. /usr/local/crosware/etc/local.d/zz_localoverrides.sh
-        : ${CWOVERRIDES:=0}
         if [[ "${BASH_SOURCE[$((${#BASH_SOURCE[@]}-1))]}" == "${cwtop}/bin/crosware" ]] ; then
-          if [ ${CWOVERRIDES} -eq 0 ] ; then
+          : ${CWOVERRIDES:=0}
+          if [[ ${CWOVERRIDES} == 0 ]] ; then
             . <(declare -f cwinstall_alpinemuslutils | sed s,cwinstall_alpinemuslutils,cwinstalldefault_alpinemuslutils,g)
             eval "function cwinstall_alpinemuslutils() { cwscriptecho hello from a function override : \${FUNCNAME[0]} ; cwinstalldefault_alpinemuslutils ; }"
             CWOVERRIDES=1
