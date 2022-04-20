@@ -1,3 +1,8 @@
+#
+# XXX - deprecated, retool to use libmnl/libnetfilter_queue:
+#   https://git.netfilter.org/libnfnetlink/commit/?id=bb4f6c8ef3a5282dc7ee04b6e731029fbca9e03b
+#
+
 rname="libnfnetlink"
 rver="1.0.1"
 rdir="${rname}-${rver}"
