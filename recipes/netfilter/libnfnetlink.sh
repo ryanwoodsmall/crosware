@@ -4,11 +4,11 @@
 #
 
 rname="libnfnetlink"
-rver="1.0.1"
+rver="1.0.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://www.netfilter.org/pub/${rname}/${rfile}"
-rsha256="f270e19de9127642d2a11589ef2ec97ef90a649a74f56cf9a96306b04817b51a"
+rsha256="b064c7c3d426efb4786e60a8e6859b82ee2f2c5e49ffeea640cfe4fe33cbc376"
 rreqs="bootstrapmake configgit"
 rpfile="${cwrecipe}/netfilter/${rname}.patches"
 
