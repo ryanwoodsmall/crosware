@@ -1113,6 +1113,7 @@ wc -l /tmp/astbuild.out
   - tac (https://github.com/ibara/tac)
   - yacc (https://github.com/ibara/yacc)
 - ifupdown-ng (ttps://github.com/ifupdown-ng/ifupdown-ng - debian/busybox compatible-ish ifupdown in c w/dep resolver)
+- iglunix (https://github.com/iglunix/iglunix - gnu-less linux distribution, musl+llvm, looks useful)
 - incron (https://github.com/ar-/incron - cron for filesystem events)
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - invisible-island (thomas e. dickey) stuff
