@@ -1,9 +1,9 @@
 rname="libmnl"
-rver="1.0.4"
+rver="1.0.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://www.netfilter.org/pub/${rname}/${rfile}"
-rsha256="171f89699f286a5854b72b91d06e8f8e3683064c5901fb09d954a9ab6f551f81"
+rsha256="274b9b919ef3152bfb3da3a13c950dd60d6e2bcd54230ffeca298d03b40d0525"
 rreqs="bootstrapmake configgit"
 
 . "${cwrecipe}/common.sh"
