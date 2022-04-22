@@ -40,10 +40,16 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  local jstcopy=\"${ridir}/bin/jstcopy\"
   mkdir -p \"${ridir}/bin\"
   mkdir -p \"${ridir}/share\"
   install -m 0755 *.sh \"${ridir}/bin/\"
   install -m 0644 *.el *.vim \"${ridir}/share/\"
+  echo -n > \"\${jstcopy}\"
+  echo '#!/usr/bin/env bash' > \"\${jstcopy}\"
+  echo 'env TERM=tmux \"${rtdir}/current/bin/osc52.sh\" --force' >> \"\${jstcopy}\"
+  chmod 755 \"\${jstcopy}\"
+  unset jstcopy
   popd >/dev/null 2>&1
 }
 "
