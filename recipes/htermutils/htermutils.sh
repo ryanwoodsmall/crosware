@@ -47,7 +47,7 @@ function cwmakeinstall_${rname}() {
   install -m 0644 *.el *.vim \"${ridir}/share/\"
   echo -n > \"\${jstcopy}\"
   echo '#!/usr/bin/env bash' > \"\${jstcopy}\"
-  echo 'env TERM=tmux \"${rtdir}/current/bin/osc52.sh\" --force' >> \"\${jstcopy}\"
+  echo 'env TERM=tmux osc52.sh --force \"\${@}\"' >> \"\${jstcopy}\"
   chmod 755 \"\${jstcopy}\"
   unset jstcopy
   popd >/dev/null 2>&1
