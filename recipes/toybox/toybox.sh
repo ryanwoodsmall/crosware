@@ -1,5 +1,6 @@
 #
 # XXX - should probably use tag for toybox_config_script.sh
+# XXX - cwmake_ loop since aarch64 occasionally just dies?
 #
 
 rname="toybox"
