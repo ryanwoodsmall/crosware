@@ -940,6 +940,8 @@ time_func ls -l -A /
 - `cwsavevars()` or similar for dumping `source`-able environment
   - could basically just `set grep -i "^cw"` or similar
   - would help with amalgamation build
+  - `cwsaveenv`?
+  - `cwsaveenvvars`?
 
 <!--
 # vim: ft=markdown
