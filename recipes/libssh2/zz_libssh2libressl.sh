@@ -1,3 +1,7 @@
+#
+# XXX - remove workaround for src/openssl.h on libressl 3.5!!!
+#
+
 rname="libssh2libressl"
 rver="$(cwver_libssh2)"
 rdir="$(cwdir_libssh2)"
@@ -18,6 +22,8 @@ function cwfetch_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  cat src/openssl.h > src/openssl.h.ORIG
+  curl -kL https://raw.githubusercontent.com/ryanwoodsmall/crosware-source-mirror/master/libssh2/vishwin_libssh2_7f55a033e5054529e5e69f06725dd02a573329b6_src_openssl.h > src/openssl.h
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-libssl-prefix=\"${cwsw}/libressl/current\" \
     --with-libz \
