@@ -840,6 +840,7 @@ time_func ls -l -A /
   - add to main script
   - completely sequester environment...
 - "aggregate" script
+  - amalgamation
   - essentially:
     - main `bin/crosware` script
     - output of `set` starting with functions
@@ -851,6 +852,7 @@ time_func ls -l -A /
   - array or hash of top-level directories
     - easier dir creation
     - setup basic `etc/profile{,.d}/`, `bin/`, `tmp/`, `var/`, ...
+  - all recipe references to `${karch}` and `${uarch}` would need to be escaped
 - shared-static concept
   - creation of .so from .a is simple-ish, if _everything_ is PIC
   - basically take an archive lib, extract, compile .o files to shared object (done)
