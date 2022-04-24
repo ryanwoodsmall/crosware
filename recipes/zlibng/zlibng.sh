@@ -62,12 +62,6 @@ function cwmakeinstall_${rname}_zlib_static() {
 }
 "
 
-#
-# XXX - no, doesn't work, blah
-#  env CFLAGS=-fPIC LDFLAGS=\"${ridir}/lib/libz-ng.a\"  CPPFLAGS= CC=\"\${CC} -I${ridir}/shared/include\" LD=\"\${CC}\" ./configure --prefix=\"${ridir}/shared\" --zlib-compat
-#  make -j${cwmakejobs} ${rlibtool} CFLAGS=-fPIC LDFLAGS=\"${ridir}/lib/libz-ng.a\" CPPFLAGS= CC=\"\${CC} -I${ridir}/shared/include\" LD=\"\${CC}\"
-#  make install ${rlibtool} CFLAGS=-fPIC LDFLAGS=\"${ridir}/lib/libz-ng.a\" CPPFLAGS= CC=\"\${CC} -I${ridir}/shared/include\" LD=\"\${CC}\"
-#
 eval "
 function cwmakeinstall_${rname}_zlib_shared() {
   cwcreatesharedlib \"${ridir}/lib/libz.a\" \"${ridir}/shared/lib/libz.so.1\"
