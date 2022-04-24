@@ -944,6 +944,23 @@ time_func ls -l -A /
   - would help with amalgamation build
   - `cwsaveenv`?
   - `cwsaveenvvars`?
+- safer `rm`?
+  - should probably only do `rm -rf ...` on relative paths, _not_ absolute
+  - wrap in `cwrmrf` or similar to force it
+  - iterate over `${@}` instead?
+  - need to check whatever's to be removed is under **/usr/local/crosware** (similar to `cwcreatesharedlib`)?
+  - something like...
+    - ```
+      function cwrmrf() {
+        cwscriptecho "removing ${1}"
+        local parentdir="$(dirname ${1})"
+        local targetdir="$(basename ${1})"
+        pushd "${parentdir}" &>/dev/null
+        rm -rf "${targetdir}"
+        test -e "${targetdir}" || cwfailexit "could not remove directory ${1}"
+        popd &>/dev/null
+      }
+      ```
 
 <!--
 # vim: ft=markdown
