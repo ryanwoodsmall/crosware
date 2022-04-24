@@ -695,6 +695,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - rrredir (https://github.com/rofl0r/rrredir)
 - rsync (https://rsync.samba.org/)
   - rsyncminimal (fewer deps, smaller, but lower performance)
+- samurai (https://github.com/michaelforney/samurai - small ninja alternative in c)
 - sc (from debian, https://packages.debian.org/buster/sc)
 - scheme48 (http://s48.org)
 - screen
@@ -1645,7 +1646,6 @@ wc -l /tmp/astbuild.out
 - rwc (https://github.com/leahneukirchen/rwc)
 - rx (https://github.com/crcx/rx - forth(-ish) userspace!)
 - sacc (https://git.fifth.space/sacc/log.html - gopher client)
-- samurai (https://github.com/michaelforney/samurai)
 - sbang (https://github.com/spack/sbang)
 - scdoc (https://sr.ht/~sircmpwn/scdoc/ and https://git.sr.ht/~sircmpwn/scdoc - simple man page generator)
 - scheme stuff:
