@@ -1458,6 +1458,8 @@ function cwlistfuncs() {
 # cwshowfunc
 #
 function cwshowfunc() {
+  cwsourceprofile
+  cwcheckrecipessourced || cwsourcerecipes
   local funclist
   if [ ${#} -le 0 ] ; then
     cwset
@@ -1466,8 +1468,7 @@ function cwshowfunc() {
     funclist="${@}"
   fi
   for funcname in ${funclist} ; do
-    cwset \
-    | sed -n '/^'"${funcname}"' ()/,/^}$/!d;p'
+    declare -f "${funcname}"
   done
   unset funcname funclist
 }
