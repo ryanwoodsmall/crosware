@@ -1,13 +1,14 @@
 #
 # XXX - uses separate openssldir in ${cwtop}/etc/libressl
 # XXX - broken on centos 6, ugh
+# XXX - 3.5.x breaks libssh2; see: https://github.com/libssh2/libssh2/pull/682
 #
 rname="libressl"
-rver="3.4.3"
+rver="3.5.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${rfile}"
-rsha256="ff88bffe354818b3ccf545e3cafe454c5031c7a77217074f533271d63c37f08d"
+rsha256="56feab8e21c3fa6549f8b7d7511658b8e98518162838a795314732654adf3e5f"
 rreqs="make cacertificates configgit zlib"
 # prefer openssl for now
 rprof="${cwetcprofd}/zz_${rname}.sh"
