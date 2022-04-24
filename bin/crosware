@@ -1913,8 +1913,10 @@ function cwcreatesharedlib() {
   "${CC}" -fPIC -shared ${olist} -o "${solib}"
   popd >/dev/null 2>&1
   cwscriptecho "shared library saved to ${solib}"
-  cwscriptecho "cleaning up"
-  rm -rf "${extdir}"
+  cwscriptecho "cleaning up ${extdir}"
+  pushd "${cwtmp}" >/dev/null 2>&1
+  rm -rf "$(basename ${extdir})"
+  popd >/dev/null 2>&1
 }
 
 #############################################
