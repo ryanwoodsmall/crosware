@@ -64,8 +64,16 @@ function cwmakeinstall_${rname}_zlib_static() {
 
 eval "
 function cwmakeinstall_${rname}_zlib_shared() {
-  cwcreatesharedlib \"${ridir}/lib/libz.a\" \"${ridir}/shared/lib/libz.so.1\"
-  ln -sf libz.so.1 \"${ridir}/shared/lib/libz.so\"
+  cwclean_${rname}
+  cwextract_${rname}
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  env CFLAGS=-fPIC LDFLAGS= CPPFLAGS= CC=\"\${CC} -I${ridir}/shared/include -L${ridir}/shared/lib -lz-ng -Wl,-rpath=${rtdir}/current/shared/lib\" ./configure --prefix=\"${ridir}/shared\" --zlib-compat
+  make -j${cwmakejobs} ${rlibtool} CFLAGS=-fPIC LDFLAGS= CPPFLAGS= CC=\"\${CC} -I${ridir}/shared/include -L${ridir}/shared/lib -lz-ng -Wl,-rpath=${rtdir}/current/shared/lib\"
+  make install ${rlibtool} CFLAGS=-fPIC LDFLAGS= CPPFLAGS= CC=\"\${CC} -I${ridir}/shared/include -L${ridir}/shared/lib -lz-ng -Wl,-rpath=${rtdir}/current/shared/lib\"
+  popd >/dev/null 2>&1
+  cwclean_${rname}
+  cwcreatesharedlib \"${ridir}/lib/libz.a\" \"${ridir}/shared/lib/libz.so.1.2.11.standalone\"
+  ln -sf libz.so.1.2.11.standalone \"${ridir}/shared/lib/libz.so.standalone\"
 }
 "
 
