@@ -312,12 +312,7 @@ function cwupgradedeps_${rname}() {
 eval "
 function cwupgradewithdeps_${rname}() {
   cwscriptecho \"upgrading ${rname} and any installed deps\"
-  cwupgradereqs_${rname}
-  cwscriptecho \"uninstalling ${rname}\"
-  cwuninstall_${rname}
-  cwscriptecho \"installing ${rname}\"
-  cwinstall_${rname}
-  cwmarkupgraded ${rname}
+  cwupgrade_${rname}
   cwupgradedeps_${rname}
 }
 "
