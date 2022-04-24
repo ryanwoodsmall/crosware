@@ -937,6 +937,9 @@ time_func ls -l -A /
   - support `${cwtop}/recipes/blah/blah.sh.overrides` or similar during recipe parcing?
     - .gitignore, allow local function overrides
     - easy but could be ugly
+- `cwsavevars()` or similar for dumping `source`-able environment
+  - could basically just `set grep -i "^cw"` or similar
+  - would help with amalgamation build
 
 <!--
 # vim: ft=markdown
