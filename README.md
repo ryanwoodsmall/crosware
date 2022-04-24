@@ -820,13 +820,14 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - ynetd (https://github.com/johnsonjh/ynetd and https://yx7.cc/code/ - minimal tcp/inetd server)
 - zip
 - zlib
+- zlibng (https://github.com/zlib-ng/zlib-ng - fork with vector support, compiled static and shared with `libz.a` compat lib and `libz.so.1` created as well)
 - zstd (https://github.com/facebook/zstd)
 - zulu - built-in recipe, glibc-based for bootstrapping (chrome os, centos, debian, ubuntu, ...)
   - zulu8glibc - zulu 8 jdk
   - zulu11glibc - zulu 11 jdk
   - zulu17glibc - zulu 17 jdk
   - zulu8musl - zulu 8 jdk built against musl libc (x86_64 only)
-  - zulu11musl - zulu 11 jdk built against musl libc (x86_64 only)
+  - zulu11musl - zulu 11 jdk built against musl libc (x86_64, aarch64 only)
   - zulu17musl - zulu 17 jdk built against musl libc (x86_64, aarch64 only)
 
 ## recipes to consider
@@ -1882,7 +1883,6 @@ wc -l /tmp/astbuild.out
 - z3 (https://github.com/Z3Prover/z3)
   - cppcheck can use/may require this for 2.x+
 - zeromq (https://github.com/zeromq/libzmq and https://zeromq.org/)
-- zlib-ng (https://github.com/zlib-ng/zlib-ng - fork with "next-get" vector support)
 - znc (https://github.com/znc/znc and https://wiki.znc.in/ZNC - irc bouncer)
 - zon (https://github.com/Aygath/zon - date/time with sunrise/sunset info)
 - zork (https://github.com/devshane/zork - it's zork dude)
