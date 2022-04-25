@@ -3,6 +3,7 @@
 # XXX - other "openssl version -a" stuff?
 # XXX - 1.1.1j disables threads/pic with -static in LDFLAGS. WHY? COME ON
 # XXX - disable zlib to workaround some conflicts (redis) and pain with forcing libz.a
+# XXX - need openssl11, openssl3, etc.?
 #
 
 rname="openssl"
