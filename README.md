@@ -1218,7 +1218,7 @@ wc -l /tmp/astbuild.out
 - json-rpc-shell (https://git.janouch.name/p/json-rpc-shell)
 - JSON.sh (https://github.com/dominictarr/JSON.sh - json parser in shell/bash)
 - jujutsu (https://github.com/martinvonz/jj - git-compatible dvcs in rust)
-- just (https://github.com/just-js/just - small javascript runtime)
+- just (https://github.com/just-js/just - small javascript runtime, uses v8 and appears to be a lot of binaries :\)
 - k0s (https://github.com/k0sproject/k0s and https://docs.k0sproject.io/ - lens' small k8s distribution)
 - k0sctl (https://github.com/k0sproject/k0sctl - bootstrapping/management for k0s nodes)
 - k3d (https://github.com/rancher/k3d and https://k3d.io - k3s in docker)
