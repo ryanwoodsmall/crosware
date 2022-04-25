@@ -2,6 +2,7 @@
 # XXX - uses separate openssldir in ${cwtop}/etc/libressl
 # XXX - broken on centos 6, ugh
 # XXX - 3.5.x breaks libssh2; see: https://github.com/libssh2/libssh2/pull/682
+# XXX - need libressl33, libressl34, etc.?
 #
 rname="libressl"
 rver="3.5.2"
