@@ -1585,6 +1585,7 @@ wc -l /tmp/astbuild.out
 - pdsh (https://github.com/chaos/pdsh or https://github.com/grondo/pdsh ?)
 - picocom (https://github.com/npat-efault/picocom)
 - pigz
+- pkgconf (https://github.com/pkgconf/pkgconf - pkg-config-alike in c, opt-in only for now - not yet on path)
 - planck (clojurescript repl, https://github.com/planck-repl/planck)
 - pocketlang (https://github.com/ThakeeNathees/pocketlang and https://thakeenathees.github.io/pocketlang/)
 - poke (http://www.jemarch.net/poke.html - gnu binary data editor/language)
