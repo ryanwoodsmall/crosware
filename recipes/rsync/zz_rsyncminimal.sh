@@ -26,10 +26,11 @@ function cwconfigure_${rname}() {
     --with-included-zlib \
     --enable-ipv6 \
     --disable-acl-support \
-    --disable-asm \
+    --disable-md5-asm \
+    --disable-roll-asm \
+    --disable-roll-simd \
     --disable-lz4 \
     --disable-openssl \
-    --disable-simd \
     --disable-xattr-support \
     --disable-xxhash \
     --disable-zstd \

@@ -5,11 +5,11 @@
 #
 
 rname="rsync"
-rver="3.2.3"
+rver="3.2.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://download.samba.org/pub/${rname}/src/${rfile}"
-rsha256="becc3c504ceea499f4167a260040ccf4d9f2ef9499ad5683c179a697146ce50e"
+rsha256="6f761838d08052b0b6579cf7f6737d93e47f01f4da04c5d24d3447b7f2a5fad1"
 rreqs="make lz4 xxhash zstd attr acl"
 
 . "${cwrecipe}/common.sh"
@@ -27,8 +27,9 @@ function cwconfigure_${rname}() {
     --enable-xxhash \
     --enable-zstd \
     --disable-openssl \
-    --disable-asm \
-    --disable-simd \
+    --disable-md5-asm \
+    --disable-roll-asm \
+    --disable-roll-simd \
       CFLAGS=\"\${CFLAGS} -DINET6\"
   popd >/dev/null 2>&1
 }
