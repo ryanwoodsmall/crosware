@@ -944,6 +944,9 @@ time_func ls -l -A /
   - would help with amalgamation build
   - `cwsaveenv`?
   - `cwsaveenvvars`?
+  - bash posix way, should only dump vars? `( set -o posix ; set )`
+    - https://askubuntu.com/questions/275965/how-to-list-all-variables-names-and-their-current-values
+  - could build a hash of var keys at the beginning of the script, then at the end; save anything created during run
 - safer `rm`?
   - should probably only do `rm -rf ...` on relative paths, _not_ absolute
   - wrap in `cwrmrf` or similar to force it
