@@ -19,6 +19,7 @@ function cwmakeinstall_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
+    --enable-headers-api \
     --enable-ipv6 \
     --with-libssh2=\"${cwsw}/libssh2libressl/current\" \
     --with-nghttp2=\"${cwsw}/nghttp2/current\" \
