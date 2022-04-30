@@ -964,6 +964,20 @@ time_func ls -l -A /
         popd &>/dev/null
       }
       ```
+- split `cwupdate` into
+  - `cwupdate_git` - check for `${CW_UPDATE_USE_GIT} == true`
+  - `cwupdate_tar` - check for `${CW_UPDATE_USE_TAR} == true`
+  - `cwupdate_zip` - check for `${CW_UPDATE_USE_ZIP} == true`
+  - restructure like:
+    - ```
+      function cwupdate() {
+        cwupgrade_git && return || true
+        cwupgrade_tar && return || true
+        cwupgrade_zip && return || true
+        cwfailexit "don't know how to update"
+      }
+      ```
+- flag to ignore `cwchecktop`
 
 <!--
 # vim: ft=markdown
