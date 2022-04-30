@@ -60,6 +60,30 @@ set -eu
 # XXX - curl, sha256sum, ... ? what else? check for tls/ssl support?
 #       xz/xzcat? bzip2/bzcat? gzip?
 #
+
+function cwprereqinfo() {
+  cwscriptecho ""
+  cwscriptecho "you can download static busybox and curl binaries here:"
+  cwscriptecho ""
+  cwscriptecho "  https://github.com/ryanwoodsmall/static-binaries"
+  cwscriptecho ""
+  cwscriptecho "temporarily ignore missing prereqs to install supporting static binaries:"
+  cwscriptecho ""
+  cwscriptecho "  env CW_IGNORE_MISSING=true crosware install cwstaticbinaries"
+  cwscriptecho ""
+  cwscriptecho "a few static binaries can be used as a bootstrap userspace:"
+  cwscriptecho ""
+  cwscriptecho "  bash scripts/install-static-bins.sh"
+  cwscriptecho "  # or: curl https://github.com/ryanwoodsmall/crosware/raw/master/scripts/install-static-bins.sh | bash"
+  cwscriptecho "  # or: wget -O - https://github.com/ryanwoodsmall/crosware/raw/master/scripts/install-static-bins.sh | bash"
+  cwscriptecho ""
+  cwscriptecho "use the new temp userspace with an environment setting:"
+  cwscriptecho ""
+  cwscriptecho "  env PATH=/usr/local/crosware/tmp/static/bin:\${PATH} crosware"
+  cwscriptecho "  # or: export PATH=\${PATH}:/usr/local/crosware/tmp/static/bin ; crosware"
+  cwscriptecho ""
+}
+
 # by default, fail on missing prereqs; set to `true` to keep going
 : ${CW_IGNORE_MISSING:="false"}
 prereqs=( 'bzip2' 'curl' 'gzip' 'nproc' 'sha256sum' 'tar' )
@@ -70,14 +94,7 @@ for prereq in ${prereqs[@]} ; do
       cwscriptecho "continuing anyway"
       continue
     fi
-    cwscriptecho "you can download static busybox and curl binaries here:"
-    cwscriptecho ""
-    cwscriptecho "  https://github.com/ryanwoodsmall/static-binaries"
-    cwscriptecho ""
-    cwscriptecho "temporarily ignore missing prereqs to install supporting static binaries:"
-    cwscriptecho ""
-    cwscriptecho "  env CW_IGNORE_MISSING=true crosware install cwstaticbinaries"
-    cwscriptecho ""
+    cwprereqinfo
     cwfailexit "exiting"
   }
 done
