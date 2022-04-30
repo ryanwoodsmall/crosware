@@ -60,13 +60,23 @@ set -eu
 # XXX - curl, sha256sum, ... ? what else? check for tls/ssl support?
 #       xz/xzcat? bzip2/bzcat? gzip?
 #
+# by default, fail on missing prereqs; set to `true` to keep going
+: ${CW_IGNORE_MISSING:="false"}
 prereqs=( 'bzip2' 'curl' 'gzip' 'nproc' 'sha256sum' 'tar' )
 for prereq in ${prereqs[@]} ; do
   hash "${prereq}" >/dev/null 2>&1 || {
     cwscriptecho "${prereq} not found"
+    if [[ ${CW_IGNORE_MISSING} == true ]] ; then
+      cwscriptecho "continuing anyway"
+      continue
+    fi
     cwscriptecho "you can download static busybox and curl binaries here:"
     cwscriptecho ""
     cwscriptecho "  https://github.com/ryanwoodsmall/static-binaries"
+    cwscriptecho ""
+    cwscriptecho "temporarily ignore missing prereqs to install supporting static binaries:"
+    cwscriptecho ""
+    cwscriptecho "  env CW_IGNORE_MISSING=true crosware install cwstaticbinaries"
     cwscriptecho ""
     cwfailexit "exiting"
   }
@@ -207,8 +217,8 @@ export CW_USE_JAVA CW_EXT_JAVA
 : ${CW_GIT_CMD:="jgitsh"}
 export CW_USE_JGIT CW_EXT_JGIT CW_GIT_CMD
 # update methods, prefer git, fallback to zip
-: ${CW_UPDATE_USE_GIT:=1}
-: ${CW_UPDATE_USE_ZIP:=1}
+: ${CW_UPDATE_USE_GIT:="true"}
+: ${CW_UPDATE_USE_ZIP:="true"}
 # time travel?
 : ${TS:="$(date '+%Y%m%d%H%M%S')"}
 export TS
@@ -890,10 +900,10 @@ function cwupdate() {
   cwchecktop
   cwscriptecho "it looks like ${cwtop} already exists, attempting update"
   local zipscript="${cwtop}/scripts/update-crosware-from-zip.sh"
-  if [ ${CW_UPDATE_USE_GIT} -eq 1 ] ; then
+  if [[ ${CW_UPDATE_USE_GIT} =~ ^true$ ]] ; then
     if [ ! -e "${cwtop}/.git" ] ; then
       cwscriptecho "${cwtop} doesn't appear to be a git clone"
-      if [ ${CW_UPDATE_USE_ZIP} -eq 1 ] ; then
+      if [[ ${CW_UPDATE_USE_ZIP} =~ ^true$ ]] ; then
         cwscriptecho "falling back to zip"
         bash "${zipscript}"
       fi
@@ -902,7 +912,7 @@ function cwupdate() {
       cwsourceprofile
       if ! $(hash ${CW_GIT_CMD} >/dev/null 2>&1) ; then
         cwscriptecho "git client ${CW_GIT_CMD} not found"
-        if [ ${CW_UPDATE_USE_ZIP} -eq 1 ] ; then
+        if [[ ${CW_UPDATE_USE_ZIP} =~ ^true$ ]] ; then
           cwscriptecho "falling back to zip"
           bash "${zipscript}"
         fi
@@ -917,7 +927,7 @@ function cwupdate() {
       popd >/dev/null 2>&1
       cwchmod "${cwtmpperm}" "${cwtmp}"
     fi
-  elif [ ${CW_UPDATE_USE_ZIP} -eq 1 ] ; then
+  elif [[ ${CW_UPDATE_USE_ZIP} =~ ^true$ ]] ; then
     cwscriptecho "attempting to update using a zip file via ${zipscript}"
     bash "${zipscript}"
   else

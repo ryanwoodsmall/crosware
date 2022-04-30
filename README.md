@@ -93,13 +93,16 @@ commands:
 
 A few user environment variables are available to control how crosware checks itself out and updates recipes.
 
-| var         | default | purpose                                        |
-| ----------- | ------- | ---------------------------------------------- |
-| CW_GIT_CMD  | jgitsh  | which "git" command to use for checkout/update |
-| CW_USE_JAVA | true    | use java for bootstrap, jgit                   |
-| CW_EXT_JAVA | false   | use system java instead of zulu recipe         |
-| CW_USE_JGIT | true    | use jgit.sh for checkout/update                |
-| CW_EXT_JGIT | false   | use system jgit.sh instead of jgitsh recipe    |
+| var               | default | purpose                                        |
+| ----------------- | ------- | ---------------------------------------------- |
+| CW_GIT_CMD        | jgitsh  | which "git" command to use for checkout/update |
+| CW_USE_JAVA       | true    | use java for bootstrap, jgit                   |
+| CW_EXT_JAVA       | false   | use system java instead of zulu recipe         |
+| CW_USE_JGIT       | true    | use jgit.sh for checkout/update                |
+| CW_EXT_JGIT       | false   | use system jgit.sh instead of jgitsh recipe    |
+| CW_UPDATE_USE_GIT | true    | use a git client to update                     |
+| CW_UPDATE_USE_ZIP | true    | use `update-crosware-from-zip.sh` to update    |
+| CW_IGNORE_MISSING | false   | set to "true" ot ignore any missing prereqs    |
 
 #### alpine
 
