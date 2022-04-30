@@ -29,7 +29,11 @@ function cwfetch_${rname}() {
   local p=''
   local u=''
   local i=''
-  local bu=\"${rurl}/raw/${rver}\"
+  local f=''
+  : \${bu:=''}
+  if [ -z \"\${bu}\" ] ; then
+    bu=\"${rurl}/raw/${rver}\"
+  fi
   if [[ ${karch} =~ ^aarch64 ]] ; then a='aarch64' ; fi
   if [[ ${karch} =~ ^arm     ]] ; then a='armhf'   ; fi
   if [[ ${karch} =~ ^i       ]] ; then a='i686'    ; fi
@@ -38,10 +42,15 @@ function cwfetch_${rname}() {
   if [ -z \"\${a}\" ] ; then
     cwfailexit \"${rname} not supported on \$(uname -m)\"
   fi
+  if command -v curl &>/dev/null ; then
+    f=cwfetch
+  else
+    f=\"${cwtop}/scripts/fakecurl.sh\"
+  fi
   cwmkdir \"${ridir}/bin\"
   for p in bash brssl busybox curl dash jo jq less links make mk mksh neatvi rc rlwrap rsync sbase-box screen socat stunnel tini tmux toybox ubase-box unrar xz ; do
-    local u=\"\${bu}/\${a}/\${p}\"
-    cwfetch \"\${u}\" \"${ridir}/bin/\${p}\"
+    u=\"\${bu}/\${a}/\${p}\"
+    \${f} \"\${u}\" \"${ridir}/bin/\${p}\"
     chmod 755 \"${ridir}/bin/\${p}\"
   done
 }
