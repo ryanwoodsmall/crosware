@@ -4,13 +4,14 @@
 #
 
 set -eu
+set -o pipefail
 
 function failexit() {
   echo "${BASH_SOURCE[0]}: ${@}" 1>&2
   exit 1
 }
 
-reqs=( 'unzip' 'curl' 'tar' )
+reqs=( 'unzip' 'tar' )
 for req in ${reqs[@]} ; do
   which ${req} >/dev/null 2>&1 || failexit "req ${req} not found"
 done
@@ -29,7 +30,7 @@ fi
 pushd "${cwtmp}"
 rm -rf "${extdir}"
 rm -f "${zipfile}"
-curl -kLo "${zipfile}" "${zipurl}"
+curl -kLo "${zipfile}" "${zipurl}" || wget -O "${zipfile}" "${zipurl}"
 unzip "${zipfile}"
 ( cd "${extdir}" ; tar -cf - . | ( cd "${cwtop}" ; tar -xvf - ) )
 rm -f "${zipfile}"
