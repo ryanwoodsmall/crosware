@@ -1004,6 +1004,16 @@ time_func ls -l -A /
       - run over ssh+ccache+distcc+...
       - pubsub claims. wtf
     - i am crazy
+- `crosware vars` command
+  - dump the `CW_...` environment vars
+  - map of var to purpose
+  - map of var to default setting
+- site/repo/etc. settings
+  - `cworg` - me `ryanwoodsmall`
+  - `cwrepo` - `crosware`
+  - `cwbaseurl` - github.com/org/repo?
+  - `cwsite` - github.com? github.com/org?
+  - `cwrawurl` - repo raw access for remote scripts
 
 <!--
 # vim: ft=markdown
