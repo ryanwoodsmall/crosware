@@ -1,3 +1,7 @@
+#
+# XXX - no checksums yet! use at your own risk!
+#
+
 rname="cwstaticbinaries"
 rver="8d8a73f8aae79cefe781ac20f831899cc23b9088"
 rdir="${rname}-${rver}"
