@@ -366,6 +366,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - curlwolfssl
   - caextract (https://curl.haxx.se/docs/caextract.html - mozilla ca certs in .pem format)
 - cvs
+- cwstaticbinaries (https://github.com/ryanwoodsmall/static-binaries - static binaries, possibly useful for bootrapping?)
 - cxref
 - dash (http://gondor.apana.org.au/~herbert/dash/ and https://git.kernel.org/pub/scm/utils/dash/dash.git)
 - derby
