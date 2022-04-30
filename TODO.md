@@ -978,6 +978,32 @@ time_func ls -l -A /
       }
       ```
 - flag to ignore `cwchecktop`
+- flag to set locks
+  - `CW_OBEY_LOCK` or similar
+    - have a wait or just bail?
+    - bail is much easier
+    - without decent queue, could get into odd scenarios
+      - where packages are built numerous times
+      - where jobs are fighting over a download?
+      - simple is better (and faster) here
+    - separate waiter and checker/claimer
+  - semaphore file in `${cwtop}/tmp`
+  - checked at startup, removed in a trap
+  - compare-and-swapish
+  - flag that keeps "did-i-set"
+  - on trap if "did-i-set" is true, give up lock
+  - otherwise bail with a non-0 exit code
+  - `crosware remove-lock` or similar command
+  - as usual, a real (and fast) graph could come in very handy here
+    - compute full graph of installation
+    - lock each _recipe_ with dependents
+    - start with the smallest req, mark it installed, move on
+    - could run concurrently
+      - i.e., a branch(?) in a graph/between two graphs could spin up more builds
+      - distributed
+      - run over ssh+ccache+distcc+...
+      - pubsub claims. wtf
+    - i am crazy
 
 <!--
 # vim: ft=markdown
