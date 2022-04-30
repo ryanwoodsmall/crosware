@@ -12,3 +12,4 @@ var/inst/**
 var/run/**
 var/spool/**
 **/*.swp
+.git.PRE-**
