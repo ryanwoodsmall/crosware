@@ -1,9 +1,9 @@
 rname="oksh"
-rver="7.0"
+rver="7.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ibara/${rname}/releases/download/${rdir}/${rfile}"
-rsha256="21d5891f38ffea3a5d1aa8c494f0a5579c93778535e0a92275b102dec3221da1"
+rsha256="9dc0b0578d9d64d10c834f9757ca11f526b562bc5454da64b2cb270122f52064"
 rreqs="make netbsdcurses"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
@@ -12,7 +12,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i.ORIG 's/ncurses\.h/curses.h/g' configure emacs.c var.c
+  sed -i.ORIG 's/ncurses\.h/curses.h/g' configure emacs.c var.c vi.c
   sed -i 's/-lncurses/-lcurses -lterminfo/g' configure
   env \
     CPPFLAGS= \
