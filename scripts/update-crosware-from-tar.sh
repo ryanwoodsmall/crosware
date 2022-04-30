@@ -18,7 +18,9 @@ done
 
 : ${version:="master"}
 : ${tarfile:="${version}.tgz"}
-: ${tarurl:="https://github.com/ryanwoodsmall/crosware/tarball/${version}"}
+: ${vendor:="ryanwoodsmall"}
+: ${project:="crosware"}
+: ${tarurl:="https://github.com/${vendor}/${project}/tarball/${version}"}
 : ${cwtop:="/usr/local/crosware"}
 : ${cwtmp:="${cwtop}/tmp"}
 
@@ -29,7 +31,10 @@ fi
 pushd "${cwtmp}"
 rm -f "${tarfile}"
 curl -fkLo "${tarfile}" "${tarurl}" || wget -O "${tarfile}" "${tarurl}"
-extdir="$(tar -ztvf ${tarfile} | grep '/$' | awk '{print $NF}' | sort | head -1 || true)"
+extdir="$(tar -ztvf ${tarfile} | grep '/$' | awk '{print $NF}' | sort | grep ^${vendor}-${project}- | grep -v '/.*/' | head -1 || true)"
+if [[ ! ${extdir} =~ ^${vendor}-${project}- ]] ; then
+  failexit "extraction directory '${extdir}' doesn't look right"
+fi
 rm -rf "${extdir}"
 tar -zxf "${tarfile}"
 ( cd "${extdir}" ; tar -cf - . | ( cd "${cwtop}" ; tar -xvf - ) )
