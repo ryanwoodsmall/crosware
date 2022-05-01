@@ -2,6 +2,8 @@
 #
 # install some static binaries to a temp dir
 #
+# XXX - make this standalone and POSIX-y, i.e. no bashisms
+#
 
 set -eu
 set -o pipefail
