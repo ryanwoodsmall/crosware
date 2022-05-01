@@ -15,7 +15,12 @@ rreqs="bootstrapmake"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts}
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
+    CC=\"\${CC} -Os -Wl,-s\" \
+    CFLAGS=\"\${CFLAGS} -Os -Wl,-s\" \
+    CXXFLAGS=\"\${CXXFLAGS} -Os -Wl,-s\" \
+    LDFLAGS=\"\${LDFLAGS} -static -s\" \
+    PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
 "
