@@ -28,7 +28,6 @@ function cwconfigure_${rname}() {
         --disable-ares \
         --disable-dependency-tracking \
         --disable-manual \
-        --disable-{dict,imap,ldap{,s},ntlm{,-wb},pop3,smb,smtp} \
         --enable-ipv6 \
         --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
         --with-ca-path=\"${cwetc}/ssl/certs\" \
