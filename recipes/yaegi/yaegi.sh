@@ -1,3 +1,6 @@
+#
+# XXX - needs to be rebuilt after go is updated?
+#
 rname="yaegi"
 rver="0.11.3"
 rdir="${rname}-${rver}"
