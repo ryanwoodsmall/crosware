@@ -1035,6 +1035,7 @@ wc -l /tmp/astbuild.out
 - e (https://github.com/hellerve/e - simple editor, syntax highlighting, archived?)
 - edbrowse (http://edbrowse.org/ and https://github.com/CMB/edbrowse)
   - cmake, curl, pcre, tidy (cmake), duktape
+- editline (https://github.com/richsalz/editline - another editline/libedit)
 - elfutils (https://sourceware.org/elfutils/)
 - ellcc (embedded clang build, http://ellcc.org/)
 - elvm (https://github.com/shinh/elvm)
