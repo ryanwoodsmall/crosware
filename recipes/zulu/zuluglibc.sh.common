@@ -20,7 +20,7 @@ fi
 if [[ ${uarch} =~ ^arm ]] ; then
   : ${rurl:="${burl}-embedded/bin/${rfile}"}
 elif [[ ${uarch} =~ ^aarch ]] ; then
-  if [[ ${majver} < 17 ]] ; then
+  if [ "${majver}" -lt 17 ] ; then
     : ${rurl:="${burl}-embedded/bin/${rfile}"}
   else
     : ${rurl:="${burl}/bin/${rfile}"}
