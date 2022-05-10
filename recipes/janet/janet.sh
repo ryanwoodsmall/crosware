@@ -5,11 +5,11 @@
 #
 
 rname="janet"
-rver="1.21.2"
+rver="1.22.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/janet-lang/${rname}/archive/refs/tags/${rfile}"
-rsha256="52db8d18f93351256d0731810e8bea95516db8142f51eeb31664f7884bf63088"
+rsha256="7c6969f8e82badc7afa28aa1054555c1c91d2858f9f45c41a82557f5c5ce85bd"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
