@@ -524,6 +524,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libsodium (https://github.com/jedisct1/libsodium)
 - libtasn1 (https://ftp.gnu.org/gnu/libtasn1/)
 - libtirpc (https://sourceforge.net/projects/libtirpc/ and http://git.linux-nfs.org/?p=steved/libtirpc.git;a=summary)
+- libtlsbearssl (https://github.com/michaelforney/libtls-bearssl - a standards-based tls lib implemented on top of bearssl)
 - libtom
   - libtomcrypt (https://www.libtom.net/LibTomCrypt/ and https://github.com/libtom/libtomcrypt)
   - libtommath (https://www.libtom.net/LibTomMath/ and https://github.com/libtom/libtommath)
@@ -1293,7 +1294,6 @@ wc -l /tmp/astbuild.out
   - lots of good stuff on this list: https://doc.libsodium.org/libsodium_users
 - libsysdev (https://github.com/idunham/libsysdev)
 - libtap (https://github.com/zorgnax/libtap)
-- libtls-bearssl (https://github.com/michaelforney/libtls-bearssl)
 - libtom
   - libtomfloat
   - libtompoly
