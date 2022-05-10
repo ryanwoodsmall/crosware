@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://bearssl.org/${rfile}"
 rsha256="6705bba1714961b41a728dfc5debbe348d2966c117649392f8c8139efc83ff14"
-rreqs="make"
+rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
