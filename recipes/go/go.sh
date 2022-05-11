@@ -21,35 +21,7 @@ elif [[ ${karch} =~ ^arm ]] ; then
 elif [[ ${karch} =~ ^riscv64 ]] ; then
   rdir="${rname}${rver}-riscv64"
   rsha256="c59a474ae0e8239eb27f3cbb447b53655eef0ecf3bbfc666ed517bd410917a7a"
-else
-  rdir="none"
-  rsha256="none"
 fi
-rfile="${rdir}.tar.xz"
-rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/20220427-${rname}${rver}/${rfile}"
-rreqs=""
+rdate="20220427"
 
-. "${cwrecipe}/common.sh"
-
-eval "
-function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
-}
-"
-
-eval "
-function cwextract_${rname}() {
-  cwextract \"${rdlfile}\" \"${rtdir}\"
-}
-"
-
-eval "
-function cwinstall_${rname}() {
-  cwfetch_${rname}
-  cwsourceprofile
-  cwextract_${rname}
-  cwlinkdir_${rname}
-  cwgenprofd_${rname}
-  cwmarkinstall_${rname}
-}
-"
+. "${cwrecipe}/go/go.sh.common"

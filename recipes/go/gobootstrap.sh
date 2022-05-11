@@ -14,35 +14,14 @@ else
   rsha256="none"
 fi
 rfile="${rdir}.tar.bz2"
-rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/20191102-go1.13.4/${rfile}"
-rreqs=""
+rdate="20191102"
+rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/${rdate}-go1.13.4/${rfile}"
 
-. "${cwrecipe}/common.sh"
+. "${cwrecipe}/go/go.sh.common"
 
 eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${cwsw}/go/current/bin\"' > \"${rprof}\"
   echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
-}
-"
-
-eval "
-function cwextract_${rname}() {
-  cwextract \"${rdlfile}\" \"${rtdir}\"
-}
-"
-
-eval "
-function cwinstall_${rname}() {
-  if [[ ${karch} =~ ^riscv ]] ; then
-    cwscriptecho \"architecture ${karch} not supported for recipe\"
-    return
-  fi
-  cwfetch_${rname}
-  cwsourceprofile
-  cwextract_${rname}
-  cwlinkdir_${rname}
-  cwgenprofd_${rname}
-  cwmarkinstall_${rname}
 }
 "

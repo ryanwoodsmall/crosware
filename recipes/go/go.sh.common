@@ -1,0 +1,43 @@
+: ${rdir:="none"}
+: ${rsha256:="none"}
+: ${rdate:="00000000"}
+: ${rfile:="${rdir}.tar.xz"}
+: ${rurl:="https://github.com/ryanwoodsmall/go-misc/releases/download/${rdate}-${rname}${rver}/${rfile}"}
+: ${rreqs:=""}
+
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+
+eval "
+function cwextract_${rname}() {
+  cwextract \"${rdlfile}\" \"${rtdir}\"
+}
+"
+
+if [[ ${rsha256} =~ none ]] ; then
+  eval "
+  function cwinstall_${rname}() {
+    cwscriptecho \"architecture ${karch} not supported for recipe\"
+  }
+  "
+else
+  eval "
+  function cwinstall_${rname}() {
+    cwfetch_${rname}
+    cwsourceprofile
+    cwextract_${rname}
+    cwlinkdir_${rname}
+    cwgenprofd_${rname}
+    cwmarkinstall_${rname}
+  }
+  "
+fi
+
+unset rdate
+
+# vim: ft=bash:
