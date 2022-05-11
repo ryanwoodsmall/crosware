@@ -738,6 +738,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - svnkit
 - tea (https://gitea.com/gitea/tea - gitea cli)
 - termcap (https://www.gnu.org/software/termutils/ - old standalone gnu termcap library)
+- termutils (https://www.gnu.org/software/termutils/ - tabs and tput)
 - tetrisbsd (https://github.com/sirjofri/tetris-bsd)
 - texinfo (untested, requires perl)
 - tig (https://github.com/jonas/tig - console git repo pager/browser/ui, ncurses)
