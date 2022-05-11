@@ -913,6 +913,7 @@ time \
 wc -l /tmp/astbuild.out
 ```
 - awka (http://awka.sourceforge.net/index.html - generate c from awk and compile)
+- awkcc (https://github.com/nokia/awkcc - awk to c transpiler w/binary executable output)
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
 - b2sum (https://github.com/dchest/b2sum)
 - babashka (https://github.com/borkdude/babashka - clojure+shell?)
