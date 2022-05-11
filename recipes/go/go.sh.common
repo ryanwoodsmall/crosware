@@ -2,7 +2,7 @@
 : ${rsha256:="none"}
 : ${rdate:="00000000"}
 : ${rfile:="${rdir}.tar.xz"}
-: ${rurl:="https://github.com/ryanwoodsmall/go-misc/releases/download/${rdate}-${rname}${rver}/${rfile}"}
+: ${rurl:="https://github.com/ryanwoodsmall/go-misc/releases/download/${rdate}-go${rver}/${rfile}"}
 : ${rreqs:=""}
 
 . "${cwrecipe}/common.sh"
@@ -22,7 +22,7 @@ function cwextract_${rname}() {
 if [[ ${rsha256} =~ none ]] ; then
   eval "
   function cwinstall_${rname}() {
-    cwscriptecho \"architecture ${karch} not supported for recipe\"
+    cwscriptecho \"architecture ${karch} not supported for recipe ${rname}\"
   }
   "
 else

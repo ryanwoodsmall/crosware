@@ -13,8 +13,8 @@ else
   rdir="none"
   rsha256="none"
 fi
-rfile="${rdir}.tar.bz2"
 rdate="20191102"
+rfile="${rdir}.tar.bz2"
 rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/${rdate}-go1.13.4/${rfile}"
 
 . "${cwrecipe}/go/go.sh.common"
