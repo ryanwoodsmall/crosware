@@ -20,7 +20,6 @@ rdate="20220511"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/${rdate}-go1.18.2/${rfile}"
 
-
 . "${cwrecipe}/go/go.sh.common"
 
 eval "

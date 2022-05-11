@@ -5,23 +5,23 @@
 # XXX - date should be moved to version?
 #
 rname="go"
-rver="1.17.9"
+rver="1.18.2"
 if [[ ${karch} =~ ^x86_64$ ]] ; then
   rdir="${rname}${rver}-amd64"
-  rsha256="72588b76af44dbf76036913fd4fdc0a21e2d48c4e3bae3cddb1652784e605cf3"
+  rsha256="9755b0b95667ed6fefb9503df3e14c549a10a86893bf27df70b7ec3682614a48"
 elif [[ ${karch} =~ ^i.86$ ]] ; then
   rdir="${rname}${rver}-386"
-  rsha256="2a6f8cf3090a7531adaa8caf1f9538386a26e449c4fda0ae0316cd416c609f0e"
+  rsha256="472648a5bf2ae14bce376e6f897f18d6dc56dfe88ec9dd94cfde122521922022"
 elif [[ ${karch} =~ ^aarch64 ]] ; then
   rdir="${rname}${rver}-arm64"
-  rsha256="87869de80803494b67cb151288393bc02a7ff97f3d2d437a91945d6e5d29a220"
+  rsha256="698dd5a8e481b6842c9457ba137ab9213d719d0848bb74e1e0eb8294c563d149"
 elif [[ ${karch} =~ ^arm ]] ; then
   rdir="${rname}${rver}-arm"
-  rsha256="c8d6fca9f798ce42cb030cec8dda9ff5313d73051d02dfcfc15d12e0480f0045"
+  rsha256="f1bbd276eb9af5e01b09bdef4172b9c3c70654f0955f5b7824142c2bb993ffa8"
 elif [[ ${karch} =~ ^riscv64 ]] ; then
   rdir="${rname}${rver}-riscv64"
-  rsha256="c59a474ae0e8239eb27f3cbb447b53655eef0ecf3bbfc666ed517bd410917a7a"
+  rsha256="e740bd3ba8824c5dc620161ea21f9f30e02881278a9945d1103e08f0f759395f"
 fi
-rdate="20220427"
+rdate="20220511"
 
 . "${cwrecipe}/go/go.sh.common"
