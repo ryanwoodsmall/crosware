@@ -1284,6 +1284,7 @@ wc -l /tmp/astbuild.out
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
 - libhdate (https://sourceforge.net/projects/libhdate/ - hebrew calendar w/hcal and hdate programs with sunrise/sunset/etc. info)
+- libhv (https://github.com/ithewei/libhv - c++ network library with some example programs, support for curl/openssl/gnutls/mbedtls/nghttp2)
 - libiconv (https://www.gnu.org/software/libiconv/)
 - libixp
   - https://github.com/bwhmather/libixp - fork updated recently?
