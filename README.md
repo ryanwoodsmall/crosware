@@ -1736,6 +1736,7 @@ wc -l /tmp/astbuild.out
   - xs (https://github.com/TieDyedDevil/XS - rc+es+scheme/lisp)
   - zsh
 - shellcheck (https://www.shellcheck.net/ and https://github.com/koalaman/shellcheck - haskell)
+- shini (https://github.com/wallyhall/shini - ini parser in shell)
 - shit (https://git.sr.ht/~sircmpwn/shit - shell git???)
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
 - simplecpp (https://github.com/danmar/simplecpp)
