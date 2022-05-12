@@ -4,7 +4,7 @@ rdir="libtls-bearssl-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/michaelforney/libtls-bearssl/releases/download/${rver}/${rfile}"
 rsha256="8714ab140eff675931212c869bf6dae797516d0fead2d0884d49a6ca0ee11c23"
-rreqs="bootstrapmake bearssl"
+rreqs="bootstrapmake bearssl cacertificates"
 
 . "${cwrecipe}/common.sh"
 
@@ -14,6 +14,7 @@ function cwconfigure_${rname}() {
   cat Makefile > Makefile.ORIG
   sed -i 's,/usr/local,${ridir},g' Makefile
   sed -i '/^install:/s,install-shared,,g' Makefile
+  sed -i.ORIG 's,/etc/ssl/cert.pem,${cwetc}/ssl/cert.pem,g' tls_internal.h
   popd >/dev/null 2>&1
 }
 "
