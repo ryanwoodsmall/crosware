@@ -1,14 +1,16 @@
 #
-# XXX - should probably use tag for toybox_config_script.sh
+# XXX - should probably use hash or tag for toybox_config_script.sh and add a sha for offline build
 # XXX - cwmake_ loop since aarch64 occasionally just dies?
+# XXX - bearssl+libtlsbearssl with CONFIG_WGET_LIBTLS?
+# XXX - openssl variant with CONFIG_WGET_OPENSSL?
 #
 
 rname="toybox"
-rver="0.8.6"
+rver="0.8.7"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/landley/${rname}/archive/${rfile}"
-rsha256="e2c4f72a158581a12f4303d0d1aeec196b01f293e495e535bcdaf75eb9ae0987"
+rsha256="b6f43d5738df54623ed21c32f430d1d5c5ac7ef465a6a883890f104b59d5d9e4"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
