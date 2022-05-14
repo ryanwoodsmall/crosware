@@ -994,6 +994,7 @@ wc -l /tmp/astbuild.out
   - lacc (https://github.com/larmel/lacc)
   - lcc (https://github.com/drh/lcc)
   - mazucc (https://github.com/jserv/MazuCC)
+  - musl.cc (https://musl.cc/ - cross and native compilers for all sorts of architectures, useful for bootstrapping openjdk on alpine?)
   - nwcc (http://nwcc.sourceforge.net/ - c89 compiler)
   - plan9-cc (https://github.com/huangguiyang/plan9-cc)
   - qbe (https://c9x.me/compile/)
