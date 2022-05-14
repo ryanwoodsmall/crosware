@@ -1,11 +1,11 @@
-rname="babycurl"
+rname="babycurlwolfssl"
 rver="$(cwver_tinycurl)"
 rdir="$(cwdir_tinycurl)"
 rfile="$(cwfile_tinycurl)"
 rdlfile="$(cwdlfile_tinycurl)"
 rurl="$(cwurl_tinycurl)"
 rsha256=""
-rreqs="mbedtls libssh2mbedtls make cacertificates pkgconf zlib"
+rreqs="wolfssl libssh2wolfssl make cacertificates pkgconf zlib"
 
 . "${cwrecipe}/common.sh"
 
@@ -31,11 +31,11 @@ function cwconfigure_${rname}() {
         --enable-ipv6 \
         --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
         --with-ca-path=\"${cwetc}/ssl/certs\" \
-        --with-default-ssl-backend=mbedtls \
+        --with-default-ssl-backend=wolfssl \
+        --with-wolfssl \
         --with-libssh2 \
-        --with-mbedtls \
         --with-zlib \
-        --without-{bearssl,brotli,gnutls,libidn2,libssh,nghttp2,nss,openssl,rusttls,wolfssh,wolfssl,zstd} \
+        --without-{bearssl,brotli,gnutls,libidn2,libssh,mbedtls,nghttp2,nss,openssl,rusttls,wolfssh,zstd} \
           CC=\"\${CC} -Os -Wl,-s\" \
           CFLAGS=\"-Os -Wl,-s \${CFLAGS}\" \
           CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
@@ -50,16 +50,18 @@ function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   rm -f ${ridir}/bin/* || true
   make install ${rlibtool}
-  mv \"${ridir}/bin/curl\" \"${ridir}/bin/${rname}\"
-  mv \"${ridir}/bin/curl-config\" \"${ridir}/bin/${rname}-config\"
-  ln -s \"${rname}\" \"${ridir}/bin/curl\"
-  ln -s \"${rname}\" \"${ridir}/bin/tiny-curl\"
-  ln -s \"${rname}\" \"${ridir}/bin/${rname}mbedtls\"
-  ln -s \"${rname}\" \"${ridir}/bin/${rname}-mbedtls\"
-  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname}\"
+  local sn=\"${rname%wolfssl}\"
+  mv \"${ridir}/bin/curl\" \"${ridir}/bin/\${sn}\"
+  ln -s \"\${sn}\" \"${ridir}/bin/\${sn}-wolfssl\"
+  ln -s \"\${sn}\" \"${ridir}/bin/${rname}\"
+  mv \"${ridir}/bin/curl-config\" \"${ridir}/bin/\${sn}-config\"
+  ln -s \"\${sn}\" \"${ridir}/bin/curl\"
+  ln -s \"\${sn}\" \"${ridir}/bin/tiny-curl\"
+  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/\${sn}\"
   cwmkdir \"${ridir}/devbin\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/devbin/curl\"
-  ln -sf \"${rtdir}/current/bin/${rname}-config\" \"${ridir}/devbin/curl-config\"
+  ln -sf \"${rtdir}/current/bin/\${sn}\" \"${ridir}/devbin/curl\"
+  ln -sf \"${rtdir}/current/bin/\${sn}-config\" \"${ridir}/devbin/curl-config\"
+  unset sn
   popd >/dev/null 2>&1
 }
 "
