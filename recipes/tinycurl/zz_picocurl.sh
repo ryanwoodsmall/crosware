@@ -1,3 +1,7 @@
+#
+# XXX - remove zlib, pkgconf reqs, move to bootstrapmake - ends up ~640KB on x86_64
+#
+
 rname="picocurl"
 rver="$(cwver_tinycurl)"
 rdir="$(cwdir_tinycurl)"
