@@ -1,3 +1,7 @@
+#
+# XXX - detect and test ${CW_GIT_CMD} and modify install/upgrade procedure to use a local clone
+#
+
 rname="shellish"
 rver="master"
 rdir="${rname//ish/-ish}-${rver}"
