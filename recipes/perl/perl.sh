@@ -1,6 +1,8 @@
 #
 # XXX - sysroot should be recreated at build time in ${rtdir}/sysroot
 # XXX - sysroot creation should be moved to statictoolchain recipe!!!
+# XXX - this is more of a perlminimal or perlstatic recipe - useful for bootstrapping openssl
+# XXX - add perlopenssl and/or perllibressl for more featureful/shared builds for e.g. cpan+gitweb
 #
 
 rname="perl"
