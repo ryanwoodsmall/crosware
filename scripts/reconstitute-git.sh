@@ -21,7 +21,7 @@ function failexit() {
   exit 1
 }
 
-which ${CW_GIT_CMD} >/dev/null 2>&1 || failexit "no ${CW_GIT_CMD}"
+command -v ${CW_GIT_CMD} >/dev/null 2>&1 || failexit "no ${CW_GIT_CMD}"
 test -e "${cwtop}" || failexit "no ${cwtop} directory"
 
 pushd "${cwtop}" >/dev/null 2>&1

@@ -13,7 +13,7 @@ function failexit() {
 
 reqs=( 'tar' )
 for req in ${reqs[@]} ; do
-  which ${req} >/dev/null 2>&1 || failexit "req ${req} not found"
+  command -v ${req} >/dev/null 2>&1 || failexit "req ${req} not found"
 done
 
 : ${version:="master"}
