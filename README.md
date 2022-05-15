@@ -1566,6 +1566,7 @@ wc -l /tmp/astbuild.out
   - unixodbc?
 - odhcploc (http://odhcploc.sourceforge.net/ - dhcp locater)
 - oleo (gnu spreadsheet, https://www.gnu.org/software/oleo/oleo.html)
+- openadk (https://openadk.org/ and https://github.com/wbx-github/openadk - embedded system toolchain and image creation)
 - openbsd-libz (https://github.com/ataraxialinux/openbsd-libz)
 - openconnect
 - opengit (https://github.com/khanzf/opengit)
