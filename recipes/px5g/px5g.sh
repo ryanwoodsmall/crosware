@@ -4,7 +4,7 @@
 #
 
 rname="px5g"
-rver="21.02"
+rver="22.03"
 rdir="${rname}-${rver}"
 rfile="${rname}-mbedtls.c"
 rurl="https://github.com/openwrt/openwrt/raw/openwrt-${rver}/package/utils/${rname}-mbedtls/${rfile}"
