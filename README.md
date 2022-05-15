@@ -737,6 +737,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - sbase (https://core.suckless.org/sbase)
   - ubase (https://core.suckless.org/ubase)
 - svnkit
+- tcpproxy (https://github.com/inetaf/tcpproxy - go, contains tlsrouter sni proxy program)
 - tea (https://gitea.com/gitea/tea - gitea cli)
 - termcap (https://www.gnu.org/software/termutils/ - old standalone gnu termcap library)
 - termutils (https://www.gnu.org/software/termutils/ - tabs and tput)
@@ -1808,6 +1809,7 @@ wc -l /tmp/astbuild.out
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
 - timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - tlse (https://github.com/eduardsui/tlse - c tls impl using libtomcrypt)
+- tlsproxy (https://github.com/abligh/tlsproxy - simple gnutls stunnel alike; may need some work, compiles but crashes w/access from chrome; seems to behave with curl?)
 - torgo (https://github.com/as/torgo)
 - tpm (https://github.com/nmeum/tpm/ - tiny password manager)
 - transocks (http://transocks.sourceforge.net/ - transparent socks, needs dante/nec socks libs)
