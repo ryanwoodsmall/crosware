@@ -1,3 +1,7 @@
+#
+# XXX - libressl variant
+#
+
 rname="uacme"
 rver="1.7.1"
 rdir="${rname}-upstream-${rver}"
