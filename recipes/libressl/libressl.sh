@@ -5,11 +5,11 @@
 # XXX - need libressl33, libressl34, etc.?
 #
 rname="libressl"
-rver="3.5.2"
+rver="3.5.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${rfile}"
-rsha256="56feab8e21c3fa6549f8b7d7511658b8e98518162838a795314732654adf3e5f"
+rsha256="3ab5e5eaef69ce20c6b170ee64d785b42235f48f2e62b095fca5d7b6672b8b28"
 rreqs="make cacertificates configgit zlib"
 # prefer openssl for now
 rprof="${cwetcprofd}/zz_${rname}.sh"
