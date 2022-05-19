@@ -1006,6 +1006,7 @@ wc -l /tmp/astbuild.out
 - cgpt (google source only?)
 - cmark (commonmark markddown - https://github.com/commonmark/cmark)
   - cmark-gfm (github fork - https://github.com/github/cmark-gfm)
+- colorized-logs (https://github.com/kilobyte/colorized-logs and https://launchpad.net/ubuntu/+source/colorized-logs - includes ansi2txt, etc.)
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
   - firm (https://pp.ipd.kit.edu/firm/ - related?)
 - cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
