@@ -351,6 +351,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - cjson (https://github.com/DaveGamble/cJSON)
 - cloc (https://github.com/AlDanial/cloc)
 - cmake
+- colorizedlogs (https://github.com/kilobyte/colorized-logs and https://launchpad.net/ubuntu/+source/colorized-logs - includes ansi2txt/ansi2html/ttyrec2ansi/pipetty)
 - configgit (gnu config.guess, config.sub updates for musl, aarch64, etc. http://git.savannah.gnu.org/gitweb/?p=config.git;a=summary)
 - coreutils (single static binary with symlinks, no nls/attr/acl/gmp/pcap/selinux)
 - corkscrew (http://wiki.kartbuilding.net/index.php/Corkscrew_-_ssh_over_https and http://web.archive.org/web/20160207093437/http://agroman.net/corkscrew/ - ssh over http/socks)
@@ -1006,7 +1007,6 @@ wc -l /tmp/astbuild.out
 - cgpt (google source only?)
 - cmark (commonmark markddown - https://github.com/commonmark/cmark)
   - cmark-gfm (github fork - https://github.com/github/cmark-gfm)
-- colorized-logs (https://github.com/kilobyte/colorized-logs and https://launchpad.net/ubuntu/+source/colorized-logs - includes ansi2txt, etc.)
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
   - firm (https://pp.ipd.kit.edu/firm/ - related?)
 - cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
