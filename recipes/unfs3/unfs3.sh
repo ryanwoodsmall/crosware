@@ -19,7 +19,9 @@ rreqs="make byacc flex libtirpc"
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i.ORIG '/LDFLAGS=/ s,-R/usr/ucblib,,' ./configure
+  cat configure > configure.ORIG
+  sed -i '/LDFLAGS=/ s,-R/usr/ucblib,,' ./configure
+  sed -i 's/rpcsoc/tirpc/g' ./configure
   env PATH=\"${cwsw}/byacc/current/bin:${cwsw}/flex/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       CC=\"\${CC} \${CFLAGS} -fcommon -I${cwsw}/libtirpc/current/include/tirpc\" \
