@@ -1,3 +1,7 @@
+#
+# XXX - make reproducible; probably just need to set compilation time?
+#
+
 rname="busybox"
 rver="1.35.0"
 rdir="${rname}-${rver}"
