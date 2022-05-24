@@ -24,7 +24,7 @@ function cwmake_${rname}() {
   make CC=\"\${CC} \${CFLAGS}\" CPPFLAGS= LDFLAGS=-static
   mv make posixmake
   make clean
-  make CC=\"\${CC} \${CFLAGS}\" CPPFLAGS= LDFLAGS=-static ENABLE_FEATURE_MAKE_EXTENSIONS=1
+  make CC=\"\${CC} \${CFLAGS} -DENABLE_FEATURE_MAKE_EXTENSIONS=1\" CPPFLAGS= LDFLAGS=-static
   mv make ${rname}
   popd >/dev/null 2>&1
 }
