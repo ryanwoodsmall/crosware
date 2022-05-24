@@ -671,6 +671,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - uses muslstandalone as libc
 - pcre
 - pcre2
+- pdpmake (https://github.com/rmyorston/pdpmake - public domain posix make)
 - perl
 - pinentry (curses via ncurses, tty)
 - pixman (http://www.pixman.org/ and https://www.cairographics.org/releases/)
