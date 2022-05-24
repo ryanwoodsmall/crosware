@@ -11,14 +11,21 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  true
+  pushd \"${rbdir}\" >/dev/null 2>&1
+  sed -i.ORIG '/(CC)/s/(OBJS)/(OBJS) -static/g' Makefile
+  popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make CC=\"\${CC} \${CFLAGS}\"
+  rm -f ${rname} posixmake make
+  make CC=\"\${CC} \${CFLAGS}\" CPPFLAGS= LDFLAGS=-static
+  mv make posixmake
+  make clean
+  make CC=\"\${CC} \${CFLAGS}\" CPPFLAGS= LDFLAGS=-static ENABLE_FEATURE_MAKE_EXTENSIONS=1
+  mv make ${rname}
   popd >/dev/null 2>&1
 }
 "
@@ -27,7 +34,8 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cwmkdir \"${ridir}/bin\"
-  install -m 755 make \"${ridir}/bin/${rname}\"
+  install -m 755 ${rname} \"${ridir}/bin/${rname}\"
+  install -m 755 posixmake \"${ridir}/bin/posixmake\"
   popd >/dev/null 2>&1
 }
 "
