@@ -1875,6 +1875,7 @@ wc -l /tmp/astbuild.out
   - wasm-micro-runtime (https://github.com/bytecodealliance/wasm-micro-runtime)
   - wasm-tools (https://github.com/bytecodealliance/wasm-tools)
   - wasp (https://github.com/WebAssembly/wasp)
+  - wazero (https://github.com/tetratelabs/wazero and https://wazero.io - webassembly runtime in go, zero deps?)
 - webcat (https://git.sr.ht/~rumpelsepp/webcat - go, see https://rumpelsepp.org/blog/ssh-through-websocket/)
 - webhook (https://github.com/adnanh/webhook - webhook to shell server in go)
 - websocat (https://github.com/vi/websocat - rust)
