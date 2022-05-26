@@ -3,13 +3,13 @@
 # XXX - CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES - Modules/Platform/UnixPaths.cmake
 # XXX - CMAKE_INSTALL_LIBDIR - https://cmake.org/cmake/help/v3.0/module/GNUInstallDirs.html
 #
-
-#
 # XXX - openssl ugh
 # -- Could NOT find OpenSSL, try to set the path to OpenSSL root folder in the system variable OPENSSL_ROOT_DIR (missing: OPENSSL_CRYPTO_LIBRARY OPENSSL_INCLUDE_DIR)
 # CMake Error at Utilities/cmcurl/CMakeLists.txt:454 (message):
 #  Could not find OpenSSL.  Install an OpenSSL development package or
 #  configure CMake with -DCMAKE_USE_OPENSSL=OFF to build without OpenSSL.
+#
+# XXX - build with libressl+a tiny-curl? probably need a picocurllibressl w/zlib and nothing else...
 #
 
 rname="cmake"
