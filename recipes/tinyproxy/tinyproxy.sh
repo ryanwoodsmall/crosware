@@ -3,11 +3,11 @@
 #
 
 rname="tinyproxy"
-rver="1.11.0"
+rver="1.11.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/${rname}/${rname}/releases/download/${rver}/${rfile}"
-rsha256="c1ec81cfc4c551d2c24e0227a5aeeaad8723bd9a39b61cd729e516b82eaa3f32"
+rsha256="d66388448215d0aeb90d0afdd58ed00386fb81abc23ebac9d80e194fceb40f7c"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
