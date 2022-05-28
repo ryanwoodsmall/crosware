@@ -1308,6 +1308,7 @@ wc -l /tmp/astbuild.out
   - libtomfloat
   - libtompoly
   - tomsfastmath
+- libu (https://github.com/koanlogic/libu - network/system/etc. utility library)
 - libuargp (https://github.com/xhebox/libuargp - argp-standalone alternative)
 - libucl (https://github.com/vstakhov/libucl - universal configuration language parser library)
 - libudev-zero (https://github.com/illiliti/libudev-zero)
@@ -1443,6 +1444,7 @@ wc -l /tmp/astbuild.out
   - or gnu mailutils (https://www.gnu.org/software/mailutils/mailutils.html)
 - makeself (https://makeself.io/ and https://github.com/megastep/makeself - bin pkgs? with signing?)
 - makesure (https://github.com/xonixx/makesure - make-like goal/task runner in shell and awk)
+- makl (https://github.com/koanlogic/makl and http://www.koanlogic.com/makl - build tool for C libs/progs using bourne shell and gnu make)
 - man stuff
   - MANPATH settings
   - roffit (https://daniel.haxx.se/projects/roffit/)
