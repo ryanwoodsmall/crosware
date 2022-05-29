@@ -1,9 +1,9 @@
 rname="opensshwolfssl"
-rver="8.8p1"
+rver="9.0p1"
 rdir="wolfssl-osp-openssh-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/wolfssl/osp/${rfile}"
-rsha256="f6d85620a1c4cef637feb6e8b483f3d7854c3ffa93acdb526e8770aa39d0bfe5"
+rsha256="ed453c84db60fea145bec05c8f449210fd5f3928ed3db08c4210ea8896d2394b"
 rreqs="make zlib netbsdcurses wolfssl"
 
 . "${cwrecipe}/common.sh"
