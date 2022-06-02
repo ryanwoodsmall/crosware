@@ -1,4 +1,4 @@
-# XXX - add an associative array of rver/rreqs
+# XXX - add and use "cwbdir_${rname}() { echo ${rbdir} ; }" at runtime in place of hard-coded $prefix for e.g. pushd/popd/configure/...?
 # XXX - rbdir should include /${rname}/ - what will it break? not much...
 : ${rbdir:="${cwbuild}/${rdir}"}
 : ${rtdir:="${cwsw}/${rname}"}
@@ -117,10 +117,10 @@ function cwlistreqs_${rname}() {
 eval "
 function cwcheckreqs_${rname}() {
   cwcheckuniq \"\${FUNCNAME[@]}\"
-  for rreq in ${rreqs} ; do
-    if ! \$(cwcheckinstalled \${rreq}) ; then
-      cwscriptecho \"installing required recipe \${rreq}\"
-      cwinstall_\${rreq}
+  for r in \$(cwreqs_${rname}) ; do
+    if ! \$(cwcheckinstalled \${r}) ; then
+      cwscriptecho \"installing required recipe \${r}\"
+      cwinstall_\${r}
       cwsourceprofile
     fi
   done
@@ -285,7 +285,7 @@ eval "
 function cwupgradereqs_${rname}() {
   cwscriptecho \"checking req upgrades for ${rname}\"
   local r
-  for r in ${rreqs} ; do
+  for r in \$(cwreqs_${rname}) ; do
     cwcheckinstalled \${r} || cwinstall_\${r}
     cwcheckupgradable \${r} && cwupgrade_\${r} || true
     cwmarkedupgradable \${r} && cwupgrade_\${r} || true
