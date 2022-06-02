@@ -680,6 +680,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - plan9port9p (9p, 9pfuse standalone binaries from plan9port)
 - posixstandard (https://pubs.opengroup.org/onlinepubs/9699919799/download/index.html - posix/sus (single unix specification) docs for personal use)
 - ppp (https://github.com/ppp-project/ppp - paul's ppp package, pppd+chat)
+- pv (https://github.com/icetee/pv - pv pipe viewer pipeviewer)
 - px5g (https://github.com/openwrt/openwrt/tree/master/package/utils/px5g-mbedtls - mbedtls cert/key gen program)
   - px5gwolfssl (https://github.com/openwrt/openwrt/tree/master/package/utils/px5g-wolfssl - px5g built with wolfssl)
 - python
@@ -1634,7 +1635,6 @@ wc -l /tmp/astbuild.out
     - http://skarnet.org./software/execline/
     - http://jdebp.eu./Softwares/nosh/
 - pup (https://github.com/ericchiang/pup)
-- pv (https://github.com/icetee/pv - pipeviewer)
 - qalc (https://qalculate.github.io/ - libqalculate and cli/text interface)
 - quictls (https://github.com/quictls/openssl - openssl (3+?) patched with quic support, for ngtcp2+nghttp3)
 - ragel (http://www.colm.net/open-source/ragel/)
