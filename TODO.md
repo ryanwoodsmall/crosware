@@ -1014,6 +1014,12 @@ time_func ls -l -A /
   - `cwbaseurl` - github.com/org/repo?
   - `cwsite` - github.com? github.com/org?
   - `cwrawurl` - repo raw access for remote scripts
+- `${cwtop}/var/deps/${rname}/{dep1,dep2,..}`
+  - track installed dependencies via `var/inst/${rname}` style files
+  - one extra level
+  - use symlinks?
+  - just remove `var/deps/${rname}/` dir on uninstall
+  - individual packages would have to create/remove their own `var/deps/${req}/${rname}` files
 
 <!--
 # vim: ft=markdown
