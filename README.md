@@ -1491,6 +1491,7 @@ wc -l /tmp/astbuild.out
 - miniyacc (https://c9x.me/yacc/)
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
 - mk (go, https://github.com/dcjones/mk)
+- mold (https://github.com/rui314/mold - fast linker, gcc 10+ (or clang 12+) for c++20 i think?)
 - moreutils (https://joeyh.name/code/moreutils/)
 - moscow ml (https://github.com/kfl/mosml)
 - mqtt-c (https://github.com/LiamBindle/MQTT-C)
