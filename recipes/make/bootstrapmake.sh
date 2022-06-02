@@ -1,3 +1,8 @@
+#
+# XXX - should probably require statictoolchain _only_ here
+# XXX - kinda the root recipe on which everything relies
+#
+
 rname="bootstrapmake"
 rver="4.2.1"
 rdir="${rname//bootstrap/}-${rver}"
