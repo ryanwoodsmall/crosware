@@ -1,5 +1,7 @@
-# XXX - add and use "cwbdir_${rname}() { echo ${rbdir} ; }" at runtime in place of hard-coded $prefix for e.g. pushd/popd/configure/...?
 # XXX - rbdir should include /${rname}/ - what will it break? not much...
+# XXX - rsha256 default to d3adb33fd3adb33fd3adb33fd3adb33fd3adb33fd3adb33fd3adb33fd3adb33fd3adb33fd3 ???
+# XXX - cwinfo_${rname}() - dump recipe values in 'rval : ${rval}' format
+# XXX - cw{c,cpp,cxx,ld,pkgconfig}_${rname}() and r* vars - dump appropriate recipe flags
 : ${rbdir:="${cwbuild}/${rdir}"}
 : ${rtdir:="${cwsw}/${rname}"}
 : ${ridir:="${rtdir}/${rdir}"}
@@ -13,12 +15,14 @@
 : ${rsite:=""}
 : ${rmessage:=}
 : ${rpfile:="${cwrecipe}/${rname}/${rname}.patches"}
+: ${rsha256:=""}
+: ${rver:="0.0.0"}
 
 if [[ ${rlibtool} == "" && ${rreqs} =~ slibtool ]] ; then
   rlibtool="LIBTOOL='${cwsw}/slibtool/current/bin/slibtool-static -all-static'"
 fi
 
-cwconfigureprefix="--prefix=${ridir}"
+cwconfigureprefix="--prefix=\$(cwidir_${rname})"
 cwconfigurelibopts="--enable-static --enable-static=yes --disable-shared --enable-shared=no"
 cwconfigurefpicopts="CFLAGS=\"\${CFLAGS} -fPIC\" CXXFLAGS=\"\${CXXFLAGS} -fPIC\""
 
@@ -41,8 +45,20 @@ function cwdlfile_${rname}() {
 "
 
 eval "
+function cwsha256_${rname}() {
+  echo \"${rsha256}\"
+}
+"
+
+eval "
 function cwdir_${rname}() {
   echo \"${rdir}\"
+}
+"
+
+eval "
+function cwbdir_${rname}() {
+  echo \"${rbdir}\"
 }
 "
 
@@ -98,7 +114,7 @@ function cwclean_${rname}() {
 
 eval "
 function cwfetch_${rname}() {
-  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
+  cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
 }
 "
 
@@ -129,7 +145,7 @@ function cwcheckreqs_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts}
   popd >/dev/null 2>&1
 }
@@ -137,7 +153,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} ${rlibtool}
   popd >/dev/null 2>&1
 }
@@ -145,7 +161,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
   popd >/dev/null 2>&1
 }
@@ -159,20 +175,20 @@ function cwgenprofd_${rname}() {
 
 eval "
 function cwmarkinstall_${rname}() {
-  cwmarkinstall \"${rname}\" \"${rver}\"
+  cwmarkinstall \"${rname}\" \"\$(cwver_${rname})\"
   cwmarkupgraded \"${rname}\"
 }
 "
 
 eval "
 function cwextract_${rname}() {
-  cwextract \"${rdlfile}\" \"${cwbuild}\"
+  cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
 }
 "
 
 eval "
 function cwlinkdir_${rname}() {
-  cwlinkdir \"$(basename ${ridir})\" \"${rtdir}\"
+  cwlinkdir \"\$(basename \$(cwidir_${rname}))\" \"${rtdir}\"
 }
 "
 
@@ -211,7 +227,7 @@ else
   "
   eval "
   function cwpatch_${rname}() {
-    pushd \"${rbdir}\" >/dev/null 2>&1
+    pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
     local p
     local f
     local c
@@ -321,7 +337,7 @@ if [[ ${rreqs} =~ configgit ]] ; then
   eval "
   function cwfixupconfig_${rname}() {
     cwscriptecho \"fixing up config files\"
-    pushd \"${rbdir}\" >/dev/null 2>&1
+    pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
     local c l
     for c in config.{guess,sub} ; do
       for l in \$(find . -name \${c}) ; do
