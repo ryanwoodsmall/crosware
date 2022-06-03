@@ -2,6 +2,7 @@
 # XXX - rsha256 default to d3adb33fd3adb33fd3adb33fd3adb33fd3adb33fd3adb33fd3adb33fd3adb33fd3adb33fd3 ???
 # XXX - cwinfo_${rname}() - dump recipe values in 'rval : ${rval}' format
 # XXX - cw{c,cpp,cxx,ld,pkgconfig}_${rname}() and r* vars - dump appropriate recipe flags
+# XXX - cwpath_${rname}() - return bin/, sbin/, etc.?
 : ${rbdir:="${cwbuild}/${rdir}"}
 : ${rtdir:="${cwsw}/${rname}"}
 : ${ridir:="${rtdir}/${rdir}"}
