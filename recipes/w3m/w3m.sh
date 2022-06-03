@@ -1,28 +1,27 @@
 #
 # XXX - ugly disabling of garbage collection below
-#
 # XXX - build against shared gc?
 #   LIBS='-lssl -lcrypto -lz -latomic_ops -lgc' \
 #   CFLAGS=\"\${CFLAGS//-Wl,-static/} -Wl,-rpath=${cwsw}/gc/current/lib\" \
 #   CXXFLAGS=\"\${CXXFLAGS//-Wl,-static/} -Wl,-rpath=${cwsw}/gc/current/lib\" \
 #   LDFLAGS=\"\${LDFLAGS//-static/}\"
-#
 # XXX - libressl variant
+# XXX - netbsdcurses?
 #
 
 rname="w3m"
-rver="0.5.3-git20210102"
+rver="0.5.3-git20220429"
 rdir="${rname}-${rver}"
 rfile="v${rver//-/+}.tar.gz"
 rurl="https://github.com/tats/${rname}/archive/${rfile}"
-rsha256="7b276d2c6ee96588f990959a01e0d8979b1b8c86fdb04d0d17ef46c30c2cd884"
+rsha256="6d76fcccb7c94658f2753f0777f69283d5cb447004a0d0d3087c1d873edc0af3"
 rreqs="make libatomicops gc gettexttiny ncurses openssl perl pkgconfig zlib cacertificates"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG '/^for lib in .*nsl/ s/ in / in dne #/g' configure
   env PATH=${cwsw}/perl/current/bin:\${PATH} ./configure ${cwconfigureprefix} \
     --disable-mouse \
