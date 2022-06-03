@@ -1,16 +1,16 @@
 rname="libnetfiltercttimeout"
-rver="1.0.0"
+rver="1.0.1"
 rdir="${rname//rc/r_c}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://www.netfilter.org/pub/${rname//rc/r_c}/${rfile}"
-rsha256="aeab12754f557cba3ce2950a2029963d817490df7edb49880008b34d7ff8feba"
+rsha256="0b59da2f3204e1c80cb85d1f6d72285fc07b01a2f5678abf5dccfbbefd650325"
 rreqs="bootstrapmake pkgconfig configgit libmnl"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
