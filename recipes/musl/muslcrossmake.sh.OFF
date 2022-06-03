@@ -1,0 +1,101 @@
+#
+# XXX - include gcc+musl verison in name? e.g. ${shasum}-9.4.0-1.2.3
+# XXX - rename to have cw or crosscompilers in name?
+# XXX - oldmalloc?
+# XXX - deps?
+# XXX - shared binutils/bfd/rpath/...
+# XXX - patchelf?
+# XXX - binutils patch for ld.so?
+# XXX - versions? gcc, musl, what else?
+# XXX - arches? alpine? arm4/5/sf?
+#
+
+rname="muslcrossmake"
+rver="fe915821b652a7fa37b34a596f47d8e20bc72338"
+rdir="musl-cross-make-${rver}"
+rfile="${rver}.zip"
+rurl="https://github.com/richfelker/musl-cross-make/archive/${rfile}"
+rsha256=""
+rreqs="make diffutils patch"
+rprof="${cwetcprofd}/zz_${rname}.sh"
+
+if ! command -v unzip &>/dev/null ; then
+  rreqs="${rreqs} busybox"
+fi
+if ! command -v rsync &>/dev/null ; then
+  rreqs="${rreqs} rsyncminimal"
+fi
+
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwfetch_${rname}() {
+  cwfetch \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\"
+}
+"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  sed -i.ORIG /tar/s,xvf,xf,g Makefile
+  test -e sources && mv sources{,.PRE-\${TS}}
+  ln -s \"${cwdl}/${rname}\" sources
+  popd >/dev/null 2>&1
+}
+"
+
+for f in configure make ; do
+  eval "
+  function cw${f}_${rname}() {
+    true
+  }
+  "
+done
+unset f
+
+for a in ${statictoolchain_triplet[@]} ; do
+  eval "
+  function cwmakeinstall_${rname}_${a//-/_}() {
+    cwscriptecho \"\${FUNCNAME[0]}: building ${rname} for ${a}\"
+    pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+    make clean || true
+    : \${CC:=\"gcc\"}
+    : \${CXX:=\"g++\"}
+    echo -n > config.mak
+    echo TARGET = ${a} >> config.mak
+    echo OUTPUT = \$(cwidir_${rname}) >> config.mak
+    echo COMMON_CONFIG += --target=${a} --host=${statictoolchain_triplet[${karch}]} --build=${statictoolchain_triplet[${karch}]} --disable-nls \$(echo --enable-static{=yes,}) --enable-shared=no --disable-shared CC=\'\${CC} -static --static\' CXX=\'\${CXX} -static --static\' CFLAGS=\'-fPIC -Os -Wl,-static -Wl,-s\' CXXFLAGS=\'-fPIC -Os -Wl,-static -Wl,-s\' LDFLAGS=\'-static -s\' CPPFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH= >> config.mak
+    echo DL_CMD = curl -k -C - -L -o >> config.mak
+    echo GCC_VER = 9.4.0 >> config.mak
+    echo MUSL_VER = 1.2.3 >> config.mak
+    echo GCC_CONFIG += --enable-languages=c,c++ --disable-lto --disable-host-shared --disable-multilib --with-pic --enable-cxx-flags=-fPIC >> config.mak
+    echo BINUTILS_CONFIG += --disable-host-shared --disable-lto --with-static-standard-libraries LIBS=-static LDFLAGS=\'-static -s\' >> config.mak
+    cwscriptecho \"config.mak for ${a}:\"
+    sed 's,^,  ,g' < config.mak
+    make -j${cwmakejobs} CFLAGS= CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
+    make install
+    cd \"\$(cwidir_${rname})/${a}/lib\"
+    for l in ld-musl*.so* ld.so ; do
+      ln -sf \"${rtdir}/current/${a}/lib/libc.so\" \"\${l}\"
+    done
+    unset l
+    cd -
+    popd >/dev/null 2>&1
+  }
+  "
+done
+unset a
+
+eval "
+function cwmakeinstall_${rname}() {
+  for a in \$(cwnormalizeargs ${statictoolchain_triplet[@]}) ; do
+    cwmakeinstall_${rname}_\${a//-/_}
+  done
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
