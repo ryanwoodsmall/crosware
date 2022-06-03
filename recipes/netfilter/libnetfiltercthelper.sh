@@ -1,16 +1,16 @@
 rname="libnetfiltercthelper"
-rver="1.0.0"
+rver="1.0.1"
 rdir="${rname//rc/r_c}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://www.netfilter.org/pub/${rname//rc/r_c}/${rfile}"
-rsha256="07618e71c4d9a6b6b3dc1986540486ee310a9838ba754926c7d14a17d8fccf3d"
+rsha256="14073d5487233897355d3ff04ddc1c8d03cc5ba8d2356236aa88161a9f2dc912"
 rreqs="bootstrapmake pkgconfig configgit libmnl"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
