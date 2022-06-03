@@ -1,8 +1,4 @@
 #
-# XXX - riscv64 missing include/ directories?
-# XXX - musl- symlinks
-# XXX - bare symlinks
-# XXX - include gcc+musl verison in name? e.g. ${shasum}-9.4.0-1.2.3
 # XXX - rename to have cw or crosscompilers in name?
 # XXX - oldmalloc?
 # XXX - deps?
@@ -14,9 +10,9 @@
 #
 
 rname="muslcrossmake"
-rver="fe915821b652a7fa37b34a596f47d8e20bc72338"
-rdir="musl-cross-make-${rver}"
-rfile="${rver}.zip"
+rver="fe915821b652a7fa37b34a596f47d8e20bc72338-9.4.0-1.2.3"
+rdir="musl-cross-make-${rver%%-*}"
+rfile="${rver%%-*}.zip"
 rurl="https://github.com/richfelker/musl-cross-make/archive/${rfile}"
 rsha256=""
 rreqs="make diffutils patch"
@@ -60,6 +56,7 @@ for a in ${statictoolchain_triplet[@]} ; do
   eval "
   function cwmakeinstall_${rname}_${a//-/_}() {
     cwscriptecho \"\${FUNCNAME[0]}: building ${rname} for ${a}\"
+    IFS=- read v g m <<< ${rver}
     pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
     make clean || true
     : \${CC:=\"gcc\"}
@@ -69,20 +66,20 @@ for a in ${statictoolchain_triplet[@]} ; do
     echo OUTPUT = \$(cwidir_${rname}) >> config.mak
     echo COMMON_CONFIG += --target=${a} --host=${statictoolchain_triplet[${karch}]} --build=${statictoolchain_triplet[${karch}]} --disable-nls \$(echo --enable-static{=yes,}) --enable-shared=no --disable-shared CC=\'\${CC} -static --static\' CXX=\'\${CXX} -static --static\' CFLAGS=\'-fPIC -Os -Wl,-static -Wl,-s\' CXXFLAGS=\'-fPIC -Os -Wl,-static -Wl,-s\' LDFLAGS=\'-static -s\' CPPFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH= >> config.mak
     echo DL_CMD = curl -k -C - -L -o >> config.mak
-    echo GCC_VER = 9.4.0 >> config.mak
-    echo MUSL_VER = 1.2.3 >> config.mak
+    echo GCC_VER = \${g} >> config.mak
+    echo MUSL_VER = \${m} >> config.mak
     echo GCC_CONFIG += --enable-languages=c,c++ --disable-lto --disable-host-shared --disable-multilib --with-pic --enable-cxx-flags=-fPIC >> config.mak
     echo BINUTILS_CONFIG += --disable-host-shared --disable-lto --with-static-standard-libraries LIBS=-static LDFLAGS=\'-static -s\' >> config.mak
     cwscriptecho \"config.mak for ${a}:\"
     sed 's,^,  ,g' < config.mak
     make -j${cwmakejobs} CFLAGS= CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
     make install
-    cd \"\$(cwidir_${rname})/${a}/lib\"
-    for l in ld-musl*.so* ld.so ; do
+    pushd \"\$(cwidir_${rname})/${a}/lib\" >/dev/null 2>&1
+    for l in ld-musl*.so* ld.so ldd ; do
       ln -sf \"${rtdir}/current/${a}/lib/libc.so\" \"\${l}\"
     done
-    unset l
-    cd -
+    unset g l m v
+    popd >/dev/null 2>&1
     popd >/dev/null 2>&1
   }
   "
@@ -90,10 +87,38 @@ done
 unset a
 
 eval "
+function cwmakeinstall_${rname}_post() {
+  for a in \$(cwnormalizeargs ${statictoolchain_triplet[@]}) ; do
+    pushd \"\$(cwidir_${rname})/\${a}/include\" >/dev/null 2>&1
+    for d in \$(find ../../x86_64-linux-musl/include/ -maxdepth 1 -mindepth 1 -type d) ; do
+      b=\"\$(basename \${d})\"
+      test -e \${b} || ln -s \${d} \${b}
+    done
+    popd >/dev/null 2>&1
+    rm -rf \"\$(cwidir_${rname})/\${a}/devbin\"
+    cwmkdir \"\$(cwidir_${rname})/\${a}/devbin\"
+    pushd \"\$(cwidir_${rname})/\${a}/devbin\" >/dev/null 2>&1
+    for b in \$(find ../../bin/ ! -type d | grep /bin/\${a}-) ; do
+      t=\"\$(basename \${b})\"
+      m=\"\$(basename \${b} | sed s,\${a}-,musl-,g)\"
+      r=\"\$(basename \${b} | sed s,\${a}-,,g)\"
+      ln -sf \${b} \${t}
+      ln -sf \${b} \${m}
+      ln -sf \${b} \${r}
+    done
+    ln -sf ../lib/ldd musl-ldd
+    popd >/dev/null 2>&1
+  done
+  unset a b d m r t
+}
+"
+
+eval "
 function cwmakeinstall_${rname}() {
   for a in \$(cwnormalizeargs ${statictoolchain_triplet[@]}) ; do
     cwmakeinstall_${rname}_\${a//-/_}
   done
+  cwmakeinstall_${rname}_post
 }
 "
 
