@@ -15,11 +15,11 @@ rdir="musl-cross-make-${rver%%-*}"
 rfile="${rver%%-*}.zip"
 rurl="https://github.com/richfelker/musl-cross-make/archive/${rfile}"
 rsha256=""
-rreqs="make diffutils patch"
+rreqs="make busybox toybox gawk sed diffutils patch flex byacc"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 if ! command -v unzip &>/dev/null ; then
-  rreqs="${rreqs} busybox"
+  rreqs="${rreqs} unzip"
 fi
 if ! command -v rsync &>/dev/null ; then
   rreqs="${rreqs} rsyncminimal"
