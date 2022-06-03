@@ -14,6 +14,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   sed -i.ORIG 's/VI.pm)$/VI.pm || true/g' Makefile.in
+  sed -i.ORIG 's,/usr/tmp,/usr/tmp ${cwtop}/tmp,g' configure
   env \
     CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
     LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -static\" \

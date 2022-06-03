@@ -22,6 +22,7 @@ function cwconfigure_${rname}() {
   done
   unset p
   cd build.unix
+  sed -i.ORIG 's,/usr/tmp,/usr/tmp ${cwtop}/tmp,g' ../dist/configure
   ../dist/configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --program-prefix=n \
     --with-db=system \
