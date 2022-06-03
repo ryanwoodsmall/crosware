@@ -1,4 +1,5 @@
 #
+# XXX - musl- symlinks
 # XXX - include gcc+musl verison in name? e.g. ${shasum}-9.4.0-1.2.3
 # XXX - rename to have cw or crosscompilers in name?
 # XXX - oldmalloc?
