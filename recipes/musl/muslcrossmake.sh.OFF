@@ -4,7 +4,8 @@
 # XXX - shared binutils/bfd/rpath/...
 # XXX - patchelf?
 # XXX - binutils patch for ld.so?
-# XXX - versions? gcc, musl, what else?
+# XXX - include binutils version in ${rver}?
+# XXX - versions? gcc, musl, what else? (probably binutils?)
 # XXX - arches? alpine? arm4/5/sf?
 # XXX - musl-linker or similar script that dumps libc.so/ld.so/... path?
 # XXX - set dynamic linker and rpath? something like...
