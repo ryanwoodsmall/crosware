@@ -1,12 +1,12 @@
 #
 # XXX - rename to have cw or crosscompilers in name?
-# XXX - oldmalloc?
 # XXX - deps?
 # XXX - shared binutils/bfd/rpath/...
 # XXX - patchelf?
 # XXX - binutils patch for ld.so?
 # XXX - versions? gcc, musl, what else?
 # XXX - arches? alpine? arm4/5/sf?
+# XXX - musl-linker or similar script that dumps libc.so/ld.so/... path?
 #
 
 rname="muslcrossmake"
@@ -64,22 +64,23 @@ for a in ${statictoolchain_triplet[@]} ; do
     echo -n > config.mak
     echo TARGET = ${a} >> config.mak
     echo OUTPUT = \$(cwidir_${rname}) >> config.mak
-    echo COMMON_CONFIG += --target=${a} --host=${statictoolchain_triplet[${karch}]} --build=${statictoolchain_triplet[${karch}]} --disable-nls \$(echo --enable-static{=yes,}) --enable-shared=no --disable-shared CC=\'\${CC} -static --static\' CXX=\'\${CXX} -static --static\' CFLAGS=\'-fPIC -Os -Wl,-static -Wl,-s\' CXXFLAGS=\'-fPIC -Os -Wl,-static -Wl,-s\' LDFLAGS=\'-static -s\' CPPFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH= >> config.mak
-    echo DL_CMD = curl -k -C - -L -o >> config.mak
     echo GCC_VER = \${g} >> config.mak
     echo MUSL_VER = \${m} >> config.mak
-    echo GCC_CONFIG += --enable-languages=c,c++ --disable-lto --disable-host-shared --disable-multilib --with-pic --enable-cxx-flags=-fPIC >> config.mak
+    echo DL_CMD = curl -k -C - -L -o >> config.mak
     echo BINUTILS_CONFIG += --disable-host-shared --disable-lto --with-static-standard-libraries LIBS=-static LDFLAGS=\'-static -s\' >> config.mak
+    echo COMMON_CONFIG += --target=${a} --host=${statictoolchain_triplet[${karch}]} --build=${statictoolchain_triplet[${karch}]} --disable-nls \$(echo --enable-static{=yes,}) --enable-shared=no --disable-shared CC=\'\${CC} -static --static\' CXX=\'\${CXX} -static --static\' CFLAGS=\'-fPIC -Os -Wl,-static -Wl,-s\' CXXFLAGS=\'-fPIC -Os -Wl,-static -Wl,-s\' LDFLAGS=\'-static -s\' CPPFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH= >> config.mak
+    echo GCC_CONFIG += --enable-languages=c,c++ --disable-lto --disable-host-shared --disable-multilib --with-pic --enable-cxx-flags=-fPIC >> config.mak
+    echo MUSL_CONFIG += --with-malloc=oldmalloc >> config.mak
     cwscriptecho \"config.mak for ${a}:\"
     sed 's,^,  ,g' < config.mak
     make -j${cwmakejobs} CFLAGS= CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
     make install
+    popd >/dev/null 2>&1
     pushd \"\$(cwidir_${rname})/${a}/lib\" >/dev/null 2>&1
     for l in ld-musl*.so* ld.so ldd ; do
       ln -sf \"${rtdir}/current/${a}/lib/libc.so\" \"\${l}\"
     done
     unset g l m v
-    popd >/dev/null 2>&1
     popd >/dev/null 2>&1
   }
   "
