@@ -3,7 +3,7 @@ rver="$(cwver_links)"
 rdir="$(cwdir_links)"
 rfile="$(cwfile_links)"
 rurl="$(cwurl_links)"
-rsha256=""
+rsha256="$(cwsha256_links)"
 rreqs="make libevent zlib libressl xz bzip2 lzlib cacertificates"
 
 . "${cwrecipe}/common.sh"
@@ -19,7 +19,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env \
     PATH=\"${cwsw}/libressl/current/bin:\${PATH}\" \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
@@ -38,7 +38,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
   ln -sf \"${rname%%libressl}\" \"${ridir}/bin/${rname}\"
   ln -sf \"${rname%%libressl}\" \"${ridir}/bin/${rname%%libressl}-${rname##links}\"
