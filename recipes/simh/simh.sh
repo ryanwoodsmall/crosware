@@ -5,6 +5,8 @@
 # XXX - github repo went, ah, something and started adding metadata to disk images
 # XXX - http://simh.trailing-edge.com/ - 3.x branch updated by bob supnik 2022
 # XXX - https://github.com/open-simh/simh - open fork
+# XXX - https://github.com/simh/simh/issues/1059
+# XXX - https://groups.io/g/simh/topic/new_license/91108560
 #
 
 rname="simh"
