@@ -2,6 +2,9 @@
 # XXX - uses a github commit, download every time
 # XXX - pcap is super iffy, particulary static, don't bother with it, use a tap/tun device
 # XXX - is busybox necessary?
+# XXX - github repo went, ah, something and started adding metadata to disk images
+# XXX - http://simh.trailing-edge.com/ - 3.x branch updated by bob supnik 2022
+# XXX - https://github.com/open-simh/simh - open fork
 #
 
 rname="simh"
