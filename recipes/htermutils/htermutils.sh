@@ -50,7 +50,7 @@ function cwmakeinstall_${rname}() {
   echo '# XXX - broken with tmux 3.3?' >> \"\${jstcopy}\"
   echo '# XXX - env TERM=tmux osc52.sh --force \"\${@}\"' >> \"\${jstcopy}\"
   echo 'test -z \"\${TMUX}\" || tmux set -s set-clipboard on &>/dev/null || true' >> \"\${jstcopy}\"
-  echo 'env TMUX= osc52.sh --force \"\${@}\"' >> \"\${jstcopy}\"
+  echo 'env TMUX= TERM=vt100 osc52.sh --force \"\${@}\"' >> \"\${jstcopy}\"
   chmod 755 \"\${jstcopy}\"
   unset jstcopy
   popd >/dev/null 2>&1
