@@ -7,6 +7,9 @@
 # XXX - versions? gcc, musl, what else?
 # XXX - arches? alpine? arm4/5/sf?
 # XXX - musl-linker or similar script that dumps libc.so/ld.so/... path?
+# XXX - set dynamic linker and rpath? something like...
+#   -Wl,--dynamic-linker,"${cwsw}/${rname}/current/${arch}/lib/ld.so"
+#   -Wl,-rpath,"${cwsw}/${rname}/current/${arch}/lib"
 #
 
 rname="muslcrossmake"
@@ -128,3 +131,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
+
+# vim: ft=sh:
