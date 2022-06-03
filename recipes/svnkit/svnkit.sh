@@ -1,13 +1,25 @@
 rname="svnkit"
-rver="1.10.3"
+rver="1.10.6"
 rdir="${rname}-${rver}"
 rfile="org.tmatesoft.svn_${rver}.standalone.nojna.zip"
 rurl="https://www.svnkit.com/${rfile}"
-rsha256="e84145f485a1fd0420df2b0d6085046589941fc2f29cf5a5fabfde27829cf9ae"
+rsha256="2776e85a835bd7534d5916a282df8486e6656c128724d559d73309e177bc178c"
 # we need unzip, use the busybox version
-rreqs="busybox"
+rreqs=""
+if ! command -v unzip &>/dev/null ; then
+  rreqs="busybox"
+fi
 
 . "${cwrecipe}/common.sh"
+
+for f in clean extract configure make ; do
+  eval "
+  function cw${f}_${rname}() {
+    true
+  }
+  "
+done
+unset f
 
 eval "
 function cwmakeinstall_${rname}() {
@@ -18,17 +30,5 @@ function cwmakeinstall_${rname}() {
 eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
-}
-"
-
-eval "
-function cwinstall_${rname}() {
-  cwfetch_${rname}
-  cwsourceprofile
-  cwcheckreqs_${rname}
-  cwmakeinstall_${rname}
-  cwlinkdir_${rname}
-  cwgenprofd_${rname}
-  cwmarkinstall_${rname}
 }
 "
