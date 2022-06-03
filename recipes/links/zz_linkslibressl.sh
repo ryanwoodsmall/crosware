@@ -40,8 +40,8 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  ln -sf \"${rname%%libressl}\" \"${ridir}/bin/${rname}\"
-  ln -sf \"${rname%%libressl}\" \"${ridir}/bin/${rname%%libressl}-${rname##links}\"
+  ln -sf \"${rname%%libressl}\" \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf \"${rname%%libressl}\" \"\$(cwidir_${rname})/bin/${rname%%libressl}-${rname##links}\"
   popd >/dev/null 2>&1
 }
 "
