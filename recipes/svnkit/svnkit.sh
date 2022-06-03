@@ -23,7 +23,7 @@ unset f
 
 eval "
 function cwmakeinstall_${rname}() {
-  cwextract \"${rdlfile}\" \"${rtdir}\"
+  cwextract \"\$(cwdlfile_${rname})\" \"${rtdir}\"
 }
 "
 
