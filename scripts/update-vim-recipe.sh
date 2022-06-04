@@ -48,6 +48,9 @@ if [ ! -e "${vrf}" ] ; then
   exit 1
 fi
 
+orfv="$(grep ^rver= ${vrf} | awk -F'"' '{print $2}')"
+orfs="$(grep ^rsha256= ${vrf} | awk -F'"' '{print $2}')"
+
 vfu="${vbu}/archive/v${vvn}.tar.gz"
 
 if ! $(curl -fkILs "${vfu}" >/dev/null 2>&1) ; then
@@ -60,19 +63,34 @@ vss="$(curl -fkLs ${vfu} | sha256sum | awk '{print $1}')"
 sed -i '/^rver=/s/^rver=.*/rver="'"${vvn}"'"/g' "${vrf}"
 sed -i '/^rsha256=/s/^rsha256=.*/rsha256="'"${vss}"'"/g' "${vrf}"
 
-if $(git diff "${vrf}" | wc -l | grep -q '^0$') ; then
-  echo "no change detected in ${vrf}"
-  exit 1
+if command -v git &>/dev/null ; then
+  if $(git diff "${vrf}" | wc -l | grep -q '^0$') ; then
+    echo "no change detected in ${vrf}"
+    exit 1
+  fi
+  git diff "${vrf}"
+  echo
+  for v in vim vimnetbsdcurses ; do
+    "${cw}" check-installed ${v} && { echo "upgrading ${v}" ; "${cw}" upgrade ${v}; echo ; } || true
+  done
+  test -e "${td}/software/vim/current/bin/vim" && "${td}/software/vim/current/bin/vim" --version | egrep '(^VIM|patches:)' || true
+  echo
+  git diff "${vrf}"
+else
+  echo "git not found, not rebuilding..."
+  nrfv="$(grep ^rver= ${vrf} | awk -F'"' '{print $2}')"
+  nrfs="$(grep ^rsha256= ${vrf} | awk -F'"' '{print $2}')"
+  if $(test "${orfv}" == "${nrfv}" && test "${orfs}" == "${nrfs}") ; then
+    echo "no change detected in ${vrf}"
+    exit 1
+  else
+    echo "v:-:${orfv}"
+    echo "v:+:${nrfv}"
+    echo "s:-:${orfs}"
+    echo "s:+:${nrfs}"
+  fi
 fi
 
-git diff "${vrf}"
-echo
-"${cw}" list-upgradable
-"${cw}" upgrade vim
-echo
-"${td}/software/vim/current/bin/vim" --version | egrep '(^VIM|patches:)'
-echo
-git diff "${vrf}"
 echo
 echo "git commit -a -m 'vim: update to ${vvn}'"
 echo
