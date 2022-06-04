@@ -21,7 +21,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=${cwsw}/gettexttiny/current/bin:\${PATH} \
     ./configure ${cwconfigureprefix} \
       --with-tlib=curses \
@@ -41,14 +41,14 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   local sv
   sv=\"${rver%.*}\"
   sv=\"\${sv//./}\"
   make install ${rlibtool}
-  ln -sf \"${rtdir}/current/share/vim/vim\${sv}/macros/less.sh\" \"${ridir}/bin/vimless\"
-  ln -sf \"${rname%netbsdcurses}\" \"${ridir}/bin/vi\"
-  ln -sf \"${rname%netbsdcurses}\" \"${ridir}/bin/${rname}\"
+  ln -sf \"${rtdir}/current/share/vim/vim\${sv}/macros/less.sh\" \"\$(cwidir_${rname})/bin/vimless\"
+  ln -sf \"${rname%netbsdcurses}\" \"\$(cwidir_${rname})/bin/vi\"
+  ln -sf \"${rname%netbsdcurses}\" \"\$(cwidir_${rname})/bin/${rname}\"
   unset sv
   popd >/dev/null 2>&1
 }
