@@ -7,6 +7,7 @@
 # XXX - https://github.com/open-simh/simh - open fork
 # XXX - https://github.com/simh/simh/issues/1059
 # XXX - https://groups.io/g/simh/topic/new_license/91108560
+# XXX - https://www.reddit.com/r/programming/comments/usv5nv/maintainer_of_open_source_emulation_software_simh/
 #
 
 rname="simh"
