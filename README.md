@@ -715,7 +715,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - shellbench (https://github.com/shellspec/shellbench)
 - shellinabox (https://github.com/shellinabox/shellinabox)
 - shellish (https://github.com/ryanwoodsmall/shell-ish - some random texts from my script bucket)
-- simh (system simulator)
+- simh (system simulator - currently classic version 3.x)
   - simh3 (http://simh.trailing-edge.com - classic simh 3.x)
   - simh4 (https://github.com/simh/simh - system simulator...?)
 - sisc (scheme)
