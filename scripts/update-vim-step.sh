@@ -10,6 +10,11 @@
 
 set -eu
 
+if ! command -v git &>/dev/null ; then
+  echo "this script requires git"
+  exit 1
+fi
+
 uvr="$(dirname $(realpath ${BASH_SOURCE[0]}))/update-vim-recipe.sh"
 slv="$(dirname $(realpath ${BASH_SOURCE[0]}))/show-latest-vim.sh"
 if [ ! -e "${uvr}" -o ! -e "${slv}" ] ; then
