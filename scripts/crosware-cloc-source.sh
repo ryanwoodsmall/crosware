@@ -6,10 +6,6 @@
 #   - `crosware set` output
 # to get a sense of how big runtime-expanded script/env is
 #
-# to view diffs between this run and the last, something like this should cut most noise:
-#
-#   vim <(diff -Naur ${cwtop}/tmp/crosware.set.out{.old,} | egrep -v -- '^(-|\+| )(cw.*=\(|(PATH|PKG_CONFIG_(LIBDIR|PATH)|(C(|XX|PP)|LD)FLAGS)=)')
-#
 
 cwtop="$(realpath $(dirname ${BASH_SOURCE[0]})/..)"
 cw="${cwtop}/bin/crosware"
@@ -47,3 +43,6 @@ echo 'crosware set expanded:'
 cloc \
   --force-lang='Bourne Again Shell' \
     "${cwso}"
+
+echo "view diffs of ${cwso} with:"
+echo "  ${cwtop}/scripts/view-cloc-diff.sh"
