@@ -564,6 +564,7 @@ time_func ls -l -A /
   - if package a requires package b
     - return true
   - return false
+- cwdepends too...
 - cwupgradereqs / cwupgradedeps
   - done-ish, `cwupgradereqs_${rname}` and `cwupgradedeps_${rname}`
   - upgrading deps could cause a world of hurt on `make`, `bootstrapmake`, etc.
@@ -1020,6 +1021,18 @@ time_func ls -l -A /
   - use symlinks?
   - just remove `var/deps/${rname}/` dir on uninstall
   - individual packages would have to create/remove their own `var/deps/${req}/${rname}` files
+- `${rname}` at runtime
+  - encode recipe name in function
+  - could `eval` most of a function with single ticks to stop var processing entirely?
+  - easier to create a more generic function
+    - or a function dispatcher...
+  - could branch based on function name
+  - might greatly reduce duplicated variant configure, make install, etc.
+  - `verb_target_extra` notation?
+    - see: https://github.com/ryanwoodsmall/shell-ish/blob/master/examples/verbtargetextracallerstack.bash
+- `cwclone` - git clone wrapper; basically:
+  - `( cd ${wherever} ; ${CW_GIT_CMD} clone ${url} [${optionaldir}])`
+- `${rfdir} / cwfdir_${rname}` - final dir, `${rtdir}/current`
 
 <!--
 # vim: ft=markdown
