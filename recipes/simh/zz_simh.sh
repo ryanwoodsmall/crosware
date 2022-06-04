@@ -12,7 +12,7 @@
 rreqs="simh3"
 rname="simh"
 rver="$(cwver_${rreqs%% .*})"
-rdir="${rname}-${rver}"
+rdir="$(cwdir_${rreqs%% .*})"
 rfile="/dev/null"
 rurl="file:///dev/null"
 rsha256=""
