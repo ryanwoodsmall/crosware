@@ -24,11 +24,9 @@
 set -eu
 
 td="$(cd $(dirname "${BASH_SOURCE[0]}")/.. && pwd)"
-
+sd="${td}/software"
 cw="${td}/bin/crosware"
-
 vrf="${td}/recipes/vim/vim.sh"
-
 vbu="https://github.com/vim/vim"
 
 slv="$(dirname $(realpath ${BASH_SOURCE[0]}))/show-latest-vim.sh"
@@ -73,7 +71,10 @@ if command -v git &>/dev/null ; then
   for v in vim vimnetbsdcurses ; do
     "${cw}" check-installed ${v} && { echo "upgrading ${v}" ; "${cw}" upgrade ${v}; echo ; } || true
   done
-  test -e "${td}/software/vim/current/bin/vim" && "${td}/software/vim/current/bin/vim" --version | egrep '(^VIM|patches:)' || true
+  test -e "${sd}/vim/current/bin/vim" || test -e "${sd}/vimnetbsdcurses/current/bin/vim" || { echo "installing vimnetbsdcurses" ; "${cw}" install vimnetbsdcurses ; }
+  for v in vim vimnetbsdcurses ; do
+    test -e "${sd}/${v}/current/bin/vim" && "${sd}/${v}/current/bin/vim" --version | egrep '(^VIM|patches:)' || true
+  done
   echo
   git diff "${vrf}"
 else
