@@ -1594,6 +1594,8 @@ wc -l /tmp/astbuild.out
       LDFLAGS="$(pkg-config --libs libbsd-overlay) $(echo -L${cwsw}/{libressl,libbsd,libmd,fetchfreebsdlibressl,zlib}/current/lib) -static"
     ```
 - openresolv (http://roy.marples.name/projects/openresolv/ - resolvconf implementation)
+- opensimh (https://github.com/open-simh/simh - pre-license change fork)
+  - simtools (https://github.com/open-simh/simtools - tools for simulators/integration)
 - openvi (https://github.com/johnsonjh/OpenVi - portable openbsd vi)
 - opkg-utils (https://git.yoctoproject.org/opkg-utils - package build, etc.)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
