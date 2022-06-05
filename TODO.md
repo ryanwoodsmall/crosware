@@ -1030,9 +1030,81 @@ time_func ls -l -A /
   - might greatly reduce duplicated variant configure, make install, etc.
   - `verb_target_extra` notation?
     - see: https://github.com/ryanwoodsmall/shell-ish/blob/master/examples/verbtargetextracallerstack.bash
+  - callbacks as well
+    - simple: append something to the end of a function
+    - save func as array, then `l=${#fa[@]} ; fa[${l}]='}' ; fa[$((${l}-1))]="custom command to run"`
+      - ( use `declare -i` for integers to ease math/force type??? posix but i'm way more accustomed to bash `$((..))` math at this point )
+    - `eval` to further expand?
+    - harder: full array-based "original" function tracking mechanism with `hash[function]=( [0]="cmd1 arg1" [1]="cmd2 arg2" ... )`
+    - save a copy of original function as an array in a hash
+    - save a list of callbacks per function to a hash of list
+    - read original function, bounce down callback hash keys, plugging in each list element in order as the last command in a function
+    - close out the function with '}' and eval...
+- serialize/deserialize
+  - ```
+    function cwserialize() {
+      declare -a s
+      # detect type w/ declare -f and declare -p
+      # act accordingly - set flag
+      # - serealize array, hash, function, value, ...
+      # leave 'declare -${type} var=...' bits in to eval? yes?
+      # recursive? decorator for saying "keep expanding?"
+      readarray -t s < <(declare -${typeflag} ${1})
+      echo $s
+    }
+    ```
+- wrapper around var checking and creating/saving vars/funcs
+  - exists
+    - vars: `function cwisvar() { declare -p ${1} &>/dev/null || return 1 && return 0 ; }`
+    - funcs: `function cwisfunc() { declare -f ${1} &>/dev/null || return 1 && return 0 ; }`
+    - specific ones for hashes, arrays, integers, ...
+    - wrappers for creating if it doesn't exist
+- functions...
+  - function stub generator
+  - `function cwstubfunction() { eval < <(echo "function ${1}() { true ; }) ; }"
+  - save/restore - save function to a hash
+    - with state tracker, would have idempotency
+  - and copier
+    - ```
+      function cwcopyfunc() {
+        declare -a func
+        readarry -t func < <(declare -f ${1})
+        func[0]="${2} () "
+        for i in ${!func[@]} ; do echo "${func[${i}]}" ; done | eval
+      }
+      ```
+  - (rename would just be copy to new tmp name, replace original name, delete tmp name)
+  - and wrapper...
+    - given a function name, a prefix command, and a postfix command, insert at beginning end
+    - `function cwfuncwrap() { savefunc $1 tmpfunc ; insert at top of tmpfunc $2 ; insert at bottom of tmpfunc $3 ; copyfunc tmpfunc $1 ; delfunc tmpfunc ; }`
 - `cwclone` - git clone wrapper; basically:
   - `( cd ${wherever} ; ${CW_GIT_CMD} clone ${url} [${optionaldir}])`
 - `${rfdir} / cwfdir_${rname}` - final dir, `${rtdir}/current`
+- simplify (not necessarily speed up) bash list bits with substrings
+  - https://unix.stackexchange.com/questions/413976/how-to-shift-array-value-in-bash
+  - dereference in function? i.e. `${${arrayname}[...` ??? (will help in function cerealization
+  - use substrings for chomping off end too?
+  - shift: `function arrayshift() { r="${a[0]}" ; a=( "${a[@]:1}" ) ; return "${r}" ; }`
+  - unshift: `for i in $(eval echo {1..$((${#a[@]}-1))}) ; do a[${#a[@]}-${i}]="${a[${#a[@]}-1-${i}]}" ; done ; a[0]="$newelement"`
+  - pop (with arithmetic) `r="${a[${#a[@]}-1]}" ; unset a[${#a[@]}-1] ; return "${r}"`
+  - push `a[${#a[@]}]="$value"`
+  - array dumper...
+  - ```
+    function dumparray() {
+      # this just echoes its args, declare -p to get copy of "raw" array by name
+      i=0
+      while $(test $# -ne 0) ; do
+        echo $i : $1
+        shift
+        ((i++))
+      done
+    }
+    ```
+- bash functions and arrays can have the same name
+  - opens up "smart datatype operators"
+  - `${varname} serialize` - dump
+  - `${varname} append value` - append
+  - `${varname} verb argument` - dispatch: run something with arguments...
 
 <!--
 # vim: ft=markdown
