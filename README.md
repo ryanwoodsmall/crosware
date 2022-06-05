@@ -1852,6 +1852,7 @@ wc -l /tmp/astbuild.out
 - ueforth (https://github.com/flagxor/eforth - small forth for linux, plus esp32forth for wifi+bt mcu)
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
 - units (https://www.gnu.org/software/units)
+- up (https://github.com/akavel/up - ultimate plumber, a pipe explorer in go)
 - upx (https://github.com/upx/upx)
 - u-root (https://github.com/u-root/u-root - go userland w/bootloaders, may be useful!)
 - usbutils (https://github.com/gregkh/usbutils)
