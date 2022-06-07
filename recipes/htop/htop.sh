@@ -4,19 +4,19 @@
 #
 
 rname="htop"
-rver="3.2.0"
+rver="3.2.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 #rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rurl="https://github.com/htop-dev/${rname}/releases/download/${rver}/${rfile}"
-rsha256="e0f645d4ac324f2c4c48aaa7a3a96d007b95516559550be0b56e423fc5b6d783"
+rsha256="5a17121cf1c69d2f2e557c0b29d45a2c353ab983f644742e1c2e4ece15aa6cbb"
 rreqs="make ncurses configgit"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null
   ./configure ${cwconfigureprefix} \
     --enable-static \
     --disable-dependency-tracking \
@@ -27,6 +27,6 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
