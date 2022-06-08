@@ -1105,6 +1105,13 @@ time_func ls -l -A /
   - `${varname} serialize` - dump
   - `${varname} append value` - append
   - `${varname} verb argument` - dispatch: run something with arguments...
+- file appender/prepender
+  - `cwappendfile filename "something to append" "something else"`
+  - `cwprependfile filename "something to prepend"
+    - only handle single args on prepend
+    - otherwise things have to be passed in reverse order
+- check for `cwpostinstall_${rname}` and run at end of `cwinstall_${rname}`
+  - `declare -f cwpostinstall_${rname} &>/dev/null && cwpostinstall_${rname} || true`
 
 <!--
 # vim: ft=markdown
