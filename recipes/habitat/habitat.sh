@@ -4,11 +4,11 @@
 #
 
 rname="habitat"
-rver="1.6.513.20220519213821"
+rver="1.6.521.20220603154827"
 rdir="${rname}-${rver}"
 rfile="core-hab-${rver%.*}-${rver##*.}-x86_64-linux.hart"
 rurl="https://bldr.habitat.sh/v1/depot/pkgs/core/hab/${rver%.*}/${rver##*.}/download?target=x86_64-linux"
-rsha256="a2c34b62f3394798a573063d14b0b5a35649bc56f703e11e1e907fbe9f6594e0"
+rsha256="04ef96b09d200ee05024da6169955a564e8dd44b8a26c05d37fad9a3f9d8c430"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
@@ -33,7 +33,7 @@ unset f
 eval "
 function cwclean_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
-  rm -rf "${rname}" hab
+  rm -rf \"${rname}\" hab
   popd >/dev/null 2>&1
 }
 "
@@ -48,8 +48,8 @@ function cwextract_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  cwmkdir \"${ridir}/bin\"
-  install -m 0755 \"${cwbuild}/hab/pkgs/core/hab/${rver%.*}/${rver##*.}/bin/hab\" \"${ridir}/bin/hab\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  install -m 755 \"\$(find ${cwbuild}/hab/pkgs/core/hab/ -type f -name hab)\" \"\$(cwidir_${rname})/bin/hab\"
 }
 "
 
