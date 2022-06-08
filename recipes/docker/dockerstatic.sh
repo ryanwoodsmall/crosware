@@ -1,5 +1,5 @@
 rname="dockerstatic"
-rver="20.10.16"
+rver="20.10.17"
 rdir="${rname//static/}-${rver}"
 rbdir="${cwbuild}/docker"
 rfile="${rdir}.tgz"
@@ -9,13 +9,13 @@ rsha256=""
 rburl="https://download.docker.com/linux/static/stable"
 if [[ ${karch} =~ ^aarch64 ]] ; then
   rurl="${rburl}/aarch64/${rfile}"
-  rsha256="2f35d8d422b63a59279084c159c9092b63b6d974a7fcd868167aee4cc5f79f3b"
+  rsha256="249244024b507a6599084522cc73e73993349d13264505b387593f2b2ed603e6"
 elif [[ ${karch} =~ ^arm ]] ; then
   rurl="${rburl}/armhf/${rfile}"
-  rsha256="d054b6ab879b0538f992bd1d9ab8f360099a5519bbe009508031ea1bf6b616db"
+  rsha256="3f3c9b3ff6a443fc621575b6a2380210bcd4c6879c199bbd7b49b84793cd8abf"
 elif [[ ${karch} =~ ^x86_64 ]] ; then
   rurl="${rburl}/x86_64/${rfile}"
-  rsha256="b43ac6c4d2f0b64e445c6564860e4fccd6331f4a61815a60642c7748b53c59ff"
+  rsha256="969210917b5548621a2b541caf00f86cc6963c6cf0fb13265b9731c3b98974d9"
 fi
 unset rburl
 
@@ -29,10 +29,10 @@ function cwgenprofd_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  mkdir -p \"${ridir}/bin\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  mkdir -p \"\$(cwidir_${rname})/bin\"
   local p
-  find . -mindepth 1 -maxdepth 1 -type f | while read -r p ; do install -m 0755 \"\${p}\" \"${ridir}/bin/\" ; done
+  find . -mindepth 1 -maxdepth 1 -type f | while read -r p ; do install -m 0755 \"\${p}\" \"\$(cwidir_${rname})/bin/\" ; done
   unset p
   popd >/dev/null 2>&1
 }
