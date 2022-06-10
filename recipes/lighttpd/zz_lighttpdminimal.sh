@@ -20,7 +20,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/pcre2/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --enable-{ipv6,lfs} \
@@ -38,10 +38,10 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  rm -f ${ridir}/lib/*.la
-  ln -sf lighttpd \"${ridir}/sbin/${rname}\"
+  rm -f \$(cwidir_${rname})/lib/*.la
+  ln -sf lighttpd \"\$(cwidir_${rname})/sbin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
