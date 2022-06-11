@@ -1059,13 +1059,26 @@ time_func ls -l -A /
     - funcs: `function cwisfunc() { declare -f ${1} &>/dev/null || return 1 && return 0 ; }`
     - specific ones for hashes, arrays, integers, ...
     - wrappers for creating if it doesn't exist
+- `cwdetectcycle` - already there, just need to tweak and make more general
+- generic eval-able `cwevalable() { while [[ ${#} != 0 ]] ; do println "${1}\n" ; shift ; done | eval ; }` or simpler
+  - arrays to functions
+  - anything really
+  - need helper functions for array handling to limit loops in functions (serialize, deserialize, ...)
+  - need quoting helpers too, ugh. - basically capture semi-interpreted strings in `"'${...}'"` for eval
+  - helpers for "anonymous" serialized arrays/hashes to pass as evalable literals
+  - with types (`type -t`)
+  - what am i doing
 - functions...
+  - can be marked readonly!
+    - see notes on OO super stuff in shell-ish doc/script
   - function stub generator
-  - `function cwstubfunction() { eval < <(echo "function ${1}() { true ; }) ; }"
+    - `function cwstubfunction() { eval < <(echo "function ${1}() { true ; }) ; }"
+    - or `cwstubfunc() { while [[ ${#} != 0 ]] ; do eval "function ${1}() { : ; }" ; shift ; done ; }`
   - save/restore - save function to a hash
     - with state tracker, would have idempotency
   - and copier
     - ```
+      # XXX - cannot lose space/fidelity! echo won't cut it, printf
       function cwcopyfunc() {
         declare -a func
         readarry -t func < <(declare -f ${1})
@@ -1077,6 +1090,36 @@ time_func ls -l -A /
   - and wrapper...
     - given a function name, a prefix command, and a postfix command, insert at beginning end
     - `function cwfuncwrap() { savefunc $1 tmpfunc ; insert at top of tmpfunc $2 ; insert at bottom of tmpfunc $3 ; copyfunc tmpfunc $1 ; delfunc tmpfunc ; }`
+    - individual prepender, appender funcs
+    - would allow for:
+      - temporary functions
+      - functions that can delete themeselves
+        - `cwdeletablefunc() { while [[ ${#} != 0 ]] ; do eval "function ${1}() { : ; unset -f \"\${FUNCNAME[0]}\" ; }" ; shift ; done ; }`
+        - ```
+          cwtmpfunc() {
+            local tmpfuncname=''
+            while true ; do
+              tmpfuncname="tmpfunc_${RANDOM}"
+              checktmpfunchashkey ${tmpfuncname} || continue && break
+            done
+            cwdeletablefunc ${funcname}
+            cwappendfunc "unset cwtmpfuncs[${func
+          }
+          ```
+        - need a hash key checker - generic or specialized? `cwcheckhashkey hash key` - cwcontains won't cut it
+      - array -> function builder, easy?
+        - `cwarraytofunc() { while [[ ${#} != 0 ]] ; do echo "${1}" ; shift ; done | eval ; }`
+  - idiom:
+    - no args: generate a randomly-named stub function and print the name
+    - one arg: generate named stub function
+      - if $1=- read name from stdin, shift
+    - two+ args: genarate a named function with stdin/"${@}" args stored as body of function
+      - if $1=- read name from stdin, shift
+      - if $1=- read body from stdinm shift
+      - if $1!=-- && ${#} save stdin to end of body
+      - if $1=-- stop parsing stdin, start processing args, pushing each arg to body end
+      - keep a tmparray with "declare -a body=([0]="function name () ",[1]="{",[2]="cmd 1",[3]="cmd 2",...,[n-1]="}") ; eval < <(while [ ${#} -gt 0 ] ; do ..."
+      - eval own body with stack canary (depth) and stdin+args
 - `cwclone` - git clone wrapper; basically:
   - `( cd ${wherever} ; ${CW_GIT_CMD} clone ${url} [${optionaldir}])`
 - `${rfdir} / cwfdir_${rname}` - final dir, `${rtdir}/current`
