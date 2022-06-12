@@ -28,83 +28,20 @@ cwconfigureprefix="--prefix=\$(cwidir_${rname})"
 cwconfigurelibopts="--enable-static --enable-static=yes --disable-shared --enable-shared=no"
 cwconfigurefpicopts="CFLAGS=\"\${CFLAGS} -fPIC\" CXXFLAGS=\"\${CXXFLAGS} -fPIC\""
 
-eval "
-function cwname_${rname}() {
-  echo \"${rname}\"
-}
-"
-
-eval "
-function cwfile_${rname}() {
-  echo \"${rfile}\"
-}
-"
-
-eval "
-function cwdlfile_${rname}() {
-  echo \"${rdlfile}\"
-}
-"
-
-eval "
-function cwsha256_${rname}() {
-  echo \"${rsha256}\"
-}
-"
-
-eval "
-function cwdir_${rname}() {
-  echo \"${rdir}\"
-}
-"
-
-eval "
-function cwbdir_${rname}() {
-  echo \"${rbdir}\"
-}
-"
-
-eval "
-function cwtdir_${rname}() {
-  echo \"${rtdir}\"
-}
-"
-
-eval "
-function cwidir_${rname}() {
-  echo \"${ridir}\"
-}
-"
-
-eval "
-function cwver_${rname}() {
-  echo \"${rver}\"
-}
-"
-
-eval "
-function cwurl_${rname}() {
-  echo \"${rurl}\"
-}
-"
-
-eval "
-function cwprof_${rname}() {
-  echo \"${rprof}\"
-}
-"
-
-eval "
-function cwsite_${rname}() {
-  echo \"${rsite}\"
-}
-"
-
-eval "
-function cwmessage_${rname}() {
-  echo \"${rmessage}\"
-}
-"
+cwechofunc "cwname_${rname}" "${rname}"
+cwechofunc "cwfile_${rname}" "${rfile}"
+cwechofunc "cwdlfile_${rname}" "${rdlfile}"
+cwechofunc "cwsha256_${rname}" "${rsha256}"
+cwechofunc "cwdir_${rname}" "${rdir}"
+cwechofunc "cwbdir_${rname}" "${rbdir}"
+cwechofunc "cwtdir_${rname}" "${rtdir}"
+cwechofunc "cwidir_${rname}" "${ridir}"
+cwechofunc "cwver_${rname}" "${rver}"
+cwechofunc "cwurl_${rname}" "${rurl}"
+cwechofunc "cwprof_${rname}" "${rprof}"
+cwechofunc "cwsite_${rname}" "${rsite}"
+cwechofunc "cwmessage_${rname}" "${rmessage}"
+cwechofunc "cwreqs_${rname}" "${rreqs}"
 
 eval "
 function cwclean_${rname}() {
@@ -117,12 +54,6 @@ function cwclean_${rname}() {
 eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
-}
-"
-
-eval "
-function cwreqs_${rname}() {
-  echo \"${rreqs}\"
 }
 "
 
