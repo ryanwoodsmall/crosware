@@ -1463,6 +1463,20 @@ function cwset() {
 }
 
 #
+# cwstubfunc
+#   create, or replace, a function
+#
+# XXX - use "true" for now but switch to ":"
+# XXX - convert recipes to use this to save some loc
+#
+function cwstubfunc() {
+  while [[ ${#} != 0 ]] ; do
+    eval "function ${1}() { true ; }"
+    shift
+  done
+}
+
+#
 # cwgetfuncs
 #
 function cwgetfuncs() {
