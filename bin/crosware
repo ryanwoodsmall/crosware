@@ -1477,6 +1477,33 @@ function cwstubfunc() {
 }
 
 #
+# cwechofunc
+#   just echo something+ out
+#
+# XXX - REALLY need array/hash serialization...
+# XXX - printf is very finicky, fallback to echo for now
+#
+function cwechofunc() {
+  local -a funcbody
+  if [[ ${#} == 0 ]] ; then
+    cwfailexit "cwstubfunc: not enough args"
+  elif [[ ${#} == 1 ]] ; then
+    eval "function ${1}() { echo \"${1}\" ; }"
+  else
+    funcbody+=( "function ${1}() {")
+    shift
+    while [[ ${#} > 0 ]] ; do
+      funcbody+=( " echo \"${1}\"; " )
+      shift
+    done
+    funcbody+=( "}" )
+  fi
+  cwsourcestdin <<<"${funcbody[@]}"
+  # or: cwsourcestdin < <(for i in ${!funcbody[@]} ; do echo "${funcbody[${i}]}" ; done)
+  unset funcbody
+}
+
+#
 # cwgetfuncs
 #
 function cwgetfuncs() {
@@ -1868,6 +1895,33 @@ function cwshowarray() {
     echo "${p}${m}"
   done
   unset a p n l i m
+}
+
+##
+## cwevalarray
+##   eval the contents of an array passed as individual arguments
+##
+## XXX - not great
+## XXX - for more specialized form (functions) need a separate array handler that append ';'
+## XXX - but what about line continuations?
+## XXX - serialization... just receive a chunk of "declare -a" text, reconstitute into [] and do it
+## XXX - for a lot of things (function wrappers) `eval "${array[@]}"` seems okay
+##
+#function cwevalarray() {
+#  eval "$(for (( i = ${#}; i > 0; : )) ; do printf "${1}\n" ; shift ; done)"
+#}
+
+#
+# cwevalstdin
+#   like '| eval' but the other way
+#
+# XXX - are these the same thing? not exactly, close enough for now
+#
+function cwevalstdin() {
+  cwsourcestdin
+}
+function cwsourcestdin() {
+  source /dev/stdin
 }
 
 #
