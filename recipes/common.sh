@@ -3,6 +3,7 @@
 # XXX - cwinfo_${rname}() - dump recipe values in 'rval : ${rval}' format
 # XXX - cw{c,cpp,cxx,ld,pkgconfig}_${rname}() and r* vars - dump appropriate recipe flags
 # XXX - cwpath_${rname}() - return bin/, sbin/, etc.?
+# XXX - caconfigure/wmake/makeinstall wrapper that takes one or more arguments - dispatch in make, fill out; variants!
 : ${rbdir:="${cwbuild}/${rdir}"}
 : ${rtdir:="${cwsw}/${rname}"}
 : ${ridir:="${rtdir}/${rdir}"}
@@ -194,16 +195,8 @@ function cwlinkdir_${rname}() {
 "
 
 if [ ! -e "${rpfile}" ] ; then
-  eval "
-  function cwfetchpatches_${rname}() {
-    true
-  }
-  "
-  eval "
-  function cwpatch_${rname}() {
-    true
-  }
-  "
+  cwstubfunc "cwfetchpatches_${rname}"
+  cwstubfunc "cwpatch_${rname}"
 else
   eval "
   function cwfetchpatches_${rname}() {
@@ -352,9 +345,5 @@ if [[ ${rreqs} =~ configgit ]] ; then
   }
   "
 else
-  eval "
-  function cwfixupconfig_${rname}() {
-    true
-  }
-  "
+  cwstubfunc "cwfixupconfig_${rname}"
 fi
