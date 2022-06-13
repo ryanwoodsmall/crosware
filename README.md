@@ -1086,6 +1086,7 @@ wc -l /tmp/astbuild.out
 - gmni (https://sr.ht/~sircmpwn/gmni/ and https://git.sr.ht/~sircmpwn/gmni - gemini client)
 - gmnisrv (https://sr.ht/~sircmpwn/gmnisrv/ and https://git.sr.ht/~sircmpwn/gmnisrv - gemini server)
 - gnulib (https://www.gnu.org/software/gnulib - probably needed to repackage for older gnu projects - shishi, gss, gsasl, ...)
+- go9p (https://github.com/knusbaum/go9p - 9p in go)
 - go-git (https://github.com/go-git/go-git)
   - pure go, might make for a decent no-frills clone/fetch/merge client?
 - gojq (https://github.com/itchyny/gojq - jq in go)
