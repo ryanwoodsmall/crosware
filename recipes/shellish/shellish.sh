@@ -39,7 +39,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${ridir}/bin\"
   pushd \"${ridir}\" >/dev/null 2>&1
   local p
-  for p in box-utils.sh chode dingafter dingsleep filesizetype.sh ht mixcase.sh procdirs.sh nll trl tru ; do
+  for p in box-utils.sh chode dingafter dingsleep filesizetype.sh ht mixcase.sh procdirs.sh nll trl tru vim9p ; do
     ln -sf \"${rtdir}/current/${rdir}/bin/\${p}\" \"${ridir}/bin/\${p}\"
   done
   unset p
