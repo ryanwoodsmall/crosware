@@ -31,6 +31,9 @@ fi
 
 . "${cwrecipe}/common.sh"
 
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
+
 eval "
 function cwfetch_${rname}() {
   cwfetch \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\"
@@ -46,15 +49,6 @@ function cwpatch_${rname}() {
   popd >/dev/null 2>&1
 }
 "
-
-for f in configure make ; do
-  eval "
-  function cw${f}_${rname}() {
-    true
-  }
-  "
-done
-unset f
 
 for a in ${statictoolchain_triplet[@]} ; do
   eval "
