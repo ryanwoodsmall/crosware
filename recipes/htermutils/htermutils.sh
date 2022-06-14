@@ -13,38 +13,29 @@ rreqs=""
 
 . "${cwrecipe}/common.sh"
 
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
+
 eval "
 function cwfetch_${rname}() {
-  cwfetch \"${rurl}\" \"${rdlfile}\"
+  cwfetch \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\"
 }
 "
 
 eval "
 function cwextract_${rname}() {
-  cwextract \"${rdlfile}\" \"${cwbuild}/${rdir}\"
-}
-"
-
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  true
+  cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}/\$(cwdir_${rname})\"
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  local jstcopy=\"${ridir}/bin/jstcopy\"
-  mkdir -p \"${ridir}/bin\"
-  mkdir -p \"${ridir}/share\"
-  install -m 0755 *.sh \"${ridir}/bin/\"
-  install -m 0644 *.el *.vim \"${ridir}/share/\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  local jstcopy=\"\$(cwidir_${rname})/bin/jstcopy\"
+  mkdir -p \"\$(cwidir_${rname})/bin\"
+  mkdir -p \"\$(cwidir_${rname})/share\"
+  install -m 0755 *.sh \"\$(cwidir_${rname})/bin/\"
+  install -m 0644 *.el *.vim \"\$(cwidir_${rname})/share/\"
   echo -n > \"\${jstcopy}\"
   echo '#!/usr/bin/env bash' > \"\${jstcopy}\"
   echo '# XXX - broken with tmux 3.3?' >> \"\${jstcopy}\"
