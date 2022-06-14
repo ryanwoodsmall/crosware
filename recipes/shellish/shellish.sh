@@ -12,35 +12,30 @@ rreqs=""
 
 . "${cwrecipe}/common.sh"
 
-for f in clean configure make ; do
-  eval "
-  function cw${f}_${rname}() {
-    true
-  }
-  "
-done
-unset f
+cwstubfunc "cwclean_${rname}"
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwfetch_${rname}() {
-  cwfetch \"${rurl}\" \"${rdlfile}\"
+  cwfetch \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\"
 }
 "
 
 eval "
 function cwextract_${rname}() {
-  rm -rf \"${ridir}/${rdir}\" || true
-  cwextract \"${rdlfile}\" \"${ridir}\"
+  rm -rf \"\$(cwidir_${rname})/\$(cwdir_${rname})\" || true
+  cwextract \"\$(cwdlfile_${rname})\" \"\$(cwidir_${rname})\"
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  cwmkdir \"${ridir}/bin\"
-  pushd \"${ridir}\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  pushd \"\$(cwidir_${rname})\" >/dev/null 2>&1
   local p
   for p in box-utils.sh chode dingafter dingsleep filesizetype.sh ht mixcase.sh procdirs.sh nll trl tru vim9p ; do
-    ln -sf \"${rtdir}/current/${rdir}/bin/\${p}\" \"${ridir}/bin/\${p}\"
+    ln -sf \"${rtdir}/current/\$(cwdir_${rname})/bin/\${p}\" \"\$(cwidir_${rname})/bin/\${p}\"
   done
   unset p
   popd >/dev/null 2>&1
