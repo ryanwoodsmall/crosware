@@ -21,14 +21,8 @@ function cwinstall_${rname}() {
 "
 fi
 
-for f in make configure ; do
-  eval "
-  function cw${f}_${rname}() {
-    true
-  }
-  "
-done
-unset f
+cwstubfunc "cwmake_${rname}"
+cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwclean_${rname}() {
