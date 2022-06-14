@@ -1,25 +1,25 @@
 rname="tio"
-rver="1.38"
+rver="1.39"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="5945b0ff27756bc5728c34bce7557d8160829c6abb05f21790a5458e9d6324b5"
+rsha256="28cffbe6a09440b233e941688b5828459878a4c390720bf444f3d3905c2a7094"
 rreqs="ninja meson inih pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:${cwsw}/pkgconfig/current/bin:\${PATH}\" \
-    \"${cwsw}/meson/current/bin/meson\" --prefix=\"${ridir}\" build
+    \"${cwsw}/meson/current/bin/meson\" --prefix=\"\$(cwidir_${rname})\" build
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:${cwsw}/pkgconfig/current/bin:\${PATH}\" \
     \"${cwsw}/meson/current/bin/meson\" compile -C build
   popd >/dev/null 2>&1
@@ -28,7 +28,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:${cwsw}/pkgconfig/current/bin:\${PATH}\" \
     \"${cwsw}/meson/current/bin/meson\" install -C build
   popd >/dev/null 2>&1
