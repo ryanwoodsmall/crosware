@@ -11,6 +11,8 @@ rreqs="go cacertificates"
 
 . "${cwrecipe}/common.sh"
 
+cwstubfunc "cwconfigure_${rname}"
+
 # XXX - segfaults on compile/link for riscv64, problem with my go? qemu? cross-compile problem?
 if [[ ${karch} =~ ^riscv64 ]] ; then
 eval "
@@ -19,12 +21,6 @@ function cwinstall_${rname}() {
 }
 "
 fi
-
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
 
 eval "
 function cwmake_${rname}() {
