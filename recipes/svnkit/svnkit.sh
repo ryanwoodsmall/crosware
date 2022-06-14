@@ -12,14 +12,10 @@ fi
 
 . "${cwrecipe}/common.sh"
 
-for f in clean extract configure make ; do
-  eval "
-  function cw${f}_${rname}() {
-    true
-  }
-  "
-done
-unset f
+cwstubfunc "cwclean_${rname}"
+cwstubfunc "cwextract_${rname}"
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwmakeinstall_${rname}() {
