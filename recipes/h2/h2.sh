@@ -7,16 +7,18 @@
 #
 
 rname="h2"
-rver="2.1.212"
+rver="2.1.214"
 rdir="${rname}-${rver}"
 rbdir="${cwbuild}/${rname}"
-rfile="${rname}-2022-04-09.zip"
+rfile="${rname}-2022-06-13.zip"
 #rurl="https://h2database.com/${rfile}"
 rurl="https://github.com/h2database/h2database/releases/download/version-${rver}/${rfile}"
-rsha256="013cc5765d1033edc8e792024aed7d91b169a7f3b2c52c6dc78a866a0a761f57"
+rsha256="34c5ffe2d27ceeff217e5b71aefe964fb3fb6c0e6891551bec4e599df5e78c9b"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
+
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwclean_${rname}() {
@@ -28,14 +30,14 @@ function cwclean_${rname}() {
 
 eval "
 function cwextract_${rname}() {
-  cwscriptecho \"extracting ${rdlfile}\"
-  cwextract \"${rdlfile}\" \"${cwbuild}\" >/dev/null 2>&1
+  cwscriptecho \"extracting \$(cwdlfile_${rname})\"
+  cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\" >/dev/null 2>&1
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   chmod 644 bin/*
   chmod 755 bin/${rname}.sh
   popd >/dev/null 2>&1
@@ -43,22 +45,16 @@ function cwconfigure_${rname}() {
 "
 
 eval "
-function cwmake_${rname}() {
-  true
-}
-"
-
-eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  local h2server=\"${ridir}/bin/${rname}-server.sh\"
-  local h2shell=\"${ridir}/bin/${rname}-shell.sh\"
-  cwmkdir \"${ridir}\"
-  tar -cf - . | ( cd \"${ridir}\" ; tar -xf - )
-  rm -rf \"${ridir}/jar\"
-  cwmkdir \"${ridir}/jar\"
-  ln -sf \"${rtdir}/current/bin/${rname}-${rver}.jar\" \"${ridir}/jar/${rname}.jar\"
-  ln -sf \"${rtdir}/current/service/wrapper.jar\" \"${ridir}/jar/wrapper.jar\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  local h2server=\"\$(cwidir_${rname})/bin/${rname}-server.sh\"
+  local h2shell=\"\$(cwidir_${rname})/bin/${rname}-shell.sh\"
+  cwmkdir \"\$(cwidir_${rname})\"
+  tar -cf - . | ( cd \"\$(cwidir_${rname})\" ; tar -xf - )
+  rm -rf \"\$(cwidir_${rname})/jar\"
+  cwmkdir \"\$(cwidir_${rname})/jar\"
+  ln -sf \"${rtdir}/current/bin/${rname}-\$(cwver_${rname}).jar\" \"\$(cwidir_${rname})/jar/${rname}.jar\"
+  ln -sf \"${rtdir}/current/service/wrapper.jar\" \"\$(cwidir_${rname})/jar/wrapper.jar\"
   echo -n | tee \"\${h2server}\" \"\${h2shell}\" >/dev/null 2>&1
   echo '#!/usr/bin/env bash' | tee -a \"\${h2server}\" \"\${h2shell}\" >/dev/null 2>&1
   echo ': \${CLASSPATH:=\"\"}' | tee -a \"\${h2server}\" \"\${h2shell}\" >/dev/null 2>&1
