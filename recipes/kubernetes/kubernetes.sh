@@ -8,12 +8,12 @@
 #
 
 rname="kubernetes"
-rver="1.23.6"
+rver="1.23.7"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
 rsha256=""
-rurl=""
+rurl="https://dl.k8s.io"
 
 . "${cwrecipe}/common.sh"
 
@@ -25,16 +25,10 @@ if [[ ${karch} =~ ^(o|r) ]] ; then
   "
 fi
 
-for f in extract configure make ; do
-  eval "
-  function cw${f}_${rname}() {
-    true
-  }
-  "
-done
-unset f
+cwstubfunc "cwextract_${rname}"
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
 
-rburl="https://dl.k8s.io/v${rver}/bin/linux"
 eval "
 function cwfetch_${rname}() {
   if [[ ${karch} =~ ^x86_64  ]] ; then a='amd64' ; fi
@@ -55,15 +49,14 @@ function cwfetch_${rname}() {
   kubeprogs+=' mounter '
   if [[ \${a} =~ 386 ]] ; then kubeprogs='kubectl kubectl-convert' ; fi
   for k in \${kubeprogs} ; do
-    u=\"${rburl}/\${a}/\${k}\"
-    f=\"${cwdl}/${rname}/${rver}/\${a}/\${k}\"
+    u=\"${rurl}/v\$(cwver_${rname})/bin/linux/\${a}/\${k}\"
+    f=\"${cwdl}/${rname}/\$(cwver_${rname})/\${a}/\${k}\"
     s=\"\${f}.sha256\"
     cwfetch \"\${u}.sha256\" \"\${s}\"
     cwfetchcheck \"\${u}\" \"\${f}\" \"\$(cat \${s})\"
   done
 }
 "
-unset rburl
 
 eval "
 function cwmakeinstall_${rname}() {
@@ -71,11 +64,11 @@ function cwmakeinstall_${rname}() {
   if [[ ${karch} =~ ^arm     ]] ; then a='arm'   ; fi
   if [[ ${karch} =~ ^aarch64 ]] ; then a='arm64' ; fi
   if [[ ${karch} =~ ^i       ]] ; then a='386'   ; fi
-  cwmkdir \"${ridir}/bin\"
-  for p in \$(find \"${cwdl}/${rname}/${rver}/\${a}/\" -maxdepth 1 -mindepth 1 -type f) ; do
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  for p in \$(find \"${cwdl}/${rname}/\$(cwver_${rname})/\${a}/\" -maxdepth 1 -mindepth 1 -type f) ; do
     if [[ \${p} =~ sha256\$ ]] ; then continue ; fi
     n=\"\$(basename \${p})\"
-    install -m 0755 \"\${p}\" \"${ridir}/bin/\${n}\"
+    install -m 0755 \"\${p}\" \"\$(cwidir_${rname})/bin/\${n}\"
   done
 }
 "
