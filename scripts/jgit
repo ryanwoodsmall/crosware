@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# jgitsh? jgit.sh? org.eclipse.....sh?
+#
+
+: ${jgitsh:="jgitsh"}
+: ${origin:="origin"}
+: ${branch:="master"}
+
+if [[ "${#}" == 1 ]] ; then
+  if [[ "${1}" == pull ]] ; then
+    "${jgitsh}" fetch "${origin}"
+    "${jgitsh}" merge "${origin}/${branch}"
+    exit "${?}"
+  fi
+fi
+
+"${jgitsh}" "${@}"
