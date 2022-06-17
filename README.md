@@ -1151,6 +1151,7 @@ wc -l /tmp/astbuild.out
   - **src/Makefile** needs a ```$(CC) -c``` for the _.c.o_ rule
   - build with something like ```make CFLAGS="-I${cwsw}/zlib/current/include -D__GLIBC__=1" LDFLAGS="-L${cwsw}/zlib/current/lib -lz -static" CPPFLAGS= SHELL='bash -x'```
   - musl static build errors out with ```iodined: open_tun: Failed to open tunneling device: No such file or directory```?
+- ip2unix (https://github.com/nixcloud/ip2unix - turn ip socket into unix socket... c++)
 - java stuff
   - alpine openjdk? 11? 8?
   - ant (included in sdkman)
