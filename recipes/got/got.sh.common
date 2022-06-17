@@ -4,7 +4,7 @@ rreqs+=" make byacc zlib pkgconfig e2fsprogs ncurses libmd libbsd "
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cat lib/dial.c > lib/dial.c.ORIG
   sed -i s,/usr/bin/ssh,ssh,g lib/dial.c
   sed -i s,execv,execvp,g lib/dial.c
@@ -14,7 +14,7 @@ function cwpatch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
@@ -27,14 +27,14 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
   p=\"${rname#got}\"
   if [ -z \"\${p}\" ] ; then
     p=\"libressl\"
   fi
-  ln -s got \"${ridir}/bin/got\${p}\"
-  ln -s got \"${ridir}/bin/got-\${p}\"
+  ln -sf got \"\$(cwidir_${rname})/bin/got\${p}\"
+  ln -sf got \"\$(cwidir_${rname})/bin/got-\${p}\"
   popd >/dev/null 2>&1
 }
 "
