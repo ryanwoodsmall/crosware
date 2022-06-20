@@ -4,17 +4,19 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://tukaani.org/${rname}/${rfile}"
 rsha256="f6f4910fd033078738bd82bfba4f49219d03b17eb0794eb91efbae419f4aba10"
-rreqs="make gettexttiny slibtool"
+rreqs="make gettexttiny slibtool patch"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-doc \
     --disable-nls \
-      LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\"
+      LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\" \
+      LDFLAGS=-static \
+      CPPFLAGS=
   popd >/dev/null 2>&1
 }
 "
