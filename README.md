@@ -1503,6 +1503,7 @@ wc -l /tmp/astbuild.out
 - mpg123
 - mpg321
 - mruby (https://github.com/mruby/mruby)
+- mrubyc (https://github.com/mrubyc/mrubyc)
 - muacme (https://github.com/jirutka/muacme - uacme wrapper with busybox/openrc/knot knsupdate/kdig)
 - multimarkdown (https://github.com/fletcher/MultiMarkdown-6)
 - muon (https://github.com/annacrombie/muon - meson in c)
