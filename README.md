@@ -1304,6 +1304,7 @@ wc -l /tmp/astbuild.out
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
 - libntlm (https://www.nongnu.org/libntlm/)
 - libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
+- libretls (https://git.causal.agency/libretls/about/ - libtls from libressl on top of openssl)
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
 - libsixel (https://github.com/saitoha/libsixel)
 - libslz (http://www.libslz.org/)
