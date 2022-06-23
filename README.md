@@ -1105,7 +1105,8 @@ wc -l /tmp/astbuild.out
 - hittpd (https://github.com/leahneukirchen/hittpd - small http server with http-parser library)
 - hoedown (markdown lib - https://github.com/hoedown/hoedown)
 - hq (https://github.com/rbwinslow/hq)
-- http-parser (https://github.com/nodejs/http-parser - useful with libgit2?)
+- http-parser (https://github.com/nodejs/http-parser - no longer active, (useful with libgit2?))
+  - llhttp (https://github.com/nodejs/llhttp - continuation on a different parsing platform)
 - http servers/proxies/load balancers/etc.
   - apache (https://httpd.apache.org/ - httpd, needs apr, apr-util)
   - cherokee (http://cherokee-project.com/)
@@ -1618,6 +1619,7 @@ wc -l /tmp/astbuild.out
 - perl-cross (https://github.com/arsv/perl-cross)
 - pdsh (https://github.com/chaos/pdsh or https://github.com/grondo/pdsh ?)
 - picocom (https://github.com/npat-efault/picocom)
+- picohttpparser (https://github.com/h2o/picohttpparser - small, fast http protocol parser)
 - pigz
 - pkgconf (https://github.com/pkgconf/pkgconf - pkg-config-alike in c, opt-in only for now - not yet on path)
 - planck (clojurescript repl, https://github.com/planck-repl/planck)
