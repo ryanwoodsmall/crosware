@@ -6,18 +6,18 @@
 #
 
 rname="perl"
-rver="5.32.1"
+rver="5.34.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.cpan.org/src/5.0/${rfile}"
-rsha256="03b693901cd8ae807231b1787798cf1f2e0b8a56218d07b7da44f784a7caeb2c"
+rsha256="357951a491b0ba1ce3611263922feec78ccd581dddc24a446b033e25acf242a1"
 rreqs="make toybox busybox byacc"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   local sttop=\"${cwsw}/statictoolchain/current\"
   local starch=\"\$(\${CC} -dumpmachine)\"
   local stbin=\"\${sttop}/bin\"
@@ -34,10 +34,33 @@ function cwconfigure_${rname}() {
     -Dso='none' \
     -Ddlext='none' \
     -Dusedl='n' \
-    -Dprefix="${ridir}" \
+    -Dprefix=\"\$(cwidir_${rname})\" \
     -Dsysroot=\"\${PWD}/sysroot\" \
     -Dlibc=\"\${stlib}/libc.a\" \
     -Dcc=\"\${CC} \${CFLAGS} \${LDFLAGS}\"
+  popd >/dev/null 2>&1
+}
+"
+
+# XXX - adapt "oldversion" linkage to be more generic
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make install ${rlibtool}
+  for ov in 5.32.1 ; do
+    pushd \"${rtdir}\" >/dev/null 2>&1
+    test -e \"${rname}-\${ov}\" \
+      && mv \"${rname}-\${ov}\" \"${rname}-\${ov}.PRE-\${TS}\" \
+      || true
+    ln -sf \"\$(cwidir_${rname})\" \"${rname}-\${ov}\"
+    cd \"\$(cwidir_${rname})/bin\"
+    ln -sf \"${rname}\$(cwver_${rname})\" \"${rname}\${ov}\"
+    cd \"\$(cwidir_${rname})/lib\"
+    ln -sf \"\$(cwver_${rname})\" \"\${ov}\"
+    cd \"\$(cwidir_${rname})/lib/site_perl\"
+    ln -sf \"\$(cwver_${rname})\" \"\${ov}\"
+    popd >/dev/null 2>&1
+  done
   popd >/dev/null 2>&1
 }
 "
