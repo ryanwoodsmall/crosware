@@ -518,6 +518,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - liboop (https://www.lysator.liu.se/liboop/)
 - libpcap
 - libressl (https://www.libressl.org/)
+- libretls (https://git.causal.agency/libretls/about/ - libtls from libressl on top of openssl)
 - libssh2 (openssl, zlib)
   - libssh2libgcrypt (gcrypt, zlib)
   - libssh2libressl (libressl, zlib)
@@ -1304,7 +1305,6 @@ wc -l /tmp/astbuild.out
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
 - libntlm (https://www.nongnu.org/libntlm/)
 - libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
-- libretls (https://git.causal.agency/libretls/about/ - libtls from libressl on top of openssl)
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
 - libsixel (https://github.com/saitoha/libsixel)
 - libslz (http://www.libslz.org/)
