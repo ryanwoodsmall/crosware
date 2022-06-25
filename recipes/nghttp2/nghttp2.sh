@@ -7,18 +7,18 @@
 #
 
 rname="nghttp2"
-rver="1.47.0"
+rver="1.48.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="68271951324554c34501b85190f22f2221056db69f493afc3bbac8e7be21e7cc"
+rsha256="47d8f30ee4f1bc621566d10362ca1b3ac83a335c63da7144947c806772d016e4"
 rreqs="make busybox slibtool"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure \
     --disable-app \
     --disable-examples\
@@ -37,7 +37,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} ${rlibtool} \
     CPPFLAGS= \
     LDFLAGS=-static \
@@ -49,7 +49,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool} \
     CPPFLAGS= \
     LDFLAGS=-static \
