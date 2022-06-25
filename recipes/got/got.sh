@@ -23,11 +23,11 @@
 #
 
 rname="got"
-rver="0.70"
+rver="0.71"
 rdir="${rname}-portable-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://gameoftrees.org/releases/portable/${rfile}"
-rsha256="2e534ed89f794a61543e6d2cb306903ea04f93977ed241004585c6b85e8b074e"
+rsha256="16a61f49e52e189606d8f4236423f912b5cae71b1d505ef1313b4fc3173108f0"
 rreqs="libressl"
 
 if ! $(command -v ssh &>/dev/null) ; then
