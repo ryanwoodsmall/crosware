@@ -22,7 +22,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --disable-{plugins,shared} \
     --enable-{lz4,lzo,static} \
@@ -36,12 +36,12 @@ function cwconfigure_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   local t=\"${rname//openvpn/}\"
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install
-  rm -f \"${ridir}/sbin/${rname}\"
-  rm -f \"${ridir}/sbin/openvpn-\${t}\"
-  ln -sf \"${rtdir}/current/sbin/openvpn\" \"${ridir}/sbin/${rname}\"
-  ln -sf \"${rtdir}/current/sbin/openvpn\" \"${ridir}/sbin/openvpn-\${t}\"
+  rm -f \"\$(cwidir_${rname})/sbin/${rname}\"
+  rm -f \"\$(cwidir_${rname})/sbin/openvpn-\${t}\"
+  ln -sf \"${rtdir}/current/sbin/openvpn\" \"\$(cwidir_${rname})/sbin/${rname}\"
+  ln -sf \"${rtdir}/current/sbin/openvpn\" \"\$(cwidir_${rname})/sbin/openvpn-\${t}\"
   popd >/dev/null 2>&1
   unset t
 }

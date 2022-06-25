@@ -10,7 +10,7 @@ rreqs="make openssl zlib lzo lz4 pkgconfig"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --disable-{plugins,shared} \
     --enable-{lz4,lzo,static} \
