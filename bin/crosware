@@ -1463,6 +1463,14 @@ function cwset() {
 }
 
 #
+# cwmyfuncname
+#   return the name of the caller so it can identify itself
+#
+function cwmyfuncname() {
+  echo "${FUNCNAME[1]}"
+}
+
+#
 # cwstubfunc
 #   create, or replace, a function
 #
@@ -1478,7 +1486,7 @@ function cwstubfunc() {
 
 #
 # cwechofunc
-#   just echo something+ out
+#   create a stub function that just echoes something+ out
 #
 # XXX - REALLY need array/hash serialization...
 # XXX - printf is very finicky, fallback to echo for now
@@ -1486,7 +1494,7 @@ function cwstubfunc() {
 function cwechofunc() {
   local -a funcbody
   if [[ ${#} == 0 ]] ; then
-    cwfailexit "cwstubfunc: not enough args"
+    cwfailexit "$(cwmyfuncname): not enough args"
   elif [[ ${#} == 1 ]] ; then
     eval "function ${1}() { echo \"${1}\" ; }"
   else
@@ -1536,7 +1544,7 @@ function cwshowfunc() {
     funclist="${@}"
   fi
   for funcname in ${funclist} ; do
-    declare -f "${funcname}"
+    declare -f "${funcname}" || cwfailexit "$(cwmyfuncname): no such function '${funcname}'"
   done
   unset funcname funclist
 }
@@ -1557,16 +1565,7 @@ function cwrunfunc() {
   local cwfuncname
   for cwfunc in "${@}" ; do
     cwfuncname="${cwfunc%%,*}"
-    # XXX - this check is too slow...
-    #if ! $(set | grep -q "^${cwfuncname} ") ; then
-    #  cwscriptecho "function ${cwfuncname} not known"
-    #  continue
-    #fi
-    # XXX - use new cwgetfuncs()/cwlistfuncs() and check existence
-    #if ! $(cwlistfuncs | grep -q "^${cwfuncname}$") ; then
-    #  cwscriptecho "function ${cwfuncname} not known"
-    #  continue
-    #fi
+    declare -f "${cwfuncname}" >/dev/null 2>&1 || cwfailexit "$(cwmyfuncname): no such function '${cwfuncname}'"
     eval "${cwfunc//,/ }"
   done
   unset cwfunc
