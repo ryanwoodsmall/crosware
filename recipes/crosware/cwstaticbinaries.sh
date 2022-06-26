@@ -3,7 +3,7 @@
 #
 
 rname="cwstaticbinaries"
-rver="8d8a73f8aae79cefe781ac20f831899cc23b9088"
+rver="6ade1b3577c0be01c437f4fa9aa448f9d5e0f6ed"
 rdir="${rname}-${rver}"
 rfile=""
 rurl="https://github.com/ryanwoodsmall/static-binaries"
