@@ -319,8 +319,9 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - automake
 - baseutils (https://github.com/ibara/baseutils - portable openbsd userland)
 - bash (5.x, netbsdcurses)
-  - bash4 (netbsdcurses)
-  - bash50 (netbsdcurses)
+  - bashminimal (5.x, internal readline, no curses/termcap)
+  - bash4 (4.4, netbsdcurses)
+  - bash50 (5.0 netbsdcurses)
 - bc (gnu bc, dc)
 - bdb185 (berkeley db 1.85)
 - bdb47 (berkeley db 4.x)
