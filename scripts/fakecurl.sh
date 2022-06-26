@@ -3,6 +3,9 @@
 # fake curl that uses busybox/gnu wget
 # might be enough for cwfetch()?
 #
+# XXX - _rename_ to cwfetch?
+# XXX - other wrappers - curl/wget, wget/curl?
+#
 
 echo "this is fake curl" 1>&2
 
@@ -14,6 +17,7 @@ if ! command -v wget &>/dev/null ; then
   exit 1
 fi
 
+: ${wget:="wget"}
 : ${wgetopts:="--no-check-certificate"}
 
 declare -a a=()
@@ -31,4 +35,4 @@ ui="${#a[@]}"
 ((ui--))
 ((ui--))
 
-wget ${wgetopts} -O "${a[${ti}]}" "${a[${ui}]}"
+${wget} ${wgetopts} -O "${a[${ti}]}" "${a[${ui}]}"
