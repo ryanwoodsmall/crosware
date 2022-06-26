@@ -1,15 +1,11 @@
-#
-# XXX - remove zlib, pkgconf reqs, move to bootstrapmake - ends up ~640KB on x86_64
-#
-
-rname="picocurl"
+rname="picocurlmbedtls"
 rver="$(cwver_tinycurl)"
 rdir="$(cwdir_tinycurl)"
 rfile="$(cwfile_tinycurl)"
 rdlfile="$(cwdlfile_tinycurl)"
 rurl="$(cwurl_tinycurl)"
 rsha256=""
-rreqs="bearssl bootstrapmake cacertificates pkgconf zlibng"
+rreqs="mbedtls bootstrapmake cacertificates pkgconf zlibng"
 
 . "${cwrecipe}/common.sh"
 
@@ -36,10 +32,10 @@ function cwconfigure_${rname}() {
         --enable-ipv6 \
         --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
         --with-ca-path=\"${cwetc}/ssl/certs\" \
-        --with-bearssl \
-        --with-default-ssl-backend=bearssl \
+        --with-mbedtls \
+        --with-default-ssl-backend=mbedtls \
         --with-zlib \
-        --without-{brotli,gnutls,libidn2,libssh{,2},nghttp2,mbedtls,nss,openssl,rusttls,wolfssh,wolfssl,zstd} \
+        --without-{bearssl,brotli,gnutls,libidn2,libssh{,2},nghttp2,nss,openssl,rusttls,wolfssh,wolfssl,zstd} \
           CC=\"\${CC} -Os -Wl,-s\" \
           CFLAGS=\"-Os -Wl,-s \${CFLAGS}\" \
           CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
@@ -54,16 +50,16 @@ function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   rm -f \$(cwidir_${rname})/bin/* || true
   make install ${rlibtool}
-  mv \"\$(cwidir_${rname})/bin/curl\" \"\$(cwidir_${rname})/bin/${rname}\"
-  mv \"\$(cwidir_${rname})/bin/curl-config\" \"\$(cwidir_${rname})/bin/${rname}-config\"
-  ln -s \"${rname}\" \"\$(cwidir_${rname})/bin/${rname}bearssl\"
-  ln -s \"${rname}-config\" \"\$(cwidir_${rname})/bin/${rname}bearssl-config\"
-  ln -s \"${rname}\" \"\$(cwidir_${rname})/bin/curl\"
-  ln -s \"${rname}\" \"\$(cwidir_${rname})/bin/tiny-curl\"
+  mv \"\$(cwidir_${rname})/bin/curl\" \"\$(cwidir_${rname})/bin/${rname%mbedtls}\"
+  mv \"\$(cwidir_${rname})/bin/curl-config\" \"\$(cwidir_${rname})/bin/${rname%mbedtls}-config\"
+  ln -s \"${rname%mbedtls}\" \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -s \"${rname%mbedtls}-config\" \"\$(cwidir_${rname})/bin/${rname}-config\"
+  ln -s \"${rname%mbedtls}\" \"\$(cwidir_${rname})/bin/curl\"
+  ln -s \"${rname%mbedtls}\" \"\$(cwidir_${rname})/bin/tiny-curl\"
   \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/${rname}\"
   cwmkdir \"\$(cwidir_${rname})/devbin\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/devbin/curl\"
-  ln -sf \"${rtdir}/current/bin/${rname}-config\" \"\$(cwidir_${rname})/devbin/curl-config\"
+  ln -sf \"${rtdir}/current/bin/${rname%mbedtls}\" \"\$(cwidir_${rname})/devbin/curl\"
+  ln -sf \"${rtdir}/current/bin/${rname%mbedtls}-config\" \"\$(cwidir_${rname})/devbin/curl-config\"
   popd >/dev/null 2>&1
 }
 "
