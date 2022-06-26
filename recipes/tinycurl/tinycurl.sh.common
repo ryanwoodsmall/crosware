@@ -23,7 +23,7 @@ function cwconfigure_${rname}() {
     extra=\"\$(echo --with-wolfssl --with-default-ssl-backend=wolfssl --with-libssh2 --without-{bearssl,mbedtls,openssl,wolfssh})\"
   fi
   cwmkdir bin
-  ln -sf \"${cwsw}/pkgconf/current/bin:\${PATH}\" bin/pkg-config
+  ln -sf \"${cwsw}/pkgconf/current/bin/pkgconf\" bin/pkg-config
   env \
     PATH=\"${cwsw}/pkgconf/current/bin:\${PWD}/bin:\${PATH}\" \
     PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\" \
