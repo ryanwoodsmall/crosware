@@ -392,7 +392,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - amd64/arm32v6/arm64v8 only
   - does _not_ work on i686
   - architecture naming conventions: https://github.com/docker-library/official-images#architectures-other-than-amd64
-- dropbear (https://matt.ucc.asn.au/dropbear/dropbear.html and https://dropbear.nl/)
+- dropbear (https://matt.ucc.asn.au/dropbear/dropbear.html and https://dropbear.nl/ - zlib, lsh sftp-server - tcp port 2222)
+  - dropbearminimal (zlibng - tcp port 22222)
 - dtach (https://github.com/crigler/dtach and http://dtach.sourceforge.net/ - simpler detachable screenalike)
 - duktape (http://duktape.org/ and https://github.com/svaarala/duktape)
 - dvtm (https://www.brain-dump.org/projects/dvtm/ and https://github.com/martanne/dvtm/)

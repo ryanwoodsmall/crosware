@@ -2,6 +2,7 @@
 builds/**/**
 cgi-bin/**
 downloads/**/**
+etc/dropbear/**
 etc/local.d/**
 etc/profile.d/**
 etc/**ssl/**
