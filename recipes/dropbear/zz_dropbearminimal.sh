@@ -11,7 +11,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
-for f in fetch make ; do
+for f in clean fetch make ; do
   eval "function cw${f}_${rname}() { cw${f}_dropbear ; }"
 done
 
