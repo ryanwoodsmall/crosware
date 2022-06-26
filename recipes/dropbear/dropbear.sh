@@ -1,5 +1,4 @@
 #
-# XXX - move config (keys) to $cwtop/etc/dropbear/ !!! - provisions in place
 # XXX - sftp-server is messy - split out into a standalone recipe?
 #
 # dropbear supports dss, ecdsa, ed25519, and rsa keys
@@ -41,27 +40,30 @@ lshver="2.1"
 
 eval "
 function cwfetch_${rname}() {
-  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
-  cwfetch \"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/options/${rname}-${rver}_localoptions.h\" \"${cwdl}/${rname}/${rname}-${rver}_localoptions.h\"
+  cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
+  cwfetch \
+    \"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/options/${rname}-\$(cwver_${rname})_localoptions.h\" \
+    \"${cwdl}/${rname}/${rname}-\$(cwver_${rname})_localoptions.h\"
   cwfetch_nettle
-  #cwfetch_lsh
   cwfetchcheck \"https://ftp.gnu.org/pub/gnu/lsh/lsh-${lshver}.tar.gz\" \"${cwdl}/lsh/lsh-${lshver}.tar.gz\" \"8bbf94b1aa77a02cac1a10350aac599b7aedda61881db16606debeef7ef212e3\"
 }
 "
 
 eval "
 function cwextract_${rname}() {
-  cwextract \"${rdlfile}\" \"${cwbuild}\"
-  cwextract \"\$(cwdlfile_nettle)\" \"${rbdir}\"
-  cwextract \"${cwdl}/lsh/lsh-${lshver}.tar.gz\" \"${rbdir}\"
+  cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
+  cwextract \"\$(cwdlfile_nettle)\" \"\$(cwbdir_${rname})\"
+  cwextract \"${cwdl}/lsh/lsh-${lshver}.tar.gz\" \"\$(cwbdir_${rname})\"
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cat \"${cwdl}/${rname}/${rname}-${rver}_localoptions.h\" > localoptions.h
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cat \"${cwdl}/${rname}/${rname}-\$(cwver_${rname})_localoptions.h\" > localoptions.h
+  cat localoptions.h >> localoptions.h.ORIG
   cwscriptecho 'patching localoptions.h'
+  sed -i \"/PRIV/s#/opt/${rname}/etc#${cwetc}/${rname}#g\" localoptions.h
   sed -i \"s#/opt/${rname}#${rtdir}#g\" localoptions.h
   echo '#undef SFTPSERVER_PATH' >> localoptions.h
   echo '#define SFTPSERVER_PATH \"${rtdir}/current/libexec/sftp-server\"' >> localoptions.h
@@ -85,7 +87,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} \
     MULTI=1 \
     SCPPROGRESS=1 \
@@ -96,13 +98,13 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install \
     MULTI=1 \
     SCPPROGRESS=1 \
     PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
-  ln -sf \"${ridir}/bin/dbclient\" \"${ridir}/bin/ssh\"
-  cwmkdir \"${rtdir}/etc\"
+  ln -sf dbclient \"\$(cwidir_${rname})/bin/ssh\"
+  cwmkdir \"${cwetc}/${rname}\"
   popd >/dev/null 2>&1
   cwmakeinstall_sftpserver_${rname}
 }
@@ -110,12 +112,12 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwmakeinstall_sftpserver_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cd \"\$(cwdir_nettle)\"
   ./configure \
     ${cwconfigurelibopts} \
-    --prefix=\"${rbdir}/sftp-server\" \
-    --libdir=\"${rbdir}/sftp-server/lib\" \
+    --prefix=\"\$(cwbdir_${rname})/sftp-server\" \
+    --libdir=\"\$(cwbdir_${rname})/sftp-server/lib\" \
     --disable-assembler \
     --disable-documentation \
     --disable-openssl \
@@ -126,24 +128,52 @@ function cwmakeinstall_sftpserver_${rname}() {
   make install
   cd -
   cd lsh-${lshver}/src/sftp
-  ./configure --prefix=\"${rbdir}/sftp-server\" \
-    LDFLAGS=\"-L${rbdir}/sftp-server/lib -static\" \
-    CPPFLAGS=\"-I${rbdir}/sftp-server/include\"
+  ./configure --prefix=\"\$(cwbdir_${rname})/sftp-server\" \
+    LDFLAGS=\"-L\$(cwbdir_${rname})/sftp-server/lib -static\" \
+    CPPFLAGS=\"-I\$(cwbdir_${rname})/sftp-server/include\"
   make -j${cwmakejobs}
   make install
   cd -
-  cwmkdir \"${ridir}/libexec\"
-  install -m 0755 \"${rbdir}/sftp-server/sbin/sftp-server\" \"${ridir}/libexec/\"
+  cwmkdir \"\$(cwidir_${rname})/libexec\"
+  install -m 0755 \"\$(cwbdir_${rname})/sftp-server/sbin/sftp-server\" \"\$(cwidir_${rname})/libexec/\"
   popd >/dev/null 2>&1
 }
 "
 
+# XXX - hmm
+eval "
+function cwclean_${rname}() {
+  pushd \"${cwbuild}\" >/dev/null 2>&1
+  rm -rf \"${rbdir}\"
+  popd >/dev/null 2>&1
+  if [ -e \"${rtdir}/etc\" ] ; then
+    test -e \"${cwetc}/${rname}\" || cwmkdir \"${cwetc}/${rname}\"
+    { cd \"${rtdir}/etc\" ; tar -cf - . ; } | { cd \"${cwetc}/${rname}\" ; tar -xf - ; }
+    local t=\"${cwtop}/tmp/${rname}-etc.PRE-\${TS}\"
+    cwmkdir \"\${t}\"
+    { cd \"${rtdir}/etc\" ; tar -cf - . ; } | { cd \"\${t}\" ; tar -xvf - ; cwscriptecho \"\$(cwmyfuncname): backed up ${rtdir}/etc to ${cwetc}/${rname} and \${t}\" ; }
+    rm -rf \"${rtdir}/etc\"
+  fi
+}
+"
+
+# XXX - hmm HMM
 eval "
 function cwuninstall_${rname}() {
+  cwclean_${rname}
   pushd \"${rtdir}\" >/dev/null 2>&1
-  rm -rf \"${rdir}\"
+  rm -rf ${rname}-*
+  rm -f current previous
   rm -f \"${rprof}\"
   rm -f \"${cwvarinst}/${rname}\"
+  if [ -e etc ] ; then
+    rmdir etc || echo \"${rtdir}/etc not empty\"
+  fi
+  popd >/dev/null 2>&1
+  pushd \"${cwsw}\" >/dev/null 2>&1
+  if [ -e ${rname} ] ; then
+    rmdir ${rname} || echo \"${cwsw}/${rname} not empty\"
+  fi
   popd >/dev/null 2>&1
 }
 "

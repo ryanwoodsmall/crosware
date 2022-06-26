@@ -58,14 +58,17 @@ function cwmakeinstall_${rname}() {
     SCPPROGRESS=1 \
     PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
   ln -sf dbclient \"\$(cwidir_${rname})/bin/ssh\"
-  test -e \"${cwetc}/${rname%minimal}\" || cwmkdir \"${cwetc}/${rname%minimal}\"
+  cwmkdir \"${cwetc}/${rname%minimal}\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  echo '# ${rname}' > \"${rprof}\"
+  echo 'append_path \"${rtdir%minimal}/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${rtdir%minimal}/current/sbin\"' >> \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
   echo 'append_path \"${rtdir}/current/sbin\"' >> \"${rprof}\"
 }
 "
