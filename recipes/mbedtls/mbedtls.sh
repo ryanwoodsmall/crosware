@@ -26,7 +26,6 @@ rdir="${rname}-${rname}-${rver}"
 rfile="${rname}-${rver}.tar.gz"
 rurl="https://github.com/ARMmbed/${rname}/archive/${rfile}"
 rsha256="f644248f23cf04315cf9bb58d88c4c9471c16ca0533ecf33f86fb7749a3e5fa6"
-rreqs="make cacertificates"
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
 
