@@ -23,7 +23,9 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   cat src/openssl.h > src/openssl.h.ORIG
-  curl -kL https://raw.githubusercontent.com/ryanwoodsmall/crosware-source-mirror/master/libssh2/vishwin_libssh2_7f55a033e5054529e5e69f06725dd02a573329b6_src_openssl.h > src/openssl.h
+  cwfetch \
+    \"https://raw.githubusercontent.com/ryanwoodsmall/crosware-source-mirror/master/libssh2/vishwin_libssh2_7f55a033e5054529e5e69f06725dd02a573329b6_src_openssl.h\" \
+    \"\$(cwbdir_${rname})/src/openssl.h\"
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-libssl-prefix=\"${cwsw}/libressl/current\" \
     --with-libz \

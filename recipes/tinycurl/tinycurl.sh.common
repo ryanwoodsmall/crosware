@@ -1,5 +1,5 @@
 : ${rreqs:=""}
-rreqs+=" make cacertificates zlib pkgconfig nghttp2 cares"
+rreqs+=" make cacertificates zlib pkgconf nghttp2 cares"
 
 . "${cwrecipe}/common.sh"
 
@@ -10,7 +10,7 @@ pn="${pn#tinycurl}"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   if [[ ${rname} =~ bearssl ]] ; then
     extra=\"\$(echo --with-bearssl --with-default-ssl-backend=bearssl --without-{libssh2,mbedtls,openssl,wolfssl,wolfssh})\"
   elif [[ ${rname} =~ libressl ]] ; then
@@ -22,22 +22,27 @@ function cwconfigure_${rname}() {
   else
     extra=\"\$(echo --with-wolfssl --with-default-ssl-backend=wolfssl --with-libssh2 --without-{bearssl,mbedtls,openssl,wolfssh})\"
   fi
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
-    --disable-dependency-tracking \
-    --disable-manual \
-    --enable-ares=\"${cwsw}/cares/current\" \
-    --enable-ipv6 \
-    \${extra} \
-    --without-{gnutls,rusttls,nss} \
-    --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
-    --with-ca-path=\"${cwetc}/ssl/certs\" \
-    --with-nghttp2=\"${cwsw}/nghttp2/current\" \
-    --with-zlib \
-      CC=\"\${CC} -Os\" \
-      CFLAGS=\"-Os -Wl,-s \${CFLAGS}\" \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
-      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
+  cwmkdir bin
+  ln -sf \"${cwsw}/pkgconf/current/bin:\${PATH}\" bin/pkg-config
+  env \
+    PATH=\"${cwsw}/pkgconf/current/bin:\${PWD}/bin:\${PATH}\" \
+    PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\" \
+      ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
+        --disable-dependency-tracking \
+        --disable-manual \
+        --enable-ares=\"${cwsw}/cares/current\" \
+        --enable-ipv6 \
+        \${extra} \
+        --without-{gnutls,rusttls,nss} \
+        --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
+        --with-ca-path=\"${cwetc}/ssl/certs\" \
+        --with-nghttp2=\"${cwsw}/nghttp2/current\" \
+        --with-zlib \
+          CC=\"\${CC} -Os\" \
+          CFLAGS=\"-Os -Wl,-s \${CFLAGS}\" \
+          CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+          LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+          PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   unset extra
   popd >/dev/null 2>&1
 }
@@ -46,7 +51,7 @@ function cwconfigure_${rname}() {
 # XXX - shouldn't be necessary but no perl breaks the lib->docs->tool build?
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} ${rlibtool} || make -j${cwmakejobs} ${rlibtool}
   popd >/dev/null 2>&1
 }
@@ -66,18 +71,18 @@ fi
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  rm -f ${ridir}/bin/{tiny-,}curl{,-config} || true
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  rm -f \$(cwidir_${rname})/bin/{tiny-,}curl{,-config} || true
   make install ${rlibtool}
-  mv \"${ridir}/bin/curl\" \"${ridir}/bin/tiny-curl\"
-  mv \"${ridir}/bin/curl-config\" \"${ridir}/bin/tiny-curl-config\"
-  ln -sf tiny-curl \"${ridir}/bin/${rname}\"
-  ln -sf tiny-curl \"${ridir}/bin/${rname}-${rver}\"
-  ln -sf tiny-curl \"${ridir}/bin/tiny-curl-${rver}\"
-  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/tiny-curl\"
-  cwmkdir \"${ridir}/devbin\"
-  ln -sf \"${rtdir}/current/bin/tiny-curl\" \"${ridir}/devbin/curl\"
-  ln -sf \"${rtdir}/current/bin/tiny-curl-config\" \"${ridir}/devbin/curl-config\"
+  mv \"\$(cwidir_${rname})/bin/curl\" \"\$(cwidir_${rname})/bin/tiny-curl\"
+  mv \"\$(cwidir_${rname})/bin/curl-config\" \"\$(cwidir_${rname})/bin/tiny-curl-config\"
+  ln -sf tiny-curl \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf tiny-curl \"\$(cwidir_${rname})/bin/${rname}-\$(cwver_${rname})\"
+  ln -sf tiny-curl \"\$(cwidir_${rname})/bin/tiny-curl-\$(cwver_${rname})\"
+  \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/tiny-curl\"
+  cwmkdir \"\$(cwidir_${rname})/devbin\"
+  ln -sf \"${rtdir}/current/bin/tiny-curl\" \"\$(cwidir_${rname})/devbin/curl\"
+  ln -sf \"${rtdir}/current/bin/tiny-curl-config\" \"\$(cwidir_${rname})/devbin/curl-config\"
   popd >/dev/null 2>&1
 }
 "

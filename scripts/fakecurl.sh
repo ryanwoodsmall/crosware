@@ -3,8 +3,6 @@
 # fake curl that uses busybox/gnu wget
 # might be enough for cwfetch()?
 #
-# XXX - add --no-check-certificate for curl -k interop by default?
-#
 
 echo "this is fake curl" 1>&2
 
@@ -16,7 +14,7 @@ if ! command -v wget &>/dev/null ; then
   exit 1
 fi
 
-: ${wgetopts:=""}
+: ${wgetopts:="--no-check-certificate"}
 
 declare -a a=()
 for i in $(seq 0 $((${#}-1))) ; do
