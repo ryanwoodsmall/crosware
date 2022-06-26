@@ -6,10 +6,15 @@
 # XXX - add --no-check-certificate for curl -k interop by default?
 #
 
-echo "this is fake curl" 2>&1
+echo "this is fake curl" 1>&2
 
 set -eu
 set -o pipefail
+
+if ! command -v wget &>/dev/null ; then
+  echo "wget not found" 1>&2
+  exit 1
+fi
 
 : ${wgetopts:=""}
 

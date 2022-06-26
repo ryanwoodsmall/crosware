@@ -17,11 +17,13 @@ rreqs="bootstrapmake"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  ${cwcurl} -kLsO https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/${rname}_config_script.sh
-  sed -i.ORIG 's/^make/#make/g;s/^test/#test/g' ${rname}_config_script.sh
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  csu=\"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/${rname}_config_script.sh\"
+  cs=\"\$(basename \${csu})\"
+  cwfetch \"\${csu}\" \"\$(cwbdir_${rname})/\${cs}\"
+  sed -i.ORIG 's/^make/#make/g;s/^test/#test/g' \"\${cs}\"
   make defconfig HOSTCC=\"\${CC} -static\"
-  bash ${rname}_config_script.sh -m -s
+  bash \"\${cs}\" -m -s
   make oldconfig HOSTCC=\"\${CC} -static\"
   popd >/dev/null 2>&1
 }
@@ -29,7 +31,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   for i in 1 2 3 ; do
     make -j${cwmakejobs} V=1 CC=\"\${CC}\" HOSTCC=\"\${CC} -static\" CFLAGS=\"\${CFLAGS}\" HOSTCFLAGS=\"\${CFLAGS}\" HOSTLDFLAGS=\"\${LDFLAGS}\" || true
   done
@@ -40,13 +42,13 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  cwmkdir "${ridir}/bin"
-  rm -f "${ridir}/bin/${rname}"
-  cp -a "${rname}" "${ridir}/bin"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  rm -f \"\$(cwidir_${rname})/bin/${rname}\"
+  cp -a \"${rname}\" \"\$(cwidir_${rname})/bin/\"
   local a=''
   for a in \$(./${rname}) ; do
-    ln -sf "${ridir}/bin/${rname}" "${ridir}/bin/\${a}"
+    ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/\${a}\"
   done
   popd >/dev/null 2>&1
 }
@@ -54,6 +56,6 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "

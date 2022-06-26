@@ -599,11 +599,18 @@ function cwfetch() {
   local targetdir="$(dirname "${targetfile}")"
   cwmkdir "${targetdir}"
   cwscriptecho "downloading ${downloadurl} to ${targetfile}"
-  ${cwcurl} ${cwcurlopts} -o "${targetfile}" "${downloadurl}"
-  if [ "${?}" -eq 0 ] ; then
+  if $(${cwcurl} ${cwcurlopts} -o "${targetfile}" "${downloadurl}") ; then
     cwscriptecho "successfully downloaded ${downloadurl} to ${targetfile}"
     return 0
   else
+    : ${fakecurl:="${cwtop}/scripts/fakecurl.sh"}
+    # XXX - command -v here?
+    if [ -e "${fakecurl%% *}" ] ; then
+      cwscriptecho "curl download failed for ${downloadurl}, trying ${fakecurl}"
+      # XXX - what if it's not a script?
+      bash ${fakecurl} "${downloadurl}" "${targetfile}" || cwfailexit "${fakecurl} failed for ${downloadurl}"
+      return 0
+    fi
     cwfailexit "curl failed for ${downloadurl}"
     return 1
   fi

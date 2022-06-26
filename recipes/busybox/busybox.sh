@@ -1,5 +1,6 @@
 #
 # XXX - make reproducible; probably just need to set compilation time?
+# XXX - move config script download to versioned based on git commit, move to cwfetch_
 #
 
 rname="busybox"
@@ -15,12 +16,14 @@ rreqs="bootstrapmake"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   chmod -R u+w .
-  ${cwcurl} -kLsO https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/bb_config_script.sh
-  sed -i.ORIG 's/^make/#make/g;s/^test/#test/g' bb_config_script.sh
+  csu=\"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/bb_config_script.sh\"
+  cs=\"\$(basename \${csu})\"
+  cwfetch \"\${csu}\" \"\$(cwbdir_${rname})/\${cs}\"
+  sed -i.ORIG 's/^make/#make/g;s/^test/#test/g' \"\${cs}\"
   make defconfig HOSTCC=\"\${CC} -static\"
-  bash bb_config_script.sh -m -s
+  bash \"\${cs}\" -m -s
   make oldconfig HOSTCC=\"\${CC} -static\"
   popd >/dev/null 2>&1
 }
@@ -28,7 +31,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} CC=\"\${CC}\" HOSTCC=\"\${CC} -static\" CFLAGS=\"\${CFLAGS}\" HOSTCFLAGS=\"\${CFLAGS}\" HOSTLDFLAGS=\"\${LDFLAGS}\"
   popd >/dev/null 2>&1
 }
@@ -36,13 +39,13 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  cwmkdir "${ridir}/bin"
-  rm -f "${ridir}/bin/${rname}"
-  cp -a "${rname}" "${ridir}/bin"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  rm -f \"\$(cwidir_${rname})/bin/${rname}\"
+  cp -a \"${rname}\" \"\$(cwidir_${rname})/bin\"
   local a=''
   for a in \$(./${rname} --list) ; do
-    ln -sf "${ridir}/bin/${rname}" "${ridir}/bin/\${a}"
+    ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/\${a}\"
   done
   popd >/dev/null 2>&1
 }
@@ -50,8 +53,8 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
-  echo 'export PAGER=\"less\"' >> "${rprof}"
-  echo 'export MANPAGER=\"less -R\"' >> "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  echo 'export PAGER=\"less\"' >> \"${rprof}\"
+  echo 'export MANPAGER=\"less -R\"' >> \"${rprof}\"
 }
 "
