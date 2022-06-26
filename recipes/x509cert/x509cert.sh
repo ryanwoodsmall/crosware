@@ -22,7 +22,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/michaelforney/${rname}/releases/download/${rver}/${rfile}"
 rsha256="10199016a96931146a7b488ac3797ab761c6a0d72fb0ceebe89838f19f10ff88"
-rreqs="make bearssl"
+rreqs="bootstrapmake bearssl"
 
 . "${cwrecipe}/common.sh"
 
