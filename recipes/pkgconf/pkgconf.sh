@@ -3,18 +3,19 @@
 #
 
 rname="pkgconf"
-rver="1.0.1"
+rver="1.8.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://github.com/${rname}/${rname}/releases/download/${rdir}/${rfile}"
-rsha256="45ce2f6ab032451345185b800badd77c054040879bd2e56225dafc7fbe583cf1"
+#rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
+rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
+rsha256="656724aa2529b63205a2a229eb01c030d70684ed7129262c654db76c85463bc8"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     CC=\"\${CC} -Os -Wl,-s\" \
     CFLAGS=\"\${CFLAGS} -Os -Wl,-s\" \
