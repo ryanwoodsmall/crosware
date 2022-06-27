@@ -4,18 +4,18 @@
 #
 
 rname="sqlite"
-rver="3380500"
+rver="3390000"
 rdir="${rname}-autoconf-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.sqlite.org/2022/${rfile}"
-rsha256="5af07de982ba658fd91a03170c945f99c971f6955bc79df3266544373e39869c"
+rsha256="e90bcaef6dd5813fcdee4e867f6b65f3c9bfd0aec0f1017f9f3bbce1e4ed09e2"
 rreqs="make netbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG s/termcap/terminfo/g configure
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --enable-readline \
     CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include -I${cwsw}/zlib/current/include\" \
