@@ -3,6 +3,7 @@
 # XXX - broken on centos 6, ugh
 # XXX - 3.5.x breaks libssh2; see: https://github.com/libssh2/libssh2/pull/682
 # XXX - need libressl33, libressl34, etc.?
+# XXX - when upgraded, an installed dependents reinstall should be performed - {libssh2,curl,...}libressl
 #
 rname="libressl"
 rver="3.5.3"
