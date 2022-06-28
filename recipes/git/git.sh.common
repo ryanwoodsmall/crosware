@@ -1,6 +1,6 @@
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
   popd >/dev/null 2>&1
 }
@@ -8,11 +8,11 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} install NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
-  cwmkdir \"${ridir}/etc\"
-  cwextract \"${rdlfile//${rname%libressl}-${rver}/${rname%libressl}-manpages-${rver}}\" \"${ridir}/share/man\"
-  ln -sf \"${rtdir}/current/bin/${rname%libressl}\" \"${ridir}/bin/${rname%libressl}libressl\"
+  cwmkdir \"\$(cwidir_${rname})/etc\"
+  cwextract \"${rdlfile//${rname%libressl}-${rver}/${rname%libressl}-manpages-${rver}}\" \"\$(cwidir_${rname})/share/man\"
+  ln -sf \"${rtdir}/current/bin/${rname%libressl}\" \"\$(cwidir_${rname})/bin/${rname%libressl}libressl\"
   popd >/dev/null 2>&1
 }
 "

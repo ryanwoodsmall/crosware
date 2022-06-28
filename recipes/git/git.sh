@@ -27,11 +27,11 @@
 #
 
 rname="git"
-rver="2.36.1"
+rver="2.37.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
-rsha256="405d4a0ff6e818d1f12b3e92e1ac060f612adcb454f6299f70583058cb508370"
+rsha256="9f7fa1711bd00c4ec3dde2fe44407dc13f12e4772b5e3c72a58db4c07495411f"
 rreqs="make bzip2 zlib openssl curl expat pcre2 perl libssh2 busybox less cacertificates nghttp2 openssh mandoc"
 
 . "${cwrecipe}/common.sh"
@@ -43,13 +43,13 @@ function cwfetch_${rname}() {
   cwfetchcheck \
     \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \
     \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \
-    \"b1e6e651333283bfe2abbdf10baa858f61c5ec9d3caacb30f44888d78d964e6f\"
+    \"80119359072c8dd01fd4bed09e5d11de54f469e952fb2b7def57d97f97adc8e0\"
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"\${cwsw}/curl/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
       --with-curl \
@@ -67,7 +67,7 @@ function cwconfigure_${rname}() {
         LDFLAGS=\"\${LDFLAGS}\" \
         LIBS='-lcurl -lnghttp2 -lssh2 -lssl -lcrypto -lz'
   sed -i.ORIG 's/-lcurl/-lcurl -lnghttp2 -lssh2 -lssl -lcrypto -lz/g' Makefile
-  grep -ril sys/poll\\.h ${rbdir}/ \
+  grep -ril sys/poll\\.h \$(cwbdir_${rname})/ \
   | grep \\.h\$ \
   | xargs sed -i.ORIG 's#sys/poll\.h#poll.h#g'
   popd >/dev/null 2>&1
