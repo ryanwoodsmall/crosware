@@ -11,11 +11,11 @@
 #
 
 rname="gauche"
-rver="0.9.11"
+rver="0.9.12"
 rdir="${rname//g/G}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://github.com/shirok/${rname//g/G}/releases/download/release${rver//./_}/${rfile}"
-rsha256="395e4ffcea496c42a5b929a63f7687217157c76836a25ee4becfcd5f130f38e4"
+rsha256="b4ae64921b07a96661695ebd5aac0dec813d1a68e546a61609113d7843f5b617"
 rreqs="make libressl mbedtls zlib gdbm"
 
 . "${cwrecipe}/common.sh"
@@ -30,7 +30,7 @@ fi
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --enable-ipv6 \
     --enable-multibyte=utf-8 \
@@ -53,12 +53,12 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  echo '#!/bin/sh' > \"${ridir}/bin/${rname}\"
-  echo 'export GAUCHE_READ_EDIT=yes' >> \"${ridir}/bin/${rname}\"
-  echo 'env GAUCHE_READ_EDIT=yes \"${rtdir}/current/bin/gosh\" \"\${@}\"' >> \"${ridir}/bin/${rname}\"
-  chmod 755 \"${ridir}/bin/${rname}\"
+  echo '#!/bin/sh' > \"\$(cwidir_${rname})/bin/${rname}\"
+  echo 'export GAUCHE_READ_EDIT=yes' >> \"\$(cwidir_${rname})/bin/${rname}\"
+  echo 'env GAUCHE_READ_EDIT=yes \"${rtdir}/current/bin/gosh\" \"\${@}\"' >> \"\$(cwidir_${rname})/bin/${rname}\"
+  chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
