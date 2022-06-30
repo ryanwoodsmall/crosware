@@ -931,6 +931,7 @@ wc -l /tmp/astbuild.out
 - barebox (https://www.barebox.org/)
 - bashdb (http://bashdb.sourceforge.net/ - bash debugger)
 - basher (https://github.com/basherpm/basher - bash script package manager)
+- bashrc (https://github.com/ajdiaz/bashc and https://ajdiaz.me/bashc/ - compile a bash script into static binary)
 - bic (https://github.com/hexagonal-sun/bic - c repl)
 - big data stuff
   - hadoop (version 2.x? 3.x? separate out into separate versioned recipes?)
