@@ -944,6 +944,7 @@ wc -l /tmp/astbuild.out
   - ```./bootstrap.sh --prefix=${ridir} --without-icu ; ./b2 --prefix=${ridir} --layout=system -q link=static install```
   - it's like a 100MB tgz, 700MB extracted, 900MB during build, 190MB installed
   - yikes
+- bootterm (https://github.com/wtarreau/bootterm - small user-friendly serial client/terminal emulator)
 - botan (https://github.com/randombit/botan)
   - build with something like...
   - ```
