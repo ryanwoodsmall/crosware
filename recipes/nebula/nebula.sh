@@ -29,6 +29,7 @@ function cwpatch_${rname}() {
 
 eval "
 function cwclean_${rname}() {
+  test -e \"\$(cwbdir_${rname})/\" || return 0
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   test -e \"\$(cwbdir_${rname})\" && chmod -R u+w \"\$(cwbdir_${rname})\" || true
   rm -rf \"\$(cwbdir_${rname})\"
