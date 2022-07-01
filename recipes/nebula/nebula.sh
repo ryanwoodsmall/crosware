@@ -1,9 +1,9 @@
 rname="nebula"
-rver="1.5.2"
+rver="1.6.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/slackhq/${rname}/archive/refs/tags/${rfile}"
-rsha256="391ac38161561690a65c0fa5ad65a2efb2d187323cc8ee84caa95fa24cb6c36a"
+rsha256="b16638b99d80a4ae6373f7757a0064dc0defd3f9e165617e7b5c3be9e64d3605"
 rreqs="go cacertificates bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -17,15 +17,11 @@ function cwinstall_${rname}() {
 "
 fi
 
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
+cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG '/^LDFLAGS/s,\$, -s -w,g' Makefile
   popd >/dev/null 2>&1
 }
@@ -33,29 +29,29 @@ function cwpatch_${rname}() {
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
-  test -e \"${rbdir}\" && chmod -R u+w \"${rbdir}\" || true
-  rm -rf \"${rbdir}\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  test -e \"\$(cwbdir_${rname})\" && chmod -R u+w \"\$(cwbdir_${rname})\" || true
+  rm -rf \"\$(cwbdir_${rname})\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
     CGO_ENABLED=0 \
-    make BUILD_NUMBER=\"${rver}\" GOPATH=\"${rbdir}/build\"
+    make BUILD_NUMBER=\"\$(cwver_${rname})\" GOPATH=\"\$(cwbdir_${rname})/build\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/bin\"
-  install -m 0755 ${rname} \"${ridir}/bin/${rname}\"
-  install -m 0755 ${rname}-cert \"${ridir}/bin/${rname}-cert\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  install -m 0755 ${rname} \"\$(cwidir_${rname})/bin/${rname}\"
+  install -m 0755 ${rname}-cert \"\$(cwidir_${rname})/bin/${rname}-cert\"
   popd >/dev/null 2>&1
 }
 "
