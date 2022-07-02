@@ -1,5 +1,10 @@
+#
+# XXX - YACC is now officially set as bison, bison requires perl, etc. - too big
+# XXX - i.e. byacc is probably going to break at some point, then awk will indirectly require perl. the humanity
+#
+
 rname="onetrueawk"
-rver="c0f4e97e4561ff42544e92512bbaf3d7d1f6a671"
+rver="b92d8cecd132ce8e02a373e28dd42e6be34d3d59"
 rdir="${rname#onetrue}-${rver}"
 rfile="${rver}.zip"
 rurl="https://github.com/${rname}/awk/archive/${rfile}"
