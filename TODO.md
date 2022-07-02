@@ -1164,6 +1164,21 @@ time_func ls -l -A /
   - only sourced by `bin/crosware`
   - e.g., use a different patchset for a recipe
   - hook install function to archive/package dated builds
+- `cwrepeatfunc # cwfuncname [cwtargetfuncname?]`
+  - rename/copy `cwfuncname` to `cwfuncname_real`
+  - ```
+    function cwrepeatfunc {
+      # XXX - or detect $# and act accordingly?
+      cwcopyfunc "${2}" "${2}_real"
+      local -a funcbody=()
+      a[0]="function ${2}() {"
+      for i in $(seq 1 ${1}) ; do
+        a+=( "${2}_real && return 0 || true" )
+      done
+      a+=( "false" )
+      a+=( "}" )
+    }
+    ```
 
 <!--
 # vim: ft=markdown
