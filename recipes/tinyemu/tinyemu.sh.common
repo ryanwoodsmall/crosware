@@ -28,7 +28,7 @@ function cwconfigure_${rname}() {
   sed -i \"/^CFLAGS=/s|\\$| \$(echo -I${cwsw}/{${rreqs// /,}}/current/include)|g\" Makefile
   sed -i \"/^LDFLAGS=/s|=|=\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static|g\" Makefile
   sed -i 's|^bindir=.*|bindir=${ridir}/bin|g' Makefile
-  sed -i 's/-lcrypto/-lcurl -lnghttp2 -lssh2 -lssl -lcrypto -lz/g' Makefile
+  sed -i 's/-lcrypto/-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz/g' Makefile
   popd >/dev/null 2>&1
 }
 "

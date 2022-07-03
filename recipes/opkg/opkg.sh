@@ -11,6 +11,8 @@
 # XXX - workstation repo: https://jumpnowtek.com/yocto/Using-your-build-workstation-as-a-remote-package-repository.html
 # XXX - private repo: https://jumpnowtek.com/yocto/Managing-a-private-opkg-repository.html
 # XXX - opkg presentation: https://elinux.org/images/2/24/Opkg_debians_little_cousin.pdf
+# XXX - 0.6.x update
+# XXX - curl -latomic fix
 #
 
 rname="opkg"

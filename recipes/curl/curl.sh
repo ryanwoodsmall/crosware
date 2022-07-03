@@ -17,6 +17,7 @@
 # - brotli?
 #
 # XXX - lots of accreted workarounds. need centralization for e.g. sched_yield(), bearssl, etc. workarounds
+# XXX - stdatomic.h / -latomic fixes...
 #
 
 rname="curl"
@@ -48,6 +49,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   echo '#include <sched.h>' >> lib/curl_config.h.in
+  echo '#include <stdatomic.h>' >> lib/curl_config.h.in
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
@@ -69,8 +71,10 @@ function cwconfigure_${rname}() {
     --with-default-ssl-backend=openssl \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
-    --with-ca-fallback
+    --with-ca-fallback \
+      LIBS='-latomic'
   echo '#include <sched.h>' >> lib/curl_config.h
+  echo '#include <stdatomic.h>' >> lib/curl_config.h
   popd >/dev/null 2>&1
 }
 "
@@ -89,6 +93,7 @@ function cwmakeinstall_${rname}_openssl() {
   mv \"${ridir}/bin/${rname}\" \"${ridir}/bin/${rname}-openssl\"
   ln -sf \"${rtdir}/current/bin/${rname}-openssl\" \"${ridir}/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}-openssl\" \"${ridir}/bin/${rname}openssl\"
+  sed -i 's/ -lcurl / -lcurl -latomic /g' \"\$(cwidir_${rname})/lib/pkgconfig/libcurl.pc\"
   popd >/dev/null 2>&1
 }
 "

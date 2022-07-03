@@ -59,8 +59,10 @@ function cwmakeinstall_${rname}() {
       LDFLAGS=\"\$(echo -L${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/lib) -static\" \
       PKG_CONFIG_LIBDIR=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/lib/pkgconfig | tr ' ' ':')\" \
       PKG_CONFIG_PATH=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/lib/pkgconfig | tr ' ' ':')\" \
+      LIBS='-latomic' \
       ${rcommonopts}
   echo '#include <sched.h>' >> lib/curl_config.h
+  echo '#include <stdatomic.h>' >> lib/curl_config.h
   make -j${cwmakejobs} ${rlibtool}
   make install ${rlibtool}
   rm -f \"${ridir}/bin/curl-${rprovider}\" \"${ridir}/bin/${rname%${rprovider}}-${rprovider}-config\"
@@ -69,6 +71,7 @@ function cwmakeinstall_${rname}() {
   test -e \"${ridir}/bin/${rname}\" || ln -sf \"curl-${rprovider}\" \"${ridir}/bin/${rname}\"
   cwmkdir \"${ridir}/devbin\"
   ln -sf \"${rtdir}/current/bin/curl-${rprovider}-config\" \"${ridir}/devbin/curl-config\"
+  sed -i 's/ -lcurl / -lcurl -latomic /g' \"\$(cwidir_${rname})/lib/pkgconfig/libcurl.pc\"
   popd >/dev/null 2>&1
 }
 "

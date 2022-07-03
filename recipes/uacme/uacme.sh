@@ -23,7 +23,7 @@ function cwconfigure_${rname}() {
       --with-openssl=\"${cwsw}/openssl/current\" \
       --without-gnutls \
       --without-mbedtls \
-        LIBS='-lcurl -lssh2 -lnghttp2 -lz -lssl -lcrypto -static' \
+        LIBS='-lcurl -latomic -lssh2 -lnghttp2 -lz -lssl -lcrypto -static' \
         PKG_CONFIG=\"${cwsw}/pkgconfig/current/bin/pkg-config\"
   popd >/dev/null 2>&1
 }

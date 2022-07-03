@@ -16,7 +16,7 @@ function cwconfigure_${rname}() {
       --without-gnutls \
         CPPFLAGS=\"\$(echo -I${cwsw}/{curl${rprovider},zlib,nghttp2,libssh2mbedtls,${rprovider}}/current/include)\" \
         LDFLAGS=\"\$(echo -L${cwsw}/{curl${rprovider},zlib,nghttp2,libssh2mbedtls,${rprovider}}/current/lib) -static\" \
-        LIBS='-lcurl -lssh2 -lnghttp2 -lz -lmbedx509 -lmbedtls -lmbedcrypto -static' \
+        LIBS='-lcurl -latomic -lssh2 -lnghttp2 -lz -lmbedx509 -lmbedtls -lmbedcrypto -static' \
         PKG_CONFIG=\"${cwsw}/pkgconfig/current/bin/pkg-config\" \
         PKG_CONFIG_LIBDIR= \
         PKG_CONFIG_PATH=

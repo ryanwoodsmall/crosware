@@ -40,8 +40,10 @@ function cwmakeinstall_${rname}() {
       LDFLAGS=\"-L${cwsw}/zlib/current/lib -L${cwsw}/libressl/current/lib -static\" \
       CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/libressl/current/include\" \
       PKG_CONFIG_PATH=\"${cwsw}/nghttp2/current/lib/pkgconfig\" \
-      PKG_CONFIG_LIBDIR=\"${cwsw}/nghttp2/current/lib/pkgconfig\"
+      PKG_CONFIG_LIBDIR=\"${cwsw}/nghttp2/current/lib/pkgconfig\" \
+      LIBS='-latomic'
   echo '#include <sched.h>' >> lib/curl_config.h
+  echo '#include <stdatomic.h>' >> lib/curl_config.h
   make -j${cwmakejobs} ${rlibtool}
   make install ${rlibtool}
   rm -f \"${ridir}/bin/curl-${rname#curl}\" \"${ridir}/bin/${rname%libressl}-libressl-config\"
@@ -50,6 +52,7 @@ function cwmakeinstall_${rname}() {
   test -e \"${ridir}/bin/${rname}\" || ln -sf \"curl-${rname#curl}\" \"${ridir}/bin/${rname}\"
   cwmkdir \"${ridir}/devbin\"
   ln -sf \"${rtdir}/current/bin/curl-${rname#curl}-config\" \"${ridir}/devbin/curl-config\"
+  sed -i 's/ -lcurl / -lcurl -latomic /g' \"\$(cwidir_${rname})/lib/pkgconfig/libcurl.pc\"
   popd >/dev/null 2>&1
 }
 "

@@ -16,7 +16,7 @@ function cwconfigure_${rname}() {
       --without-mbedtls \
         CPPFLAGS=\"\$(echo -I${cwsw}/{curl${rprovider},libtasn1,libunistring,nettle,gmp,zlib,nghttp2,libssh2libgcrypt,libgcrypt,libgpgerror,${rprovider}}/current/include)\" \
         LDFLAGS=\"\$(echo -L${cwsw}/{curl${rprovider},libtasn1,libunistring,nettle,gmp,zlib,nghttp2,libssh2libgcrypt,libgcrypt,libgpgerror,${rprovider}}/current/lib) -static\" \
-        LIBS='-lcurl -lssh2 -lgcrypt -lgpg-error -lnghttp2 -lz -lgnutls -ltasn1 -lunistring -lhogweed -lgmp -lnettle -static' \
+        LIBS='-lcurl -latomic -lssh2 -lgcrypt -lgpg-error -lnghttp2 -lz -lgnutls -ltasn1 -lunistring -lhogweed -lgmp -lnettle -static' \
         PKG_CONFIG=\"${cwsw}/pkgconfig/current/bin/pkg-config\" \
         PKG_CONFIG_LIBDIR= \
         PKG_CONFIG_PATH=

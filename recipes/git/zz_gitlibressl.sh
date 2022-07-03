@@ -35,10 +35,10 @@ function cwconfigure_${rname}() {
         CXXFLAGS=\"\${CXXFLAGS}\" \
         LDFLAGS=\"\$(echo -L${cwsw}/{libressl,zlib,nghttp2,expat,pcre2,curllibressl,libssh2libressl}/current/lib -static)\" \
         CPPFLAGS=\"\$(echo -I${cwsw}/{libressl,zlib,nghttp2,expat,pcre2,curllibressl,libssh2libressl}/current/include)\" \
-        LIBS='-lcurl -lnghttp2 -lssh2 -lssl -lcrypto -lz -lexpat' \
+        LIBS='-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz -lexpat' \
         PKG_CONFIG_LIBDIR= \
         PKG_CONFIG_PATH=
-  sed -i.ORIG 's/-lcurl/-lcurl -lnghttp2 -lssh2 -lssl -lcrypto -lz -lexpat/g' Makefile
+  sed -i.ORIG 's/-lcurl/-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz -lexpat/g' Makefile
   grep -ril sys/poll\\.h \$(cwbdir_${rname})/ \
   | grep \\.h\$ \
   | xargs sed -i.ORIG 's#sys/poll\.h#poll.h#g'

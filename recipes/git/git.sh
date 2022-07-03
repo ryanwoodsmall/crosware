@@ -65,8 +65,8 @@ function cwconfigure_${rname}() {
         CFLAGS=\"\${CFLAGS}\" \
         CXXFLAGS=\"\${CXXFLAGS}\" \
         LDFLAGS=\"\${LDFLAGS}\" \
-        LIBS='-lcurl -lnghttp2 -lssh2 -lssl -lcrypto -lz'
-  sed -i.ORIG 's/-lcurl/-lcurl -lnghttp2 -lssh2 -lssl -lcrypto -lz/g' Makefile
+        LIBS='-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz'
+  sed -i.ORIG 's/-lcurl/-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz/g' Makefile
   grep -ril sys/poll\\.h \$(cwbdir_${rname})/ \
   | grep \\.h\$ \
   | xargs sed -i.ORIG 's#sys/poll\.h#poll.h#g'

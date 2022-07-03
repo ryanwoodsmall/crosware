@@ -33,6 +33,7 @@ function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG 's/-Werror-implicit-function-declaration//g' configure
   echo '#include <sched.h>' >> lib/curl_config.h.in
+  echo '#include <stdatomic.h>' >> lib/curl_config.h.in
   popd >/dev/null 2>&1
 }
 "
