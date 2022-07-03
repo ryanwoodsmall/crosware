@@ -16,6 +16,8 @@
 # - zstd support?
 # - brotli?
 #
+# XXX - lots of accreted workarounds. need centralization for e.g. sched_yield(), bearssl, etc. workarounds
+#
 
 rname="curl"
 rver="7.84.0"
@@ -41,9 +43,11 @@ function cwextract_${rname}() {
 }
 "
 
+# XXX - ugh, sched.h needs to be included for sched_yield, breaks arm32
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  echo '#include <sched.h>' >> lib/curl_config.h.in
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
@@ -66,6 +70,7 @@ function cwconfigure_${rname}() {
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
     --with-ca-fallback
+  echo '#include <sched.h>' >> lib/curl_config.h
   popd >/dev/null 2>&1
 }
 "

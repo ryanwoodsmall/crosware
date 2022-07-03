@@ -29,6 +29,15 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  sed -i.ORIG 's/-Werror-implicit-function-declaration//g' configure
+  echo '#include <sched.h>' >> lib/curl_config.h.in
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   rm -f \"${cwetcprofd}/${rname}.sh\"
   echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"

@@ -41,6 +41,7 @@ function cwmakeinstall_${rname}() {
       CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/libressl/current/include\" \
       PKG_CONFIG_PATH=\"${cwsw}/nghttp2/current/lib/pkgconfig\" \
       PKG_CONFIG_LIBDIR=\"${cwsw}/nghttp2/current/lib/pkgconfig\"
+  echo '#include <sched.h>' >> lib/curl_config.h
   make -j${cwmakejobs} ${rlibtool}
   make install ${rlibtool}
   rm -f \"${ridir}/bin/curl-${rname#curl}\" \"${ridir}/bin/${rname%libressl}-libressl-config\"
