@@ -3,7 +3,7 @@
 #
 
 rname="cwstaticbinaries"
-rver="6ade1b3577c0be01c437f4fa9aa448f9d5e0f6ed"
+rver="71f6aca10a5a4a0f09bf22aef85b3af3de009b16"
 rdir="${rname}-${rver}"
 rfile=""
 rurl="https://github.com/ryanwoodsmall/static-binaries"
@@ -32,7 +32,7 @@ function cwfetch_${rname}() {
   local f=''
   : \${bu:=''}
   if [ -z \"\${bu}\" ] ; then
-    bu=\"${rurl}/raw/${rver}\"
+    bu=\"${rurl}/raw/\$(cwver_${rname})\"
   fi
   if [[ ${karch} =~ ^aarch64 ]] ; then a='aarch64' ; fi
   if [[ ${karch} =~ ^arm     ]] ; then a='armhf'   ; fi
@@ -47,18 +47,18 @@ function cwfetch_${rname}() {
   else
     f=\"${cwtop}/scripts/fakecurl.sh\"
   fi
-  cwmkdir \"${ridir}/bin\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
   for p in bash brssl busybox curl dash jo jq less links make mk mksh neatvi rc rlwrap rsync sbase-box screen socat stunnel tini tmux toybox ubase-box unrar xz ; do
     u=\"\${bu}/\${a}/\${p}\"
-    \${f} \"\${u}\" \"${ridir}/bin/\${p}\"
-    chmod 755 \"${ridir}/bin/\${p}\"
+    \${f} \"\${u}\" \"\$(cwidir_${rname})/bin/\${p}\"
+    chmod 755 \"\$(cwidir_${rname})/bin/\${p}\"
   done
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${ridir}/bin\" &>/dev/null
+  pushd \"\$(cwidir_${rname})/bin\" &>/dev/null
   for i in \$(./busybox --list) ; do
     test -e \${i} || ln -s busybox \${i}
   done
