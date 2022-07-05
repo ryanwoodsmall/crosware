@@ -1691,6 +1691,7 @@ wc -l /tmp/astbuild.out
 - rx (https://github.com/crcx/rx - forth(-ish) userspace!)
 - sacc (https://git.fifth.space/sacc/log.html - gopher client)
 - sbang (https://github.com/spack/sbang)
+- scc (https://github.com/boyter/scc - sloc/cloc/code, code counter in go)
 - scdoc (https://sr.ht/~sircmpwn/scdoc/ and https://git.sr.ht/~sircmpwn/scdoc - simple man page generator)
 - scheme stuff:
   - bigloo
