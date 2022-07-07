@@ -970,6 +970,7 @@ wc -l /tmp/astbuild.out
 - bsdgames (debian - https://packages.debian.org/buster/bsdgames)
 - bsd-headers (http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/musl - oe/yocto)
 - btyacc (https://www.siber.com/btyacc/ - 2.x and 3.x)
+- bubblewrap (https://github.com/containers/bubblewrap - user-mode unprivileged sandboxing?)
 - build-scripts (https://github.com/noloader/Build-Scripts - useful versions, packaging, etc. stuff)
 - buricco stuff
   - lc-subset (https://github.com/buricco/lc-subset - userspace tools, mostly from scratch, mostly unix-like)
