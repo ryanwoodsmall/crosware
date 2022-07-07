@@ -1,9 +1,9 @@
 rname="file"
-rver="5.41"
+rver="5.42"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://astron.com/pub/${rname}/${rfile}"
-rsha256="13e532c7b364f7d57e23dfeea3147103150cb90593a57af86c10e4f6e411603f"
+rsha256="c076fb4d029c74073f15c43361ef572cfb868407d347190ba834af3b1639b0e4"
 rreqs="make zlib bzip2 xz"
 
 . "${cwrecipe}/common.sh"
