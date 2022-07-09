@@ -1179,6 +1179,34 @@ time_func ls -l -A /
       a+=( "}" )
     }
     ```
+- local build tool/system utility config points+overrides
+  - set common tool locations, and "meta" tools in like `etc/tools`
+  - ```
+    # lex
+    : ${CW_FLEX="${cwsw}/flex/current/bin/flex"}
+    : ${CW_REFLEX="${cwsw}/reflex/current/bin/reflex"}
+    : ${CW_LEX="${CW_...}"} # CW_(FLEX|REFLEX)
+    # yacc
+    : ${CW_BISON="${cwsw}/bison/current/bin/bison"}
+    : ${CW_BYACC="${cwsw}/byacc/current/bin/byacc"}
+    : ${CW_YACC="${CW_...}" # CW_(BISON|BYACC)
+    # ...
+    ```
+  - then use in recipes in `./configure... (LEX|YACC)=...` lines
+  - easier to override in env... but may not declare req, so mostly for testing?
+  - harder for ncurses/netbsdcurses, etc.
+  - could also do sorta meta/dynamic/templatized variants?
+  - _and_ could use similar scheme to replace "userspace"
+    - prefer + supplement + override via different combinations
+    - LOTS of different permutations
+      - busybox+toybox
+      - toybox first, then busybox, then ..., then ..., ...
+      - sbase/ubase/...
+      - coreutils+utillinux
+      - baseutils+other bsd stuff
+      - heirloom
+      - etc.
+  - could get complicated, or straight-up out-of-hand
 
 <!--
 # vim: ft=markdown
