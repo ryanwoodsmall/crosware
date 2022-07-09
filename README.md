@@ -975,6 +975,7 @@ wc -l /tmp/astbuild.out
 - buricco stuff
   - lc-subset (https://github.com/buricco/lc-subset - userspace tools, mostly from scratch, mostly unix-like)
   - lunaris (https://github.com/buricco/lunaris - linux distro with svr4 feel)
+- busybear-linux (https://github.com/michaeljclark/busybear-linux - small riscv distro, lots of good userspace and /etc config stuff)
 - c9 (https://github.com/ftrvxmtrx/c9 - small 9p client/server impl)
   - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
   - https://git.sr.ht/~ft/c9
