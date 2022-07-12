@@ -21,11 +21,11 @@
 #
 
 rname="mbedtls"
-rver="2.28.0"
-rdir="${rname}-${rname}-${rver}"
-rfile="${rname}-${rver}.tar.gz"
-rurl="https://github.com/ARMmbed/${rname}/archive/${rfile}"
-rsha256="f644248f23cf04315cf9bb58d88c4c9471c16ca0533ecf33f86fb7749a3e5fa6"
+rver="2.28.1"
+rdir="${rname}-${rver}"
+rfile="v${rver}.tar.gz"
+rurl="https://github.com/Mbed-TLS/${rname}/archive/refs/tags/${rfile}"
+rsha256="6797a7b6483ef589deeab8d33d401ed235d7be25eeecda1be8ddfed406d40ff4"
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
 
