@@ -1,9 +1,9 @@
 rname="gh"
-rver="2.13.0"
+rver="2.14.0"
 rdir="cli-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/cli/cli/archive/refs/tags/${rfile}"
-rsha256="f8bc46bda990bc9947a26f5505533b86903c96f95047b2dacf7c9534e5b86760"
+rsha256="cf5f9eed51248911f9b2174f03e78eafe44bd34d292554e0d9e4072850cf37e4"
 rreqs="go bootstrapmake"
 
 if ! $(command -v git &>/dev/null) ; then
