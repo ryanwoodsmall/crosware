@@ -1586,6 +1586,7 @@ wc -l /tmp/astbuild.out
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - nyacc (https://www.nongnu.org/nyacc/ and https://savannah.nongnu.org/projects/nyacc)
 - obase (https://github.com/leahneukirchen/obase - unmaintained, see outils)
+- octosql (https://github.com/cube2222/octosql - query+transform sql, in go)
 - odbc?
   - iodbc?
   - unixodbc?
@@ -1615,12 +1616,12 @@ wc -l /tmp/astbuild.out
   - simtools (https://github.com/open-simh/simtools - tools for simulators/integration)
 - openvi (https://github.com/johnsonjh/OpenVi - portable openbsd vi)
 - opkg-utils (https://git.yoctoproject.org/opkg-utils - package build, etc.)
+- otools (https://github.com/CarbsLinux/otools - carbs linux openbsd ports)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
   - "cannot be used as a static library" - what?
   - needs libffi, libtasn1
   - configure ```--without-libffi --without-libtasn1```
-- otools (https://github.com/CarbsLinux/otools - carbs linux openbsd ports)
 - p9 (https://github.com/hugelgupf/p9 - go 9p client/server, with p9ufs server bin)
 - parenj / parenjs
 - partcl (https://github.com/zserge/partcl and https://zserge.com/posts/tcl-interpreter/ - a small tcl interpreter)
