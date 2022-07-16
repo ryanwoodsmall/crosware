@@ -1207,6 +1207,10 @@ time_func ls -l -A /
       - heirloom
       - etc.
   - could get complicated, or straight-up out-of-hand
+- ssl/tls tests/checks?
+  - https://www.howsmyssl.com/
+  - https://check-tls.akamai.io/
+  - https://check-tls.akamaized.net/v1/tlssni.json
 
 <!--
 # vim: ft=markdown
