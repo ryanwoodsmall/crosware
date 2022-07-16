@@ -1,9 +1,9 @@
 rname="cryanc"
-rver="1.5"
+rver="2.0"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/classilla/${rname}/archive/refs/tags/${rfile}"
-rsha256="019c2a4df4ce5a332fc29b7903244d6a76bb0bd8bb3e406326b6239416a5b0f6"
+rsha256="3e5bdc08467b09d2e0b8899ae6feb9982b7a52b624c612be1f7b7d3399765bb0"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
