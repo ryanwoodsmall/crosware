@@ -930,6 +930,7 @@ wc -l /tmp/astbuild.out
 - b2sum (https://github.com/dchest/b2sum)
 - babashka (https://github.com/borkdude/babashka - clojure+shell?)
 - barebox (https://www.barebox.org/)
+- barefoot (https://www.inet.no/barefoot/index.html - tcp/udp port bouncer/redirector)
 - bashdb (http://bashdb.sourceforge.net/ - bash debugger)
 - basher (https://github.com/basherpm/basher - bash script package manager)
 - bashrc (https://github.com/ajdiaz/bashc and https://ajdiaz.me/bashc/ - compile a bash script into static binary)
