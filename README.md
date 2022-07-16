@@ -855,6 +855,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 ## recipes to consider
 
 - 3mux (https://github.com/aaronjanse/3mux - tmux-like multiplex in go)
+- 3proxy (https://github.com/3proxy/3proxy - lots of little proxy things)
 - 9pfs (https://github.com/mischief/9pfs - fuse 9p driver)
 - abs (https://www.abs-lang.org/ and https://github.com/abs-lang/abs - shell like interpreter in go)
 - ack (https://beyondgrep.com/)
@@ -1519,6 +1520,7 @@ wc -l /tmp/astbuild.out
 - muacme (https://github.com/jirutka/muacme - uacme wrapper with busybox/openrc/knot knsupdate/kdig)
 - multimarkdown (https://github.com/fletcher/MultiMarkdown-6)
 - muon (https://github.com/annacrombie/muon - meson in c)
+- muonsocks (https://github.com/niklata/muonsocks - c++ fork/rewrite(?) of microsocks with socks4a client support)
 - mupdf (https://mupdf.com/ and https://github.com/ArtifexSoftware/mupdf - muraster, mutool build without X11/GL)
 - musl stuff
   - musl-locales (https://github.com/rilian-la-te/musl-locales - cmake? seriously?)
