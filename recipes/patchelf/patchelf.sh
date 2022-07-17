@@ -1,24 +1,18 @@
-#
-# XXX - dir/file mismatch popped up in 0.11
-# XXX - releases all over the place w/<=0.12?
-#
-
 rname="patchelf"
-rver="0.14.5"
+rver="0.15.0"
 rdir="${rname}-${rver}"
-rfile="${rname}-${rver}.tar.bz2"
-#rurl="https://nixos.org/releases/${rname}/${rname}-${rver}/${rfile}"
+rfile="${rname}-${rver}.tar.gz"
 rurl="https://github.com/NixOS/${rname}/releases/download/${rver}/${rfile}"
-rsha256="b9a46f2989322eb89fa4f6237e20836c57b455aa43a32545ea093b431d982f5c"
+rsha256="53a8d58ed4e060412b8fdcb6489562b3c62be6f65cee5af30eba60f4423bfa0f"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname}\"
+  \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
