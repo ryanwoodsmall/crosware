@@ -683,7 +683,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - plan9port9p (9p, 9pfuse standalone binaries from plan9port)
 - posixstandard (https://pubs.opengroup.org/onlinepubs/9699919799/download/index.html - posix/sus (single unix specification) docs for personal use)
 - ppp (https://github.com/ppp-project/ppp - paul's ppp package, pppd+chat)
-- pv (https://github.com/icetee/pv - pv pipe viewer pipeviewer)
+- pv (http://www.ivarch.com/programs/pv.shtml and https://github.com/a-j-wood/pv - pv pipe viewer pipeviewer)
 - px5g (https://github.com/openwrt/openwrt/tree/master/package/utils/px5g-mbedtls - mbedtls cert/key gen program)
   - px5gwolfssl (https://github.com/openwrt/openwrt/tree/master/package/utils/px5g-wolfssl - px5g built with wolfssl)
 - python

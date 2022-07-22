@@ -1,19 +1,21 @@
 rname="pv"
-rver="1.6.6"
+rver="1.6.20"
 rdir="${rname}-${rver}"
-rfile="v${rver}.tar.gz"
-rurl="https://github.com/icetee/${rname}/archive/refs/tags/${rfile}"
-rsha256="74a78d4682b91cb7eeb6247780f882871b56fca157ce26dfeb69de14c81ad20c"
+rfile="${rdir}.tar.gz"
+rurl="https://github.com/a-j-wood/pv/releases/download/v${rver}/${rfile}"
+rsha256="b5f1ee79a370c5287e092b6e8f1084f026521fe0aecf25c44b9460b870319a9e"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --disable-nls \
-      LDFLAGS=-static \
+      CFLAGS=\"\${CFLAGS} -Os -Wl,-s\" \
+      CXXFLAGS=\"\${CXXFLAGS} -Os -Wl,-s\" \
+      LDFLAGS=\"-s -static\" \
       PKG_CONFIG_{LIBDIR,PATH}= \
       CPPFLAGS=
   popd >/dev/null 2>&1
