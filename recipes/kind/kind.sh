@@ -1,9 +1,9 @@
 rname="kind"
-rver="0.13.0"
+rver="0.14.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/kubernetes-sigs/${rname}/archive/refs/tags/${rfile}"
-rsha256="e07e3a06c8a1d3861ebee3c2fecb027e839da8abf79c6f00c394b077e1f990fd"
+rsha256="7850a3bb4c644622a1c643e63306ddcd76a5b729375df9bc97f87a82375b9439"
 rreqs="bootstrapmake go"
 
 . "${cwrecipe}/common.sh"
@@ -25,18 +25,18 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  : \${GOCACHE=\"${rbdir}/gocache\"}
-  : \${GOMODCACHE=\"${rbdir}/gomodcache\"}
-  cwmkdir \"${rbdir}/bin\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+  cwmkdir \"\$(cwbdir_${rname})/bin\"
   env \
     PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
     GOCACHE=\"\${GOCACHE}\" \
     GOMODCACHE=\"\${GOMODCACHE}\" \
-    GOPATH=\"${rbdir}/gopath\" \
+    GOPATH=\"\$(cwbdir_${rname})/gopath\" \
     GOROOT=\"${cwsw}/go/current\" \
-    COMMIT=\"${rver}\" \
-      \"${cwsw}/go/current/bin/go\" build -v -o bin/${rname} -trimpath -ldflags='-buildid= -w -X=sigs.k8s.io/kind/pkg/cmd/kind/version.GitCommit=${rver}'
+    COMMIT=\"\$(cwver_${rname})\" \
+      \"${cwsw}/go/current/bin/go\" build -v -o bin/${rname} -trimpath -ldflags=\"-buildid= -w -X=sigs.k8s.io/kind/pkg/cmd/kind/version.GitCommit=\$(cwver_${rname})\"
   chmod -R u+rw . || true
   popd >/dev/null 2>&1
 }
@@ -44,9 +44,9 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/bin\"
-  install -m 0755 bin/${rname} \"${ridir}/bin/${rname}\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  install -m 0755 bin/${rname} \"\$(cwidir_${rname})/bin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
