@@ -4,11 +4,11 @@
 #
 
 rname="bmake"
-rver="20220724"
+rver="20220726"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.crufty.net/ftp/pub/sjg/${rfile}"
-rsha256="aefabbc723fb20a583b39f6518256dd8deb23108322c25bc38284175888b257a"
+rsha256="1bf3770789722721dca7b0bff8afc4a9520da20f0219bb7bc52350af0133f0a0"
 rreqs=""
 rbdir="${cwbuild}/${rdir}/build"
 rprof="${cwetcprofd}/zz_${rname}.sh"
@@ -19,9 +19,9 @@ eval "
 function cwextract_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
   rm -rf \"${rname}\"
-  cwextract \"${rdlfile}\" \"${cwbuild}\"
-  mv \"${rname}\" \"${rdir}\"
-  cwmkdir \"${rbdir}\"
+  cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
+  mv \"${rname}\" \"\$(cwdir_${rname})\"
+  cwmkdir \"\$(cwbdir_${rname})\"
   popd >/dev/null 2>&1
 }
 "
@@ -30,14 +30,14 @@ eval "
 function cwclean_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
   rm -rf \"${rname}\"
-  rm -rf \"${rdir}\"
+  rm -rf \"\$(cwbdir_${rname})\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG '/{/!s/op_test/echo op_test/g' ../boot-strap
   local f
   for f in opt-ignore opt-keep-going sh-dots export ; do
@@ -52,20 +52,20 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  env CPPFLAGS= LDFLAGS=-static sh ../boot-strap --prefix=\"${ridir}\" op=build
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  env CPPFLAGS= LDFLAGS=-static sh ../boot-strap --prefix=\"\$(cwidir_${rname})\" op=build
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  env INSTALL=install CPPFLAGS= LDFLAGS=-static sh ../boot-strap --prefix=\"${ridir}\" op=install
-  cwmkdir \"${ridir}/share/man/man1\"
-  rm -rf \"${ridir}/share/man/cat1\"
-  install -m0644 ../${rname}.1 \"${ridir}/share/man/man1/\"
-  install -m0644 ../make.1 \"${ridir}/share/man/man1/\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  env INSTALL=install CPPFLAGS= LDFLAGS=-static sh ../boot-strap --prefix=\"\$(cwidir_${rname})\" op=install
+  cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
+  rm -rf \"\$(cwidir_${rname})/share/man/cat1\"
+  install -m0644 ../${rname}.1 \"\$(cwidir_${rname})/share/man/man1/\"
+  install -m0644 ../make.1 \"\$(cwidir_${rname})/share/man/man1/\"
   popd >/dev/null 2>&1
 }
 "
