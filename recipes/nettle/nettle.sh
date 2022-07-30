@@ -3,20 +3,20 @@
 #
 
 rname="nettle"
-rver="3.8"
+rver="3.8.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="7576c68481c198f644b08c160d1a4850ba9449e308069455b5213319f234e8e6"
+rsha256="364f3e2b77cd7dcde83fd7c45219c834e54b0c75e428b6f894a23d12dd41cbfe"
 rreqs="make gmp"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
-    --libdir=\"${ridir}/lib\" \
+    --libdir=\"\$(cwidir_${rname})/lib\" \
     --disable-assembler \
     --disable-documentation \
     --disable-openssl
