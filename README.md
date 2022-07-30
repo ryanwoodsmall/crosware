@@ -1046,10 +1046,12 @@ wc -l /tmp/astbuild.out
 - diod (https://github.com/chaos/diod - 9p fileserver)
   - `attr/xattr.h` -> `sys/xattr.h` - fix multiple files
   - `sys/sysmacros.h` fix in **diod/ops.c**
-  - lua 5.1
-  - perl (for metadata creation?)
   - rename `err()` in **libdiod/diod_log.c** (`sed -i.ORIG 's/^err /diod_err /g' libdiod/diod_log.c`?)
-  - munge for authentication support?
+  - reqs
+    - lua 5.1
+    - perl (for metadata creation?)
+    - libcap - might be optional?
+  - munge (below) for authentication support?
 - discount (markdown - https://github.com/Orc/discount)
 - dnscrypt-proxy (https://github.com/DNSCrypt/dnscrypt-proxy - doh in go)
 - dnscrypt-wrapper (https://github.com/cofyc/dnscrypt-wrapper - libbsd+libsodium+libevent dnscrypt wrapper/proxy, use with unbound?)
