@@ -1044,6 +1044,12 @@ wc -l /tmp/astbuild.out
 - ddrescue
 - dehydrated (https://github.com/dehydrated-io/dehydrated - shell acme/letsencrypt client)
 - diod (https://github.com/chaos/diod - 9p fileserver)
+  - `attr/xattr.h` -> `sys/xattr.h` - fix multiple files
+  - `sys/sysmacros.h` fix in **diod/ops.c**
+  - lua 5.1
+  - perl (for metadata creation?)
+  - rename `err()` in **libdiod/diod_log.c** (`sed -i.ORIG 's/^err /diod_err /g' libdiod/diod_log.c`?)
+  - munge for authentication support?
 - discount (markdown - https://github.com/Orc/discount)
 - dnscrypt-proxy (https://github.com/DNSCrypt/dnscrypt-proxy - doh in go)
 - dnscrypt-wrapper (https://github.com/cofyc/dnscrypt-wrapper - libbsd+libsodium+libevent dnscrypt wrapper/proxy, use with unbound?)
@@ -1521,6 +1527,7 @@ wc -l /tmp/astbuild.out
 - mrubyc (https://github.com/mrubyc/mrubyc)
 - muacme (https://github.com/jirutka/muacme - uacme wrapper with busybox/openrc/knot knsupdate/kdig)
 - multimarkdown (https://github.com/fletcher/MultiMarkdown-6)
+- munge (https://github.com/dun/munge - hpc auth environment, useful for cred auth against gpg(?) for e.g. diod)
 - muon (https://github.com/annacrombie/muon - meson in c)
 - muonsocks (https://github.com/niklata/muonsocks - c++ fork/rewrite(?) of microsocks with socks4a client support)
 - mupdf (https://mupdf.com/ and https://github.com/ArtifexSoftware/mupdf - muraster, mutool build without X11/GL)
