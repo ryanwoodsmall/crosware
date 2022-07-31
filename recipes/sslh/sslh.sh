@@ -1,3 +1,7 @@
+#
+# XXX - minimal variant without pcre/libconfig/libcap?
+#
+
 rname="sslh"
 rver="1.22c"
 rdir="${rname}-${rver}"
