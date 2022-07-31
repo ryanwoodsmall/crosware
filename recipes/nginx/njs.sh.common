@@ -5,7 +5,7 @@ rreqs="make pcre2 netbsdcurses ${rreqs}"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure \
     --cc-opt=\"\${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     --ld-opt=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\"
@@ -16,12 +16,12 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   \$(\${CC} -dumpmachine)-strip --strip-all build/njs
-  cwmkdir \"${ridir}/bin\"
-  rm -f \"${ridir}/bin/njs\" \"${ridir}/bin/${rname}\"
-  install -m 0755 build/njs \"${ridir}/bin/njs\"
-  test -e \"${ridir}/bin/${rname}\" || ln -sf njs \"${ridir}/bin/${rname}\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  rm -f \"\$(cwidir_${rname})/bin/njs\" \"\$(cwidir_${rname})/bin/${rname}\"
+  install -m 0755 build/njs \"\$(cwidir_${rname})/bin/njs\"
+  test -e \"\$(cwidir_${rname})/bin/${rname}\" || ln -sf njs \"\$(cwidir_${rname})/bin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
