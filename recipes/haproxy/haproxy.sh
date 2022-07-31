@@ -1,16 +1,16 @@
 rname="haproxy"
-rver="2.6.1"
+rver="2.6.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.haproxy.org/download/${rver%.*}/src/${rfile}"
-rsha256="915b351e6450d183342c4cdcda7771eac4f0f72bf90582adcd15a01c700d29b1"
+rsha256="f9b7dc06e02eb13b5d94dc66e0864a714aee2af9dfab10fa353ff9f1f52c8202"
 rreqs="make openssl pcre2 zlib lua"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG 's,-lpthread,-lpthread -latomic,g' Makefile
   sed -i 's/-Wl,-Bdynamic/-Wl,-static -static/g' Makefile
   popd >/dev/null 2>&1
@@ -19,10 +19,10 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} \
     V=1 \
-    PREFIX=\"${ridir}\" \
+    PREFIX=\"\$(cwidir_${rname})\" \
     TARGET=linux-musl \
     USE_{THREAD,PTHREAD_PSHARED,OPENSSL,{,STATIC_}PCRE2,ZLIB,{,LINUX_}TPROXY,CRYPT_H,GETADDRINFO,LUA}=1 \
     SSL_INC=\"${cwsw}/openssl/current/include\" \
@@ -41,10 +41,10 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} install \
     V=1 \
-    PREFIX=\"${ridir}\" \
+    PREFIX=\"\$(cwidir_${rname})\" \
     TARGET=linux-musl \
     USE_{THREAD,PTHREAD_PSHARED,OPENSSL,{,STATIC_}PCRE2,ZLIB,{,LINUX_}TPROXY,CRYPT_H,GETADDRINFO,LUA}=1 \
     SSL_INC=\"${cwsw}/openssl/current/include\" \
@@ -57,7 +57,7 @@ function cwmakeinstall_${rname}() {
     LUA_LIB=\"${cwsw}/lua/current/lib\" \
     CC=\"\${CC}\" \
     LDFLAGS=\"\${LDFLAGS}\"
-  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/sbin/${rname}\"
+  \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/sbin/${rname}\"
   popd >/dev/null 2>&1
 }
 "

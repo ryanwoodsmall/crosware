@@ -21,10 +21,10 @@ unset f
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} \
     V=1 \
-    PREFIX=\"${ridir}\" \
+    PREFIX=\"\$(cwidir_${rname})\" \
     TARGET=linux-musl \
     USE_{THREAD,PTHREAD_PSHARED,OPENSSL,{,STATIC_}PCRE2,ZLIB,{,LINUX_}TPROXY,CRYPT_H,GETADDRINFO,LUA}=1 \
     SSL_INC=\"${cwsw}/libressl/current/include\" \
@@ -44,10 +44,10 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} install \
     V=1 \
-    PREFIX=\"${ridir}\" \
+    PREFIX=\"\$(cwidir_${rname})\" \
     TARGET=linux-musl \
     USE_{THREAD,PTHREAD_PSHARED,OPENSSL,{,STATIC_}PCRE2,ZLIB,{,LINUX_}TPROXY,CRYPT_H,GETADDRINFO,LUA}=1 \
     SSL_INC=\"${cwsw}/libressl/current/include\" \
@@ -61,9 +61,9 @@ function cwmakeinstall_${rname}() {
     CC=\"\${CC}\" \
     LDFLAGS=\"-L${cwsw}/libressl/current/lib -static\" \
     CPPFLAGS=
-  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/sbin/${rname%libressl}\"
-  ln -sf \"${rtdir}/current/sbin/${rname%libressl}\" \"${ridir}/sbin/${rname%libressl}${rname#haproxy}\"
-  ln -sf \"${rtdir}/current/sbin/${rname%libressl}\" \"${ridir}/sbin/${rname%libressl}-${rname#haproxy}\"
+  \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/sbin/${rname%libressl}\"
+  ln -sf \"${rtdir}/current/sbin/${rname%libressl}\" \"\$(cwidir_${rname})/sbin/${rname%libressl}${rname#haproxy}\"
+  ln -sf \"${rtdir}/current/sbin/${rname%libressl}\" \"\$(cwidir_${rname})/sbin/${rname%libressl}-${rname#haproxy}\"
   popd >/dev/null 2>&1
 }
 "
