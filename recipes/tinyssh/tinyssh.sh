@@ -1,9 +1,9 @@
 rname="tinyssh"
-rver="20220311"
+rver="20220801"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/janmojzis/${rname}/archive/refs/tags/${rfile}"
-rsha256="510ff0e69c08b1438b64295aa324486959d13c3843cf751d89e3ef4022cebdfa"
+rsha256="234656fc8d369608eb5d0f3a26280e0e38e2e6b134cfc610b6e24bce176acd4f"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -19,9 +19,9 @@ fi
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  echo '${ridir}/sbin' > conf-bin
-  echo '${ridir}/share/man' > conf-man
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  echo \"\$(cwidir_${rname})/sbin\" > conf-bin
+  echo \"\$(cwidir_${rname})/share/man\" > conf-man
   echo \"\${AR}\" > conf-ar
   echo \"\${CC}\" > conf-cc
   echo '-Wl,-static' >> conf-cflags
@@ -32,7 +32,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make CFLAGS= CPPFLAGS= CXXFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
   popd >/dev/null 2>&1
 }
