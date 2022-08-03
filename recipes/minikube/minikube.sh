@@ -1,9 +1,9 @@
 rname="minikube"
-rver="1.26.0"
+rver="1.26.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/kubernetes/${rname}/archive/refs/tags/${rfile}"
-rsha256="7a647f7de0ae51d9fd0be2428e9b38adcb3d6e361934f35e1e892c87d8bcead3"
+rsha256="71e56130ffaf6fd1c4b6777dc0b88935b8f2cbdb83fd8d2904e81e7cc1c48a60"
 rreqs="bootstrapmake go"
 
 # XXX - ugh
