@@ -3,13 +3,16 @@
 #  echo "${rver}" | grep -q '.*\..*\..*' && sver="${rver%.?}" || sver="${rver}"
 #
 rname="utillinux"
-rver="2.38"
+rver="2.38.1"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
-#rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver%.?}/${rfile}"
-rurl="https://kernel.org/pub/linux/utils/util-linux/v${rver}/${rfile}"
-rsha256="6d111cbe4d55b336db2f1fbeffbc65b89908704c01136371d32aa9bec373eb64"
+rsha256="60492a19b44e6cf9a3ddff68325b333b8b52b6c59ce3ebd6a0ecaa4c5117e84f"
 rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig"
+
+rburl="https://kernel.org/pub/linux/utils/util-linux"
+rurl="${rburl}/v${rver%.?}/${rfile}"
+#rurl="${rburl}/v${rver}/${rfile}"
+unset rburl
 
 . "${cwrecipe}/common.sh"
 
@@ -19,7 +22,7 @@ rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig"
 # touch -d 1970-01-01 disk-utils/Makemodule.am
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cat include/pidfd-utils.h > include/pidfd-utils.h.ORIG
   echo '#include <sys/types.h>' > include/pidfd-utils.h
   cat include/pidfd-utils.h.ORIG >> include/pidfd-utils.h
