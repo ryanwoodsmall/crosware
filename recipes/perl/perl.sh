@@ -6,11 +6,11 @@
 #
 
 rname="perl"
-rver="5.34.1"
+rver="5.36.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.cpan.org/src/5.0/${rfile}"
-rsha256="357951a491b0ba1ce3611263922feec78ccd581dddc24a446b033e25acf242a1"
+rsha256="e26085af8ac396f62add8a533c3a0ea8c8497d836f0689347ac5abd7b7a4e00a"
 rreqs="make toybox busybox byacc"
 
 . "${cwrecipe}/common.sh"
@@ -47,7 +47,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  for ov in 5.32.1 ; do
+  for ov in 5.32.1 5.34.1 ; do
     pushd \"${rtdir}\" >/dev/null 2>&1
     test -e \"${rname}-\${ov}\" \
       && mv \"${rname}-\${ov}\" \"${rname}-\${ov}.PRE-\${TS}\" \
