@@ -13,18 +13,18 @@
 #
 
 rname="cmake"
-rver="3.22.5"
+rver="3.22.6"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/Kitware/CMake/releases/download/v${rver}/${rfile}"
-rsha256="d3987c3f7759fa0a401c5fcd5076be44a19613bfaa8baee1b5d1835750dc5375"
+rsha256="73933163670ea4ea95c231549007b0c7243282293506a2cf4443714826ad5ec3"
 rreqs="make bash busybox toybox"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   find . -type f -name '*.cmake' -print0 | xargs -0 sed -i.ORIG 's#/usr/include#/no/usr/include#g;s#/usr/lib#/no/usr/lib#g'
   sed -i.ORIG 's#-DCMAKE_BOOTSTRAP=1#-DCMAKE_BOOTSTRAP=1 -DCMAKE_IGNORE_PATH=/usr/include -DCMAKE_USE_OPENSSL=OFF#g' bootstrap
   sed -i.ORIG 's#\"/lib#\"/no/lib#g;s#\"/usr/lib#\"/no/usr/lib#g' Source/cmExportInstallFileGenerator.cxx CMakeLists.txt
@@ -46,10 +46,9 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  #find \"${ridir}\" -type f -name CMakeGenericSystem.cmake | xargs sed -i.SO 's/\"\\.so\" \"\\.a\"/\".a\" \".so\"/g'
-  find \"${ridir}/bin/\" -type f | xargs file | grep 'ELF.*not stripped' | cut -f1 -d: | xargs strip --strip-all
+  find \"\$(cwidir_${rname})/bin/\" -type f | xargs file | grep 'ELF.*not stripped' | cut -f1 -d: | xargs strip --strip-all || true
   popd >/dev/null 2>&1
 }
 "
