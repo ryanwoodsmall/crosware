@@ -969,6 +969,15 @@ wc -l /tmp/astbuild.out
   - brogue-linux (https://github.com/CubeTheThird/brogue-linux)
   - gbrogue (https://github.com/gbelo/gBrogue)
 - bsd-coreutils (https://github.com/Projeto-Pindorama/bsd-coreutils - bsd stuff, fork of lobase-old?)
+- bsdgames
+  - pick and choose?
+  - https://github.com/vattam/BSDGames
+  - https://github.com/ctdk/bsdgames-osx
+  - https://github.com/jj1bdx/bsdgames
+  - https://github.com/abakh/nbsdgames (above)
+  - https://github.com/chrisevett/bsdgames
+  - https://github.com/fritz0705/bsdgames
+  - ...
 - bsdgames (debian - https://packages.debian.org/buster/bsdgames)
 - bsd-headers (http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/musl - oe/yocto)
 - btyacc (https://www.siber.com/btyacc/ - 2.x and 3.x)
