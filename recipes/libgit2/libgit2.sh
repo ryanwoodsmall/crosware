@@ -1,13 +1,14 @@
 #
+# XXX - libressl variant
 # XXX - mbedtls variant
 #
 
 rname="libgit2"
-rver="1.4.4"
+rver="1.5.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="e9923e9916a32f54c661d55d79c28fa304cb23617639e68bff9f94d3e18f2d4b"
+rsha256="8de872a0f201b33d9522b817c92e14edb4efad18dae95cf156cf240b2efff93e"
 rreqs="make zlib pkgconfig openssl libssh2 cmake"
 rbdir="${cwbuild}/${rdir}/build"
 
@@ -15,23 +16,28 @@ rbdir="${cwbuild}/${rdir}/build"
 
 eval "
 function cwconfigure_${rname}() {
-  cwmkdir \"${rbdir}\"
+  cwmkdir \"\$(cwbdir_${rname})\"
   local extra=''
   test -z \"\$(which -a python python2 python3)\" && extra='-DBUILD_TESTS=OFF' || true
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/cmake/current/bin:${cwsw}/pkgconfig/current/bin:\${PATH}\" \
-    cmake .. \
-      \${extra} \
-      -DBUILD_CLAR=OFF \
-      -DBUILD_SHARED_LIBS=OFF \
-      -DUSE_SSH=ON \
-      -DUSE_HTTPS=ON \
-      -DUSE_BUNDLED_ZLIB=OFF \
-      -DSHA1_BACKEND=OpenSSL \
-      -DUSE_EXT_HTTP_PARSER=OFF \
-      -DCMAKE_INSTALL_PREFIX=\"${ridir}\" \
-      -DZLIB_LIBRARY=\"${cwsw}/zlib/current/lib/libz.a\" \
-      -DZLIB_INCLUDE_DIR=\"${cwsw}/zlib/current/include\"
+    CC=\"\${CC} -I${cwsw}/openssl/current/include\" \
+      cmake .. \
+        \${extra} \
+        -DBUILD_CLAR=OFF \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DLINK_WITH_STATIC_LIBRARIES=ON \
+        -DUSE_SSH=ON \
+        -DUSE_HTTPS=ON \
+        -DUSE_BUNDLED_ZLIB=OFF \
+        -DSHA1_BACKEND=OpenSSL \
+        -DUSE_EXT_HTTP_PARSER=OFF \
+        -DCMAKE_INSTALL_PREFIX=\"\$(cwidir_${rname})\" \
+        -DOPENSSL_INCLUDE_DIR=\"${cwsw}/openssl/current/include\" \
+        -DOPENSSL_CRYPTO_LIBRARY=\"${cwsw}/openssl/current/lib/libcrypto.a\" \
+        -DOPENSSL_SSL_LIBRARY=\"${cwsw}/openssl/current/lib/libssl.a\" \
+        -DZLIB_LIBRARY=\"${cwsw}/zlib/current/lib/libz.a\" \
+        -DZLIB_INCLUDE_DIR=\"${cwsw}/zlib/current/include\"
   sed -i.ORIG '/Requires.private/s/\\.private:/:/g' ${rname}.pc
   sed -i '/^Requires/s/\$/ libcrypto libssl libssh2 zlib/g' ${rname}.pc
   unset extra
@@ -42,7 +48,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwclean_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
-  rm -rf \"${rdir}\"
+  rm -rf \"\$(cwdir_${rname})\"
   popd >/dev/null 2>&1
 }
 "
