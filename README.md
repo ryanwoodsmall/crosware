@@ -1028,6 +1028,7 @@ wc -l /tmp/astbuild.out
   - scc (http://www.simple-cc.org/)
   - tendra (https://bitbucket.org/asmodai/tendra/src/default/ https://en.wikipedia.org/wiki/TenDRA_Compiler)
   - yet another c compiler (https://github.com/lasarus/C-Compiler)
+  - wcc (https://github.com/freewilll/wcc)
 - cfssl (https://github.com/cloudflare/cfssl - cloudflare tls swiss army knife)
 - cgpt (google source only?)
 - cmark (commonmark markddown - https://github.com/commonmark/cmark)
