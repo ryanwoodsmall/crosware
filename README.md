@@ -1362,6 +1362,7 @@ wc -l /tmp/astbuild.out
 - libyaml (https://github.com/yaml/libyaml)
 - lisp stuff
   - aria (https://github.com/rxi/aria - tiny embeddable language)
+  - carp (https://github.com/carp-lang/Carp)
   - clisp (https://clisp.sourceforge.io/
     - reqs: libsigsegv, libffcall, readline, ncurses
     - configure with ```--without-dynamic-modules``` (and? ```--with-dynamic-ffi```)
