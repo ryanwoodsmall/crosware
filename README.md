@@ -1394,6 +1394,7 @@ wc -l /tmp/astbuild.out
     - picolisp (c, lisp)
     - ersatz picolisp (java)
   - roswell (https://github.com/roswell/roswell)
+  - scopes (https://hg.sr.ht/~duangle/scopes)
   - sbcl (http://sbcl.org and https://github.com/sbcl/sbcl)
   - stutter (https://github.com/mkirchner/stutter - lisp impl in c, no external libs except editline?)
 - llvm / clang
