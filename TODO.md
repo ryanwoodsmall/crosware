@@ -1211,6 +1211,10 @@ time_func ls -l -A /
   - https://www.howsmyssl.com/
   - https://check-tls.akamai.io/
   - https://check-tls.akamaized.net/v1/tlssni.json
+- cron...
+  - `sbase` uses **/etc/crontab**
+  - `busybox` and `toybox` use **/var/spool/cron/crontabs** (i think?)
+  - standardize in **${cwtop}/etc/crontab** and **${cwtop}/var/spool/cron**
 
 <!--
 # vim: ft=markdown
