@@ -22,11 +22,11 @@
 #
 
 rname="lighttpd"
-rver="1.4.65"
+rver="1.4.66"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://download.lighttpd.net/${rname}/releases-${rver%.*}.x/${rfile}"
-rsha256="bf0fa68a629fbc404023a912b377e70049331d6797bcbb4b3e8df4c3b42328be"
+rsha256="47ac6e60271aa0196e65472d02d019556dc7c6d09df3b65df2c1ab6866348e3b"
 rreqs="make zlib bzip2 pcre2 mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr brotli zstd xxhash lua54"
 
 . "${cwrecipe}/common.sh"
