@@ -1,9 +1,9 @@
 rname="strace"
-rver="5.18"
+rver="5.19"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="60293ea79ac9253d600cdc9be077ad2988ca22284a439c9e66be5150db3d1187"
+rsha256="aa3dc1c8e60e4f6ff3d396514aa247f3c7bf719d8a8dc4dd4fa793be786beca3"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
@@ -11,7 +11,7 @@ rreqs="make"
 # XXX - ugly hack to avoid signal/sigcontext redefs on arm64
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} --enable-mpers=no --disable-gcc-Werror CFLAGS=\"\${CFLAGS} -Dsigcontext_struct=sigcontext\"
   touch config.h
   if \$(uname -m | grep -q ^aarch64) ; then
