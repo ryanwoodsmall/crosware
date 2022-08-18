@@ -1,9 +1,9 @@
 rname="outils"
-rver="0.9"
+rver="0.10"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/leahneukirchen/${rname}/archive/${rfile}"
-rsha256="b7afdf1a0d11b9d5a0e1ea165ad2841e32b21245ec573170cb6498a13bf43b73"
+rsha256="6b5101e805c1baa8ca7111b4df8260bfa1b2b7b8670ed341af7233a9971706d4"
 rreqs="make"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
@@ -11,8 +11,8 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i.ORIG '/^PREFIX/s#^PREFIX.*#PREFIX = ${ridir}#g' Makefile
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  sed -i.ORIG \"/^PREFIX/s#^PREFIX.*#PREFIX = \$(cwidir_${rname})#g\" Makefile
   sed -i '/^LDFLAGS=/s/^LDFLAGS=/LDFLAGS=-static /g' Makefile
   popd >/dev/null 2>&1
 }
@@ -20,7 +20,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} CC=\"\${CC} \${CFLAGS}\"
   popd >/dev/null 2>&1
 }
@@ -28,7 +28,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install CC=\"\${CC} \${CFLAGS}\"
   popd >/dev/null 2>&1
 }
