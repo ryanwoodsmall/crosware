@@ -5,11 +5,11 @@
 #
 
 rname="janet"
-rver="1.23.0"
+rver="1.24.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/janet-lang/${rname}/archive/refs/tags/${rfile}"
-rsha256="0b4d5d3632e0d376d9512ea8ea262f31f75c132b488dd7870f472acae709a865"
+rsha256="ae794c7b4ffe7cfb6f1edec60556ccda34165b2fea5c23045e332eeebc1077f4"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -21,16 +21,16 @@ rreqs="bootstrapmake"
 
 eval "
 function cwfetch_${rname}() {
-  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
+  cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
   cwfetch \"https://github.com/${rname}-lang/jpm/archive/refs/heads/${jpm_ver}.zip\" \"${jpm_dlfile}\"
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cat Makefile > Makefile.ORIG
-  sed -i 's,^PREFIX.*,PREFIX=${ridir},g' Makefile
+  sed -i \"s,^PREFIX.*,PREFIX=\$(cwidir_${rname}),g\" Makefile
   sed -i '/\\(cp\\|ln\\).*\\.so/s,\\(cp\\|ln\\),echo \\1,g' Makefile
   if [[ ${karch} =~ ^riscv64 ]] ; then
     sed -i.ORIG 's/defined(__aarch64__).*/__riscv_xlen == 64/g' src/include/janet.h
@@ -43,7 +43,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} ${rlibtool} CPPFLAGS= LDFLAGS=-static PKG_CONFIG_LDFLAGS= PKG_CONFIG_PATH=
   popd >/dev/null 2>&1
 }
@@ -51,15 +51,15 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool} CPPFLAGS= LDFLAGS=-static PKG_CONFIG_LDFLAGS= PKG_CONFIG_PATH=
-  \$(\${CC} -dumpmachine)-strip \"${ridir}/bin/${rname}\"
+  \$(\${CC} -dumpmachine)-strip \"\$(cwidir_${rname})/bin/${rname}\"
   if hash git >/dev/null 2>&1 ; then
     rm -rf \"${jpm_dir}\"
     unzip \"${jpm_dlfile}\"
     cd \"${jpm_dir}\"
-    env {JANET_,}PREFIX=\"${ridir}\" PATH=\"${ridir}/bin:\${PATH}\" \"${ridir}/bin/${rname}\" bootstrap.janet
-    sed -i \"s,${ridir},${rtdir}/current,g\" \"${ridir}/bin/jpm\"
+    env {JANET_,}PREFIX=\"\$(cwidir_${rname})\" PATH=\"\$(cwidir_${rname})/bin:\${PATH}\" \"\$(cwidir_${rname})/bin/${rname}\" bootstrap.janet
+    sed -i \"s,\$(cwidir_${rname}),${rtdir}/current,g\" \"\$(cwidir_${rname})/bin/jpm\"
     cd -
   else
     cwscriptecho \"'git' not found - not installing jpm\"
