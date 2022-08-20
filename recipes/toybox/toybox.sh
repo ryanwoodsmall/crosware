@@ -18,6 +18,7 @@ rreqs="bootstrapmake"
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  sed -i.ORIG '/crypt.*ssl/s,for i in .*,for i in nononononono,g' scripts/make.sh
   csu=\"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/${rname}_config_script.sh\"
   cs=\"\$(basename \${csu})\"
   cwfetch \"\${csu}\" \"\$(cwbdir_${rname})/\${cs}\"
