@@ -1009,10 +1009,12 @@ wc -l /tmp/astbuild.out
 - c/c++ compiler stuff
   - lots of links to compilers/transpilers/interpreters/... that interact with/output C: https://github.com/dbohdan/compilers-targeting-c
   - 8cc (https://github.com/rui314/8cc)
+  - 8cc.go (https://github.com/DQNEO/8cc.go - 8cc ported to go)
   - 9cc (https://github.com/rui314/9cc)
   - 9-cc (https://github.com/0intro/9-cc - unix port of plan 9 compiler)
   - andrew chambers's c (https://github.com/andrewchambers/c)
   - c4 (https://github.com/rswier/c4)
+  - cake (https://github.com/thradams/cake - c23 fronted, may be able to compile newer C to c99/c89/...?)
   - chibicc (https://github.com/rui314/chibicc)
   - compcert (https://github.com/AbsInt/CompCert and https://compcert.org - formally verified c compiler)
   - cproc (https://git.sr.ht/~mcf/cproc and https://github.com/michaelforney/cproc)
