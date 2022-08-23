@@ -1,16 +1,16 @@
 rname="yash"
-rver="2.52"
+rver="2.53"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/magicant/${rname}/releases/download/${rver}/${rfile}"
-rsha256="55137beffd83848805b8cef90c0c6af540744afcc103e1b0f7bdf3ef1991b5c9"
+rsha256="e430ee845dfd7711c4f864d518df87dd78b40560327c494f59ccc4731585305d"
 rreqs="make netbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --disable-nls \
     --enable-{array,dirstack,double-bracket,help,history,lineedit,printf,socket,test,ulimit} \
