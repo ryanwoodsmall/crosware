@@ -1109,6 +1109,7 @@ time_func ls -l -A /
         - need a hash key checker - generic or specialized? `cwcheckhashkey hash key` - cwcontains won't cut it
       - array -> function builder, easy?
         - `cwarraytofunc() { while [[ ${#} != 0 ]] ; do echo "${1}" ; shift ; done | eval ; }`
+        - build with `cwbuildfunc() { declare -a f=() ; a[0]="function ${1}() {" ; while ${@} ; do a+=( "${1}" ) ; shift ; done ; a=( "}" ) ; eval ... }`
   - idiom:
     - no args: generate a randomly-named stub function and print the name
     - one arg: generate named stub function
