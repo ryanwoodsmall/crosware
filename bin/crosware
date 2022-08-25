@@ -1052,9 +1052,7 @@ function cwinstall() {
   cwsourceprofile
   cwcheckrecipessourced || cwsourcerecipes
   for recipe in "${@}" ; do
-    if ! $(set | grep -q "^cwinstall_${recipe} ") ; then
-      cwfailexit "recipe ${recipe} not found"
-    fi
+    declare -f "cwinstall_${recipe}" >/dev/null 2>&1 || cwfailexit "recipe ${recipe} not found"
     recipestobuild[${#recipestobuild[@]}]="cwinstall_${recipe}"
   done
   test ${#recipestobuild[@]} -eq 0 && cwfailexit "please provide at least one valid recipe to build"
@@ -1199,7 +1197,7 @@ function cwuninstall() {
   cwcheckrecipessourced || cwsourcerecipes
   local recipe=""
   for recipe in "${@}" ; do
-    if ! $(set | grep -q "^cwuninstall_${recipe} ") ; then
+    if ! declare -f "cwuninstall_${recipe}" >/dev/null 2>&1 ; then
       cwscriptecho "no uninstall found for ${recipe}"
       continue
     fi
