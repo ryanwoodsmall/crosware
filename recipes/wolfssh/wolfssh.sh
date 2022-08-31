@@ -3,11 +3,11 @@
 #
 
 rname="wolfssh"
-rver="1.4.10"
+rver="1.4.11"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="26f99d0e91e6ad48b9bfd5220f35238832a6af357dbf4b73e60d03c9e6285ccb"
+rsha256="4bf11693db55edb553b260127636a75f3fb31ea180616facddc47ba5d074ffe5"
 rreqs="make wolfssl configgit"
 
 . "${cwrecipe}/common.sh"
