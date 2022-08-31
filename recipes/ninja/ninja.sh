@@ -1,9 +1,9 @@
 rname="ninja"
-rver="1.11.0"
+rver="1.11.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}-build/${rname}/archive/${rfile}"
-rsha256="3c6ba2e66400fe3f1ae83deb4b235faf3137ec20bd5b08c29bfc368db143e4c6"
+rsha256="31747ae633213f1eda3842686f83c2aa1412e0f5691d1c14dbbcc67fe7400cea"
 rreqs="make python3"
 
 . "${cwrecipe}/common.sh"
