@@ -8,14 +8,15 @@
 # XXX - socat osp patch is fine, builds clean, but dtls+tun crashes passing traffic
 # XXX - libssh2 patch is clean and build works, older version
 # XXX - openssh osp requires some finagling but works, at least ssh/sftp clients
+# XXX - new default disabled options in 5.5.x: --enable-quic --enable-dtlscid
 #
 
 rname="wolfssl"
-rver="5.4.0"
+rver="5.5.0"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="488488ce472ada04f07653dc3dcce21e069d6ed1c459ae1ec369cb6553589156"
+rsha256="583e4e6b65052a33c0ab1817a931cdff69910e5086f8474908ff2434f9340e38"
 rreqs="make cacertificates configgit slibtool toybox"
 
 . "${cwrecipe}/common.sh"
