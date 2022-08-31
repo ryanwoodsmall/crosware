@@ -47,6 +47,7 @@ function cwmakeinstall_${rname}() {
   ln -sf wolfscp \"${ridir}/bin/${rname}-scp\"
   install -m 0755 ./examples/sftpclient/wolfsftp \"${ridir}/bin/wolfsftp\"
   ln -sf wolfsftp \"${ridir}/bin/${rname}-sftp\"
+  ln -sf wolfsshd \"${ridir}/bin/${rname}-sshd\"
   rm -rf \"${ridir}/keys\"
   mkdir -p \"${ridir}/keys\"
   ( cd keys ; tar -cf - .) | ( cd \"${ridir}/keys/\" ; tar -xf - )
