@@ -21,11 +21,11 @@
 #
 
 rname="curl"
-rver="7.84.0"
+rver="7.85.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://curl.se/download/${rfile}"
-rsha256="702fb26e73190a3bd77071aa146f507b9817cc4dfce218d2ab87f00cd3bc059d"
+rsha256="21a7e83628ee96164ac2b36ff6bf99d467c7b0b621c1f7e317d8f0d96011539c"
 rreqs="make zlib openssl libssh2 cacertificates nghttp2 pkgconfig"
 
 . "${cwrecipe}/common.sh"
