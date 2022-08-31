@@ -1,5 +1,6 @@
 #
 # XXX - opt-in only for now
+# XXX - moving to https://gitea.treehouse.systems/ariadne/pkgconf
 #
 
 rname="pkgconf"
