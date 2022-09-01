@@ -1,64 +1,44 @@
-#
-# XXX - rename to bare ksh w/o 93? probably not...
-# XXX - rename to ksh2020? probably
-# XXX - need VISUAL=emacs ???
-# XXX - EDITOR=???
-# XXX - meson is a mess
-# XXX - this is no longer supported. crap
-#
-
 rname="ksh93"
-rver="2020.0.0"
-rdir="${rname%%93}-${rver}"
-rfile="${rdir}.tar.xz"
-rurl="https://github.com/att/ast/releases/download/${rver}/${rfile}"
-rsha256="3d6287f9ad13132bf8e57a8eac512b36a63ccce2b1e4531d7a946c5bf2375c63"
-rreqs="meson ninja muslfts bash busybox"
+rver="1.0.3"
+rdir="${rname%93}-${rver}"
+rfile="v${rver}.tar.gz"
+rurl="https://github.com/${rname}/ksh/archive/refs/tags/${rfile}"
+rsha256="e554a96ecf7b64036ecb730fcc2affe1779a2f14145eb6a95d0dfe8b1aba66b5"
+rreqs="busybox"
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwconfigure_${rname}() {
-  local m=\$(\${CC} -dumpmachine)
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  echo -n > cross.ini
-  echo '[binaries]' >> cross.ini
-  echo \"ld = 'bfd'\" >> cross.ini
-  echo \"c = '\${m}-gcc'\" >> cross.ini
-  echo \"ar = '\${m}-ar'\" >> cross.ini
-  echo \"as = '\${m}-as'\" >> cross.ini
-  echo \"cpp = '\${m}-cpp'\" >> cross.ini
-  echo \"strip = '\${m}-strip'\" >> cross.ini
-  echo '[properties]' >> cross.ini
-  echo \"c_args = '-I${cwsw}/muslfts/current/include'\" >> cross.ini
-  echo \"c_link_args = '-L${cwsw}/muslfts/current/lib -lfts -static'\" >> cross.ini
-  cat cross.ini > native.ini
-  rm -rf build
-  env \
-    CXXFLAGS= CFLAGS= CC= CXX= LD= AR= STRIP= CPP= AS= CPPFLAGS= LDFLAGS= \
-    PATH=\"${cwsw}/ccache/current/bin:${cwsw}/python3/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/bash/current/bin:${cwsw}/busybox/current/bin:${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin\" \
-      \"${cwsw}/meson/current/bin/meson\" setup --prefix \"${ridir}\" --default-library static --cross-file cross.ini --native-file native.ini build \"${rbdir}\"
-  popd >/dev/null 2>&1
-  unset m
-}
-"
+cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  \"${cwsw}/ninja/current/bin/ninja\" -C build
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  env \
+    PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/busybox/current/bin\" \
+      \"${cwsw}/busybox/current/bin/ash\" ./bin/package make \
+        CC=\"\${CC} -static -Wl,-static\" \
+        CCFLAGS=\"\${CFLAGS} -Wl,-s -Wl,-static -Os\" \
+        LDFLAGS=\"-static -s\" \
+        SHELL=\"${cwsw}/busybox/current/bin/ash\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  rm -f \"${ridir}/bin/ksh*\"
-  \"${cwsw}/ninja/current/bin/ninja\" -C build install
-  mv \"${ridir}/bin/ksh\" \"${ridir}/bin/${rname}\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/ksh\"
-  strip --strip-all \"${ridir}/bin/${rname}\" \"${ridir}/bin/shcomp\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  rm -f \"\$(cwidir_${rname})/bin/${rname}\"
+  rm -f \"\$(cwidir_${rname})/bin/${rname%93}\"
+  env \
+    PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/busybox/current/bin\" \
+      \"${cwsw}/busybox/current/bin/ash\" ./bin/package install \"\$(cwidir_${rname})\" \
+        CC=\"\${CC} -static -Wl,-static\" \
+        CCFLAGS=\"\${CFLAGS} -Wl,-s -Wl,-static -Os\" \
+        LDFLAGS=\"-static -s\" \
+        SHELL=\"${cwsw}/busybox/current/bin/ash\"
+  cat \"\$(cwidir_${rname})/bin/${rname%93}\" > \"\$(cwidir_${rname})/bin/${rname}\"
+  chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/${rname%93}\"
   popd >/dev/null 2>&1
 }
 "

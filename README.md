@@ -490,9 +490,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - kawa (scheme)
 - kernelheaders (https://github.com/sabotage-linux/kernel-headers - from sabotage linux)
 - kind (https://kind.sigs.k8s.io/ - k8s in docker, pure go)
-- ksh93 (https://github.com/att/ast/ via at&t ast)
-  - this is actually ksh2020...
-  - should be renamed as such
+- ksh93 (https://github.com/ksh93/ksh - up-to-date/patched at&t ksh93 with ast build system)
 - kubernetes (binaries)
 - kuroko (https://kuroko-lang.github.io/ and https://github.com/kuroko-lang/kuroko - small python-like dynamic language)
 - less (netbsdcurses)
@@ -1978,6 +1976,9 @@ wc -l /tmp/astbuild.out
 
 - bsdheaders (https://github.com/bonsai-linux/bsd-headers - from bonsai linux, workaround DECLS for cdefs.h)
   - upstream repo went missing
+- (old) ksh93 (https://github.com/att/ast/ via at&t ast)
+  - actually ksh2020
+  - dormant
 - libmetalink (https://github.com/metalink-dev/libmetalink)
   - supported only in wget, which tries to bring in gpgme and its assorted deps; easier to remove for now
 
