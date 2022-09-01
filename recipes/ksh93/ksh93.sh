@@ -1,5 +1,6 @@
 #
-# XXX - broken on riscv64
+# XXX - ash broken on riscv64?
+# XXX - require/move SHELL to mksh?
 #
 
 rname="ksh93"
@@ -8,7 +9,7 @@ rdir="${rname%93}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/ksh/archive/refs/tags/${rfile}"
 rsha256="e554a96ecf7b64036ecb730fcc2affe1779a2f14145eb6a95d0dfe8b1aba66b5"
-rreqs="busybox"
+rreqs="busybox bashminimal"
 
 . "${cwrecipe}/common.sh"
 
@@ -18,12 +19,12 @@ eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env \
-    PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/busybox/current/bin\" \
-      \"${cwsw}/busybox/current/bin/ash\" ./bin/package make \
+    PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/bashminimal/current/bin:${cwsw}/busybox/current/bin\" \
+      \"${cwsw}/bashminimal/current/bin/bash\" ./bin/package make \
         CC=\"\${CC} -static -Wl,-static\" \
         CCFLAGS=\"\${CFLAGS} -Wl,-s -Wl,-static -Os\" \
         LDFLAGS=\"-static -s\" \
-        SHELL=\"${cwsw}/busybox/current/bin/ash\"
+        SHELL=\"${cwsw}/bashminimal/current/bin/bash\"
   popd >/dev/null 2>&1
 }
 "
@@ -34,12 +35,12 @@ function cwmakeinstall_${rname}() {
   rm -f \"\$(cwidir_${rname})/bin/${rname}\"
   rm -f \"\$(cwidir_${rname})/bin/${rname%93}\"
   env \
-    PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/busybox/current/bin\" \
-      \"${cwsw}/busybox/current/bin/ash\" ./bin/package install \"\$(cwidir_${rname})\" \
+    PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/bashminimal/current/bin:${cwsw}/busybox/current/bin\" \
+      \"${cwsw}/bashminimal/current/bin/bash\" ./bin/package install \"\$(cwidir_${rname})\" \
         CC=\"\${CC} -static -Wl,-static\" \
         CCFLAGS=\"\${CFLAGS} -Wl,-s -Wl,-static -Os\" \
         LDFLAGS=\"-static -s\" \
-        SHELL=\"${cwsw}/busybox/current/bin/ash\"
+        SHELL=\"${cwsw}/bashminimal/current/bin/bash\"
   cat \"\$(cwidir_${rname})/bin/${rname%93}\" > \"\$(cwidir_${rname})/bin/${rname}\"
   chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/${rname%93}\"
