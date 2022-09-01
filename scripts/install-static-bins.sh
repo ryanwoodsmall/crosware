@@ -37,7 +37,7 @@ if [ ! -e "${tempbin}" ] ; then
   mkdir -p "${tempbin}" || failexit "could not mkdir ${tempbin} or it does not exist"
 fi
 
-pushd "${tempbin}"
+cd "${tempbin}"
   # XXX - cwstatictinaries:
   #   bash brssl busybox curl dash jo jq less links make mk mksh neatvi rc rlwrap rsync sbase-box screen socat stunnel tini tmux toybox ubase-box unrar xz
   for p in bash busybox curl dash less make mk mksh neatvi rc rlwrap rsync screen sbase-box tini toybox ubase-box xz ; do
@@ -54,7 +54,7 @@ pushd "${tempbin}"
       test -e "${a}" || ln -s "${p}" "${a}"
     done
   done
-popd
+cd -
 
 echo "binaries installed in ${tempbin}"
 echo "run crosware with:"
