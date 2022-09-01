@@ -4,7 +4,7 @@
 #
 
 rname="alpinemuslutils"
-rver="3.16.0"
+rver="3.16.1"
 rdir="${rname}-${rver}"
 rfile="getconf.c"
 rurl="https://raw.githubusercontent.com/alpinelinux/aports/v${rver}/main/musl/${rfile}"
@@ -13,14 +13,12 @@ rreqs=""
 
 . "${cwrecipe}/common.sh"
 
-for f in extract configure make ; do
-  eval "function cw${f}_${rname}() { true ; }"
-done
-unset f
+cwstubfunc "cwextract_${rname}"
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwfetch_${rname}() {
-  cwmkdir \"${ridir}/bin\"
   local -a dlfiles=()
   local -A dlshasums=()
   dlfiles=( 'getconf.c' 'getent.c' 'iconv.c' )
@@ -38,13 +36,13 @@ function cwfetch_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  cwmkdir \"${ridir}/bin\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
   for p in getconf getent iconv ; do
     cwscriptecho \"compiling alpine-\${p} from \${p}.c\"
-    \${CC} \${CFLAGS} \"${rdlfile%${rfile}}\${p}.c\" -o \"${ridir}/bin/alpine-\${p}\" -static
+    \${CC} \${CFLAGS} \"${rdlfile%${rfile}}\${p}.c\" -o \"\$(cwidir_${rname})/bin/alpine-\${p}\" -static
   done
-  ln -sf alpine-getconf \"${ridir}/bin/getconf\"
-  ln -sf alpine-getent \"${ridir}/bin/getent\"
+  ln -sf alpine-getconf \"\$(cwidir_${rname})/bin/getconf\"
+  ln -sf alpine-getent \"\$(cwidir_${rname})/bin/getent\"
   unset p
 }
 "
