@@ -1072,8 +1072,21 @@ time_func ls -l -A /
   - can be marked readonly!
     - see notes on OO super stuff in shell-ish doc/script
   - function stub generator
-    - `function cwstubfunction() { eval < <(echo "function ${1}() { true ; }) ; }"
+    - `function cwstubfunction() { eval < <(echo "function ${1}() { true ; }) ; }"`
     - or `cwstubfunc() { while [[ ${#} != 0 ]] ; do eval "function ${1}() { : ; }" ; shift ; done ; }`
+  - function aliasing
+    - ordering?
+      - "alias source target" - i.e., like `ln -s source target`
+      - "alias target source" - i.e., like `alias fakecmd="realcmd"`
+    - arguments? - i.e., `{ ${2} "${@}" ; }`
+    - ex:
+      - ```
+        # 'alias' type is easier and would allow loop... `{ ${2} ; ${3} ; ... ; }`
+        function cwaliasfunc() {
+          eval "function ${1}() { ${2} ; }"
+        }
+        cwaliasfunc new_function_name source_function
+        ```
   - save/restore - save function to a hash
     - with state tracker, would have idempotency
   - and copier
