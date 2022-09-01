@@ -1,3 +1,7 @@
+#
+# XXX - broken on riscv64
+#
+
 rname="ksh93"
 rver="1.0.3"
 rdir="${rname%93}-${rver}"
