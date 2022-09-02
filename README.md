@@ -81,6 +81,7 @@ commands:
   show-uarch : show userspace architecture
   uninstall : uninstall some packages
   update : attempt to update existing install of crosware
+  update-list-upgradable : update crosware and list upgradable recipes
   update-upgrade-all : update crosware and upgrade out-of-date recipes
   upgrade : uninstall then install a recipe
   upgrade-all : upgrade all packages with different recipe versions
