@@ -6,7 +6,7 @@ rfile="$(cwfile_dash)"
 rdlfile="$(cwdlfile_dash)"
 rurl="$(cwurl_dash)"
 rsha256="$(cwsha256_dash)"
-rreqs="bootstrapmake configgit"
+rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
