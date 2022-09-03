@@ -1,16 +1,16 @@
 rname="libatomicops"
-rver="7.6.12"
+rver="7.6.14"
 rdir="libatomic_ops-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ivmai/libatomic_ops/releases/download/v${rver}/${rfile}"
-rsha256="f0ab566e25fce08b560e1feab6a3db01db4a38e5bc687804334ef3920c549f3e"
+rsha256="390f244d424714735b7050d056567615b3b8f29008a663c262fb548f1802d292"
 rreqs="make configgit"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts}
   popd >/dev/null 2>&1
 }
