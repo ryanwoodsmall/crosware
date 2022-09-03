@@ -27,18 +27,18 @@
 #
 
 rname="gc"
-rver="8.2.0"
+rver="8.2.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ivmai/bdwgc/releases/download/v${rver}/${rfile}"
-rsha256="2540f7356cb74f6c5b75326c6d38a066edd796361fd7d4ed26e494d9856fed8f"
+rsha256="f30107bcb062e0920a790ffffa56d9512348546859364c23a14be264b38836a0"
 rreqs="make libatomicops pkgconfig configgit"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-cplusplus \
     --enable-large-config \
