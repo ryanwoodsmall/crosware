@@ -38,6 +38,13 @@ else
   "
 fi
 
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${cwsw}/go/current/bin\"' > \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
+}
+"
+
 unset rdate
 
 # vim: ft=bash:

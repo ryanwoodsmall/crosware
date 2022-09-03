@@ -21,10 +21,3 @@ rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/${rdate}-go1.19/${rfile}"
 
 . "${cwrecipe}/go/go.sh.common"
-
-eval "
-function cwgenprofd_${rname}() {
-  echo 'append_path \"${cwsw}/go/current/bin\"' > \"${rprof}\"
-  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
-}
-"
