@@ -13,14 +13,8 @@ function cwinstall_${rname}_unsupported() {
 }
 "
 
-if [ ${mver} -lt 11 ] ; then
-  if [[ ! ${karch} =~ ^x86_64$ ]] ; then
-    eval "function cwinstall_${rname}() { cwinstall_${rname}_unsupported ; }"
-  fi
-else
-  if [[ ! ${karch} =~ ^(x86_64|aarch64)$ ]] ; then
-    eval "function cwinstall_${rname}() { cwinstall_${rname}_unsupported ; }"
-  fi
+if [[ ! ${karch} =~ ^(x86_64|aarch64)$ ]] ; then
+  eval "function cwinstall_${rname}() { cwinstall_${rname}_unsupported ; }"
 fi
 
 eval "
