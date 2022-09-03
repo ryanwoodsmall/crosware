@@ -4,11 +4,11 @@
 #
 
 rname="habitat"
-rver="1.6.521.20220603154827"
+rver="1.6.568.20220831181712"
 rdir="${rname}-${rver}"
 rfile="core-hab-${rver%.*}-${rver##*.}-x86_64-linux.hart"
 rurl="https://bldr.habitat.sh/v1/depot/pkgs/core/hab/${rver%.*}/${rver##*.}/download?target=x86_64-linux"
-rsha256="04ef96b09d200ee05024da6169955a564e8dd44b8a26c05d37fad9a3f9d8c430"
+rsha256="070a4be97dbf393e98f775c7a4c4cbc50a54fdaa3947aec58f7a43e4b82698d8"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
@@ -35,7 +35,7 @@ function cwclean_${rname}() {
 eval "
 function cwextract_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
-  tail -n +6 \"${rdlfile}\" | xzcat -dc | tar -xf -
+  tail -n +6 \"\$(cwdlfile_${rname})\" | xzcat -dc | tar -xf -
   popd >/dev/null 2>&1
 }
 "
