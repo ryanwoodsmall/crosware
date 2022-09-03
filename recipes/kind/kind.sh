@@ -1,27 +1,14 @@
 rname="kind"
-rver="0.14.0"
+rver="0.15.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/kubernetes-sigs/${rname}/archive/refs/tags/${rfile}"
-rsha256="7850a3bb4c644622a1c643e63306ddcd76a5b729375df9bc97f87a82375b9439"
+rsha256="a3a0abbce70c5da267fabcb0409e0e373e8bc657679cc4cc38844743dd8a97d0"
 rreqs="bootstrapmake go"
 
 . "${cwrecipe}/common.sh"
 
-# XXX - segfaults on compile/link for riscv64, problem with my go? qemu? cross-compile problem?
-if [[ ${karch} =~ ^riscv64 ]] ; then
-eval "
-function cwinstall_${rname}() {
-  cwscriptecho \"recipe ${rname} does not support architecture ${karch}\"
-}
-"
-fi
-
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
+cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
