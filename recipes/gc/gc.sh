@@ -6,9 +6,6 @@
 #       default is 64k
 #       GC_DONT_GC turns off collection, and works, but seems like a bad idea
 #
-# XXX - known issue on musl w/static linking (alpine)
-#       https://github.com/ivmai/bdwgc/issues/154
-#
 # XXX - other opts
 #       -DUSE_GET_STACKBASE_FOR_MAIN (https://bugzilla.redhat.com/show_bug.cgi?id=689877)
 #       -DGC_DISABLE_INCREMENTAL
@@ -22,8 +19,6 @@
 #     CFLAGS=\"\${CFLAGS//-Wl,-static/} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -DIGNORE_DYNAMIC_LOADING\" \
 #     CXXFLAGS=\"\${CXXFLAGS//-Wl,-static/} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -DIGNORE_DYNAMIC_LOADING\" \
 #     LDFLAGS=\"\${LDFLAGS//-static/}\"
-#
-# XXX - riscv64 __data_start issue: https://github.com/ivmai/bdwgc/issues/294
 #
 
 rname="gc"
