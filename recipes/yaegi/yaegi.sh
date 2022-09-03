@@ -2,11 +2,11 @@
 # XXX - needs to be rebuilt after go is updated?
 #
 rname="yaegi"
-rver="0.14.1"
+rver="0.14.2"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/traefik/${rname}/archive/refs/tags/${rfile}"
-rsha256="f480cc37c2d443ccb6fa34477deaf82bc7d3773fc4ea6871b261d31bd430a132"
+rsha256="78f69e7a2de98b3ea23b05385d3da9cf98b967a398b2af9545b9bba48533ea46"
 rreqs="go cacertificates"
 
 . "${cwrecipe}/common.sh"
