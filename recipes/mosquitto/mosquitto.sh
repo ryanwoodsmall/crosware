@@ -1,19 +1,19 @@
 rname="mosquitto"
-rver="2.0.14"
+rver="2.0.15"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/eclipse/${rname}/archive/refs/tags/${rfile}"
-rsha256="c0ce97b1911d1769ccfd65da237e919fd7eaa60209fd190c113d63fbd0c40347"
+rsha256="26dc3f1758b00c1725a0e4dd32f40c61f374375717f09b6af2bac62c5b44f1eb"
 rreqs="make cares cjson openssl"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i.ORIG '/DESTDIR.*etc/s,/etc/,${ridir}/etc/,g' Makefile
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  sed -i.ORIG \"/DESTDIR.*etc/s,/etc/,\$(cwidir_${rname})/etc/,g\" Makefile
   sed -i.ORIG 's/-lpthread.*//g;s/-lcjson/-lcjson -lpthread -lssl -lcrypto -lcares/g' apps/mosquitto_ctrl/Makefile
-  sed -i.ORIG 's,^prefix.*,prefix=${ridir},g;s,--strip-program=.*,,g' config.mk
+  sed -i.ORIG \"s,^prefix.*,prefix=\$(cwidir_${rname}),g;s,--strip-program=.*,,g\" config.mk
   sed -i 's/^WITH_DOCS:.*/WITH_DOCS:=no/g' config.mk
   sed -i 's/^WITH_SHARED_LIBRARIES:.*/WITH_SHARED_LIBRARIES:=no/g' config.mk
   sed -i 's/^WITH_SRV:.*/WITH_SRV:=yes/g' config.mk
@@ -25,7 +25,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make \
     CPPFLAGS=\"\$(echo -I${cwsw}/{openssl,cares,cjson}/current/include)\" \
     {LOCAL_,}LDFLAGS=\"\$(echo -L${cwsw}/{openssl,cares,cjson}/current/lib) -static\"
@@ -35,7 +35,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install \
     CPPFLAGS=\"\$(echo -I${cwsw}/{openssl,cares,cjson}/current/include)\" \
     {LOCAL_,}LDFLAGS=\"\$(echo -L${cwsw}/{openssl,cares,cjson}/current/lib) -static\"

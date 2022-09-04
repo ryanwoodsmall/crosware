@@ -5,7 +5,7 @@ rreqs="make cares cjson libressl"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make \
     CPPFLAGS=\"\$(echo -I${cwsw}/{libressl,cares,cjson}/current/include)\" \
     {LOCAL_,}LDFLAGS=\"\$(echo -L${cwsw}/{libressl,cares,cjson}/current/lib) -static\"
@@ -15,13 +15,13 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   local b p d
-  rm -f ${ridir}/{,s}bin/*-libressl || true
+  rm -f \$(cwidir_${rname})/{,s}bin/*-libressl || true
   make install \
     CPPFLAGS=\"\$(echo -I${cwsw}/{libressl,cares,cjson}/current/include)\" \
     {LOCAL_,}LDFLAGS=\"\$(echo -L${cwsw}/{libressl,cares,cjson}/current/lib) -static\"
-  for b in \$(find ${ridir}/{,s}bin/ ! -type d) ; do
+  for b in \$(find \$(cwidir_${rname})/{,s}bin/ ! -type d) ; do
     p=\"\$(basename \${b})\"
     d=\"\$(dirname \${b})\"
     ln -sf \"\${p}\" \"\${d}/\${p}-libressl\"

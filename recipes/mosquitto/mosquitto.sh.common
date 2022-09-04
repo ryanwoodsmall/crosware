@@ -20,9 +20,9 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cwconfigure_mosquitto
-  sed -i 's,^prefix.*,prefix=${ridir},g' config.mk
+  sed -i \"s,^prefix.*,prefix=\$(cwidir_${rname}),g\" config.mk
   sed -i 's,${cwsw}/mosquitto,${rtdir},g' Makefile
   popd >/dev/null 2>&1
 }
