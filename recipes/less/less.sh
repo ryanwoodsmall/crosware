@@ -16,19 +16,20 @@
 #
 
 rname="less"
-rver="590"
+rver="608"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="http://www.greenwoodsoftware.com/${rname}/${rfile}"
-rurl="https://ftp.gnu.org/pub/gnu/${rname}/${rfile}"
-rsha256="6aadf54be8bf57d0e2999a3c5d67b1de63808bb90deb8f77b028eafae3a08e10"
+#rurl="https://ftp.gnu.org/pub/gnu/${rname}/${rfile}"
+rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
+rsha256="a69abe2e0a126777e021d3b73aa3222e1b261f10e64624d41ec079685a6ac209"
 rreqs="make netbsdcurses busybox toybox"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/busybox/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
