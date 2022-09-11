@@ -640,6 +640,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libdom (https://www.netsurf-browser.org/projects/libdom/)
   - libcss (https://www.netsurf-browser.org/projects/libcss/)
 - nettle (http://www.lysator.liu.se/~nisse/nettle/ and https://git.lysator.liu.se/nettle/nettle)
+  - nettleminimal (opt-in, standalone; bundled mini-gmp)
 - nghttp2 (https://github.com/nghttp2/nghttp2)
 - nginx (https://nginx.org/)
   - njs (http://nginx.org/en/docs/njs/index.html - nginx javascript cli tool, with https support via libressl)
