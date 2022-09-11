@@ -6,6 +6,8 @@ etc/dropbear/**
 etc/local.d/**
 etc/profile.d/**
 etc/**ssl/**
+etc/openssh/**
+etc/tinyssh/**
 software/**/**
 tmp/**
 var/etc/**
