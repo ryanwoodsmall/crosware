@@ -1,3 +1,9 @@
+#
+# to use with lshsftpserver:
+#   test -e ${cwtop}/etc/tinyssh/ || tinysshd-makekey ${cwtop}/etc/tinyssh/
+#   tinysshd-printkey ${cwtop}/etc/tinyssh/
+#   busybox tcpsvd 0 22222 tinysshd -v -x sftp=${cwsw}/lshsftpserver/current/sbin/sftp-server ${cwtop}/etc/tinyssh/
+#
 rname="tinyssh"
 rver="20220801"
 rdir="${rname}-${rver}"
