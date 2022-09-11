@@ -29,8 +29,9 @@ function cwextract_${rname}() {
 eval "
 function cwclean_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
-  rm -rf \"${rname}\"
   rm -rf \"\$(cwbdir_${rname})\"
+  rm -rf \"${rdir}\"
+  rm -rf \"${rname}\"
   popd >/dev/null 2>&1
 }
 "
