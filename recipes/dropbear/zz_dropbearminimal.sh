@@ -26,7 +26,7 @@ function cwconfigure_${rname}() {
   sed -i '/DROPBEAR_SMALL_CODE/s,0,1,g' localoptions.h
   sed -i s,2222,22222,g localoptions.h
   echo '#undef SFTPSERVER_PATH' >> localoptions.h
-  echo '#define SFTPSERVER_PATH \"${rtdir}/current/libexec/sftp-server\"' >> localoptions.h
+  echo '#define SFTPSERVER_PATH \"${cwsw}/lshsftpserver/current/sbin/sftp-server\"' >> localoptions.h
   ./configure \
     ${cwconfigureprefix} \
      --disable-lastlog \
