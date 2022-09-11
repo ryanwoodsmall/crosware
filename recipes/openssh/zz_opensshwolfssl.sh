@@ -10,7 +10,7 @@ rreqs="make zlib netbsdcurses wolfssl"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   local r
   sed -i.ORIG 's/ ge(/ internal_ge(/g' fe25519.c
   for r in \
@@ -53,17 +53,17 @@ function cwpatch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --with-wolfssl=\"${cwsw}/wolfssl/current\" \
     --without-pie \
     --with-libedit=\"${cwsw}/netbsdcurses/current\" \
-    --sysconfdir=\"${rtdir}/etc\" \
+    --sysconfdir=\"${cwetc}/openssh\" \
     --with-privsep-path=\"${cwtmp}/empty\" \
     --with-mantype=man \
       CFLAGS=\"\${CFLAGS}\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
-      LDFLAGS=\"-L${ridir}/lib \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+      LDFLAGS=\"-L\$(cwidir_${rname})/lib \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
       LIBS='-lwolfssl -lz -lcrypt -ledit -lcurses -lterminfo -static -s' \
       PKG_CONFIG_LIBDIR= \
       PKG_CONFIG_PATH=
@@ -73,7 +73,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} ${rlibtool}
   popd >/dev/null 2>&1
 }
@@ -81,10 +81,10 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install
-  ln -sf ssh \"${ridir}/bin/openssh\"
-  for p in ${ridir}/{bin,sbin}/s* ; do
+  ln -sf ssh \"\$(cwidir_${rname})/bin/openssh\"
+  for p in \$(cwidir_${rname})/{bin,sbin}/s* ; do
     s=\"\$(basename \${p})\"
     d=\"\$(dirname \${p})\"
     t=\"\${d}/openssh-\${s}\"

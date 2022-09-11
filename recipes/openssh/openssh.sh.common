@@ -19,13 +19,13 @@ fi
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env \
     PATH=\"${cwsw}/${sslprov}/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
       --without-pie \
       --with-libedit=\"${cwsw}/netbsdcurses/current\" \
-      --sysconfdir=\"${rtdir}/etc\" \
+      --sysconfdir=\"${cwetc}/openssh\" \
       --with-privsep-path=\"${cwtmp}/empty\" \
       --with-mantype=man \
         CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/${sslprov}/current/include -I${cwsw}/netbsdcurses/include\" \
@@ -52,25 +52,25 @@ function cwuninstall_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   local b
   local d
   local s
   env PATH=\"${cwsw}/${sslprov}/current/bin:\${PATH}\" make install
-  install -m 0755 contrib/ssh-copy-id \"${ridir}/bin/\"
+  install -m 0755 contrib/ssh-copy-id \"\$(cwidir_${rname})/bin/\"
   for md in cat1 man1 ; do
-    test -e \"${ridir}/share/man/\${md}\" \
-    && install -m 0644 contrib/ssh-copy-id.1 \"${ridir}/share/man/\${md}/\" \
+    test -e \"\$(cwidir_${rname})/share/man/\${md}\" \
+    && install -m 0644 contrib/ssh-copy-id.1 \"\$(cwidir_${rname})/share/man/\${md}/\" \
     || true
   done
-  rm -f ${ridir}/*bin/${rname%${sslprov}}{,-*} || true
-  for s in \$(find ${ridir}/{,s}bin/ -mindepth 1 -maxdepth 1 ! -type d) ; do
+  rm -f \$(cwidir_${rname})/*bin/${rname%${sslprov}}{,-*} || true
+  for s in \$(find \$(cwidir_${rname})/{,s}bin/ -mindepth 1 -maxdepth 1 ! -type d) ; do
     b=\"\$(basename \${s})\"
     d=\"\$(basename \$(dirname \${s}))\"
-    ln -sf \"${rtdir}/current/\${d}/\${b}\" \"${ridir}/\${d}/${rname%${sslprov}}-\${b}\"
+    ln -sf \"${rtdir}/current/\${d}/\${b}\" \"\$(cwidir_${rname})/\${d}/${rname%${sslprov}}-\${b}\"
   done
-  ln -sf \"${rtdir}/current/bin/ssh\" \"${ridir}/bin/${rname%${sslprov}}\"
-  ln -sf \"${rtdir}/current/bin/ssh\" \"${ridir}/bin/${rname%${sslprov}}-${sslprov}\"
+  ln -sf \"${rtdir}/current/bin/ssh\" \"\$(cwidir_${rname})/bin/${rname%${sslprov}}\"
+  ln -sf \"${rtdir}/current/bin/ssh\" \"\$(cwidir_${rname})/bin/${rname%${sslprov}}-${sslprov}\"
   unset b
   unset d
   unset s
