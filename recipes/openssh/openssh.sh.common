@@ -38,19 +38,6 @@ function cwconfigure_${rname}() {
 "
 
 eval "
-function cwuninstall_${rname}() {
-  rm -f \"${rprof}\"
-  rm -f \"${cwvarinst}/${rname}\"
-  if [ ! -e \"${rtdir}\" ] ; then
-    return
-  fi
-  pushd \"${rtdir}\" >/dev/null 2>&1
-  rm -rf ${rname%${sslprov}}-* current previous
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   local b
