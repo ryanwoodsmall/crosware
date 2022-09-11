@@ -1,5 +1,6 @@
 #
 # XXX - sftp-server is messy - split out into a standalone recipe?
+# XXX - use git commit instead of date (requiring a git tag) for options file?
 #
 # dropbear supports dss, ecdsa, ed25519, and rsa keys
 #
@@ -25,8 +26,10 @@
 #   dropbearkey -y -f ~/.ssh/id_dropbear | egrep -v '^(Public key.*:|Fingerprint:)' > ~/.ssh/id_rsa.pub
 #
 rname="dropbear"
-rver="2022.82"
-rdir="${rname}-${rver}"
+rsver="2022.82"
+rdate="20220911040856"
+rver="${rsver}-${rdate}"
+rdir="${rname}-${rsver}"
 rfile="${rdir}.tar.bz2"
 #rurl="https://matt.ucc.asn.au/${rname}/releases/${rfile}"
 #rurl="https://dropbear.nl/mirror/releases/${rfile}"
@@ -42,9 +45,10 @@ lshver="2.1"
 eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
-  cwfetch \
-    \"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/options/${rname}-\$(cwver_${rname})_localoptions.h\" \
-    \"${cwdl}/${rname}/${rname}-\$(cwver_${rname})_localoptions.h\"
+  cwfetchcheck \
+    \"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/${rdate}-${rname}-${rsver}/options/${rname}-${rsver}_localoptions.h\" \
+    \"${cwdl}/${rname}/${rname}-\$(cwver_${rname})_localoptions.h\" \
+    \"eaea9045bfbd267320a858e3ed49be40fdb876fbf7bc7703146f0bd7951f02f5\"
   cwfetch_nettle
   cwfetchcheck \"https://ftp.gnu.org/pub/gnu/lsh/lsh-${lshver}.tar.gz\" \"${cwdl}/lsh/lsh-${lshver}.tar.gz\" \"8bbf94b1aa77a02cac1a10350aac599b7aedda61881db16606debeef7ef212e3\"
 }
@@ -191,3 +195,5 @@ function cwgenprofd_${rname}() {
 "
 
 unset lshver
+unset rdate
+unset rsver
