@@ -1,5 +1,4 @@
 #
-# XXX - sftp-server is messy - split out into a standalone recipe?
 # XXX - use git commit instead of date (requiring a git tag) for options file?
 #
 # dropbear supports dss, ecdsa, ed25519, and rsa keys
@@ -36,7 +35,7 @@ rfile="${rdir}.tar.bz2"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rsha256="3a038d2bbc02bf28bbdd20c012091f741a3ec5cbe460691811d714876aad75d1"
 # need a patch program, try toybox
-rreqs="make toybox zlib configgit"
+rreqs="make toybox zlib configgit lshsftpserver"
 
 . "${cwrecipe}/common.sh"
 
@@ -49,16 +48,6 @@ function cwfetch_${rname}() {
     \"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/${rdate}-${rname}-${rsver}/options/${rname}-${rsver}_localoptions.h\" \
     \"${cwdl}/${rname}/${rname}-\$(cwver_${rname})_localoptions.h\" \
     \"eaea9045bfbd267320a858e3ed49be40fdb876fbf7bc7703146f0bd7951f02f5\"
-  cwfetch_nettle
-  cwfetchcheck \"https://ftp.gnu.org/pub/gnu/lsh/lsh-${lshver}.tar.gz\" \"${cwdl}/lsh/lsh-${lshver}.tar.gz\" \"8bbf94b1aa77a02cac1a10350aac599b7aedda61881db16606debeef7ef212e3\"
-}
-"
-
-eval "
-function cwextract_${rname}() {
-  cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
-  cwextract \"\$(cwdlfile_nettle)\" \"\$(cwbdir_${rname})\"
-  cwextract \"${cwdl}/lsh/lsh-${lshver}.tar.gz\" \"\$(cwbdir_${rname})\"
 }
 "
 
@@ -110,37 +99,8 @@ function cwmakeinstall_${rname}() {
     PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
   ln -sf dbclient \"\$(cwidir_${rname})/bin/ssh\"
   cwmkdir \"${cwetc}/${rname}\"
-  popd >/dev/null 2>&1
-  cwmakeinstall_sftpserver_${rname}
-}
-"
-
-eval "
-function cwmakeinstall_sftpserver_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  cd \"\$(cwdir_nettle)\"
-  ./configure \
-    ${cwconfigurelibopts} \
-    --prefix=\"\$(cwbdir_${rname})/sftp-server\" \
-    --libdir=\"\$(cwbdir_${rname})/sftp-server/lib\" \
-    --disable-assembler \
-    --disable-documentation \
-    --disable-openssl \
-    --enable-mini-gmp \
-      LDFLAGS=-static \
-      CPPFLAGS=
-  make -j${cwmakejobs}
-  make install
-  cd -
-  cd lsh-${lshver}/src/sftp
-  ./configure --prefix=\"\$(cwbdir_${rname})/sftp-server\" \
-    LDFLAGS=\"-L\$(cwbdir_${rname})/sftp-server/lib -static\" \
-    CPPFLAGS=\"-I\$(cwbdir_${rname})/sftp-server/include\"
-  make -j${cwmakejobs}
-  make install
-  cd -
   cwmkdir \"\$(cwidir_${rname})/libexec\"
-  install -m 0755 \"\$(cwbdir_${rname})/sftp-server/sbin/sftp-server\" \"\$(cwidir_${rname})/libexec/\"
+  install -m 0755 \"${cwsw}/lshsftpserver/current/sbin/sftp-server\" \"\$(cwidir_${rname})/libexec/\"
   popd >/dev/null 2>&1
 }
 "
