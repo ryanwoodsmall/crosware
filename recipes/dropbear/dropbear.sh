@@ -105,44 +105,6 @@ function cwmakeinstall_${rname}() {
 }
 "
 
-# XXX - hmm
-eval "
-function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
-  rm -rf \"${rbdir}\"
-  popd >/dev/null 2>&1
-  if [ -e \"${rtdir}/etc\" ] ; then
-    test -e \"${cwetc}/${rname}\" || cwmkdir \"${cwetc}/${rname}\"
-    { cd \"${rtdir}/etc\" ; tar -cf - . ; } | { cd \"${cwetc}/${rname}\" ; tar -xf - ; }
-    local t=\"${cwtop}/tmp/${rname}-etc.PRE-\${TS}\"
-    cwmkdir \"\${t}\"
-    { cd \"${rtdir}/etc\" ; tar -cf - . ; } | { cd \"\${t}\" ; tar -xvf - ; cwscriptecho \"\$(cwmyfuncname): backed up ${rtdir}/etc to ${cwetc}/${rname} and \${t}\" ; }
-    rm -rf \"${rtdir}/etc\"
-  fi
-}
-"
-
-# XXX - hmm HMM
-eval "
-function cwuninstall_${rname}() {
-  cwclean_${rname}
-  pushd \"${rtdir}\" >/dev/null 2>&1
-  rm -rf ${rname}-*
-  rm -f current previous
-  rm -f \"${rprof}\"
-  rm -f \"${cwvarinst}/${rname}\"
-  if [ -e etc ] ; then
-    rmdir etc || echo \"${rtdir}/etc not empty\"
-  fi
-  popd >/dev/null 2>&1
-  pushd \"${cwsw}\" >/dev/null 2>&1
-  if [ -e ${rname} ] ; then
-    rmdir ${rname} || echo \"${cwsw}/${rname} not empty\"
-  fi
-  popd >/dev/null 2>&1
-}
-"
-
 eval "
 function cwgenprofd_${rname}() {
   echo 'append_path \"${cwsw}/openssh/current/bin\"' > \"${rprof}\"
