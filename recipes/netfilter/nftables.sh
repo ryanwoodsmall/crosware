@@ -14,11 +14,11 @@
 #
 
 rname="nftables"
-rver="1.0.4"
+rver="1.0.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://www.netfilter.org/pub/${rname}/${rfile}"
-rsha256="927fb1fea1f685a328c10cf791eb655d7e1ed49d310eea5cb3101dfd8d6cba35"
+rsha256="8d1b4b18393af43698d10baa25d2b9b6397969beecac7816c35dd0714e4de50a"
 rreqs="bootstrapmake pkgconfig byacc netbsdcurses libpcap libnl jansson libmnl libnetfilterconntrack libnfnetlink libnftnl iptables slibtool"
 
 . "${cwrecipe}/common.sh"
