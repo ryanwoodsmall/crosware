@@ -1,28 +1,26 @@
 rname="jruby"
-rver="9.3.7.0"
+rver="9.3.8.0"
 rdir="${rname}-${rver}"
 rfile="${rname}-dist-${rver}-bin.tar.gz"
 rurl="https://repo1.maven.org/maven2/org/${rname}/${rname}-dist/${rver}/${rfile}"
-rsha256="94a7a8b3beeac2253a8876e73adfac6bececb2b54d2ddfa68f245dc81967d0c1"
+rsha256="674a4d1308631faa5f0124d01d73eb1edc89346ee7de21c70e14305bd61b46df"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
 
+cwstubfunc "cwextract_${rname}"
+cwstubfunc "cwmake_${rname}"
+cwstubfunc "cwconfigure_${rname}"
+
 eval "
-function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
+function cwmakeinstall_${rname}() {
+  cwextract \"\$(cwdlfile_${rname})\" \"${rtdir}\"
 }
 "
 
 eval "
-function cwinstall_${rname}() {
-  cwfetch_${rname}
-  cwcheckreqs_${rname}
-  cwsourceprofile
-  cwextract \"\$(cwdlfile_${rname})\" \"${rtdir}\"
-  cwlinkdir_${rname}
-  cwgenprofd_${rname}
-  cwmarkinstall_${rname}
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
 }
 "
