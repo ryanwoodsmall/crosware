@@ -1,4 +1,4 @@
-rreqs+=" make byacc zlib pkgconfig e2fsprogs ncurses libmd libbsd "
+rreqs+=" make byacc zlib pkgconfig e2fsprogs ncurses libmd libbsd libevent "
 
 . "${cwrecipe}/common.sh"
 
@@ -18,7 +18,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
-    LIBS='-lpanelw -lncursesw -lz' \
+    LIBS='-levent -lpanelw -lncursesw -lz' \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':' )\" \
     YACC=\"${cwsw}/byacc/current/bin/byacc\"
   popd >/dev/null 2>&1
