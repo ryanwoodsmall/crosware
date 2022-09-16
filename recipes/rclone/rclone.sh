@@ -1,49 +1,40 @@
 rname="rclone"
-rver="1.59.1"
+rver="1.59.2"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="3eb56502c49ffe53da0360b66d5c9ee6147433f1a9b0238686c1743855cc891f"
+rsha256="ef263bbb8c05ddf9d9309a88cc3b5c928467179b71d3ba3b442bfeafb94ed24b"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
 
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
+
 eval "
 function cwclean_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
-  chmod -R u+rw \"${rbdir}\" || true
+  test -e \"${rbdir}\" && chmod -R u+rw \"${rbdir}\" || true
   rm -rf \"${rbdir}\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  true
-}
-"
-
-eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  : \${GOCACHE=\"${rbdir}/gocache\"}
-  : \${GOMODCACHE=\"${rbdir}/gomodcache\"}
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
   env \
     CGO_ENABLED=0 \
     GOCACHE=\"\${GOCACHE}\" \
     GOMODCACHE=\"\${GOMODCACHE}\" \
     PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-      \"${cwsw}/go/current/bin/go\" build -x -ldflags '-s -X github.com/rclone/rclone/fs.Version=${rver} -w -extldflags \"-s -static\"'
-  cwmkdir \"${ridir}/bin\"
-  cwmkdir \"${ridir}/share/man/man1\"
-  install -m 755 ${rname} \"${ridir}/bin/${rname}\"
-  install -m 644 ${rname}.1 \"${ridir}/share/man/man1/${rname}.1\"
+      \"${cwsw}/go/current/bin/go\" build -ldflags \"-s -X github.com/rclone/rclone/fs.Version=\$(cwver_${rname}) -w -extldflags '-s -static'\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
+  install -m 755 ${rname} \"\$(cwidir_${rname})/bin/${rname}\"
+  install -m 644 ${rname}.1 \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
   popd >/dev/null 2>&1
 }
 "
