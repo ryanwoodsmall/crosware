@@ -1671,6 +1671,7 @@ wc -l /tmp/astbuild.out
 - planck (clojurescript repl, https://github.com/planck-repl/planck)
 - pocketlang (https://github.com/ThakeeNathees/pocketlang and https://thakeenathees.github.io/pocketlang/)
 - poke (http://www.jemarch.net/poke.html - gnu binary data editor/language)
+- posixtestsuite (http://posixtest.sourceforge.net/ - old open posix test suite)
 - premake (https://github.com/premake/premake-core and https://premake.github.io/ - lua build tool, brotli supports it?)
 - prngd (http://prngd.sourceforge.net/ - for lxc? dropbear? old? hmm?)
 - procps-ng (https://gitlab.com/procps-ng/procps)
