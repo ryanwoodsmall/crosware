@@ -1,24 +1,24 @@
 rname="bim3"
-rver="3.0.0"
+rver="3.1.0"
 rdir="${rname%%3}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/klange/${rname%%3}/archive/${rfile}"
-rsha256="6b7044b3579cc7c39528e7aefce200ac893245dbdb9c017ae41f85e1647ddaa8"
+rsha256="33e0c4705d6f1fb8c9d3f34730b205a3e9c2233caa7c7442dc12499c640bad9d"
 rreqs="bootstrapmake kuroko"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i 's#^prefix=.*#prefix=${ridir}#g' Makefile
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  sed -i \"s#^prefix=.*#prefix=\$(cwidir_${rname})#g\" Makefile
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/kuroko/current/static/bin:\${PATH}\" \
     make \
       CPPFLAGS=\"-I${cwsw}/kuroko/current/static/include\" \
@@ -29,10 +29,10 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install
-  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname%%3}\"
-  ln -sf \"${rname%%3}\" \"${ridir}/bin/${rname}\"
+  \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/${rname%%3}\"
+  ln -sf \"${rname%%3}\" \"\$(cwidir_${rname})/bin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
