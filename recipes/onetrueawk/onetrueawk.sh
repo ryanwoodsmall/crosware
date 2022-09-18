@@ -4,7 +4,7 @@
 #
 
 rname="onetrueawk"
-rver="b92d8cecd132ce8e02a373e28dd42e6be34d3d59"
+rver="9e248c317b88470fc86aa7c988919dc49452c88c"
 rdir="${rname#onetrue}-${rver}"
 rfile="${rver}.zip"
 rurl="https://github.com/${rname}/awk/archive/${rfile}"
@@ -22,7 +22,7 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cat makefile > makefile.ORIG
   sed -i 's/-o maketab/-o maketab -static -Wl,-static/g' makefile
   sed -i 's/gcc/\$(CC)/g' makefile
@@ -33,7 +33,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make YACC=\"${cwsw}/byacc/current/bin/byacc -d -b awkgram\" {HOST,}CC=\"\${CC} -Wl,-static\" CPPFLAGS= LDFLAGS=-static
   popd >/dev/null 2>&1
 }
@@ -41,14 +41,14 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/bin\"
-  cwmkdir \"${ridir}/share/man/man1\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
   \$(\${CC} -dumpmachine)-strip --strip-all a.out
-  install -m 0755 a.out \"${ridir}/bin/awk\"
-  ln -sf \"${rtdir}/current/bin/awk\" \"${ridir}/bin/${rname}\"
-  install -m 0644 awk.1 \"${ridir}/share/man/man1/\"
-  ln -sf \"${rtdir}/current/share/man/man1/awk.1\" \"${ridir}/share/man/man1/${rname}.1\"
+  install -m 0755 a.out \"\$(cwidir_${rname})/bin/awk\"
+  ln -sf \"${rtdir}/current/bin/awk\" \"\$(cwidir_${rname})/bin/${rname}\"
+  install -m 0644 awk.1 \"\$(cwidir_${rname})/share/man/man1/\"
+  ln -sf \"${rtdir}/current/share/man/man1/awk.1\" \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
   popd >/dev/null 2>&1
 }
 "
