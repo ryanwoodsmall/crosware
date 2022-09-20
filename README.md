@@ -1281,6 +1281,7 @@ wc -l /tmp/astbuild.out
 - jitter (http://ageinghacker.net/projects/jitter/ - jit/vm/interpreter thing)
 - jobflow (https://github.com/rofl0r/jobflow - small gnu parallel alike in c)
 - joe (https://joe-editor.sourceforge.io/)
+- jqp (https://github.com/noahgorstein/jqp - jq playground, in go w/gojq)
 - json-rpc-shell (https://git.janouch.name/p/json-rpc-shell)
 - JSON.sh (https://github.com/dominictarr/JSON.sh - json parser in shell/bash)
 - juicefs (https://github.com/juicedata/juicefs - distributed filesystem in go on top of redis (transactions) and s3 (objects); cool)
