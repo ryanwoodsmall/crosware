@@ -1134,6 +1134,7 @@ wc -l /tmp/astbuild.out
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
 - go-toml (https://github.com/pelletier/go-toml - go toml library with jsontoml/tomljson/tomll programs)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
+- (go) yq (https://github.com/mikefarah/yq - yq alternative in go)
 - gpg
   - etc.
 - graphviz (http://graphviz.org/)
@@ -1963,8 +1964,7 @@ wc -l /tmp/astbuild.out
 - yaml-cli (https://github.com/OpenIPC/yaml-cli - r/w mini yaml filter/editing tool)
 - yggdrasil (https://github.com/yggdrasil-network/yggdrasil-go - opportunistic ipv6 mesh network in go)
 - yj (https://github.com/sclevine/yj - yaml/toml/json/hcl converter in go)
-- yq (https://github.com/kislyuk/yq)
-  - and other yq, in go (https://github.com/mikefarah/yq)
+- yq (https://github.com/kislyuk/yq - jq for yaml, python+jq)
 - ytalk (http://ytalk.ourproject.org/)
 - z3 (https://github.com/Z3Prover/z3)
   - cppcheck can use/may require this for 2.x+
