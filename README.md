@@ -899,6 +899,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - nasm
   - vasm
   - yasm
+- asignify (https://github.com/vstakhov/asignify - standalone openbsd signify-like)
 - at&t ast
   - old, full code:
     - does not work at all bulding w/musl
@@ -1806,6 +1807,7 @@ wc -l /tmp/astbuild.out
 - shit (https://git.sr.ht/~sircmpwn/shit - shell git???)
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
 - simplecpp (https://github.com/danmar/simplecpp)
+- signify (https://github.com/aperezdc/signify - standalone openbsd signify)
 - sish (https://github.com/antoniomika/sish - go tunnel tool)
 - skarnet stuff
   - dnsfunnel (https://skarnet.org/software/dnsfunnel/ - dns cache fanout to udp)
