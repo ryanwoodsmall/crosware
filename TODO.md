@@ -1229,6 +1229,7 @@ time_func ls -l -A /
   - `sbase` uses **/etc/crontab**
   - `busybox` and `toybox` use **/var/spool/cron/crontabs** (i think?)
   - standardize in **${cwtop}/etc/crontab** and **${cwtop}/var/spool/cron**
+- use `awk '!seen[$0]'` to get unique elements while retaining order
 
 <!--
 # vim: ft=markdown
