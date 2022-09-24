@@ -1,3 +1,8 @@
+#
+# XXX - move *all* versions rprof to zz_zz_zuluglibc.sh (to come _after_ musl) and set version pref 17->11->8
+# XXX - remove remove all zz_zulu#glibc.sh files as part of genprofd
+#
+
 majver="${rname}"
 majver="${majver%glibc}"
 majver="${majver#zulu}"

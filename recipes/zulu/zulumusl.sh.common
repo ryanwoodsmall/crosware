@@ -1,3 +1,8 @@
+#
+# XXX - move *all* versions rprof to zz_zulumusl.sh and set version pref 17->11->8
+# XXX - remove remove all zz_zulu#musl.sh files as part of genprofd
+#
+
 : ${rdir:="zulu${rver}-linux_musl_x64"}
 : ${rfile:="${rdir}.tar.gz"}
 : ${rurl:="https://cdn.azul.com/zulu/bin/${rfile}"}
