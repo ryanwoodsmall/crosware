@@ -9,6 +9,18 @@
 #     - this all sucks
 #
 # XXX - need a short-circuit env var to bail out before profile.d/local.d sourcing
+# XXX - speed up/eliminate tons of subshells on append_ funcs using awk...
+# XXX - eg, for PATH:
+#         export PATH="$(echo "${PATH}" | tr ':' '\n' | awk '!seen[$0]++' | paste -s -d: -)"
+# XXX - seems supported by:
+#       - mawk (including chromeos)
+#       - gawk
+#       - busybox awk
+#       - onetrueawak
+#       - 9base/plan9port awk
+#       - baseutils awk
+#       - heirloom awk/nawk (not oawk)
+# XXX - save OLDVAR="${VAR}" then `|| export VAR="${OLDVAR}"` to catch awk failure?
 #
 
 # XXX - probably need realpath in the chain here somewhere
