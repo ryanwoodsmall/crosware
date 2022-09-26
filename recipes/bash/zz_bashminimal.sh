@@ -2,6 +2,7 @@
 # XXX - 'termcap' package support worth it?
 # XXX - add to path at very end? or... prepend?
 # XXX - include a ${CW_BASH} top-level var, just use bash, otherwise check for this packages "cwbash"???
+# XXX - version number/recipe patch file/...?
 #
 
 rname="bashminimal"
