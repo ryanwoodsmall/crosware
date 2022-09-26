@@ -487,7 +487,12 @@ function cwurltofilename() {
 - remote version checker for regular urls
   - feed to update recipe file script
 - ```update-recipe``` command to check/update/build/commit new versions automatically
-  - new ```cwrecipe_checkupdate``` per-recipe function
+  - new ```cwcheckupdate_${rname}``` per-recipe function
+  - **caextract** would be an easy place to start
+  - base (**bash**, **busybox**, **toybox**, **curl**) would be great to have "baked-in"
+  - git client, maven, etc. could be used for respective recipes
+  - and base container could indicate it needs an update, for example
+  - hmm
 - ```append_env``` environment wrapper for _profile.d_ files
 - cacertificates
   - probably need openssl/c_rehash
