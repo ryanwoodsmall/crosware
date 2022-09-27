@@ -3,16 +3,26 @@
 #
 
 rname="bash"
-rver="5.1.16"
+rver="5.2.0"
 rdir="${rname}-${rver}"
 rbdir="${cwbuild}/${rname}-${rver%.*}"
 rfile="${rname}-${rver%.*}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="cc012bc860406dcf42f64431bcd3d2fa7560c02915a601aba9cd597a39329baa"
+rsha256="a139c166df7ff4471c5e0733051642ee5556c1cc8a4a78f145583c5c81ab32fb"
 rreqs="make byacc sed netbsdcurses patch"
 
 . "${cwrecipe}/common.sh"
 . "${cwrecipe}/${rname}/${rname}.sh.common"
+
+# XXX - ugh, lib/sh/strtoimax.c - broken on alpine too
+eval "
+function cwmake_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  echo > lib/sh/strtoimax.c
+  make -j${cwmakejobs} ${rlibtool}
+  popd >/dev/null 2>&1
+}
+"
 
 eval "
 function cwmakeinstall_${rname}() {

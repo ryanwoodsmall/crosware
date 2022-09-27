@@ -1,9 +1,10 @@
 #
 # XXX - this is the minimal usable bash, mostly for scripting; using it interactively will probably be a very bad time
-# XXX - 'termcap' package support worth it? (no)
-# XXX - add to path at very end? or... prepend?
+# XXX - 'termcap' package support worth it? (no, readline plus small builtin fallback gnu termcap is fine)
+# XXX - add to path at very end? or... prepend? (no, neither)
 # XXX - include a ${CW_BASH} top-level var, just use bash, otherwise check for this packages "cwbash"???
 # XXX - version number/recipe patch file/...? - requires gnu patch, so probably not since that bloats reqs
+# XXX - probably need to set rdir based on rbdir - if not patching, we'll have a base X.Y version
 #
 
 rname="bashminimal"
@@ -43,10 +44,12 @@ function cwconfigure_${rname}() {
 }
 "
 
+# XXX - ugh, lib/sh/strtoimax.c - broken on alpine too
 # XXX - why? twice? where's the race?
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  echo > lib/sh/strtoimax.c
   make -j${cwmakejobs} ${rlibtool} LDFLAGS='-static -s' CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}= YACC= \
   || make -j${cwmakejobs} ${rlibtool} LDFLAGS='-static -s' CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}= YACC= \
      || make ${rlibtool} LDFLAGS='-static -s' CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}= YACC=
