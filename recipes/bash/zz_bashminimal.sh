@@ -1,8 +1,9 @@
 #
-# XXX - 'termcap' package support worth it?
+# XXX - this is the minimal usable bash, mostly for scripting; using it interactively will probably be a very bad time
+# XXX - 'termcap' package support worth it? (no)
 # XXX - add to path at very end? or... prepend?
 # XXX - include a ${CW_BASH} top-level var, just use bash, otherwise check for this packages "cwbash"???
-# XXX - version number/recipe patch file/...?
+# XXX - version number/recipe patch file/...? - requires gnu patch, so probably not since that bloats reqs
 #
 
 rname="bashminimal"

@@ -4,7 +4,7 @@
 
 rname="bash"
 rver="5.1.16"
-rdir="${rname}-${rver%.*}"
+rdir="${rname}-${rver}"
 rbdir="${cwbuild}/${rname}-${rver%.*}"
 rfile="${rname}-${rver%.*}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
@@ -16,13 +16,13 @@ rreqs="make byacc sed netbsdcurses patch"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make strip
   make install
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}-${rver%.*}\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}-${rver%%.*}\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}${rver%%.*}\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/sh\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}-${rver%.*}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}-${rver%%.*}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}${rver%%.*}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/sh\"
   popd >/dev/null 2>&1
 }
 "

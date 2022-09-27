@@ -13,7 +13,7 @@ rpfile="${cwrecipe}/${rname%4}/${rname}.patches"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   # ganked from alpine
   #  https://git.alpinelinux.org/cgit/aports/tree/main/bash/APKBUILD
   make y.tab.c
@@ -26,11 +26,11 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/bin\"
-  install -m 0755 bash \"${ridir}/bin/${rname}\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname%4}\"
-  ln -sf \"${rtdir}/current/bin/${rname%4}\" \"${ridir}/bin/sh\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  install -m 0755 bash \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname%4}\"
+  ln -sf \"${rtdir}/current/bin/${rname%4}\" \"\$(cwidir_${rname})/bin/sh\"
   popd >/dev/null 2>&1
 }
 "

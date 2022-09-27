@@ -1,15 +1,15 @@
-rname="bash50"
-rver="5.0.18"
-rdir="${rname%50}-${rver}"
-rbdir="${cwbuild}/${rname%50}-${rver%.*}"
-rfile="${rname%50}-${rver%.*}.tar.gz"
-rurl="https://ftp.gnu.org/gnu/${rname%50}/${rfile}"
-rsha256="b4a80f2ac66170b2913efbfb9f2594f1f76c7b1afd11f799e22035d63077fb4d"
+rname="bash51"
+rver="5.1.16"
+rdir="${rname%51}-${rver}"
+rbdir="${cwbuild}/${rname%51}-${rver%.*}"
+rfile="${rname%51}-${rver%.*}.tar.gz"
+rurl="https://ftp.gnu.org/gnu/${rname%51}/${rfile}"
+rsha256="cc012bc860406dcf42f64431bcd3d2fa7560c02915a601aba9cd597a39329baa"
 rreqs="make byacc sed netbsdcurses patch"
-rpfile="${cwrecipe}/${rname%50}/${rname}.patches"
+rpfile="${cwrecipe}/${rname%51}/${rname}.patches"
 
 . "${cwrecipe}/common.sh"
-. "${cwrecipe}/${rname%50}/${rname%50}.sh.common"
+. "${cwrecipe}/${rname%51}/${rname%51}.sh.common"
 
 eval "
 function cwmakeinstall_${rname}() {
@@ -17,7 +17,7 @@ function cwmakeinstall_${rname}() {
   make strip
   cwmkdir \"\$(cwidir_${rname})/bin\"
   install -m 0755 bash \"\$(cwidir_${rname})/bin/${rname}\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname%50}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname%51}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}-${rver}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}-${rver%.*}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/sh\"
