@@ -1,21 +1,12 @@
 rname="nebula"
-rver="1.6.0"
+rver="1.6.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/slackhq/${rname}/archive/refs/tags/${rfile}"
-rsha256="b16638b99d80a4ae6373f7757a0064dc0defd3f9e165617e7b5c3be9e64d3605"
+rsha256="9c343d998d2eab9473c3bf73d434b8a382d90b1f73095dd1114ecaf2e1c0970f"
 rreqs="go cacertificates bootstrapmake"
 
 . "${cwrecipe}/common.sh"
-
-# XXX - segfaults on compile/link for riscv64, problem with my go? qemu? cross-compile problem?
-if [[ ${karch} =~ ^riscv64 ]] ; then
-eval "
-function cwinstall_${rname}() {
-  cwscriptecho \"recipe ${rname} does not support architecture ${karch}\"
-}
-"
-fi
 
 cwstubfunc "cwconfigure_${rname}"
 
