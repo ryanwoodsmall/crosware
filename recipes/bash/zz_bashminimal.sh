@@ -40,6 +40,8 @@ function cwconfigure_${rname}() {
   echo '#define NON_INTERACTIVE_LOGIN_SHELLS' >> config-top.h
   echo '#define SYS_BASHRC \"/etc/bash.bashrc\"' >> config-top.h
   echo '#define SYS_BASH_LOGOUT \"/etc/bash.bash_logout\"' >> config-top.h
+  echo '#undef DEFAULT_LOADABLE_BUILTINS_PATH' >> config-top.h
+  echo '#define DEFAULT_LOADABLE_BUILTINS_PATH \"${rtdir}/current/lib/bash:.\"' >> config-top.h
   popd >/dev/null 2>&1
 }
 "
