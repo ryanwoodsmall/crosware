@@ -33,7 +33,9 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  test -e \"${cwetc}/${rname}.conf\" || install -m 0644 ${rname}.conf.example \"${cwetc}/${rname}.conf\"
+  cwmkdir \"\$(cwidir_${rname})/share/etc\"
+  install -m 0644 \"${rname}.conf.example\" \"\$(cwidir_${rname})/share/etc/\"
+  test -e \"${cwetc}/${rname}.conf\" || install -m 0644 \"${rname}.conf.example\" \"${cwetc}/${rname}.conf\"
   popd >/dev/null 2>&1
 }
 "
