@@ -13,6 +13,7 @@
 # XXX - opkg presentation: https://elinux.org/images/2/24/Opkg_debians_little_cousin.pdf
 # XXX - 0.6.x update
 # XXX - curl -latomic fix
+# XXX - bringing in mbedtls for some reason?
 #
 
 rname="opkg"
@@ -21,13 +22,13 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://git.yoctoproject.org/${rname}/snapshot/${rfile}"
 rsha256="4e0ae527ca7059d472f7bc85c590d77ef09bbb34db4d79fb738123cccf4ec6fa"
-rreqs="make autoconf automake libtool pkgconfig gpgme gnupg curl openssl libarchive xz bzip2 lz4 zstd configgit"
+rreqs="make autoconf automake libtool pkgconfig gpgme gnupg curl openssl libarchive xz bzip2 lz4 zstd configgit slibtool libassuan zlib libssh2 expat libmd libbsd acl nghttp2 lzo mbedtls"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH}\" \
     autoreconf -fiv -I./m4 \$(echo -I${cwsw}/{automake,libtool,pkgconfig}/current/share/aclocal)
   cwfixupconfig_${rname}
@@ -36,7 +37,9 @@ function cwconfigure_${rname}() {
       --enable-{xz,bzip2,lz4,zstd,sha256,curl,ssl-curl,gpg} \
       --with-static-libopkg \
       --without-libsolv \
-        PKG_CONFIG_{LIBDIR,PATH}=\"\${PKG_CONFIG_LIBDIR}:${cwsw}/libarchive/current/lib/pkgconfig\" \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lassuan'
   popd >/dev/null 2>&1
 }
@@ -44,10 +47,10 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  cwmkdir \"${ridir}/etc/opkg\"
-  touch \"${ridir}/etc/opkg/default.conf\"
+  cwmkdir \"\$(cwidir_${rname})/etc/opkg\"
+  touch \"\$(cwidir_${rname})/etc/opkg/default.conf\"
   popd >/dev/null 2>&1
 }
 "
