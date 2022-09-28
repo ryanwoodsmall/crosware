@@ -11,17 +11,16 @@
 # XXX - workstation repo: https://jumpnowtek.com/yocto/Using-your-build-workstation-as-a-remote-package-repository.html
 # XXX - private repo: https://jumpnowtek.com/yocto/Managing-a-private-opkg-repository.html
 # XXX - opkg presentation: https://elinux.org/images/2/24/Opkg_debians_little_cousin.pdf
-# XXX - 0.6.x update
 # XXX - curl -latomic fix
 # XXX - bringing in mbedtls for some reason?
 #
 
 rname="opkg"
-rver="0.5.0"
+rver="0.6.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://git.yoctoproject.org/${rname}/snapshot/${rfile}"
-rsha256="4e0ae527ca7059d472f7bc85c590d77ef09bbb34db4d79fb738123cccf4ec6fa"
+rsha256="a5b80774a81bcff1c304b8e857d3ab2a1d688a063abd0eb51d4d1711970c943e"
 rreqs="make autoconf automake libtool pkgconfig gpgme gnupg curl openssl libarchive xz bzip2 lz4 zstd configgit slibtool libassuan zlib libssh2 expat libmd libbsd acl nghttp2 lzo mbedtls"
 
 . "${cwrecipe}/common.sh"
