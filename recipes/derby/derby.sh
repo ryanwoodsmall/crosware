@@ -1,6 +1,7 @@
 #
 # XXX - derbyjdk8 package with 10.14.x.x?
 # XXX - use a mirror?
+# XXX - derby 10.16.1.1+ requires java 17?
 #
 
 rname="derby"
