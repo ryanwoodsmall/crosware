@@ -1,3 +1,7 @@
+#
+# XXX - this probably needs to be the -stable release, but the archive appears to change w/additions
+# XXX - could just download every build but that precludes cache and known-good sha-256, ugh
+#
 rname="libsodium"
 rver="1.0.18"
 rdir="${rname}-${rver}"
