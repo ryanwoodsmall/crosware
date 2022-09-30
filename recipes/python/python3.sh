@@ -12,18 +12,18 @@
 # XXX - ninja/meson cruft is ugly, need real separation
 #
 rname="python3"
-rver="3.7.13"
+rver="3.7.14"
 rdir="Python-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.python.org/ftp/python/${rver}/${rfile}"
-rsha256="99f106275df8899c3e8cb9d7c01ce686c202ef275953301427194693de5bef84"
+rsha256="4157ae31eb81af19e81c36882610491b0fb8f50e00fa8a17b095c88908b9c45c"
 rreqs="make bzip2 zlib ncurses readline openssl gdbm sqlite bdb47 expat libffi xz utillinux pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --with-ensurepip=install \
     --with-dbmliborder=gdbm:bdb \
@@ -52,7 +52,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} \
     CFLAGS='-fPIC' \
     CXXFLAGS'=-fPIC' \
@@ -63,7 +63,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install \
     CFLAGS='-fPIC' \
     CXXFLAGS='-fPIC' \
