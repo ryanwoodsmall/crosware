@@ -872,6 +872,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - acme-dns-client (https://github.com/acme-dns/acme-dns-client - go)
 - acme labs (http://www.acme.com/software/ - SO MUCH GOOD STUFF)
   - db (http://www.acme.com/software/db/ - gdbm? ndbm/sdbm/dbm?)
+  - e (http://acme.com/software/e/ - small emacs-like)
   - js_httpd (http://www.acme.com/software/js_httpd/)
   - lam (http://www.acme.com/software/lam/)
   - mudecode (http://www.acme.com/software/mudecode/)
