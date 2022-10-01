@@ -492,6 +492,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - jruby
 - jscheme
 - jython
+- k0s (https://github.com/k0sproject/k0s and https://docs.k0sproject.io/ - lens' small k8s distribution)
 - k3s (https://k3s.io/ and https://github.com/k3s-io/k3s - small k8s distribution)
 - kawa (scheme)
 - kernelheaders (https://github.com/sabotage-linux/kernel-headers - from sabotage linux)
@@ -1288,7 +1289,6 @@ wc -l /tmp/astbuild.out
 - juicefs (https://github.com/juicedata/juicefs - distributed filesystem in go on top of redis (transactions) and s3 (objects); cool)
 - jujutsu (https://github.com/martinvonz/jj - git-compatible dvcs in rust)
 - just (https://github.com/just-js/just - small javascript runtime, uses v8 and appears to be a lot of binaries :\)
-- k0s (https://github.com/k0sproject/k0s and https://docs.k0sproject.io/ - lens' small k8s distribution)
 - k0sctl (https://github.com/k0sproject/k0sctl - bootstrapping/management for k0s nodes)
 - k3d (https://github.com/rancher/k3d and https://k3d.io - k3s in docker)
 - kakoune (http://kakoune.org/ and https://github.com/mawww/kakoune)
