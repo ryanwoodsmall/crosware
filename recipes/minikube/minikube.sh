@@ -1,9 +1,9 @@
 rname="minikube"
-rver="1.26.1"
+rver="1.27.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/kubernetes/${rname}/archive/refs/tags/${rfile}"
-rsha256="71e56130ffaf6fd1c4b6777dc0b88935b8f2cbdb83fd8d2904e81e7cc1c48a60"
+rsha256="8978a27cff9bf1450c0cd56e28306e8272150f599a017ba31c2bad57fd9248d2"
 rreqs="bootstrapmake go"
 
 # XXX - ugh
@@ -12,15 +12,6 @@ if ! hash git >/dev/null 2>&1 ; then
 fi
 
 . "${cwrecipe}/common.sh"
-
-# XXX - segfaults on compile/link for riscv64, problem with my go? qemu? cross-compile problem?
-if [[ ${karch} =~ ^riscv64 ]] ; then
-eval "
-function cwinstall_${rname}() {
-  cwscriptecho \"recipe ${rname} does not support architecture ${karch}\"
-}
-"
-fi
 
 eval "
 function cwconfigure_${rname}() {
