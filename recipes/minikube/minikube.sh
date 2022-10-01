@@ -7,17 +7,13 @@ rsha256="8978a27cff9bf1450c0cd56e28306e8272150f599a017ba31c2bad57fd9248d2"
 rreqs="bootstrapmake go"
 
 # XXX - ugh
-if ! hash git >/dev/null 2>&1 ; then
+if ! command -v git &>/dev/null ; then
   rreqs+=" git "
 fi
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
+cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
