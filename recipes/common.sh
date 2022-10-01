@@ -4,6 +4,7 @@
 # XXX - cw{c,cpp,cxx,ld,pkgconfig}_${rname}() and r* vars - dump appropriate recipe flags
 # XXX - cwpath_${rname}() - return bin/, sbin/, etc.?
 # XXX - caconfigure/wmake/makeinstall wrapper that takes one or more arguments - dispatch in make, fill out; variants!
+# XXX - shortcut cw{check,upgrade}reqs_${rname} to a stub function if [ -z "${rreqs}" ] - cuts down on code?
 : ${rbdir:="${cwbuild}/${rdir}"}
 : ${rtdir:="${cwsw}/${rname}"}
 : ${ridir:="${rtdir}/${rdir}"}
