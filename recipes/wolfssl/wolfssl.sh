@@ -12,18 +12,18 @@
 #
 
 rname="wolfssl"
-rver="5.5.0"
+rver="5.5.1"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="583e4e6b65052a33c0ab1817a931cdff69910e5086f8474908ff2434f9340e38"
+rsha256="a4ed7cfae94c04cb68d16e5503338efb61cda5bd2f8fb7cc30edfb080bf3ccb4"
 rreqs="make cacertificates configgit slibtool toybox"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   touch wolfssl/wolfcrypt/fips.h
   touch cyassl/ctaocrypt/fips.h
   sed -i '/^#!/s#/bin/sh#/usr/bin/env bash#g' configure
@@ -124,7 +124,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cat wolfssl/test.h > wolfssl/test.h.ORIG
   sed -i 's,\./certs/,certs/,g' wolfssl/test.h
   sed -i 's,\"certs/,\"${rtdir}/current/certs/,g' wolfssl/test.h
@@ -135,20 +135,20 @@ function cwpatch_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  test -e \"${ridir}/include/wolfssl/options.h\" || cp wolfssl/options.h \"${ridir}/include/wolfssl/\"
-  cwmkdir \"${ridir}/bin\"
+  test -e \"\$(cwidir_${rname})/include/wolfssl/options.h\" || cp wolfssl/options.h \"\$(cwidir_${rname})/include/wolfssl/\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
   for i in \$(find examples/ -type f -exec \"${cwsw}/toybox/current/bin/toybox\" file {} + | awk -F: '/ELF.*executable/{print \$1}') ; do
     n=\"\$(basename \${i})\"
-    install -m 0755 \"\${i}\" \"${ridir}/bin/${rname}-\${n}\"
-    \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname}-\${n}\"
+    install -m 0755 \"\${i}\" \"\$(cwidir_${rname})/bin/${rname}-\${n}\"
+    \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/${rname}-\${n}\"
   done
   unset i n
-  rm -rf \"${ridir}/certs\"
-  cwmkdir \"${ridir}/certs\"
-  ( cd certs ; tar -cf - . ) | ( cd \"${ridir}/certs/\" ; tar -xf - )
-  sed -i 's,${ridir},${rtdir}/current,g' \"${ridir}/bin/${rname}-config\"
+  rm -rf \"\$(cwidir_${rname})/certs\"
+  cwmkdir \"\$(cwidir_${rname})/certs\"
+  ( cd certs ; tar -cf - . ) | ( cd \"\$(cwidir_${rname})/certs/\" ; tar -xf - )
+  sed -i \"s,\$(cwidir_${rname}),${rtdir}/current,g\" \"\$(cwidir_${rname})/bin/${rname}-config\"
   popd >/dev/null 2>&1
 }
 "
