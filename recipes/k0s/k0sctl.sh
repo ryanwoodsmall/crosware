@@ -1,29 +1,20 @@
-#
-# XXX - k3s notes apply here too
-# XXX - package for airgap images?
-#
-
-rname="k0s"
-rver="1.25.2_${rname}.0"
+rname="k0sctl"
+rver="0.14.0"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
 rsha256=""
-rbfile="${rname}-v${rver//_/+}"
-rburl="https://github.com/${rname}project/${rname}/releases/download/v${rver//_/%2B}"
 if [[ ${karch} =~ ^aarch64 ]] ; then
-  rfile="${rbfile}-arm64"
-  rsha256="40163fa1a3dad2b949fe5fb48cd28f0e5139d6e06f89e71629b57fb5a4d30e6c"
+  rfile="${rname}-linux-arm64"
+  rsha256="8fc33a124fd7fb85ebde92ec5393b0d22eef753b56a08aac3e350b8a85ff09a2"
 elif [[ ${karch} =~ ^arm ]] ; then
-  rfile="${rbfile}-arm"
-  rsha256="102261c621594c1cc812ddc777eb0dd6fafba57ec9c086037baff5bbfe25d22a"
+  rfile="${rname}-linux-arm"
+  rsha256="0e5fda3ac11dc1c8ce0a285e00bd0898a10aa618a03cda9707e158a644763f77"
 elif [[ ${karch} =~ ^x86_64 ]] ; then
-  rfile="${rbfile}-amd64"
-  rsha256="ef825eac5f1b851f4ee883e33587b019b5a76984aa7c37e06c64661b0dd4fd3c"
+  rfile="${rname}-linux-x64"
+  rsha256="7fbe42adb4f775e2f87b4dc46ed97aa7d4c0ce8b9135e799a122a4c2fbec2b59"
 fi
-rurl="${rburl}/${rfile//+/%2B}"
-unset rbfile
-unset rburl
+rurl="https://github.com/k0sproject/${rname}/releases/download/v${rver}/${rfile}"
 
 . "${cwrecipe}/common.sh"
 
