@@ -1,9 +1,10 @@
 #
 # XXX - no checksums yet! use at your own risk!
+# XXX - skipping dropbear scp for now since $PATH to dbclient is hard-coded
 #
 
 rname="cwstaticbinaries"
-rver="bdb852cacb403f08b6e80fbec4d415629fef5203"
+rver="0075fb20261cfbc31207ce8344a96ec3d9b33611"
 rdir="${rname}-${rver}"
 rfile=""
 rurl="https://github.com/ryanwoodsmall/static-binaries"
@@ -48,7 +49,7 @@ function cwfetch_${rname}() {
     f=\"${cwtop}/scripts/fakecurl.sh\"
   fi
   cwmkdir \"\$(cwidir_${rname})/bin\"
-  for p in bash brssl busybox curl dash jo jq less links make mk mksh neatvi rc rlwrap rsync sbase-box screen socat stunnel tini tmux toybox ubase-box unrar xz ; do
+  for p in bash brssl busybox curl dash dropbearmulti jo jq less links make mk mksh neatvi rc rlwrap rsync sbase-box screen socat stunnel tini tmux toybox ubase-box unrar xz ; do
     u=\"\${bu}/\${a}/\${p}\"
     \${f} \"\${u}\" \"\$(cwidir_${rname})/bin/\${p}\"
     chmod 755 \"\$(cwidir_${rname})/bin/\${p}\"
@@ -66,6 +67,9 @@ function cwmakeinstall_${rname}() {
     for i in \$(./\${p}) ; do
       test -e \${i} || ln -s \${p} \${i}
     done
+  done
+  for i in dbclient dropbear dropbearconvert dropbearkey ssh ; do
+    test -e \${i} || ln -s dropbearmulti \${i}
   done
   popd &>/dev/null
 }

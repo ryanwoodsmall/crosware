@@ -38,9 +38,7 @@ if [ ! -e "${tempbin}" ] ; then
 fi
 
 cd "${tempbin}"
-  # XXX - cwstatictinaries:
-  #   bash brssl busybox curl dash jo jq less links make mk mksh neatvi rc rlwrap rsync sbase-box screen socat stunnel tini tmux toybox ubase-box unrar xz
-  for p in bash busybox curl dash less make mk mksh neatvi rc rlwrap rsync screen sbase-box tini toybox ubase-box xz ; do
+  for p in bash busybox curl dash dropbearmulti less make mk mksh neatvi rc rlwrap rsync screen sbase-box tini toybox ubase-box xz ; do
     u="${baseurl}/${a}/${p}"
     t="${tempbin}/${p}"
     curl -fkLo "${t}" "${u}" || wget -O "${t}" "${u}"
@@ -53,6 +51,9 @@ cd "${tempbin}"
     for a in $(./${p}) ; do
       test -e "${a}" || ln -s "${p}" "${a}"
     done
+  done
+  for a in dbclient dropbear dropbearconvert dropbearkey ssh ; do
+    test -e "${a}" || ln -s dropbearmulti "${a}"
   done
 cd -
 
