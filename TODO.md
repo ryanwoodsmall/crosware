@@ -1235,6 +1235,11 @@ time_func ls -l -A /
   - `busybox` and `toybox` use **/var/spool/cron/crontabs** (i think?)
   - standardize in **${cwtop}/etc/crontab** and **${cwtop}/var/spool/cron**
 - use `awk '!seen[$0]'` to get unique elements while retaining order
+- `cwsplit "<delim>" "string<delim>string<delim>..." "string<delim>..."`
+  - split any input into newlines on `<delimiter>`
+  - `cwjoin "<delim>" "<string1>" "<strings2>" "..."`
+    - join args w/delimiter
+  - name on `cut`/`paste`/`join`/`split` shell commands? conflation here...
 
 <!--
 # vim: ft=markdown
