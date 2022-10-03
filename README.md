@@ -409,6 +409,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - investigate adding tre, spidermonkey javascript/ecmascript/js, ...
 - elvis (https://github.com/mbert/elvis)
 - entr (http://entrproject.org/ and https://github.com/eradman/entr)
+- es (https://github.com/wryun/es-shell - extensible shell, descended from plan9/rc, with scheme/lisp/other functional programming additions)
 - etcd (https://etcd.io/ and https://github.com/etcd-io/etcd)
 - expat
 - fetchfreebsd (https://github.com/jrmarino/fetch-freebsd - freebsd fetch program/fetch.h header/libfetch.a lib, openssl, custom compilation instead of cmake)
@@ -1790,7 +1791,6 @@ wc -l /tmp/astbuild.out
 - sed-bin (https://github.com/lhoursquentin/sed-bin - posix sed to c??? cool)
 - selfdock (https://github.com/anordal/selfdock - container alike)
 - shells?
-  - es (https://github.com/wryun/es-shell)
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
   - ksh2020 (https://github.com/ksh2020/ksh - figure out this vs ast ksh93/forks/etc.)
@@ -1801,7 +1801,8 @@ wc -l /tmp/astbuild.out
   - sh (https://github.com/mvdan/sh - shell parser/formatter in go)
   - smoosh (http://shell.cs.pomona.edu/ and https://github.com/mgree/smoosh - very posix shell with formal mechnanism, in ocaml)
   - tcsh (and/or standard csh)
-  - xs (https://github.com/TieDyedDevil/XS - rc+es+scheme/lisp)
+  - xs (https://github.com/TieDyedDevil/XS - rc+es+scheme/lisp - abandoned see es)
+    - xs-library (https://github.com/TieDyedDevil/XS-library)
   - zsh
 - shellcheck (https://www.shellcheck.net/ and https://github.com/koalaman/shellcheck - haskell)
 - shini (https://github.com/wallyhall/shini - ini parser in shell)
