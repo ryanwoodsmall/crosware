@@ -5,6 +5,6 @@ rfile="$(cwfile_lynx)"
 rdlfile="$(cwdlfile_lynx)"
 rurl="$(cwurl_lynx)"
 rsha256=""
-rreqs="libressl netbsdcurses"
+rreqs="libressl netbsdcurses slangnetbsdcurses"
 
 . "${cwrecipe}/lynx/lynx.sh.common"
