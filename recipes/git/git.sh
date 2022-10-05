@@ -4,18 +4,19 @@
 #
 # git will use whatever "ssh" command is in the $PATH
 # this can break with dropbear's dbclient -> ssh symlink
-# git can be configured to use "openssh"
-# these are provided by the openssh/opensshlibressl packages
+# e.g., when kex/mac/cipher/key/cert/... types can't find a match
+#
+# git can be configured to use "openssh" if there are any issues
+# the "openssh" command is provided by the openssh or opensshlibressl packages
 #
 #   export GIT_SSH_COMMAND='openssh'
 #   git config --global core.sshCommand 'openssh'
 #
-# these can be used to pass additional options to the ssh cli
+# this/these environment variables can be used to pass additional options to the ssh cli
 # to i.e. use a specific key, set IdentitiesOnly options, etc.
 #
 # additionally, the "simple" ssh variant can be used to turn off openssh specifics
-# i.e. spuriuos SendEnv=GIT_PROTOCOL
-# note that this won't make dropbear work
+# i.e. spurious SendEnv=GIT_PROTOCOL warnings and odd connection drop errors
 #
 #   export GIT_SSH_VARIANT=simple
 #   git config --global ssh.variant simple
@@ -27,11 +28,11 @@
 #
 
 rname="git"
-rver="2.37.3"
+rver="2.38.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
-rsha256="814641d7f61659cfbc17825d0462499ca1403e39ff53d76a8512050e6483e87a"
+rsha256="923eade26b1814de78d06bda8e0a9f5da8b7c4b304b3f9050ffb464f0310320a"
 rreqs="make bzip2 zlib openssl curl expat pcre2 perl libssh2 busybox less cacertificates nghttp2 openssh mandoc"
 
 . "${cwrecipe}/common.sh"
@@ -43,7 +44,7 @@ function cwfetch_${rname}() {
   cwfetchcheck \
     \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \
     \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \
-    \"9c5373549ae6131d4fc7bc04f6e064e33f5038710aacfb65c95e78e479927414\"
+    \"4820d9056a8bfe0d54d48464b715da2e30212645ac4d7021f850d3c56136d6e3\"
 }
 "
 
