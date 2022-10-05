@@ -596,6 +596,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - mgminimal (no curses/terminfo/termcap, optimized for size)
 - microsocks (https://github.com/rofl0r/microsocks)
 - miller (https://github.com/johnkerl/miller - mlr, needs '-g -pg' disabled in c/Makefile.{am,in})
+  - miller6 (https://github.com/johnkerl/miller - mlr, reimplemented in go)
 - minikube (https://minikube.sigs.k8s.io/)
 - minischeme (https://github.com/catseye/minischeme)
 - mksh (http://www.mirbsd.org/mksh.htm)
