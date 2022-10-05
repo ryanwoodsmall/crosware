@@ -19,7 +19,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://www.netfilter.org/pub/${rname}/${rfile}"
 rsha256="8d1b4b18393af43698d10baa25d2b9b6397969beecac7816c35dd0714e4de50a"
-rreqs="bootstrapmake pkgconfig byacc netbsdcurses libpcap libnl jansson libmnl libnetfilterconntrack libnfnetlink libnftnl iptables slibtool"
+rreqs="bootstrapmake pkgconfig byacc netbsdcurses readlinenetbsdcurses libpcap libnl jansson libmnl libnetfilterconntrack libnfnetlink libnftnl iptables slibtool"
 
 . "${cwrecipe}/common.sh"
 
