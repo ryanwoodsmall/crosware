@@ -5,7 +5,7 @@ rfile="$(cwfile_most)"
 rdlfile="$(cwdlfile_most)"
 rurl="$(cwurl_most)"
 rsha256=""
-rreqs="make netbsdcurses configgit"
+rreqs="make netbsdcurses slangnetbsdcurses configgit"
 
 . "${cwrecipe}/common.sh"
 
@@ -20,7 +20,7 @@ unset f
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG \"s/TERMCAP=-ltermcap/TERMCAP='-lcurses -lterminfo'/g\" configure
   popd >/dev/null 2>&1
 }
@@ -28,11 +28,11 @@ function cwpatch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
-    --with-slang=\"${cwsw}/netbsdcurses/current\" \
-      LDFLAGS=-static \
-      CPPFLAGS= \
+    --with-slang=\"${cwsw}/slangnetbsdcurses/current\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
@@ -40,9 +40,9 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  ln -sf most \"${ridir}/bin/${rname}\"
+  ln -sf most \"\$(cwidir_${rname})/bin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
