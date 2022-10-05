@@ -1,3 +1,10 @@
+# XXX - should this fallback to dropbear?
+if ! command -v ssh >/dev/null 2>&1 ; then
+  rreqs="${rreqs} openssh"
+fi
+
+. "${cwrecipe}/common.sh"
+
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1

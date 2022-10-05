@@ -33,9 +33,8 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
 rsha256="923eade26b1814de78d06bda8e0a9f5da8b7c4b304b3f9050ffb464f0310320a"
-rreqs="make bzip2 zlib openssl curl expat pcre2 perl libssh2 busybox less cacertificates nghttp2 openssh mandoc"
+rreqs="make bzip2 zlib openssl curl expat pcre2 perl libssh2 busybox less cacertificates nghttp2 mandoc"
 
-. "${cwrecipe}/common.sh"
 . "${cwrecipe}/${rname}/${rname}.sh.common"
 
 eval "
