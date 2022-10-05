@@ -12,7 +12,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="http://www.dest-unreach.org/${rname}/download/${rfile}"
 rsha256="d47318104415077635119dfee44bcfb41de3497374a9a001b1aff6e2f0858007"
-rreqs="make openssl netbsdcurses zlib"
+rreqs="make openssl netbsdcurses readlinenetbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
 
@@ -20,13 +20,13 @@ rreqs="make openssl netbsdcurses zlib"
 #  https://git.alpinelinux.org/cgit/aports/tree/main/socat
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --enable-openssl \
     --enable-readline \
     --disable-libwrap \
-      CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include -I${cwsw}/netbsdcurses/current/include/readline -I${cwsw}/openssl/current/include -I${cwsw}/zlib/current/include\" \
-      LDFLAGS=\"-L${cwsw}/openssl/current/lib -L${cwsw}/netbsdcurses/current/lib -L${cwsw}/zlib/current/lib -static\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       LIBS=\"-lreadline -lcurses -lterminfo -lssl -lcrypto -lz\"
   echo '#define NETDB_INTERNAL (-1)' >> compat.h
   sed -i 's#netinet/if_ether#linux/if_ether#g' sysincludes.h

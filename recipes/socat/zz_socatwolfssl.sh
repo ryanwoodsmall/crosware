@@ -8,13 +8,13 @@ rdir="wolfssl-osp-socat-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/wolfssl/osp/${rfile}"
 rsha256="ba4aa74ec7280712c1d76303d3d5135fc8a517c81a526877242c8a9fd79899a7"
-rreqs="make wolfssl netbsdcurses"
+rreqs="make wolfssl netbsdcurses readlinenetbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --with-wolfssl=\"${cwsw}/wolfssl/current\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
@@ -30,10 +30,10 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install
-  ln -sf socat \"${ridir}/bin/${rname}\"
-  ln -sf socat \"${ridir}/bin/socat-wolfssl\"
+  ln -sf socat \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf socat \"\$(cwidir_${rname})/bin/socat-wolfssl\"
   popd >/dev/null 2>&1
 }
 "

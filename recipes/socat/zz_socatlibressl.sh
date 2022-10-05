@@ -5,7 +5,7 @@ rfile="$(cwfile_socat)"
 rdlfile="$(cwdlfile_socat)"
 rurl="$(cwurl_socat)"
 rsha256=""
-rreqs="make libressl netbsdcurses"
+rreqs="make libressl netbsdcurses readlinenetbsdcurses"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -24,21 +24,21 @@ unset f
 # XXX - ugly symlinks
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --enable-openssl \
     --enable-readline \
     --disable-libwrap \
-      CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include -I${cwsw}/netbsdcurses/current/include/readline -I${cwsw}/libressl/current/include\" \
-      LDFLAGS=\"-L${cwsw}/libressl/current/lib -L${cwsw}/netbsdcurses/current/lib\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       LIBS=\"-lreadline -lcurses -lterminfo -lssl -lcrypto\" \
       PKG_CONFIG_LIBDIR= \
       PKG_CONFIG_PATH=
   echo '#define NETDB_INTERNAL (-1)' >> compat.h
   sed -i 's#netinet/if_ether#linux/if_ether#g' sysincludes.h
-  cwmkdir \"${ridir}/bin\"
-  ln -sf ${rname%libressl} \"${ridir}/bin/${rname}\"
-  ln -sf ${rname%libressl} \"${ridir}/bin/${rname%libressl}-libressl\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  ln -sf ${rname%libressl} \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf ${rname%libressl} \"\$(cwidir_${rname})/bin/${rname%libressl}-libressl\"
   if [[ ${karch} =~ ^arm ]] ; then
     sed -i.ORIG s/Gethostbyname/gethostbyname/g xio-ip.c
   fi
