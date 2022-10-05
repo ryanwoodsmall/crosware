@@ -1,5 +1,5 @@
 : ${rreqs:=""}
-rreqs="make pcre2 netbsdcurses ${rreqs}"
+rreqs="make pcre2 netbsdcurses readlinenetbsdcurses ${rreqs}"
 
 . "${cwrecipe}/common.sh"
 
