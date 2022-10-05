@@ -4,7 +4,7 @@ rdir="wolfssl-osp-openssh-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/wolfssl/osp/${rfile}"
 rsha256="ed453c84db60fea145bec05c8f449210fd5f3928ed3db08c4210ea8896d2394b"
-rreqs="make zlib netbsdcurses wolfssl"
+rreqs="make zlib netbsdcurses libeditnetbsdcurses wolfssl"
 
 . "${cwrecipe}/common.sh"
 
@@ -57,7 +57,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} \
     --with-wolfssl=\"${cwsw}/wolfssl/current\" \
     --without-pie \
-    --with-libedit=\"${cwsw}/netbsdcurses/current\" \
+    --with-libedit=\"${cwsw}/libeditnetbsdcurses/current\" \
     --sysconfdir=\"${cwetc}/openssh\" \
     --with-privsep-path=\"${cwtmp}/empty\" \
     --with-mantype=man \

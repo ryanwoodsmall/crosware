@@ -1,5 +1,5 @@
 : ${rreqs:=""}
-rreqs+=" make zlib netbsdcurses"
+rreqs+=" make zlib netbsdcurses libeditnetbsdcurses"
 
 : ${sslprov:='openssl'}
 rreqs+=" ${sslprov}"
@@ -24,12 +24,12 @@ function cwconfigure_${rname}() {
     PATH=\"${cwsw}/${sslprov}/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
       --without-pie \
-      --with-libedit=\"${cwsw}/netbsdcurses/current\" \
+      --with-libedit=\"${cwsw}/libeditnetbsdcurses/current\" \
       --sysconfdir=\"${cwetc}/openssh\" \
       --with-privsep-path=\"${cwtmp}/empty\" \
       --with-mantype=man \
-        CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/${sslprov}/current/include -I${cwsw}/netbsdcurses/include\" \
-        LDFLAGS=\"-static -L${cwsw}/zlib/current/lib -L${cwsw}/${sslprov}/current/lib -L${cwsw}/netbsdcurses/current/lib\" \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
         LIBS='-lcrypto -lz -lcrypt -ledit -lcurses -lterminfo' \
         PKG_CONFIG_LIBDIR= \
         PKG_CONFIG_PATH=
