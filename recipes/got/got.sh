@@ -30,8 +30,4 @@ rurl="https://gameoftrees.org/releases/portable/${rfile}"
 rsha256="d3955420752a5e7112e029a0a29cd0d8b434ba57527dfb0617913179d10efb20"
 rreqs="libressl"
 
-if ! command -v ssh &>/dev/null ; then
-  rreqs="${rreqs} openssh"
-fi
-
 . "${cwrecipe}/got/got.sh.common"

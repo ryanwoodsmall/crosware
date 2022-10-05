@@ -1,5 +1,10 @@
 rreqs+=" make byacc zlib pkgconfig e2fsprogs ncurses libmd libbsd libevent "
 
+# XXX - should this fallback to dropbear?
+if ! command -v ssh &>/dev/null ; then
+  rreqs="${rreqs} openssh"
+fi
+
 . "${cwrecipe}/common.sh"
 
 eval "
