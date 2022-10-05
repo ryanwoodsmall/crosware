@@ -21,7 +21,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="0b01bb08e29623c4e3b940f233c961451d9af8c5066301add76a52a95d51772c"
-rreqs="make sed netbsdcurses configgit"
+rreqs="make sed netbsdcurses readlinenetbsdcurses configgit"
 
 . "${cwrecipe}/common.sh"
 
@@ -57,10 +57,10 @@ function cwconfigure_${rname}() {
     --disable-rsh \
     --disable-silent-rules \
     --without-idn \
-    --with-libreadline-prefix=\"${cwsw}/netbsdcurses/current\" \
-      CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include -I\$(cwbdir_${rname})/include\" \
-      LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib/ -static\" \
-      LIBS=\"-L${cwsw}/netbsdcurses/current/lib/ -lreadline -lcurses -lterminfo\"
+    --with-libreadline-prefix=\"${cwsw}/readlinenetbsdcurses/current\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include) -I\$(cwbdir_${rname})/include\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+      LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -lreadline -lcurses -lterminfo\"
   popd >/dev/null 2>&1
 }
 "
