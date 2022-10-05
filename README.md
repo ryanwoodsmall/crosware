@@ -736,7 +736,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - simh3 (http://simh.trailing-edge.com - classic simh 3.x)
   - simh4 (https://github.com/simh/simh - system simulator...?)
 - sisc (scheme)
-- slang (ncurses)
+- slang (https://www.jedsoft.org/slang/ - s-lang programmers library, ncurses)
+  - slangnetbsdcurses (same, netbsdcurses)
 - slibtool (https://github.com/midipix-project/slibtool)
 - slip tools (full slattach, etc.)?
 - slirp???
