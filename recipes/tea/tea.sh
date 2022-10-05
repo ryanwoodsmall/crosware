@@ -1,45 +1,60 @@
 rname="tea"
-rver="0.8.0"
+rver="0.9.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://gitea.com/gitea/${rname}/archive/${rfile}"
-rsha256="6c73c0a7b66cdfd1e5a302257d54df06a3a41eb9bdbfeb547966db431ae23b23"
+rsha256="b7658a074508c117c2af3a55b7b37abf194f84fe94939c9b6b7ff324696258b9"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
 
-eval "function cwconfigure_${rname}() { true ; }"
+cwstubfunc "cwconfigure_${rname}"
+
+eval "
+function cwclean_${rname}() {
+  pushd \"${cwbuild}\" >/dev/null 2>&1
+  chmod -R u+rw \"${rname}\" \"\$(cwdir_${rname})\" &>/dev/null || true
+  rm -rf \"${rbdir}\"
+  popd >/dev/null 2>&1
+}
+"
 
 eval "
 function cwextract_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
-  rm -rf \"${rname}\" \"${rdir}\"
-  cwextract \"${rdlfile}\" \"${cwbuild}\"
-  mv \"${rname}\" \"${rdir}\"
+  rm -rf \"${rname}\" \"\$(cwdir_${rname})\"
+  cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
+  mv \"${rname}\" \"\$(cwdir_${rname})\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  : \${GOCACHE=\"${rbdir}/gocache\"}
-  : \${GOMODCACHE=\"${rbdir}/gomodcache\"}
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
   env \
     CGO_ENABLED=0 \
     GOCACHE=\"\${GOCACHE}\" \
     GOMODCACHE=\"\${GOMODCACHE}\" \
     PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-      go build -x -mod=vendor -ldflags '-s -w -extldflags \"-s -static\"' -o \"${rname}\"
+      go mod vendor
+  env \
+    CGO_ENABLED=0 \
+    GOCACHE=\"\${GOCACHE}\" \
+    GOMODCACHE=\"\${GOMODCACHE}\" \
+    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+      go build -ldflags '-s -w -extldflags \"-s -static\"' -o \"${rname}\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/bin\"
-  install -m 755 \"${rname}\" \"${ridir}/bin/${rname}\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  install -m 755 \"${rname}\" \"\$(cwidir_${rname})/bin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
