@@ -1,3 +1,8 @@
+: ${rreqs:=""}
+rreqs="${rreqs} make byacc sed netbsdcurses readlinenetbsdcurses patch"
+
+. "${cwrecipe}/common.sh"
+
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
@@ -10,9 +15,9 @@ function cwconfigure_${rname}() {
     --with-curses \
       CFLAGS=\"\${CFLAGS} -O2 -pipe\" \
       CXXFLAGS=\"\${CXXFLAGS} -O2 -pipe\" \
-      CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
-      LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib/ -static\" \
-      LIBS=\"-L${cwsw}/netbsdcurses/current/lib/ -lcurses -lterminfo\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+      LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -lcurses -lterminfo\" \
       YACC=\"${cwsw}/byacc/current/bin/byacc\"
   echo '#define SSH_SOURCE_BASHRC' >> config-top.h
   echo '#define NON_INTERACTIVE_LOGIN_SHELLS' >> config-top.h

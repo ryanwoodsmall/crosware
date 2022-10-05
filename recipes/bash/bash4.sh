@@ -4,11 +4,10 @@ rdir="${rname%4}-${rver}"
 rbdir="${cwbuild}/${rname%4}-${rver%.*}"
 rfile="${rname%4}-${rver%.*}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname%4}/${rfile}"
+rreqs="configgit"
 rsha256="d86b3392c1202e8ff5a423b302e6284db7f8f435ea9f39b5b1b20fd3ac36dfcb"
-rreqs="make byacc sed netbsdcurses patch configgit"
 rpfile="${cwrecipe}/${rname%4}/${rname}.patches"
 
-. "${cwrecipe}/common.sh"
 . "${cwrecipe}/${rname%4}/${rname%4}.sh.common"
 
 eval "
