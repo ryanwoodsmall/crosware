@@ -1,6 +1,8 @@
 #
 # XXX - 2.1 breaks with dsa on newer nettle
 # XXX - clean up packaged nettle stuff
+# XXX - move to nettleminimal?
+# XXX - drop recipe? lsh is... something
 #
 rname="lsh"
 rver="2.0.4"
@@ -8,13 +10,13 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/pub/gnu/${rname}/${rfile}"
 rsha256="614b9d63e13ad3e162c82b6405d1f67713fc622a8bc11337e72949d613713091"
-rreqs="make gmp liboop netbsdcurses zlib configgit"
+rreqs="make gmp liboop netbsdcurses readlinenetbsdcurses zlib configgit"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --disable-assembler \
     --disable-gss \
@@ -22,8 +24,8 @@ function cwconfigure_${rname}() {
     --disable-pam \
     --disable-srp \
     --disable-utmp \
-      CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include -I${cwsw}/gmp/current/include -I${cwsw}/liboop/current/include -I${cwsw}/zlib/current/include\" \
-      LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -L${cwsw}/gmp/current/lib -L${cwsw}/liboop/current/lib -L${cwsw}/zlib/current/lib\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       LIBS=\"-lgmp -loop -lreadline -lcurses -lterminfo -lz -static\"
   popd >/dev/null 2>&1
 }
@@ -31,10 +33,10 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  rm -rf \"${ridir}/include\"
-  rm -rf \"${ridir}/lib\"
+  rm -rf \"\$(cwidir_${rname})/include\"
+  rm -rf \"\$(cwidir_${rname})/lib\"
   popd >/dev/null 2>&1
 }
 "
