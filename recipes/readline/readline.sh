@@ -1,10 +1,10 @@
 rname="readline"
-rver="8.2"
-rdir="${rname}-${rver}"
+rver="8.2.1"
+rdir="${rname}-${rver%.*}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35"
-rreqs="make ncurses sed"
+rreqs="make ncurses sed patch"
 
 . "${cwrecipe}/common.sh"
 
