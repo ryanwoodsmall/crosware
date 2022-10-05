@@ -6,13 +6,13 @@ rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/ccxvii/${rname}/archive/${rfile}"
 rsha256="bbb74b96c168e7120f1aa2ce0a42026eba01cff14a9234108c91795f3a4c8cd0"
-rreqs="make netbsdcurses"
+rreqs="make netbsdcurses readlinenetbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG 's/-lreadline/-lreadline -lcurses -lterminfo -static/g' Makefile
   popd >/dev/null 2>&1
 }
@@ -20,17 +20,25 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make release prefix=\"${ridir}\" CC=\"\${CC} \${CFLAGS} -I${cwsw}/netbsdcurses/current/include -L${cwsw}/netbsdcurses/current/lib\" CPPFLAGS= LDFLAGS=-static
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make release \
+    prefix=\"\$(cwidir_${rname})\" \
+    CC=\"\${CC} \${CFLAGS} \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) \$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+    LDFLAGS=-static \
+    CPPFLAGS=
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make install prefix=\"${ridir}\" CC=\"\${CC} \${CFLAGS} -I${cwsw}/netbsdcurses/current/include -L${cwsw}/netbsdcurses/current/lib\" CPPFLAGS= LDFLAGS=-static
-  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname}\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make install \
+    prefix=\"\$(cwidir_${rname})\" \
+    CC=\"\${CC} \${CFLAGS} \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) \$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+    LDFLAGS=-static \
+    CPPFLAGS=
+  \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
