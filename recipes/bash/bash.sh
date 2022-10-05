@@ -3,7 +3,7 @@
 #
 
 rname="bash"
-rver="5.2.0"
+rver="5.2.1"
 rdir="${rname}-${rver}"
 rbdir="${cwbuild}/${rname}-${rver%.*}"
 rfile="${rname}-${rver%.*}.tar.gz"
