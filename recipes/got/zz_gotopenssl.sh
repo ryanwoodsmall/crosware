@@ -8,7 +8,7 @@ rsha256=""
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rreqs="openssl"
 
-if ! $(command -v ssh &>/dev/null) ; then
+if ! command -v ssh &>/dev/null ; then
   rreqs="${rreqs} openssh"
 fi
 
