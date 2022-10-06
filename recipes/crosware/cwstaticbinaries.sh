@@ -4,7 +4,7 @@
 #
 
 rname="cwstaticbinaries"
-rver="0075fb20261cfbc31207ce8344a96ec3d9b33611"
+rver="e448040c61e99557d3518b73755cda0925187a1a"
 rdir="${rname}-${rver}"
 rfile=""
 rurl="https://github.com/ryanwoodsmall/static-binaries"
@@ -15,14 +15,10 @@ rprof="${cwetcprofd}/zz_zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
-for f in extract make configure ; do
-  eval "
-  function cw${f}_${rname}() {
-    true
-  }
-  "
-done
-unset f
+cwstubfunc "cwclean_${rname}"
+cwstubfunc "cwextract_${rname}"
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwfetch_${rname}() {
