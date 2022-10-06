@@ -666,9 +666,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - opennc (openbsd netcat - formerly http://systhread.net/coding/opennc.php)
   - see netcatopenbbsd for bsd netcat as packaged by debian
   - see libressl for tls-enabled `nc` command
-- openssh (openssl, netbsdcurses, libedit)
-  - opensshlibressl (libressl, netbsdcurses, libedit)
-  - opensshwolfssl (patches from wolfssl osp project - netbsdcurses, libedit)
+- openssh (openssl, netbsdcurses, libedit, zlib)
+  - opensshminimal (zlibng)
+  - opensshlibressl (libressl, netbsdcurses, libedit, zlib)
+  - opensshwolfssl (patches from wolfssl osp project - netbsdcurses, libedit, zlib)
 - openssl
 - openvpn (https://openvpn.net/community-downloads/ and https://github.com/OpenVPN/openvpn - openssl, zlib, lz4, lzo)
   - openvpnlibressl (libressl, lz4, lzo)

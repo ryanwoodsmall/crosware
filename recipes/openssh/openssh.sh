@@ -9,6 +9,7 @@
 #   HostKeyAlgorithms +ssh-rsa
 #
 # XXX - https://gist.github.com/ryanwoodsmall/1bd42c1323d23b77845fef30afcc2d46
+# XXX - need to set PID file location - defaults to /var/run
 #
 
 rname="openssh"
