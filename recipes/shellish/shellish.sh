@@ -8,7 +8,11 @@ rdir="${rname//ish/-ish}-${rver}"
 rfile="${rver}.zip"
 rurl="https://github.com/ryanwoodsmall/${rname//ish/-ish}/archive/refs/heads/${rfile}"
 rsha256=""
-rreqs=""
+rreqs="htermutils"
+
+if ! command -v less &>/dev/null ; then
+  rreqs="${rreqs} busybox"
+fi
 
 . "${cwrecipe}/common.sh"
 
