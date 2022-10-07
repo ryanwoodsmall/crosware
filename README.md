@@ -667,7 +667,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - see netcatopenbbsd for bsd netcat as packaged by debian
   - see libressl for tls-enabled `nc` command
 - openssh (openssl, netbsdcurses, libedit, zlib)
-  - opensshminimal (no openssl, built-in auth/key/cipher/mac/... only, zlibng)
+  - opensshminimal (no openssl, built-in auth/key/cipher/mac/... only, netbsdcurses, libedit, zlibng)
   - opensshlibressl (libressl, netbsdcurses, libedit, zlib)
   - opensshwolfssl (patches from wolfssl osp project - netbsdcurses, libedit, zlib)
 - openssl
