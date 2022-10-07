@@ -5,7 +5,7 @@ rfile="$(cwfile_libedit)"
 rdlfile="$(cwdlfile_libedit)"
 rurl="$(cwurl_libedit)"
 rsha256="$(cwsha256_libedit)"
-rreqs="make netbsdcurses"
+rreqs="bootstrapmake netbsdcurses"
 rpfile="${cwrecipe}/${rname%netbsdcurses}/${rname%netbsdcurses}.patches"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
