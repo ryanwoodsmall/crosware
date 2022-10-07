@@ -1,7 +1,6 @@
 #
-# XXX - libeditnetbsdcurses?
+# XXX - libbsd+libmd? server/client seem to work but not sure what else it would proivde
 #
-
 rname="opensshminimal"
 rver="$(cwver_openssh)"
 rdir="$(cwdir_openssh)"
@@ -9,7 +8,7 @@ rfile="$(cwfile_openssh)"
 rdlfile="$(cwdlfile_openssh)"
 rurl="$(cwurl_openssh)"
 rsha256="$(cwsha256_openssh)"
-rreqs="bootstrapmake zlibng"
+rreqs="bootstrapmake zlibng netbsdcurses libeditnetbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
@@ -28,9 +27,9 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} \
     --disable-security-key \
     --sysconfdir=\"${cwetc}/openssh\" \
+    --with-libedit=\"${cwsw}/libeditnetbsdcurses/current\" \
     --with-mantype=man \
     --with-privsep-path=\"${cwtmp}/empty\" \
-    --without-libedit \
     --without-openssl \
     --without-pie \
     --without-security-key-builtin \
@@ -38,8 +37,8 @@ function cwconfigure_${rname}() {
       CXXFLAGS=\"\${CXXFLAGS} -Wl,-s -Os\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
-      PKG_CONFIG_LIBDIR= \
-      PKG_CONFIG_PATH=
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+      LIBS='-lz -ledit -lcurses -lterminfo'
   popd >/dev/null 2>&1
 }
 "
