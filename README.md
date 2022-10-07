@@ -1408,6 +1408,7 @@ wc -l /tmp/astbuild.out
     - **requires** shared lib
   - lisp500 (http://web.archive.org/web/20070722203906/https://www.modeemi.fi/~chery/lisp500/)
   - lispe (https://github.com/naver/lispe)
+  - mal (https://github.com/kanaka/mal/ - make a lisp, in a bunch of languages)
   - mankai common lisp (https://common-lisp.net/project/mkcl/)
   - newlisp (http://www.newlisp.org/ - unnoficial code mirror at https://github.com/kosh04/newlisp)
     - needs libffi, ncurses, readline
