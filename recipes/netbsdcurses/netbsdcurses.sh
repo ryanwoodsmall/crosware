@@ -12,7 +12,7 @@ rdir="netbsd-curses-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/sabotage-linux/netbsd-curses/archive/${rfile}"
 rsha256="9d3ebd651e5f70b87b1327b01cbd7e0c01a0f036b4c1371f653b7704b11daf23"
-rreqs="make configgit"
+rreqs="bootstrapmake configgit"
 # we want this to come after ncurses
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
