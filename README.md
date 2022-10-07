@@ -1028,6 +1028,7 @@ wc -l /tmp/astbuild.out
   - lots of links to compilers/transpilers/interpreters/... that interact with/output C: https://github.com/dbohdan/compilers-targeting-c
   - 8cc (https://github.com/rui314/8cc)
   - 8cc.go (https://github.com/DQNEO/8cc.go - 8cc ported to go)
+  - lambda-8cc (https://github.com/woodrush/lambda-8cc - 8cc c compiler implemented as lambda calculus, with a vm and common lisp, and...)
   - 9cc (https://github.com/rui314/9cc)
   - 9-cc (https://github.com/0intro/9-cc - unix port of plan 9 compiler)
   - andrew chambers's c (https://github.com/andrewchambers/c)
