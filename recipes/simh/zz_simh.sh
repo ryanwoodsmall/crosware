@@ -9,7 +9,7 @@
 # XXX - https://www.reddit.com/r/programming/comments/usv5nv/maintainer_of_open_source_emulation_software_simh/
 #
 
-rreqs="simh3"
+rreqs="opensimh"
 rname="simh"
 rver="$(cwver_${rreqs%% .*})"
 rdir="$(cwdir_${rreqs%% .*})"
