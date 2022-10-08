@@ -512,6 +512,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libconfig (https://hyperrealm.github.io/libconfig/ and https://github.com/hyperrealm/libconfig)
 - libconfuse (https://github.com/libconfuse/libconfuse)
 - libedit (https://www.thrysoee.dk/editline/ - aka editline, from netbsd, line editing, history, etc., ncurses)
+  - libeditminimal (stripped down standalone libedit + small gnu termcap, from bash)
   - libeditnetbsdcurses (same, with netbsdcurses)
 - libev (http://software.schmorp.de/pkg/libev.html)
 - libevent (no openssl support yet)
