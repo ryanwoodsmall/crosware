@@ -1037,6 +1037,7 @@ wc -l /tmp/astbuild.out
   - chibicc (https://github.com/rui314/chibicc)
   - compcert (https://github.com/AbsInt/CompCert and https://compcert.org - formally verified c compiler)
   - cproc (https://git.sr.ht/~mcf/cproc and https://github.com/michaelforney/cproc)
+  - gofrontend (https://github.com/golang/gofrontend - go frontend for gcc? in c? not sure what verisons it works with?)
   - kefir (https://github.com/protopopov1122/kefir - c17 compiler from scratch)
   - kencc (https://github.com/aryx/fork-kencc)
   - lacc (https://github.com/larmel/lacc)
