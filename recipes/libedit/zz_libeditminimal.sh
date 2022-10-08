@@ -25,6 +25,7 @@ function cwextract_${rname}() {
 }
 "
 
+# XXX - warning on patching: this'll need to be moved to configure if a patchfile needs applying
 eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
