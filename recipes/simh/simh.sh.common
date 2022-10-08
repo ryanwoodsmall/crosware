@@ -1,4 +1,5 @@
-rreqs="make busybox"
+: ${rreqs:=""}
+rreqs="${rreqs} make busybox"
 
 . "${cwrecipe}/common.sh"
 
