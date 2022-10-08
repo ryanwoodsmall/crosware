@@ -42,6 +42,10 @@ cwechofunc "cwurl_${rname}" "${rurl}"
 cwechofunc "cwprof_${rname}" "${rprof}"
 cwechofunc "cwsite_${rname}" "${rsite}"
 cwechofunc "cwmessage_${rname}" "${rmessage}"
+
+rreqs="${rreqs//  / }"
+rreqs="${rreqs## }"
+rreqs="${rreqs%% }"
 cwechofunc "cwreqs_${rname}" "${rreqs}"
 
 eval "
