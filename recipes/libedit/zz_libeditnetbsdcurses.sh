@@ -13,7 +13,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_libedit)\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/netbsdcurses/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
       CFLAGS=\"\${CFLAGS} -fPIC -D__STDC_ISO_10646__=201206L\" \

@@ -27,7 +27,7 @@ function cwextract_${rname}() {
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_libedit)\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i 's, install-man ,,g' Makefile.in
   sed -i '/DIRS/s, doc,,g' Makefile.in
   popd >/dev/null 2>&1
@@ -36,7 +36,7 @@ function cwpatch_${rname}() {
 
 eval "
 function cwinstall_${rname}_termcap() {
-  pushd \"\$(cwbdir_libedit)/\$(basename \$(cwbdir_bash))\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})/\$(basename \$(cwbdir_bash))\" >/dev/null 2>&1
   ./configure \
     --prefix=\"\$(cwidir_${rname})\" \
     --disable-nls \
@@ -58,7 +58,7 @@ function cwinstall_${rname}_termcap() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_libedit)\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cwinstall_${rname}_termcap
   env PATH=\"${cwsw}/minimal/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
