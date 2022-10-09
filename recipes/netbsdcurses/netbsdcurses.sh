@@ -4,6 +4,7 @@
 # XXX - oasis version? https://github.com/oasislinux/netbsd-curses
 # XXX - install curses_private.h - see rogue
 # XXX - define _curx and _cury
+# XXX - fix refs to /usr/share/misc/terminfo and /usr/share/tabset/*
 #
 
 rname="netbsdcurses"
