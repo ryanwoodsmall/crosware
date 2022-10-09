@@ -12,7 +12,7 @@ export cwname="crosware"
 if [[ ${0} =~ ^/dev/fd/ ]] ; then
   scriptname="${cwname}"
 else
-  scriptname="$(basename ${0})"
+  scriptname="$(basename -- ${0})"
 fi
 
 function cwscriptecho() {
@@ -38,7 +38,7 @@ function cwfailexit() {
 #
 
 # make sure we're using bash and not sourced
-if [ -z "${BASH_SOURCE}" -o "${0}" != "${BASH_SOURCE}" ] ; then
+if [ -z "${BASH_SOURCE}" -o "$(basename -- ${0})" != "$(basename -- ${BASH_SOURCE})" ] ; then
   echo "please execute this script instead of sourcing it"
   if [ "${0}" != "${BASH_SOURCE}" ] ; then
     return
