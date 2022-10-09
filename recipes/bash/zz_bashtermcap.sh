@@ -46,7 +46,8 @@ function cwconfigure_${rname}() {
     --without-curses \
     --enable-static-link \
     --without-bash-malloc \
-      {{C{,XX,PP},LD}FLAGS,PKG_CONFIG_{LIBDIR,}}=
+      LDFLAGS=-static \
+      {CPPFLAGS,PKG_CONFIG_{LIBDIR,PATH}}=
   popd >/dev/null 2>&1
 }
 "
