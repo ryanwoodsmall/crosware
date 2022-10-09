@@ -5,25 +5,11 @@ rfile="$(cwfile_libedit)"
 rdlfile="$(cwdlfile_libedit)"
 rurl="$(cwurl_libedit)"
 rsha256="$(cwsha256_libedit)"
-rreqs="bootstrapmake"
+rreqs="bootstrapmake bashtermcap"
 rpfile="${cwrecipe}/${rname%minimal}/${rname%minimal}.patches"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
-
-eval "
-function cwfetch_${rname}() {
-  cwfetch_bash
-  cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
-}
-"
-
-eval "
-function cwextract_${rname}() {
-  cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
-  cwextract \"\$(cwdlfile_bash)\" \"\$(cwbdir_${rname})\"
-}
-"
 
 # XXX - warning on patching: this'll need to be moved to configure if a patchfile needs applying
 eval "
@@ -37,23 +23,10 @@ function cwpatch_${rname}() {
 
 eval "
 function cwinstall_${rname}_termcap() {
-  pushd \"\$(cwbdir_${rname})/\$(basename \$(cwbdir_bash))\" >/dev/null 2>&1
-  ./configure \
-    --prefix=\"\$(cwidir_${rname})\" \
-    --disable-nls \
-    --disable-separate-helpfiles \
-    --enable-readline \
-    --without-curses \
-    --enable-static-link \
-    --without-bash-malloc \
-      {{C{,XX,PP},LD}FLAGS,PKG_CONFIG_{LIBDIR,}}=
-  cd lib/termcap
-  make
   cwmkdir \"\$(cwidir_${rname})/include\"
   cwmkdir \"\$(cwidir_${rname})/lib\"
-  install -m 644 termcap.h \"\$(cwidir_${rname})/include/\"
-  install -m 644 libtermcap.a \"\$(cwidir_${rname})/lib/\"
-  popd >/dev/null 2>&1
+  install -m 644 \"${cwsw}/bashtermcap/current/include/termcap.h\" \"\$(cwidir_${rname})/include/\"
+  install -m 644 \"${cwsw}/bashtermcap/current/lib/libtermcap.a\" \"\$(cwidir_${rname})/lib/\"
 }
 "
 
