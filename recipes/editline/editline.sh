@@ -4,13 +4,13 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/troglobit/${rname}/releases/download/${rver}/${rfile}"
 rsha256="df223b3333a545fddbc67b49ded3d242c66fadf7a04beb3ada20957fcd1ffc0e"
-rreqs="make"
+rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} CPPFLAGS= LDFLAGS=-static
   popd >/dev/null 2>&1
 }
