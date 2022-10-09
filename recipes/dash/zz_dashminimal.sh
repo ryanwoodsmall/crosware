@@ -6,7 +6,7 @@ rfile="$(cwfile_dash)"
 rdlfile="$(cwdlfile_dash)"
 rurl="$(cwurl_dash)"
 rsha256="$(cwsha256_dash)"
-rreqs="bootstrapmake"
+rreqs="bootstrapmake libeditminimal"
 
 . "${cwrecipe}/common.sh"
 
@@ -21,9 +21,11 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} \
     --disable-silent-rules \
     --enable-static \
-    --without-libedit \
+    --with-libedit \
+      CC=\"\${CC} -I${cwsw}/libeditminimal/current/include -L${cwsw}/libeditminimal/current/lib\" \
       C{,XX}FLAGS=\"\${CFLAGS} -Os -Wl,-s -Wl,-static\" \
-      LDFLAGS=\"-static -s\" \
+      LDFLAGS=-static \
+      LIBS='-ledit -ltermcap -static' \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
@@ -33,7 +35,13 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  env C{,XX}FLAGS=\"\${CFLAGS} -Os -Wl,-s -Wl,-static\" LDFLAGS=\"-static -s\" CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}= make -j${cwmakejobs} ${rlibtool}
+  env \
+    CC=\"\${CC} -I${cwsw}/libeditminimal/current/include -L${cwsw}/libeditminimal/current/lib\" \
+    C{,XX}FLAGS=\"\${CFLAGS} -Os -Wl,-s -Wl,-static\" \
+    LDFLAGS=-static \
+    CPPFLAGS= \
+    PKG_CONFIG_{LIBDIR,PATH}= \
+      make -j${cwmakejobs} ${rlibtool}
   popd >/dev/null 2>&1
 }
 "
@@ -41,7 +49,13 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  env C{,XX}FLAGS=\"\${CFLAGS} -Os -Wl,-s -Wl,-static\" LDFLAGS=\"-static -s\" CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}= make install ${rlibtool}
+  env \
+    CC=\"\${CC} -I${cwsw}/libeditminimal/current/include -L${cwsw}/libeditminimal/current/lib\" \
+    C{,XX}FLAGS=\"\${CFLAGS} -Os -Wl,-s -Wl,-static\" \
+    LDFLAGS=-static \
+    CPPFLAGS= \
+    PKG_CONFIG_{LIBDIR,PATH}= \
+      make install ${rlibtool}
   rm -f \"\$(cwidir_${rname})/bin/${rname}\"
   cat \"\$(cwidir_${rname})/bin/${rname%minimal}\" > \"\$(cwidir_${rname})/bin/${rname}\"
   chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
