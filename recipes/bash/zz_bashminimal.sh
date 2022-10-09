@@ -24,6 +24,7 @@ rreqs="bootstrapmake"
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  sed -i.ORIG \"s,/etc/termcap,${cwetc}/termcap,g\" lib/termcap/termcap.c
   ./configure ${cwconfigureprefix} \
     --disable-nls \
     --disable-separate-helpfiles \
