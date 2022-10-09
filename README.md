@@ -377,7 +377,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - cwstaticbinaries (https://github.com/ryanwoodsmall/static-binaries - static binaries, possibly useful for bootrapping?)
 - cxref
 - dash (http://gondor.apana.org.au/~herbert/dash/ and https://git.kernel.org/pub/scm/utils/dash/dash.git)
-  - dashminimal (no features or reqs other than a make program)
+  - dashminimal (libedit with basic termcap)
+  - dashtiny (no libedit)
 - derby
 - diffutils
 - diction and style (https://www.gnu.org/software/diction/)

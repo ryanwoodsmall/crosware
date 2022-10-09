@@ -16,9 +16,9 @@ function cwconfigure_${rname}() {
     --with-libedit \
     --disable-silent-rules \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
-      CFLAGS=\"\${CFLAGS} -O2 \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -ledit -lcurses -lterminfo -static\" \
-      LIBS=\"-ledit -lcurses -lterminfo -static\" \
+      CFLAGS=\"\${CFLAGS} -O2 -Wl,-s \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -ledit -lcurses -lterminfo -static -s\" \
+      LIBS=\"-ledit -lcurses -lterminfo -static -s\" \
       YACC=byacc
   popd >/dev/null 2>&1
 }
