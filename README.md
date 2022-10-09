@@ -321,6 +321,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - baseutils (https://github.com/ibara/baseutils - portable openbsd userland)
 - bash (latest 5.x, netbsdcurses)
   - bashminimal (latest 5.x, internal readline, no curses/termcap)
+  - bashtiny (latest 5.x, no readline/curses/termcap)
   - bash4 (4.4, netbsdcurses)
   - bash50 (5.0, netbsdcurses)
   - bash50 (5.1, netbsdcurses)
