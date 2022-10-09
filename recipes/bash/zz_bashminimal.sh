@@ -9,7 +9,9 @@
 
 rname="bashminimal"
 rver="$(cwver_bash)"
+rver="${rver%.*}"
 rdir="$(cwdir_bash)"
+rdir="${rdir%.*}"
 rbdir="$(cwbdir_bash)"
 rfile="$(cwfile_bash)"
 rdlfile="$(cwdlfile_bash)"
