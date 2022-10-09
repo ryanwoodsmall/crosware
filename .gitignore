@@ -18,6 +18,7 @@
 /etc/dropbear*
 /etc/gnutls*
 /etc/openssh*
+/etc/termcap*
 /etc/tinyssh*
 /var/inst/*
 !/var/inst/.crosware_directory_not_tracked_in_git

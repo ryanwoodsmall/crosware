@@ -7,6 +7,7 @@ etc/local.d/**
 etc/profile.d/**
 etc/**ssl/**
 etc/openssh/**
+etc/termcap*
 etc/tinyssh/**
 software/**/**
 tmp/**
