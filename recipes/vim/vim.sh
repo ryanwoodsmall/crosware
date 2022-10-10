@@ -54,7 +54,6 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  # XXX - prepend to prefer our vim/xxd/etc.
   echo 'prepend_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
