@@ -847,6 +847,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - uucp (https://www.airs.com/ian/uucp.html and https://www.gnu.org/software/uucp/)
 - vile (https://invisible-island.net/vile/)
 - vim (https://github.com/vim/vim and https://www.vim.org/ - ncurses, with syntax highlighting, which chrome/chromium os vim lacks)
+  - vimminimal (termcap lib and database from bash and gnu termcap, no scripting w/lua, no encryption w/libsodium, ...)
   - vimnetbsdcurses (netbsdcurses)
 - w3m (https://github.com/tats/w3m)
 - wget
