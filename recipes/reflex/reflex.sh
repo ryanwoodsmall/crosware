@@ -1,19 +1,19 @@
 rname="reflex"
-rver="20210808"
+rver="20221012"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://invisible-mirror.net/archives/${rname}/${rfile}"
-rsha256="6b30a09557776cbc7435d974e5cfc50cb6c63da804f3ae2b4065466da0581c21"
+rsha256="662b6781b3be7f599e8b0bc06fce735750f6a438f0795af6a02c814a510993cc"
 rreqs="make byacc"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install
-  ln -sf \"${ridir}/bin/${rname}\" \"${ridir}/bin/lex\"
-  ln -sf \"${ridir}/bin/${rname}++\" \"${ridir}/bin/lex++\"
+  ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/lex\"
+  ln -sf \"${rname}++\" \"\$(cwidir_${rname})/bin/lex++\"
   popd >/dev/null 2>&1
 }
 "
