@@ -17,6 +17,7 @@ function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i 's, install-man ,,g' Makefile.in
   sed -i '/DIRS/s, doc,,g' Makefile.in
+  cwpatch_libedit
   popd >/dev/null 2>&1
 }
 "

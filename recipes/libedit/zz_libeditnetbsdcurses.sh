@@ -12,6 +12,12 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwpatch_${rname}() {
+  cwpatch_libedit
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/netbsdcurses/current/bin:\${PATH}\" \
