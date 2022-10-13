@@ -12,11 +12,11 @@
 # XXX - ninja/meson cruft is ugly, need real separation
 #
 rname="python3"
-rver="3.7.14"
+rver="3.7.15"
 rdir="Python-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.python.org/ftp/python/${rver}/${rfile}"
-rsha256="4157ae31eb81af19e81c36882610491b0fb8f50e00fa8a17b095c88908b9c45c"
+rsha256="5911475a07ac2b53d746e88a0716af6d2b4734941919136ea0d33fb9c75b9714"
 rreqs="make bzip2 zlib ncurses readline openssl gdbm sqlite bdb47 expat libffi xz utillinux pkgconfig"
 
 . "${cwrecipe}/common.sh"
