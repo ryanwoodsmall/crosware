@@ -1,27 +1,26 @@
 rname="jython"
-rver="2.7.2"
+rver="2.7.3"
 rdir="${rname}-${rver}"
 rfile="${rname}-installer-${rver}.jar"
 rurl="https://repo.maven.apache.org/maven2/org/python/${rname}-installer/${rver}/${rfile}"
-rsha256="36e40609567ce020a1de0aaffe45e0b68571c278c14116f52e58cc652fb71552"
+rsha256="3ffc25c5257d2028b176912a4091fe048c45c7d98218e52d7ce3160a62fdc9fc"
 rprof="${cwetcprofd}/zz_${rname}.sh"
-rreqs="bash busybox"
+rreqs="bashtiny busybox"
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwextract_${rname}() {
-  true
-}
-"
+cwstubfunc "cwclean_${rname}"
+cwstubfunc "cwextract_${rname}"
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwmakeinstall_${rname}() {
   unset JYTHON_HOME
-  test -e \"${ridir}\" && mv \"${ridir}\"{,.PRE-\${TS}}
+  test -e \"\$(cwidir_${rname})\" && mv \"\$(cwidir_${rname})\"{,.PRE-\${TS}}
   env \
-    PATH=\"${cwsw}/bash/current/bin:${cwsw}/busybox/current/bin:\${JAVA_HOME}/bin\" \
-    java -jar \"${rdlfile}\" -s -t all -d \"${ridir}\"
+    PATH=\"${cwsw}/bashtiny/current/bin:${cwsw}/busybox/current/bin:\${JAVA_HOME}/bin\" \
+    java -jar \"\$(cwdlfile_${rname})\" -s -t all -d \"\$(cwidir_${rname})\"
 }
 "
 
