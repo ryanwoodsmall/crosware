@@ -4,32 +4,30 @@
 #
 
 rname="caextract"
-rver="2022-07-19"
+rver="2022-10-11"
 rdir="${rname}-${rver}"
 rfile="cacert-${rver}.pem"
 rurl="https://curl.se/ca/${rfile}"
-rsha256="6ed95025fba2aef0ce7b647607225745624497f876d74ef6ec22b26e73e9de77"
+rsha256="2cff03f9efdaf52626bd1b451d700605dc1ea000c5da56bd0fc59f8f43071040"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
 
-for f in extract configure make clean ; do
-  eval "
-  function cw${f}_${rname}() {
-    true
-  }
-  "
-done
-unset f
+cwstubfunc "cwclean_${rname}"
+cwstubfunc "cwextract_${rname}"
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwmakeinstall_${rname}() {
-  mkdir -p \"${ridir}\"
-  rm -f \"${ridir}/${rfile}\"
-  install -m 0644 \"${rdlfile}\" \"${ridir}/${rfile}\"
-  ln -sf \"${rfile}\" \"${ridir}/${rname}.pem\"
-  ln -sf \"${rfile}\" \"${ridir}/cacert.pem\"
-  ln -sf \"${rfile}\" \"${ridir}/cert.pem\"
-  ln -sf \"${rfile}\" \"${ridir}/ca-bundle.crt\"
+  local f=\"\$(basename \$(cwdlfile_${rname}))\"
+  cwmkdir \"\$(cwidir_${rname})\"
+  rm -f \"\$(cwidir_${rname})/\${f}\"
+  install -m 0644 \"\$(cwdlfile_${rname})\" \"\$(cwidir_${rname})/\${f}\"
+  ln -sf \"\${f}\" \"\$(cwidir_${rname})/${rname}.pem\"
+  ln -sf \"\${f}\" \"\$(cwidir_${rname})/cacert.pem\"
+  ln -sf \"\${f}\" \"\$(cwidir_${rname})/cert.pem\"
+  ln -sf \"\${f}\" \"\$(cwidir_${rname})/ca-bundle.crt\"
+  unset f
 }
 "
