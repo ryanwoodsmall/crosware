@@ -1,15 +1,17 @@
 rname="manpages"
-rver="5.13"
+rver="6.00"
 rdir="man-pages-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/${rfile}"
-rsha256="614dae3efe7dfd480986763a2a2a8179215032a5a4526c0be5e899a25f096b8b"
+rsha256="9edbc52fee23d0e2c38f5555eeea1a9dbeea6b6514503f94bfba7c534660a288"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
 mpv="man-pages-posix-2017-a"
 mpd="${mpv%-a}"
+
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwfetch_${rname}() {
@@ -31,21 +33,15 @@ function cwextract_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i.ORIG '/INSTALL/s/-T//g' Makefile
+  grep -rl 'INSTALL.*-T' . | xargs sed -i.ORIG '/INSTALL/s/-T//g'
   popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  true
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  make install prefix=\"${ridir}\"
+  make install-man prefix=\"${ridir}\"
   cd ${mpd}
   make install prefix=\"${ridir}\"
   popd >/dev/null 2>&1
