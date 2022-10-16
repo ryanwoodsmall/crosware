@@ -4,7 +4,7 @@
 #
 
 rname="cwstaticbinaries"
-rver="e448040c61e99557d3518b73755cda0925187a1a"
+rver="9f6ff3c0b6777959a07995ad483f2bcc417ea987"
 rdir="${rname}-${rver}"
 rfile=""
 rurl="https://github.com/ryanwoodsmall/static-binaries"
