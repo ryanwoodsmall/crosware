@@ -15,7 +15,7 @@ function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG '/_gpgrt_logv_printhex.*NULL,.*NULL/ s/NULL,.*NULL/NULL, arg_ptr/g' src/logging.c
   #sed -i 's/va_list arg_ptr;/va_list arg_ptr = {};/g' src/logging.c
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --disable-nls AWK='busybox awk'
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --disable-nls --enable-install-gpg-error-config AWK='busybox awk'
   popd >/dev/null 2>&1
 }
 "
