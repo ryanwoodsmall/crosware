@@ -1,9 +1,9 @@
 rname="zutils"
-rver="1.10"
+rver="1.11"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="http://download.savannah.gnu.org/releases/${rname}/${rfile}"
-rsha256="0dd44138292d5757648037195b6945c3df70b316221b4285520ad38f2eaeb195"
+rsha256="50e8e24b0a280ccab037004b9000b070d17a6e0cd86972927d1b2a5505421389"
 # diff is needed, use busybox version for now
 rreqs="make busybox lunzip"
 
@@ -11,7 +11,7 @@ rreqs="make busybox lunzip"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} CPPFLAGS=\"\${CPPFLAGS}\" LDFLAGS=\"\${LDFLAGS}\" CC=\"\${CC}\" CFLAGS=\"\${CFLAGS}\"
   popd >/dev/null 2>&1
 }
@@ -19,6 +19,6 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
