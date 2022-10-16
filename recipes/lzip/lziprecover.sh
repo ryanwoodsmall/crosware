@@ -1,16 +1,16 @@
 rname="lziprecover"
-rver="1.22"
+rver="1.23"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://download.savannah.gnu.org/releases/lzip/${rname}/${rfile}"
-rsha256="fd958a0975f7729c44f3b784e566891f736c3dc68374dbd2149ee692a16d0862"
+rsha256="f29804177f06dd51c3fa52615ae198a76002b6ce8d961c3575546c3740f4b572"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} CPPFLAGS=\"\${CPPFLAGS}\" CXX=\"\${CXX}\" CXXFLAGS=\"\${CXXFLAGS}\" LDFLAGS=\"\${LDFLAGS}\"
   popd >/dev/null 2>&1
 }
@@ -18,6 +18,6 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
