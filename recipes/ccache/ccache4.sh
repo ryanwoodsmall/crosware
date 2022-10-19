@@ -3,11 +3,11 @@
 #
 
 rname="ccache4"
-rver="4.6.3"
+rver="4.7"
 rdir="${rname%4}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname%4}/${rname%4}/releases/download/v${rver}/${rfile}"
-rsha256="f46ba3706ad80c30d4d5874dee2bf9227a7fcd0ccaac31b51919a3053d84bd05"
+rsha256="4a7612898dd5dcda6dbecd40e72d5df2a15caae7cf53524db4abe945b73117ea"
 rreqs="cmake make zstd"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
@@ -15,9 +15,9 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cmake . \
-    -DCMAKE_INSTALL_PREFIX=\"${ridir}\" \
+    -DCMAKE_INSTALL_PREFIX=\"\$(cwidir_${rname})\" \
     -DZSTD_INCLUDE_DIR=\"${cwsw}/zstd/current/include\" \
     -DZSTD_LIBRARY=\"${cwsw}/zstd/current/lib/libzstd.a\" \
     -DBUILD_SHARED_LIBS=OFF \
@@ -29,12 +29,12 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   local c=\"${rname%4}\"
-  cwmkdir \"${ridir}/bin\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
   make install
-  strip --strip-all \"${ridir}/bin/\${c}\"
-  cd \"${ridir}/bin\"
+  strip --strip-all \"\$(cwidir_${rname})/bin/\${c}\"
+  cd \"\$(cwidir_${rname})/bin\"
   for p in cc cpp c++ gcc g++ ; do
     for a in ${statictoolchain_triplet[@]} musl ; do
       ln -sf \${c} \${a}-\${p}
