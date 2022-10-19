@@ -1847,8 +1847,9 @@ wc -l /tmp/astbuild.out
 - splint (https://en.wikipedia.org/wiki/Splint_(programming_tool))
 - spm (https://notabug.org/kl3/spm/ - password manager, fork of tpm)
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
-- squid (http://www.squid-cache.org/ - perl, openssl/gnutls/nettle, expat/libxml2, ...)
+- squid (http://www.squid-cache.org/ - perl, openssl/gnutls/nettle, expat/libxml2, libcap, ...)
   - wip w/config below, crashing on startup, may need dynamic perl...
+  - see: https://git.alpinelinux.org/aports/tree/main/squid/APKBUILD
   - ```
     rm -rf $cwtop/tmp/squid-5.7-built
     make clean
