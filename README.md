@@ -1847,6 +1847,14 @@ wc -l /tmp/astbuild.out
 - splint (https://en.wikipedia.org/wiki/Splint_(programming_tool))
 - spm (https://notabug.org/kl3/spm/ - password manager, fork of tpm)
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
+- squid (http://www.squid-cache.org/ - perl, openssl/gnutls/nettle, expat/libxml2, ...)
+  - wip w/config below, crashing on startup, may need dynamic perl...
+  - ```
+    rm -rf $cwtop/tmp/squid-5.7-built
+    make clean
+    make distclean
+    ( time (  ./configure --prefix=${cwtop}/tmp/squid-5.7-built --with-expat=${cwsw}/expat/current --with-openssl=${cwsw}/openssl/current --disable-loadable-modules --disable-optimizations --enable-shared=no --disable-shared --enable-static{=yes,} --enable-{icmp,ipv6,linux-netfilter,auth,esi} --disable-translation --disable-auto-locale --disable-arch-native CC="${CC} -Wl,-s -g0 -Os" CXX="${CXX} -Wl,-s -g0 -Os" CFLAGS="${CFLAGS} -Wl,-s -g0" CXXFLAGS="${CXXFLAGS} -Wl,-s -g0" LDFLAGS="${LDFLAGS} -s" ; echo $? ) ) 2>&1 | tee /tmp/blah.out
+    ```
 - sredird (https://github.com/msantos/sredird - network serial port redirector)
 - srv (https://github.com/joshuarli/srv)
 - sshuttle (https://github.com/sshuttle/sshuttle)
