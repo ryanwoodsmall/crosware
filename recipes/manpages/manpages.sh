@@ -1,9 +1,9 @@
 rname="manpages"
-rver="6.00"
+rver="6.01"
 rdir="man-pages-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/${rfile}"
-rsha256="9edbc52fee23d0e2c38f5555eeea1a9dbeea6b6514503f94bfba7c534660a288"
+rsha256="8be5177b2788c480a984517947d602ffaa64edeaed83edf4bd04f35163cb5c0b"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
