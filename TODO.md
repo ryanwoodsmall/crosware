@@ -1240,6 +1240,17 @@ time_func ls -l -A /
   - `cwjoin "<delim>" "<string1>" "<strings2>" "..."`
     - join args w/delimiter
   - name on `cut`/`paste`/`join`/`split` shell commands? conflation here...
+- `cwsha256fetch` (naming?)
+  - two-step download
+  - get SHA-256 checksummed `filename.sha256` or similar
+  - verify its checksum
+  - substitute `awk '{print $NF}' filename.sha256` for last element of `https://domain.tld/path/to/filename.sha256`
+  - allows single-file download with caching
+  - and multi-arch if in separate `.sha256` files
+  - with multi-file checksum files, have to know the filename in advance
+  - new `rsha256file` config setting?
+  - this may be too much work for little gain
+  - doing something like this w/k3s, k0s, ... other such bin recipes
 
 <!--
 # vim: ft=markdown
