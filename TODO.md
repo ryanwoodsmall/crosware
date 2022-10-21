@@ -1247,7 +1247,8 @@ time_func ls -l -A /
   - substitute `awk '{print $NF}' filename.sha256` for last element of `https://domain.tld/path/to/filename.sha256`
   - allows single-file download with caching
   - and multi-arch if in separate `.sha256` files
-  - with multi-file checksum files, have to know the filename in advance
+  - with multi-file checksum files, have to know the filename in advance?
+  - not really, have the sha256sum, just look it up in the checksum file
   - new `rsha256file` config setting?
   - this may be too much work for little gain
   - doing something like this w/k3s, k0s, ... other such bin recipes
