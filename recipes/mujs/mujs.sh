@@ -1,11 +1,9 @@
 rname="mujs"
-rver="1.3.0"
+rver="1.3.1"
 rdir="${rname}-${rver}"
-#rfile="${rdir}.tar.xz"
-#rurl="https://${name}/downloads/${rfile}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/ccxvii/${rname}/archive/${rfile}"
-rsha256="e22a087e6c00dc37a5a9f98ddef92c3ea5a142786a53deffe4a9f39050b811f5"
+rsha256="fc784d71bfa3f2c33f91412a9f22e356cdc4f9d34d9beeba46c34543a40f52b8"
 rreqs="make netbsdcurses readlinenetbsdcurses"
 
 . "${cwrecipe}/common.sh"
