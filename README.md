@@ -745,6 +745,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - sisc (scheme)
 - slang (https://www.jedsoft.org/slang/ - s-lang programmers library, ncurses)
   - slangnetbsdcurses (same, netbsdcurses)
+  - slangminimal (only tiny termcap from bash)
 - slibtool (https://github.com/midipix-project/slibtool)
 - slip tools (full slattach, etc.)?
 - slirp???
