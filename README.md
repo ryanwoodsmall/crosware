@@ -576,6 +576,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - lynxnetbsdcursesslanglibressl (netbsdcurses slang, libressl)
   - lynxslang (ncurses slang, openssl)
   - lynxslanglibressl (ncurses slang, libressl)
+  - lynxminimal (slang with tiny termcap, libressl)
 - lz4 (https://github.com/lz4/lz4)
 - lzo (http://www.oberhumer.com/opensource/lzo)
 - lzip
