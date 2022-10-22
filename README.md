@@ -1737,6 +1737,7 @@ wc -l /tmp/astbuild.out
 - regx (https://github.com/wd5gnr/regx - regx and litgrep, literate regex)
 - relational-pipes (https://relational-pipes.globalcode.info/)
 - remake (http://bashdb.sourceforge.net/remake/ and https://github.com/rocky/remake)
+- restic (https://github.com/restic/restic and https://restic.net/ - backups, in go, with an rclone REST backend!)
 - retro (forth, http://retroforth.org/)
 - reverse-ssh (https://github.com/Fahrj/reverse-ssh - reverse ssh/shell in go)
 - rocksock-http (https://github.com/rofl0r/rocksock-httpd)
