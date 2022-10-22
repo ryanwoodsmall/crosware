@@ -24,7 +24,9 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_slang)\" >/dev/null 2>&1
   cwinstall_${rname}_termcap
-  sed -i.ORIG s/ncurses5-/off_ncurses5-/g configure
+  cat configure > configure.ORIG
+  sed -i s/ncurses5-/off_ncurses5-/g configure
+  sed -i s/ncursesw5-/off_ncursesw5-/g configure
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     CPPFLAGS=\"-I\$(cwidir_${rname})/include\" \
     LDFLAGS=\"-L\$(cwidir_${rname})/lib -static\" \
