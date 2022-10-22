@@ -11,7 +11,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${rfile}"
 rsha256="3ab5e5eaef69ce20c6b170ee64d785b42235f48f2e62b095fca5d7b6672b8b28"
-rreqs="make cacertificates configgit zlib"
+rreqs="bootstrapmake cacertificates configgit zlib"
 # prefer openssl for now
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
@@ -19,7 +19,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-asm \
     --enable-nc \
@@ -35,11 +35,11 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  rm -f \"${ridir}/bin/openssl\" \"${ridir}/bin/${rname}\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  rm -f \"\$(cwidir_${rname})/bin/openssl\" \"\$(cwidir_${rname})/bin/${rname}\"
   make install ${rlibtool}
-  mv \"${ridir}/bin/openssl\" \"${ridir}/bin/${rname}\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/openssl\"
+  mv \"\$(cwidir_${rname})/bin/openssl\" \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/openssl\"
   popd >/dev/null 2>&1
 }
 "
