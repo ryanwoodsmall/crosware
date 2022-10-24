@@ -1427,6 +1427,7 @@ wc -l /tmp/astbuild.out
   - picolisp (https://picolisp.com/wiki/?home)
     - picolisp (c, lisp)
     - ersatz picolisp (java)
+  - psl (https://github.com/blakemcbride/PSL - "portable standard lisp")
   - roswell (https://github.com/roswell/roswell)
   - scopes (https://hg.sr.ht/~duangle/scopes)
   - sbcl (http://sbcl.org and https://github.com/sbcl/sbcl)
