@@ -1042,6 +1042,7 @@ wc -l /tmp/astbuild.out
   - 9-cc (https://github.com/0intro/9-cc - unix port of plan 9 compiler)
   - andrew chambers's c (https://github.com/andrewchambers/c)
   - c4 (https://github.com/rswier/c4)
+    - swieros (https://github.com/rswier/swieros - fully emulated cpu/machine with unix-like os, c compiler, etc. COOL!)
   - cake (https://github.com/thradams/cake - c23 fronted, may be able to compile newer C to c99/c89/...?)
   - chibicc (https://github.com/rui314/chibicc)
   - compcert (https://github.com/AbsInt/CompCert and https://compcert.org - formally verified c compiler)
