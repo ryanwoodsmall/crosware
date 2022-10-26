@@ -1,17 +1,19 @@
 rname="hsqldb"
-rver="2.6.1"
+rver="2.7.1"
 rvermaj="${rver%%.*}"
 rvermin="${rver#*.}"
 rvermin="${rvermin%.*}"
 rdir="${rname}-${rver}"
 rfile="${rdir}.zip"
 rurl="https://sourceforge.net/projects/${rname}/files/${rname}/${rname}_${rvermaj}_${rvermin}/${rfile}/download"
-rsha256="722c721308c4b7af143a8b5dd53709372554c53443c785f27f2620f64ea446d4"
+rsha256="77416bb895cd9f099ed603c759c217a43d8b3b47cbf02cd93a7f07d7842ea39d"
 rreqs=""
 
 unset rvermaj rvermin
 
 . "${cwrecipe}/common.sh"
+
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwextract_${rname}() {
@@ -22,33 +24,29 @@ function cwextract_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cd \"${rname}\"
   chmod 644 bin/*.bat
   popd >/dev/null 2>&1
 }
 "
 
-eval "
-function cwmake_${rname}() {
-  true
-}
-"
+
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  local hsqldbserver=\"${ridir}/bin/${rname}-server.sh\"
-  local hsqldbwebserver=\"${ridir}/bin/${rname}-webserver.sh\"
-  local hsqldbshell=\"${ridir}/bin/${rname}-sqltool.sh\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  local hsqldbserver=\"\$(cwidir_${rname})/bin/${rname}-server.sh\"
+  local hsqldbwebserver=\"\$(cwidir_${rname})/bin/${rname}-webserver.sh\"
+  local hsqldbshell=\"\$(cwidir_${rname})/bin/${rname}-sqltool.sh\"
   cd \"${rname}\"
-  cwmkdir \"${ridir}\"
-  tar -cf - . | ( cd \"${ridir}\" ; tar -xf - )
-  rm -rf \"${ridir}/jar\"
-  cwmkdir \"${ridir}/jar\"
-  ln -sf \"${rtdir}/current/lib/sqltool.jar\" \"${ridir}/jar/\"
-  ln -sf \"${rtdir}/current/lib/${rname}.jar\" \"${ridir}/jar/\"
-  ln -sf \"${rtdir}/current/lib/${rname}-jdk8.jar\" \"${ridir}/jar/\"
+  cwmkdir \"\$(cwidir_${rname})\"
+  tar -cf - . | ( cd \"\$(cwidir_${rname})\" ; tar -xf - )
+  rm -rf \"\$(cwidir_${rname})/jar\"
+  cwmkdir \"\$(cwidir_${rname})/jar\"
+  ln -sf \"${rtdir}/current/lib/sqltool.jar\" \"\$(cwidir_${rname})/jar/\"
+  ln -sf \"${rtdir}/current/lib/${rname}.jar\" \"\$(cwidir_${rname})/jar/\"
+  ln -sf \"${rtdir}/current/lib/${rname}-jdk8.jar\" \"\$(cwidir_${rname})/jar/\"
   echo -n | tee \"\${hsqldbserver}\" \"\${hsqldbshell}\" \"\${hsqldbwebserver}\" >/dev/null 2>&1
   echo '#!/usr/bin/env bash' | tee -a \"\${hsqldbserver}\" \"\${hsqldbshell}\" \"\${hsqldbwebserver}\" >/dev/null 2>&1
   echo ': \${CLASSPATH:=\"\"}' | tee -a \"\${hsqldbserver}\" \"\${hsqldbshell}\" \"\${hsqldbwebserver}\" >/dev/null 2>&1
@@ -60,7 +58,6 @@ function cwmakeinstall_${rname}() {
   echo 'java -jar \"${rtdir}/current/jar/sqltool.jar\" \"\${@}\"' >> \"\${hsqldbshell}\"
   chmod 755 \"\${hsqldbserver}\" \"\${hsqldbshell}\" \"\${hsqldbwebserver}\"
   unset hsqldbserver hsqldbshell
-
   popd >/dev/null 2>&1
 }
 "
