@@ -1956,7 +1956,7 @@ wc -l /tmp/astbuild.out
   - **config.c** needs proper **vpnc-script** and **default.conf** paths
 - wasm stuff... (most need rust and/or cmake, python3, etc.!)
   - awesome-wasm-runtimes (https://github.com/appcypher/awesome-wasm-runtimes - bunch of potential stuff here)
-  - binaryen (https://github.com/WebAssembly/binaryen)
+  - binaryen (https://github.com/WebAssembly/binaryen - includes `wasm2js` tool to run wasm on top of javascript)
   - lucet (https://github.com/bytecodealliance/lucet)
   - posish (https://github.com/bytecodealliance/posish)
   - wabt (https://github.com/WebAssembly/wabt)
