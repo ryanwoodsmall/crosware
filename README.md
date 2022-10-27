@@ -1955,6 +1955,7 @@ wc -l /tmp/astbuild.out
   - **vpnc-script** needs to ignore unknown "via ??? ???" output from ```ip route```
   - **config.c** needs proper **vpnc-script** and **default.conf** paths
 - wasm stuff... (most need rust and/or cmake, python3, etc.!)
+  - awesome-wasm-runtimes (https://github.com/appcypher/awesome-wasm-runtimes - bunch of potential stuff here)
   - binaryen (https://github.com/WebAssembly/binaryen)
   - lucet (https://github.com/bytecodealliance/lucet)
   - posish (https://github.com/bytecodealliance/posish)
