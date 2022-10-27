@@ -11,10 +11,34 @@ rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
+
 eval "
-function cwconfigure_${rname}() {
+function cwmakeinstall_${rname}() {
+  cwmakeinstall_${rname}_static
+  cwmakeinstall_${rname}_shared
+}
+"
+
+eval "
+function cwmakeinstall_${rname}_static() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make clean || true
   env CFLAGS=\"\${CFLAGS} -fPIC\" ./configure ${cwconfigureprefix} --static
+  make -j${cwmakejobs} ${rlibtool}
+  make install ${rlibtool}
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}_shared() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make clean || true
+  env CFLAGS=-fPIC CXXFLAGS=-fPIC LDFLAGS= ./configure --prefix=\"\$(cwidir_${rname})/shared\" --shared
+  make -j${cwmakejobs} ${rlibtool}
+  make install ${rlibtool}
   popd >/dev/null 2>&1
 }
 "
