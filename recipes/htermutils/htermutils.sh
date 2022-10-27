@@ -11,6 +11,10 @@ rurl="https://chromium.googlesource.com/apps/libapps/+archive/${rver}/hterm/${rf
 rsha256=""
 rreqs=""
 
+if ! command -v unzip &>/dev/null ; then
+  rreqs="${rreqs} busybox"
+fi
+
 . "${cwrecipe}/common.sh"
 
 cwstubfunc "cwconfigure_${rname}"
