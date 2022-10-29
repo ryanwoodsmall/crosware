@@ -3,6 +3,9 @@
 #
 # show latest vim github release version
 #
+# XXX - use xmllint? uses xpath, does this work for html?
+#   curl ... | xmllint --xpath '/*[local-name()="blah"]/*[local-name()="diblah"]/text()' -
+#
 
 set -eu
 
