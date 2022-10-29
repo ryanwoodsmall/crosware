@@ -3,18 +3,18 @@
 #
 
 rname="libbsd"
-rver="0.11.6"
+rver="0.11.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://libbsd.freedesktop.org/releases/${rfile}"
-rsha256="19b38f3172eaf693e6e1c68714636190c7e48851e45224d720b3b5bc0499b5df"
+rsha256="9baa186059ebbf25c06308e9f991fda31f7183c0f24931826d83aa6abd8a0261"
 rreqs="make libmd"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} LDFLAGS='-L${cwsw}/libmd/current/lib -static' CPPFLAGS='-I${cwsw}/libmd/current/include'
   echo '#include <fcntl.h>' >> config.h
   popd >/dev/null 2>&1
@@ -23,9 +23,9 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  rm -f ${ridir}/lib/*.so
+  rm -f \$(cwidir_${rname})/lib/*.so
   popd >/dev/null 2>&1
 }
 "
