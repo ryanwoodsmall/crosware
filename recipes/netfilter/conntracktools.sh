@@ -3,11 +3,11 @@
 #
 
 rname="conntracktools"
-rver="1.4.6"
+rver="1.4.7"
 rdir="${rname//kt/k-t}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://www.netfilter.org/pub/${rname//kt/k-t}/${rfile}"
-rsha256="590859cc848245dbfd9c6487761dd303b3a1771e007f4f42213063ca56205d5f"
+rsha256="099debcf57e81690ced57f516b493588a73518f48c14d656f823b29b4fc24b5d"
 rreqs="bootstrapmake pkgconfig byacc flex slibtool libtirpc libmnl libnfnetlink libnetfilterconntrack libnetfiltercttimeout libnetfiltercthelper libnetfilterqueue"
 
 . "${cwrecipe}/common.sh"
