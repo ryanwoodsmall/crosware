@@ -1,9 +1,9 @@
 rname="patchelf"
-rver="0.15.0"
+rver="0.16.1"
 rdir="${rname}-${rver}"
 rfile="${rname}-${rver}.tar.gz"
 rurl="https://github.com/NixOS/${rname}/releases/download/${rver}/${rfile}"
-rsha256="53a8d58ed4e060412b8fdcb6489562b3c62be6f65cee5af30eba60f4423bfa0f"
+rsha256="1a562ed28b16f8a00456b5f9ee573bb1af7c39c1beea01d94fc0c7b3256b0406"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
