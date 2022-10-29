@@ -39,27 +39,21 @@ function cwconfigure_${rname}() {
       --enable-{ipv6,lfs} \
       --with-webdav-{locks,props} \
       --with-{pcre2,zlib,mbedtls,bzip2,attr,libxml,sqlite,uuid,brotli,zstd,xxhash,lua} \
-        CC=\"\${CC} \$(pkg-config --cflags --libs libbsd)\" \
-        CPPFLAGS=\"\$(echo -I${cwsw}/{bzip2,zlib,pcre2,mbedtls,libxml2,sqlite,e2fsprogs,attr,brotli,zstd,xxhash,lua54}/current/include)\" \
-        LDFLAGS=\"\$(echo -L${cwsw}/{bzip2,zlib,pcre2,mbedtls,libxml2,sqlite,e2fsprogs,attr,brotli,zstd,xxhash,lua54}/current/lib)\" \
-        LIBS=\"\$(echo -L${cwsw}/{brotli,mbedtls}/current/lib -l{brotli,mbedx509,mbedtls,mbedcrypto})\" \
+        CC=\"\${CC} \$(pkg-config --cflags --libs libbsd-overlay zlib libpcre2-posix libxml-2.0)\" \
         CFLAGS=\"-fPIC -Wl,-rpath,${rtdir}/current/lib\" \
         CXXFLAGS=\"-fPIC -Wl,-rpath,${rtdir}/current/lib\" \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
+        LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib -l{brotli,mbedx509,mbedtls,mbedcrypto})\" \
+        BROTLI_CFLAGS=\"-I${cwsw}/brotli/current/include\" \
+        BROTLI_LIBS=\"-L${cwsw}/brotli/current/lib -lbrotli\" \
         LUA_CFLAGS=\"-I${cwsw}/lua54/current/include\" \
-        LUA_LIBS=\"-L${cwsw}/lua54/current/libs -llua\"
-  grep -ril 'sys/queue\\.h' . \
-  | xargs sed -i.ORIG 's,sys/queue,bsd/sys/queue,g'
-  cat >>config.h<<EOF
-#undef __BEGIN_DECLS
-#undef __END_DECLS
-#ifdef __cplusplus
-# define __BEGIN_DECLS extern \"C\" {
-# define __END_DECLS }
-#else
-# define __BEGIN_DECLS
-# define __END_DECLS
-#endif
-EOF
+        LUA_LIBS=\"-L${cwsw}/lua54/current/libs -llua\" \
+        SQLITE_CFLAGS=\"-I${cwsw}/sqlite/current/include\" \
+        SQLITE_LIBS=\"-L${cwsw}/sqlite/current/libs -lsqlite3\" \
+        XML_CFLAGS=\"-I${cwsw}/libxml2/current/include\" \
+        XML_LIBS=\"-L${cwsw}/libxml2/current/libs -lxml2\" \
+        PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
 "
