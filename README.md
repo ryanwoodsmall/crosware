@@ -1310,6 +1310,8 @@ wc -l /tmp/astbuild.out
 - JSON.sh (https://github.com/dominictarr/JSON.sh - json parser in shell/bash)
 - juicefs (https://github.com/juicedata/juicefs - distributed filesystem in go on top of redis (transactions) and s3 (objects); cool)
 - jujutsu (https://github.com/martinvonz/jj - git-compatible dvcs in rust)
+- jumphost (https://github.com/osresearch/jumphost - minimal openssh key-based jump host)
+  - linux-builder (https://github.com/osresearch/linux-builder - used to create a minimal vm image?)
 - just (https://github.com/just-js/just - small javascript runtime, uses v8 and appears to be a lot of binaries :\)
 - k3d (https://github.com/rancher/k3d and https://k3d.io - k3s in docker)
 - kakoune (http://kakoune.org/ and https://github.com/mawww/kakoune)
