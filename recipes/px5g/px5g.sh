@@ -4,41 +4,35 @@
 #
 
 rname="px5g"
-rver="22.03"
+rver="22.03.2"
 rdir="${rname}-${rver}"
 rfile="${rname}-mbedtls.c"
-rurl="https://github.com/openwrt/openwrt/raw/openwrt-${rver}/package/utils/${rname}-mbedtls/${rfile}"
+rurl="https://raw.githubusercontent.com/openwrt/openwrt/v${rver}/package/utils/${rname}-mbedtls/${rfile}"
 rsha256="cb42a8c59896bb87e46d5e521d7c5a99362b149e15ffa7ca6e3dc87376bc0964"
 rreqs="mbedtls"
 
 . "${cwrecipe}/common.sh"
 
-for f in extract configure ; do
-  eval "
-  function cw${f}_${rname}() {
-    true
-  }
-  "
-done
-unset f
+cwstubfunc "cwextract_${rname}"
+cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
-  mkdir -p \"${rbdir}\"
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  \${CC} -I\"${cwsw}/mbedtls/current/include\" \"${rdlfile}\" -o \"${rname}\" -L\"${cwsw}/mbedtls/current/lib\" -lmbedtls -lmbedx509 -lmbedcrypto -static
+  mkdir -p \"\$(cwbdir_${rname})\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  \${CC} -I\"${cwsw}/mbedtls/current/include\" \"\$(cwdlfile_${rname})\" -o \"${rname}\" -L\"${cwsw}/mbedtls/current/lib\" -lmbedtls -lmbedx509 -lmbedcrypto -static
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   \$(\${CC} -dumpmachine)-strip --strip-all \"${rname}\"
-  cwmkdir \"${ridir}/bin\"
-  install -m 0755 \"${rname}\" \"${ridir}/bin/${rname}\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}mbedtls\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/${rname}-mbedtls\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  install -m 0755 \"${rname}\" \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}mbedtls\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}-mbedtls\"
   popd >/dev/null 2>&1
 }
 "
