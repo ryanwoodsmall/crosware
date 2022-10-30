@@ -2,7 +2,10 @@
 # XXX - move config script download to versioned based on git commit, move to cwfetch_
 # XXX - busybox should be reproducible; use KCONFIG_NOTIMESTAMP=1 ??? - what else? BB_EXTRA_VERSION is the biggie, taken care of below...
 # XXX - see... https://github.com/osresearch/linux-builder/blob/main/modules/busybox
-# XXX - reproducible: based on statictoolchain version, need to account for busybox version AND busybox config script version too
+# XXX - reproducible: based on statictoolchain version, also need to account for/probably include...
+#       - busybox version (nah, already included?)
+#       - busybox config script version
+#       - karch/host triplet?
 # XXX - might want to make toybox a prereq - would get tar bzip support (would need to compress statictoolchain w/gzip though!)
 #
 
