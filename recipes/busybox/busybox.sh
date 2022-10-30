@@ -1,7 +1,8 @@
 #
-# XXX - make reproducible; probably just need to set compilation time?
 # XXX - move config script download to versioned based on git commit, move to cwfetch_
-# XXX - busybox should be reproducible; use KCONFIG_NOTIMESTAMP=1 ??? - what else?
+# XXX - busybox should be reproducible; use KCONFIG_NOTIMESTAMP=1 ??? - what else? BB_EXTRA_VERSION is the biggie, taken care of below...
+# XXX - see... https://github.com/osresearch/linux-builder/blob/main/modules/busybox
+# XXX - reproducible: based on statictoolchain version, need to account for busybox version AND busybox config script version too
 # XXX - might want to make toybox a prereq - would get tar bzip support (would need to compress statictoolchain w/gzip though!)
 #
 
@@ -27,6 +28,12 @@ function cwconfigure_${rname}() {
   make defconfig HOSTCC=\"\${CC} -static\"
   bash \"\${cs}\" -m -s
   make oldconfig HOSTCC=\"\${CC} -static\"
+  cat include/libbb.h > include/libbb.h.ORIG
+  echo '#undef BB_EXTRA_VERSION' >> include/libbb.h
+  echo -n '#define BB_EXTRA_VERSION \" (' >> include/libbb.h
+  echo -n \"\$(cwver_statictoolchain)\" >> include/libbb.h
+  echo -n ')\"' >> include/libbb.h
+  echo >> include/libbb.h
   popd >/dev/null 2>&1
 }
 "
