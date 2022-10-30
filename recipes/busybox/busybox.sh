@@ -4,8 +4,8 @@
 # XXX - see... https://github.com/osresearch/linux-builder/blob/main/modules/busybox
 # XXX - reproducible: based on statictoolchain version, also need to account for/probably include...
 #       - busybox version (nah, already included?)
-#       - busybox config script version
-#       - karch/host triplet?
+#       - busybox config script version - _must_ get this versioned/checksummed like toybox
+#       - karch/host triplet? - simplest, just use "${CC} -dumpmachine"
 # XXX - might want to make toybox a prereq - would get tar bzip support (would need to compress statictoolchain w/gzip though!)
 #
 
