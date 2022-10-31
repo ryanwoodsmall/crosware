@@ -22,7 +22,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --disable-openssl \
     --disable-readline \
@@ -34,9 +34,9 @@ function cwconfigure_${rname}() {
       PKG_CONFIG_PATH=
   echo '#define NETDB_INTERNAL (-1)' >> compat.h
   sed -i 's#netinet/if_ether#linux/if_ether#g' sysincludes.h
-  cwmkdir \"${ridir}/bin\"
-  ln -sf ${rname%minimal} \"${ridir}/bin/${rname}\"
-  ln -sf ${rname%minimal} \"${ridir}/bin/${rname%minimal}-${rname#socat}\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  ln -sf ${rname%minimal} \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf ${rname%minimal} \"\$(cwidir_${rname})/bin/${rname%minimal}-${rname#socat}\"
   if [[ ${karch} =~ ^arm ]] ; then
     sed -i.ORIG s/Gethostbyname/gethostbyname/g xio-ip.c
   fi

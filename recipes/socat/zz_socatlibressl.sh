@@ -5,7 +5,7 @@ rfile="$(cwfile_socat)"
 rdlfile="$(cwdlfile_socat)"
 rurl="$(cwurl_socat)"
 rsha256=""
-rreqs="make libressl netbsdcurses readlinenetbsdcurses"
+rreqs="make libressl netbsdcurses readlinenetbsdcurses zlib"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -31,9 +31,8 @@ function cwconfigure_${rname}() {
     --disable-libwrap \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
-      LIBS=\"-lreadline -lcurses -lterminfo -lssl -lcrypto\" \
-      PKG_CONFIG_LIBDIR= \
-      PKG_CONFIG_PATH=
+      LIBS=\"-lreadline -lcurses -lterminfo -lssl -lcrypto -lz\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   echo '#define NETDB_INTERNAL (-1)' >> compat.h
   sed -i 's#netinet/if_ether#linux/if_ether#g' sysincludes.h
   cwmkdir \"\$(cwidir_${rname})/bin\"
@@ -43,6 +42,7 @@ function cwconfigure_${rname}() {
     sed -i.ORIG s/Gethostbyname/gethostbyname/g xio-ip.c
   fi
   echo '#undef HAVE_GETPROTOBYNUMBER_R' >> config.h
+  echo '#undef HAVE_OPENSSL_INIT_SSL' >> config.h
   popd >/dev/null 2>&1
 }
 "
