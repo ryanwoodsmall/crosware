@@ -1653,6 +1653,7 @@ wc -l /tmp/astbuild.out
   - iodbc?
   - unixodbc?
 - odhcploc (http://odhcploc.sourceforge.net/ - dhcp locater)
+- ofelia (https://github.com/mcuadros/ofelia - scheduler for docker jobs, ala cron)
 - oleo (gnu spreadsheet, https://www.gnu.org/software/oleo/oleo.html)
 - openadk (https://openadk.org/ and https://github.com/wbx-github/openadk - embedded system toolchain and image creation)
 - openbsd-libz (https://github.com/ataraxialinux/openbsd-libz)
