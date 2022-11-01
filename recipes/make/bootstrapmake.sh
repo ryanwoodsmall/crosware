@@ -16,7 +16,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} --disable-load CPPFLAGS= LDFLAGS='-static -s'
   popd >/dev/null 2>&1
 }
@@ -24,7 +24,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   bash ./build.sh
   popd >/dev/null 2>&1
 }
@@ -32,7 +32,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./make install-binPROGRAMS
   popd >/dev/null 2>&1
 }
@@ -40,7 +40,7 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${cwsw}/make/current/bin\"' > "${rprof}"
-  echo 'append_path \"${rtdir}/current/bin\"' >> "${rprof}"
+  echo 'append_path \"${cwsw}/make/current/bin\"' > \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
 }
 "
