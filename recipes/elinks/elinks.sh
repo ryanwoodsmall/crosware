@@ -67,7 +67,7 @@ eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
   env PATH=\"${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH}\" \
-    make -j${cwmakejobs} ${rlibtool}
+    make ${rlibtool}
   popd >/dev/null 2>&1
 }
 "
