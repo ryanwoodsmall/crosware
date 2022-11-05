@@ -2,6 +2,7 @@
 # XXX - options from https://github.com/svaarala/duktape/blob/master/Makefile
 # XXX - DUK_USE_ES6
 # XXX - jxpretty
+# XXX - include jsoncbor: https://github.com/svaarala/duktape/tree/master/extras/cbor
 #
 
 rname="duktape"
