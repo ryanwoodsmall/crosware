@@ -1968,6 +1968,7 @@ wc -l /tmp/astbuild.out
   - wasm3 (https://github.com/wasm3/wasm3)
   - wasmedge (https://github.com/WasmEdge/WasmEdge - wasm runtime from cncf)
   - wasmer (https://github.com/wasmerio/wasmer - cross-platform webassembly binaries everywhere)
+    - wapm (https://wapm.io - webassembly package manager)
   - wasmtime (https://github.com/bytecodealliance/wasmtime and https://github.com/bytecodealliance/wasmtime)
   - wasmtime-cpp (https://github.com/bytecodealliance/wasmtime-cpp)
   - wasm-c-api (https://github.com/WebAssembly/wasm-c-api)
