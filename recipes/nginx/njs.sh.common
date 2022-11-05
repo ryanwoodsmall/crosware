@@ -1,5 +1,16 @@
 : ${rreqs:=""}
-rreqs="make pcre2 netbsdcurses readlinenetbsdcurses ${rreqs}"
+rreqs="make pcre2 ${rreqs}"
+
+if [[ ${rname} =~ tiny ]] ; then
+  rtlib="-lno_readline"
+elif [[ ${rname} =~ minimal ]] ; then
+  rreqs="${rreqs} readlineminimal"
+  rtlib="-lreadline -ltermcap"
+else
+  rreqs="${rreqs} netbsdcurses readlinenetbsdcurses"
+  rtlib="-lreadline -lcurses -lterminfo"
+fi
+
 
 . "${cwrecipe}/common.sh"
 
@@ -9,7 +20,7 @@ function cwconfigure_${rname}() {
   ./configure \
     --cc-opt=\"\${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     --ld-opt=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\"
-  sed -i.ORIG 's/-lreadline/-lreadline -lcurses -lterminfo/g' build/Makefile
+  sed -i.ORIG 's/-lreadline/${rtlib}/g' build/Makefile
   popd >/dev/null 2>&1
 }
 "
@@ -32,5 +43,7 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
+
+unset rtlib
 
 # vim: ft=sh:

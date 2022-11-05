@@ -656,9 +656,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - nettleminimal (opt-in, standalone; bundled mini-gmp)
 - nghttp2 (https://github.com/nghttp2/nghttp2)
 - nginx (https://nginx.org/)
-  - njs (http://nginx.org/en/docs/njs/index.html - nginx javascript cli tool, with https support via libressl)
-  - njsopenssl (njs built against openssl)
-  - njsminimal (njs without https support)
+  - njs (http://nginx.org/en/docs/njs/index.html - nginx javascript cli tool, with https support via libressl and readline shell)
+  - njsopenssl (njs built against openssl and readline shell)
+  - njsminimal (njs wht readline but without any https support)
+  - njstiny (njs with no readline or https support)
 - ninja (https://ninja-build.org/)
 - nmap
 - npth (https://gnupg.org/software/npth/index.html)
