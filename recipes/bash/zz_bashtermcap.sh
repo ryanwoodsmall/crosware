@@ -65,9 +65,12 @@ function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})/lib/termcap\" >/dev/null 2>&1
   cwmkdir \"\$(cwidir_${rname})/include\"
   cwmkdir \"\$(cwidir_${rname})/lib\"
+  cwmkdir \"\$(cwidir_${rname})/etc\"
   install -m 644 termcap.h \"\$(cwidir_${rname})/include/\"
   install -m 644 libtermcap.a \"\$(cwidir_${rname})/lib/\"
   install -m 644 \"\$(cwbdir_${rname})/\$(cwdir_termcap)/termcap.src\" \"${cwetc}/termcap\"
+  install -m 644 \"\$(cwbdir_${rname})/\$(cwdir_termcap)/termcap.src\" \"\$(cwidir_${rname})/etc/\"
+  ln -sf termcap.src \"\$(cwidir_${rname})/etc/termcap\"
   popd >/dev/null 2>&1
 }
 "
