@@ -1,16 +1,16 @@
 rname="texinfo"
-rver="6.8"
+rver="7.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="8eb753ed28bca21f8f56c1a180362aed789229bd62fff58bf8368e9beb59fec4"
+rsha256="20744b82531ce7a04d8cee34b07143ad59777612c3695d5855f29fba40fbe3e0"
 rreqs="make sed perl ncurses"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   PATH=\"${cwsw}/perl/current/bin:\${PATH}\" ./configure ${cwconfigureprefix} --disable-nls
   popd >/dev/null 2>&1
 }
@@ -18,7 +18,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/perl/current/bin:\${PATH}\" make -j${cwmakejobs}
   popd >/dev/null 2>&1
 }
@@ -26,6 +26,6 @@ function cwmake_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
