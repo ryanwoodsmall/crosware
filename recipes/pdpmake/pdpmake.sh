@@ -1,9 +1,13 @@
+#
+# XXX - check macros: ENABLE_FEATURE_MAKE_POSIX_202X ENABLE_FEATURE_CLEAN_UP
+#
+
 rname="pdpmake"
-rver="1.2.0"
+rver="1.3.0"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/rmyorston/${rname}/archive/refs/tags/${rfile}"
-rsha256="c545301f4031eb2705196e789e19cd83fe954f62f6ebb9e7e8cf3191884ada17"
+rsha256="1242d2171398a03a82a4b57c9b710de74e4efff41e8f5b1e4f60f2dd7c6451c1"
 rreqs="bootstrapmake"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
@@ -11,7 +15,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG '/(CC)/s/(OBJS)/(OBJS) -static/g' Makefile
   popd >/dev/null 2>&1
 }
@@ -19,7 +23,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   rm -f ${rname} posixmake make
   make CC=\"\${CC} \${CFLAGS}\" CPPFLAGS= LDFLAGS=-static
   mv make posixmake
@@ -32,10 +36,10 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/bin\"
-  install -m 755 ${rname} \"${ridir}/bin/${rname}\"
-  install -m 755 posixmake \"${ridir}/bin/posixmake\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  install -m 755 ${rname} \"\$(cwidir_${rname})/bin/${rname}\"
+  install -m 755 posixmake \"\$(cwidir_${rname})/bin/posixmake\"
   popd >/dev/null 2>&1
 }
 "
