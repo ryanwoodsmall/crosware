@@ -39,6 +39,8 @@ function cwmakeinstall_${rname}() {
   install -m 755 \"build/release/${rname}-pp\" \"\$(cwidir_${rname})/bin/${rname}-pp\"
   \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/${rname}\"
   \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/${rname}-pp\"
+  cwmkdir \"\$(cwidir_${rname})/docs\"
+  ( cd docs/ ; tar -cf - . ) | ( cd \"\$(cwidir_${rname})/docs\" ; tar -xf - )
   popd >/dev/null 2>&1
 }
 "
