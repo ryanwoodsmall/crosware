@@ -20,7 +20,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --with-included-popt \
     --with-included-zlib \
@@ -44,11 +44,11 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  ln -sf rsync \"${ridir}/bin/${rname}\"
-  ln -sf rsync \"${ridir}/bin/rsync-minimal\"
-  \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/rsync\"
+  ln -sf rsync \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf rsync \"\$(cwidir_${rname})/bin/rsync-minimal\"
+  \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/rsync\"
   popd >/dev/null 2>&1
 }
 "

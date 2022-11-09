@@ -5,18 +5,18 @@
 #
 
 rname="rsync"
-rver="3.2.5"
+rver="3.2.6"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://download.samba.org/pub/${rname}/src/${rfile}"
-rsha256="2ac4d21635cdf791867bc377c35ca6dda7f50d919a58be45057fd51600c69aba"
+rsha256="fb3365bab27837d41feaf42e967c57bd3a47bc8f10765a3671efd6a3835454d3"
 rreqs="make lz4 xxhash zstd attr acl"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --with-included-popt \
     --with-included-zlib \
