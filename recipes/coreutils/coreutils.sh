@@ -8,25 +8,26 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="61a1f410d78ba7e7f37a5a4f50e6d1320aca33375484a3255eddf17a38580423"
-rreqs="make gettexttiny sed attr acl perl"
+rreqs="make gettexttiny sed attr acl perl gmp openssl utillinux libcap"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  sed -i.ORIG s/stdbuf_supported=yes/stdbuf_supported=no/g configure
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env FORCE_UNSAFE_CONFIGURE=1 ./configure ${cwconfigureprefix} \
-    --disable-libcap \
     --disable-nls \
     --enable-acl \
+    --enable-libcap \
     --enable-single-binary=symlinks \
     --enable-xattr \
-    --without-libgmp \
-    --without-openssl \
+    --with-libgmp \
+    --with-libgmp-prefix=\"${cwsw}/gmp/current\" \
+    --with-openssl=yes \
     --without-selinux \
-      CPPFLAGS='-I${cwsw}/acl/current/include -I${cwsw}/attr/current/include' \
-      LDFLAGS='-L${cwsw}/acl/current/lib -L${cwsw}/attr/current/lib -static'
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   uname -m | egrep -q '(aarch|riscv)64' && echo '#define SYS_getdents SYS_getdents64' >> src/ls.h || true
   popd >/dev/null 2>&1
 }
