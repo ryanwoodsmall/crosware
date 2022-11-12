@@ -6,7 +6,7 @@ rfile="$(cwfile_dropbear)"
 rdlfile="$(cwdlfile_dropbear)"
 rurl="$(cwurl_dropbear)"
 rsha256="$(cwsha256_dropbear)"
-rreqs="bootstrapmake zlibng configgit"
+rreqs="bootstrapmake zlib configgit"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -40,11 +40,11 @@ function cwconfigure_${rname}() {
      --disable-pam \
      --enable-zlib \
      --enable-static \
-       CC=\"\${CC} -Os -Wl,-s -I${cwsw}/zlibng/current/include\" \
+       CC=\"\${CC} -Os -Wl,-s -I${cwsw}/zlib/current/include\" \
        CFLAGS=\"\${CFLAGS} -Os -Wl,-s\" \
        CXXFLAGS=\"\${CXXFLAGS} -Os -Wl,-s\" \
-       CPPFLAGS=\"-I${cwsw}/zlibng/current/include\" \
-       LDFLAGS=\"-L${cwsw}/zlibng/current/lib -static -s\" \
+       CPPFLAGS=\"-I${cwsw}/zlib/current/include\" \
+       LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\" \
        PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
