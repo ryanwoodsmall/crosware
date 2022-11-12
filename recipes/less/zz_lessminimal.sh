@@ -11,26 +11,16 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 . "${cwrecipe}/common.sh"
 
 eval "
-function cwinstall_${rname}_termcap() {
-  cwmkdir \"\$(cwidir_${rname})/include\"
-  cwmkdir \"\$(cwidir_${rname})/lib\"
-  install -m 644 \"${cwsw}/bashtermcap/current/include/termcap.h\" \"\$(cwidir_${rname})/include/\"
-  install -m 644 \"${cwsw}/bashtermcap/current/lib/libtermcap.a\" \"\$(cwidir_${rname})/lib/\"
-}
-"
-
-eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_less)\" >/dev/null 2>&1
-  cwinstall_${rname}_termcap
   cat configure > configure.ORIG
   sed -i '/^TERMLIBS=/s,=,=-ltermcap,' configure
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     ac_cv_header_termcap_=yes \
     CC=\"\${CC} -g0 -Os -Wl,-s\" \
     CFLAGS=\"\${CFLAGS} -g0 -Os -Wl,-s\" \
-    CPPFLAGS=\"-I\$(cwidir_${rname})/include\" \
-    LDFLAGS=\"-L\$(cwidir_${rname})/lib -static\" \
+    CPPFLAGS=\"-I${cwsw}/bashtermcap/current/include\" \
+    LDFLAGS=\"-L${cwsw}/bashtermcap/current/lib -static\" \
     LIBS='-ltermcap' \
     PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
