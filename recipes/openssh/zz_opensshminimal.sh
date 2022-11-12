@@ -8,7 +8,7 @@ rfile="$(cwfile_openssh)"
 rdlfile="$(cwdlfile_openssh)"
 rurl="$(cwurl_openssh)"
 rsha256="$(cwsha256_openssh)"
-rreqs="bootstrapmake zlibng netbsdcurses libeditnetbsdcurses"
+rreqs="bootstrapmake zlib netbsdcurses libeditnetbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
