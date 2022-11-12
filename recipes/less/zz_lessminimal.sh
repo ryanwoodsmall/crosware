@@ -37,10 +37,12 @@ function cwconfigure_${rname}() {
 }
 "
 
+# note prepend_ - swap order of "real" vs minimal
 eval "
 function cwgenprofd_${rname}() {
-  echo 'prepend_path \"${cwsw}/${rname%minimal}/current/bin\"' > \"${rprof}\"
+  echo -n > \"${rprof}\"
   echo 'prepend_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
+  echo 'prepend_path \"${cwsw}/${rname%minimal}/current/bin\"' >> \"${rprof}\"
   echo 'export PAGER=\"less -Q -L\"' >> \"${rprof}\"
   echo 'export MANPAGER=\"less -R -Q -L\"' >> \"${rprof}\"
   echo 'alias less=\"less -Q -L\"' >> \"${rprof}\"
