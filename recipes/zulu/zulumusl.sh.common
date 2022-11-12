@@ -6,11 +6,14 @@
 : ${rdir:="zulu${rver}-linux_musl_x64"}
 : ${rfile:="${rdir}.tar.gz"}
 : ${rurl:="https://cdn.azul.com/zulu/bin/${rfile}"}
-rreqs="libz patchelf toybox"
+rreqs="zlib patchelf toybox"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rdlfile="${cwdl}/zulu/${rfile}"
 
 . "${cwrecipe}/common.sh"
+
+cwstubfunc "cwmake_${rname}"
+cwstubfunc "cwmakeinstall_${rname}"
 
 eval "
 function cwinstall_${rname}_unsupported() {
@@ -29,21 +32,9 @@ function cwextract_${rname}() {
 "
 
 eval "
-function cwmake_${rname}() {
-  true
-}
-"
-
-eval "
-function cwmakeinstall_${rname}() {
-  true
-}
-"
-
-eval "
 function cwconfigure_${rname}() {
   local l=\"${cwsw}/statictoolchain/current/\$(\${CC} -dumpmachine)/lib/ld.so\"
-  local z=\"\$(realpath ${cwsw}/libz/current/lib/libz.so)\"
+  local z=\"\$(realpath ${cwsw}/zlib/current/shared/lib/libz.so)\"
   local f
   for f in \$(find ${ridir}/ -type f -exec toybox file {} + | grep ':.*ELF' | cut -f1 -d: | grep -v '\\.so') ; do
     cwscriptecho \"patching \${f}\"
