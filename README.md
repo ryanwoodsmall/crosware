@@ -725,6 +725,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - retawqlibressl (ncurses, libressl)
 - rhino
 - rlwrap (netbsdcurses)
+  - rlwrapminimal (stripped down with small gnu termcap from bash)
 - rogue
 - rpcsvcproto (https://github.com/thkukuk/rpcsvc-proto - contains rpcgen)
 - rrredir (https://github.com/rofl0r/rrredir)
