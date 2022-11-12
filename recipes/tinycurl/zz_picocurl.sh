@@ -9,7 +9,7 @@ rfile="$(cwfile_tinycurl)"
 rdlfile="$(cwdlfile_tinycurl)"
 rurl="$(cwurl_tinycurl)"
 rsha256=""
-rreqs="bearssl bootstrapmake cacertificates pkgconf zlibng"
+rreqs="bearssl bootstrapmake cacertificates pkgconf zlib"
 
 . "${cwrecipe}/common.sh"
 
