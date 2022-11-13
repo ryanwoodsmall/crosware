@@ -3,9 +3,8 @@
 # XXX - --with-pcre-opt=\"--enable-jit --enable-pcre8 --enable-pcre16 --enable-pcre32 --enable-unicode-properties --enable-utf\" \
 # XXX - no pcre jit on riscv64
 # XXX - probably need to remove static bits for dynamic modules
-# XXX - libressl variant, see:
-#  - https://gist.github.com/Belphemur/3c022598919e6a1788fc
-#  - https://github.com/nginx-modules/docker-nginx-libressl/blob/master/stable/alpine/Dockerfile
+# XXX - use crosware-provided openssl/libressl by sylminking to $(cwidir_${rname})/$(cwdir_{openssl,libress})/.openssl
+# XXX - fake out config/configure/Makefile/...
 #
 
 rname="nginx"
