@@ -5,7 +5,7 @@ rfile="$(cwfile_rsync)"
 rdlfile="$(cwdlfile_rsync)"
 rurl="$(cwurl_rsync)"
 rsha256=""
-rreqs="bootstrapmake"
+rreqs="bootstrapmake busybox"
 
 . "${cwrecipe}/common.sh"
 
@@ -36,6 +36,8 @@ function cwconfigure_${rname}() {
     --disable-zstd \
       CFLAGS=\"\${CFLAGS} -DINET6 -Os\" \
       LDFLAGS=-static \
+      SED=\"${cwsw}/busybox/current/bin/sed\" \
+      AWK=\"${cwsw}/busybox/current/bin/awk\" \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
