@@ -94,6 +94,10 @@ function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool} CC=\"\${CC}\" CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
   \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/sbin/${rname}\"
+  for p in \$(find \$(cwdir_openssl)/.openssl/bin/ -type f) ; do
+    install -m 755 \${p} \"\$(cwidir_${rname})/sbin/${rname}-\$(basename \${p})\"
+  done
+  unset p
   popd >/dev/null 2>&1
 }
 "
