@@ -5,7 +5,7 @@ rfile="$(cwfile_lighttpd)"
 rdlfile="$(cwdlfile_lighttpd)"
 rurl="$(cwurl_lighttpd)"
 rsha256=""
-rreqs="make pkgconfig libbsd zlib pcre2"
+rreqs="make pkgconfig libbsd zlib pcre2 mbedtls"
 
 . "${cwrecipe}/common.sh"
 
@@ -24,13 +24,15 @@ function cwconfigure_${rname}() {
   env PATH=\"${cwsw}/pcre2/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --enable-{ipv6,lfs} \
-      --with-{zlib,pcre2} \
-      --without-{mbedtls,webdav-{locks,props},bzip2,attr,libxml,sqlite,uuid,brotli,zstd,xxhash,lua} \
-        CC=\"\${CC} \$(pkg-config --cflags --libs libbsd-overlay zlib libpcre2-posix)\" \
+      --with-{zlib,pcre2,mbedtls} \
+      --without-{webdav-{locks,props},bzip2,attr,libxml,sqlite,uuid,brotli,zstd,xxhash,lua} \
+        CC=\"\${CC} -g0 -Os -Wl,-s \$(pkg-config --cflags --libs libbsd-overlay zlib libpcre2-posix)\" \
+        CXX=\"\${CXX} -g0 -Os -Wl,-s \$(pkg-config --cflags --libs libbsd-overlay zlib libpcre2-posix)\" \
+        CFLAGS=\"-fPIC -Wl,-rpath,${rtdir}/current/lib -g0 -Os -Wl,-s\" \
+        CXXFLAGS=\"-fPIC -Wl,-rpath,${rtdir}/current/lib -g0 -Os -Wl,-s\" \
         CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
-        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
-        CFLAGS=\"-fPIC -Wl,-rpath,${rtdir}/current/lib\" \
-        CXXFLAGS=\"-fPIC -Wl,-rpath,${rtdir}/current/lib\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -s\" \
+        LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib -l{z,mbedx509,mbedtls,mbedcrypto})\" \
         PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
