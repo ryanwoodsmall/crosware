@@ -5,7 +5,7 @@ rfile="$(cwfile_tinycurl)"
 rdlfile="$(cwdlfile_tinycurl)"
 rurl="$(cwurl_tinycurl)"
 rsha256=""
-rreqs="mbedtls bootstrapmake cacertificates pkgconf zlib libssh2mbedtls nghttp2"
+rreqs="mbedtls bootstrapmake cacertificates pkgconf zlib"
 
 . "${cwrecipe}/common.sh"
 
@@ -35,9 +35,7 @@ function cwconfigure_${rname}() {
         --with-mbedtls \
         --with-default-ssl-backend=mbedtls \
         --with-zlib \
-        --with-libssh2=\"${cwsw}/libssh2mbedtls/current\" \
-        --with-nghttp2=\"${cwsw}/nghttp2/current\" \
-        --without-{bearssl,brotli,gnutls,libidn2,libssh,nss,openssl,rusttls,wolfssh,wolfssl,zstd} \
+        --without-{bearssl,brotli,gnutls,libidn2,libssh{,2},nghttp2,nss,openssl,rusttls,wolfssh,wolfssl,zstd} \
           CC=\"\${CC} -g0 -Os -Wl,-s\" \
           CFLAGS=\"-g0 -Os -Wl,-s \${CFLAGS}\" \
           CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
