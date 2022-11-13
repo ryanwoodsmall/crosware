@@ -830,6 +830,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - inadyn (https://github.com/troglobit/inadyn - dynamic dns updater, openssl)
     - inadyngnutls (gnutls)
     - inadynlibressl (libressl)
+    - inadynmbedtls (mbedtls)
   - libuev (https://github.com/troglobit/libuev)
   - mdnsd (https://github.com/troglobit/mdnsd - multicast dns daemon, mdsresponder, mdns-sd, etc.)
   - mg (see above)
