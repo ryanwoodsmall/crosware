@@ -5,7 +5,7 @@ rfile="${rdir}.tar.gz"
 rdlfile="${cwdl}/${rname%mbedtls}/${rfile}"
 rurl=""
 rsha256=""
-rreqs="make zlib mbedtls"
+rreqs="bootstrapmake zlib mbedtls"
 
 . "${cwrecipe}/common.sh"
 
