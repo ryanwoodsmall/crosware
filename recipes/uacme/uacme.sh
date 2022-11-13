@@ -14,7 +14,7 @@ rreqs="make curl zlib openssl libssh2 cacertificates nghttp2 pkgconfig"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/curl/current/bin:\${PATH}\" \
     ./configure \
       ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
@@ -31,18 +31,18 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  ln -sf \"${rname}\" \"${ridir}/bin/${rname}-openssl\"
-  ln -sf \"ualpn\" \"${ridir}/bin/ualpn-openssl\"
-  \$(\${CC} -dumpmachine)-strip \"${ridir}/bin/${rname}\" \"${ridir}/bin/ualpn\"
-  cwmkdir \"${ridir}/share/man/man1\"
-  cwmkdir \"${ridir}/share/doc/txt\"
-  cwmkdir \"${ridir}/share/doc/html\"
+  ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/${rname}-openssl\"
+  ln -sf \"ualpn\" \"\$(cwidir_${rname})/bin/ualpn-openssl\"
+  \$(\${CC} -dumpmachine)-strip \"\$(cwidir_${rname})/bin/${rname}\" \"\$(cwidir_${rname})/bin/ualpn\"
+  cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
+  cwmkdir \"\$(cwidir_${rname})/share/doc/txt\"
+  cwmkdir \"\$(cwidir_${rname})/share/doc/html\"
   for p in uacme ualpn ; do
-    install -m 644 \${p}.1 \"${ridir}/share/man/man1/\"
-    install -m 644 \${p}.1.txt \"${ridir}/share/doc/txt/\"
-    install -m 644 docs/\${p}.html \"${ridir}/share/doc/html/\"
+    install -m 644 \${p}.1 \"\$(cwidir_${rname})/share/man/man1/\"
+    install -m 644 \${p}.1.txt \"\$(cwidir_${rname})/share/doc/txt/\"
+    install -m 644 docs/\${p}.html \"\$(cwidir_${rname})/share/doc/html/\"
   done
   unset p
   popd >/dev/null 2>&1

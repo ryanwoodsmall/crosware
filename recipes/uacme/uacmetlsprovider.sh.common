@@ -25,18 +25,20 @@ unset f
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  ln -sf \"${rbase}\" \"${ridir}/bin/${rbase}-${rprovider}\"
-  ln -sf \"ualpn\" \"${ridir}/bin/ualpn-${rprovider}\"
-  \$(\${CC} -dumpmachine)-strip \"${ridir}/bin/${rbase}\" \"${ridir}/bin/ualpn\"
-  cwmkdir \"${ridir}/share/man/man1\"
-  cwmkdir \"${ridir}/share/doc/txt\"
-  cwmkdir \"${ridir}/share/doc/html\"
+  ln -sf \"${rbase}\" \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf \"${rbase}\" \"\$(cwidir_${rname})/bin/${rbase}-${rprovider}\"
+  ln -sf \"ualpn\" \"\$(cwidir_${rname})/bin/ualpn${rprovider}\"
+  ln -sf \"ualpn\" \"\$(cwidir_${rname})/bin/ualpn-${rprovider}\"
+  \$(\${CC} -dumpmachine)-strip \"\$(cwidir_${rname})/bin/${rbase}\" \"\$(cwidir_${rname})/bin/ualpn\"
+  cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
+  cwmkdir \"\$(cwidir_${rname})/share/doc/txt\"
+  cwmkdir \"\$(cwidir_${rname})/share/doc/html\"
   for p in uacme ualpn ; do
-    install -m 644 \${p}.1 \"${ridir}/share/man/man1/\${p}.1\"
-    install -m 644 \${p}.1.txt \"${ridir}/share/doc/txt/\${p}.1.txt\"
-    install -m 644 docs/\${p}.html \"${ridir}/share/doc/html/\${p}.html\"
+    install -m 644 \${p}.1 \"\$(cwidir_${rname})/share/man/man1/\${p}.1\"
+    install -m 644 \${p}.1.txt \"\$(cwidir_${rname})/share/doc/txt/\${p}.1.txt\"
+    install -m 644 docs/\${p}.html \"\$(cwidir_${rname})/share/doc/html/\${p}.html\"
   done
   unset p
   popd >/dev/null 2>&1

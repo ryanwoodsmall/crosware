@@ -5,7 +5,7 @@ rreqs="make curl${rprovider} ${rprovider} libtasn1 libunistring nettle gmp nghtt
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/curl${rprovider}/current/devbin:\${PATH}\" \
     ./configure \
       ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \

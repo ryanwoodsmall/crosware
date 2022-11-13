@@ -5,7 +5,7 @@ rreqs="make curl${rprovider} ${rprovider} nghttp2 zlib libssh2mbedtls pkgconfig"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/curl${rprovider}/current/devbin:\${PATH}\" \
     ./configure \
       ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
@@ -14,12 +14,15 @@ function cwconfigure_${rname}() {
       --with-${rprovider}=\"${cwsw}/${rprovider}/current\" \
       --without-openssl \
       --without-gnutls \
+        CC=\"\${CC} -g0 -Os -Wl,-s\" \
+        CXX=\"\${CXX} -g0 -Os -Wl,-s\" \
+        CFLAGS=\"\${CFLAGS} -g0 -Os -Wl,-s\" \
+        CXXFLAGS=\"\${CXXFLAGS} -g0 -Os -Wl,-s\" \
         CPPFLAGS=\"\$(echo -I${cwsw}/{curl${rprovider},zlib,nghttp2,libssh2mbedtls,${rprovider}}/current/include)\" \
-        LDFLAGS=\"\$(echo -L${cwsw}/{curl${rprovider},zlib,nghttp2,libssh2mbedtls,${rprovider}}/current/lib) -static\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{curl${rprovider},zlib,nghttp2,libssh2mbedtls,${rprovider}}/current/lib) -static -s\" \
         LIBS='-lcurl -latomic -lssh2 -lnghttp2 -lz -lmbedx509 -lmbedtls -lmbedcrypto -static' \
         PKG_CONFIG=\"${cwsw}/pkgconfig/current/bin/pkg-config\" \
-        PKG_CONFIG_LIBDIR= \
-        PKG_CONFIG_PATH=
+        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{curl${rprovider},zlib,nghttp2,libssh2mbedtls,${rprovider}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd >/dev/null 2>&1
 }
 "
