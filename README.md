@@ -993,6 +993,9 @@ wc -l /tmp/astbuild.out
       --disable-shared-library \
       --build-targets=static,cli
     ```
+- bpf stuff
+  - bcc (https://github.com/iovisor/bcc)
+  - libbpf (https://github.com/libbpf/libbpf)
 - bpkg (http://www.bpkg.sh/ and https://github.com/bpkg/bpkg - bash package manager)
 - brogue stuff
   - brogue (https://github.com/tsadok/brogue)
