@@ -27,7 +27,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://download.lighttpd.net/${rname}/releases-${rver%.*}.x/${rfile}"
 rsha256="7e04d767f51a8d824b32e2483ef2950982920d427d1272ef4667f49d6f89f358"
-rreqs="make zlib bzip2 pcre2 mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr brotli zstd xxhash lua54"
+rreqs="make zlib bzip2 pcre2 mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr brotli zstd xxhash lua54 netbsdcurses readlinenetbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
