@@ -24,6 +24,7 @@ if [[ ${libssh2provider} =~ libssh2libgcrypt ]] ; then
   rreqs="${rreqs} libgpgerror libgcrypt libssh2libgcrypt"
 elif [[ ${libssh2provider} =~ libssh2mbedtls ]] ; then
   rreqs="${rreqs} libssh2mbedtls"
+  rreqs="${rreqs// make / bootstrapmake }"
 fi
 
 . "${cwrecipe}/common.sh"
