@@ -5,7 +5,7 @@ rfile="$(cwfile_nginx)"
 rdlfile="$(cwdlfile_nginx)"
 rurl="$(cwurl_nginx)"
 rsha256="$(cwsha256_nginx)"
-rreqs="make slibtool pcre2"
+rreqs="make slibtool pcre2 libressl"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -13,7 +13,6 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
-  cwfetch_libressl
   cwfetch_pcre2
   cwfetch_zlib
   cwfetch_njs
@@ -23,7 +22,6 @@ function cwfetch_${rname}() {
 eval "
 function cwextract_${rname}() {
   cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
-  cwextract \"\$(cwdlfile_libressl)\" \"\$(cwbdir_${rname})\"
   cwextract \"\$(cwdlfile_pcre2)\" \"\$(cwbdir_${rname})\"
   cwextract \"\$(cwdlfile_zlib)\" \"\$(cwbdir_${rname})\"
   cwextract \"\$(cwdlfile_njs)\" \"\$(cwbdir_${rname})\"
@@ -33,20 +31,11 @@ function cwextract_${rname}() {
 eval "
 function cwinstall_${rname}_libressl() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwdir_libressl)\"
   cd \"\$(cwdir_libressl)\"
-  ./configure \
-    ${cwconfigurelibopts} \
-    --prefix=\"\$(cwbdir_${rname})/\$(cwdir_libressl)/.openssl\" \
-    --disable-asm \
-    --enable-nc \
-    --with-openssldir=\"${cwetc}/libressl\" \
-    --with-pic \
-      CFLAGS=\"\${CFLAGS} -g0 -Os -Wl,-s\" \
-      LDFLAGS='-static -s' \
-      CPPFLAGS=
-  make -j${cwmakejobs}
-  make install_sw
+  ln -sf \"${cwsw}/libressl/current\" .openssl
   echo | tee config Makefile
+  chmod 755 config
   echo all: >> Makefile 
   echo clean: >> Makefile 
   echo install_sw: >> Makefile 
@@ -107,10 +96,6 @@ function cwmakeinstall_${rname}() {
   make install ${rlibtool} CC=\"\${CC}\" CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
   \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/sbin/${rname%libressl}\"
   ln -sf \"${rname%libressl}\" \"\$(cwidir_${rname})/sbin/${rname}\"
-  for p in \$(find \$(cwdir_libressl)/.openssl/bin/ -type f) ; do
-    install -m 755 \${p} \"\$(cwidir_${rname})/sbin/${rname}-\$(basename \${p})\"
-  done
-  unset p
   popd >/dev/null 2>&1
 }
 "
