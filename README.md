@@ -399,7 +399,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - does _not_ work on i686
   - architecture naming conventions: https://github.com/docker-library/official-images#architectures-other-than-amd64
 - dropbear (https://matt.ucc.asn.au/dropbear/dropbear.html and https://dropbear.nl/ - zlib, lsh sftp-server - tcp port 2222)
-  - dropbearminimal (zlibng - tcp port 22222)
+  - dropbearminimal (zlib - tcp port 22222)
 - dtach (https://github.com/crigler/dtach and http://dtach.sourceforge.net/ - simpler detachable screenalike)
 - duktape (http://duktape.org/ and https://github.com/svaarala/duktape)
 - dvtm (https://www.brain-dump.org/projects/dvtm/ and https://github.com/martanne/dvtm/)
@@ -554,7 +554,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libxml2
 - libxo (https://github.com/Juniper/libxo and http://juniper.github.io/libxo/libxo-manual.html - html/json/xml output lib and xo cli)
 - libxslt
-- libz (sortix, zlib fork https://sortix.org/libz/)
+- libz (sortix, zlib fork https://sortix.org/libz/ - static and shared libs for compatibility with alpine/musl bins)
 - lighttpd (https://www.lighttpd.net/ - mbedtls - ssl/tls, webdav support)
   - lighttpdminimal (zlib, pcre2, libbsd - not tls, webdav, etc.)
 - linenoise (https://github.com/antirez/linenoise)
@@ -675,7 +675,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - see netcatopenbbsd for bsd netcat as packaged by debian
   - see libressl for tls-enabled `nc` command
 - openssh (openssl, netbsdcurses, libedit, zlib)
-  - opensshminimal (no openssl, built-in auth/key/cipher/mac/... only, netbsdcurses, libedit, zlibng)
+  - opensshminimal (no openssl, built-in auth/key/cipher/mac/... only, netbsdcurses, libedit, zlib)
   - opensshlibressl (libressl, netbsdcurses, libedit, zlib)
   - opensshwolfssl (patches from wolfssl osp project - netbsdcurses, libedit, zlib)
 - openssl
@@ -811,8 +811,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
     - tinycurl772openssl (openssl, libssh2, zlib, nghttp2)
   - babycurl (mbedtls, libssh2, zlib)
   - babycurlwolfssl (wolfssl, libssh2, zlib)
-  - picocurl (bearssl, zlibng)
-    - picocurlmbedtls (mbedtls, zlibng)
+  - picocurl (bearssl, zlib)
+    - picocurlmbedtls (mbedtls, zlib, libssh2)
 - tinyemu (https://bellard.org/tinyemu/ - risc-v 32/64, risc-v 128 on x86_64/aarch64, x86 w/kvm on x86_64/i686; openssl/curl support, no sdl)
   - tinyemulibressl (libressl/curl, no sdl)
 - tinyproxy (https://tinyproxy.github.io/ and https://github.com/tinyproxy/tinyproxy)
