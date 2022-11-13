@@ -19,24 +19,25 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/pkgconfig/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
+      --disable-mbedtls \
       --enable-openssl \
       --without-systemd \
-        CPPFLAGS=\"\$(echo -I${cwsw}/{libressl,libconfuse,zlib}/current/include)\" \
-        LDFLAGS=\"\$(echo -L${cwsw}/{libressl,libconfuse,zlib}/current/lib) -static\" \
-        PKG_CONFIG_LIBDIR=\"\$(echo ${cwsw}/{libressl,libconfuse,zlib}/current/lib/pkgconfig | tr ' ' ':')\" \
-        PKG_CONFIG_PATH=\"\$(echo ${cwsw}/{libressl,libconfuse,zlib}/current/lib/pkgconfig | tr ' ' ':')\"
+        CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  ln -sf \"${rname%%libressl}\" \"${ridir}/sbin/${rname%%libressl}-${rname##inadyn}\"
+  ln -sf \"${rname%%libressl}\" \"\$(cwidir_${rname})/sbin/${rname}\"
+  ln -sf \"${rname%%libressl}\" \"\$(cwidir_${rname})/sbin/${rname%%libressl}-${rname##inadyn}\"
   popd >/dev/null 2>&1
 }
 "

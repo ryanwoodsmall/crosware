@@ -19,14 +19,15 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/pkgconfig/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
+      --disable-mbedtls \
+      --disable-openssl \
       --without-systemd \
-        CPPFLAGS=\"\$(echo -I${cwsw}/{gnutls,libtasn1,libunistring,nettle,gmp,libconfuse,zlib}/current/include)\" \
-        LDFLAGS=\"\$(echo -L${cwsw}/{gnutls,libtasn1,libunistring,nettle,gmp,libconfuse,zlib}/current/lib) -static\" \
-        PKG_CONFIG_LIBDIR=\"\$(echo ${cwsw}/{gnutls,libtasn1,libunistring,nettle,gmp,libconfuse,zlib}/current/lib/pkgconfig | tr ' ' ':')\" \
-        PKG_CONFIG_PATH=\"\$(echo ${cwsw}/{gnutls,libtasn1,libunistring,nettle,gmp,libconfuse,zlib}/current/lib/pkgconfig | tr ' ' ':')\" \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lz -lgnutls -ltasn1 -lunistring -lhogweed -lgmp -lnettle -static'
   popd >/dev/null 2>&1
 }
@@ -34,9 +35,10 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  ln -sf \"${rname%%gnutls}\" \"${ridir}/sbin/${rname%%gnutls}-${rname##inadyn}\"
+  ln -sf \"${rname%%gnutls}\" \"\$(cwidir_${rname})/sbin/${rname}\"
+  ln -sf \"${rname%%gnutls}\" \"\$(cwidir_${rname})/sbin/${rname%%gnutls}-${rname##inadyn}\"
   popd >/dev/null 2>&1
 }
 "
