@@ -74,6 +74,8 @@ server.modules += ("mod_mbedtls")
 }
 
 server.modules += ("mod_status")
+status.config-url = "/server-config"
+status.statistics-url = "/server-statistics"
 status.status-url = "/server-status"
 
 server.modules += ("mod_alias")
