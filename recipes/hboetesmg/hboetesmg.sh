@@ -3,18 +3,20 @@
 #
 
 rname="hboetesmg"
-rver="20220614"
+rver="20221112"
 rdir="${rname#hboetes}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/${rname%mg}/${rname#hboetes}/archive/refs/tags/${rfile}"
-rsha256="d3bc16baba82457c4f60ecd258762ee2ed848064f79729fe92e29bfd181af121"
+rsha256="eeb4181fdb6f2bd3f9b5a3c8ccc5b71fbcf9c7f4a805a2f1858334359d44b545"
 rreqs="make netbsdcurses pkgconfig libbsd"
 
 . "${cwrecipe}/common.sh"
 
+cwstubfunc "cwmake_${rname}"
+
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   local p=\"${cwsw}/pkgconfig/current/bin/pkg-config\"
   cat GNUmakefile > GNUmakefile.ORIG
   sed -i '/CURSES_LIBS:=/s|=.*|=-L${cwsw}/netbsdcurses/current/lib -lcurses -lterminfo -static|g' GNUmakefile
@@ -25,14 +27,8 @@ function cwconfigure_${rname}() {
 "
 
 eval "
-function cwmake_${rname}() {
-  true
-}
-"
-
-eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   local p=\"${cwsw}/pkgconfig/current/bin/pkg-config\"
   local m='mg'
   local n=\"${rname%mg}\"
@@ -40,7 +36,7 @@ function cwmakeinstall_${rname}() {
   make -f GNUmakefile \
     clean \
     install-strip \
-      prefix=\"${ridir}\" \
+      prefix=\"\$(cwidir_${rname})\" \
       CC=\"\${CC} -I${cwsw}/netbsdcurses/current/include \$(\${p} --cflags libbsd-overlay) -DHAVE_PTY_H\" \
       CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
       INSTALL=install \
@@ -48,9 +44,9 @@ function cwmakeinstall_${rname}() {
       PKG_CONFIG=\"\${p}\" \
       STATIC=yesplease \
       STRIP=\"\$(\${CC} -dumpmachine)-strip\"
-  ln -sf \"\${f}\" \"${ridir}/bin/${rname}\"
-  ln -sf \"\${f}\" \"${ridir}/bin/\${m}-\${n}\"
-  ln -sf \"\${f}\" \"${ridir}/bin/\${n}-\${m}\"
+  ln -sf \"\${f}\" \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf \"\${f}\" \"\$(cwidir_${rname})/bin/\${m}-\${n}\"
+  ln -sf \"\${f}\" \"\$(cwidir_${rname})/bin/\${n}-\${m}\"
   popd >/dev/null 2>&1
 }
 "
