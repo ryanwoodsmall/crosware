@@ -415,6 +415,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - entr (http://entrproject.org/ and https://github.com/eradman/entr)
 - es (https://github.com/wryun/es-shell - extensible shell, descended from plan9/rc, with scheme/lisp/other functional programming additions)
 - etcd (https://etcd.io/ and https://github.com/etcd-io/etcd)
+- ethtool (https://mirrors.edge.kernel.org/pub/software/network/ethtool/)
 - expat
 - fetchfreebsd (https://github.com/jrmarino/fetch-freebsd - freebsd fetch program/fetch.h header/libfetch.a lib, openssl, custom compilation instead of cmake)
   - fetchfreebsdlibressl (same with libressl)
