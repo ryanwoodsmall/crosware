@@ -9,9 +9,7 @@
 #     autoreconf -fiv .
 #     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts}
 #
-# XXX - add -F to not page on <$LINES?
 # XXX - add -I to search case insensitively?
-# XXX - add -R for default pager?
 # XXX - add -X to leave content on screen after exit?
 #
 
@@ -42,8 +40,9 @@ function cwconfigure_${rname}() {
 eval "
 function cwgenprofd_${rname}() {
   echo 'prepend_path \"${rtdir}/current/bin\"' > \"${rprof}\"
-  echo 'export PAGER=\"less -Q -L\"' >> \"${rprof}\"
-  echo 'export MANPAGER=\"less -R -Q -L\"' >> \"${rprof}\"
-  echo 'alias less=\"less -Q -L\"' >> \"${rprof}\"
+  echo 'export LESS=\"-F -L -Q -R\"' >> \"${rprof}\"
+  echo 'export PAGER=\"less \${LESS}\"' >> \"${rprof}\"
+  echo 'export MANPAGER=\"less \${LESS}\"' >> \"${rprof}\"
+  echo 'alias less=\"less \${LESS}\"' >> \"${rprof}\"
 }
 "

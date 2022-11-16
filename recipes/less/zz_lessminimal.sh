@@ -33,8 +33,9 @@ function cwgenprofd_${rname}() {
   echo -n > \"${rprof}\"
   echo 'prepend_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
   echo 'prepend_path \"${cwsw}/${rname%minimal}/current/bin\"' >> \"${rprof}\"
-  echo 'export PAGER=\"less -Q -L\"' >> \"${rprof}\"
-  echo 'export MANPAGER=\"less -R -Q -L\"' >> \"${rprof}\"
-  echo 'alias less=\"less -Q -L\"' >> \"${rprof}\"
+  echo 'export LESS=\"-F -L -Q -R\"' >> \"${rprof}\"
+  echo 'export PAGER=\"less \${LESS}\"' >> \"${rprof}\"
+  echo 'export MANPAGER=\"less \${LESS}\"' >> \"${rprof}\"
+  echo 'alias less=\"less \${LESS}\"' >> \"${rprof}\"
 }
 "
