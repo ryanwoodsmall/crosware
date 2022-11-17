@@ -1055,6 +1055,8 @@ wc -l /tmp/astbuild.out
   - cake (https://github.com/thradams/cake - c23 fronted, may be able to compile newer C to c99/c89/...?)
   - chibicc (https://github.com/rui314/chibicc)
   - compcert (https://github.com/AbsInt/CompCert and https://compcert.org - formally verified c compiler)
+  - cparse (https://github.com/jafarlihi/cparse)
+    - clex (https://github.com/jafarlihi/clex)
   - cproc (https://git.sr.ht/~mcf/cproc and https://github.com/michaelforney/cproc)
   - gofrontend (https://github.com/golang/gofrontend - go frontend for gcc? in c? not sure what verisons it works with?)
   - kefir (https://github.com/protopopov1122/kefir - c17 compiler from scratch)
