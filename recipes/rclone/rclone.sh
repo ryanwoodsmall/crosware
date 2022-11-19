@@ -1,9 +1,9 @@
 rname="rclone"
-rver="1.60.0"
+rver="1.60.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="357ee8bb1c1589d9640f1eb87ffeb9dbe8bc7ea6f33f90f56df142515a32f4f2"
+rsha256="b0037124c04fd1c31a1d9ae1c80e25555da3a22d7ab1ae714ed2c02247fbdac5"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
