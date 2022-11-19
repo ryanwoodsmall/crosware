@@ -4,6 +4,7 @@
 # XXX - would require sudo? ugh?
 # XXX - if [[ ! $(stat -c '%U' $(which doas)) == root ]] ; then sudo chown root $(which doas) ; sudo chmod u+s $(which doas) ; fi
 # XXX - capture in a wrapper and call doas.real or doas.bin? hmm
+# XXX - move config to ${cwtop}/etc/opendoas/doas.conf?
 #
 
 rname="opendoas"
