@@ -286,7 +286,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - **statictoolchain** musl-cross-make static toolchain
   - now self-hosted on crosware
     - https://github.com/ryanwoodsmall/musl-misc/blob/master/musl-cross-make-confs/Makefile.arch_indep
-    - https://github.com/ryanwoodsmall/dockerfiles/blob/master/crosware/statictoolchain/files/build-statictoolchain.sh
+    - https://github.com/ryanwoodsmall/crosware/blob/master/scripts/build-statictoolchain.sh
 
 ## working recipes
 
