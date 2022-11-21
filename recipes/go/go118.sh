@@ -1,5 +1,6 @@
 rname="go118"
 rver="1.18.6"
+rdate="20220910"
 if [[ ${karch} =~ ^x86_64$ ]] ; then
   rdir="go${rver}-amd64"
   rsha256="8e26b91f26582450af8d7e649b3fd20f8e0c6f2c5bcba134e27d14b805ec624d"
@@ -16,7 +17,6 @@ elif [[ ${karch} =~ ^riscv64 ]] ; then
   rdir="go${rver}-riscv64"
   rsha256="96e52cfb3d1fdf5f71c9b65e36f1def11dfe4e577876be892d846b0ebb511e30"
 fi
-rdate="20220910"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/go-misc/releases/download/${rdate}-go1.19.1/${rfile}"
 
