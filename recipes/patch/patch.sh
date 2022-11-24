@@ -1,5 +1,4 @@
 #
-# XXX - change to bootstrapmake
 # XXX - require attr and add: --enable-xattr to configure
 #
 
@@ -9,7 +8,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="ac610bda97abe0d9f6b7c963255a11dcb196c25e337c61f94e4778d632f1d8fd"
-rreqs="make sed"
+rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
