@@ -1,25 +1,24 @@
 #
-# XXX - this is the minimal usable bash, mostly for scripting; using it interactively will probably be a very bad time
-# XXX - 'termcap' package support worth it? (no, readline plus small builtin fallback gnu termcap is fine)
 # XXX - add to path at very end? or... prepend? (no, neither)
 # XXX - include a ${CW_BASH} top-level var, just use bash, otherwise check for this packages "cwbash"???
-# XXX - version number/recipe patch file/...? - requires gnu patch, so probably not since that bloats reqs
-# XXX - probably need to set rdir based on rbdir - if not patching, we'll have a base X.Y version
+# XXX - see bashtiny as well - same caveats
 #
 
 rname="bashminimal"
 rver="$(cwver_bash)"
-#rver="${rver%.*}"
 rdir="$(cwdir_bash)"
-#rdir="${rdir%.*}"
 rbdir="$(cwbdir_bash)"
 rfile="$(cwfile_bash)"
 rdlfile="$(cwdlfile_bash)"
 rurl="$(cwurl_bash)"
 rsha256="$(cwsha256_bash)"
-rreqs="bootstrapmake"
+rreqs="bootstrapmake patch"
+rpfile="${cwrecipe}/bash/bash.patches"
 
 . "${cwrecipe}/common.sh"
+
+eval "function cwfetchpatches_${rname}() { cwfetchpatches_bash ; }"
+eval "function cwpatch_${rname}() { cwpatch_bash ; }"
 
 eval "
 function cwconfigure_${rname}() {

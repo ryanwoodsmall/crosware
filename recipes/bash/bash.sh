@@ -3,14 +3,14 @@
 #
 
 rname="bash"
-rver="5.2.9"
+rver="5.2.12"
 rdir="${rname}-${rver}"
-#rbdir="${cwbuild}/${rname}-${rver%.*}"
-#rfile="${rname}-${rver%.*}.tar.gz"
-rbdir="${cwbuild}/${rname}-${rver}"
-rfile="${rname}-${rver}.tar.gz"
+rbdir="${cwbuild}/${rname}-${rver%.*}"
+rfile="${rname}-${rver%.*}.tar.gz"
+#rbdir="${cwbuild}/${rname}-${rver}"
+#rfile="${rname}-${rver}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="68d978264253bc933d692f1de195e2e5b463a3984dfb4e5504b076865f16b6dd"
+rsha256="a139c166df7ff4471c5e0733051642ee5556c1cc8a4a78f145583c5c81ab32fb"
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
 

@@ -1,16 +1,22 @@
+#
+# XXX - this is the minimal usable bash, mostly for scripting; using it interactively will probably be a very bad time
+#
+
 rname="bashtiny"
 rver="$(cwver_bash)"
-#rver="${rver%.*}"
 rdir="$(cwdir_bash)"
-#rdir="${rdir%.*}"
 rbdir="$(cwbdir_bash)"
 rfile="$(cwfile_bash)"
 rdlfile="$(cwdlfile_bash)"
 rurl="$(cwurl_bash)"
 rsha256="$(cwsha256_bash)"
-rreqs="bootstrapmake"
+rreqs="bootstrapmake patch"
+rpfile="${cwrecipe}/bash/bash.patches"
 
 . "${cwrecipe}/common.sh"
+
+eval "function cwfetchpatches_${rname}() { cwfetchpatches_bash ; }"
+eval "function cwpatch_${rname}() { cwpatch_bash ; }"
 
 eval "
 function cwconfigure_${rname}() {
