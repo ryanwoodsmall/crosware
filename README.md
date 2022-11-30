@@ -1280,6 +1280,7 @@ wc -l /tmp/astbuild.out
   - temurin (https://adoptium.net/ - eclipse; adoptium, formerly adoptopenjdk)
   - ...
 - javascript stuff
+  - bun (https://bun.sh/ and https://github.com/oven-sh/bun - javascript runtime/bundler/transpiler/packager in zig/c++/...)
   - colony-compiler (unmaintained - https://github.com/tessel/colony-compiler)
   - dukluv (https://github.com/creationix/dukluv - libuv+duktape)
   - engine262 (https://github.com/engine262/engine262 - js in js)
@@ -1294,6 +1295,7 @@ wc -l /tmp/astbuild.out
   - mininode (https://github.com/mininode/mininode - embedded node.js compat on duktape, cool not sure how mature)
   - mjs (formerly v7 - https://github.com/cesanta/mjs and https://github.com/cesanta/v7/)
   - otto (https://github.com/robertkrimen/otto - go js)
+  - rampart (https://www.rampart.dev/ and https://github.com/aflin/rampart - minimal full-stack built on duktape)
   - quad-wheel (https://code.google.com/archive/p/quad-wheel/)
   - tiny-js (https://github.com/gfwilliams/tiny-js)
 - jdbc
