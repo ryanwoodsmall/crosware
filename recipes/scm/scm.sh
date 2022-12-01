@@ -1,6 +1,9 @@
 #
 # XXX - dynamic, leave as-is for now
 # XXX - probably decouple slib/have standalone slib recipe?
+# XXX - posix/readline/curses/editline/lib/dump/regex/socket/... options?
+# XXX - editline could replace rlwrap? not sure
+# XXX - http://people.csail.mit.edu/jaffer/buildscm.html
 #
 rname="scm"
 rver="5f3-3b7"
