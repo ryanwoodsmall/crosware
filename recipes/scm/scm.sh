@@ -3,7 +3,17 @@
 # XXX - probably decouple slib/have standalone slib recipe?
 # XXX - posix/readline/curses/editline/lib/dump/regex/socket/... options?
 # XXX - editline could replace rlwrap? not sure
-# XXX - http://people.csail.mit.edu/jaffer/buildscm.html
+# XXX - build script generator? http://people.csail.mit.edu/jaffer/buildscm.html
+#
+# more detailed installation in docs:
+# - https://people.csail.mit.edu/jaffer/scm/Installing-SCM.html#Installing-SCM
+#   - https://people.csail.mit.edu/jaffer/scm/GNU-configure-and-make.html#GNU-configure-and-make
+#     - https://people.csail.mit.edu/jaffer/scm/Making-scmlit.html#Making-scmlit
+#     - https://people.csail.mit.edu/jaffer/scm/Makefile-targets.html#Makefile-targets
+#   - https://people.csail.mit.edu/jaffer/scm/Building-SCM.html#Building-SCM
+#     - https://people.csail.mit.edu/jaffer/scm/Invoking-Build.html#Invoking-Build
+#     - https://people.csail.mit.edu/jaffer/scm/Build-Options.html#Build-Options
+#     - https://people.csail.mit.edu/jaffer/scm/Compiling-and-Linking-Custom-Files.html#Compiling-and-Linking-Custom-Files
 #
 rname="scm"
 rver="5f3-3b7"
