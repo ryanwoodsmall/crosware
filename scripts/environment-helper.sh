@@ -1,4 +1,16 @@
 #!/bin/bash
+#
+# XXX - probably needs to be a list of keys?
+# - id_rsa
+# - id_ecdsa
+# - id_ed25519
+# - id_xmss
+# - id_dsa
+#
+# probably not since may require physical usb/token/... authorization:
+# - id_ecdsa_sk
+# - id_ed25519_sk
+#
 
 envscript="/tmp/transient-environment.sh"
 touch "${envscript}"
