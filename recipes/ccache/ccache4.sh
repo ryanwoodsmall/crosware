@@ -3,11 +3,11 @@
 #
 
 rname="ccache4"
-rver="4.7.3"
+rver="4.7.4"
 rdir="${rname%4}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname%4}/${rname%4}/releases/download/v${rver}/${rfile}"
-rsha256="577841df9e9d9659d58a2f4e0f6eaceb7e29816988ffb2b12390e17b109b4ac4"
+rsha256="dc283906b73bd7c461178ca472a459e9d86b5523405035921bd8204e77620264"
 rreqs="cmake make zstd"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
