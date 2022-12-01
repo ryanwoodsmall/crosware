@@ -736,6 +736,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - samurai (https://github.com/michaelforney/samurai - small ninja alternative in c)
 - sc (from debian, https://packages.debian.org/buster/sc)
 - scheme48 (http://s48.org)
+- scm (http://people.csail.mit.edu/jaffer/SCM.html and http://people.csail.mit.edu/jaffer/SLIB.html - scm scheme with slib library)
 - screen
 - sdbm (https://github.com/jaydg/sdbm - dbm/ndbm alike, updated for modern systems, with ndbm.h and libndbm.a symlinks)
 - sdkman (http://sdkman.io)
@@ -1805,12 +1806,10 @@ wc -l /tmp/astbuild.out
   - rscheme (http://www.rscheme.org/rs)
   - s7 (https://ccrma.stanford.edu/software/snd/snd/s7.html)
   - scheme2c (https://github.com/barak/scheme2c)
-  - scm (http://people.csail.mit.edu/jaffer/SCM.html)
   - sharpf (https://github.com/false-schemers/sharpF - minimalist scheme language builder)
   - sigscheme (https://github.com/uim/sigscheme)
   - siod (http://people.delphiforums.com/gjc//siod.html)
   - siof (https://github.com/false-schemers/siof - scheme in one file)
-  - slib (http://people.csail.mit.edu/jaffer/SLIB.html)
   - stalin (w/debian patches? https://github.com/barak/stalin)
   - stklos (http://www.stklos.net/)
   - tinyscheme
