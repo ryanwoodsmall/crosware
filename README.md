@@ -1828,6 +1828,7 @@ wc -l /tmp/astbuild.out
   - https://github.com/screen-editor/se
   - or http://svn.so-much-stuff.com/svn/trunk/cvs/trunk/local.d/se.d/
   - or http://web.archive.org/web/20150929083830/http://www.gifford.co.uk/~coredump/se.htm
+- seaweedfs (https://github.com/seaweedfs/seaweedfs - distributed filesystem/filer/s3/etc. in go, with a k8s csi driver)
 - sed-bin (https://github.com/lhoursquentin/sed-bin - posix sed to c??? cool)
 - selfdock (https://github.com/anordal/selfdock - container alike)
 - shells?
