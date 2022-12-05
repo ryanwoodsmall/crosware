@@ -1185,6 +1185,7 @@ wc -l /tmp/astbuild.out
 - hq (https://github.com/rbwinslow/hq)
 - http-parser (https://github.com/nodejs/http-parser - no longer active, (useful with libgit2?))
   - llhttp (https://github.com/nodejs/llhttp - continuation on a different parsing platform)
+- heirloom-ng (https://github.com/Projeto-Pindorama/heirloom-ng - updated heirloom utils with a flatter installation)
 - http servers/proxies/load balancers/etc.
   - apache (https://httpd.apache.org/ - httpd, needs apr, apr-util)
   - cherokee (http://cherokee-project.com/)
