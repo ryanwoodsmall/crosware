@@ -1173,6 +1173,7 @@ wc -l /tmp/astbuild.out
 - (go) yq (https://github.com/mikefarah/yq - yq alternative in go)
 - gpg
   - etc.
+- gplaces (https://github.com/dimkr/gplaces - terminal gemini client, based on delve (https://github.com/kieselsteini/delve) gopher client?)
 - graphviz (http://graphviz.org/)
 - gron (https://github.com/tomnomnom/gron - greppable json, in go)
   - gron.awk (https://github.com/xonixx/gron.awk - gron, in awk,,,)
@@ -1180,12 +1181,13 @@ wc -l /tmp/astbuild.out
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
 - gss (https://www.gnu.org/software/gss/)
 - gwsocket (https://github.com/allinurl/gwsocket - standalone websocket server in c)
+- hcl2json (https://github.com/tmccombs/hcl2json - does what it says on the tin)
+- heirloom-ng (https://github.com/Projeto-Pindorama/heirloom-ng - updated heirloom utils with a flatter installation)
 - hittpd (https://github.com/leahneukirchen/hittpd - small http server with http-parser library)
 - hoedown (markdown lib - https://github.com/hoedown/hoedown)
 - hq (https://github.com/rbwinslow/hq)
 - http-parser (https://github.com/nodejs/http-parser - no longer active, (useful with libgit2?))
   - llhttp (https://github.com/nodejs/llhttp - continuation on a different parsing platform)
-- heirloom-ng (https://github.com/Projeto-Pindorama/heirloom-ng - updated heirloom utils with a flatter installation)
 - http servers/proxies/load balancers/etc.
   - apache (https://httpd.apache.org/ - httpd, needs apr, apr-util)
   - cherokee (http://cherokee-project.com/)
