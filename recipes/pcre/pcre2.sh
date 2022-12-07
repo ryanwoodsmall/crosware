@@ -1,9 +1,9 @@
 rname="pcre2"
-rver="10.40"
+rver="10.41"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
-rurl="https://github.com/PhilipHazel/${rname}/releases/download/${rname}-${rver}/${rfile}"
-rsha256="14e4b83c4783933dc17e964318e6324f7cae1bc75d8f3c79bc6969f00c159d68"
+rurl="https://github.com/PCRE2Project/${rname}/releases/download/${rname}-${rver}/${rfile}"
+rsha256="0f78cebd3e28e346475fb92e95fe9999945b4cbaad5f3b42aca47b887fb53308"
 rreqs="make zlib bzip2"
 
 . "${cwrecipe}/common.sh"
@@ -11,7 +11,7 @@ rreqs="make zlib bzip2"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-pcre2test-lib{edit,readline} \
     --enable-pcre2-8 \

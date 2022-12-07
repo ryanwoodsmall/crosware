@@ -11,7 +11,7 @@ rreqs="make zlib bzip2 slibtool"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-pcretest-lib{edit,readline} \
     --enable-pcre8 \
