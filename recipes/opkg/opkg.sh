@@ -36,8 +36,10 @@ function cwconfigure_${rname}() {
       --enable-{xz,bzip2,lz4,zstd,sha256,curl,ssl-curl,gpg} \
       --with-static-libopkg \
       --without-libsolv \
+        CFLAGS=\"\${CFLAGS} -g0 -Wl,-s -Os\" \
+        CXXFLAGS=\"\${CXXFLAGS} -g0 -Wl,-s -Os\" \
         CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
-        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lassuan'
   popd >/dev/null 2>&1
