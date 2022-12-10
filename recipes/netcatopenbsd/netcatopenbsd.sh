@@ -6,11 +6,11 @@
 #
 
 rname="netcatopenbsd"
-rver="1.203-2"
+rver="1.219-1"
 rdir="netcat-openbsd-debian-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://salsa.debian.org/debian/netcat-openbsd/-/archive/debian/${rver}/${rfile}"
-rsha256="ef58398dbeb2ab290e30b45870e8967c8a1484ce5092daaad8c68ca2e0a9321a"
+rsha256="505c99159dc90a90a4cfcec964c16c9f9963a0826847588257760371f32358e9"
 rreqs="make libbsd pkgconfig libmd"
 
 . "${cwrecipe}/common.sh"
@@ -24,7 +24,7 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   for p in \$(cat debian/patches/series) ; do
     patch -p1 < debian/patches/\${p}
   done
@@ -37,7 +37,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/pkgconfig/current/bin:\${PATH}\" \
     \${CC} -o ${rname} base64.c netcat.c atomicio.c socks.c \$(pkg-config --cflags libbsd) \$(pkg-config --libs libbsd) -L${cwsw}/libmd/current/lib -lmd -static
   \$(\${CC} -dumpmachine)-strip --strip-all ${rname}
@@ -47,17 +47,17 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/bin\"
-  cwmkdir \"${ridir}/share/man/man1\"
-  install -m 0755 ${rname} \"${ridir}/bin/${rname}\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/netcat-openbsd-debian\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/netcat-openbsd\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/nc\"
-  install -m 0644 nc.1 \"${ridir}/share/man/man1/${rname}.1\"
-  ln -sf ${rname}.1 \"${ridir}/share/man/man1/netcat-openbsd-debian.1\"
-  ln -sf ${rname}.1 \"${ridir}/share/man/man1/netcat-openbsd.1\"
-  ln -sf ${rname}.1 \"${ridir}/share/man/man1/nc.1\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
+  install -m 0755 ${rname} \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/netcat-openbsd-debian\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/netcat-openbsd\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/nc\"
+  install -m 0644 nc.1 \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
+  ln -sf ${rname}.1 \"\$(cwidir_${rname})/share/man/man1/netcat-openbsd-debian.1\"
+  ln -sf ${rname}.1 \"\$(cwidir_${rname})/share/man/man1/netcat-openbsd.1\"
+  ln -sf ${rname}.1 \"\$(cwidir_${rname})/share/man/man1/nc.1\"
   popd >/dev/null 2>&1
 }
 "
