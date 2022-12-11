@@ -1,9 +1,9 @@
 rname="unrar"
-rver="6.1.7"
+rver="6.2.2"
 rdir="${rname}"
 rfile="${rname}src-${rver}.tar.gz"
 rurl="https://www.rarlab.com/rar/${rfile}"
-rsha256="de75b6136958173fdfc530d38a0145b72342cf0d3842bf7bb120d336602d88ed"
+rsha256="477d6ca7e246caec5412cc83b36c15a4ac837726a892df022919800129107cd5"
 rreqs="make"
 ridir="${cwsw}/${rname}/${rname}-${rver}"
 
@@ -11,10 +11,10 @@ ridir="${cwsw}/${rname}/${rname}-${rver}"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cp makefile{,.ORIG}
   sed -i \"/^CXX=/s#^CXX=.*#CXX=\${CXX}#g\" makefile
-  sed -i \"/^DESTDIR=/s#^DESTDIR=.*#DESTDIR=${ridir}#g\" makefile
+  sed -i \"/^DESTDIR=/s#^DESTDIR=.*#DESTDIR=\$(cwidir_${rname})#g\" makefile
   sed -i '/^CXXFLAGS=/s/$/ -Wl,-static -fPIC/g' makefile
   sed -i '/^LDFLAGS=/s/$/ -static/g' makefile
   sed -i 's/\$(CPPFLAGS)//g' makefile
