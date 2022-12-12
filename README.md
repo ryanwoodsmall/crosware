@@ -1875,6 +1875,7 @@ wc -l /tmp/astbuild.out
 - sparse (https://sparse.wiki.kernel.org/index.php/Main_Page)
 - splint (https://en.wikipedia.org/wiki/Splint_(programming_tool))
 - spm (https://notabug.org/kl3/spm/ - password manager, fork of tpm)
+- sqlean (https://github.com/nalgeon/sqlean - useful additions for sqlite)
 - squashfs-tools (https://github.com/plougher/squashfs-tools/tree/master/squashfs-tools)
 - squid (http://www.squid-cache.org/ - perl, openssl/gnutls/nettle, expat/libxml2, libcap, ...)
   - wip w/config below, crashing on startup, may need dynamic perl...
