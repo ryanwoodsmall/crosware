@@ -1073,6 +1073,7 @@ wc -l /tmp/astbuild.out
   - tendra (https://bitbucket.org/asmodai/tendra/src/default/ https://en.wikipedia.org/wiki/TenDRA_Compiler)
   - wcc (https://github.com/freewilll/wcc)
   - xcc (https://github.com/tyfkda/xcc - toy C compiler for x86-64/aarch64/wasm - linux, xv6?)
+    - xv6 bits: https://github.com/tyfkda/xv6 (forked from https://github.com/swetland/xv6)
   - yet another c compiler (https://github.com/lasarus/C-Compiler)
 - cfssl (https://github.com/cloudflare/cfssl - cloudflare tls swiss army knife)
 - cgpt (google source only?)
