@@ -1380,6 +1380,7 @@ wc -l /tmp/astbuild.out
   - https://github.com/Gottox/libfetch - newer combo of netbsd/freebsd versions? no fetchReqHTTP
   - https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.8-stable - _old_ alpine port against netbsd libfetch? no fetchReqHTTP
 - libffcall (https://www.gnu.org/software/libffcall/)
+- libfixposix (https://github.com/sionescu/libfixposix - common posix wrappers, used by jruby, which bundles glibc build of such - replace?)
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
 - libhdate (https://sourceforge.net/projects/libhdate/ - hebrew calendar w/hcal and hdate programs with sunrise/sunset/etc. info)
 - libhv (https://github.com/ithewei/libhv - c++ network library with some example programs, support for curl/openssl/gnutls/mbedtls/nghttp2)
