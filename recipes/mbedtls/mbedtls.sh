@@ -1,5 +1,4 @@
 #
-# XXX - alpine still tracking 2.16.x
 # XXX - is threading right?
 #  see alpine: https://git.alpinelinux.org/aports/tree/main/mbedtls/APKBUILD
 # XXX - generate a self-signed cert for like localhost?
@@ -21,11 +20,11 @@
 #
 
 rname="mbedtls"
-rver="2.28.1"
+rver="2.28.2"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/Mbed-TLS/${rname}/archive/refs/tags/${rfile}"
-rsha256="6797a7b6483ef589deeab8d33d401ed235d7be25eeecda1be8ddfed406d40ff4"
+rsha256="bc55232bf71fd66045122ba9050a29ea7cb2e8f99b064a9e6334a82f715881a0"
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
 
