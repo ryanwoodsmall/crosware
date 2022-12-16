@@ -110,13 +110,17 @@ A few user environment variables are available to control how crosware checks it
 Alpine (https://alpinelinux.org/) uses musl libc (http://musl-libc.org) and as such cannot use the Zulu JDK as distributed. To bootstrap using the system-supplied OpenJDK from Alpine repos:
 
 ```shell
+# as above, make sure /usr/local is writable by the primary user/group you'll be using...
+# this assumes you're using the default busybox ash shell, and running apk as root...
 export CW_EXT_JAVA=true
 apk update
 apk upgrade
-apk add bash curl openjdk8
+apk add bash curl openjdk11
 cd /tmp
 curl -kLO https://raw.githubusercontent.com/ryanwoodsmall/crosware/master/bin/crosware
 bash crosware bootstrap
+# or, using bash process substitution...
+#   bash -c 'export CW_EXT_JAVA=true ; bash <(curl -kLs https://raw.githubusercontent.com/ryanwoodsmall/crosware/master/bin/crosware) bootstrap'
 ```
 
 Make sure the environment variable ```CW_EXT_JAVA``` is set to **true** (or just something other than **false**) to use system Java. Please note that ```/usr/local/crosware/etc/profile``` contains bashisms, and does not work on BusyBox ash, so set your ```SHELL``` accordingly.
