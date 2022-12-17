@@ -873,7 +873,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - xvi (http://martinwguy.github.io/xvi/)
 - xxhash (https://github.com/Cyan4973/xxHash)
 - xz (https://tukaani.org/xz/)
-- yash (http://yash.osdn.jp/ and https://github.com/magicant/yash)
+- yash (http://yash.osdn.jp/ and https://github.com/magicant/yash - yash posix shell, with arrays; netbsdcurses+libedit)
+  - yashminimal (no line editing)
 - yaegi (https://github.com/traefik/yaegi - go interpreter in go!)
 - ynetd (https://github.com/johnsonjh/ynetd and https://yx7.cc/code/ - minimal tcp/inetd server)
 - zip

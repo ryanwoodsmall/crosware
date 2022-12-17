@@ -1,3 +1,6 @@
+#
+# XXX - minimal termcap variant? doesn't seem to work, looking for tinfo/terminfo/curses/ncurses{,w}
+#
 rname="yash"
 rver="2.53"
 rdir="${rname}-${rver}"
