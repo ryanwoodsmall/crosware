@@ -10,7 +10,7 @@ rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
-for f in clean fetch extract patch make makeinstall ; do
+for f in clean fetch extract patch make ; do
   eval "function cw${f}_${rname} { cw${f}_${rname%tiny} ; }"
 done
 unset f
@@ -29,6 +29,17 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"-static -s\" \
       CPPFLAGS= \
       LIBS=
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  test -e \"\$(cwidir_${rname})/bin\" && rm -f \$(cwidir_${rname})/bin/* || true
+  make install
+  mv ${rname%tiny} \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf ${rname} \"\$(cwidir_${rname})/bin/${rname%tiny}\"
   popd >/dev/null 2>&1
 }
 "
