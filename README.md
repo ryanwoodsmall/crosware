@@ -773,7 +773,9 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - stunnel (https://www.stunnel.org/ - openssl)
   - stunnellibressl (libressl build)
 - sqlite
-- sslh (https://www.rutschle.net/tech/sslh/README.html and https://www.rutschle.net/tech/sslh/README.html)
+- sslh (https://www.rutschle.net/tech/sslh/README.html and https://www.rutschle.net/tech/sslh/README.html - ssl/protocol multiplexer, with libconfig/pcre2/libcap support)
+  - sslhminimal (no libcap/capabilities support)
+  - sslhtiny (zero features, no capabilities, config file or regex support)
 - suckless
   - 9base (https://tools.suckless.org/9base)
   - sbase (https://core.suckless.org/sbase)

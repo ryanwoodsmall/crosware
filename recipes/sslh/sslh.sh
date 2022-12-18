@@ -1,5 +1,5 @@
 #
-# XXX - minimal variant without pcre/libconfig/libcap?
+# XXX - libev support for sslh-ev? not sure it's even valid anymore
 #
 
 rname="sslh"
@@ -14,15 +14,15 @@ rreqs="make pcre2 libconfig libcap libbsd pkgconfig"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i.ORIG '/^PREFIX/s,PREFIX.*,PREFIX=${ridir},g' Makefile
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  sed -i.ORIG \"/^PREFIX/s,PREFIX.*,PREFIX=\$(cwidir_${rname}),g\" Makefile
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} \
     CC=\"\${CC} \${CFLAGS} \$(pkg-config --{cflags,libs} libbsd)\" \
     ENABLE_REGEX=1 \
@@ -35,11 +35,11 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install
-  install -m 0755 ${rname}-fork \"${ridir}/sbin/\"
-  install -m 0755 ${rname}-select \"${ridir}/sbin/\"
-  ln -sf ${rname}-fork \"${ridir}/sbin/${rname}\"
+  install -m 0755 ${rname}-fork \"\$(cwidir_${rname})/sbin/\"
+  install -m 0755 ${rname}-select \"\$(cwidir_${rname})/sbin/\"
+  ln -sf ${rname}-fork \"\$(cwidir_${rname})/sbin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
