@@ -38,7 +38,7 @@ if [ ! -e "${tempbin}" ] ; then
 fi
 
 cd "${tempbin}"
-  for p in bash busybox curl dash dropbearmulti less make mk mksh neatvi rc rlwrap rsync screen sbase-box tini toybox ubase-box xz ; do
+  for p in ag bash brssl busybox curl dash dropbearmulti entr jo jq less make mk mksh neatvi pv px5g rc rlwrap rsync screen sbase-box tini toybox ubase-box x509cert xz ; do
     u="${baseurl}/${a}/${p}"
     t="${tempbin}/${p}"
     curl -fkLo "${t}" "${u}" || wget -O "${t}" "${u}"
