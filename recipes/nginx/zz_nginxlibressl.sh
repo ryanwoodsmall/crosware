@@ -36,9 +36,9 @@ function cwinstall_${rname}_libressl() {
   ln -sf \"${cwsw}/libressl/current\" .openssl
   echo | tee config Makefile
   chmod 755 config
-  echo all: >> Makefile 
-  echo clean: >> Makefile 
-  echo install_sw: >> Makefile 
+  echo all: >> Makefile
+  echo clean: >> Makefile
+  echo install_sw: >> Makefile
   popd >/dev/null 2>&1
 }
 "
