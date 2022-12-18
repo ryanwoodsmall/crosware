@@ -1553,6 +1553,7 @@ wc -l /tmp/astbuild.out
   - MANPATH settings
   - roffit (https://daniel.haxx.se/projects/roffit/)
 - mandown (https://github.com/Titor8115/mandown - man like markdown, markdown like man?)
+- maramake (https://maradns.samiam.org/maramake/ and https://github.com/samboy/maramake - pdpmake fork, used in maradns)
 - matrixssl (https://github.com/matrixssl/matrixssl)
 - mcpp (http://mcpp.sourceforge.net/)
 - md4c (https://github.com/mity/md4c - markdown parser, md2html cli, uses cmake)
