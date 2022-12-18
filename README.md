@@ -1659,9 +1659,10 @@ wc -l /tmp/astbuild.out
 - nghttp3 (https://github.com/ngtcp2/nghttp3)
 - ngtcp2 (https://github.com/ngtcp2/ngtcp2)
 - nlnetlabs stuff
-  - can be built against openssl, libevent, libsodium, nghttp2, expat, etc.
-  - nsd can be made to work with uacme for DNS-01 challenges, needed for wildcard certs
+  - ldns (https://nlnetlabs.nl/projects/ldns/about/ and https://github.com/NLnetLabs/ldns - nlnet dns library, including drill (dig) client, dane support, etc.)
   - nsd (https://github.com/NLnetLabs/nsd and https://nlnetlabs.nl/projects/nsd/about/ - authoritative dns server)
+    - nsd can be built against openssl, libevent, libsodium, nghttp2, expat, etc.
+    - nsd can be made to work with uacme for DNS-01 challenges, needed for wildcard certs
   - unbound (https://github.com/NLnetLabs/unbound and https://nlnetlabs.nl/projects/unbound/about/ - caching/recurisve dns resolver)
     - `dohclient`, `petal`, `readzone` from testcode dir all look interesting
 - nnn (https://github.com/jarun/nnn)
