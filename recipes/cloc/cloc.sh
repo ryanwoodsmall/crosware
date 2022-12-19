@@ -1,28 +1,24 @@
 rname="cloc"
-rver="1.94"
+rver="1.96"
 rdir="${rname}-${rver}"
 rfile="${rdir}.pl"
 rurl="https://github.com/AlDanial/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="093517cadb868af6968cfe0fb3a23a46ce527622acecd4518a73eace7ae5a9bc"
+rsha256="099b5223029a6d29192d527024a90ec89bee75fc19ec6f4d65a1de4e8791af3c"
 rreqs="perl"
 
 . "${cwrecipe}/common.sh"
 
-for f in extract configure make ; do
-eval "
-function cw${f}_${rname}() {
-  true
-}
-"
-done
-unset f
+cwstubfunc "cwclean_${rname}"
+cwstubfunc "cwextract_${rname}"
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwmakeinstall_${rname}() {
-  cwmkdir \"${ridir}/bin\"
-  install -m 0755 \"${rdlfile}\" \"${ridir}/bin/\"
-  ln -sf \"${rfile}\" \"${ridir}/bin/${rname}.pl\"
-  ln -sf \"${rfile}\" \"${ridir}/bin/${rname}\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  install -m 0755 \"\$(cwdlfile_${rname})\" \"\$(cwidir_${rname})/bin/\"
+  ln -sf \"\$(cwfile_${rname})\" \"\$(cwidir_${rname})/bin/${rname}.pl\"
+  ln -sf \"\$(cwfile_${rname})\" \"\$(cwidir_${rname})/bin/${rname}\"
 }
 "
 
