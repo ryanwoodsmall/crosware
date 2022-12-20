@@ -1,9 +1,9 @@
 rname="ethtool"
-rver="6.0"
+rver="6.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://mirrors.edge.kernel.org/pub/software/network/${rname}/${rfile}"
-rsha256="d5446c93de570ce68f3b1ea69dbfa12fcfd67fc19897f655d3f18231e2b818d6"
+rsha256="c41fc881ffa5a40432d2dd829eb44c64a49dee482e716baacf9262c64daa8f90"
 rreqs="make libmnl"
 
 . "${cwrecipe}/common.sh"
@@ -12,11 +12,14 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+    CC=\"\${CC} -D_GNU_SOURCE\" \
+    CXX=\"\${CXX} -D_GNU_SOURCE\" \
     MNL_CFLAGS=\"-I${cwsw}/libmnl/current/include\" \
     MNL_LIBS=\"-L${cwsw}/libmnl/current/lib -lmnl\" \
     LDFLAGS=-static \
     CPPFLAGS= \
     PKG_CONFIG_{LIBDIR,PATH}=
+  echo '#include <sys/types.h>' >> ethtool-config.h
   popd >/dev/null 2>&1
 }
 "
