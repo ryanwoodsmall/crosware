@@ -5,13 +5,13 @@
 # XXX - move to curl cacert https://curl.haxx.se/docs/caextract.html
 #
 rname="cacertificates"
-rver="20220614-r2"
+rver="20220614-r3"
 rdir="${rname}-${rver}"
 #rfile="ca-certificates-cacert-${rver}.apk"
 #rurl="https://mirrors.edge.kernel.org/alpine/v3.11/main/x86_64/${rfile}"
 rfile="ca-certificates-bundle-${rver}.apk"
 rurl="https://mirrors.edge.kernel.org/alpine/v3.17/main/x86_64/${rfile}"
-rsha256="302bb29f5d43cbd60b02aebfdbf585db9575b4371a40a8593fd13a83e93c5f6c"
+rsha256="01cb129cce730ad86860c134c1f42307df2d04eba6b9376d699d299375389f2a"
 rreqs=""
 rdlfile="${cwdl}/${rname}/${rfile}.tar.gz"
 
