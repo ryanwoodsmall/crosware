@@ -1098,6 +1098,7 @@ wc -l /tmp/astbuild.out
   - would be useful to provide gcc with glibc support for more "native" builds
   - base on centos 7? rhel 8? debian 10? ubuntu 20 lts?
   - could be used to bootstrap llvm/clang and bootstrap rust?
+- ctop (https://ctop.sh/ and https://github.com/bcicen/ctop - container top)
 - curlie (https://github.com/rs/curlie and https://curlie.io/ - curl features with httpie-alike in go)
 - cwebsocket (https://github.com/jeremyhahn/cwebsocket - c websocket client/server)
   - other cwebsocket? (https://github.com/m8rge/cwebsocket)
