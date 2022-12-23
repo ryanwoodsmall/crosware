@@ -12,11 +12,11 @@
 #
 
 rname="wolfssl"
-rver="5.5.3"
+rver="5.5.4"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="0848362b777cc424d90a7d0b2d1c0700d03cfd7c0c30a4b8452f8cf4eec679de"
+rsha256="0fede6d4d7ae7c0fe6eb519dbfe9bc22766bbdc891b37fa6dacde09e61ff2549"
 rreqs="make cacertificates configgit slibtool toybox"
 
 . "${cwrecipe}/common.sh"
@@ -48,6 +48,7 @@ function cwconfigure_${rname}() {
     --enable-bind \
     --enable-blake2 \
     --enable-blake2s \
+    --enable-brainpool \
     --enable-camellia \
     --enable-certext \
     --enable-certgen \
