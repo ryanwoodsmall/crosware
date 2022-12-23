@@ -38,14 +38,14 @@ function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
   for p in client echoserver portfwd server ; do
-    install -m 0755 \"./examples/\${p}/\${p}\" \"\$(cwidir_${rname})/bin/${rname}-\${p}\"
+    install -m 0755 \"./examples/\${p}/.libs/\${p}\" \"\$(cwidir_${rname})/bin/${rname}-\${p}\"
   done
   unset p
   ln -sf \"${rname}-client\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rname}-client\" \"\$(cwidir_${rname})/bin/${rname}-ssh\"
-  install -m 0755 ./examples/scpclient/wolfscp \"\$(cwidir_${rname})/bin/wolfscp\"
+  install -m 0755 ./examples/scpclient/.libs/wolfscp \"\$(cwidir_${rname})/bin/wolfscp\"
   ln -sf wolfscp \"\$(cwidir_${rname})/bin/${rname}-scp\"
-  install -m 0755 ./examples/sftpclient/wolfsftp \"\$(cwidir_${rname})/bin/wolfsftp\"
+  install -m 0755 ./examples/sftpclient/.libs/wolfsftp \"\$(cwidir_${rname})/bin/wolfsftp\"
   ln -sf wolfsftp \"\$(cwidir_${rname})/bin/${rname}-sftp\"
   ln -sf wolfsshd \"\$(cwidir_${rname})/bin/${rname}-sshd\"
   rm -rf \"\$(cwidir_${rname})/keys\"
