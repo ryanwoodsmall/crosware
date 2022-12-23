@@ -1090,6 +1090,7 @@ wc -l /tmp/astbuild.out
   - firm (https://pp.ipd.kit.edu/firm/ - related?)
 - cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
 - cpu (https://github.com/u-root/cpu - plan 9-like cpu - "push" local filesystem/program to remote, execute - in go, works over ssh... cool)
+- croc (https://github.com/schollz/croc and https://schollz.com/blog/croc6/ - point-to-point filesharing, with a relay)
 - cronolog (https://github.com/fordmason/cronolog)
   - maybe a fork? (https://github.com/pbiering/cronolog seems active)
   - another one? (https://github.com/FireBurn/cronolog)
