@@ -8,13 +8,13 @@ rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rsha256="4bf11693db55edb553b260127636a75f3fb31ea180616facddc47ba5d074ffe5"
-rreqs="make wolfssl configgit"
+rreqs="make wolfssl configgit slibtool"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --enable-all \
     --with-wolfssl=\"${cwsw}/wolfssl/current\" \
@@ -27,7 +27,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG '/define serverKeyRsaPemFile/s,^.*,#define serverKeyRsaPemFile \"${rtdir}/current/keys/server-key-rsa.pem\",g' wolfssh/test.h
   popd >/dev/null 2>&1
 }
@@ -35,24 +35,24 @@ function cwpatch_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
   for p in client echoserver portfwd server ; do
-    install -m 0755 \"./examples/\${p}/\${p}\" \"${ridir}/bin/${rname}-\${p}\"
+    install -m 0755 \"./examples/\${p}/\${p}\" \"\$(cwidir_${rname})/bin/${rname}-\${p}\"
   done
   unset p
-  ln -sf \"${rname}-client\" \"${ridir}/bin/${rname}\"
-  ln -sf \"${rname}-client\" \"${ridir}/bin/${rname}-ssh\"
-  install -m 0755 ./examples/scpclient/wolfscp \"${ridir}/bin/wolfscp\"
-  ln -sf wolfscp \"${ridir}/bin/${rname}-scp\"
-  install -m 0755 ./examples/sftpclient/wolfsftp \"${ridir}/bin/wolfsftp\"
-  ln -sf wolfsftp \"${ridir}/bin/${rname}-sftp\"
-  ln -sf wolfsshd \"${ridir}/bin/${rname}-sshd\"
-  rm -rf \"${ridir}/keys\"
-  mkdir -p \"${ridir}/keys\"
-  ( cd keys ; tar -cf - .) | ( cd \"${ridir}/keys/\" ; tar -xf - )
-  sed -i 's,${ridir},${rtdir}/current,g' \"${ridir}/bin/${rname}-config\"
-  sed -i 's,-lwolfssl,-L${cwsw}/wolfssl/current/lib -lwolfssl,g' \"${ridir}/bin/${rname}-config\"
+  ln -sf \"${rname}-client\" \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf \"${rname}-client\" \"\$(cwidir_${rname})/bin/${rname}-ssh\"
+  install -m 0755 ./examples/scpclient/wolfscp \"\$(cwidir_${rname})/bin/wolfscp\"
+  ln -sf wolfscp \"\$(cwidir_${rname})/bin/${rname}-scp\"
+  install -m 0755 ./examples/sftpclient/wolfsftp \"\$(cwidir_${rname})/bin/wolfsftp\"
+  ln -sf wolfsftp \"\$(cwidir_${rname})/bin/${rname}-sftp\"
+  ln -sf wolfsshd \"\$(cwidir_${rname})/bin/${rname}-sshd\"
+  rm -rf \"\$(cwidir_${rname})/keys\"
+  mkdir -p \"\$(cwidir_${rname})/keys\"
+  ( cd keys ; tar -cf - .) | ( cd \"\$(cwidir_${rname})/keys/\" ; tar -xf - )
+  sed -i \"s,\$(cwidir_${rname}),${rtdir}/current,g\" \"\$(cwidir_${rname})/bin/${rname}-config\"
+  sed -i 's,-lwolfssl,-L${cwsw}/wolfssl/current/lib -lwolfssl,g' \"\$(cwidir_${rname})/bin/${rname}-config\"
   popd >/dev/null 2>&1
 }
 "
