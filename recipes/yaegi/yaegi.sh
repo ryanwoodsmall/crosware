@@ -1,5 +1,5 @@
 #
-# XXX - needs to be rebuilt after go is updated?
+# XXX - needs to be rebuilt after go is updated!
 #
 rname="yaegi"
 rver="0.14.3"
@@ -12,15 +12,6 @@ rreqs="go cacertificates"
 . "${cwrecipe}/common.sh"
 
 cwstubfunc "cwconfigure_${rname}"
-
-# XXX - segfaults on compile/link for riscv64, problem with my go? qemu? cross-compile problem?
-if [[ ${karch} =~ ^riscv64 ]] ; then
-eval "
-function cwinstall_${rname}() {
-  cwscriptecho \"recipe ${rname} does not support architecture ${karch}\"
-}
-"
-fi
 
 eval "
 function cwmake_${rname}() {
