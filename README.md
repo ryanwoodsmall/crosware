@@ -1720,6 +1720,7 @@ wc -l /tmp/astbuild.out
   - needs libffi, libtasn1
   - configure ```--without-libffi --without-libtasn1```
 - p9 (https://github.com/hugelgupf/p9 - go 9p client/server, with p9ufs server bin)
+- pa (https://github.com/biox/pa - password manager in shell using age!)
 - parenj / parenjs
 - partcl (https://github.com/zserge/partcl and https://zserge.com/posts/tcl-interpreter/ - a small tcl interpreter)
 - pax
