@@ -1649,6 +1649,7 @@ wc -l /tmp/astbuild.out
   - fbpad (https://github.com/aligrudi/fbpad)
   - fbvnc (https://repo.or.cz/fbvnc.git)
   - troffp9 (https://github.com/aligrudi/troffp9 - plan 9 troff port)
+- neko (https://github.com/m1k1o/neko and https://neko.m1k1o.net/#/ - virtual browser/desktop in docker???)
 - neon (https://notroj.github.io/neon/ and https://github.com/notroj/neon)
 - netfilter.org stuff
   - ipset (https://www.netfilter.org/projects/ipset/)
