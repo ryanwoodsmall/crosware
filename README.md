@@ -834,6 +834,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - tnftpd (ftp://ftp.netbsd.org/pub/NetBSD/misc/tnftp/ and https://en.wikipedia.org/wiki/Tnftp - formerly lukemftp)
 - toybox (static)
 - tree (http://mama.indstate.edu/users/ice/tree/)
+  - tree1 (version 1.x, compatible with pass release 1.7.4)
 - troglobit stuff
   - editline (https://github.com/troglobit/editline)
   - inadyn (https://github.com/troglobit/inadyn - dynamic dns updater, openssl)
