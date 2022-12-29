@@ -1,7 +1,9 @@
 #
-# XXX - tree 2.x.x available, need to test against pass: http://mama.indstate.edu/users/ice/tree/changes.html
-# XXX - moving to gitlab: https://gitlab.com/OldManProgrammer/unix-tree
-# XXX - github mirror: https://github.com/Old-Man-Programmer/tree
+# XXX - tree 2.x.x available, changes: http://mama.indstate.edu/users/ice/tree/changes.html
+# XXX - pass needs a later git commit for tree 2.x compat
+# XXX - official site: http://oldmanprogrammer.net/source.php?dir=projects/tree
+# XXX - gitlab mirror: https://gitlab.com/OldManProgrammer/unix-tree
+# XXX - old/original site: http://mama.indstate.edu/users/ice/tree/
 #
 rname="tree"
 rtreever="1"

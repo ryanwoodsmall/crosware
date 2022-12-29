@@ -1,9 +1,9 @@
 rname="tree2"
 rver="2.1.0"
 rdir="${rname%2}-${rver}"
-rfile="${rdir}.tgz"
-rurl="http://mama.indstate.edu/users/ice/${rname%2}/src/${rfile}"
-rsha256="0160c535bff2b0dc6a830b9944e981e3427380f63e748da96ced7071faebabf6"
+rfile="${rver}.tar.gz"
+rurl="https://github.com/Old-Man-Programmer/${rname%2}/archive/refs/tags/${rfile}"
+rsha256="e9da64f6bbf894840b76d5fb2d37282076febbc96076fc4e833b08fe42190ad2"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
