@@ -1854,12 +1854,13 @@ wc -l /tmp/astbuild.out
 - seaweedfs (https://github.com/seaweedfs/seaweedfs - distributed filesystem/filer/s3/etc. in go, with a k8s csi driver)
 - sed-bin (https://github.com/lhoursquentin/sed-bin - posix sed to c??? cool)
 - selfdock (https://github.com/anordal/selfdock - container alike)
-- shells?
+- shells and shell stuff
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
   - ksh2020 (https://github.com/ksh2020/ksh - figure out this vs ast ksh93/forks/etc.)
   - mrsh (https://mrsh.sh/ - https://git.sr.ht/~emersion/mrsh and https://github.com/emersion/mrsh)
     - imrsh (https://git.sr.ht/~sircmpwn/imrsh - interactive mrsh)
+  - pure sh bible (https://github.com/dylanaraps/pure-sh-bible - how to do things in shell that would otherwise require external programs)
   - rc (https://github.com/siebenmann/rc - chris siebenmann's rc fork - tobold/rakitzis rc with updates)
   - scsh (https://scsh.net)
   - sh (https://github.com/mvdan/sh - shell parser/formatter in go)
