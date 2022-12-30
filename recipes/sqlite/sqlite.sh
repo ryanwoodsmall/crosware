@@ -4,11 +4,11 @@
 #
 
 rname="sqlite"
-rver="3400000"
+rver="3400100"
 rdir="${rname}-autoconf-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.sqlite.org/2022/${rfile}"
-rsha256="0333552076d2700c75352256e91c78bf5cd62491589ba0c69aed0a81868980e7"
+rsha256="2c5dea207fa508d765af1ef620b637dcb06572afa6f01f0815bd5bbf864b33d9"
 rreqs="make netbsdcurses readlinenetbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
