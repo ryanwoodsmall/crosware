@@ -1159,6 +1159,7 @@ wc -l /tmp/astbuild.out
   - firectl (https://github.com/firecracker-microvm/firectl - firecracker vm control, go)
   - firecracker-containerd (https://github.com/firecracker-microvm/firecracker-containerd)
 - firejail (https://github.com/netblue30/firejail)
+- forgejo (https://forgejo.org/ and https://codeberg.org/forgejo/forgejo - gitea fork)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
 - fq (https://github.com/wader/fq - like jq for binaries in go)
 - frontabse (http://openbsd.stanleylieber.com/frontbase - 9base fork?)
