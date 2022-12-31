@@ -1855,6 +1855,7 @@ wc -l /tmp/astbuild.out
 - seaweedfs (https://github.com/seaweedfs/seaweedfs - distributed filesystem/filer/s3/etc. in go, with a k8s csi driver)
 - sed-bin (https://github.com/lhoursquentin/sed-bin - posix sed to c??? cool)
 - selfdock (https://github.com/anordal/selfdock - container alike)
+- selfie (https://github.com/cksystemsteaching/selfie - self-hosting riscv emulator/simulator, compiler, hypervisor, ...)
 - shells and shell stuff
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
