@@ -6,7 +6,7 @@ rdlfile="$(cwdlfile_vim)"
 rurl="$(cwurl_vim)"
 rsha256=""
 rprof="${cwetcprofd}/zz_${rname}.sh"
-rreqs="bootstrapmake bashtermcap"
+rreqs="bootstrapmake bashtermcap lua libsodium"
 
 . "${cwrecipe}/common.sh"
 
@@ -28,15 +28,16 @@ function cwconfigure_${rname}() {
     --with-features=huge \
     --without-x \
     --enable-gui=no \
-    --enable-luainterp=no \
-    --disable-luainterp \
     --disable-nls \
+    --with-lua-prefix=${cwsw}/lua/current \
+    --enable-luainterp=yes \
+    --enable-libsodium \
       CFLAGS=\"\${CFLAGS} -Os -g0 -Wl,-s\" \
       CXXFLAGS=\"\${CXXFLAGS} -Os -g0 -Wl,-s\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
-      LIBS='-ltermcap' \
-      PKG_CONFIG_{LIBDIR,PATH}=
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+      LIBS='-ltermcap'
   popd >/dev/null 2>&1
 }
 "

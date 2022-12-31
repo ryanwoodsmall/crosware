@@ -31,10 +31,11 @@ function cwconfigure_${rname}() {
       --enable-gui=no \
       --with-lua-prefix=${cwsw}/lua/current \
       --enable-luainterp=yes \
-        CPPFLAGS=\"\$(echo -I${cwsw}/{lua,netbsdcurses,libsodium}/current/include)\" \
-        LDFLAGS=\"\$(echo -L${cwsw}/{lua,netbsdcurses,libsodium}/current/lib) -static\" \
-        LIBS='-lcurses -lterminfo' \
-        PKG_CONFIG_{LIBDIR,PATH}=
+      --enable-libsodium \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+        LIBS='-lcurses -lterminfo'
   popd >/dev/null 2>&1
 }
 "
