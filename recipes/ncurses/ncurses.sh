@@ -1,15 +1,16 @@
 #
 # XXX - need to maintain version symlinks for hard-coded paths to termcap/terminfo files
 # XXX - need to track current? http://invisible-mirror.net/archives/ncurses/current/
+# XXX - this needs a cleanup...
 #
 
 rname="ncurses"
-rver="6.3"
+rver="6.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="http://invisible-mirror.net/archives/${rname}/${rfile}"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="97fc51ac2b085d4cde31ef4d2c3122c21abc217e9090a43a30fc5ec21684e059"
+rsha256="6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159"
 # cmp, use toybox
 rreqs="make toybox sed pkgconfig"
 
@@ -51,7 +52,7 @@ function cwbuild_${rname}() {
         PKG_CONFIG_{LIBDIR,PATH}=\"${ridir}/lib/pkgconfig\"
   make -j${cwmakejobs}
   make install
-  for v in 6.0 6.1 6.2 ; do
+  for v in 6.0 6.1 6.2 6.3 ; do
     test -e \"${rtdir}/${rname}-\${v}\" || ln -s \"${rtdir}/current\" \"${rtdir}/${rname}-\${v}\"
   done
   unset v
