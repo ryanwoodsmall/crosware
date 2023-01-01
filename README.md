@@ -537,7 +537,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libmd (https://www.hadrons.org/software/libmd/)
 - libnl
 - liboop (https://www.lysator.liu.se/liboop/)
-- libpcap
+- libpcap (https://www.tcpdump.org/ and https://www.tcpdump.org/release/ - packet capture library)
+  - libpcap19 (older version for compatibility? with iftop? i dunno)
 - libressl (https://www.libressl.org/)
 - libretls (https://git.causal.agency/libretls/about/ - libtls from libressl on top of openssl)
 - libssh2 (openssl, zlib)
