@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.tcpdump.org/release/${rfile}"
 rsha256="db6d79d4ad03b8b15fb16c42447d093ad3520c0ec0ae3d331104dcfb1ce77560"
-rreqs="make bison flex libnl"
+rreqs="make bison flex libnl pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
@@ -18,9 +18,11 @@ function cwconfigure_${rname}() {
     ${cwconfigurelibopts} \
     --with-pcap=linux \
     --with-libnl=\"${cwsw}/libnl/current\" \
+    --enable-ipv6 \
       CPPFLAGS=\"\${CPPFLAGS}\" \
       CFLAGS=\"\${CFLAGS}\" \
-      LDFLAGS=\"\${LDFLAGS}\"
+      LDFLAGS=\"\${LDFLAGS}\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   echo '#include <limits.h>' >> config.h
   echo '#include <unistd.h>' >> config.h
   popd >/dev/null 2>&1
