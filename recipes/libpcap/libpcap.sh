@@ -16,6 +16,8 @@ function cwconfigure_${rname}() {
   ./configure \
     ${cwconfigureprefix} \
     ${cwconfigurelibopts} \
+    --disable-dbus \
+    --without-dpdk \
     --with-pcap=linux \
     --with-libnl=\"${cwsw}/libnl/current\" \
     --enable-ipv6 \
