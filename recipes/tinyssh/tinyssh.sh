@@ -2,14 +2,14 @@
 # to use with lshsftpserver:
 #   test -e ${cwtop}/etc/tinyssh/ || tinysshd-makekey ${cwtop}/etc/tinyssh/
 #   tinysshd-printkey ${cwtop}/etc/tinyssh/
-#   busybox tcpsvd 0 22222 tinysshd -v -x sftp=${cwsw}/lshsftpserver/current/sbin/sftp-server ${cwtop}/etc/tinyssh/
+#   env -i ${cwsw}/busybox/current/bin/busybox tcpsvd -vE 0.0.0.0 22222 ${cwsw}/tinyssh/current/sbin/tinysshd -v -x sftp=${cwsw}/lshsftpserver/current/sbin/sftp-server ${cwtop}/etc/tinyssh/
 #
 rname="tinyssh"
-rver="20220801"
+rver="20230101"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/janmojzis/${rname}/archive/refs/tags/${rfile}"
-rsha256="234656fc8d369608eb5d0f3a26280e0e38e2e6b134cfc610b6e24bce176acd4f"
+rsha256="74a434389dd05bf421feb6b6fab241f763b78222750d21100bd81d9ba626b28c"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
