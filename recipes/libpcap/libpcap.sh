@@ -1,9 +1,9 @@
 rname="libpcap"
-rver="1.10.1"
+rver="1.10.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.tcpdump.org/release/${rfile}"
-rsha256="ed285f4accaf05344f90975757b3dbfe772ba41d1c401c2648b7fa45b711bdd4"
+rsha256="db6d79d4ad03b8b15fb16c42447d093ad3520c0ec0ae3d331104dcfb1ce77560"
 rreqs="make bison flex libnl"
 
 . "${cwrecipe}/common.sh"
@@ -11,7 +11,7 @@ rreqs="make bison flex libnl"
 # XXX - yuck
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ln -s ${cwsw}/libnl/current/include/libnl3/netlink .
   ./configure \
     ${cwconfigureprefix} \
@@ -29,9 +29,9 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install
-  sed -i 's#/\\.libs # #g' ${ridir}/bin/pcap-config ${ridir}/lib/pkgconfig/libpcap.pc
+  sed -i 's#/\\.libs # #g' \$(cwidir_${rname})/bin/pcap-config \$(cwidir_${rname})/lib/pkgconfig/libpcap.pc
   popd >/dev/null 2>&1
 }
 "
