@@ -9,11 +9,10 @@
 #  - gnutls
 #  - nettle
 # XXX - features...
-#  - libev "no longer recommended" - https://redmine.lighttpd.net/projects/lighttpd/wiki/Server_event-handlerDetails
 #  - gdbm
 #  - memcached
 # XXX - explicitly disable stuff?
-#  - --without-{krb5,openssl,wolfssl,nettle,gnutls,nss,ldap,pam,fam,gdbm,sasl,libev}
+#  - --without-{krb5,openssl,wolfssl,nettle,gnutls,nss,ldap,pam,fam,gdbm,sasl}
 # XXX - quick/dirty md5 htdigest passwords without htdigest from apache httpd:
 #  - echo "user:realm:$(echo -n user:realm:password | md5sum | awk '{print $1}')"
 #  - need to cut the first 32 chars for the digest?
@@ -22,11 +21,11 @@
 #
 
 rname="lighttpd"
-rver="1.4.67"
+rver="1.4.68"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://download.lighttpd.net/${rname}/releases-${rver%.*}.x/${rfile}"
-rsha256="7e04d767f51a8d824b32e2483ef2950982920d427d1272ef4667f49d6f89f358"
+rsha256="e56f37ae52b63e1ada4d76ce78005affb6e56eea2f6bdb0ce17d6d36e9583384"
 rreqs="make zlib bzip2 pcre2 mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr brotli zstd xxhash lua54 netbsdcurses readlinenetbsdcurses"
 
 . "${cwrecipe}/common.sh"
