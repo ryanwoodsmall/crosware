@@ -9,6 +9,16 @@ rreqs="make openssl libconfuse pkgconfig zlib"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cat configure > configure.ORIG
+  sed -i 's,^CAFILE1=.*,CAFILE1=\"${cwtop}/etc/ssl/cert.pem\",g' configure
+  sed -i 's,^CAFILE2=.*,CAFILE2=\"${cwsw}/caextract/current/cert.pem\",g' configure
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/pkgconfig/current/bin:\${PATH}\" \

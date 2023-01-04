@@ -8,7 +8,7 @@ rreqs="make libconfuse pkgconfig zlib gnutls libtasn1 libunistring nettle gmp"
 
 . "${cwrecipe}/common.sh"
 
-for f in clean fetch extract make ; do
+for f in clean fetch extract make patch ; do
   eval "
   function cw${f}_${rname}() {
     cw${f}_${rname%%gnutls}
