@@ -1258,6 +1258,7 @@ wc -l /tmp/astbuild.out
   - ballerina (https://ballerina.io and https://github.com/ballerina-platform/ballerina-lang - included in sdkman)
   - ceylon (https://ceylon-lang.org and https://github.com/eclipse/ceylon)
   - clojure (leiningen included in sdkman)
+  - doppio (https://github.com/plasma-umass/doppio and https://plasma-umass.org/doppio-demo - java 8 jvm, in javascript)
   - ecj (separate compiler from eclipse? native code w/graal, gcj, etc.?)
   - frege (https://github.com/Frege/frege)
   - gradle (included in sdkman)
