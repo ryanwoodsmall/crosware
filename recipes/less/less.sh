@@ -40,7 +40,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwgenprofd_${rname}() {
   echo 'prepend_path \"${rtdir}/current/bin\"' > \"${rprof}\"
-  echo 'export LESS=\"-F -L -Q -R\"' >> \"${rprof}\"
+  echo 'export LESS=\"-i -F -L -Q -R\"' >> \"${rprof}\"
   echo 'export PAGER=\"less \${LESS}\"' >> \"${rprof}\"
   echo 'export MANPAGER=\"less \${LESS}\"' >> \"${rprof}\"
   echo 'alias less=\"less \${LESS}\"' >> \"${rprof}\"
