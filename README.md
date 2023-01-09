@@ -448,6 +448,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - gnupg (with ntbtls - https://gnupg.org/software/index.html)
   - gnupg1 (gnupg 1.x - older, smaller gnupg version, with fewer prereqs)
 - gnutls (https://gnutls.org/)
+  - gnutlsminimal (built against nettleminimal w/mini-gmp, openssl compat enabled)
 - gpgme (https://gnupg.org/software/gpgme/index.html - gnupg access library)
 - go
   - go recipe is latest available version
