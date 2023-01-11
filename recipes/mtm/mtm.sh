@@ -1,5 +1,10 @@
 #
+# XXX - disable -bce (back_color_erase) since old rhel<=7 don't seem to have it?
 # XXX - need second tic invocation with `env TERMINFO=${HOME}/.terminfo ...` set?
+# XXX - netbsdcurses needs /usr/share/misc/terminfo fix, then something like...
+#   test -e \"${cwsw}/netbsdcurses/current/bin/tic\" && \"${cwsw}/netbsdcurses/current/bin/tic\" -s -x ${rname}.ti || true
+# XXX - or just include mtm.ti in netbsdcurses???
+# XXX - set default terms to mtm/mtm-256color
 #
 
 rname="mtm"
@@ -14,17 +19,19 @@ rreqs="make ncurses"
 
 eval "
 function cwconfigure_${rname}() {
-  true
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  sed -i.ORIG '/screen-/s,-bce,,g' config.def.h
+  popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make \
     CC=\"\${CC}\" \
     CFLAGS=\"\${CFLAGS} \${CPPFLAGS}\" \
-    DESTDIR=\"${ridir}\" \
+    DESTDIR=\"\$(cwidir_${rname})\" \
     LIBS=\"\${LDFLAGS} -lncursesw -lutil -static\"
   popd >/dev/null 2>&1
 }
@@ -32,13 +39,14 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/bin\"
-  cwmkdir \"${ridir}/share/man/man1\"
-  cwmkdir \"${ridir}/share/terminfo\"
-  make install DESTDIR=\"${ridir}\"
-  install -m 0644 ${rname}.ti \"${ridir}/share/terminfo/${rname}.ti\"
-  \"${cwsw}/ncurses/current/bin/tic\" -s -x ${rname}.ti
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
+  cwmkdir \"\$(cwidir_${rname})/share/terminfo\"
+  make install DESTDIR=\"\$(cwidir_${rname})\"
+  install -m 0644 ${rname}.ti \"\$(cwidir_${rname})/share/terminfo/${rname}.ti\"
+  \"${cwsw}/ncurses/current/bin/tic\" -s -x ${rname}.ti || true
+  env TERMINFO=\"${cwsw}/ncurses/current/share/terminfo\" \"${cwsw}/ncurses/current/bin/tic\" -s -x ${rname}.ti || true
   popd >/dev/null 2>&1
 }
 "
