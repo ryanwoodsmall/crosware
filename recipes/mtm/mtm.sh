@@ -1,4 +1,5 @@
 #
+# XXX - UGH TERMINFO TERMCAP TERMINALS $TERM UGH
 # XXX - ugh, just use xterm-color for now!
 # XXX - disable -bce (back_color_erase) since old rhel<=7 don't seem to have it?
 # XXX - netbsdcurses needs /usr/share/misc/terminfo fix, then something like...
@@ -17,15 +18,17 @@ rreqs="make ncurses"
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  cat config.def.h > config.def.h.ORIG
-  sed -i 's,screen-256color-bce,xterm-color,g' config.def.h
-  sed -i 's,screen-bce,xterm-color,g' config.def.h
-  popd >/dev/null 2>&1
-}
-"
+cwstubfunc "cwconfigure_${rname}"
+
+#eval "
+#function cwconfigure_${rname}() {
+#  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+#  cat config.def.h > config.def.h.ORIG
+#  sed -i 's,screen-256color-bce,xterm-color,g' config.def.h
+#  sed -i 's,screen-bce,xterm-color,g' config.def.h
+#  popd >/dev/null 2>&1
+#}
+#"
 
 eval "
 function cwmake_${rname}() {
