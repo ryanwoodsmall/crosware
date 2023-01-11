@@ -12,7 +12,7 @@ rreqs="make netbsdcurses sed"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} --enable-colors256 \
     CPPFLAGS=\"-I${cwsw}/libevent/current/include -I${cwsw}/netbsdcurses/current/include\" \
     LDFLAGS=\"-L${cwsw}/libevent/current/lib -L${cwsw}/netbsdcurses/current/lib -static\" \
@@ -23,12 +23,14 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install
   echo 'hardstatus alwayslastline \"%Lw\"' >> etc/screenrc
-  cwmkdir \"${ridir}/etc\"
-  install -m 0644 etc/screenrc \"${ridir}/etc/screenrc\"
-  install -m 0644 etc/etcscreenrc \"${ridir}/etc/etcscreenrc\"
+  cwmkdir \"\$(cwidir_${rname})/etc\"
+  install -m 0644 etc/screenrc \"\$(cwidir_${rname})/etc/screenrc\"
+  install -m 0644 etc/etcscreenrc \"\$(cwidir_${rname})/etc/etcscreenrc\"
+  cwmkdir \"\$(cwidir_${rname})/share/terminfo\"
+  install -m 0644 terminfo/screeninfo.src \"\$(cwidir_${rname})/share/terminfo/screeninfo.src\"
   popd >/dev/null 2>&1
 }
 "
