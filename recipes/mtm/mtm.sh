@@ -1,9 +1,10 @@
 #
+# XXX - ugh, just use xterm-color for now!
 # XXX - disable -bce (back_color_erase) since old rhel<=7 don't seem to have it?
 # XXX - netbsdcurses needs /usr/share/misc/terminfo fix, then something like...
 #   test -e \"${cwsw}/netbsdcurses/current/bin/tic\" && \"${cwsw}/netbsdcurses/current/bin/tic\" -s -x ${rname}.ti || true
-# XXX - or just include mtm.ti in netbsdcurses???
-# XXX - set default terms to mtm/mtm-256color
+# XXX - or just include mtm.ti in netbsdcurses?
+# XXX - set default terms to mtm/mtm-256color?
 #
 
 rname="mtm"
@@ -19,7 +20,9 @@ rreqs="make ncurses"
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  sed -i.ORIG '/screen-/s,-bce,,g' config.def.h
+  cat config.def.h > config.def.h.ORIG
+  sed -i 's,screen-256color-bce,xterm-color,g' config.def.h
+  sed -i 's,screen-bce,xterm-color,g' config.def.h
   popd >/dev/null 2>&1
 }
 "
