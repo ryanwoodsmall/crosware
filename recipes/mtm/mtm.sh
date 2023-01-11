@@ -1,6 +1,5 @@
 #
 # XXX - disable -bce (back_color_erase) since old rhel<=7 don't seem to have it?
-# XXX - need second tic invocation with `env TERMINFO=${HOME}/.terminfo ...` set?
 # XXX - netbsdcurses needs /usr/share/misc/terminfo fix, then something like...
 #   test -e \"${cwsw}/netbsdcurses/current/bin/tic\" && \"${cwsw}/netbsdcurses/current/bin/tic\" -s -x ${rname}.ti || true
 # XXX - or just include mtm.ti in netbsdcurses???
@@ -45,8 +44,9 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"\$(cwidir_${rname})/share/terminfo\"
   make install DESTDIR=\"\$(cwidir_${rname})\"
   install -m 0644 ${rname}.ti \"\$(cwidir_${rname})/share/terminfo/${rname}.ti\"
-  \"${cwsw}/ncurses/current/bin/tic\" -s -x ${rname}.ti || true
   env TERMINFO=\"${cwsw}/ncurses/current/share/terminfo\" \"${cwsw}/ncurses/current/bin/tic\" -s -x ${rname}.ti || true
+  cwmkdir \"\${HOME}/.terminfo\"
+  env TERMINFO=\"\${HOME}/.terminfo\" \"${cwsw}/ncurses/current/bin/tic\" -s -x ${rname}.ti || true
   popd >/dev/null 2>&1
 }
 "
