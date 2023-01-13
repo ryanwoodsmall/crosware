@@ -871,6 +871,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - w3m (https://github.com/tats/w3m)
 - wget
 - wireguard (https://www.wireguard.com/)
+  - wireguardgo (https://git.zx2c4.com/wireguard-go - userspace go client)
   - wireguardtools (https://git.zx2c4.com/wireguard-tools - wg and wg-quick tools)
 - wolfmqtt (https://www.wolfssl.com/products/wolfmqtt/ and https://github.com/wolfSSL/wolfMQTT - tls-enabled mqtt lib and examples for wolfssl)
 - wolfssh (https://www.wolfssl.com/products/wolfssh/ and https://github.com/wolfSSL/wolfssh - ssh lib and examples for wolfssl)
@@ -2039,8 +2040,6 @@ wc -l /tmp/astbuild.out
   - can be coaxed to work with busybox httpd but is unpleasant
   - mini_httpd, thttpd, or lighttpd probably better options
 - whatshell.sh (https://www.in-ulm.de/~mascheck/various/whatshell/ and https://www.in-ulm.de/~mascheck/various/whatshell/whatshell.sh)
-- wireguard (https://www.wireguard.com/)
-  - wireguard-go (https://git.zx2c4.com/wireguard-go - userspace go client)
 - wireproxy (https://github.com/octeep/wireproxy - wireguard client that exposes a socks5 proxy)
 - wolfssl-examples (https://github.com/wolfSSL/wolfssl-examples - lots of wolfssl docs/demos)
 - wolfssl osp (https://github.com/wolfSSL/osp - "open source project" ports for wolfssl)
