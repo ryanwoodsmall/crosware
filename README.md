@@ -2051,6 +2051,9 @@ wc -l /tmp/astbuild.out
 - wren (https://wren.io/ and https://github.com/wren-lang/wren)
 - wsServer (https://theldus.github.io/wsServer/ and https://github.com/Theldus/wsServer - websocket server in c)
 - wsupp-libc (https://github.com/arsv/wsupp-libc - small wpa supplicant alike?)
+- wuffs (https://github.com/google/wuffs - "wrangling unsafe file formats safely," a safe language, with c interop)
+  - examples: https://github.com/google/wuffs/tree/main/example
+    - bzcat, cbor-to-json, crc32, json-to-cbor, jsonptr, etc.
 - xe (https://github.com/leahneukirchen/xe)
 - xq (https://github.com/jeffbr13/xq)
 - xserver-sixel (https://github.com/saitoha/xserver-sixel)
