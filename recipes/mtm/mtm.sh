@@ -6,6 +6,7 @@
 #   test -e \"${cwsw}/netbsdcurses/current/bin/tic\" && \"${cwsw}/netbsdcurses/current/bin/tic\" -s -x ${rname}.ti || true
 # XXX - or just include mtm.ti in netbsdcurses?
 # XXX - set default terms to mtm/mtm-256color?
+# XXX - dtach does weird stuff with resetting the terminal; abduco seems to do work better!
 #
 
 rname="mtm"
