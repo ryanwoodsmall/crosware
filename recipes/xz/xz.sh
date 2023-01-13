@@ -1,12 +1,9 @@
-#
-# XXX - xz 5.4.x is released, need to test compat
-#
 rname="xz"
-rver="5.2.10"
+rver="5.4.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://tukaani.org/${rname}/${rfile}"
-rsha256="eb7a3b2623c9d0135da70ca12808a214be9c019132baaa61c9e1d198d1d9ded3"
+rsha256="e4b0f81582efa155ccf27bb88275254a429d44968e488fc94b806f2a61cd3e22"
 rreqs="make gettexttiny slibtool patch"
 
 . "${cwrecipe}/common.sh"
