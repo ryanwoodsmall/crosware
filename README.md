@@ -871,8 +871,9 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - w3m (https://github.com/tats/w3m)
 - wget
 - wireguard (https://www.wireguard.com/)
-  - wireguardgo (https://git.zx2c4.com/wireguard-go - userspace go client)
-  - wireguardtools (https://git.zx2c4.com/wireguard-tools - wg and wg-quick tools)
+  - wgctrlgo (https://github.com/WireGuard/wgctrl-go - wireguard interface control program in go)
+  - wireguardgo (https://git.zx2c4.com/wireguard-go - userspace wireguard go client)
+  - wireguardtools (https://git.zx2c4.com/wireguard-tools - wireguard wg and wg-quick tools)
 - wolfmqtt (https://www.wolfssl.com/products/wolfmqtt/ and https://github.com/wolfSSL/wolfMQTT - tls-enabled mqtt lib and examples for wolfssl)
 - wolfssh (https://www.wolfssl.com/products/wolfssh/ and https://github.com/wolfSSL/wolfssh - ssh lib and examples for wolfssl)
 - wolfssl (https://www.wolfssl.com/ and https://github.com/wolfSSL/wolfssl - formerly cyassl)
