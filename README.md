@@ -870,6 +870,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - vimnetbsdcurses (netbsdcurses)
 - w3m (https://github.com/tats/w3m)
 - wget
+- wireguard (https://www.wireguard.com/)
+  - wireguardtools (https://git.zx2c4.com/wireguard-tools - wg and wg-quick tools)
 - wolfmqtt (https://www.wolfssl.com/products/wolfmqtt/ and https://github.com/wolfSSL/wolfMQTT - tls-enabled mqtt lib and examples for wolfssl)
 - wolfssh (https://www.wolfssl.com/products/wolfssh/ and https://github.com/wolfSSL/wolfssh - ssh lib and examples for wolfssl)
 - wolfssl (https://www.wolfssl.com/ and https://github.com/wolfSSL/wolfssl - formerly cyassl)
@@ -2039,7 +2041,6 @@ wc -l /tmp/astbuild.out
 - whatshell.sh (https://www.in-ulm.de/~mascheck/various/whatshell/ and https://www.in-ulm.de/~mascheck/various/whatshell/whatshell.sh)
 - wireguard (https://www.wireguard.com/)
   - wireguard-go (https://git.zx2c4.com/wireguard-go - userspace go client)
-  - wireguard-tools (https://git.zx2c4.com/wireguard-tools - c, no deps)
 - wireproxy (https://github.com/octeep/wireproxy - wireguard client that exposes a socks5 proxy)
 - wolfssl-examples (https://github.com/wolfSSL/wolfssl-examples - lots of wolfssl docs/demos)
 - wolfssl osp (https://github.com/wolfSSL/osp - "open source project" ports for wolfssl)

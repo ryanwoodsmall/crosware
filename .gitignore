@@ -36,3 +36,4 @@
 /.got/**
 /**/*.swp
 /.git.PRE-*
+/etc/wireguard*
