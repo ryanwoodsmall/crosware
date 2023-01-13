@@ -13,10 +13,14 @@ rreqs="make netbsdcurses sed"
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} --enable-colors256 \
-    CPPFLAGS=\"-I${cwsw}/libevent/current/include -I${cwsw}/netbsdcurses/current/include\" \
-    LDFLAGS=\"-L${cwsw}/libevent/current/lib -L${cwsw}/netbsdcurses/current/lib -static\" \
-    LIBS=\"-lcurses -lterminfo\"
+  ./configure ${cwconfigureprefix} \
+    --disable-pam \
+    --disable-socket-dir \
+    --disable-use-locale \
+    --enable-colors256 \
+      CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
+      LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -static\" \
+      LIBS=\"-lcurses -lterminfo\"
   popd >/dev/null 2>&1
 }
 "
