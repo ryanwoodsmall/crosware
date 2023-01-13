@@ -637,6 +637,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - neat/litcave stuff (http://litcave.rudi.ir/)
   - neatvi (https://github.com/aligrudi/neatvi)
 - nebula (https://github.com/slackhq/nebula - mesh network overlay/vpn)
+- neofetch (https://github.com/dylanaraps/neofetch - terminal machine/os info)
 - netbsdcurses (libedit, readline, slang bundled - **manual** CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - netbsdwtf (https://github.com/void-linux/netbsd-wtf - "wtf" acronym finder from netbsd)
 - netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
