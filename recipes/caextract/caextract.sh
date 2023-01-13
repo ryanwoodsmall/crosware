@@ -4,11 +4,11 @@
 #
 
 rname="caextract"
-rver="2022-10-11"
+rver="2023-01-10"
 rdir="${rname}-${rver}"
 rfile="cacert-${rver}.pem"
 rurl="https://curl.se/ca/${rfile}"
-rsha256="2cff03f9efdaf52626bd1b451d700605dc1ea000c5da56bd0fc59f8f43071040"
+rsha256="fb1ecd641d0a02c01bc9036d513cb658bbda62a75e246bedbc01764560a639f0"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
