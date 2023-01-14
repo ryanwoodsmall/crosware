@@ -1345,6 +1345,7 @@ wc -l /tmp/astbuild.out
            jerry-main/{main-unix,main-utils,main-options,cli}.c \
              -o jerry
         ```
+      - jerry-snapshot: as above but with `jerry-main/main-unix-snapshot.c` instead of plain `main-unix.c`
     - config options: https://jerryscript.net/configuration/
     - other jerryscript stuff:
       - iotjs (https://github.com/jerryscript-project/iotjs - iot js platform built w/python?)
