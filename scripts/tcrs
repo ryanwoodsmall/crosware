@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#
+# run common reinstall, capturing output and exit status, dumping an eval-able environment reset
+#
+# XXX - make this generic? add "cw" symlink and abbrev commands in script?
+#
+
+set -eu
+set -o pipefail
+
+if [ ${#} -lt 1 ] ; then
+  echo "# no recipes given..." 1>&2
+  exit 1
+fi
+
+if ! command -v crosware &>/dev/null ; then
+  echo "# where is crosware..." 1>&2
+  exit 1
+fi
+
+if [ -e /usr/local/crosware/etc/vars ] ; then
+  . /usr/local/crosware/etc/vars
+else
+  export cwtop="$(dirname $(dirname $(command -v crosware)))"
+fi
+
+if [ ! -e "${cwtop}/recipes/" ] ; then
+  echo "# no recipes..." 1>&2
+  exit 1
+fi
+
+export reenv="${cwtop}/scripts/reset-cwenv.sh"
+test -e "${cwtop}/tmp" || mkdir -p "${cwtop}/tmp"
+export outfile="${cwtop}/tmp/tcrs.out"
+echo "# logging to ${outfile}" 1>&2
+
+( time ( crosware reinstall "${@}" ; echo "# $?" ) ) 2>&1 | tee "${outfile}" 1>&2
+
+if [ -e "${reenv}" ] ; then
+  echo ". ${reenv}"
+fi
