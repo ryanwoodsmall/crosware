@@ -1311,20 +1311,51 @@ wc -l /tmp/astbuild.out
   - temurin (https://adoptium.net/ - eclipse; adoptium, formerly adoptopenjdk)
   - ...
 - javascript stuff
+  - see: https://notes.eatonphil.com/javascript-implementations.html
   - bun (https://bun.sh/ and https://github.com/oven-sh/bun - javascript runtime/bundler/transpiler/packager in zig/c++/...)
   - colony-compiler (unmaintained - https://github.com/tessel/colony-compiler)
   - dukluv (https://github.com/creationix/dukluv - libuv+duktape)
   - engine262 (https://github.com/engine262/engine262 - js in js)
   - escargot (https://github.com/Samsung/escargot)
-  - espruino (https://github.com/espruino/Espruino)
+  - espruino (https://github.com/espruino/Espruino - pi build?)
+    - espruintools (https://github.com/espruino/EspruinoTools)
   - esvu (https://github.com/devsnek/esvu)
   - goja (https://github.com/dop251/goja - go js)
+    - goja-nodejs (https://github.com/dop251/goja_nodejs - node.js compat?)
   - iv (https://github.com/Constellation/iv)
   - jerryscript (https://github.com/jerryscript-project/jerryscript and http://jerryscript.net/)
+    - needs an `fflush(stdout);` added for the prompt print...
+    - compile standalone tool with something like...
+      - ```
+        gcc \
+         -Wl,-static -Wl,-s -g0 -Os \
+           -DJERRY_COMMIT_HASH='"-fake"' \
+           -DJERRY_BUILTINS=1 \
+           -DJERRY_DEBUGGER=1 \
+           -DJERRY_LINE_INFO=1 \
+           -DJERRY_PROMISE_CALLBACK=1 \
+           -DJERRY_SNAPSHOT_{EXEC,SAVE}=1 \
+           -DJERRY_{PARSER,REGEXP}_DUMP_BYTE_CODE=1 \
+           -DJERRY_ERROR_MESSAGES=1 \
+           -DJERRY_LOGGING=1 \
+           -DJERRY_CPOINTER_32_BIT=1 \
+         $(find */ -name \*.h -exec dirname {} \; | sort -u | grep -vE 'targets|tests|valgrind' | sed s,^,-I${PWD}/,g) \
+         -I${PWD}/jerry-ext/include \
+           $(find jerry-{core,ext,port/default} -type f -name \*.c) \
+           jerry-main/{main-unix,main-utils,main-options,cli}.c \
+             -o jerry
+        ```
+    - config options: https://jerryscript.net/configuration/
+    - other jerryscript stuff:
+      - iotjs (https://github.com/jerryscript-project/iotjs - iot js platform built w/python?)
+      - iotjs-modules (https://github.com/jerryscript-project/iotjs-modules)
+      - iotjs-samples (https://github.com/jerryscript-project/iotjs-samples)
   - jsi (jsish - https://jsish.org/)
   - jsvu (https://github.com/GoogleChromeLabs/jsvu)
   - mininode (https://github.com/mininode/mininode - embedded node.js compat on duktape, cool not sure how mature)
   - mjs (formerly v7 - https://github.com/cesanta/mjs and https://github.com/cesanta/v7/)
+    - v7 (https://github.com/cesanta/v7 - basis for mjs)
+    - elk (https://github.com/cesanta/elk - tiny embedded js engine)
   - otto (https://github.com/robertkrimen/otto - go js)
   - rampart (https://www.rampart.dev/ and https://github.com/aflin/rampart - minimal full-stack built on duktape)
   - quad-wheel (https://code.google.com/archive/p/quad-wheel/)
@@ -1613,6 +1644,8 @@ wc -l /tmp/astbuild.out
 - minit (https://github.com/chazomaticus/minit - small init with startup/shutdown scripts)
 - miniyacc (https://c9x.me/yacc/)
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
+- mjson (https://github.com/cesanta/mjson - json parser/emitter/json-rpc engine)
+  - frozen (https://github.com/cesanta/frozen - json parser/generator)
 - mk (go, https://github.com/dcjones/mk)
 - mold (https://github.com/rui314/mold - fast linker, gcc 10+ (or clang 12+) for c++20 i think?)
 - moreutils (https://joeyh.name/code/moreutils/)
@@ -1894,6 +1927,7 @@ wc -l /tmp/astbuild.out
   - nsss (https://skarnet.org/software/nsss/ - nscd/nss ish implementation)
 - sljit (http://sljit.sourceforge.net/)
 - sloccount (https://dwheeler.com/sloccount/)
+- slre (https://github.com/cesanta/slre - super light regular expression library)
 - smarden stuff
   - ipsvd (http://smarden.org/ipsvd/ - can use matrixssl?)
   - runit (http://smarden.org/runit/)
