@@ -1192,6 +1192,7 @@ wc -l /tmp/astbuild.out
 - gogit (https://github.com/speedata/gogit - read-only git repository thing in go, archived/unmaintained)
 - gojq (https://github.com/itchyny/gojq - jq in go)
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
+- go-openssl (https://github.com/libp2p/go-openssl - cgo wrapper around openssl? archived/unmaintained)
 - gops (https://github.com/google/gops - running go process analyzer)
 - go-toml (https://github.com/pelletier/go-toml - go toml library with jsontoml/tomljson/tomll programs)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
