@@ -2,8 +2,11 @@
 #
 # jgitsh? jgit.sh? org.eclipse.....sh?
 #
+set -eu
 
-: ${jgitsh:="jgitsh"}
+: ${cwtop:="/usr/local/crosware"}
+: ${cwsw:="${cwtop}/software"}
+: ${jgitsh:="${cwsw}/jgitsh/current/bin/jgitsh"}
 : ${origin:="origin"}
 : ${branch:="master"}
 
