@@ -51,6 +51,30 @@ BEGIN {
 EOF
 chmod 755 env.awk
 
+# XXX - should njs/qjs be application/json?
+
+# env.njs - same but javascript/json (with njs)
+scriptecho "installing ${cgidir}/env.njs"
+cat >env.njs<<EOF
+#!${cwsw}/njs/current/bin/njs
+console.log("Status: 200 OK")
+console.log("Content-type: text/plain")
+console.log("")
+console.log(JSON.stringify(process.env))
+EOF
+chmod 755 env.njs
+
+# env.qjs - quickjs
+scriptecho "installing ${cgidir}/env.qjs"
+cat >env.qjs<<EOF
+#!${cwsw}/quickjs/current/bin/qjs --std
+console.log("Status: 200 OK")
+console.log("Content-type: text/plain")
+console.log("")
+console.log(JSON.stringify(std.getenviron()))
+EOF
+chmod 755 env.qjs
+
 # tar.cgi serves a .tar of common git files, new/updated recipes, etc.
 scriptecho "installing ${cgidir}/tar.cgi"
 cat >tar.cgi<<EOF
