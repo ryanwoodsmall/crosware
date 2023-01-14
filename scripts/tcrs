@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 #
-# run common reinstall, capturing output and exit status, dumping an eval-able environment reset
+# run common reinstall
+# capture output and exit status
+# dump an eval-able environment reset
 #
-# XXX - make this generic? add "cw" symlink and abbrev commands in script?
+# XXX - make this generic?
+# XXX - add "cw" symlink and abbrev commands in script?
+# XXX - reinstall -> ri, etc.
 #
 
 set -eu
@@ -34,7 +38,8 @@ test -e "${cwtop}/tmp" || mkdir -p "${cwtop}/tmp"
 export outfile="${cwtop}/tmp/tcrs.out"
 echo "# logging to ${outfile}" 1>&2
 
-( time ( crosware reinstall "${@}" ; echo "# $?" ) ) 2>&1 | tee "${outfile}" 1>&2
+( time ( crosware reinstall "${@}" ; echo "# $?" ) ) 2>&1 \
+| tee "${outfile}" 1>&2
 
 if [ -e "${reenv}" ] ; then
   echo ". ${reenv}"
