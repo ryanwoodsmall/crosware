@@ -744,7 +744,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - sc (from debian, https://packages.debian.org/buster/sc)
 - scheme48 (http://s48.org)
 - scm (http://people.csail.mit.edu/jaffer/SCM.html and http://people.csail.mit.edu/jaffer/SLIB.html - scm scheme with slib library)
-- screen
+- screen (https://www.gnu.org/software/screen - terminal multiplexer, netbsdcurses)
+  - screenminimal (limited functionality using bash libtermcap)
 - sdbm (https://github.com/jaydg/sdbm - dbm/ndbm alike, updated for modern systems, with ndbm.h and libndbm.a symlinks)
 - sdkman (http://sdkman.io)
 - sed (gnu gsed, prepended to $PATH, becomes default sed)
