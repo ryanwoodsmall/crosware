@@ -410,7 +410,7 @@ function cwinstall_jgitsh() {
   install -m 0755 "${cwtmptmp}/${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/"
   ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_pkgname}"
   ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink}"
-  ln -sf "${jgitsh_file}" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/${jgitsh_symlink/%.sh/}"
+  ln -sf "${cwtop}/scripts/jgit" "${jgitsh_inst_dir}/${jgitsh_ver}/bin/jgit"
   cwlinkdir "${jgitsh_ver}" "${jgitsh_inst_dir}"
   cwexpandenv "${jgitsh_pkgname}" "${cwetcprofd}/${jgitsh_pkgname}.sh"
   cwmarkinstall "${jgitsh_pkgname}" "${jgitsh_ver}"
