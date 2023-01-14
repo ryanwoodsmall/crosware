@@ -3,14 +3,22 @@
 # XXX - ugly workarounds for ethhdr, u_int16_t
 # XXX - see: https://patchwork.ozlabs.org/project/openwrt/patch/1434902002-18745-1-git-send-email-amery@geeks.cl/
 #
+# XXX - breakage w/slibtool as of 1.8.9
+#   /usr/local/crosware/software/statictoolchain/202109250959-x86_64-linux-musl/bin/../lib/gcc/x86_64-linux-musl/9.4.0/../../../../x86_64-linux-musl/bin/ld: /usr/local/crosware/software/libnftnl/current/lib/libnftnl.a(utils.o): in function `__abi_breakage':
+#   utils.c:(.text+0x820): multiple definition of `__abi_breakage'; /usr/local/crosware/software/libnetfilterconntrack/current/lib/libnetfilter_conntrack.a(main.o):main.c:(.text+0x2dd): first defined here
+#   collect2: error: ld returned 1 exit status
+#   slibtool-static: exec error upon slbt_exec_link_create_executable(), line 1580: (see child process error messages).
+#   slibtool-static: < returned to > slbt_exec_link(), line 1845.
+#   make[3]: *** [Makefile:662: xtables-nft-multi] Error 2
+#
 
 rname="iptables"
-rver="1.8.8"
+rver="1.8.9"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.bz2"
+rfile="${rdir}.tar.xz"
 rurl="https://www.netfilter.org/pub/${rname}/${rfile}"
-rsha256="71c75889dc710676631553eb1511da0177bbaaf1b551265b912d236c3f51859f"
-rreqs="bootstrapmake pkgconfig libpcap libnl libmnl libnetfilterconntrack libnfnetlink libnftnl slibtool"
+rsha256="ef6639a43be8325a4f8ea68123ffac236cb696e8c78501b64e8106afb008c87f"
+rreqs="bootstrapmake pkgconfig libpcap libnl libmnl libnetfilterconntrack libnfnetlink libnftnl"
 
 . "${cwrecipe}/common.sh"
 
