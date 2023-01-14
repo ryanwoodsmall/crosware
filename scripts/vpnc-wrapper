@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# XXX - this is mostly untested/legacy
+#   i no longer really use or have access to a working cisco vpn...
+#
 
 whoami | grep -q ^root$ || {
 	echo "please run this as root (via sudo)"
@@ -27,12 +31,12 @@ test -e /var/run/vpnc || mkdir -p /var/run/vpnc
 # XXX - this should check for .*$IF.* and _append_ if not found
 # from shill_main.cc, this should be a comma-separated list
 tr \\0 \\n < /proc/$(pgrep shill)/environ | \
-  grep -q "^BLACKLISTED_DEVICES=${vpnif}$" || {
-	echo "adding ${vpnif} to shill BLACKLISTED_DEVICES"
+  grep -q "^BLOCKED_DEVICES=${vpnif}$" || {
+	echo "adding ${vpnif} to shill BLOCKED_DEVICES"
 	echo "restarting shill"
 	stop shill
 	sleep ${sleeptime}
-	start shill BLACKLISTED_DEVICES="${vpnif}"
+	start shill BLOCKED_DEVICES="${vpnif}"
 }
 sleep ${sleeptime}
 
