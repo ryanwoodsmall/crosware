@@ -1670,6 +1670,8 @@ wc -l /tmp/astbuild.out
     - currently in **alpinemuslutils** recipe as `alpine-{getconf,getent,iconv}`
     - should these be in statictoolchain, i.e in https://github.com/ryanwoodsmall/musl-misc?
   - muslstack (https://github.com/yaegashi/muslstack)
+  - musl-compat (https://github.com/Projeto-Pindorama/musl-compat - missing headers - cdefs, etc.)
+  - musl-extra (https://github.com/Projeto-Pindorama/musl-extra - getconf, etc.)
 - mutt
 - mvi (https://github.com/byllgrim/mvi)
 - nanomsg (https://github.com/nanomsg/nanomsg and https://nanomsg.org/)
