@@ -3,6 +3,7 @@
 # XXX - DUK_USE_ES6
 # XXX - jxpretty
 # XXX - include jsoncbor: https://github.com/svaarala/duktape/tree/master/extras/cbor
+# XXX - config options: https://wiki.duktape.org/configoptions
 #
 
 rname="duktape"
