@@ -1,8 +1,6 @@
 #
 # XXX - options from https://github.com/svaarala/duktape/blob/master/Makefile
-# XXX - DUK_USE_ES6
-# XXX - jxpretty
-# XXX - include jsoncbor: https://github.com/svaarala/duktape/tree/master/extras/cbor
+# XXX - DUK_USE_32BIT_PTRS
 # XXX - config options: https://wiki.duktape.org/configoptions
 #
 
@@ -52,6 +50,8 @@ function cwmake_${rname}() {
     -static
   \${CC} -I./src examples/cmdline/duk_cmdline.c -o duk-min -L. -l${rname} -static
   \${CC} -I./src examples/eval/eval.c -o duk-eval -L. -l${rname} -static
+  \${CC} -I./src examples/jxpretty/jxpretty.c -o duk-jxpretty -L. -l${rname} -static
+  \${CC} -I./src -I./extras/cbor extras/cbor/jsoncbor.c -o duk-jsoncbor -L. -l${rname} -static
   strip --strip-all duk{,-{eval,min}}
   popd >/dev/null 2>&1
 }
@@ -75,7 +75,7 @@ function cwmakeinstall_${rname}() {
   install -m 644 extras/logging/duk_logging.h \"${ridir}/include/\"
   install -m 644 polyfills/*.js \"${ridir}/polyfills/\"
   install -m 644 mandel.js \"${ridir}/wow/\"
-  install -m 755 duk{,-{eval,min}} \"${ridir}/bin/\"
+  install -m 755 duk{,-{eval,min,jxpretty,jsoncbor}} \"${ridir}/bin/\"
   ln -sf \"${rtdir}/current/bin/duk\" \"${ridir}/bin/${rname}\"
   #echo '#!/usr/bin/env bash' > \"${ridir}/bin/${rname}\"
   #echo 'rlwrap \"${rtdir}/current/bin/duk\" \"\${@}\"' >> \"${ridir}/bin/${rname}\"
