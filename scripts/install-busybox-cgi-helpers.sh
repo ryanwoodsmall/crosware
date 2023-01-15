@@ -75,6 +75,19 @@ console.log(JSON.stringify(std.getenviron()))
 EOF
 chmod 755 env.qjs
 
+# env.jojq - json w/jo+jq
+scriptecho "installing ${cgidir}/env.jojq"
+cat >env.jojq<<EOF
+#!/usr/bin/env sh
+: \${jo:="/usr/local/crosware/software/jo/current/bin/jo"}
+: \${jq:="/usr/local/crosware/software/jq/current/bin/jq"}
+echo "Content-type: text/plain"
+echo
+( tr '\\0' '\\n' < /proc/\$\$/environ ; echo JO_VER=\$(\${jo} -V) ; echo JQ_VER=\$(\${jq} --version) ) \
+  | ( \${jo} -p -- | \${jq} -M . ) 2>/dev/null
+EOF
+chmod 755 env.jojq
+
 # tar.cgi serves a .tar of common git files, new/updated recipes, etc.
 scriptecho "installing ${cgidir}/tar.cgi"
 cat >tar.cgi<<EOF
