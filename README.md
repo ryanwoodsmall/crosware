@@ -2014,6 +2014,7 @@ wc -l /tmp/astbuild.out
   - sysklogd (https://github.com/troglobit/sysklogd - bsd syslog on linux, newer rfc compliant)
   - ttinfo (https://github.com/troglobit/ttinfo)
   - uftpd (https://github.com/troglobit/uftpd)
+  - uget (https://github.com/troglobit/uget - small wget/curl file fetcher w/openssl support - investigate libressl/wolfssl compat...)
 - tsocks (http://tsocks.sourceforge.net/)
 - ttdnsd (http://www.mulliner.org/collin/ttdnsd.php - tor tcp dns daemon, can work with socks, udp+tcp, etc. to relay dns)
 - ttyd (https://github.com/tsl0922/ttyd - gotty in c, like shellinabox w/xterm.js, libwebsockets, uses cmake)
