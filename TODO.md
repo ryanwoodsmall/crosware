@@ -1252,6 +1252,29 @@ time_func ls -l -A /
   - new `rsha256file` config setting?
   - this may be too much work for little gain
   - doing something like this w/k3s, k0s, ... other such bin recipes
+- openbsd nc
+  - included with tls support in `libressl` and `otools` (with bearssl+libtls)
+  - for a proxy example see: https://gist.github.com/m1tk4/bb626dcf2bc1bfade170a38b3085cdbd
+  - tls version:
+    - ```
+      #!/bin/sh -e
+      if [ $# != 3 ]
+      then
+          echo "usage: $0 <src-port> <dst-host> <dst-port>"
+          exit 0
+      fi
+      nc=/usr/local/crosware/software/otools/current/bin/nc
+      TMP=`mktemp -d`
+      PIPE=$TMP/pipe
+      trap 'rm -rf "$TMP"' EXIT
+      mkfifo -m 0600 "$PIPE"
+      ${nc} -c -R /usr/local/crosware/etc/ssl/cert.pem -C /usr/local/crosware/tmp/lighttpd_cert.pem -K /usr/local/crosware/tmp/lighttpd_key.pem -N -l "$1" <"$PIPE" \
+      | ${nc} -w 3 -N "$2" "$3" > "$PIPE"
+      ```
+    - unusable w/connections that don't automatically close (http, ssh, ..., keepalive?)
+    - port and/or connection stay open
+    - same issue w/little libtls proxy i've been working on and non-tls- or proxy-aware servers
+    - stdin/stdout are easy-ish, it's when you're forking (ala inetd) or opening a r/w pipe where things go south
 
 <!--
 # vim: ft=markdown
