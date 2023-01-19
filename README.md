@@ -2033,6 +2033,7 @@ wc -l /tmp/astbuild.out
 - uacme - libressl doesn't seem to work out of the box, patch?
 - ublinter (https://github.com/danmar/ublinter)
 - ubridge (https://github.com/GNS3/ubridge - udp, ethernet, tap, etc. userspace bridge controller)
+- u-config (https://github.com/skeeto/u-config - minimal pkg-config alike)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
 - ueforth (https://github.com/flagxor/eforth - small forth for linux, plus esp32forth for wifi+bt mcu)
 - uget (https://github.com/OpenIPC/uget - tiny http-only wget/curl program)
