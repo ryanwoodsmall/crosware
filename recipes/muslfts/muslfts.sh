@@ -1,3 +1,6 @@
+#
+# XXX - distribute an autotools-ed version of the archive?
+#
 rname="muslfts"
 rver="1.2.7"
 rdir="musl-fts-${rver}"
