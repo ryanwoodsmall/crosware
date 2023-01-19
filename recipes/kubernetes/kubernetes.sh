@@ -2,6 +2,8 @@
 # XXX - need a version policy, i.e. "within one version of k3s?"
 # XXX - kubelet is glibc, probably need to compile? ugh?
 # XXX - k8s builds seem relatively straightforward...
+# XXX - gke vs upstream version skew can cause issues w/X.Y.Z clients against X.(Y-(3+)).Z clusters
+# XXX - probably need to version, 1.25.x == kubernetes125, 1.26.x = kubernetes125, etc.
 #
 # dev doc:
 #   https://github.com/kubernetes/community/blob/master/contributors/devel/development.md
