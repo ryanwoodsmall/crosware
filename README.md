@@ -692,6 +692,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - openvpnlibressl (libressl, lz4, lzo)
   - openvpnmbedtls (mbedtls, lz4, lzo)
 - opkg (https://git.yoctoproject.org/opkg - WIP .ipk package manager, libarchive/curl/openssl/gnupg/gpgme)
+- otools (https://github.com/CarbsLinux/otools - carbs linux openbsd ports)
 - outils (https://github.com/leahneukirchen/outils - utils from openbsd, including jot/rs/vis/unvis/etc.)
 - p7zip
 - par (http://www.nicemice.net/par/ and https://bitbucket.org/amc-nicemice/par/src/master/)
@@ -1764,7 +1765,6 @@ wc -l /tmp/astbuild.out
   - simtools (https://github.com/open-simh/simtools - tools for simulators/integration)
 - openvi (https://github.com/johnsonjh/OpenVi - portable openbsd vi)
 - opkg-utils (https://git.yoctoproject.org/opkg-utils - package build, etc.)
-- otools (https://github.com/CarbsLinux/otools - carbs linux openbsd ports)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
   - "cannot be used as a static library" - what?
