@@ -975,6 +975,7 @@ time \
       CCFLAGS="-D_GNU_SOURCE -D_BSD_SOURCE -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_USE_GNU -D__GLIBC__" 2>&1 | tee /tmp/astbuild.out
 wc -l /tmp/astbuild.out
 ```
+- awall (https://github.com/alpinelinux/awall - alpine firewall!)
 - awka (http://awka.sourceforge.net/index.html - generate c from awk and compile)
 - awkcc (https://github.com/nokia/awkcc - awk to c transpiler w/binary executable output)
 - axtls (http://axtls.sourceforge.net/ - dead? curl deprecated)
