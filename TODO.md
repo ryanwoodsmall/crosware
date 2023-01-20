@@ -1275,6 +1275,9 @@ time_func ls -l -A /
     - port and/or connection stay open
     - same issue w/little libtls proxy i've been working on and non-tls- or proxy-aware servers
     - stdin/stdout are easy-ish, it's when you're forking (ala inetd) or opening a r/w pipe where things go south
+- command to list profile.d files
+  - `list-recipe-profds`?
+  - e.g. `recipe : /usr/local/crosware/etc/profile.d/recipe.sh`
 
 <!--
 # vim: ft=markdown
