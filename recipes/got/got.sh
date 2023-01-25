@@ -23,11 +23,11 @@
 #
 
 rname="got"
-rver="0.79"
+rver="0.82"
 rdir="${rname}-portable-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://gameoftrees.org/releases/portable/${rfile}"
-rsha256="78be1c0a905184ed1cb506468359faf87e4ee86851291b1670439c46bfb3d87c"
+rsha256="2dbd16678813b86fc60409c487d7dffcad1c8b08c35f772612122d33227f9662"
 rreqs="libressl"
 
 . "${cwrecipe}/got/got.sh.common"

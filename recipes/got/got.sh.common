@@ -12,6 +12,7 @@ function cwpatch_${rname}() {
   cat lib/dial.c > lib/dial.c.ORIG
   sed -i s,/usr/bin/ssh,ssh,g lib/dial.c
   sed -i s,execv,execvp,g lib/dial.c
+  sed -i s,sys/queue,bsd/sys/queue,g template/configure template/parse.y
   popd >/dev/null 2>&1
 }
 "
