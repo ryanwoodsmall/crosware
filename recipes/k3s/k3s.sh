@@ -9,7 +9,7 @@
 #
 
 rname="k3s"
-rver="1.26.0_${rname}2"
+rver="1.26.1_${rname}1"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
