@@ -15,8 +15,8 @@ function cwconfigure_${rname}() {
     --disable-{plugins,shared} \
     --enable-{lz4,lzo,static} \
     --with-crypto-library=openssl \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{openssl,zlib,lzo,lz4}/current/include)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{openssl,zlib,lzo,lz4}/current/lib) -static\"
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\"
   popd >/dev/null 2>&1
 }
 "

@@ -27,8 +27,8 @@ function cwconfigure_${rname}() {
     --disable-{plugins,shared} \
     --enable-{lz4,lzo,static} \
     --with-crypto-library=mbedtls \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{mbedtls,zlib,lzo,lz4}/current/include)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{mbedtls,zlib,lzo,lz4}/current/lib) -static\"
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\"
   popd >/dev/null 2>&1
 }
 "
