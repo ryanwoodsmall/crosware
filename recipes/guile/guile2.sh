@@ -11,7 +11,7 @@ rreqs="make sed gawk gmp libtool slibtool pkgconfig libffi gc readline ncurses l
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --program-suffix=${rver%%.*}
   popd >/dev/null 2>&1
 }
