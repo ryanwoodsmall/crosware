@@ -5,11 +5,11 @@
 #
 
 rname="diffutils"
-rver="3.8"
+rver="3.9"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="a6bdd7d1b31266d11c4f4de6c1b748d4607ab0231af5188fc2533d0ae2438fec"
+rsha256="d80d3be90a201868de83d78dad3413ad88160cc53bcc36eb9eaf7c20dbf023f1"
 rreqs="make sed gettexttiny"
 
 . "${cwrecipe}/common.sh"
@@ -17,7 +17,7 @@ rreqs="make sed gettexttiny"
 # XXX - sed fix from https://git.alpinelinux.org/cgit/aports/tree/main/diffutils/APKBUILD
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG '/gets is a/d' lib/stdio.in.h
   ./configure ${cwconfigureprefix} --disable-nls
   cat lib/sigsegv.c > lib/sigsegv.c.ORIG
