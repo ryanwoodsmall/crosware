@@ -520,6 +520,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libatomicops
 - libbsd
 - libcap (https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/)
+- libcapng (https://people.redhat.com/sgrubb/libcap-ng/ and https://github.com/stevegrubb/libcap-ng - posix capabilities lib)
 - libconfig (https://hyperrealm.github.io/libconfig/ and https://github.com/hyperrealm/libconfig)
 - libconfuse (https://github.com/libconfuse/libconfuse)
 - libedit (https://www.thrysoee.dk/editline/ - aka editline, from netbsd, line editing, history, etc., ncurses)
