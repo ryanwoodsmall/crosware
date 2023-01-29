@@ -1,11 +1,15 @@
-rname="openvpnmbedtls"
+#
+# XXX - disable EC and EVP stuff... not great, but not defined in wolfssl
+# XXX - or i don't have wolfssl configured correctly
+#
+rname="openvpnwolfssl"
 rver="$(cwver_openvpn)"
 rdir="$(cwdir_openvpn)"
 rfile="$(cwfile_openvpn)"
 rdlfile="$(cwdlfile_openvpn)"
 rurl="$(cwurl_openvpn)"
 rsha256=""
-rreqs="make mbedtls zlib lz4 lzo pkgconfig libcapng"
+rreqs="make wolfssl zlib lz4 lzo pkgconfig libcapng"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -26,10 +30,13 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} \
     --disable-{plugins,shared} \
     --enable-{lz4,lzo,static} \
-    --with-crypto-library=mbedtls \
+    --with-crypto-library=wolfssl \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
+  sed -i.ORIG '/0x101.*LIBRESSL/s,101,123,g' src/openvpn/crypto_openssl.c
+  echo '#undef OPENSSL_NO_EC' >> config.h
+  echo '#define OPENSSL_NO_EC 1' >> config.h
   popd >/dev/null 2>&1
 }
 "

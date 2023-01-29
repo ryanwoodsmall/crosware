@@ -5,7 +5,7 @@ rfile="$(cwfile_openvpn)"
 rdlfile="$(cwdlfile_openvpn)"
 rurl="$(cwurl_openvpn)"
 rsha256=""
-rreqs="make libressl zlib lz4 lzo pkgconfig"
+rreqs="make libressl zlib lz4 lzo pkgconfig libcapng"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"

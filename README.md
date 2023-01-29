@@ -692,6 +692,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - openvpn (https://openvpn.net/community-downloads/ and https://github.com/OpenVPN/openvpn - openssl, zlib, lz4, lzo)
   - openvpnlibressl (libressl, lz4, lzo)
   - openvpnmbedtls (mbedtls, lz4, lzo)
+  - openvpnwolfssl (wolfssl, lz4, lzo)
 - opkg (https://git.yoctoproject.org/opkg - WIP .ipk package manager, libarchive/curl/openssl/gnupg/gpgme)
 - otools (https://github.com/CarbsLinux/otools - carbs linux openbsd ports)
 - outils (https://github.com/leahneukirchen/outils - utils from openbsd, including jot/rs/vis/unvis/etc.)
