@@ -1200,6 +1200,7 @@ wc -l /tmp/astbuild.out
 - gops (https://github.com/google/gops - running go process analyzer)
 - go-toml (https://github.com/pelletier/go-toml - go toml library with jsontoml/tomljson/tomll programs)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
+- go-tunnel (https://github.com/opencoff/go-tunnel - stunnel replacement written in go)
 - (go) yq (https://github.com/mikefarah/yq - yq alternative in go)
 - gpg
   - etc.
