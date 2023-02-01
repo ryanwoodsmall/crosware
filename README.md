@@ -1656,6 +1656,7 @@ wc -l /tmp/astbuild.out
 - mold (https://github.com/rui314/mold - fast linker, gcc 10+ (or clang 12+) for c++20 i think?)
 - moreutils (https://joeyh.name/code/moreutils/)
 - moscow ml (https://github.com/kfl/mosml)
+- mox (https://github.com/mjl-/mox - small mail server in go)
 - mqtt-c (https://github.com/LiamBindle/MQTT-C)
 - mpg123
 - mpg321
