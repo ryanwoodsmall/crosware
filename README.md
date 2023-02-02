@@ -384,6 +384,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - dash (http://gondor.apana.org.au/~herbert/dash/ and https://git.kernel.org/pub/scm/utils/dash/dash.git)
   - dashminimal (libedit with basic termcap)
   - dashtiny (no libedit)
+- ddrescue (https://www.gnu.org/software/ddrescue/ - gnu data recovery tool/nicer dd)
 - derby
 - diffutils
 - diction and style (https://www.gnu.org/software/diction/)
@@ -1121,7 +1122,6 @@ wc -l /tmp/astbuild.out
 - cwerg (https://github.com/robertmuth/Cwerg - compiler back-end for arm 32- and 64-bit)
 - dante (socks proxy client/server https://www.inet.no/dante/)
 - dasel (https://github.com/TomWright/dasel - data selector like jq, yq - go)
-- ddrescue
 - dehydrated (https://github.com/dehydrated-io/dehydrated - shell acme/letsencrypt client)
 - diod (https://github.com/chaos/diod - 9p fileserver)
   - `attr/xattr.h` -> `sys/xattr.h` - fix multiple files
