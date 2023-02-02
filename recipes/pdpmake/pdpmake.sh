@@ -3,11 +3,11 @@
 #
 
 rname="pdpmake"
-rver="1.4.0"
+rver="1.4.1"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/rmyorston/${rname}/archive/refs/tags/${rfile}"
-rsha256="d17600f2699938980cc8734ed9f1cd993b11264e22b6fe2c18cdb8ed6ab5045d"
+rsha256="223f9918caa4c8b841bbbc37f57c0bf5e41e612f3f4145b323ffc78e6e52df87"
 rreqs="bootstrapmake"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
