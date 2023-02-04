@@ -9,6 +9,8 @@
 # XXX - libssh2 patch is clean and build works, older version
 # XXX - openssh osp requires some finagling but works, at least ssh/sftp clients
 # XXX - new default disabled options in 5.5.x: --enable-quic --enable-dtlscid
+# XXX - fix ca certs in src/ssl.c
+# XXX - link in cacertificates/caextract pem in certs/? which files?
 #
 
 rname="wolfssl"
