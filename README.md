@@ -1683,6 +1683,9 @@ wc -l /tmp/astbuild.out
 - nanomsg (https://github.com/nanomsg/nanomsg and https://nanomsg.org/)
   - cmake, no.
 - nc / ncat / netcat
+- ncurses components...
+  - terminfo and termcap (http://invisible-mirror.net/archives/ncurses/current/)
+  - replace/augment gnutermcap?
 - ne (https://github.com/vigna/ne terminal editor)
 - neat/litcave stuff (http://litcave.rudi.ir/)
   - neatcc (https://github.com/aligrudi/neatcc)
