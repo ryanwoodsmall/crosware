@@ -3,9 +3,10 @@
 # XXX - requires go-misc change too
 # XXX - generic go recipe w/CGO enabled
 # XXX - date should be moved to version?
+# XXX - set GOPATH/GOCACHE/GOMODCACHE/...???
 #
 rname="go"
-rgover="119"
+rgover="120"
 rver="$(cwver_${rname}${rgover})"
 rdir="$(cwdir_${rname}${rgover})"
 rbdir="$(cwbdir_${rname}${rgover})"
