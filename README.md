@@ -458,6 +458,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
     - go117 recipe with golang 1.17.x static binaries for all supported architectures
     - go118 recipe with golang 1.18.x static binaries for all supported architectures
     - go119 recipe with golang 1.19.x static binaries for all supported architectures
+    - go119 recipe with golang 1.20.x static binaries for all supported architectures
   - static binary archive
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
 - got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like, libressl)
