@@ -4,12 +4,12 @@
 #
 
 rname="htop"
-rver="3.2.1"
+rver="3.2.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 #rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rurl="https://github.com/htop-dev/${rname}/releases/download/${rver}/${rfile}"
-rsha256="5a17121cf1c69d2f2e557c0b29d45a2c353ab983f644742e1c2e4ece15aa6cbb"
+rsha256="bac9e9ab7198256b8802d2e3b327a54804dc2a19b77a5f103645b11c12473dc8"
 rreqs="make ncurses configgit"
 
 . "${cwrecipe}/common.sh"
