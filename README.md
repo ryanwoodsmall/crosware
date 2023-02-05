@@ -2066,6 +2066,7 @@ wc -l /tmp/astbuild.out
   - cowasm (https://github.com/sagemathinc/cowasm - collaborative webassembly, shell, in zig, with python, unix ports, etc.!)
   - lucet (https://github.com/bytecodealliance/lucet)
   - posish (https://github.com/bytecodealliance/posish)
+  - w2c2 (https://github.com/turbolent/w2c2 - compiles webassembly to c)
   - wabt (https://github.com/WebAssembly/wabt)
   - wasi (https://github.com/bytecodealliance/wasi and https://github.com/WebAssembly/WASI)
   - wasi-libc (https://github.com/WebAssembly/wasi-libc)
