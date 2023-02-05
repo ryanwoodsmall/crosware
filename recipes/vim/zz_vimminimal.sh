@@ -10,7 +10,7 @@ rreqs="bootstrapmake bashtermcap lua libsodium"
 
 . "${cwrecipe}/common.sh"
 
-for f in fetch clean make ; do
+for f in fetch clean extract patch make ; do
   eval "
   function cw${f}_${rname}() {
     cw${f}_${rname%minimal}
