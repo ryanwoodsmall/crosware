@@ -1127,6 +1127,7 @@ wc -l /tmp/astbuild.out
 - dante (socks proxy client/server https://www.inet.no/dante/)
 - dasel (https://github.com/TomWright/dasel - data selector like jq, yq - go)
 - dehydrated (https://github.com/dehydrated-io/dehydrated - shell acme/letsencrypt client)
+- dinit (https://github.com/davmac314/dinit - init and service monitor)
 - diod (https://github.com/chaos/diod - 9p fileserver)
   - `attr/xattr.h` -> `sys/xattr.h` - fix multiple files
   - `sys/sysmacros.h` fix in **diod/ops.c**
