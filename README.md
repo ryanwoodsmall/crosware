@@ -1709,6 +1709,7 @@ wc -l /tmp/astbuild.out
   - neatsmtp (https://github.com/aligrudi/neatsmtp)
   - neatvi
     - kyx0r fork with lots of features (https://github.com/kyx0r/neatvi)
+    - nextvi (https://github.com/kyx0r/nextvi - "next" version of neatvi)
   - fbpdf (https://github.com/aligrudi/fbpdf)
   - fbvis (https://repo.or.cz/fbvis.git)
   - fbff (https://github.com/aligrudi/fbff)
