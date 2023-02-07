@@ -1674,6 +1674,7 @@ wc -l /tmp/astbuild.out
 - musl stuff
   - musl-locales (https://github.com/rilian-la-te/musl-locales - cmake? seriously?)
   - musl-obstack (https://github.com/pullmoll/musl-obstack and/or https://github.com/void-linux/musl-obstack)
+  - musl-rpmatch (https://github.com/pullmoll/musl-rpmatch - glibc compat rpmatch(3) yes/no response function)
   - musl-utils
     - getconf, getent, iconv
     - currently in **alpinemuslutils** recipe as `alpine-{getconf,getent,iconv}`
