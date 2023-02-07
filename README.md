@@ -1041,6 +1041,8 @@ wc -l /tmp/astbuild.out
 - bsdgames (debian - https://packages.debian.org/buster/bsdgames)
 - bsd-headers (http://cgit.openembedded.org/openembedded-core/tree/meta/recipes-core/musl - oe/yocto)
 - bsdutils (https://github.com/dcantrell/bsdutils - alternative to coreutils with stuff from freebsd)
+  - chimerautils (https://github.com/chimera-linux/chimerautils)
+  - other chimera repos... (https://github.com/orgs/chimera-linux/repositories)
 - btyacc (https://www.siber.com/btyacc/ - 2.x and 3.x)
 - bubblewrap (https://github.com/containers/bubblewrap - user-mode unprivileged sandboxing?)
 - build-scripts (https://github.com/noloader/Build-Scripts - useful versions, packaging, etc. stuff)
