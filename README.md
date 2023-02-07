@@ -1151,6 +1151,7 @@ wc -l /tmp/astbuild.out
 - edbrowse (http://edbrowse.org/ and https://github.com/CMB/edbrowse)
   - cmake, curl, pcre, tidy (cmake), duktape
 - editline (https://github.com/richsalz/editline - another editline/libedit)
+- elftoolchain (https://github.com/elftoolchain/elftoolchain - bsd licensed elf ar/ld/strings/etc. - binutils-ish)
 - elfutils (https://sourceware.org/elfutils/)
 - ellcc (embedded clang build, http://ellcc.org/)
 - elvm (https://github.com/shinh/elvm)
