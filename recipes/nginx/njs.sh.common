@@ -1,5 +1,5 @@
 : ${rreqs:=""}
-rreqs="make pcre2 ${rreqs}"
+rreqs="make pcre2 libxml2 zlib xz pkgconfig ${rreqs}"
 
 if [[ ${rname} =~ tiny ]] ; then
   rtlib="-lno_readline"
@@ -13,6 +13,16 @@ fi
 
 
 . "${cwrecipe}/common.sh"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cat auto/libxml2 > auto/libxml2.ORIG
+  sed -i 's,/usr/local,${cwsw}/libxml2/current,g' auto/libxml2
+  sed -i 's,-lxml2,-lxml2 -llzma -lz,g' auto/libxml2
+  popd >/dev/null 2>&1
+}
+"
 
 eval "
 function cwconfigure_${rname}() {
