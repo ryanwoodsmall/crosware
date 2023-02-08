@@ -13,7 +13,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://nginx.org/download/${rfile}"
 rsha256="75cb5787dbb9fae18b14810f91cc4343f64ce4c24e27302136fb52498042ba54"
-rreqs="make perl slibtool pcre2"
+rreqs="make perl slibtool pcre2 libgpgerror libgcrypt libxml2 libxslt zlib xz pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
@@ -38,6 +38,22 @@ function cwextract_${rname}() {
 "
 
 eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cat \$(cwdir_njs)/auto/libxml2 > \$(cwdir_njs)/auto/libxml2.ORIG
+  sed -i 's,/usr/local,${cwsw}/libxml2/current,g' \$(cwdir_njs)/auto/libxml2
+  sed -i 's,-lxml2,-lxml2 -llzma -lz,g' \$(cwdir_njs)/auto/libxml2
+  cat auto/lib/libxslt/conf > auto/lib/libxslt/conf.ORIG
+  sed -i \"s, /usr/local/include, ${cwsw}/libxml2/current/include/libxml2 \$(echo ${cwsw}/{${rreqs// /,}}/current/include),g\" auto/lib/libxslt/conf
+  sed -i \"s,-L/usr/local/lib,\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib),g\" auto/lib/libxslt/conf
+  sed -i 's,-lxslt,-lxslt -lgcrypt -lgpg-error -lxml2 -llzma -lz,g' auto/lib/libxslt/conf
+  sed -i 's,-lxml2 -lxslt,-lxslt,g' auto/lib/libxslt/conf
+  sed -i 's,-lexslt,-lexslt -lxslt -lgcrypt -lgpg-error -lxml2 -llzma -lz,g' auto/lib/libxslt/conf
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG '/if.*eq.*-static/s/-static/-blahblahblah/g' \"\$(cwdir_openssl)/Configure\"
@@ -46,8 +62,8 @@ function cwconfigure_${rname}() {
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --add-module=\"\$(cwbdir_${rname})/\$(cwdir_njs)/nginx\" \
       --with-cc=\"\$(which \${CC})\" \
-      --with-cc-opt=\"-fPIC -Wl,-static\" \
-      --with-ld-opt=\"-static\" \
+      --with-cc-opt=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include) \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -fPIC -Wl,-static\" \
+      --with-ld-opt=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       --with-openssl=\"\$(cwbdir_${rname})/\$(cwdir_openssl)\" \
       --with-openssl-opt=\"--openssldir=${cwetc}/ssl no-asm no-shared no-zlib no-zlib-dynamic -fPIC -DOPENSSL_PIC -DOPENSSL_THREADS -static\" \
       --with-perl=\"${cwsw}/perl/current/bin/perl\" \
@@ -70,6 +86,7 @@ function cwconfigure_${rname}() {
       --with-http_stub_status_module \
       --with-http_sub_module \
       --with-http_v2_module \
+      --with-http_xslt_module \
       --with-mail \
       --with-mail_ssl_module \
       --with-stream \
