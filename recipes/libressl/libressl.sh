@@ -6,11 +6,11 @@
 # XXX - when upgraded, an installed dependents reinstall should be performed - {libssh2,curl,...}libressl
 #
 rname="libressl"
-rver="3.6.1"
+rver="3.6.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${rfile}"
-rsha256="acfac61316e93b919c28d62d53037ca734de85c46b4d703f19fd8395cf006774"
+rsha256="4be80fff073746cf50b4a8e5babe2795acae98c6b132a9e02519b445dfbfd033"
 rreqs="bootstrapmake cacertificates configgit zlib"
 # prefer openssl for now
 rprof="${cwetcprofd}/zz_${rname}.sh"
