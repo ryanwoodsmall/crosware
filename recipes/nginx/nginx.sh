@@ -3,8 +3,6 @@
 # XXX - --with-pcre-opt=\"--enable-jit --enable-pcre8 --enable-pcre16 --enable-pcre32 --enable-unicode-properties --enable-utf\" \
 # XXX - no pcre jit on riscv64
 # XXX - probably need to remove static bits for dynamic modules
-# XXX - use crosware-provided openssl/libressl by sylminking to $(cwidir_${rname})/$(cwdir_{openssl,libress})/.openssl
-# XXX - fake out config/configure/Makefile/...
 #
 
 rname="nginx"
@@ -13,14 +11,13 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://nginx.org/download/${rfile}"
 rsha256="75cb5787dbb9fae18b14810f91cc4343f64ce4c24e27302136fb52498042ba54"
-rreqs="make perl slibtool pcre2 libgpgerror libgcrypt libxml2 libxslt zlib xz pkgconfig"
+rreqs="make openssl slibtool pcre2 libgpgerror libgcrypt libxml2 libxslt zlib xz pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
-  cwfetch_openssl
   cwfetch_pcre2
   cwfetch_zlib
   cwfetch_njs
@@ -30,7 +27,6 @@ function cwfetch_${rname}() {
 eval "
 function cwextract_${rname}() {
   cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
-  cwextract \"\$(cwdlfile_openssl)\" \"\$(cwbdir_${rname})\"
   cwextract \"\$(cwdlfile_pcre2)\" \"\$(cwbdir_${rname})\"
   cwextract \"\$(cwdlfile_zlib)\" \"\$(cwbdir_${rname})\"
   cwextract \"\$(cwdlfile_njs)\" \"\$(cwbdir_${rname})\"
@@ -54,10 +50,24 @@ function cwpatch_${rname}() {
 "
 
 eval "
+function cwinstall_${rname}_openssl() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwdir_openssl)\"
+  cd \"\$(cwdir_openssl)\"
+  ln -sf \"${cwsw}/openssl/current\" .openssl
+  echo | tee config Makefile
+  chmod 755 config
+  echo all: >> Makefile
+  echo clean: >> Makefile
+  echo install_sw: >> Makefile
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  sed -i.ORIG '/if.*eq.*-static/s/-static/-blahblahblah/g' \"\$(cwdir_openssl)/Configure\"
-  sed -i.ORIG 's/-march=armv7-a/-march=armv7-a -static/g' \"\$(cwdir_openssl)/config\"
+  cwinstall_${rname}_openssl
   env PATH=\"${cwsw}/perl/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --add-module=\"\$(cwbdir_${rname})/\$(cwdir_njs)/nginx\" \
@@ -65,8 +75,6 @@ function cwconfigure_${rname}() {
       --with-cc-opt=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include) \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -fPIC -Wl,-static\" \
       --with-ld-opt=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       --with-openssl=\"\$(cwbdir_${rname})/\$(cwdir_openssl)\" \
-      --with-openssl-opt=\"--openssldir=${cwetc}/ssl no-asm no-shared no-zlib no-zlib-dynamic -fPIC -DOPENSSL_PIC -DOPENSSL_THREADS -static\" \
-      --with-perl=\"${cwsw}/perl/current/bin/perl\" \
       --with-pcre=\"\$(cwbdir_${rname})/\$(cwdir_pcre2)\" \
       --with-zlib=\"\$(cwbdir_${rname})/\$(cwdir_zlib)\" \
       --with-compat \
@@ -110,9 +118,6 @@ function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool} CC=\"\${CC}\" CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
   \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/sbin/${rname}\"
-  for p in \$(find \$(cwdir_openssl)/.openssl/bin/ -type f) ; do
-    install -m 755 \${p} \"\$(cwidir_${rname})/sbin/${rname}-\$(basename \${p})\"
-  done
   unset p
   popd >/dev/null 2>&1
 }
