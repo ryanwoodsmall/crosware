@@ -28,6 +28,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-docs \
     --disable-nls \
+    --disable-silent-rules \
     --with-gnutls \
     --with-lz4 \
     --with-system-cafile=\"${cwetc}/ssl/cert.pem\" \
