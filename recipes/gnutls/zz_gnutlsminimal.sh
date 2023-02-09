@@ -26,6 +26,7 @@ function cwconfigure_${rname}() {
       --disable-hardware-acceleration \
       --disable-nls \
       --disable-padlock \
+      --disable-silent-rules \
       --enable-local-libopts \
       --enable-manpages \
       --enable-openssl-compatibility \

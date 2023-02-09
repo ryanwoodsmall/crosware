@@ -31,6 +31,7 @@ function cwconfigure_${rname}() {
     --disable-nls \
     --disable-openssl-compatibility \
     --disable-padlock \
+    --disable-silent-rules \
     --enable-local-libopts \
     --enable-manpages \
     --enable-sha1-support \
