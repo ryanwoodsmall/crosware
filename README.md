@@ -682,6 +682,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
 - onetrueawk (https://github.com/onetrueawk/awk - the one true awk)
 - oniguruma (https://github.com/kkos/oniguruma)
+- openconnect (https://www.infradead.org/openconnect and https://gitlab.com/openconnect/openconnect - cisco/juniper/etc. vpn client)
+  - includes default `vpnc-script` (https://www.infradead.org/openconnect/vpnc-script.html and https://gitlab.com/openconnect/vpnc-scripts)
 - opendoas (https://github.com/Duncaen/OpenDoas - much simpler "doas" sudo replacement)
 - opennc (openbsd netcat - formerly http://systhread.net/coding/opennc.php)
   - see netcatopenbbsd for bsd netcat as packaged by debian
@@ -1758,7 +1760,6 @@ wc -l /tmp/astbuild.out
 - oleo (gnu spreadsheet, https://www.gnu.org/software/oleo/oleo.html)
 - openadk (https://openadk.org/ and https://github.com/wbx-github/openadk - embedded system toolchain and image creation)
 - openbsd-libz (https://github.com/ataraxialinux/openbsd-libz)
-- openconnect
 - opengit (https://github.com/khanzf/opengit)
   - original gist: https://gist.github.com/ryanwoodsmall/2cbce4664f13b95ec7b0385fcee0b957
   - bmake, libbsd, libmd, zlib, pkgconfig, fetchfreebsd{,libressl}, openssl/libressl

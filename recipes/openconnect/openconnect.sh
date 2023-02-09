@@ -1,0 +1,53 @@
+rname="openconnect"
+rver="9.01"
+rdir="${rname}-${rver}"
+rfile="${rdir}.tar.gz"
+rurl="https://www.infradead.org/${rname}/download/${rfile}"
+rsha256="b3d7faf830e9793299d6a41e81d84cd4a3e2789c148c9e598e4585010090e4c7"
+rreqs="make pkgconfig openssl libxml2 zlib xz lz4 slibtool"
+
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwfetch_${rname}() {
+  cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
+  cwfetchcheck \"https://gitlab.com/openconnect/vpnc-scripts/-/raw/22756827315bc875303190abb3756b5b1dd147ce/vpnc-script\" \
+    \"${cwdl}/${rname}/vpnc-script\" \
+    \"46c0413e26f1d918d95755d323cf833bf1b7540400a3b75ebbb2ac4c906f7f7f\"
+}
+"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  sed -i.ORG s,-Wmissing-include-dirs,,g configure
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/etc\"
+  install -m 755 \"${cwdl}/${rname}/vpnc-script\" \"\$(cwidir_${rname})/etc/vpnc-script\"
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+    --disable-docs \
+    --disable-nls \
+    --with-lz4 \
+    --with-openssl \
+    --with-system-cafile=\"${cwetc}/ssl/cert.pem\" \
+    --with-vpnc-script=\"\$(cwidir_${rname})/etc/vpnc-script\" \
+    --without-gnutls \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+      LIBS='-lxml2 -llzma -lz -llz4'
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/sbin\"' > \"${rprof}\"
+}
+"
