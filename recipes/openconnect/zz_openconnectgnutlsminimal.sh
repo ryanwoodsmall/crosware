@@ -1,4 +1,4 @@
-rname="openconnectgnutls"
+rname="openconnectgnutlsminimal"
 rver="$(cwver_openconnect)"
 rdir="$(cwdir_openconnect)"
 rfile="$(cwfile_openconnect)"
@@ -24,7 +24,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cwmkdir \"\$(cwidir_${rname})/etc\"
-  install -m 755 \"${cwdl}/${rname%gnutls}/vpnc-script\" \"\$(cwidir_${rname})/etc/vpnc-script\"
+  install -m 755 \"${cwdl}/${rname%gnutlsminimal}/vpnc-script\" \"\$(cwidir_${rname})/etc/vpnc-script\"
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-docs \
     --disable-nls \
@@ -46,7 +46,8 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  ln -sf ${rname%gnutls} \"\$(cwidir_${rname})/sbin/${rname}\"
+  ln -sf ${rname%gnutlsminimal} \"\$(cwidir_${rname})/sbin/${rname%minimal}\"
+  ln -sf ${rname%gnutlsminimal} \"\$(cwidir_${rname})/sbin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
