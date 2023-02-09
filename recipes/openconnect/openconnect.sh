@@ -1,3 +1,7 @@
+#
+# XXX - chromeos needs some love: https://scene-si.org/2015/06/01/openconnect-on-a-chromebook-without-crouton/
+# XXX - make sure shill doesn't tear down the tun# interface...
+#
 rname="openconnect"
 rver="9.01"
 rdir="${rname}-${rver}"
