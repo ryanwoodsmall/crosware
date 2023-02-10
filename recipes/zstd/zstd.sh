@@ -1,16 +1,16 @@
 rname="zstd"
-rver="1.5.2"
+rver="1.5.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/facebook/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="7c42d56fac126929a6a85dbc73ff1db2411d04f104fae9bdea51305663a83fd0"
+rsha256="0f470992aedad543126d06efab344dc5f3e171893810455787d38347343a4424"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cp lib/Makefile{,.ORIG}
   cp Makefile{,.ORIG}
   sed -i '/^lib/s/libzstd.a libzstd/libzstd.a/g' lib/Makefile
@@ -22,9 +22,9 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make \
-    {PREFIX,prefix}=\"${ridir}\" \
+    {PREFIX,prefix}=\"\$(cwidir_${rname})\" \
     LDFLAGS='-static' \
     CPPFLAGS=-DXXH_NAMESPACE=ZSTD_ \
     PKG_CONFIG_LIBDIR= \
@@ -35,9 +35,9 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install \
-    {PREFIX,prefix}=\"${ridir}\" \
+    {PREFIX,prefix}=\"\$(cwidir_${rname})\" \
     LDFLAGS='-static' \
     CPPFLAGS=-DXXH_NAMESPACE=ZSTD_ \
     PKG_CONFIG_LIBDIR= \
