@@ -47,6 +47,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
+  install -m 0755 contrib/ssh-copy-id \"\$(cwidir_${rname})/bin/\"
   ln -sf ssh \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf ssh \"\$(cwidir_${rname})/bin/openssh\"
   ln -sf ssh \"\$(cwidir_${rname})/bin/openssh-ssh\"
