@@ -1514,6 +1514,7 @@ wc -l /tmp/astbuild.out
   - lispe (https://github.com/naver/lispe)
   - mal (https://github.com/kanaka/mal/ - make a lisp, in a bunch of languages)
   - mankai common lisp (https://common-lisp.net/project/mkcl/)
+  - maru (https://github.com/attila-lendvai/maru - small self-hosting lisp, lots of links to other small/bootstrap languages)
   - newlisp (http://www.newlisp.org/ - unnoficial code mirror at https://github.com/kosh04/newlisp)
     - needs libffi, ncurses, readline
     - ```make makefile_build ; sed -i 's/ = gcc$/ = gcc $(CPPFLAGS) $(shell pkg-config --cflags libffi)/g;s/-lreadline/$(LDFLAGS) -lreadline -lncurses/g' makefile_build```
