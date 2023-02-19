@@ -1,6 +1,3 @@
-#
-# XXX - strip with install -s? hardly seems worth it
-#
 rname="tini"
 rver="0.19.0"
 rdir="${rname}-${rver}"
@@ -13,7 +10,7 @@ rreqs=""
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   echo '#define TINI_VERSION \"${rver}\"' > ./src/tiniConfig.h
   echo '#define TINI_GIT \"\"' >> ./src/tiniConfig.h
   popd >/dev/null 2>&1
@@ -22,19 +19,17 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}/src\" >/dev/null 2>&1
-  \${CC} \"${rname}.c\" -o \"${rname}\" -static
+  pushd \"\$(cwbdir_${rname})/src\" >/dev/null 2>&1
+  \${CC} \${CFLAGS} -g0 -Os -Wl,-s \"${rname}.c\" -o \"${rname}\" -static -s
   popd >/dev/null 2>&1
 }
 "
 
-# XXX - init symlink?
-#  ln -sf \"${rtdir}/current/sbin/${rname}\" \"${ridir}/sbin/init\"
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}/src\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/sbin\"
-  install -m 0755 \"${rname}\" \"${ridir}/sbin/${rname}\"
+  pushd \"\$(cwbdir_${rname})/src\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/sbin\"
+  install -m 0755 \"${rname}\" \"\$(cwidir_${rname})/sbin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
