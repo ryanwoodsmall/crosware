@@ -405,6 +405,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - architecture naming conventions: https://github.com/docker-library/official-images#architectures-other-than-amd64
 - dropbear (https://matt.ucc.asn.au/dropbear/dropbear.html and https://dropbear.nl/ - zlib, lsh sftp-server - tcp port 2222)
   - dropbearminimal (zlib - tcp port 22222)
+- dsvpn (https://github.com/jedisct1/dsvpn - dead simple vpn)
 - dtach (https://github.com/crigler/dtach and http://dtach.sourceforge.net/ - simpler detachable screenalike)
 - duktape (http://duktape.org/ and https://github.com/svaarala/duktape)
 - dvtm (https://www.brain-dump.org/projects/dvtm/ and https://github.com/martanne/dvtm/)
@@ -1400,7 +1401,6 @@ wc -l /tmp/astbuild.out
     - sqlshell (scala, sbt - https://github.com/bmc/sqlshell)
 - jed (https://www.jedsoft.org/jed/)
 - jedisct1 stuff
-  - dsvpn (https://github.com/jedisct1/dsvpn - dead simple vpn)
   - encpipe (https://github.com/jedisct1/encpipe - simple encrypted pipe with libhydrogen)
   - libhydrogen (https://github.com/jedisct1/libhydrogen - simple high-level crypto lib from libsodium folks)
   - minisign (https://github.com/jedisct1/minisign - sign/verify files with digital signatures, libsodium+cmake)
