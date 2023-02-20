@@ -1,5 +1,6 @@
 #
 # XXX - remove workaround for src/openssl.h on libressl 3.5!!!
+# XXX - need to fixup lib/libssh2.la, replace libressl-#.#.# (and zlib-#.#.#) versioned dirs with current
 #
 
 rname="libssh2libressl"
