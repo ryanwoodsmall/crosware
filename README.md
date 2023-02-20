@@ -447,6 +447,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - global
 - glorytun (https://github.com/angt/glorytun - udp tunnel using libsodium)
   - uses mud (https://github.com/angt/mud - multipath udp lib)
+  - docker container example: https://github.com/angt/mudock
 - gmp
 - gnupg (with ntbtls - https://gnupg.org/software/index.html)
   - gnupg1 (gnupg 1.x - older, smaller gnupg version, with fewer prereqs)
@@ -941,6 +942,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - amfora (https://github.com/makeworld-the-better-one/amfora - go gemini client)
 - ansicurses (https://github.com/byllgrim/ansicurses)
 - angt stuff
+  - arply (https://github.com/angt/arply - arp ipv4 response daemon)
+  - forwarp (https://github.com/angt/forwarp - arp forward between interfaces)
   - secret (https://github.com/angt/secret - small secret store, uses libhydrogen)
   - slashinit (https://github.com/angt/slashinit - initramfs init, diskless/tunable)
   - totp (https://github.com/angt/totp - small time-based one-time pad)
@@ -1157,7 +1160,6 @@ wc -l /tmp/astbuild.out
     - rip off vidoas into opendoas?
 - docbook?
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
-- dsvpn (https://github.com/jedisct1/dsvpn)
 - dumb-init (https://github.com/Yelp/dumb-init)
 - duplicity (http://duplicity.nongnu.org/)
 - e (https://github.com/hellerve/e - simple editor, syntax highlighting, archived?)
@@ -1397,6 +1399,17 @@ wc -l /tmp/astbuild.out
     - jisql (https://github.com/stdunbar/jisql)
     - sqlshell (scala, sbt - https://github.com/bmc/sqlshell)
 - jed (https://www.jedsoft.org/jed/)
+- jedisct1 stuff
+  - dsvpn (https://github.com/jedisct1/dsvpn - dead simple vpn)
+  - encpipe (https://github.com/jedisct1/encpipe - simple encrypted pipe with libhydrogen)
+  - libhydrogen (https://github.com/jedisct1/libhydrogen - simple high-level crypto lib from libsodium folks)
+  - minisign (https://github.com/jedisct1/minisign - sign/verify files with digital signatures, libsodium+cmake)
+   - go implementation: https://github.com/aead/minisign
+   - javascript: https://github.com/chm-diederichs/minisign
+  - piknik (https://github.com/jedisct1/piknik - network copy/paste)
+  - rpdns (https://github.com/jedisct1/rpdns - dns proxy)
+  - vtun (https://github.com/jedisct1/vtun - secure virtual tunnel with libsodium instead of openssl)
+    - original: https://vtun.sourceforge.net/
 - jimtcl (https://github.com/msteveb/jimtcl and http://jim.tcl.tk/ - small tcl implementation)
 - jitter (http://ageinghacker.net/projects/jitter/ - jit/vm/interpreter thing)
 - jobflow (https://github.com/rofl0r/jobflow - small gnu parallel alike in c)
@@ -1461,7 +1474,6 @@ wc -l /tmp/astbuild.out
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
 - libhdate (https://sourceforge.net/projects/libhdate/ - hebrew calendar w/hcal and hdate programs with sunrise/sunset/etc. info)
 - libhv (https://github.com/ithewei/libhv - c++ network library with some example programs, support for curl/openssl/gnutls/mbedtls/nghttp2)
-- libhydrogen (https://github.com/jedisct1/libhydrogen - simple high-level crypto lib from libsodium folks)
 - libiconv (https://www.gnu.org/software/libiconv/)
 - libixp
   - https://github.com/bwhmather/libixp - fork updated recently?
