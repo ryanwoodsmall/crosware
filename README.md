@@ -940,6 +940,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - althttpd (https://sqlite.org/althttpd/doc/trunk/althttpd.md - sqlite web server, xinetd+stunnel)
 - amfora (https://github.com/makeworld-the-better-one/amfora - go gemini client)
 - ansicurses (https://github.com/byllgrim/ansicurses)
+- angt stuff
+  - secret (https://github.com/angt/secret - small secret store, uses libhydrogen)
+  - slashinit (https://github.com/angt/slashinit - initramfs init, diskless/tunable)
+  - totp (https://github.com/angt/totp - small time-based one-time pad)
 - arachsys stuff
   - init (https://github.com/arachsys/init - bsd-ish init with a lot of nice utils - uevent, syslog, etc.)
   - skd (https://github.com/arachsys/skd - socket daemon, inetd-like - bind to a udp/tcp port/socket, run something)
@@ -1457,6 +1461,7 @@ wc -l /tmp/astbuild.out
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
 - libhdate (https://sourceforge.net/projects/libhdate/ - hebrew calendar w/hcal and hdate programs with sunrise/sunset/etc. info)
 - libhv (https://github.com/ithewei/libhv - c++ network library with some example programs, support for curl/openssl/gnutls/mbedtls/nghttp2)
+- libhydrogen (https://github.com/jedisct1/libhydrogen - simple high-level crypto lib from libsodium folks)
 - libiconv (https://www.gnu.org/software/libiconv/)
 - libixp
   - https://github.com/bwhmather/libixp - fork updated recently?
