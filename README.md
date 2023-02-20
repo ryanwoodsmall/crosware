@@ -445,6 +445,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - old version
   - new version requires meson, ninja, thus python3
 - global
+- glorytun (https://github.com/angt/glorytun - udp tunnel using libsodium)
+  - uses mud (https://github.com/angt/mud - multipath udp lib)
 - gmp
 - gnupg (with ntbtls - https://gnupg.org/software/index.html)
   - gnupg1 (gnupg 1.x - older, smaller gnupg version, with fewer prereqs)
@@ -1195,7 +1197,6 @@ wc -l /tmp/astbuild.out
 - gdb
 - ghostunnel (https://github.com/ghostunnel/ghostunnel - stunnel-ish in go, with mutual tls auth)
 - git-crypt (https://github.com/AGWA/git-crypt)
-- glorytun (https://github.com/angt/glorytun - udp tunnel using libsodium)
 - glow (https://github.com/charmbracelet/glow - terminal markdown renderer in go)
 - gmni (https://sr.ht/~sircmpwn/gmni/ and https://git.sr.ht/~sircmpwn/gmni - gemini client)
 - gmnisrv (https://sr.ht/~sircmpwn/gmnisrv/ and https://git.sr.ht/~sircmpwn/gmnisrv - gemini server)
