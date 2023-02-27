@@ -2,11 +2,11 @@
 # XXX - 4.4 changes: MAKE_TMPDIR, etc.; https://lists.gnu.org/archive/html/info-gnu/2022-10/msg00008.html
 #
 rname="make"
-rver="4.4"
+rver="4.4.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="581f4d4e872da74b3941c874215898a7d35802f03732bdccee1d4a7979105d18"
+rsha256="dd16fb1d67bfab79a72f5e8390735c49e3e8e70b4945a15ab1f81ddb78658fb3"
 rreqs="busybox sed gawk"
 
 . "${cwrecipe}/common.sh"
