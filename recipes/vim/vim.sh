@@ -3,33 +3,14 @@
 #
 
 rname="vim"
-rver="9.0.1357"
+rver="9.0.1363"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
-rsha256="aa98cf211abdfb122c5d3bbcf26122411afb3291dd99f8cf40efa7b8fee898fa"
+rsha256="0b42a8e333e1e0d69bf85b9dbc87f14f11809631713df7a86ee4524c70a1f65d"
 rreqs="make ncurses lua gettexttiny attr acl libsodium"
 
 . "${cwrecipe}/common.sh"
-
-eval "
-function cwfetch_${rname}() {
-  cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
-  cwfetchcheck \
-    \"https://raw.githubusercontent.com/vim/vim/685bf83b73d0fe6fd36bb2949bebd6aae66a139e/runtime/syntax/sh.vim\" \
-    \"${cwdl}/${rname}/sh.vim-204\" \
-    \"72a0ebae4048cc04e68da8776a271dbf4cb1ed96ddef4d96ec2cf5d89063d125\"
-}
-"
-
-eval "
-function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  mv \"runtime/syntax/sh.vim\" \"runtime/syntax/sh.vim.ORIG\"
-  install -m 644 \"${cwdl}/${rname}/sh.vim-204\" \"runtime/syntax/sh.vim\"
-  popd >/dev/null 2>&1
-}
-"
 
 eval "
 function cwconfigure_${rname}() {
