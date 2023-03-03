@@ -4,11 +4,11 @@
 #
 
 rname="miller6"
-rver="6.6.0"
+rver="6.7.0"
 rdir="${rname%6}-${rver}"
-rfile="v${rver}.tar.gz"
-rurl="https://github.com/johnkerl/miller/archive/refs/tags/${rfile}"
-rsha256="79f219aa2c7d1fc83dd6afa98b4ac335c0c3f4e17ab84f0890bb0f79cfa5504e"
+rfile="${rdir}.tar.gz"
+rurl="https://github.com/johnkerl/miller/releases/download/v${rver}/${rfile}"
+rsha256="45c86dbb35e326184740eded13d61e9900187dfde72d9c46789d429373c7566f"
 rreqs="bootstrapmake go"
 
 . "${cwrecipe}/common.sh"
