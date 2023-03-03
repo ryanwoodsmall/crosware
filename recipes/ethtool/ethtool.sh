@@ -1,9 +1,9 @@
 rname="ethtool"
-rver="6.1"
+rver="6.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://mirrors.edge.kernel.org/pub/software/network/${rname}/${rfile}"
-rsha256="c41fc881ffa5a40432d2dd829eb44c64a49dee482e716baacf9262c64daa8f90"
+rsha256="86df0114064d4d73f6bf72bf03e85c33964a519ee0c1d1ba65005ad2d0e570e1"
 rreqs="make libmnl"
 
 . "${cwrecipe}/common.sh"
