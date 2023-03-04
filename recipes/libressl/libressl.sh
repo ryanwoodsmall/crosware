@@ -40,6 +40,7 @@ function cwmakeinstall_${rname}() {
   make install ${rlibtool}
   mv \"\$(cwidir_${rname})/bin/openssl\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/openssl\"
+  ln -sf \"${rtdir}/current/bin/nc\" \"\$(cwidir_${rname})/bin/${rname}-nc\"
   popd >/dev/null 2>&1
 }
 "
