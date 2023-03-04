@@ -1178,6 +1178,7 @@ wc -l /tmp/astbuild.out
   - `--without-x --with-xml2 --with-modules`
   - `LIBGNUTLS_LIBS='-lgnutls -lhogweed -lnettle -lgmp -ltasn1 -lunistring'`
   - `LIBXML2_LIBS='-lxml2 -lz -lz -llzma'`
+- httpd.bash (https://github.com/emasaka/httpd.bash/blob/master/httpd.bash - a little webserver in bash)
 - emulation stuff
   - axpbox (https://github.com/lenticularis39/axpbox - alpha)
   - gxemul (http://gavare.se/gxemul/)
