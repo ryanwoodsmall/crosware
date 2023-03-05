@@ -1278,6 +1278,8 @@ time_func ls -l -A /
 - command to list profile.d files
   - `list-recipe-profds`?
   - e.g. `recipe : /usr/local/crosware/etc/profile.d/recipe.sh`
+- make ssl/tls ca/certs/etc. configurable
+  - `CW_CERT_PATH` or some such
 
 <!--
 # vim: ft=markdown
