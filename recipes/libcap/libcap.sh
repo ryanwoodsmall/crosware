@@ -1,3 +1,6 @@
+#
+# XXX - needs invisible island indent for (system-provided) gperf support
+#
 rname="libcap"
 rver="2.63"
 rdir="${rname}-${rver}"
