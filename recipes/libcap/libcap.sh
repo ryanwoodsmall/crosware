@@ -1,5 +1,5 @@
 #
-# XXX - needs invisible island indent for (system-provided) gperf support
+# XXX - needs gnu (or invisible island!) indent for (system-provided) gperf support
 #
 rname="libcap"
 rver="2.63"
