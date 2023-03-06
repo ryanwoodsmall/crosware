@@ -16,20 +16,20 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make lib=lib prefix=\"${ridir}\" GOLANG=no
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make lib=lib prefix=\"\$(cwidir_${rname})\" GOLANG=no USE_GPERF=no
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cd libcap
-  make install-static lib=lib prefix=\"${ridir}\" GOLANG=no
+  make install-static lib=lib prefix=\"\$(cwidir_${rname})\" GOLANG=no USE_GPERF=no
   cd -
   cd progs
-  make install lib=lib prefix=\"${ridir}\" GOLANG=no
+  make install lib=lib prefix=\"\$(cwidir_${rname})\" GOLANG=no USE_GPERF=no
   cd -
   popd >/dev/null 2>&1
 }
