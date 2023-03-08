@@ -941,13 +941,14 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - aloa (linter - https://github.com/ralfholly/aloa)
 - althttpd (https://sqlite.org/althttpd/doc/trunk/althttpd.md - sqlite web server, xinetd+stunnel)
 - amfora (https://github.com/makeworld-the-better-one/amfora - go gemini client)
-- ansicurses (https://github.com/byllgrim/ansicurses)
 - angt stuff
   - arply (https://github.com/angt/arply - arp ipv4 response daemon)
   - forwarp (https://github.com/angt/forwarp - arp forward between interfaces)
   - secret (https://github.com/angt/secret - small secret store, uses libhydrogen)
   - slashinit (https://github.com/angt/slashinit - initramfs init, diskless/tunable)
   - totp (https://github.com/angt/totp - small time-based one-time pad)
+- ansicurses (https://github.com/byllgrim/ansicurses)
+- ansi (https://github.com/fidian/ansi - ansi color codes/tables in bash)
 - arachsys stuff
   - init (https://github.com/arachsys/init - bsd-ish init with a lot of nice utils - uevent, syslog, etc.)
   - skd (https://github.com/arachsys/skd - socket daemon, inetd-like - bind to a udp/tcp port/socket, run something)
