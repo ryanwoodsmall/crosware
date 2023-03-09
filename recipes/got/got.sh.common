@@ -12,7 +12,6 @@ function cwpatch_${rname}() {
   cat lib/dial.c > lib/dial.c.ORIG
   sed -i s,/usr/bin/ssh,ssh,g lib/dial.c
   sed -i s,execv,execvp,g lib/dial.c
-  sed -i s,sys/queue,bsd/sys/queue,g template/configure template/parse.y
   popd >/dev/null 2>&1
 }
 "
@@ -23,9 +22,11 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
-    LIBS='-levent -lpanelw -lncursesw -lz' \
+    LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -levent -lpanelw -lncursesw -lz\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':' )\" \
     YACC=\"${cwsw}/byacc/current/bin/byacc\"
+  find . -type f -name Makefile | xargs sed -i 's,-lbsd,-lbsd -lmd,g'
+  find . -type f -name Makefile | xargs sed -i 's,-lpanelw,-lpanelw -lncursesw,g'
   popd >/dev/null 2>&1
 }
 "
