@@ -2039,6 +2039,8 @@ wc -l /tmp/astbuild.out
 - tcpredirect (https://github.com/chengyingyuan/tcpredirect - keyed redirect/proxying?)
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
 - timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
+- tlsclient (https://git.sr.ht/~moody/tlsclient - plan 9 tlsclient for unix, with openssl?)
+  - x9utils (https://github.com/halfwit/x9utils - ditto, with some additions)
 - tlse (https://github.com/eduardsui/tlse - c tls impl using libtomcrypt)
 - tlsproxy (https://github.com/abligh/tlsproxy - simple gnutls stunnel alike; may need some work, compiles but crashes w/access from chrome; seems to behave with curl?)
 - torgo (https://github.com/as/torgo)
