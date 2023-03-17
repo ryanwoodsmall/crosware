@@ -1,3 +1,9 @@
+#
+# XXX - rclone 1.62.x moved to fuse3, chromeos is currently fuse2
+# XXX - results in failed mounts missing fusermount3 on PATH
+# XXX - ugh, ugh
+#
+
 rname="rclone"
 rver="1.62.2"
 rdir="${rname}-${rver}"
