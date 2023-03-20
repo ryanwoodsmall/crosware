@@ -50,8 +50,7 @@ function cwmakeinstall_${rname}() {
   sv=\"\${sv//./}\"
   make install ${rlibtool}
   ln -sf \"${rtdir}/current/share/vim/vim\${sv}/macros/less.sh\" \"\$(cwidir_${rname})/bin/vimless\"
-  ln -sf \"${rname%}\" \"\$(cwidir_${rname})/bin/vi\"
-  echo ln -sf \"${rname%minimal}\" \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/vi\"
   echo '#!/usr/bin/env bash' > \"\$(cwidir_${rname})/bin/${rname}\"
   echo 'env TERM=xterm-color \"${rtdir}/current/bin/vim\" \"\${@}\"' >> \"\$(cwidir_${rname})/bin/${rname}\"
   chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
