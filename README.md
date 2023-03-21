@@ -933,6 +933,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - lots of dns updates in there too...
     - dyn, freedns, etc. update script: https://github.com/acmesh-official/acme.sh/blob/master/dnsapi/dns_freedns.sh
 - acmetool (https://github.com/hlandau/acmetool - acme tool in go)
+- act (https://github.com/nektos/act - github actions running locally)
 - ag (the silver searcher https://geoff.greer.fm/ag/)
 - agner fog's stuff
   - https://www.agner.org/optimize/#objconv
@@ -1412,6 +1413,7 @@ wc -l /tmp/astbuild.out
   - rpdns (https://github.com/jedisct1/rpdns - dns proxy)
   - vtun (https://github.com/jedisct1/vtun - secure virtual tunnel with libsodium instead of openssl)
     - original: https://vtun.sourceforge.net/
+- jenkinsfile-runner (https://github.com/jenkinsci/jenkinsfile-runner - run a Jenkinsfile under a FaaS model)
 - jimtcl (https://github.com/msteveb/jimtcl and http://jim.tcl.tk/ - small tcl implementation)
 - jitter (http://ageinghacker.net/projects/jitter/ - jit/vm/interpreter thing)
 - jobflow (https://github.com/rofl0r/jobflow - small gnu parallel alike in c)
