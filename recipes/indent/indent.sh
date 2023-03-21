@@ -1,9 +1,9 @@
 rname="indent"
-rver="2.2.12"
+rver="2.2.13"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="e77d68c0211515459b8812118d606812e300097cfac0b4e9fb3472664263bb8b"
+rsha256="9e64634fc4ce6797b204bcb8897ce14fdd0ab48ca57696f78767c59cae578095"
 rreqs="make sed flex configgit texinfo gettexttiny slibtool bison"
 
 . "${cwrecipe}/common.sh"
