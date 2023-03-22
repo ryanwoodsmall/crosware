@@ -18,11 +18,11 @@ function cwconfigure_${rname}() {
         CXX=\"\${CXX} -g0 -Os -Wl,-s\" \
         CFLAGS=\"\${CFLAGS} -g0 -Os -Wl,-s\" \
         CXXFLAGS=\"\${CXXFLAGS} -g0 -Os -Wl,-s\" \
-        CPPFLAGS=\"\$(echo -I${cwsw}/{curl${rprovider},zlib,nghttp2,libssh2mbedtls,${rprovider}}/current/include)\" \
-        LDFLAGS=\"\$(echo -L${cwsw}/{curl${rprovider},zlib,nghttp2,libssh2mbedtls,${rprovider}}/current/lib) -static -s\" \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lcurl -latomic -lssh2 -lnghttp2 -lz -lmbedx509 -lmbedtls -lmbedcrypto -static' \
-        PKG_CONFIG=\"${cwsw}/pkgconfig/current/bin/pkg-config\" \
-        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{curl${rprovider},zlib,nghttp2,libssh2mbedtls,${rprovider}}/current/lib/pkgconfig | tr ' ' ':')\"
+        PKG_CONFIG=\"${cwsw}/pkgconfig/current/bin/pkg-config\"
   popd >/dev/null 2>&1
 }
 "

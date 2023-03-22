@@ -870,8 +870,9 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - **plan9port9p** recipe provides `9p` client
   - **libixp** recipe provides `ixpc` 9p client
 - uacme (https://github.com/ndilieto/uacme - standalone acme/letsencrypt client in c, curl+openssl)
-  - uacmembedtls (curl+mbedtls)
+  - uacmelibressl (curl+libressl)
   - uacmegnutls (curl+gnutls)
+  - uacmembedtls (curl+mbedtls)
 - uemacs (https://git.kernel.org/pub/scm/editors/uemacs/uemacs.git/ - micro-emacs)
 - unfs3 (https://unfs3.github.io/ and https://github.com/unfs3/unfs3)
 - unrar

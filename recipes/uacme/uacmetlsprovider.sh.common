@@ -27,11 +27,14 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
+  \$(\${CC} -dumpmachine)-strip \"\$(cwidir_${rname})/bin/${rbase}\"
   ln -sf \"${rbase}\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rbase}\" \"\$(cwidir_${rname})/bin/${rbase}-${rprovider}\"
-  ln -sf \"ualpn\" \"\$(cwidir_${rname})/bin/ualpn${rprovider}\"
-  ln -sf \"ualpn\" \"\$(cwidir_${rname})/bin/ualpn-${rprovider}\"
-  \$(\${CC} -dumpmachine)-strip \"\$(cwidir_${rname})/bin/${rbase}\" \"\$(cwidir_${rname})/bin/ualpn\"
+  if [ -f \"\$(cwidir_${rname})/bin/ualpn\" ] ; then
+    ln -sf \"ualpn\" \"\$(cwidir_${rname})/bin/ualpn${rprovider}\"
+    ln -sf \"ualpn\" \"\$(cwidir_${rname})/bin/ualpn-${rprovider}\"
+    \$(\${CC} -dumpmachine)-strip \"\$(cwidir_${rname})/bin/ualpn\"
+  fi
   cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
   cwmkdir \"\$(cwidir_${rname})/share/doc/txt\"
   cwmkdir \"\$(cwidir_${rname})/share/doc/html\"

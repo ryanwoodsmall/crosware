@@ -1,7 +1,3 @@
-#
-# XXX - libressl variant
-#
-
 rname="uacme"
 rver="1.7.4"
 rdir="${rname}-upstream-${rver}"
@@ -23,6 +19,9 @@ function cwconfigure_${rname}() {
       --with-openssl=\"${cwsw}/openssl/current\" \
       --without-gnutls \
       --without-mbedtls \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lcurl -latomic -lssh2 -lnghttp2 -lz -lssl -lcrypto -static' \
         PKG_CONFIG=\"${cwsw}/pkgconfig/current/bin/pkg-config\"
   popd >/dev/null 2>&1
