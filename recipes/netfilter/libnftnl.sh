@@ -1,16 +1,16 @@
 rname="libnftnl"
-rver="1.2.4"
+rver="1.2.5"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.bz2"
+rfile="${rdir}.tar.xz"
 rurl="https://www.netfilter.org/pub/${rname}/${rfile}"
-rsha256="c0fe233be4cdfd703e7d5977ef8eb63fcbf1d0052b6044e1b23d47ca3562477f"
+rsha256="966de0a8120c8a53db859889749368bfb2cba0c4f0b4c1a30d264eccc45f1226"
 rreqs="bootstrapmake pkgconfig libmnl"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
