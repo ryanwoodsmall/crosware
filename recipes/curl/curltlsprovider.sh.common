@@ -1,6 +1,8 @@
 #
 # override ${rproviderreqs} in recipe, like so: rproviderreqs="gnutls,gcrypt,gpgerror,nettle"
 #
+# XXX - this needs cleaning up, bad
+#
 rver="$(cwver_curl)"
 rdir="$(cwdir_curl)"
 rfile="$(cwfile_curl)"
@@ -31,7 +33,7 @@ fi
 . "${cwrecipe}/${rname%${rprovider}}/${rname%${rprovider}}.sh.common"
 
 sslproviders=( bearssl gnutls mbedtls openssl wolfssl )
-othersslproviders=( $(echo ${sslproviders[@]} | tr ' ' '\n' | grep -v "^${rprovider}$") )
+othersslproviders=( $(echo ${sslproviders[@]} | tr ' ' '\n' | grep -v "^${rprovider%minimal}$") )
 
 # XXX - ugh - https://github.com/curl/curl/pull/7133
 eval "
@@ -52,8 +54,8 @@ function cwmakeinstall_${rname}() {
     --without-zstd \
     --without-wolfssh \
     $(echo ${othersslproviders[@]} | tr ' ' '\n' | sed 's/^/--without-/g' | xargs echo) \
-    --with-${rprovider}=\"${cwsw}/${rprovider}/current\" \
-    --with-default-ssl-backend=${rprovider} \
+    --with-${rprovider%minimal}=\"${cwsw}/${rprovider}/current\" \
+    --with-default-ssl-backend=${rprovider%minimal} \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/include) ${rcppflags}\" \

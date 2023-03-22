@@ -374,6 +374,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - curl (https://curl.se/ - openssl)
   - curlbearssl
   - curlgnutls
+  - curlgnutlsminimal (with nettleminimal/mini-gmp)
   - curllibressl
   - curlmbedtls
   - curlwolfssl
