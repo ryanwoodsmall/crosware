@@ -873,6 +873,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - uacme (https://github.com/ndilieto/uacme - standalone acme/letsencrypt client in c, curl+openssl)
   - uacmelibressl (curl+libressl)
   - uacmegnutls (curl+gnutls)
+  - uacmegnutls (curl+gnutlsminimal built with nettleminimal/mini-gmp)
   - uacmembedtls (curl+mbedtls)
 - uemacs (https://git.kernel.org/pub/scm/editors/uemacs/uemacs.git/ - micro-emacs)
 - unfs3 (https://unfs3.github.io/ and https://github.com/unfs3/unfs3)
