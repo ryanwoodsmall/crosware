@@ -6,7 +6,7 @@ set -eu
 set -o pipefail
 
 declare -a curls
-curls=( $(find ${cwsw}/curl*/current/bin/curl-*{ssl,tls} | sort ; true) )
+curls=( $(find ${cwsw}/curl*/current/bin/curl-*{ssl,tls}{,minimal} 2>/dev/null | sort ; true) )
 
 declare -A tls tlsver feat prot
 
