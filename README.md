@@ -857,6 +857,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - editline (https://github.com/troglobit/editline)
   - inadyn (https://github.com/troglobit/inadyn - dynamic dns updater, openssl)
     - inadyngnutls (gnutls)
+    - inadyngnutlsminimal (gnutlsminimal built with nettleminimal/mini-gmp)
     - inadynlibressl (libressl)
     - inadynmbedtls (mbedtls)
   - libuev (https://github.com/troglobit/libuev)
