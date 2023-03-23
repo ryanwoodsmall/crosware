@@ -471,6 +471,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - portable: https://gameoftrees.org/portable.html
   - supports git, ssh, git+ssh protocols - no http/https
   - has a tig-like `tog` program, nice!
+- goyq (https://github.com/mikefarah/yq - yq implementation in go)
 - grep (gnu grep)
 - groff
 - guile (https://www.gnu.org/software/guile/)
@@ -1227,7 +1228,6 @@ wc -l /tmp/astbuild.out
 - go-toml (https://github.com/pelletier/go-toml - go toml library with jsontoml/tomljson/tomll programs)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - go-tunnel (https://github.com/opencoff/go-tunnel - stunnel replacement written in go)
-- (go) yq (https://github.com/mikefarah/yq - yq alternative in go)
 - gpg
   - etc.
 - gplaces (https://github.com/dimkr/gplaces - terminal gemini client, based on delve (https://github.com/kieselsteini/delve) gopher client?)
