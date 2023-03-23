@@ -41,6 +41,7 @@ function cwmakeinstall_${rname}() {
   install -m 755 \"${rname}\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/${rname#go}\"
   ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/go-${rname#go}\"
+  ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/${rname#go}go\"
   ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/${rname#go}-go\"
   popd >/dev/null 2>&1
 }
