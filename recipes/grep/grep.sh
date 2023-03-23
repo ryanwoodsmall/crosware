@@ -1,9 +1,9 @@
 rname="grep"
-rver="3.9"
+rver="3.10"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="abcd11409ee23d4caf35feb422e53bbac867014cfeed313bb5f488aca170b599"
+rsha256="24efa5b595fb5a7100879b51b8868a0bb87a71c183d02c4c602633b88af6855b"
 rreqs="make pcre2 sed pkgconfig"
 
 . "${cwrecipe}/common.sh"
