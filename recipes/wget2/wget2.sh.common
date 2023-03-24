@@ -1,0 +1,80 @@
+: ${rreqs:=""}
+rreqs+=" make lunzip zlib pcre2 pkgconfig sed cacertificates lunzip bzip2 xz brotli zstd nghttp2 lzlib"
+
+if [[ -z "${rname#wget2}" ]] ; then
+  rsslprov="openssl"
+  rconfigureopts="--with-openssl=yes --with-ssl=openssl"
+  rreqs+=" ${rsslprov}"
+elif [[ "${rname#wget2}" == "libressl" ]] ; then
+  rsslprov="libressl"
+  rconfigureopts="--with-openssl=yes --with-ssl=openssl"
+  rreqs+=" ${rsslprov}"
+elif [[ "${rname#wget2}" == "gnutlsminimal" ]] ; then
+  rsslprov="gnutlsminimal"
+  rconfigureopts="--with-openssl=no --with-ssl=gnutls LIBS='-lgnutls -lhogweed -lnettle'"
+  rreqs+=" ${rsslprov} nettleminimal"
+elif [[ "${rname#wget2}" == "gnutls" ]] ; then
+  rsslprov="gnutls"
+  rconfigureopts="--with-openssl=no --with-ssl=gnutls LIBS='-lgnutls -ltasn1 -lunistring -lhogweed -lgmp -lnettle'"
+  rreqs+=" ${rsslprov} libtasn1 libunistring nettle gmp"
+elif [[ "${rname#wget2}" == "wolfssl" ]] ; then
+  rsslprov="wolfssl"
+  rconfigureopts="--with-openssl=no --with-ssl=wolfssl"
+  rreqs+=" ${rsslprov}"
+fi
+
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  sed -i.ORIG \"s,/etc/ssl/certs,${cwtop}/etc/ssl/certs,g\" libwget/ssl_*.c
+  popd >/dev/null 2>&1
+}
+"
+
+if [[ ! -z "${rname#wget2}" ]] ; then
+  for f in clean fetch extract patch make ; do
+    eval "function cw${f}_${rname} { cw${f}_${rname%${rsslprov}} ; }"
+  done
+  unset f
+fi
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+    --disable-doc \
+    --disable-nls \
+    --with-{brotlidec,bzip2,libnghttp2,libpcre2,lzip,lzma,zlib,zstd} \
+    --without-{gpgme,libidn{,2},libhsts,libmicrohttpd,libpcre,libpsl,linux-crypto,plugin-support} \
+      ${rconfigureopts} \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+      BROTLIDEC_CFLAGS=\"-I${cwsw}/brotli/current/include\" \
+      BROTLIDEC_LIBS=\"-L${cwsw}/brotli/current/lib -lbrotlidec -lbrotlicommon\"
+
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make install ${rlibtool}
+  test -e \"\$(cwidir_${rname})/bin/${rname%${rsslprov}}${rsslprov}\" || ln -sf \"${rname%${rsslprov}}\" \"\$(cwidir_${rname})/bin/${rname%${rsslprov}}${rsslprov}\"
+  rm -f \"\$(cwidir_${rname})/bin/${rname%${rsslprov}}_noinstall\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+
+unset rsslprov
+
+# vim: ft=bash:
