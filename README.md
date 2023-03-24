@@ -889,7 +889,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - vimminimal (termcap lib and database from bash and gnu termcap, no scripting w/lua, no encryption w/libsodium, ...)
   - vimnetbsdcurses (netbsdcurses)
 - w3m (https://github.com/tats/w3m)
-- wget
+- wget (https://www.gnu.org/software/wget/ - openssl)
+  - wgetgnutls (gnutls variant)
+  - wgetgnutlsminimal (gnutls variant with nettleminimal/mini-gmp)
+  - wgetlibressl (libressl instead of openssl)
 - wireguard (https://www.wireguard.com/)
   - wgctrlgo (https://github.com/WireGuard/wgctrl-go - wireguard interface control program in go)
   - wireguardgo (https://git.zx2c4.com/wireguard-go - userspace wireguard go client)

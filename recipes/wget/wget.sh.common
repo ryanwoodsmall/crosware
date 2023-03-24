@@ -1,0 +1,70 @@
+: ${rreqs:=""}
+rreqs+=" make lunzip zlib pcre2 pkgconfig sed cacertificates"
+
+if [[ -z "${rname#wget}" ]] ; then
+  rsslprov="openssl"
+  rconfigureopts="--with-openssl=yes --with-ssl=openssl --with-libssl-prefix=${cwsw}/${rsslprov}/current"
+  rreqs+=" ${rsslprov} gettexttiny"
+elif [[ "${rname#wget}" == "libressl" ]] ; then
+  rsslprov="libressl"
+  rconfigureopts="--with-openssl=yes --with-ssl=openssl --with-libssl-prefix=${cwsw}/${rsslprov}/current"
+  rreqs+=" ${rsslprov}"
+elif [[ "${rname#wget}" == "gnutlsminimal" ]] ; then
+  rsslprov="gnutlsminimal"
+  rconfigureopts="--with-openssl=no --with-ssl=gnutls --with-libgnutls-prefix=${cwsw}/${rsslprov}/current LIBS='-lgnutls -lhogweed -lnettle'"
+  rreqs+=" ${rsslprov} nettleminimal"
+elif [[ "${rname#wget}" == "gnutls" ]] ; then
+  rsslprov="gnutls"
+  rconfigureopts="--with-openssl=no --with-ssl=gnutls --with-libgnutls-prefix=${cwsw}/${rsslprov}/current LIBS='-lgnutls -ltasn1 -lunistring -lhogweed -lgmp -lnettle'"
+  rreqs+=" ${rsslprov} libtasn1 libunistring nettle gmp"
+fi
+
+. "${cwrecipe}/common.sh"
+
+if [[ ! -z "${rname#wget}" ]] ; then
+  for f in clean fetch extract patch make ; do
+    eval "function cw${f}_${rname} { cw${f}_${rname%${rsslprov}} ; }"
+  done
+  unset f
+fi
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix} \
+    --enable-pcre2 \
+    --enable-ipv6 \
+    --disable-pcre \
+    --with-included-libunistring \
+    --with-included-regex \
+    --with-zlib \
+    --without-metalink \
+      ${rconfigureopts} \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make install
+  for l in ${rname} ${rname%${rsslprov}}${rsslprov} ${rname%${rsslprov}}-${rsslprov} ; do
+    test -e \"\$(cwidir_${rname})/bin/\${l}\" || ln -s \"${rname%${rsslprov}}\" \"\$(cwidir_${rname})/bin/\${l}\"
+  done
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'prepend_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  echo 'prepend_path \"${cwsw}/${rname%${rsslprov}}/current/bin\"' >> \"${rprof}\"
+}
+"
+
+unset rsslprov
+
+# vim: ft=bash:
