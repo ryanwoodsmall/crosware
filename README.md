@@ -1451,6 +1451,10 @@ wc -l /tmp/astbuild.out
 - kine (https://github.com/k3s-io/kine - "kine is not etcd" - etcd api to rdbms w/sqlite, mysql, postgres, dqlite)
 - kineto (https://sr.ht/~sircmpwn/kineto/ and https://git.sr.ht/~sircmpwn/kineto - gemini to http gateway/proxy)
 - klipse (https://github.com/viebel/klipse - js-based multi-language code snippet evaluation framework)
+- knot
+  - knot-dns (https://www.knot-dns.cz - authoritative dns)
+    - muacme (https://github.com/jirutka/muacme - uacme wrapper with busybox/openrc/openssl/libressl/wget/knot knsupdate/kdig)
+  - knot-resolver (https://www.knot-resolver.cz - caching recursive dns resolver)
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
 - ksh-openbsd (https://github.com/levaidaniel/ksh-openbsd - another ksh port)
 - kvmtool (https://github.com/kvmtool/kvmtool - standalone native kvm frontend w/o qemu?)
@@ -1703,7 +1707,6 @@ wc -l /tmp/astbuild.out
 - mpg321
 - mruby (https://github.com/mruby/mruby)
 - mrubyc (https://github.com/mrubyc/mrubyc)
-- muacme (https://github.com/jirutka/muacme - uacme wrapper with busybox/openrc/knot knsupdate/kdig)
 - multimarkdown (https://github.com/fletcher/MultiMarkdown-6)
 - munge (https://github.com/dun/munge - hpc auth environment, useful for cred auth against gpg(?) for e.g. diod)
 - muon (https://github.com/annacrombie/muon - meson in c)
@@ -1771,6 +1774,7 @@ wc -l /tmp/astbuild.out
   - nsd (https://github.com/NLnetLabs/nsd and https://nlnetlabs.nl/projects/nsd/about/ - authoritative dns server)
     - nsd can be built against openssl, libevent, libsodium, nghttp2, expat, etc.
     - nsd can be made to work with uacme for DNS-01 challenges, needed for wildcard certs
+      - https://gitlab.alpinelinux.org/alpine/infra/docker/uacme-nsd-wildcard
   - unbound (https://github.com/NLnetLabs/unbound and https://nlnetlabs.nl/projects/unbound/about/ - caching/recurisve dns resolver)
     - `dohclient`, `petal`, `readzone` from testcode dir all look interesting
 - nnn (https://github.com/jarun/nnn)
@@ -1826,8 +1830,9 @@ wc -l /tmp/astbuild.out
 - pax
 - pciutils (https://github.com/pciutils/pciutils)
   - _/usr/share/misc/pci.ids_ file (https://github.com/pciutils/pciids)
-- perl-cross (https://github.com/arsv/perl-cross)
 - pdsh (https://github.com/chaos/pdsh or https://github.com/grondo/pdsh ?)
+- perl-cross (https://github.com/arsv/perl-cross)
+- pflask (https://github.com/ghedo/pflask - lightweight process containers)
 - picocom (https://github.com/npat-efault/picocom)
 - picohttpparser (https://github.com/h2o/picohttpparser - small, fast http protocol parser)
 - pigz
@@ -2081,7 +2086,6 @@ wc -l /tmp/astbuild.out
 - tzdb (https://www.iana.org/time-zones)
 - u9fs (https://github.com/unofficial-mirror/u9fs - 9p filesystem (or one of the forks))
   - https://github.com/sevki/u9fs - can turn off rhosts auth? need ~rpc bits otherwise
-- uacme - libressl doesn't seem to work out of the box, patch?
 - ublinter (https://github.com/danmar/ublinter)
 - ubridge (https://github.com/GNS3/ubridge - udp, ethernet, tap, etc. userspace bridge controller)
 - u-config (https://github.com/skeeto/u-config - minimal pkg-config alike)
