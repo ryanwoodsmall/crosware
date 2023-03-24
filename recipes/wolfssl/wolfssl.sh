@@ -128,6 +128,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  sed -i.ORIG \"s,/etc/ssl/certs,${cwtop}/etc/ssl/certs,g\" src/ssl.c
   cat wolfssl/test.h > wolfssl/test.h.ORIG
   sed -i 's,\./certs/,certs/,g' wolfssl/test.h
   sed -i 's,\"certs/,\"${rtdir}/current/certs/,g' wolfssl/test.h
