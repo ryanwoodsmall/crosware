@@ -1,7 +1,7 @@
 #
-# XXX - wget2: wolfssl, bison, flex, xz, ...
 # XXX - c-ares support
 # XXX - libpsl support
+# XXX - libidn support
 # XXX - gpgme support
 # XXX - disabled metalink+expat 20220226
 # XXX - metalink has/needs(?) gpgme support, probably not worth it for now
