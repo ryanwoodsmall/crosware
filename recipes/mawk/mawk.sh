@@ -1,9 +1,9 @@
 rname="mawk"
-rver="1.3.4-20230203"
+rver="1.3.4-20230322"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://invisible-mirror.net/archives/${rname}/${rfile}"
-rsha256="6db7a32ac79c51107ad31a407d4f92c6b842dde2f68a7533b4e7b7b03e8900be"
+rsha256="cafaa642c6d738484dedcb24e8433bf57ff1f7ee958cfa547603e433135d9d89"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
