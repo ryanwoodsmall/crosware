@@ -10,11 +10,11 @@
 #
 
 rname="w3m"
-rver="0.5.3-git20220429"
+rver="0.5.3-git20230121"
 rdir="${rname}-${rver}"
 rfile="v${rver//-/+}.tar.gz"
 rurl="https://github.com/tats/${rname}/archive/${rfile}"
-rsha256="6d76fcccb7c94658f2753f0777f69283d5cb447004a0d0d3087c1d873edc0af3"
+rsha256="fdc7d55d3c0104db26aa9759db34f37e5eee03f44c868796e3bbfb8935c96e39"
 rreqs="make libatomicops gc gettexttiny ncurses openssl perl pkgconfig zlib cacertificates"
 
 . "${cwrecipe}/common.sh"
