@@ -9,16 +9,18 @@
 # XXX - libssh2 patch is clean and build works, older version
 # XXX - openssh osp requires some finagling but works, at least ssh/sftp clients
 # XXX - new default disabled options in 5.5.x: --enable-quic --enable-dtlscid
-# XXX - fix ca certs in src/ssl.c
+# XXX - docs on QUIC: https://github.com/wolfSSL/wolfssl/blob/master/doc/QUIC.md
+# XXX - fix ca certs in src/ssl.c - broken?
 # XXX - link in cacertificates/caextract pem in certs/? which files?
+# XXX - kyber, shake###, etc.
 #
 
 rname="wolfssl"
-rver="5.5.4"
+rver="5.6.0"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="0fede6d4d7ae7c0fe6eb519dbfe9bc22766bbdc891b37fa6dacde09e61ff2549"
+rsha256="e0467c5c20dbbd2ff097ae0bde6fb042a227da591acf5678266919da162d169f"
 rreqs="make cacertificates configgit slibtool toybox"
 
 . "${cwrecipe}/common.sh"
@@ -63,8 +65,12 @@ function cwconfigure_${rname}() {
     --enable-des3 \
     --enable-dsa \
     --enable-dtls \
+    --enable-dtls13 \
+    --enable-dtlscid \
+    --enable-earlydata \
     --enable-ecccustcurves \
     --enable-eccencrypt \
+    --enable-ech \
     --enable-ed25519 \
     --enable-ed25519-stream \
     --enable-ed448 \
@@ -72,6 +78,7 @@ function cwconfigure_${rname}() {
     --enable-fpecc \
     --enable-hkdf \
     --enable-hmac \
+    --enable-hpke \
     --enable-indef \
     --enable-jobserver=no \
     --enable-kdf \
@@ -95,6 +102,7 @@ function cwconfigure_${rname}() {
     --enable-pkcs12 \
     --enable-psk \
     --enable-pwdbased \
+    --enable-quic \
     --enable-renegotiation-indication \
     --enable-ripemd \
     --enable-rsapss \
@@ -111,6 +119,7 @@ function cwconfigure_${rname}() {
     --enable-ssh \
     --enable-sslv3 \
     --enable-stunnel \
+    --enable-sys-ca-certs \
     --enable-tls13 \
     --enable-tlsv10 \
     --enable-tlsx \
