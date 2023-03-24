@@ -1215,6 +1215,7 @@ wc -l /tmp/astbuild.out
 - gcompat (https://code.foxkit.us/adelie/gcompat and https://github.com/AdelieLinux/gcompat)
 - geomyidae (http://r-36.net/scm/geomyidae/ - gopher server)
 - gdb
+- gh-dash (https://github.com/dlvhdr/gh-dash - github cli dashboard w/gh)
 - ghostunnel (https://github.com/ghostunnel/ghostunnel - stunnel-ish in go, with mutual tls auth)
 - git-crypt (https://github.com/AGWA/git-crypt)
 - glow (https://github.com/charmbracelet/glow - terminal markdown renderer in go)
