@@ -1,9 +1,9 @@
 rname="xz"
-rver="5.4.1"
+rver="5.4.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://tukaani.org/${rname}/${rfile}"
-rsha256="e4b0f81582efa155ccf27bb88275254a429d44968e488fc94b806f2a61cd3e22"
+rsha256="87947679abcf77cc509d8d1b474218fd16b72281e2797360e909deaee1ac9d05"
 rreqs="make gettexttiny slibtool patch"
 
 . "${cwrecipe}/common.sh"
