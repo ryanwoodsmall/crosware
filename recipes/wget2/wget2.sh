@@ -1,6 +1,7 @@
 #
 # XXX - gpgme support
 # XXX - wolfssl seems to leave a port open and never completes a retrieval?
+# XXX - --with-included-regex : default, safe to specify/force?
 #
 rname="wget2"
 rver="2.0.1"

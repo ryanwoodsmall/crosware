@@ -5,6 +5,7 @@
 # XXX - gpgme support
 # XXX - disabled metalink+expat 20220226
 # XXX - metalink has/needs(?) gpgme support, probably not worth it for now
+# XXX - --without-included-unistring for full-fat gnutls
 #
 
 rname="wget"
