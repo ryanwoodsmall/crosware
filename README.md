@@ -915,6 +915,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - yash (http://yash.osdn.jp/ and https://github.com/magicant/yash - yash posix shell, with arrays; netbsdcurses+libedit)
   - yashminimal (no line editing)
 - yaegi (https://github.com/traefik/yaegi - go interpreter in go!)
+- yj (https://github.com/sclevine/yj - yaml/toml/json/hcl converter in go)
 - ynetd (https://github.com/johnsonjh/ynetd and https://yx7.cc/code/ - minimal tcp/inetd server)
 - zip
 - zlib
@@ -2176,7 +2177,6 @@ wc -l /tmp/astbuild.out
 - xserver-sixel (https://github.com/saitoha/xserver-sixel)
 - yaml-cli (https://github.com/OpenIPC/yaml-cli - r/w mini yaml filter/editing tool)
 - yggdrasil (https://github.com/yggdrasil-network/yggdrasil-go - opportunistic ipv6 mesh network in go)
-- yj (https://github.com/sclevine/yj - yaml/toml/json/hcl converter in go)
 - yq (https://github.com/kislyuk/yq - jq for yaml, python+jq)
 - ytalk (http://ytalk.ourproject.org/)
 - z3 (https://github.com/Z3Prover/z3)
