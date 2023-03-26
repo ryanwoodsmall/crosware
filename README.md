@@ -1242,6 +1242,7 @@ wc -l /tmp/astbuild.out
 - gops (https://github.com/google/gops - running go process analyzer)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - go-tunnel (https://github.com/opencoff/go-tunnel - stunnel replacement written in go)
+- goxz (https://github.com/Songmu/goxz - gather deps for cross-compile and archive?)
 - gpg
   - etc.
 - gplaces (https://github.com/dimkr/gplaces - terminal gemini client, based on delve (https://github.com/kieselsteini/delve) gopher client?)
