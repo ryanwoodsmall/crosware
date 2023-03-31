@@ -1569,6 +1569,7 @@ wc -l /tmp/astbuild.out
   - newlisp (http://www.newlisp.org/ - unnoficial code mirror at https://github.com/kosh04/newlisp)
     - needs libffi, ncurses, readline
     - ```make makefile_build ; sed -i 's/ = gcc$/ = gcc $(CPPFLAGS) $(shell pkg-config --cflags libffi)/g;s/-lreadline/$(LDFLAGS) -lreadline -lncurses/g' makefile_build```
+  - npt (https://github.com/nptcl/npt and https://nptcl.github.io/npt/docs/md/ - ansi common lisp implementation, with readline/editline)
   - picolisp (https://picolisp.com/wiki/?home)
     - picolisp (c, lisp)
     - ersatz picolisp (java)
