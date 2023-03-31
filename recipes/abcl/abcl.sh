@@ -1,34 +1,33 @@
 #
-# XXX - needs classpath and main func to bring in contrib jar
-#       https://common-lisp.net/project/armedbear/doc/abcl-install-with-java.html#linux
+# XXX - rlwrap completions example here: https://armedbear.common-lisp.dev/doc/abcl-install-with-java.html
 #
 rname="abcl"
-rver="1.8.0"
+rver="1.9.1"
 rdir="${rname}-bin-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://common-lisp.net/project/armedbear/releases/${rver}/${rfile}"
-rsha256="83faaee1f3c121daf4e1fc74e3887d167efe47bc94538592b88b4ca16ed3c5a5"
+rsha256="79d2f16de734d4edf137077a2aeb9cba21e128343577abc2ec16eb330ccfb419"
 rreqs="rlwrap"
 
 . "${cwrecipe}/common.sh"
 
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
+
 eval "
-function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current\"' > \"${rprof}\"
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})\"
+  tar -cf - . | ( cd \"\$(cwidir_${rname})\" ; tar -xf - )
+  echo '#!/bin/sh' > \"\$(cwidir_${rname})/${rname}\"
+  echo 'rlwrap -C ${rname} java -cp ${rtdir}/current/${rname}.jar:${rtdir}/current/${rname}-contrib.jar org.armedbear.lisp.Main \"\${@}\"' >> \"\$(cwidir_${rname})/${rname}\"
+  cwchmod \"755\" \"\$(cwidir_${rname})/${rname}\"
+  popd >/dev/null 2>&1
 }
 "
 
 eval "
-function cwinstall_${rname}() {
-  cwfetch_${rname}
-  cwcheckreqs_${rname}
-  cwsourceprofile
-  cwextract \"${rdlfile}\" \"${rtdir}\"
-  echo '#!/bin/sh' > \"${ridir}/${rname}\"
-  echo 'rlwrap -C ${rname} java -jar ${rtdir}/current/${rname}.jar \"\${@}\"' >> \"${ridir}/${rname}\"
-  cwchmod \"755\" \"${ridir}/${rname}\"
-  cwlinkdir_${rname}
-  cwgenprofd_${rname}
-  cwmarkinstall_${rname}
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current\"' > \"${rprof}\"
 }
 "
