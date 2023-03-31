@@ -1564,6 +1564,7 @@ wc -l /tmp/astbuild.out
   - lisp500 (http://web.archive.org/web/20070722203906/https://www.modeemi.fi/~chery/lisp500/)
   - lispe (https://github.com/naver/lispe)
   - mal (https://github.com/kanaka/mal/ - make a lisp, in a bunch of languages)
+    - minimal (https://github.com/kanaka/miniMAL - js impl based on mal!)
   - mankai common lisp (https://common-lisp.net/project/mkcl/)
   - maru (https://github.com/attila-lendvai/maru - small self-hosting lisp, lots of links to other small/bootstrap languages)
   - newlisp (http://www.newlisp.org/ - unnoficial code mirror at https://github.com/kosh04/newlisp)
