@@ -443,6 +443,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - github tools
   - gh (https://github.com/cli/cli and https://cli.github.com/ - gh command in go with release management...)
   - hub (https://github.com/github/hub and https://hub.github.com - git wrapper)
+- glab (https://gitlab.com/gitlab-org/cli - gitlab glab cli)
 - glib (https://wiki.gnome.org/Projects/GLib)
   - old version
   - new version requires meson, ninja, thus python3
@@ -1230,7 +1231,6 @@ wc -l /tmp/astbuild.out
 - gh-dash (https://github.com/dlvhdr/gh-dash - github cli dashboard w/gh)
 - ghostunnel (https://github.com/ghostunnel/ghostunnel - stunnel-ish in go, with mutual tls auth)
 - git-crypt (https://github.com/AGWA/git-crypt)
-- glab (https://gitlab.com/gitlab-org/cli - gitlab glab cli)
 - glow (https://github.com/charmbracelet/glow - terminal markdown renderer in go)
 - gmni (https://sr.ht/~sircmpwn/gmni/ and https://git.sr.ht/~sircmpwn/gmni - gemini client)
 - gmnisrv (https://sr.ht/~sircmpwn/gmnisrv/ and https://git.sr.ht/~sircmpwn/gmnisrv - gemini server)
