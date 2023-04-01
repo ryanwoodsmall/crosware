@@ -684,6 +684,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - njstiny (njs with no readline or crypto support)
 - ninja (https://ninja-build.org/)
 - nmap
+- npt (https://github.com/nptcl/npt and https://nptcl.github.io/npt/docs/md/ - ansi common lisp implementation, terme display/repl)
+  - nptreadline (npt with netbsdcurses+readline)
 - npth (https://gnupg.org/software/npth/index.html)
 - ntbtls (https://gnupg.org/software/ntbtls/index.html)
 - nvi (via debian, https://salsa.debian.org/debian/nvi)
@@ -1570,7 +1572,6 @@ wc -l /tmp/astbuild.out
   - newlisp (http://www.newlisp.org/ - unnoficial code mirror at https://github.com/kosh04/newlisp)
     - needs libffi, ncurses, readline
     - ```make makefile_build ; sed -i 's/ = gcc$/ = gcc $(CPPFLAGS) $(shell pkg-config --cflags libffi)/g;s/-lreadline/$(LDFLAGS) -lreadline -lncurses/g' makefile_build```
-  - npt (https://github.com/nptcl/npt and https://nptcl.github.io/npt/docs/md/ - ansi common lisp implementation, with readline/editline)
   - picolisp (https://picolisp.com/wiki/?home)
     - picolisp (c, lisp)
     - ersatz picolisp (java)
