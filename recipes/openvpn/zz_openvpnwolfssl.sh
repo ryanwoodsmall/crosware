@@ -28,7 +28,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
-    --disable-{plugins,shared} \
+    --disable-{dco,plugins,shared} \
     --enable-{lz4,lzo,static} \
     --with-crypto-library=wolfssl \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
