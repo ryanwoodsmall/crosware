@@ -13,6 +13,7 @@
 # XXX - fix ca certs in src/ssl.c - broken?
 # XXX - link in cacertificates/caextract pem in certs/? which files?
 # XXX - kyber, shake###, etc.
+# XXX - configure needs colrm; bring in baseutils instead of util-linux...
 #
 
 rname="wolfssl"
@@ -21,7 +22,7 @@ rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rsha256="e0467c5c20dbbd2ff097ae0bde6fb042a227da591acf5678266919da162d169f"
-rreqs="make cacertificates configgit slibtool toybox"
+rreqs="make cacertificates configgit slibtool toybox baseutils"
 
 . "${cwrecipe}/common.sh"
 
