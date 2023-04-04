@@ -1838,6 +1838,7 @@ wc -l /tmp/astbuild.out
   - simtools (https://github.com/open-simh/simtools - tools for simulators/integration)
 - openvi (https://github.com/johnsonjh/OpenVi - portable openbsd vi)
 - opkg-utils (https://git.yoctoproject.org/opkg-utils - package build, etc.)
+- orbitron (https://github.com/xyproto/orbiton - vt100 IDE in go)
 - p11-kit (https://p11-glue.github.io/p11-glue/p11-kit.html)
   - probably not...
   - "cannot be used as a static library" - what?
