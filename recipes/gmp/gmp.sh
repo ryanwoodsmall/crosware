@@ -11,7 +11,12 @@ rreqs="make sed m4"
 eval "
 function cwconfigure_${rname}() {
   pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --{build,host}=\"\$(\${CC} -dumpmachine)\"
+  env PATH=\"${cwsw}/m4/current/bin:\${PATH}\" \
+    ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --{build,host}=\"\$(\${CC} -dumpmachine)\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+      M4=\"${cwsw}/m4/current/bin/m4\"
   popd >/dev/null 2>&1
 }
 "
