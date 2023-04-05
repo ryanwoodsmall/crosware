@@ -1,3 +1,32 @@
+#
+# to create and exchange certs on a single node to test:
+#   for t in client server ; do
+#     ${cwsw}/bearssl/current/bin/brssl skey -gen rsa:2048 -rawpem ${cwtop}/tmp/ghostunnel-${t}.key
+#     ${cwsw}/x509cert/current/bin/x509cert -a $(hostname) -d $((100*366*24*60*60)) ${cwtop}/tmp/ghostunnel-${t}.key CN=$(hostname) | tee ${cwtop}/tmp/ghostunnel-${t}.crt
+#     cat ${cwtop}/tmp/ghostunnel-${t}.crt >> ${cwtop}/tmp/ghostunnel-cacert.pem
+#   done
+#
+# server:
+#   ${cwsw}/ghostunnel/current/bin/ghostunnel \
+#     server \
+#       --listen=0.0.0.0:12343 \
+#       --target=localhost:12380 \
+#       --cert=${cwtop}/tmp/ghostunnel-server.crt \
+#       --key=${cwtop}/tmp/ghostunnel-server.key \
+#       --cacert=${cwtop}/tmp/ghostunnel-cacert.pem \
+#       --allow-cn=$(hostname)
+#
+# client:
+#   ${cwsw}/ghostunnel/current/bin/ghostunnel \
+#     client \
+#       --unsafe-listen \
+#       --listen=localhost:12381 \
+#       --target=$(hostname):12343 \
+#       --cert=${cwtop}/tmp/ghostunnel-client.crt \
+#       --key=${cwtop}/tmp/ghostunnel-client.key \
+#       --cacert=${cwtop}/tmp/ghostunnel-cacert.pem \
+#       --verify-cn=$(hostname)
+#
 rname="ghostunnel"
 rver="1.7.1"
 rdir="${rname}-${rver}"
