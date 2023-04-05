@@ -1,9 +1,9 @@
 rname="cryanc"
-rver="2.0"
+rver="2.2"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/classilla/${rname}/archive/refs/tags/${rfile}"
-rsha256="3e5bdc08467b09d2e0b8899ae6feb9982b7a52b624c612be1f7b7d3399765bb0"
+rsha256="2fa267ab96305d04b6144251f3a0fd7008aecae00aef43be0fb9bc2a75db0a7f"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
@@ -16,7 +16,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   \${CC} \${CFLAGS} carl.c -o carl -static
   popd >/dev/null 2>&1
 }
@@ -24,14 +24,14 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/bin\"
-  cwmkdir \"${ridir}/share/man/man1\"
-  cwmkdir \"${ridir}/src\"
-  install -m 0755 carl \"${ridir}/bin/carl\"
-  install -m 0644 carl.1 \"${ridir}/share/man/man1/carl.1\"
-  ln -sf carl \"${ridir}/bin/${rname}\"
-  cp *.{c,h,md} \"${ridir}/src/\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
+  cwmkdir \"\$(cwidir_${rname})/src\"
+  install -m 0755 carl \"\$(cwidir_${rname})/bin/carl\"
+  install -m 0644 carl.1 \"\$(cwidir_${rname})/share/man/man1/carl.1\"
+  ln -sf carl \"\$(cwidir_${rname})/bin/${rname}\"
+  cp *.{c,h,md} \"\$(cwidir_${rname})/src/\"
   popd >/dev/null 2>&1
 }
 "
