@@ -355,6 +355,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - cares (https://github.com/c-ares/c-ares and https://c-ares.haxx.se/ - c-ares, asynch dns, must explicitly opt-in)
 - ccache - version 3.x, autotools
   - ccache4 - now requires cmake, keep them separate for now
+- certstrap (https://github.com/square/certstrap - simple CA in go)
 - cflow
 - check
 - cjson (https://github.com/DaveGamble/cJSON)
