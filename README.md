@@ -352,7 +352,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - byacc
 - bzip2
 - cacertificates (from alpine)
-- cadaver (http://www.webdav.org/cadaver/ - cli webdav client using neon)
+- cadaver (http://www.webdav.org/cadaver/ - cli webdav client using neon - openssl+expat+readline)
+  - cadavergnutls (gnutls)
+  - cadavergnutlsminimal (gnutls + nettle w/mini-gmp)
+  - cadaverlibressl (libressl)
 - cares (https://github.com/c-ares/c-ares and https://c-ares.haxx.se/ - c-ares, asynch dns, must explicitly opt-in)
 - ccache - version 3.x, autotools
   - ccache4 - now requires cmake, keep them separate for now
@@ -653,7 +656,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - neatvi (https://github.com/aligrudi/neatvi)
 - nebula (https://github.com/slackhq/nebula - mesh network overlay/vpn)
 - neofetch (https://github.com/dylanaraps/neofetch - terminal machine/os info)
-- neon (https://notroj.github.io/neon/ and https://github.com/notroj/neon - http/webdav library)
+- neon (https://notroj.github.io/neon/ and https://github.com/notroj/neon - http/webdav library with openssl+expat)
+  - neongnutls (gnutls)
+  - neongnutlsminimal (gnutls + nettle w/mini-gmp)
+  - neonlibressl (libressl)
 - netbsdcurses (libedit, readline, slang bundled - **manual** CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - netbsdwtf (https://github.com/void-linux/netbsd-wtf - "wtf" acronym finder from netbsd)
 - netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
