@@ -44,6 +44,7 @@ function cwmake_${rname}() {
     GOMODCACHE=\"\${GOMODCACHE}\" \
     PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
     GH_VERSION=\"\$(cwver_${rname})\" \
+    GO_LDFLAGS='-s -w' \
       make
   popd >/dev/null 2>&1
 }
