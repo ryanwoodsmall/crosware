@@ -29,7 +29,7 @@ function cwmake_${rname}() {
     GOCACHE=\"\${GOCACHE}\" \
     GOMODCACHE=\"\${GOMODCACHE}\" \
     PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-      go build -ldflags '-s -w -extldflags \"-s -static\" -X main.version=${rver}' -o ${rname} .
+      go build -ldflags \"-s -w -extldflags '-s -static' -X main.version=\$(cwver_${rname})\" -o ${rname} .
   ./${rname} --help-custom-man > ${rname}.1
   popd >/dev/null 2>&1
 }
