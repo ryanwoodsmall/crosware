@@ -1170,6 +1170,7 @@ wc -l /tmp/astbuild.out
 - cwerg (https://github.com/robertmuth/Cwerg - compiler back-end for arm 32- and 64-bit)
 - dante (socks proxy client/server https://www.inet.no/dante/)
 - dasel (https://github.com/TomWright/dasel - data selector like jq, yq - go)
+- dave (https://github.com/micromata/dave - go webdav sever w/tls)
 - dehydrated (https://github.com/dehydrated-io/dehydrated - shell acme/letsencrypt client)
 - dinit (https://github.com/davmac314/dinit - init and service monitor)
 - diod (https://github.com/chaos/diod - 9p fileserver)
@@ -1249,6 +1250,7 @@ wc -l /tmp/astbuild.out
 - gops (https://github.com/google/gops - running go process analyzer)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - go-tunnel (https://github.com/opencoff/go-tunnel - stunnel replacement written in go)
+- gowebdav (https://github.com/studio-b12/gowebdav - go webdav sli program)
 - goxz (https://github.com/Songmu/goxz - gather deps for cross-compile and archive?)
 - gpg
   - etc.
