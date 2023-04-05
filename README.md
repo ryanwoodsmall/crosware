@@ -652,6 +652,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - neatvi (https://github.com/aligrudi/neatvi)
 - nebula (https://github.com/slackhq/nebula - mesh network overlay/vpn)
 - neofetch (https://github.com/dylanaraps/neofetch - terminal machine/os info)
+- neon (https://notroj.github.io/neon/ and https://github.com/notroj/neon - http/webdav library)
 - netbsdcurses (libedit, readline, slang bundled - **manual** CPPFLAGS/LDFLAGS for now - sabotage https://github.com/sabotage-linux/netbsd-curses)
 - netbsdwtf (https://github.com/void-linux/netbsd-wtf - "wtf" acronym finder from netbsd)
 - netcatopenbsd (from debian, https://salsa.debian.org/debian/netcat-openbsd)
@@ -1780,7 +1781,6 @@ wc -l /tmp/astbuild.out
   - fbvnc (https://repo.or.cz/fbvnc.git)
   - troffp9 (https://github.com/aligrudi/troffp9 - plan 9 troff port)
 - neko (https://github.com/m1k1o/neko and https://neko.m1k1o.net/#/ - virtual browser/desktop in docker???)
-- neon (https://notroj.github.io/neon/ and https://github.com/notroj/neon)
 - netfilter.org stuff
   - ipset (https://www.netfilter.org/projects/ipset/)
   - ulogd (https://www.netfilter.org/projects/ulogd/)
