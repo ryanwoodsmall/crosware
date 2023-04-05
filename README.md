@@ -438,6 +438,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - gc (working on x86\_64, aarch64; broken on i386, arm)
 - gdbm
 - gettexttiny
+- ghostunnel (https://github.com/ghostunnel/ghostunnel - stunnel-ish in go, with mutual tls auth)
 - git - built with curl+openssl
   - gitlibressl - built with libressl+curl
 - github tools
@@ -1233,7 +1234,6 @@ wc -l /tmp/astbuild.out
 - geomyidae (http://r-36.net/scm/geomyidae/ - gopher server)
 - gdb
 - gh-dash (https://github.com/dlvhdr/gh-dash - github cli dashboard w/gh)
-- ghostunnel (https://github.com/ghostunnel/ghostunnel - stunnel-ish in go, with mutual tls auth)
 - git-crypt (https://github.com/AGWA/git-crypt)
 - glow (https://github.com/charmbracelet/glow - terminal markdown renderer in go)
 - gmni (https://sr.ht/~sircmpwn/gmni/ and https://git.sr.ht/~sircmpwn/gmni - gemini client)
