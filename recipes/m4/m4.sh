@@ -14,8 +14,8 @@ rreqs="make sed"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts}
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} LDFLAGS=-static CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}=
   cat lib/sigsegv.c > lib/sigsegv.c.ORIG
   echo '#include <config.h>' > lib/sigsegv.c
   echo '#include <sys/reg.h>' >> lib/sigsegv.c
@@ -26,6 +26,6 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
+  echo 'prepend_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
 "
