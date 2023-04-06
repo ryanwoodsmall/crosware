@@ -352,7 +352,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - byacc
 - bzip2
 - cacertificates (from alpine)
-- cadaver (http://www.webdav.org/cadaver/ - cli webdav client using neon - openssl+expat+readline)
+- cadaver (https://notroj.github.io/cadaver/ and https://github.com/notroj/cadaver - cli webdav client using neon - openssl+expat+readline)
   - cadavergnutls (gnutls)
   - cadavergnutlsminimal (gnutls + nettle w/mini-gmp)
   - cadaverlibressl (libressl)
