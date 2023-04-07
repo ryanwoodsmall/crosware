@@ -4,7 +4,7 @@
 #
 
 rname="k0s"
-rver="1.26.2_${rname}.1"
+rver="1.26.3_${rname}.0"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
@@ -13,13 +13,13 @@ rbfile="${rname}-v${rver//_/+}"
 rburl="https://github.com/${rname}project/${rname}/releases/download/v${rver//_/%2B}"
 if [[ ${karch} =~ ^aarch64 ]] ; then
   rfile="${rbfile}-arm64"
-  rsha256="993fe94643ccdcde3ab4bc95b51db2411339a25e0feb19a9e0f0be4e884ffebf"
+  rsha256="62877123d81417ddd82f20dd3af089f59cb0e890e3a8b8419c25373aa92ddf0d"
 elif [[ ${karch} =~ ^arm ]] ; then
   rfile="${rbfile}-arm"
-  rsha256="2a30c23b56b90d6f4f17f4f9f02655b4a95efa66a6240ebb05908550ac388ef4"
+  rsha256="3c1a637d670dec6c4df50730f27af774dcb60bd7a0dc62d5efcf99e4e8ba22e6"
 elif [[ ${karch} =~ ^x86_64 ]] ; then
   rfile="${rbfile}-amd64"
-  rsha256="b7ef3daadcf88a5c3009cf260d962831e87813a1de591f67fa7aca60b0a107d4"
+  rsha256="b1c1e0dc201f6d313ba74390e14d0e98da99a5de37c0da6a027e38c5471af15a"
 fi
 rurl="${rburl}/${rfile//+/%2B}"
 unset rbfile
