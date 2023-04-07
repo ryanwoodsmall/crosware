@@ -1233,6 +1233,7 @@ wc -l /tmp/astbuild.out
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
 - fq (https://github.com/wader/fq - like jq for binaries in go)
 - frontabse (http://openbsd.stanleylieber.com/frontbase - 9base fork?)
+- fx (https://github.com/antonmedv/fx - terminal json viewer/navigator in go)
 - fzf (https://github.com/junegunn/fzf - fuzzy finder in go)
 - gatling (http://www.fefe.de/gatling/ - small web/cgi/ftp/smb server)
 - garage (https://git.deuxfleurs.fr/Deuxfleurs/garage and https://garagehq.deuxfleurs.fr/ - distributed s3 object store in rust)
