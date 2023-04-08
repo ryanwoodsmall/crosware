@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
 # show all the files that are part of a package with sizes and types
+# XXX - should probably be show-recipe-files.sh but there's already show-recent-... so tab completion wins
 #
 set -euo pipefail
 sn="$(basename -- ${BASH_SOURCE[0]})"
