@@ -1,9 +1,9 @@
 rname="mawk"
-rver="1.3.4-20230322"
+rver="1.3.4-20230404"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://invisible-mirror.net/archives/${rname}/${rfile}"
-rsha256="cafaa642c6d738484dedcb24e8433bf57ff1f7ee958cfa547603e433135d9d89"
+rsha256="5a8260b1adda00bad8e40ba89fa20860c5b6e1393089dd1c7a6126aa023e9f63"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
@@ -12,7 +12,10 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
-    CFLAGS=\"\${CFLAGS} \${LDFLAGS}\"
+    CFLAGS=\"\${CFLAGS} -static\" \
+    LDFLAGS=\"-static\" \
+    CPPFLAGS= \
+    PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
 "
