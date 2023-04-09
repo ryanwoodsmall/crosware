@@ -1280,6 +1280,9 @@ time_func ls -l -A /
   - e.g. `recipe : /usr/local/crosware/etc/profile.d/recipe.sh`
 - make ssl/tls ca/certs/etc. configurable
   - `CW_CERT_PATH` or some such
+- `${cwsw}/${rname}/${rver}/lbin` - "link directory"
+  - basically ```bin/*``` with `${rname}-` prepended
+  - easy, would solve a few yacc, lex, m4, et al. issues?
 
 <!--
 # vim: ft=markdown
