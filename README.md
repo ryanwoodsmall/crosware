@@ -1812,6 +1812,7 @@ wc -l /tmp/astbuild.out
 - nnn (https://github.com/jarun/nnn)
 - node / npm (ugh)
 - noice (https://git.2f30.org/noice/)
+- nopenbsd-curses (https://github.com/tch69/nopenbsd-curses - openbsd ncurses, but portable)
 - nopoll (https://github.com/ASPLes/nopoll - websocket toolkit)
 - notcurses (https://github.com/dankamongmen/notcurses)
 - nq (https://github.com/leahneukirchen/nq)
