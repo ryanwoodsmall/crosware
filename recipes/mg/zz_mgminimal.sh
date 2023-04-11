@@ -9,7 +9,7 @@ rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
-for f in clean fetch extract make ; do
+for f in clean fetch extract patch make ; do
   eval "
     function cw${f}_${rname}() {
       cw${f}_${rname%%minimal}
@@ -20,7 +20,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --enable-size-optimizations \
     --without-curses \
@@ -33,10 +33,10 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install-strip
-  ln -sf \"${rtdir}/current/bin/${rname%%minimal}\" \"${ridir}/bin/${rname}\"
-  ln -sf \"${rtdir}/current/bin/${rname%%minimal}\" \"${ridir}/bin/${rname%%minimal}-${rname##mg}\"
+  ln -sf \"${rtdir}/current/bin/${rname%%minimal}\" \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname%%minimal}\" \"\$(cwidir_${rname})/bin/${rname%%minimal}-${rname##mg}\"
   popd >/dev/null 2>&1
 }
 "
