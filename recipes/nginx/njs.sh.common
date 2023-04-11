@@ -24,6 +24,7 @@ function cwpatch_${rname}() {
 }
 "
 
+# XXX - probably need `env PKG_CONFIG_{LIBDIR,PATH}= ...` here
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
