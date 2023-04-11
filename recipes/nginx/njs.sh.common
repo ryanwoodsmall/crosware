@@ -1,5 +1,5 @@
 : ${rreqs:=""}
-rreqs="make pcre2 libxml2 zlib xz pkgconfig ${rreqs}"
+rreqs="make pcre2 libxml2 zlib xz pkgconfig zlib ${rreqs}"
 
 if [[ ${rname} =~ tiny ]] ; then
   rtlib="-lno_readline"
