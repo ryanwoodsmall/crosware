@@ -29,7 +29,7 @@ function cwmake_${rname}() {
     GOCACHE=\"\${GOCACHE}\" \
     GOMODCACHE=\"\${GOMODCACHE}\" \
     PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-      go build -ldflags '-s -w -extldflags \"-s -static\" -X main.buildDate=$(date +%Y-%m-%d) -X main.version=${rver} -X main.platform=linux -X main.debugMode=false' -o \"${rname}\" \"\$(cwbdir_${rname})/cmd/${rname}\"
+      go build -ldflags \"-s -w -extldflags '-s -static' -X main.buildDate=\$(date +%Y-%m-%d) -X main.version=\$(cwver_${rname}) -X main.platform=linux -X main.debugMode=false\" -o \"${rname}\" \"\$(cwbdir_${rname})/cmd/${rname}\"
   popd >/dev/null 2>&1
 }
 "
