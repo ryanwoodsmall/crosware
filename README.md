@@ -1230,6 +1230,14 @@ wc -l /tmp/astbuild.out
   - firecracker-containerd (https://github.com/firecracker-microvm/firecracker-containerd)
 - firejail (https://github.com/netblue30/firejail)
 - forgejo (https://forgejo.org/ and https://codeberg.org/forgejo/forgejo - gitea fork)
+- forth stuff
+  - embed (https://github.com/howerj/embed - small forth interpreter+metacompiler in c, j1 and h2 (virtual) cpu models)
+  - libforth (https://github.com/howerj/libforth - forth interpreter and standalone program in c, with libline line editing)
+    - libline (https://github.com/howerj/libline - linenoise fork)
+  - retro (forth, http://retroforth.org/ and https://github.com/crcx/retroforth)
+    - 32-/64-bit support!!!
+    - other good forth/smalltalk/... stuff: http://forthworks.com/
+  - ueforth (https://github.com/flagxor/eforth - small forth for linux, plus esp32forth for wifi+bt mcu)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
 - fq (https://github.com/wader/fq - like jq for binaries in go)
 - frontabse (http://openbsd.stanleylieber.com/frontbase - 9base fork?)
@@ -1917,7 +1925,6 @@ wc -l /tmp/astbuild.out
 - relational-pipes (https://relational-pipes.globalcode.info/)
 - remake (http://bashdb.sourceforge.net/remake/ and https://github.com/rocky/remake)
 - restic (https://github.com/restic/restic and https://restic.net/ - backups, in go, with an rclone REST backend!)
-- retro (forth, http://retroforth.org/)
 - reverse-ssh (https://github.com/Fahrj/reverse-ssh - reverse ssh/shell in go)
 - rocksock-http (https://github.com/rofl0r/rocksock-httpd)
 - rocksocks5 (https://github.com/rofl0r/rocksocks5)
@@ -1931,7 +1938,7 @@ wc -l /tmp/astbuild.out
 - rvm?
 - rw (https://sortix.org/rw/)
 - rwc (https://github.com/leahneukirchen/rwc)
-- rx (https://github.com/crcx/rx - forth(-ish) userspace!)
+- rx (https://github.com/crcx/rx - forth(-ish) userspace! - gone?)
 - sacc (https://git.fifth.space/sacc/log.html - gopher client)
 - sbang (https://github.com/spack/sbang)
 - scc (https://github.com/boyter/scc - sloc/cloc/code, code counter in go)
@@ -2124,7 +2131,6 @@ wc -l /tmp/astbuild.out
 - ubridge (https://github.com/GNS3/ubridge - udp, ethernet, tap, etc. userspace bridge controller)
 - u-config (https://github.com/skeeto/u-config - minimal pkg-config alike)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
-- ueforth (https://github.com/flagxor/eforth - small forth for linux, plus esp32forth for wifi+bt mcu)
 - uget (https://github.com/OpenIPC/uget - tiny http-only wget/curl program)
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
 - units (https://www.gnu.org/software/units)
