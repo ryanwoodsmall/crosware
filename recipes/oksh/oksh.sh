@@ -1,9 +1,12 @@
+#
+# XXX - "small" variant w/--enable-small
+#
 rname="oksh"
-rver="7.2"
+rver="7.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ibara/${rname}/releases/download/${rdir}/${rfile}"
-rsha256="3340ca98b1d5a2800ebe7dba75312d8a4971a3fcff20fcd0d0ec5cf7b719427e"
+rsha256="9f176ff6841435a55f27bfd3ebbfc951c8cca6fdf3638f0123f44617e3992f93"
 rreqs="make netbsdcurses"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
