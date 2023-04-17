@@ -701,6 +701,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - nvi (via debian, https://salsa.debian.org/debian/nvi)
 - nvi179 (4bsd release from keith bostic, https://sites.google.com/a/bostic.com/keithbostic/vi)
 - oksh (https://github.com/ibara/oksh - netbsdcurses)
+  - okshsmall (limited prereqs, no curses/history support)
 - onetrueawk (https://github.com/onetrueawk/awk - the one true awk)
 - oniguruma (https://github.com/kkos/oniguruma)
 - openconnect (https://www.infradead.org/openconnect and https://gitlab.com/openconnect/openconnect - cisco/juniper/etc. vpn client, openssl)

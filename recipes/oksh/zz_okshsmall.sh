@@ -1,28 +1,38 @@
-rname="oksh"
-rver="7.3"
-rdir="${rname}-${rver}"
-rfile="${rdir}.tar.gz"
-rurl="https://github.com/ibara/${rname}/releases/download/${rdir}/${rfile}"
-rsha256="9f176ff6841435a55f27bfd3ebbfc951c8cca6fdf3638f0123f44617e3992f93"
-rreqs="make netbsdcurses"
+rname="okshsmall"
+rver="$(cwver_oksh)"
+rdir="$(cwdir_oksh)"
+rfile="$(cwfile_oksh)"
+rdlfile="$(cwdlfile_oksh)"
+rurl="$(cwurl_oksh)"
+rsha256="$(cwsha256_oksh)"
+rreqs="bootstrapmake"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
+
 . "${cwrecipe}/common.sh"
+
+for f in clean fetch extract patch make ; do
+  eval "
+    function cw${f}_${rname}() {
+      cw${f}_${rname%%small}
+    }
+    "
+done
+unset f
 
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  sed -i.ORIG 's/ncurses\.h/curses.h/g' configure emacs.c var.c vi.c
-  sed -i 's/-lncurses/-lcurses -lterminfo/g' configure
   env \
     CPPFLAGS= \
-    CFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
-    LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -lcurses -lterminfo -static\" \
+    CFLAGS=\"\${CFLAGS} -Os -g0 -Wl,-s -DEMACS\" \
+    LDFLAGS=\"-static -s\" \
       ./configure \
         --prefix=\"\$(cwidir_${rname})\" \
         --bindir=\"\$(cwidir_${rname})/bin\" \
         --mandir=\"\$(cwidir_${rname})/share/man\" \
-        --enable-curses \
+        --disable-curses \
+        --enable-small \
         --enable-ksh \
         --enable-sh \
         --enable-static
@@ -33,7 +43,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  make -j${cwmakejobs} CPPFLAGS=
+  make -j${cwmakejobs} CPPFLAGS= CFLAGS=\"\${CFLAGS} -Os -g0 -Wl,-s -DEMACS\" LDFLAGS=\"-static -s\"
   popd >/dev/null 2>&1
 }
 "
@@ -41,9 +51,10 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  find \$(cwidir_${rname})/bin/ ! -type d | grep 'sh$' | xargs rm -f &>/dev/null || true
+  find \$(cwidir_${rname})/bin/ ! -type d | grep '/bin/.*sh' | xargs rm -f &>/dev/null || true
   make install
   mv \"\$(cwidir_${rname})/bin/ksh\" \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/oksh\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/ksh\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/sh\"
   popd >/dev/null 2>&1
@@ -52,6 +63,7 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  echo 'append_path \"${cwsw}/oksh/current/bin\"' > \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
 }
 "
