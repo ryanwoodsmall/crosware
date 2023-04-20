@@ -495,6 +495,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - hboetesmg (https://github.com/hboetes/mg - micro gnuemacs, libbsd+netbsdcurses)
 - heirloom project tools (http://heirloom.sourceforge.net/ - musl/static changes at https://github.com/ryanwoodsmall/heirloom-project)
   - exvi with netbsdcurses also available as a standalone package
+- helm (https://helm.sh/ and https://github.com/helm/helm - kubernetes package manager)
 - help2man
 - hitch (https://hitch-tls.org/ - openssl+libev tls proxy)
 - hsqldb (http://hsqldb.org/ - java hypersql database, followup to hypersonicsql, with `sqltool` client)
