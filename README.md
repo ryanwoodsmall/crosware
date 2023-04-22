@@ -1289,6 +1289,7 @@ wc -l /tmp/astbuild.out
   - llhttp (https://github.com/nodejs/llhttp - continuation on a different parsing platform)
 - http servers/proxies/load balancers/etc.
   - apache (https://httpd.apache.org/ - httpd, needs apr, apr-util)
+  - caddy (https://caddyserver.com/ and https://github.com/caddyserver/caddy - http server with automatic tls)
   - cherokee (http://cherokee-project.com/)
   - hiawatha (https://www.hiawatha-webserver.org/)
   - lighttpd
