@@ -19,6 +19,19 @@
 #  - keep user+realm short!
 #  - https://github.com/apache/httpd/blob/trunk/support/htdigest.c
 #
+# XXX - auth...
+#  digest:
+#    see: https://redmine.lighttpd.net/projects/lighttpd/wiki/Mod_auth#htdigest-mod_authn_file
+#    user/realm/pass (apache2-utils/httpd-tools):
+#      htdigest [-c] passwdfile realm username
+#    or without any tools (md5):
+#      echo -n 'user:realm:pass' | md5sum | sed 's/^/user:realm:/g' | tee -a .htpasswd
+#    sha-256:
+#      printf "%s:%s:%s:%s\n" "$user" "$realm" "$(printf "%s" "$user:$realm:$pass" | sha256sum | awk '{print $1}')" "$(printf "%s" "$user:$realm" | sha256sum | awk '{print $1}')"
+#  basic:
+#    minihttpd/thttpd have simple crypt `htpasswd`
+#
+#
 
 rname="lighttpd"
 rver="1.4.69"
