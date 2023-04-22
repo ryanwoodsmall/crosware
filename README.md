@@ -2004,6 +2004,7 @@ wc -l /tmp/astbuild.out
 - sed-bin (https://github.com/lhoursquentin/sed-bin - posix sed to c??? cool)
 - selfdock (https://github.com/anordal/selfdock - container alike)
 - selfie (https://github.com/cksystemsteaching/selfie - self-hosting riscv emulator/simulator, compiler, hypervisor, ...)
+- sftp (https://github.com/pkg/sftp - go library, but contains a standalone `sftp-server` that works with tinysshd/dropbear - add as gosftpserver?)
 - shells and shell stuff
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
