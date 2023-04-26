@@ -1891,6 +1891,7 @@ wc -l /tmp/astbuild.out
 - poke (http://www.jemarch.net/poke.html - gnu binary data editor/language)
 - posixtestsuite (http://posixtest.sourceforge.net/ - old open posix test suite)
 - premake (https://github.com/premake/premake-core and https://premake.github.io/ - lua build tool, brotli supports it?)
+- privoxy (https://www.privoxy.org/ - filtering http proxy with filtering support, openssl/mbedtls support)
 - prngd (http://prngd.sourceforge.net/ - for lxc? dropbear? old? hmm?)
 - procps-ng (https://gitlab.com/procps-ng/procps)
   - needs autoconf, automake, libtool, ncurses, pkgconfig, slibtool
