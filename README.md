@@ -516,6 +516,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - j7zip
 - janet (https://janet-lang.org/ and https://github.com/janet-lang/janet)
 - jansson (https://github.com/akheron/jansson and https://digip.org/jansson/ - C json support, used by nftables)
+- jfrogcli (https://github.com/jfrog/jfrog-cli and https://jfrog.com/help/r/jfrog-cli/jfrog-cli - jfrog cli for e.g. artifactory)
 - jo (https://github.com/jpmens/jo)
 - jq (https://stedolan.github.io/jq/ - with oniguruma regex)
 - jruby
