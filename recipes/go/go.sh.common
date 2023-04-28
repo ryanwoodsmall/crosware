@@ -8,12 +8,6 @@
 . "${cwrecipe}/common.sh"
 
 eval "
-function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
-}
-"
-
-eval "
 function cwextract_${rname}() {
   cwextract \"${rdlfile}\" \"${rtdir}\"
 }
