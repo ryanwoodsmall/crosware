@@ -1914,6 +1914,7 @@ wc -l /tmp/astbuild.out
     - http://jdebp.eu./Softwares/nosh/
 - pup (https://github.com/ericchiang/pup)
 - qalc (https://qalculate.github.io/ - libqalculate and cli/text interface)
+- quicssh (https://github.com/moul/quicssh - ssh client/server wrapper/proxy/tunnel using quic, go)
 - quictls (https://github.com/quictls/openssl - openssl (3+?) patched with quic support, for ngtcp2+nghttp3)
 - ragel (http://www.colm.net/open-source/ragel/)
 - ranger (https://ranger.github.io - python)
