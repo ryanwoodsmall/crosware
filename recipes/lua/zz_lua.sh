@@ -1,9 +1,11 @@
 rname="lua"
-rver="5.3.6"
-rdir="${rname}-${rver}"
-rfile="${rdir}.tar.gz"
-rsha256="fc5fd69bb8736323f026672b1b7235da613d7177e72558893a0bdcd320466d60"
-rdlfile="${cwdl}/${rname}/${rfile}"
+rluaver="53"
+rvn="${rname}${rluaver}"
+rver="$(cwver_${rvn})"
+rdir="$(cwdir_${rvn})"
+rfile="$(cwfile_${rvn})"
+rsha256="$(cwsha256_${rvn})"
+rdlfile="$(cwdlfile_${rvn})"
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
 
@@ -14,3 +16,5 @@ function cwgenprofd_${rname}() {
   echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
 }
 "
+
+unset rluaver rvn

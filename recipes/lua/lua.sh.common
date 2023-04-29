@@ -8,17 +8,17 @@
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  sed -i.ORIG \"s#^INSTALL_TOP=.*#INSTALL_TOP= ${ridir}#g\" Makefile
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  sed -i.ORIG \"s#^INSTALL_TOP=.*#INSTALL_TOP= \$(cwidir_${rname})#g\" Makefile
   sed -i.ORIG \"/^CC=/s#gcc# \${CC} -DLUA_USE_DLOPEN #g\" src/Makefile
-  sed -i.ORIG '/#define LUA_ROOT/s,^.*,#define LUA_ROOT \"${ridir}\",g' src/luaconf.h
+  sed -i.ORIG '/#define LUA_ROOT/s,^.*,#define LUA_ROOT \"'\$(cwidir_${rname})'\",g' src/luaconf.h
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} posix MYCFLAGS=\"\${CFLAGS}\" MYLDFLAGS=\"-static\" LDFLAGS=-static CPPFLAGS=
   popd >/dev/null 2>&1
 }
