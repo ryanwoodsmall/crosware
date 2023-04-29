@@ -483,6 +483,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - goyq (https://github.com/mikefarah/yq - yq implementation in go)
 - grep (gnu grep)
 - groff
+- gosftpserver (https://github.com/pkg/sftp - standalone `sftp-server` that works with tinysshd/dropbear from go sftp lib)
 - guile (https://www.gnu.org/software/guile/)
   - works for aarch64/x86_64
   - does _not_ work on arm/i686 (gc)
@@ -2009,7 +2010,6 @@ wc -l /tmp/astbuild.out
 - sed-bin (https://github.com/lhoursquentin/sed-bin - posix sed to c??? cool)
 - selfdock (https://github.com/anordal/selfdock - container alike)
 - selfie (https://github.com/cksystemsteaching/selfie - self-hosting riscv emulator/simulator, compiler, hypervisor, ...)
-- sftp (https://github.com/pkg/sftp - go library, but contains a standalone `sftp-server` that works with tinysshd/dropbear - add as gosftpserver?)
 - shells and shell stuff
   - fish
   - gash (guile as shell, https://savannah.nongnu.org/projects/gash/)
