@@ -40,14 +40,14 @@ rfile="${rdir}.tar.xz"
 #rurl="https://download.lighttpd.net/${rname}/releases-${rver%.*}.x/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rsha256="16ac8db95e719629ba61949b99f8a26feba946a81d185215b28379bb4116b0b4"
-rreqs="make zlib bzip2 pcre2 mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr brotli zstd xxhash lua54 netbsdcurses readlinenetbsdcurses"
+rreqs="make zlib bzip2 pcre2 mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr brotli zstd xxhash lua netbsdcurses readlinenetbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  env PATH=\"${cwsw}/lua54/current/bin:${cwsw}/pcre2/current/bin:\${PATH}\" \
+  env PATH=\"${cwsw}/lua/current/bin:${cwsw}/pcre2/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --enable-{ipv6,lfs} \
       --with-webdav-{locks,props} \
@@ -60,8 +60,8 @@ function cwconfigure_${rname}() {
         LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib -l{brotli,mbedx509,mbedtls,mbedcrypto})\" \
         BROTLI_CFLAGS=\"-I${cwsw}/brotli/current/include\" \
         BROTLI_LIBS=\"-L${cwsw}/brotli/current/lib -lbrotli\" \
-        LUA_CFLAGS=\"-I${cwsw}/lua54/current/include\" \
-        LUA_LIBS=\"-L${cwsw}/lua54/current/libs -llua\" \
+        LUA_CFLAGS=\"-I${cwsw}/lua/current/include\" \
+        LUA_LIBS=\"-L${cwsw}/lua/current/libs -llua\" \
         SQLITE_CFLAGS=\"-I${cwsw}/sqlite/current/include\" \
         SQLITE_LIBS=\"-L${cwsw}/sqlite/current/libs -lsqlite3\" \
         XML_CFLAGS=\"-I${cwsw}/libxml2/current/include\" \
