@@ -1,5 +1,5 @@
 rname="lua"
-rluaver="53"
+rluaver="54"
 rvn="${rname}${rluaver}"
 rver="$(cwver_${rvn})"
 rdir="$(cwdir_${rvn})"
