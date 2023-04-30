@@ -3,7 +3,10 @@
 # XXX - features...
 # XXX   tre
 # XXX   spidermonkey
+# XXX   idn / idn2
 # XXX - libressl variant
+# XXX - gnutls variant
+# XXX - move to https://github.com/rkd77/elinks - alpine is using this
 #
 
 rname="elinks"
