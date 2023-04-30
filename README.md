@@ -688,6 +688,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libcss (https://www.netsurf-browser.org/projects/libcss/)
 - nettle (http://www.lysator.liu.se/~nisse/nettle/ and https://git.lysator.liu.se/nettle/nettle)
   - nettleminimal (opt-in, standalone; bundled mini-gmp)
+- nextvi (https://github.com/kyx0r/nextvi - "next" version/fork of neatvi with some extra features/simplifications)
 - nghttp2 (https://github.com/nghttp2/nghttp2)
 - nginx (https://nginx.org/ - openssl)
   - nginxlibressl (libressl)
@@ -1795,9 +1796,6 @@ wc -l /tmp/astbuild.out
   - neatrefer (https://github.com/aligrudi/neatrefer)
   - neatmkfn (https://github.com/aligrudi/neatmkfn)
   - neatsmtp (https://github.com/aligrudi/neatsmtp)
-  - neatvi
-    - kyx0r fork with lots of features (https://github.com/kyx0r/neatvi)
-    - nextvi (https://github.com/kyx0r/nextvi - "next" version of neatvi)
   - fbpdf (https://github.com/aligrudi/fbpdf)
   - fbvis (https://repo.or.cz/fbvis.git)
   - fbff (https://github.com/aligrudi/fbff)
