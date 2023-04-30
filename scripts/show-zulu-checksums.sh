@@ -96,9 +96,11 @@ for p in ${!packageids[@]} ; do
 done
 
 # dump info for each {arch}:{libc}:{version}
+# format:
+#   sha-256 : arch : libc : version : url
+# sorted by libc specifier
 for p in ${!packageids[@]} ; do
   test -z "${packageids[${p}]}" && continue || true
   i=( $(echo ${p//:/ }) )
-  # arch : libc : version : url : sha-256
-  echo "${i[0]} : ${i[1]} : ${i[2]} : ${urls[${p}]} : ${sha256sums[${p}]}"
-done | sort -t: -k2
+  echo "${sha256sums[${p}]} : ${i[0]} : ${i[1]} : ${i[2]} : ${urls[${p}]}"
+done | sort -t: -k3
