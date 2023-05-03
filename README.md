@@ -2040,6 +2040,7 @@ wc -l /tmp/astbuild.out
 - smarden stuff
   - ipsvd (http://smarden.org/ipsvd/ - can use matrixssl?)
   - runit (http://smarden.org/runit/)
+- smimesign (https://github.com/github/smimesign - commit/tag signing for git, in go)
 - snarf (https://www.xach.com/snarf/ - old but small, still useful?)
 - source-highlight (https://www.gnu.org/software/src-highlite/)
   - 2.x, 3.x require boost (yeeee), ctags
