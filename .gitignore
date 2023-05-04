@@ -37,3 +37,5 @@
 /**/*.swp
 /.git.PRE-*
 /etc/wireguard*
+/etc/sysklogd*
+/var/log*

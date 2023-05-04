@@ -821,6 +821,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - sbase (https://core.suckless.org/sbase)
   - ubase (https://core.suckless.org/ubase)
 - svnkit
+- sysklogd (https://github.com/troglobit/sysklogd - bsd syslog on linux, newer rfc compliant)
 - tcpproxy (https://github.com/inetaf/tcpproxy - go, contains tlsrouter sni proxy program)
 - tea (https://gitea.com/gitea/tea - gitea cli)
 - termcap (https://www.gnu.org/software/termutils/ - old standalone gnu termcap library)
@@ -2121,7 +2122,6 @@ wc -l /tmp/astbuild.out
   - mping (https://github.com/troglobit/mping - multicast ping)
   - smcroute (https://github.com/troglobit/smcroute and https://troglobit.com/projects/smcroute/)
   - ssdp-responder (https://github.com/troglobit/ssdp-responder - windows network thing w/internet gateway device config?)
-  - sysklogd (https://github.com/troglobit/sysklogd - bsd syslog on linux, newer rfc compliant)
   - ttinfo (https://github.com/troglobit/ttinfo)
   - uftpd (https://github.com/troglobit/uftpd)
   - uget (https://github.com/troglobit/uget - small wget/curl file fetcher w/openssl support - investigate libressl/wolfssl compat...)
