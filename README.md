@@ -1164,6 +1164,7 @@ wc -l /tmp/astbuild.out
 - cmark (commonmark markddown - https://github.com/commonmark/cmark)
   - cmark-gfm (github fork - https://github.com/github/cmark-gfm)
 - cocker (https://github.com/calvinwilliams/cocker - small container engine in c)
+- connect/connect-proxy (https://github.com/jjkeijser/connect-proxy/ and https://src.fedoraproject.org/rpms/connect-proxy/tree/rawhide - small openssl http/https/socks proxy)
 - conty (https://github.com/Kron4ek/Conty - shell containerizer, needs fuse2/3, coreutils, tar (gnu?), gzip (gnu?), bash)
 - cparser (https://pp.ipd.kit.edu/git/cparser/)
   - firm (https://pp.ipd.kit.edu/firm/ - related?)
