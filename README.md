@@ -646,6 +646,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - mpfr
 - mtm (https://github.com/deadpixi/mtm - micro terminal multiplexer)
 - mujs (http://mujs.com/ and https://github.com/ccxvii/mujs)
+- muon (https://github.com/annacrombie/muon and https://muon.build/ - meson-alike in c, use with samurai (ninja) and pkgconf (pkg-config))
 - muslfts (https://github.com/pullmoll/musl-fts)
 - muslstandalone (http://musl.libc.org/ - unbundled musl libc and kernel headers with musl-gcc wrapper, possibly different version from statictoolchain)
   - musl11 (musl 1.1.x for compat)
@@ -1762,7 +1763,6 @@ wc -l /tmp/astbuild.out
 - mrubyc (https://github.com/mrubyc/mrubyc)
 - multimarkdown (https://github.com/fletcher/MultiMarkdown-6)
 - munge (https://github.com/dun/munge - hpc auth environment, useful for cred auth against gpg(?) for e.g. diod)
-- muon (https://github.com/annacrombie/muon - meson in c)
 - muonsocks (https://github.com/niklata/muonsocks - c++ fork/rewrite(?) of microsocks with socks4a client support)
 - mupdf (https://mupdf.com/ and https://github.com/ArtifexSoftware/mupdf - muraster, mutool build without X11/GL)
 - musl stuff
