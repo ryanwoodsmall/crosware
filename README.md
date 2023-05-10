@@ -2215,6 +2215,7 @@ wc -l /tmp/astbuild.out
 - yggdrasil (https://github.com/yggdrasil-network/yggdrasil-go - opportunistic ipv6 mesh network in go)
 - yq (https://github.com/kislyuk/yq - jq for yaml, python+jq)
 - ytalk (http://ytalk.ourproject.org/)
+- yx (https://gitlab.com/tomalok/yx - small yaml data extraction tool in c w/libyaml)
 - z3 (https://github.com/Z3Prover/z3)
   - cppcheck can use/may require this for 2.x+
 - zeromq (https://github.com/zeromq/libzmq and https://zeromq.org/)
