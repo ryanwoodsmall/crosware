@@ -1951,6 +1951,7 @@ wc -l /tmp/astbuild.out
 - rw (https://sortix.org/rw/)
 - rwc (https://github.com/leahneukirchen/rwc)
 - rx (https://github.com/crcx/rx - forth(-ish) userspace! - gone?)
+- s5cmd (https://github.com/peak/s5cmd - fast s3/local fs client in go)
 - sacc (https://git.fifth.space/sacc/log.html - gopher client)
 - sbang (https://github.com/spack/sbang)
 - scc (https://github.com/boyter/scc - sloc/cloc/code, code counter in go)
