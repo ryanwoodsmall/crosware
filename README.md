@@ -1683,6 +1683,7 @@ wc -l /tmp/astbuild.out
     - https://stackoverflow.com/questions/46905464/how-to-enable-a-llvm-backend
     - https://releases.llvm.org/download.html
     - https://reviews.llvm.org/D34910
+- llvmbox (https://github.com/rsms/llvmbox - packaging up llvm and reqs in a distribution)
 - lnav (https://github.com/tstack/lnav)
 - lobase (https://github.com/Duncaen/lobase)
   - lobase (https://github.com/ataraxialinux/lobase - fork, updated)
