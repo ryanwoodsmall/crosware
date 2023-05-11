@@ -8,12 +8,12 @@
 #
 
 rname="pcc"
-rver="20211109"
+rver="20230419"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 #rurl="ftp://pcc.ludd.ltu.se/pub/${rname}/${rfile}"
 rurl="http://pcc.ludd.ltu.se/ftp/pub/${rname}/${rfile}"
-rsha256="9f99bb94f77b7dc7e30f30620376b106bb94dff6a82e1517d41237ff05631281"
+rsha256="48abd6381631f3152e298a25ae0f100a2a10e0c1fd0e86baa5004a577b20745b"
 rreqs="make byacc flex configgit muslstandalone"
 
 . "${cwrecipe}/common.sh"
@@ -25,7 +25,7 @@ function cwfetch_${rname}() {
   f=\"${rfile//pcc/pcc-libs}\"
   u=\"${rurl%/*}-libs/\${f}\"
   d=\"${rdlfile%/*}/\${f}\"
-  s=\"c14236ed7742fa692eaa62f3dae1b61faa793d1f68ff8a07ae292438ee5e51ce\"
+  s=\"aab4cec19cd3aacf9961471d22685a50635417b4f4e8034994bba82bd5871d4e\"
   cwfetchcheck \"\${u}\" \"\${d}\" \"\${s}\"
   unset f u d s
 }
@@ -63,6 +63,8 @@ function cwconfigure_${rname}() {
   sed -i.ORIG \
     '/^OBJS = /s/^OBJS = .*/OBJS = crt0.o crt1.o gcrt1.o crti.o crtn.o crtbegin.o crtend.o crtbeginS.o crtendS.o crtbeginT.o crtendT.o/g;s/-fpic/-fPIC/g' \
       ${rname}-libs-${rver}/csu/linux/Makefile
+  sed -i '/^CFLAGS/s, = , = -I. ,g' ${rname}-libs-${rver}/csu/linux/Makefile
+  sed -i 's,CFLAGS,CFLAGS_EXTRA,g' ${rname}-libs-${rver}/csu/linux/Makefile
   unset s t m c d
   popd >/dev/null 2>&1
 }
