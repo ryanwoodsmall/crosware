@@ -1232,6 +1232,7 @@ wc -l /tmp/astbuild.out
   - axpbox (https://github.com/lenticularis39/axpbox - alpha)
   - gxemul (http://gavare.se/gxemul/)
 - eris (https://github.com/nealey/eris - small web server)
+- ewd (https://github.com/chettrick/ewd - event watcher daemon)
 - faasd (https://github.com/openfaas/faasd - openfaas but smaller? needs runc, etc.)
 - fcgiwrap (https://github.com/gnosek/fcgiwrap - standard cgi to fcgi socket wrapper, useful with nginx?)
 - felinks (https://github.com/rkd77/elinks - up-to-date fork of elinks)
@@ -1750,6 +1751,7 @@ wc -l /tmp/astbuild.out
       ```
   - binary will be **ports/unix/micropython**
 - minit (https://github.com/chazomaticus/minit - small init with startup/shutdown scripts)
+- minimal (https://github.com/ivandavidov/minimal - minimal linux live system; kernel+glibc+busybox)
 - miniyacc (https://c9x.me/yacc/)
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
 - mjson (https://github.com/cesanta/mjson - json parser/emitter/json-rpc engine)
