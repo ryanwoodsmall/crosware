@@ -5,7 +5,7 @@ rfile="$(cwfile_cadaver)"
 rdlfile="$(cwdlfile_cadaver)"
 rurl="$(cwurl_cadaver)"
 rsha256=""
-rreqs="make expat zlib gnutls libtasn1 libunistring nettle gmp netbsdcurses readlinenetbsdcurses"
+rreqs="make expat zlib gnutls libtasn1 libunistring nettle gmp neongnutls netbsdcurses readlinenetbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
