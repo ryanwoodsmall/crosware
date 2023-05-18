@@ -1,17 +1,18 @@
 #
 # XXX - something like this should work for figuring url...
 #  echo "${rver}" | grep -q '.*\..*\..*' && sver="${rver%.?}" || sver="${rver}"
+# XXX - terminfo (netbsdcurses), slang (termcap?), etc. - replace ncurses?
 #
 rname="utillinux"
-rver="2.38.1"
+rver="2.39"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
-rsha256="60492a19b44e6cf9a3ddff68325b333b8b52b6c59ce3ebd6a0ecaa4c5117e84f"
+rsha256="32b30a336cda903182ed61feb3e9b908b762a5e66fe14e43efb88d37162075cb"
 rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig"
 
 rburl="https://kernel.org/pub/linux/utils/util-linux"
-rurl="${rburl}/v${rver%.?}/${rfile}"
-#rurl="${rburl}/v${rver}/${rfile}"
+#rurl="${rburl}/v${rver%.?}/${rfile}"
+rurl="${rburl}/v${rver}/${rfile}"
 unset rburl
 
 . "${cwrecipe}/common.sh"
@@ -29,6 +30,7 @@ function cwconfigure_${rname}() {
   sed -i '/defined.*__linux/s/$/ \\&\\& defined(SYS_pidfd_send_signal)/g' include/pidfd-utils.h
   sed -i.ORIG '/READLINE_LIBS/ s/-lreadline/-lreadline -lncurses -lncursesw/g' configure
   sed -i.ORIG 's/raw\.8/mkfs.8/g' Makefile.in
+  sed -i.ORIG /PER_LINUX_FDPIC/d sys-utils/setarch.c
   env PATH=\"${cwsw}/ncurses/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
       --disable-asciidoc \
@@ -45,6 +47,9 @@ function cwconfigure_${rname}() {
       --without-selinux \
       --without-smack \
       --without-systemd \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lreadline -lncurses -lncursesw' \
         LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\" \
         PCRE2_POSIX_LIBS=\"\$(pkg-config --libs libpcre2-posix libpcre2-8)\"
