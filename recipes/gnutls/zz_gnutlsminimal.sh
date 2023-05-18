@@ -22,12 +22,10 @@ function cwconfigure_${rname}() {
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
       --disable-doc \
       --disable-gtk-doc{,-{html,pdf}} \
-      --disable-guile \
       --disable-hardware-acceleration \
       --disable-nls \
       --disable-padlock \
       --disable-silent-rules \
-      --enable-local-libopts \
       --enable-manpages \
       --enable-openssl-compatibility \
       --enable-sha1-support \
@@ -40,7 +38,8 @@ function cwconfigure_${rname}() {
       --with-included-unistring \
       --without-idn \
       --without-p11-kit \
-      --without-tpm \
+      --without-tpm{,2} \
+      --without-{zlib,zstd,brotli} \
         CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
         LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \

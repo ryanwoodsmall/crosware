@@ -1,9 +1,17 @@
+#
+# XXX - options to check/support:
+#   --enable-heartbeat-support
+#   --enable-srp-authentication
+#   --without-brotli
+#   --without-zlib
+#   --without-zstd
+#
 rname="gnutls"
-rver="3.6.16"
+rver="3.8.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.gnupg.org/ftp/gcrypt/${rname}/v${rver%.*}/${rfile}"
-rsha256="1b79b381ac283d8b054368b335c408fedcb9b7144e0c07f531e3537d4328f3b3"
+rsha256="0ea0d11a1660a1e63f960f157b197abe6d0c8cb3255be24e1fb3815930b9bdc5"
 rreqs="make sed byacc nettle gmp libtasn1 libunistring pkgconfig slibtool cacertificates"
 
 . "${cwrecipe}/common.sh"
@@ -26,13 +34,11 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-doc \
     --disable-gtk-doc{,-{html,pdf}} \
-    --disable-guile \
     --disable-hardware-acceleration \
     --disable-nls \
     --disable-openssl-compatibility \
     --disable-padlock \
     --disable-silent-rules \
-    --enable-local-libopts \
     --enable-manpages \
     --enable-sha1-support \
     --enable-ssl3-support \
@@ -41,7 +47,11 @@ function cwconfigure_${rname}() {
     --with-unbound-root-key-file=\"${cwetc}/${rname}/unbound/root.key\" \
     --without-idn \
     --without-p11-kit \
-    --without-tpm \
+    --without-tpm{,2} \
+    --without-{zlib,zstd,brotli} \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       PKG_CONFIG=\"${cwsw}/pkgconfig/current/bin/pkg-config\"
   popd >/dev/null 2>&1
 }
