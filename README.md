@@ -1189,6 +1189,7 @@ wc -l /tmp/astbuild.out
 - dante (socks proxy client/server https://www.inet.no/dante/)
 - dasel (https://github.com/TomWright/dasel - data selector like jq, yq - go)
 - dave (https://github.com/micromata/dave - go webdav sever w/tls)
+- davix (https://github.com/cern-fts/davix - c++ (cmake, libxml2, openssl) webdav/s3 client?)
 - dehydrated (https://github.com/dehydrated-io/dehydrated - shell acme/letsencrypt client)
 - dinit (https://github.com/davmac314/dinit - init and service monitor)
 - diod (https://github.com/chaos/diod - 9p fileserver)
