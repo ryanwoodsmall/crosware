@@ -3,11 +3,11 @@
 # XXX - make sure shill doesn't tear down the tun# interface...
 #
 rname="openconnect"
-rver="9.11"
+rver="9.12"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.infradead.org/${rname}/download/${rfile}"
-rsha256="a3c63441395ebc073995a5f4713ab5599af63c04f7492b9b48df11a7fbcb06c7"
+rsha256="a2bedce3aa4dfe75e36e407e48e8e8bc91d46def5335ac9564fbf91bd4b2413e"
 rreqs="make pkgconfig openssl libxml2 zlib xz lz4 slibtool"
 
 . "${cwrecipe}/common.sh"
