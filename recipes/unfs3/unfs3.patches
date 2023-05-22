@@ -1,3 +1,2 @@
-https://raw.githubusercontent.com/alpinelinux/aports/ad2d41f6d38d92a2ee0a0e86759884a4d0797a42/main/unfs3/unfs3-0.9.22-musl.patch,6d5e371dbacb055e8775e409c24a4fd73153510fcb5ace2c0a4e7a189f9140d7,1
-https://raw.githubusercontent.com/alpinelinux/aports/ad2d41f6d38d92a2ee0a0e86759884a4d0797a42/main/unfs3/gcc-10.patch,ed98e0b5cfe3007cb877ca5ac8e117a73f3fedfda4ebc220f9c2d2804c576204,1
-https://raw.githubusercontent.com/alpinelinux/aports/ad2d41f6d38d92a2ee0a0e86759884a4d0797a42/main/unfs3/fix-tcp.patch,3ef6b73de280196ea7472911e94724e77a0dc4975ea67656e66a6719054b88ae,1
+https://raw.githubusercontent.com/alpinelinux/aports/444b460a3b4752211828afa746bcb13a1e9dac8f/main/unfs3/implicit.patch,a3ebfc4cb89be3cc22ed0d27efe2d9aaeb88d14e0da06b5806e4830ec056ea66,1
+https://raw.githubusercontent.com/alpinelinux/aports/444b460a3b4752211828afa746bcb13a1e9dac8f/main/unfs3/lfs64.patch,16a3271c07fdcf7be82dfb2053552975273b1a5f5b7967c5180bc13e99d1e041,1 
