@@ -49,6 +49,7 @@ qs['java_package_type']='jdk'
 qs['javafx_bundled']='false'
 qs['release_status']='ga'
 qs['availability_types']='ca'
+qs['crac_supported']='false'
 
 # hashes to hold package ids, sha-256 sums, download urls, etc.
 # encoded as {arch}:{libc}:{version}
