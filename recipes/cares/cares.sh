@@ -1,16 +1,16 @@
 rname="cares"
-rver="1.19.0"
+rver="1.19.1"
 rdir="c-ares-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/c-ares/c-ares/releases/download/${rname}-${rver//./_}/${rfile}"
-rsha256="bfceba37e23fd531293829002cac0401ef49a6dc55923f7f92236585b7ad1dd3"
+rsha256="321700399b72ed0e037d0074c629e7741f6b2ec2dda92956abe3e9671d3e268e"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-tests \
       LDFLAGS=-static \
@@ -23,15 +23,15 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   local p
   make install ${rlibtool}
-  cwmkdir \"${ridir}/bin\"
-  cwmkdir \"${ridir}/share/man/man1\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
   for p in a{country,dig,host} ; do
-    install -m 0755 src/tools/\${p} \"${ridir}/bin/\${p}\"
-    \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/\${p}\"
-    install -m 0644 docs/\${p}.1 \"${ridir}/share/man/man1/\${p}.1\"
+    install -m 0755 src/tools/\${p} \"\$(cwidir_${rname})/bin/\${p}\"
+    \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/\${p}\"
+    install -m 0644 docs/\${p}.1 \"\$(cwidir_${rname})/share/man/man1/\${p}.1\"
   done
   popd >/dev/null 2>&1
 }
