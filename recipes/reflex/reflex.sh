@@ -1,9 +1,9 @@
 rname="reflex"
-rver="20230206"
+rver="20230521"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://invisible-mirror.net/archives/${rname}/${rfile}"
-rsha256="a36ee836e4077fdac5aff280ec89fd97f21fd789c70d42c4501bf9da344df0d4"
+rsha256="5d0556d5f1833f3ce679d1ff67d579a4bf003c520274c4f886f7a0264ed3e321"
 rreqs="make byacc"
 
 . "${cwrecipe}/common.sh"
