@@ -10,12 +10,12 @@
 #
 
 rname="busybox"
-rver="1.36.0"
+rver="1.36.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 #rurl="http://${rname}.net/downloads/${rfile}"
-rsha256="542750c8af7cb2630e201780b4f99f3dcceeb06f505b479ec68241c1e6af61a5"
+rsha256="b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
