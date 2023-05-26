@@ -1,10 +1,10 @@
 rname="sbase"
-rver="63271b47f7e045cdee3fa90178560f982b70c218"
+rver="53040766d1a09baa7412c73c9a93afac2bfd6acc"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rprof="${cwetcprofd}/zz_${rname}.sh"
-rsha256="0d0536748a3ad2f959fdc11383296cab130236a89db3de5a26f15a5b499aefc9"
+rsha256="3016002557c3c43619b542a6af682288bde83a1480729ab0a7b794400a39bb1f"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
