@@ -7,7 +7,8 @@ rname="libz"
 rver="1.2.8.2015.12.26"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://sortix.org/${rname}/release/${rfile}"
+#rurl="https://sortix.org/${rname}/release/${rfile}"
+rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/sortix/libz/${rfile}"
 rsha256="abcc2831b7a0e891d0875fa852e9b9510b420d843d3d20aad010f65493fe4f7b"
 rreqs="bootstrapmake"
 
@@ -15,7 +16,7 @@ rreqs="bootstrapmake"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
      --enable-shared \
      --enable-static \
