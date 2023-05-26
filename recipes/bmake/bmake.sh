@@ -4,12 +4,12 @@
 #
 
 rname="bmake"
-rver="20230512"
+rver="20230522"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="http://www.crufty.net/ftp/pub/sjg/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="b927b50a45e4b5579c6491ab09ce3dbd8b170fb10fe6f16d484e13d15e338ffa"
+rsha256="dfe556df70e1555b70eccf4e6d367aa8b91aa076d5e9b55e36b5ce3e721f9050"
 rreqs=""
 rbdir="${cwbuild}/${rdir}/build"
 rprof="${cwetcprofd}/zz_${rname}.sh"
