@@ -475,6 +475,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - static binary archive
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
 - gojq (https://github.com/itchyny/gojq - jq in go)
+- goldy (https://github.com/ibm-security-innovation/goldy - dtls to udp proxy using mbedtls)
 - got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like, libressl)
   - gotopenssl recipe provided as well
   - portable: https://gameoftrees.org/portable.html
