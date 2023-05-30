@@ -4,7 +4,7 @@
 # XXX - libedit has a bunch of duplicate symbols
 #
 rname="opensimh"
-rver="7b494542efdd0c74eec220a627b909200814c798"
+rver="8b6c0b60c9e9d1d4eae62b52391b132f0450447c"
 rdir="simh-${rver}"
 rfile="${rver}.zip"
 rurl="https://github.com/open-simh/simh/archive/${rfile}"
