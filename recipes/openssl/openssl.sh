@@ -8,11 +8,11 @@
 #
 
 rname="openssl"
-rver="1.1.1t"
+rver="1.1.1u"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.openssl.org/source/${rfile}"
-rsha256="8dee9b24bdb1dcbf0c3d1e9b02fb8f6bf22165e807f45adeb7c9677536859d3b"
+rsha256="e2f8d84b523eecd06c7be7626830370300fbcc15386bf5142d72758f6963ebc6"
 rreqs="make perl cacertificates"
 
 . "${cwrecipe}/common.sh"
@@ -21,8 +21,12 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i.ORIG '/if.*eq.*-static/s/-static/-blahblahblah/g' Configure
-  env PATH=\"${cwsw}/perl/current/bin:\${PATH}\" \
-    ./config --prefix=\"\$(cwidir_${rname})\" --openssldir=${cwetc}/ssl no-asm no-shared no-zlib no-zlib-dynamic \${CFLAGS} \${LDFLAGS} \${CPPFLAGS} -fPIC -DOPENSSL_PIC -DOPENSSL_THREADS
+  env \
+    PATH=\"${cwsw}/perl/current/bin:\${PATH}\" \
+    LDFLAGS=-static \
+    CPPFLAGS= \
+    PKG_CONFIG_{LIBDIR,PATH}= \
+      ./config --prefix=\"\$(cwidir_${rname})\" --openssldir=${cwetc}/ssl no-asm no-shared no-zlib no-zlib-dynamic \${CFLAGS} -static -fPIC -DOPENSSL_PIC -DOPENSSL_THREADS
   popd >/dev/null 2>&1
 }
 "
