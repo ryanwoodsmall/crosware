@@ -1,9 +1,9 @@
 rname="libxml2"
-rver="2.11.0"
+rver="2.11.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://download.gnome.org/sources/${rname}/${rver%.*}/${rfile}"
-rsha256="b1a2fca3f7722d6c35a4f24974a1b5800e4d84ec5cb756bc61ef2b8c75a19e36"
+rsha256="737e1d7f8ab3f139729ca13a2494fd17bf30ddb4b7a427cf336252cab57f57f7"
 rreqs="make xz zlib"
 
 . "${cwrecipe}/common.sh"
