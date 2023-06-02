@@ -1,9 +1,9 @@
 rname="nettle"
-rver="3.9"
+rver="3.9.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="0ee7adf5a7201610bb7fe0acbb7c9b3be83be44904dd35ebbcd965cd896bfeaa"
+rsha256="ccfeff981b0ca71bbd6fbcb054f407c60ffb644389a5be80d6716d5b550c6ce3"
 rreqs="make gmp"
 
 . "${cwrecipe}/common.sh"
@@ -15,7 +15,10 @@ function cwconfigure_${rname}() {
     --libdir=\"\$(cwidir_${rname})/lib\" \
     --disable-assembler \
     --disable-documentation \
-    --disable-openssl
+    --disable-openssl \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd >/dev/null 2>&1
 }
 "
