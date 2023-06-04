@@ -1728,6 +1728,7 @@ wc -l /tmp/astbuild.out
 - mg3a (https://github.com/paaguti/mg3a)
 - mkcert (https://github.com/FiloSottile/mkcert)
 - micro (https://micro-editor.github.io/ and https://github.com/zyedidia/micro - go terminal editor)
+- microproxy (https://github.com/thekvs/microproxy - http/https proxy in go, toml config)
 - micropython (https://github.com/micropython/micropython)
   - needs python, git, libffi, pkgconfig, make, mbedtls
   - clone repo (single tag, **--depth 1**, **--single-branch**, etc.); i.e., for 1.10:
