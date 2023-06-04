@@ -1283,6 +1283,20 @@ time_func ls -l -A /
 - `${cwsw}/${rname}/${rver}/lbin` - "link directory"
   - basically ```bin/*``` with `${rname}-` prepended
   - easy, would solve a few yacc, lex, m4, et al. issues?
+- `/usr/local/crosware/software` should contain an arch...
+  - would allow for coexistence of multiple architectures
+    - i.e., fully shared install - could do similar for...
+    - `builds`, `var/inst`, and so-on
+    - `etc` would be hard to share though? yeah. not really possible.
+    - `downloads` would needs locks/semaphors, and also traps to cleanup on exit
+    - oof, maybe this isn't a great idea?
+  - karch or uarch? karch...
+  - `${cwsw}` becomes `/usr/local/crosware/${karch}`
+  - need short arch? go/java style, but which?
+    - aarch64 -> arm64
+    - armv#{l,a,...} -> arm32 (assume hf, softfloat is just not worth it for now)
+    - i{3..6}86 -> x86 (386?)
+    - x86_64 - > amd64 (x64? )
 
 <!--
 # vim: ft=markdown
