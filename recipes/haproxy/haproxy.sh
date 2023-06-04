@@ -1,9 +1,12 @@
+#
+# XXX - wolfssl variant, requires wolfssl to be built with --enable-haproxy
+#
 rname="haproxy"
-rver="2.6.13"
+rver="2.8.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.haproxy.org/download/${rver%.*}/src/${rfile}"
-rsha256="d69ff5233dbca657132ef280d111222ec1e33f5be1c1937d4e9ff516f63f5243"
+rsha256="61cdafb5db7e9174d0757b8e4bcde938352306fb7cc8ff2b5f55c26dd48a6cf7"
 rreqs="make openssl pcre2 zlib lua"
 
 . "${cwrecipe}/common.sh"
