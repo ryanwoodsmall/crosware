@@ -1146,6 +1146,7 @@ wc -l /tmp/astbuild.out
   - cparse (https://github.com/jafarlihi/cparse)
     - clex (https://github.com/jafarlihi/clex)
   - cproc (https://git.sr.ht/~mcf/cproc and https://github.com/michaelforney/cproc)
+  - fcc (https://github.com/Fedjmike/fcc - small c/c-like compiler)
   - gofrontend (https://github.com/golang/gofrontend - go frontend for gcc? in c? not sure what verisons it works with?)
   - kefir (https://github.com/protopopov1122/kefir - c17 compiler from scratch)
   - kencc (https://github.com/aryx/fork-kencc)
