@@ -1,14 +1,15 @@
 #
 # XXX - don't really need make, but it's recommend in the readme
 # XXX - regular `make`/`make install` with proper vars works fine!
+# XXX - vim integration files???
 #
 
 rname="miller6"
-rver="6.7.0"
+rver="6.8.0"
 rdir="${rname%6}-${rver}"
-rfile="${rdir}.tar.gz"
-rurl="https://github.com/johnkerl/miller/releases/download/v${rver}/${rfile}"
-rsha256="45c86dbb35e326184740eded13d61e9900187dfde72d9c46789d429373c7566f"
+rfile="v${rver}.tar.gz"
+rurl="https://github.com/johnkerl/miller/archive/refs/tags/${rfile}"
+rsha256="3b87d95a5f9dd51510e0131bd1827110bde6b5904fa58bdaba862d261757c0c1"
 rreqs="bootstrapmake go"
 
 . "${cwrecipe}/common.sh"
