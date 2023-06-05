@@ -1267,6 +1267,7 @@ wc -l /tmp/astbuild.out
 - gdb
 - gh-dash (https://github.com/dlvhdr/gh-dash - github cli dashboard w/gh)
 - git-crypt (https://github.com/AGWA/git-crypt)
+- gitern (https://github.com/huumn/gitern - ssh key based multitenant git host)
 - glow (https://github.com/charmbracelet/glow - terminal markdown renderer in go)
 - gmni (https://sr.ht/~sircmpwn/gmni/ and https://git.sr.ht/~sircmpwn/gmni - gemini client)
 - gmnisrv (https://sr.ht/~sircmpwn/gmnisrv/ and https://git.sr.ht/~sircmpwn/gmnisrv - gemini server)
