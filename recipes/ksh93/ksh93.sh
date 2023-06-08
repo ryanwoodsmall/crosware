@@ -23,7 +23,8 @@ function cwmake_${rname}() {
         CC=\"\${CC} -static -Wl,-static\" \
         CCFLAGS=\"\${CFLAGS} -Wl,-s -Wl,-static -Os\" \
         LDFLAGS=\"-static -s\" \
-        SHELL=\"${cwsw}/dashtiny/current/bin/dash\"
+        SHELL=\"${cwsw}/dashtiny/current/bin/dash\" \
+        TMPDIR=\"${cwtop}/tmp\"
   popd >/dev/null 2>&1
 }
 "
@@ -40,7 +41,8 @@ function cwmakeinstall_${rname}() {
         CC=\"\${CC} -static -Wl,-static\" \
         CCFLAGS=\"\${CFLAGS} -Wl,-s -Wl,-static -Os\" \
         LDFLAGS=\"-static -s\" \
-        SHELL=\"${cwsw}/dashtiny/current/bin/dash\"
+        SHELL=\"${cwsw}/dashtiny/current/bin/dash\" \
+        TMPDIR=\"${cwtop}/tmp\"
   cat \"\$(cwidir_${rname})/bin/${rname%93}\" > \"\$(cwidir_${rname})/bin/${rname}\"
   chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/${rname%93}\"
