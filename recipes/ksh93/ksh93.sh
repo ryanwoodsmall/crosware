@@ -31,6 +31,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
   rm -f \"\$(cwidir_${rname})/bin/${rname}\"
   rm -f \"\$(cwidir_${rname})/bin/${rname%93}\"
   env \
