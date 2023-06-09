@@ -2185,6 +2185,7 @@ wc -l /tmp/astbuild.out
   - wasmedge (https://github.com/WasmEdge/WasmEdge - wasm runtime from cncf)
   - wasmer (https://github.com/wasmerio/wasmer - cross-platform webassembly binaries everywhere)
     - wapm (https://wapm.io - webassembly package manager)
+  - wasmninja (https://github.com/burntcarrot/wasmninja - wasm micro serverless platform in go, running on redis+minio)
   - wasmtime (https://github.com/bytecodealliance/wasmtime and https://github.com/bytecodealliance/wasmtime)
   - wasmtime-cpp (https://github.com/bytecodealliance/wasmtime-cpp)
   - wasm-c-api (https://github.com/WebAssembly/wasm-c-api)
