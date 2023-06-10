@@ -2175,6 +2175,7 @@ wc -l /tmp/astbuild.out
   - binaryen (https://github.com/WebAssembly/binaryen - includes `wasm2js` tool to run wasm on top of javascript)
   - cowasm (https://github.com/sagemathinc/cowasm - collaborative webassembly, shell, in zig, with python, unix ports, etc.!)
   - lucet (https://github.com/bytecodealliance/lucet)
+  - polywasm (https://github.com/evanw/polywasm - a polyfill for running/converting .wasm to javascript...)
   - posish (https://github.com/bytecodealliance/posish)
   - w2c2 (https://github.com/turbolent/w2c2 - compiles webassembly to c)
   - wabt (https://github.com/WebAssembly/wabt)
