@@ -1,3 +1,6 @@
+#
+# XXX - upstream https://github.com/muennich/rc went missing...
+#
 rname="rc"
 rver="21016570f4b42a0814134c43e8e27c388856ee5e"
 rdir="${rname}-${rver}"
