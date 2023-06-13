@@ -1297,6 +1297,18 @@ time_func ls -l -A /
     - armv#{l,a,...} -> arm32 (assume hf, softfloat is just not worth it for now)
     - i{3..6}86 -> x86 (386?)
     - x86_64 - > amd64 (x64? )
+- `cwifinstalled ${recipe} ${program/function} ${args} ...`
+  - if a recipe is installed, do something; if not, just return/`true`/`:`
+  - cosmetic wrapper around `cwcheckinstalled`
+  - ```
+    function cwifinstalled() {
+      local r="${1}"
+      shift
+      if cwcheckinstalled "${r}" &>/dev/null ; then
+        eval "${@}"
+      fi
+    }
+    ```
 
 <!--
 # vim: ft=markdown
