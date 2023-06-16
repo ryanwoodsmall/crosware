@@ -1270,6 +1270,7 @@ wc -l /tmp/astbuild.out
 - git-crypt (https://github.com/AGWA/git-crypt)
 - gitern (https://github.com/huumn/gitern - ssh key based multitenant git host)
 - glow (https://github.com/charmbracelet/glow - terminal markdown renderer in go)
+- gmifs (https://github.com/n0x1m/gmifs - gemini static server/filesystem in go)
 - gmni (https://sr.ht/~sircmpwn/gmni/ and https://git.sr.ht/~sircmpwn/gmni - gemini client)
 - gmnisrv (https://sr.ht/~sircmpwn/gmnisrv/ and https://git.sr.ht/~sircmpwn/gmnisrv - gemini server)
 - gnulib (https://www.gnu.org/software/gnulib - probably needed to repackage for older gnu projects - shishi, gss, gsasl, ...)
