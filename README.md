@@ -1790,6 +1790,7 @@ wc -l /tmp/astbuild.out
   - musl-extra (https://github.com/Projeto-Pindorama/musl-extra - getconf, etc.)
 - mutt
 - mvi (https://github.com/byllgrim/mvi)
+- nackle (https://github.com/howerj/nackle - small tls/ssl tools)
 - nanomsg (https://github.com/nanomsg/nanomsg and https://nanomsg.org/)
   - cmake, no.
 - nc / ncat / netcat
