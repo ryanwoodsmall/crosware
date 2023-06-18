@@ -1,5 +1,6 @@
 #
 # XXX - upstream https://github.com/muennich/rc went missing...
+# XXX - move (back) to https://github.com/rakitzis/rc
 #
 rname="rc"
 rver="21016570f4b42a0814134c43e8e27c388856ee5e"
