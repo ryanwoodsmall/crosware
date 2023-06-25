@@ -1849,6 +1849,7 @@ wc -l /tmp/astbuild.out
 - nopoll (https://github.com/ASPLes/nopoll - websocket toolkit)
 - notcurses (https://github.com/dankamongmen/notcurses)
 - nq (https://github.com/leahneukirchen/nq)
+- nsq (https://github.com/nsqio/nsq and https://nsq.io - realtime distributed messaging/queue, in go)
 - nss (ugh)
 - nuitka (https://github.com/Nuitka/Nuitka and https://nuitka.net - python compiler using cpython)
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
