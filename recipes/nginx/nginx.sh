@@ -3,14 +3,15 @@
 # XXX - --with-pcre-opt=\"--enable-jit --enable-pcre8 --enable-pcre16 --enable-pcre32 --enable-unicode-properties --enable-utf\" \
 # XXX - no pcre jit on riscv64
 # XXX - probably need to remove static bits for dynamic modules
+# XXX - need nginxstable varianet?
 #
 
 rname="nginx"
-rver="1.23.4"
+rver="1.25.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://nginx.org/download/${rfile}"
-rsha256="d43300e36bb249a7e6edc60bca1b0fc372a0bafce2f346d76acfb677a8790fc0"
+rsha256="f09071ac46e0ea3adc0008ef0baca229fc6b4be4533baef9bbbfba7de29a8602"
 rreqs="make openssl slibtool pcre2 libgpgerror libgcrypt libxml2 libxslt zlib xz pkgconfig"
 
 . "${cwrecipe}/common.sh"
