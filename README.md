@@ -637,6 +637,9 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - miller5 (mlr, old version in c)
   - miller6 (mlr, reimplemented in go)
 - minikube (https://minikube.sigs.k8s.io/)
+- minio (https://github.com/minio/minio and https://min.io - s3-compatible object store)
+  - miniomc (https://github.com/minio/mc - minio `mc` client)
+  - docs: https://min.io/docs/minio/linux/index.html
 - minischeme (https://github.com/catseye/minischeme)
 - mksh (http://www.mirbsd.org/mksh.htm)
 - mosquitto (https://github.com/eclipse/mosquitto and https://mosquitto.org/ - mqtt broker & pub/sub client - openssl/cjson/c-ares)
