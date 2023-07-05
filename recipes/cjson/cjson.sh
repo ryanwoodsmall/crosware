@@ -3,7 +3,7 @@ rver="1.7.16"
 rdir="${rname//json/JSON}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/DaveGamble/${rname//json/JSON}/archive/refs/tags/${rfile}"
-rsha256="b0ca16e9f4c22b54482a3bfc14b64b50d8f2e305ee6014b0b3d3d9e700934f8d"
+rsha256="451131a92c55efc5457276807fc0c4c2c2707c9ee96ef90c47d68852d5384c6c"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
