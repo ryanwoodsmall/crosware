@@ -1,9 +1,9 @@
 rname="cjson"
-rver="1.7.15"
+rver="1.7.16"
 rdir="${rname//json/JSON}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/DaveGamble/${rname//json/JSON}/archive/refs/tags/${rfile}"
-rsha256="5308fd4bd90cef7aa060558514de6a1a4a0819974a26e6ed13973c5f624c24b2"
+rsha256="b0ca16e9f4c22b54482a3bfc14b64b50d8f2e305ee6014b0b3d3d9e700934f8d"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
