@@ -4,15 +4,15 @@
 # XXX - terminfo (netbsdcurses), slang (termcap?), etc. - replace ncurses?
 #
 rname="utillinux"
-rver="2.39"
+rver="2.39.1"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
-rsha256="32b30a336cda903182ed61feb3e9b908b762a5e66fe14e43efb88d37162075cb"
+rsha256="890ae8ff810247bd19e274df76e8371d202cda01ad277681b0ea88eeaa00286b"
 rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig"
 
 rburl="https://kernel.org/pub/linux/utils/util-linux"
-#rurl="${rburl}/v${rver%.?}/${rfile}"
-rurl="${rburl}/v${rver}/${rfile}"
+rurl="${rburl}/v${rver%.*}/${rfile}"
+#rurl="${rburl}/v${rver}/${rfile}"
 unset rburl
 
 . "${cwrecipe}/common.sh"
