@@ -2,13 +2,13 @@
 rreqs="make pcre2 libxml2 zlib xz pkgconfig zlib ${rreqs}"
 
 if [[ ${rname} =~ tiny ]] ; then
-  rtlib="-lno_readline"
+  rtlib="-lno_edit"
 elif [[ ${rname} =~ minimal ]] ; then
-  rreqs="${rreqs} readlineminimal"
-  rtlib="-lreadline -ltermcap"
+  rreqs="${rreqs} libeditminimal"
+  rtlib="-ledit -ltermcap"
 else
-  rreqs="${rreqs} netbsdcurses readlinenetbsdcurses"
-  rtlib="-lreadline -lcurses -lterminfo"
+  rreqs="${rreqs} netbsdcurses libeditnetbsdcurses"
+  rtlib="-ledit -lcurses -lterminfo"
 fi
 
 
@@ -20,6 +20,7 @@ function cwpatch_${rname}() {
   cat auto/libxml2 > auto/libxml2.ORIG
   sed -i 's,/usr/local,${cwsw}/libxml2/current,g' auto/libxml2
   sed -i 's,-lxml2,-lxml2 -llzma -lz,g' auto/libxml2
+  sed -i.ORIG 's/-ledit/${rtlib}/g' auto/readline
   popd >/dev/null 2>&1
 }
 "
@@ -31,7 +32,6 @@ function cwconfigure_${rname}() {
   ./configure \
     --cc-opt=\"\${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     --ld-opt=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\"
-  sed -i.ORIG 's/-lreadline/${rtlib}/g' build/Makefile
   popd >/dev/null 2>&1
 }
 "
