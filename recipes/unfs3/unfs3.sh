@@ -3,6 +3,7 @@
 # XXX - write an exports file: echo '/usr/local/crosware 0.0.0.0/0(ro)' | tee ${cwtop}/tmp/exports
 # XXX - start with: unfsd -d -e ${cwtop}/tmp/exports -i /tmp/unfsd.pid -u -n 2049 -m 2049 -p -s
 # XXX - mount with: mount -t nfs -o udp,rw,port=2049,mountport=2049 10.11.12.13:/usr/local/crosware /mnt/tmp
+# XXX - custom cwclean_ to workaround weird `pop_var_context: head of shell_variables not a function context` error w/bash 5.2+/readline 8.2+
 #
 
 rname="unfs3"
@@ -14,6 +15,12 @@ rsha256="9bc6568fba2e43f3e2181f1d1802afec41929c1e55a6e53da982aacc7ce79ebb"
 rreqs="make byacc flex libtirpc pkgconfig"
 
 . "${cwrecipe}/common.sh"
+
+eval "
+function cwclean_${rname}() {
+  ( pushd \"${cwbuild}\" >/dev/null 2>&1 ; rm -rf \"${rbdir}\" ; popd >/dev/null 2>&1 ) &>/dev/null || true
+}
+"
 
 eval "
 function cwconfigure_${rname}() {
