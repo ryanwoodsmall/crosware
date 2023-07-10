@@ -3,12 +3,18 @@ rver="0.9.2"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://gitea.com/gitea/${rname}/archive/${rfile}"
-rsha256="edcd1e9af43c91c653b19ba2f58297b4815afd285657221282321ceb2930c537"
+rsha256=""
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
 
 cwstubfunc "cwconfigure_${rname}"
+
+eval "
+function cwfetch_${rname}() {
+  cwfetch \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\"
+}
+"
 
 eval "
 function cwclean_${rname}() {
