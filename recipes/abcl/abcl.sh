@@ -2,11 +2,11 @@
 # XXX - rlwrap completions example here: https://armedbear.common-lisp.dev/doc/abcl-install-with-java.html
 #
 rname="abcl"
-rver="1.9.1"
+rver="1.9.2"
 rdir="${rname}-bin-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://common-lisp.net/project/armedbear/releases/${rver}/${rfile}"
-rsha256="79d2f16de734d4edf137077a2aeb9cba21e128343577abc2ec16eb330ccfb419"
+rsha256="24970976b3565ddf32a1e0b17c5034a9996df25404ec44f240505b01c68a37fe"
 rreqs="rlwrap"
 
 . "${cwrecipe}/common.sh"
