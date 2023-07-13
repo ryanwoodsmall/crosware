@@ -1725,6 +1725,7 @@ wc -l /tmp/astbuild.out
 - matrixssl (https://github.com/matrixssl/matrixssl)
 - mcpp (http://mcpp.sourceforge.net/)
 - md4c (https://github.com/mity/md4c - markdown parser, md2html cli, uses cmake)
+- mdp (https://github.com/visit1985/mdp - markdown presentation tool, in c w/curses)
 - memcached (https://memcached.org/ and https://github.com/memcached/memcached - libevent, can use openssl)
 - mercurial / hg
   - need docutils: ```env PATH=${cwsw}/python2/current/bin:${PATH} pip install docutils```
