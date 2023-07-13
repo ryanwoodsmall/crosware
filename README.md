@@ -1724,6 +1724,8 @@ wc -l /tmp/astbuild.out
 - maramake (https://maradns.samiam.org/maramake/ and https://github.com/samboy/maramake - pdpmake fork, used in maradns)
 - matrixssl (https://github.com/matrixssl/matrixssl)
 - mcpp (http://mcpp.sourceforge.net/)
+- md (https://github.com/Noah-Arcouette/md - c markdown compiler/reader/displayer)
+  - imd (https://github.com/Noah-Arcouette/imd - newer version)
 - md4c (https://github.com/mity/md4c - markdown parser, md2html cli, uses cmake)
 - mdp (https://github.com/visit1985/mdp - markdown presentation tool, in c w/curses)
 - memcached (https://memcached.org/ and https://github.com/memcached/memcached - libevent, can use openssl)
