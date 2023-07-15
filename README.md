@@ -1699,6 +1699,7 @@ wc -l /tmp/astbuild.out
   - lobase (https://github.com/ataraxialinux/lobase - fork, updated)
   - lobase-old (https://github.com/ataraxialinux/lobase-old - fork? bsd stuff)
 - long-shebang (https://github.com/shlevy/long-shebang)
+- lowdown (https://github.com/kristapsdz/lowdown - markdown formatter forked from hoedown, from mandoc maintainer(s))
 - lowzip (https://github.com/svaarala/lowzip)
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - lua stuff
@@ -1722,6 +1723,7 @@ wc -l /tmp/astbuild.out
   - roffit (https://daniel.haxx.se/projects/roffit/)
 - mandown (https://github.com/Titor8115/mandown - man like markdown, markdown like man?)
 - maramake (https://maradns.samiam.org/maramake/ and https://github.com/samboy/maramake - pdpmake fork, used in maradns)
+- markdown-to-terminal (https://github.com/zielmicha/markdown-to-terminal - md pretty printer)
 - matrixssl (https://github.com/matrixssl/matrixssl)
 - mcpp (http://mcpp.sourceforge.net/)
 - md (https://github.com/Noah-Arcouette/md - c markdown compiler/reader/displayer)
