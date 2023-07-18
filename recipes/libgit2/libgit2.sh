@@ -4,11 +4,11 @@
 #
 
 rname="libgit2"
-rver="1.6.4"
+rver="1.7.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="d25866a4ee275a64f65be2d9a663680a5cf1ed87b7ee4c534997562c828e500d"
+rsha256="d9d0f84a86bf98b73e68997f5c1543cc5067d0ca9c7a5acaba3e8d117ecefef3"
 rreqs="make zlib pkgconfig openssl libssh2 cmake"
 rbdir="${cwbuild}/${rdir}/build"
 
@@ -20,12 +20,18 @@ function cwconfigure_${rname}() {
   local extra=''
   test -z \"\$(which -a python python2 python3)\" && extra='-DBUILD_TESTS=OFF' || true
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  env PATH=\"${cwsw}/cmake/current/bin:${cwsw}/pkgconfig/current/bin:\${PATH}\" \
+  env \
+    PATH=\"${cwsw}/cmake/current/bin:${cwsw}/pkgconfig/current/bin:\${PATH}\" \
     CC=\"\${CC} -I${cwsw}/openssl/current/include\" \
+    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       cmake .. \
         \${extra} \
         -DBUILD_CLAR=OFF \
         -DBUILD_SHARED_LIBS=OFF \
+        -DLIBSSH2_INCLUDE_DIR=\"${cwsw}/libssh2/current/include\" \
+        -DLIBSSH2_LIBRARY=\"${cwsw}/libssh2/current/lib/libssh2.a\" \
         -DLINK_WITH_STATIC_LIBRARIES=ON \
         -DUSE_SSH=ON \
         -DUSE_HTTPS=ON \
