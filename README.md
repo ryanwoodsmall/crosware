@@ -2129,6 +2129,7 @@ wc -l /tmp/astbuild.out
 - tcpredirect (https://github.com/chengyingyuan/tcpredirect - keyed redirect/proxying?)
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
 - timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
+- tinyemu tweaks (https://github.com/fernandotcl/TinyEMU - direct elf image load!)
 - tlsclient (https://git.sr.ht/~moody/tlsclient - plan 9 tlsclient for unix, with openssl?)
   - x9utils (https://github.com/halfwit/x9utils - ditto, with some additions)
 - tlse (https://github.com/eduardsui/tlse - c tls impl using libtomcrypt)
