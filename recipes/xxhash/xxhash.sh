@@ -1,16 +1,16 @@
 rname="xxhash"
-rver="0.8.1"
+rver="0.8.2"
 rdir="${rname/h/H}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/Cyan4973/${rname}/archive/${rfile}"
-rsha256="3bb6b7d6f30c591dd65aaaff1c8b7a5b94d81687998ca9400082c739a690436c"
+rsha256="baee0c6afd4f03165de7a4e67988d16f0f2b257b51d0e3cb91909302a26a79c4"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cp Makefile{,.ORIG}
   sed -i '/^lib:/s/:.*/: libxxhash.a/g' Makefile
   sed -i '/INSTALL_PROGRAM.*LIBXXH/d' Makefile
@@ -21,16 +21,18 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} ${rlibtool} {PREFIX,prefix}=\"${ridir}\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  env CPPFLAGS= LDFLAGS=-static \
+    make -j${cwmakejobs} ${rlibtool} {PREFIX,prefix}=\"\$(cwidir_${rname})\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make install ${rlibtool} {PREFIX,prefix}=\"${ridir}\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  env CPPFLAGS= LDFLAGS=-static \
+    make install ${rlibtool} {PREFIX,prefix}=\"\$(cwidir_${rname})\"
   popd >/dev/null 2>&1
 }
 "
