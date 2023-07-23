@@ -4,11 +4,11 @@
 #
 
 rname="gnupg"
-rver="2.2.41"
+rver="2.4.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="13f3291007a5e8546fcb7bc0c6610ce44aaa9b3995059d4f8145ba09fd5be3e1"
+rsha256="a271ae6d732f6f4d80c258ad9ee88dd9c94c8fdc33c3e45328c4d7c126bd219d"
 rreqs="make libgpgerror libgcrypt libksba libassuan npth ntbtls sqlite readline ncurses slibtool zlib bzip2 pkgconfig pinentry configgit"
 
 . "${cwrecipe}/common.sh"
@@ -33,7 +33,10 @@ function cwconfigure_${rname}() {
       --with-bzip2=\"${cwsw}/bzip2/current\" \
       --with-readline=\"${cwsw}/readline/current\" \
       --with-zlib=\"${cwsw}/zlib/current\" \
-      --with-pinentry-pgm=\"${cwsw}/pinentry/current/bin/pinentry\"
+      --with-pinentry-pgm=\"${cwsw}/pinentry/current/bin/pinentry\" \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd >/dev/null 2>&1
 }
 "
