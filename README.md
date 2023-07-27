@@ -1926,6 +1926,7 @@ wc -l /tmp/astbuild.out
   - ```make install-strip LIBTOOL="${cwsw}/slibtool/current/bin/slibtool-static -all-static"```
     - slibtool require should make this automatic
 - proot (https://proot-me.github.io/ and https://github.com/proot-me/proot - userspace containerizing/unprivileged reproducible environments+builds)
+- proxyproto (https://github.com/mailgun/proxyproto - go haproxy proxy proto library with client/server example)
 - psmisc
 - pty tools
   - updated djb pty/ptyget/ptybandage/ptyrun/...
