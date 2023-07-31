@@ -6,32 +6,16 @@
 #   https://github.com/libarchive/libarchive/tree/master/examples/minitar
 # XXX - shar:
 #   https://github.com/libarchive/libarchive/tree/master/contrib/shar
-# XXX - ugh...
-#   libtool: compile:  x86_64-linux-musl-gcc -DLIBBSD_OVERLAY -isystem /usr/local/crosware/software/libbsd/libbsd-0.11.7/include/bsd -lbsd -DHAVE_CONFIG_H -I.  -Wl,-static -fPIC -Wl,-s -Wall -Wformat -Wformat-security -ffunction-sections -fdata-sections -fvisibility=hidden -D__LIBARCHIVE_ENABLE_VISIBILITY -MT libarchive/archive_read_disk_posix.lo -MD -MP -MF libarchive/.deps/archive_read_disk_posix.Tpo -c libarchive/archive_read_disk_posix.c -o libarchive/archive_read_disk_posix.o
-#   libarchive/archive_read_disk_posix.c: In function 'setup_current_filesystem':
-#   libarchive/archive_read_disk_posix.c:1869:41: error: 'struct statvfs' has no member named 'f_namelen'; did you mean 'f_namemax'?
-#    1869 |  t->current_filesystem->name_max = svfs.f_namelen;
-#         |                                         ^~~~~~~~~
-#         |                                         f_namemax
 #
-
 rname="libarchive"
-rver="3.7.0"
+rver="3.7.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="44729a0cc3b0b0be6742a9873d25e85e240c9318f5f5ebf2cca6bc84d7b91b07"
+rsha256="b17403ce670ff18d8e06fea05a9ea9accf70678c88f1b9392a2e29b51127895f"
 rreqs="make expat zlib bzip2 lz4 lzo zstd mbedtls xz libmd attr acl e2fsprogs libbsd pkgconfig"
 
 . "${cwrecipe}/common.sh"
-
-eval "
-function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  sed -i.ORIG '/svfs.*f_namelen/s,svfs,sfs,g' libarchive/archive_read_disk_posix.c
-  popd >/dev/null 2>&1
-}
-"
 
 eval "
 function cwconfigure_${rname}() {
