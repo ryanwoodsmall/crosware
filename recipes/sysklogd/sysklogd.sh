@@ -1,9 +1,9 @@
 rname="sysklogd"
-rver="2.5.0"
+rver="2.5.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/troglobit/sysklogd/releases/download/v${rver}/${rfile}"
-rsha256="e1d635944e5a6062c8ea18b9506668ebdaefacea1965147f60cf3fb3a25770e8"
+rsha256="47a7ba220035c5b116c249dc271c7c007ec37ffd2b453404e38aabf467d16806"
 rreqs="bootstrapmake slibtool"
 
 . "${cwrecipe}/common.sh"
