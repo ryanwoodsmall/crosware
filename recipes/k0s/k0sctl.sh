@@ -1,18 +1,18 @@
 rname="k0sctl"
-rver="0.15.3"
+rver="0.15.4"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
 rsha256=""
 if [[ ${karch} =~ ^aarch64 ]] ; then
   rfile="${rname}-linux-arm64"
-  rsha256="295d5aa46337ccdb3146da550e637275ce1394e0d5b9915c99e1b73faaae1727"
+  rsha256="c1711beb8700ae9855f3180ef12bd515323b3f569b0e4378d5239bff24e8c552"
 elif [[ ${karch} =~ ^arm ]] ; then
   rfile="${rname}-linux-arm"
-  rsha256="9e7002096bbcbec15041519a6ce0d9d1a5040c3e624780cefb8f0fa4692d5b95"
+  rsha256="85e3e0962cec1328edad0408f9f74db50dbcd1ba1f868a1e83e769f3412013bd"
 elif [[ ${karch} =~ ^x86_64 ]] ; then
   rfile="${rname}-linux-x64"
-  rsha256="487dc360fa04a0f547c5d46ff392ed2724193b8a7a084b28d18528e23c04b52d"
+  rsha256="c555ad9664e23f83dba839d6ddf26e92c1a1aa2e837a9d81e53a18c4750ac19a"
 fi
 rurl="https://github.com/k0sproject/${rname}/releases/download/v${rver}/${rfile}"
 
