@@ -1,9 +1,9 @@
 rname="neatvi"
-rver="11"
+rver="12"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/aligrudi/${rname}/archive/refs/tags/${rfile}"
-rsha256="a87deb7e523de0a8e445b537e73d460c48929ba9386058ff27908b946b4c7782"
+rsha256="49d84e1568d95f978cda2d9859319e9732bea9e4766c3b709bb429b8a92c8c95"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
