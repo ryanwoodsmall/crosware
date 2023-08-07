@@ -3,11 +3,11 @@
 #
 
 rname="file"
-rver="5.44"
+rver="5.45"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://astron.com/pub/${rname}/${rfile}"
-rsha256="3751c7fba8dbc831cb8d7cc8aff21035459b8ce5155ef8b0880a27d028475f3b"
+rsha256="fc97f51029bb0e2c9f4e3bffefdaf678f0e039ee872b9de5c002a6d09c784d82"
 rreqs="make zlib bzip2 xz"
 
 . "${cwrecipe}/common.sh"
