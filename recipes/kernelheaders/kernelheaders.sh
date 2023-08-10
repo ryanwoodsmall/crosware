@@ -4,43 +4,36 @@
 #
 
 rname="kernelheaders"
-rver="4.19.88"
-rdir="kernel-headers-${rver}"
-rfile="v${rver}.tar.gz"
-rurl="https://github.com/sabotage-linux/kernel-headers/archive/${rfile}"
-rsha256="d104397fc657ffb0f0bda46f54fd182b76a9ebc324149c183a4ff8c86a8db53d"
+rver="4.19.88-2"
+rdir="linux-headers-${rver}"
+rfile="${rdir}.tar.xz"
+rurl="https://github.com/sabotage-linux/kernel-headers/releases/download/v${rver}/${rfile}"
+rsha256="dc7abf734487553644258a3822cfd429d74656749e309f2b25f09f4282e05588" 
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  true
-}
-"
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   local a
-  if [[ ${karch} =~ ^aarch64 ]] ; then
+  if [[ \${karch} =~ ^aarch64 ]] ; then
     a=aarch64
-  elif [[ ${karch} =~ ^arm ]] ; then
+  elif [[ \${karch} =~ ^arm ]] ; then
     a=arm
-  elif [[ ${karch} =~ ^i.86 ]] ; then
+  elif [[ \${karch} =~ ^i.86 ]] ; then
     a=x86
-  elif [[ ${karch} =~ ^x86_64 ]] ; then
+  elif [[ \${karch} =~ ^x86_64 ]] ; then
     a=x86_64
+  elif [[ \${karch} =~ ^riscv ]] ; then
+    a=riscv
   else
     cwfailexit \"how did you get here\"
   fi
-  make ARCH=\${a} prefix=\"${ridir}\" install
+  make ARCH=\${a} prefix=\"\$(cwidir_${rname})\" install
   unset a
   popd >/dev/null 2>&1
 }
