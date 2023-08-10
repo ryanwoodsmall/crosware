@@ -1627,6 +1627,7 @@ wc -l /tmp/astbuild.out
   - sbcl (http://sbcl.org and https://github.com/sbcl/sbcl)
   - stutter (https://github.com/mkirchner/stutter - lisp impl in c, no external libs except editline?)
   - tort (https://github.com/kstephens/tort - tiny object runtime)
+- listening (https://github.com/leahneukirchen/listening - check if a tcp port is listening)
 - llvm / clang
   - this is "complicated," to put it nicely
     - opens up rust, emscripten, zig, etc.
