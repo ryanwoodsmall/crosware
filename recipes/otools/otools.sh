@@ -3,6 +3,8 @@
 # XXX - do other receipes need this? baseutils, outils, ...
 # XXX - bearssl libtls in use here - not extensively tested...
 # XXX - make libressl default? libretls (openssl) and libtlsbearssl variants?
+# XXX - turn on muslfts support?
+# XXX - otools- symlinks are kind of annoying, eliminate?
 #
 rname="otools"
 rver="1.5.1"
