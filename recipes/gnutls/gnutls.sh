@@ -7,11 +7,11 @@
 #   --without-zstd
 #
 rname="gnutls"
-rver="3.8.0"
+rver="3.8.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.gnupg.org/ftp/gcrypt/${rname}/v${rver%.*}/${rfile}"
-rsha256="0ea0d11a1660a1e63f960f157b197abe6d0c8cb3255be24e1fb3815930b9bdc5"
+rsha256="ba8b9e15ae20aba88f44661978f5b5863494316fe7e722ede9d069fe6294829c"
 rreqs="make sed byacc nettle gmp libtasn1 libunistring pkgconfig slibtool cacertificates"
 
 . "${cwrecipe}/common.sh"
