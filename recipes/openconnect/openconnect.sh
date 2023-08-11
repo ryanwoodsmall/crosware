@@ -1,6 +1,7 @@
 #
 # XXX - chromeos needs some love: https://scene-si.org/2015/06/01/openconnect-on-a-chromebook-without-crouton/
 # XXX - make sure shill doesn't tear down the tun# interface...
+# XXX - 3.8.1 renamed: GNUTLS_NO_EXTENSIONS -> GNUTLS_NO_DEFAULT_EXTENSIONS, remove patch when updated
 #
 rname="openconnect"
 rver="9.12"
@@ -24,7 +25,8 @@ function cwfetch_${rname}() {
 eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  sed -i.ORG s,-Wmissing-include-dirs,,g configure
+  sed -i.ORIG s,-Wmissing-include-dirs,,g configure
+  sed -i.ORIG s,GNUTLS_NO_EXTENSIONS,GNUTLS_NO_DEFAULT_EXTENSIONS,g gnutls-dtls.c
   popd >/dev/null 2>&1
 }
 "
