@@ -8,7 +8,7 @@ rver="4.19.88-2"
 rdir="linux-headers-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/sabotage-linux/kernel-headers/releases/download/v${rver}/${rfile}"
-rsha256="dc7abf734487553644258a3822cfd429d74656749e309f2b25f09f4282e05588" 
+rsha256="dc7abf734487553644258a3822cfd429d74656749e309f2b25f09f4282e05588"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"

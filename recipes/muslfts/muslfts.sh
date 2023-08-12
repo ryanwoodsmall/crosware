@@ -31,7 +31,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  \${CC} -I. -fPIC -c fts.c -o fts.o 
+  \${CC} -I. -fPIC -c fts.c -o fts.o
   \${AR} -v -r libfts.a fts.o
   cat > musl-fts.pc << EOF
 prefix=${rtdir}/current
