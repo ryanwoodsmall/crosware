@@ -1,9 +1,9 @@
 rname="pv"
-rver="1.6.20"
+rver="1.7.24"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/a-j-wood/pv/releases/download/v${rver}/${rfile}"
-rsha256="b5f1ee79a370c5287e092b6e8f1084f026521fe0aecf25c44b9460b870319a9e"
+rsha256="3bf43c5809c8d50066eaeaea5a115f6503c57a38c151975b710aa2bee857b65e"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
