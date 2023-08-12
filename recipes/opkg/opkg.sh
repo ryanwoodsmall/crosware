@@ -16,11 +16,11 @@
 #
 
 rname="opkg"
-rver="0.6.1"
+rver="0.6.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://git.yoctoproject.org/${rname}/snapshot/${rfile}"
-rsha256="e8dc05e312bcd6726fb438c368d9f7bc35dbe55b7a664e1b33f4b8d3fa49f065"
+rsha256="126fe62286e72e85539cf67bfc6941b1764e8c79df982a11a84511aa8e19ed4b"
 rreqs="make autoconf automake libtool pkgconfig gpgme gnupg curl openssl libarchive xz bzip2 lz4 zstd configgit slibtool libassuan zlib libssh2 expat libmd libbsd acl nghttp2 lzo mbedtls"
 
 . "${cwrecipe}/common.sh"
