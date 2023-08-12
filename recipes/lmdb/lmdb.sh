@@ -1,9 +1,9 @@
 rname="lmdb"
-rver="0.9.29"
+rver="0.9.31"
 rdir="${rname}-LMDB_${rver}"
 rfile="LMDB_${rver}.tar.gz"
 rurl="https://github.com/LMDB/${rname}/archive/refs/tags/${rfile}"
-rsha256="22054926b426c66d8f2bc22071365df6e35f3aacf19ad943bc6167d4cae3bebb"
+rsha256="dd70a8c67807b3b8532b3e987b0a4e998962ecc28643e1af5ec77696b081c9b0"
 rreqs="bootstrapmake"
 rbdir="${cwbuild}/${rdir}/libraries/lib${rname}"
 
