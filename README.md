@@ -422,6 +422,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - works for aarch64/i686/x86_64
   - does _not_ work on arm (gc? gmp?)
 - ed (gnu ed)
+- elfutils (https://sourceware.org/elfutils/ - library and utilities for dealing with elf files, including some binutils workalikes(?) - ar, nm, ranlib, strings, strip, etc.)
 - elinks (http://elinks.or.cz/ from git: https://repo.or.cz/elinks.git)
   - investigate adding tre, spidermonkey javascript/ecmascript/js, ...
 - elvis (https://github.com/mbert/elvis)
@@ -1226,7 +1227,6 @@ wc -l /tmp/astbuild.out
   - cmake, curl, pcre, tidy (cmake), duktape
 - editline (https://github.com/richsalz/editline - another editline/libedit)
 - elftoolchain (https://github.com/elftoolchain/elftoolchain - bsd licensed elf ar/ld/strings/etc. - binutils-ish)
-- elfutils (https://sourceware.org/elfutils/)
 - ellcc (embedded clang build, http://ellcc.org/)
 - elvm (https://github.com/shinh/elvm)
 - emacs
