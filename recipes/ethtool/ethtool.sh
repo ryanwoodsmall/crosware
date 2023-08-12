@@ -1,9 +1,12 @@
+#
+# XXX - 6.4 has some compilation issues
+#
 rname="ethtool"
-rver="6.2"
+rver="6.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://mirrors.edge.kernel.org/pub/software/network/${rname}/${rfile}"
-rsha256="86df0114064d4d73f6bf72bf03e85c33964a519ee0c1d1ba65005ad2d0e570e1"
+rsha256="d9425f0a3df138734001fccc4175fe178c025f938460ac25c4ebc39960168822"
 rreqs="make libmnl"
 
 . "${cwrecipe}/common.sh"
