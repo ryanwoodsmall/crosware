@@ -654,6 +654,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - mujs (http://mujs.com/ and https://github.com/ccxvii/mujs)
 - muon (https://github.com/annacrombie/muon and https://muon.build/ - meson-alike in c, use with samurai (ninja) and pkgconf (pkg-config))
 - muslfts (https://github.com/pullmoll/musl-fts)
+- muslobstack (https://github.com/void-linux/musl-obstack - glibc obstack+some libiberty macros for musl)
 - muslstandalone (http://musl.libc.org/ - unbundled musl libc and kernel headers with musl-gcc wrapper, possibly different version from statictoolchain)
   - musl11 (musl 1.1.x for compat)
   - musl12 (musl 1.2.x with `oldmalloc` for compat)
@@ -1788,7 +1789,6 @@ wc -l /tmp/astbuild.out
 - mupdf (https://mupdf.com/ and https://github.com/ArtifexSoftware/mupdf - muraster, mutool build without X11/GL)
 - musl stuff
   - musl-locales (https://github.com/rilian-la-te/musl-locales - cmake? seriously?)
-  - musl-obstack (https://github.com/pullmoll/musl-obstack and/or https://github.com/void-linux/musl-obstack)
   - musl-rpmatch (https://github.com/pullmoll/musl-rpmatch - glibc compat rpmatch(3) yes/no response function)
   - musl-utils
     - getconf, getent, iconv
