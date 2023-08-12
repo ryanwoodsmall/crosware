@@ -5,11 +5,11 @@
 #
 
 rname="hitch"
-rver="1.7.3"
+rver="1.8.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://hitch-tls.org/source/${rfile}"
-rsha256="1a1bf4955d775b718dc31c89a1a05176530b0ca856f95ee42a2bc7a23f289787"
+rsha256="dfc99484bc7ffea27a3169e84d6c217988eda47b208ab2e5524dc2a5dd158f4e"
 rreqs="make openssl libev pkgconfig zlib"
 
 . "${cwrecipe}/common.sh"
@@ -18,7 +18,10 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
-    --enable-tcp-fastopen
+    --enable-tcp-fastopen \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd >/dev/null 2>&1
 }
 "
