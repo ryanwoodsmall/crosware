@@ -1,12 +1,13 @@
 #
-# XXX - 6.4 has some compilation issues
+# XXX - 6.4 has some compilation issues, linux/kernel.h include workaround below
+# XXX - mailing list message: https://www.spinics.net/lists/netdev/msg658962.html
 #
 rname="ethtool"
-rver="6.3"
+rver="6.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://mirrors.edge.kernel.org/pub/software/network/${rname}/${rfile}"
-rsha256="d9425f0a3df138734001fccc4175fe178c025f938460ac25c4ebc39960168822"
+rsha256="5eaa083e8108e1dd3876b2c803a1942a2763942715b7f6eb916e189adbb44972"
 rreqs="make libmnl"
 
 . "${cwrecipe}/common.sh"
@@ -23,6 +24,9 @@ function cwconfigure_${rname}() {
     CPPFLAGS= \
     PKG_CONFIG_{LIBDIR,PATH}=
   echo '#include <sys/types.h>' >> ethtool-config.h
+  cat uapi/linux/ethtool.h > uapi/linux/ethtool.h.ORIG
+  echo '#include <linux/kernel.h>' > uapi/linux/ethtool.h
+  cat uapi/linux/ethtool.h.ORIG >> uapi/linux/ethtool.h
   popd >/dev/null 2>&1
 }
 "
