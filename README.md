@@ -578,6 +578,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libtomcrypt (https://www.libtom.net/LibTomCrypt/ and https://github.com/libtom/libtomcrypt)
   - libtommath (https://www.libtom.net/LibTomMath/ and https://github.com/libtom/libtommath)
 - libtool
+- libuargp (https://github.com/xhebox/libuargp - argp-standalone alternative w/argp_parse)
 - libucontext (https://github.com/kaniini/libucontext - glibc compat ucontext, opt-in)
 - libunistring (https://ftp.gnu.org/gnu/libunistring/)
 - libuv (https://github.com/libuv/libuv)
@@ -1573,7 +1574,6 @@ wc -l /tmp/astbuild.out
   - libtompoly
   - tomsfastmath
 - libu (https://github.com/koanlogic/libu - network/system/etc. utility library)
-- libuargp (https://github.com/xhebox/libuargp - argp-standalone alternative)
 - libucl (https://github.com/vstakhov/libucl - universal configuration language parser library)
 - libudev-zero (https://github.com/illiliti/libudev-zero)
 - libunwind (http://www.nongnu.org/libunwind/ and http://savannah.nongnu.org/projects/libunwind)
