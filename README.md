@@ -475,6 +475,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
     - go120 recipe with golang 1.20.x static binaries for all supported architectures
   - static binary archive
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
+- gogit (https://github.com/go-git/go-git - `go-git` cli with `git-{receive,upload}-pack` wrappers)
 - gojq (https://github.com/itchyny/gojq - jq in go)
 - goldy (https://github.com/ibm-security-innovation/goldy - dtls to udp proxy using mbedtls)
 - got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like, libressl)
@@ -1284,6 +1285,7 @@ wc -l /tmp/astbuild.out
 - go9p (https://github.com/knusbaum/go9p - 9p in go)
 - go-git (https://github.com/go-git/go-git)
   - pure go, might make for a decent no-frills clone/fetch/merge client?
+  - more stuff in examples directory!
 - gogit (https://github.com/speedata/gogit - read-only git repository thing in go, archived/unmaintained)
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
 - go-openssl (https://github.com/libp2p/go-openssl - cgo wrapper around openssl? archived/unmaintained)
