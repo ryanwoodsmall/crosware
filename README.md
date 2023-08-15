@@ -1152,6 +1152,7 @@ wc -l /tmp/astbuild.out
   - compcert (https://github.com/AbsInt/CompCert and https://compcert.org - formally verified c compiler)
   - cparse (https://github.com/jafarlihi/cparse)
     - clex (https://github.com/jafarlihi/clex)
+  - cppfront (https://github.com/hsutter/cppfront - experimental c++2 -> c++1 compiler)
   - cproc (https://git.sr.ht/~mcf/cproc and https://github.com/michaelforney/cproc)
   - fcc (https://github.com/Fedjmike/fcc - small c/c-like compiler)
   - gofrontend (https://github.com/golang/gofrontend - go frontend for gcc? in c? not sure what verisons it works with?)
