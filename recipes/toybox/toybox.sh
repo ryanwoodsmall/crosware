@@ -6,11 +6,11 @@
 #
 
 rname="toybox"
-rver="0.8.9"
+rver="0.8.10"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/landley/${rname}/archive/${rfile}"
-rsha256="8f2782073c1c862a405315b6516d8410e47139fc2c94b98bb5d23804537c1b65"
+rsha256="3c31e235fe87e74e6c6cf7cd7299fcbffb0f4a4834dae607aa26bb4f1583549a"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
