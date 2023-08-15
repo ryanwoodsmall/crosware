@@ -3,11 +3,11 @@
 #
 
 rname="mg"
-rver="3.6"
+rver="3.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/troglobit/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="0e30f99b7606ddd92535aec0ba0118557afa4adca0961267314a4bf7791865fb"
+rsha256="05101360d2194392da0950e8b6f18d067d8af0fd2f572461ba4d4e7b4ccbb4c1"
 rreqs="make netbsdcurses"
 
 . "${cwrecipe}/common.sh"
