@@ -9,7 +9,8 @@
 #  Could not find OpenSSL.  Install an OpenSSL development package or
 #  configure CMake with -DCMAKE_USE_OPENSSL=OFF to build without OpenSSL.
 #
-# XXX - build with libressl+a tiny-curl? probably need a picocurllibressl w/zlib and nothing else...
+# XXX - build with libressl+a tiny-curl? probably need a picocurllibressl w/zlib and nothing else... doesn't solve openssl req
+# XXX - need to figure out libs too, looks like /lib64 is default in some places (see libgit2)
 #
 
 rname="cmake"
