@@ -41,6 +41,7 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"-L${cwsw}/bashtermcap/current/lib -static -s\" \
       LIBS=-ltermcap \
       PKG_CONFIG_{LIBDIR,PATH}=
+  echo '#undef TERMINFO' >> config.h
   popd >/dev/null 2>&1
 }
 "
