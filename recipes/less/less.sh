@@ -14,13 +14,13 @@
 #
 
 rname="less"
-rver="633"
+rver="643"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="http://www.greenwoodsoftware.com/${rname}/${rfile}"
-#rurl="https://ftp.gnu.org/pub/gnu/${rname}/${rfile}"
-rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="2f201d64b828b88af36dfe6cfdba3e0819ece2e446ebe6224813209aaefed04f"
+rurl="https://ftp.gnu.org/pub/gnu/${rname}/${rfile}"
+#rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
+rsha256="2911b5432c836fa084c8a2e68f6cd6312372c026a58faaa98862731c8b6052e8"
 rreqs="make netbsdcurses busybox toybox"
 
 . "${cwrecipe}/common.sh"
