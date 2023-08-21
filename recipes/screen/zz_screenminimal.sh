@@ -13,6 +13,21 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
+for f in fetch clean extract ; do
+  eval "function cw${f}_${rname}() { cw${f}_${rname%%minimal} ; }"
+done
+unset f
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cat configure > configure.ORIG
+  sed -i 's/as_fn_error.*tgetent.*/true/g' configure
+  sed -i 's/-ltinfo//g' configure
+  popd >/dev/null 2>&1
+}
+"
+
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
