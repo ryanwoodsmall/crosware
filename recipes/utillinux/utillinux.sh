@@ -4,10 +4,10 @@
 # XXX - terminfo (netbsdcurses), slang (termcap?), etc. - replace ncurses?
 #
 rname="utillinux"
-rver="2.39.1"
+rver="2.39.2"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
-rsha256="890ae8ff810247bd19e274df76e8371d202cda01ad277681b0ea88eeaa00286b"
+rsha256="87abdfaa8e490f8be6dde976f7c80b9b5ff9f301e1b67e3899e1f05a59a1531f"
 rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig"
 
 rburl="https://kernel.org/pub/linux/utils/util-linux"
@@ -21,6 +21,7 @@ unset rburl
 # XXX - ugh
 # sed -i.ORIG '/MANPAGES.*raw\.8/d' disk-utils/Makemodule.am
 # touch -d 1970-01-01 disk-utils/Makemodule.am
+# XXX - touchy stuff here, eliminate/move to cwpatch_!!!
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
@@ -30,7 +31,6 @@ function cwconfigure_${rname}() {
   sed -i '/defined.*__linux/s/$/ \\&\\& defined(SYS_pidfd_send_signal)/g' include/pidfd-utils.h
   sed -i.ORIG '/READLINE_LIBS/ s/-lreadline/-lreadline -lncurses -lncursesw/g' configure
   sed -i.ORIG 's/raw\.8/mkfs.8/g' Makefile.in
-  sed -i.ORIG /PER_LINUX_FDPIC/d sys-utils/setarch.c
   env PATH=\"${cwsw}/ncurses/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
       --disable-asciidoc \
