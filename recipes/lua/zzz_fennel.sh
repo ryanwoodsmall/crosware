@@ -148,3 +148,7 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/${rname}-bin\"' > \"${rprof}\"
 }
 "
+
+unset rfennelver
+unset rluaver
+unset rluarocksver
