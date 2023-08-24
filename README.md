@@ -431,6 +431,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - etcd (https://etcd.io/ and https://github.com/etcd-io/etcd)
 - ethtool (https://mirrors.edge.kernel.org/pub/software/network/ethtool/)
 - expat
+- fennel (https://fennel-lang.org/ and https://github.com/bakpakin/Fennel - a lisp that compiles to lua, with a dedicated shared lua install and readline support via luarocks)
 - fetchfreebsd (https://github.com/jrmarino/fetch-freebsd - freebsd fetch program/fetch.h header/libfetch.a lib, openssl, custom compilation instead of cmake)
   - fetchfreebsdlibressl (same with libressl)
 - file
