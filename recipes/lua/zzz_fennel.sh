@@ -126,8 +126,14 @@ function cwmakeinstall_${rname}() {
   cwmakeinstall_luarocks_${rname}
   cwmkdir \$(cwidir_${rname})/bin
   install -m 755 \$(cwdlfile_${rname}) \$(cwidir_${rname})/bin/\$(cwfile_${rname})
-  ln -sf \$(cwfile_${rname}) \$(cwidir_${rname})/bin/${rname}
   sed -i 's,^#!/usr/bin/env.*,#!${rtdir}/current/bin/lua,' \$(cwidir_${rname})/bin/\$(cwfile_${rname})
+  (
+    unset LDFLAGS CPPFLAGS PKG_CONFIG_{LIBDIR,PATH} CFLAGS CXXFLAGS
+    env \
+      PATH=\"\$(cwidir_${rname})/bin:\${PATH}\" \
+      LD_LIBRARY_PATH=\"\$(cwidir_${rname})/lib\" \
+        \$(cwidir_${rname})/bin/luarocks install fennel \$(cwver_${rname} | cut -f1 -d-)
+  )
   rm -rf \$(cwidir_${rname})/${rname}-bin
   cwmkdir \$(cwidir_${rname})/${rname}-bin
   cd \$(cwidir_${rname})/${rname}-bin
