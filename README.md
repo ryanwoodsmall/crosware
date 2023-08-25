@@ -220,9 +220,13 @@ And I wrote a little quick/dirty Alpine chroot creator that works on Chrome/Chro
 
 - https://github.com/ryanwoodsmall/shell-ish/blob/master/bin/chralpine.sh
 
-The musl wiki has some pointers on patches and compatibility:
+The musl wiki has some pointers on patches and compatibility, and a list of useful alternative implementations of common programs/libraries/utilities/etc.;
+many are in use in crosware:
 
 - https://wiki.musl-libc.org/compatibility.html#Software-compatibility,-patches-and-build-instructions
+- https://wiki.musl-libc.org/alternatives.html
+
+## bootstrapping ex nihilo
 
 Mes (and m2) might be useful at some point.
 
@@ -249,6 +253,8 @@ Mes (and m2) might be useful at some point.
 - https://lists.gnu.org/archive/html/guile-user/2017-07/msg00089.html
 - http://lists.gnu.org/archive/html/info-gnu/2018-08/msg00006.html
 
+## other sites/utilities/etc.
+
 Suckless has a list of good stuff:
 
 - https://suckless.org/rocks/
@@ -265,6 +271,10 @@ Eltanin tools may be useful:
 
 - https://eltan.in.net/?tools/index
 - https://github.com/eltanin-os
+
+Busybox tiny utility notes:
+
+- https://busybox.net/tinyutils.html
 
 ## C/C++ compiler
 
@@ -551,6 +561,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libedit (https://www.thrysoee.dk/editline/ - aka editline, from netbsd, line editing, history, etc., ncurses)
   - libeditminimal (stripped down standalone libedit + small gnu termcap, from bash)
   - libeditnetbsdcurses (same, with netbsdcurses)
+  - need a few symlinks for compat w/readline: https://github.com/sabotage-linux/sabotage/blob/master/pkg/libedit
 - libev (http://software.schmorp.de/pkg/libev.html)
 - libevent (no openssl support yet)
 - libffi
@@ -1153,25 +1164,39 @@ wc -l /tmp/astbuild.out
   - compcert (https://github.com/AbsInt/CompCert and https://compcert.org - formally verified c compiler)
   - cparse (https://github.com/jafarlihi/cparse)
     - clex (https://github.com/jafarlihi/clex)
+  - cparser (https://github.com/facebookresearch/CParser - c preprocessor in lua)
+  - cparser (https://pp.ipd.kit.edu/git/cparser/)
+    - firm (https://pp.ipd.kit.edu/firm/ - related?)
   - cppfront (https://github.com/hsutter/cppfront - experimental c++2 -> c++1 compiler)
   - cproc (https://git.sr.ht/~mcf/cproc and https://github.com/michaelforney/cproc)
   - fcc (https://github.com/Fedjmike/fcc - small c/c-like compiler)
+  - fcpp (https://github.com/bagder/fcpp - ansi c preprocessor)
   - gofrontend (https://github.com/golang/gofrontend - go frontend for gcc? in c? not sure what verisons it works with?)
+  - gpp (https://logological.org/gpp - general preprocessor)
   - kefir (https://github.com/protopopov1122/kefir - c17 compiler from scratch)
   - kencc (https://github.com/aryx/fork-kencc)
   - lacc (https://github.com/larmel/lacc)
   - lcc (https://github.com/drh/lcc)
   - mazucc (https://github.com/jserv/MazuCC)
+  - mcpp (https://mcpp.sourceforge.net (or a fork) - small/standalone c preprocecssor)
   - musl.cc (https://musl.cc/ - cross and native compilers for all sorts of architectures, useful for bootstrapping openjdk on alpine?)
   - nwcc (http://nwcc.sourceforge.net/ - c89 compiler)
   - plan9-cc (https://github.com/huangguiyang/plan9-cc)
   - qbe (https://c9x.me/compile/)
   - scc (http://www.simple-cc.org/)
+  - simplecpp (https://github.com/danmar/simplecpp)
   - tendra (https://bitbucket.org/asmodai/tendra/src/default/ https://en.wikipedia.org/wiki/TenDRA_Compiler)
+  - tinycpp (https://github.com/rofl0r/tinycpp - small/embeddable c preprocessor)
+  - tradcpp (https://www.netbsd.org/~dholland/tradcpp - traditional k&r c preprocessor)
+  - ucpp (https://github.com/lpsantil/ucpp - small/old c99 preprocessor)
+  - warp (https://github.com/facebookarchive/warp - unmaintained; fast c preprocessor from meta/facebook)
   - wcc (https://github.com/freewilll/wcc)
   - xcc (https://github.com/tyfkda/xcc - toy C compiler for x86-64/aarch64/wasm - linux, xv6?)
     - xv6 bits: https://github.com/tyfkda/xv6 (forked from https://github.com/swetland/xv6)
   - yet another c compiler (https://github.com/lasarus/C-Compiler)
+  - bunch of options on github, eg., just for preprocessing...
+    - https://github.com/topics/preprocessor?l=c
+    - https://github.com/topics/preprocessor?l=c%2B%2B
 - cfssl (https://github.com/cloudflare/cfssl - cloudflare tls swiss army knife)
 - cgpt (google source only?)
 - cmark (commonmark markddown - https://github.com/commonmark/cmark)
@@ -1179,8 +1204,6 @@ wc -l /tmp/astbuild.out
 - cocker (https://github.com/calvinwilliams/cocker - small container engine in c)
 - connect/connect-proxy (https://github.com/jjkeijser/connect-proxy/ and https://src.fedoraproject.org/rpms/connect-proxy/tree/rawhide - small openssl http/https/socks proxy)
 - conty (https://github.com/Kron4ek/Conty - shell containerizer, needs fuse2/3, coreutils, tar (gnu?), gzip (gnu?), bash)
-- cparser (https://pp.ipd.kit.edu/git/cparser/)
-  - firm (https://pp.ipd.kit.edu/firm/ - related?)
 - cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
 - cpu (https://github.com/u-root/cpu - plan 9-like cpu - "push" local filesystem/program to remote, execute - in go, works over ssh... cool)
 - croc (https://github.com/schollz/croc and https://schollz.com/blog/croc6/ - point-to-point filesharing, with a relay)
@@ -2058,7 +2081,6 @@ wc -l /tmp/astbuild.out
 - shini (https://github.com/wallyhall/shini - ini parser in shell)
 - shit (https://git.sr.ht/~sircmpwn/shit - shell git???)
 - shuffle (http://savannah.nongnu.org/projects/shuffle/)
-- simplecpp (https://github.com/danmar/simplecpp)
 - signify (https://github.com/aperezdc/signify - standalone openbsd signify)
 - sish (https://github.com/antoniomika/sish - go tunnel tool)
 - skarnet stuff
