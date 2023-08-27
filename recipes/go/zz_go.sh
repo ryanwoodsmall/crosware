@@ -6,7 +6,7 @@
 # XXX - set GOPATH/GOCACHE/GOMODCACHE/...???
 #
 rname="go"
-rgover="120"
+rgover="121"
 rver="$(cwver_${rname}${rgover})"
 rdir="$(cwdir_${rname}${rgover})"
 rbdir="$(cwbdir_${rname}${rgover})"
