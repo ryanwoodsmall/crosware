@@ -13,6 +13,7 @@
 # XXX - opkg presentation: https://elinux.org/images/2/24/Opkg_debians_little_cousin.pdf
 # XXX - curl -latomic fix
 # XXX - bringing in mbedtls for some reason?
+# XXX - libressl variant w/pre-autotools'ed archive... avoid perl?
 #
 
 rname="opkg"
