@@ -24,6 +24,7 @@ function cwconfigure_${rname}() {
     PATH=\"${cwsw}/${sslprov}/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
       --without-pie \
+      --without-zlib-version-check \
       --with-libedit=\"${cwsw}/libeditnetbsdcurses/current\" \
       --sysconfdir=\"${cwetc}/openssh\" \
       --with-privsep-path=\"${cwtmp}/empty\" \

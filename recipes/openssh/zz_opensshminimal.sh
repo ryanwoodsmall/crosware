@@ -33,6 +33,7 @@ function cwconfigure_${rname}() {
     --without-openssl \
     --without-pie \
     --without-security-key-builtin \
+    --without-zlib-version-check \
       CFLAGS=\"\${CFLAGS} -Wl,-s -Os\" \
       CXXFLAGS=\"\${CXXFLAGS} -Wl,-s -Os\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \

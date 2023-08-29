@@ -57,6 +57,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} \
     --with-wolfssl=\"${cwsw}/wolfssl/current\" \
     --without-pie \
+    --without-zlib-version-check \
     --with-libedit=\"${cwsw}/libeditnetbsdcurses/current\" \
     --sysconfdir=\"${cwetc}/openssh\" \
     --with-privsep-path=\"${cwtmp}/empty\" \
