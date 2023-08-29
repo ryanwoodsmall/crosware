@@ -1,10 +1,10 @@
 rname="libedit"
-rver="20221030-3.1"
+rver="20230828-3.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="https://www.thrysoee.dk/editline/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="f0925a5adf4b1bf116ee19766b7daa766917aec198747943b1c4edf67a4be2bb"
+rsha256="4ee8182b6e569290e7d1f44f0f78dac8716b35f656b76528f699c69c98814dad"
 rreqs="make ncurses"
 
 . "${cwrecipe}/common.sh"
