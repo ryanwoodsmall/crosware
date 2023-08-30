@@ -1,14 +1,15 @@
 #
 # XXX - aarch64 only has SYS_getdents64, not SYS_getdents - introduced in 05a99f7d7f8e0999994b760bb6337ca10ea0a14b
+# XXX - 9.4 includes openssl/configuration.h, which... ehh, just turn it off
 #
 
 rname="coreutils"
-rver="9.3"
+rver="9.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="adbcfcfe899235b71e8768dcf07cd532520b7f54f9a8064843f8d199a904bbaa"
-rreqs="make gettexttiny sed attr acl perl gmp openssl utillinux libcap"
+rsha256="ea613a4cf44612326e917201bbbcdfbd301de21ffc3b59b6e5c07e040b275e52"
+rreqs="make gettexttiny sed attr acl perl gmp utillinux libcap"
 
 . "${cwrecipe}/common.sh"
 
@@ -23,7 +24,7 @@ function cwconfigure_${rname}() {
     --enable-xattr \
     --with-libgmp \
     --with-libgmp-prefix=\"${cwsw}/gmp/current\" \
-    --with-openssl=yes \
+    --with-openssl=no \
     --without-selinux \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
