@@ -12,11 +12,11 @@
 # XXX - remove bdb - gdbm is plenty good for the dbm module
 #
 rname="python3"
-rver="3.8.17"
+rver="3.8.18"
 rdir="Python-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.python.org/ftp/python/${rver}/${rfile}"
-rsha256="2e54b0c68191f16552f6de2e97a2396540572a219f6bbb28591a137cecc490a9"
+rsha256="3ffb71cd349a326ba7b2fadc7e7df86ba577dd9c4917e52a8401adbda7405e3f"
 rreqs="make bzip2 zlib ncurses readline openssl gdbm sqlite bdb47 expat libffi xz e2fsprogs pkgconfig"
 
 . "${cwrecipe}/common.sh"
