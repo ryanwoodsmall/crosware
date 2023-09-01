@@ -1,9 +1,9 @@
 rname="mosquitto"
-rver="2.0.15"
+rver="2.0.17"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/eclipse/${rname}/archive/refs/tags/${rfile}"
-rsha256="26dc3f1758b00c1725a0e4dd32f40c61f374375717f09b6af2bac62c5b44f1eb"
+rsha256="8867a687cf90ed846820ebf4fa15b4fd4efb9dfa40c360b1f132acdbb9774e69"
 rreqs="make cares cjson openssl"
 
 . "${cwrecipe}/common.sh"
