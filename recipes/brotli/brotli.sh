@@ -1,3 +1,7 @@
+#
+# XXX - brotli 1.1.x apparently deprecates a standard Makefile for cmake/bazel/python? absolutely not.
+# XXX - might just remove this. cmake. no. no no no no no no no no no
+#
 rname="brotli"
 rver="1.0.9"
 rdir="${rname}-${rver}"
