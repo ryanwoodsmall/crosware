@@ -22,6 +22,8 @@ function cwconfigure_${rname}() {
   sed -i s,ENABLE_REGEX=1,ENABLE_REGEX=,g Makefile
   sed -i s,USELIBCONFIG=1,USELIBCONFIG=,g Makefile
   sed -i /^LIBS=/s,-lpcre2-8,,g Makefile
+  sed -i s,-DLIBPCRE,,g Makefile
+  sed -i /^sslh:/s,sslh-ev,,g Makefile
   popd >/dev/null 2>&1
 }
 "
@@ -48,10 +50,12 @@ function cwmakeinstall_${rname}() {
   make install
   install -m 0755 ${rname%tiny}-fork \"\$(cwidir_${rname})/sbin/${rname}-fork\"
   install -m 0755 ${rname%tiny}-select \"\$(cwidir_${rname})/sbin/${rname}-select\"
+  install -m 0755 echosrv \"\$(cwidir_${rname})/sbin/${rname}-echosrv\"
   ln -sf ${rname}-fork \"\$(cwidir_${rname})/sbin/${rname%tiny}-fork\"
   ln -sf ${rname}-select \"\$(cwidir_${rname})/sbin/${rname%tiny}-select\"
   ln -sf ${rname}-fork \"\$(cwidir_${rname})/sbin/${rname}\"
   ln -sf ${rname}-fork \"\$(cwidir_${rname})/sbin/${rname%tiny}\"
+  ln -sf ${rname}-echosrv \"\$(cwidir_${rname})/sbin/echosrv\"
   popd >/dev/null 2>&1
 }
 "
