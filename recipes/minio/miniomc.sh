@@ -23,7 +23,7 @@ function cwfetch_${rname}() {
 eval "
 function cwclean_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
-  chmod -R u+rw \"\$(cwdir_${rname})\" &>/dev/null || true
+  chmod -R u+rw \"\$(cwdir_${rname})\" \"${rbdir}\" &>/dev/null || true
   rm -rf \"${rbdir}\"
   popd >/dev/null 2>&1
 }
