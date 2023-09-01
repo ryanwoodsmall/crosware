@@ -2118,6 +2118,7 @@ wc -l /tmp/astbuild.out
     ```
 - sredird (https://github.com/msantos/sredird - network serial port redirector)
 - srv (https://github.com/joshuarli/srv)
+- ssf (https://github.com/securesocketfunneling/ssf and https://securesocketfunneling.github.io/ssf/#home - secure sockets funneling, c++ w/boost, openssl, cmake, krb5? ssh drop-in, looks nice!)
 - sshuttle (https://github.com/sshuttle/sshuttle)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - starlark-go (https://github.com/google/starlark-go - starlark, python-like configuration language in go w/interpreter)
