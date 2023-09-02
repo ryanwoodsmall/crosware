@@ -13,15 +13,11 @@ rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
+cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make brotli lib CPPFLAGS= LDFLAGS=-static
   popd >/dev/null 2>&1
 }
@@ -29,26 +25,26 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   local l
   for l in common dec enc ; do
-    ( cd bin/obj/c/\${l} ; \${AR} -v -r \"${rbdir}/lib${rname}\${l}.a\" *.o )
+    ( cd bin/obj/c/\${l} ; \${AR} -v -r \"\$(cwbdir_${rname})/lib${rname}\${l}.a\" *.o )
   done
-  cwmkdir \"${ridir}/bin\"
-  cwmkdir \"${ridir}/lib/pkgconfig\"
-  cwmkdir \"${ridir}/include/${rname}\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  cwmkdir \"\$(cwidir_${rname})/lib/pkgconfig\"
+  cwmkdir \"\$(cwidir_${rname})/include/${rname}\"
   \$(\${CC} -dumpmachine)-strip --strip-all bin/${rname}
-  install -m 0755 bin/${rname} \"${ridir}/bin/${rname}\"
-  install -m 0644 lib*.a \"${ridir}/lib/\"
-  install -m 0644 c/include/${rname}/*.h \"${ridir}/include/${rname}/\"
+  install -m 0755 bin/${rname} \"\$(cwidir_${rname})/bin/${rname}\"
+  install -m 0644 lib*.a \"\$(cwidir_${rname})/lib/\"
+  install -m 0644 c/include/${rname}/*.h \"\$(cwidir_${rname})/include/${rname}/\"
   for l in scripts/lib${rname}{common,dec,enc}*.pc.in ; do
-    cat \${l} > \"${ridir}/lib/pkgconfig/\$(basename \${l%%.in})\"
+    cat \${l} > \"\$(cwidir_${rname})/lib/pkgconfig/\$(basename \${l%%.in})\"
   done
-  sed -i 's,@prefix@,${rtdir}/current,g' ${ridir}/lib/pkgconfig/*.pc
-  sed -i 's,@exec_prefix@,${rtdir}/current,g' ${ridir}/lib/pkgconfig/*.pc
-  sed -i 's,@includedir@,${rtdir}/current/include,g' ${ridir}/lib/pkgconfig/*.pc
-  sed -i 's,@libdir@,${rtdir}/current/lib,g' ${ridir}/lib/pkgconfig/*.pc
-  sed -i 's,@PACKAGE_VERSION@,${rver},g' ${ridir}/lib/pkgconfig/*.pc
+  sed -i \"s,@prefix@,${rtdir}/current,g\" \$(cwidir_${rname})/lib/pkgconfig/*.pc
+  sed -i \"s,@exec_prefix@,${rtdir}/current,g\" \$(cwidir_${rname})/lib/pkgconfig/*.pc
+  sed -i \"s,@includedir@,${rtdir}/current/include,g\" \$(cwidir_${rname})/lib/pkgconfig/*.pc
+  sed -i \"s,@libdir@,${rtdir}/current/lib,g\" \$(cwidir_${rname})/lib/pkgconfig/*.pc
+  sed -i \"s,@PACKAGE_VERSION@,\$(cwver_${rname}),g\" \$(cwidir_${rname})/lib/pkgconfig/*.pc
   unset l
   popd >/dev/null 2>&1
 }
