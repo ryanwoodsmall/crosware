@@ -84,7 +84,7 @@ cat >env.jojq<<EOF
 echo "Content-type: text/plain"
 echo
 ( tr '\\0' '\\n' < /proc/\$\$/environ ; echo JO_VER=\$(\${jo} -V) ; echo JQ_VER=\$(\${jq} --version) ) \
-  | ( \${jo} -p -- | \${jq} -M . ) 2>/dev/null
+  | ( \${jo} -p -- | \${jq} -M -S . ) 2>/dev/null
 EOF
 chmod 755 env.jojq
 
