@@ -1958,6 +1958,7 @@ wc -l /tmp/astbuild.out
     - slibtool require should make this automatic
 - proot (https://proot-me.github.io/ and https://github.com/proot-me/proot - userspace containerizing/unprivileged reproducible environments+builds)
 - proxyproto (https://github.com/mailgun/proxyproto - go haproxy proxy proto library with client/server example)
+- proxytunnel (https://github.com/proxytunnel/proxytunnel - http/https proxy for ssh)
 - psmisc
 - pty tools
   - updated djb pty/ptyget/ptybandage/ptyrun/...
