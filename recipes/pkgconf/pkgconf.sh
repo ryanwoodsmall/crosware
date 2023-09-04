@@ -4,13 +4,13 @@
 #
 
 rname="pkgconf"
-rver="2.0.2"
+rver="2.0.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 #rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
 #rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rurl="https://distfiles.dereferenced.org/${rname}/${rfile}"
-rsha256="ea5a25ef8f251eb5377ec0e21c75fb61894433cfbdbf0b2559ba33e4c2664401"
+rsha256="cabdf3c474529854f7ccce8573c5ac68ad34a7e621037535cbc3981f6b23836c"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
