@@ -1,9 +1,9 @@
 rname="jq"
-rver="1.6"
+rver="1.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/jqlang/${rname}/releases/download/${rdir}/${rfile}"
-rsha256="5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72"
+rsha256="402a0d6975d946e6f4e484d1a84320414a0ff8eb6cf49d2c11d144d4d344db62"
 rreqs="make byacc flex oniguruma configgit"
 
 . "${cwrecipe}/common.sh"
