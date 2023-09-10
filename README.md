@@ -2198,6 +2198,7 @@ wc -l /tmp/astbuild.out
 - ublinter (https://github.com/danmar/ublinter)
 - ubridge (https://github.com/GNS3/ubridge - udp, ethernet, tap, etc. userspace bridge controller)
 - u-config (https://github.com/skeeto/u-config - minimal pkg-config alike)
+- udftools (https://github.com/pali/udftools - udf fs tools, for dealing with e.g. windows iso images)
 - udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
 - uget (https://github.com/OpenIPC/uget - tiny http-only wget/curl program)
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
