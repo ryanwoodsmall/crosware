@@ -4,21 +4,23 @@
 #
 
 rname="onetrueawk"
-rver="9e248c317b88470fc86aa7c988919dc49452c88c"
+rver="20230909"
 rdir="${rname#onetrue}-${rver}"
-rfile="${rver}.zip"
-rurl="https://github.com/${rname}/awk/archive/${rfile}"
-rsha256=""
+rfile="${rver}.tar.gz"
+#rfile="${rver}.zip"
+#rurl="https://github.com/onetrueawk/awk/archive/${rfile}"
+rurl="https://github.com/onetrueawk/awk/archive/refs/tags/${rfile}"
+rsha256="24e554feb609fa2f5eb911fb8fe006c68d9042e34b2caafaad1f2200ce967c50"
 rreqs="make byacc"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwfetch_${rname}() {
-  cwfetch \"${rurl}\" \"${rdlfile}\"
-}
-"
+#eval "
+#function cwfetch_${rname}() {
+#  cwfetch \"${rurl}\" \"${rdlfile}\"
+#}
+#"
 
 eval "
 function cwconfigure_${rname}() {
