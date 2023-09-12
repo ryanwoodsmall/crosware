@@ -8,11 +8,11 @@
 #
 
 rname="openssl"
-rver="1.1.1v"
+rver="1.1.1w"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.openssl.org/source/${rfile}"
-rsha256="d6697e2871e77238460402e9362d47d18382b15ef9f246aba6c7bd780d38a6b0"
+rsha256="cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8"
 rreqs="make perl cacertificates"
 
 . "${cwrecipe}/common.sh"
