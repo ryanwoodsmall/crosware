@@ -1,3 +1,6 @@
+#
+# XXX - see openssl virtual recipe file recipes/openssl/zz_openssl.sh for notes!
+#
 rname="openssl111"
 rver="1.1.1w"
 rdir="${rname%111}-${rver}"

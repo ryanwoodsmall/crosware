@@ -2,12 +2,9 @@
 # XXX - our perl needs to be at front of path for config/make
 # XXX - other "openssl version -a" stuff?
 # XXX - 1.1.1j disables threads/pic with -static in LDFLAGS. WHY? COME ON
-# XXX - disable zlib to workaround some conflicts (redis) and pain with forcing libz.a
-# XXX - remove `-lz` "fix" - this shouldn't be necessary but will need a full rebuild
-# XXX - need openssl11, openssl3, etc.?
 #
 
-v="111"
+rv="111"
 rname="openssl"
 rver="$(cwver_${rname}${v})"
 rdir="$(cwdir_${rname}${v})"
@@ -43,4 +40,4 @@ function cwgenprofd_${rname}() {
 }
 "
 
-unset v
+unset rv
