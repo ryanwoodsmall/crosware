@@ -18,6 +18,7 @@ rreqs="openssl${v}"
 
 . "${cwrecipe}/common.sh"
 
+cwstubfunc "cwclean_${rname}"
 cwstubfunc "cwfetch_${rname}"
 cwstubfunc "cwextract_${rname}"
 cwstubfunc "cwconfigure_${rname}"
