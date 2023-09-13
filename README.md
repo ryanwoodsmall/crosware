@@ -744,6 +744,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - opensshlibressl (libressl, netbsdcurses, libedit, zlib)
   - opensshwolfssl (patches from wolfssl osp project - netbsdcurses, libedit, zlib)
 - openssl
+  - openssl111 (old lts version)
 - openvpn (https://openvpn.net/community-downloads/ and https://github.com/OpenVPN/openvpn - openssl, zlib, lz4, lzo)
   - openvpnlibressl (libressl, lz4, lzo)
   - openvpnmbedtls (mbedtls, lz4, lzo)
