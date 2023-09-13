@@ -6,12 +6,12 @@
 
 rv="111"
 rname="openssl"
-rver="$(cwver_${rname}${v})"
-rdir="$(cwdir_${rname}${v})"
-rfile="$(cwfile_${rname}${v})"
-rurl="$(cwurl_${rname}${v})"
+rver="$(cwver_${rname}${rv})"
+rdir="$(cwdir_${rname}${rv})"
+rfile="$(cwfile_${rname}${rv})"
+rurl="$(cwurl_${rname}${rv})"
 rsha256=""
-rreqs="openssl${v}"
+rreqs="openssl${rv}"
 
 . "${cwrecipe}/common.sh"
 
@@ -26,7 +26,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${rtdir}\"
   rm -rf \"${rtdir}/current\"
   rm -rf \"\$(cwidir_${rname})\"
-  ln -sf \"\$(cwidir_${rname}${v})\" \"\$(cwidir_${rname})\"
+  ln -sf \"\$(cwidir_${rname}${rv})\" \"\$(cwidir_${rname})\"
 }
 "
 
