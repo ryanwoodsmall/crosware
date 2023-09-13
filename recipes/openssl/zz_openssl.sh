@@ -29,7 +29,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${rtdir}\"
   rm -rf \"${rtdir}/current\"
   rm -rf \"\$(cwidir_${rname})\"
-  ln -sf \"${cwsw}/openssl${v}/\$(cwdir_${rname})\" \"\$(cwidir_${rname})\"
+  ln -sf \"\$(cwidir_${rname}${v})\" \"\$(cwidir_${rname})\"
 }
 "
 
