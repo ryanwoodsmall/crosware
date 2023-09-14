@@ -3,18 +3,19 @@
 # XXX - could just download every build but that precludes cache and known-good sha-256, ugh
 #
 rname="libsodium"
-rver="1.0.18"
+rver="1.0.19"
 rdir="${rname}-${rver}"
+rbdir="${cwbuild}/${rname}-stable"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/jedisct1/${rname}/releases/download/${rver}-RELEASE/${rfile}"
-rsha256="6f504490b342a4f8a4c4a02fc9b866cbef8622d5df4e5452b46be121e46636c1"
+rsha256="018d79fe0a045cca07331d37bd0cb57b2e838c51bc48fd837a1472e50068bbea"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     LDFLAGS=-static \
     CPPFLAGS= \
