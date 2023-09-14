@@ -10,7 +10,7 @@
 #
 
 rname="kubernetes"
-rver="1.28.1"
+rver="1.28.2"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
