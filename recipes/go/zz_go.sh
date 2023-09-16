@@ -4,6 +4,8 @@
 # XXX - generic go recipe w/CGO enabled
 # XXX - date should be moved to version?
 # XXX - set GOPATH/GOCACHE/GOMODCACHE/...???
+# XXX - might may should possibly probably need to set GOTOOLCHAIN to "path" to avoid toolchain download?
+# XXX - https://tip.golang.org/doc/toolchain
 #
 rname="go"
 rgover="121"
