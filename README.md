@@ -936,6 +936,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - vim (https://github.com/vim/vim and https://www.vim.org/ - ncurses, with syntax highlighting, which chrome/chromium os vim lacks)
   - vimminimal (termcap lib and database from bash and gnu termcap, no scripting w/lua, no encryption w/libsodium, ...)
   - vimnetbsdcurses (netbsdcurses)
+- vultrcli (https://github.com/vultr/vultr-cli - vultr-cli program)
 - w3m (https://github.com/tats/w3m)
 - wget (https://www.gnu.org/software/wget/ - openssl)
   - wgetgnutls (gnutls variant)
