@@ -2,18 +2,19 @@
 # XXX - postgresql mode seems to work best with version 8.1 jdbc
 # XXX - https://jdbc.postgresql.org/download/postgresql-8.1-415.jdbc3.jar
 # XXX - example jdbc url below...
+# XXX - integrate dated zip release into version; rver="#.#.#-YYYY-MM-DD" ; rdir="${rname}-${rver%%-*} ; rfile="${rname}-${rver#*-}"
 #
 #  jdbc:postgresql://localhost:5435/~/tmppg;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
 #
 
 rname="h2"
-rver="2.2.222"
+rver="2.2.224"
 rdir="${rname}-${rver}"
 rbdir="${cwbuild}/${rname}"
-rfile="${rname}-2023-08-22.zip"
+rfile="${rname}-2023-09-17.zip"
 #rurl="https://h2database.com/${rfile}"
 rurl="https://github.com/h2database/h2database/releases/download/version-${rver}/${rfile}"
-rsha256="0dcc343523f2d52b505b1eecb95143132d2fa1222029597eb572d4a3c0d06535"
+rsha256="33f6c5c51aef2d9b15635214e4c7f01f82256f37df511b3efee3f6b6d79d5deb"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
