@@ -1,9 +1,9 @@
 rname="inadyn"
-rver="2.11.0"
+rver="2.12.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/troglobit/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="9c8b2a425acb9681564e9fc25a319f2109c7d2ebe1ffe99b06d4a722efb6ecba"
+rsha256="e64c4386b6f42bbace589b847f22823a755b59f14a277a5f556fef0d99069245"
 rreqs="make openssl libconfuse pkgconfig zlib"
 
 . "${cwrecipe}/common.sh"
