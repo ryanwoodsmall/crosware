@@ -1,7 +1,6 @@
 #
 # XXX - need to fixup .pc with -L${cwsw}/libmd/current/lib as well?
 #
-
 rname="libbsd"
 rver="0.11.7"
 rdir="${rname}-${rver}"
@@ -15,7 +14,7 @@ rreqs="make libmd"
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} LDFLAGS='-L${cwsw}/libmd/current/lib -static' CPPFLAGS='-I${cwsw}/libmd/current/include'
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} LDFLAGS='-L${cwsw}/libmd/current/lib -static' CPPFLAGS='-I${cwsw}/libmd/current/include' PKG_CONFIG_{LIBDIR,PATH}=
   echo '#include <fcntl.h>' >> config.h
   popd >/dev/null 2>&1
 }
