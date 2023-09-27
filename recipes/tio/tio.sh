@@ -1,9 +1,9 @@
 rname="tio"
-rver="2.6"
+rver="2.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="2ce4e8810eb620a40b2a69c4e89ed42df7e48a9ee70cba04d84c5a31aaf5764c"
+rsha256="bf8fe434848c2c1b6540af0b42503c986068176ddc1a988cf02e521e7de5daa5"
 rreqs="ninja meson inih pkgconfig"
 
 . "${cwrecipe}/common.sh"
