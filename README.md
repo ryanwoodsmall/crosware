@@ -1266,10 +1266,10 @@ wc -l /tmp/astbuild.out
   - `--without-x --with-xml2 --with-modules`
   - `LIBGNUTLS_LIBS='-lgnutls -lhogweed -lnettle -lgmp -ltasn1 -lunistring'`
   - `LIBXML2_LIBS='-lxml2 -lz -lz -llzma'`
-- httpd.bash (https://github.com/emasaka/httpd.bash/blob/master/httpd.bash - a little webserver in bash)
 - emulation stuff
   - axpbox (https://github.com/lenticularis39/axpbox - alpha)
   - gxemul (http://gavare.se/gxemul/)
+- entware (https://github.com/Entware/Entware - opkg cross platform meta distribution for openwrt, et al)
 - eris (https://github.com/nealey/eris - small web server)
 - ewd (https://github.com/chettrick/ewd - event watcher daemon)
 - faasd (https://github.com/openfaas/faasd - openfaas but smaller? needs runc, etc.)
@@ -1347,6 +1347,7 @@ wc -l /tmp/astbuild.out
   - caddy (https://caddyserver.com/ and https://github.com/caddyserver/caddy - http server with automatic tls)
   - cherokee (http://cherokee-project.com/)
   - hiawatha (https://www.hiawatha-webserver.org/)
+  - httpd.bash (https://github.com/emasaka/httpd.bash/blob/master/httpd.bash - a little webserver in bash)
   - lighttpd
     - `lighttpdbig` package with lua+dbi+sqlite+openssl+...
     - can build with: gdbm, zstd, brotli, xxhash, lua, memcache, ...
