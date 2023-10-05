@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+#
+# via /etc/init/openssh-server.conf.README
+#
+# 3. Manually start sshd.
+#   This is the least convenient option, but doesn't require OOBE or rootfs
+#   verification removal, so can be used without changing the system too much.
+# 
+#   Unlike the above methods, this will not auto-start sshd on boot.
+#   Additionally, password access is not possible without rootfs verification
+#   removal, so test keys must be used to SSH into the device.
+# 
+#   # Create host keys (only needs to be done once).
+#   $ mkdir -p /mnt/stateful_partition/etc/ssh
+#   $ ssh-keygen -f /mnt/stateful_partition/etc/ssh/ssh_host_rsa_key -N '' -t rsa
+#   $ ssh-keygen -f /mnt/stateful_partition/etc/ssh/ssh_host_ed25519_key -N '' -t ed25519
+# 
+#   # Open firewall and start sshd (must be done on every boot).
+#   $ iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+#   $ ip6tables -A INPUT -p tcp --dport 22 -j ACCEPT
+#   $ /usr/sbin/sshd \
+#     -oAuthorizedKeysFile=/usr/share/chromeos-ssh-config/keys/authorized_keys
+#
+
+set -eu
+set -o pipefail
+
+scriptname="$(basename -- ${BASH_SOURCE[0]})"
+
+if [[ ${UID} != 0 ]] ; then
+  echo "${scriptname}: please run as root" 1>&2
+  exit 1
+fi
+
+test -e /mnt/stateful_partition/etc/ssh || mkdir -p /mnt/stateful_partition/etc/ssh
+
+for a in rsa ed25519 ; do
+  test -e /mnt/stateful_partition/etc/ssh/ssh_host_${a}_key || ssh-keygen -f /mnt/stateful_partition/etc/ssh/ssh_host_${a}_key -N '' -t ${a}
+done
+
+if [[ ! -e /mnt/stateful_partition/etc/ssh/authorized_keys ]] ; then
+  cat /home/chronos/user/.ssh/authorized_keys >>/mnt/stateful_partition/etc/ssh/authorized_keys 2>/dev/null || true
+fi
+chmod 640 /mnt/stateful_partition/etc/ssh/authorized_keys
+chown root:chronos /mnt/stateful_partition/etc/ssh/authorized_keys 1>&2 || true
+
+if [[ -e /var/run/sshd.pid ]] ; then
+  echo "${scriptname}: sshd is already running"
+  echo "pid: $(pgrep sshd)"
+  echo "pidfile: $(cat /var/run/sshd.pid)"
+else
+  echo "${scriptname}: starting sshd"
+  /usr/sbin/sshd -o AuthorizedKeysFile=/mnt/stateful_partition/etc/ssh/authorized_keys
+fi
