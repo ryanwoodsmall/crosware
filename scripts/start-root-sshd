@@ -1,25 +1,81 @@
 #!/usr/bin/env bash
 #
-# via /etc/init/openssh-server.conf.README
+############
+# WHAT/WHY #
+############
+# - start a local openssh daemon running as root
+# - work around brain-dead PR_SET_NO_NEW_PRIVS/sudo brokenness
+# - "why would someone who has their chromebook/chromebox in dev mode need to be root on the desktop?"
+# - well, let me think... okay, here's one: it's my computer
+# - that's it
+# - it's my computer
+# - i am unbelievably frustrated with google
+# - doubly so with the chromeos team
+# - every day i take another step towards stock debian
+#
+#######
+# HOW #
+#######
+# this *REQUIRES* your chromeos device be in dev mode. how could it not?
+# this *MUST* be run as *ROOT* via a console vty
+# - setup ssh keys for the "chronos" user if you haven't; ed25519 is good
+# - append the public key portion to your ~/.ssh/authorized_keys file
+# - press ctrl-alt-forward a couple times
+# - you should (eventually) be prompted with a white-on-black scary note
+# - type root (no quotes, nothing, just "root") and press enter
+#   - if you've set a dev-mode password, login as chronos and sudo to root
+# - type "bash /usr/local/crosware/scripts/start-root-sshd" (no quotes again) and press enter
+# - become the chronos user and verify you can "ssh chronos@localhost" or similar w/o a password
+# - do the same with "ssh root@localhost"
+#
+############################################
+# via /etc/init/openssh-server.conf.README #
+############################################
 #
 # 3. Manually start sshd.
 #   This is the least convenient option, but doesn't require OOBE or rootfs
 #   verification removal, so can be used without changing the system too much.
-# 
+#
 #   Unlike the above methods, this will not auto-start sshd on boot.
 #   Additionally, password access is not possible without rootfs verification
 #   removal, so test keys must be used to SSH into the device.
-# 
+#
 #   # Create host keys (only needs to be done once).
 #   $ mkdir -p /mnt/stateful_partition/etc/ssh
 #   $ ssh-keygen -f /mnt/stateful_partition/etc/ssh/ssh_host_rsa_key -N '' -t rsa
 #   $ ssh-keygen -f /mnt/stateful_partition/etc/ssh/ssh_host_ed25519_key -N '' -t ed25519
-# 
+#
 #   # Open firewall and start sshd (must be done on every boot).
 #   $ iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 #   $ ip6tables -A INPUT -p tcp --dport 22 -j ACCEPT
 #   $ /usr/sbin/sshd \
 #     -oAuthorizedKeysFile=/usr/share/chromeos-ssh-config/keys/authorized_keys
+#
+#########
+# NOTES #
+#########
+# - normally on chromeos, i setup a dropbear to run via ~/.ssh_config via a ProxyCommand
+# - this port is forwarded to my jumphost over ssh, and is key-only
+# - no firewall stuff to open
+# - as long as i have an ssh connection open i can tunnel back to my chromeos terminal
+# - and then into my debian vm running openssh or dropbear
+# - demonic
+#
+########
+# TODO #
+########
+# - require opensshminimal? with a stripped sshd_config?
+#   - probably not a bad idea...
+#   - or go all-in on dropbear/tinyssh?
+#   - this works on a plain dev-mode chromebook, so is separate from crosware
+#   - so not unless it's configurable
+#   - also lose socks, et al. w/o openssh
+# - need to move this to 2223 probably...
+#   - sslh multiplexes ssh (2222) and adb (5555) on tcp 22
+#   - so move ssh to 2223, reinplace 2222 to 2223 in /etc/sslh.conf:
+#     sed s,2222,2223,g /etc/sslh.conf | tee /tmp/sslh.conf ; mount -o bind,ro /tmp/sslh.conf /etc/sslh.conf
+#   - then start sslh w/initctl
+#   - then start sshd on port 2223
 #
 
 set -eu
@@ -45,7 +101,7 @@ chmod 640 /mnt/stateful_partition/etc/ssh/authorized_keys
 chown root:chronos /mnt/stateful_partition/etc/ssh/authorized_keys 1>&2 || true
 
 if [[ -e /var/run/sshd.pid ]] ; then
-  echo "${scriptname}: sshd is already running"
+  echo "${scriptname}: sshd is already running (or stale pid file)"
   echo "pid: $(pgrep sshd)"
   echo "pidfile: $(cat /var/run/sshd.pid)"
 else
