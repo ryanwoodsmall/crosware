@@ -1,9 +1,9 @@
 rname="cares"
-rver="1.19.1"
+rver="1.20.0"
 rdir="c-ares-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/c-ares/c-ares/releases/download/${rname}-${rver//./_}/${rfile}"
-rsha256="321700399b72ed0e037d0074c629e7741f6b2ec2dda92956abe3e9671d3e268e"
+rsha256="cde8433e9bf6c6a0d9e7e69947745ee649256d76009d6c23b9555f84c5c13988"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -28,7 +28,7 @@ function cwmakeinstall_${rname}() {
   make install ${rlibtool}
   cwmkdir \"\$(cwidir_${rname})/bin\"
   cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
-  for p in a{country,dig,host} ; do
+  for p in a{dig,host} ; do
     install -m 0755 src/tools/\${p} \"\$(cwidir_${rname})/bin/\${p}\"
     \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/\${p}\"
     install -m 0644 docs/\${p}.1 \"\$(cwidir_${rname})/share/man/man1/\${p}.1\"
