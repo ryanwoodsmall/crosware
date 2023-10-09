@@ -1,6 +1,6 @@
 rname="minio"
-rver="2023-09-30T07-02-29Z"
-rcommitid="22d2dbc4e68a20ada8c82edf1cc68026e7b0e3d6"
+rver="2023-10-07T15-07-38Z"
+rcommitid="c27d0583d4d496981140eff822e2abb34a6f0b60"
 rdir="minio-RELEASE.${rver}"
 rfile="RELEASE.${rver}.tar.gz"
 rurl="https://github.com/minio/minio/archive/refs/tags/${rfile}"
@@ -43,15 +43,17 @@ function cwmake_${rname}() {
   l+=\" -X github.com/minio/minio/cmd.ShortCommitID=\${s} \"
   l+=\" -X github.com/minio/minio/cmd.GOPATH= \"
   l+=\" -X github.com/minio/minio/cmd.GOROOT= \"
-  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
-  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-  env \
-    CGO_ENABLED=0 \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-    MINIO_RELEASE=RELEASE \
-      go build -trimpath -tags kqueue -ldflags \"-s -w -extldflags '-s -static' \${l}\" -o \"${rname}\"
+  (
+    : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+    : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    env \
+      CGO_ENABLED=0 \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+      MINIO_RELEASE=RELEASE \
+        go build -trimpath -tags kqueue -ldflags \"-s -w -extldflags '-s -static' \${l}\" -o \"${rname}\"
+  )
   unset l c s y
   popd >/dev/null 2>&1
 }
@@ -62,7 +64,7 @@ function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   cwmkdir \"\$(cwidir_${rname})/bin\"
   install -m 755 \"${rname}\" \"\$(cwidir_${rname})/bin/${rname}\"
-  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname%mc}-server\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}-server\"
   popd >/dev/null 2>&1
 }
 "

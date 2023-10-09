@@ -1,6 +1,6 @@
 rname="miniomc"
-rver="2023-09-29T16-41-22Z"
-rcommitid="d47a2ba53a5e10cd1bc8b946c05f4cadb71d4ee3"
+rver="2023-10-04T06-52-56Z"
+rcommitid="eca8310ac822cf0e533c6bd3fb85c8d6099d1465"
 rdir="mc-RELEASE.${rver}"
 rfile="RELEASE.${rver}.tar.gz"
 rurl="https://github.com/minio/mc/archive/refs/tags/${rfile}"
@@ -41,15 +41,17 @@ function cwmake_${rname}() {
   l+=\" -X github.com/minio/mc/cmd.Version=\$(cwver_${rname}) \"
   l+=\" -X github.com/minio/mc/cmd.CommitID=\${c} \"
   l+=\" -X github.com/minio/mc/cmd.ShortCommitID=\${s} \"
-  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
-  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-  env \
-    CGO_ENABLED=0 \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-    MC_RELEASE=RELEASE \
-      go build -trimpath -tags kqueue -ldflags \"-s -w -extldflags '-s -static' \${l}\" -o \"${rname}\"
+  (
+    : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+    : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    env \
+      CGO_ENABLED=0 \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+      MC_RELEASE=RELEASE \
+        go build -trimpath -tags kqueue -ldflags \"-s -w -extldflags '-s -static' \${l}\" -o \"${rname}\"
+  )
   unset l c s y
   popd >/dev/null 2>&1
 }
