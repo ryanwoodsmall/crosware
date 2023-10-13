@@ -1,9 +1,9 @@
 rname="px5gwolfssl"
-rver="22.03.2"
+rver="23.05.0"
 rdir="${rname}-${rver}"
 rfile="${rname%wolfssl}-wolfssl.c"
 rurl="https://raw.githubusercontent.com/openwrt/openwrt/v${rver}/package/utils/${rname%wolfssl}-wolfssl/${rfile}"
-rsha256="b7f7f241961eb308eb54b3f85b0556c4932e40f4528dc72062dadedb2530ab9b"
+rsha256="818d6557427ecd7202fd2f98a75ecde867b8ce59cf222249d1b9b230dec53053"
 rreqs="wolfssl"
 
 . "${cwrecipe}/common.sh"

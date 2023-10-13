@@ -4,11 +4,11 @@
 #
 
 rname="px5g"
-rver="22.03.2"
+rver="23.05.0"
 rdir="${rname}-${rver}"
 rfile="${rname}-mbedtls.c"
 rurl="https://raw.githubusercontent.com/openwrt/openwrt/v${rver}/package/utils/${rname}-mbedtls/${rfile}"
-rsha256="cb42a8c59896bb87e46d5e521d7c5a99362b149e15ffa7ca6e3dc87376bc0964"
+rsha256="d7fd1842959225ef876a53752d98d1d244a711ad40f72a2ef02e47d064798f73"
 rreqs="mbedtls"
 
 . "${cwrecipe}/common.sh"
