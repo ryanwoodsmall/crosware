@@ -11,11 +11,11 @@
 #
 
 rname="gauche"
-rver="0.9.12"
+rver="0.9.13"
 rdir="${rname//g/G}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://github.com/shirok/${rname//g/G}/releases/download/release${rver//./_}/${rfile}"
-rsha256="b4ae64921b07a96661695ebd5aac0dec813d1a68e546a61609113d7843f5b617"
+rsha256="792fe4e4f800acd7293f9e3095d580a87cea8b221f33707ae37874f8a3f1b76b"
 rreqs="make libressl mbedtls zlib gdbm"
 
 . "${cwrecipe}/common.sh"
