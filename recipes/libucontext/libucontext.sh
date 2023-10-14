@@ -1,24 +1,21 @@
 rname="libucontext"
-rver="1.1"
+rver="1.2"
 rdir="${rname}-${rver}"
+# weird libucontext-libucontext-#.# dir
 rbdir="${cwbuild}/${rname}-${rdir}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/kaniini/${rname}/archive/refs/tags/${rfile}"
-rsha256="298201cef024aee29dfb81c3f1ef800047d5c799297651a60e2c53bb76956ea6"
+rsha256="937fba9d0beebd7cf957b79979b19fe3a29bb9c4bfd25e869477d7154bbf8fd3"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
+cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  env CPPFLAGS= LDFLAGS=-static make LIBDIR=\"${ridir}/lib\" INCLUDEDIR=\"${ridir}/include\" PKGCONFIGDIR=\"${ridir}/lib/pkgconfig\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  env CPPFLAGS= LDFLAGS=-static make LIBDIR=\"\$(cwidir_${rname})/lib\" INCLUDEDIR=\"\$(cwidir_${rname})/include\" PKGCONFIGDIR=\"\$(cwidir_${rname})/lib/pkgconfig\"
   popd >/dev/null 2>&1
 }
 "
@@ -26,8 +23,8 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  env CPPFLAGS= LDFLAGS=-static make install LIBDIR=\"${ridir}/lib\" INCLUDEDIR=\"${ridir}/include\" PKGCONFIGDIR=\"${ridir}/lib/pkgconfig\"
-  rm -f ${ridir}/lib/*.so* || true
+  env CPPFLAGS= LDFLAGS=-static make install LIBDIR=\"\$(cwidir_${rname})/lib\" INCLUDEDIR=\"\$(cwidir_${rname})/include\" PKGCONFIGDIR=\"\$(cwidir_${rname})/lib/pkgconfig\"
+  rm -f \$(cwidir_${rname})/lib/*.so* || true
   popd >/dev/null 2>&1
 }
 "
