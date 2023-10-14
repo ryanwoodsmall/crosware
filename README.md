@@ -1356,6 +1356,7 @@ wc -l /tmp/astbuild.out
       - fcgi-debug (https://redmine.lighttpd.net/projects/fcgi-debug/repository)
       - scgi-cgi (https://redmine.lighttpd.net/projects/scgi-cgi/repository - run cgi scripts in scgi)
       - spawn-fcgi (https://redmine.lighttpd.net/projects/spawn-fcgi/repository)
+  - lwan (https://lwan.ws/ and https://github.com/lpereira/lwan - lightweight, extensible web server - cmake...)
   - mongoose (https://github.com/cesanta/mongoose)
   - monkey (http://monkey-project.com/)
   - openresty (https://openresty.org/)
