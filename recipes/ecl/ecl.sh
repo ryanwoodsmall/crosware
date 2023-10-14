@@ -3,26 +3,22 @@
 #
 
 rname="ecl"
-rver="21.2.1"
+rver="23.9.9"
 rdir="${rname}-${rver}"
 rfile="${rname}-${rver}.tgz"
 rurl="https://common-lisp.net/project/${rname}/static/files/release/${rfile}"
-rsha256="b15a75dcf84b8f62e68720ccab1393f9611c078fcd3afdd639a1086cad010900"
+rsha256="c51bdab4ca6c1173dd3fe9cfe9727bcefb97bb0a3d6434b627ca6bdaeb33f880"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
 if [[ ${karch} =~ ^(armv|riscv64) ]] ; then
-eval "
-function cwinstall_${rname}() {
-  cwscriptecho \"recipe ${rname} does not support architecture ${karch}\"
-}
-"
+  eval "function cwinstall_${rname}() { cwscriptecho \"recipe ${rname} does not support architecture ${karch}\" ; }"
 fi
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
     --enable-shared=yes \
     --enable-boehm=included \
@@ -30,17 +26,18 @@ function cwconfigure_${rname}() {
     --enable-gmp=portable \
     --with-dffi=included \
     --enable-manual=no \
-    CFLAGS='-D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -fPIC' \
-    CXXFLAGS='-D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -fPIC' \
-    CPPFLAGS= \
-    LDFLAGS=
+      CFLAGS='-D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -fPIC' \
+      CXXFLAGS='-D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -fPIC' \
+      CPPFLAGS= \
+      LDFLAGS= \
+      PKG_CONFIG_{PATH,LIBDIR}=
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make
   popd >/dev/null 2>&1
 }
@@ -48,7 +45,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install
   popd >/dev/null 2>&1
 }
