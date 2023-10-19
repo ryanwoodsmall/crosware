@@ -1,9 +1,9 @@
 rname="texinfo"
-rver="7.0.3"
+rver="7.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="74b420d09d7f528e84f97aa330f0dd69a98a6053e7a4e01767eed115038807bf"
+rsha256="deeec9f19f159e046fdf8ad22231981806dac332cc372f1c763504ad82b30953"
 rreqs="make sed perl ncurses"
 
 . "${cwrecipe}/common.sh"
