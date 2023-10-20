@@ -619,8 +619,8 @@ time_func ls -l -A /
       ForwardAgent yes
       Hostname 1.2.3.4
       EscapeChar @
-      RemoteForward 2222 localhost:2222
-      ProxyCommand sh -c 'cd /tmp ; busybox fuser -4 2222/tcp || screen -dmS ssh env -i /usr/local/crosware/software/dropbear/current/sbin/dropbear -m -R -F -E -p 2222 -P /tmp/dropbear.pid -s -a -G chronos-access; busybox nc %h %p'
+      RemoteForward 2223 localhost:2223
+      ProxyCommand sh -c 'cd /tmp ; busybox fuser -4 2223/tcp || screen -dmS ssh env -i /usr/local/crosware/software/dropbear/current/sbin/dropbear -m -R -F -E -p 2223 -P /tmp/dropbear.pid -s -a -G chronos-access; busybox nc %h %p'
     ```
   - can multiplex with Android adb using **sslh**
 - probably need `tar -o` to not restore uid/gid in at least:

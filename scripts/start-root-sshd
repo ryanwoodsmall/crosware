@@ -106,5 +106,5 @@ if [[ -e /var/run/sshd.pid ]] ; then
   echo "pidfile: $(cat /var/run/sshd.pid)"
 else
   echo "${scriptname}: starting sshd"
-  /usr/sbin/sshd -o AuthorizedKeysFile=/mnt/stateful_partition/etc/ssh/authorized_keys
+  /usr/sbin/sshd -o AuthorizedKeysFile=/mnt/stateful_partition/etc/ssh/authorized_keys -p 2222
 fi
