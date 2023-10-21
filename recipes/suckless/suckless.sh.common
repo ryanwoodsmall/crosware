@@ -33,7 +33,7 @@ function cwconfigure_${rname}() {
   sed -i '/^LDFLAGS/d' config.mk
   echo \"CC = \${CC}\" >> config.mk
   echo \"AR = \${AR}\" >> config.mk
-  echo \"LDFLAGS = \${LDFLAGS}\" >> config.mk
+  echo \"LDFLAGS = -static\" >> config.mk
   echo \"PREFIX = ${ridir}\" >> config.mk
   echo '#include <sys/sysmacros.h>' >> util.h
   popd >/dev/null 2>&1
