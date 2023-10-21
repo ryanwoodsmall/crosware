@@ -1,9 +1,9 @@
 rname="outils"
-rver="0.12"
+rver="0.13"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/leahneukirchen/${rname}/archive/${rfile}"
-rsha256="63b6ebddfb2e6213be1d5b20475321ba6f3221d6f86abe1dc615329c955c24db"
+rsha256="49d46211fe84a5b96cf55d689696d190b7aba7d3e043c8c8dc9f5ff9af8f927a"
 rreqs="bootstrapmake"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
