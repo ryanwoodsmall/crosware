@@ -3,7 +3,28 @@ Tools, things, stuff, miscellaneous, detritus, junk, etc., primarily for Chrome 
 
 ## bootstrap
 
-To bootstrap, using ```/usr/local/crosware``` with initial downloads in ```/usr/local/tmp```:
+If running on a Chromebook/Chromebox/ChromeOS/Flex machine, **developer mode is necessary**.
+_crosware_ temporarily requires `root` access to set ownership and permission in `/usr/local`.
+
+To bootstrap, using ```/usr/local/crosware``` with initial downloads in ```/usr/local/tmp```...
+
+# :warning: On ChromeOS `sudo` must be run via a virtual terminal :warning:
+
+Google, in their infinite wisdom, has disabled `sudo` on ChromeOS.
+Or, rather, disabled gaining extra privileges in the current process (`PR_SET_NO_NEW_PRIVS`/`minijail`/???).
+This effectively stops `root` user access via the ChromeOS GUI.
+
+This means the `sudo` commands below must be run via a VT.
+
+- To access a VT, press one of the following key sequences:
+  - Ctrl-Alt-right arrow (F2)
+  - Ctrl-Alt-refresh (F3)
+  - Ctrl-Alt-full screen (F4)
+- Login as `chronos` either with no password, or with a dev password (if you set one)
+- Run the `sudo ...` commands below
+- Return to the ChromeOS GUI with Ctrl-Alt-back arrow (F1)
+
+If you want to start a locally-accessible SSH daemon, see: [scripts/start-root-sshd](scripts/start-root-sshd).
 
 ```shell
 # allow your regular user to write to /usr/local
