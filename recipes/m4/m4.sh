@@ -1,7 +1,3 @@
-#
-# XXX - probably need to prepend, heirloom m4 has different (POSIX-only, SVR3, ...) option set
-#
-
 rname="m4"
 rver="1.4.19"
 rdir="${rname}-${rver}"
