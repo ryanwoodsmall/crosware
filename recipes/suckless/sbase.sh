@@ -12,16 +12,16 @@ rreqs="bootstrapmake"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make ${rname}-box
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  ( unset CPPFLAGS ; make sbase-box ) || cwfailexit \"${rname}: build failed\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make ${rname}-box-install
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  ( unset CPPFLAGS ; make sbase-box-install ) || cwfailexit \"${rname}: install failed\"
   popd >/dev/null 2>&1
 }
 "
