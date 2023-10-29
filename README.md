@@ -778,6 +778,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - pass (https://www.passwordstore.org/)
 - patch (gnu)
 - patchelf (https://nixos.org/patchelf.html and https://github.com/NixOS/patchelf)
+- paxmirabilis (http://www.mirbsd.org/pax.htm - pax/tar/cpio from mirbsd)
 - pcc (http://pcc.ludd.ltu.se/)
   - only x86_64 for now!
   - kinda painful for static compilation, segfaults, etc.
