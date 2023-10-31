@@ -17,11 +17,11 @@
 #
 
 rname="wolfssl"
-rver="5.6.3"
+rver="5.6.4"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="5a96202b56b15945579d9911bdc30acccbfcba977ff17cb706f1fc4417d70b59"
+rsha256="bebbc75f7f92c36bfd29c1b9318948f0c3317a13bf93fbfa0eb5ac14de7ce87c"
 rreqs="make cacertificates configgit slibtool toybox baseutils"
 
 . "${cwrecipe}/common.sh"
@@ -30,7 +30,6 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   touch wolfssl/wolfcrypt/fips.h
-  touch cyassl/ctaocrypt/fips.h
   sed -i '/^#!/s#/bin/sh#/usr/bin/env bash#g' configure
   bash ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --enable-examples \
