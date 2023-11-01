@@ -1,9 +1,9 @@
 rname="gpgme"
-rver="1.22.0"
+rver="1.23.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/gpgme/${rfile}"
-rsha256="9551e37081ad3bde81018a0d24f245c3f8206990549598fb31a97a68380a7b71"
+rsha256="a0c316f7ab7d3bfb01a8753c3370dc906e5b61436021f3b54ff1483b513769bd"
 rreqs="make gnupg libgpgerror libgcrypt libksba libassuan npth ntbtls sqlite readline ncurses slibtool zlib bzip2 pkgconfig pinentry configgit"
 
 . "${cwrecipe}/common.sh"
