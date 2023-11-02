@@ -2045,6 +2045,7 @@ wc -l /tmp/astbuild.out
   - elk (http://sam.zoy.org/elk)
   - femtolisp (https://github.com/JeffBezanson/femtolisp)
   - gerbil (https://cons.io/ and https://github.com/vyzo/gerbil)
+  - hook (https://gitlab.com/spritely/guile-hoot - wasm backend for guile)
   - ikarus (https://en.wikipedia.org/wiki/Ikarus_(Scheme_implementation))
     - https://github.com/lambdaconservatory/ikarus
     - shared, no static
