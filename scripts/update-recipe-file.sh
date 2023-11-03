@@ -40,8 +40,6 @@ test -e "${cw}" || {
 if [ "${rs}x" == "x" ] ; then
   echo "no sha256sum passed, attempting to figure one out"
   out="$(${cw} run-func cwver_${rn} cwurl_${rn} | paste -s -d'|' -)"
-  #ov="$(${cw} run-func cwver_${rn})"
-  #ru="$(${cw} run-func cwurl_${rn} | sed "s/${ov}/${rv}/g")"
   ov="${out%%|*}"
   ru="${out#${ov}|}"
   ru="${ru//${ov}/${rv}}"
