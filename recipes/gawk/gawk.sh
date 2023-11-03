@@ -1,9 +1,9 @@
 rname="gawk"
-rver="5.2.2"
+rver="5.3.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="3c1fce1446b4cbee1cd273bd7ec64bc87d89f61537471cd3e05e33a965a250e9"
+rsha256="ca9c16d3d11d0ff8c69d79dc0b47267e1329a69b39b799895604ed447d3ca90b"
 rreqs="bootstrapmake sed"
 
 . "${cwrecipe}/common.sh"
@@ -16,7 +16,10 @@ function cwconfigure_${rname}() {
     --disable-mpfr \
     --disable-nls \
     --disable-pma \
-    --without-readline
+    --without-readline \
+      LDFLAGS=-static \
+      CPPFLAGS= \
+      PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
 "
