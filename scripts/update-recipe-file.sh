@@ -11,6 +11,7 @@
 #  - "crosware update-recipe-file recipe 1.2.3 abcdef0123456789...."
 #  - add "crosware upgrade recipe"?
 #  - add git commit?
+#  - use arrays for ver/url figuring
 #
 
 set -eu
@@ -38,8 +39,12 @@ test -e "${cw}" || {
 }
 if [ "${rs}x" == "x" ] ; then
   echo "no sha256sum passed, attempting to figure one out"
-  ov="$(${cw} run-func cwver_${rn})"
-  ru="$(${cw} run-func cwurl_${rn} | sed "s/${ov}/${rv}/g")"
+  out="$(${cw} run-func cwver_${rn} cwurl_${rn} | paste -s -d'|' -)"
+  #ov="$(${cw} run-func cwver_${rn})"
+  #ru="$(${cw} run-func cwurl_${rn} | sed "s/${ov}/${rv}/g")"
+  ov="${out%%|*}"
+  ru="${out#${ov}|}"
+  ru="${ru//${ov}/${rv}}"
   rs="$(curl -kLs "${ru}" | sha256sum | awk '{print $1}')"
 fi
 if ! $(echo -n "${rs}" | wc -c | grep -q '^64$') ; then
