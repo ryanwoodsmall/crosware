@@ -1,0 +1,51 @@
+rsv="${rver%.*}"
+rsv="${rsv//./}"
+rsn="${rname%${rsv}}"
+rdir="${rsn}-${rver}"
+rfile="${rdir}.tar.gz"
+rurl="https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/${rfile}"
+rreqs="bootstrapmake cacertificates configgit zlib"
+rprof="${cwetcprofd}/zz_${rname}.sh"
+
+. "${cwrecipe}/common.sh"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
+    --disable-asm \
+    --enable-nc \
+    --with-openssldir=\"${cwetc}/${rname}\" \
+    --with-pic \
+      CC=\"\${CC} -Os\" \
+      CFLAGS=\"-Os \${CFLAGS}\" \
+      LDFLAGS=-static \
+      CPPFLAGS= \
+      PKG_CONFIG_{LIBDIR,PATH}=
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  rm -f \"\$(cwidir_${rname})/bin/openssl\" \"\$(cwidir_${rname})/bin/${rsn}\"
+  make install ${rlibtool}
+  mv \"\$(cwidir_${rname})/bin/openssl\" \"\$(cwidir_${rname})/bin/${rsn}\"
+  ln -sf \"${rtdir}/current/bin/${rsn}\" \"\$(cwidir_${rname})/bin/openssl\"
+  ln -sf \"${rtdir}/current/bin/nc\" \"\$(cwidir_${rname})/bin/${rsn}-nc\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${cwsw}/openssl/current/bin\"' > \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
+}
+"
+
+unset rsv
+unset rsn
+
+# vim: ft=bash
