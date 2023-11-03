@@ -1,9 +1,9 @@
-rname="openssl111"
-rver="1.1.1w"
-rdir="${rname%111}-${rver}"
+rname="openssl30"
+rver="3.0.12"
+rdir="${rname%30}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.openssl.org/source/${rfile}"
-rsha256="cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8"
+rsha256="f93c9e8edde5e9166119de31755fc87b4aa34863662f67ddfcba14d0b6b69b61"
 rreqs="make perl cacertificates"
 
 . "${cwrecipe}/common.sh"
@@ -18,6 +18,7 @@ function cwconfigure_${rname}() {
     CPPFLAGS= \
     PKG_CONFIG_{LIBDIR,PATH}= \
       ./config --prefix=\"\$(cwidir_${rname})\" --openssldir=${cwetc}/ssl no-asm no-shared no-zlib no-zlib-dynamic \${CFLAGS} -static -fPIC -DOPENSSL_PIC -DOPENSSL_THREADS
+  sed -i.ORIG s,LIBDIR=lib64,LIBDIR=lib,g Makefile || true
   popd >/dev/null 2>&1
 }
 "
