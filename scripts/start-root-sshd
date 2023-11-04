@@ -64,8 +64,6 @@
 # - as long as i have an ssh connection open i can tunnel back to my chromeos terminal
 # - and then into my debian vm running openssh or dropbear
 # - demonic
-# - probably want sslh too, add this...
-#     initctl status sslh | grep -q start/running || initctl start sslh
 #
 
 set -eu
@@ -98,3 +96,8 @@ else
   echo "${scriptname}: starting sshd"
   /usr/sbin/sshd -o AuthorizedKeysFile=/mnt/stateful_partition/etc/ssh/authorized_keys -p 2222
 fi
+
+echo "${scriptname}: restarting sslh"
+initctl stop sslh &>/dev/null || true
+initctl start sslh
+initctl status sslh
