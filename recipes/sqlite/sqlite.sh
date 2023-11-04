@@ -1,14 +1,17 @@
 #
 # XXX - look at alpine: https://git.alpinelinux.org/aports/tree/main/sqlite/APKBUILD
 # XXX - and at ALL the options... https://sqlite.org/compile.html
+# XXX - editline? probably not, libeditminimal though?
+# XXX - unofficial looking linenoise support?
+# XXX - custom make install builds w/readline and bare; configure/build twice is slow/wasteful
 #
 
 rname="sqlite"
-rver="3430200"
+rver="3440000"
 rdir="${rname}-autoconf-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.sqlite.org/2023/${rfile}"
-rsha256="6d422b6f62c4de2ca80d61860e3a3fb693554d2f75bb1aaca743ccc4d6f609f0"
+rsha256="b9cd386e7cd22af6e0d2a0f06d0404951e1bef109e42ea06cc0450e10cd15550"
 rreqs="make netbsdcurses readlinenetbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
@@ -24,6 +27,26 @@ function cwconfigure_${rname}() {
   popd >/dev/null 2>&1
 }
 "
+
+#eval "
+#function cwmakeinstall_${rname}() {
+#  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+#  make install ${rlibtool}
+#  make clean || true
+#  make distclean || true
+#  install -m 755 \"\$(cwidir_${rname})/bin/sqlite3\" \"\$(cwidir_${rname})/bin/sqlite3-readline\"
+#  rm -f \"\$(cwidir_${rname})/bin/sqlite3\"
+#  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --disable-readline --disable-editline \
+#    CPPFLAGS=\"-I${cwsw}/\" \
+#    LDFLAGS=\"-L${cwsw}/zlib/current/lib -static\" \
+#    LIBS=\"-L${cwsw}/zlib/current/lib -lz -static\"
+#  make -j${cwmakejobs} ${rlibtool}
+#  make install ${rlibtool}
+#  install -m 755 \"\$(cwidir_${rname})/bin/sqlite3\" \"\$(cwidir_${rname})/bin/sqlite3-minimal\"
+#  ln -sf sqlite3-readline \"\$(cwidir_${rname})/bin/sqlite3\"
+#  popd >/dev/null 2>&1
+#}
+#"
 
 eval "
 function cwgenprofd_${rname}() {
