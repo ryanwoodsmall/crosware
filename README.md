@@ -623,7 +623,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libxml2 (https://gitlab.gnome.org/GNOME/libxml2)
   - libxml2minimal (no features)
 - libxo (https://github.com/Juniper/libxo and http://juniper.github.io/libxo/libxo-manual.html - html/json/xml output lib and xo cli)
-- libxslt
+- libxslt (https://gitlab.gnome.org/GNOME/libxslt)
+  - libxsltminimal (no features, built against libxml2minimal)
 - libz (sortix, zlib fork https://sortix.org/libz/ - static and shared libs for compatibility with alpine/musl bins)
 - lighttpd (https://www.lighttpd.net/ - mbedtls - ssl/tls, webdav support)
   - lighttpdminimal (zlib, pcre2, libbsd - not tls, webdav, etc.)
