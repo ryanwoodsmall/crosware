@@ -45,7 +45,7 @@ function cwextract_${rname}() {
 "
 
 eval "
-function cwmakeinstall_readline_${rname}() {
+function cwmakeinstall_${rname}_readline() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   mkdir libreadline
   cd libreadline
@@ -64,7 +64,7 @@ function cwmakeinstall_readline_${rname}() {
 "
 
 eval "
-function cwmakeinstall_lua_${rname}() {
+function cwmakeinstall_${rname}_lua() {
   pushd \"\$(cwbdir_${rname})/\$(cwdir_lua)\" >/dev/null 2>&1
   (
     unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS PKG_CONFIG_{LIBDIR,PATH}
@@ -95,7 +95,7 @@ function cwmakeinstall_lua_${rname}() {
 "
 
 eval "
-function cwmakeinstall_luarocks_${rname}() {
+function cwmakeinstall_${rname}_luarocks() {
   pushd \"\$(cwbdir_${rname})/luarocks-${rluarocksver}\" >/dev/null 2>&1
   (
     unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS PKG_CONFIG_{LIBDIR,PATH}
@@ -121,9 +121,9 @@ function cwmakeinstall_luarocks_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  cwmakeinstall_readline_${rname}
-  cwmakeinstall_lua_${rname}
-  cwmakeinstall_luarocks_${rname}
+  cwmakeinstall_${rname}_readline
+  cwmakeinstall_${rname}_lua
+  cwmakeinstall_${rname}_luarocks
   cwmkdir \$(cwidir_${rname})/bin
   install -m 755 \$(cwdlfile_${rname}) \$(cwidir_${rname})/bin/\$(cwfile_${rname})
   sed -i 's,^#!/usr/bin/env.*,#!${rtdir}/current/bin/lua,' \$(cwidir_${rname})/bin/\$(cwfile_${rname})
