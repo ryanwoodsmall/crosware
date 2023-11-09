@@ -13,7 +13,7 @@ cwstubfunc "cwconfigure_${rname}"
 eval "
 function cwclean_${rname}() {
   pushd \"${cwbuild}\" >/dev/null 2>&1
-  chmod -R u+rw \"\$(cwdir_${rname})\" &>/dev/null || true
+  chmod -R u+rw \"\$(cwdir_${rname})\" \"\$(cwbdir_${rname})\" &>/dev/null || true
   rm -rf \"${rbdir}\"
   popd >/dev/null 2>&1
 }
@@ -22,14 +22,17 @@ function cwclean_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
-  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-  env \
-    CGO_ENABLED=0 \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-      go build -ldflags '-s -w -extldflags \"-s -static\"' -o \"${rname}\"
+  (
+    : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+    : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    env \
+      CGO_ENABLED=0 \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+        go build -ldflags '-s -w -extldflags \"-s -static\"' -o \"${rname}\"
+    chmod -R u+rw . || true
+  )
   popd >/dev/null 2>&1
 }
 "
