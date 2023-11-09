@@ -20,11 +20,11 @@
 #
 
 rname="mbedtls"
-rver="2.28.5"
+rver="2.28.6"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/Mbed-TLS/${rname}/archive/refs/tags/${rfile}"
-rsha256="849e86b626e42ded6bf67197b64aa771daa54e2a7e2868dc67e1e4711959e5e3"
+rsha256="737b088bb8877ff8f0fc404ebbc48f82486df3da4bfd5b28fa208a5967e42fb3"
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
 
