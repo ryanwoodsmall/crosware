@@ -1,9 +1,9 @@
 rname="minikube"
-rver="1.31.2"
+rver="1.32.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/kubernetes/${rname}/archive/refs/tags/${rfile}"
-rsha256="1d427f5fbaf8c6a5e5339fc9ec3aecfdd70f589f53b23f1567de4beca6e79574"
+rsha256="d8413766aa8ba81a6eee24d8ca8f2f7862029521630122b83ed892ec4f9b4960"
 rreqs="bootstrapmake go"
 
 # XXX - ugh
@@ -18,21 +18,23 @@ cwstubfunc "cwconfigure_${rname}"
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  if [[ ${karch} =~ ^x86_64  ]] ; then a='x86_64'  ; fi
-  if [[ ${karch} =~ ^arm     ]] ; then a='armv6'   ; fi
-  if [[ ${karch} =~ ^aarch64 ]] ; then a='arm64'   ; fi
-  if [[ ${karch} =~ ^i       ]] ; then a='i686'    ; fi
-  if [[ ${karch} =~ ^riscv64 ]] ; then a='riscv64' ; fi
-  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
-  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-  env \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    GOPATH=\"\$(cwbdir_${rname})/gopath\" \
-    GOROOT=\"${cwsw}/go/current\" \
-      make out/${rname}-linux-\${a}
-  chmod -R u+rw . || true
+  (
+    if [[ ${karch} =~ ^x86_64  ]] ; then a='x86_64'  ; fi
+    if [[ ${karch} =~ ^arm     ]] ; then a='armv6'   ; fi
+    if [[ ${karch} =~ ^aarch64 ]] ; then a='arm64'   ; fi
+    if [[ ${karch} =~ ^i       ]] ; then a='i686'    ; fi
+    if [[ ${karch} =~ ^riscv64 ]] ; then a='riscv64' ; fi
+    : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+    : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    env \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      GOPATH=\"\$(cwbdir_${rname})/gopath\" \
+      GOROOT=\"${cwsw}/go/current\" \
+        make out/${rname}-linux-\${a}
+    chmod -R u+rw . || true
+  )
   popd >/dev/null 2>&1
 }
 "
