@@ -38,16 +38,19 @@ function cwpatch_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  : \${GOCACHE=\"${rbdir}/gocache\"}
-  : \${GOMODCACHE=\"${rbdir}/gomodcache\"}
-  env \
-    PATH=\"${cwsw}/groff/current/bin:${cwsw}/utillinux/current/bin:\${PATH}\" \
-    LANG=C \
-    CGO_ENABLED=0 \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-      make
+  (
+    : \${GOCACHE=\"${rbdir}/gocache\"}
+    : \${GOMODCACHE=\"${rbdir}/gomodcache\"}
+    env \
+      PATH=\"${cwsw}/groff/current/bin:${cwsw}/utillinux/current/bin:\${PATH}\" \
+      LANG=C \
+      CGO_ENABLED=0 \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+        make
+    chmod -R u+rw . || true
+  )
   popd >/dev/null 2>&1
 }
 "
@@ -55,18 +58,21 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
-  : \${GOCACHE=\"${rbdir}/gocache\"}
-  : \${GOMODCACHE=\"${rbdir}/gomodcache\"}
-  sed -i.ORIG s,groff,${cwsw}/groff/current/bin/groff,g Makefile
-  sed -i.ORIG s,col,${cwsw}/utillinux/current/bin/col,g Makefile
-  env \
-    PATH=\"${cwsw}/groff/current/bin:${cwsw}/utillinux/current/bin:\${PATH}\" \
-    LANG=C \
-    CGO_ENABLED=0 \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-      make install
+  (
+    : \${GOCACHE=\"${rbdir}/gocache\"}
+    : \${GOMODCACHE=\"${rbdir}/gomodcache\"}
+    sed -i.ORIG s,groff,${cwsw}/groff/current/bin/groff,g Makefile
+    sed -i.ORIG s,col,${cwsw}/utillinux/current/bin/col,g Makefile
+    env \
+      PATH=\"${cwsw}/groff/current/bin:${cwsw}/utillinux/current/bin:\${PATH}\" \
+      LANG=C \
+      CGO_ENABLED=0 \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+        make install
+    chmod -R u+rw . || true
+  )
   popd >/dev/null 2>&1
 }
 "

@@ -22,16 +22,19 @@ function cwclean_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
-  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-  env \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    GOPATH=\"\$(cwbdir_${rname})/gopath\" \
-    GOROOT=\"${cwsw}/go/current\" \
-    CGO_ENABLED=0 \
-      make PREFIX=\"\$(cwidir_${rname})\"
+  (
+    : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+    : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    env \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      GOPATH=\"\$(cwbdir_${rname})/gopath\" \
+      GOROOT=\"${cwsw}/go/current\" \
+      CGO_ENABLED=0 \
+        make PREFIX=\"\$(cwidir_${rname})\"
+    chmod -R u+rw . || true
+  )
   popd >/dev/null 2>&1
 }
 "
@@ -39,16 +42,19 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
-  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-  env \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    GOPATH=\"\$(cwbdir_${rname})/gopath\" \
-    GOROOT=\"${cwsw}/go/current\" \
-    CGO_ENABLED=0 \
-      make install PREFIX=\"\$(cwidir_${rname})\"
+  (
+    : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+    : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    env \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      GOPATH=\"\$(cwbdir_${rname})/gopath\" \
+      GOROOT=\"${cwsw}/go/current\" \
+      CGO_ENABLED=0 \
+        make install PREFIX=\"\$(cwidir_${rname})\"
+    chmod -R u+rw . || true
+  )
   popd >/dev/null 2>&1
 }
 "

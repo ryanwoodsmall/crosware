@@ -22,15 +22,18 @@ function cwclean_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
-  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-  env \
-    CGO_ENABLED=0 \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-    GOFLAGS=-trimpath \
-      go build -ldflags \"-s -w\" -o vultr-cli
+  (
+    : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+    : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    env \
+      CGO_ENABLED=0 \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+      GOFLAGS=-trimpath \
+        go build -ldflags \"-s -w\" -o vultr-cli
+    chmod -R u+rw . || true
+  )
   popd >/dev/null 2>&1
 }
 "

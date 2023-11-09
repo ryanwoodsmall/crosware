@@ -22,17 +22,20 @@ function cwclean_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
-  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-  for p in jsontoml tomljson tomll ; do
-    cwscriptecho \"${rname}: building \${p}\"
-    env \
-      CGO_ENABLED=0 \
-      GOCACHE=\"\${GOCACHE}\" \
-      GOMODCACHE=\"\${GOMODCACHE}\" \
-      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-        go build -ldflags '-s -w -extldflags \"-s -static\"' -o \"\${p}\" \"\$(cwbdir_${rname})/cmd/\${p}/\"
-  done
+  (
+    : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+    : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    for p in jsontoml tomljson tomll ; do
+      cwscriptecho \"${rname}: building \${p}\"
+      env \
+        CGO_ENABLED=0 \
+        GOCACHE=\"\${GOCACHE}\" \
+        GOMODCACHE=\"\${GOMODCACHE}\" \
+        PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+          go build -ldflags '-s -w -extldflags \"-s -static\"' -o \"\${p}\" \"\$(cwbdir_${rname})/cmd/\${p}/\"
+    done
+    chmod -R u+rw . || true
+  )
   popd >/dev/null 2>&1
 }
 "

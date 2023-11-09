@@ -29,18 +29,21 @@ function cwclean_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
-  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-  env \
-    CGO_ENABLED=0 \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-      \"${cwsw}/go/current/bin/go\" build -ldflags \"-s -X github.com/rclone/rclone/fs.Version=\$(cwver_${rname}) -w -extldflags '-s -static'\"
-  cwmkdir \"\$(cwidir_${rname})/bin\"
-  cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
-  install -m 755 ${rname} \"\$(cwidir_${rname})/bin/${rname}\"
-  install -m 644 ${rname}.1 \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
+  (
+    : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+    : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    env \
+      CGO_ENABLED=0 \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+        \"${cwsw}/go/current/bin/go\" build -ldflags \"-s -X github.com/rclone/rclone/fs.Version=\$(cwver_${rname}) -w -extldflags '-s -static'\"
+    cwmkdir \"\$(cwidir_${rname})/bin\"
+    cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
+    install -m 755 ${rname} \"\$(cwidir_${rname})/bin/${rname}\"
+    install -m 644 ${rname}.1 \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
+    chmod -R u+rw . || true
+  )
   popd >/dev/null 2>&1
 }
 "

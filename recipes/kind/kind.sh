@@ -13,18 +13,20 @@ cwstubfunc "cwconfigure_${rname}"
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
-  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-  cwmkdir \"\$(cwbdir_${rname})/bin\"
-  env \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    GOPATH=\"\$(cwbdir_${rname})/gopath\" \
-    GOROOT=\"${cwsw}/go/current\" \
-    COMMIT=\"\$(cwver_${rname})\" \
-      \"${cwsw}/go/current/bin/go\" build -v -o bin/${rname} -trimpath -ldflags=\"-buildid= -w -X=sigs.k8s.io/kind/pkg/cmd/kind/version.GitCommit=\$(cwver_${rname})\"
-  chmod -R u+rw . || true
+  (
+    : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+    : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    cwmkdir \"\$(cwbdir_${rname})/bin\"
+    env \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      GOPATH=\"\$(cwbdir_${rname})/gopath\" \
+      GOROOT=\"${cwsw}/go/current\" \
+      COMMIT=\"\$(cwver_${rname})\" \
+        \"${cwsw}/go/current/bin/go\" build -v -o bin/${rname} -trimpath -ldflags=\"-buildid= -w -X=sigs.k8s.io/kind/pkg/cmd/kind/version.GitCommit=\$(cwver_${rname})\"
+    chmod -R u+rw . || true
+  )
   popd >/dev/null 2>&1
 }
 "

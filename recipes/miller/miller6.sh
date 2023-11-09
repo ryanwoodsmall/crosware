@@ -26,16 +26,18 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
-  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-  env \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    GOPATH=\"\$(cwbdir_${rname})/gopath\" \
-    GOROOT=\"${cwsw}/go/current\" \
-      go build -ldflags '-s -w -extldflags \"-s -static\"' -o mlr \"\$(cwbdir_${rname})/cmd/mlr\"
-  chmod -R u+rw . || true
+  (
+    : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+    : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    env \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      GOPATH=\"\$(cwbdir_${rname})/gopath\" \
+      GOROOT=\"${cwsw}/go/current\" \
+        go build -ldflags '-s -w -extldflags \"-s -static\"' -o mlr \"\$(cwbdir_${rname})/cmd/mlr\"
+    chmod -R u+rw . || true
+  )
   popd >/dev/null 2>&1
 }
 "

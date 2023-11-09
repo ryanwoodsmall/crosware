@@ -36,16 +36,19 @@ function cwpatch_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
-  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-  env \
-    CGO_ENABLED=0 \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-    GH_VERSION=\"\$(cwver_${rname})\" \
-    GO_LDFLAGS='-s -w' \
-      make
+  (
+    : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+    : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    env \
+      CGO_ENABLED=0 \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+      GH_VERSION=\"\$(cwver_${rname})\" \
+      GO_LDFLAGS='-s -w' \
+        make
+    chmod -R u+rw . || true
+  )
   popd >/dev/null 2>&1
 }
 "
@@ -53,15 +56,17 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
-  : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-  env \
-    CGO_ENABLED=0 \
-    GOCACHE=\"\${GOCACHE}\" \
-    GOMODCACHE=\"\${GOMODCACHE}\" \
-    PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-      make install prefix=\"\$(cwidir_${rname})\"
-  chmod -R u+rw .
+  (
+    : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
+    : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    env \
+      CGO_ENABLED=0 \
+      GOCACHE=\"\${GOCACHE}\" \
+      GOMODCACHE=\"\${GOMODCACHE}\" \
+      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+        make install prefix=\"\$(cwidir_${rname})\"
+    chmod -R u+rw .
+  )
   popd >/dev/null 2>&1
 }
 "
