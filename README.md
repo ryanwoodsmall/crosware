@@ -1766,6 +1766,7 @@ wc -l /tmp/astbuild.out
 - lowzip (https://github.com/svaarala/lowzip)
 - lrzsz (https://ohse.de/uwe/software/lrzsz.html)
 - lua stuff
+  - castl (https://github.com/PaulBernier/castl - compile javascript es5/es6 to lua)
   - lua versions
     - settle on a version, 5.3 is at least "done?"
     - haproxy, lighttpd, etc., seem to support 5.1
