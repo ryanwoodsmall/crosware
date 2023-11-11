@@ -1000,9 +1000,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - zulu8glibc - zulu 8 jdk
   - zulu11glibc - zulu 11 jdk
   - zulu17glibc - zulu 17 jdk
-  - zulu8musl - zulu 8 jdk built against musl libc (x86_64 only)
+  - zulu8musl - zulu 8 jdk built against musl libc (x86_64, aarch64 only)
   - zulu11musl - zulu 11 jdk built against musl libc (x86_64, aarch64 only)
   - zulu17musl - zulu 17 jdk built against musl libc (x86_64, aarch64 only)
+  - zulu21musl - zulu 21 jdk built against musl libc (x86_64, aarch64 only)
 
 ## recipes to consider
 

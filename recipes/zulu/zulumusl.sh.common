@@ -1,13 +1,8 @@
-#
-# XXX - move *all* versions rprof to zz_zulumusl.sh and set version pref 17->11->8
-# XXX - remove remove all zz_zulu#musl.sh files as part of genprofd
-#
-
 : ${rdir:="zulu${rver}-linux_musl_x64"}
 : ${rfile:="${rdir}.tar.gz"}
 : ${rurl:="https://cdn.azul.com/zulu/bin/${rfile}"}
 rreqs="zlib patchelf toybox"
-rprof="${cwetcprofd}/zz_${rname}.sh"
+rprof="${cwetcprofd}/zz_zulumusl.sh"
 rdlfile="${cwdl}/zulu/${rfile}"
 
 . "${cwrecipe}/common.sh"
@@ -49,10 +44,14 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'export JAVA_HOME=\"${rtdir}/current\"' > \"${rprof}\"
+  local v
+  find ${cwetcprofd}/ -type f -name '*zulu*musl*' | xargs rm -f || true
+  echo -n > \"${rprof}\"
   echo 'export _JAVA_OPTIONS=\"-Djava.io.tmpdir=${cwtmp} -Djava.awt.headless=true -XX:-UsePerfData\"' >> \"${rprof}\"
-  echo 'prepend_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
+  for v in 8 11 17 21 ; do
+    echo \"if [ -e ${cwsw}/zulu\${v}musl/current ] ; then prepend_path ${cwsw}/zulu\${v}musl/current/bin ; export JAVA_HOME=${cwsw}/zulu\${v}musl/current ; fi\" >> \"${rprof}\"
+  done
 }
 "
 
-# vim: ft=sh:
+# vim: ft=bash:

@@ -1,8 +1,3 @@
-#
-# XXX - move *all* versions rprof to zz_zz_zuluglibc.sh (to come _after_ musl) and set version pref 17->11->8
-# XXX - remove remove all zz_zulu#glibc.sh files as part of genprofd
-#
-
 majver="${rname}"
 majver="${majver%glibc}"
 majver="${majver#zulu}"
@@ -33,7 +28,7 @@ elif [[ ${uarch} =~ ^aarch ]] ; then
 else
   : ${rurl:="${burl}/bin/${rfile}"}
 fi
-: ${rprof:="${cwetcprofd}/zz_${rname}.sh"}
+: ${rprof:="${cwetcprofd}/zz_zz_zuluglibc.sh"}
 : ${rdlfile:="${cwdl}/zulu/${rfile}"}
 : ${rreqs:=""}
 
@@ -47,6 +42,10 @@ function cwinstall_${rname}() {
 "
 fi
 
+cwstubfunc "cwmake_${rname}"
+cwstubfunc "cwmakeinstall_${rname}"
+cwstubfunc "cwconfigure_${rname}"
+
 eval "
 function cwextract_${rname}() {
   cwextract \"${rdlfile}\" \"${rtdir}\"
@@ -54,31 +53,20 @@ function cwextract_${rname}() {
 "
 
 eval "
-function cwmake_${rname}() {
-  true
-}
-"
-
-eval "
-function cwmakeinstall_${rname}() {
-  true
-}
-"
-
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
-
-eval "
 function cwgenprofd_${rname}() {
-  echo 'export JAVA_HOME=\"${rtdir}/current\"' > \"${rprof}\"
+  local v
+  find ${cwetcprofd}/ -type f -name '*zulu*glibc*' | xargs rm -f || true
+  echo -n > \"${rprof}\"
   echo 'export _JAVA_OPTIONS=\"-Djava.io.tmpdir=${cwtmp} -Djava.awt.headless=true -XX:-UsePerfData\"' >> \"${rprof}\"
-  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
+  for v in 21 17 11 8 ; do
+    echo \"if [ -e ${cwsw}/zulu\${v}glibc/current ] ; then append_path ${cwsw}/zulu\${v}glibc/current/bin ; fi\" >> \"${rprof}\"
+  done
+  for v in 8 11 17 21 ; do
+    echo \"if [ -e ${cwsw}/zulu\${v}/glibc/current ] ; then export JAVA_HOME=${cwsw}/zulu\${v}glibc/current ; fi\" >> \"${rprof}\"
+  done
 }
 "
 
 unset jarch majver burl
 
-# vim: ft=sh:
+# vim: ft=bash:

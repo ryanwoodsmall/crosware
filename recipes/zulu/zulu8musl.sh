@@ -1,11 +1,10 @@
-rver="8.72.0.17-ca-jdk8.0.382"
+rver="8.74.0.17-ca-jdk8.0.392"
 mver="${rver%%.*}"
 rname="zulu${mver}musl"
-rsha256="4c570c3033a1368407078025db84b96131338bfe695037280339e37bf67d382a"
-# per-arch override rver/rdir/rfile/rurl/rsha256 here
+rsha256="e3a3e06a5d605f37b9f235cc0451c0c0f6eca83bd6ce26d9dd48904a3edc5f97"
 if [[ ${karch} =~ aarch64 ]] ; then
   rdir="zulu${rver}-linux_musl_aarch64"
-  rsha256="834a68b52c1eda5acc5376b30eaecfc452f2e7bff9869cbdd6b3846ead143977"
+  rsha256="332075a5b6c9ede4137424ffbb49aa46b06d5d9f442f603e604ef46fcb23df70"
 fi
 
 . "${cwrecipe}/${rname%${mver}musl}/${rname//${mver}musl/musl}.sh.common"
