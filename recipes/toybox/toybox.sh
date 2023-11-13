@@ -36,6 +36,7 @@ function cwmake_${rname}() {
   for i in 1 2 3 4 5 6 7 ; do
     make -j${cwmakejobs} V=1 CC=\"\${CC}\" HOSTCC=\"\${CC} -static\" CFLAGS=\"\${CFLAGS}\" HOSTCFLAGS=\"\${CFLAGS}\" HOSTLDFLAGS=\"\${LDFLAGS}\" || true
   done
+  make V=1 CC=\"\${CC}\" HOSTCC=\"\${CC} -static\" CFLAGS=\"\${CFLAGS}\" HOSTCFLAGS=\"\${CFLAGS}\" HOSTLDFLAGS=\"\${LDFLAGS}\" || true
   test -e toybox || cwfailexit \"toybox did not build for some reason? aarch64?\"
   popd >/dev/null 2>&1
 }
