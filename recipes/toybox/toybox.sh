@@ -33,7 +33,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  for i in 1 2 3 ; do
+  for i in 1 2 3 4 5 6 7 ; do
     make -j${cwmakejobs} V=1 CC=\"\${CC}\" HOSTCC=\"\${CC} -static\" CFLAGS=\"\${CFLAGS}\" HOSTCFLAGS=\"\${CFLAGS}\" HOSTLDFLAGS=\"\${LDFLAGS}\" || true
   done
   test -e toybox || cwfailexit \"toybox did not build for some reason? aarch64?\"
