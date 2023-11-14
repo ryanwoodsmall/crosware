@@ -7,11 +7,11 @@
 #     px5g selfsigned -newkey rsa:2048 -keyout client.key -out client.crt -subj /CN=client
 #     socat -d -d openssl-dtls-client:server:8444,cert=client.crt,key=client.key,cafile=server.crt tun:192.168.123.2/24,tun-name=tun0,iff-up
 rname="socat"
-rver="1.7.4.4"
+rver="1.8.0.0"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.bz2"
+rfile="${rdir}.tar.gz"
 rurl="http://www.dest-unreach.org/${rname}/download/${rfile}"
-rsha256="fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac"
+rsha256="6010f4f311e5ebe0e63c77f78613d264253680006ac8979f52b0711a9a231e82"
 rreqs="make openssl netbsdcurses readlinenetbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
@@ -22,6 +22,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
+    --enable-default-ipv=4 \
     --enable-openssl \
     --enable-readline \
     --disable-libwrap \

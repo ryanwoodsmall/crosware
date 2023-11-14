@@ -26,6 +26,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   ./configure ${cwconfigureprefix} \
+    --enable-default-ipv=4 \
     --enable-openssl \
     --enable-readline \
     --disable-libwrap \
