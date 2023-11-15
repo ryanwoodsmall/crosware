@@ -1674,6 +1674,7 @@ wc -l /tmp/astbuild.out
     - **requires** shared lib
   - lisp500 (http://web.archive.org/web/20070722203906/https://www.modeemi.fi/~chery/lisp500/)
   - lispe (https://github.com/naver/lispe)
+  - lysp (https://www.piumarta.com/software/lysp/ - small lisp)
   - mal (https://github.com/kanaka/mal/ - make a lisp, in a bunch of languages)
     - minimal (https://github.com/kanaka/miniMAL - js impl based on mal!)
   - mankai common lisp (https://common-lisp.net/project/mkcl/)
