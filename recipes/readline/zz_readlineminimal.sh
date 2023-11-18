@@ -5,16 +5,16 @@ rfile="$(cwfile_readline)"
 rdlfile="$(cwdlfile_readline)"
 rurl="$(cwurl_readline)"
 rsha256="$(cwsha256_readline)"
-rreqs="bootstrapmake bashtermcap"
+rreqs="bootstrapmake bashtermcap patch"
 #rpfile="${cwrecipe}/${rname%minimal}/${rname%minimal}.patches"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
-# XXX - warning on patching: readline like bash needs gnu patch, this is minimal
 eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwpatch_readline
   sed -i '/^install-static:/s,install-doc,,g' Makefile.in
   popd >/dev/null 2>&1
 }

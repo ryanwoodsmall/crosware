@@ -1,5 +1,5 @@
 rname="readline"
-rver="8.2.1"
+rver="8.2.7"
 rdir="${rname}-${rver%.*}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
@@ -11,7 +11,10 @@ rreqs="make ncurses sed patch"
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-curses ${cwconfigurefpicopts}
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-curses ${cwconfigurefpicopts} \
+    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd >/dev/null 2>&1
 }
 "
