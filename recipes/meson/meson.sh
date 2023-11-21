@@ -2,11 +2,11 @@
 # XXX - ugh
 #
 rname="meson"
-rver="1.2.3"
+rver="1.3.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/mesonbuild/meson/releases/download/${rver}/${rfile}"
-rsha256="4533a43c34548edd1f63a276a42690fce15bde9409bcf20c4b8fa3d7e4d7cac1"
+rsha256="4ba253ef60e454e23234696119cbafa082a0aead0bd3bbf6991295054795f5dc"
 rreqs="python3 ninja"
 
 . "${cwrecipe}/common.sh"
