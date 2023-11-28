@@ -4,11 +4,11 @@
 # XXX - lots of useful stuff in the _examples/ directory!!!
 #
 rname="gogit"
-rver="5.10.0"
+rver="5.10.1"
 rdir="go-git-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/go-git/go-git/archive/refs/tags/${rfile}"
-rsha256="1841f1ad805b8a01c827e8dd5165ac5ad0bf6577c390fc6c15e931d0f2c54709"
+rsha256="4f1bff106d40c28d99a624eb2c9b73ace529772e602abcdc9d7e59c911d304a9"
 rreqs="go"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
@@ -31,12 +31,14 @@ function cwmake_${rname}() {
   (
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    cd cli/go-git/
     env \
       CGO_ENABLED=0 \
       GOCACHE=\"\${GOCACHE}\" \
       GOMODCACHE=\"\${GOMODCACHE}\" \
       PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-        go build -ldflags '-s -w -extldflags \"-s -static\"' -o go-git \$(cwbdir_${rname})/cli/go-git/
+        go build -ldflags '-s -w -extldflags \"-s -static\"' -o ../../go-git
+    cd -
     chmod -R u+rw . || true
   )
   popd >/dev/null 2>&1
