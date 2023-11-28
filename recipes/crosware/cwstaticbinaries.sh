@@ -4,7 +4,7 @@
 #
 
 rname="cwstaticbinaries"
-rver="028a7c3ff5ea8371b2aa18ce6723d36d9a7ebbf8"
+rver="94013a63368ff77497a36e358034b180f8568e24"
 rdir="${rname}-${rver}"
 rfile=""
 rurl="https://github.com/ryanwoodsmall/static-binaries"
@@ -31,11 +31,11 @@ function cwfetch_${rname}() {
   if [ -z \"\${bu}\" ] ; then
     bu=\"${rurl}/raw/\$(cwver_${rname})\"
   fi
-  if [[ ${karch} =~ ^aarch64 ]] ; then a='aarch64' ; fi
-  if [[ ${karch} =~ ^arm     ]] ; then a='armhf'   ; fi
-  if [[ ${karch} =~ ^i       ]] ; then a='i686'    ; fi
-  if [[ ${karch} =~ ^riscv64 ]] ; then a='riscv64' ; fi
-  if [[ ${karch} =~ ^x86_64  ]] ; then a='x86_64'  ; fi
+  if [[ \${karch} =~ ^aarch64 ]] ; then a='aarch64' ; fi
+  if [[ \${karch} =~ ^arm     ]] ; then a='armhf'   ; fi
+  if [[ \${karch} =~ ^i       ]] ; then a='i686'    ; fi
+  if [[ \${karch} =~ ^riscv64 ]] ; then a='riscv64' ; fi
+  if [[ \${karch} =~ ^x86_64  ]] ; then a='x86_64'  ; fi
   if [ -z \"\${a}\" ] ; then
     cwfailexit \"${rname} not supported on \$(uname -m)\"
   fi
