@@ -11,6 +11,7 @@
 #
 # XXX - build with libressl+a tiny-curl? probably need a picocurllibressl w/zlib and nothing else... doesn't solve openssl req
 # XXX - need to figure out libs too, looks like /lib64 is default in some places (see libgit2)
+# XXX - defaults to -O3, tweak down/add -Wl,-s -g0 for no debug to speed up compilation?
 #
 
 rname="cmake"
