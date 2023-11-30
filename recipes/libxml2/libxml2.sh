@@ -14,7 +14,10 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-ftp \
     --with-legacy \
-    --without-python
+    --without-python \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd >/dev/null 2>&1
 }
 "
