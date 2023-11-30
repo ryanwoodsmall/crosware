@@ -1,9 +1,9 @@
 rname="libxslt"
-rver="1.1.38"
+rver="1.1.39"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://download.gnome.org/sources/${rname}/${rver%.*}/${rfile}"
-rsha256="1f32450425819a09acaff2ab7a5a7f8a2ec7956e505d7beeb45e843d0e1ecab1"
+rsha256="2a20ad621148339b0759c4d4e96719362dee64c9a096dbba625ba053846349f0"
 rreqs="make libgpgerror libgcrypt libxml2 slibtool xz zlib pkgconfig"
 
 . "${cwrecipe}/common.sh"
@@ -19,7 +19,10 @@ function cwconfigure_${rname}() {
       --without-plugins \
         LIBS='-llzma -lz' \
         LIBXML_CFLAGS=\"\$(pkg-config --cflags liblzma zlib libxml-2.0)\" \
-        LIBXML_LIBS=\"\$(pkg-config --libs liblzma zlib libxml-2.0)\"
+        LIBXML_LIBS=\"\$(pkg-config --libs liblzma zlib libxml-2.0)\" \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd >/dev/null 2>&1
 }
 "
