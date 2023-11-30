@@ -1,3 +1,7 @@
+#
+# XXX - 2.12.x breaks (at least) lighttpd, njs, openconnect
+# XXX - xmlstarlet needs #inlcude <libxml/xmlsave.h> w/2.12.x
+#
 rname="libxml2"
 rver="2.11.5"
 rdir="${rname}-${rver}"
