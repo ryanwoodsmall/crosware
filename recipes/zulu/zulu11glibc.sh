@@ -1,16 +1,16 @@
-rver="11.66.15-ca-jdk11.0.20"
+rver="11.68.17-ca-jdk11.0.21"
 mver="${rver%%.*}"
 rname="zulu${mver}glibc"
 rsha256=""
 
 if [[ ${uarch} =~ ^aarch64 ]] ; then
-  rsha256="54174439f2b3fddd11f1048c397fe7bb45d4c9d66d452d6889b013d04d21c4de"
+  rsha256="5638887df0e680c890b4c6f9543c9b61c96c90fb01f877d79ae57566466d3b3d"
 elif [[ ${uarch} =~ ^arm ]] ; then
-  rsha256="0caac5eceb50040296ddff231048ed600bdd9f7818899ca72b9e7f0175b95315"
+  rsha256="22b77de4bc46abd9b5463068ccd33e05d9ce6dd6fffb99dfab03e8c6d071b685"
 elif [[ ${uarch} =~ ^i.86 ]] ; then
-  rsha256="0589901c9311cfa570961a88717aae058b5839f3aef17bd98692f4b2e273292d"
+  rsha256="e0a8e9d8a8f5bab7caeab347fa9934761de79cb91967a9f8582f901b6b606eda"
 elif [[ ${uarch} =~ ^x86_64 ]] ; then
-  rsha256="a34b404f87a08a61148b38e1416d837189e1df7a040d949e743633daf4695a3c"
+  rsha256="725aba257da4bca14959060fea3faf59005eafdc2d5ccc3cb745403c5b60fb27"
 fi
 
 . "${cwrecipe}/${rname%${mver}glibc}/${rname//${mver}glibc/glibc}.sh.common"

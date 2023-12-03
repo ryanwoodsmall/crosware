@@ -4,6 +4,8 @@
 # see also: https://github.com/ryanwoodsmall/shell-ish/blob/master/bin/show-latest-zulu.sh
 # api: https://api.azul.com/metadata/v1/docs/swagger
 #
+# XXX - occasionally gets an -hl- (headless) variant, even when non -hl- is available? what?
+#
 set -euo pipefail
 
 # prefix script name to passed args and echo it out
