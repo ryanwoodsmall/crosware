@@ -4,10 +4,10 @@
 # XXX - terminfo (netbsdcurses), slang (termcap?), etc. - replace ncurses?
 #
 rname="utillinux"
-rver="2.39.2"
+rver="2.39.3"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.xz"
-rsha256="87abdfaa8e490f8be6dde976f7c80b9b5ff9f301e1b67e3899e1f05a59a1531f"
+rsha256="7b6605e48d1a49f43cc4b4cfc59f313d0dd5402fa40b96810bd572e167dfed0f"
 rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig"
 
 rburl="https://kernel.org/pub/linux/utils/util-linux"
