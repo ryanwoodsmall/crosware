@@ -4,7 +4,7 @@ rdir="$(cwdir_tinycurl)"
 rfile="$(cwfile_tinycurl)"
 rdlfile="$(cwdlfile_tinycurl)"
 rurl="$(cwurl_tinycurl)"
-rsha256=""
+rsha256="$(cwsha256_tinycurl)"
 rreqs="mbedtls libssh2mbedtls make cacertificates pkgconf zlib"
 
 . "${cwrecipe}/common.sh"

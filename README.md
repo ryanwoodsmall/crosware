@@ -901,16 +901,24 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - static still has issues
   - shared seems to work for hello world stuff
   - uses muslstandalone as libc
-- tinycurl (https://curl.se/tiny/ - curl but smaller, focus on http(s) - wolfssl, wolfssh, zlib, nghttp2)
+- tinycurl (https://curl.se/tiny/ - curl but smaller, focus on http/https)
   - tinycurlbearssl (bearssl, zlib, nghttp2)
   - tinycurllibressl (libressl, libssh2, zlib, nghttp2)
   - tinycurlmbedtls (mbedtls, libssh2, zlib, nghttp2)
   - tinycurlopenssl (openssl, libssh2, zlib, nghttp2)
-  - tinycurl772 (older version - wolfssl, wolfssh, zlib, nghttp2)
+  - tinycurlwolfssl (wolfssl, libssh2, zlib, nghttp2)
+  - tinycurl779
+    - tinycurl779bearssl (bearssl, zlib, nghttp2)
+    - tinycurl779libressl (libressl, libssh2, zlib, nghttp2)
+    - tinycurl779mbedtls (mbedtls, libssh2, zlib, nghttp2)
+    - tinycurl779openssl (openssl, libssh2, zlib, nghttp2)
+    - tinycurl779wolfssl (wolfssl, libsshw, zlib, nghttp2)
+  - tinycurl772
     - tinycurl772bearssl (bearssl, zlib, nghttp2)
     - tinycurl772libressl (libressl, libssh2, zlib, nghttp2)
     - tinycurl772mbedtls (mbedtls, libssh2, zlib, nghttp2)
     - tinycurl772openssl (openssl, libssh2, zlib, nghttp2)
+    - tinycurl772wolfssl (wolfssl, libsshw, zlib, nghttp2)
   - babycurl (mbedtls, libssh2, zlib)
   - babycurlwolfssl (wolfssl, libssh2, zlib)
   - picocurl (bearssl, zlib)

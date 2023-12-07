@@ -4,13 +4,19 @@ rdir="tiny-curl-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://curl.se/tiny/${rfile}"
 rsha256="f903cfcd008615d194f80a2b1c1f261609cea9c764eb9daaff92bf99040f7730"
-rreqs="wolfssl libssh2wolfssl"
-. "${cwrecipe}/${rname%772}/${rname%772}.sh.common"
+rreqs="${rname}wolfssl"
+
+. "${cwrecipe}/common.sh"
+
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
 
 eval "
-function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i.ORIG '/addcflags.*wolfssl/s,\$addcflags,-I${cwsw}/wolfssl/current/include,g' configure
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  mkdir -p ${rtdir}
+  rm -rf \$(cwidir_${rname}) || true
+  ln -sf \$(cwidir_\$(cwreqs_${rname} | cut -f1 -d' ')) \$(cwidir_${rname})
   popd >/dev/null 2>&1
 }
 "

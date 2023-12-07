@@ -6,7 +6,17 @@ rreqs+=" make cacertificates zlib pkgconf nghttp2 cares"
 # XXX - add new versions here
 pn="${rname}"
 pn="${pn#tinycurl772}"
+pn="${pn#tinycurl779}"
 pn="${pn#tinycurl}"
+
+for f in fetch clean extract make ; do
+  eval "
+  function cw${f}_${rname}() {
+    cw${f}_${rname%${pn}}
+  }
+  "
+done
+unset f
 
 eval "
 function cwconfigure_${rname}() {
@@ -19,8 +29,10 @@ function cwconfigure_${rname}() {
     extra=\"\$(echo --with-mbedtls --with-default-ssl-backend=mbedtls --with-libssh2 --without-{bearssl,openssl,wolfssl,wolfssh})\"
   elif [[ ${rname} =~ openssl ]] ; then
     extra=\"\$(echo --with-openssl --with-default-ssl-backend=openssl --with-libssh2 --without-{bearssl,mbedtls,wolfssl,wolfssh})\"
-  else
+  elif [[ ${rname} =~ wolfssl ]] ; then
     extra=\"\$(echo --with-wolfssl --with-default-ssl-backend=wolfssl --with-libssh2 --without-{bearssl,mbedtls,openssl,wolfssh})\"
+  else
+    cwfailexit \"you should not be here; tinycurl{,###}{,...} misconfigured\"
   fi
   cwmkdir bin
   ln -sf \"${cwsw}/pkgconf/current/bin/pkgconf\" bin/pkg-config
@@ -56,18 +68,6 @@ function cwmake_${rname}() {
   popd >/dev/null 2>&1
 }
 "
-
-# XXX - just need to call super here
-if [ ! -z "${pn}" ] ; then
-  for f in fetch clean extract make ; do
-    eval "
-    function cw${f}_${rname}() {
-      cw${f}_${rname%${pn}}
-    }
-    "
-  done
-  unset f
-fi
 
 eval "
 function cwmakeinstall_${rname}() {
