@@ -1314,8 +1314,8 @@ time_func ls -l -A /
   - easy solution i suppose
   - **bin/crosware** needs a modeline too?
 - easy way for non-interactive-only environment var settings
-  - e.g. in **etc/local.d/zz-interactive.sh**: ```if [[ $- =~ i ]] ; then unset ... ; fi```
-  - re-order path too? ```if [[ $- =~ i ]] ; then alias prepend_path=append_path ; fi```
+  - **scripts/non-interactive.sh**: symlink to **${cwtop}/etc/local.d/zz-local.sh** or similar
+  - **scripts/etc-profile-dot-d_crosware.sh**: symlink to **/etc/profile.d/zz-local.sh** or similar
 
 <!--
 # vim: ft=markdown
