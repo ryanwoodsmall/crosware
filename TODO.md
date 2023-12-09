@@ -1309,6 +1309,13 @@ time_func ls -l -A /
       fi
     }
     ```
+- rename everything under **recipes/** ```*.bash```
+  - vim sometimes decides `.sh` means POSIX and sometimes not?
+  - easy solution i suppose
+  - **bin/crosware** needs a modeline too?
+- easy way for non-interactive-only environment var settings
+  - e.g. in **etc/local.d/zz-interactive.sh**: ```if [[ $- =~ i ]] ; then unset ... ; fi```
+  - re-order path too? ```if [[ $- =~ i ]] ; then alias prepend_path=append_path ; fi```
 
 <!--
 # vim: ft=markdown
