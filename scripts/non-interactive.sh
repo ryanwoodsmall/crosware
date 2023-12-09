@@ -2,7 +2,7 @@
 #
 # cleanse the environment of crosware, moving crosware paths to the end
 # suitable for "i just want the commands somewhere" installs
-# this can be installed/symlinked to ${cwtop}/etc/local.d/zz-local.sh
+# this can be installed/symlinked to e.g. ${cwtop}/etc/local.d/zz-non-interactive.sh
 # should be safe to call from /etc/profile.d/ too? maybe? not trying it
 #
 # XXX - spaces in ${PATH}? no. please. just don't do it. use a symlink or something

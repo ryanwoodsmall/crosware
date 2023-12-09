@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # add crosware to the environment, safely-ish, for non-root users
-# copy/symlink to e.g. /etc/profile.d/zz-local.sh or similar
+# copy/symlink to e.g. /etc/profile.d/zz-crosware.sh or similar
 # add some common paths, just in case
 #
 # XXX - custom GIT_SSH_COMMAND for dropbear if ${CW_GIT_CMD} is git?
