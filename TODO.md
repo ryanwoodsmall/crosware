@@ -1316,6 +1316,10 @@ time_func ls -l -A /
 - easy way for non-interactive-only environment var settings
   - **scripts/non-interactive.sh**: symlink to **${cwtop}/etc/local.d/zz-local.sh** or similar
   - **scripts/etc-profile-dot-d_crosware.sh**: symlink to **/etc/profile.d/zz-local.sh** or similar
+- ```CW_TOOLCHAIN```
+  - environment var to control which toolchain is considered the "system" one
+  - default to **statictoolchain**
+  - recipe name or full path?
 
 <!--
 # vim: ft=markdown
