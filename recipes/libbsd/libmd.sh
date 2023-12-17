@@ -7,7 +7,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://libbsd.freedesktop.org/releases/${rfile}"
 rsha256="1bd6aa42275313af3141c7cf2e5b964e8b1fd488025caf2f971f43b00776b332"
-rreqs="make"
+rreqs="bootstrapmake"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
