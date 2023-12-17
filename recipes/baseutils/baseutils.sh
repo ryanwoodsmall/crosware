@@ -1,5 +1,6 @@
 #
 # XXX - no riscv64 machine support in arch/uname (yet)
+# XXX - move to pkgconf? or move everything towards pkgconf by default? both
 #
 
 rname="baseutils"
