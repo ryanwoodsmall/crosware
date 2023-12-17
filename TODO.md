@@ -1320,6 +1320,26 @@ time_func ls -l -A /
   - environment var to control which toolchain is considered the "system" one
   - default to **statictoolchain**
   - recipe name or full path?
+- ```cwdispatch "(program|function) args" "fallback args"```
+  - check for existence of first program/fucntion, run if it exists
+  - otherwise just run the second thing
+  - wrap for override-able/"generic" (not!) functions
+  - could eliminate a lot of `true`- or `:`-only stub functions
+  - breaks recursion for e.g. reqs? or recursion useful here? hmm
+  - ```bash
+    function cwdispatch() {
+      if command -v "${1%% *}" ; then
+        eval "${1}"
+      eval 
+        eval "${2}"
+      fi 
+    }
+    function cwdevenv() {
+      local reqs=$(cwreqs_${1} | tr ' ' ',')
+      local output='LDFLAGS=... CPPFLAGS=... PKG_CONFIG_{LIBDIR,PATH}=...'
+      cwdispatch cwdevenv_${1} "printf '%s\n' '${output}'"
+    }
+    ```
 
 <!--
 # vim: ft=markdown
