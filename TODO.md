@@ -1340,6 +1340,8 @@ time_func ls -l -A /
       cwdispatch cwdevenv_${1} "printf '%s\n' '${output}'"
     }
     ```
+- **termcap** (minimal) recipes...
+  - move to https://invisible-island.net/datafiles/current/termcap.src.gz ???
 
 <!--
 # vim: ft=markdown
