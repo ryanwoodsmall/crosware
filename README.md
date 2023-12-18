@@ -1489,6 +1489,7 @@ wc -l /tmp/astbuild.out
   - esvu (https://github.com/devsnek/esvu)
   - goja (https://github.com/dop251/goja - go js)
     - goja-nodejs (https://github.com/dop251/goja_nodejs - node.js compat?)
+  - hop (http://hop.inria.fr/home/index.html and https://github.com/manuel-serrano/hop - in scheme, shared JS execution between client and server)
   - iv (https://github.com/Constellation/iv)
   - jerryscript (https://github.com/jerryscript-project/jerryscript and http://jerryscript.net/)
     - needs an `fflush(stdout);` added for the prompt print...
