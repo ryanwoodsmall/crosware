@@ -1,9 +1,9 @@
 rname="nextvi"
-rver="138d15c0f02797563f97b865fc98666208282760"
+rver="a458e47c0a1293b04da52c75ae7fb3dbbfab1b7c"
 rdir="${rname}-${rver}"
 rfile="${rver}.zip"
 rurl="https://github.com/kyx0r/nextvi/archive/${rfile}"
-rsha256="2edefded0b87ea12f985184370cbc8bd7c6611117f67640c7bae8f4ad82fab08"
+rsha256="2cb95b4e49f614a9c1d140d9b3b469ec0a8acee71161f2dbfd184252f1a43f05"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
