@@ -1,9 +1,9 @@
 rname="nebula"
-rver="1.8.0"
+rver="1.8.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/slackhq/${rname}/archive/refs/tags/${rfile}"
-rsha256="678ad2bda47258cce8c2d14b3fa56d17c0ba4f894d75b75afab8937d64e12da7"
+rsha256="85c048b6d39296eeb8cf2d3324124d834011121383d0550662018190494d433e"
 rreqs="go cacertificates bootstrapmake"
 
 . "${cwrecipe}/common.sh"
