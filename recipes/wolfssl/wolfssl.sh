@@ -17,11 +17,14 @@
 #
 
 rname="wolfssl"
-rver="5.6.4"
-rdir="${rname}-${rver}-stable"
-rfile="${rdir}.tar.xz"
-rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="bebbc75f7f92c36bfd29c1b9318948f0c3317a13bf93fbfa0eb5ac14de7ce87c"
+rver="5.6.6"
+#rdir="${rname}-${rver}-stable"
+#rfile="${rdir}.tar.xz"
+#rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
+rdir="${rname}-${rver}"
+rfile="${rdir}.tar.gz"
+rurl="https://github.com/wolfSSL/wolfssl/releases/download/v${rver}-stable/${rfile}"
+rsha256="75aaafe3b8c776d1ac417288116c8d444115f9fac5acb382a39a7d163dfd618d"
 rreqs="make cacertificates configgit slibtool toybox baseutils"
 
 . "${cwrecipe}/common.sh"
