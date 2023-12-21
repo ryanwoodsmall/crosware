@@ -1,9 +1,9 @@
 rname="libcapng"
-rver="0.8.3"
+rver="0.8.4"
 rdir="libcap-ng-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://people.redhat.com/sgrubb/libcap-ng/${rfile}"
-rsha256="bed6f6848e22bb2f83b5f764b2aef0ed393054e803a8e3a8711cb2a39e6b492d"
+rsha256="68581d3b38e7553cb6f6ddf7813b1fc99e52856f21421f7b477ce5abd2605a8a"
 rreqs="make slibtool"
 
 . "${cwrecipe}/common.sh"
