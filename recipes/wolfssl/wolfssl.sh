@@ -128,6 +128,7 @@ function cwconfigure_${rname}() {
     --enable-tlsx \
     --enable-trustedca \
     --enable-truncatedhmac \
+    --enable-wolfssh \
     --enable-x963kdf \
     --enable-xchacha \
       CFLAGS=\"\${CFLAGS}\" \
