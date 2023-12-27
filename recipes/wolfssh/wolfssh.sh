@@ -1,17 +1,13 @@
 #
-# XXX - BROKEN WITH WOLFSSL 5.6.6 - heap changes here/there (heapmath?) or something else is breaking...
 # XXX - examples seem to work with username/password, but tinycurl does not?
-# XXX - DYNATYPE_AGENT_ID? DYNTYPE_AGENT_ID? ssh->heap? ssh->ctx->heap?
-#   grep -rl DYNATYPE_AGENT_ID . | xargs sed -i.ORIG s,DYNATYPE_AGENT_ID,DYNTYPE_AGENT_ID,g 2>/dev/null || true
-#   grep -rl 'ssh->heap' . | xargs sed -i.ORIG 's,ssh->heap,ssh->ctx->heap,g' 2>/dev/null || true
 #
 
 rname="wolfssh"
-rver="1.4.14"
+rver="1.4.15"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="0b0094cfdbbe306530cedfd1ea7b40f1c6372b2840a9373cb21faee1e85dc513"
+rsha256="d099298234702b1bfea7f35a59048f54365c6f4f07859f01af9a23fca94d0534"
 rreqs="make wolfssl configgit slibtool"
 
 . "${cwrecipe}/common.sh"
