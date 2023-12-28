@@ -3,10 +3,11 @@
 #
 
 rname="shellish"
-rver="master"
+rver="9cfdf812b909985b89c5ea4f911b4f7f6ebdc74a"
 rdir="${rname//ish/-ish}-${rver}"
 rfile="${rver}.zip"
-rurl="https://github.com/ryanwoodsmall/${rname//ish/-ish}/archive/refs/heads/${rfile}"
+#rurl="https://github.com/ryanwoodsmall/${rname//ish/-ish}/archive/refs/heads/${rfile}"
+rurl="https://codeload.github.com/ryanwoodsmall/shell-ish/zip/${rver}"
 rsha256=""
 rreqs="htermutils"
 
@@ -38,7 +39,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"\$(cwidir_${rname})/bin\"
   pushd \"\$(cwidir_${rname})\" >/dev/null 2>&1
   local p
-  for p in box-utils.sh chode coltotal dingafter dingsleep filesizetype.sh ht mixcase.sh procdirs.sh nll trl tru vim9p ; do
+  for p in box-utils.sh chode coltotal dingafter dingsleep filesizetype.sh ht mixcase.sh procdirs.sh nll revnl trl tru vim9p ; do
     ln -sf \"${rtdir}/current/\$(cwdir_${rname})/bin/\${p}\" \"\$(cwidir_${rname})/bin/\${p}\"
   done
   unset p
