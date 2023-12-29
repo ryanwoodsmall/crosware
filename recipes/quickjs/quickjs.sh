@@ -7,11 +7,11 @@
 #
 
 rname="quickjs"
-rver="2021-03-27"
+rver="2023-12-09"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://bellard.org/${rname}/${rfile}"
-rsha256="a45bface4c3379538dea8533878d694e289330488ea7028b105f72572fe7fe1a"
+rsha256="e8afe386f875d0e52310ea91aa48e2b0e04182e821f19147794e3e272f4c8d8c"
 #rfile="${rver}.tar.gz"
 #rurl="https://github.com/horhof/${rname}/archive/${rfile}"
 #rsha256="99a267894a162fb21cdb95061432910a7c5f0268c7e10b57bebc507586a629a6"
