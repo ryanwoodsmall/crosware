@@ -1,9 +1,9 @@
 rname="autoconf"
-rver="2.71"
+rver="2.72"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="f14c83cfebcc9427f2c3cea7258bd90df972d92eb26752da4ddad81c87a0faa4"
+rsha256="ba885c1319578d6c94d46e9b0dceb4014caafe2490e437a0dbca3f270a223f5a"
 rreqs="make perl m4 sed configgit"
 
 . "${cwrecipe}/common.sh"
