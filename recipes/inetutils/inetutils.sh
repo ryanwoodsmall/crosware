@@ -60,7 +60,8 @@ function cwconfigure_${rname}() {
     --with-libreadline-prefix=\"${cwsw}/readlinenetbsdcurses/current\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include) -I\$(cwbdir_${rname})/include\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
-      LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -lreadline -lcurses -lterminfo\"
+      LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -lreadline -lcurses -lterminfo\" \
+      TMPDIR=${cwtop}/tmp
   popd >/dev/null 2>&1
 }
 "
