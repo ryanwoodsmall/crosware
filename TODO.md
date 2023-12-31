@@ -1330,9 +1330,9 @@ time_func ls -l -A /
     function cwdispatch() {
       if command -v "${1%% *}" ; then
         eval "${1}"
-      eval 
+      eval
         eval "${2}"
-      fi 
+      fi
     }
     function cwdevenv() {
       local reqs=$(cwreqs_${1} | tr ' ' ',')
