@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# see scripts/start-root-sshd for setup instructions/startup
+#
+: ${sudosshopts:=""}
+export sudosshopts="${sudosshopts} -t"
+sudossh "${@}"

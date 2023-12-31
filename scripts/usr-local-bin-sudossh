@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# see scripts/start-root-sshd for setup instructions/startup
+#
+: ${sudosshopts:=""}
+: ${ssh:="ssh"}
+: ${user:="root"}
+: ${host:="localhost"}
+: ${port:="22"}
+${ssh} ${sudosshopts} -l ${user} -p ${port} ${host} "${@}"
