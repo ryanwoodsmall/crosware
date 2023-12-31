@@ -11,24 +11,30 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} --with-bundled-zlib
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix} \
+    --with-bundled-zlib \
+      C{,XX}FLAGS=\"\${CFLAGS} -Os -Wl,-s -g0\" \
+      LDFLAGS='-s -static' \
+      CPPFLAGS= \
+      PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install
-  strip --strip-all \"${ridir}/bin/${rname}\"
-  cd \"${ridir}/bin\"
+  strip --strip-all \"\$(cwidir_${rname})/bin/${rname}\"
+  cd \"\$(cwidir_${rname})/bin\"
   for p in cc cpp c++ gcc g++ ; do
     for a in ${statictoolchain_triplet[@]} musl ; do
       ln -sf ${rname} \${a}-\${p}
     done
     ln -sf ${rname} \${p}
   done
+  cd -
   popd >/dev/null 2>&1
 }
 "
