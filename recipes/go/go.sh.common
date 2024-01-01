@@ -5,6 +5,8 @@
 : ${rurl:="https://github.com/ryanwoodsmall/go-misc/releases/download/${rdate}-go${rver}/${rfile}"}
 : ${rreqs:=""}
 
+rreqs="${rreqs} cacertificates"
+
 . "${cwrecipe}/common.sh"
 
 eval "

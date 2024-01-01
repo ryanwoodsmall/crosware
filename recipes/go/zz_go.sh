@@ -16,7 +16,7 @@ rfile="$(cwfile_${rname}${rgover})"
 rdlfile="$(cwdlfile_${rname}${rgover})"
 rurl="$(cwurl_${rname}${rgover})"
 rsha256="$(cwsha256_${rname}${rgover})"
-rreqs="${rname}${rgover}"
+rreqs="${rname}${rgover} cacertificates"
 
 . "${cwrecipe}/common.sh"
 
