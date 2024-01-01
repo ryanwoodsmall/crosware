@@ -8,25 +8,21 @@ rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
+cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make -j${cwmakejobs} -f makefile.unix PREFIX=\"${ridir}\" CC=\"\${CC}\" CFLAGS=\"\${CFLAGS}\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make -j${cwmakejobs} -f makefile.unix PREFIX=\"\$(cwidir_${rname})\" CC=\"\${CC}\" CFLAGS=\"\${CFLAGS}\"
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  make -f makefile.unix PREFIX=\"${ridir}\" CC=\"\${CC}\" CFLAGS=\"\${CFLAGS}\" install
-  sed -i \"s,${ridir},${rtdir}/current,g\" \"${ridir}/lib/pkgconfig/${rname}.pc\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make -f makefile.unix PREFIX=\"\$(cwidir_${rname})\" CC=\"\${CC}\" CFLAGS=\"\${CFLAGS}\" install
+  sed -i \"s,\$(cwidir_${rname}),${rtdir}/current,g\" \"\$(cwidir_${rname})/lib/pkgconfig/${rname}.pc\"
   popd >/dev/null 2>&1
 }
 "

@@ -8,19 +8,15 @@ rreqs="bootstrapmake libtommath"
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
+cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   pcf=\"${rname}.pc\"
   cat \"\${pcf}.in\" > \"\${pcf}\"
   sed -i '/^prefix=/s,@to-be-replaced@,${rtdir}/current,g' \"\${pcf}\"
-  sed -i '/^Version:/s,@to-be-replaced@,${rver},g' \"\${pcf}\"
+  sed -i '/^Version:/s,@to-be-replaced@,'\"\$(cwver_${rname})\"',g' \"\${pcf}\"
   unset pcf
   popd >/dev/null 2>&1
 }
@@ -28,9 +24,9 @@ function cwpatch_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} \
-    PREFIX=\"${ridir}\" \
+    PREFIX=\"\$(cwidir_${rname})\" \
     CC=\"\${CC}\" \
     CFLAGS=\"\${CFLAGS} -DUSE_LTM -DLTM_DESC -I${cwsw}/libtommath/current/include\" \
     EXTRALIBS=\"-L${cwsw}/libtommath/current/lib -ltommath -static\" \
@@ -41,24 +37,24 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  rm -f \"${ridir}/bin/${rname}-hashsum\"
-  rm -f \"${ridir}/bin/hashsum\"
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  rm -f \"\$(cwidir_${rname})/bin/${rname}-hashsum\"
+  rm -f \"\$(cwidir_${rname})/bin/hashsum\"
   for t in install_all hashsum ltcrypt sizes constants openssl-enc ; do
     make \
-      PREFIX=\"${ridir}\" \
+      PREFIX=\"\$(cwidir_${rname})\" \
       CC=\"\${CC}\" \
       CFLAGS=\"\${CFLAGS} -DUSE_LTM -DLTM_DESC -I${cwsw}/libtommath/current/include\" \
       EXTRALIBS=\"-L${cwsw}/libtommath/current/lib -ltommath -static\" \
         \${t}
     if [[ ! \${t} =~ install_all ]] ; then
       \$(\${CC} -dumpmachine)-strip --strip-all \${t}
-      install -m 755 \${t} \"${ridir}/bin/${rname}-\${t}\"
+      install -m 755 \${t} \"\$(cwidir_${rname})/bin/${rname}-\${t}\"
     fi
   done
-  ln -sf \"${rname}-hashsum\" \"${ridir}/bin/hashsum\"
-  cwmkdir \"${ridir}/lib/pkgconfig\"
-  install -m 644 \"${rname}.pc\" \"${ridir}/lib/pkgconfig/${rname}.pc\"
+  ln -sf \"${rname}-hashsum\" \"\$(cwidir_${rname})/bin/hashsum\"
+  cwmkdir \"\$(cwidir_${rname})/lib/pkgconfig\"
+  install -m 644 \"${rname}.pc\" \"\$(cwidir_${rname})/lib/pkgconfig/${rname}.pc\"
   popd >/dev/null 2>&1
 }
 "
