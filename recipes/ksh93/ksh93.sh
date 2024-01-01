@@ -3,11 +3,11 @@
 #
 
 rname="ksh93"
-rver="1.0.7"
+rver="1.0.8"
 rdir="${rname%93}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/ksh/archive/refs/tags/${rfile}"
-rsha256="a5ea1e493f0343c644e12ff03bc464d682b8e61ec034b8e20e95965f62f0b870"
+rsha256="b46565045d0eb376d3e6448be6dbc214af454efc405d527f92cb81c244106c8e"
 rreqs="busybox dashtiny"
 
 . "${cwrecipe}/common.sh"
