@@ -454,8 +454,9 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - does _not_ work on arm (gc? gmp?)
 - ed (gnu ed)
 - elfutils (https://sourceware.org/elfutils/ - library and utilities for dealing with elf files, including some binutils workalikes(?) - ar, nm, ranlib, strings, strip, etc.)
-- elinks (http://elinks.or.cz/ from git: https://repo.or.cz/elinks.git)
-  - investigate adding tre, spidermonkey javascript/ecmascript/js, ...
+- elinks (https://github.com/rkd77/elinks - up-to-date/maintained elinks fork, currently only minimal variant)
+  - elinksminimal (libressl, zlib)
+  - investigate adding tre, spidermonkey/mujs/quickjs javascript/ecmascript/js, ...
 - elvis (https://github.com/mbert/elvis)
 - entr (http://entrproject.org/ and https://github.com/eradman/entr)
 - es (https://github.com/wryun/es-shell - extensible shell, descended from plan9/rc, with scheme/lisp/other functional programming additions)
