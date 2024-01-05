@@ -365,9 +365,9 @@ zulu_jdk_sha256sum["riscv64"]="none"
 declare -A zulu_jdk_dir zulu_jdk_file zulu_jdk_url
 for supported_arch in ${supported_arches[@]} ; do
   zulu_jdk_dir[${supported_arch}]="zulu${zulu_jdk_ver[${supported_arch}]}-linux_${zulu_jdk_arch[${supported_arch}]}"
-  if [[ ${supported_arch} =~ ^(i686|x86_64)$ ]] ; then
+  if [[ ${supported_arch} =~ ^(i686|x86_64|aarch64)$ ]] ; then
     zulu_jdk_base_url="http://cdn.azul.com/zulu/bin"
-  elif [[ ${supported_arch} =~ ^a(rmv|arch) ]] ; then
+  elif [[ ${supported_arch} =~ ^armv ]] ; then
     zulu_jdk_base_url="http://cdn.azul.com/zulu-embedded/bin"
   fi
   zulu_jdk_file[${supported_arch}]="${zulu_jdk_dir[${supported_arch}]}.tar.gz"
