@@ -28,7 +28,7 @@ if [ ! -z "${BASH_VERSION}" ] ; then
     for i in ${!y[@]} ; do
       p+=( "${y[${i}]}" )
     done
-    export PATH=$(for i in ${!p[@]} ; do printf '%s\n' "${p[${i}]}" ; done | paste -s -d : -)
+    export PATH=$(for i in ${!p[@]} ; do printf '%s\n' "${p[${i}]}" ; done | awk '!seen[$0]++' | paste -s -d : -)
   fi
   unset a y n p i d
 fi
