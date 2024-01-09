@@ -5,11 +5,11 @@
 #
 
 rname="rclone"
-rver="1.65.0"
+rver="1.65.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="22a15cbc381bab351c0698c83c1666344a07e1bde39ba44f33b95c5fb22cfaf4"
+rsha256="e16f7f6b81865c7f719d4b214ea45a0608ada71d9b9b6f65c6ead21128cbc8fe"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
