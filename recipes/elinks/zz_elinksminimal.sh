@@ -1,3 +1,6 @@
+#
+# XXX - should this require bashtiny, use ${cwsw}/software/bashtiny/current/bin/bash ???
+#
 rname="elinksminimal"
 rver="$(cwver_${rname%%minimal})"
 rdir="$(cwdir_${rname%%minimal})"
@@ -17,7 +20,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\" \
-    /bin/bash ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+    bash ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --disable-{html-highlight,css,xbel,css,nls,gettext} \
       --enable-{ipv6,ftp,gemini,gopher,utf-8,{88,256}-colors,true-color} \
       --without-{x,guile,perl,ruby,libcurl,mujs,quickjs,libevent,libev,gnutls} \
