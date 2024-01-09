@@ -169,7 +169,8 @@ export cwcurl
 export cwcurlopts
 # make
 #   -j # of parallel jobs
-: ${cwmakejobs:="$(($(nproc)+1))"}
+: ${cwnproc:="$(nproc)"}
+: ${cwmakejobs:="$((${cwnproc}+1))"}
 export cwmakejobs
 
 #
