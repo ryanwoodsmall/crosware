@@ -4,6 +4,8 @@ rsn="${rname%${rsv}}"
 rdir="${rsn}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/${rfile}"
+# XXX - this change slipped into 3e44f32be29bd0086c62d612a261acf29fb5b0de
+# XXX - leaving for now since zlib isn't needed by anything in libressl afaict
 #rreqs="bootstrapmake cacertificates configgit zlib"
 rreqs="bootstrapmake cacertificates configgit"
 rprof="${cwetcprofd}/zz_${rname}.sh"
