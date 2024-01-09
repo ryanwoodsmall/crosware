@@ -1,34 +1,33 @@
 rname="k0sctl"
-rver="0.17.2"
+rver="0.17.3"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
 rsha256=""
-if [[ ${karch} =~ ^aarch64 ]] ; then
+if [[ ${karch} =~ ^x86_64 ]] ; then
+  rfile="${rname}-linux-x64"
+  rsha256="691df629e12e2fc026198595215528ae017edd0c05b406fa91a497d228ef2132"
+elif [[ ${karch} =~ ^aarch64 ]] ; then
   rfile="${rname}-linux-arm64"
-  rsha256="3881f10f5dd887f2e2b2fe74b00f5fe3618ed8c85f6949c83e87a4cadb7341fa"
+  rsha256="38d9351e724dd9fad1685af11dcf689ea346e53328e6339ad72ae113ff98f008"
 elif [[ ${karch} =~ ^arm ]] ; then
   rfile="${rname}-linux-arm"
-  rsha256="223d755d21d25c759936bb55663b79ef3a9cd0e9e8c7881c5097650790fc559f"
-elif [[ ${karch} =~ ^x86_64 ]] ; then
-  rfile="${rname}-linux-x64"
-  rsha256="bda0fddea3c5e560f7c4da1bed8a42798797dcaa39c8e38f521ad3b54974482e"
+  rsha256="3ef2ba73d09c5f396693e51990e271f1c19f0f7c5ea99012801f52914cfb0a1f"
 fi
 rurl="https://github.com/k0sproject/${rname}/releases/download/v${rver}/${rfile}"
 
 . "${cwrecipe}/common.sh"
 
-if [[ ${karch} =~ ^(i.86|riscv64) ]] ; then
-  eval "
-  function cwinstall_${rname}() {
-    cwscriptecho \"${rname} does not support ${karch}\"
-  }
-  "
-fi
-
 cwstubfunc "cwextract_${rname}"
 cwstubfunc "cwconfigure_${rname}"
 cwstubfunc "cwmake_${rname}"
+
+eval "
+function cwfetch_${rname}() {
+  test -z \"\$(cwsha256_${rname})\" && cwfailexit \"${rname} does not support \${karch}\"
+  cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
+}
+"
 
 eval "
 function cwmakeinstall_${rname}() {
