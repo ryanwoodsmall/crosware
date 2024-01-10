@@ -2148,6 +2148,7 @@ wc -l /tmp/astbuild.out
   - ```./configure --prefix=${ridir} --enable-static{,=yes} --enable-shared=no --disable-shared --with-boost-libdir=${cwsw}/boost/current/lib LDFLAGS="${LDFLAGS} -L${cwsw}/boost/current/lib" CXXFLAGS="${CXXFLAGS} -I${cwsw}/boost/current/include"```
   - ```source-highlight --out-format esc256 --output STDOUT --input blah.cpp | less -R```
 - spidermonkey
+  - https://github.com/ptomato/mozjs - convenient tarballs? maybe?
 - spidernode
 - sparse (https://sparse.wiki.kernel.org/index.php/Main_Page)
 - splint (https://en.wikipedia.org/wiki/Splint_(programming_tool))
