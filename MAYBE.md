@@ -404,6 +404,7 @@ wc -l /tmp/astbuild.out
 - incron (https://github.com/ar-/incron - cron for filesystem events)
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - invisible-island (thomas e. dickey) stuff
+  - add (https://invisible-island.net/add/add.html - nice full screen curses calculator!)
   - bcpp (https://invisible-island.net/bcpp/bcpp.html)
   - c_count (https://invisible-island.net/c_count/c_count.html)
   - cindent (https://invisible-island.net/cindent/cindent.html)
