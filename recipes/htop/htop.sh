@@ -35,6 +35,7 @@ function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null
   ./configure ${cwconfigureprefix} \
     --enable-static \
+    --disable-capabilities \
     --disable-dependency-tracking \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
