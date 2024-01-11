@@ -4,11 +4,11 @@
 #
 
 rname="zlibng"
-rver="2.1.5"
+rver="2.1.6"
 rdir="zlib-ng-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/zlib-ng/zlib-ng/archive/refs/tags/${rfile}"
-rsha256="3f6576971397b379d4205ae5451ff5a68edf6c103b2f03c4188ed7075fbb5f04"
+rsha256="a5d504c0d52e2e2721e7e7d86988dec2e290d723ced2307145dedd06aeb6fef2"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"

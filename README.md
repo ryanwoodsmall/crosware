@@ -1040,7 +1040,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - ynetd (https://github.com/johnsonjh/ynetd and https://yx7.cc/code/ - minimal tcp/inetd server)
 - zip
 - zlib
-- zlibng (https://github.com/zlib-ng/zlib-ng - fork with vector support, compiled static and shared with `libz.a` compat lib and `libz.so.1` created as well)
+- zlibng (https://github.com/zlib-ng/zlib-ng - fork with vector support, compiled static ~and shared~ with `libz.a` compat lib ~and `libz.so.1`~ created as well)
 - zstd (https://github.com/facebook/zstd)
 - zulu - built-in recipe, glibc-based for bootstrapping (chrome os, centos, debian, ubuntu, ...)
   - zulu8glibc - zulu 8 jdk
