@@ -43,6 +43,8 @@ function cwmakeinstall_${rname}() {
     ln -sf \"${rtdir}/current/\$(cwdir_${rname})/bin/\${p}\" \"\$(cwidir_${rname})/bin/\${p}\"
   done
   unset p
+  rm -rf shell-ish-master
+  ln -sf shell-ish-\$(cwver_${rname}) shell-ish-master
   popd >/dev/null 2>&1
 }
 "
