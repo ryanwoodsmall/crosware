@@ -1,5 +1,5 @@
 rname="readline"
-rver="8.2.7"
+rver="8.2.10"
 rdir="${rname}-${rver%.*}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
