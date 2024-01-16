@@ -7,11 +7,11 @@
 #
 
 rname="sqlite"
-rver="3440200"
+rver="3450000"
 rdir="${rname}-autoconf-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://www.sqlite.org/2023/${rfile}"
-rsha256="1c6719a148bc41cf0f2bbbe3926d7ce3f5ca09d878f1246fcc20767b175bb407"
+rurl="https://www.sqlite.org/2024/${rfile}"
+rsha256="72887d57a1d8f89f52be38ef84a6353ce8c3ed55ada7864eb944abd9a495e436"
 rreqs="make netbsdcurses readlinenetbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
