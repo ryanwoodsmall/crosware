@@ -1848,14 +1848,30 @@ function cwlistrecipedeps() {
 }
 
 #
+# return longest input string length
+#
+function cwlongest() {
+  local w=0
+  local l=0
+  while test ${#} -gt 1 ; do
+    l=${#1}
+    shift
+    test ${l} -gt ${w} && w=${l} || true
+  done
+  echo ${w}
+}
+
+#
 # usage
 #
 function cwusage() {
+  #local padding=$((2+$(cwlongest ${!cwcmds[@]})))
   echo "usage: ${cwname} [command]"
   echo
   echo "commands:"
   for cwcmd in $(echo ${!cwcmds[@]} | tr ' ' '\n' | sort) ; do
     echo "  ${cwcmd} : ${cwcmds[${cwcmd}]}"
+    #printf '%'${padding}'s : %s\n' "${cwcmd}" "${cwcmds[${cwcmd}]}"
   done
   echo
 }
