@@ -8,27 +8,24 @@
 #
 
 rname="plan9port"
-rver="d0d440860f2000a1560abb3f593cdc325fcead4c"
+rver="be7c68f6954f7dcaa53403e0f600716f65a13d32"
 rdir="${rname}-${rver}"
 rfile="${rver}.zip"
 rurl="https://github.com/9fans/${rname}/archive/${rfile}"
-rsha256="7c61418a2a2c83ce24af92968966b205fd231dce298dff18b1735013414dc1af"
+rsha256="931b96e814b31769bf62b2ef2189ac2f474207d079932987c468b1c86854fb39"
 rreqs="busybox toybox"
 rprof="${cwetcprofd}/zz_zz_${rname}.sh"
 rbdir="${cwsw}/${rname}/${rdir}"
 
 . "${cwrecipe}/common.sh"
 
+cwstubfunc "cwclean_${rname}"
+cwstubfunc "cwmake_${rname}"
+
 eval "
 function cwextract_${rname}() {
   cwmkdir \"${ridir}\"
   cwextract \"${rdlfile}\" \"${rtdir}\" >\"${ridir}/${rname}_extract.out\" 2>&1
-}
-"
-
-eval "
-function cwclean_${rname}() {
-  true
 }
 "
 
@@ -50,12 +47,6 @@ function cwconfigure_${rname}() {
   echo CC9=\${CC} >> LOCAL.config
   echo CC9FLAGS=-Wl,-static >> LOCAL.config
   popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  true
 }
 "
 
