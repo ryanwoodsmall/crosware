@@ -1,17 +1,22 @@
 rname="libidn"
-rver="1.41"
+rver="1.42"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/libidn/${rfile}"
-rsha256="884d706364b81abdd17bee9686d8ff2ae7431c5a14651047c68adf8b31fd8945"
+rsha256="d6c199dcd806e4fe279360cb4b08349a0d39560ed548ffd1ccadda8cdecb4723"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --disable-nls --disable-doc
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+    --disable-doc \
+    --disable-nls \
+      LDFLAGS=-static \
+      CPPFLAGS= \
+      PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
 "
