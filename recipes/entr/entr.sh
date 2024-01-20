@@ -1,9 +1,9 @@
 rname="entr"
-rver="5.4"
+rver="5.5"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/eradman/${rname}/archive/refs/tags/${rfile}"
-rsha256="491dded2cc3f1dcd8d26f496a4c7b3a996b91c7ab20883ca375037a398221f9e"
+rsha256="128c0ce2efea5ae6bd3fd33c3cd31e161eb0c02609d8717ad37e95b41656e526"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
