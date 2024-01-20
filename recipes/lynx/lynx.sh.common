@@ -32,10 +32,10 @@ function cwconfigure_${rname}() {
   fi
   if [[ ${rname} =~ libressl ]] ; then
     e+=' --with-ssl=${cwsw}/libressl/current'
-    libs+=' -lcrypto -lssl -lz'
+    libs+=' -lssl -lcrypto -lz'
   else
     e+=' --with-ssl=${cwsw}/openssl/current'
-    libs+=' -lcrypto -lssl -lz'
+    libs+=' -lssl -lcrypto -lz'
   fi
   env PATH=\"${cwsw}/pkgconfig/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
@@ -51,6 +51,9 @@ function cwconfigure_${rname}() {
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS=\"\${libs}\"
   unset e libs
+  if [[ ${rname} =~ netbsdcurses ]] && [[ ! ${rname} =~ slang ]] ; then
+    echo '#undef HAVE_DELSCREEN' >> lynx_cfg.h
+  fi
   popd >/dev/null 2>&1
 }
 "
