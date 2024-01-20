@@ -9,8 +9,11 @@
 # XXX - reinstall -> ri, etc.
 #
 
-set -eu
-set -o pipefail
+# XXX - whoops, can't do this if you do like 
+#   user@host dir $ `./scripts/tcrs recipe`
+# if that fails, logout!
+#set -eu
+#set -o pipefail
 
 if [ ${#} -lt 1 ] ; then
   echo "# no recipes given..." 1>&2
