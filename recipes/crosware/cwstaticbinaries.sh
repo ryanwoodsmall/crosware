@@ -4,7 +4,7 @@
 #
 
 rname="cwstaticbinaries"
-rver="0a37895f6b324e174a750c2ecb913d0a75ddf64e"
+rver="20e5ad502e1c9cd1293e9d8db2bc74b2470b45df"
 rdir="${rname}-${rver}"
 rfile=""
 rurl="https://github.com/ryanwoodsmall/static-binaries"
@@ -45,7 +45,7 @@ function cwfetch_${rname}() {
     f=\"${cwtop}/scripts/fakecurl.sh\"
   fi
   cwmkdir \"\$(cwidir_${rname})/bin\"
-  for p in ag bash brssl busybox curl dash dropbearmulti entr jo jq less links make mk mksh neatvi pv px5g rc rlwrap rsync sbase-box screen socat stunnel tini tmux toybox ubase-box unrar x509cert xz ; do
+  for p in ag bash brssl busybox curl dash dropbearmulti entr jo jq less links make mandoc mk mksh neatvi nc pv px5g rc rlwrap rsync sbase-box screen socat stunnel tini tmux toybox ubase-box unrar x509cert xz ; do
     u=\"\${bu}/\${a}/\${p}\"
     \${f} \"\${u}\" \"\$(cwidir_${rname})/bin/\${p}\"
     chmod 755 \"\$(cwidir_${rname})/bin/\${p}\"
