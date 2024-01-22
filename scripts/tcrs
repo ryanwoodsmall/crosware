@@ -9,7 +9,7 @@
 # XXX - reinstall -> ri, etc.
 #
 
-# XXX - whoops, can't do this if you do like 
+# XXX - whoops, can't do this if you do like
 #   user@host dir $ `./scripts/tcrs recipe`
 # if that fails, logout!
 #set -eu
