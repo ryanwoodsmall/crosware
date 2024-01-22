@@ -39,3 +39,5 @@
 /etc/wireguard*
 /etc/sysklogd*
 /var/log*
+/etc/pci.ids
+/etc/usb.ids

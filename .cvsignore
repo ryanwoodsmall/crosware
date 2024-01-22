@@ -17,3 +17,5 @@ var/run/**
 var/spool/**
 **/*.swp
 .git.PRE-**
+etc/pci.ids
+etc/usb.ids
