@@ -1,9 +1,10 @@
 rname="ddrescue"
-rver="1.27"
+rver="1.28"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
-rurl="http://download.savannah.gnu.org/releases/${rname}/${rfile}"
-rsha256="38c80c98c5a44f15e53663e4510097fd68d6ec20758efdf3a925037c183232eb"
+#rurl="http://download.savannah.gnu.org/releases/${rname}/${rfile}"
+rurl="http://ftp.gnu.org/pub/gnu/ddrescue/${rfile}"
+rsha256="6626c07a7ca1cc1d03cad0958522c5279b156222d32c342e81117cfefaeb10c1"
 rreqs="make lunzip"
 
 . "${cwrecipe}/common.sh"
