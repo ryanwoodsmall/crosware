@@ -11,11 +11,11 @@
 #
 
 rname="gauche"
-rver="0.9.13"
+rver="0.9.14"
 rdir="${rname//g/G}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://github.com/shirok/${rname//g/G}/releases/download/release${rver//./_}/${rfile}"
-rsha256="792fe4e4f800acd7293f9e3095d580a87cea8b221f33707ae37874f8a3f1b76b"
+rsha256="02928f8535cf83f23ed6097f1b07b1fdb487a5ad2cb81d8a34d5124d02db3d48"
 rreqs="make libressl mbedtls zlib gdbm"
 
 . "${cwrecipe}/common.sh"
@@ -38,7 +38,7 @@ function cwconfigure_${rname}() {
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
     --with-dbm=gdbm,ndbm,odbm \
     --with-local=\"\$(echo ${cwsw}/{${rreqs// /,}}/current | tr ' ' ':')\" \
-    --with-tls=axtls,mbedtls \
+    --with-tls=mbedtls \
     --with-zlib=\"${cwsw}/zlib/current\" \
       CFLAGS='-fPIC' \
       CXXFLAGS='-fPIC' \
