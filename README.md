@@ -607,6 +607,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - kind (https://kind.sigs.k8s.io/ - k8s in docker, pure go)
 - ksh93 (https://github.com/ksh93/ksh - up-to-date/patched at&t ksh93 with ast build system)
 - kubernetes (binaries)
+  - kubectllatest (kubectl only)
 - kuroko (https://kuroko-lang.github.io/ and https://github.com/kuroko-lang/kuroko - small python-like dynamic language)
 - less (netbsdcurses)
   - lessminimal (stripped down with small gnu termcap from bash)
