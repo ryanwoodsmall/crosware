@@ -1,9 +1,9 @@
 rname="libidn2"
-rver="2.3.4"
+rver="2.3.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/libidn/${rfile}"
-rsha256="93caba72b4e051d1f8d4f5a076ab63c99b77faee019b72b9783b267986dbb45f"
+rsha256="4c21a791b610b9519b9d0e12b8097bf2f359b12f8dd92647611a929e6bfd7d64"
 rreqs="make libunistring"
 
 . "${cwrecipe}/common.sh"
@@ -11,7 +11,12 @@ rreqs="make libunistring"
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --disable-nls --disable-doc
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+    --disable-doc \
+    --disable-nls \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd >/dev/null 2>&1
 }
 "
