@@ -16,7 +16,7 @@ rdir="${rname//g/G}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://github.com/shirok/${rname//g/G}/releases/download/release${rver//./_}/${rfile}"
 rsha256="02928f8535cf83f23ed6097f1b07b1fdb487a5ad2cb81d8a34d5124d02db3d48"
-rreqs="make libressl mbedtls zlib gdbm"
+rreqs="make libressl mbedtls zlib gdbm netbsdcurses readlinenetbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
