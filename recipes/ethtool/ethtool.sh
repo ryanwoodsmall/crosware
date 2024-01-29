@@ -3,11 +3,11 @@
 # XXX - mailing list message: https://www.spinics.net/lists/netdev/msg658962.html
 #
 rname="ethtool"
-rver="6.6"
+rver="6.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://mirrors.edge.kernel.org/pub/software/network/${rname}/${rfile}"
-rsha256="833a8493cb9cd5809ab59743092d9a38742c282290800e9626407511bbcebf9e"
+rsha256="c3ae526b01ce4d8df6c794ab170de4a4104d111ea8d8db3f1fd7c25fcb905619"
 rreqs="make libmnl"
 
 . "${cwrecipe}/common.sh"
