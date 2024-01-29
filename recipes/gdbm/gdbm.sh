@@ -1,3 +1,7 @@
+#
+# XXX - need base include+lib+pkgconfig without readline, tool with readline
+# XXX - same issue with sqlite
+#
 rname="gdbm"
 rver="1.23"
 rdir="${rname}-${rver}"
