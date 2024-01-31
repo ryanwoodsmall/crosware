@@ -1,7 +1,3 @@
-#
-# XXX - need base include+lib+pkgconfig without readline, tool with readline
-# XXX - same issue with sqlite
-#
 rname="gdbm"
 rver="1.23"
 rdir="${rname}-${rver}"
@@ -23,6 +19,26 @@ function cwconfigure_${rname}() {
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LIBS='-lreadline -lcurses -lterminfo -static -s' \
       PKG_CONFIG_{LIBDIR,PATH}=
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make install ${rlibtool}
+  install -m 755 \"\$(cwidir_${rname})/bin/gdbmtool\" \"\$(cwidir_${rname})/bin/gdbmtool-readline\"
+  make clean || true
+  make distclean || true
+  rm -f \"\$(cwidir_${rname})/bin/gdbmtool\"
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --disable-nls --enable-libgdbm-compat --without-readline \
+    LDFLAGS=-static \
+    CPPFLAGS= \
+    PKG_CONFIG_{LIBDIR,PATH}=
+  make -j${cwmakejobs} ${rlibtool}
+  make install ${rlibtool}
+  install -m 755 \"\$(cwidir_${rname})/bin/gdbmtool\" \"\$(cwidir_${rname})/bin/gdbmtool-minimal\"
+  ln -sf gdbmtool-readline \"\$(cwidir_${rname})/bin/gdbmtool\"
   popd >/dev/null 2>&1
 }
 "
