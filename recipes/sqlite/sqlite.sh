@@ -4,6 +4,7 @@
 # XXX - editline? probably not, libeditminimal though?
 # XXX - unofficial looking linenoise support?
 # XXX - custom make install builds w/readline and bare; configure/build twice is slow/wasteful
+# XXX - minimal/tiny variant?
 #
 
 rname="sqlite"
@@ -28,25 +29,25 @@ function cwconfigure_${rname}() {
 }
 "
 
-#eval "
-#function cwmakeinstall_${rname}() {
-#  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-#  make install ${rlibtool}
-#  make clean || true
-#  make distclean || true
-#  install -m 755 \"\$(cwidir_${rname})/bin/sqlite3\" \"\$(cwidir_${rname})/bin/sqlite3-readline\"
-#  rm -f \"\$(cwidir_${rname})/bin/sqlite3\"
-#  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --disable-readline --disable-editline \
-#    CPPFLAGS=\"-I${cwsw}/\" \
-#    LDFLAGS=\"-L${cwsw}/zlib/current/lib -static\" \
-#    LIBS=\"-L${cwsw}/zlib/current/lib -lz -static\"
-#  make -j${cwmakejobs} ${rlibtool}
-#  make install ${rlibtool}
-#  install -m 755 \"\$(cwidir_${rname})/bin/sqlite3\" \"\$(cwidir_${rname})/bin/sqlite3-minimal\"
-#  ln -sf sqlite3-readline \"\$(cwidir_${rname})/bin/sqlite3\"
-#  popd >/dev/null 2>&1
-#}
-#"
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make install ${rlibtool}
+  install -m 755 \"\$(cwidir_${rname})/bin/sqlite3\" \"\$(cwidir_${rname})/bin/sqlite3-readline\"
+  make clean || true
+  make distclean || true
+  rm -f \"\$(cwidir_${rname})/bin/sqlite3\"
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --disable-readline --disable-editline \
+    CPPFLAGS=\"-I${cwsw}/zlib/current/include\" \
+    LDFLAGS=\"-L${cwsw}/zlib/current/lib -static\" \
+    LIBS=\"-L${cwsw}/zlib/current/lib -lz -static\"
+  make -j${cwmakejobs} ${rlibtool}
+  make install ${rlibtool}
+  install -m 755 \"\$(cwidir_${rname})/bin/sqlite3\" \"\$(cwidir_${rname})/bin/sqlite3-minimal\"
+  ln -sf sqlite3-readline \"\$(cwidir_${rname})/bin/sqlite3\"
+  popd >/dev/null 2>&1
+}
+"
 
 eval "
 function cwgenprofd_${rname}() {
