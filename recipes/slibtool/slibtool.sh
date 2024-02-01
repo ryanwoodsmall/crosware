@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/midipix-project/slibtool/archive/refs/tags/${rfile}"
 rsha256="a93294fa3ad44d690448341a5bb0234f985f8a57be660c03180c27db4a809840"
-rreqs="bootstrapmake"
+rreqs="make m4"
 
 . "${cwrecipe}/common.sh"
 
