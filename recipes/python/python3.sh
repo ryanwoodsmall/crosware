@@ -6,6 +6,7 @@
 # XXX - move to libressl to avoid perl dep in openssl? (libressl support removed in 3.10)
 # XXX - shared build should enable venv to work
 # XXX - "minimal" variant: libressl (no perl prereq), netbsdcurses+readline, dbm/gdbm/ndbm (via gdbm), sqlite, libffi, ...
+# XXX - or... nothing, actually minimal. hmm
 # XXX - sabotage patch for netbsd-curses https://github.com/sabotage-linux/sabotage/blob/06a4a815/KEEP/python2710-curses.patch
 # XXX - standalone builds, crib?: https://github.com/indygreg/python-build-standalone
 # XXX - ninja/meson cruft is ugly, need real separation

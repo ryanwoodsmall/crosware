@@ -10,7 +10,6 @@
 #     - requires libgcrypt, which needs libgpgerror
 #     - libssh2 w/libgcrypt OR mbedtls need '--key id_rsa --pubkey id_rsa.pub' options
 #     - https://www.zufallsheld.de/2020/06/07/debugging-issues-libcurl-pubkey-authentication/
-# - enable libidn2?
 # - add ngtcp2+nghttp3 (experimental, really needs openssl (with patches)? gnutls?)
 # - zstd support?
 # - brotli?
@@ -20,6 +19,7 @@
 # XXX - enable c-ares resolver - necessary for dns overrides!
 #       - curl: option --dns-servers: the installed libcurl version doesn't support this
 #       - https://github.com/curl/curl/issues/8551
+# XXX - libpsl support is enabled by default now; it requires libidn2, libunistring and a python, explicitly disable...
 #
 
 rname="curl"
