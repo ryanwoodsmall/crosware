@@ -1069,6 +1069,7 @@ wc -l /tmp/astbuild.out
   - mosh (https://github.com/higepon/mosh and http://mosh.monaos.org/files/doc/text/About-txt.html)
   - oaklisp (https://github.com/barak/oaklisp)
   - otus lisp (https://github.com/yuriy-chumak/ol - ol, small purely functional scheme)
+  - owl lisp (https://gitlab.com/owl-lisp/owl - purely functional)
   - racket
   - rscheme (http://www.rscheme.org/rs)
   - s7 (https://ccrma.stanford.edu/software/snd/snd/s7.html)
