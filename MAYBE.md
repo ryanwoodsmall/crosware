@@ -622,7 +622,6 @@ wc -l /tmp/astbuild.out
 - libmawk (http://repo.hu/projects/libmawk/ - embeddable mawk library fork)
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
 - libntlm (https://www.nongnu.org/libntlm/)
-- libpsl (https://github.com/rockdaboot/libpsl https://github.com/publicsuffix/list https://publicsuffix.org/)
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
 - libsixel (https://github.com/saitoha/libsixel)
 - libslz (http://www.libslz.org/)
