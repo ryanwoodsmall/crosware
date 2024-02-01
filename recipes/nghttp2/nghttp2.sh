@@ -1,9 +1,10 @@
 #
-# XXX - lib only!
-# XXX - separate openssl build? needed for app
+# XXX - this is the bare lib only!
+# XXX - apps need(?)...
 # XXX - libxml2
 # XXX - libev
 # XXX - zlib
+# XXX - ... and NEED separate openssl and libressl variants for apps, examples
 #
 
 rname="nghttp2"
