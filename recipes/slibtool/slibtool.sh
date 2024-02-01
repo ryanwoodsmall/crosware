@@ -1,16 +1,16 @@
 rname="slibtool"
-rver="0.5.28"
+rver="0.5.35"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
-rurl="https://github.com/midipix-project/${rname}/archive/${rfile}"
-rsha256="0fefc07ca7e0e3164278f2c59a9a9682d0dcb18c2ea51556afd32a928c698dad"
+rurl="https://github.com/midipix-project/slibtool/archive/refs/tags/${rfile}"
+rsha256="a93294fa3ad44d690448341a5bb0234f985f8a57be660c03180c27db4a809840"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env \
     CXXFLAGS='-Wl,-static -fPIC' \
     CFLAGS='-Wl,-static -fPIC' \
@@ -21,7 +21,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make -j${cwmakejobs} CFLAGS_CMDLINE='-Wl,-static -fPIC'
   popd >/dev/null 2>&1
 }
@@ -29,7 +29,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install CFLAGS_CMDLINE='-Wl,-static -fPIC'
   popd >/dev/null 2>&1
 }
