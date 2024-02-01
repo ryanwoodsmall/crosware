@@ -51,6 +51,7 @@ function cwmakeinstall_${rname}() {
     --without-brotli \
     --without-hyper \
     --without-libidn2 \
+    --without-libpsl \
     --without-zstd \
     --without-wolfssh \
     $(echo ${othersslproviders[@]} | tr ' ' '\n' | sed 's/^/--without-/g' | xargs echo) \

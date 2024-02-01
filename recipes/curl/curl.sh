@@ -23,11 +23,11 @@
 #
 
 rname="curl"
-rver="8.5.0"
+rver="8.6.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://curl.se/download/${rfile}"
-rsha256="05fc17ff25b793a437a0906e0484b82172a9f4de02be5ed447e0cab8c3475add"
+rsha256="9c6db808160015f30f3c656c0dec125feb9dc00753596bf858a272b5dd8dc398"
 rreqs="make zlib openssl libssh2 cacertificates nghttp2 pkgconfig"
 
 . "${cwrecipe}/common.sh"
@@ -63,6 +63,7 @@ function cwconfigure_${rname}() {
     --without-brotli \
     --without-hyper \
     --without-libidn2 \
+    --without-libpsl \
     --without-zstd \
     --without-bearssl \
     --without-mbedtls \
