@@ -20,13 +20,12 @@
 #     CXXFLAGS=\"\${CXXFLAGS//-Wl,-static/} -D_GNU_SOURCE -DNO_GETCONTEXT -DUSE_MMAP -DHAVE_DL_ITERATE_PHDR -DIGNORE_DYNAMIC_LOADING\" \
 #     LDFLAGS=\"\${LDFLAGS//-static/}\"
 #
-
 rname="gc"
-rver="8.2.4"
+rver="8.2.6"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ivmai/bdwgc/releases/download/v${rver}/${rfile}"
-rsha256="3d0d3cdbe077403d3106bb40f0cbb563413d6efdbb2a7e1cd6886595dec48fc2"
+rsha256="b9183fe49d4c44c7327992f626f8eaa1d8b14de140f243edb1c9dcff7719a7fc"
 rreqs="make libatomicops pkgconfig configgit"
 
 . "${cwrecipe}/common.sh"
