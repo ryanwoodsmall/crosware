@@ -3,11 +3,11 @@
 # XXX - xmlstarlet needs #inlcude <libxml/xmlsave.h> w/2.12.x
 #
 rname="libxml2"
-rver="2.11.5"
+rver="2.11.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://download.gnome.org/sources/${rname}/${rver%.*}/${rfile}"
-rsha256="3727b078c360ec69fa869de14bd6f75d7ee8d36987b071e6928d4720a28df3a6"
+rsha256="fb27720e25eaf457f94fd3d7189bcf2626c6dccf4201553bc8874d50e3560162"
 rreqs="make xz zlib"
 
 . "${cwrecipe}/common.sh"
