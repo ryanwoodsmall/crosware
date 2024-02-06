@@ -16,12 +16,12 @@
 #     - https://people.csail.mit.edu/jaffer/scm/Compiling-and-Linking-Custom-Files.html#Compiling-and-Linking-Custom-Files
 #
 rname="scm"
-rver="5f3-3b7"
+rver="5f4-3c1"
 rbdir="${cwbuild}/${rname}"
 rdir="${rname}-${rver}"
 rfile="${rname}-${rver%-*}.zip"
 rurl="http://groups.csail.mit.edu/mac/ftpdir/${rname}/${rfile}"
-rsha256="27c944b871c319a820e0fb1698bccb27d929db197f9e44d9ad4650f52aa4bdcb"
+rsha256="d3426dff809d80b49bf2e9f7f3bab21183ef920323fc53f5ac58310137d4269e"
 rreqs="make texinfo"
 
 if ! command -v rlwrap &>/dev/null ; then
@@ -48,7 +48,7 @@ function cwfetch_${rname}() {
   cwfetchcheck \
     \"\$(dirname \$(cwurl_${rname}))/${slibfile}\" \
     \"${slibdlfile}\" \
-    \"f5d5cdad335395a5a5aa37effe28aa8078b216ea39911f651929678f1ac228b6\"
+    \"c2f8eb98e60530df53211985d4b403b6e97a7a969833c1a6d1bf83561da0c781\"
 }
 "
 
