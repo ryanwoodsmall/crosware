@@ -119,12 +119,7 @@ function cwmakeinstall_${rname}() {
     env PATH=\"${rbdir}:\${PATH}\" make install
     popd >/dev/null 2>&1
     pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-    : rm -f \"\$(cwidir_${rname})/bin/scm\"
-    : rm -f \"\$(cwidir_${rname})/bin/scm.bin\"
     make install
-    : mv \"\$(cwidir_${rname})/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}.bin\"
-    : echo 'rlwrap -C ${rname} -pBlue -m -M .scm -q\\\" \"${rtdir}/current/bin/${rname}.bin\" \"\${@}\"' >> \"\$(cwidir_${rname})/bin/${rname}\"
-    : chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
     popd >/dev/null 2>&1
   )
 }
