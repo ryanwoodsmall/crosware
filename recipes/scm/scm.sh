@@ -62,6 +62,7 @@ function cwextract_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   (
+    export PATH=\"${cwsw}/ccache/current/bin:${cwsw}/ccache4/current/bin:${cwsw}/statictoolchain/current/bin:\${PATH}\"
     export CFLAGS=-fPIC
     export CPPFLAGS=\"\$(echo -I${cwsw}/{ncurses,readline}/current/include{,/ncurses{,w}})\"
     export LDFLAGS=\"\$(echo -L${cwsw}/{ncurses,readline}/current/lib)\"
@@ -94,6 +95,7 @@ eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   (
+    export PATH=\"${cwsw}/ccache/current/bin:${cwsw}/ccache4/current/bin:${cwsw}/statictoolchain/current/bin:\${PATH}\"
     export CFLAGS=-fPIC
     export CPPFLAGS=\"\$(echo -I${cwsw}/{ncurses,readline}/current/include{,/ncurses{,w}})\"
     export LDFLAGS=\"\$(echo -L${cwsw}/{ncurses,readline}/current/lib)\"
@@ -108,6 +110,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   (
+    export PATH=\"${cwsw}/ccache/current/bin:${cwsw}/ccache4/current/bin:${cwsw}/statictoolchain/current/bin:\${PATH}\"
     export CFLAGS=-fPIC
     export CPPFLAGS=\"\$(echo -I${cwsw}/{ncurses,readline}/current/include{,/ncurses{,w}})\"
     export LDFLAGS=\"\$(echo -L${cwsw}/{ncurses,readline}/current/lib)\"
