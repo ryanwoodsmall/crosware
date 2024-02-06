@@ -2,7 +2,7 @@
 # XXX - dynamic, leave as-is for now
 # XXX - probably decouple slib/have standalone slib recipe?
 # XXX - posix/editline/lib/dump/regex/socket/... options?
-# XXX - editline could replace rlwrap/readline? not sure
+# XXX - editline could replace readline? not sure
 # XXX - build script generator? http://people.csail.mit.edu/jaffer/buildscm.html
 #
 # more detailed installation in docs:
@@ -23,10 +23,6 @@ rfile="${rname}-${rver%-*}.zip"
 rurl="http://groups.csail.mit.edu/mac/ftpdir/${rname}/${rfile}"
 rsha256="d3426dff809d80b49bf2e9f7f3bab21183ef920323fc53f5ac58310137d4269e"
 rreqs="make texinfo readline ncurses"
-
-#if ! command -v rlwrap &>/dev/null ; then
-#  rreqs+=" rlwrap"
-#fi
 
 if ! command -v rsync &>/dev/null ; then
   rreqs+=" rsyncminimal"
