@@ -1,8 +1,8 @@
 #
 # XXX - dynamic, leave as-is for now
 # XXX - probably decouple slib/have standalone slib recipe?
-# XXX - posix/readline/curses/editline/lib/dump/regex/socket/... options?
-# XXX - editline could replace rlwrap? not sure
+# XXX - posix/editline/lib/dump/regex/socket/... options?
+# XXX - editline could replace rlwrap/readline? not sure
 # XXX - build script generator? http://people.csail.mit.edu/jaffer/buildscm.html
 #
 # more detailed installation in docs:
@@ -22,10 +22,14 @@ rdir="${rname}-${rver}"
 rfile="${rname}-${rver%-*}.zip"
 rurl="http://groups.csail.mit.edu/mac/ftpdir/${rname}/${rfile}"
 rsha256="d3426dff809d80b49bf2e9f7f3bab21183ef920323fc53f5ac58310137d4269e"
-rreqs="make texinfo"
+rreqs="make texinfo readline ncurses"
 
-if ! command -v rlwrap &>/dev/null ; then
-  rreqs+=" rlwrap"
+#if ! command -v rlwrap &>/dev/null ; then
+#  rreqs+=" rlwrap"
+#fi
+
+if ! command -v rsync &>/dev/null ; then
+  rreqs+=" rsyncminimal"
 fi
 
 . "${cwrecipe}/common.sh"
@@ -61,37 +65,68 @@ function cwextract_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix}
-  popd >/dev/null 2>&1
-  pushd \"${cwbuild}/slib\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix}
-  popd >/dev/null 2>&1
+  (
+    export CFLAGS=-fPIC
+    export CPPFLAGS=\"\$(echo -I${cwsw}/{ncurses,readline}/current/include{,/ncurses{,w}})\"
+    export LDFLAGS=\"\$(echo -L${cwsw}/{ncurses,readline}/current/lib)\"
+    export PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{ncurses,readline}/current/lib/pkgconfig | tr ' ' ':')\"
+    pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+    ./configure ${cwconfigureprefix}
+    cat Makefile > Makefile.ORIG
+    sed -i \"/^#CC/s,.*,CC=\${CC} \$(echo -I${cwsw}/{ncurses,readline}/current/include{,/ncurses{,w}}) \$(echo -L${cwsw}/{ncurses,readline}/current/lib),\" Makefile
+    sed -i \"/^#LIBS/s,.*,LIBS=\$(echo -L${cwsw}/{readline,ncurses}/current/lib) -lreadline -lncurses,\" Makefile
+    sed -i \"/^#CFLAGS/s,.*,CFLAGS=-fPIC,\" Makefile
+    cat build.scm > build.scm.ORIG
+    sed -i \"s,/lib/libncurses.so,${cwsw}/ncurses/current/lib/libncurses.a,g\" build.scm
+    sed -i \"s,/usr/lib/libcurses.a,${cwsw}/ncurses/current/lib/libncurses.a,g\" build.scm
+    sed -i \"s,/usr/lib/libtermcap.a,${cwsw}/ncurses/current/lib/libncurses.a,g\" build.scm
+    sed -i \"s,/usr/lib/libreadline.a,${cwsw}/readline/current/lib/libreadline.a,g\" build.scm
+    sed -i \"/-lcurses/s,-lcurses,-lncurses,g\" build.scm
+    sed -i \"/-ltermcap/s,-ltermcap,-lncurses,g\" build.scm
+    sed -i 's,\"cc\",\"gcc\",g' build.scm
+    sed -i 's,\"-shared\",\"-shared\" \"-L${cwsw}/readline/current/lib\" \"-L${cwsw}/ncurses/current/lib\",g' build.scm
+    popd >/dev/null 2>&1
+    pushd \"${cwbuild}/slib\" >/dev/null 2>&1
+    ./configure ${cwconfigureprefix}
+    popd >/dev/null 2>&1
+  )
 }
 "
 
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  make scmlit
-  make all
+  (
+    export CFLAGS=-fPIC
+    export CPPFLAGS=\"\$(echo -I${cwsw}/{ncurses,readline}/current/include{,/ncurses{,w}})\"
+    export LDFLAGS=\"\$(echo -L${cwsw}/{ncurses,readline}/current/lib)\"
+    export PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{ncurses,readline}/current/lib/pkgconfig | tr ' ' ':')\"
+    make scmlit
+    make all
+  )
   popd >/dev/null 2>&1
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${cwbuild}/slib\" >/dev/null 2>&1
-  env PATH=\"${rbdir}:\${PATH}\" make install
-  popd >/dev/null 2>&1
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  rm -f \"\$(cwidir_${rname})/bin/scm\"
-  rm -f \"\$(cwidir_${rname})/bin/scm.bin\"
-  make install
-  mv \"\$(cwidir_${rname})/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}.bin\"
-  echo 'rlwrap -C ${rname} -pBlue -m -M .scm -q\\\" \"${rtdir}/current/bin/${rname}.bin\" \"\${@}\"' >> \"\$(cwidir_${rname})/bin/${rname}\"
-  chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
-  popd >/dev/null 2>&1
+  (
+    export CFLAGS=-fPIC
+    export CPPFLAGS=\"\$(echo -I${cwsw}/{ncurses,readline}/current/include{,/ncurses{,w}})\"
+    export LDFLAGS=\"\$(echo -L${cwsw}/{ncurses,readline}/current/lib)\"
+    export PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{ncurses,readline}/current/lib/pkgconfig | tr ' ' ':')\"
+    pushd \"${cwbuild}/slib\" >/dev/null 2>&1
+    env PATH=\"${rbdir}:\${PATH}\" make install
+    popd >/dev/null 2>&1
+    pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+    : rm -f \"\$(cwidir_${rname})/bin/scm\"
+    : rm -f \"\$(cwidir_${rname})/bin/scm.bin\"
+    make install
+    : mv \"\$(cwidir_${rname})/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}.bin\"
+    : echo 'rlwrap -C ${rname} -pBlue -m -M .scm -q\\\" \"${rtdir}/current/bin/${rname}.bin\" \"\${@}\"' >> \"\$(cwidir_${rname})/bin/${rname}\"
+    : chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
+    popd >/dev/null 2>&1
+  )
 }
 "
 
