@@ -121,6 +121,11 @@ function cwmakeinstall_${rname}() {
     pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
     make install
     popd >/dev/null 2>&1
+    local initfile=\"\$(cwidir_${rname})/lib/scm/Init\$(cwver_${rname} | cut -f1 -d-).scm\"
+    cat \${initfile} > \${initfile}.ORIG
+    echo '(load \"/usr/local/crosware/software/scm/current/lib/scm/edline.so\")' >> \${initfile}
+    echo '(load \"/usr/local/crosware/software/scm/current/lib/scm/Iedline.scm\")' >> \${initfile}
+    unset initfile
   )
 }
 "
