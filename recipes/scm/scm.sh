@@ -85,6 +85,7 @@ function cwconfigure_${rname}() {
     sed -i \"/-ltermcap/s,-ltermcap,-lncurses,g\" build.scm
     sed -i 's,\"cc\",\"gcc\",g' build.scm
     sed -i 's,\"-shared\",\"-shared\" \"-L${cwsw}/readline/current/lib\" \"-L${cwsw}/ncurses/current/lib\",g' build.scm
+    sed -i.ORIG '/#.*include.*getpagesize.*/d' gmalloc.c unexec.c
     popd >/dev/null 2>&1
     pushd \"${cwbuild}/slib\" >/dev/null 2>&1
     ./configure ${cwconfigureprefix}
