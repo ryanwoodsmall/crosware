@@ -4,11 +4,11 @@
 #
 
 rname="libgit2"
-rver="1.7.1"
+rver="1.7.2"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="17d2b292f21be3892b704dddff29327b3564f96099a1c53b00edc23160c71327"
+rsha256="de384e29d7efc9330c6cdb126ebf88342b5025d920dcb7c645defad85195ea7f"
 rreqs="make zlib pkgconfig openssl libssh2 cmake"
 rbdir="${cwbuild}/${rdir}/build"
 
@@ -45,7 +45,7 @@ function cwconfigure_${rname}() {
         -DZLIB_LIBRARY=\"${cwsw}/zlib/current/lib/libz.a\" \
         -DZLIB_INCLUDE_DIR=\"${cwsw}/zlib/current/include\"
   sed -i.ORIG '/Requires.private/s/\\.private:/:/g' ${rname}.pc
-  sed -i '/^Requires/s/\$/ libcrypto libssl libssh2 zlib/g' ${rname}.pc
+  sed -i '/^Requires/s/\$/ libssh2 libssl libcrypto zlib/g' ${rname}.pc
   unset extra
   popd >/dev/null 2>&1
 }
