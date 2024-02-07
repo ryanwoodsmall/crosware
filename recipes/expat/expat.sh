@@ -1,9 +1,9 @@
 rname="expat"
-rver="2.5.0"
+rver="2.6.0"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.bz2"
+rfile="${rdir}.tar.gz"
 rurl="https://github.com/libexpat/libexpat/releases/download/R_${rver//./_}/${rfile}"
-rsha256="6f0e6e01f7b30025fa05c85fdad1e5d0ec7fd35d9f61b22f34998de11969ff67"
+rsha256="a13447b9aa67d7c860783fdf6820f33ebdea996900d6d8bbc50a628f55f099f7"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
@@ -11,7 +11,7 @@ rreqs="make"
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --without-docbook
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --without-docbook LDFLAGS=-static CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
 "
