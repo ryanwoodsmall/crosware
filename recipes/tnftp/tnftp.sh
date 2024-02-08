@@ -1,9 +1,9 @@
 rname="tnftp"
-rver="20210827"
+rver="20230507"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.netbsd.org/pub/NetBSD/misc/${rname}/${rfile}"
-rsha256="101901e90b656c223ec8106370dd0d783fb63d26aa6f0b2a75f40e86a9f06ea2"
+rsha256="be0134394bd7d418a3b34892b0709eeb848557e86474e1786f0d1a887d3a6580"
 rreqs="make netbsdcurses libeditnetbsdcurses configgit"
 
 . "${cwrecipe}/common.sh"
@@ -15,18 +15,10 @@ function cwconfigure_${rname}() {
     --disable-ssl \
     --enable-editcomplete \
     --without-socks \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include) -I. -I..\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
-      LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -ledit -lcurses -lterminfo\"
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  make -j${cwmakejobs} ${rlibtool} \
-    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include) -I. -I..\"
+      LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -ledit -lcurses -lterminfo\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig| tr ' ' ':')\"
   popd >/dev/null 2>&1
 }
 "
