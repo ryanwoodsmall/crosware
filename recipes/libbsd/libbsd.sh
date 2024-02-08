@@ -2,11 +2,11 @@
 # XXX - need to fixup .pc with -L${cwsw}/libmd/current/lib as well?
 #
 rname="libbsd"
-rver="0.11.7"
+rver="0.11.8"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://libbsd.freedesktop.org/releases/${rfile}"
-rsha256="9baa186059ebbf25c06308e9f991fda31f7183c0f24931826d83aa6abd8a0261"
+rsha256="55fdfa2696fb4d55a592fa9ad14a9df897c7b0008ddb3b30c419914841f85f33"
 rreqs="bootstrapmake libmd"
 
 . "${cwrecipe}/common.sh"
