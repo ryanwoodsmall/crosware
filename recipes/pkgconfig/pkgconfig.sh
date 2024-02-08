@@ -10,10 +10,14 @@ rreqs="bootstrapmake configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
-  # sed -i.ORIG 's/-Werror=format=. //g' glib/configure
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   sed -i 's/-Werror=missing-include-dirs//g' glib/configure
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --with-internal-glib --with-system-library-path='/lib:/lib64:/usr/lib:/usr/lib64'
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
+    --with-internal-glib \
+    --with-system-library-path='/lib:/lib64:/usr/lib:/usr/lib64' \
+      LDFLAGS=-static \
+      CPPFLAGS= \
+      PKG_CONFIG_{LIBDIR,PATH}='${cwsw}/${rname}/current/lib/pkgconfig'
   popd >/dev/null 2>&1
 }
 "
