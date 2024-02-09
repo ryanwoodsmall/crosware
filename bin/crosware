@@ -1477,6 +1477,8 @@ function cwset() {
   cwgetinstalled
   echo '#!/usr/bin/env bash'
   set
+  echo
+  echo '# vim: set ft=bash:'
 }
 
 #
