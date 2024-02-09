@@ -1,34 +1,27 @@
-eval "
-function cwextract_${rname}() {
-  cwmkdir \"${rbdir}\"
-  cat \"${cwdl}/${rname}/${rname#bsd}.c\" > \"${rbdir}/${rname#bsd}.c\"
-}
-"
+rver="$(cwver_outils)"
+rdir="${rname}-${rver}"
+rfile="$(cwfile_outils)"
+rurl="$(cwurl_outils)"
+rsha256="$(cwsha256_outils)"
+rreqs="outils"
 
-eval "
-function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  sed -i.ORIG s/__dead//g ${rname#bsd}.c || true
-  popd >/dev/null 2>&1
-}
-"
+. "${cwrecipe}/common.sh"
 
-eval "
-function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  \${CC} ${rname#bsd}.c -o ${rname#bsd} \$(pkg-config --cflags --libs libbsd-overlay) -static
-  popd >/dev/null 2>&1
-}
-"
+cwstubfunc "cwfetch_${rname}"
+cwstubfunc "cwclean_${rname}"
+cwstubfunc "cwextract_${rname}"
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/bin\"
-  cwmkdir \"${ridir}/share/man/man1\"
-  install -s -m 0755 ${rname#bsd} \"${ridir}/bin/\"
-  install -m 0644 \"${cwdl}/${rname}/${rname#bsd}.1\" \"${ridir}/share/man/man1/\"
-  popd >/dev/null 2>&1
+  cwscriptecho \"installing ${rname} using ${rname#bsd} from outils\"
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  install -s -m 0755 \"\$(cwidir_outils)/bin/${rname#bsd}\" \"\$(cwidir_${rname})/bin/\"
+  ln -sf ${rname#bsd} \"\$(cwidir_${rname})/bin/${rname}\"
+  cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
+  install -m 0644 \"\$(cwidir_outils)/share/man/man1/${rname#bsd}.1\" \"\$(cwidir_${rname})/share/man/man1/\"
+  ln -sf ${rname#bsd}.1 \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
 }
 "
 
@@ -38,4 +31,4 @@ function cwgenprofd_${rname}() {
 }
 "
 
-# vim: set ft=sh:
+# vim: set ft=bash:
