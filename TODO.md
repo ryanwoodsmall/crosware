@@ -1342,6 +1342,10 @@ time_func ls -l -A /
     ```
 - **termcap** (minimal) recipes...
   - move to https://invisible-island.net/datafiles/current/termcap.src.gz ???
+- **cwfuncfailexit**
+  - wrapped `cwfailexit` with funtion name
+  - `function cwfuncfailexit() { cwfailexit "${FUNCNAME[1]}: ${@}" ; }`
+  - good enough?
 
 <!--
 # vim: ft=markdown
