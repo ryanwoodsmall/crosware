@@ -168,6 +168,7 @@ wc -l /tmp/astbuild.out
 - cembed (https://github.com/rxi/cembed - embed files in a c header - useful for tinyscheme/minischeme library in single binary???)
 - cepl (https://github.com/alyptik/cepl)
 - certviewer (https://github.com/cortiz/certview - certificate, including remote, viewer in go, with text/yaml/json/... output)
+- certstrap (https://github.com/square/certstrap - simple CA bootstrap in go!)
 - chelf (https://github.com/Gottox/chelf)
 - ching (https://github.com/floren/ching - i ching from bsd)
   - needs nroff (heirloom or groff)
