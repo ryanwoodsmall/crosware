@@ -1346,6 +1346,8 @@ time_func ls -l -A /
   - wrapped `cwfailexit` with funtion name
   - `function cwfuncfailexit() { cwfailexit "${FUNCNAME[1]}: ${@}" ; }`
   - good enough?
+- use `cwmyfuncname` consistently instead of `${FUNCNAME[0}`
+  - add a `cwcaller` to return `${FUNCNAME[1]}` for a little more cleanup?
 
 <!--
 # vim: ft=markdown

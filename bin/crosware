@@ -2048,6 +2048,80 @@ function cwcreatesharedlib() {
   popd >/dev/null 2>&1
 }
 
+#
+# cwprependfunc
+#   insert commands at the beginning of a function
+#
+# a function is read into an array and lines
+# a new array is created with additions in given argument order
+#
+# XXX - BIG assumption that showing bash functions with `declare -f funcname` returns something like:
+#   funcname ()
+#   {
+#       command1 args;
+#       command2 args;
+#       ...;
+#       finalcommand args
+#   }
+# XXX - probably need "cwcheckminargs" and "cwcheckfunc"
+# XXX - lots of overlap with cwappendfunc
+# XXX - wrap in something like: `cwfuncmod [prepend|append] funcname "command one" "command two" ...`?
+# XXX = tried to optimize this as an in-place move+insertion(s); this is way easier and i couldn't see a perf difference
+#
+function cwprependfunc() {
+  local me="${FUNCNAME[0]}"
+  if [[ ${#} -lt 2 ]] ; then
+    cwfailexit "${me}: need at least a function name and one item to prepend"
+  fi
+  local f="${1}"
+  shift
+  if ! $(local -F "${f}" &> /dev/null) ; then
+    cwfailexit "${me}: no such func ${f}"
+  fi
+  local argc="${#}"
+  local -a fa=()
+  readarray -t fa < <(declare -f "${f}")
+  local -a nf=()
+  nf[0]="${fa[0]}"
+  nf[1]="${fa[1]}"
+  while [[ ${#} -gt 0 ]] ; do
+    nf+=( "${1}" )
+    shift
+  done
+  for (( i=2 ; i < ${#fa[@]} ; i++ )) ; do
+    nf[${#nf[@]}]="${fa[${i}]}"
+  done
+  cwsourcestdin < <(for i in ${!nf[@]} ; do printf '%s\n' "${nf[${i}]}" ; done)
+}
+
+#
+# cwappendfunc
+#   insert commands at the end of a function
+#
+function cwappendfunc() {
+  local me="${FUNCNAME[0]}"
+  if [[ ${#} -lt 2 ]] ; then
+    cwfailexit "${me}: need at least a function name and one item to append"
+  fi
+  local f="${1}"
+  shift
+  if ! $(local -F "${f}" &> /dev/null) ; then
+    cwfailexit "${me}: no such func ${f}"
+  fi
+  local -a fa=()
+  readarray -t fa < <(declare -f "${f}")
+  local le=$((${#fa[@]}-2))
+  fa[${le}]="${fa[${le}]} ;"
+  while [[ ${#} -gt 0 ]] ; do
+    li="${#fa[@]}"
+    ni=$((${#fa[@]}-1))
+    fa[${ni}]="${1} ;"
+    fa[${li}]="}"
+    shift
+  done
+  cwsourcestdin < <(for i in ${!fa[@]} ; do printf '%s\n' "${fa[${i}]}" ; done)
+}
+
 #############################################
 # program actually starts... here... maybe. #
 #############################################
