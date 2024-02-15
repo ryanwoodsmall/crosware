@@ -1532,6 +1532,7 @@ function cwechofunc() {
 
 #
 # cwgetfuncs
+# XXX - speed up with declare -F
 #
 function cwgetfuncs() {
   if [ ${cwfunctionssourced} -eq 1 ] ; then
