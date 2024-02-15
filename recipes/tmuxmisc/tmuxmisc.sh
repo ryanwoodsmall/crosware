@@ -1,3 +1,6 @@
+#
+# XXX - tmux-nodes.sh broke with tmux 3.4, tmux-local-nodes.sh
+#
 rname="tmuxmisc"
 rver="master"
 rdir="${rname//xm/x-m}-${rver}"
