@@ -271,7 +271,7 @@ Alpine and Sabotage are good sources of inspiration and patches:
 - Alpine: https://alpinelinux.org/ and git: https://git.alpinelinux.org/
 - Sabotage: http://sabotage.tech/ and git: https://github.com/sabotage-linux/sabotage/
 
-The Alpine folks distribute a chroot installer (untested):
+The Alpine folks distribute a chroot installer:
 
 - https://github.com/alpinelinux/alpine-chroot-install
 
