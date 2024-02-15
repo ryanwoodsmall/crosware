@@ -1348,6 +1348,22 @@ time_func ls -l -A /
   - good enough?
 - use `cwmyfuncname` consistently instead of `${FUNCNAME[0}`
   - add a `cwcaller` to return `${FUNCNAME[1]}` for a little more cleanup?
+- function wrapper to check for proper arity
+  - instead of a proliferation of `if [[ $# ${numexpectedargs} ]] ; then cwfailexit ... ; fi`...
+  - maybe:
+  - ```bash
+    # receives two integers, checks equality
+    # - ${1} : expected arity
+    # - ${2} : actual arity
+    function cwcheckarity() {
+      test "${#}" -eq 2 || cwfailexit "$(cwmyfuncname): provide exactly two integers"
+      test "${1}" -eq "${2}" && return 0 || return 1
+    }
+    function cwarityexample() {
+      cwcheckarity 3 ${#} || cwfailexit "$(cwmyfuncname): provide three arguments"
+      ...
+    }
+    ```
 
 <!--
 # vim: ft=markdown
