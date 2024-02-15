@@ -1357,10 +1357,10 @@ time_func ls -l -A /
     # - ${2} : actual arity
     function cwcheckarity() {
       test "${#}" -eq 2 || cwfailexit "$(cwmyfuncname): provide exactly two integers"
-      test "${1}" -eq "${2}" && return 0 || return 1
+      test "${1}" -eq "${2}" && return 0 || cwfailexit "$(cwmyfuncname): ${FUNCNAME[1]} expected ${1} argument(s) but received ${#}"
     }
     function cwarityexample() {
-      cwcheckarity 3 ${#} || cwfailexit "$(cwmyfuncname): provide three arguments"
+      cwcheckarity 3 ${#}
       ...
     }
     ```
