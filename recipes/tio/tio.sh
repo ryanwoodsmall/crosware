@@ -12,7 +12,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:${cwsw}/pkgconfig/current/bin:\${PATH}\" \
-    \"${cwsw}/meson/current/bin/meson\" --prefix=\"\$(cwidir_${rname})\" build
+    \"${cwsw}/meson/current/bin/meson\" setup --prefix=\"\$(cwidir_${rname})\" build
   popd >/dev/null 2>&1
 }
 "
