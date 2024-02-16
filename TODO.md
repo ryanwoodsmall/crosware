@@ -1364,6 +1364,8 @@ time_func ls -l -A /
       ...
     }
     ```
+- convert as many rats' nests of `if ... then ... fi` to `case` statements
+  - easier, prettier too
 
 <!--
 # vim: ft=markdown
