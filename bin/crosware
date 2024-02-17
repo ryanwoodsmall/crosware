@@ -2093,6 +2093,7 @@ function cwprependfunc() {
     nf+=( "${1}" )
     shift
   done
+  local i
   for (( i=2 ; i < ${#fa[@]} ; i++ )) ; do
     nf[${#nf[@]}]="${fa[${i}]}"
   done
@@ -2118,8 +2119,8 @@ function cwappendfunc() {
   local le=$((${#fa[@]}-2))
   fa[${le}]="${fa[${le}]} ;"
   while [[ ${#} -gt 0 ]] ; do
-    li="${#fa[@]}"
-    ni=$((${#fa[@]}-1))
+    local li="${#fa[@]}"
+    local ni=$((${#fa[@]}-1))
     fa[${ni}]="${1} ;"
     fa[${li}]="}"
     shift
