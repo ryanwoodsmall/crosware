@@ -510,6 +510,7 @@ wc -l /tmp/astbuild.out
       - iotjs-modules (https://github.com/jerryscript-project/iotjs-modules)
       - iotjs-samples (https://github.com/jerryscript-project/iotjs-samples)
   - jsi (jsish - https://jsish.org/)
+  - jsvm (https://github.com/jawb/JSVM - small one-instruction vm in js)
   - jsvu (https://github.com/GoogleChromeLabs/jsvu)
   - mininode (https://github.com/mininode/mininode - embedded node.js compat on duktape, cool not sure how mature)
   - mjs (formerly v7 - https://github.com/cesanta/mjs and https://github.com/cesanta/v7/)
