@@ -1,9 +1,9 @@
 rname="pcre2"
-rver="10.42"
+rver="10.43"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.bz2"
+rfile="${rdir}.tar.gz"
 rurl="https://github.com/PCRE2Project/${rname}/releases/download/${rname}-${rver}/${rfile}"
-rsha256="8d36cd8cb6ea2a4c2bb358ff6411b0c788633a2a45dabbf1aeb4b701d1b5e840"
+rsha256="889d16be5abb8d05400b33c25e151638b8d4bac0e2d9c76e9d6923118ae8a34e"
 rreqs="make zlib bzip2"
 
 . "${cwrecipe}/common.sh"
@@ -18,7 +18,10 @@ function cwconfigure_${rname}() {
     --enable-pcre2-16 \
     --enable-pcre2-32 \
     --enable-pcre2grep-libz \
-    --enable-pcre2grep-libbz2
+    --enable-pcre2grep-libbz2 \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib -static)\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig -static)\"
   popd >/dev/null 2>&1
 }
 "
