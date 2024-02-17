@@ -1366,6 +1366,16 @@ time_func ls -l -A /
     ```
 - convert as many rats' nests of `if ... then ... fi` to `case` statements
   - easier, prettier too
+- need to capture `./configure` as `${rconfigurecmd}` and make overridable
+  - probably also need to explicitly set the default as `bash ./configure`
+  - toybox's `toysh` symlinked to `/bin/sh` is no bueno
+  - needs at least busybox `ash`, `dash` or a `ksh`
+  - sysroot idea would come in handy here
+    - bash (and bin/sh)
+    - awk (gawk)
+    - sed (gsed)
+    - busybox (most stuff)
+    - toyox (other stuff)
 
 <!--
 # vim: ft=markdown
