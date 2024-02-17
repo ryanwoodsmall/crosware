@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 #
 # test currently installed {j,}git versions for https, ssh git interop
 #
@@ -16,13 +15,16 @@ if [ ! -e "${td}" ] ; then
   exit 1
 fi
 
+: ${GIT_SSH_COMMAND=""}
+test -z "${GIT_SSH_COMMAND}" && export GIT_SSH_COMMAND=ssh || true
+
 gh="github.com"
 bpr="ryanwoodsmall/vimrcs.git"
 co="$(basename ${bpr%%.git})"
 
 repos="https://${gh}/${bpr}"
 
-if $(ssh git@${gh} 2>&1 | grep -qi 'successfully authenticated') ; then
+if $(${GIT_SSH_COMMAND} git@${gh} |& grep -qi successfully) ; then
   repos+=" git@${gh}:${bpr}"
 fi
 
