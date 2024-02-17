@@ -1001,7 +1001,7 @@ function cwsourcerecipes() {
       cwrecipereqsexpanded["${rname}"]=0
       cwmarkupgraded "${rname}"
     fi
-    unset cwconfigureprefix rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps rlibtool rconfigureopts rcommonopts rdlfile rpfile rsite rmessage rfuncname rfuncbody rconfigurecmd
+    unset cwconfigureprefix rname rver rfile rurl rprof rreqs rbreqs rsha256 rdir ridir rbdir rtdir rdeps rbdeps rlibtool rconfigureopts rcommonopts rdlfile rpfile rsite rmessage rfuncname rfuncbody rconfigurecmd rdirtype
   done
   unset recipefile
   export cwrecipes
