@@ -23,6 +23,10 @@ function cwstderrecho() {
   cwscriptecho "${@}" 1>&2
 }
 
+function cwfuncecho() {
+  cwscriptecho "$(cwcaller): ${@}"
+}
+
 function cwfailexit() {
   local failmesg="error"
   if [ ! -z "${@}" ] ; then
