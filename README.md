@@ -27,11 +27,15 @@ This means the `sudo` commands below must be run via a VT.
 If you want to start a locally-accessible SSH daemon, see: [scripts/start-root-sshd](scripts/start-root-sshd).
 
 ```shell
+# check you're the chronos user on a chromebook/not root in a container
+whoami
+
 # allow your regular user to write to /usr/local
 sudo chgrp ${GROUPS} /usr/local
 sudo chmod 2775 /usr/local
 ```
-The sudo commands above must be run only once.
+
+The sudo commands above only need to be run once; it should be safe to run them again.
 If you choose to use the [scripts/start-root-sshd](scripts/start-root-sshd) script, it must be run after every reboot.
 
 The following can now be run as the standard ChromeOS user _chronos_ from a GUI/`crosh` shell terminal.
