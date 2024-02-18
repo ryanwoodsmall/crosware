@@ -1347,7 +1347,14 @@ time_func ls -l -A /
   - `function cwfuncfailexit() { cwfailexit "${FUNCNAME[1]}: ${@}" ; }`
   - good enough?
 - use `cwmyfuncname` consistently instead of `${FUNCNAME[0}`
-  - add a `cwcaller` to return `${FUNCNAME[1]}` for a little more cleanup?
+  - add a `cwcaller` to return `${FUNCNAME[2]}` for a little more cleanup?
+  - need a separate `cwfuncecho` that's something like
+  - ```bash
+    function cwfuncecho() {
+      cwscriptecho "$(cwcaller): ${@}"
+    }
+    ```
+  - or iterate over `${#}`?
 - function wrapper to check for proper arity
   - instead of a proliferation of `if [[ $# ${numexpectedargs} ]] ; then cwfailexit ... ; fi`...
   - maybe:
