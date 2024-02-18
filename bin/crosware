@@ -89,11 +89,11 @@ function cwprereqinfo() {
 prereqs=( 'awk' 'bzip2' 'curl' 'gzip' 'nproc' 'sha256sum' 'sed' 'tar' )
 for prereq in ${prereqs[@]} ; do
   command -v "${prereq}" &> /dev/null || {
-    cwscriptecho "${prereq} not found"
     if [[ "${prereq}" == bzip2 ]] ; then
-      cwscriptecho "checking for bzcat"
+      #cwscriptecho "checking for bzcat"
       command -v "bzcat" &> /dev/null && continue || true
     fi
+    cwscriptecho "${prereq} (or alternative) not found"
     if [[ ${CW_IGNORE_MISSING} == true ]] ; then
       cwscriptecho "continuing anyway"
       continue
