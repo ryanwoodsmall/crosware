@@ -2277,3 +2277,5 @@ esac
 
 # XXX - should this be in a trap so it's *always* run?
 cwshowmessages cwmessages
+
+# vim: set ft=bash:
