@@ -985,7 +985,7 @@ function cwsourcerecipes() {
   if [ ${cwrecipessourced} -eq 1 ] ; then
     return
   fi
-  for recipefile in ${cwrecipe}/*/*.sh ; do
+  for recipefile in ${cwrecipe}/*/*.sh ${cwrecipe}/zz_virtual/*/*.sh ; do
     rname=""
     source ${recipefile}
     if [ ! -z "${rname}" ] ; then
