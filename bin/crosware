@@ -1493,6 +1493,18 @@ function cwmyfuncname() {
 }
 
 #
+# cwcaller
+#   return the name of the function who called our caller, or main
+#
+function cwcaller() {
+  if [[ ${#FUNCNAME[@]} -ge 3 ]] ; then
+    echo "${FUNCNAME[2]}"
+  else
+    echo main
+  fi
+}
+
+#
 # cwstubfunc
 #   create, or replace, a function
 #
