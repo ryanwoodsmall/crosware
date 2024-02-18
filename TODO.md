@@ -1374,6 +1374,20 @@ time_func ls -l -A /
     - sed (gsed)
     - busybox (most stuff)
     - toyox (other stuff)
+- cw{cpp,ld,pkgconfig}flags... vanilla vs custom?
+  - cppflags:
+  - ```shell
+    function cwcppflags() {
+      if declare -F cwcppflags_${recipe} &>/dev/null ; then
+        cwcppflags_${recipe}
+      else
+        for r in $(cwreqs_${recipe}) ; do
+          echo -I${cwsw}/${r}/current/include
+        done
+      fi | paste -s -d' ' -
+    }
+    ```
+
 
 <!--
 # vim: ft=markdown
