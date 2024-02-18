@@ -12,7 +12,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://nginx.org/download/${rfile}"
 rsha256="760729901acbaa517996e681ee6ea259032985e37c2768beef80df3a877deed9"
-rreqs="make openssl slibtool pcre2 libgpgerror libgcrypt libxml2 libxslt zlib xz pkgconfig"
+rreqs="make openssl slibtool libgpgerror libgcrypt libxml2 libxslt zlib xz pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
@@ -20,7 +20,6 @@ eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
   cwfetch_pcre2
-  cwfetch_zlib
   cwfetch_njs
 }
 "
@@ -29,14 +28,13 @@ eval "
 function cwextract_${rname}() {
   cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
   cwextract \"\$(cwdlfile_pcre2)\" \"\$(cwbdir_${rname})\"
-  cwextract \"\$(cwdlfile_zlib)\" \"\$(cwbdir_${rname})\"
   cwextract \"\$(cwdlfile_njs)\" \"\$(cwbdir_${rname})\"
 }
 "
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat \$(cwdir_njs)/auto/libxml2 > \$(cwdir_njs)/auto/libxml2.ORIG
   sed -i 's,/usr/local,${cwsw}/libxml2/current,g' \$(cwdir_njs)/auto/libxml2
   sed -i 's,-lxml2,-lxml2 -llzma -lz,g' \$(cwdir_njs)/auto/libxml2
@@ -46,13 +44,13 @@ function cwpatch_${rname}() {
   sed -i 's,-lxslt,-lxslt -lgcrypt -lgpg-error -lxml2 -llzma -lz,g' auto/lib/libxslt/conf
   sed -i 's,-lxml2 -lxslt,-lxslt,g' auto/lib/libxslt/conf
   sed -i 's,-lexslt,-lexslt -lxslt -lgcrypt -lgpg-error -lxml2 -llzma -lz,g' auto/lib/libxslt/conf
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwinstall_${rname}_openssl() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwdir_openssl)\"
   cd \"\$(cwdir_openssl)\"
   ln -sf \"${cwsw}/openssl/current\" .openssl
@@ -61,14 +59,33 @@ function cwinstall_${rname}_openssl() {
   echo all: >> Makefile
   echo clean: >> Makefile
   echo install_sw: >> Makefile
-  popd >/dev/null 2>&1
+  cd -
+  popd &>/dev/null
+}
+"
+
+eval "
+function cwinstall_${rname}_zlib() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  cwmkdir \"\$(cwdir_zlib)\"
+  cd \"\$(cwdir_zlib)\"
+  ln -sf ${cwsw}/zlib/current/lib/libz.a .
+  ( cd ${cwsw}/zlib/current/include/ ; tar -cf - . ) | tar -xf -
+  echo | tee configure Makefile
+  chmod 755 configure
+  echo all: >> Makefile
+  echo distclean: >> Makefile
+  echo libz.a: >> Makefile
+  cd -
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwinstall_${rname}_openssl
+  cwinstall_${rname}_zlib
   env PATH=\"${cwsw}/perl/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --add-module=\"\$(cwbdir_${rname})/\$(cwdir_njs)/nginx\" \
@@ -95,6 +112,7 @@ function cwconfigure_${rname}() {
       --with-http_stub_status_module \
       --with-http_sub_module \
       --with-http_v2_module \
+      --with-http_v3_module \
       --with-http_xslt_module \
       --with-mail \
       --with-mail_ssl_module \
@@ -102,25 +120,25 @@ function cwconfigure_${rname}() {
       --with-stream_realip_module \
       --with-stream_ssl_module \
       --with-stream_ssl_preread_module
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} ${rlibtool} CC=\"\${CC}\" CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH= NJS_CFLAGS=-static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool} CC=\"\${CC}\" CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
   \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/sbin/${rname}\"
   unset p
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

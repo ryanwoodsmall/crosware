@@ -5,38 +5,19 @@ rfile="$(cwfile_nginx)"
 rdlfile="$(cwdlfile_nginx)"
 rurl="$(cwurl_nginx)"
 rsha256="$(cwsha256_nginx)"
-rreqs="make slibtool pcre2 libressl libgpgerror libgcrypt libxml2 libxslt zlib xz pkgconfig"
+rreqs="make slibtool libressl libgpgerror libgcrypt libxml2 libxslt zlib xz pkgconfig"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwfetch_${rname}() {
-  cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
-  cwfetch_pcre2
-  cwfetch_zlib
-  cwfetch_njs
-}
-"
-
-eval "
-function cwextract_${rname}() {
-  cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
-  cwextract \"\$(cwdlfile_pcre2)\" \"\$(cwbdir_${rname})\"
-  cwextract \"\$(cwdlfile_zlib)\" \"\$(cwbdir_${rname})\"
-  cwextract \"\$(cwdlfile_njs)\" \"\$(cwbdir_${rname})\"
-}
-"
-
-eval "
-function cwpatch_${rname}() {
-  cwpatch_${rname%libressl}
-}
-"
+for f in fetch clean extract patch ; do
+  eval "function cw${f}_${rname}() { cw${f}_${rname%libressl} ; }"
+done
+unset f
 
 eval "
 function cwinstall_${rname}_libressl() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwdir_libressl)\"
   cd \"\$(cwdir_libressl)\"
   ln -sf \"${cwsw}/libressl/current\" .openssl
@@ -45,14 +26,15 @@ function cwinstall_${rname}_libressl() {
   echo all: >> Makefile
   echo clean: >> Makefile
   echo install_sw: >> Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwinstall_${rname}_libressl
+  cwinstall_${rname%libressl}_zlib
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --add-module=\"\$(cwbdir_${rname})/\$(cwdir_njs)/nginx\" \
     --with-cc=\"\$(which \${CC})\" \
@@ -78,6 +60,7 @@ function cwconfigure_${rname}() {
     --with-http_stub_status_module \
     --with-http_sub_module \
     --with-http_v2_module \
+    --with-http_v3_module \
     --with-http_xslt_module \
     --with-mail \
     --with-mail_ssl_module \
@@ -85,25 +68,25 @@ function cwconfigure_${rname}() {
     --with-stream_realip_module \
     --with-stream_ssl_module \
     --with-stream_ssl_preread_module
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} ${rlibtool} CC=\"\${CC}\" CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH= NJS_CFLAGS=-static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool} CC=\"\${CC}\" CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
   \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/sbin/${rname%libressl}\"
   ln -sf \"${rname%libressl}\" \"\$(cwidir_${rname})/sbin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
