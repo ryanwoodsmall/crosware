@@ -7,7 +7,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="dd16fb1d67bfab79a72f5e8390735c49e3e8e70b4945a15ab1f81ddb78658fb3"
-rreqs="busybox sed gawk"
+rreqs="busybox sed gawk bashtiny"
 
 . "${cwrecipe}/common.sh"
 
@@ -20,7 +20,8 @@ function cwconfigure_${rname}() {
     --disable-nls \
     --without-guile \
       LDFLAGS=-static \
-      CPPFLAGS=
+      CPPFLAGS= \
+      PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
 "
@@ -31,8 +32,8 @@ function cwmake_${rname}() {
   env \
     LDFLAGS=-static \
     CPPFLAGS= \
-    PATH=\"${cwsw}/busybox/current/bin:\${PATH}\" \
-      \"${cwsw}/busybox/current/bin/ash\" ./build.sh
+    PATH=\"${cwsw}/bashtiny/current/bin:${cwsw}/sed/current/bin:${cwsw}/gawk/current/bin:${cwsw}/busybox/current/bin:\${PATH}\" \
+      \"${cwsw}/bashtiny/current/bin/bash\" ./build.sh
   popd >/dev/null 2>&1
 }
 "
@@ -43,7 +44,7 @@ function cwmakeinstall_${rname}() {
   env \
     LDFLAGS=-static \
     CPPFLAGS= \
-    PATH=\"${cwsw}/busybox/current/bin:\${PATH}\" \
+    PATH=\"${cwsw}/bashtiny/current/bin:${cwsw}/sed/current/bin:${cwsw}/gawk/current/bin:${cwsw}/busybox/current/bin:\${PATH}\" \
       ./make install-binPROGRAMS
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/g${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/gnu${rname}\"
