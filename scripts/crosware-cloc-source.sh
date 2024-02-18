@@ -23,6 +23,8 @@ for p in cloc perl ; do
   }
 done
 
+clocout="${cwtop}/tmp/cloc.out"
+test -e "${clocout}" && cat "${clocout}" > "${clocout}.old" || true
 (
   echo 'crosware source:'
   cwsi="${cwtop}/tmp/crosware_cloc_ignored.out"
@@ -47,4 +49,4 @@ done
 
   echo "view diffs of ${cwso} with:"
   echo "  ${cwtop}/scripts/view-cloc-diff.sh"
-) |& tee ${cwtop}/tmp/cloc.out
+) |& tee "${clocout}"
