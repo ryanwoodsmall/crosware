@@ -23,26 +23,28 @@ for p in cloc perl ; do
   }
 done
 
-echo 'crosware source:'
-cwsi="${cwtop}/tmp/crosware_cloc_ignored.out"
-cloc \
-  --lang-no-ext='Bourne Again Shell' \
-  --force-lang='Bourne Again Shell',sh{,.common} \
-  --ignored="${cwsi}" \
-    "${cwtop}/bin/" \
-    "${cwtop}/etc/profile" \
-    "${cwtop}/etc/functions" \
-    "${cwtop}/etc/vars" \
-    "${cwtop}/recipes/"
+(
+  echo 'crosware source:'
+  cwsi="${cwtop}/tmp/crosware_cloc_ignored.out"
+  cloc \
+    --lang-no-ext='Bourne Again Shell' \
+    --force-lang='Bourne Again Shell',sh{,.{common,main}} \
+    --ignored="${cwsi}" \
+      "${cwtop}/bin/" \
+      "${cwtop}/etc/profile" \
+      "${cwtop}/etc/functions" \
+      "${cwtop}/etc/vars" \
+      "${cwtop}/recipes/"
 
-echo
-cwso="${cwtop}/tmp/crosware.set.out"
-test -e "${cwso}" && cat "${cwso}" > "${cwso}.old"
-"${cw}" set > "${cwso}"
-echo 'crosware set expanded:'
-cloc \
-  --force-lang='Bourne Again Shell' \
-    "${cwso}"
+  echo
+  cwso="${cwtop}/tmp/crosware.set.out"
+  test -e "${cwso}" && cat "${cwso}" > "${cwso}.old"
+  "${cw}" set > "${cwso}"
+  echo 'crosware set expanded:'
+  cloc \
+    --force-lang='Bourne Again Shell' \
+      "${cwso}"
 
-echo "view diffs of ${cwso} with:"
-echo "  ${cwtop}/scripts/view-cloc-diff.sh"
+  echo "view diffs of ${cwso} with:"
+  echo "  ${cwtop}/scripts/view-cloc-diff.sh"
+) |& tee ${cwtop}/tmp/cloc.out
