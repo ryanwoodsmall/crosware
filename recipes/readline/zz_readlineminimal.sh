@@ -11,6 +11,11 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
+for f in fetch fetchpatches clean extract ; do
+  eval "function cw${f}_${rname}() { cw${f}_${rname%minimal} ; }"
+done
+unset f
+
 eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
