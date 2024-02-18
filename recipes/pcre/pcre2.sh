@@ -11,7 +11,7 @@ rreqs="make zlib bzip2"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-pcre2test-lib{edit,readline} \
     --enable-pcre2-8 \
@@ -21,7 +21,7 @@ function cwconfigure_${rname}() {
     --enable-pcre2grep-libbz2 \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib -static)\" \
-      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig -static)\"
-  popd >/dev/null 2>&1
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
+  popd &>/dev/null
 }
 "
