@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 #
 # crosware
 #  driver script to bootstrap and install software
@@ -951,7 +950,7 @@ function cwupdate() {
       cwscriptecho "attempting to update using a git client"
       cwscriptecho "attempting to fetch/merge in ${cwtop}"
       pushd "${cwtop}" >/dev/null 2>&1 || cwfailexit "could not pushd into ${cwtop}"
-      cwscriptecho "${FUNCNAME[0]} using client ${CW_GIT_CMD}: $(${CW_GIT_CMD} version 2>/dev/null ; true)"
+      cwscriptecho "$(cwmyfuncname) using client ${CW_GIT_CMD}: $(${CW_GIT_CMD} version 2>/dev/null ; true)"
       ${CW_GIT_CMD} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
       ${CW_GIT_CMD} merge "${cworigin}/${cwbranch}" || { popd ; cwfailexit "could not merge ${cworigin}/${cwbranch} in ${cwtop}" ; }
       popd >/dev/null 2>&1
@@ -1893,7 +1892,7 @@ function cwpusharray() {
   local array element
   # XXX - should this error out?
   if [ ${#} -lt 2 ] ; then
-    cwscriptecho "${FUNCNAME[0]}: not enough arguments"
+    cwscriptecho "$(cwmyfuncname): not enough arguments"
     return
   fi
   array="${1}"
@@ -2074,7 +2073,7 @@ function cwcreatesharedlib() {
 # XXX = tried to optimize this as an in-place move+insertion(s); this is way easier and i couldn't see a perf difference
 #
 function cwprependfunc() {
-  local me="${FUNCNAME[0]}"
+  local me="$(cwmyfuncname)"
   if [[ ${#} -lt 2 ]] ; then
     cwfailexit "${me}: need at least a function name and one item to prepend"
   fi
@@ -2105,7 +2104,7 @@ function cwprependfunc() {
 #   insert commands at the end of a function
 #
 function cwappendfunc() {
-  local me="${FUNCNAME[0]}"
+  local me="$(cwmyfuncname)"
   if [[ ${#} -lt 2 ]] ; then
     cwfailexit "${me}: need at least a function name and one item to append"
   fi
