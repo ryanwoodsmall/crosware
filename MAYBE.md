@@ -315,6 +315,7 @@ wc -l /tmp/astbuild.out
   - ueforth (https://github.com/flagxor/eforth - small forth for linux, plus esp32forth for wifi+bt mcu)
 - fountain (formerly? http://hea-www.cfa.harvard.edu/~dj/tmp/fountain-1.0.2.tar.gz)
 - fq (https://github.com/wader/fq - like jq for binaries in go)
+- freenginx (https://freenginx.org - nginx fork aimed at hewing closer to open source than f5, who kinda suck)
 - frontabse (http://openbsd.stanleylieber.com/frontbase - 9base fork?)
 - fx (https://github.com/antonmedv/fx - terminal json viewer/navigator in go)
 - fzf (https://github.com/junegunn/fzf - fuzzy finder in go)
