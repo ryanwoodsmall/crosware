@@ -347,6 +347,7 @@ wc -l /tmp/astbuild.out
 - gopass (https://github.com/gopasspw/gopass - like pass but in go, uses gpg/git)
 - gops (https://github.com/google/gops - running go process analyzer)
 - gosecure (https://github.com/diegohce/gosecure - simple secure tls proxy in go)
+- gotify (https://github.com/gotify/server - go, simple message sending via rest api)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - go-tunnel (https://github.com/opencoff/go-tunnel - stunnel replacement written in go)
 - gowebdav (https://github.com/studio-b12/gowebdav - go webdav sli program)
