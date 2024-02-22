@@ -1,9 +1,9 @@
 rname="jfrogcli"
-rver="2.52.10"
+rver="2.53.1"
 rdir="jfrog-cli-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/jfrog/jfrog-cli/archive/refs/tags/${rfile}"
-rsha256="c5072ad254852921f007e7591afaee3d89a09919ed4c8fb2e492a1c7f1215672"
+rsha256="19b499135f210f4d237e65d6826433e69c7d321d21ad894abc385b2292220307"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
@@ -25,6 +25,7 @@ function cwmake_${rname}() {
   (
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    ${cwsw}/go/current/bin/go mod tidy || true
     env \
       CGO_ENABLED=0 \
       GOCACHE=\"\${GOCACHE}\" \
