@@ -225,13 +225,16 @@ crosware list-upgradable
 
 # notes
 
-This is a _mostly_ self-hosting virtual distribution of sorts, targeting all variations of 32-/64-bit x86 and ARM on Chrome OS, installable on other Linux distributions independently - with **riscv64** support as well.
-A static-only GCC compiler using musl-libc (with [musl-cross-make](https://github.com/richfelker/musl-cross-make.git) ) is installed as part of the bootstrap; this sort of precludes things like emacs, but doesn't stop anyone from using a musl toolchain to build a glibc-based shared toolchain.
+This is a _mostly_ self-hosting virtual Linux distribution of sorts, targeting all variations of 32-/64-bit x86 and ARM on Chrome OS, installable on other Linux distributions independently - with **riscv64** support as well.
+The primary aim of _crosware_ is to be a small - for some definition of small - and "as statically-linked as possible" development environment aimed at containers and ChromeOS, but also piggybacking on virtually any distribution that has a persistent `/usr/local` with write permissions.
+
+A static-only GCC compiler using [musl libc](https://musl.libc.org/) (with [musl-cross-make](https://github.com/richfelker/musl-cross-make.git) ) is installed as part of the bootstrap; this sort of precludes things like emacs, but doesn't stop anyone from using the static musl toolchain to build a shared toolchain and libraries, bootstrap another compiler, leverage Alpine packages, etc..
+Despite having "static" in the name, a `libc.so` (and `ld.so`, normally a symlink to musl's libc) is available and leveraged for a number packages, primarily to support other programming languages' linking modes and plugin/shared object strategies.
 
 The initial bootstrap looks something like:
 
 - scripted, i.e., `crosware bootstrap`:
-  - get a JDK (Azul Zulu OpenJDK)
+  - get a JDK (Azul Zulu OpenJDK for glibc)
   - get jgit.sh (standalone)
   - get static bootstrapped compiler
   - checkout rest of project
@@ -240,6 +243,13 @@ The initial bootstrap looks something like:
   - build native busybox, toolbox, sed, etc.
   - build a few libs / support (ncurses, openssl, slang, zlib, bzip2, lzma, libevent, pkg-config)
   - build a few packages (curl, vim w/syntax hightlighting, screen, tmux, links, lynx - mostly because I use them)
+
+Some scripts that might be use for bootstrapping on a non-glibc distro:
+
+- [scripts/install-static-bins.sh](scripts/install-static-bins.sh)
+- [scripts/update-crosware-from-tar.sh](scripts/update-crosware-from-tar.sh) (or [scripts/update-crosware-from-zip.sh](scripts/update-crosware-from-zip.sh) )
+- [scripts/install-musl-zulu.sh](scripts/install-musl-zulu.sh)
+- [scripts/reconstitute-git.sh](scripts/reconstitute-git.sh)
 
 # environment
 
