@@ -146,7 +146,7 @@ sudo ln -sf /usr/local/crosware/scripts/usr-local-bin-sudossht /usr/local/bin/su
 
 # chromeos only? - obsolete on chromeos but good to note anyway
 # wrap sudo to be passwordless with a trust-on-first-use approach
-# this is (well, was) useful for dev-mode chromebooks with a chronos user password seet
+# this is (well, was) useful for dev-mode chromebooks with a chronos user password set
 . /usr/local/crosware/scripts/passwordless-sudo.sh
 ```
 
