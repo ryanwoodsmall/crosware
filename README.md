@@ -226,7 +226,7 @@ crosware list-upgradable
 # notes
 
 This is a _mostly_ self-hosting virtual distribution of sorts, targeting all variations of 32-/64-bit x86 and ARM on Chrome OS, installable on other Linux distributions independently - with **riscv64** support as well.
-A static-only GCC compiler using musl-libc (with musl-cross-make) is installed as part of the bootstrap; this sort of precludes things like emacs, but doesn't stop anyone from using a musl toolchain to build a glibc-based shared toolchain.
+A static-only GCC compiler using musl-libc (with [musl-cross-make](https://github.com/richfelker/musl-cross-make.git) ) is installed as part of the bootstrap; this sort of precludes things like emacs, but doesn't stop anyone from using a musl toolchain to build a glibc-based shared toolchain.
 
 The initial bootstrap looks something like:
 
