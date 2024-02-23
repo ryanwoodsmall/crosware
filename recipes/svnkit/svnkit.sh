@@ -4,11 +4,7 @@ rdir="${rname}-${rver}"
 rfile="org.tmatesoft.svn_${rver}.standalone.nojna.zip"
 rurl="https://www.svnkit.com/${rfile}"
 rsha256="e4f9b91874c70f11c4380d0b256a1cb8aa9d1089c75a40b54d415c4723c2b224"
-# we need unzip, use the busybox version
 rreqs=""
-if ! command -v unzip &>/dev/null ; then
-  rreqs="busybox"
-fi
 
 . "${cwrecipe}/common.sh"
 

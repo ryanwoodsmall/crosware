@@ -22,9 +22,6 @@ rsha256=""
 rreqs="make busybox toybox gawk sed diffutils patch flex byacc"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
-if ! command -v unzip &>/dev/null ; then
-  rreqs="${rreqs} unzip"
-fi
 if ! command -v rsync &>/dev/null ; then
   rreqs="${rreqs} rsyncminimal"
 fi

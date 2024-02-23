@@ -43,6 +43,17 @@ cwechofunc "cwprof_${rname}" "${rprof}"
 cwechofunc "cwsite_${rname}" "${rsite}"
 cwechofunc "cwmessage_${rname}" "${rmessage}"
 
+# we might need an unzip or lunzip and i don't want this to propagate
+# XXX - should this be in the main cwextract for identified .zip files? seems risky
+if [[ ${rfile} =~ .zip$ ]] ; then
+  if ! command -v unzip &>/dev/null ; then
+    rreqs+=" busybox"
+  fi
+elif [[ ${rfile} =~ .lz$ ]] ; then
+  if ! command -v lunzip &>/dev/null ; then
+    rreqs+=" lunzip"
+  fi
+fi
 rreqs="${rreqs//  / }"
 rreqs="${rreqs## }"
 rreqs="${rreqs%% }"
@@ -283,3 +294,5 @@ if [[ ${rreqs} =~ configgit ]] ; then
 else
   cwstubfunc "cwfixupconfig_${rname}"
 fi
+
+# vim: ft=bash
