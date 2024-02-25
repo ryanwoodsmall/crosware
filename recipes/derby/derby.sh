@@ -1,16 +1,18 @@
 #
-# XXX - derbyjdk8 package with 10.14.x.x?
-# XXX - use a mirror?
-# XXX - derby 10.16.1.1+ requires java 17?
+# XXX - derby 10.15.x.x requires java 9
+# XXX - derby 10.16.x.x requires java 17
+# XXX - derby 10.17.x.x requires java 21
 #
-
+# XXX - derbyjdk8 package with 10.14.x.x
+# XXX - derbyjdk11/derbyjdk17/derbyjdk21 (ditto)
+# XXX - use a mirror?
+#
 rname="derby"
-rver="10.15.2.0"
+rver="10.17.1.0"
 rdir="db-${rname}-${rver}-bin"
 rfile="${rdir}.tar.gz"
-#rurl="http://www-us.apache.org/dist//db/${rname}/db-${rname}-${rver}/${rfile}"
 rurl="https://archive.apache.org/dist/db/derby/db-${rname}-${rver}/${rfile}"
-rsha256="ac51246a2d9eef70cecd6562075b30aa9953f622cbd2cd3551bc3d239dc6f02a"
+rsha256="cbcfe4a0f07aab943cf89978f38d9047a9783233a770c54074bf555a65bedd42"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
