@@ -1,11 +1,11 @@
 rname="xz"
-rver="5.4.6"
+rver="5.6.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="https://tukaani.org/${rname}/${rfile}"
 rurl="https://github.com/tukaani-project/xz/releases/download/v${rver}/${rfile}"
-rsha256="aeba3e03bf8140ddedf62a0a367158340520f6b384f75ca6045ccc6c0d43fd5c"
-rreqs="make gettexttiny slibtool patch"
+rsha256="0f5c81f14171b74fcc9777d302304d964e63ffc2d7b634ef023a7249d9b5d875"
+rreqs="make slibtool"
 
 . "${cwrecipe}/common.sh"
 
@@ -17,7 +17,8 @@ function cwconfigure_${rname}() {
     --disable-nls \
       LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\" \
       LDFLAGS=-static \
-      CPPFLAGS=
+      CPPFLAGS= \
+      PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
 "
