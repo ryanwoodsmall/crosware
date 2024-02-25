@@ -6,7 +6,6 @@
 #       - busybox version (nah, already included?)
 #       - busybox config script version - _must_ get this versioned/checksummed like toybox
 #       - karch/host triplet? - simplest, just use "${CC} -dumpmachine"
-# XXX - might want to make toybox a prereq - would get tar bzip support (would need to compress statictoolchain w/gzip though!)
 #
 
 rname="busybox"
