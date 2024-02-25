@@ -5,7 +5,7 @@
 # XXX - luarocks is pretty dependent on shared libs for ffi, etc.; probably _only_ useful for readline here
 #
 rname="fennel"
-rfennelver="1.4.1"
+rfennelver="1.4.2"
 # "vendor" a recent/system version of lua (needs to be shared)
 rluaver="$(cwver_lua)"
 # append lua version to fennel version so they kinda move in lockstep
@@ -13,7 +13,7 @@ rver="${rfennelver}-${rluaver}"
 rdir="${rname}-${rfennelver}"
 rfile="${rdir}"
 rurl="https://fennel-lang.org/downloads/${rfile}"
-rsha256="9470e4e49ceb36994d560849f20edcf479a96a48f036870bc5274b9e11012db0"
+rsha256="e7de1a866f0d1deb9593ef0b01d20f8027bb2b72f5cd9cb2ae6011fff92b5f05"
 rreqs="make netbsdcurses readlinenetbsdcurses"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 # no separate recipe for luarocks for now
