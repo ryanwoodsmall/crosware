@@ -1,7 +1,6 @@
 #
 # XXX - this is the minimal usable bash, mostly for scripting; using it interactively will probably be a very bad time
 #
-
 rname="bashtiny"
 rver="$(cwver_bash)"
 rdir="$(cwdir_bash)"
@@ -61,6 +60,7 @@ function cwmakeinstall_${rname}() {
   rm -f \"\$(cwidir_${rname})/bin/${rname}\"
   make install ${rlibtool} LDFLAGS='-static -s' CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}= YACC=
   mv -f \"\$(cwidir_${rname})/bin/bash\" \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/sh\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/bash\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/cwbash\"
   popd >/dev/null 2>&1
