@@ -1,12 +1,12 @@
 rname="hsqldb"
-rver="2.7.1"
+rver="2.7.2"
 rvermaj="${rver%%.*}"
 rvermin="${rver#*.}"
 rvermin="${rvermin%.*}"
 rdir="${rname}-${rver}"
 rfile="${rdir}.zip"
 rurl="https://sourceforge.net/projects/${rname}/files/${rname}/${rname}_${rvermaj}_${rvermin}/${rfile}/download"
-rsha256="77416bb895cd9f099ed603c759c217a43d8b3b47cbf02cd93a7f07d7842ea39d"
+rsha256="ffb359cbe66ba3179317b6afdb62cd274765333bd30167ce332a4b2d85975812"
 rreqs=""
 
 unset rvermaj rvermin
@@ -46,7 +46,6 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"\$(cwidir_${rname})/jar\"
   ln -sf \"${rtdir}/current/lib/sqltool.jar\" \"\$(cwidir_${rname})/jar/\"
   ln -sf \"${rtdir}/current/lib/${rname}.jar\" \"\$(cwidir_${rname})/jar/\"
-  ln -sf \"${rtdir}/current/lib/${rname}-jdk8.jar\" \"\$(cwidir_${rname})/jar/\"
   echo -n | tee \"\${hsqldbserver}\" \"\${hsqldbshell}\" \"\${hsqldbwebserver}\" >/dev/null 2>&1
   echo '#!/usr/bin/env bash' | tee -a \"\${hsqldbserver}\" \"\${hsqldbshell}\" \"\${hsqldbwebserver}\" >/dev/null 2>&1
   echo ': \${CLASSPATH:=\"\"}' | tee -a \"\${hsqldbserver}\" \"\${hsqldbshell}\" \"\${hsqldbwebserver}\" >/dev/null 2>&1
