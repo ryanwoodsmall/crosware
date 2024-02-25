@@ -14,14 +14,15 @@ rreqs="busybox sed gawk bashtiny"
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} \
-    --disable-dependency-tracking \
-    --disable-load \
-    --disable-nls \
-    --without-guile \
-      LDFLAGS=-static \
-      CPPFLAGS= \
-      PKG_CONFIG_{LIBDIR,PATH}=
+  env PATH=\"${cwsw}/bashtiny/current/bin:${cwsw}/sed/current/bin:${cwsw}/gawk/current/bin:${cwsw}/busybox/current/bin:\${PATH}\" \
+    ./configure ${cwconfigureprefix} \
+      --disable-dependency-tracking \
+      --disable-load \
+      --disable-nls \
+      --without-guile \
+        LDFLAGS=-static \
+        CPPFLAGS= \
+        PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
 "
