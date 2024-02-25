@@ -11,7 +11,7 @@
 #    rfuncname=extra
 #    rfuncbody='echo hello from $(cwmyfuncname) ; pwd ; ls -la'
 #    rdirtype=tmp
-#    eval "function cwtmpdir_${rname}() { echo \${cwtop}/tmp ; }"
+#    cwechofunc "cwtmpdir_${rname}" "${cwtop}/tmp"
 #    . ${cwtop}/recipes/functmpl.sh
 #    cwprependfunc cwinstall_${rname} 'echo before' cw${rfuncname}_${rname}
 #    cwappendfunc cwinstall_${rname} 'echo after' cw${rfuncname}_${rname}
