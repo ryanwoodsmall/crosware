@@ -32,17 +32,25 @@
 #    minihttpd/thttpd have simple crypt `htpasswd`
 #
 #
-
 rname="lighttpd"
-rver="1.4.73"
+rver="1.4.74"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
+rfile="${rdir}.tar.gz"
 #rurl="https://download.lighttpd.net/${rname}/releases-${rver%.*}.x/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="818816d0b314b0aa8728a7076513435f6d5eb227f3b61323468e1f10dbe84ca8"
+rsha256="3a82994d2afdd685c967569919cfa612dbb39bc1cc737d1b07dc4e988379ae57"
 rreqs="make zlib bzip2 pcre2 mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr brotli zstd xxhash lua netbsdcurses readlinenetbsdcurses"
 
 . "${cwrecipe}/common.sh"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  test -e src/compat || mkdir -p src/compat
+  test -e src/compat/sys || ln -s ${cwsw}/libbsd/current/include/bsd/sys src/compat/
+  popd &>/dev/null
+}
+"
 
 eval "
 function cwconfigure_${rname}() {

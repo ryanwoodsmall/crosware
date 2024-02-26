@@ -9,7 +9,7 @@ rreqs="make pkgconfig libbsd zlib pcre2 mbedtls"
 
 . "${cwrecipe}/common.sh"
 
-for f in fetch clean extract make ; do
+for f in fetch clean extract make patch ; do
   eval "
   function cw${f}_${rname}() {
     cw${f}_${rname%minimal}
