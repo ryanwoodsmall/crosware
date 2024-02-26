@@ -25,7 +25,7 @@ function cwconfigure_${rname}() {
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --enable-{ipv6,lfs} \
       --with-{zlib,pcre2,mbedtls} \
-      --without-{webdav-{locks,props},bzip2,attr,libxml,sqlite,uuid,brotli,zstd,xxhash,lua} \
+      --without-{webdav-{locks,props},bzip2,attr,libxml,sqlite,brotli,zstd,xxhash,lua} \
         CC=\"\${CC} -g0 -Os -Wl,-s \$(pkg-config --cflags --libs libbsd-overlay zlib libpcre2-posix)\" \
         CXX=\"\${CXX} -g0 -Os -Wl,-s \$(pkg-config --cflags --libs libbsd-overlay zlib libpcre2-posix)\" \
         CFLAGS=\"-fPIC -Wl,-rpath,${rtdir}/current/lib -g0 -Os -Wl,-s\" \

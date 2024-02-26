@@ -39,7 +39,7 @@ rfile="${rdir}.tar.gz"
 #rurl="https://download.lighttpd.net/${rname}/releases-${rver%.*}.x/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rsha256="3a82994d2afdd685c967569919cfa612dbb39bc1cc737d1b07dc4e988379ae57"
-rreqs="make zlib bzip2 pcre2 mbedtls pkgconfig libbsd sqlite libxml2 e2fsprogs attr brotli zstd xxhash lua netbsdcurses readlinenetbsdcurses"
+rreqs="make zlib bzip2 pcre2 mbedtls pkgconfig libbsd sqlite libxml2 attr brotli zstd xxhash lua netbsdcurses readlinenetbsdcurses xz"
 
 . "${cwrecipe}/common.sh"
 
@@ -59,7 +59,7 @@ function cwconfigure_${rname}() {
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --enable-{ipv6,lfs} \
       --with-webdav-{locks,props} \
-      --with-{pcre2,zlib,mbedtls,bzip2,attr,libxml,sqlite,uuid,brotli,zstd,xxhash,lua} \
+      --with-{pcre2,zlib,mbedtls,bzip2,attr,libxml,sqlite,brotli,zstd,xxhash,lua} \
         CC=\"\${CC} \$(pkg-config --cflags --libs libbsd-overlay zlib libpcre2-posix libxml-2.0)\" \
         CFLAGS=\"-fPIC -Wl,-rpath,${rtdir}/current/lib\" \
         CXXFLAGS=\"-fPIC -Wl,-rpath,${rtdir}/current/lib\" \
