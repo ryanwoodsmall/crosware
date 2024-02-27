@@ -1387,7 +1387,31 @@ time_func ls -l -A /
       fi | paste -s -d' ' -
     }
     ```
-
+- variants...
+  - cloning fetch/clean/extract/patch{,/make{,install}} in a lot of places
+  - can do these too?
+    - {b,}dir
+    - {dl,}file
+    - url
+    - sha256
+    - ver
+  - avoid `recipes/common.sh` completely in some cases for variants?
+  - use `recipes/functmpl.sh` template and create a cwinstall_?
+  - or just copy the cwinstall_main function and reeval with _variant name instead?
+  - need to get a bit more consistent
+- (more) function modification
+  - `cwcopyfunc func1 func2`
+    - copy a function
+    - readarray, change array[0] and re-eval
+  - `cwwrapfunc func1 func2`
+    - wrap a call to a function in another function
+    - `eval "function ${2}() { ${1} \"\${@}\" ; }"
+    - ordering here? be consistent with copy
+  - `cwreinplacefunc func "pattern"`
+    - sed pattern, e.g.: `s/_myrecipe/_myrecipevariant/g`
+    - read a function into an array
+    - run sed on each element
+    - re-eval
 
 <!--
 # vim: ft=markdown
