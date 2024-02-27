@@ -371,6 +371,7 @@ wc -l /tmp/astbuild.out
   - llhttp (https://github.com/nodejs/llhttp - continuation on a different parsing platform)
 - http servers/proxies/load balancers/etc.
   - apache (https://httpd.apache.org/ - httpd, needs apr, apr-util)
+  - bozohttpd (https://linuxreviews.org/The_bozotic_HTTP_server - small httpd w/o tls; home site is offline, netbsd has pkgsrc?)
   - caddy (https://caddyserver.com/ and https://github.com/caddyserver/caddy - http server with automatic tls)
   - cherokee (http://cherokee-project.com/)
   - hiawatha (https://www.hiawatha-webserver.org/)
@@ -1128,6 +1129,7 @@ wc -l /tmp/astbuild.out
 - skarnet stuff
   - dnsfunnel (https://skarnet.org/software/dnsfunnel/ - dns cache fanout to udp)
   - nsss (https://skarnet.org/software/nsss/ - nscd/nss ish implementation)
+  - tipidee (https://skarnet.org/software/tipidee/ - http server w/tls via e.g. s6-tlsserver - or plain inetd, etc.)
 - sljit (http://sljit.sourceforge.net/)
 - sloccount (https://dwheeler.com/sloccount/)
 - slre (https://github.com/cesanta/slre - super light regular expression library)
