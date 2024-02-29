@@ -17,7 +17,7 @@ rsha256="e7de1a866f0d1deb9593ef0b01d20f8027bb2b72f5cd9cb2ae6011fff92b5f05"
 rreqs="make netbsdcurses readlinenetbsdcurses"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 # no separate recipe for luarocks for now
-rluarocksver="3.9.2"
+rluarocksver="3.10.0"
 
 # XXX - luarocks need a real wget... libressl/gnutlsminimal are smallest!
 if ! wget --version 2>&1 | grep -q 'GNU Wget' ; then
