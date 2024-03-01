@@ -9,13 +9,13 @@ rsha256=""
 rburl="https://download.docker.com/linux/static/stable"
 if [[ ${karch} =~ ^aarch64 ]] ; then
   rurl="${rburl}/aarch64/${rfile}"
-  rsha256="c8711e7e24b6943c766b542c66f79ce4f96abd7df9a31b6e3fc61b7759a64364"
+  rsha256="713cbf9b64828016aa5605453c956bb7e2a1fad6d05bea6217f9e9396de378e5"
 elif [[ ${karch} =~ ^arm ]] ; then
   rurl="${rburl}/armhf/${rfile}"
-  rsha256="fe8e5d0b1bb64db677515f23715e3fe856f1b638ae44b6d9f22613c10da99721"
+  rsha256="b1bed8106214f12a91a635000538c51a438e481f036e307113bc4549ef28d29e"
 elif [[ ${karch} =~ ^x86_64 ]] ; then
   rurl="${rburl}/x86_64/${rfile}"
-  rsha256="df4068cf8228abfb7cf349ce0b2b943f8ed00ad5b523626431777e25efd3277a"
+  rsha256="fa56a890c16ca83715d7e62b351ff0528fcb92f70100129caf6382a8945b95fb"
 fi
 unset rburl
 
