@@ -1,19 +1,19 @@
 rname="cscope"
-rver="15.8b"
+rver="15.9"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://prdownloads.sourceforge.net/${rname}/${rfile}"
-rsha256="4889d091f05aa0845384b1e4965aa31d2b20911fb2c001b2cdcffbcb7212d3af"
+rsha256="c5505ae075a871a9cd8d9801859b0ff1c09782075df281c72c23e72115d9f159"
 rreqs="make ncurses bison flex configgit"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's/-lcurses/-lncurses/g' configure
   ./configure ${cwconfigureprefix}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
