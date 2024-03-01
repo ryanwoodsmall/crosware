@@ -137,7 +137,6 @@ function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool} CC=\"\${CC}\" CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
   \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/sbin/${rname}\"
-  unset p
   popd &>/dev/null
 }
 "
