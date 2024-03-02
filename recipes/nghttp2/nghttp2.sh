@@ -12,49 +12,48 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
 rsha256="ca2333c13d1af451af68de3bd13462de7e9a0868f0273dea3da5bc53ad70b379"
-rreqs="bootstrapmake busybox slibtool"
+rreqs="bootstrapmake busybox bashtiny slibtool"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  ./configure \
-    --disable-app \
-    --disable-examples\
-    ${cwconfigureprefix} \
-    ${cwconfigurelibopts} \
-    ${rconfigureopts} \
-    ${rcommonopts} \
-      CPPFLAGS= \
-      LDFLAGS=-static \
-      PKG_CONFIG_LIBDIR= \
-      PKG_CONFIG_PATH=
-  popd >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  env PATH=\"\$(echo ${cwsw}/{bashtiny,busybox,bootstrapmake,slibtool,ccache{,4},statictoolchain}/current/bin | tr ' ' ':')\" \
+    \"${cwsw}/bashtiny/current/bin/bash\" \
+      ./configure \
+        --disable-app \
+        --disable-examples\
+          ${cwconfigureprefix} \
+          ${cwconfigurelibopts} \
+          ${rconfigureopts} \
+          ${rcommonopts} \
+            LDFLAGS=-static \
+            CPPFLAGS= \
+            PKG_CONFIG_{LIBDIR,PATH}=
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} ${rlibtool} \
-    CPPFLAGS= \
     LDFLAGS=-static \
-    PKG_CONFIG_LIBDIR= \
-    PKG_CONFIG_PATH=
-  popd >/dev/null 2>&1
+    CPPFLAGS= \
+    PKG_CONFIG_{LIBDIR,PATH}=
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool} \
-    CPPFLAGS= \
     LDFLAGS=-static \
-    PKG_CONFIG_LIBDIR= \
-    PKG_CONFIG_PATH=
-  popd >/dev/null 2>&1
+    CPPFLAGS= \
+    PKG_CONFIG_{LIBDIR,PATH}=
+  popd &>/dev/null
 }
 "
 
