@@ -6,13 +6,12 @@
 # XXX - zlib
 # XXX - ... and NEED separate openssl and libressl variants for apps, examples
 #
-
 rname="nghttp2"
-rver="1.59.0"
+rver="1.60.0"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
+rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="fdc9bd71f5cf8d3fdfb63066b89364c10eb2fdeab55f3c6755cd7917b2ec4ffb"
+rsha256="ca2333c13d1af451af68de3bd13462de7e9a0868f0273dea3da5bc53ad70b379"
 rreqs="bootstrapmake busybox slibtool"
 
 . "${cwrecipe}/common.sh"
@@ -23,7 +22,6 @@ function cwconfigure_${rname}() {
   ./configure \
     --disable-app \
     --disable-examples\
-    --disable-python-bindings \
     ${cwconfigureprefix} \
     ${cwconfigurelibopts} \
     ${rconfigureopts} \
