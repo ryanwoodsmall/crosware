@@ -3,39 +3,41 @@
 # XXX - baseutils has an m4 as well, bmake is only req
 #
 rname="elfutils"
-rver="0.189"
+rver="0.191"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://sourceware.org/elfutils/ftp/${rver}/${rfile}"
-rsha256="39bd8f1a338e2b7cd4abc3ff11a0eddc6e690f69578a57478d8179b4148708c8"
+rsha256="df76db71366d1d708365fc7a6c60ca48398f14367eb2b8954efc8897147ad871"
 rreqs="bootstrapmake zlib libuargp muslfts muslobstack otools"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --disable-debuginfod \
     --disable-libdebuginfod \
     --disable-nls \
+    --enable-deterministic-archives \
     --enable-install-elfh \
+    --program-prefix=eu- \
     --without-biarch \
-      C{,XX}FLAGS=-fPIC \
+      C{,XX}FLAGS='-fPIC -Wno-error=unused-parameter -Os -g0 -Wl,-s' \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
-      LIBS=\"-largp -lfts -lz\"
+      LIBS=\"-largp -lfts -lz -s\"
   echo '#undef FNM_EXTMATCH' >> config.h
   echo '#define FNM_EXTMATCH 0' >> config.h
   sed -i.ORIG 's,-lobstack,-lobstack -largp -lfts,g' libdw/Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   (
     cd src
@@ -45,6 +47,7 @@ function cwmakeinstall_${rname}() {
     sed -i 's,-shared,,g' Makefile
     sed -i '/^libdw/d' Makefile
     sed -i '/^#libdw/s,^#,,g' Makefile
+    sed -i '/^srcfiles_LDADD/s,\$, -static,' Makefile
     make ${rlibtool} CC=\"\${CC} -Wl,-static\"
     make install ${rlibtool}
   )
@@ -52,7 +55,7 @@ function cwmakeinstall_${rname}() {
   rm -f \$(cwidir_${rname})/include/${rname}_elf.h
   cat \$(cwidir_${rname})/include/elf.h > \$(cwidir_${rname})/include/${rname}_elf.h
   rm -f \$(cwidir_${rname})/include/elf.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
