@@ -442,6 +442,7 @@ wc -l /tmp/astbuild.out
   - jmk (http://jmk.sourceforge.net/edu/neu/ccs/jmk/jmk.html)
   - kotlin (included in sdkman)
   - libjffi (https://github.com/jnr/jffi)
+    - jruby hash a glibc .so included
   - luaj
   - maven (included in sdkman)
   - mina (apache multipurpose infrastructure for network applications: java nio, ftp, sshd, etc.; https://mina.apache.org/)
@@ -616,6 +617,7 @@ wc -l /tmp/astbuild.out
   - https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.8-stable - _old_ alpine port against netbsd libfetch? no fetchReqHTTP
 - libffcall (https://www.gnu.org/software/libffcall/)
 - libfixposix (https://github.com/sionescu/libfixposix - common posix wrappers, used by jruby, which bundles glibc build of such - replace?)
+  - no deps, but needs autoconf/automake/libtool/pkgconfig
 - libfuse (https://github.com/libfuse/libfuse - separate userspace? uses meson? `fusermount` needs setuid)
   - need version 2 and 3, probably?
   - ugh?
