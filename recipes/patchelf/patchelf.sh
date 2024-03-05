@@ -9,10 +9,13 @@ rreqs="bootstrapmake"
 . "${cwrecipe}/common.sh"
 
 eval "
-function cwmakeinstall_${rname}() {
+function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  make install ${rlibtool}
-  \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/${rname}\"
+  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+    C{,XX}FLAGS=\"\${CFLAGS} -Wl,-s -Os -g0\" \
+    LDFLAGS='-static -s' \
+    CPPFLAGS= \
+    PKG_CONFIG_{LIBDIR,PATH}=
   popd >/dev/null 2>&1
 }
 "
