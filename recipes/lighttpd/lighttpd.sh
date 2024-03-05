@@ -57,7 +57,7 @@ function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   env PATH=\"${cwsw}/lua/current/bin:${cwsw}/pcre2/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
-      --enable-{ipv6,lfs} \
+      --enable-ipv6 \
       --with-webdav-{locks,props} \
       --with-{pcre2,zlib,mbedtls,bzip2,attr,libxml,sqlite,brotli,zstd,xxhash,lua} \
         CC=\"\${CC} \$(pkg-config --cflags --libs libbsd-overlay zlib libpcre2-posix libxml-2.0)\" \
