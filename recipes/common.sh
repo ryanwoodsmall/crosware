@@ -45,6 +45,9 @@ cwechofunc "cwmessage_${rname}" "${rmessage}"
 
 # we might need an unzip or lunzip and i don't want this to propagate
 # XXX - should this be in the main cwextract for identified .zip files? seems risky
+# XXX - should the lunzip always stanza just add it? all direct lunzip rreqs have been removed
+# XXX - would like to run this _once_, not every time this is sourced; however...
+# XXX - would ALSO essentially need an expanded list of all files from all reqs. oof
 if [[ ${rfile} =~ .zip$ ]] ; then
   if ! command -v unzip &>/dev/null ; then
     rreqs+=" busybox"

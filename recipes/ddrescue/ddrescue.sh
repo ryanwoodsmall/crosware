@@ -5,7 +5,7 @@ rfile="${rdir}.tar.lz"
 #rurl="http://download.savannah.gnu.org/releases/${rname}/${rfile}"
 rurl="http://ftp.gnu.org/pub/gnu/ddrescue/${rfile}"
 rsha256="6626c07a7ca1cc1d03cad0958522c5279b156222d32c342e81117cfefaeb10c1"
-rreqs="make lunzip"
+rreqs="make"
 
 . "${cwrecipe}/common.sh"
 

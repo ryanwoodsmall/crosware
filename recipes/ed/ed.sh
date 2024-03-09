@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="b1a463b297a141f9876c4b1fcd01477f645cded92168090e9a35db2af4babbca"
-rreqs="make lunzip"
+rreqs="make"
 
 . "${cwrecipe}/common.sh"
 

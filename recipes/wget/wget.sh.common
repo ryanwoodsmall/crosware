@@ -1,5 +1,5 @@
 : ${rreqs:=""}
-rreqs+=" make lunzip zlib pcre2 pkgconfig sed cacertificates"
+rreqs+=" make zlib pcre2 pkgconfig sed cacertificates"
 
 if [[ -z "${rname#wget}" ]] ; then
   rsslprov="openssl"

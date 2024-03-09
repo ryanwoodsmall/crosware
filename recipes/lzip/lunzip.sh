@@ -1,18 +1,18 @@
 rname="lunzip"
-rver="1.13"
+rver="1.14"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://download.savannah.gnu.org/releases/lzip/${rname}/${rfile}"
-rsha256="3c7d8320b947d2eb3c6081caf9b6c91b12debecb089ee544407cd14c8e517894"
-rreqs="make"
+rsha256="70a30ca88c538b074a04a6d5fa12a57f8e89febcb9145d322e9525f3694e4cb0"
+rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  ./configure ${cwconfigureprefix} CPPFLAGS=\"\${CPPFLAGS}\" LDFLAGS=\"\${LDFLAGS}\" CC=\"\${CC}\" CFLAGS=\"\${CFLAGS}\"
-  popd >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  ./configure ${cwconfigureprefix} CPPFLAGS=\"\" LDFLAGS=\"-static\" CC=\"\${CC}\" CFLAGS=\"\${CFLAGS}\"
+  popd &>/dev/null
 }
 "
 

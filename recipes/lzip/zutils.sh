@@ -5,7 +5,7 @@ rfile="${rdir}.tar.lz"
 rurl="http://download.savannah.gnu.org/releases/${rname}/${rfile}"
 rsha256="50e8e24b0a280ccab037004b9000b070d17a6e0cd86972927d1b2a5505421389"
 # diff is needed, use busybox version for now
-rreqs="make busybox lunzip"
+rreqs="make busybox"
 
 . "${cwrecipe}/common.sh"
 
