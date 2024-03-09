@@ -2,13 +2,12 @@
 # XXX - gnutls variant?
 # XXX - netbsdcurses?
 #
-
 rname="gnupg"
-rver="2.4.4"
+rver="2.4.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="67ebe016ca90fa7688ce67a387ebd82c6261e95897db7b23df24ff335be85bc6"
+rsha256="f68f7d75d06cb1635c336d34d844af97436c3f64ea14bcb7c869782f96f44277"
 rreqs="make libgpgerror libgcrypt libksba libassuan npth ntbtls sqlite readline ncurses slibtool zlib bzip2 pkgconfig pinentry configgit"
 
 . "${cwrecipe}/common.sh"
