@@ -7,13 +7,12 @@
 # XXX - metalink has/needs(?) gpgme support, probably not worth it for now
 # XXX - --without-included-unistring for full-fat gnutls
 #
-
 rname="wget"
-rver="1.21.4"
+rver="1.24.5"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.lz"
+rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="3683619a5f50edcbccb1720a79006fa37bf9b9a255a8c5b48048bc3c7a874bd9"
+rsha256="fa2dc35bab5184ecbc46a9ef83def2aaaa3f4c9f3c97d4bd19dcb07d4da637de"
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
 
