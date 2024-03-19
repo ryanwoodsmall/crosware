@@ -4,13 +4,13 @@
 #
 
 rname="onetrueawk"
-rver="20230909"
+rver="20240311"
 rdir="${rname#onetrue}-${rver}"
 rfile="${rver}.tar.gz"
 #rfile="${rver}.zip"
 #rurl="https://github.com/onetrueawk/awk/archive/${rfile}"
 rurl="https://github.com/onetrueawk/awk/archive/refs/tags/${rfile}"
-rsha256="24e554feb609fa2f5eb911fb8fe006c68d9042e34b2caafaad1f2200ce967c50"
+rsha256="5d46ab41595bcade23928a0aa9cff16972ee46e0a904a2a28c318324ccb669ce"
 rreqs="make byacc"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
