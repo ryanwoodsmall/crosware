@@ -17,7 +17,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --disable-lineedit \
     --disable-nls \
@@ -29,18 +29,18 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"-static -s\" \
       CPPFLAGS= \
       LIBS=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   test -e \"\$(cwidir_${rname})/bin\" && rm -f \$(cwidir_${rname})/bin/* || true
   make install
   mv ${rname%tiny} \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf ${rname} \"\$(cwidir_${rname})/bin/${rname%tiny}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

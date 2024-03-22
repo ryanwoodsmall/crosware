@@ -2,18 +2,18 @@
 # XXX - minimal termcap variant? doesn't seem to work, looking for tinfo/terminfo/curses/ncurses{,w}
 #
 rname="yash"
-rver="2.55"
+rver="2.56.1"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
+rfile="${rdir}.tar.gz"
 rurl="https://github.com/magicant/${rname}/releases/download/${rver}/${rfile}"
-rsha256="97cd809d5e216b3c4afae42379f1bd4f5082b7c16d51e282d60a5014fbc9e1f6"
+rsha256="03e3f8dd10f8cdab9a9799e7b97d07f1eb58bbbad2fd6ac112a399aace026b0e"
 rreqs="make netbsdcurses libeditnetbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --disable-nls \
     --enable-{array,dirstack,double-bracket,help,history,lineedit,printf,socket,test,ulimit} \
@@ -22,7 +22,7 @@ function cwconfigure_${rname}() {
       LDFLAGS=-static \
       LIBS='-ledit -lcurses -lterminfo -static' \
       CPPFLAGS=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
