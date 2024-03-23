@@ -928,7 +928,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - ubase (https://core.suckless.org/ubase)
 - svnkit
 - sysklogd (https://github.com/troglobit/sysklogd - bsd syslog on linux, newer rfc compliant)
-- tcpproxy (https://github.com/inetaf/tcpproxy - go, contains tlsrouter sni proxy program)
 - tea (https://gitea.com/gitea/tea - gitea cli)
 - termcap (https://www.gnu.org/software/termutils/ - old standalone gnu termcap library)
 - termutils (https://www.gnu.org/software/termutils/ - tabs and tput)

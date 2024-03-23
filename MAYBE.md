@@ -1203,6 +1203,7 @@ wc -l /tmp/astbuild.out
   - subc (https://www.t3x.org/subc)
 - tcc (http://repo.or.cz/w/tinycc.git)
   - static compilation is _pretty broken_
+- tcpproxy (https://github.com/inetaf/tcpproxy - go, contains tlsrouter sni proxy program)
 - tcpredirect (https://github.com/chengyingyuan/tcpredirect - keyed redirect/proxying?)
 - tidy (https://github.com/htacg/tidy-html5 - cmake)
 - timewarrior (https://timewarrior.net/ and https://github.com/GothenburgBitFactory/taskwarrior)
