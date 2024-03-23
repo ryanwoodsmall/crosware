@@ -6,14 +6,14 @@
 # XXX - alpine keeps removing .apk files, getting real old
 #
 rname="cacertificates"
-rver="20230506-r0"
+rver="20240226-r0"
 rdir="${rname}-${rver}"
 rfile="ca-certificates-bundle-${rver}.apk"
 #rfile="ca-certificates-cacert-${rver}.apk"
 #rurl="https://mirrors.edge.kernel.org/alpine/v3.11/main/x86_64/${rfile}"
 #rurl="https://mirrors.edge.kernel.org/alpine/v3.17/main/x86_64/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/alpine/${rfile}"
-rsha256="951c4a60beaf76b40a40abbd86e18b1d18b7660eb73b03fb5d6ce3cc3e053b19"
+rsha256="50824da2ebb1a9dd361ce47231fac498de6ae409439072e478288bf42cf6b044"
 rreqs=""
 rdlfile="${cwdl}/${rname}/${rfile}.tar.gz"
 
