@@ -4,7 +4,7 @@
 #
 
 rname="alpinemuslutils"
-rver="3.19.0"
+rver="3.19.1"
 rdir="${rname}-${rver}"
 rfile="getconf.c"
 rurl="https://raw.githubusercontent.com/alpinelinux/aports/v${rver}/main/musl/${rfile}"
