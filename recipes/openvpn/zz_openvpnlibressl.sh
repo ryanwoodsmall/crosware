@@ -22,7 +22,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --disable-{dco,plugins,shared} \
     --enable-{lz4,lzo,static} \
@@ -30,20 +30,20 @@ function cwconfigure_${rname}() {
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
   local t=\"${rname//openvpn/}\"
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install
   rm -f \"\$(cwidir_${rname})/sbin/${rname}\"
   rm -f \"\$(cwidir_${rname})/sbin/openvpn-\${t}\"
   ln -sf \"${rtdir}/current/sbin/openvpn\" \"\$(cwidir_${rname})/sbin/${rname}\"
   ln -sf \"${rtdir}/current/sbin/openvpn\" \"\$(cwidir_${rname})/sbin/openvpn-\${t}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
   unset t
 }
 "

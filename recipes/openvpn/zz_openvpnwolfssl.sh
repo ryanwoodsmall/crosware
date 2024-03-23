@@ -26,7 +26,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --disable-{dco,plugins,shared} \
     --enable-{lz4,lzo,static} \
@@ -37,20 +37,20 @@ function cwconfigure_${rname}() {
   sed -i.ORIG '/0x101.*LIBRESSL/s,101,123,g' src/openvpn/crypto_openssl.c
   echo '#undef OPENSSL_NO_EC' >> config.h
   echo '#define OPENSSL_NO_EC 1' >> config.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
   local t=\"${rname//openvpn/}\"
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install
   rm -f \"\$(cwidir_${rname})/sbin/${rname}\"
   rm -f \"\$(cwidir_${rname})/sbin/openvpn-\${t}\"
   ln -sf \"${rtdir}/current/sbin/openvpn\" \"\$(cwidir_${rname})/sbin/${rname}\"
   ln -sf \"${rtdir}/current/sbin/openvpn\" \"\$(cwidir_${rname})/sbin/openvpn-\${t}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
   unset t
 }
 "
