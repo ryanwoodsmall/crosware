@@ -1167,6 +1167,7 @@ wc -l /tmp/astbuild.out
 - ssf (https://github.com/securesocketfunneling/ssf and https://securesocketfunneling.github.io/ssf/#home - secure sockets funneling, c++ w/boost, openssl, cmake, krb5? ssh drop-in, looks nice!)
 - sshuttle (https://github.com/sshuttle/sshuttle)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
+- st (https://github.com/fabiensanglard/st - command space-time explorer, track memory/threads/etc. from cli: https://fabiensanglard.net/st/index.html)
 - starlark-go (https://github.com/google/starlark-go - starlark, python-like configuration language in go w/interpreter)
 - subversion / svn
   - needs apr/apr-util (easy) and serf (uses scons, needs fiddling)
