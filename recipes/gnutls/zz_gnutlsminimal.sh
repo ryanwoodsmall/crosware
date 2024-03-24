@@ -17,7 +17,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/nettleminimal/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
       --disable-doc \
@@ -44,13 +44,13 @@ function cwconfigure_${rname}() {
         LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         PKG_CONFIG=\"${cwsw}/pkgconfig/current/bin/pkg-config\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   cd doc/examples/tlsproxy
   \${CC} \
@@ -60,6 +60,6 @@ function cwmakeinstall_${rname}() {
     -L${cwsw}/nettleminimal/current/lib -L\$(cwidir_${rname})/lib \
     -lgnutls -lhogweed -lnettle -static
   install -m 755 ${rname%minimal}-tlsproxy \$(cwidir_${rname})/bin/
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
