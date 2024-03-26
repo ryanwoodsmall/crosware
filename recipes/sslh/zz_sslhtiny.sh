@@ -18,12 +18,16 @@ unset f
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  sed -i.ORIG \"/^PREFIX/s,PREFIX.*,PREFIX=\$(cwidir_${rname}),g\" Makefile
-  sed -i s,ENABLE_REGEX=1,ENABLE_REGEX=,g Makefile
-  sed -i s,USELIBCONFIG=1,USELIBCONFIG=,g Makefile
-  sed -i /^LIBS=/s,-lpcre2-8,,g Makefile
-  sed -i s,-DLIBPCRE,,g Makefile
-  sed -i /^sslh:/s,sslh-ev,,g Makefile
+  sed -i s,-lpcre2-8,,g Makefile.in
+  sed -i s,-DLIBPCRE,,g Makefile.in
+  sed -i s,^ENABLE_REGEX=1,ENABLE_REGEX=0,g Makefile.in
+  sed -i s,^USELIBCONFIG=1,USELIBCONFIG=0,g Makefile.in
+  sed -i s,^USELIBEV=1,USELIBEV=0,g Makefile.in
+  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+    C{,XX}FLAGS=\"\${CFLAGS} -Wl,-s -g0 -Os\" \
+    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd >/dev/null 2>&1
 }
 "
@@ -31,15 +35,19 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  make -j${cwmakejobs} \
-    CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s\" \
-    LDFLAGS=\"-static -s\" \
-    ENABLE_REGEX= \
-    USELIBCONFIG= \
-    USELIBCAP= \
-    USELIBBSD= \
-    CPPFLAGS= \
-    PKG_CONFIG_{LIBDIR,PATH}=
+  env PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+    make -j${cwmakejobs} ${rlibtool} \
+      CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s\" \
+      C{,XX}FLAGS=\"\${CFLAGS} -Wl,-s -g0 -Os\" \
+      USELIBCONFIG= \
+      ENABLE_REGEX= \
+      USELIBBSD= \
+      USELIBCAP= \
+      USELIBEV= \
+      LIBPCRE= \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -U{USELIBCONFIG,ENABLE_REGEX,USELIBEV,LIBPCRE})\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd >/dev/null 2>&1
 }
 "
@@ -47,15 +55,27 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  make install
-  install -m 0755 ${rname%tiny}-fork \"\$(cwidir_${rname})/sbin/${rname}-fork\"
-  install -m 0755 ${rname%tiny}-select \"\$(cwidir_${rname})/sbin/${rname}-select\"
-  install -m 0755 echosrv \"\$(cwidir_${rname})/sbin/${rname}-echosrv\"
-  ln -sf ${rname}-fork \"\$(cwidir_${rname})/sbin/${rname%tiny}-fork\"
-  ln -sf ${rname}-select \"\$(cwidir_${rname})/sbin/${rname%tiny}-select\"
-  ln -sf ${rname}-fork \"\$(cwidir_${rname})/sbin/${rname}\"
-  ln -sf ${rname}-fork \"\$(cwidir_${rname})/sbin/${rname%tiny}\"
-  ln -sf ${rname}-echosrv \"\$(cwidir_${rname})/sbin/echosrv\"
+  cwmkdir tmpinst
+  make install DESTDIR=\"\$(cwbdir_${rname})/tmpinst\" ${rlibtool}
+  cwmkdir \"\$(cwidir_${rname})\"
+  tar -C tmpinst/usr/ -cf - . | tar -C \"\$(cwidir_${rname})/\" -xvf -
+  ln -sf sslh \"$(cwidir_${rname})/sbin/${rname}\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  cwmkdir tmpinst
+  make install DESTDIR=\"\$(cwbdir_${rname})/tmpinst\" ${rlibtool}
+  cwmkdir \"\$(cwidir_${rname})\"
+  tar -C tmpinst/usr/ -cf - . | tar -C \"\$(cwidir_${rname})/\" -xvf -
+  install -m 755 echosrv \"$(cwidir_${rname})/sbin/echosrv\"
+  install -m 755 sslh-fork \"$(cwidir_${rname})/sbin/sslh-fork\"
+  install -m 755 sslh-select \"$(cwidir_${rname})/sbin/sslh-select\"
+  ln -sf sslh-fork \"$(cwidir_${rname})/sbin/sslh\"
+  ln -sf sslh \"$(cwidir_${rname})/sbin/${rname}\"
   popd >/dev/null 2>&1
 }
 "
