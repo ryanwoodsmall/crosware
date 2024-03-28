@@ -3,11 +3,11 @@
 #
 
 rname="wolfssh"
-rver="1.4.15"
+rver="1.4.17"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="d099298234702b1bfea7f35a59048f54365c6f4f07859f01af9a23fca94d0534"
+rsha256="0a63449f13827cc152716b521bcfd9bd89c773000b1b13326c277a0ec21bc8d4"
 rreqs="make wolfssl configgit slibtool"
 
 . "${cwrecipe}/common.sh"
@@ -37,7 +37,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
   make install ${rlibtool}
-  for p in client echoserver portfwd server ; do
+  for p in client echoserver portfwd ; do
     install -m 0755 \"./examples/\${p}/.libs/\${p}\" \"\$(cwidir_${rname})/bin/${rname}-\${p}\"
   done
   unset p
