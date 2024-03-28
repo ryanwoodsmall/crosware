@@ -1,9 +1,9 @@
 rname="libtommath"
-rver="1.2.1"
+rver="1.3.0"
 rdir="${rname}-${rver}"
 rfile="ltm-${rver}.tar.xz"
 rurl="https://github.com/libtom/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="986025d7b374276fee2e30e99f3649e4ac0db8a02257a37ee10eae72abed0d1f"
+rsha256="296272d93435991308eb73607600c034b558807a07e829e751142e65ccfa9d08"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
