@@ -11,7 +11,7 @@
 #   function cwcount() {
 #     local i=\$(cwcount)
 #     echo \${i}
-#     eval 'function cwcount() { 
+#     eval 'function cwcount() {
 #   ...
 #   }
 #   "
