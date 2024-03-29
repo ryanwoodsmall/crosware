@@ -4,15 +4,15 @@
 # XXX - terminfo (netbsdcurses), slang (termcap?), etc. - replace ncurses?
 #
 rname="utillinux"
-rver="2.39.3"
+rver="2.40"
 rdir="util-linux-${rver}"
-rfile="${rdir}.tar.xz"
-rsha256="7b6605e48d1a49f43cc4b4cfc59f313d0dd5402fa40b96810bd572e167dfed0f"
-rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig"
+rfile="${rdir}.tar.gz"
+rsha256="2a51d08cb71fd8e491e0cf633032c928f9a2848417f8441cb8cf7ef9971de916"
+rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig sqlite"
 
 rburl="https://kernel.org/pub/linux/utils/util-linux"
-rurl="${rburl}/v${rver%.*}/${rfile}"
-#rurl="${rburl}/v${rver}/${rfile}"
+#rurl="${rburl}/v${rver%.*}/${rfile}"
+rurl="${rburl}/v${rver}/${rfile}"
 unset rburl
 
 . "${cwrecipe}/common.sh"
@@ -37,6 +37,7 @@ function cwconfigure_${rname}() {
       --disable-makeinstall-chown \
       --disable-makeinstall-setuid \
       --disable-nls \
+      --disable-pam-lastlog2 \
       --disable-pylibmount \
       --enable-line \
       --enable-pg \
