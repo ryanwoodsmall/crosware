@@ -11,6 +11,11 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
+for f in fetch fetchpatches clean extract patch ; do
+  eval "function cw${f}_${rname}() { cw${f}_${rname%netbsdcurses} ; }"
+done
+unset f
+
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
