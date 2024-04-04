@@ -2,6 +2,7 @@
 # XXX - something like this should work for figuring url...
 #  echo "${rver}" | grep -q '.*\..*\..*' && sver="${rver%.?}" || sver="${rver}"
 # XXX - terminfo (netbsdcurses), slang (termcap?), etc. - replace ncurses?
+# XXX - col was deprecated in 2.40; ugh
 #
 rname="utillinux"
 rver="2.40"
