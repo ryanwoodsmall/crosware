@@ -8,7 +8,7 @@
 # XXX - https://tip.golang.org/doc/toolchain
 #
 rname="go"
-rgover="121"
+rgover="122"
 rver="$(cwver_${rname}${rgover})"
 rdir="$(cwdir_${rname}${rgover})"
 rbdir="$(cwbdir_${rname}${rgover})"
