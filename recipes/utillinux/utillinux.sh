@@ -2,14 +2,14 @@
 # XXX - something like this should work for figuring url...
 #  echo "${rver}" | grep -q '.*\..*\..*' && sver="${rver%.?}" || sver="${rver}"
 # XXX - terminfo (netbsdcurses), slang (termcap?), etc. - replace ncurses?
-# XXX - col was deprecated in 2.40; ugh
+# XXX - col was deprecated in 2.40; ugh. screw it just use heirloom
 #
 rname="utillinux"
 rver="2.40"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.gz"
 rsha256="2a51d08cb71fd8e491e0cf633032c928f9a2848417f8441cb8cf7ef9971de916"
-rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig sqlite"
+rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig sqlite heirloom"
 
 rburl="https://kernel.org/pub/linux/utils/util-linux"
 #rurl="${rburl}/v${rver%.*}/${rfile}"
@@ -55,6 +55,15 @@ function cwconfigure_${rname}() {
         LIBS='-lreadline -lncurses -lncursesw' \
         LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\" \
         PCRE2_POSIX_LIBS=\"\$(pkg-config --libs libpcre2-posix libpcre2-8)\"
+  popd >/dev/null 2>&1
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make install ${rlibtool}
+  install -m 755 \"${cwsw}/heirloom/current/bin/col\" \"\$(cwidir_${rname})/bin/col\"
   popd >/dev/null 2>&1
 }
 "
