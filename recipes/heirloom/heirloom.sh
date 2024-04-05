@@ -7,7 +7,7 @@
 #   - https://github.com/illumos/illumos-gate/commit/356ba08c15b26adbde3440aa89d8b31cd39fc526
 #
 rname="heirloom"
-rreqs="make sed netbsdcurses zlib bzip2 ed byacc reflex mksh busybox"
+rreqs="make sed netbsdcurses zlib bzip2 ed byacc reflex oksh busybox"
 
 . "${cwrecipe}/heirloom/heirloom.sh.common"
 . "${cwrecipe}/common.sh"
@@ -35,8 +35,8 @@ function cwmake_${rname}() {
   local d=''
   for d in ${rname}{,-{sh,devtools,doctools,ex-vi}} ; do
     pushd \${d}
-    env CHARSET= PATH=\"${cwsw}/byacc/current/bin:${cwsw}/reflex/current/bin:\${PATH}\" make
-    env CHARSET= PATH=\"${cwsw}/byacc/current/bin:${cwsw}/reflex/current/bin:\${PATH}\" make install
+    env CHARSET= PATH=\"${cwsw}/byacc/current/bin:${cwsw}/reflex/current/bin:${cwsw}/oksh/current/bin:\${PATH}\" make
+    env CHARSET= PATH=\"${cwsw}/byacc/current/bin:${cwsw}/reflex/current/bin:${cwsw}/oksh/current/bin:\${PATH}\" make install
     popd
   done
   popd >/dev/null 2>&1
