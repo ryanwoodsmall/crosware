@@ -24,16 +24,18 @@
 #   dropbearconvert dropbear openssh ~/.ssh/id_dropbear ~/.ssh/id_rsa
 #   dropbearkey -y -f ~/.ssh/id_dropbear | egrep -v '^(Public key.*:|Fingerprint:)' > ~/.ssh/id_rsa.pub
 #
+# XXX - enable DROPBEAR_USE_SSH_CONFIG in dropbear-misc and test
+#
 rname="dropbear"
-rsver="2022.83"
-rdate="20221114164419"
+rsver="2024.84"
+rdate="20240404224231"
 rver="${rsver}-${rdate}"
 rdir="${rname}-${rsver}"
 rfile="${rdir}.tar.bz2"
 #rurl="https://matt.ucc.asn.au/${rname}/releases/${rfile}"
 #rurl="https://dropbear.nl/mirror/releases/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="bc5a121ffbc94b5171ad5ebe01be42746d50aa797c9549a4639894a16749443b"
+rsha256="16e22b66b333d6b7e504c43679d04ed6ca30f2838db40a21f935c850dfc01009"
 # need a patch program, try toybox
 rreqs="make toybox zlib configgit lshsftpserver"
 
@@ -45,7 +47,7 @@ function cwfetch_${rname}() {
   cwfetchcheck \
     \"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/${rdate}-${rname}-${rsver}/options/${rname}-${rsver}_localoptions.h\" \
     \"${cwdl}/${rname}/${rname}-\$(cwver_${rname})_localoptions.h\" \
-    \"ced52660b03f32b8fe6f6db508b36eece70683bb5d9fa2a4a1a52f8f7d91d257\"
+    \"72e3b996656211c6271240e3440809acb1925d46b20cf0b9aedb402f7be9d667\"
 }
 "
 
