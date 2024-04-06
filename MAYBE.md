@@ -425,6 +425,8 @@ wc -l /tmp/astbuild.out
   - alpine openjdk? 11? 8?
   - ant (included in sdkman)
   - antlr
+  - artifactory oss (https://jfrog.com/community/download-artifactory-oss/ - basic java/generic/remote/virtual repo management)
+    - other jfrog stuff here too: https://jfrog.com/community/open-source/ - conan, docker, etc.
   - ballerina (https://ballerina.io and https://github.com/ballerina-platform/ballerina-lang - included in sdkman)
   - ceylon (https://ceylon-lang.org and https://github.com/eclipse/ceylon)
   - clojure (leiningen included in sdkman)
@@ -447,6 +449,8 @@ wc -l /tmp/astbuild.out
   - luaj
   - maven (included in sdkman)
   - mina (apache multipurpose infrastructure for network applications: java nio, ftp, sshd, etc.; https://mina.apache.org/)
+  - nexus oss (https://www.sonatype.com/products/sonatype-nexus-oss-download - artifact repo, more features than artifactory oss?)
+    - `curl -kILs https://download.sonatype.com/nexus/3/latest-unix.tar.gz |& awk '/^location:/{print $2}'` to get latest rev???
   - nailgun (https://github.com/facebook/nailgun and http://www.martiansoftware.com/nailgun/)
   - rembulan (jvm lua)
   - ringojs
