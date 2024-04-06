@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="6b9757f592b7518b4902eb6af7e54570bdccba37a871fddb2d30ae3863511c13"
-rreqs="gawk make perl sed"
+rreqs="gawk make perl sed m4"
 
 . "${cwrecipe}/common.sh"
 
