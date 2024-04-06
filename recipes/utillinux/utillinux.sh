@@ -2,14 +2,15 @@
 # XXX - something like this should work for figuring url...
 #  echo "${rver}" | grep -q '.*\..*\..*' && sver="${rver%.?}" || sver="${rver}"
 # XXX - terminfo (netbsdcurses), slang (termcap?), etc. - replace ncurses?
-# XXX - col was deprecated in 2.40; ugh. screw it just use heirloom
+# XXX - col was deprecated in 2.40; ugh. screw it just use heirloom when/if this break
+# XXX - autoconf/automake/libtool/bison/flex necessary to regenerate from configure.ac; but, perl
 #
 rname="utillinux"
 rver="2.40"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.gz"
 rsha256="2a51d08cb71fd8e491e0cf633032c928f9a2848417f8441cb8cf7ef9971de916"
-rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig sqlite heirloom"
+rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig sqlite"
 
 rburl="https://kernel.org/pub/linux/utils/util-linux"
 #rurl="${rburl}/v${rver%.*}/${rfile}"
@@ -22,16 +23,25 @@ unset rburl
 # XXX - ugh
 # sed -i.ORIG '/MANPAGES.*raw\.8/d' disk-utils/Makemodule.am
 # touch -d 1970-01-01 disk-utils/Makemodule.am
-# XXX - touchy stuff here, eliminate/move to cwpatch_!!!
+# XXX - touchy stuff here, eliminate???
 eval "
-function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat include/pidfd-utils.h > include/pidfd-utils.h.ORIG
   echo '#include <sys/types.h>' > include/pidfd-utils.h
   cat include/pidfd-utils.h.ORIG >> include/pidfd-utils.h
   sed -i '/defined.*__linux/s/$/ \\&\\& defined(SYS_pidfd_send_signal)/g' include/pidfd-utils.h
-  sed -i.ORIG '/READLINE_LIBS/ s/-lreadline/-lreadline -lncurses -lncursesw/g' configure
+  cat configure > configure.ORIG
+  sed -i '/READLINE_LIBS/ s/-lreadline/-lreadline -lncurses -lncursesw/g' configure
+  sed -i s,ul_haveprogram_col=no,ul_haveprogram_col=yes,g configure
   sed -i.ORIG 's/raw\.8/mkfs.8/g' Makefile.in
+  popd &>/dev/null
+}
+"
+
+eval "
+function cwconfigure_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/ncurses/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
       --disable-asciidoc \
@@ -54,17 +64,10 @@ function cwconfigure_${rname}() {
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lreadline -lncurses -lncursesw' \
         LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\" \
-        PCRE2_POSIX_LIBS=\"\$(pkg-config --libs libpcre2-posix libpcre2-8)\"
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  make install ${rlibtool}
-  install -m 755 \"${cwsw}/heirloom/current/bin/col\" \"\$(cwidir_${rname})/bin/col\"
-  popd >/dev/null 2>&1
+        PCRE2_POSIX_LIBS=\"\$(pkg-config --libs libpcre2-posix libpcre2-8)\" \
+        build_col=yes \
+        ul_haveprogram_col=yes
+  popd &>/dev/null
 }
 "
 
