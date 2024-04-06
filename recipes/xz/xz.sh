@@ -11,8 +11,22 @@ rreqs="make slibtool"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  cat Makefile.in > Makefile.in.ORIG
+  sed -i '/DIRS/s, po, ,g' Makefile.in
+  sed -i '/DIRS/s, tests, ,g' Makefile.in
+  rm -rf ./po/ ./tests/
+  mkdir -p po tests
+  touch po/Makefile.in.in
+  touch tests/Makefile.in
+  popd &>/dev/null
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-doc \
     --disable-nls \
@@ -20,7 +34,7 @@ function cwconfigure_${rname}() {
       LDFLAGS=-static \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
