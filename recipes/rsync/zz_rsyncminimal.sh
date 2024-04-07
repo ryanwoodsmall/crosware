@@ -4,23 +4,19 @@ rdir="$(cwdir_rsync)"
 rfile="$(cwfile_rsync)"
 rdlfile="$(cwdlfile_rsync)"
 rurl="$(cwurl_rsync)"
-rsha256=""
+rsha256="$(cwsha256_rsync)"
 rreqs="bootstrapmake busybox"
 
 . "${cwrecipe}/common.sh"
 
-for f in fetch clean extract make ; do
-  eval "
-  function cw${f}_${rname}() {
-    cw${f}_${rname%minimal}
-  }
-  "
+for f in fetch clean extract patch make ; do
+  eval "function cw${f}_${rname}() { cw${f}_${rname%minimal} ; }"
 done
 unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --with-included-popt \
     --with-included-zlib \
@@ -34,24 +30,24 @@ function cwconfigure_${rname}() {
     --disable-xattr-support \
     --disable-xxhash \
     --disable-zstd \
-      CFLAGS=\"\${CFLAGS} -DINET6 -Os\" \
-      LDFLAGS=-static \
+      CFLAGS=\"\${CFLAGS} -DINET6 -Os -g0 -Wl,-s\" \
+      LDFLAGS=\"-static -s\" \
       SED=\"${cwsw}/busybox/current/bin/sed\" \
       AWK=\"${cwsw}/busybox/current/bin/awk\" \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   ln -sf rsync \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf rsync \"\$(cwidir_${rname})/bin/rsync-minimal\"
   \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/rsync\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
