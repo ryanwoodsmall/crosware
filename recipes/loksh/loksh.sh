@@ -1,9 +1,9 @@
 rname="loksh"
-rver="7.4"
+rver="7.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/dimkr/${rname}/releases/download/${rver}/${rfile}"
-rsha256="14636f794e939817f79653e00b2af7e73a199e585d52055455c15b9203caf299"
+rsha256="0c70706b2ae960af035d73d3bb5f30030286e9ebe9855363dccadb85f901adf0"
 rreqs="ncurses samurai muon"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
