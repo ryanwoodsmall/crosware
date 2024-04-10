@@ -2,7 +2,7 @@ rname="openssl111"
 rver="1.1.1w"
 rdir="${rname%111}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://www.openssl.org/source/${rfile}"
+rurl="https://www.openssl.org/source/old/1.1.1/${rfile}"
 rsha256="cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8"
 rreqs="make perl cacertificates"
 
