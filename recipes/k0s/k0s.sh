@@ -3,7 +3,7 @@
 # XXX - package for airgap images?
 #
 rname="k0s"
-rver="1.29.2_${rname}.0"
+rver="1.29.3_${rname}.0"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
@@ -12,13 +12,13 @@ rbfile="${rname}-v${rver//_/+}"
 rburl="https://github.com/${rname}project/${rname}/releases/download/v${rver//_/%2B}"
 if [[ ${karch} =~ ^x86_64 ]] ; then
   rfile="${rbfile}-amd64"
-  rsha256="3511344dcf63e56d5286b230b7993965cb05b27bdb721780c2037339ccd8fcbd"
+  rsha256="1320c4ac2ff15fc9442c8629739a55bf21e8951b5b244c791aa9c9990280ecce"
 elif [[ ${karch} =~ ^arm ]] ; then
   rfile="${rbfile}-arm"
-  rsha256="0dda85767c045d672ced242e986a18bd13b558a88635cfd60ee4aff7a10d4caa"
+  rsha256="4407adec18c31334b026841b67f8bfa09b15620da1229f77e3cd6d72f765a4f8"
 elif [[ ${karch} =~ ^aarch64 ]] ; then
   rfile="${rbfile}-arm64"
-  rsha256="8eb4db7cd041cf2a6fa48865ba1163b59760ab3090036e1e52eb94daaf913822"
+  rsha256="3e5429dbd2aa2acca93c8295d9af9ac452cbdfc283810e3aa86900506e82022c"
 fi
 rurl="${rburl}/${rfile//+/%2B}"
 unset rbfile
