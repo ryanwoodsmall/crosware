@@ -33,12 +33,12 @@
 #
 #
 rname="lighttpd"
-rver="1.4.75"
+rver="1.4.76"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="https://download.lighttpd.net/${rname}/releases-${rver%.*}.x/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="283aa8cba5534979f987c2a652948c241a94683a21e06e2a7109f632bbcdda97"
+rsha256="7c4a08448ffee6b9bea01ea4f61ded4d939c282a1df0fa79740bf4c31ffbd468"
 rreqs="make zlib bzip2 pcre2 mbedtls pkgconfig libbsd sqlite libxml2 attr brotli zstd xxhash lua netbsdcurses readlinenetbsdcurses xz"
 
 . "${cwrecipe}/common.sh"
