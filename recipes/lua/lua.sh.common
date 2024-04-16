@@ -24,4 +24,26 @@ function cwmake_${rname}() {
 }
 "
 
-# vim: set ft=sh:
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  make install MYCFLAGS=\"\${CFLAGS}\" MYLDFLAGS=\"-static\" LDFLAGS=-static CPPFLAGS=
+  cwmkdir \"\$(cwidir_${rname})/lib/pkgconfig\"
+  {
+    : make pc # not in lua 5.1, only prints out k=v so have to do below anyway
+    echo Name: lua-\$(cwver_${rname} | cut -f1-2 -d.)
+    echo Description: Lua
+    echo Version: \$(cwver_${rname})
+    echo Cflags: -I${rtdir}/current/include
+    echo Libs: -L${rtdir}/current/lib -llua
+    echo Libs.private:
+  } > \$(cwidir_${rname})/lib/pkgconfig/lua-\$(cwver_${rname} | cut -f1-2 -d.).pc
+  if [[ ${rname} == lua ]] ; then
+    cat \$(cwidir_${rname})/lib/pkgconfig/lua-\$(cwver_${rname} | cut -f1-2 -d.).pc > \$(cwidir_${rname})/lib/pkgconfig/lua.pc
+    sed -i '/^Name:/s,.*,Name: lua,g' \$(cwidir_${rname})/lib/pkgconfig/lua.pc
+  fi
+  popd >/dev/null 2>&1
+}
+"
+
+# vim: set ft=bash:
