@@ -1,18 +1,20 @@
 rname="tio"
-rver="2.7"
+rver="2.8"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="bf8fe434848c2c1b6540af0b42503c986068176ddc1a988cf02e521e7de5daa5"
-rreqs="ninja meson inih pkgconfig"
+rsha256="890a880a048e604dbb9c3765d10b3dcdd2bb54cecf7b4bcc3a1ac0f3b6c95706"
+rreqs="ninja meson inih pkgconfig lua"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  env PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:${cwsw}/pkgconfig/current/bin:\${PATH}\" \
-    \"${cwsw}/meson/current/bin/meson\" setup --prefix=\"\$(cwidir_${rname})\" build
+  env \
+    PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:${cwsw}/pkgconfig/current/bin:${cwsw}/lua/current/bin:\${PATH}\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+      \"${cwsw}/meson/current/bin/meson\" setup --prefix=\"\$(cwidir_${rname})\" build
   popd >/dev/null 2>&1
 }
 "
@@ -20,8 +22,10 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  env PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:${cwsw}/pkgconfig/current/bin:\${PATH}\" \
-    \"${cwsw}/meson/current/bin/meson\" compile -C build
+  env \
+    PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:${cwsw}/pkgconfig/current/bin:${cwsw}/lua/current/bin:\${PATH}\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+      \"${cwsw}/meson/current/bin/meson\" compile -C build
   popd >/dev/null 2>&1
 }
 "
@@ -29,8 +33,10 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  env PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:${cwsw}/pkgconfig/current/bin:\${PATH}\" \
-    \"${cwsw}/meson/current/bin/meson\" install -C build
+  env \
+    PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:${cwsw}/pkgconfig/current/bin:${cwsw}/lua/current/bin:\${PATH}\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+      \"${cwsw}/meson/current/bin/meson\" install -C build
   popd >/dev/null 2>&1
 }
 "
