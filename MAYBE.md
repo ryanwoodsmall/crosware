@@ -1272,6 +1272,7 @@ wc -l /tmp/astbuild.out
 - wasm stuff... (most need rust and/or cmake, python3, etc.!)
   - awesome-wasm-runtimes (https://github.com/appcypher/awesome-wasm-runtimes - bunch of potential stuff here)
   - binaryen (https://github.com/WebAssembly/binaryen - includes `wasm2js` tool to run wasm on top of javascript)
+  - chicory (https://github.com/dylibso/chicory - native jvm webassembly runtime!!!)
   - cowasm (https://github.com/sagemathinc/cowasm - collaborative webassembly, shell, in zig, with python, unix ports, etc.!)
   - lucet (https://github.com/bytecodealliance/lucet)
   - polywasm (https://github.com/evanw/polywasm - a polyfill for running/converting .wasm to javascript...)
