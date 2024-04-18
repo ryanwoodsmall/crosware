@@ -4,7 +4,7 @@ rdir="$(cwdir_njs)"
 rfile="$(cwfile_njs)"
 rdlfile="$(cwdlfile_njs)"
 rurl="$(cwurl_njs)"
-rsha256=""
+rsha256="$(cwsha256_njs)"
 rreqs=""
 
 . "${cwrecipe}/nginx/njs.sh.common"
