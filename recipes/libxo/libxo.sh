@@ -2,11 +2,11 @@
 # XXX - kind of odd, build a normal static version then a shared version for encoder libenc_*.so files
 #
 rname="libxo"
-rver="1.7.0"
+rver="1.7.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/Juniper/libxo/releases/download/${rver}/${rfile}"
-rsha256="9de1e322382ecfdf0310ce7b083ea22e8fdbddca27290652b021edca78fdf201"
+rsha256="adee0d024bda9bb1b76504cd48336c30c9dac771dad7e0d982315f3e0e3c103c"
 rreqs="make libbsd libmd configgit"
 
 . "${cwrecipe}/common.sh"
