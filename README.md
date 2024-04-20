@@ -470,6 +470,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - cvs
 - cwstaticbinaries (https://github.com/ryanwoodsmall/static-binaries - static binaries, possibly useful for bootrapping?)
 - cxref
+- dasel (https://github.com/TomWright/dasel - select/put/delete/convert data from json/toml/yaml/xml/csv)
 - dash (http://gondor.apana.org.au/~herbert/dash/ and https://git.kernel.org/pub/scm/utils/dash/dash.git)
   - dashminimal (libedit with basic termcap)
   - dashtiny (no libedit)
