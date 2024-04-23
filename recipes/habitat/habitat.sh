@@ -9,7 +9,6 @@ rdir="${rname}-${rver}"
 rfile="core-hab-${rver%.*}-${rver##*.}-x86_64-linux.hart"
 rurl="https://bldr.habitat.sh/v1/depot/pkgs/core/hab/${rver%.*}/${rver##*.}/download?target=x86_64-linux"
 rsha256="8643e13d08693a4b6355fa85710acdb77816ea50bb8a79779152ff545461313e"
-
 rreqs=""
 
 . "${cwrecipe}/common.sh"
