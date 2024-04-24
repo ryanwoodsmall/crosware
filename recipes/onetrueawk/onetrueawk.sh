@@ -2,15 +2,14 @@
 # XXX - YACC is now officially set as bison, bison requires perl, etc. - too big
 # XXX - i.e. byacc is probably going to break at some point, then awk will indirectly require perl. the humanity
 #
-
 rname="onetrueawk"
-rver="20240311"
+rver="20240422"
 rdir="${rname#onetrue}-${rver}"
 rfile="${rver}.tar.gz"
 #rfile="${rver}.zip"
 #rurl="https://github.com/onetrueawk/awk/archive/${rfile}"
 rurl="https://github.com/onetrueawk/awk/archive/refs/tags/${rfile}"
-rsha256="5d46ab41595bcade23928a0aa9cff16972ee46e0a904a2a28c318324ccb669ce"
+rsha256="4793404735db5ea79f790cf865bf4fe875f9c5c23b1b8da186349f54b3a32281"
 rreqs="make byacc"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
@@ -24,26 +23,26 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat makefile > makefile.ORIG
   sed -i 's/-o maketab/-o maketab -static -Wl,-static/g' makefile
   sed -i 's/gcc/\$(CC)/g' makefile
   sed -i 's/-lm/-lm -static/g' makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make YACC=\"${cwsw}/byacc/current/bin/byacc -d -b awkgram\" {HOST,}CC=\"\${CC} -Wl,-static\" CPPFLAGS= LDFLAGS=-static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
   \$(\${CC} -dumpmachine)-strip --strip-all a.out
@@ -51,7 +50,7 @@ function cwmakeinstall_${rname}() {
   ln -sf \"${rtdir}/current/bin/awk\" \"\$(cwidir_${rname})/bin/${rname}\"
   install -m 0644 awk.1 \"\$(cwidir_${rname})/share/man/man1/\"
   ln -sf \"${rtdir}/current/share/man/man1/awk.1\" \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
