@@ -11,11 +11,11 @@
 #
 
 rname="gauche"
-rver="0.9.14"
+rver="0.9.15"
 rdir="${rname//g/G}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://github.com/shirok/${rname//g/G}/releases/download/release${rver//./_}/${rfile}"
-rsha256="02928f8535cf83f23ed6097f1b07b1fdb487a5ad2cb81d8a34d5124d02db3d48"
+rsha256="3643e27bc7c8822cfd6fb2892db185f658e8e364938bc2ccfcedb239e35af783"
 rreqs="make libressl mbedtls zlib gdbm netbsdcurses readlinenetbsdcurses"
 
 . "${cwrecipe}/common.sh"
@@ -30,7 +30,7 @@ fi
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --enable-ipv6 \
     --enable-multibyte=utf-8 \
@@ -45,21 +45,21 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LIBS='-lgdbm_compat -lgdbm' \
-      PKG_CONFIG_LIBDIR= \
-      PKG_CONFIG_PATH=
-  popd >/dev/null 2>&1
+      PKG_CONFIG_{LIBDIR,PATH}=
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
+  test -e \$(cwidir_${rname})/bin/${rname} && mv \$(cwidir_${rname})/bin/${rname}{,.PRE-\${TS}} || true
   echo '#!/bin/sh' > \"\$(cwidir_${rname})/bin/${rname}\"
   echo 'export GAUCHE_READ_EDIT=yes' >> \"\$(cwidir_${rname})/bin/${rname}\"
   echo 'env GAUCHE_READ_EDIT=yes \"${rtdir}/current/bin/gosh\" \"\${@}\"' >> \"\$(cwidir_${rname})/bin/${rname}\"
   chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
