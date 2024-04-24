@@ -2,14 +2,13 @@
 # XXX - 20200902 breaks on some tests, at least with musl: opt-ignore opt-keep-going sh-dots export ...
 # XXX - ugh
 #
-
 rname="bmake"
-rver="20240404"
+rver="20240414"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="http://www.crufty.net/ftp/pub/sjg/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="60dfb60090086f2d008d9c4ec8a224c992a3e62522cc06e43764d5d1e3d7d8bd"
+rsha256="e1ba6c230cb3acf8b4c0885efaf3ffba3905942784b29d0f7fe22201542a5d56"
 rreqs=""
 rbdir="${cwbuild}/${rdir}/build"
 rprof="${cwetcprofd}/zz_${rname}.sh"
@@ -18,28 +17,28 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwextract_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   rm -rf \"${rname}\"
   cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
   mv \"${rname}\" \"\$(cwdir_${rname})\"
   cwmkdir \"\$(cwbdir_${rname})\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   rm -rf \"\$(cwbdir_${rname})\"
   rm -rf \"${rdir}\"
   rm -rf \"${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG '/{/!s/op_test/echo op_test/g' ../boot-strap
   local f
   for f in opt-ignore opt-keep-going sh-dots export ; do
@@ -48,27 +47,27 @@ function cwconfigure_${rname}() {
   done
   unset f
   true
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env CPPFLAGS= LDFLAGS=-static sh ../boot-strap --prefix=\"\$(cwidir_${rname})\" op=build
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env INSTALL=install CPPFLAGS= LDFLAGS=-static sh ../boot-strap --prefix=\"\$(cwidir_${rname})\" op=install
   cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
   rm -rf \"\$(cwidir_${rname})/share/man/cat1\"
   install -m0644 ../${rname}.1 \"\$(cwidir_${rname})/share/man/man1/\"
   install -m0644 ../make.1 \"\$(cwidir_${rname})/share/man/man1/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
