@@ -26,7 +26,7 @@ function cwconfigure_${rname}() {
   sed -i '/DROPBEAR_SMALL_CODE/s,0,1,g' localoptions.h
   sed -i s,2222,22222,g localoptions.h
   echo '#undef SFTPSERVER_PATH' >> localoptions.h
-  echo '#define SFTPSERVER_PATH \"${cwsw}/lshsftpserver/current/sbin/sftp-server\"' >> localoptions.h
+  echo '#define SFTPSERVER_PATH \"${rtdir}/current/libexec/sftp-server\"' >> localoptions.h
   ./configure \
     ${cwconfigureprefix} \
      --disable-lastlog \
@@ -59,6 +59,7 @@ function cwmakeinstall_${rname}() {
     PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
   ln -sf dbclient \"\$(cwidir_${rname})/bin/ssh\"
   cwmkdir \"${cwetc}/${rname%minimal}\"
+  cwmkdir \"\$(cwidir_${rname})/libexec\"
   popd >/dev/null 2>&1
 }
 "
