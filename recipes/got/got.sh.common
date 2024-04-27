@@ -20,11 +20,13 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
-    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
-    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
-    LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -levent -lpanelw -lncursesw -lz\" \
-    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':' )\" \
-    YACC=\"${cwsw}/byacc/current/bin/byacc\"
+    --enable-cvg \
+    --enable-gotd \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+      LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -levent -lpanelw -lncursesw -lz\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':' )\" \
+      YACC=\"${cwsw}/byacc/current/bin/byacc\"
   find . -type f -name Makefile | xargs sed -i 's,-lbsd,-lbsd -lmd,g'
   find . -type f -name Makefile | xargs sed -i 's,-lpanelw,-lpanelw -lncursesw,g'
   popd &>/dev/null
@@ -50,6 +52,7 @@ function cwgenprofd_${rname}() {
   echo ': \${TOG_COLORS:=\"default\"}' > \"${rprof}\"
   echo 'export TOG_COLORS' >> \"${rprof}\"
   echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/sbin\"' >> \"${rprof}\"
 }
 "
 
