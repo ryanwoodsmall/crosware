@@ -1,9 +1,9 @@
 rname="jruby"
-rver="9.4.6.0"
+rver="9.4.7.0"
 rdir="${rname}-${rver}"
 rfile="${rname}-dist-${rver}-bin.tar.gz"
 rurl="https://repo1.maven.org/maven2/org/${rname}/${rname}-dist/${rver}/${rfile}"
-rsha256="2da14de4152b71fdbfa35ba4687a46ef12cd465740337b549cc1fe6c7c139813"
+rsha256="f1c39f8257505300a528ff83fe4721fbe61a855abb25e3d27d52d43ac97a4d80"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rreqs=""
 
@@ -16,6 +16,8 @@ cwstubfunc "cwconfigure_${rname}"
 eval "
 function cwmakeinstall_${rname}() {
   cwextract \"\$(cwdlfile_${rname})\" \"${rtdir}\"
+  cwmkdir \"\$(cwidir_${rname})/bin.off\"
+  mv \$(cwidir_${rname})/bin/*.{bat,dll,exe} \$(cwidir_${rname})/bin.off/
 }
 "
 
