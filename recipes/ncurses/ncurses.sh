@@ -4,7 +4,8 @@
 # XXX - this needs a (little more?) cleanup...
 # XXX - move to pkgconf
 #
-
+# XXX - needs a number of fixups for 6.5
+#
 rname="ncurses"
 rver="6.4"
 rdir="${rname}-${rver}"
