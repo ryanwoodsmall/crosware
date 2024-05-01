@@ -1,9 +1,9 @@
 rname="neatvi"
-rver="14"
+rver="15"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/aligrudi/${rname}/archive/refs/tags/${rfile}"
-rsha256="758fdb499ae7404146a07bcb6302e4168df03c3d56bbf014d619830ad95a6788"
+rsha256="895f91a9fa877ce12fa6ec00d843d39fb2a3d8df96bf9ac2dba4d78f3823d8c1"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -16,20 +16,20 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  make CC=\"\${CC}\" LDFLAGS=-static
-  popd >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  make CC=\"\${CC}\" LDFLAGS='-s -static'
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   rm -f \"\$(cwidir_${rname})/bin/${rname}\"
   strip --strip-all vi
   install -m 0755 vi \"\$(cwidir_${rname})/bin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
