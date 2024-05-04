@@ -1,38 +1,30 @@
 rname="rhino"
-rver="1.7.14"
+rver="1.7.15"
 rdir="${rname}-${rver}"
 rfile="${rdir}.jar"
 rurl="https://repo.maven.apache.org/maven2/org/mozilla/${rname}/${rver}/${rfile}"
-rsha256="c9290b0d801bf0dbbbc44338e0f769b7650a0c5d04e6bb1aeb85775c0211b003"
+rsha256="2427fdcbc149ca0a25ccfbb7c71b01f39ad42708773a47816cd2342861766b63"
 rreqs="rlwrap"
 
 . "${cwrecipe}/common.sh"
 
+cwstubfunc "cwextract_${rname}"
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
+
 eval "
-function cwextract_${rname}() {
-  true
+function cwmakeinstall_${rname}() {
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  rm -f \"\$(cwidir_${rname})/${rname}.jar\"
+  cp \"\$(cwdlfile_${rname})\" \"\$(cwidir_${rname})/${rname}.jar\"
+  echo '#!/usr/bin/env bash' > \"\$(cwidir_${rname})/bin/${rname}\"
+  echo '${cwsw}/rlwrap/current/bin/rlwrap -C ${rname} java -jar \"${rtdir}/current/${rname}.jar\" \"\${@}\"' >> \"\$(cwidir_${rname})/bin/${rname}\"
+  cwchmod \"755\" \"\$(cwidir_${rname})/bin/${rname}\"
 }
 "
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current\"' > \"${rprof}\"
-}
-"
-
-eval "
-function cwinstall_${rname}() {
-  cwfetch_${rname}
-  cwcheckreqs_${rname}
-  cwsourceprofile
-  cwmkdir \"${ridir}\"
-  rm -f \"${ridir}/${rname}.jar\"
-  cp \"${rdlfile}\" \"${ridir}/${rname}.jar\"
-  echo '#!/bin/sh' > \"${ridir}/${rname}\"
-  echo 'rlwrap -C ${rname} java -jar \"${rtdir}/current/${rname}.jar\" \"\${@}\"' >> \"${ridir}/${rname}\"
-  cwchmod \"755\" \"${ridir}/${rname}\"
-  cwlinkdir_${rname}
-  cwgenprofd_${rname}
-  cwmarkinstall_${rname}
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
