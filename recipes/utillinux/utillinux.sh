@@ -1,21 +1,19 @@
 #
-# XXX - something like this should work for figuring url...
-#  echo "${rver}" | grep -q '.*\..*\..*' && sver="${rver%.?}" || sver="${rver}"
 # XXX - terminfo (netbsdcurses), slang (termcap?), etc. - replace ncurses?
 # XXX - col was deprecated in 2.40; ugh. screw it just use heirloom when/if this break
 # XXX - autoconf/automake/libtool/bison/flex necessary to regenerate from configure.ac; but, perl
 #
 rname="utillinux"
-rver="2.40"
+rver="2.40.1"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.gz"
-rsha256="2a51d08cb71fd8e491e0cf633032c928f9a2848417f8441cb8cf7ef9971de916"
+rsha256="8e396eececae2b3b68db232c33b8810faa7c31f6df19f98f512739293d5829b7"
 rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig sqlite"
 
 rburl="https://kernel.org/pub/linux/utils/util-linux"
-#rurl="${rburl}/v${rver%.*}/${rfile}"
-rurl="${rburl}/v${rver}/${rfile}"
-unset rburl
+grep -q '.*\..*\..*' <<< "${rver}" && rsver="${rver%.*}" || rsver="${rver}"
+rurl="${rburl}/v${rsver}/${rfile}"
+unset rburl rsver
 
 . "${cwrecipe}/common.sh"
 
