@@ -9,7 +9,15 @@ rdir="${rname}-${rver}"
 rfile="${rname}-core-${rver}.jar"
 rurl="https://repo1.maven.org/maven2/org/openjdk/nashorn/nashorn-core/${rver}/${rfile}"
 rsha256="fake"
-rreqs="libxml2 busybox"
+rreqs=""
+
+if ! command -v dos2unix &>/dev/null
+  rreqs+=" busybox "
+fi
+
+if ! command -v xmllint &>/dev/null
+  rreqs+=" libxml2 "
+fi
 
 . "${cwrecipe}/common.sh"
 
@@ -34,7 +42,6 @@ function cwfetch_${rname}() {
   cwmkdir \$(cwidir_${rname})/lib
   local a=''
   for a in \$(xmllint --xpath '/*[local-name()=\"project\"]/*[local-name()=\"dependencies\"]/*[local-name()=\"dependency\"]/*[local-name()=\"artifactId\"]/text()' \${pf}) ; do
-    cwscriptecho \"fetching \${a} version \${av}\"
     local f=''
     local u=''
     local m=''
@@ -44,7 +51,6 @@ function cwfetch_${rname}() {
     m=\$(curl \${cwcurlopts} \${u}.md5)
     md5sum \${f} | grep -q \${m}
     install -m 644 \${f} \$(cwidir_${rname})/lib/\$(basename \${f})
-    : ln -sf \$(basename \${f}) \$(cwidir_${rname})/lib/\${a}.jar
   done
   unset pf av a f u m
 }
@@ -55,7 +61,6 @@ function cwmakeinstall_${rname}() {
   cwmkdir \$(cwidir_${rname})/bin
   cwmkdir \$(cwidir_${rname})/lib
   install -m 644 \$(cwdlfile_${rname}) \$(cwidir_${rname})/lib/
-  : ln -sf \$(cwfile_${rname}) \$(cwidir_${rname})/lib/${rname}.jar
   local b=\$(cwidir_${rname})/bin/${rname}
   echo -n > \${b}
   echo '#!/usr/bin/env bash' >> \${b}
