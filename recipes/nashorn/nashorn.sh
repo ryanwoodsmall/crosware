@@ -11,11 +11,11 @@ rurl="https://repo1.maven.org/maven2/org/openjdk/nashorn/nashorn-core/${rver}/${
 rsha256="fake"
 rreqs=""
 
-if ! command -v dos2unix &>/dev/null
+if ! command -v dos2unix &>/dev/null ; then
   rreqs+=" busybox "
 fi
 
-if ! command -v xmllint &>/dev/null
+if ! command -v xmllint &>/dev/null ; then
   rreqs+=" libxml2 "
 fi
 
