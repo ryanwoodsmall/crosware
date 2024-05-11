@@ -9,15 +9,7 @@ rdir="${rname}-${rver}"
 rfile="${rname}-core-${rver}.jar"
 rurl="https://repo1.maven.org/maven2/org/openjdk/nashorn/nashorn-core/${rver}/${rfile}"
 rsha256="fake"
-rreqs=""
-
-if ! command -v dos2unix &>/dev/null ; then
-  rreqs+=" busybox "
-fi
-
-if ! command -v xmllint &>/dev/null ; then
-  rreqs+=" libxml2 "
-fi
+rreqs="busybox libxml2 rlwrap"
 
 . "${cwrecipe}/common.sh"
 
@@ -36,12 +28,13 @@ function cwsha256_${rname}() {
 eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
+  local xl=${cwsw}/libxml2/current/bin/xmllint
   local pf=\$(cwdlfile_${rname} | sed 's/jar\$/pom/g')
   cwfetch \"\$(cwurl_${rname} | sed 's/jar\$/pom/g')\" \${pf}
-  local av=\$(xmllint --xpath '/*[local-name()=\"project\"]/*[local-name()=\"dependencies\"]/*[local-name()=\"dependency\"]/*[local-name()=\"version\"]/text()' \${pf} | head -1)
+  local av=\$(\${xl} --xpath '/*[local-name()=\"project\"]/*[local-name()=\"dependencies\"]/*[local-name()=\"dependency\"]/*[local-name()=\"version\"]/text()' \${pf} | head -1)
   cwmkdir \$(cwidir_${rname})/lib
   local a=''
-  for a in \$(xmllint --xpath '/*[local-name()=\"project\"]/*[local-name()=\"dependencies\"]/*[local-name()=\"dependency\"]/*[local-name()=\"artifactId\"]/text()' \${pf}) ; do
+  for a in \$(\${xl} --xpath '/*[local-name()=\"project\"]/*[local-name()=\"dependencies\"]/*[local-name()=\"dependency\"]/*[local-name()=\"artifactId\"]/text()' \${pf}) ; do
     local f=''
     local u=''
     local m=''
@@ -52,7 +45,7 @@ function cwfetch_${rname}() {
     md5sum \${f} | grep -q \${m}
     install -m 644 \${f} \$(cwidir_${rname})/lib/\$(basename \${f})
   done
-  unset pf av a f u m
+  unset xl pf av a f u m
 }
 "
 
@@ -64,7 +57,7 @@ function cwmakeinstall_${rname}() {
   local b=\$(cwidir_${rname})/bin/${rname}
   echo -n > \${b}
   echo '#!/usr/bin/env bash' >> \${b}
-  echo 'java -classpath \$(find ${rtdir}/current/lib/ -type f | grep jar\$ | paste -s -d: -) org.openjdk.nashorn.tools.Shell \"\${@}\"' >> \${b}
+  echo 'rlwrap -C ${rname} java -classpath \$(find ${rtdir}/current/lib/ -type f | grep jar\$ | paste -s -d: -) org.openjdk.nashorn.tools.Shell \"\${@}\"' >> \${b}
   chmod 755 \${b}
   unset b
 }
