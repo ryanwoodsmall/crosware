@@ -1,35 +1,31 @@
 rname="cjson"
-rver="1.7.17"
+rver="1.7.18"
 rdir="${rname//json/JSON}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/DaveGamble/${rname//json/JSON}/archive/refs/tags/${rfile}"
-rsha256="c91d1eeb7175c50d49f6ba2a25e69b46bd05cffb798382c19bfb202e467ec51c"
+rsha256="3aa806844a03442c00769b83e99970be70fbef03735ff898f4811dd03b9f5ee5"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
+cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make lib${rname}{,_utils}.a CC=\"\${CC}\" CXX=\"\${CXX}\" CFLAGS=-fPIC CXXFLAGS=-fPIC AR=\"\${AR}\" LD=\"\${LD}\" LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/include/${rname}\"
   cwmkdir \"\$(cwidir_${rname})/lib\"
   install -m 0644 c*.h \"\$(cwidir_${rname})/include/${rname}/\"
   install -m 0644 lib*.a \"\$(cwidir_${rname})/lib/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
