@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://invisible-mirror.net/archives/${rname}/${rfile}"
 rsha256="f2897779017189f1a94757705ef6f6e15dc9208ef079eea7f28abec577e08446"
-rreqs="make"
+rreqs="make diffutils"
 
 . "${cwrecipe}/common.sh"
 
