@@ -2,6 +2,7 @@
 # XXX - online-only, main jar is cached but poms/checksums/support jars are not
 # XXX - dependency stuff will break if anything other than asm{,-*} is added!!!
 # XXX - maven/gradle/... would be better here, but, sdkman? guh
+# XXX - replace rlwrap with jline?
 #
 rname="nashorn"
 rver="15.4"
