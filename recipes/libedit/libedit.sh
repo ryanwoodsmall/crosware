@@ -1,19 +1,19 @@
 rname="libedit"
-rver="20230828-3.1"
+rver="20240517-3.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="https://www.thrysoee.dk/editline/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="4ee8182b6e569290e7d1f44f0f78dac8716b35f656b76528f699c69c98814dad"
+rsha256="3a489097bb4115495f3bd85ae782852b7097c556d9500088d74b6fa38dbd12ff"
 rreqs="make ncurses"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} CFLAGS=\"\${CFLAGS} -D__STDC_ISO_10646__=201206L\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

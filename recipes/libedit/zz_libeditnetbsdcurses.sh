@@ -19,7 +19,7 @@ function cwpatch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/netbsdcurses/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
       CFLAGS=\"\${CFLAGS} -fPIC -D__STDC_ISO_10646__=201206L\" \
@@ -28,6 +28,6 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -static\" \
       LIBS=\"-lcurses -lterminfo\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/netbsdcurses/current/lib/pkgconfig\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
