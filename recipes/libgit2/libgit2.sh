@@ -2,13 +2,12 @@
 # XXX - libressl variant
 # XXX - mbedtls variant
 #
-
 rname="libgit2"
-rver="1.8.0"
+rver="1.8.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="9e1d6a880d59026b675456fbb1593c724c68d73c34c0d214d6eb848e9bbd8ae4"
+rsha256="8c1eaf0cf07cba0e9021920bfba9502140220786ed5d8a8ec6c7ad9174522f8e"
 rreqs="make zlib pkgconfig openssl libssh2 cmake"
 rbdir="${cwbuild}/${rdir}/build"
 
@@ -19,7 +18,7 @@ function cwconfigure_${rname}() {
   cwmkdir \"\$(cwbdir_${rname})\"
   local extra=''
   test -z \"\$(which -a python python2 python3)\" && extra='-DBUILD_TESTS=OFF' || true
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     PATH=\"${cwsw}/cmake/current/bin:${cwsw}/pkgconfig/current/bin:\${PATH}\" \
     CC=\"\${CC} -I${cwsw}/openssl/current/include\" \
@@ -47,22 +46,20 @@ function cwconfigure_${rname}() {
   sed -i.ORIG '/Requires.private/s/\\.private:/:/g' ${rname}.pc
   sed -i '/^Requires/s/\$/ libssh2 libssl libcrypto zlib/g' ${rname}.pc
   unset extra
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   rm -rf \"\$(cwdir_${rname})\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_ldflags \"-L${rtdir}/current/lib\"' > \"${rprof}\"
-  echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
-  echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
