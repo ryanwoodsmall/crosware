@@ -85,25 +85,30 @@ echo
 EOF
 chmod 755 env.jojq
 
-# XXX - dedupe this and rhino
+# common javascript on jvm
+declare -a jvmjs
+jvmjs+=( 'var eka = java.lang.System.getenv().keySet().toArray();' )
+jvmjs+=( 'var pka = java.lang.System.getProperties().keySet().toArray();' )
+jvmjs+=( 'var e = {};' )
+jvmjs+=( 'var p = {};' )
+jvmjs+=( 'for (k in eka) { e[eka[k]] = java.lang.System.getenv(eka[k]); }' )
+jvmjs+=( 'for (k in pka) { p[pka[k]] = java.lang.System.getProperty(pka[k]); }' )
+jvmjs+=( 'e["JAVA_PROPERTIES"] = p;' )
+jvmjs+=( 'print("Status: 200 OK");' )
+jvmjs+=( 'print("Content-type: application/json");' )
+jvmjs+=( 'print("");' )
+jvmjs+=( 'print(JSON.stringify(e));' )
+
 # env.nashorn - nashorn javascript on java jvm
+# XXX - nashorn has an '$ENV' object in scripting mode; should be same as java.lang.System.getenv()
 : ${JAVA_HOME:=""}
 if [ ! -z "${JAVA_HOME}" ] ; then
   scriptecho "installing ${cgidir}/env.nashorn"
   cat >env.nashorn<<EOF
 #!/usr/bin/env bash
+export _JAVA_OPTIONS='-Djava.io.tmpdir=/usr/local/crosware/tmp -Djava.awt.headless=true -XX:-UsePerfData'
 {
-  echo 'var eka = Object.keys(\$ENV);'
-  echo 'var pka = java.lang.System.getProperties().keySet().toArray();'
-  echo 'var e = {};'
-  echo 'var p = {};'
-  echo 'for (k in eka) { e[eka[k]] = java.lang.System.getenv(eka[k]); }'
-  echo 'for (k in pka) { p[pka[k]] = java.lang.System.getProperty(pka[k]); }'
-  echo 'e["JAVA_PROPERTIES"] = p;'
-  echo 'print("Status: 200 OK");'
-  echo 'print("Content-type: application/json");'
-  echo 'print("");'
-  echo 'print(JSON.stringify(e));'
+$(for k in ${!jvmjs[@]} ; do printf '%s\n' "${jvmjs[${k}]}" | sed "s,^,  echo ',g;s,$,',g" ; done)
 } | ${JAVA_HOME}/bin/java -classpath "\$(find ${cwsw}/nashorn/current/lib/ -type f | grep jar\$ | paste -s -d: -)" org.openjdk.nashorn.tools.Shell -scripting - 2>/dev/null
 EOF
   chmod 755 env.nashorn
@@ -115,22 +120,9 @@ if [ ! -z "${JAVA_HOME}" ] ; then
   scriptecho "installing ${cgidir}/env.rhino"
   cat >env.rhino<<EOF
 #!/usr/bin/env bash
+export _JAVA_OPTIONS='-Djava.io.tmpdir=/usr/local/crosware/tmp -Djava.awt.headless=true -XX:-UsePerfData'
 ${JAVA_HOME}/bin/java -jar "/usr/local/crosware/software/rhino/current/rhino.jar" -e '
-var eka = java.lang.System.getenv().keySet().toArray();
-var pka = java.lang.System.getProperties().keySet().toArray();
-var e = {};
-var p = {};
-for (k in eka) {
-  e[eka[k]] = java.lang.System.getenv(eka[k]);
-}
-for (k in pka) {
-  p[pka[k]] = java.lang.System.getProperty(pka[k]);
-}
-e["JAVA_PROPERTIES"] = p;
-print("Status: 200 OK");
-print("Content-type: application/json");
-print("");
-print(JSON.stringify(e))
+$(for k in ${!jvmjs[@]} ; do printf '%s\n' "${jvmjs[${k}]}" ; done)
 ' 2>/dev/null
 EOF
   chmod 755 env.rhino
