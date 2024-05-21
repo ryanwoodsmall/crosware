@@ -1,16 +1,16 @@
 rname="e2fsprogs"
-rver="1.47.0"
+rver="1.47.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/${rname}/v${rver}/${rfile}"
-rsha256="144af53f2bbd921cef6f8bea88bb9faddca865da3fbc657cc9b4d2001097d5db"
+rsha256="5a33dc047fd47284bca4bb10c13cfe7896377ae3d01cb81a05d406025d99e0d1"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --disable-nls \
     --disable-bsd-shlibs \
@@ -24,15 +24,15 @@ function cwconfigure_${rname}() {
       CPPFLAGS= \
       PKG_CONFIG_LIBDIR= \
       PKG_CONFIG_PATH=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool} MKDIR_P='mkdir -p' INSTALL='install -D'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
