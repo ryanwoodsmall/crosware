@@ -726,10 +726,14 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - man-pages (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/)
   - man-pages-posix (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/)
 - mawk (https://invisible-island.net/mawk/mawk.html)
-- mbedtls (polarssl, lts and compat versions)
-  - mbedtls216
-  - mbedtls228
-  - mbedtls36
+- mbedtls (polarssl)
+  - lts
+    - mbedtls2
+      - mbedtls228
+    - mbedtls3
+      - mbedtls36
+  -compat
+    - mbedtls216
 - meson (http://mesonbuild.com/)
 - mg (https://github.com/troglobit/mg - micro gnuemacs, netbsdcurses)
   - mgminimal (no curses/terminfo/termcap, optimized for size)

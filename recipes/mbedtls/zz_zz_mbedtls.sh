@@ -16,17 +16,33 @@
 #  - MBEDTLS_NIST_KW_C
 #  - MBEDTLS_MD2_C
 #  - MBEDTLS_MD4_C
-# XXX - mbedtls 3.x...
 #
-
 rname="mbedtls"
-rver="2.28.8"
-rdir="${rname}-${rver}"
-rfile="v${rver}.tar.gz"
-rurl="https://github.com/Mbed-TLS/${rname}/archive/refs/tags/${rfile}"
-rsha256="4fef7de0d8d542510d726d643350acb3cdb9dc76ad45611b59c9aa08372b4213"
+rpv="2"
+rpn="${rname}${rpv}"
+rver="$(cwver_${rpn})"
+rdir="$(cwdir_${rpn})"
+rfile="$(cwfile_${rpn})"
+rdlfile="$(cwdlfile_${rpn})"
+rurl="$(cwurl_${rpn})"
+rsha256="$(cwsha256_${rpn})"
+rreqs="${rpn}"
 
-. "${cwrecipe}/${rname}/${rname}.sh.common"
+. "${cwrecipe}/common.sh"
+
+for f in fetch clean extract configure make ; do
+  cwstubfunc "cw${f}_${rname}"
+done
+unset f
+
+eval "
+function cwmakeinstall_${rname}() {
+  cwmkdir \"${rtdir}\"
+  rm -rf \"${rtdir}/current\"
+  rm -rf \"\$(cwidir_${rname})\"
+  ln -sf \"\$(cwidir_${rpn})\" \"\$(cwidir_${rname})\"
+}
+"
 
 eval "
 function cwgenprofd_${rname}() {
@@ -35,3 +51,6 @@ function cwgenprofd_${rname}() {
   echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
 }
 "
+
+unset rpv
+unset rpn
