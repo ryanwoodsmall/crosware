@@ -728,6 +728,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - mawk (https://invisible-island.net/mawk/mawk.html)
 - mbedtls (polarssl)
   - mbedtls216
+  - mbedtls228
 - meson (http://mesonbuild.com/)
 - mg (https://github.com/troglobit/mg - micro gnuemacs, netbsdcurses)
   - mgminimal (no curses/terminfo/termcap, optimized for size)
