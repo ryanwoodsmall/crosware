@@ -1,9 +1,9 @@
 rname="manpages"
-rver="6.7"
+rver="6.8"
 rdir="man-pages-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/${rfile}"
-rsha256="19436880d78b6d876736faad94736a0edf390dbd1bdc81153e484d62ae33cfe1"
+rsha256="f4d5b9756b4ee52e34ca9d895095c92312ced6292395b811e11069ab007e6f06"
 rreqs="make coreutils"
 
 . "${cwrecipe}/common.sh"
@@ -32,23 +32,23 @@ function cwextract_${rname}() {
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG s,/usr/bin/env,${cwsw}/coreutils/current/bin/env,g GNUmakefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   grep -rl 'INSTALL.*-T' . | xargs sed -i.ORIG '/INSTALL/s/-T//g'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     export PATH=\"${cwsw}/coreutils/current/bin:\${PATH}\"
     cwmkdir \"\$(cwidir_${rname})\"
@@ -58,7 +58,7 @@ function cwmakeinstall_${rname}() {
     cwscriptecho \"\$(cwmyfuncname): installing man-pages-posix\"
     make install prefix=\"\$(cwidir_${rname})\" &> \$(cwidir_${rname})/man-pages-posix_install.out
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
