@@ -1,3 +1,6 @@
+#
+# XXX - avoid execution of `git log` for every file? wtf
+#
 rname="manpages"
 rver="6.8"
 rdir="man-pages-${rver}"
