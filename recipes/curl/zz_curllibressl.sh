@@ -16,6 +16,11 @@ function cwmakeinstall_${rname}() {
   cwclean_${rname}
   cwextract_${rname}
   pushd \"${rbdir}\" >/dev/null 2>&1
+   local e='--enable-docs --enable-manual'
+   if ! command -v perl &>/dev/null ; then
+     e='--disable-docs --disable-manual'
+     sed -i '/SUBDIRS.*docs/s,\\(docs\\|cmdline-opts\\),,g' Makefile.in
+   fi
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
@@ -38,6 +43,7 @@ function cwmakeinstall_${rname}() {
     --with-default-ssl-backend=openssl \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
+      \${e} \
       LDFLAGS=\"-L${cwsw}/zlib/current/lib -L${cwsw}/libressl/current/lib -static\" \
       CPPFLAGS=\"-I${cwsw}/zlib/current/include -I${cwsw}/libressl/current/include\" \
       PKG_CONFIG_PATH=\"${cwsw}/nghttp2/current/lib/pkgconfig\" \
@@ -54,6 +60,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${ridir}/devbin\"
   ln -sf \"${rtdir}/current/bin/curl-${rname#curl}-config\" \"${ridir}/devbin/curl-config\"
   sed -i 's/ -lcurl / -lcurl -latomic /g' \"\$(cwidir_${rname})/lib/pkgconfig/libcurl.pc\"
+  unset e
   popd >/dev/null 2>&1
 }
 "

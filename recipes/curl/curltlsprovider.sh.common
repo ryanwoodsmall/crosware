@@ -39,6 +39,11 @@ othersslproviders=( $(echo ${sslproviders[@]} | tr ' ' '\n' | grep -v "^${rprovi
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  local e='--enable-docs --enable-manual'
+  if ! command -v perl &>/dev/null ; then
+    e='--disable-docs --disable-manual'
+    sed -i '/SUBDIRS.*docs/s,\\(docs\\|cmdline-opts\\),,g' Makefile.in
+  fi
   sed -i.ORIG '/SSL_HOST_NAME/s,const,,g' lib/vtls/bearssl.c || true
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
@@ -59,6 +64,7 @@ function cwmakeinstall_${rname}() {
     --with-default-ssl-backend=${rprovider%minimal} \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
+      \${e} \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/include) ${rcppflags}\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/lib) -static\" \
       PKG_CONFIG_LIBDIR=\"\$(echo ${cwsw}/{${rproviderreqs},zlib,nghttp2,libgpgerror,libgcrypt,${libssh2provider}}/current/lib/pkgconfig | tr ' ' ':')\" \
@@ -76,6 +82,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${ridir}/devbin\"
   ln -sf \"${rtdir}/current/bin/curl-${rprovider}-config\" \"${ridir}/devbin/curl-config\"
   sed -i 's/ -lcurl / -lcurl -latomic /g' \"\$(cwidir_${rname})/lib/pkgconfig/libcurl.pc\"
+  unset e
   popd >/dev/null 2>&1
 }
 "

@@ -51,6 +51,11 @@ function cwextract_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   pushd \"${rbdir}\" >/dev/null 2>&1
+  local e='--enable-docs --enable-manual'
+  if ! command -v perl &>/dev/null ; then
+    e='--disable-docs --disable-manual'
+    sed -i '/SUBDIRS.*docs/s,\\(docs\\|cmdline-opts\\),,g' Makefile.in
+  fi
   echo '#include <sched.h>' >> lib/curl_config.h.in
   echo '#include <stdatomic.h>' >> lib/curl_config.h.in
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
@@ -76,9 +81,11 @@ function cwconfigure_${rname}() {
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
     --with-ca-fallback \
+      \${e} \
       LIBS='-latomic'
   echo '#include <sched.h>' >> lib/curl_config.h
   echo '#include <stdatomic.h>' >> lib/curl_config.h
+  unset e
   popd >/dev/null 2>&1
 }
 "
