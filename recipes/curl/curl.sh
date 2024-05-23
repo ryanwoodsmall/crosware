@@ -37,7 +37,7 @@ eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
   cwfetchcheck \
-    \"https://raw.githubusercontent.com/icing/curl/2afeacd27e5877000c205c255816aa62e5eeaa32/lib/vtls/mbedtls.c\" \
+    \"https://raw.githubusercontent.com/curl/curl/0c4b4c1e93c8e869af230090f32346fdfd548f21/lib/vtls/mbedtls.c\" \
     \"\$(dirname \$(cwdlfile_${rname}))/mbedtls-8.8.0.c\" \
     \"7cf97ab024932e15080f0eec2aed62a0a9b49083d07dbb7829cb9552984414c6\"
 }
