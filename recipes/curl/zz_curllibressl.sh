@@ -15,14 +15,15 @@ eval "
 function cwmakeinstall_${rname}() {
   cwclean_${rname}
   cwextract_${rname}
-  pushd \"${rbdir}\" >/dev/null 2>&1
-   local e='--enable-docs --enable-manual'
-   if ! command -v perl &>/dev/null ; then
-     e='--disable-docs --disable-manual'
-     sed -i '/SUBDIRS.*docs/s,\\(docs\\|cmdline-opts\\),,g' Makefile.in
-     sed -i '/SUBDIRS.*docs/s,../docs,,g' src/Makefile.in
-     sed -i 's,^SUBDIRS.*,SUBDIRS=libcurl,g' docs/Makefile.in
-   fi
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  local e='--enable-docs --enable-manual'
+  if ! command -v perl &>/dev/null ; then
+    cwfuncecho 'no perl; disabling docs/manual'
+    e='--disable-docs --disable-manual'
+    sed -i '/SUBDIRS.*docs/s,\\(docs\\|cmdline-opts\\),,g' Makefile.in
+    sed -i '/SUBDIRS.*docs/s,../docs,,g' src/Makefile.in
+    sed -i 's,^SUBDIRS.*,SUBDIRS=libcurl,g' docs/Makefile.in
+  fi
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
@@ -55,14 +56,14 @@ function cwmakeinstall_${rname}() {
   echo '#include <stdatomic.h>' >> lib/curl_config.h
   make -j${cwmakejobs} ${rlibtool}
   make install ${rlibtool}
-  rm -f \"${ridir}/bin/curl-${rname#curl}\" \"${ridir}/bin/${rname%libressl}-libressl-config\"
-  mv \"${ridir}/bin/${rname%libressl}\" \"${ridir}/bin/curl-${rname#curl}\"
-  mv \"${ridir}/bin/${rname%libressl}-config\" \"${ridir}/bin/curl-${rname#curl}-config\"
-  test -e \"${ridir}/bin/${rname}\" || ln -sf \"curl-${rname#curl}\" \"${ridir}/bin/${rname}\"
-  cwmkdir \"${ridir}/devbin\"
-  ln -sf \"${rtdir}/current/bin/curl-${rname#curl}-config\" \"${ridir}/devbin/curl-config\"
+  rm -f \"\$(cwidir_${rname})/bin/curl-${rname#curl}\" \"\$(cwidir_${rname})/bin/${rname%libressl}-libressl-config\"
+  mv \"\$(cwidir_${rname})/bin/${rname%libressl}\" \"\$(cwidir_${rname})/bin/curl-${rname#curl}\"
+  mv \"\$(cwidir_${rname})/bin/${rname%libressl}-config\" \"\$(cwidir_${rname})/bin/curl-${rname#curl}-config\"
+  test -e \"\$(cwidir_${rname})/bin/${rname}\" || ln -sf \"curl-${rname#curl}\" \"\$(cwidir_${rname})/bin/${rname}\"
+  cwmkdir \"\$(cwidir_${rname})/devbin\"
+  ln -sf \"${rtdir}/current/bin/curl-${rname#curl}-config\" \"\$(cwidir_${rname})/devbin/curl-config\"
   sed -i 's/ -lcurl / -lcurl -latomic /g' \"\$(cwidir_${rname})/lib/pkgconfig/libcurl.pc\"
   unset e
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

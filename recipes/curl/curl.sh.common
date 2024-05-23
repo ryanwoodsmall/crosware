@@ -1,40 +1,18 @@
-eval "
-function cwextract_${rname}() {
-  cwextract_curl
-}
-"
+for f in extract clean fetch ; do
+  eval "function cw${f}_${rname}() { cw${f}_curl ; }"
+done
+unset f
 
-eval "
-function cwclean_${rname}() {
-  cwclean_curl
-}
-"
-
-eval "
-function cwfetch_${rname}() {
-  cwfetch_curl
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  true
-}
-"
-
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's/-Werror-implicit-function-declaration//g' configure
   echo '#include <sched.h>' >> lib/curl_config.h.in
   echo '#include <stdatomic.h>' >> lib/curl_config.h.in
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
