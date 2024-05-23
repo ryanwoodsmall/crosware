@@ -2,9 +2,8 @@
 # XXX - no checksums yet! use at your own risk!
 # XXX - skipping dropbear scp for now since $PATH to dbclient is hard-coded
 #
-
 rname="cwstaticbinaries"
-rver="e4ddc6e43a8855c953755d37e7505635c93fade2"
+rver="da3fa0b444c07772f15550f5d8f2070e60e37488"
 rdir="${rname}-${rver}"
 rfile=""
 rurl="https://github.com/ryanwoodsmall/static-binaries"
