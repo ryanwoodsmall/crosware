@@ -20,6 +20,8 @@ function cwmakeinstall_${rname}() {
    if ! command -v perl &>/dev/null ; then
      e='--disable-docs --disable-manual'
      sed -i '/SUBDIRS.*docs/s,\\(docs\\|cmdline-opts\\),,g' Makefile.in
+     sed -i '/SUBDIRS.*docs/s,../docs,,g' src/Makefile.in
+     sed -i 's,^SUBDIRS.*,SUBDIRS=libcurl,g' docs/Makefile.in
    fi
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \

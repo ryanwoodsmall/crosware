@@ -55,6 +55,8 @@ function cwconfigure_${rname}() {
   if ! command -v perl &>/dev/null ; then
     e='--disable-docs --disable-manual'
     sed -i '/SUBDIRS.*docs/s,\\(docs\\|cmdline-opts\\),,g' Makefile.in
+    sed -i '/SUBDIRS.*docs/s,../docs,,g' src/Makefile.in
+    sed -i 's,^SUBDIRS.*,SUBDIRS=libcurl,g' docs/Makefile.in
   fi
   echo '#include <sched.h>' >> lib/curl_config.h.in
   echo '#include <stdatomic.h>' >> lib/curl_config.h.in
