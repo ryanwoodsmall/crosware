@@ -1,13 +1,12 @@
 #
 # XXX - check macros: ENABLE_FEATURE_CLEAN_UP
 #
-
 rname="pdpmake"
-rver="1.4.1"
+rver="1.4.2"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/rmyorston/${rname}/archive/refs/tags/${rfile}"
-rsha256="223f9918caa4c8b841bbbc37f57c0bf5e41e612f3f4145b323ffc78e6e52df87"
+rsha256="e34aa44a9319315a16d59fd0a9b514cfd1131466774541d5a4dcdfc2ac8bbb26"
 rreqs="bootstrapmake"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
