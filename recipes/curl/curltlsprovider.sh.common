@@ -49,10 +49,6 @@ function cwmakeinstall_${rname}() {
     sed -i 's,^SUBDIRS.*,SUBDIRS=libcurl,g' docs/Makefile.in
   fi
   sed -i.ORIG '/SSL_HOST_NAME/s,const,,g' lib/vtls/bearssl.c || true
-
-cat lib/vtls/mbedtls.c > lib/vtls/mbedtls.c.ORIG
-install -m 644 \$(dirname \$(cwdlfile_${rname}))/mbedtls-\$(cwver_${rname}).c lib/vtls/mbedtls.c
-
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-dependency-tracking \
     --disable-maintainer-mode \
