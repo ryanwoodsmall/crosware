@@ -1,3 +1,6 @@
+#
+# XXX - fewer deps w/invisible island version? https://invisible-island.net/cindent/cindent.html
+#
 rname="indent"
 rver="2.2.13"
 rdir="${rname}-${rver}"
