@@ -16,6 +16,7 @@
 #  - MBEDTLS_NIST_KW_C
 #  - MBEDTLS_MD2_C
 #  - MBEDTLS_MD4_C
+# XXX - programs disabled in mbedtls 3+; generating files requires python
 #
 rname="mbedtls"
 rpv="2"
