@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-
 #
 # build a native statictoolchain package
 #
-
 set -eu
 
 : ${TS:="$(date '+%Y%m%d%H%M')"}
@@ -14,6 +12,9 @@ export EXTRA_MAKE_ARGS="${EXTRA_MAKE_ARGS} TS=${TS}"
 
 : ${CW_GIT_CMD:="git"}
 export CW_GIT_CMD
+if [[ ${CW_GIT_CMD} =~ jgit ]] ; then
+  export CW_GIT_CMD="git"
+fi
 
 st="$(date)"
 
