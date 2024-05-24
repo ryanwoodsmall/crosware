@@ -2,9 +2,8 @@
 # XXX - include __stack_chk_fail_local.c?
 # XXX - looks like an libssp_nonshared.a can be built from it?
 #
-
 rname="alpinemuslutils"
-rver="3.19.1"
+rver="3.20.0"
 rdir="${rname}-${rver}"
 rfile="getconf.c"
 rurl="https://raw.githubusercontent.com/alpinelinux/aports/v${rver}/main/musl/${rfile}"
