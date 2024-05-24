@@ -10,8 +10,6 @@ export TS
 : ${EXTRA_MAKE_ARGS:=""}
 export EXTRA_MAKE_ARGS="${EXTRA_MAKE_ARGS} TS=${TS}"
 
-export CW_GIT_CMD="git"
-
 st="$(date)"
 
 logfile="/tmp/musl-cross-make.out"
@@ -24,6 +22,7 @@ source /usr/local/crosware/etc/profile
 echo "installing prerequisites"
 crosware check-installed ccache || crosware install ccache >>${logfile} 2>&1
 source /usr/local/crosware/etc/profile
+export CW_GIT_CMD="git"
 for r in ${CW_GIT_CMD} diffutils patch rsync ; do
   echo installing ${r}
   ( time ( crosware check-installed ${r} || crosware install ${r} ) ) >>${logfile} 2>&1
