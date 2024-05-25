@@ -75,7 +75,7 @@ sed -i "s#^rsha256=.*#rsha256=\"${rs}\"#" "${rf}"
 if $(command -v git &>/dev/null) ; then
   echo "git diff:"
   echo
-  git diff
+  env PAGER=cat git diff
 fi
 echo
 
