@@ -1,29 +1,29 @@
 rname="cares"
-rver="1.28.1"
+rver="1.29.0"
 rdir="c-ares-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/c-ares/c-ares/releases/download/${rname}-${rver//./_}/${rfile}"
-rsha256="675a69fc54ddbf42e6830bc671eeb6cd89eeca43828eb413243fd2c0a760809d"
+rsha256="0b89fa425b825c4c7bc708494f374ae69340e4d1fdc64523bdbb2750bfc02ea7"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-tests \
       LDFLAGS=-static \
       CPPFLAGS= \
       PKG_CONFIG_LIBDIR= \
       PKG_CONFIG_PATH=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local p
   make install ${rlibtool}
   cwmkdir \"\$(cwidir_${rname})/bin\"
@@ -33,7 +33,7 @@ function cwmakeinstall_${rname}() {
     \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/\${p}\"
     install -m 0644 docs/\${p}.1 \"\$(cwidir_${rname})/share/man/man1/\${p}.1\"
   done
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
