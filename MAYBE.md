@@ -1013,6 +1013,7 @@ wc -l /tmp/astbuild.out
     - http://skarnet.org./software/execline/
     - http://jdebp.eu./Softwares/nosh/
 - pup (https://github.com/ericchiang/pup)
+- q (https://github.com/natesales/q - nice go dns query program)
 - qalc (https://qalculate.github.io/ - libqalculate and cli/text interface)
 - quicssh (https://github.com/moul/quicssh - ssh client/server wrapper/proxy/tunnel using quic, go)
 - quictls (https://github.com/quictls/openssl - openssl (3+?) patched with quic support, for ngtcp2+nghttp3)
