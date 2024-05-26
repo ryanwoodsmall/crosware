@@ -2,6 +2,10 @@
 #
 # install musl-based zulu jdk "out of tree"
 #
+# XXX - keep using astron file file for a little more precision w/executables and libs/objects
+# XXX - toybox file would be a better fit/faster, but...
+#   /usr/local/zulu/zulu17.50.19-ca-jdk17.0.11-linux_musl_x64/bin/java: ELF shared object, 64-bit LSB x86-64, dynamic (/lib/ld-musl-x86_64.so.1), not stripped
+#
 
 # only run if we're have valid crosware
 if ! command -v crosware &>/dev/null ; then
