@@ -30,7 +30,10 @@ fi
 # version picker
 case "${reqver}" in
   8|11|17|21) :
+    echo "installing zulu ${reqver} musl..."
+    echo "getting full version..."
     zuluver="$(crosware run-func cwver_zulu${reqver}musl)"
+    echo "getting sha256 checksum..."
     zulusha="$(crosware run-func cwsha256_zulu${reqver}musl)"
     ;;
   all) :
@@ -85,13 +88,15 @@ fi
 : ${zuludldir:="${cwdl}/zulu"}
 : ${zuludlfile:="${zuludldir}/${zulufile}"}
 
-# we need file, libz, and patchelf
+# we need file, zlib, and patchelf
 for req in file zlib patchelf ; do
+  echo "checking prereq ${req}..."
   crosware check-installed ${req} || crosware install ${req}
 done
 . "${cwtop}/etc/profile"
 
 # download everything
+echo "downloading ${zuluurl}..."
 crosware \
   run-func \
     cwfetchcheck,${zuluurl},${zuludlfile},${zulusha}
@@ -101,6 +106,7 @@ install -m 0755 -D $(realpath ${cwsw}/zlib/current/shared/lib/libz.so) ${zulutop
 ln -sf libz.so.1 ${zulutop}/${zuludir}/lib/libz.so
 
 # install zulu jdk
+echo "extracting ${zuludlfile} to ${zulutop}..."
 crosware \
   run-func \
     cwextract,${zuludlfile},${zulutop} \
