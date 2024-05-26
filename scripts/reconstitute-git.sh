@@ -21,7 +21,7 @@ function failexit() {
   exit 1
 }
 
-command -v ${CW_GIT_CMD} >/dev/null 2>&1 || failexit "no ${CW_GIT_CMD}"
+command -v ${CW_GIT_CMD} >/dev/null 2>&1 || failexit "no ${CW_GIT_CMD}; use jgit.sh with 'export CW_GIT_CMD=jgitsh'"
 test -e "${cwtop}" || failexit "no ${cwtop} directory"
 
 pushd "${cwtop}" >/dev/null 2>&1
