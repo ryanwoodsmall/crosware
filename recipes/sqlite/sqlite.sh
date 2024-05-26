@@ -6,32 +6,32 @@
 # XXX - custom make install builds w/readline and bare; configure/build twice is slow/wasteful
 # XXX - minimal/tiny variant?
 #
-
 rname="sqlite"
-rver="3450200"
+rver="3460000"
 rdir="${rname}-autoconf-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.sqlite.org/2024/${rfile}"
-rsha256="bc9067442eedf3dd39989b5c5cfbfff37ae66cc9c99274e0c3052dc4d4a8f6ae"
+rsha256="6f8e6a7b335273748816f9b3b62bbdc372a889de8782d7f048c653a447417a7d"
 rreqs="make netbsdcurses readlinenetbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG s/termcap/terminfo/g configure
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --enable-readline \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
-    LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -lreadline -lcurses -lterminfo -lz -static\"
-  popd >/dev/null 2>&1
+    LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -lreadline -lcurses -lterminfo -lz -static\" \
+    PKG_CONFIG_{LIBDIR,PATH}=
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   install -m 755 \"\$(cwidir_${rname})/bin/sqlite3\" \"\$(cwidir_${rname})/bin/sqlite3-readline\"
   make clean || true
@@ -40,12 +40,13 @@ function cwmakeinstall_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --disable-readline --disable-editline \
     CPPFLAGS=\"-I${cwsw}/zlib/current/include\" \
     LDFLAGS=\"-L${cwsw}/zlib/current/lib -static\" \
-    LIBS=\"-L${cwsw}/zlib/current/lib -lz -static\"
+    LIBS=\"-L${cwsw}/zlib/current/lib -lz -static\" \
+    PKG_CONFIG_{LIBDIR,PATH}=
   make -j${cwmakejobs} ${rlibtool}
   make install ${rlibtool}
   install -m 755 \"\$(cwidir_${rname})/bin/sqlite3\" \"\$(cwidir_${rname})/bin/sqlite3-minimal\"
   ln -sf sqlite3-readline \"\$(cwidir_${rname})/bin/sqlite3\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
