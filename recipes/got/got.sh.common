@@ -21,7 +21,6 @@ function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --enable-cvg \
-    --enable-gotd \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -levent -lpanelw -lncursesw -lz\" \
