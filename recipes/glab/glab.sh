@@ -1,9 +1,9 @@
 rname="glab"
-rver="1.40.0"
+rver="1.41.0"
 rdir="cli-v${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://gitlab.com/gitlab-org/cli/-/archive/v${rver}/${rfile}"
-rsha256="0e426a4b0b1945fa16b504c2245a9a525e0b4a858565e482d934b481163d87b5"
+rsha256="3531455facae3a9695e2826277040157e8a337ee7eb7e212e054d7ffc61bc7db"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
@@ -12,16 +12,16 @@ cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   chmod -R u+rw \"\$(cwdir_${rname})\" &>/dev/null || true
   rm -rf \"${rbdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
@@ -33,16 +33,16 @@ function cwmake_${rname}() {
         go build -ldflags \"-s -w -extldflags '-s -static' -X main.buildDate=\$(date +%Y-%m-%d) -X main.version=\$(cwver_${rname}) -X main.platform=linux -X main.debugMode=false\" -o \"${rname}\" \"\$(cwbdir_${rname})/cmd/${rname}\"
     chmod -R u+rw . || true
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   install -m 755 \"${rname}\" \"\$(cwidir_${rname})/bin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
