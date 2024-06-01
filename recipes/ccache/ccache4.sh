@@ -1,13 +1,15 @@
 #
 # XXX - redis backend requires redis (duhhh) and hiredis
+# XXX - fmt requirement in 4.10+, need cmake w/curl or to manually include it
 #
-
 rname="ccache4"
 rver="4.9.1"
+#rver="4.10"
 rdir="${rname%4}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname%4}/${rname%4}/releases/download/v${rver}/${rfile}"
 rsha256="12834ecaaaf2db069dda1d1d991f91c19e3274cc04a471af5b64195def17e90f"
+#rsha256="16972ba62c8499045edc3ae7d7b8a0b419a961567f5ff0f01bf5a44194204775"
 rreqs="cmake make zstd"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
