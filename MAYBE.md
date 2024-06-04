@@ -1022,7 +1022,8 @@ wc -l /tmp/astbuild.out
 - rawtar (https://github.com/andrewchambers/rawtar)
 - re2c (http://re2c.org/ and https://github.com/skvadrik/re2c)
 - redis (https://github.com/redis/redis and https://redis.io - tls, jemalloc, etc., options)
-- redka (https://github.com/nalgeon/redka - api compatible redis on sqlite in go)
+  - redka (https://github.com/nalgeon/redka - api compatible redis on sqlite in go)
+  - valkey (https://github.com/valkey-io/valkey - pre-license-change redis fork)
 - redo-c (https://github.com/leahneukirchen/redo-c - djb's redo concept implemented in c instead of python)
 - redsocks (http://darkk.net.ru/redsocks/ and https://github.com/darkk/redsocks - transparent proxy redirection)
   - requires libevent
