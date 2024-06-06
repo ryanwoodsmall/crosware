@@ -16,6 +16,6 @@ set -o pipefail
 #echo godd
 ##pids="$(${sudocmd} $(which pstree) -p ${arcvmpid} | sed 's,^.*(,,g;s,)$,,g' | sort -un | paste -s -d, -)"
 ##${sudocmd} $(which lsof) -P -n -l -p "${pids}"
-#echo what 
+#echo what
 
 sudossh lsof -P -n -l -p $(sudossh $(which pstree) -p $(for p in $(sudossh $(which pgrep) crosvm) ; do tr \\0 \\n < <(sudossh cat /proc/${p}/{cmdline,environ}) | grep -qi arc && echo $p ; done) | sed 's,^.*(,,g;s,)$,,g' | sort -un | paste -s -d, -)
