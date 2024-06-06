@@ -1094,16 +1094,6 @@ time_func ls -l -A /
         ```
   - save/restore - save function to a hash
     - with state tracker, would have idempotency
-  - and copier
-    - ```
-      # XXX - cannot lose space/fidelity! echo won't cut it, printf
-      function cwcopyfunc() {
-        declare -a func
-        readarry -t func < <(declare -f ${1})
-        func[0]="${2} () "
-        for i in ${!func[@]} ; do echo "${func[${i}]}" ; done | eval
-      }
-      ```
   - (rename would just be copy to new tmp name, replace original name, delete tmp name)
   - and wrapper...
     - given a function name, a prefix command, and a postfix command, insert at beginning end

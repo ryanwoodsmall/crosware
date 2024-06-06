@@ -2069,6 +2069,22 @@ function cwcreatesharedlib() {
 }
 
 #
+# cwcopyfunc
+#   copy a function to another name
+#   receives function source name, function destination name
+#
+function cwcopyfunc() {
+  if [[ ${#} -lt 2 ]] ; then
+    cwfailexit "$(cwmyfuncname): please provide two function names"
+  fi
+  declare -f "${1}" &>/dev/null || cwfailexit "$(cwmyfuncname): no such function '${1}'"
+  local -a fa=()
+  readarray -t fa < <(declare -f "${1}")
+  fa[0]="function ${2}()"
+  cwsourcestdin < <(for i in ${!fa[@]} ; do printf '%s\n' "${fa[${i}]}" ; done)
+}
+
+#
 # cwprependfunc
 #   insert commands at the beginning of a function
 #
