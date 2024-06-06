@@ -13,6 +13,14 @@ cwstubfunc "cwextract_${rname}"
 cwstubfunc "cwmake_${rname}"
 cwstubfunc "cwconfigure_${rname}"
 
+cwcopyfunc "cwinstall_${rname}" "cwinstall_${rname}_real"
+eval "
+function cwinstall_${rname}() {
+  command -v java &>/dev/null || cwfailexit 'java is required for ${rname}; set JAVA_HOME or PATH'
+  cwinstall_${rname}_real
+}
+"
+
 eval "
 function cwmakeinstall_${rname}() {
   cwextract \"\$(cwdlfile_${rname})\" \"${rtdir}\"
