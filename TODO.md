@@ -1402,6 +1402,9 @@ time_func ls -l -A /
     - read a function into an array
     - run sed on each element
     - re-eval
+- **REALLY GOTTA SET `TMPDIR`**
+  - do it
+  - fix whatever breaks later
 
 <!--
 # vim: ft=markdown
