@@ -1,9 +1,9 @@
 rname="pcre2"
-rver="10.43"
+rver="10.44"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/PCRE2Project/${rname}/releases/download/${rname}-${rver}/${rfile}"
-rsha256="889d16be5abb8d05400b33c25e151638b8d4bac0e2d9c76e9d6923118ae8a34e"
+rsha256="86b9cb0aa3bcb7994faa88018292bc704cdbb708e785f7c74352ff6ea7d3175b"
 rreqs="make zlib bzip2"
 
 . "${cwrecipe}/common.sh"
