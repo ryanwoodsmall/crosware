@@ -34,7 +34,7 @@ function cwmakeinstall_${rname}() {
   echo '#!/usr/bin/env bash' > \"\$(cwidir_${rname})/bin/${rname}\"
   echo 'rlwrap -C ${rname} -pYellow -m -M .scm -q\\\" \"${rtdir}/current/bin/${rname}.bin\" \"\${@}\"' >> \"\$(cwidir_${rname})/bin/${rname}.rlwrap\"
   ln -sf ${rname}.bin \"\$(cwidir_${rname})/bin/${rname}\"
-  chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
+  chmod 755 \$(cwidir_${rname})/bin/${rname}{,.rlwrap}
   popd &>/dev/null
 }
 "
