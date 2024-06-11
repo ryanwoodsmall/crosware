@@ -1,8 +1,8 @@
 #
 # XXX - git-svn mirror more reliablabe that sourceforge at this point?
 # XXX - https://github.com/snipsnipsnip/tinyscheme
+# XXX - rlwrap broke somewhere, repeats keypresses, ugh
 #
-
 rname="tinyscheme"
 rver="1.42"
 rdir="${rname}-${rver}"
@@ -15,26 +15,27 @@ rreqs="make rlwrap"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG '/^SYS_LIBS=/s/$/ -static/g' makefile
   sed -i.ORIG '/putstr.*prompt/s/;/;fflush(stdout);/g' scheme.c
   sed -i 's#init.scm#${rtdir}/current/share/${rname}/init.scm#g' scheme.c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   strip --strip-all scheme
-  cwmkdir \"${ridir}/bin\"
-  cwmkdir \"${ridir}/share/${rname}\"
-  install -m 0755 scheme \"${ridir}/bin/${rname}.bin\"
-  install -m 0644 init.scm \"${ridir}/share/${rname}/init.scm\"
-  echo '#!/usr/bin/env bash' > \"${ridir}/bin/${rname}\"
-  echo 'rlwrap -C ${rname} -pYellow -m -M .scm -q\\\" \"${rtdir}/current/bin/${rname}.bin\" \"\${@}\"' >> \"${ridir}/bin/${rname}\"
-  chmod 755 \"${ridir}/bin/${rname}\"
-  popd >/dev/null 2>&1
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  cwmkdir \"\$(cwidir_${rname})/share/${rname}\"
+  install -m 0755 scheme \"\$(cwidir_${rname})/bin/${rname}.bin\"
+  install -m 0644 init.scm \"\$(cwidir_${rname})/share/${rname}/init.scm\"
+  echo '#!/usr/bin/env bash' > \"\$(cwidir_${rname})/bin/${rname}\"
+  echo 'rlwrap -C ${rname} -pYellow -m -M .scm -q\\\" \"${rtdir}/current/bin/${rname}.bin\" \"\${@}\"' >> \"\$(cwidir_${rname})/bin/${rname}.rlwrap\"
+  ln -sf ${rname}.bin \"\$(cwidir_${rname})/bin/${rname}\"
+  chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
+  popd &>/dev/null
 }
 "
 
