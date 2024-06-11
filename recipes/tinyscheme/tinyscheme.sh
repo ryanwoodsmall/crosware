@@ -1,7 +1,7 @@
 #
 # XXX - git-svn mirror more reliablabe that sourceforge at this point?
 # XXX - https://github.com/snipsnipsnip/tinyscheme
-# XXX - rlwrap broke somewhere, repeats keypresses, ugh
+# XXX - rlwrap broke somewhere, repeats keypresses, ugh - screen reset sometimes fixes?
 #
 rname="tinyscheme"
 rver="1.42"
@@ -33,7 +33,7 @@ function cwmakeinstall_${rname}() {
   install -m 0644 init.scm \"\$(cwidir_${rname})/share/${rname}/init.scm\"
   echo '#!/usr/bin/env bash' > \"\$(cwidir_${rname})/bin/${rname}\"
   echo 'rlwrap -C ${rname} -pYellow -m -M .scm -q\\\" \"${rtdir}/current/bin/${rname}.bin\" \"\${@}\"' >> \"\$(cwidir_${rname})/bin/${rname}.rlwrap\"
-  ln -sf ${rname}.bin \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf ${rname}.rlwrap \"\$(cwidir_${rname})/bin/${rname}\"
   chmod 755 \$(cwidir_${rname})/bin/${rname}{,.rlwrap}
   popd &>/dev/null
 }
