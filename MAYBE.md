@@ -1247,7 +1247,6 @@ wc -l /tmp/astbuild.out
   - twtxt (https://github.com/buckket/twtxt - minimal text based microblogging)
   - twtxtc (https://hub.darcs.net/dertuxmalwieder/twtxtc - c client)
   - txtnish (https://github.com/mdom/txtnish - minimal client)
-- txt2man (https://github.com/mvertes/txt2man - plain text to man page converter?)
 - txt2tags (https://github.com/txt2tags/txt2tags)
 - tzdb (https://www.iana.org/time-zones)
 - u9fs (https://github.com/unofficial-mirror/u9fs - 9p filesystem (or one of the forks))

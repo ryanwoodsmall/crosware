@@ -1015,6 +1015,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - redir (https://github.com/troglobit/redir)
   - sntpd (https://github.com/troglobit/sntpd - ntp client/server/...)
   - uredir (https://github.com/troglobit/uredir)
+- txt2man (https://github.com/mvertes/txt2man - plain text to man page converter?)
 - u9fs (https://github.com/Plan9-Archive/u9fs - userspace 9p server, recently updated, works without rhosts stuff)
   - no auth serve w/busybox or toybox: `tcpsvd -E -v 0.0.0.0 564 ./u9fs -D -z -a none -u username /path/to/share`
   - access from remote host w/plan 9 from user space: `9p -a 'tcp!hostname.domain.name!564' ls /`
