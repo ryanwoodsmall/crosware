@@ -12,17 +12,17 @@ cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG \"s,/usr/local,\$(cwidir_${rname}),g\" Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install prefix=\"\$(cwidir_${rname})\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
