@@ -5,11 +5,11 @@
 #
 
 rname="janet"
-rver="1.34.0"
+rver="1.35.2"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/janet-lang/${rname}/archive/refs/tags/${rfile}"
-rsha256="d49670c564dcff6f9f7945067fa2acbd3431d923c25fc4ce6e400de28eeb0b1b"
+rsha256="947dfdab6c1417c7c43efef2ecb7a92a3c339ce2135233fe88323740e6e7fab1"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -28,7 +28,7 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat Makefile > Makefile.ORIG
   sed -i \"s,^PREFIX.*,PREFIX=\$(cwidir_${rname}),g\" Makefile
   sed -i '/\\(cp\\|ln\\).*\\.so/s,\\(cp\\|ln\\),echo \\1,g' Makefile
@@ -37,24 +37,24 @@ function cwconfigure_${rname}() {
     echo '#undef JANET_ARCH_NAME' >> src/conf/janetconf.h
     echo '#define JANET_ARCH_NAME riscv64' >> src/conf/janetconf.h
   fi
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} ${rlibtool} CPPFLAGS= LDFLAGS=-static PKG_CONFIG_LDFLAGS= PKG_CONFIG_PATH=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool} CPPFLAGS= LDFLAGS=-static PKG_CONFIG_LDFLAGS= PKG_CONFIG_PATH=
   \$(\${CC} -dumpmachine)-strip \"\$(cwidir_${rname})/bin/${rname}\"
-  if hash git >/dev/null 2>&1 ; then
+  if command -v git &>/dev/null ; then
     rm -rf \"${jpm_dir}\"
     unzip \"${jpm_dlfile}\"
     cd \"${jpm_dir}\"
@@ -64,7 +64,7 @@ function cwmakeinstall_${rname}() {
   else
     cwscriptecho \"'git' not found - not installing jpm\"
   fi
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
