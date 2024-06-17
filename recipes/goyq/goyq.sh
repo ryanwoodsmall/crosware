@@ -1,9 +1,9 @@
 rname="goyq"
-rver="4.44.1"
+rver="4.44.2"
 rdir="${rname#go}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/mikefarah/yq/archive/refs/tags/${rfile}"
-rsha256="e66da5ee0c081d7974bae6a59e4791ba354178ee32ea78ab1b95d4dd60b2813d"
+rsha256="eb741c2d41351537aa42d563d0fccf16b3195c352b33e0ef111fd448232da911"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
@@ -12,16 +12,16 @@ cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   chmod -R u+rw \"\$(cwdir_${rname})\" &>/dev/null || true
   rm -rf \"${rbdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
@@ -33,20 +33,20 @@ function cwmake_${rname}() {
         go build -ldflags '-s -w -extldflags \"-s -static\"' -o \"${rname}\"
     chmod -R u+rw . || true
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   install -m 755 \"${rname}\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/${rname#go}\"
   ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/go-${rname#go}\"
   ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/${rname#go}go\"
   ln -sf \"${rname}\" \"\$(cwidir_${rname})/bin/${rname#go}-go\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
