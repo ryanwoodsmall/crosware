@@ -16,7 +16,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/libxml2minimal/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
       --with-libxml-prefix=\"${cwsw}/libxml2minimal/current\" \
@@ -31,6 +31,6 @@ function cwconfigure_${rname}() {
         CPPFLAGS=\"-I${cwsw}/libxml2minimal/current/include\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/libxml2minimal/current/lib/pkgconfig\"
   sed -i.ORIG '/SUBDIRS.*=.*doc/s, doc , ,g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
