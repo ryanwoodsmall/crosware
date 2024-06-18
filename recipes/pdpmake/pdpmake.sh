@@ -2,11 +2,11 @@
 # XXX - check macros: ENABLE_FEATURE_CLEAN_UP
 #
 rname="pdpmake"
-rver="1.4.3"
+rver="2.0.0"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/rmyorston/${rname}/archive/refs/tags/${rfile}"
-rsha256="e078ab376683de2a3044826c301f0cdef1147065f5244b52af33727797489819"
+rsha256="72ef8b7e691dfdf1cc5dd979654870e8cf664a4305ac155165ddfb77ba945854"
 rreqs="bootstrapmake txt2man"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
@@ -24,10 +24,10 @@ eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   rm -f ${rname} posixmake make
-  make CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s\" CPPFLAGS= LDFLAGS='-static -s'
+  make CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s -DENABLE_FEATURE_MAKE_EXTENSIONS=0 -DENABLE_FEATURE_MAKE_POSIX_2024=0\" CPPFLAGS= LDFLAGS='-static -s'
   mv make posixmake
   make clean
-  make CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s -DENABLE_FEATURE_MAKE_EXTENSIONS=1 -DENABLE_FEATURE_MAKE_POSIX_202X=1\" CPPFLAGS= LDFLAGS='-static -s'
+  make CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s -DENABLE_FEATURE_MAKE_EXTENSIONS=1 -DENABLE_FEATURE_MAKE_POSIX_2024=1\" CPPFLAGS= LDFLAGS='-static -s'
   mv make ${rname}
   make ${rname}.1
   popd &>/dev/null
