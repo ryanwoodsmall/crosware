@@ -3,11 +3,11 @@
 # create a password-less bind mount sudoers.d file
 # should only prompt for password on first use
 #
-# XXX - realsudo should be overridable e.g. to sudossh/sudossht?
 # XXX - utilize doas if sudo not found?
 #
+: ${realsudo:="/usr/bin/sudo"}
+export realsudo
 function sudo() {
-  local realsudo="/usr/bin/sudo"
   local sudoersddir="/etc/sudoers.d"
   local sudoersdfile="95_cros_base"
   local tmpdir="/usr/local/tmp"
