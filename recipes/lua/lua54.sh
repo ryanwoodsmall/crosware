@@ -1,7 +1,7 @@
-rver="5.4.6"
+rver="5.4.7"
 sv="${rver%.*}"
 sv="${sv//./}"
 rname="lua${sv}"
-rsha256="7d5ea1b9cb6aa0b59ca3dde1c6adcb57ef83a1ba8e5432c0ecd06bf439b3ad88"
+rsha256="9fbf5e28ef86c69858f6d3d34eccc32e911c1a28b4120ff3e84aaa70cfbf1e30"
 . "${cwrecipe}/${rname%${sv}}/${rname%${sv}}.sh.common"
 unset sv
