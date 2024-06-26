@@ -133,7 +133,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \$(cwidir_${rname})/bin
   install -m 755 \$(cwdlfile_${rname}) \$(cwidir_${rname})/bin/\$(cwfile_${rname})
   sed -i 's,^#!/usr/bin/env.*,#!${rtdir}/current/bin/lua,' \$(cwidir_${rname})/bin/\$(cwfile_${rname})
-  ln -sf ${rfile} \$(cwidir_${rname})/bin/${rname}
+  ln -sf \$(cwfile_${rname}) \$(cwidir_${rname})/bin/${rname}
   rm -rf \$(cwidir_${rname})/${rname}-bin
   cwmkdir \$(cwidir_${rname})/${rname}-bin
   cd \$(cwidir_${rname})/${rname}-bin
