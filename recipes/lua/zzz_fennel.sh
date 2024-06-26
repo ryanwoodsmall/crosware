@@ -20,7 +20,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 # no separate recipe for luarocks for now
 rluarocksver="3.11.1"
 
-# XXX - luarocks need a real wget... libressl/gnutlsminimal are smallest!
+# XXX - luarocks needs a real wget... libressl/gnutlsminimal are smallest!
 if ! wget --version 2>&1 | grep -q 'GNU Wget' ; then
   rreqs+=" wgetlibressl"
 fi
@@ -95,8 +95,6 @@ function cwmakeinstall_${rname}_lua() {
     done
     unset l
     cwcreatesharedlib \$(cwidir_${rname})/lib/liblua.{a,so}
-    #cwmkdir \$(cwidir_${rname})/lib/pkgconfig
-    #( cd \$(cwidir_lua)/lib/pkgconfig ; tar -cf - . ) | ( cd \$(cwidir_${rname})/lib/pkgconfig ; tar -xvf - )
   )
   popd &>/dev/null
 }
@@ -136,14 +134,6 @@ function cwmakeinstall_${rname}() {
   install -m 755 \$(cwdlfile_${rname}) \$(cwidir_${rname})/bin/\$(cwfile_${rname})
   sed -i 's,^#!/usr/bin/env.*,#!${rtdir}/current/bin/lua,' \$(cwidir_${rname})/bin/\$(cwfile_${rname})
   ln -sf ${rfile} \$(cwidir_${rname})/bin/${rname}
-  #(
-  #  unset LDFLAGS CPPFLAGS PKG_CONFIG_{LIBDIR,PATH} CFLAGS CXXFLAGS
-  #  export PKG_CONFIG_{LIBDIR,PATH}=\"\$(cwidir_${rname})/lib/pkgconfig\"
-  #  env \
-  #    PATH=\"\$(cwidir_${rname})/bin:\${PATH}\" \
-  #    LD_LIBRARY_PATH=\"\$(cwidir_${rname})/lib\" \
-  #      \$(cwidir_${rname})/bin/luarocks install --force fennel \$(cwver_${rname} | cut -f1 -d-)
-  #)
   rm -rf \$(cwidir_${rname})/${rname}-bin
   cwmkdir \$(cwidir_${rname})/${rname}-bin
   cd \$(cwidir_${rname})/${rname}-bin
