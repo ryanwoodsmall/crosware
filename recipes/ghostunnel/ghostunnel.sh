@@ -28,11 +28,11 @@
 #       --verify-cn=$(hostname)
 #
 rname="ghostunnel"
-rver="1.7.3"
+rver="1.8.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="eea12aff83447f4d84e4ce64c16ca7e57cf2bafa83afa95aee7d718b26d56488"
+rsha256="f6f228d305a508b63a94961f68ec0222f3b08b4a84183b9e5893b24ff208929a"
 rreqs="go cacertificates"
 
 . "${cwrecipe}/common.sh"
