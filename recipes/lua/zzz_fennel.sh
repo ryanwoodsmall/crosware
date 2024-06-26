@@ -3,9 +3,10 @@
 # XXX - separate luarocks recipe...
 # XXX - lib{readline,history}.so stuff needs work...
 # XXX - luarocks is pretty dependent on shared libs for ffi, etc.; probably _only_ useful for readline here
+# XXX - luarocks fennel install broken w/fennel 1.5.0?
 #
 rname="fennel"
-rfennelver="1.4.2"
+rfennelver="1.5.0"
 # "vendor" a recent/system version of lua (needs to be shared)
 rluaver="$(cwver_lua)"
 # append lua version to fennel version so they kinda move in lockstep
@@ -13,7 +14,7 @@ rver="${rfennelver}-${rluaver}"
 rdir="${rname}-${rfennelver}"
 rfile="${rdir}"
 rurl="https://fennel-lang.org/downloads/${rfile}"
-rsha256="e7de1a866f0d1deb9593ef0b01d20f8027bb2b72f5cd9cb2ae6011fff92b5f05"
+rsha256="2c60972b7e56215ebc864e17670c03f170724dc0aaff4c8baad189df7d52cb7f"
 rreqs="make netbsdcurses readlinenetbsdcurses"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 # no separate recipe for luarocks for now
@@ -22,6 +23,11 @@ rluarocksver="3.11.1"
 # XXX - luarocks need a real wget... libressl/gnutlsminimal are smallest!
 if ! wget --version 2>&1 | grep -q 'GNU Wget' ; then
   rreqs+=" wgetlibressl"
+fi
+
+# unzip
+if ! command -v unzip &>/dev/null ; then
+  rreqs+=" busybox"
 fi
 
 . "${cwrecipe}/common.sh"
@@ -46,7 +52,7 @@ function cwextract_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}_readline() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   mkdir libreadline
   cd libreadline
   cwscriptecho \"creating a fat libreadline.so from...\"
@@ -59,13 +65,13 @@ function cwmakeinstall_${rname}_readline() {
   \${AR} -r libreadline.a *.o
   cwcreatesharedlib \$(cwbdir_${rname})/libreadline/libreadline.a \$(cwidir_${rname})/lib/libreadline.so
   cd -
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}_lua() {
-  pushd \"\$(cwbdir_${rname})/\$(cwdir_lua)\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})/\$(cwdir_lua)\" &>/dev/null
   (
     unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS PKG_CONFIG_{LIBDIR,PATH}
     local COMPFLAGS
@@ -89,14 +95,16 @@ function cwmakeinstall_${rname}_lua() {
     done
     unset l
     cwcreatesharedlib \$(cwidir_${rname})/lib/liblua.{a,so}
+    #cwmkdir \$(cwidir_${rname})/lib/pkgconfig
+    #( cd \$(cwidir_lua)/lib/pkgconfig ; tar -cf - . ) | ( cd \$(cwidir_${rname})/lib/pkgconfig ; tar -xvf - )
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}_luarocks() {
-  pushd \"\$(cwbdir_${rname})/luarocks-${rluarocksver}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})/luarocks-${rluarocksver}\" &>/dev/null
   (
     unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS PKG_CONFIG_{LIBDIR,PATH}
     env \
@@ -113,9 +121,9 @@ function cwmakeinstall_${rname}_luarocks() {
     env \
       PATH=\"\$(cwidir_${rname})/bin:\${PATH}\" \
       LD_LIBRARY_PATH=\"\$(cwidir_${rname})/lib\" \
-        \$(cwidir_${rname})/bin/luarocks install readline {HISTORY,READLINE}_DIR=$cwsw/readlinenetbsdcurses/current
+        \$(cwidir_${rname})/bin/luarocks install --force readline {HISTORY,READLINE}_DIR=$cwsw/readlinenetbsdcurses/current
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -127,13 +135,15 @@ function cwmakeinstall_${rname}() {
   cwmkdir \$(cwidir_${rname})/bin
   install -m 755 \$(cwdlfile_${rname}) \$(cwidir_${rname})/bin/\$(cwfile_${rname})
   sed -i 's,^#!/usr/bin/env.*,#!${rtdir}/current/bin/lua,' \$(cwidir_${rname})/bin/\$(cwfile_${rname})
-  (
-    unset LDFLAGS CPPFLAGS PKG_CONFIG_{LIBDIR,PATH} CFLAGS CXXFLAGS
-    env \
-      PATH=\"\$(cwidir_${rname})/bin:\${PATH}\" \
-      LD_LIBRARY_PATH=\"\$(cwidir_${rname})/lib\" \
-        \$(cwidir_${rname})/bin/luarocks install fennel \$(cwver_${rname} | cut -f1 -d-)
-  )
+  ln -sf ${rfile} \$(cwidir_${rname})/bin/${rname}
+  #(
+  #  unset LDFLAGS CPPFLAGS PKG_CONFIG_{LIBDIR,PATH} CFLAGS CXXFLAGS
+  #  export PKG_CONFIG_{LIBDIR,PATH}=\"\$(cwidir_${rname})/lib/pkgconfig\"
+  #  env \
+  #    PATH=\"\$(cwidir_${rname})/bin:\${PATH}\" \
+  #    LD_LIBRARY_PATH=\"\$(cwidir_${rname})/lib\" \
+  #      \$(cwidir_${rname})/bin/luarocks install --force fennel \$(cwver_${rname} | cut -f1 -d-)
+  #)
   rm -rf \$(cwidir_${rname})/${rname}-bin
   cwmkdir \$(cwidir_${rname})/${rname}-bin
   cd \$(cwidir_${rname})/${rname}-bin
