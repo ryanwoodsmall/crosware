@@ -454,6 +454,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - corkscrew (http://wiki.kartbuilding.net/index.php/Corkscrew_-_ssh_over_https and http://web.archive.org/web/20160207093437/http://agroman.net/corkscrew/ - ssh over http/socks)
 - cppcheck
 - cppi
+- cpu (https://github.com/u-root/cpu - plan 9-like cpu - "push" local filesystem/program to remote, execute - in go, works like ssh+9p)
 - cronolog (https://linux.die.net/man/1/cronolog - version 1.6.2 with fedora largefile patch)
 - cryanc (https://github.com/classilla/cryanc - crypto ancienne, tls for old platforms, provides "carl" binary with client+proxy)
 - cscope

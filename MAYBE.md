@@ -235,7 +235,7 @@ wc -l /tmp/astbuild.out
 - connect/connect-proxy (https://github.com/jjkeijser/connect-proxy/ and https://src.fedoraproject.org/rpms/connect-proxy/tree/rawhide - small openssl http/https/socks proxy)
 - conty (https://github.com/Kron4ek/Conty - shell containerizer, needs fuse2/3, coreutils, tar (gnu?), gzip (gnu?), bash)
 - cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
-- cpu (https://github.com/u-root/cpu - plan 9-like cpu - "push" local filesystem/program to remote, execute - in go, works over ssh... cool)
+- cpu - look at using with troglobit mdnsd!
 - croc (https://github.com/schollz/croc and https://schollz.com/blog/croc6/ - point-to-point filesharing, with a relay)
 - cronolog (https://github.com/fordmason/cronolog)
   - maybe a fork? (https://github.com/pbiering/cronolog seems active)
