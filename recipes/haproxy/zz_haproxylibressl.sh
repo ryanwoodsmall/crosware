@@ -21,7 +21,7 @@ unset f
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} \
     V=1 \
     PREFIX=\"\$(cwidir_${rname})\" \
@@ -38,13 +38,13 @@ function cwmake_${rname}() {
     CC=\"\${CC}\" \
     LDFLAGS=\"-L${cwsw}/libressl/current/lib -static\" \
     CPPFLAGS=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} install \
     V=1 \
     PREFIX=\"\$(cwidir_${rname})\" \
@@ -64,7 +64,7 @@ function cwmakeinstall_${rname}() {
   \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/sbin/${rname%libressl}\"
   ln -sf \"${rtdir}/current/sbin/${rname%libressl}\" \"\$(cwidir_${rname})/sbin/${rname%libressl}${rname#haproxy}\"
   ln -sf \"${rtdir}/current/sbin/${rname%libressl}\" \"\$(cwidir_${rname})/sbin/${rname%libressl}-${rname#haproxy}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
