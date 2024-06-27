@@ -1204,6 +1204,8 @@ wc -l /tmp/astbuild.out
 - tab (https://tkatchev.bitbucket.io/tab/)
 - tack (https://github.com/davidgiven/ack and http://tack.sourceforge.net/ - the amsterdam compiler kit)
 - taggins (https://github.com/bromanbro/taggins - easy, extended attr filesystem user.tags for files)
+- tarsnap stuff (https://www.tarsnap.com/open-source.html)
+  - spiped (https://www.tarsnap.com/spiped.html and https://github.com/Tarsnap/spiped - symmetric pipe w/psk, `ssh -L`-ish)
 - taskwarrior (https://taskwarrior.org/ and https://github.com/GothenburgBitFactory/taskwarrior)
 - taskserver (https://github.com/GothenburgBitFactory/taskserver)
 - t3x.org stuff (nils holm)
