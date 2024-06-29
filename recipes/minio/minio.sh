@@ -1,6 +1,6 @@
 rname="minio"
-rver="2024-06-26T01-06-18Z"
-rcommitid="499531f0b5863ad5b3a5e92a24239138c3ba7a13"
+rver="2024-06-28T09-06-49Z"
+rcommitid="aebac9001386b034e14cb7d5f1dbb8113831b3f7"
 rdir="minio-RELEASE.${rver}"
 rfile="RELEASE.${rver}.tar.gz"
 rurl="https://github.com/minio/minio/archive/refs/tags/${rfile}"
@@ -22,16 +22,16 @@ function cwfetch_${rname}() {
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   chmod -R u+rw \"\$(cwdir_${rname})\" &>/dev/null || true
   rm -rf \"${rbdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local l=''
   local c=\"\$(cwcommitid_${rname})\"
   local s=\"\${c:0:12}\"
@@ -55,17 +55,17 @@ function cwmake_${rname}() {
         go build -trimpath -tags kqueue -ldflags \"-s -w -extldflags '-s -static' \${l}\" -o \"${rname}\"
   )
   unset l c s y
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   install -m 755 \"${rname}\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}-server\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
