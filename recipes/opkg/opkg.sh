@@ -17,18 +17,18 @@
 #
 
 rname="opkg"
-rver="0.6.3"
+rver="0.7.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://git.yoctoproject.org/${rname}/snapshot/${rfile}"
-rsha256="6c73a111131629550e00fb84a8ffdbd7fb575c1899d5ca2d5a92980d92c350c4"
+rsha256="478350ef1802be5fc4871f41000c3d23e01b7b81b8ea786ea9d81fccf0c7190e"
 rreqs="make autoconf automake libtool pkgconfig gpgme gnupg curl openssl libarchive xz bzip2 lz4 zstd configgit slibtool libassuan zlib libssh2 expat libmd libbsd acl nghttp2 lzo mbedtls"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH}\" \
     autoreconf -fiv -I./m4 \$(echo -I${cwsw}/{automake,libtool,pkgconfig}/current/share/aclocal)
   cwfixupconfig_${rname}
@@ -43,17 +43,17 @@ function cwconfigure_${rname}() {
         LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lassuan'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   cwmkdir \"\$(cwidir_${rname})/etc/opkg\"
   touch \"\$(cwidir_${rname})/etc/opkg/default.conf\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
