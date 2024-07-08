@@ -7,9 +7,8 @@
 # XXX - this recipe _always_ fetches the sha256sum file, so needs to be online
 # XXX - without airgap, that makes sense, but i'm not a huge fan of this approach (no caching, no offline)
 #
-
 rname="k3s"
-rver="1.30.2_${rname}1"
+rver="1.30.2_${rname}2"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
