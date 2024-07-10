@@ -479,6 +479,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - derby
 - diffutils
 - diction and style (https://www.gnu.org/software/diction/)
+- direvent (https://www.gnu.org.ua/software/direvent/direvent.html - gnu directory event monitoring daemon)
 - distcc (https://distcc.github.io/ and https://github.com/distcc/distcc - minimal build, no pump, libiberty, avahi, etc.)
 - dnsmasq (http://www.thekelleys.org.uk/dnsmasq/doc.html)
   - look at adding...
