@@ -12,7 +12,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_less)\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_less)\" &>/dev/null
   cat configure > configure.ORIG
   sed -i '/^TERMLIBS=/s,=,=-ltermcap,' configure
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
@@ -23,7 +23,7 @@ function cwconfigure_${rname}() {
     LDFLAGS=\"-L${cwsw}/bashtermcap/current/lib -static\" \
     LIBS='-ltermcap' \
     PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
