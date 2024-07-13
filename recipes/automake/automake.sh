@@ -1,18 +1,18 @@
 rname="automake"
-rver="1.16.5"
+rver="1.17"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
-rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="f01d58cd6d9d77fbdca9eb4bbd5ead1988228fdb73d6f7a201f5f8d6b118b469"
+rfile="${rdir}.tar.gz"
+rurl="https://ftp.gnu.org/gnu/automake/${rfile}"
+rsha256="397767d4db3018dd4440825b60c64258b636eaf6bf99ac8b0897f06c89310acd"
 rreqs="make perl m4 autoconf sed"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=${cwsw}/perl/current/bin:${cwsw}/m4/current/bin:${cwsw}/autoconf/current/bin:\${PATH} ./configure ${cwconfigureprefix}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
