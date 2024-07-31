@@ -3,12 +3,12 @@
 #
 # XXX - this needs cleaning up, bad
 #
-rver="$(cwver_curl)"
-rdir="$(cwdir_curl)"
-rfile="$(cwfile_curl)"
-rdlfile="$(cwdlfile_curl)"
-rurl="$(cwurl_curl)"
-rsha256=""
+: ${rver:="$(cwver_curl)"}
+: ${rdir:="$(cwdir_curl)"}
+: ${rfile:="$(cwfile_curl)"}
+: ${rdlfile:="$(cwdlfile_curl)"}
+: ${rurl:="$(cwurl_curl)"}
+: ${rsha256:="$(cwsha256_curl)"}
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rprovider="${rname#curl}"
 : ${rproviderreqs:="${rprovider}"}
