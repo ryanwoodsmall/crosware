@@ -20,28 +20,18 @@
 #       - curl: option --dns-servers: the installed libcurl version doesn't support this
 #       - https://github.com/curl/curl/issues/8551
 # XXX - libpsl support is enabled by default now; it requires libidn2, libunistring and a python, explicitly disable...
+# XXX - mbedtls is messy at/after fba9afebba22d577f122239b184edc90c18fd81b (bisected) - need to figure out why
 #
 rname="curl"
-rver="8.7.1"
+rver="8.9.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="https://curl.se/download/${rfile}"
 rurl="https://github.com/curl/curl/releases/download/curl-${rver//./_}/${rfile}"
-rsha256="f91249c87f68ea00cf27c44fdfa5a78423e41e71b7d408e5901a9896d905c495"
+rsha256="291124a007ee5111997825940b3876b3048f7d31e73e9caa681b80fe48b2dcd5"
 rreqs="make zlib openssl libssh2 cacertificates nghttp2 pkgconfig"
 
 . "${cwrecipe}/common.sh"
-
-## XXX - 8.8.0 - remove after mbedtls fix is in place
-#eval "
-#function cwfetch_${rname}() {
-#  cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
-#  cwfetchcheck \
-#    \"https://raw.githubusercontent.com/curl/curl/0c4b4c1e93c8e869af230090f32346fdfd548f21/lib/vtls/mbedtls.c\" \
-#    \"\$(dirname \$(cwdlfile_${rname}))/mbedtls-8.8.0.c\" \
-#    \"7cf97ab024932e15080f0eec2aed62a0a9b49083d07dbb7829cb9552984414c6\"
-#}
-#"
 
 # ugly - multiple configs need this, can't rely on base openssl cwconfigure_curl running
 eval "
