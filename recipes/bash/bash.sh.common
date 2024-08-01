@@ -5,7 +5,7 @@ rreqs="${rreqs} make byacc sed netbsdcurses readlinenetbsdcurses patch"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --disable-nls \
     --disable-separate-helpfiles \
@@ -25,7 +25,7 @@ function cwconfigure_${rname}() {
   echo '#define SYS_BASH_LOGOUT \"/etc/bash.bash_logout\"' >> config-top.h
   echo '#undef DEFAULT_LOADABLE_BUILTINS_PATH' >> config-top.h
   echo '#define DEFAULT_LOADABLE_BUILTINS_PATH \"${rtdir}/current/lib/bash:.\"' >> config-top.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

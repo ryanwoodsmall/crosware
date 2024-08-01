@@ -11,7 +11,7 @@ rpfile="${cwrecipe}/${rname%51}/${rname}.patches"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make strip
   cwmkdir \"\$(cwidir_${rname})/bin\"
   install -m 0755 bash \"\$(cwidir_${rname})/bin/${rname}\"
@@ -19,6 +19,6 @@ function cwmakeinstall_${rname}() {
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}-${rver}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname}-${rver%.*}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/sh\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
