@@ -1,9 +1,9 @@
 rname="cares"
-rver="1.32.3"
+rver="1.33.0"
 rdir="c-ares-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/c-ares/c-ares/releases/download/v${rver}/${rfile}"
-rsha256="5f02cc809aac3f6cc5edc1fac6c4423fd5616d7406ce47b904c24adf0ff2cd0f"
+rsha256="3e41df2f172041eb4ecb754a464c11ccc5046b2a1c8b1d6a40dac45d3a3b2346"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
