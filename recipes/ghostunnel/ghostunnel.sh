@@ -1,4 +1,6 @@
 #
+# XXX - go 1.22.x - tls.go too many args (logger) to certstore
+#
 # to create and exchange certs on a single node to test:
 #   for t in client server ; do
 #     ${cwsw}/bearssl/current/bin/brssl skey -gen rsa:2048 -rawpem ${cwtop}/tmp/ghostunnel-${t}.key
@@ -28,12 +30,12 @@
 #       --verify-cn=$(hostname)
 #
 rname="ghostunnel"
-rver="1.8.0"
+rver="1.8.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="f6f228d305a508b63a94961f68ec0222f3b08b4a84183b9e5893b24ff208929a"
-rreqs="go cacertificates"
+rsha256="7eee035a6e721d4d7ec43470ba684fd5c7fe1419bcdbf4b04e675547ea12fc52"
+rreqs="go cacertificates bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
@@ -41,40 +43,52 @@ cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   test -e \"\$(cwbdir_${rname})\" && chmod -R u+rw \"\$(cwbdir_${rname})/\" || true
   rm -rf \"\$(cwbdir_${rname})\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
+}
+"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  sed -i.ORIG \"s,1\\.22\\.4,\$(cwver_go),g\" go.mod
+  sed -i.ORIG '/CertificateFromPKCS11Module/s/, logger//g' tls.go
+  sed -i.ORIG \"s,^VERSION.*,VERSION=\$(cwver_${rname}),g\" Makefile
+  sed -i '/-ldflags/s,-X,-s -w -X,g' Makefile
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
     env \
+      VERSION=\"\$(cwver_${rname})\" \
       CGO_ENABLED=0 \
       GOCACHE=\"\${GOCACHE}\" \
       GOMODCACHE=\"\${GOMODCACHE}\" \
       PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-        go build -ldflags \"-s -w -extldflags '-s -static' -X main.version=\$(cwver_${rname})\" -o ${rname} .
-    ./${rname} --help-custom-man > ${rname}.1
+        make ${rname}{,.{certstore,man}}
     chmod -R u+rw . || true
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
   install -m 0755 ${rname} \"\$(cwidir_${rname})/bin/${rname}\"
-  install -m 0644 ${rname}.1 \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
-  popd >/dev/null 2>&1
+  install -m 0755 ${rname}.certstore \"\$(cwidir_${rname})/bin/${rname}.certstore\"
+  install -m 0644 ${rname}.man \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
+  popd &>/dev/null
 }
 "
 
