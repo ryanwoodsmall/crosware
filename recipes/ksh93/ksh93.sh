@@ -1,9 +1,9 @@
 rname="ksh93"
-rver="1.0.9"
+rver="1.0.10"
 rdir="${rname%93}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/ksh93/ksh/archive/refs/tags/${rfile}"
-rsha256="c58d618b551c594580541a0759e32ea6ddadd7b7a84f9f3ebea2ffb9a5d9d580"
+rsha256="9f4c7a9531cec6941d6a9fd7fb70a4aeda24ea32800f578fd4099083f98b4e8a"
 rreqs="busybox bashtiny"
 
 . "${cwrecipe}/common.sh"
