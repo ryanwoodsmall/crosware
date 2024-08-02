@@ -1,9 +1,9 @@
 rname="etcd"
-rver="3.5.14"
+rver="3.5.15"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/etcd-io/${rname}/archive/refs/tags/${rfile}"
-rsha256="3d8898d52f028c85b55976ec7e9a12efe6c252fcbfe6e0f8a0ffe2533293dc3f"
+rsha256="bfc9c90f103acd47b0dca2840d4b69af68cb39f22893bef0f4fb5c5351314b84"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
@@ -12,7 +12,7 @@ cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
@@ -33,16 +33,16 @@ function cwmake_${rname}() {
     done
     chmod -R u+rw . || true
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   install -m 0755 bin/${rname}* \"\$(cwidir_${rname})/bin/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
