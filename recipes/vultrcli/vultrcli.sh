@@ -1,9 +1,9 @@
 rname="vultrcli"
-rver="3.3.0"
+rver="3.3.1"
 rdir="vultr-cli-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/vultr/vultr-cli/archive/refs/tags/${rfile}"
-rsha256="801102036a0ca5153a72281d67fa8070311ea893c25ddc8f38d25475b2e99989"
+rsha256="404d4438f6640a34f5f287f6c9af86376ea48c72f7596a4db967dcf9eddd7f17"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
@@ -12,16 +12,16 @@ cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   chmod -R u+rw \"\$(cwdir_${rname})\" &>/dev/null || true
   rm -rf \"${rbdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
@@ -34,16 +34,16 @@ function cwmake_${rname}() {
         go build -ldflags \"-s -w\" -o vultr-cli
     chmod -R u+rw . || true
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   install -m 755 vultr-cli \"\$(cwidir_${rname})/bin/vultr-cli\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
