@@ -1039,6 +1039,7 @@ wc -l /tmp/astbuild.out
 - remake (http://bashdb.sourceforge.net/remake/ and https://github.com/rocky/remake)
 - restic (https://github.com/restic/restic and https://restic.net/ - backups, in go, with an rclone REST backend!)
 - reverse-ssh (https://github.com/Fahrj/reverse-ssh - reverse ssh/shell in go)
+- rng-tools (https://github.com/nhorman/rng-tools - rngd, needs at least libressl and libcap?)
 - rocksock-http (https://github.com/rofl0r/rocksock-httpd)
 - rocksocks5 (https://github.com/rofl0r/rocksocks5)
 - rover (https://lecram.github.io/p/rover)
