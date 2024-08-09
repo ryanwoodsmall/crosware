@@ -17,7 +17,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-nls \
     --enable-webdav \
@@ -30,15 +30,15 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       LIBS='-lgnutls -ltasn1 -lunistring -lhogweed -lgmp -lnettle'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   sed -i 's,-lgnutls,-lgnutls -ltasn1 -lunistring -lhogweed -lgmp -lnettle,g' \"\$(cwidir_${rname})/bin/neon-config\" \"\$(cwidir_${rname})/lib/pkgconfig/neon.pc\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
