@@ -10,14 +10,14 @@ rreqs="make expat zlib gnutls libtasn1 libunistring nettle gmp neongnutls netbsd
 . "${cwrecipe}/common.sh"
 
 local f
-for f in clean fetch extract patch make makeinstall ; do
+for f in clean fetch extract patch make ; do
   eval "function cw${f}_${rname}() { cw${f}_cadaver ; }"
 done
 unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local pkgconfpath=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   env PATH=\"${cwsw}/neon${rname#cadaver}/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
@@ -31,7 +31,14 @@ function cwconfigure_${rname}() {
         LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\${pkgconfpath}\" \
         LIBS='-lgnutls -ltasn1 -lunistring -lhogweed -lgmp -lnettle -lreadline -lcurses -lterminfo'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  cwmakeinstall_${rname%gnutls}
+  test -e \"\$(cwidir_${rname})/bin/${rname}\" || ln -s ${rname%gnutls} \"\$(cwidir_${rname})/bin/${rname}\"
 }
 "
 

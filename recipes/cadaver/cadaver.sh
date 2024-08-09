@@ -10,15 +10,16 @@ rreqs="make expat zlib openssl neon netbsdcurses readlinenetbsdcurses"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG '/y\\/n/s,;,;fflush(stdout);fflush(stderr);,g' src/cadaver.c src/edit.c
-  popd >/dev/null 2>&1
+  sed -i.ORIG 's, 31 32, 31 32 33,g' configure
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/neon${rname#cadaver}/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --disable-nls \
@@ -31,7 +32,7 @@ function cwconfigure_${rname}() {
         LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lreadline -lcurses -lterminfo'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

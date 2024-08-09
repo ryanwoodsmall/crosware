@@ -10,14 +10,14 @@ rreqs="make expat zlib libressl neonlibressl netbsdcurses readlinenetbsdcurses"
 . "${cwrecipe}/common.sh"
 
 local f
-for f in clean fetch extract patch make makeinstall ; do
+for f in clean fetch extract patch make ; do
   eval "function cw${f}_${rname}() { cw${f}_cadaver ; }"
 done
 unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/neon${rname#cadaver}/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --disable-nls \
@@ -30,7 +30,14 @@ function cwconfigure_${rname}() {
         LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lreadline -lcurses -lterminfo'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
+}
+"
+
+eval "
+function cwmakeinstall_${rname}() {
+  cwmakeinstall_${rname%libressl}
+  test -e \"\$(cwidir_${rname})/bin/${rname}\" || ln -s ${rname%libressl} \"\$(cwidir_${rname})/bin/${rname}\"
 }
 "
 
