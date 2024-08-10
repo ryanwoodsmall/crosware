@@ -3,13 +3,13 @@
 # XXX - i.e. byacc is probably going to break at some point, then awk will indirectly require perl. the humanity
 #
 rname="onetrueawk"
-rver="20240422"
+rver="20240728"
 rdir="${rname#onetrue}-${rver}"
 rfile="${rver}.tar.gz"
 #rfile="${rver}.zip"
 #rurl="https://github.com/onetrueawk/awk/archive/${rfile}"
 rurl="https://github.com/onetrueawk/awk/archive/refs/tags/${rfile}"
-rsha256="4793404735db5ea79f790cf865bf4fe875f9c5c23b1b8da186349f54b3a32281"
+rsha256="2d479817f95d5997fc4348ecebb1d8a1b25c81cebedb46ca4f59434247e08543"
 rreqs="make byacc"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
