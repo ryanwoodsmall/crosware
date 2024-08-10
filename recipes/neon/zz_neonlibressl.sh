@@ -28,6 +28,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
+    --disable-auto-libproxy \
     --disable-nls \
     --enable-webdav \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
