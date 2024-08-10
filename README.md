@@ -411,7 +411,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - bashtiny (latest 5.x, no readline/curses/termcap)
   - bash4 (4.4, netbsdcurses)
   - bash50 (5.0, netbsdcurses)
-  - bash50 (5.1, netbsdcurses)
+  - bash51 (5.1, netbsdcurses)
   - bashtermcap (termcap.h, libtermcap.a from bash, etc/termcap from gnu termcap)
 - bc (gnu bc, dc)
 - bdb185 (berkeley db 1.85)
@@ -427,10 +427,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - brogue
 - brotli (https://github.com/google/brotli)
 - bsd programs
-  - bsdjot (from netbsd - https://netbsd.gw.com/cgi-bin/man-cgi?jot+1)
-  - bsdrs (from netbsd - https://netbsd.gw.com/cgi-bin/man-cgi?rs+1)
-  - bsdunvis (from netbsd - https://netbsd.gw.com/cgi-bin/man-cgi?unvis+1)
-  - bsdvis (from netbsd - https://netbsd.gw.com/cgi-bin/man-cgi?vis+1)
+  - bsdjot (from outils)
+  - bsdrs (from outils)
+  - bsdunvis (from outils)
+  - bsdvis (from outils)
 - busybox (static)
 - byacc
 - bzip2
