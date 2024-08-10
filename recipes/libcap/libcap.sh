@@ -2,39 +2,35 @@
 # XXX - needs gnu (or invisible island!) indent for (system-provided) gperf support
 #
 rname="libcap"
-rver="2.67"
+rver="2.70"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
+rfile="${rdir}.tar.gz"
 rurl="https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/${rfile}"
-rsha256="ce9b22fdc271beb6dae7543da5f74cf24cb82e6848cfd088a5a069dec5ea5198"
-rreqs="make perl attr"
+rsha256="d3b777ed413c9fafface03b917e171854709b5e4be38dbfb9219aaf7dfd4eea6"
+rreqs="make attr"
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
+cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make lib=lib prefix=\"\$(cwidir_${rname})\" GOLANG=no USE_GPERF=no
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cd libcap
   make install-static lib=lib prefix=\"\$(cwidir_${rname})\" GOLANG=no USE_GPERF=no
   cd -
   cd progs
   make install lib=lib prefix=\"\$(cwidir_${rname})\" GOLANG=no USE_GPERF=no
   cd -
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
