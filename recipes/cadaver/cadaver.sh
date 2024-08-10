@@ -1,3 +1,7 @@
+#
+# XXX - remove neon 0.33.x workaround
+# XXX - use cwappendfunc in other tls lib variants instead of full cwmakeinstall_
+#
 rname="cadaver"
 rver="0.24"
 rdir="${rname}-${rver}"
