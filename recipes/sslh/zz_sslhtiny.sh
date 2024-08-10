@@ -17,7 +17,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i s,-lpcre2-8,,g Makefile.in
   sed -i s,-DLIBPCRE,,g Makefile.in
   sed -i s,^ENABLE_REGEX=1,ENABLE_REGEX=0,g Makefile.in
@@ -28,13 +28,13 @@ function cwconfigure_${rname}() {
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
     make -j${cwmakejobs} ${rlibtool} \
       CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s\" \
@@ -48,25 +48,25 @@ function cwmake_${rname}() {
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -U{USELIBCONFIG,ENABLE_REGEX,USELIBEV,LIBPCRE})\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir tmpinst
   make install DESTDIR=\"\$(cwbdir_${rname})/tmpinst\" ${rlibtool}
   cwmkdir \"\$(cwidir_${rname})\"
   tar -C tmpinst/usr/ -cf - . | tar -C \"\$(cwidir_${rname})/\" -xvf -
   ln -sf sslh \"$(cwidir_${rname})/sbin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir tmpinst
   make install DESTDIR=\"\$(cwbdir_${rname})/tmpinst\" ${rlibtool}
   cwmkdir \"\$(cwidir_${rname})\"
@@ -76,7 +76,7 @@ function cwmakeinstall_${rname}() {
   install -m 755 sslh-select \"$(cwidir_${rname})/sbin/sslh-select\"
   ln -sf sslh-fork \"$(cwidir_${rname})/sbin/sslh\"
   ln -sf sslh \"$(cwidir_${rname})/sbin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
