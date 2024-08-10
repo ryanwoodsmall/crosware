@@ -1,19 +1,19 @@
 rname="libnl"
-rver="3.9.0"
+rver="3.10.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://github.com/thom311/${rname}/releases/download/${rname}${rver//./_}/${rfile}"
-rsha256="aed507004d728a5cf11eab48ca4bf9e6e1874444e33939b9d3dfed25018ee9bb"
+rurl="https://github.com/thom311/libnl/releases/download/${rname}${rver//./_}/${rfile}"
+rsha256="49b3e2235fdb58f5910bbb3ed0de8143b71ffc220571540502eb6c2471f204f5"
 rreqs="make bison"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's#sys/poll.h#poll.h#g' include/netlink/netlink.h
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
