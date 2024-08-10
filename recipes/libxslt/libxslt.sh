@@ -1,9 +1,9 @@
 rname="libxslt"
-rver="1.1.41"
+rver="1.1.42"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://download.gnome.org/sources/${rname}/${rver%.*}/${rfile}"
-rsha256="3ad392af91115b7740f7b50d228cc1c5fc13afc1da7f16cb0213917a37f71bda"
+rsha256="85ca62cac0d41fc77d3f6033da9df6fd73d20ea2fc18b0a3609ffb4110e1baeb"
 rreqs="make libgpgerror libgcrypt libxml2 slibtool xz zlib pkgconfig"
 
 . "${cwrecipe}/common.sh"
