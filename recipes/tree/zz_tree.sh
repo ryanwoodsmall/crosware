@@ -26,11 +26,11 @@ unset f
 eval "
 function cwmakeinstall_${rname}() {
   cwmkdir \"${rtdir}\"
-  pushd \"${rtdir}\" >/dev/null 2>&1
+  pushd \"${rtdir}\" &>/dev/null
   test -e \"\$(cwdir_${rname})\" && rm -f \"\$(cwdir_${rname})\" || true
   test -e \"\$(cwdir_${rname})\" && mv \$(cwdir_${rname}) \$(cwdir_${rname}).PRE-\${TS} || true
   ln -sf \"\$(cwidir_${rname}${rtreever})\" \"\$(cwdir_${rname})\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
