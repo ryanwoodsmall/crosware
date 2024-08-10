@@ -21,7 +21,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --with-tlib=termcap \
     --without-local-dir \
@@ -38,13 +38,13 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       LIBS='-ltermcap'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local sv
   sv=\"${rver%.*}\"
   sv=\"\${sv//./}\"
@@ -55,7 +55,7 @@ function cwmakeinstall_${rname}() {
   echo 'env TERM=xterm-color \"${rtdir}/current/bin/vim\" \"\${@}\"' >> \"\$(cwidir_${rname})/bin/${rname}\"
   chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
   unset sv
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

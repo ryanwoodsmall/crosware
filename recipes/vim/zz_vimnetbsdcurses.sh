@@ -21,7 +21,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=${cwsw}/gettexttiny/current/bin:\${PATH} \
     ./configure ${cwconfigureprefix} \
       --with-tlib=curses \
@@ -36,13 +36,13 @@ function cwconfigure_${rname}() {
         LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lcurses -lterminfo'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local sv
   sv=\"${rver%.*}\"
   sv=\"\${sv//./}\"
@@ -51,7 +51,7 @@ function cwmakeinstall_${rname}() {
   ln -sf \"${rname%netbsdcurses}\" \"\$(cwidir_${rname})/bin/vi\"
   ln -sf \"${rname%netbsdcurses}\" \"\$(cwidir_${rname})/bin/${rname}\"
   unset sv
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
