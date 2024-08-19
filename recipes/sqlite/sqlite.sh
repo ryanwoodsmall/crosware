@@ -7,11 +7,11 @@
 # XXX - minimal/tiny variant?
 #
 rname="sqlite"
-rver="3460000"
+rver="3460100"
 rdir="${rname}-autoconf-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.sqlite.org/2024/${rfile}"
-rsha256="6f8e6a7b335273748816f9b3b62bbdc372a889de8782d7f048c653a447417a7d"
+rsha256="67d3fe6d268e6eaddcae3727fce58fcc8e9c53869bdd07a0c61e38ddf2965071"
 rreqs="make netbsdcurses readlinenetbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
