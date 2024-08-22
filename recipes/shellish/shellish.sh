@@ -1,9 +1,8 @@
 #
 # XXX - detect and test ${CW_GIT_CMD} and modify install/upgrade procedure to use a local clone
 #
-
 rname="shellish"
-rver="6fc7766d7927d738f66a4e3ddc3200122cf1addd"
+rver="0dcfae3670897870c5a73b61146d86a469b3af65"
 rdir="${rname//ish/-ish}-${rver}"
 rfile="${rver}.zip"
 #rurl="https://github.com/ryanwoodsmall/${rname//ish/-ish}/archive/refs/heads/${rfile}"
@@ -37,7 +36,7 @@ function cwextract_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   cwmkdir \"\$(cwidir_${rname})/bin\"
-  pushd \"\$(cwidir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwidir_${rname})\" &>/dev/null
   local p
   for p in box-utils.sh chode coltotal dingafter dingsleep filesizetype.sh ht mixcase.sh nll procdirs.sh revnl revnll trl tru vim9p ymdhms.sh ; do
     ln -sf \"${rtdir}/current/\$(cwdir_${rname})/bin/\${p}\" \"\$(cwidir_${rname})/bin/\${p}\"
@@ -45,7 +44,7 @@ function cwmakeinstall_${rname}() {
   unset p
   rm -rf shell-ish-master
   ln -sf shell-ish-\$(cwver_${rname}) shell-ish-master
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
