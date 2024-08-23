@@ -7,11 +7,11 @@
 #
 
 rname="nginx"
-rver="1.26.1"
+rver="1.27.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://nginx.org/download/${rfile}"
-rsha256="f9187468ff2eb159260bfd53867c25ff8e334726237acf227b9e870e53d3e36b"
+rsha256="bd7ba68a6ce1ea3768b771c7e2ab4955a59fb1b1ae8d554fedb6c2304104bdfc"
 rreqs="make openssl slibtool libgpgerror libgcrypt libxml2 libxslt zlib xz pkgconfig"
 
 . "${cwrecipe}/common.sh"
