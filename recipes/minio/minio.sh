@@ -1,6 +1,6 @@
 rname="minio"
-rver="2024-08-17T01-24-54Z"
-rcommitid="72cff79c8a7cc59bccb591995e3c3ed6aa2f4cd5"
+rver="2024-08-26T15-33-07Z"
+rcommitid="1c4d28d7af0373cde810703839a179739dbe6f34"
 rdir="minio-RELEASE.${rver}"
 rfile="RELEASE.${rver}.tar.gz"
 rurl="https://github.com/minio/minio/archive/refs/tags/${rfile}"
