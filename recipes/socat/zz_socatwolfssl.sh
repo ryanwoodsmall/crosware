@@ -14,7 +14,7 @@ rreqs="make wolfssl netbsdcurses readlinenetbsdcurses"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --with-wolfssl=\"${cwsw}/wolfssl/current\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
@@ -24,17 +24,17 @@ function cwconfigure_${rname}() {
   echo '#define NETDB_INTERNAL (-1)' >> compat.h
   sed -i 's#netinet/if_ether#linux/if_ether#g' sysincludes.h
   echo '#undef HAVE_GETPROTOBYNUMBER_R' >> config.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install
   ln -sf socat \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf socat \"\$(cwidir_${rname})/bin/socat-wolfssl\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -22,7 +22,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --enable-default-ipv=4 \
     --disable-openssl \
@@ -42,7 +42,7 @@ function cwconfigure_${rname}() {
     sed -i.ORIG s/Gethostbyname/gethostbyname/g xio-ip.c
   fi
   echo '#undef HAVE_GETPROTOBYNUMBER_R' >> config.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
