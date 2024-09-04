@@ -2,13 +2,12 @@
 # XXX - latest sha-256 sum is provided: https://curl.se/ca/cacert.pem.sha256
 # XXX - if this doesn't match what we have stored, should indicate an update
 #
-
 rname="caextract"
-rver="2024-03-11"
+rver="2024-07-02"
 rdir="${rname}-${rver}"
 rfile="cacert-${rver}.pem"
 rurl="https://curl.se/ca/${rfile}"
-rsha256="1794c1d4f7055b7d02c2170337b61b48a2ef6c90d77e95444fd2596f4cac609f"
+rsha256="1bf458412568e134a4514f5e170a328d11091e071c7110955c9884ed87972ac9"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
