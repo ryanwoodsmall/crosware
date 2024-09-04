@@ -6,11 +6,11 @@
 #
 sname="mbedtls"
 rname="${sname}36"
-rver="3.6.0"
+rver="3.6.1"
 rdir="${sname}-${rver}"
 rfile="${sname}-${rver}.tar.bz2"
-rurl="https://github.com/Mbed-TLS/mbedtls/releases/download/v${rver}/${rfile}"
-rsha256="3ecf94fcfdaacafb757786a01b7538a61750ebd85c4b024f56ff8ba1490fcd38"
+rurl="https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-${rver}/${rfile}"
+rsha256="fc8bef0991b43629b7e5319de6f34f13359011105e08e3e16eed3a9fe6ffd3a3"
 
 . "${cwrecipe}/${sname}/${sname}.sh.common"
 
