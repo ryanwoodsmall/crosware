@@ -4,7 +4,7 @@
 # XXX - libxml2
 # XXX - libev
 # XXX - zlib
-# XXX - ... and NEED separate openssl and libressl variants for apps, examples
+# XXX - ... and NEED separate openssl, libressl and wolfssl variants for apps, examples
 #
 rname="nghttp2"
 rver="1.63.0"
@@ -23,7 +23,8 @@ function cwconfigure_${rname}() {
     \"${cwsw}/bashtiny/current/bin/bash\" \
       ./configure \
         --disable-app \
-        --disable-examples\
+        --disable-examples \
+        --enable-lib-only \
           ${cwconfigureprefix} \
           ${cwconfigurelibopts} \
           ${rconfigureopts} \
