@@ -41,3 +41,4 @@
 /var/log*
 /etc/pci.ids
 /etc/usb.ids
+/.jython_cache*

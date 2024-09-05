@@ -19,3 +19,4 @@ var/spool/**
 .git.PRE-**
 etc/pci.ids
 etc/usb.ids
+.jython_cache**
