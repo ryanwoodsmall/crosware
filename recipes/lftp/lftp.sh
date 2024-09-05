@@ -41,9 +41,9 @@ function cwmake_${rname}() {
   rm -f *.a *.o
   for l in history readline ; do
     cp ${cwsw}/readline/current/lib/lib\${l}.a .
-    busybox ar x lib\${l}.a
+    busybox ar x -v lib\${l}.a
     rm -f xmalloc.o lib\${l}.a
-    ar r lib\${l}.a *.o
+    busybox ar r lib\${l}.a *.o
     ranlib lib\${l}.a
     rm -f *.o
   done
