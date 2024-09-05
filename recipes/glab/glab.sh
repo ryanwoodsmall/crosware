@@ -1,9 +1,12 @@
+#
+# XXX - remove patch!!!
+#
 rname="glab"
-rver="1.45.0"
+rver="1.46.0"
 rdir="cli-v${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://gitlab.com/gitlab-org/cli/-/archive/v${rver}/${rfile}"
-rsha256="3cb222f196bb995b87c938e2ac0d496a343515af1530eebff228e630fa243ca9"
+rsha256="ac52637f657f97dbdafe9401b01d5ddd2782d953a0e1da08c0a59e17826b9716"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
@@ -15,6 +18,14 @@ function cwclean_${rname}() {
   pushd \"${cwbuild}\" &>/dev/null
   chmod -R u+rw \"\$(cwdir_${rname})\" &>/dev/null || true
   rm -rf \"${rbdir}\"
+  popd &>/dev/null
+}
+"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  sed -i.ORIG \"s,go 1.23.0,go \$(cwver_go),\" go.mod
   popd &>/dev/null
 }
 "
