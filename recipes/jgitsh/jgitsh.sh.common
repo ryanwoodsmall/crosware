@@ -1,0 +1,26 @@
+: ${rfile:="org.eclipse.jgit.pgm-${rver}.sh"}
+: ${rurl:="https://repo.eclipse.org/content/groups/releases/org/eclipse/jgit/org.eclipse.jgit.pgm/${rver}/${rfile}"}
+rdir="${rname}-${rver}"
+rreqs=""
+
+. "${cwrecipe}/common.sh"
+
+cwstubfunc "cwextract_${rname}"
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
+
+eval "
+function cwmakeinstall_${rname}() {
+  cwmkdir \$(cwidir_${rname})/bin
+  install -m 0755 \$(cwdlfile_${rname}) \$(cwidir_${rname})/bin/\$(cwfile_${rname})
+  ln -sf \$(cwfile_${rname}) \$(cwidir_${rname})/bin/${rname}
+}
+"
+
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+}
+"
+
+# vim: set ft=bash:
