@@ -6,7 +6,7 @@ rreqs="bootstrapmake cacertificates bashtiny busybox"
 . "${cwrecipe}/common.sh"
 
 r=''
-p="$(for r in busybox bootstrapmake bashtiny statictoolchain ccache ccache4 ; do echo ${cwsw}/${r}/current/bin ; done | paste -s -d: -)"
+p="$(for r in ccache4 ccache statictoolchain bashtiny bootstrapmake busybox ; do echo ${cwsw}/${r}/current/bin ; done | paste -s -d: -)"
 
 eval "
 function cwconfigure_${rname}() {
