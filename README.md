@@ -563,6 +563,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
     - go120 recipe with golang 1.20.x static binaries for all supported architectures
     - go121 recipe with golang 1.21.x static binaries for all supported architectures
     - go122 recipe with golang 1.22.x static binaries for all supported architectures
+    - go123 recipe with golang 1.23.x static binaries for all supported architectures
   - static binary archive
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
 - gogit (https://github.com/go-git/go-git - `go-git` cli with `git-{receive,upload}-pack` wrappers)
