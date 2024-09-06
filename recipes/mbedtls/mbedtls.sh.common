@@ -5,6 +5,9 @@ rreqs="bootstrapmake cacertificates bashtiny busybox"
 
 . "${cwrecipe}/common.sh"
 
+r=''
+p="$(for r in busybox bootstrapmake bashtiny statictoolchain ccache ccache4 ; do echo ${cwsw}/${r}/current/bin ; done | paste -s -d: -)"
+
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
@@ -25,20 +28,27 @@ function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local OLDPATH=\"\${PATH}\"
   (
-    local p=''
-    local r=''
-    for r in busybox bootstrapmake bashtiny statictoolchain ccache ccache4 ;
-    do
-      export p=\"${cwsw}/\${r}/current/bin:\${p}\"
-    done
-    unset r
-    export PATH=\"\${p}\"
-    env PATH=\"\${p}\" make -j${cwmakejobs} no_test CC=\"\${CC} -Os\" CFLAGS=\"-Os -Wl,-s \${CFLAGS}\" LDFLAGS=\"-static -s\" PATH=\"\${p}\"
-    unset p
+    export PATH=\"${p}\"
+    env PATH=\"${p}\" make -j${cwmakejobs} no_test CC=\"\${CC} -Os\" CFLAGS=\"-Os -Wl,-s \${CFLAGS}\" LDFLAGS=\"-static -s\" PATH=\"${p}\"
   )
   export PATH=\"\${OLDPATH}\"
   popd &>/dev/null
 }
 "
 
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  local OLDPATH=\"\${PATH}\"
+  (
+    export PATH=\"${p}\"
+    make install
+  )
+  export PATH=\"\${OLDPATH}\"
+  popd &>/dev/null
+}
+"
+
+unset r
+unset p
 # vim: ft=sh:
