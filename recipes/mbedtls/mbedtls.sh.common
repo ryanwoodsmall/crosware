@@ -26,7 +26,6 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  cwmyfuncname
   local OLDPATH=\"\${PATH}\"
   (
     export PATH=\"${p}\"
@@ -40,11 +39,10 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  cwmyfuncname
   local OLDPATH=\"\${PATH}\"
   (
     export PATH=\"${p}\"
-    env PATH=\"${p}\" make install PATH=\"${p}\"
+    env PATH=\"${p}\" make install PATH=\"${p}\" PERL=true PYTHON=true
   )
   export PATH=\"\${OLDPATH}\"
   popd &>/dev/null
