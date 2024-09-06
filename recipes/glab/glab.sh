@@ -1,6 +1,3 @@
-#
-# XXX - remove patch!!!
-#
 rname="glab"
 rver="1.46.0"
 rdir="cli-v${rver}"
@@ -18,14 +15,6 @@ function cwclean_${rname}() {
   pushd \"${cwbuild}\" &>/dev/null
   chmod -R u+rw \"\$(cwdir_${rname})\" &>/dev/null || true
   rm -rf \"${rbdir}\"
-  popd &>/dev/null
-}
-"
-
-eval "
-function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  sed -i.ORIG \"s,go 1.23.0,go \$(cwver_go),\" go.mod
   popd &>/dev/null
 }
 "
