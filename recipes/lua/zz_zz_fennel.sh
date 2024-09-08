@@ -21,7 +21,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 rluarocksver="3.11.1"
 
 # XXX - luarocks needs a real wget... libressl/gnutlsminimal are smallest!
-if ! wget --version 2>&1 | grep -q 'GNU Wget' ; then
+if ! wget --version |& grep -q 'GNU Wget' ; then
   rreqs+=" wgetlibressl"
 fi
 
