@@ -3,13 +3,12 @@
 # XXX - jpm moved to separate project in 1.17.x: https://github.com/janet-lang/jpm
 # XXX - jpm probably needs to be a commit hash with a 'git' wrapper for rev-parse HEAD and get-url on install
 #
-
 rname="janet"
-rver="1.35.2"
+rver="1.36.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/janet-lang/${rname}/archive/refs/tags/${rfile}"
-rsha256="947dfdab6c1417c7c43efef2ecb7a92a3c339ce2135233fe88323740e6e7fab1"
+rsha256="104aa500d4a43c2c147851823fd8b7cd06a90d01efcdff71529ff1fa68953bb4"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
