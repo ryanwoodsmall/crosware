@@ -229,6 +229,7 @@ wc -l /tmp/astbuild.out
     - https://github.com/topics/preprocessor?l=c%2B%2B
 - cfssl (https://github.com/cloudflare/cfssl - cloudflare tls swiss army knife)
 - cgpt (google source only?)
+- claudb (https://github.com/tonivade/claudb - redis implementation in java)
 - cmark (commonmark markddown - https://github.com/commonmark/cmark)
   - cmark-gfm (github fork - https://github.com/github/cmark-gfm)
 - cocker (https://github.com/calvinwilliams/cocker - small container engine in c)
@@ -279,6 +280,7 @@ wc -l /tmp/astbuild.out
 - dumb-init (https://github.com/Yelp/dumb-init)
 - duplicity (http://duplicity.nongnu.org/)
 - e (https://github.com/hellerve/e - simple editor, syntax highlighting, archived?)
+- echovault (https://github.com/EchoVault/EchoVault and https://echovault.io - redis-like with protocol compat, go)
 - edbrowse (http://edbrowse.org/ and https://github.com/CMB/edbrowse)
   - cmake, curl, pcre, tidy (cmake), duktape
 - editline (https://github.com/richsalz/editline - another editline/libedit)
@@ -301,6 +303,7 @@ wc -l /tmp/astbuild.out
 - faasd (https://github.com/openfaas/faasd - openfaas but smaller? needs runc, etc.)
 - fcgiwrap (https://github.com/gnosek/fcgiwrap - standard cgi to fcgi socket wrapper, useful with nginx?)
 - felinks (https://github.com/rkd77/elinks - up-to-date fork of elinks)
+- ferretdb (https://github.com/FerretDB/FerretDB and https://www.ferretdb.com - mongodb-alike with postgresql/sqlite support, go)
 - firecracker (https://github.com/firecracker-microvm/firecracker - rust, but there are static bins for aarch64/x86_64)
   - firectl (https://github.com/firecracker-microvm/firectl - firecracker vm control, go)
   - firecracker-containerd (https://github.com/firecracker-microvm/firecracker-containerd)
@@ -595,6 +598,7 @@ wc -l /tmp/astbuild.out
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
 - ksh-openbsd (https://github.com/levaidaniel/ksh-openbsd - another ksh port)
 - kvmtool (https://github.com/kvmtool/kvmtool - standalone native kvm frontend w/o qemu?)
+- kvrocks (https://github.com/apache/kvrocks and https://kvrocks.apache.org - redis-alike, proto compat, c++)
 - larn (short roguelike https://en.wikipedia.org/wiki/Larn_(video_game) - maintained/modern https://github.com/atsb/RL_M)
 - ldd
   - driver script
@@ -787,8 +791,10 @@ wc -l /tmp/astbuild.out
   - luajit (https://luajit.org/)
   - luau (https://github.com/Roblox/luau - lua 5.1 compatible)
   - terra (https://github.com/zdevito/terra and http://terralang.org/)
-- mailhog (https://github.com/mailhog/MailHog - web/api smtp testing/capture)
+- maildev (https://github.com/maildev/maildev - node.js test mail server, like mailhog)
+- mailhog (https://github.com/mailhog/MailHog - unmaintained! web/api smtp testing/capture, go)
   - mhsendmail (https://github.com/mailhog/mhsendmail - mailhog sendmail replacement, go)
+- mailpit (https://github.com/axllent/mailpit and https://mailpit.axllent.org - mailhog/maildev/mailcatcher/etc. tool, with tls, go)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html)
   - s-nail (https://www.sdaoden.eu/code.html#s-mailx) - up-to-date w/tls (openssl 1.1+) support
   - or gnu mailutils (https://www.gnu.org/software/mailutils/mailutils.html)
@@ -844,6 +850,7 @@ wc -l /tmp/astbuild.out
   - binary will be **ports/unix/micropython**
 - minit (https://github.com/chazomaticus/minit - small init with startup/shutdown scripts)
 - minimal (https://github.com/ivandavidov/minimal - minimal linux live system; kernel+glibc+busybox)
+- miniredis (https://github.com/alicebob/miniredis - small redis in go for testing)
 - miniyacc (https://c9x.me/yacc/)
 - miniz (zlib, png? needs cmake? https://github.com/richgel999/miniz)
 - mjson (https://github.com/cesanta/mjson - json parser/emitter/json-rpc engine)
@@ -1045,6 +1052,7 @@ wc -l /tmp/astbuild.out
 - rocksocks5 (https://github.com/rofl0r/rocksocks5)
 - rover (https://lecram.github.io/p/rover)
 - rpcbind (https://sourceforge.net/projects/rpcbind/ and http://git.linux-nfs.org/?p=steved/rpcbind.git;a=summary)
+- rqlite (https://github.com/rqlite/gorqlite and https://rqlite.io - distributed db built on sqlite, go)
 - rust (https://www.rust-lang.org/)
   - bootstrap? (https://guix.gnu.org/blog/2018/bootstrapping-rust/ - guix!)
   - mrustc (https://github.com/thepowersgang/mrustc - c++)
@@ -1203,6 +1211,7 @@ wc -l /tmp/astbuild.out
 - sundown (markdown lib - https://github.com/vmg/sundown)
 - sunwait (sunrise/sundown calculator/figurer - https://github.com/risacher/sunwait)
 - svi (https://github.com/byllgrim/svi)
+- syclladb (https://en.wikipedia.org/wiki/ScyllaDB and https://www.scylladb.com - cassandra/dynamodb implementation, c++20)
 - tab (https://tkatchev.bitbucket.io/tab/)
 - tack (https://github.com/davidgiven/ack and http://tack.sourceforge.net/ - the amsterdam compiler kit)
 - taggins (https://github.com/bromanbro/taggins - easy, extended attr filesystem user.tags for files)
