@@ -788,6 +788,7 @@ wc -l /tmp/astbuild.out
   - luau (https://github.com/Roblox/luau - lua 5.1 compatible)
   - terra (https://github.com/zdevito/terra and http://terralang.org/)
 - mailhog (https://github.com/mailhog/MailHog - web/api smtp testing/capture)
+  - mhsendmail (https://github.com/mailhog/mhsendmail - mailhog sendmail replacement, go)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html)
   - s-nail (https://www.sdaoden.eu/code.html#s-mailx) - up-to-date w/tls (openssl 1.1+) support
   - or gnu mailutils (https://www.gnu.org/software/mailutils/mailutils.html)
