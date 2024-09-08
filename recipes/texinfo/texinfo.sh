@@ -1,26 +1,26 @@
 rname="texinfo"
-rver="7.1"
+rver="7.1.1"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
+rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="deeec9f19f159e046fdf8ad22231981806dac332cc372f1c763504ad82b30953"
+rsha256="a46b46b54fd79641a8af5be4ad525788956ccf9798d3113396abeafa9020ef63"
 rreqs="make sed perl ncurses"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   PATH=\"${cwsw}/perl/current/bin:\${PATH}\" ./configure ${cwconfigureprefix} --disable-nls
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/perl/current/bin:\${PATH}\" make -j${cwmakejobs}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
