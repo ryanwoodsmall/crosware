@@ -55,6 +55,9 @@ function cwfetch_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwidir_${rname})/bin\" &>/dev/null
+  local i=''
+  local l=''
+  local p=''
   for i in \$(./busybox --list) ; do
     test -e \${i} || ln -s busybox \${i}
   done
@@ -65,6 +68,11 @@ function cwmakeinstall_${rname}() {
   done
   for i in dbclient dropbear dropbearconvert dropbearkey ssh ; do
     test -e \${i} || ln -s dropbearmulti \${i}
+  done
+  for l in crosware musl ; do
+    for p in busybox toybox ; do
+      ln -sf ${rtdir}/current/bin/\${p} \$(cwidir_${rname})/bin/\${p}.\${l}
+    done
   done
   popd &>/dev/null
 }
