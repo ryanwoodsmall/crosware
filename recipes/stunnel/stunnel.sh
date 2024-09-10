@@ -1,16 +1,16 @@
 rname="stunnel"
-rver="5.72"
+rver="5.73"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="3d532941281ae353319735144e4adb9ae489a10b7e309c58a48157f08f42e949"
+rsha256="bc917c3bcd943a4d632360c067977a31e85e385f5f4845f69749bce88183cb38"
 rreqs="make openssl zlib toybox perl"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   grep -ril '/usr/bin/perl' . \
   | xargs sed -i \"s#/usr/bin/perl#${cwsw}/perl/current/bin/perl#g\"
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
@@ -21,7 +21,7 @@ function cwconfigure_${rname}() {
       LIBS='-lz'
   find . -type f -name Makefile -exec sed -i 's/-fPIE/-fPIC/g' {} \;
   find . -type f -name Makefile -exec sed -i 's/-pie//g' {} \;
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
