@@ -1022,6 +1022,7 @@ wc -l /tmp/astbuild.out
     - http://skarnet.org./software/execline/
     - http://jdebp.eu./Softwares/nosh/
 - pup (https://github.com/ericchiang/pup)
+- pwnat (https://github.com/samyk/pwnat and https://samy.pl/pwnat - NAT-to-NAT traversal)
 - q (https://github.com/natesales/q - nice go dns query program)
 - qalc (https://qalculate.github.io/ - libqalculate and cli/text interface)
 - quicssh (https://github.com/moul/quicssh - ssh client/server wrapper/proxy/tunnel using quic, go)
@@ -1268,7 +1269,7 @@ wc -l /tmp/astbuild.out
 - ubridge (https://github.com/GNS3/ubridge - udp, ethernet, tap, etc. userspace bridge controller)
 - u-config (https://github.com/skeeto/u-config - minimal pkg-config alike)
 - udftools (https://github.com/pali/udftools - udf fs tools, for dealing with e.g. windows iso images)
-- udptunnel (http://www.cs.columbia.edu/~lennox/udptunnel/)
+- udptunnel (https://github.com/astroza/udptunnel)
 - uget (https://github.com/OpenIPC/uget - tiny http-only wget/curl program)
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
 - units (https://www.gnu.org/software/units)
