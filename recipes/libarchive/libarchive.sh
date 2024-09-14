@@ -8,18 +8,18 @@
 #   https://github.com/libarchive/libarchive/tree/master/contrib/shar
 #
 rname="libarchive"
-rver="3.7.4"
+rver="3.7.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="7875d49596286055b52439ed42f044bd8ad426aa4cc5aabd96bfe7abb971d5e8"
+rurl="https://github.com/libarchive/${rname}/releases/download/v${rver}/${rfile}"
+rsha256="37556113fe44d77a7988f1ef88bf86ab68f53d11e85066ffd3c70157cc5110f1"
 rreqs="make expat zlib bzip2 lz4 lzo zstd mbedtls xz libmd attr acl e2fsprogs libbsd pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --enable-acl \
     --enable-bsd{cat,cpio,tar,unzip}=static \
@@ -43,16 +43,16 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       LIBS='-lbsd -lmd -lmbedtls -lmbedcrypto -lmbedx509'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   sed -i '/iconv/d' \"\$(cwidir_${rname})/lib/pkgconfig/libarchive.pc\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
