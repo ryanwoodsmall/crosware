@@ -1,13 +1,12 @@
 #
 # XXX - no riscv64 support yet due to gc
 #
-
 rname="ecl"
-rver="23.9.9"
+rver="24.5.10"
 rdir="${rname}-${rver}"
 rfile="${rname}-${rver}.tgz"
 rurl="https://common-lisp.net/project/${rname}/static/files/release/${rfile}"
-rsha256="c51bdab4ca6c1173dd3fe9cfe9727bcefb97bb0a3d6434b627ca6bdaeb33f880"
+rsha256="e4ea65bb1861e0e495386bfa8bc673bd014e96d3cf9d91e9038f91435cbe622b"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
@@ -18,7 +17,7 @@ fi
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --enable-shared=yes \
     --enable-boehm=included \
@@ -31,23 +30,23 @@ function cwconfigure_${rname}() {
       CPPFLAGS= \
       LDFLAGS= \
       PKG_CONFIG_{PATH,LIBDIR}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
