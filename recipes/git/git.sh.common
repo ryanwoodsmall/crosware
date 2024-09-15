@@ -1,5 +1,5 @@
 # XXX - should this fallback to dropbear?
-if ! command -v ssh >/dev/null 2>&1 ; then
+if ! command -v ssh &>/dev/null ; then
   rreqs="${rreqs} openssh"
 fi
 
@@ -7,20 +7,20 @@ fi
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} install NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
   cwmkdir \"\$(cwidir_${rname})/etc\"
   cwextract \"${rdlfile//${rname%libressl}-${rver}/${rname%libressl}-manpages-${rver}}\" \"\$(cwidir_${rname})/share/man\"
   ln -sf \"${rtdir}/current/bin/${rname%libressl}\" \"\$(cwidir_${rname})/bin/${rname%libressl}libressl\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

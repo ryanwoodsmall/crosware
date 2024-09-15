@@ -26,13 +26,12 @@
 # - https://git-scm.com/docs/git-config#Documentation/git-config.txt-sshvariant
 # - https://stackoverflow.com/questions/4565700/how-to-specify-the-private-ssh-key-to-use-when-executing-shell-command-on-git
 #
-
 rname="git"
-rver="2.46.0"
+rver="2.46.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
-rsha256="b138811e16838f669a2516e40f09d50500e1c7fc541b5ab50ce84b98585e5230"
+rsha256="b0a4d1ad50e820edd84c0d1b609c29349d4ae2681ed458914ea759aafcd4bf21"
 rreqs="make bzip2 zlib openssl curl expat pcre2 perl libssh2 busybox less cacertificates nghttp2 mandoc"
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
@@ -43,13 +42,13 @@ function cwfetch_${rname}() {
   cwfetchcheck \
     \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \
     \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \
-    \"a1b1853311d734ca242fcb2163cd57d8e8b49563cd17cd3d080cfca52f69deb5\"
+    \"37c1f2f69e11cf2f6ac97a97c364d2a3590598ab6412bed0c0a41749cc9fe50e\"
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"\${cwsw}/curl/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
       --with-curl \
@@ -70,6 +69,6 @@ function cwconfigure_${rname}() {
   grep -ril sys/poll\\.h \$(cwbdir_${rname})/ \
   | grep \\.h\$ \
   | xargs sed -i.ORIG 's#sys/poll\.h#poll.h#g'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

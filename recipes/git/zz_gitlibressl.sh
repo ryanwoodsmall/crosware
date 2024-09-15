@@ -17,7 +17,7 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/libressl/current/bin:${cwsw}/curllibressl/current/devbin:${cwsw}/perl/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
       --with-curl=\"${cwsw}/curllibressl/current\" \
@@ -41,15 +41,15 @@ function cwconfigure_${rname}() {
   grep -ril sys/poll\\.h \$(cwbdir_${rname})/ \
   | grep \\.h\$ \
   | xargs sed -i.ORIG 's#sys/poll\.h#poll.h#g'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/curllibressl/current/devbin:\${PATH}\" make -j${cwmakejobs} NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
