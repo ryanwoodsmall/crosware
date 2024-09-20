@@ -1,11 +1,10 @@
 #
 # - other ssl/tls providers
-#   - gnutls, nss, ...
+#   - nss, ...
 # - libssh2
-#   - doesn't support some newer elliptic curve stuff yet...
-#   - ... libssh does, but needs cmake, so no way
+#   - libssh supports (more?) ecc stuff, but needs cmake, so no way
 #   - main package supports openssl
-#   - copy of libssh2 bundled with libressl recipe
+#   - libressl, mbedtls, wolfssl variants
 #   - other providers use libssh2libgcrypt
 #     - requires libgcrypt, which needs libgpgerror
 #     - libssh2 w/libgcrypt OR mbedtls need '--key id_rsa --pubkey id_rsa.pub' options
@@ -13,6 +12,8 @@
 # - add ngtcp2+nghttp3 (experimental, really needs openssl (with patches)? gnutls?)
 # - zstd support?
 # - brotli?
+#
+# XXX - need a 'curlstandalone' w/zlib+nghttp2+mbedtls and embedded ca only
 #
 # XXX - lots of accreted workarounds. need centralization for e.g. sched_yield(), bearssl, etc. workarounds
 # XXX - stdatomic.h / -latomic fixes...
@@ -23,13 +24,13 @@
 # XXX - mbedtls is messy at/after fba9afebba22d577f122239b184edc90c18fd81b (bisected) - need to figure out why
 #
 rname="curl"
-rver="8.10.0"
+rver="8.10.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="https://curl.se/download/${rfile}"
 rurl="https://github.com/curl/curl/releases/download/curl-${rver//./_}/${rfile}"
-rsha256="58c9dcf73493ae9d181fd334b3b3987ff73124621565187ade237bff1064a716"
-rreqs="make zlib openssl libssh2 cacertificates nghttp2 pkgconfig"
+rsha256="d15ebab765d793e2e96db090f0e172d127859d78ca6f6391d7eafecfd894bbc0"
+rreqs="make zlib openssl libssh2 cacertificates nghttp2 pkgconfig caextract"
 
 . "${cwrecipe}/common.sh"
 
@@ -81,6 +82,7 @@ function cwconfigure_${rname}() {
     --without-gnutls \
     --with-openssl=\"${cwsw}/openssl/current\" \
     --with-default-ssl-backend=openssl \
+    --with-ca-embed=\"\$(realpath ${cwsw}/caextract/current/cert.pem)\" \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\"  \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
     --with-ca-fallback \

@@ -5,7 +5,7 @@ rfile="$(cwfile_curl)"
 rdlfile="$(cwdlfile_curl)"
 rurl="$(cwurl_curl)"
 rsha256=""
-rreqs="make zlib libressl cacertificates nghttp2 pkgconfig libssh2libressl"
+rreqs="make zlib libressl cacertificates nghttp2 pkgconfig libssh2libressl caextract"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -44,6 +44,7 @@ function cwmakeinstall_${rname}() {
     --without-mbedtls \
     --with-openssl=\"${cwsw}/libressl/current\" \
     --with-default-ssl-backend=openssl \
+    --with-ca-embed=\"\$(realpath ${cwsw}/caextract/current/cert.pem)\" \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
       \${e} \
