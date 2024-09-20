@@ -19,7 +19,7 @@ fi
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     PATH=\"${cwsw}/${sslprov}/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
@@ -34,13 +34,13 @@ function cwconfigure_${rname}() {
         LIBS='-lcrypto -lz -lcrypt -ledit -lcurses -lterminfo' \
         PKG_CONFIG_LIBDIR= \
         PKG_CONFIG_PATH=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local b
   local d
   local s
@@ -62,7 +62,7 @@ function cwmakeinstall_${rname}() {
   unset b
   unset d
   unset s
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

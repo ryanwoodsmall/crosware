@@ -23,7 +23,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --disable-security-key \
     --sysconfdir=\"${cwetc}/openssh\" \
@@ -40,13 +40,13 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       LIBS='-lz -ledit -lcurses -lterminfo'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   install -m 0755 contrib/ssh-copy-id \"\$(cwidir_${rname})/bin/\"
   ln -sf ssh \"\$(cwidir_${rname})/bin/${rname}\"
@@ -54,7 +54,7 @@ function cwmakeinstall_${rname}() {
   ln -sf ssh \"\$(cwidir_${rname})/bin/openssh-ssh\"
   ln -sf scp \"\$(cwidir_${rname})/bin/openssh-scp\"
   ln -sf sftp \"\$(cwidir_${rname})/bin/openssh-sftp\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
