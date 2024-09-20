@@ -3,8 +3,8 @@
 # XXX - cwmake_ loop since aarch64 occasionally just dies?
 # XXX - bearssl+libtlsbearssl with CONFIG_WGET_LIBTLS?
 # XXX - openssl variant with CONFIG_WGET_OPENSSL?
+# XXX - scripts/genconfig.sh and the like need workarounds for '#!/bin/bash' -> '#!/usr/bin/env bash'
 #
-
 rname="toybox"
 rver="0.8.11"
 rdir="${rname}-${rver}"
