@@ -15,9 +15,16 @@ rfile="${rdir}.tar.bz2"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 #rurl="http://${rname}.net/downloads/${rfile}"
 rsha256="b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314"
-rreqs="bootstrapmake toybox bashtiny bzip2"
+rreqs="bootstrapmake toybox bashtiny"
 
 . "${cwrecipe}/common.sh"
+
+eval "
+function cwextract_${rname}() {
+  cwscriptecho \"extracting \$(cwdlfile_${rname}) to ${cwbuild} using toybox\"
+  \"${cwsw}/toybox/current/bin/toybox\" bzcat \"\$(cwdlfile_${rname})\" | \"${cwsw}/toybox/current/bin/toybox\" tar -C \"${cwbuild}\" -xf -
+}
+"
 
 eval "
 function cwconfigure_${rname}() {
