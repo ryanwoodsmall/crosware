@@ -1,16 +1,16 @@
 rname="gawk"
-rver="5.3.0"
+rver="5.3.1"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
-rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="ca9c16d3d11d0ff8c69d79dc0b47267e1329a69b39b799895604ed447d3ca90b"
+rfile="${rdir}.tar.gz"
+rurl="https://ftp.gnu.org/gnu/gawk/${rfile}"
+rsha256="fa41b3a85413af87fb5e3a7d9c8fa8d4a20728c67651185bb49c38a7f9382b1e"
 rreqs="bootstrapmake sed"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --disable-extensions \
     --disable-mpfr \
@@ -20,7 +20,7 @@ function cwconfigure_${rname}() {
       LDFLAGS=-static \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
