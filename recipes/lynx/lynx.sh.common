@@ -16,7 +16,7 @@ fi
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local e=''
   local libs=''
   if [[ ${rname} =~ slang ]] ; then
@@ -54,13 +54,13 @@ function cwconfigure_${rname}() {
   if [[ ${rname} =~ netbsdcurses ]] && [[ ! ${rname} =~ slang ]] ; then
     echo '#undef HAVE_DELSCREEN' >> lynx_cfg.h
   fi
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   rm -f \$(cwidir_${rname})/bin/lynx*
   make install ${rlibtool}
   \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/lynx\"
@@ -69,7 +69,7 @@ function cwmakeinstall_${rname}() {
   sed -i 's/#FORCE_SSL_PROMPT:PROMPT/FORCE_SSL_PROMPT:yes/g' \"\$(cwidir_${rname})/etc/lynx.cfg\"
   sed -i 's/#FORCE_COOKIE_PROMPT:PROMPT/FORCE_COOKIE_PROMPT:yes/g' \"\$(cwidir_${rname})/etc/lynx.cfg\"
   sed -i 's/#NO_PAUSE:FALSE/NO_PAUSE:TRUE/g' \"\$(cwidir_${rname})/etc/lynx.cfg\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
