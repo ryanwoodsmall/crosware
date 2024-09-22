@@ -15,23 +15,22 @@
 # XXX - kyber, shake###, etc.
 # XXX - configure needs colrm; bring in baseutils instead of util-linux...
 #
-
 rname="wolfssl"
-rver="5.7.0"
+rver="5.7.2"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 #rdir="${rname}-${rver}"
 #rfile="${rdir}.tar.gz"
 #rurl="https://github.com/wolfSSL/wolfssl/releases/download/v${rver}-stable/${rfile}"
-rsha256="aaf2f4d3956ecd00c08d0486893aa4d2574ec78a51c67da29334343797bcf225"
+rsha256="b80d1f556524ae8c2575b7728c21b33d5af5743f4bdbc224a1006091600f9755"
 rreqs="make cacertificates configgit slibtool toybox baseutils"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   touch wolfssl/wolfcrypt/fips.h
   sed -i '/^#!/s#/bin/sh#/usr/bin/env bash#g' configure
   bash ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
@@ -134,25 +133,25 @@ function cwconfigure_${rname}() {
       CFLAGS=\"\${CFLAGS}\" \
       LDFLAGS=-static \
       CPPFLAGS=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG \"s,/etc/ssl/certs,${cwtop}/etc/ssl/certs,g\" src/ssl.c
   cat wolfssl/test.h > wolfssl/test.h.ORIG
   sed -i 's,\./certs/,certs/,g' wolfssl/test.h
   sed -i 's,\"certs/,\"${rtdir}/current/certs/,g' wolfssl/test.h
   sed -i.ORIG 's,\"certs/ocsp,\"${rtdir}/current/certs/ocsp,g' examples/server/server.c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   test -e \"\$(cwidir_${rname})/include/wolfssl/options.h\" || cp wolfssl/options.h \"\$(cwidir_${rname})/include/wolfssl/\"
   cwmkdir \"\$(cwidir_${rname})/bin\"
@@ -166,7 +165,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"\$(cwidir_${rname})/certs\"
   ( cd certs ; tar -cf - . ) | ( cd \"\$(cwidir_${rname})/certs/\" ; tar -xf - )
   sed -i \"s,\$(cwidir_${rname}),${rtdir}/current,g\" \"\$(cwidir_${rname})/bin/${rname}-config\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
