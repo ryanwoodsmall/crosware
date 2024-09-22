@@ -21,18 +21,18 @@
 #     LDFLAGS=\"\${LDFLAGS//-static/}\"
 #
 rname="gc"
-rver="8.2.6"
+rver="8.2.8"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ivmai/bdwgc/releases/download/v${rver}/${rfile}"
-rsha256="b9183fe49d4c44c7327992f626f8eaa1d8b14de140f243edb1c9dcff7719a7fc"
+rsha256="7649020621cb26325e1fb5c8742590d92fb48ce5c259b502faf7d9fb5dabb160"
 rreqs="make libatomicops pkgconfig configgit"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-cplusplus \
     --enable-large-config \
@@ -42,7 +42,7 @@ function cwconfigure_${rname}() {
   sed -i.ORIG 's|#include <unistd.h>|\\
 #include <unistd.h>\\
 #include <sys/select.h>|g' pthread_stop_world.c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
