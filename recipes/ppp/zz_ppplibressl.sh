@@ -11,23 +11,23 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 . "${cwrecipe}/common.sh"
 
 local f
-for f in clean fetch extract make ; do
+for f in clean fetch extract ; do
   eval "function cw${f}_${rname}() { cw${f}_ppp ; }"
 done
 unset f
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwpatch_${rname%libressl}
   grep -rl ssl_msg_callback . | xargs sed -i.ORIG s,ssl_msg_callback,pppd_ssl_msg_callback,g
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --enable-{multilink,plugins,eaptls,peap,microsoft-extensions} \
     --disable-{systemd,openssl-engine} \
@@ -40,18 +40,18 @@ function cwconfigure_${rname}() {
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       LIBS='-lpcap -lnl-3 -lnl-genl-3 -lssl -lcrypto'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install
   rm -rf \"\$(cwidir_${rname})/etc/ppp\"
   cwmkdir \"\$(cwidir_${rname})/etc/ppp\"
   ( cd etc.ppp ; tar cf - . ) | ( cd \"\$(cwidir_${rname})/etc/ppp\" ; tar xvf - )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
