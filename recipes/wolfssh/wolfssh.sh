@@ -1,41 +1,40 @@
 #
 # XXX - examples seem to work with username/password, but tinycurl does not?
 #
-
 rname="wolfssh"
-rver="1.4.17"
+rver="1.4.18"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="0a63449f13827cc152716b521bcfd9bd89c773000b1b13326c277a0ec21bc8d4"
+rsha256="cdede2f52b7b079df0023e7a70de9a1867e3ef4a9d14a0d10de68bcac97dd9c0"
 rreqs="make wolfssl configgit slibtool"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --enable-all \
     --with-wolfssl=\"${cwsw}/wolfssl/current\" \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}= \
       LDFLAGS='-static -s'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG '/define serverKeyRsaPemFile/s,^.*,#define serverKeyRsaPemFile \"${rtdir}/current/keys/server-key-rsa.pem\",g' wolfssh/test.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   for p in client echoserver portfwd ; do
     install -m 0755 \"./examples/\${p}/.libs/\${p}\" \"\$(cwidir_${rname})/bin/${rname}-\${p}\"
@@ -53,7 +52,7 @@ function cwmakeinstall_${rname}() {
   ( cd keys ; tar -cf - .) | ( cd \"\$(cwidir_${rname})/keys/\" ; tar -xf - )
   sed -i \"s,\$(cwidir_${rname}),${rtdir}/current,g\" \"\$(cwidir_${rname})/bin/${rname}-config\"
   sed -i 's,-lwolfssl,-L${cwsw}/wolfssl/current/lib -lwolfssl,g' \"\$(cwidir_${rname})/bin/${rname}-config\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
