@@ -1,9 +1,8 @@
 #
 # XXX - version history, not sure where else to link this: https://mywiki.wooledge.org/BashFAQ/061
 #
-
 rname="bash"
-rver="5.2.32"
+rver="5.2.37"
 rdir="${rname}-${rver}"
 rbdir="${cwbuild}/${rname}-${rver%.*}"
 rfile="${rname}-${rver%.*}.tar.gz"

@@ -30,15 +30,15 @@ function cwextract_${rname}() {
 eval "
 function cwpatch_${rname}() {
   cwpatch_bash
-  pushd \"\$(cwbdir_${rname})/lib/termcap\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})/lib/termcap\" &>/dev/null
   sed -i.ORIG \"s,/etc/termcap,${cwetc}/termcap,g\" termcap.c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure \
     --prefix=\"\$(cwidir_${rname})\" \
     --disable-nls \
@@ -48,22 +48,23 @@ function cwconfigure_${rname}() {
     --enable-static-link \
     --without-bash-malloc \
       LDFLAGS=-static \
-      {CPPFLAGS,PKG_CONFIG_{LIBDIR,PATH}}=
-  popd >/dev/null 2>&1
+      {CPPFLAGS,PKG_CONFIG_{LIBDIR,PATH}}= \
+      YACC=
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})/lib/termcap\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})/lib/termcap\" &>/dev/null
   make
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})/lib/termcap\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})/lib/termcap\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/include\"
   cwmkdir \"\$(cwidir_${rname})/lib\"
   cwmkdir \"\$(cwidir_${rname})/etc\"
@@ -72,6 +73,6 @@ function cwmakeinstall_${rname}() {
   install -m 644 \"\$(cwbdir_${rname})/\$(cwdir_termcap)/termcap.src\" \"${cwetc}/termcap\"
   install -m 644 \"\$(cwbdir_${rname})/\$(cwdir_termcap)/termcap.src\" \"\$(cwidir_${rname})/etc/\"
   ln -sf termcap.src \"\$(cwidir_${rname})/etc/termcap\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

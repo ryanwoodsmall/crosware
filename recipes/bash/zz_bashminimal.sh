@@ -22,7 +22,7 @@ eval "function cwpatch_${rname}() { cwpatch_bash ; }"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG \"s,/etc/termcap,${cwetc}/termcap,g\" lib/termcap/termcap.c
   ./configure ${cwconfigureprefix} \
     --disable-nls \
@@ -44,7 +44,7 @@ function cwconfigure_${rname}() {
   echo '#define SYS_BASH_LOGOUT \"/etc/bash.bash_logout\"' >> config-top.h
   echo '#undef DEFAULT_LOADABLE_BUILTINS_PATH' >> config-top.h
   echo '#define DEFAULT_LOADABLE_BUILTINS_PATH \"${rtdir}/current/lib/bash:.\"' >> config-top.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -52,24 +52,24 @@ function cwconfigure_${rname}() {
 # XXX - why? twice? where's the race?
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   echo > lib/sh/strtoimax.c
   make -j${cwmakejobs} ${rlibtool} LDFLAGS='-static -s' CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}= YACC= \
   || make -j${cwmakejobs} ${rlibtool} LDFLAGS='-static -s' CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}= YACC= \
      || make ${rlibtool} LDFLAGS='-static -s' CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}= YACC=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   rm -f \"\$(cwidir_${rname})/bin/bash\"
   rm -f \"\$(cwidir_${rname})/bin/${rname}\"
   make install ${rlibtool} LDFLAGS='-static -s' CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}= YACC=
   mv -f \"\$(cwidir_${rname})/bin/bash\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/bash\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
