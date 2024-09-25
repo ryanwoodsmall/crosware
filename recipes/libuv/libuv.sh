@@ -1,21 +1,21 @@
 rname="libuv"
-rver="1.48.0"
+rver="1.49.0"
 rdir="${rname}-${rver}"
 rfile="${rname}-v${rver}-dist.tar.gz"
 rurl="https://dist.libuv.org/dist/v${rver}/${rfile}"
-rsha256="c593139feb9061699fdd2f7fde47bb6c1ca77761ae9ec04f052083f1ef46c13b"
+rsha256="dd81e0fd09e4b0b37ca12685b9e718237bf65203e539f460ef568c962a9b0c07"
 rreqs="make slibtool"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     LDFLAGS=-static \
     CPPFLAGS= \
     PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
