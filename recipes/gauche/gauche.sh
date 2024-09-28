@@ -1,6 +1,5 @@
 #
 # XXX - dbm - gdbm is used for gdbm/ndbm/odbm; sdbm supports ndbm, and bdb supports ndbm/odbm
-# XXX - dedicated slib
 # XXX - no gc on riscv64 yet
 # XXX - broken on arm 32-bit...
 #   (cd util; make default)
@@ -16,7 +15,7 @@ rdir="${rname//g/G}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://github.com/shirok/${rname//g/G}/releases/download/release${rver//./_}/${rfile}"
 rsha256="3643e27bc7c8822cfd6fb2892db185f658e8e364938bc2ccfcedb239e35af783"
-rreqs="make libressl mbedtls zlib gdbm netbsdcurses readlinenetbsdcurses"
+rreqs="make libressl mbedtls zlib gdbm netbsdcurses readlinenetbsdcurses slib"
 
 . "${cwrecipe}/common.sh"
 
@@ -31,6 +30,8 @@ fi
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  cwmkdir \"\$(cwidir_${rname})/src\"
+  cwextract \"\$(cwdlfile_slib)\" \"\$(cwidir_${rname})/src/\"
   ./configure ${cwconfigureprefix} \
     --enable-ipv6 \
     --enable-multibyte=utf-8 \
@@ -40,6 +41,7 @@ function cwconfigure_${rname}() {
     --with-local=\"\$(echo ${cwsw}/{${rreqs// /,}}/current | tr ' ' ':')\" \
     --with-tls=mbedtls \
     --with-zlib=\"${cwsw}/zlib/current\" \
+    --with-slib=\"\$(cwidir_${rname})/src/slib\" \
       CFLAGS='-fPIC' \
       CXXFLAGS='-fPIC' \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
