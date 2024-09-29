@@ -924,6 +924,7 @@ wc -l /tmp/astbuild.out
 - nfs-utils (http://git.linux-nfs.org/?p=steved/nfs-utils.git;a=summary and https://mirrors.edge.kernel.org/pub/linux/utils/nfs-utils/)
 - nghttp3 (https://github.com/ngtcp2/nghttp3)
 - ngtcp2 (https://github.com/ngtcp2/ngtcp2)
+- ninep (https://github.com/gnoack/ninep - go 9p tools)
 - nlnetlabs stuff
   - ldns (https://nlnetlabs.nl/projects/ldns/about/ and https://github.com/NLnetLabs/ldns - nlnet dns library, including drill (dig) client, dane support, etc.)
   - nsd (https://github.com/NLnetLabs/nsd and https://nlnetlabs.nl/projects/nsd/about/ - authoritative dns server)
