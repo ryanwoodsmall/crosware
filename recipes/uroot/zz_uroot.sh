@@ -1,7 +1,7 @@
 #
 # XXX - this should be a git hash probably?
 # XXX - unbundle gobusybox?
-# XXX - docker? containerd? tini, ghostunnel, minio/mc, rclone, wireguard, nebula, 9p client, ssh client/server, caddy, ...
+# XXX - docker? containerd?  ghostunnel, minio/mc, rclone, wireguard, nebula, 9p client, ssh client/server, caddy, ...
 #
 rname="uroot"
 rurootver="0.14.0"
