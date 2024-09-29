@@ -455,8 +455,12 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - cppcheck
 - cppi
 - cpu (https://github.com/u-root/cpu - plan 9-like cpu - "push" local filesystem/program to remote, execute - in go, works like ssh+9p)
-  - p9ufs (https://github.com/hugelgupf/p9 - standalone go 9p fileserver)
+  - p9ufs (https://github.com/hugelgupf/p9 - standalone go 9p fileserver, included in u-root/gobusybox)
   - smbiosdmidecode (https://github.com/u-root/smbios - go dmidecode)
+  - uroot (https://github.com/u-root/u-root - go userland w/bootloaders and other amenities)
+    - also contains...
+      - gobusybox (https://github.com/u-root/gobusybox - a general-purpose wrapper to create a `bb` binary with a number of go cmd/... sources)
+      - mkuimage (https://github.com/u-root/mkuimage - small go-based cpio root filesystems)
 - cronolog (https://linux.die.net/man/1/cronolog - version 1.6.2 with fedora largefile patch)
 - cryanc (https://github.com/classilla/cryanc - crypto ancienne, tls for old platforms, provides "carl" binary with client+proxy)
 - cscope
