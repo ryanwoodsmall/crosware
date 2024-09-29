@@ -367,6 +367,7 @@ wc -l /tmp/astbuild.out
 - gsasl/libgsasl (https://www.gnu.org/software/gsasl/)
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
 - gss (https://www.gnu.org/software/gss/)
+- gvisor (https://github.com/google/gvisor and https://gvisor.dev - container application kernel, uses bazel+docker to build?)
 - gwsocket (https://github.com/allinurl/gwsocket - standalone websocket server in c)
 - hcl2json (https://github.com/tmccombs/hcl2json - does what it says on the tin)
 - heirloom-ng (https://github.com/Projeto-Pindorama/heirloom-ng - updated heirloom utils with a flatter installation)
