@@ -346,6 +346,7 @@ wc -l /tmp/astbuild.out
   - pure go, might make for a decent no-frills clone/fetch/merge client?
   - more stuff in examples directory!
 - gogit (https://github.com/speedata/gogit - read-only git repository thing in go, archived/unmaintained)
+- gokvm (https://github.com/bobuhiro11/gokvm - KVM based tiny x86 hypervisor written in pure golang, which can boot Linux)
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
 - go-openssl (https://github.com/libp2p/go-openssl - cgo wrapper around openssl? archived/unmaintained)
 - gopass (https://github.com/gopasspw/gopass - like pass but in go, uses gpg/git)
