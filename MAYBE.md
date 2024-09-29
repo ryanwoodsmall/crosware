@@ -849,6 +849,7 @@ wc -l /tmp/astbuild.out
         CFLAGS_EXTRA="-I${cwsw}/mbedtls/current/include"
       ```
   - binary will be **ports/unix/micropython**
+- mimixbox (https://github.com/nao1215/mimixbox - go, mimic busybox on linux)
 - minibase (https://github.com/arsv/minibase - small/early boot userspace, c)
 - minit (https://github.com/chazomaticus/minit - small init with startup/shutdown scripts)
 - minimal (https://github.com/ivandavidov/minimal - minimal linux live system; kernel+glibc+busybox)
