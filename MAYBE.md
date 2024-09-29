@@ -1318,7 +1318,6 @@ wc -l /tmp/astbuild.out
   - web49 (https://github.com/FastVM/Web49)
 - watchexec (https://github.com/watchexec/watchexec - notify/event/file watching+execute something, in rust)
 - webcat (https://git.sr.ht/~rumpelsepp/webcat - go, see https://rumpelsepp.org/blog/ssh-through-websocket/)
-- webhook (https://github.com/adnanh/webhook - webhook to shell server in go)
 - websocat (https://github.com/vi/websocat - rust)
 - websocket.sh (https://github.com/meefik/websocket.sh - busybox+ash ws server)
 - websocketd (go, https://github.com/joewalnes/websocketd)

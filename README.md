@@ -1051,6 +1051,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - vimnetbsdcurses (netbsdcurses)
 - vultrcli (https://github.com/vultr/vultr-cli - vultr-cli program)
 - w3m (https://github.com/tats/w3m)
+- webhook (https://github.com/adnanh/webhook - webhook to shell server in go)
 - wget (https://www.gnu.org/software/wget/ - openssl)
   - wgetgnutls (gnutls variant)
   - wgetgnutlsminimal (gnutls variant with nettleminimal/mini-gmp)
