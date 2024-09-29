@@ -2,18 +2,18 @@
 # XXX - 3.4 breaks my tmux-nodes.sh stuff in tmuxmisc, need to figure that out
 #
 rname="tmux"
-rver="3.4"
+rver="3.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://github.com/${rname}/${rname}/releases/download/${rver}/${rfile}"
-rsha256="551ab8dea0bf505c0ad6b7bb35ef567cdde0ccb84357df142c254f35a23e19aa"
+rurl="https://github.com/tmux/tmux/releases/download/${rver}/${rfile}"
+rsha256="2fe01942e7e7d93f524a22f2c883822c06bc258a4d61dba4b407353d7081950f"
 rreqs="make libevent netbsdcurses pkgconfig byacc"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/byacc/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       CPPFLAGS=\"-I${cwsw}/libevent/current/include -I${cwsw}/netbsdcurses/current/include\" \
@@ -21,7 +21,7 @@ function cwconfigure_${rname}() {
       LIBS=\"-lcurses -lterminfo\" \
       YACC=byacc \
       PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
