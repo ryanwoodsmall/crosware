@@ -1278,6 +1278,7 @@ wc -l /tmp/astbuild.out
 - up (https://github.com/akavel/up - ultimate plumber, a pipe explorer in go)
 - upx (https://github.com/upx/upx)
 - u-root (https://github.com/u-root/u-root - go userland w/bootloaders, may be useful!)
+  - gobusybox (https://github.com/u-root/gobusybox - a general-purpose??? wrapper to create a `bb` binary with a bunch of go cmd/... sources!)
 - usbutils (https://github.com/gregkh/usbutils)
 - utalk (http://utalk.ourproject.org/)
 - uwebsockets (https://github.com/uNetworking/uWebSockets - c++ lib that supports openssl/wolfssl)
