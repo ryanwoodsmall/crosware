@@ -349,6 +349,7 @@ wc -l /tmp/astbuild.out
 - gophernicus (https://github.com/gophernicus/gophernicus - gopher server)
 - go-openssl (https://github.com/libp2p/go-openssl - cgo wrapper around openssl? archived/unmaintained)
 - gopass (https://github.com/gopasspw/gopass - like pass but in go, uses gpg/git)
+- goph (https://github.com/melbahja/goph - go ssh client)
 - gops (https://github.com/google/gops - running go process analyzer)
 - gosecure (https://github.com/diegohce/gosecure - simple secure tls proxy in go)
 - gotify (https://github.com/gotify/server - go, simple message sending via rest api)
