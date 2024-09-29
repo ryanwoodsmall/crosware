@@ -456,6 +456,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - cppi
 - cpu (https://github.com/u-root/cpu - plan 9-like cpu - "push" local filesystem/program to remote, execute - in go, works like ssh+9p)
   - p9ufs (https://github.com/hugelgupf/p9 - standalone go 9p fileserver)
+  - smbiosdmidecode (https://github.com/u-root/smbios - go dmidecode)
 - cronolog (https://linux.die.net/man/1/cronolog - version 1.6.2 with fedora largefile patch)
 - cryanc (https://github.com/classilla/cryanc - crypto ancienne, tls for old platforms, provides "carl" binary with client+proxy)
 - cscope
