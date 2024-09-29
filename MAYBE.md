@@ -797,7 +797,7 @@ wc -l /tmp/astbuild.out
 - maildev (https://github.com/maildev/maildev - node.js test mail server, like mailhog)
 - mailhog (https://github.com/mailhog/MailHog - unmaintained! web/api smtp testing/capture, go)
   - mhsendmail (https://github.com/mailhog/mhsendmail - mailhog sendmail replacement, go)
-- mailpit (https://github.com/axllent/mailpit and https://mailpit.axllent.org - mailhog/maildev/mailcatcher/etc. tool, with tls, go)
+- mailpit (https://github.com/axllent/mailpit and https://mailpit.axllent.org - mailhog/maildev/mailcatcher/etc. tool, with tls, go - needs java script tools, node/npm/...)
 - mailx (for sus/lsb/etc. - http://heirloom.sourceforge.net/mailx.html)
   - s-nail (https://www.sdaoden.eu/code.html#s-mailx) - up-to-date w/tls (openssl 1.1+) support
   - or gnu mailutils (https://www.gnu.org/software/mailutils/mailutils.html)
