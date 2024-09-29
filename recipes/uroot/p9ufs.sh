@@ -1,3 +1,6 @@
+#
+# XXX - this doesn't really belong here but is tightly coupled with u-root
+#
 rname="p9ufs"
 rver="6f4f11e5296eca26bcb7a7a3b44197723ce82bee"
 rdir="p9-${rver}"
@@ -31,6 +34,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \$(cwidir_${rname})/bin
+  rm -rf \$(cwidir_${rname})/bin/p9ufs
   install -m 755 \$(cwbdir_${rname})/bin/p9ufs \$(cwidir_${rname})/bin/p9ufs
   popd &>/dev/null
 }
