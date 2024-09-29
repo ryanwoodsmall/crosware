@@ -1241,7 +1241,7 @@ wc -l /tmp/astbuild.out
   - x9utils (https://github.com/halfwit/x9utils - ditto, with some additions)
 - tlse (https://github.com/eduardsui/tlse - c tls impl using libtomcrypt)
 - tlsproxy (https://github.com/abligh/tlsproxy - simple gnutls stunnel alike; may need some work, compiles but crashes w/access from chrome; seems to behave with curl?)
-- torgo (https://github.com/as/torgo)
+- torgo (https://github.com/as/torgo - "a unix-like non-gnu command line toolkit")
 - tpm (https://github.com/nmeum/tpm/ - tiny password manager)
 - transocks (http://transocks.sourceforge.net/ - transparent socks, needs dante/nec socks libs)
   - transocks_ev (http://oss.tiggerswelt.net/transocks_ev/README - libevent transparent socks-5 with iptables)
