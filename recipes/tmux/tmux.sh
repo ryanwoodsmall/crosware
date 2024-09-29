@@ -1,5 +1,6 @@
 #
 # XXX - 3.4 breaks my tmux-nodes.sh stuff in tmuxmisc, need to figure that out
+# XXX - explicitly disable jemalloc
 #
 rname="tmux"
 rver="3.5"
