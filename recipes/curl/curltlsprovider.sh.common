@@ -66,7 +66,6 @@ function cwmakeinstall_${rname}() {
     $(echo ${othersslproviders[@]} | tr ' ' '\n' | sed 's/^/--without-/g' | xargs echo) \
     --with-${rprovider%minimal}=\"${cwsw}/${rprovider}/current\" \
     --with-default-ssl-backend=${rprovider%minimal} \
-    --with-ca-embed=\"\$(realpath ${cwsw}/caextract/current/cert.pem)\" \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
       \${e} \

@@ -44,7 +44,6 @@ function cwmakeinstall_${rname}() {
     --without-mbedtls \
     --with-openssl=\"${cwsw}/libressl/current\" \
     --with-default-ssl-backend=openssl \
-    --with-ca-embed=\"\$(realpath ${cwsw}/caextract/current/cert.pem)\" \
     --with-ca-bundle=\"${cwetc}/ssl/cert.pem\" \
     --with-ca-path=\"${cwetc}/ssl/certs\" \
       \${e} \
