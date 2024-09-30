@@ -3,7 +3,7 @@
 # XXX - looks like an libssp_nonshared.a can be built from it?
 #
 rname="alpinemuslutils"
-rver="3.20.0"
+rver="3.20.3"
 rdir="${rname}-${rver}"
 rfile="getconf.c"
 rurl="https://raw.githubusercontent.com/alpinelinux/aports/v${rver}/main/musl/${rfile}"
