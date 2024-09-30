@@ -6,14 +6,14 @@
 # XXX - alpine keeps removing .apk files, getting real old
 #
 rname="cacertificates"
-rver="20240226-r0"
+rver="20240705-r0"
 rdir="${rname}-${rver}"
 rfile="ca-certificates-bundle-${rver}.apk"
 #rfile="ca-certificates-cacert-${rver}.apk"
 #rurl="https://mirrors.edge.kernel.org/alpine/v3.11/main/x86_64/${rfile}"
 #rurl="https://mirrors.edge.kernel.org/alpine/v3.17/main/x86_64/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/alpine/${rfile}"
-rsha256="50824da2ebb1a9dd361ce47231fac498de6ae409439072e478288bf42cf6b044"
+rsha256="0073d75bd7e53f17ed1085ce7ac854cc3ce00f2e0178500075379149de226f92"
 rreqs=""
 rdlfile="${cwdl}/${rname}/${rfile}.tar.gz"
 
@@ -26,9 +26,9 @@ cwstubfunc "cwmake_${rname}"
 eval "
 function cwextract_${rname}() {
   cwmkdir \"\$(cwidir_${rname})\"
-  pushd \"\$(cwidir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwidir_${rname})\" &>/dev/null
   cwextract \"\$(cwdlfile_${rname})\" \"\$(cwidir_${rname})\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -49,12 +49,12 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwuninstall_${rname}() {
-  pushd \"${cwsw}\" >/dev/null 2>&1
+  pushd \"${cwsw}\" &>/dev/null
   rm -rf \"${rname}\"
   rm -f \"${cwetc}/ssl/cert.pem\"
   rm -f \"${cwetc}/ssl/certs/ca-bundle.crt\"
   rm -f \"${rprof}\"
   rm -f \"${cwvarinst}/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
