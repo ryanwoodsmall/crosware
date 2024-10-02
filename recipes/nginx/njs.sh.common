@@ -16,35 +16,35 @@ fi
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat auto/libxml2 > auto/libxml2.ORIG
   sed -i 's,/usr/local,${cwsw}/libxml2/current,g' auto/libxml2
   sed -i 's,-lxml2,-lxml2 -llzma -lz,g' auto/libxml2
   sed -i.ORIG 's/-ledit/${rtlib}/g' auto/readline
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 # XXX - probably need `env PKG_CONFIG_{LIBDIR,PATH}= ...` here
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure \
     --cc-opt=\"\${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     --ld-opt=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   \$(\${CC} -dumpmachine)-strip --strip-all build/njs
   cwmkdir \"\$(cwidir_${rname})/bin\"
   rm -f \"\$(cwidir_${rname})/bin/njs\" \"\$(cwidir_${rname})/bin/${rname}\"
   install -m 0755 build/njs \"\$(cwidir_${rname})/bin/njs\"
   test -e \"\$(cwidir_${rname})/bin/${rname}\" || ln -sf njs \"\$(cwidir_${rname})/bin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
