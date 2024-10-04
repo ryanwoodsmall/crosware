@@ -6,20 +6,20 @@ rreqs="bootstrapmake cares cjson"
 # XXX - ugly
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i 's/WITH_TLS:=.*/WITH_TLS=no/g' config.mk
   sed -i 's/-lssl//g;s/-lcrypto//g' apps/mosquitto_ctrl/Makefile
   sed -i.ORIG '/INSTALL.*mosquitto_passwd/d' apps/mosquitto_passwd/Makefile
   make \
     CPPFLAGS=\"\$(echo -I${cwsw}/{cares,cjson}/current/include)\" \
     {LOCAL_,}LDFLAGS=\"\$(echo -L${cwsw}/{cares,cjson}/current/lib) -static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local b p d
   rm -f \$(cwidir_${rname})/{,s}bin/*-{notls,plaintext} || true
   make install \
@@ -32,6 +32,6 @@ function cwmakeinstall_${rname}() {
     ln -sf \"\${p}\" \"\${d}/\${p}-plaintext\"
   done
   unset b p d
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

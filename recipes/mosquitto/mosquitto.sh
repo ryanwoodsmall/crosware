@@ -1,16 +1,16 @@
 rname="mosquitto"
-rver="2.0.18"
+rver="2.0.19"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/eclipse/${rname}/archive/refs/tags/${rfile}"
-rsha256="25499231664bc5338f9f05eb1815f4d5878f0c6c97e03afb3463a7b139a7e775"
+rsha256="8f72b850e252d6bac69debe7646a24e5cc48994606e3846cb7f2db0cde6e1941"
 rreqs="make cares cjson openssl"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG \"/DESTDIR.*etc/s,/etc/,\$(cwidir_${rname})/etc/,g\" Makefile
   sed -i.ORIG 's/-lpthread.*//g;s/-lcjson/-lcjson -lpthread -lssl -lcrypto -lcares/g' apps/mosquitto_ctrl/Makefile
   sed -i.ORIG \"s,^prefix.*,prefix=\$(cwidir_${rname}),g;s,--strip-program=.*,,g\" config.mk
@@ -19,27 +19,27 @@ function cwconfigure_${rname}() {
   sed -i 's/^WITH_SRV:.*/WITH_SRV:=yes/g' config.mk
   sed -i 's/^WITH_STATIC_LIBRARIES:.*/WITH_STATIC_LIBRARIES:=yes/g' config.mk
   sed -i 's/^WITH_STRIP:.*/WITH_STRIP:=yes/g' config.mk
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make \
     CPPFLAGS=\"\$(echo -I${cwsw}/{openssl,cares,cjson}/current/include)\" \
     {LOCAL_,}LDFLAGS=\"\$(echo -L${cwsw}/{openssl,cares,cjson}/current/lib) -static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install \
     CPPFLAGS=\"\$(echo -I${cwsw}/{openssl,cares,cjson}/current/include)\" \
     {LOCAL_,}LDFLAGS=\"\$(echo -L${cwsw}/{openssl,cares,cjson}/current/lib) -static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
