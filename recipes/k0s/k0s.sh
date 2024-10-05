@@ -3,7 +3,7 @@
 # XXX - package for airgap images?
 #
 rname="k0s"
-rver="1.31.1_${rname}.0"
+rver="1.31.1_${rname}.1"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
@@ -12,13 +12,13 @@ rbfile="${rname}-v${rver//_/+}"
 rburl="https://github.com/${rname}project/${rname}/releases/download/v${rver//_/%2B}"
 if [[ ${karch} =~ ^x86_64 ]] ; then
   rfile="${rbfile}-amd64"
-  rsha256="740f525440e125ae5123e17f4d634230b5a6a82d8562b740b6c2cf329603cd1e"
+  rsha256="9a12fc420d09cb776427b4c803bf2b0445b34d0517b0547324a9c9a6b3518c68"
 elif [[ ${karch} =~ ^arm ]] ; then
   rfile="${rbfile}-arm"
-  rsha256="0011d563018660647d273535cc19463906041abf86a29182c6e61b89f59cfce4"
+  rsha256="eac05156eff68fb0d7e934a11f135773785194da4641d72fd13f1384065af333"
 elif [[ ${karch} =~ ^aarch64 ]] ; then
   rfile="${rbfile}-arm64"
-  rsha256="e0c2edc3d6d749b18368c22f8ea048eb858debd7091270a738ccabdae90b7c32"
+  rsha256="b9ad5fc79a35dde8bc7ae8c3b8352e4537eb36fab08e544cdce0ef88004ba785"
 fi
 rurl="${rburl}/${rfile//+/%2B}"
 unset rbfile
