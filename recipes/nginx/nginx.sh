@@ -4,6 +4,7 @@
 # XXX - no pcre jit on riscv64
 # XXX - probably need to remove static bits for dynamic modules
 # XXX - need nginxstable varianet?
+# XXX - enable quickjs in njs module?
 #
 
 rname="nginx"
