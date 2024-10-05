@@ -73,6 +73,7 @@ EOF
 chmod 755 env.qjs
 
 # env.jojq - json w/jo+jq
+# XXX exclude long FLAG/PKG_CONF_...; chokes up jo
 scriptecho "installing ${cgidir}/env.jojq"
 cat >env.jojq<<EOF
 #!/usr/bin/env sh
@@ -80,7 +81,7 @@ cat >env.jojq<<EOF
 : \${jq:="/usr/local/crosware/software/jq/current/bin/jq"}
 echo "Content-type: application/json"
 echo
-( tr '\\0' '\\n' < /proc/\$\$/environ ; echo JO_VER=\$(\${jo} -V) ; echo JQ_VER=\$(\${jq} --version) ) \
+( tr '\\0' '\\n' < /proc/\$\$/environ | grep -vE -- '^(PKG_CONF|((CPP|LD)FLAGS|PATH)=)' ; echo JO_VER=\$(\${jo} -V) ; echo JQ_VER=\$(\${jq} --version) ) \
   | ( \${jo} -p -- | \${jq} -M -S . ) 2>/dev/null
 EOF
 chmod 755 env.jojq
