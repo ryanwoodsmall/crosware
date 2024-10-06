@@ -13,13 +13,14 @@
 #
 
 # XXX - small, libressl+zlib for now
+# XXX again, now requires autotools...
 rp="minimal"
 rname="elinks"
-rver="0.17.0"
+rver="0.17.1.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/rkd77/elinks/releases/download/v${rver}/${rfile}"
-rsha256="58c73a6694dbb7ccf4e22cee362cf14f1a20c09aaa4273343e8b7df9378b330e"
+rsha256="dc6f292b7173814d480655e7037dd68b7251303545ca554344d7953a57c4ba63"
 rreqs="elinks${rp}"
 
 . "${cwrecipe}/common.sh"
