@@ -9,7 +9,7 @@ rreqs="bootstrapmake busybox"
 
 . "${cwrecipe}/common.sh"
 
-for f in fetch clean extract patch make ; do
+for f in fetch clean extract patch ; do
   eval "function cw${f}_${rname}() { cw${f}_${rname%minimal} ; }"
 done
 unset f
@@ -36,6 +36,21 @@ function cwconfigure_${rname}() {
       AWK=\"${cwsw}/busybox/current/bin/awk\" \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
+  popd &>/dev/null
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  make help-rsync.h
+  make help-rsyncd.h
+  cat help-rsync.h > help-rsync.h.ORIG
+  cat help-rsyncd.h > help-rsyncd.h.ORIG
+  sed -i '/\"unsafe\"/s, .unsafe. , unsafe ,' help-rsync.h
+  sed -i '/\"log file\"/s, .log file. , log file ,' help-rsyncd.h
+  sed -i '/\"log format\"/s, .log format. , log format,' help-rsyncd.h
+  make -j${cwmakejobs} ${rlibtool}
   popd &>/dev/null
 }
 "
