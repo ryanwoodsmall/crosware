@@ -1,10 +1,10 @@
 rname="libcss"
-rver="0.9.1"
+rver="0.9.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}-src.tar.gz"
 rurl="http://download.netsurf-browser.org/libs/releases/${rfile}"
-rsha256="d2dce16e93392e8d6a7209420d47c2d56a3811701a0e81a724fc541c63d3c6dc"
-rreqs="make pkgconfig perl bison flex byacc reflex expat libparserutils libwapcaplet libhubbub libdom"
+rsha256="2df215bbec34d51d60c1a04b01b2df4d5d18f510f1f3a7af4b80cddb5671154e"
+rreqs="make pkgconfig perl bison flex byacc reflex expat libparserutils libwapcaplet libhubbub libdom gperf"
 
 . "${cwrecipe}/common.sh"
 . "${cwrecipe}/netsurf/netsurf.sh.common"

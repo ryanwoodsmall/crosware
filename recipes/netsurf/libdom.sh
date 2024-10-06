@@ -1,10 +1,10 @@
 rname="libdom"
-rver="0.4.1"
+rver="0.4.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}-src.tar.gz"
 rurl="http://download.netsurf-browser.org/libs/releases/${rfile}"
-rsha256="98ee072471e55e208c9878e515c410ad462ca36f87b4afcbecad023f3a2cef4a"
-rreqs="make pkgconfig perl bison flex byacc reflex expat libparserutils libwapcaplet libhubbub"
+rsha256="d05e45af16547014c2b0a3aecf3670fa13d419f505b3f5fc7ac8a1491fc30f3c"
+rreqs="make pkgconfig perl bison flex byacc reflex expat libparserutils libwapcaplet libhubbub gperf"
 
 . "${cwrecipe}/common.sh"
 . "${cwrecipe}/netsurf/netsurf.sh.common"

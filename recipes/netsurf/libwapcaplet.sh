@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}-src.tar.gz"
 rurl="http://download.netsurf-browser.org/libs/releases/${rfile}"
 rsha256="9b2aa1dd6d6645f8e992b3697fdbd87f0c0e1da5721fa54ed29b484d13160c5c"
-rreqs="make pkgconfig perl bison flex byacc reflex expat libparserutils"
+rreqs="make pkgconfig perl bison flex byacc reflex expat libparserutils gperf"
 
 . "${cwrecipe}/common.sh"
 . "${cwrecipe}/netsurf/netsurf.sh.common"

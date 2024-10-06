@@ -4,39 +4,36 @@
 # i.e., http://download.netsurf-browser.org/libs/releases/buildsystem-1.8.tar.gz
 #
 
-nsau="http://download.netsurf-browser.org/netsurf/releases/source-full/netsurf-all-3.10.tar.gz"
-nsas="495adf6b6614ce36fca6c605f7c321f9cb4a3df838043158122678ce2b3325b7"
+nsau="http://download.netsurf-browser.org/netsurf/releases/source-full/netsurf-all-3.11.tar.gz"
+nsas="4dea880ff3c2f698bfd62c982b259340f9abcd7f67e6c8eb2b32c61f71644b7b"
 nsaf="${nsau##*/}"
 nsad="${nsaf%%.tar.gz}"
 nsadl="${cwdl}/netsurf/${nsaf}"
 
+cwstubfunc "cwmake_${rname}"
+
 eval "
 function cwfetch_${rname}() {
-  cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
+  cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
   cwfetchcheck \"${nsau}\" \"${nsadl}\" \"${nsas}\"
 }
 "
 
 eval "
 function cwextract_${rname}() {
-  cwextract \"${rdlfile}\" \"${cwbuild}\"
-  cwextract \"${nsadl}\" \"${rbdir}\"
+  cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
+  cwextract \"${nsadl}\" \"\$(cwbdir_${rname})\"
 }
 "
 
 # XXX - oof
 eval "
 function cwconfigure_${rname}() {
-  rm -rf \"${ridir}\"
-  pushd \"${rbdir}/${nsad}/buildsystem\" >/dev/null 2>&1
-  make install PREFIX=\"${ridir}\"
-  popd >/dev/null 2>&1
-}
-"
-
-eval "
-function cwmake_${rname}() {
-  true
+  rm -rf \"\$(cwidir_${rname})\"
+  pushd \"\$(cwbdir_${rname})/${nsad}/buildsystem\" &>/dev/null
+  sed -i.ORIG '/^INSTALL/s,-C,,g' makefiles/Makefile.tools
+  make install PREFIX=\"\$(cwidir_${rname})\"
+  popd &>/dev/null
 }
 "
 
@@ -44,7 +41,7 @@ eval "
 function cwmakeinstall_${rname}() {
   local nscflags
   local nsldflags
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   rm -rf \"${nsad}\"
   local l
   for l in libparserutils libwapcaplet libhubbub libdom ; do
@@ -54,15 +51,15 @@ function cwmakeinstall_${rname}() {
   local m=\"\$(\${CC} -dumpmachine)\"
   mkdir -p \"build-\${m}-\${m}-release-lib-static\"
   make install \
-    PREFIX=\"${ridir}\" \
+    PREFIX=\"\$(cwidir_${rname})\" \
     HOST=\"\${m}\" \
     VARIANT=\"release\" \
-    NSBUILD=\"${ridir}/share/netsurf-buildsystem/makefiles\" \
+    NSBUILD=\"\$(cwidir_${rname})/share/netsurf-buildsystem/makefiles\" \
     TARGET=\"framebuffer\" \
     CFLAGS=\"\${CFLAGS} \${CPPFLAGS} \${nscflags} -I./include -I./src\" \
     LDFLAGS=\"\${LDFLAGS} \${nsldflags}\" #\
     #Q=''
-  popd >/dev/null 2>&1
+  popd &>/dev/null
   unset nscflags nsldflags l m
 }
 "
