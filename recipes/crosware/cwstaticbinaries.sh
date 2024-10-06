@@ -3,7 +3,7 @@
 # XXX - skipping dropbear scp for now since $PATH to dbclient is hard-coded
 #
 rname="cwstaticbinaries"
-rver="da3fa0b444c07772f15550f5d8f2070e60e37488"
+rver="228c67d1a9e56cf84c41bde3a70734e857c17cb4"
 rdir="${rname}-${rver}"
 rfile=""
 rurl="https://github.com/ryanwoodsmall/static-binaries"
