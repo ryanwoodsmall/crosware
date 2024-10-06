@@ -5,27 +5,27 @@
 #
 
 rname="miller6"
-rver="6.12.0"
+rver="6.13.0"
 rdir="${rname%6}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/johnkerl/miller/archive/refs/tags/${rfile}"
-rsha256="e97dab1a514ecd88da9374b2a5759cebc607476596f6b1d6d8fbe444b9e0eab2"
+rsha256="6beca48af3066fc8d87c3ce17c5dd3debac61ff8f296c0e95c0634fd3ab05599"
 rreqs="bootstrapmake go"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})\"
   ./configure --prefix=\"\$(cwidir_${rname})\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
@@ -38,13 +38,13 @@ function cwmake_${rname}() {
         go build -ldflags '-s -w -extldflags \"-s -static\"' -o mlr \"\$(cwbdir_${rname})/cmd/mlr\"
     chmod -R u+rw . || true
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
   install -m 0755 mlr \"\$(cwidir_${rname})/bin/mlr\"
@@ -52,7 +52,7 @@ function cwmakeinstall_${rname}() {
   ln -sf mlr \"\$(cwidir_${rname})/bin/mlr6\"
   ln -sf mlr \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf mlr \"\$(cwidir_${rname})/bin/${rname%6}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
