@@ -2,11 +2,11 @@
 # XXX - netbsdcurses?
 #
 rname="pinentry"
-rver="1.3.0"
+rver="1.3.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="9b3cd5226e7597f2fded399a3bc659923351536559e9db0826981bca316494de"
+rsha256="bc72ee27c7239007ab1896c3c2fae53b076e2c9bd2483dc2769a16902bce8c04"
 rreqs="make slibtool libgpgerror libassuan ncurses pkgconfig configgit"
 
 . "${cwrecipe}/common.sh"
