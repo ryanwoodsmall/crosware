@@ -27,7 +27,7 @@ function cwfetch_${rname}() {
   cwfetchcheck \
     \"https://github.com/u-root/gobusybox/archive/${rgobusyboxver}.zip\" \
     \"${cwdl}/${rname}/gobusybox/${rgobusyboxver}.zip\" \
-    \"58e7a7b271b5cb4c551ea76a64593d74f4286acf7c3d6d4deb32065a91ffe867\" 
+    \"58e7a7b271b5cb4c551ea76a64593d74f4286acf7c3d6d4deb32065a91ffe867\"
   cwfetchcheck \
     \"https://github.com/u-root/mkuimage/archive/${rmkuimagever}.zip\" \
     \"${cwdl}/${rname}/mkuimage/${rmkuimagever}.zip\" \
