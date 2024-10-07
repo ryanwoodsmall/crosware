@@ -13,18 +13,18 @@
 # XXX - remove bdb - gdbm is plenty good for the dbm module
 #
 rname="python3"
-rver="3.8.19"
+rver="3.8.20"
 rdir="Python-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.python.org/ftp/python/${rver}/${rfile}"
-rsha256="d2807ac69f69b84fd46a0b93bbd02a4fa48d3e70f4b2835ff0f72a2885040076"
+rsha256="6fb89a7124201c61125c0ab4cf7f6894df339a40c02833bfd28ab4d7691fafb4"
 rreqs="make bzip2 zlib ncurses readline openssl gdbm sqlite bdb47 expat libffi xz e2fsprogs pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --with-ensurepip=install \
     --with-dbmliborder=gdbm:bdb \
@@ -47,26 +47,26 @@ function cwconfigure_${rname}() {
   sld=\"'\$(echo \${sld} | tr ' ' '\n' | grep ^/ | xargs echo | sed \"s/ /','/g\")'\"
   sed -i \"/system_lib_dirs =/s#= \[.*#= \[\${sld}\]#\" setup.py
   unset sld
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} \
     CFLAGS='-fPIC' \
     CXXFLAGS'=-fPIC' \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -I${cwsw}/ncurses/current/include/ncurses{,w} -I${cwsw}/e2fsprogs/current/include/uuid)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install \
     CFLAGS='-fPIC' \
     CXXFLAGS='-fPIC' \
@@ -82,7 +82,7 @@ function cwmakeinstall_${rname}() {
     fi
   done
   unset p
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
