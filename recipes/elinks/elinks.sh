@@ -10,6 +10,8 @@
 #   spidermonkey
 #   tre
 #   ...
+# XXX - no more pregenerated autotools
+# XXX - move this to meson (muon!): https://github.com/rkd77/elinks/issues/335
 #
 
 # XXX - small, libressl+zlib for now
