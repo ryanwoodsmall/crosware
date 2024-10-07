@@ -82,6 +82,7 @@ function cwmakeinstall_${rname}() {
     fi
   done
   unset p
+  \$(cwidir_${rname})/bin/python3 -m build -h || \$(cwidir_${rname})/bin/pip3 install build || true
   popd &>/dev/null
 }
 "
