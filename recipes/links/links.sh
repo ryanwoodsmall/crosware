@@ -1,18 +1,18 @@
 rname="links"
-rver="2.29"
+rver="2.30"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="http://links.twibright.com/download/${rfile}"
-rsha256="22aa96c0b38e1a6f8f7ed9d7a4167a47fc37246097759ef6059ecf8f9ead7998"
+rsha256="c4631c6b5a11527cdc3cb7872fc23b7f2b25c2b021d596be410dadb40315f166"
 rreqs="make libevent zlib openssl xz bzip2 lzlib cacertificates"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} --with-ssl --with-ipv6 --disable-graphics --without-x
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

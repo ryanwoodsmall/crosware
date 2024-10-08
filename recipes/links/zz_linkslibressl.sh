@@ -19,7 +19,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     PATH=\"${cwsw}/libressl/current/bin:\${PATH}\" \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
@@ -32,17 +32,17 @@ function cwconfigure_${rname}() {
         --disable-ssl-pkgconfig \
         --disable-graphics \
         --without-x
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   ln -sf \"${rname%%libressl}\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rname%%libressl}\" \"\$(cwidir_${rname})/bin/${rname%%libressl}-${rname##links}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
