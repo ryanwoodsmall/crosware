@@ -11,6 +11,7 @@
 # XXX - standalone builds, crib?: https://github.com/indygreg/python-build-standalone
 # XXX - ninja/meson cruft is ugly, need real separation
 # XXX - remove bdb - gdbm is plenty good for the dbm module
+# XXX - need to clean this WHOLE mess up
 #
 rname="python3"
 rver="3.9.20"
@@ -82,7 +83,7 @@ function cwmakeinstall_${rname}() {
     fi
   done
   unset p
-  \$(cwidir_${rname})/bin/python3 -m build -h || \$(cwidir_${rname})/bin/pip3 install build || true
+  \$(cwidir_${rname})/bin/python3 -m build -V &>/dev/null || \$(cwidir_${rname})/bin/pip3 install build || true
   popd &>/dev/null
 }
 "
