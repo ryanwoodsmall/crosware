@@ -45,7 +45,6 @@ function cwconfigure_${rname}() {
 }
 "
 
-
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
