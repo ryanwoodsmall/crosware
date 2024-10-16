@@ -102,11 +102,9 @@ function cwmakeinstall_${rname}() {
     cd \$(cwidir_${rname})/gobusybox/
     echo -n linking...
     for a in \$(\$(cwidir_${rname})/bin/bb |& tr '\\t' ' ' | tr -s ' ' | awk '/^ - /{print \$NF}' | sort ) ; do
-      test -e \${a} || { echo -n \" \${a}\" ; ln -sf bb \${a} ; }
+      test -e \${a} || { echo -n \" \${a}\" ; ln -sf ${rtdir}/current/bin/bb \${a} ; }
     done
     echo
-    rm -rf bb
-    ln -sf ${rtdir}/current/bin/bb bb
     cd -
   )
   popd &>/dev/null
