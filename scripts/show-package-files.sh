@@ -18,8 +18,11 @@ function failexit() {
 function findfiles() {
   local d="${cwsw}/${1}/current/"
   test -e "${d}" || { scriptecho "${1}: not installed" ; return ; }
-  # XXX - probably needs to be tightened up with find -print0/xargs -0 !!!
-  find "${d}" ! -type d | xargs realpath | sort -u | xargs filesizetype.sh
+  find "${d}" ! -type d -print0 \
+  | xargs -0 realpath \
+  | sort -u \
+  | sed 's,\(^\|$\),",g' \
+  | xargs filesizetype.sh
 }
 
 if [[ ${#} == 0 ]] ; then
