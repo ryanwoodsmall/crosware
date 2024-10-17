@@ -2,35 +2,34 @@
 # XXX - crashes on centos 7 with a sigsev if xterm-color, a 256 color term, etc. $TERM is set
 #
 rname="screenminimal"
-rver="$(cwver_screen)"
-rdir="$(cwdir_screen)"
-rfile="$(cwfile_screen)"
-rdlfile="$(cwdlfile_screen)"
-rurl="$(cwurl_screen)"
-rsha256="$(cwsha256_screen)"
+rver="4.9.1"
+rdir="${rname%minimal}-${rver}"
+rfile="${rdir}.tar.gz"
+rurl="https://ftp.gnu.org/gnu/${rname%minimal}/${rfile}"
+rsha256="26cef3e3c42571c0d484ad6faf110c5c15091fbf872b06fa7aa4766c7405ac69"
 rreqs="bootstrapmake bashtermcap"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
-for f in fetch clean extract ; do
-  eval "function cw${f}_${rname}() { cw${f}_${rname%%minimal} ; }"
-done
-unset f
+#for f in fetch clean extract ; do
+#  eval "function cw${f}_${rname}() { cw${f}_${rname%%minimal} ; }"
+#done
+#unset f
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat configure > configure.ORIG
   sed -i 's/as_fn_error.*tgetent.*/true/g' configure
   sed -i 's/-ltinfo//g' configure
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --disable-pam \
     --disable-socket-dir \
@@ -42,13 +41,13 @@ function cwconfigure_${rname}() {
       LIBS=-ltermcap \
       PKG_CONFIG_{LIBDIR,PATH}=
   echo '#undef TERMINFO' >> config.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install
   rm -f \"\$(cwidir_${rname})/bin/${rname}\"
   rm -f \"\$(cwidir_${rname})/bin/${rname}-${rver}\"
@@ -64,7 +63,7 @@ function cwmakeinstall_${rname}() {
   install -m 0644 etc/etcscreenrc \"\$(cwidir_${rname})/etc/etcscreenrc\"
   cwmkdir \"\$(cwidir_${rname})/share/terminfo\"
   install -m 0644 terminfo/screeninfo.src \"\$(cwidir_${rname})/share/terminfo/screeninfo.src\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
