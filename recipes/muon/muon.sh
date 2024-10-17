@@ -2,11 +2,11 @@
 # XXX - libcurl, libarchive, etc.
 #
 rname="muon"
-rver="0.3.0"
+rver="0.3.1"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/annacrombie/muon/archive/refs/tags/${rfile}"
-rsha256="e1c2741e7cbcdcb6152ad4251f032aa9ea3b77e96ce84f760a3265dc7c56ae5c"
+rsha256="14b175b29c4390a69c1d9b5758b4689f0456c749822476af67511f007be2e503"
 rreqs="samurai pkgconf"
 
 . "${cwrecipe}/common.sh"
