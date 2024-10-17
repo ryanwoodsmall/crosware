@@ -24,9 +24,9 @@ fi
 # fail fast from here on out
 set -eu
 
-# default to jdk 11
+# default to jdk 21
 if [ ${#} -lt 1 ] ; then
-  reqver=11
+  reqver=21
 else
   reqver="${1}"
 fi
@@ -41,9 +41,9 @@ case "${reqver}" in
     zulusha="$(crosware run-func cwsha256_zulu${reqver}musl)"
     ;;
   all) :
-    bash "${BASH_SOURCE[0]}" 17
     bash "${BASH_SOURCE[0]}" 8
     bash "${BASH_SOURCE[0]}" 11
+    bash "${BASH_SOURCE[0]}" 17
     bash "${BASH_SOURCE[0]}" 21
     exit 0
     ;;
