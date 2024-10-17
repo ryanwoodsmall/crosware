@@ -429,7 +429,6 @@ wc -l /tmp/astbuild.out
 - ip2unix (https://github.com/nixcloud/ip2unix - turn ip socket into unix socket... c++)
 - java stuff
   - alpine openjdk? 11? 8?
-  - ant (included in sdkman)
   - antlr
   - artifactory oss (https://jfrog.com/community/download-artifactory-oss/ - basic java/generic/remote/virtual repo management)
     - other jfrog stuff here too: https://jfrog.com/community/open-source/ - conan, docker, etc.
