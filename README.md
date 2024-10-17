@@ -739,6 +739,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - manpages, consisting of...
   - man-pages (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/)
   - man-pages-posix (https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/man-pages-posix/)
+- maven (https://maven.apache.org - java build tool)
 - mawk (https://invisible-island.net/mawk/mawk.html)
 - mbedtls (polarssl)
   - lts

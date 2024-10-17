@@ -452,7 +452,6 @@ wc -l /tmp/astbuild.out
   - libjffi (https://github.com/jnr/jffi)
     - jruby hash a glibc .so included
   - luaj
-  - maven (included in sdkman)
   - mina (apache multipurpose infrastructure for network applications: java nio, ftp, sshd, etc.; https://mina.apache.org/)
   - nexus oss (https://www.sonatype.com/products/sonatype-nexus-oss-download - artifact repo, more features than artifactory oss?)
     - `curl -kILs https://download.sonatype.com/nexus/3/latest-unix.tar.gz |& awk '/^location:/{print $2}'` to get latest rev???
