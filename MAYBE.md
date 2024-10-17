@@ -544,7 +544,7 @@ wc -l /tmp/astbuild.out
     - sqlite (https://bitbucket.org/xerial/sqlite-jdbc and https://github.com/xerial/sqlite-jdbc)
   - programs/clients/other
     - ha-jdbc (https://github.com/ha-jdbc/ha-jdbc)
-    - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net/)
+    - henplus (https://github.com/neurolabs/henplus - formerly http://henplus.sourceforge.net - jdbc sql client)
       - can use/needs(?) java-readline (https://github.com/aclemons/java-readline)
     - jisql (https://github.com/stdunbar/jisql)
     - sqlshell (scala, sbt - https://github.com/bmc/sqlshell)
