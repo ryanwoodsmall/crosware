@@ -1279,6 +1279,7 @@ wc -l /tmp/astbuild.out
 - up (https://github.com/akavel/up - ultimate plumber, a pipe explorer in go)
 - upx (https://github.com/upx/upx)
 - usbutils (https://github.com/gregkh/usbutils)
+- usql (https://github.com/xo/usql - universal sql client in go)
 - utalk (http://utalk.ourproject.org/)
 - uwebsockets (https://github.com/uNetworking/uWebSockets - c++ lib that supports openssl/wolfssl)
 - vcluster (https://github.com/loft-sh/vcluster and https://www.vcluster.com - k8s inside a k8s namespace, cluster virtualization)
