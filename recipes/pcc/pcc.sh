@@ -12,7 +12,8 @@ rver="20230603"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 #rurl="ftp://pcc.ludd.ltu.se/pub/${rname}/${rfile}"
-rurl="http://pcc.ludd.ltu.se/ftp/pub/${rname}/${rfile}"
+#rurl="http://pcc.ludd.ltu.se/ftp/pub/${rname}/${rfile}"
+rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rsha256="aa715e621432914efc02bfe47b4ed3dc38325f8676704090378b823cb127c0e3"
 rreqs="make byacc flex configgit muslstandalone"
 
@@ -22,8 +23,10 @@ eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
   local f u d s
-  f=\"${rfile//pcc/pcc-libs}\"
-  u=\"${rurl%/*}-libs/\${f}\"
+  : f=\"${rfile//pcc/pcc-libs}\"
+  f=\"${rfile//${rname}-${rver}/${rname}-libs-${rver}}\"
+  : u=\"${rurl%/*}-libs/\${f}\"
+  u=\"\$(dirname ${rurl})/\${f}\"
   d=\"${rdlfile%/*}/\${f}\"
   s=\"436b526b047a5273c95a5a3879eccdf113e679b4eeaec869a4443520bfaf24cf\"
   cwfetchcheck \"\${u}\" \"\${d}\" \"\${s}\"
@@ -40,7 +43,7 @@ function cwextract_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   local s=\"${cwsw}/statictoolchain/current\"
   local t=\"${cwsw}/muslstandalone/current\"
   local m=\"\$(\${t}/bin/musl-gcc -dumpmachine)\"
@@ -66,21 +69,21 @@ function cwconfigure_${rname}() {
   sed -i '/^CFLAGS/s, = , = -I. ,g' ${rname}-libs-${rver}/csu/linux/Makefile
   sed -i 's,CFLAGS,CFLAGS_EXTRA,g' ${rname}-libs-${rver}/csu/linux/Makefile
   unset s t m c d
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make -j${cwmakejobs} CC=\"${cwsw}/muslstandalone/current/bin/musl-gcc -DUSE_MUSL\" YACC=byacc ${rlibtool}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install CC=\"${cwsw}/muslstandalone/current/bin/musl-gcc -DUSE_MUSL\" ${rlibtool}
   local c=\"${ridir}/bin/pcc\"
   local v=\"\$(\${c} --version | awk '{print \$4}')\"
@@ -101,7 +104,7 @@ function cwmakeinstall_${rname}() {
     done
   done
   unset c v i t
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
