@@ -63,9 +63,13 @@ function cwconfigure_${rname}() {
         CXX=\"\${CXX}\" \
         CFLAGS=\"\${CFLAGS}\" \
         CXXFLAGS=\"\${CXXFLAGS}\" \
-        LDFLAGS=\"\${LDFLAGS}\" \
+        CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+        LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz'
   sed -i.ORIG 's/-lcurl/-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz/g' Makefile
+  : sed -i '/:.* build-unit-tests/s,build-unit-tests,,g' Makefile
+  : sed -i '/:.* unit-tests/s,unit-tests,,g' Makefile
   grep -ril sys/poll\\.h \$(cwbdir_${rname})/ \
   | grep \\.h\$ \
   | xargs sed -i.ORIG 's#sys/poll\.h#poll.h#g'

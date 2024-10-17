@@ -9,11 +9,14 @@ rreqs="make zlib libressl expat pcre2 perl cacertificates nghttp2 curllibressl l
 
 . "${cwrecipe}/${rname%libressl}/${rname%libressl}.sh.common"
 
-eval "
-function cwfetch_${rname}() {
-  cwfetch_${rname%libressl}
-}
-"
+for f in fetch patch ; do
+  eval "
+  function cwfetch_${rname}() {
+    cwfetch_${rname%libressl}
+  }
+  "
+done
+unset f
 
 eval "
 function cwconfigure_${rname}() {
@@ -34,10 +37,11 @@ function cwconfigure_${rname}() {
         CXXFLAGS=\"\${CXXFLAGS}\" \
         LDFLAGS=\"\$(echo -L${cwsw}/{libressl,zlib,nghttp2,expat,pcre2,curllibressl,libssh2libressl}/current/lib -static)\" \
         CPPFLAGS=\"\$(echo -I${cwsw}/{libressl,zlib,nghttp2,expat,pcre2,curllibressl,libssh2libressl}/current/include)\" \
-        LIBS='-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz -lexpat' \
-        PKG_CONFIG_LIBDIR= \
-        PKG_CONFIG_PATH=
+        PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+        LIBS='-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz -lexpat'
   sed -i.ORIG 's/-lcurl/-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz -lexpat/g' Makefile
+  : sed -i '/:.* build-unit-tests/s,build-unit-tests,,g' Makefile
+  : sed -i '/:.* unit-tests/s,unit-tests,,g' Makefile
   grep -ril sys/poll\\.h \$(cwbdir_${rname})/ \
   | grep \\.h\$ \
   | xargs sed -i.ORIG 's#sys/poll\.h#poll.h#g'
@@ -48,7 +52,14 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  env PATH=\"${cwsw}/curllibressl/current/devbin:\${PATH}\" make -j${cwmakejobs} NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
+  env PATH=\"${cwsw}/curllibressl/current/devbin:\${PATH}\" make -j${cwmakejobs} NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1 \
+    CC=\"\${CC}\" \
+    CXX=\"\${CXX}\" \
+    CFLAGS=\"\${CFLAGS}\" \
+    CXXFLAGS=\"\${CXXFLAGS}\" \
+    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd &>/dev/null
 }
 "

@@ -6,9 +6,28 @@ fi
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  cat t/unit-tests/clar/clar.c > t/unit-tests/clar/clar.c.ORIG
+  echo -n > t/unit-tests/clar/clar.c
+  echo '#include <time.h>' >> t/unit-tests/clar/clar.c
+  echo '#include <sys/time.h>' >> t/unit-tests/clar/clar.c
+  cat t/unit-tests/clar/clar.c.ORIG >> t/unit-tests/clar/clar.c
+  popd &>/dev/null
+}
+"
+
+eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  make -j${cwmakejobs} NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
+  make -j${cwmakejobs} NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1 \
+    CC=\"\${CC}\" \
+    CXX=\"\${CXX}\" \
+    CFLAGS=\"\${CFLAGS}\" \
+    CXXFLAGS=\"\${CXXFLAGS}\" \
+    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd &>/dev/null
 }
 "
@@ -16,7 +35,14 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  make -j${cwmakejobs} install NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1
+  make -j${cwmakejobs} install NO_GETTEXT=1 NO_ICONV=1 NO_MSGFMT_EXTENDED_OPTIONS=1 \
+    CC=\"\${CC}\" \
+    CXX=\"\${CXX}\" \
+    CFLAGS=\"\${CFLAGS}\" \
+    CXXFLAGS=\"\${CXXFLAGS}\" \
+    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   cwmkdir \"\$(cwidir_${rname})/etc\"
   cwextract \"${rdlfile//${rname%libressl}-${rver}/${rname%libressl}-manpages-${rver}}\" \"\$(cwidir_${rname})/share/man\"
   ln -sf \"${rtdir}/current/bin/${rname%libressl}\" \"\$(cwidir_${rname})/bin/${rname%libressl}libressl\"
