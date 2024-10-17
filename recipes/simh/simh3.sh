@@ -1,18 +1,25 @@
 rname="simh3"
-rver="v312-2"
+rver="v312-5"
 rdir="${rname%3}_${rver}"
 rfile="${rname%3}${rver}.zip"
 rurl="http://simh.trailing-edge.com/sources/${rfile}"
-rsha256="0f2b6e12c4749aee798e201d60bd1e9dd482525a34a44e988208238b3c6e8df2"
+rsha256="561524723b5979c4ba6d1ed58fd33749c47ac2934eba55d98c48f558b71f3ee8"
 
 . "${cwrecipe}/simh/simh.sh.common"
 
 eval "
+function cwfetch_${rname}() {
+  curl ${cwcurlopts} -I \"\$(cwurl_${rname})\" &>/dev/null || cwfailexit \"upstream url \$(cwurl_${rname}) appears to be gone\"
+  cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
+}
+"
+
+eval "
 function cwextract_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   rm -rf sim \"\$(cwdir_${rname})\"
   cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
   mv sim \"\$(cwdir_${rname})\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
