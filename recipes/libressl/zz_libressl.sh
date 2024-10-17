@@ -4,6 +4,7 @@
 # XXX - when upgraded, an installed dependents reinstall should be performed - {libssh2,curl,...}libressl
 # XXX - 3.8.x broken w/nginx: sha3_update, sha3_final conflicts from gcrypt (remove from libxslt???)
 # XXX - 3.8.x broken w/openvpn: ENGINE_get_next
+# XXX - need to figure out ${cwtop}/etc/libressl{,##} situation
 #
 rname="libressl"
 rsv="37"
