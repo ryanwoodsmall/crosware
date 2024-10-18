@@ -16,7 +16,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-{,{sshd,docker}-}tests \
     --disable-examples-build \
@@ -34,6 +34,6 @@ function cwconfigure_${rname}() {
   sed -i \"s#\$(cwidir_${rname})#${rtdir}/current#g\" libssh2.pc
   sed -i '/^Libs:/s|\$| -lmbedx509 -lmbedtls -lmbedcrypto -lz|g' libssh2.pc
   grep -ril '<sys/poll.h>' . | xargs sed -i.ORIG 's#<sys/poll.h>#<poll.h>#g'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
