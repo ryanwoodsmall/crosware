@@ -14,6 +14,7 @@ function cwpatch_${rname}() {
   echo '#include <sys/time.h>' >> t/unit-tests/clar/clar.c
   cat t/unit-tests/clar/clar.c.ORIG >> t/unit-tests/clar/clar.c
   sed -i '/gettimeofday/s,\\&tz,NULL,g' t/unit-tests/clar/clar.c
+  sed -i '/struct timezone tz/s,^,//,g' t/unit-tests/clar/clar.c
   popd &>/dev/null
 }
 "
