@@ -6,18 +6,17 @@
 #
 sname="mbedtls"
 rname="${sname}36"
-rver="3.6.1"
+rver="3.6.2"
 rdir="${sname}-${rver}"
 rfile="${sname}-${rver}.tar.bz2"
 rurl="https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-${rver}/${rfile}"
-rsha256="fc8bef0991b43629b7e5319de6f34f13359011105e08e3e16eed3a9fe6ffd3a3"
+rsha256="8b54fb9bcf4d5a7078028e0520acddefb7900b3e66fec7f7175bb5b7d85ccdca"
 
 . "${cwrecipe}/${sname}/${sname}.sh.common"
 
-
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat Makefile > Makefile.ORIG
   sed -i \"s#^DESTDIR=.*#DESTDIR=\$(cwidir_${rname})#g\" Makefile
   sed -i '/^all:/s,tests,,g' Makefile
@@ -25,20 +24,20 @@ function cwconfigure_${rname}() {
   sed -i '/^install:/s,no_test,lib,g' Makefile
   sed -i '/MAKE.*test/s,\$(MAKE),: \$(MAKE),g' Makefile
   sed -i '/DESTDIR.*bin/s,\\(mkdir\\|cp\\|rm\\),: \\1,g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local gd=''
   gd+=' -DMBEDTLS_THREADING_C '
   gd+=' -DMBEDTLS_THREADING_PTHREAD '
   local r=''
   local p=\"\$(for r in ccache4 ccache statictoolchain bashtiny bootstrapmake busybox ; do echo ${cwsw}/\${r}/current/bin ; done | paste -s -d: -)\"
   env PATH=\"\${p}\" make -j${cwmakejobs} lib CC=\"\${CC} -Os \${gd}\" C{,XX}FLAGS=\"-Os -Wl,-s \${CFLAGS} \${gd}\" LDFLAGS=\"-static -s\" CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}= GEN_FILES= PATH=\"\${p}\" PERL=true PYTHON=true
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
