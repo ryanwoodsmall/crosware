@@ -9,7 +9,7 @@ rsha256="561524723b5979c4ba6d1ed58fd33749c47ac2934eba55d98c48f558b71f3ee8"
 
 eval "
 function cwfetch_${rname}() {
-  curl ${cwcurlopts} -I \"\$(cwurl_${rname})\" &>/dev/null || cwfailexit \"upstream url \$(cwurl_${rname}) appears to be gone\"
+  curl ${cwcurlopts} -I \"\$(cwurl_${rname})\" &>/dev/null || cwscriptecho \"upstream url \$(cwurl_${rname}) appears to be gone\"
   cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
 }
 "
