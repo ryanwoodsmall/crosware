@@ -1,9 +1,9 @@
 rname="libuv"
-rver="1.49.1"
+rver="1.49.2"
 rdir="${rname}-${rver}"
 rfile="${rname}-v${rver}-dist.tar.gz"
 rurl="https://dist.libuv.org/dist/v${rver}/${rfile}"
-rsha256="a4fc48e8972a9665c3ef0a585a572e5bd4b741b7d0f06326b340d7bd4106b874"
+rsha256="2e910e668e5daf1be6a5195a696985d7200adfa5c4d3400ee7b3355affdcf52c"
 rreqs="make slibtool"
 
 . "${cwrecipe}/common.sh"
