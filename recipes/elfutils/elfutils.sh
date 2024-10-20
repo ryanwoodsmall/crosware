@@ -3,11 +3,11 @@
 # XXX - baseutils has an m4 as well, bmake is only req
 #
 rname="elfutils"
-rver="0.191"
+rver="0.192"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://sourceware.org/elfutils/ftp/${rver}/${rfile}"
-rsha256="df76db71366d1d708365fc7a6c60ca48398f14367eb2b8954efc8897147ad871"
+rsha256="616099beae24aba11f9b63d86ca6cc8d566d968b802391334c91df54eab416b4"
 rreqs="bootstrapmake zlib libuargp muslfts muslobstack otools"
 
 . "${cwrecipe}/common.sh"
@@ -48,13 +48,17 @@ function cwmakeinstall_${rname}() {
     sed -i '/^libdw/d' Makefile
     sed -i '/^#libdw/s,^#,,g' Makefile
     sed -i '/^srcfiles_LDADD/s,\$, -static,' Makefile
-    make ${rlibtool} CC=\"\${CC} -Wl,-static\"
+    sed -i '/^.*_LDADD = /s,(libelf) ,(libelf) -largp -lz ,g' Makefile
+    sed -i '/^.*_LDADD = /s,(libdw) ,(libdw) -lfts ,g' Makefile
+    make ${rlibtool} CC=\"\${CC} -Wl,-static -Wl,-largp -Wl,-lfts -Wl,-lz\"
     make install ${rlibtool}
   )
   rm -f \$(cwidir_${rname})/lib/lib*.so*
   rm -f \$(cwidir_${rname})/include/${rname}_elf.h
   cat \$(cwidir_${rname})/include/elf.h > \$(cwidir_${rname})/include/${rname}_elf.h
   rm -f \$(cwidir_${rname})/include/elf.h
+  sed -i 's,-ldw,-ldw -lfts,g' \$(cwidir_${rname})/lib/pkgconfig/libdw.pc
+  sed -i 's,-lelf,-lelf -lz,g' \$(cwidir_${rname})/lib/pkgconfig/libelf.pc
   popd &>/dev/null
 }
 "
