@@ -1,9 +1,9 @@
 rname="libnftnl"
-rver="1.2.7"
+rver="1.2.8"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.netfilter.org/pub/${rname}/${rfile}"
-rsha256="9122774f968093d5c0bacddd67de480f31fa4073405a7fc058a34b0f387aecb3"
+rsha256="37fea5d6b5c9b08de7920d298de3cdc942e7ae64b1a3e8b880b2d390ae67ad95"
 rreqs="bootstrapmake pkgconfig libmnl"
 
 . "${cwrecipe}/common.sh"
