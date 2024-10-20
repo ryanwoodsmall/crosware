@@ -4,13 +4,12 @@
 #  rver="6c331794cf0bc6b609b5cd15c581ac0ea0a30b27"
 #  rurl="https://salsa.debian.org/debian/netcat-openbsd/-/archive/${rver}/${rfile}"
 #
-
 rname="netcatopenbsd"
-rver="1.219-1"
+rver="1.226-1.1"
 rdir="netcat-openbsd-debian-${rver}"
-rfile="${rdir}.tar.bz2"
+rfile="${rdir}.tar.gz"
 rurl="https://salsa.debian.org/debian/netcat-openbsd/-/archive/debian/${rver}/${rfile}"
-rsha256="505c99159dc90a90a4cfcec964c16c9f9963a0826847588257760371f32358e9"
+rsha256="3ae7a862a0b1a7686f91279b70acb29767bb834606f929bf0b2b20db9f56623a"
 rreqs="make libbsd pkgconfig libmd"
 
 . "${cwrecipe}/common.sh"
@@ -24,30 +23,30 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   for p in \$(cat debian/patches/series) ; do
     patch -p1 < debian/patches/\${p}
   done
   sed -i.ORIG 's/in6\\.h/in.h/g' {netcat,socks}.c
   sed -i 's#netinet/in\\.h#netinet/ip.h#g;s#linux/in\\.h#netinet/ip.h#g' {netcat,socks}.c
   cp \"${cwdl}/${rname}/base64.c\" .
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/pkgconfig/current/bin:\${PATH}\" \
     \${CC} -o ${rname} base64.c netcat.c atomicio.c socks.c \$(pkg-config --cflags libbsd) \$(pkg-config --libs libbsd) -L${cwsw}/libmd/current/lib -lmd -static
   \$(\${CC} -dumpmachine)-strip --strip-all ${rname}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
   install -m 0755 ${rname} \"\$(cwidir_${rname})/bin/${rname}\"
@@ -58,7 +57,7 @@ function cwmakeinstall_${rname}() {
   ln -sf ${rname}.1 \"\$(cwidir_${rname})/share/man/man1/netcat-openbsd-debian.1\"
   ln -sf ${rname}.1 \"\$(cwidir_${rname})/share/man/man1/netcat-openbsd.1\"
   ln -sf ${rname}.1 \"\$(cwidir_${rname})/share/man/man1/nc.1\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
