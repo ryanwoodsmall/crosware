@@ -446,6 +446,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - certstrap (https://github.com/square/certstrap - simple CA in go)
 - cflow
 - check
+- civetweb (https://github.com/civetweb/civetweb - small/embeddable c/c++ webserver with mbedtls/zlib/lua/duktape/cgi support)
+  - openssl/libressl/wolfssl/minimal variants???
 - cjson (https://github.com/DaveGamble/cJSON)
 - cloc (https://github.com/AlDanial/cloc)
 - cmake
