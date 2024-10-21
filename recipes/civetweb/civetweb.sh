@@ -16,15 +16,15 @@ cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's,-lmbedcrypto -lmbedtls -lmbedx509,-lmbedx509 -lmbedtls -lmbedcrypto,g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     export margs=\"PREFIX=\$(cwidir_${rname}) WITH_X_DOM_SOCKET=1 WITH_SERVER_STATS=1 WITH_LUA=1 WITH_DUKTAPE=1 WITH_IPV6=1 WITH_WEBSOCKET=1 WITH_ZLIB=1 WITH_MBEDTLS=1\"
     export CC=\"\${CC} \${CFLAGS} \$(echo -I${cwsw}/{mbedtls,zlib}/current/include) \$(echo -L${cwsw}/{mbedtls,zlib}/current/lib)\"
@@ -33,7 +33,7 @@ function cwmakeinstall_${rname}() {
     make \${margs} \
     && make \${margs} install
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
