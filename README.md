@@ -1026,6 +1026,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
     - inadyngnutlsminimal (gnutlsminimal built with nettleminimal/mini-gmp)
     - inadynlibressl (libressl)
     - inadynmbedtls (mbedtls)
+  - libite (https://github.com/troglobit/libite - sys/queue, sys/tree interfaces in lite/)
   - libuev (https://github.com/troglobit/libuev)
   - mdnsd (https://github.com/troglobit/mdnsd - multicast dns daemon, mdsresponder, mdns-sd, etc.)
   - mg (see above)

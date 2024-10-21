@@ -1246,7 +1246,6 @@ wc -l /tmp/astbuild.out
 - tre (https://github.com/laurikari/tre)
 - troglobit stuff
   - finit (https://github.com/troglobit/finit)
-  - libite (https://github.com/troglobit/libite - sys/queue, sys/tree interfaces in lite/)
   - merecat (https://github.com/troglobit/merecat)
   - mping (https://github.com/troglobit/mping - multicast ping)
   - smcroute (https://github.com/troglobit/smcroute and https://troglobit.com/projects/smcroute/)
