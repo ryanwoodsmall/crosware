@@ -1,9 +1,9 @@
 rname="libuev"
 rver="2.4.1"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
+rfile="${rdir}.tar.gz"
 rurl="https://github.com/troglobit/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="1d171c572ca48ddd6763f76c54e77d021d4ca7beb007610f7c1fec903511977b"
+rsha256="7a6a31cf5c5df0eb424230588d2c5fa33253fc22a7a5b766d905d1c7ffa979d5"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
