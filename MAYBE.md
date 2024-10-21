@@ -381,6 +381,7 @@ wc -l /tmp/astbuild.out
   - bozohttpd (https://linuxreviews.org/The_bozotic_HTTP_server - small httpd w/o tls; home site is offline, netbsd has pkgsrc?)
   - caddy (https://caddyserver.com/ and https://github.com/caddyserver/caddy - http server with automatic tls)
   - cherokee (http://cherokee-project.com/)
+  - civetweb (https://github.com/civetweb/civetweb - embedded c/c++ webserver with openssl/mbedtls/wolfssl(?)/lua/cgi/... support)
   - hiawatha (https://www.hiawatha-webserver.org/)
   - httpd.bash (https://github.com/emasaka/httpd.bash/blob/master/httpd.bash - a little webserver in bash)
   - lighttpd
