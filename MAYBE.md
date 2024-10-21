@@ -1251,7 +1251,6 @@ wc -l /tmp/astbuild.out
   - mping (https://github.com/troglobit/mping - multicast ping)
   - smcroute (https://github.com/troglobit/smcroute and https://troglobit.com/projects/smcroute/)
   - ssdp-responder (https://github.com/troglobit/ssdp-responder - windows network thing w/internet gateway device config?)
-  - ttinfo (https://github.com/troglobit/ttinfo)
   - uftpd (https://github.com/troglobit/uftpd)
   - uget (https://github.com/troglobit/uget - small wget/curl file fetcher w/openssl support - investigate libressl/wolfssl compat...)
 - trurl (https://github.com/curl/trurl and https://curl.se/trurl - tr-like url process for for curl)

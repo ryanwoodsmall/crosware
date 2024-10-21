@@ -1032,6 +1032,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - minisnmpd (https://github.com/troglobit/mini-snmpd and https://troglobit.com/projects/mini-snmpd/)
   - redir (https://github.com/troglobit/redir)
   - sntpd (https://github.com/troglobit/sntpd - ntp client/server/...)
+  - ttinfo (https://github.com/troglobit/ttinfo)
   - uredir (https://github.com/troglobit/uredir)
 - txt2man (https://github.com/mvertes/txt2man - plain text to man page converter?)
 - u9fs (https://github.com/Plan9-Archive/u9fs - userspace 9p server, recently updated, works without rhosts stuff)
