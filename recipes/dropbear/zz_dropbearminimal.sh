@@ -11,13 +11,13 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
-for f in clean fetch make ; do
+for f in clean fetch extract patch make ; do
   eval "function cw${f}_${rname}() { cw${f}_dropbear ; }"
 done
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat \"${cwdl}/${rname%minimal}/${rname%minimal}-\$(cwver_${rname})_localoptions.h\" > localoptions.h
   cat localoptions.h > localoptions.h.ORIG
   cwscriptecho 'patching localoptions.h'
@@ -46,13 +46,13 @@ function cwconfigure_${rname}() {
        CPPFLAGS=\"-I${cwsw}/zlib/current/include\" \
        LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\" \
        PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install \
     MULTI=1 \
     SCPPROGRESS=1 \
@@ -60,7 +60,7 @@ function cwmakeinstall_${rname}() {
   ln -sf dbclient \"\$(cwidir_${rname})/bin/ssh\"
   cwmkdir \"${cwetc}/${rname%minimal}\"
   cwmkdir \"\$(cwidir_${rname})/libexec\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

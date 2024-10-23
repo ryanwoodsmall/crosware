@@ -27,15 +27,15 @@
 # XXX - enable DROPBEAR_USE_SSH_CONFIG in dropbear-misc and test
 #
 rname="dropbear"
-rsver="2024.85"
-rdate="20240426034811"
+rsver="2024.86"
+rdate="20241023035849"
 rver="${rsver}-${rdate}"
 rdir="${rname}-${rsver}"
 rfile="${rdir}.tar.bz2"
-#rurl="https://matt.ucc.asn.au/${rname}/releases/${rfile}"
+#rurl="https://matt.ucc.asn.au/dropbear/releases/${rfile}"
 #rurl="https://dropbear.nl/mirror/releases/${rfile}"
-rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="86b036c433a69d89ce51ebae335d65c47738ccf90d13e5eb0fea832e556da502"
+rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/dropbear/${rfile}"
+rsha256="e78936dffc395f2e0db099321d6be659190966b99712b55c530dd0a1822e0a5e"
 # need a patch program, try toybox
 rreqs="make toybox zlib configgit lshsftpserver"
 
@@ -45,7 +45,7 @@ eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
   cwfetchcheck \
-    \"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/${rdate}-${rname}-${rsver}/options/${rname}-${rsver}_localoptions.h\" \
+    \"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/${rdate}-${rname}-${rsver}-crosware/options/${rname}-${rsver}_localoptions.h\" \
     \"${cwdl}/${rname}/${rname}-\$(cwver_${rname})_localoptions.h\" \
     \"72e3b996656211c6271240e3440809acb1925d46b20cf0b9aedb402f7be9d667\"
 }
@@ -53,7 +53,7 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat \"${cwdl}/${rname}/${rname}-\$(cwver_${rname})_localoptions.h\" > localoptions.h
   cat localoptions.h >> localoptions.h.ORIG
   cwscriptecho 'patching localoptions.h'
@@ -74,25 +74,28 @@ function cwconfigure_${rname}() {
     --disable-pam \
     --enable-zlib \
     --enable-static \
-      CC=\"\${CC}\" LDFLAGS=\"\${LDFLAGS}\"
-  popd >/dev/null 2>&1
+      CC=\"\${CC}\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} \
     MULTI=1 \
     SCPPROGRESS=1 \
     PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install \
     MULTI=1 \
     SCPPROGRESS=1 \
@@ -101,7 +104,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${cwetc}/${rname}\"
   cwmkdir \"\$(cwidir_${rname})/libexec\"
   install -m 0755 \"${cwsw}/lshsftpserver/current/sbin/sftp-server\" \"\$(cwidir_${rname})/libexec/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
