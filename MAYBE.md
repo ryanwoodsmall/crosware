@@ -6,6 +6,7 @@ some notes, experiments, etc. as well.
 - 3mux (https://github.com/aaronjanse/3mux - tmux-like multiplex in go)
 - 3proxy (https://github.com/3proxy/3proxy - lots of little proxy things)
 - 9pfs (https://github.com/mischief/9pfs - fuse 9p driver)
+- 9pro (new home https://git.sr.ht/~ft/9pro)
 - abs (https://www.abs-lang.org/ and https://github.com/abs-lang/abs - shell like interpreter in go)
 - ack (https://beyondgrep.com/)
 - acme-dns (https://github.com/joohoi/acme-dns - REST/ACME DNS in go)
