@@ -377,6 +377,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 
 ## working recipes
 
+- 9mount (https://github.com/sqweek/9mount - mount/umount wrappers for 9p)
 - 9pro (https://git.sr.ht/~ft/9pro - 9p tools for unix)
 - abcl (common lisp, https://common-lisp.net/project/armedbear/)
 - abduco (https://www.brain-dump.org/projects/abduco/ and https://github.com/martanne/abduco)
