@@ -12,6 +12,16 @@ cwstubfunc "cwconfigure_${rname}"
 cwstubfunc "cwmake_${rname}"
 
 eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  cat Makefile > Makefile.ORIG
+  sed -i 's,chown,: chown,g' Makefile
+  sed -i 's,4755,0755,g' Makefile
+  popd &>/dev/null
+}
+"
+
+eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install prefix=\"\$(cwidir_${rname})\" CPPFLAGS= LDFLAGS=-static
