@@ -564,12 +564,15 @@ function cwchecktop() {
 #   mkdir -p with check/wrapper
 #
 function cwmkdir() {
-  local tgtdir="${1}"
-  if [ ! -e "${tgtdir}" ] ; then
-    cwscriptecho "creating directory ${tgtdir}"
-    mkdir -p "${tgtdir}" || cwfailexit "could not create ${tgtdir}"
-  fi
-  test -e "${tgtdir}" || cwfailexit "${tgtdir} still doesn't exist"
+  while [[ ${#} -gt 0 ]] ; do
+    local tgtdir="${1}"
+    shift
+    if [ ! -e "${tgtdir}" ] ; then
+      cwscriptecho "creating directory ${tgtdir}"
+      mkdir -p "${tgtdir}" || cwfailexit "could not create ${tgtdir}"
+    fi
+    test -e "${tgtdir}" || cwfailexit "${tgtdir} still doesn't exist"
+  done
 }
 
 #
