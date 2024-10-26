@@ -30,8 +30,9 @@ function cwmakeinstall_${rname}() {
     export CC=\"\${CC} \${CFLAGS} \$(echo -I${cwsw}/{mbedtls,zlib}/current/include) \$(echo -L${cwsw}/{mbedtls,zlib}/current/lib)\"
     export CXX=\"\${CXX} \${CXXFLAGS} \$(echo -I${cwsw}/{mbedtls,zlib}/current/include) \$(echo -L${cwsw}/{mbedtls,zlib}/current/lib)\"
     unset {C{PP,XX,},LD}FLAGS PKG_CONFIG_{LIBDIR,PATH}
-    make \${margs} \
-    && make \${margs} install
+    make \${margs}
+    cwmkdir \$(cwidir_${rname})/{bin,etc,share/doc/civetweb}
+    make \${margs} install
   )
   popd &>/dev/null
 }
