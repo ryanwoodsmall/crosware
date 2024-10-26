@@ -98,6 +98,7 @@ function cwconfigure_${rname}() {
     --enable-oldnames \
     --enable-openssh \
     --enable-openvpn \
+    --enable-pic \
     --enable-pkcallbacks \
     --enable-pkcs7 \
     --enable-pkcs11 \
