@@ -580,6 +580,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - gogit (https://github.com/go-git/go-git - `go-git` cli with `git-{receive,upload}-pack` wrappers)
 - gojq (https://github.com/itchyny/gojq - jq in go)
 - goldy (https://github.com/ibm-security-innovation/goldy - dtls to udp proxy using mbedtls)
+- gop9p (https://github.com/docker-archive/go-p9p - 9pr client, 9ps server)
 - got (https://gameoftrees.org/ - game of trees, openbsd-specific git-like, libressl)
   - gotopenssl recipe provided as well
   - portable: https://gameoftrees.org/portable.html
