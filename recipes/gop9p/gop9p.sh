@@ -29,6 +29,7 @@ function cwconfigure_${rname}() {
   popd &>/dev/null
 }
 "
+
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
