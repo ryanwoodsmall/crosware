@@ -14,6 +14,7 @@
 # XXX - link in cacertificates/caextract pem in certs/? which files?
 # XXX - kyber, shake###, etc.
 # XXX - configure needs colrm; bring in baseutils instead of util-linux...
+# XXX - --enable-iopool ???
 #
 rname="wolfssl"
 rver="5.7.4"
