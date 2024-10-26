@@ -16,14 +16,14 @@
 # XXX - configure needs colrm; bring in baseutils instead of util-linux...
 #
 rname="wolfssl"
-rver="5.7.2"
+rver="5.7.4"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 #rdir="${rname}-${rver}"
 #rfile="${rdir}.tar.gz"
 #rurl="https://github.com/wolfSSL/wolfssl/releases/download/v${rver}-stable/${rfile}"
-rsha256="b80d1f556524ae8c2575b7728c21b33d5af5743f4bdbc224a1006091600f9755"
+rsha256="79fd96ce1f142aa6e0ec1ccb6d7810acfb1215fa48ee5a6ad63ee52034bc502d"
 rreqs="make cacertificates configgit slibtool toybox baseutils"
 
 . "${cwrecipe}/common.sh"
