@@ -1,9 +1,9 @@
 rname="webhook"
-rver="2.8.1"
+rver="2.8.2"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/adnanh/webhook/archive/refs/tags/${rfile}"
-rsha256="a1e3eb2231e5631ebb374b76a79c3bac9cbdc7010974395e2d5e4e2e62ffd187"
+rsha256="c233a810effc24b5ed5653f4fa82152f288ec937d5744a339f7066a6cbccc565"
 rreqs="go cacertificates"
 
 . "${cwrecipe}/common.sh"
