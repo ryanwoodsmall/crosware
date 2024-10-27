@@ -7,21 +7,22 @@
 #
 
 rname="quickjs"
-rver="2024-01-13"
+rver="6e2e68fd0896957f92eb6c242a2e048c1ef3cae0"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
-rurl="https://bellard.org/${rname}/${rfile}"
-rsha256="3c4bf8f895bfa54beb486c8d1218112771ecfc5ac3be1036851ef41568212e03"
+rfile="${rver}.zip"
+#rfile="${rdir}.tar.xz"
+#rurl="https://bellard.org/${rname}/${rfile}"
 #rfile="${rver}.tar.gz"
 #rurl="https://github.com/horhof/${rname}/archive/${rfile}"
-#rsha256="99a267894a162fb21cdb95061432910a7c5f0268c7e10b57bebc507586a629a6"
+rurl="https://github.com/bellard/quickjs/archive/${rfile}"
+rsha256="d4542882686eefa8c0c80493dfb30d858588c0553ffe17a058189132607ff24e"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat Makefile > Makefile.ORIG
   sed -i \"/^PREFIX/s#=.*#=\$(cwidir_${rname})#g\" Makefile
   sed -i \"/^CFLAGS_OPT=/s/-O2/-O2 \${CFLAGS}/g\" Makefile
@@ -32,24 +33,24 @@ function cwconfigure_${rname}() {
   sed -i '/^PROGS.*test_fib/s/PROGS/DISABLED_/g' Makefile
   sed -i '/^PROGS=/s/run-test262//g' Makefile
   sed -i 's/-lpthread/-lpthread -latomic/g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make -j${cwmakejobs} CC=\"\${CC}\" CXX=\"\${CXX}\" LDFLAGS=-static CONFIG_CC=\"\${CC}\" PREFIX=\"\$(cwidir_${rname})\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool} PREFIX=\"\$(cwidir_${rname})\"
   ln -sf qjs \"\$(cwidir_${rname})/bin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
