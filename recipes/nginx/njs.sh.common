@@ -31,7 +31,8 @@ function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure \
     --cc-opt=\"\${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
-    --ld-opt=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\"
+    --ld-opt=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+    --no-quickjs
   popd &>/dev/null
 }
 "
