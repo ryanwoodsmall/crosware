@@ -161,25 +161,6 @@ wc -l /tmp/astbuild.out
   - lc-subset (https://github.com/buricco/lc-subset - userspace tools, mostly from scratch, mostly unix-like)
   - lunaris (https://github.com/buricco/lunaris - linux distro with svr4 feel)
 - busybear-linux (https://github.com/michaeljclark/busybear-linux - small riscv distro, lots of good userspace and /etc config stuff)
-- c9 (https://github.com/ftrvxmtrx/c9 - small 9p client/server impl)
-  - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
-  - https://git.sr.ht/~ft/c9
-- c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
-- cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
-- cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
-- cembed (https://github.com/rxi/cembed - embed files in a c header - useful for tinyscheme/minischeme library in single binary???)
-- cepl (https://github.com/alyptik/cepl)
-- certviewer (https://github.com/cortiz/certview - certificate, including remote, viewer in go, with text/yaml/json/... output)
-- certstrap (https://github.com/square/certstrap - simple CA bootstrap in go!)
-- chelf (https://github.com/Gottox/chelf)
-- ching (https://github.com/floren/ching - i ching from bsd)
-  - needs nroff (heirloom or groff)
-  - ```
-    sed -i.ORIG s,/usr/local,${ridir},g Makefile phx/pathnames.h ching.sh
-    sed -i s,${ridir}/games,${ridir}/bin,g Makefile phx/pathnames.h ching.sh
-    make CC="${CC} -static -Wl,-static"
-    ```
-- chrpath
 - c/c++ compiler stuff
   - lots of links to compilers/transpilers/interpreters/... that interact with/output C: https://github.com/dbohdan/compilers-targeting-c
   - 8cc (https://github.com/rui314/8cc)
@@ -228,9 +209,29 @@ wc -l /tmp/astbuild.out
   - bunch of options on github, eg., just for preprocessing...
     - https://github.com/topics/preprocessor?l=c
     - https://github.com/topics/preprocessor?l=c%2B%2B
+- c9 (https://github.com/ftrvxmtrx/c9 - small 9p client/server impl)
+  - moved? https://github.com/ftrvxmtrx/o-hai-I-m-moving-to-git.sr.ht
+  - https://git.sr.ht/~ft/c9
+- c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
+- cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
+- cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
+- cembed (https://github.com/rxi/cembed - embed files in a c header - useful for tinyscheme/minischeme library in single binary???)
+- cepl (https://github.com/alyptik/cepl)
+- certviewer (https://github.com/cortiz/certview - certificate, including remote, viewer in go, with text/yaml/json/... output)
+- certstrap (https://github.com/square/certstrap - simple CA bootstrap in go!)
+- chelf (https://github.com/Gottox/chelf)
+- ching (https://github.com/floren/ching - i ching from bsd)
+  - needs nroff (heirloom or groff)
+  - ```
+    sed -i.ORIG s,/usr/local,${ridir},g Makefile phx/pathnames.h ching.sh
+    sed -i s,${ridir}/games,${ridir}/bin,g Makefile phx/pathnames.h ching.sh
+    make CC="${CC} -static -Wl,-static"
+    ```
+- chrpath
 - cfssl (https://github.com/cloudflare/cfssl - cloudflare tls swiss army knife)
 - cgpt (google source only?)
 - claudb (https://github.com/tonivade/claudb - redis implementation in java)
+- cntlm (https://github.com/versat/cntlm - ntlm auth proxy)
 - cmark (commonmark markddown - https://github.com/commonmark/cmark)
   - cmark-gfm (github fork - https://github.com/github/cmark-gfm)
 - cocker (https://github.com/calvinwilliams/cocker - small container engine in c)
