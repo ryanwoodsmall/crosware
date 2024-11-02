@@ -3,11 +3,11 @@
 # XXX - mbedtls variant
 #
 rname="libgit2"
-rver="1.8.3"
+rver="1.8.4"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="868810a5508d41dd7033d41bdc55312561f3f916d64f5b7be92bc1ff4dcae02a"
+rsha256="49d0fc50ab931816f6bfc1ac68f8d74b760450eebdb5374e803ee36550f26774"
 rreqs="make zlib pkgconfig openssl libssh2 cmake"
 rbdir="${cwbuild}/${rdir}/build"
 
