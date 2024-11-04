@@ -1,3 +1,6 @@
+#
+# XXX - unrar 7.x is out...
+#
 rname="unrar"
 rver="6.2.10"
 rdir="${rname}"
@@ -11,14 +14,14 @@ ridir="${cwsw}/${rname}/${rname}-${rver}"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cp makefile{,.ORIG}
   sed -i \"/^CXX=/s#^CXX=.*#CXX=\${CXX}#g\" makefile
   sed -i \"/^DESTDIR=/s#^DESTDIR=.*#DESTDIR=\$(cwidir_${rname})#g\" makefile
   sed -i '/^CXXFLAGS=/s/$/ -Wl,-static -fPIC/g' makefile
   sed -i '/^LDFLAGS=/s/$/ -static/g' makefile
   sed -i 's/\$(CPPFLAGS)//g' makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
