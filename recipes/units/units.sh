@@ -1,3 +1,6 @@
+#
+# XXX - readline support worth it?
+#
 rname="units"
 rver="2.23"
 rdir="${rname}-${rver}"
