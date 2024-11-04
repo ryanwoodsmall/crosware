@@ -1275,7 +1275,6 @@ wc -l /tmp/astbuild.out
 - udptunnel (https://github.com/astroza/udptunnel)
 - uget (https://github.com/OpenIPC/uget - tiny http-only wget/curl program)
 - uniso (from alpine https://github.com/alpinelinux/alpine-conf/blob/master/uniso.c)
-- units (https://www.gnu.org/software/units)
 - up (https://github.com/akavel/up - ultimate plumber, a pipe explorer in go)
 - upx (https://github.com/upx/upx)
 - usbutils (https://github.com/gregkh/usbutils)

@@ -1051,6 +1051,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - uacmembedtls (curl+mbedtls)
 - uemacs (https://git.kernel.org/pub/scm/editors/uemacs/uemacs.git/ - micro-emacs)
 - unfs3 (https://unfs3.github.io/ and https://github.com/unfs3/unfs3)
+- units (https://www.gnu.org/software/units - gnu unit conversion cli program)
 - unrar
 - unzip
 - utillinux
