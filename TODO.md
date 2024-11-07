@@ -1409,7 +1409,10 @@ time_func ls -l -A /
   - something simple to call from `cwfetch_${rname}` when upstream URLs are unstable
   - i.e., version A.B.C gets moved to `archive/file-A.B.C.tgz` when version X.Y.Z comes out
   - a `curl -fkILs` to do a `HEAD`?
-- add `lunzip` to the base container
+- base container additions
+  - lunzip
+  - netbsdwtf
+  - units
 
 <!--
 # vim: ft=markdown
