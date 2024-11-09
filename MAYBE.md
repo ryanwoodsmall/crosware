@@ -355,6 +355,7 @@ wc -l /tmp/astbuild.out
 - goph (https://github.com/melbahja/goph - go ssh client)
 - gops (https://github.com/google/gops - running go process analyzer)
 - gosecure (https://github.com/diegohce/gosecure - simple secure tls proxy in go)
+- gosmb (https://github.com/wthorp/GoSMB = currently an smb proxy, eventually implementing a full server)
 - gotify (https://github.com/gotify/server - go, simple message sending via rest api)
 - gotty (https://github.com/yudai/gotty - like shellinabox in go)
 - go-tunnel (https://github.com/opencoff/go-tunnel - stunnel replacement written in go)
@@ -535,6 +536,10 @@ wc -l /tmp/astbuild.out
   - rampart (https://www.rampart.dev/ and https://github.com/aflin/rampart - minimal full-stack built on duktape)
   - quad-wheel (https://code.google.com/archive/p/quad-wheel/)
   - tiny-js (https://github.com/gfwilliams/tiny-js)
+- jcifs (https://www.jcifs.org - java cifs/smb lib)
+  - jcifs (https://github.com/codelibs/jcifs - older code)
+  - jcifs-ng (https://github.com/AgNO3/jcifs-ng - cleaned-up/improved version)
+  - smbj (https://github.com/hierynomus/smbj - smb2/smb3 implementation in java)
 - jdbc
   - drivers
     - derby (included in derby.jar)
