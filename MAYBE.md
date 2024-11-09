@@ -51,6 +51,7 @@ some notes, experiments, etc. as well.
   - ucontain (https://github.com/arachsys/ucontain - shell container manager with unshare and pivot)
 - argp-standalone (http://www.lysator.liu.se/~nisse/misc/ and https://git.alpinelinux.org/aports/tree/main/argp-standalone)
 - aria2 (https://github.com/aria2/aria2 and https://aria2.github.io/)
+- arozos (https://github.com/tobychui/arozos - remote "desktop for nas" in go and js)
 - arr (https://github.com/leahneukirchen/arr)
 - assemblers?
   - fasm
