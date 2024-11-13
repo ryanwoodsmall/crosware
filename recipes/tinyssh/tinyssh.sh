@@ -14,6 +14,8 @@ rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
+cwstubfunc "cwconfigure_${rname}"
+
 # XXX - channel tests (at least) break on riscv64...
 if [[ ${karch} =~ ^riscv64 ]] ; then
 eval "
@@ -32,24 +34,12 @@ function cwpatch_${rname}() {
 "
 
 eval "
-function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  echo \"\$(cwidir_${rname})/sbin\" > conf-bin
-  echo \"\$(cwidir_${rname})/share/man\" > conf-man
-  echo \"\${AR}\" > conf-ar
-  echo \"\${CC}\" > conf-cc
-  echo '-Wl,-static' >> conf-cflags
-  echo '-static' >> conf-libs
-  popd &>/dev/null
-}
-"
-
-eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS PKG_CONFIG_LIBDIR PKG_CONFIG_PATH
-    make PREFIX=\"\$(cwidir_${rname})\"
+    export CFLAGS='-g0 -Wl,-static -Wl,-s'
+    make PREFIX=\"\$(cwidir_${rname})\" CC=\"\${CC}\" LDFLAGS='-static -s'
   )
   popd &>/dev/null
 }
