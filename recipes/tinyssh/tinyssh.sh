@@ -5,11 +5,11 @@
 #   env -i ${cwsw}/busybox/current/bin/busybox tcpsvd -vE 0.0.0.0 22222 ${cwsw}/tinyssh/current/sbin/tinysshd -v -x sftp=${cwsw}/lshsftpserver/current/sbin/sftp-server ${cwtop}/etc/tinyssh/
 #
 rname="tinyssh"
-rver="20240101"
+rver="20241111"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/janmojzis/${rname}/archive/refs/tags/${rfile}"
-rsha256="d2cd49d0e5e8bdb808d86f07f946a0cfbf2dc9a449a4b8243a82be267d852b62"
+rsha256="c33e0c2a403058c70a279a6c0c0b65fba5d54f9217f51ddce04d0d7fed73abac"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -24,23 +24,34 @@ function cwinstall_${rname}() {
 fi
 
 eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  grep -ril /usr/local . | xargs sed -i.ORIG \"/PREFIX/s,/usr/local,\$(cwidir_${rname}),g\"
+  popd &>/dev/null
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   echo \"\$(cwidir_${rname})/sbin\" > conf-bin
   echo \"\$(cwidir_${rname})/share/man\" > conf-man
   echo \"\${AR}\" > conf-ar
   echo \"\${CC}\" > conf-cc
   echo '-Wl,-static' >> conf-cflags
   echo '-static' >> conf-libs
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
-  make CFLAGS= CPPFLAGS= CXXFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
-  popd >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  (
+    unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS PKG_CONFIG_LIBDIR PKG_CONFIG_PATH
+    make PREFIX=\"\$(cwidir_${rname})\"
+  )
+  popd &>/dev/null
 }
 "
 
