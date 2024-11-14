@@ -1,14 +1,18 @@
 #
 # XXX - xmalloc hack - it's included in libhistory/libreadline
+# XXX - libressl variant?
+# XXX - netbsdcurses?
 #
 rname="lftp"
-rver="4.9.2"
+rver="4.9.3"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
+rfile="${rdir}.tar.gz"
+#rfile="${rdir}.tar.xz"
 #rurl="http://lftp.yar.ru/ftp/${rfile}"
 #rurl="https://sources.voidlinux.org/${rdir}/${rfile}"
-rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="c517c4f4f9c39bd415d7313088a2b1e313b2d386867fe40b7692b83a20f0670d"
+#rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
+rurl="https://github.com/lavv17/lftp/releases/download/v${rver}/${rfile}"
+rsha256="68116cc184ab660a78a4cef323491e89909e5643b59c7b5f0a14f7c2b20e0a29"
 rreqs="make slibtool ncurses readline openssl zlib pkgconfig expat configgit"
 
 . "${cwrecipe}/common.sh"
