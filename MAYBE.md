@@ -952,6 +952,7 @@ wc -l /tmp/astbuild.out
 - nsq (https://github.com/nsqio/nsq and https://nsq.io - realtime distributed messaging/queue, in go)
 - nss (ugh)
 - nuitka (https://github.com/Nuitka/Nuitka and https://nuitka.net - python compiler using cpython)
+- nullmailer (https://github.com/bruceg/nullmailer - relay-only smtp)
 - num-utils (http://suso.suso.org/programs/num-utils/index.phtml)
 - nyacc (https://www.nongnu.org/nyacc/ and https://savannah.nongnu.org/projects/nyacc)
 - obase (https://github.com/leahneukirchen/obase - unmaintained, see outils)
