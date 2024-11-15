@@ -6,17 +6,12 @@
 #   --without-zlib
 #   --without-zstd
 #
-# XXX - 3.8.4 breaks static linking with numerous multiple definition errors w/nettle+gmp+hogweed by "fixing static linking."
-#   rver="3.8.4"
-#   rsha256="2bea4e154794f3f00180fa2a5c51fe8b005ac7a31cd58bd44cdfa7f36ebc3a9b"
-# just great, glad they didn't bundle security advisory bug fixes with feature "enhancments." oh wait, what's that?
-#
 rname="gnutls"
-rver="3.8.3"
+rver="3.8.8"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.gnupg.org/ftp/gcrypt/${rname}/v${rver%.*}/${rfile}"
-rsha256="f74fc5954b27d4ec6dfbb11dea987888b5b124289a3703afcada0ee520f4173e"
+rsha256="ac4f020e583880b51380ed226e59033244bc536cad2623f2e26f5afa2939d8fb"
 rreqs="make sed byacc nettle gmp libtasn1 libunistring pkgconfig slibtool cacertificates"
 
 . "${cwrecipe}/common.sh"
