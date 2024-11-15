@@ -1,3 +1,6 @@
+#
+# XXX - 1.24.x+ uses gettid syscall now, which needs musl 1.2.2+
+#
 rname="gpgme"
 rver="1.23.2"
 rdir="${rname}-${rver}"
@@ -10,7 +13,7 @@ rreqs="make gnupg libgpgerror libgcrypt libksba libassuan npth ntbtls sqlite rea
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/gnupg/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
       --with-libgpg-error-prefix=\"${cwsw}/libgpgerror/current\" \
@@ -18,25 +21,25 @@ function cwconfigure_${rname}() {
         CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
         LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/gnupg/current/bin:\${PATH}\" \
     make -j${cwmakejobs} ${rlibtool}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/gnupg/current/bin:\${PATH}\" \
     make install ${rlibtool}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
