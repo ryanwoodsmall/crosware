@@ -1413,6 +1413,7 @@ time_func ls -l -A /
   - lunzip
   - netbsdwtf
   - units
+- `gettid` syscall added in 1.2.2 - https://git.musl-libc.org/cgit/musl/commit/?id=d49cf07541bb54a5ac7aec1feec8514db33db8ea
 
 <!--
 # vim: ft=markdown
