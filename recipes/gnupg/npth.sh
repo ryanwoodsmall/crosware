@@ -4,11 +4,11 @@
 # XXX - error... npth.c:392:21: error: unknown type name 'npth_rwlock_t'; did you mean 'npth_cond_t'?
 #
 rname="npth"
-rver="1.7"
+rver="1.8"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="8589f56937b75ce33b28d312fccbf302b3b71ec3f3945fde6aaa74027914ad05"
+rsha256="8bd24b4f23a3065d6e5b26e98aba9ce783ea4fd781069c1b35d149694e90ca3e"
 rreqs="make slibtool configgit"
 
 . "${cwrecipe}/common.sh"
