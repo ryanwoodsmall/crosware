@@ -3,18 +3,18 @@
 # XXX - netbsdcurses?
 #
 rname="gnupg"
-rver="2.4.5"
+rver="2.4.6"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="f68f7d75d06cb1635c336d34d844af97436c3f64ea14bcb7c869782f96f44277"
+rsha256="95acfafda7004924a6f5c901677f15ac1bda2754511d973bb4523e8dd840e17a"
 rreqs="make libgpgerror libgcrypt libksba libassuan npth ntbtls sqlite readline ncurses slibtool zlib bzip2 pkgconfig pinentry configgit"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/libgpgerror/current/bin:${cwsw}/libgcrypt/current/bin:${cwsw}/libassuan/current/bin:${cwsw}/libksba/current/bin:${cwsw}/npth/current/bin:${cwsw}/ntbtls/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
       --disable-ccid-driver \
@@ -36,13 +36,13 @@ function cwconfigure_${rname}() {
         CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
         LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   local p
   for p in \$(find \$(cwidir_${rname})/bin/ ! -type d) ; do
@@ -50,7 +50,7 @@ function cwmakeinstall_${rname}() {
     ln -sf \${p} \$(cwidir_${rname})/bin/\${p}${rver%%.*}
   done
   unset p
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
