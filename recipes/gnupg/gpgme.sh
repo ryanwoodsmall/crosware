@@ -1,15 +1,27 @@
 #
 # XXX - 1.24.x+ uses gettid syscall now, which needs musl 1.2.2+
+# XXX - hacky workaround below until compiler upgrades
 #
 rname="gpgme"
-rver="1.23.2"
+rver="1.24.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/gpgme/${rfile}"
-rsha256="9499e8b1f33cccb6815527a1bc16049d35a6198a6c5fae0185f2bd561bce5224"
+rsha256="61e3a6ad89323fecfaff176bc1728fb8c3312f2faa83424d9d5077ba20f5f7da"
 rreqs="make gnupg libgpgerror libgcrypt libksba libassuan npth ntbtls sqlite readline ncurses slibtool zlib bzip2 pkgconfig pinentry configgit"
 
 . "${cwrecipe}/common.sh"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  sed -i.ORIG '/gettid/s,^.*,thread=UINTPTR_MAX;,' src/debug.c
+  cat conf/config.h.in > conf/config.h.in.ORIG
+  echo '#include <stdint.h>' >> conf/config.h.in
+  echo '#include <stdint.h>' >> conf/config.h.in
+  popd &>/dev/null
+}
+"
 
 eval "
 function cwconfigure_${rname}() {
