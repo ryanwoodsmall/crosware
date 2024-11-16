@@ -662,6 +662,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libevent (no openssl support yet)
 - libffi
 - libgcrypt (https://gnupg.org/software/libgcrypt/index.html)
+  - libgcryptlts (LTS version)
 - libgit2
 - libgpgerror (https://gnupg.org/software/libgpg-error/index.html)
 - libidn (https://www.gnu.org/software/libidn/)
