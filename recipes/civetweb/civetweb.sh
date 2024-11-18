@@ -1,5 +1,6 @@
 #
 # XXX - virtualize; openssl, libressl, mbedtls, minimal variants
+# XXX - sqlite lua db support
 #
 rname="civetweb"
 rver="1.16"
