@@ -677,9 +677,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libpcap19 (older version for compatibility? with iftop? i dunno)
 - libpsl (https://github.com/rockdaboot/libpsl & https://github.com/publicsuffix/list & https://publicsuffix.org/ - libidn2+libunistring, python3)
 - libressl (https://www.libressl.org/)
-  - libressl37 (old but default version that's still currently the current default by default, currently, until i can update to 3.8/3.9)
+  - libressl37 (old but default version that's still currently the current default by default, currently, until i can update to 3.8/3.9/4.x)
   - libressl38
   - libressl39
+  - libressl40
 - libretls (https://git.causal.agency/libretls/about/ - libtls from libressl on top of openssl)
 - libssh2 (openssl, zlib)
   - libssh2libgcrypt (gcrypt, zlib)

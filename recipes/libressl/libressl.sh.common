@@ -4,9 +4,6 @@ rsn="${rname%${rsv}}"
 rdir="${rsn}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/${rfile}"
-# XXX - this change slipped into 3e44f32be29bd0086c62d612a261acf29fb5b0de
-# XXX - leaving for now since zlib isn't needed by anything in libressl afaict
-#rreqs="bootstrapmake cacertificates configgit zlib"
 rreqs="bootstrapmake cacertificates configgit"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
@@ -14,7 +11,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-asm \
     --enable-nc \
@@ -25,19 +22,20 @@ function cwconfigure_${rname}() {
       LDFLAGS=-static \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   rm -f \"\$(cwidir_${rname})/bin/openssl\" \"\$(cwidir_${rname})/bin/${rsn}\"
   make install ${rlibtool}
   mv \"\$(cwidir_${rname})/bin/openssl\" \"\$(cwidir_${rname})/bin/${rsn}\"
   ln -sf \"${rtdir}/current/bin/${rsn}\" \"\$(cwidir_${rname})/bin/openssl\"
   ln -sf \"${rtdir}/current/bin/nc\" \"\$(cwidir_${rname})/bin/${rsn}-nc\"
-  popd >/dev/null 2>&1
+  ln -sf \"${rtdir}/current/bin/${rsn}\" \"\$(cwidir_${rname})/bin/${rname}\"
+  popd &>/dev/null
 }
 "
 
