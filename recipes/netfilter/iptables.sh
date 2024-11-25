@@ -11,12 +11,14 @@
 #   slibtool-static: < returned to > slbt_exec_link(), line 1845.
 #   make[3]: *** [Makefile:662: xtables-nft-multi] Error 2
 #
+# XXX - 1.8.11 breaks a bunch of shit; investigate w/musl 1.2.5+
+#
 rname="iptables"
-rver="1.8.11"
+rver="1.8.10"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.netfilter.org/pub/${rname}/${rfile}"
-rsha256="d87303d55ef8c92bcad4dd3f978b26d272013642b029425775f5bad1009fe7b2"
+rsha256="5cc255c189356e317d070755ce9371eb63a1b783c34498fb8c30264f3cc59c9c"
 rreqs="bootstrapmake pkgconfig libpcap libnl libmnl libnetfilterconntrack libnfnetlink libnftnl"
 
 . "${cwrecipe}/common.sh"
@@ -31,17 +33,13 @@ function cwconfigure_${rname}() {
       PKG_CONFIG_LIBDIR=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       PKG_CONFIG_PATH=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       LIBS='-lpcap -lnl-3 -lnl-genl-3 -lmnl -static'
-  for i in include/xtables.h iptables/xshared.h ; do
-    cat \${i} > \${i}.ORIG
-    echo -n > \${i}
-    echo '#include <sys/types.h>' >> \${i}
-    echo '#include <netinet/if_ether.h>' >> \${i}
-    echo '#include <linux/if.h>' >> \${i}
-    echo '#include <linux/if_link.h>' >> \${i}
-    echo '#include <linux/netfilter_bridge/ebtables.h>' >> \${i}
-    cat \${i}.ORIG >> \${i}
-    sed -i '/include/s,<net/if\\.h>,<linux/if.h>,g' \${i}
-  done
+  echo '#include <sys/types.h>' >> config.h
+  echo '#include <netinet/if_ether.h>' >> config.h
+  cat iptables/xshared.h > iptables/xshared.h.ORIG
+  echo -n > iptables/xshared.h
+  echo '#include <sys/types.h>' >> iptables/xshared.h
+  echo '#include <netinet/if_ether.h>' >> iptables/xshared.h
+  cat iptables/xshared.h.ORIG >> iptables/xshared.h
   popd &>/dev/null
 }
 "

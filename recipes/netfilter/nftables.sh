@@ -22,14 +22,6 @@ rreqs="bootstrapmake pkgconfig byacc netbsdcurses readlinenetbsdcurses libpcap l
 
 . "${cwrecipe}/common.sh"
 
-#eval "
-#function cwpatch_${rname}() {
-#  pushd \"\$(cwbdir_${rname})\" &>/dev/null
-#  # grep -ril 'include.*netinet/ether\\.' . #| grep -E '\\.(c|h)(\\.in|)$' | xargs sed -i.ORIG 's,netinet/if_ether\\.,netinet/ether.,g'
-#  popd &>/dev/null
-#}
-#"
-
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
