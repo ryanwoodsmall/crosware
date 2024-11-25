@@ -12,7 +12,6 @@
 #   }
 #   "
 #
-
 rname="nftables"
 rver="1.1.1"
 rdir="${rname}-${rver}"
@@ -22,6 +21,14 @@ rsha256="6358830f3a64f31e39b0ad421d7dadcd240b72343ded48d8ef13b8faf204865a"
 rreqs="bootstrapmake pkgconfig byacc netbsdcurses readlinenetbsdcurses libpcap libnl jansson libmnl libnetfilterconntrack libnfnetlink libnftnl iptables slibtool"
 
 . "${cwrecipe}/common.sh"
+
+#eval "
+#function cwpatch_${rname}() {
+#  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+#  # grep -ril 'include.*netinet/ether\\.' . #| grep -E '\\.(c|h)(\\.in|)$' | xargs sed -i.ORIG 's,netinet/if_ether\\.,netinet/ether.,g'
+#  popd &>/dev/null
+#}
+#"
 
 eval "
 function cwconfigure_${rname}() {
