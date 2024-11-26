@@ -1,5 +1,5 @@
 #
-# XXX - remove neon 0.33.x workaround
+# XXX - remove newer neon 0.33.x+ workaround
 # XXX - use cwappendfunc in other tls lib variants instead of full cwmakeinstall_
 #
 rname="cadaver"
@@ -16,7 +16,7 @@ eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG '/y\\/n/s,;,;fflush(stdout);fflush(stderr);,g' src/cadaver.c src/edit.c
-  sed -i.ORIG 's, 31 32, 31 32 33,g' configure
+  sed -i.ORIG 's, 31 32, 31 32 33 34,g' configure
   popd &>/dev/null
 }
 "
