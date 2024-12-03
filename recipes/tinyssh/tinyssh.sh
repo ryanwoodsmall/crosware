@@ -5,11 +5,11 @@
 #   env -i ${cwsw}/busybox/current/bin/busybox tcpsvd -vE 0.0.0.0 22222 ${cwsw}/tinyssh/current/sbin/tinysshd -v -x sftp=${cwsw}/lshsftpserver/current/sbin/sftp-server ${cwtop}/etc/tinyssh/
 #
 rname="tinyssh"
-rver="20241111"
+rver="20241201"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/janmojzis/${rname}/archive/refs/tags/${rfile}"
-rsha256="c33e0c2a403058c70a279a6c0c0b65fba5d54f9217f51ddce04d0d7fed73abac"
+rsha256="cfd8ef3553f07886723823f3e0c2c5a773f29d1eb5be1fb57fe4a9a5ef89db21"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
