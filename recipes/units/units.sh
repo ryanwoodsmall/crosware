@@ -2,11 +2,11 @@
 # XXX - readline support worth it?
 #
 rname="units"
-rver="2.23"
+rver="2.24"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/units/${rfile}"
-rsha256="d957b451245925c9e614c4513397449630eaf92bd62b8495ba09bbe351a17370"
+rsha256="1e502c4edfacf20b29284716c72e5ddb51a495a2365d7b03e7960494c4a0c902"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
