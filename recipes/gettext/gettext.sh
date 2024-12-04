@@ -1,6 +1,8 @@
 #
 # opt-in only
 #
+# XXX - 0.23 breaks with relocatable errors
+#
 rname="gettext"
 rver="0.22.5"
 rdir="${rname}-${rver}"
