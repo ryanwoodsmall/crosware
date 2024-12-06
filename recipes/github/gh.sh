@@ -1,9 +1,9 @@
 rname="gh"
-rver="2.62.0"
+rver="2.63.2"
 rdir="cli-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/cli/cli/archive/refs/tags/${rfile}"
-rsha256="8b0d44a7fccd0c768d5ef7c3fbd274851b5752084e47761f146852de6539193e"
+rsha256="2578a8b1f00cb292a8094793515743f2a86e02b8d0b18d6b95959ddbeebd6b8d"
 rreqs="go bootstrapmake"
 
 if ! command -v git &>/dev/null ; then
@@ -37,6 +37,7 @@ eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
+    export TMPDIR=${cwtop}/tmp
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
     env \
@@ -57,6 +58,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
+    export TMPDIR=${cwtop}/tmp
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
     env \
