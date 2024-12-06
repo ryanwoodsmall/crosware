@@ -4,11 +4,11 @@
 # XXX - jpm probably needs to be a commit hash with a 'git' wrapper for rev-parse HEAD and get-url on install
 #
 rname="janet"
-rver="1.36.0"
+rver="1.37.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/janet-lang/${rname}/archive/refs/tags/${rfile}"
-rsha256="104aa500d4a43c2c147851823fd8b7cd06a90d01efcdff71529ff1fa68953bb4"
+rsha256="85a87115fb7b59a3fb4dab7d291627ce109eecdcf84b403ec8787ef54082519f"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
