@@ -1,14 +1,12 @@
 #
 # opt-in only
 #
-# XXX - 0.23 breaks with relocatable errors
-#
 rname="gettext"
-rver="0.22.5"
+rver="0.23.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/gettext/${rfile}"
-rsha256="ec1705b1e969b83a9f073144ec806151db88127f5e40fe5a94cb6c8fa48996a0"
+rsha256="52a578960fe308742367d75cd1dff8552c5797bd0beba7639e12bdcda28c0e49"
 rreqs="bashtiny gawk sed make busybox toybox"
 
 rnewpath=""
