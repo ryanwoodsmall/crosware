@@ -1,13 +1,14 @@
 #
 # XXX - libressl variant
 # XXX - mbedtls variant
+# XXX - lib64 fix - cmake?
 #
 rname="libgit2"
-rver="1.8.4"
+rver="1.9.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="49d0fc50ab931816f6bfc1ac68f8d74b760450eebdb5374e803ee36550f26774"
+rsha256="75b27d4d6df44bd34e2f70663cfd998f5ec41e680e1e593238bbe517a84c7ed2"
 rreqs="make zlib pkgconfig openssl libssh2 cmake"
 rbdir="${cwbuild}/${rdir}/build"
 
