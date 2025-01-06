@@ -3,11 +3,11 @@
 #
 rtls="openssl"
 rname="ppp"
-rver="2.5.1"
+rver="2.5.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://download.samba.org/pub/ppp/${rfile}"
-rsha256="733b7f5840b613da4eab0429a5081293275f06ba8b528e1b8eea6964faf0243a"
+rsha256="47da358de54a10cb10bf6ff2cf9b1c03c0d3555518f6182e8f701b8e55733cb2"
 rreqs="${rname}${rtls}"
 
 . "${cwrecipe}/common.sh"
