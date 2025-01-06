@@ -8,7 +8,7 @@ rreqs="make curl${rprovider} ${rprovider} nghttp2 zlib libssh2libressl pkgconfig
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/curl${rprovider}/current/devbin:\${PATH}\" \
     ./configure \
       ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
@@ -22,7 +22,7 @@ function cwconfigure_${rname}() {
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lcurl -latomic -lssh2 -lnghttp2 -lz -lssl -lcrypto -static' \
         PKG_CONFIG=\"${cwsw}/pkgconfig/current/bin/pkg-config\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
