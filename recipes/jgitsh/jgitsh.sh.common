@@ -14,6 +14,13 @@ function cwmakeinstall_${rname}() {
   cwmkdir \$(cwidir_${rname})/bin
   install -m 0755 \$(cwdlfile_${rname}) \$(cwidir_${rname})/bin/\$(cwfile_${rname})
   ln -sf \$(cwfile_${rname}) \$(cwidir_${rname})/bin/${rname}
+  local j=\"\$(cwidir_${rname})/bin/jgit${rver%%.*}\"
+  rm -f \${j} || true
+  echo -n > \${j}
+  chmod 755 \${j}
+  echo '#!/usr/bin/env bash' >> \${j}
+  echo 'export jgitsh=\"${rtdir}/current/bin/${rname}\"' >> \${j}
+  echo 'exec ${cwtop}/scripts/jgit \"\${@}\"' >> \${j}
 }
 "
 
