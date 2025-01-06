@@ -30,11 +30,11 @@
 #       --verify-cn=$(hostname)
 #
 rname="ghostunnel"
-rver="1.8.2"
+rver="1.8.3"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="e44105ca591fa1f2e4af1e6b516ae65833b98a5f8e76093179ecb0fc03c0c47c"
+rsha256="999cdc019ad1ec90b69370169469d4a32bf7bfffe646c7843aba083e2e35e613"
 rreqs="go cacertificates bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -73,7 +73,7 @@ function cwmake_${rname}() {
       GOCACHE=\"\${GOCACHE}\" \
       GOMODCACHE=\"\${GOMODCACHE}\" \
       PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-        make ${rname}{,.{certstore,man}}
+        make ${rname}{,.man}
     chmod -R u+rw . || true
   )
   popd &>/dev/null
@@ -86,7 +86,6 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"\$(cwidir_${rname})/bin\"
   cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
   install -m 0755 ${rname} \"\$(cwidir_${rname})/bin/${rname}\"
-  install -m 0755 ${rname}.certstore \"\$(cwidir_${rname})/bin/${rname}.certstore\"
   install -m 0644 ${rname}.man \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
   popd &>/dev/null
 }
