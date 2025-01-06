@@ -15,6 +15,7 @@ rsha256="e9498367cb765d44bb06be9709c950f436b30bf7071a224a0fee2522f9cbb417"
 rreqs="make openssl netbsdcurses readlinenetbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
+. "${cwrecipe}/socat/socat.sh.common"
 
 # XXX - non-patch versions of alpine fixes
 #  https://git.alpinelinux.org/cgit/aports/tree/main/socat

@@ -9,6 +9,7 @@ rreqs="make libressl netbsdcurses readlinenetbsdcurses zlib"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
+. "${cwrecipe}/socat/socat.sh.common"
 
 local f
 for f in clean extract fetch ; do

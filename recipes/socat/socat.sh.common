@@ -1,0 +1,13 @@
+eval "
+function cwmakeinstall_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  make install ${rlibtool}
+  cwmkdir \$(cwidir_${rname})/share/doc
+  cwmkdir \$(cwidir_${rname})/share/examples
+  ( cd doc/ ; tar -cf - . ) | ( cd \$(cwidir_${rname})/share/doc ; tar -xf - )
+  install -m 0644 *.sh \$(cwidir_${rname})/share/examples/
+  popd &>/dev/null
+}
+"
+
+# vim: set ft=bash:
