@@ -345,6 +345,7 @@ wc -l /tmp/astbuild.out
 - go stuff
   - https://github.com/avelino/awesome-go
 - go9p (https://github.com/knusbaum/go9p - 9p in go)
+- goaccess (https://github.com/allinurl/goaccess and https://goaccess.io - interactive web log analyzer/viewer)
 - go-git (https://github.com/go-git/go-git)
   - pure go, might make for a decent no-frills clone/fetch/merge client?
   - more stuff in examples directory!
