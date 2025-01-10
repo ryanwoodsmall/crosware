@@ -1,9 +1,9 @@
 rname="bc"
-rver="1.08.0"
+rver="1.08.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/bc/${rfile}"
-rsha256="7db49996cbe16d7602936fef586e69e492c3df65765c0a891841025a1ad741ef"
+rsha256="b71457ffeb210d7ea61825ff72b3e49dc8f2c1a04102bbe23591d783d1bfe996"
 rreqs="bison ed flex make readlinenetbsdcurses netbsdcurses sed texinfo"
 
 . "${cwrecipe}/common.sh"
