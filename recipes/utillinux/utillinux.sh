@@ -4,10 +4,10 @@
 # XXX - autoconf/automake/libtool/bison/flex necessary to regenerate from configure.ac; but, perl
 #
 rname="utillinux"
-rver="2.40.2"
+rver="2.40.3"
 rdir="util-linux-${rver}"
 rfile="${rdir}.tar.gz"
-rsha256="7bec316b713a14c6be1a5721aa0e56a3b6170277329e6e1f1a56013cc91eece0"
+rsha256="6d72589a24b7feccdf8db20336bb984f64c7cfc2ceb044ef01cac5dce480284e"
 rreqs="make zlib ncurses readline gettexttiny slibtool pcre2 pkgconfig sqlite"
 
 rburl="https://kernel.org/pub/linux/utils/util-linux"
