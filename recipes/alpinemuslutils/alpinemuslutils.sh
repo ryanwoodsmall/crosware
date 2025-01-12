@@ -3,7 +3,7 @@
 # XXX - looks like an libssp_nonshared.a can be built from it?
 #
 rname="alpinemuslutils"
-rver="3.20.3"
+rver="3.21.2"
 rdir="${rname}-${rver}"
 rfile="getconf.c"
 rurl="https://raw.githubusercontent.com/alpinelinux/aports/v${rver}/main/musl/${rfile}"
@@ -22,7 +22,7 @@ function cwfetch_${rname}() {
   local -A dlshasums=()
   dlfiles=( 'getconf.c' 'getent.c' 'iconv.c' )
   dlshasums+=( ['getconf.c']='d87d0cbb3690ae2c5d8cc218349fd8278b93855dd625deaf7ae50e320aad247c' )
-  dlshasums+=( ['getent.c']='002c1a216f6bed0f816ab1cfebde94a0b127193ef410c36b2190599983e015b8' )
+  dlshasums+=( ['getent.c']='b25f32d306d542246e9358ef65cd67c12b3e3a77656bc467853d3b0c76b5fbbd' )
   dlshasums+=( ['iconv.c']='f79a2930a2e5bb0624321589edf8b889d1e9b603e01e6b7ae214616605b3fdd7' )
   for f in \${dlfiles[@]} ; do
     dlurl=\"${rurl%${rfile}}\${f}\"
