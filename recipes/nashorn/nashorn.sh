@@ -5,7 +5,7 @@
 # XXX - replace rlwrap with jline?
 #
 rname="nashorn"
-rver="15.4"
+rver="15.6"
 rdir="${rname}-${rver}"
 rfile="${rname}-core-${rver}.jar"
 rurl="https://repo1.maven.org/maven2/org/openjdk/nashorn/nashorn-core/${rver}/${rfile}"
