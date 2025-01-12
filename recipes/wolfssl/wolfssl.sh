@@ -17,14 +17,14 @@
 # XXX - --enable-iopool ???
 #
 rname="wolfssl"
-rver="5.7.4"
+rver="5.7.6"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 #rdir="${rname}-${rver}"
 #rfile="${rdir}.tar.gz"
 #rurl="https://github.com/wolfSSL/wolfssl/releases/download/v${rver}-stable/${rfile}"
-rsha256="79fd96ce1f142aa6e0ec1ccb6d7810acfb1215fa48ee5a6ad63ee52034bc502d"
+rsha256="b1dcdebd7164228b5516a30cc5f58c7207eca8d23352ccd0adec1f82c365b091"
 rreqs="make cacertificates configgit slibtool toybox baseutils"
 
 . "${cwrecipe}/common.sh"
