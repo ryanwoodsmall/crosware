@@ -629,6 +629,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - jgitsh (bootstrap recipe)
   - jgitsh6 (java 11)
   - jgitsh7 (java 17)
+- jj (https://github.com/tidwall/jj - json stream editor)
 - jo (https://github.com/jpmens/jo)
 - jq (https://stedolan.github.io/jq/ - with oniguruma regex)
 - jruby
