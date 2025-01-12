@@ -965,6 +965,7 @@ wc -l /tmp/astbuild.out
 - ofelia (https://github.com/mcuadros/ofelia - scheduler for docker jobs, ala cron)
 - oleo (gnu spreadsheet, https://www.gnu.org/software/oleo/oleo.html)
 - openadk (https://openadk.org/ and https://github.com/wbx-github/openadk - embedded system toolchain and image creation)
+- openbao (https://github.com/openbao/openbao and https://openbao.org - open source vault fork)
 - openbsd-libz (https://github.com/ataraxialinux/openbsd-libz)
 - opengit (https://github.com/khanzf/opengit)
   - original gist: https://gist.github.com/ryanwoodsmall/2cbce4664f13b95ec7b0385fcee0b957
@@ -985,6 +986,7 @@ wc -l /tmp/astbuild.out
 - openresolv (http://roy.marples.name/projects/openresolv/ - resolvconf implementation)
 - opensimh (https://github.com/open-simh/simh - pre-license change fork)
   - simtools (https://github.com/open-simh/simtools - tools for simulators/integration)
+- opentofu (https://github.com/opentofu/opentofu and https://opentofu.org - open source terraform fork)
 - openvi (https://github.com/johnsonjh/OpenVi - portable openbsd vi)
 - opkg-utils (https://git.yoctoproject.org/opkg-utils - package build, etc.)
 - orbitron (https://github.com/xyproto/orbiton - vt100 IDE in go)
