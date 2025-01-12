@@ -19,6 +19,7 @@ function cwmakeinstall_${rname}() {
   cp \"\$(cwdlfile_${rname})\" \"\$(cwidir_${rname})/${rname}-all.jar\"
   echo '#!/usr/bin/env bash' > \"\$(cwidir_${rname})/bin/${rname}\"
   echo '${cwsw}/rlwrap/current/bin/rlwrap -C ${rname} java -jar \"${rtdir}/current/${rname}-all.jar\" \"\${@}\"' >> \"\$(cwidir_${rname})/bin/${rname}\"
+  ln -sf ${rname}-all.jar \$(cwidir_${rname})/${rname}.jar
   cwchmod \"755\" \"\$(cwidir_${rname})/bin/${rname}\"
 }
 "
