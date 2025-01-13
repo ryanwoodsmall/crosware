@@ -1,9 +1,9 @@
 rname="age"
-rver="1.2.0"
+rver="1.2.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/FiloSottile/${rname}/archive/refs/tags/${rfile}"
-rsha256="cefe9e956401939ad86a9c9d7dcf843a43b6bcdf4ee7d8e4508864f227a3f6f0"
+rsha256="93bd89a16c74949ee7c69ef580d8e4cf5ce03e7d9c461b68cf1ace3e4017eef5"
 rreqs="go cacertificates"
 
 . "${cwrecipe}/common.sh"
