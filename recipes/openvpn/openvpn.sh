@@ -1,9 +1,9 @@
 rname="openvpn"
-rver="2.6.12"
+rver="2.6.13"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://swupdate.openvpn.org/community/releases/${rfile}"
-rsha256="1c610fddeb686e34f1367c347e027e418e07523a10f4d8ce4a2c2af2f61a1929"
+rsha256="1af10b86922bd7c99827cc0f151dfe9684337b8e5ebdb397539172841ac24a6a"
 rreqs="make openssl zlib lzo lz4 pkgconfig libcapng"
 
 . "${cwrecipe}/common.sh"
