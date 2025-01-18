@@ -4,11 +4,11 @@
 # XXX - workaround ipv6 thing, via: https://git.alpinelinux.org/aports/tree/main/rsync/APKBUILD
 #
 rname="rsync"
-rver="3.3.0"
+rver="3.4.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://download.samba.org/pub/rsync/src/${rfile}"
-rsha256="7399e9a6708c32d678a72a63219e96f23be0be2336e50fd1348498d07041df90"
+rsha256="2924bcb3a1ed8b551fc101f740b9f0fe0a202b115027647cf69850d65fd88c52"
 rreqs="make lz4 xxhash zstd attr acl"
 
 . "${cwrecipe}/common.sh"
