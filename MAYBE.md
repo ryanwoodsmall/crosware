@@ -334,8 +334,9 @@ wc -l /tmp/astbuild.out
 - gcompat (https://code.foxkit.us/adelie/gcompat and https://github.com/AdelieLinux/gcompat)
 - gcide (https://gcide.gnu.org.ua - gnu collaborative international dictionary of english)
   - WARNING CONTAINS SLURS OF IT'S PERIOD (AND OURS)
+  - also contains encoded diacritics. hmm
   - words list with...
-    - ```grep -h '^<p><ent>' CIDE.* | while read -r l ; do : echo $l ; w="${l#*>}" ; w="${w#*>}" ; w="${w%%<*}" ; echo $w ; done```
+    - ```grep -h '<p><ent>' CIDE.* | while read -r l ; do w="${l##*<ent>}" w="${w%%</ent*}" ; printf '%s\n' "${w}" ; done | tr -s ' ' | sed 's,^ ,,g'```
 - geomyidae (http://r-36.net/scm/geomyidae/ - gopher server)
 - gdb
 - gh-dash (https://github.com/dlvhdr/gh-dash - github cli dashboard w/gh)
