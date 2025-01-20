@@ -4,13 +4,15 @@
 # XXX - bearssl+libtlsbearssl with CONFIG_WGET_LIBTLS?
 # XXX - openssl variant with CONFIG_WGET_OPENSSL?
 # XXX - scripts/genconfig.sh and the like need workarounds for '#!/bin/bash' -> '#!/usr/bin/env bash'
+# XXX - CONFIG_AWK
+# XXX - shell configs?
 #
 rname="toybox"
-rver="0.8.11"
+rver="0.8.12"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/landley/${rname}/archive/${rfile}"
-rsha256="83a3a88cbe1fa30f099c2f58295baef4637aaf988085aaea56e03aa29168175d"
+rsha256="3c529d93923dde67d048e7bcbd5d1bc0dd1ad09362269e2415f5f2eaab349b5b"
 rreqs="bootstrapmake alpinemuslutils"
 
 . "${cwrecipe}/common.sh"
