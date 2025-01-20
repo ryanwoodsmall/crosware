@@ -332,6 +332,10 @@ wc -l /tmp/astbuild.out
   - `gcc9`, `gcc10`, `gcc11` - default musl, useful for testing new versions
   - `gcc#glibc` - for gcc+glibc libc/libgcc_s/etc. (jdk, graalvm, ...)
 - gcompat (https://code.foxkit.us/adelie/gcompat and https://github.com/AdelieLinux/gcompat)
+- gcide (https://gcide.gnu.org.ua - gnu collaborative international dictionary of english)
+  - WARNING CONTAINS SLURS OF IT'S PERIOD (AND OURS)
+  - words list with...
+    - ```grep -h '^<p><ent>' CIDE.* | while read -r l ; do : echo $l ; w="${l#*>}" ; w="${w#*>}" ; w="${w%%<*}" ; echo $w ; done```
 - geomyidae (http://r-36.net/scm/geomyidae/ - gopher server)
 - gdb
 - gh-dash (https://github.com/dlvhdr/gh-dash - github cli dashboard w/gh)
