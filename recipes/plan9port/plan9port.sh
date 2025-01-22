@@ -24,20 +24,24 @@ cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwextract_${rname}() {
-  cwmkdir \"${ridir}\"
-  cwextract \"${rdlfile}\" \"${rtdir}\" >\"${ridir}/${rname}_extract.out\" 2>&1
+  cwmkdir \"\$(cwidir_${rname})\"
+  cwextract \"\$(cwdlfile_${rname})\" \"${rtdir}\" &> \"\$(cwidir_${rname})/${rname}_extract.out\"
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's,^PATH=,PATH=${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/busybox/current/bin:${cwsw}/toybox/current/bin:,g' INSTALL
   sed -i.ORIG '/^LDFLAGS/s/=/=-static/g' src/mkhdr
   sed -i.ORIG '/</s,1024,0,g' src/libthread/pthread.c
   grep -ril 'sys/termios\.h' . | xargs sed -i.ORIG 's,sys/termios\.h,termios.h,g' || true
   find src/cmd -name mk\* -exec grep -l 'LD -o' {} + | xargs sed -i.ORIG 's,LD ,LD \$LDFLAGS ,g' || true
-  if ! \$(which perl >/dev/null 2>&1) ; then
+  if ! command -v perl &>/dev/null ; then
+    cwscriptecho ''
+    cwscriptecho 'disabling manweb'
+    cwscriptecho ''
+    sleep 1
     mv dist/manweb{,.ORIG}
     head -1 dist/manweb.ORIG > dist/manweb
     echo true >> dist/manweb
@@ -46,20 +50,20 @@ function cwconfigure_${rname}() {
   echo WSYSTYPE=nowsys > LOCAL.config
   echo CC9=\${CC} >> LOCAL.config
   echo CC9FLAGS=-Wl,-static >> LOCAL.config
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   time busybox ash ./INSTALL 2>&1 | tee ${rname}_build.out
   find bin/ -type f -exec toybox file {} + \
   | grep ELF \
   | cut -f1 -d: \
   | xargs \$(\${CC} -dumpmachine)-strip --strip-all \
     || true
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

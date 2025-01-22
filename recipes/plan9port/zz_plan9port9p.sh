@@ -18,46 +18,46 @@ function cwfetch_${rname}() {
 # unzip is incredibly loud, add "-q"?
 eval "
 function cwextract_${rname}() {
-  cwextract \"${rdlfile}\" \"${cwbuild}\" >/dev/null 2>&1
+  cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\" &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG '/^LDFLAGS/s/=/=-static/g' src/mkhdr
   sed -i.ORIG '/</s,1024,0,g' src/libthread/pthread.c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cd src
   for l in 9 9pclient auth authsrv bio ip mux ndb thread ; do
-    ( cd lib\${l}/ ; env PLAN9=\"${rbdir}\" PATH=\"${rbdir}/bin:\${PATH}\" \"${cwsw}/9base/current/bin/mk\" CC9=\"\${CC}\" )
+    ( cd lib\${l}/ ; env PLAN9=\"\$(cwbdir_${rname})\" PATH=\"\$(cwbdir_${rname})/bin:\${PATH}\" \"${cwsw}/9base/current/bin/mk\" CC9=\"\${CC}\" )
   done
   cd cmd
-  env PLAN9=\"${rbdir}\" PATH=\"${rbdir}/bin:\${PATH}\" \"${cwsw}/9base/current/bin/mk\" 9p.install CC9=\"\${CC}\"
+  env PLAN9=\"\$(cwbdir_${rname})\" PATH=\"\$(cwbdir_${rname})/bin:\${PATH}\" \"${cwsw}/9base/current/bin/mk\" 9p.install CC9=\"\${CC}\"
   cd 9pfuse
-  env PLAN9=\"${rbdir}\" PATH=\"${rbdir}/bin:\${PATH}\" \"${cwsw}/9base/current/bin/mk\" 9pfuse.install CC9=\"\${CC}\"
-  popd >/dev/null 2>&1
+  env PLAN9=\"\$(cwbdir_${rname})\" PATH=\"\$(cwbdir_${rname})/bin:\${PATH}\" \"${cwsw}/9base/current/bin/mk\" 9pfuse.install CC9=\"\${CC}\"
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
-  cwmkdir \"${ridir}/bin\"
-  cwmkdir \"${ridir}/man/man1\"
-  cwmkdir \"${ridir}/man/man4\"
-  install -m 0755 bin/9p \"${ridir}/bin/\"
-  install -m 0755 bin/9pfuse \"${ridir}/bin/\"
-  install -m 0644 man/man1/9p.1 \"${ridir}/man/man1/\"
-  install -m 0644 man/man4/9pfuse.4 \"${ridir}/man/man4/\"
-  find \"${ridir}/bin/\" ! -type d | xargs \$(\${CC} -dumpmachine)-strip --strip-all || true
-  popd >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  cwmkdir \"\$(cwidir_${rname})/bin\"
+  cwmkdir \"\$(cwidir_${rname})/man/man1\"
+  cwmkdir \"\$(cwidir_${rname})/man/man4\"
+  install -m 0755 bin/9p \"\$(cwidir_${rname})/bin/\"
+  install -m 0755 bin/9pfuse \"\$(cwidir_${rname})/bin/\"
+  install -m 0644 man/man1/9p.1 \"\$(cwidir_${rname})/man/man1/\"
+  install -m 0644 man/man4/9pfuse.4 \"\$(cwidir_${rname})/man/man4/\"
+  find \"\$(cwidir_${rname})/bin/\" ! -type d | xargs \$(\${CC} -dumpmachine)-strip --strip-all || true
+  popd &>/dev/null
 }
 "
 
