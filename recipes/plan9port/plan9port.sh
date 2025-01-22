@@ -8,11 +8,11 @@
 #
 
 rname="plan9port"
-rver="be7c68f6954f7dcaa53403e0f600716f65a13d32"
+rver="61e362add9e1485bec1ab8261d729016850ec270"
 rdir="${rname}-${rver}"
 rfile="${rver}.zip"
 rurl="https://github.com/9fans/${rname}/archive/${rfile}"
-rsha256="931b96e814b31769bf62b2ef2189ac2f474207d079932987c468b1c86854fb39"
+rsha256="b86ed10afe0c469fa4c477527f0a3bcfe79b83c1d14a30b2e9f83d674295e455"
 rreqs="busybox toybox"
 rprof="${cwetcprofd}/zz_zz_${rname}.sh"
 rbdir="${cwsw}/${rname}/${rdir}"
