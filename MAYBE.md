@@ -1348,6 +1348,7 @@ wc -l /tmp/astbuild.out
   - stunnel, etc.
   - nice... some don't seem to work
 - wordgrinder (https://github.com/davidgiven/wordgrinder - word processor)
+- wordlist (https://github.com/en-wl/wordlist - that's the wordlist, with offense badboys marked)
 - words (https://gitlab.com/redhat/centos-stream/rpms/words/-/blob/c10s/words.spec?ref_type=heads - dictionary for /usr/share/dict/words)
   - https://web.archive.org/web/20060527013227/http://www.dcs.shef.ac.uk/research/ilash/Moby/mwords.tar.Z (???)
 - wrp (https://github.com/tenox7/wrp - web rendering proxy)
