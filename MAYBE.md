@@ -1181,6 +1181,7 @@ wc -l /tmp/astbuild.out
   - runit (http://smarden.org/runit/)
 - smimesign (https://github.com/github/smimesign - commit/tag signing for git, in go)
 - snarf (https://www.xach.com/snarf/ - old but small, still useful?)
+- soap (https://github.com/pmamico/soap-cli - cli soap client using curl and xmlstarlet)
 - source-highlight (https://www.gnu.org/software/src-highlite/)
   - 2.x, 3.x require boost (yeeee), ctags
   - ```./configure --prefix=${ridir} --enable-static{,=yes} --enable-shared=no --disable-shared --with-boost-libdir=${cwsw}/boost/current/lib LDFLAGS="${LDFLAGS} -L${cwsw}/boost/current/lib" CXXFLAGS="${CXXFLAGS} -I${cwsw}/boost/current/include"```
