@@ -14,11 +14,11 @@
 # XXX - 1.8.11 breaks a bunch of shit; investigate w/musl 1.2.5+
 #
 rname="iptables"
-rver="1.8.10"
+rver="1.8.11"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://www.netfilter.org/pub/${rname}/${rfile}"
-rsha256="5cc255c189356e317d070755ce9371eb63a1b783c34498fb8c30264f3cc59c9c"
+rsha256="d87303d55ef8c92bcad4dd3f978b26d272013642b029425775f5bad1009fe7b2"
 rreqs="bootstrapmake pkgconfig libpcap libnl libmnl libnetfilterconntrack libnfnetlink libnftnl"
 
 . "${cwrecipe}/common.sh"
