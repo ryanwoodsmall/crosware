@@ -3,11 +3,11 @@
 # XXX - hacky workaround below until compiler upgrades
 #
 rname="gpgme"
-rver="1.24.0"
+rver="1.24.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/gpgme/${rfile}"
-rsha256="61e3a6ad89323fecfaff176bc1728fb8c3312f2faa83424d9d5077ba20f5f7da"
+rsha256="ea05d0258e71061d61716584ec34cef59330a91340571edc46b78374973ba85f"
 rreqs="make gnupg libgpgerror libgcrypt libksba libassuan npth ntbtls sqlite readline ncurses slibtool zlib bzip2 pkgconfig pinentry configgit"
 
 . "${cwrecipe}/common.sh"
