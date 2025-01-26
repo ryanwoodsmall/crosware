@@ -3,11 +3,11 @@
 # XXX - netbsdcurses?
 #
 rname="gnupg"
-rver="2.4.6"
+rver="2.4.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://gnupg.org/ftp/gcrypt/${rname}/${rfile}"
-rsha256="95acfafda7004924a6f5c901677f15ac1bda2754511d973bb4523e8dd840e17a"
+rsha256="7b24706e4da7e0e3b06ca068231027401f238102c41c909631349dcc3b85eb46"
 rreqs="make libgpgerror libgcrypt libksba libassuan npth ntbtls sqlite readline ncurses slibtool zlib bzip2 pkgconfig pinentry configgit"
 
 . "${cwrecipe}/common.sh"
