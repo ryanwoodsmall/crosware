@@ -338,6 +338,7 @@ wc -l /tmp/astbuild.out
   - words list with...
     - ```grep -h '<p><ent>' CIDE.* | while read -r l ; do w="${l##*<ent>}" w="${w%%</ent*}" ; printf '%s\n' "${w}" ; done | tr -s ' ' | sed 's,^ ,,g'```
 - geomyidae (http://r-36.net/scm/geomyidae/ - gopher server)
+- getdents (https://github.com/aidenbell/getdents - fast get directory entries syscall)
 - gdb
 - gh-dash (https://github.com/dlvhdr/gh-dash - github cli dashboard w/gh)
 - git-crypt (https://github.com/AGWA/git-crypt)
