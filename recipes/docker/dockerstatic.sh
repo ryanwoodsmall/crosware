@@ -1,5 +1,5 @@
 rname="dockerstatic"
-rver="27.5.0"
+rver="27.5.1"
 rdir="${rname//static/}-${rver}"
 rbdir="${cwbuild}/docker"
 rfile="${rdir}.tgz"
@@ -9,17 +9,20 @@ rsha256=""
 rburl="https://download.docker.com/linux/static/stable"
 if [[ ${karch} =~ ^aarch64 ]] ; then
   rurl="${rburl}/aarch64/${rfile}"
-  rsha256="b93df316480e939712c67e2c37a7cc1442bcedbf6ca91a945b11c8afc246ff0f"
+  rsha256="e6b53725a73763ab3f988c73f8772eaed429754c1a579db5ff11f21990fd1817"
 elif [[ ${karch} =~ ^arm ]] ; then
   rurl="${rburl}/armhf/${rfile}"
-  rsha256="457f41862a6e9ef872800a3b5f0360ae9a1975ace09c27402a315fe2bf0912ae"
+  rsha256="d1aac79d0ea25ab2d7bac56398959d70b4a3c34b90db91842c841f0d7faf36c3"
 elif [[ ${karch} =~ ^x86_64 ]] ; then
   rurl="${rburl}/x86_64/${rfile}"
-  rsha256="4fca6bb9a3f4e13c50dea35aeef57aad735aed8e7eff67ef3741f777ce2c2eb7"
+  rsha256="4f798b3ee1e0140eab5bf30b0edc4e84f4cdb53255a429dc3bbae9524845d640"
 fi
 unset rburl
 
 . "${cwrecipe}/common.sh"
+
+cwstubfunc "cwconfigure_${rname}"
+cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwmakeinstall_${rname}() {
@@ -32,22 +35,14 @@ function cwmakeinstall_${rname}() {
 }
 "
 
+cwcopyfunc "cwinstall_${rname}" "cwinstall_${rname}_real"
 eval "
 function cwinstall_${rname}() {
   if [[ ${karch} =~ ^(i.86|riscv64) ]] ; then
     cwscriptecho \"${rname} does not support ${karch}\"
     return
   fi
-  cwclean_${rname}
-  cwfetch_${rname}
-  cwcheckreqs_${rname}
-  cwsourceprofile
-  cwextract_${rname}
-  cwmakeinstall_${rname}
-  cwlinkdir_${rname}
-  cwgenprofd_${rname}
-  cwmarkinstall_${rname}
-  cwclean_${rname}
+  cwinstall_${rname}_real
 }
 "
 
