@@ -155,6 +155,9 @@ ${CC:-gcc} "${cwtop}/builds/busybox-${bbver}/networking/httpd_indexcgi.c" -o "${
 # ssi handler
 scriptecho "installing ${cgidir}/httpd_ssi"
 ${CC:-gcc} "${cwtop}/builds/busybox-${bbver}/networking/httpd_ssi.c" -o "${cgidir}/httpd_ssi" -static
+# post upload thing
+scriptecho "installing ${cgidir}/httpd_post_upload.cgi"
+install -m 0755 "${cwtop}/builds/busybox-${bbver}/networking/httpd_post_upload.cgi" "${cgidir}/httpd_post_upload.cgi"
 
 scriptecho "cleaning up"
 crosware run-func cwclean_busybox
