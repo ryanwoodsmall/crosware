@@ -506,6 +506,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - does _not_ work on i686
   - architecture naming conventions: https://github.com/docker-library/official-images#architectures-other-than-amd64
 - doctl (https://github.com/digitalocean/doctl and https://docs.digitalocean.com/reference/doctl/ - digital ocean api control program)
+- dosfstools (https://github.com/dosfstools/dosfstools - dosfstools)
 - dropbear (https://matt.ucc.asn.au/dropbear/dropbear.html and https://dropbear.nl/ - zlib, lsh sftp-server - tcp port 2222)
   - dropbearminimal (zlib - tcp port 22222)
 - dsvpn (https://github.com/jedisct1/dsvpn - dead simple vpn)
