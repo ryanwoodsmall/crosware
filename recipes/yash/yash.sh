@@ -2,11 +2,11 @@
 # XXX - minimal termcap variant? doesn't seem to work, looking for tinfo/terminfo/curses/ncurses{,w}
 #
 rname="yash"
-rver="2.57"
+rver="2.58"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/magicant/${rname}/releases/download/${rver}/${rfile}"
-rsha256="6e0afb767d7d7378713c4b9fdcf2cdca4871d5b11ebae07f5646aea8182aa03e"
+rsha256="4c7367998ad8fea0ea9dc787985925c3fff11853196bfbe931627ad5ee265cc5"
 rreqs="make netbsdcurses libeditnetbsdcurses"
 
 . "${cwrecipe}/common.sh"
