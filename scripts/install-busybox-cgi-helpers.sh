@@ -144,7 +144,7 @@ EOF
 chmod 755 tar.cgi
 
 # get and extract busybox
-scriptecho "fetching busybox"
+scriptecho "fetching and extracting busybox... this may take a few minutes"
 bbver="$(crosware run-func cwver_busybox)"
 crosware run-func cw{fetch,clean,extract}_busybox
 
