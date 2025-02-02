@@ -38,8 +38,8 @@ function cwmakeinstall_${rname}() {
 cwcopyfunc "cwinstall_${rname}" "cwinstall_${rname}_real"
 eval "
 function cwinstall_${rname}() {
-  if [[ ${karch} =~ ^(i.86|riscv64) ]] ; then
-    cwscriptecho \"${rname} does not support ${karch}\"
+  if [[ \${karch} =~ ^(i.86|riscv64) ]] ; then
+    cwscriptecho \"${rname} does not support \${karch}\"
     return
   fi
   cwinstall_${rname}_real
