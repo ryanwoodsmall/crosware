@@ -1,12 +1,11 @@
 #
 # XXX - zstd support
 #
-
 rname="file"
 rver="5.46"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://astron.com/pub/${rname}/${rfile}"
+rurl="https://astron.com/pub/file/${rfile}"
 rsha256="c9cc77c7c560c543135edc555af609d5619dbef011997e988ce40a3d75d86088"
 rreqs="make zlib bzip2 xz"
 
