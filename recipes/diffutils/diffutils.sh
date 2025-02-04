@@ -1,9 +1,9 @@
 rname="diffutils"
-rver="3.10"
+rver="3.11"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
-rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="90e5e93cc724e4ebe12ede80df1634063c7a855692685919bfe60b556c9bd09e"
+rfile="${rdir}.tar.gz"
+rurl="https://ftp.gnu.org/gnu/diffutils/${rfile}"
+rsha256="c80a3c2bf87e252fe7d605b8ba6bf928d75a90b55f3bfcf7c4a4f337ec62fc31"
 rreqs="make sed gawk"
 
 . "${cwrecipe}/common.sh"
@@ -11,7 +11,7 @@ rreqs="make sed gawk"
 # XXX - sed fix from https://git.alpinelinux.org/cgit/aports/tree/main/diffutils/APKBUILD
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG '/gets is a/d' lib/stdio.in.h
   ./configure ${cwconfigureprefix} --disable-nls \
     LDFLAGS=-static \
@@ -21,13 +21,13 @@ function cwconfigure_${rname}() {
   echo '#include <config.h>' > lib/sigsegv.c
   echo '#include <sys/reg.h>' >> lib/sigsegv.c
   cat lib/sigsegv.c.ORIG >> lib/sigsegv.c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   (
     local i
@@ -38,7 +38,7 @@ function cwmakeinstall_${rname}() {
     done
     test -e gnudiff || ln -s diff gnudiff
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
