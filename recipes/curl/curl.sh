@@ -24,12 +24,12 @@
 # XXX - mbedtls is messy at/after fba9afebba22d577f122239b184edc90c18fd81b (bisected) - need to figure out why
 #
 rname="curl"
-rver="8.12.0"
+rver="8.12.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="https://curl.se/download/${rfile}"
 rurl="https://github.com/curl/curl/releases/download/curl-${rver//./_}/${rfile}"
-rsha256="b72ec874e403c90462dc3019c5b24cc3cdd895247402bf23893b3b59419353bc"
+rsha256="7b40ea64947e0b440716a4d7f0b7aa56230a5341c8377d7b609649d4aea8dbcf"
 rreqs="make zlib openssl libssh2 cacertificates nghttp2 pkgconfig caextract"
 
 . "${cwrecipe}/common.sh"
