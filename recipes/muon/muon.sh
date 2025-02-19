@@ -2,11 +2,11 @@
 # XXX - libcurl, libarchive, etc.
 #
 rname="muon"
-rver="0.3.1"
+rver="0.4.0"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/annacrombie/muon/archive/refs/tags/${rfile}"
-rsha256="14b175b29c4390a69c1d9b5758b4689f0456c749822476af67511f007be2e503"
+rsha256="c2ce8302e886b2d3534ec38896a824dc83f43698d085d57bb19a751611d94e86"
 rreqs="samurai pkgconf"
 
 . "${cwrecipe}/common.sh"
@@ -32,11 +32,11 @@ function cwmake_${rname}() {
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
-      \"\$(cwbdir_${rname})/build/muon\" setup \
+      \"\$(cwbdir_${rname})/build/muon-bootstrap\" setup \
         -Dprefix=\"\$(cwidir_${rname})\" \
         -Dstatic=true \
         -Dlibpkgconf=enabled \
-        -Dreadline=bestline \
+        -Dreadline=builtin \
         -D{docs,libarchive,libcurl,tracy}=disabled \
         -Dwebsite=false \
          build
