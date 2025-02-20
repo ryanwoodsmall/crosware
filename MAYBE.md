@@ -1079,7 +1079,8 @@ wc -l /tmp/astbuild.out
 - rqlite (https://github.com/rqlite/gorqlite and https://rqlite.io - distributed db built on sqlite, go)
 - rust (https://www.rust-lang.org/)
   - bootstrap? (https://guix.gnu.org/blog/2018/bootstrapping-rust/ - guix!)
-  - mrustc (https://github.com/thepowersgang/mrustc - c++)
+  - dozer (https://codeberg.org/notgull/dozer - wip rust compiler in c)
+  - mrustc (https://github.com/thepowersgang/mrustc - c++, bootstrap???)
   - rust-gcc (https://rust-gcc.github.io/ and https://github.com/Rust-GCC/gccrs)
   - rustup (https://rustup.rs/)
 - rvm?
