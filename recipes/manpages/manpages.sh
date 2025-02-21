@@ -2,11 +2,11 @@
 # XXX - avoid execution of `git log` for every file? wtf
 #
 rname="manpages"
-rver="6.9.1"
+rver="6.11"
 rdir="man-pages-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/${rfile}"
-rsha256="3ae3f8ad97487d2c1b14258231d97d03b4e569b915377f6dd4f6be7141c57ee0"
+rsha256="44c09f43ae7a0b327efef5285a30d56ecc5fd4a07056f77e806f6c65196ba7f3"
 rreqs="make coreutils"
 
 . "${cwrecipe}/common.sh"
@@ -55,8 +55,8 @@ function cwmakeinstall_${rname}() {
   (
     export PATH=\"${cwsw}/coreutils/current/bin:\${PATH}\"
     cwmkdir \"\$(cwidir_${rname})\"
-    cwscriptecho \"\$(cwmyfuncname): installing man-pages\"
-    make install-man prefix=\"\$(cwidir_${rname})\" &> \$(cwidir_${rname})/man-pages_install.out
+    cwscriptecho \"\$(cwmyfuncname): installing man-pages... this will take awhile\"
+    make -j${cwmakejobs} -R install prefix=\"\$(cwidir_${rname})\" &> \$(cwidir_${rname})/man-pages_install.out
     cd ${mpd}
     cwscriptecho \"\$(cwmyfuncname): installing man-pages-posix\"
     make install prefix=\"\$(cwidir_${rname})\" &> \$(cwidir_${rname})/man-pages-posix_install.out
