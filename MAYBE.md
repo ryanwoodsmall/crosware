@@ -219,6 +219,7 @@ wc -l /tmp/astbuild.out
 - cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
 - cembed (https://github.com/rxi/cembed - embed files in a c header - useful for tinyscheme/minischeme library in single binary???)
 - cepl (https://github.com/alyptik/cepl)
+- certspotter (https://github.com/SSLMate/certspotter - monitor letsencrypt/certificate transparency/etc. for changes)
 - certviewer (https://github.com/cortiz/certview - certificate, including remote, viewer in go, with text/yaml/json/... output)
 - certstrap (https://github.com/square/certstrap - simple CA bootstrap in go!)
 - chelf (https://github.com/Gottox/chelf)
