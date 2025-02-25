@@ -16,11 +16,11 @@
 #
 
 rname="inetutils"
-rver="2.5"
+rver="2.6"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
+rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="87697d60a31e10b5cb86a9f0651e1ec7bee98320d048c0739431aac3d5764fb6"
+rsha256="ccaa256e0d646df7f285ff158a3291f37cd1fc8382f3774d22f7254127635da7"
 rreqs="make sed netbsdcurses readlinenetbsdcurses configgit"
 
 . "${cwrecipe}/common.sh"
@@ -34,7 +34,7 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwbdir_${rname})/include/protocols\"
   cwmkdir \"\$(cwbdir_${rname})/include/bits/types\"
   install -m 0644 \"${cwdl}/${rname}/talkd.h\" \"\$(cwbdir_${rname})/include/protocols/talkd.h\"
@@ -62,16 +62,16 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -lreadline -lcurses -lterminfo\" \
       TMPDIR=${cwtop}/tmp
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install-strip
   find \$(cwidir_${rname})/bin/ \$(cwidir_${rname})/sbin/ | xargs chmod a+x
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
