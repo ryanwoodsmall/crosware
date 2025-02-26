@@ -7,11 +7,11 @@
 # XXX - clean this up!
 #
 rname="sqlite"
-rver="3490000"
+rver="3490100"
 rdir="${rname}-autoconf-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.sqlite.org/2025/${rfile}"
-rsha256="4d8bfa0b55e36951f6e5a9fb8c99f3b58990ab785c57b4f84f37d163a0672759"
+rsha256="106642d8ccb36c5f7323b64e4152e9b719f7c0215acf5bfeac3d5e7f97b59254"
 rreqs="make netbsdcurses readlinenetbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
@@ -80,7 +80,6 @@ function cwmakeinstall_${rname}_minimal() {
     ./configure ${cwconfigureprefix} --disable-shared --disable-readline --disable-editline
     make -j${cwmakejobs} ${rlibtool}
   )
-  make install ${rlibtool}
   install -m 755 sqlite3 \"\$(cwidir_${rname})/bin/sqlite3-minimal\"
   popd &>/dev/null
 }
@@ -92,6 +91,7 @@ function cwmakeinstall_${rname}() {
   cwmakeinstall_${rname}_readline
   cwmakeinstall_${rname}_linenoise
   cwmakeinstall_${rname}_minimal
+  make install ${rlibtool}
   ln -sf sqlite3-readline \"\$(cwidir_${rname})/bin/sqlite3\"
   popd &>/dev/null
 }
