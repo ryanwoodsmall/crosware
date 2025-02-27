@@ -1102,6 +1102,7 @@ wc -l /tmp/astbuild.out
   - chez (scheme, https://github.com/cisco/ChezScheme - utillinux (uuid), ncurses, disable x11)
   - chibi-scheme (https://github.com/ashinn/chibi-scheme)
   - chicken (https://www.call-cc.org)
+  - cyclone (https://justinethier.github.io/cyclone - new r7rs compiler)
   - elk (http://sam.zoy.org/elk)
   - femtolisp (https://github.com/JeffBezanson/femtolisp)
   - gerbil (https://cons.io/ and https://github.com/vyzo/gerbil)
@@ -1111,6 +1112,7 @@ wc -l /tmp/astbuild.out
     - shared, no static
     - gmp, libffi, pkgconfig, probably configgit
     - configure with... ```./configure --prefix=${ridir} CPPFLAGS="${CPPFLAGS} $(pkg-config --cflags libffi)" CFLAGS="${CFLAGS//-Wl,-static}" LDFLAGS="${LDFLAGS//-static/}"```
+  - jazz (https://github.com/jazzscheme/jazz - gambit development environment?)
   - ksi (http://ksi.sourceforge.net/)
     - gmp, gc
   - larceny (and petit larceny, http://larcenists.org)
@@ -1127,11 +1129,13 @@ wc -l /tmp/astbuild.out
   - racket
   - rscheme (http://www.rscheme.org/rs)
   - s7 (https://ccrma.stanford.edu/software/snd/snd/s7.html)
+  - sagittarius (https://ktakashi.github.io and https://github.com/ktakashi/sagittarius-scheme)
   - scheme2c (https://github.com/barak/scheme2c)
   - sharpf (https://github.com/false-schemers/sharpF - minimalist scheme language builder)
   - sigscheme (https://github.com/uim/sigscheme)
   - siod (http://people.delphiforums.com/gjc//siod.html)
   - siof (https://github.com/false-schemers/siof - scheme in one file)
+  - skint (https://github.com/false-schemers/skint - cheap/fast interpreter)
   - stalin (w/debian patches? https://github.com/barak/stalin)
   - stklos (http://www.stklos.net/)
   - tinyscheme
@@ -1140,6 +1144,7 @@ wc -l /tmp/astbuild.out
     - https://github.com/ignorabimus/tinyscheme
     - other forks/branches?
   - tisp (https://github.com/edvb/tisp)
+  - tr7 (https://gitlab.com/jobol/tr7 - embeddable scheme)
   - umb-scheme
   - vicare (ikarus fork-of-fork, https://github.com/barak/vicare)
   - ypsilon (http://www.littlewingpinball.net/mediawiki/index.php/Ypsilon)
