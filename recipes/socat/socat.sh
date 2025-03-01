@@ -7,11 +7,11 @@
 #     px5g selfsigned -newkey rsa:2048 -keyout client.key -out client.crt -subj /CN=client
 #     socat -d -d openssl-dtls-client:server:8444,cert=client.crt,key=client.key,cafile=server.crt tun:192.168.123.2/24,tun-name=tun0,iff-up
 rname="socat"
-rver="1.8.0.2"
+rver="1.8.0.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.dest-unreach.org/${rname}/download/${rfile}"
-rsha256="e9498367cb765d44bb06be9709c950f436b30bf7071a224a0fee2522f9cbb417"
+rsha256="a9f9eb6cfb9aa6b1b4b8fe260edbac3f2c743f294db1e362b932eb3feca37ba4"
 rreqs="make openssl netbsdcurses readlinenetbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
