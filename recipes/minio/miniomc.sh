@@ -1,6 +1,6 @@
 rname="miniomc"
-rver="2025-02-04T04-57-50Z"
-rcommitid="318e7070718f59198a9c6911f72e46dab1625b3a"
+rver="2025-02-21T16-00-46Z"
+rcommitid="9eb205cb62c6466887037397c5aa202b53d10c78"
 rdir="mc-RELEASE.${rver}"
 rfile="RELEASE.${rver}.tar.gz"
 rurl="https://github.com/minio/mc/archive/refs/tags/${rfile}"
