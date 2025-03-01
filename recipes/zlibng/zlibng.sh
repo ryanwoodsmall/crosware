@@ -3,11 +3,11 @@
 # XXX - 2.1.x broke something with shared, might be gcc version. turn it off for now
 #
 rname="zlibng"
-rver="2.2.3"
+rver="2.2.4"
 rdir="zlib-ng-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/zlib-ng/zlib-ng/archive/refs/tags/${rfile}"
-rsha256="f2fb245c35082fe9ea7a22b332730f63cf1d42f04d84fe48294207d033cba4dd"
+rsha256="a73343c3093e5cdc50d9377997c3815b878fd110bf6511c2c7759f2afb90f5a3"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
