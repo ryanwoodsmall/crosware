@@ -10,6 +10,7 @@ rurl="http://musl.libc.org/releases/${rfile}"
 rsha256="a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4"
 rreqs="make"
 rprof="${cwetcprofd}/zz_${rname}.sh"
+rpfile="${cwrecipe}/musl/${rname}.patches"
 
 . "${cwrecipe}/common.sh"
 

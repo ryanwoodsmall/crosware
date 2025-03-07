@@ -1,0 +1,2 @@
+https://raw.githubusercontent.com/ryanwoodsmall/musl-misc/refs/heads/master/patches/0001-iconv-fix-erroneous-input-validation-in-EUC-KR-decod.patch,0896fcdb5125d9d0723f4e165f13c209830e7045a75cba4e858060837cb7292e,1
+https://raw.githubusercontent.com/ryanwoodsmall/musl-misc/refs/heads/master/patches/0002-iconv-harden-UTF-8-output-code-path-against-input-de.patch,0620fcee4e8a4e52ebe1ea75e2b51d2197ebda242489c0586924eafa9e9606a1,1
