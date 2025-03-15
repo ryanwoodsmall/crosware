@@ -1,6 +1,5 @@
 #
 # XXX - no riscv64 machine support in arch/uname (yet)
-# XXX - move to pkgconf? or move everything towards pkgconf by default? both
 #
 
 rname="baseutils"
@@ -10,7 +9,7 @@ rfile="${rver}.zip"
 #rurl="https://github.com/ibara/${rname}/archive/${rfile}"
 rurl="https://github.com/ryanwoodsmall/${rname}/archive/${rfile}"
 rsha256=""
-rreqs="bmake libbsd pkgconfig"
+rreqs="bmake libbsd pkgconf"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -23,44 +22,46 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's/make /\$(MAKE) /g' Makefile
   grep -ril 'sys/cdefs' . | xargs sed -i.ORIG 's#sys/cdefs#bsd/sys/cdefs#g'
   grep -ril 'sys/queue' . | xargs sed -i.ORIG 's#sys/queue#bsd/sys/queue#g'
   sed -i.ORIG 's/SIMPLEQ/STAILQ/g' paste/paste.c
-  if [[ ${karch} =~ riscv64 ]] ; then
+  if [[ \${karch} =~ riscv64 ]] ; then
     sed -i.ORIG '/-C arch/d;/-C uname/d' Makefile
   fi
   sed -i 's/-o maketab/-o maketab -static/g' awk/Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  export PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\"
   \"${cwsw}/bmake/current/bin/bmake\" \
-    PREFIX=\"${ridir}\" \
-    MANDIR=\"${ridir}/share/man\" \
-    LDFLAGS=\"\$(pkg-config --libs libbsd) -static\" \
-    CPPFLAGS=\"\$(pkg-config --cflags libbsd)\" \
-    CC=\"\${CC} \$(pkg-config --cflags libbsd)\"
-  popd >/dev/null 2>&1
+    PREFIX=\"\$(cwidir_${rname})\" \
+    MANDIR=\"\$(cwidir_${rname})/share/man\" \
+    LDFLAGS=\"\$(\${PKG_CONFIG} --libs libbsd) -static\" \
+    CPPFLAGS=\"\$(\${PKG_CONFIG} --cflags libbsd)\" \
+    CC=\"\${CC} \$(\${PKG_CONFIG} --cflags libbsd)\"
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  export PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\"
   \"${cwsw}/bmake/current/bin/bmake\" \
     install \
-    PREFIX=\"${ridir}\" \
-    MANDIR=\"${ridir}/share/man\" \
-    LDFLAGS=\"\$(pkg-config --libs libbsd) -static\" \
-    CPPFLAGS=\"\$(pkg-config --cflags libbsd)\" \
-    CC=\"\${CC} \$(pkg-config --cflags libbsd)\"
-  find \"${ridir}/\" -type f -exec chmod u+rw {} +
-  popd >/dev/null 2>&1
+    PREFIX=\"\$(cwidir_${rname})\" \
+    MANDIR=\"\$(cwidir_${rname})/share/man\" \
+    LDFLAGS=\"\$(\${PKG_CONFIG} --libs libbsd) -static\" \
+    CPPFLAGS=\"\$(\${PKG_CONFIG} --cflags libbsd)\" \
+    CC=\"\${CC} \$(\${PKG_CONFIG} --cflags libbsd)\"
+  find \"\$(cwidir_${rname})/\" -type f -exec chmod u+rw {} +
+  popd &>/dev/null
 }
 "
 
