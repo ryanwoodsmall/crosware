@@ -8,7 +8,6 @@ rreqs="go cacertificates"
 
 . "${cwrecipe}/common.sh"
 
-
 cwstubfunc "cwconfigure_${rname}"
 
 eval "
