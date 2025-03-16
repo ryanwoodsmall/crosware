@@ -10,30 +10,31 @@ rreqs="configgit bootstrapmake nettleminimal"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cd src/sftp/
   env PATH=\"${cwsw}/nettleminimal/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+      C{,XX}FLAGS=\"\${CFLAGS} -Os -g0 -Wl,-s\" \
       CPPFLAGS=\"-I${cwsw}/nettleminimal/current/include\" \
-      LDFLAGS=\"-L${cwsw}/nettleminimal/current/lib -static\" \
+      LDFLAGS=\"-L${cwsw}/nettleminimal/current/lib -static -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/nettleminimal/current/lib/pkgconfig\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cd src/sftp/
   env PATH=\"${cwsw}/nettleminimal/current/bin:\${PATH}\" \
     make -j${cwmakejobs} ${rlibtool}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cd src/sftp/
   env PATH=\"${cwsw}/nettleminimal/current/bin:\${PATH}\" \
     make install ${rlibtool}
@@ -41,6 +42,6 @@ function cwmakeinstall_${rname}() {
   rm -f \"\$(cwidir_${rname})/share/man/man1/lsftp.1\" || true
   rmdir \"\$(cwidir_${rname})/bin\"
   rmdir \"\$(cwidir_${rname})/share/man/man1\" || true
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
