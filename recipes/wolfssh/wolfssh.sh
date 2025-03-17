@@ -2,11 +2,11 @@
 # XXX - examples seem to work with username/password, but tinycurl does not?
 #
 rname="wolfssh"
-rver="1.4.19"
+rver="1.4.20"
 rdir="${rname}-${rver}-stable"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="9cc08ec50335d0ea05c892dda5e2d31ab65bd9d7ab62c140cd3e62d15153ba99"
+rsha256="06a295fb405be73c7a41e13e11aae799a46e5a25cd406c68c6ef20427b53b261"
 rreqs="make wolfssl configgit slibtool"
 
 . "${cwrecipe}/common.sh"
