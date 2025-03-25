@@ -2,11 +2,11 @@
 # XXX - need a "make modules" in here?
 #
 rname="gambit"
-rver="4.9.5"
+rver="4.9.6"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
-rurl="https://github.com/gambit/${rname}/archive/${rfile}"
-rsha256="758da7b4afe6411e9c4fed14b0cc5ada39b5f1393c1edd4d3dd9c9a06127c310"
+rurl="https://github.com/gambit/gambit/archive/${rfile}"
+rsha256="6fc1fa06262e03c1b4215977e75bdbbd80d09b3819683ac2124c5ac94781272c"
 rreqs="make configgit"
 
 . "${cwrecipe}/common.sh"
