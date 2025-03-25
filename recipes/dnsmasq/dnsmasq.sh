@@ -3,11 +3,11 @@
 # XXX - nettle support for dnssec/etc.?
 #
 rname="dnsmasq"
-rver="2.90"
+rver="2.91"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.thekelleys.org.uk/${rname}/${rfile}"
-rsha256="8f6666b542403b5ee7ccce66ea73a4a51cf19dd49392aaccd37231a2c51b303b"
+rsha256="2d26a048df452b3cfa7ba05efbbcdb19b12fe7a0388761eb5d00938624bd76c8"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
