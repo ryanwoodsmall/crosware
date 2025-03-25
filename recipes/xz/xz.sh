@@ -1,11 +1,11 @@
 rname="xz"
-rver="5.6.4"
+rver="5.8.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/tukaani-project/xz/releases/download/v${rver}/${rfile}"
 #rurl="https://tukaani.org/${rname}/${rfile}"
 #rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="269e3f2e512cbd3314849982014dc199a7b2148cf5c91cedc6db629acdf5e09b"
+rsha256="b523c5e47d1490338c5121bdf2a6ecca2bcf0dce05a83ad40a830029cbe6679b"
 rreqs="make slibtool"
 
 . "${cwrecipe}/common.sh"
