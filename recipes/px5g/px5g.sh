@@ -1,6 +1,7 @@
 #
 # XXX - selfsigned:
 #   px5g selfsigned -newkey rsa:2048 -keyout blah.key -out blah.crt -subj /CN=host.name
+# XXX - 24.10.x needs mbedtls 3, i believe; api changes
 #
 rname="px5g"
 rver="23.05.3"
