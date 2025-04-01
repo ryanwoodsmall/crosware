@@ -1,9 +1,9 @@
 rname="inih"
-rver="r58"
+rver="r59"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/benhoyt/${rname}/archive/refs/tags/${rfile}"
-rsha256="e79216260d5dffe809bda840be48ab0eec7737b2bb9f02d2275c1b46344ea7b7"
+rsha256="062279922805f5e9a369551a08d5ddb506140fe50774183ffdbb7c22bb97e3f4"
 rreqs="meson ninja"
 
 . "${cwrecipe}/common.sh"
