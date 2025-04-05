@@ -93,7 +93,7 @@
     - ```if ! $(set | grep -q "^cwinstall_${recipe} ") ; then ... ; fi```
   - this works in its stead:
     - ```
-         set | grep "^cwinstall_${recipe} " >/dev/null 2>&1
+         set | grep "^cwinstall_${recipe} " &>/dev/null
          if [ ${?} -ne 0 ] ; then ... ; fi
       ```
 - check that we are running as root
