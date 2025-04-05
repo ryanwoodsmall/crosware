@@ -14,31 +14,31 @@ rreqs="make netbsdcurses readlinenetbsdcurses byacc"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat Makefile > Makefile.ORIG
   sed -i \"/^DESCRIPTION/s,^DESCRIPTION.*,DESCRIPTION=${rname}-\$(cwver_${rname}),g\" Makefile
   sed -i \"/^PREFIX/s,^PREFIX.*,PREFIX=\$(cwidir_${rname}),g\" Makefile
   sed -i 's,-lreadline,-lreadline -lcurses -lterminfo,g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
     CFLAGS=\"\${CFLAGS}\" \
     CC=\"\${CC} \${CFLAGS} -static\"
   make history mksignal mkstatval tripping LDFLAGS=-static CC=\"\${CC} \${CFLAGS} -static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
@@ -48,7 +48,7 @@ function cwmakeinstall_${rname}() {
   rm -f \$(cwidir_${rname})/share/${rname}/helpers/*
   cp -a history mksignal mkstatval tripping \"\$(cwidir_${rname})/share/${rname}/helpers/\"
   \$(\${CC} -dumpmachine)-strip \"\$(cwidir_${rname})/bin/${rname}\" \$(cwidir_${rname})/share/${rname}/helpers/*
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

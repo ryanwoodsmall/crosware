@@ -10,23 +10,23 @@ rreqs="make libbsd netbsdcurses pkgconfig"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   grep -rl sys/poll . | xargs sed -i.ORIG s,sys/poll,poll,g || true
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -e 's%@tetris_scorefile@%${ridir}/scores/${rname}.scores%g' tetris.6.in > tetris.6
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   for c in *.c ; do
     echo \${c}
     \${CC} \${CFLAGS} \
@@ -37,13 +37,13 @@ function cwmake_${rname}() {
         -c \${c} -o \${c//.c/.o} 2>&1 | sed \"s,^,\${c}:,g\"
   done
   unset c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   \${CC} \${CFLAGS} \
     -D_GNU_SOURCE \
     -D_PATH_SCOREFILE='\"${ridir}/scores/${rname}.scores\"' \
@@ -58,7 +58,7 @@ function cwmakeinstall_${rname}() {
   ln -sf tetris2 \"${ridir}/bin/tetris\"
   ln -sf tetris2 \"${ridir}/bin/${rname}\"
   install -m 644 tetris.6 \"${ridir}/share/man/man6/tetris.6\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

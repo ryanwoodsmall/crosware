@@ -8,25 +8,25 @@
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG \"s#^INSTALL_TOP=.*#INSTALL_TOP= \$(cwidir_${rname})#g\" Makefile
   sed -i.ORIG \"/^CC=/s#gcc# \${CC} -DLUA_USE_DLOPEN #g\" src/Makefile
   sed -i.ORIG '/#define LUA_ROOT/s,^.*,#define LUA_ROOT \"'\$(cwidir_${rname})/'\",g' src/luaconf.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} posix MYCFLAGS=\"\${CFLAGS}\" MYLDFLAGS=\"-static\" LDFLAGS=-static CPPFLAGS=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install MYCFLAGS=\"\${CFLAGS}\" MYLDFLAGS=\"-static\" LDFLAGS=-static CPPFLAGS=
   cwmkdir \"\$(cwidir_${rname})/lib/pkgconfig\"
   {
@@ -42,7 +42,7 @@ function cwmakeinstall_${rname}() {
     cat \$(cwidir_${rname})/lib/pkgconfig/lua-\$(cwver_${rname} | cut -f1-2 -d.).pc > \$(cwidir_${rname})/lib/pkgconfig/lua.pc
     sed -i '/^Name:/s,.*,Name: lua,g' \$(cwidir_${rname})/lib/pkgconfig/lua.pc
   fi
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

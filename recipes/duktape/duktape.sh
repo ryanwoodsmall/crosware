@@ -22,7 +22,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   \${CC} -fPIC -Os -c -o src/${rname}.{o,c}
   \${CC} -fPIC -Os -c -o extras/console/duk_console.{o,c} -I./src
   \${CC} -fPIC -Os -c -o extras/print-alert/duk_print_alert.{o,c} -I./src
@@ -53,13 +53,13 @@ function cwmake_${rname}() {
   \${CC} -I./src examples/jxpretty/jxpretty.c -o duk-jxpretty -L. -l${rname} -static
   \${CC} -I./src -I./extras/cbor extras/cbor/jsoncbor.c -o duk-jsoncbor -L. -l${rname} -static
   strip --strip-all duk{,-{eval,min}}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   local d
   for d in bin include lib polyfills wow ; do
     cwmkdir \"${ridir}/\${d}\"
@@ -80,7 +80,7 @@ function cwmakeinstall_${rname}() {
   #echo '#!/usr/bin/env bash' > \"${ridir}/bin/${rname}\"
   #echo 'rlwrap \"${rtdir}/current/bin/duk\" \"\${@}\"' >> \"${ridir}/bin/${rname}\"
   #chmod 755 \"${ridir}/bin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
   \"${ridir}/bin/duk\" \"${ridir}/wow/mandel.js\"
 }
 "

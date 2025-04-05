@@ -6,31 +6,31 @@ rreqs="make netbsdcurses"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}/heirloom-ex-vi\" >/dev/null 2>&1
+  pushd \"${rbdir}/heirloom-ex-vi\" &>/dev/null
   sed -i.ORIG \"/^PREFIX.*=/s#^PREFIX.*#PREFIX = ${ridir}#g\" Makefile
   sed -i '/^TERMLIB.*=/s/ncurses/curses/g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}/heirloom-ex-vi\" >/dev/null 2>&1
+  pushd \"${rbdir}/heirloom-ex-vi\" &>/dev/null
   make CPPFLAGS=\"-I${cwsw}/netbsdcurses/include\" LDADD=\"-L${cwsw}/netbsdcurses/current/lib -lcurses -lterminfo -static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}/heirloom-ex-vi\" >/dev/null 2>&1
+  pushd \"${rbdir}/heirloom-ex-vi\" &>/dev/null
   make install
   for l in edit vedit view vi ; do
     ln -sf \"${rtdir}/current/bin/ex\" \"${ridir}/bin/\${l}\"
   done
   ln -sf \"${rtdir}/current/bin/vi\" \"${ridir}/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/vi\" \"${ridir}/bin/ex-vi\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

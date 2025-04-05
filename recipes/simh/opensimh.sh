@@ -21,7 +21,7 @@ function cwfetch_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local TMPCC=\"\${CC} \${CFLAGS} -g0 -Os -Wl,-s -I. -D_LARGEFILE64_SOURCE -static\"
   cwscriptecho \"TMPCC = \${TMPCC}\"
   make -j${cwmakejobs} all alpha \
@@ -31,6 +31,6 @@ function cwmake_${rname}() {
     CFLAGS= \
     CPPFLAGS= \
     CXXFLAGS=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

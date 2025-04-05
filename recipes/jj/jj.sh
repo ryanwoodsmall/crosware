@@ -12,16 +12,16 @@ cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   chmod -R u+rw \"\$(cwdir_${rname})\" \"\$(cwbdir_${rname})\" &>/dev/null || true
   rm -rf \"${rbdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
@@ -33,16 +33,16 @@ function cwmake_${rname}() {
         go build -ldflags \"-X main.version=\$(cwver_${rname}) -s -w -extldflags '-s -static'\" -o jj cmd/jj/*.go
     chmod -R u+rw . || true
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   install -m 755 \"${rname}\" \"\$(cwidir_${rname})/bin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

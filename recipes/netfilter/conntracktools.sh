@@ -13,14 +13,14 @@ rreqs="bootstrapmake pkgconfig byacc flex slibtool libtirpc libmnl libnfnetlink 
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
     LIBS='-lmnl -static'
   grep -ril -- -lnetfilter_cttimeout . | grep /Makefile | xargs sed -i 's,-lnetfilter_cttimeout,-lnetfilter_cttimeout -lmnl,g'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

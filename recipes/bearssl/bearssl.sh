@@ -16,15 +16,15 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make -j${cwmakejobs} CC=\"\${CC} -Os\" LD=\"\${CC}\" CFLAGS=\"-Os \${CFLAGS}\" LDFLAGS=\"\${LDFLAGS} -lc -static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cwmkdir \"${ridir}/bin\"
   cwmkdir \"${ridir}/include\"
   cwmkdir \"${ridir}/lib\"
@@ -33,7 +33,7 @@ function cwmakeinstall_${rname}() {
   ln -sf \"${ridir}/bin/brssl\" \"${ridir}/bin/${rname}\"
   install -m 0644 inc/*.h \"${ridir}/include/\"
   install -m 0644 build/lib${rname}.a \"${ridir}/lib/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -36,13 +36,13 @@ function cwextract_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   cwmkdir \"${ridir}/bin\"
-  pushd \"${ridir}\" >/dev/null 2>&1
+  pushd \"${ridir}\" &>/dev/null
   local p
   for p in tmux-local-node.sh tmux-nodes.sh ; do
     ln -sf \"${rtdir}/current/${rdir}/bin/\${p}\" \"${ridir}/bin/\${p}\"
   done
   unset p
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

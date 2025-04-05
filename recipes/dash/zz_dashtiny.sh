@@ -17,7 +17,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --disable-silent-rules \
     --enable-static \
@@ -27,26 +27,26 @@ function cwconfigure_${rname}() {
       LIBS=-static \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     C{,XX}FLAGS=\"\${CFLAGS} -g0 -Os -Wl,-s -Wl,-static\" \
     LDFLAGS='-static -s' \
     CPPFLAGS= \
     PKG_CONFIG_{LIBDIR,PATH}= \
       make -j${cwmakejobs} ${rlibtool}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     C{,XX}FLAGS=\"\${CFLAGS} -g0 -Os -Wl,-s -Wl,-static\" \
     LDFLAGS='-static -s' \
@@ -58,7 +58,7 @@ function cwmakeinstall_${rname}() {
   chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname%tiny}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/cw${rname%tiny}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

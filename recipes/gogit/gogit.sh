@@ -18,16 +18,16 @@ cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   chmod -R u+rw \"\$(cwdir_${rname})\" &>/dev/null || true
   rm -rf \"${rbdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
@@ -41,13 +41,13 @@ function cwmake_${rname}() {
     cd -
     chmod -R u+rw . || true
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   install -m 755 go-git \"\$(cwidir_${rname})/bin/go-git\"
   ln -sf go-git \"\$(cwidir_${rname})/bin/${rname}\"
@@ -55,7 +55,7 @@ function cwmakeinstall_${rname}() {
   chmod 755 \$(cwidir_${rname})/bin/git-{receive,upload}-pack
   echo '${rtdir}/current/bin/go-git receive-pack \"\${@}\"' | tee -a \$(cwidir_${rname})/bin/git-receive-pack
   echo '${rtdir}/current/bin/go-git upload-pack \"\${@}\"' | tee -a \$(cwidir_${rname})/bin/git-upload-pack
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

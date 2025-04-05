@@ -1,6 +1,6 @@
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i '/^PREFIX/d' config.mk
   sed -i '/^CC/d' config.mk
   sed -i '/^AR/d' config.mk
@@ -10,7 +10,7 @@ function cwconfigure_${rname}() {
   echo \"LDFLAGS = -static\" >> config.mk
   echo \"PREFIX = \$(cwidir_${rname})\" >> config.mk
   echo '#include <sys/sysmacros.h>' >> util.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

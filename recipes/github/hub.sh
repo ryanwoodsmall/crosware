@@ -20,24 +20,24 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   chmod -R u+rw \"${rbdir}\" || true
   rm -rf \"${rbdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG 's,/usr/local,${ridir},g' script/install.sh
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   (
     : \${GOCACHE=\"${rbdir}/gocache\"}
     : \${GOMODCACHE=\"${rbdir}/gomodcache\"}
@@ -51,13 +51,13 @@ function cwmake_${rname}() {
         make
     chmod -R u+rw . || true
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   (
     : \${GOCACHE=\"${rbdir}/gocache\"}
     : \${GOMODCACHE=\"${rbdir}/gomodcache\"}
@@ -73,7 +73,7 @@ function cwmakeinstall_${rname}() {
         make install
     chmod -R u+rw . || true
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

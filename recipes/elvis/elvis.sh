@@ -12,7 +12,7 @@ rreqs="make netbsdcurses"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG \"/^PREFIX=/s#PREFIX=.*#PREFIX=${ridir}#g\" configure instman.sh Makefile.in
   sed -i 's/TLIBS=\"-lcurses\"/TLIBS=\"-lcurses -lterminfo -static\"/g' configure
   sed -i '/^\\t.*CC/s/EXE)\$/EXE) -static/g' Makefile.in
@@ -34,35 +34,35 @@ function cwconfigure_${rname}() {
       --without-{x{,ft},gnome} \
         linux
   sed -i.ORIG '/PROTOCOL_/s/undef/define/g' config.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make \
     CC=\"\${CC} \${CFLAGS} -fcommon -I${cwsw}/netbsdcurses/current/include -L${cwsw}/netbsdcurses/current/lib\" \
     CPPFLAGS= \
     LDFLAGS=-static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install MANPATH=\"${ridir}/share/man\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   rm -rf \"${rbdir}\"
   rm -rf \"._${rdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

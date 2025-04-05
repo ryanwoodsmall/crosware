@@ -17,26 +17,26 @@ rreqs="bootstrapmake busybox toybox"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/busybox/current/bin:\${PATH}\" ./configure ${cwconfigureprefix} --program-prefix=g
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/busybox/current/bin:\${PATH}\" make -j${cwmakejobs}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/busybox/current/bin:\${PATH}\" make install
   ln -sf g${rname} \$(cwidir_${rname})/bin/${rname}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -16,7 +16,7 @@ cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local h
   for h in ASSERT DIRENT DLFCN ERRNO FCNTL INTTYPES STDINT STDIO STDLIB STRINGS STRING SYS_PARAM SYS_STAT SYS_TYPES UNISTD ; do
     echo \"#define HAVE_\${h}_H 1\"
@@ -24,13 +24,13 @@ function cwconfigure_${rname}() {
   echo '#define HAVE_DECL_MAX 1' >> config.h
   echo '#define HAVE_DECL_UINTMAX_MAX 0' >> config.h
   echo '#define HAVE_DIRFD 1' >> config.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   \${CC} -I. -fPIC -c fts.c -o fts.o
   \${AR} -v -r libfts.a fts.o
   cat > musl-fts.pc << EOF
@@ -52,7 +52,7 @@ EOF
   install -m 644 fts.h \$(cwidir_${rname})/include/
   install -m 644 libfts.a \$(cwidir_${rname})/lib/
   install -m 644 musl-fts.pc \$(cwidir_${rname})/lib/pkgconfig/
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

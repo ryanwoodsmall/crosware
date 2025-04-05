@@ -10,9 +10,9 @@ rreqs="make configgit gettexttiny"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   ./configure ${cwconfigureprefix} --disable-nls CC=\"\${CC}\" CFLAGS=-Wl,-static LDFLAGS=-static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

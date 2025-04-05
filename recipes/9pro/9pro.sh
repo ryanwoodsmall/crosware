@@ -16,20 +16,20 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   env CC=\"\${CC}\" CFLAGS='-static -Wl,-static' ./build.sh
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cwmkdir \"${ridir}/bin\"
   \$(\${CC} -dumpmachine)-strip --strip-all 9pex 9gc
   install -m 0755 9pex \"${ridir}/bin/\"
   install -m 0755 9gc \"${ridir}/bin/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

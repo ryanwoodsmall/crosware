@@ -10,9 +10,9 @@ rreqs="make perl m4 sed configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   env PATH=${cwsw}/perl/current/bin:${cwsw}/m4/current/bin:\${PATH} ./configure ${cwconfigureprefix}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

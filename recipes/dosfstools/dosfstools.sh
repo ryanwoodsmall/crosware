@@ -10,21 +10,21 @@ rreqs="bootstrapmake"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} LDFLAGS=-static CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     export LDFLAGS=-static
     unset CPPFLAGS PKG_CONFIG_{LIBDIR,PATH}
     make -j${cwmakejobs} ${rlibtool}
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

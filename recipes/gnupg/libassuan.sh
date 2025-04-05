@@ -10,10 +10,10 @@ rreqs="make libgpgerror slibtool configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-libgpg-error-prefix=\"\${cwsw}/libgpgerror/current/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

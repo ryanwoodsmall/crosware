@@ -10,7 +10,7 @@ rreqs="make slang byacc configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG s/termcap/ncurses/g configure
   sed -i s/ncurses5-config/ncurses6-config/g configure
   sed -i s/ncursesw5-config/ncursesw6-config/g configure
@@ -18,7 +18,7 @@ function cwconfigure_${rname}() {
     --without-x \
     --with-slang=\"${cwsw}/slang/current\" \
       YACC=byacc
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

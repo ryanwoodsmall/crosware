@@ -24,16 +24,16 @@ function cwfetch_${rname}() {
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG s,-Wmissing-include-dirs,,g configure
   sed -i.ORIG s,GNUTLS_NO_EXTENSIONS,GNUTLS_NO_DEFAULT_EXTENSIONS,g gnutls-dtls.c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/etc\"
   install -m 755 \"${cwdl}/${rname}/vpnc-script\" \"\$(cwidir_${rname})/etc/vpnc-script\"
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
@@ -49,7 +49,7 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       LIBS='-lxml2 -llzma -lz -llz4'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

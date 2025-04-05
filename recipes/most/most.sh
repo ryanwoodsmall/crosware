@@ -10,14 +10,14 @@ rreqs="make slang configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG s/ncurses5-config/ncurses6-config/g configure
   sed -i s/ncursesw5-config/ncursesw6-config/g configure
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --without-x \
     --with-slang=\"${cwsw}/slang/current\"
   mkdir -p src/objs
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

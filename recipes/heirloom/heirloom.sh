@@ -14,7 +14,7 @@ rreqs="make sed netbsdcurses zlib bzip2 ed byacc reflex oksh busybox"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   grep -ril \"/usr/local/${rname}\" . \
   | xargs sed -i \"s#/usr/local/${rname}#${ridir}#g\"
   sed -i '/^LEX = /s/LEX.*/LEX=reflex/g' heirloom/build/mk.config
@@ -25,13 +25,13 @@ function cwconfigure_${rname}() {
   sed -i 's#/ncurses/#/netbsdcurses/#g' heirloom-ex-vi/Makefile
   sed -i '/^TERMLIB/s/ncurses/curses/g' heirloom-ex-vi/Makefile
   sed -i '/^#LDADD/s/.*/LDADD = -lcurses -lterminfo/g' heirloom-ex-vi/Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   local d=''
   for d in ${rname}{,-{sh,devtools,doctools,ex-vi}} ; do
     pushd \${d}
@@ -39,7 +39,7 @@ function cwmake_${rname}() {
     env CHARSET= PATH=\"${cwsw}/byacc/current/bin:${cwsw}/reflex/current/bin:${cwsw}/oksh/current/bin:\${PATH}\" make install
     popd
   done
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

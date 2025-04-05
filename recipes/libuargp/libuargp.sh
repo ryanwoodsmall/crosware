@@ -16,10 +16,10 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat Makefile > Makefile.ORIG
   sed -i \"/^prefix=/s,.*,prefix=\$(cwidir_${rname}),g\" Makefile
   sed -i \"/^ALL_LIBS=/s,=.*,=libargp.a,g\" Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

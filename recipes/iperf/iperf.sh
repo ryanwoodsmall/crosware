@@ -17,11 +17,11 @@ rreqs="make configgit"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cat include/headers.h > include/headers.h.ORIG
   echo '#include <netinet/if_ether.h>' > include/headers.h
   cat include/headers.h.ORIG >> include/headers.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

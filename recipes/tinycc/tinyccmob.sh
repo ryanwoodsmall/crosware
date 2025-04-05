@@ -21,7 +21,7 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   local t=\"${cwsw}/muslstandalone/current\"
   local i=\"\${t}/include\"
   local l=\"\${t}/lib\"
@@ -40,15 +40,15 @@ function cwconfigure_${rname}() {
       --elfinterp=\"\${s}\"
   ln -s include/tcc_predefs.h .
   unset t i l s
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make CPPFLAGS= CXXFLAGS= LDFLAGS='-static' CFLAGS='-Wl,-static -fPIC' CC=\"${cwsw}/muslstandalone/current/bin/musl-gcc\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

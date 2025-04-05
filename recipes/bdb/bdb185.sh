@@ -16,7 +16,7 @@ rreqs="make busybox libbsd pkgconfig"
 
 eval "
 function cwextract_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   local bb=\"${cwsw}/busybox/current/bin/busybox\"
   rm -rf \"${rdir}\" \"${rname}\"
   cwmkdir \"${cwbuild}/${rname}\"
@@ -28,13 +28,13 @@ function cwextract_${rname}() {
   rm -rf \"${rname}/\"
   chmod -R u+rw \"${rbdir}\"
   unset bb
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   local bb=\"${cwsw}/busybox/current/bin/busybox\"
   for p in db.${rver}{,.{s390,nodebug}}.patch ; do
     \${bb} patch -p1 < \${p}
@@ -58,7 +58,7 @@ EOF
   sed -i '/:.*LIBDBSO/s,LIBDBSO,LIBDB,g' Makefile
   sed -i 's,-ldb,-ldb -lbsd -static,g' Makefile
   unset bb p
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -70,15 +70,15 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}/PORT/linux\" >/dev/null 2>&1
+  pushd \"${rbdir}/PORT/linux\" &>/dev/null
   make CC=\"\${CC} \${CFLAGS} -D_GNU_SOURCE -D_BSD_SOURCE \$(pkg-config --{cflags,libs} libbsd)\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}/PORT/linux\" >/dev/null 2>&1
+  pushd \"${rbdir}/PORT/linux\" &>/dev/null
   for d in bin include lib ; do
     cwmkdir \"${ridir}/\${d}\"
   done
@@ -86,6 +86,6 @@ function cwmakeinstall_${rname}() {
   install -m 644 \$(realpath include/{bdbqueue,db,mpool,ndbm}.h) \"${ridir}/include/\"
   install -m 644 libdb.a \"${ridir}/lib/\"
   ln -sf libdb.a \"${ridir}/lib/libndbm.a\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

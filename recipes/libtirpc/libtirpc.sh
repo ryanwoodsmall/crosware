@@ -10,7 +10,7 @@ rreqs="make libbsd pkgconfig"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's,/etc/netconfig,${rtdir}/current/etc/netconfig,g' tirpc/netconfig.h
   sed -i.ORIG 's,/etc/bindresvport.blacklist,${rtdir}/current/etc/bindresvport.blacklist,g' src/bindresvport.c
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
@@ -20,17 +20,17 @@ function cwconfigure_${rname}() {
       PKG_CONFIG_{PATH,LIBDIR}=
   grep -ril sys/cdefs . | xargs sed -i 's,sys/cdefs,bsd/sys/cdefs,g'
   grep -ril sys/queue . | xargs sed -i 's,sys/queue,bsd/sys/queue,g'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   cwmkdir \"\$(cwidir_${rname})/etc\"
   install -m 644 doc/netconfig \"\$(cwidir_${rname})/etc/\"
   install -m 644 doc/bindresvport.blacklist \"\$(cwidir_${rname})/etc/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

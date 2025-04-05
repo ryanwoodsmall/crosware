@@ -10,30 +10,30 @@ rreqs="bootstrapmake kuroko"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i \"s#^prefix=.*#prefix=\$(cwidir_${rname})#g\" Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/kuroko/current/static/bin:\${PATH}\" \
     make \
       CPPFLAGS=\"-I${cwsw}/kuroko/current/static/include\" \
       LDFLAGS=\"-L${cwsw}/kuroko/current/static/lib -static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install
   \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/${rname%%3}\"
   ln -sf \"${rname%%3}\" \"\$(cwidir_${rname})/bin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -10,10 +10,10 @@ rreqs="make pkgconfig libconfuse"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG s,sys/sysinfo,linux/sysinfo,g linux.c
   ./configure ${cwconfigureprefix} --with-config --without-systemd
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

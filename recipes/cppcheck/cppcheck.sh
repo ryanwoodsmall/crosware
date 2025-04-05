@@ -16,7 +16,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   env PATH=\"${cwsw}/pcre/current/bin:\${PATH}\" make -j${cwmakejobs} \
     PREFIX=\"${ridir}\" \
     FILESDIR=\"${ridir}/share/${rname}\" \
@@ -27,18 +27,18 @@ function cwmake_${rname}() {
     CFLAGS=\"-Wl,-static -fPIC\" \
     CXXFLAGS=\"-Wl,-static -fPIC -DNDEBUG\" \
     LDFLAGS=\"-static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   env PATH=\"${cwsw}/pcre/current/bin:\${PATH}\" make install \
     PREFIX=\"${ridir}\" \
     FILESDIR=\"${ridir}/share/${rname}\" \
     HAVE_RULES=yes
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -10,19 +10,19 @@ rreqs="make pkgconfig libuev libbsd"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG s,sys/queue,bsd/sys/queue,g youdp.c
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install ${rlibtool}
   ln -sf \"${rname}\" \"${ridir}/bin/udpredir\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

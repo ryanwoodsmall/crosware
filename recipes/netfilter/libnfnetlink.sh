@@ -16,8 +16,8 @@ rpfile="${cwrecipe}/netfilter/${rname}.patches"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

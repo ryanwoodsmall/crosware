@@ -10,21 +10,21 @@ rreqs="gawk make perl sed m4"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --without-doc \
     --with-doc=no \
     --with-awk=gawk \
     --with-alt-awk=gawk
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

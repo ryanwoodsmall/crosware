@@ -31,7 +31,7 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cwmkdir \"${ridir}/lib\"
   cwmkdir \"${ridir}/bin\"
   install -m 0644 \"\$(realpath ${rdlfile//${rfile}/fortunes})\" \"${ridir}/lib/fortunes\"
@@ -54,17 +54,17 @@ function cwconfigure_${rname}() {
     sed -i '/^OBJTYPE/d' config.mk
     echo \"OBJTYPE = arm\" >> config.mk
   fi
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install ${rlibtool}
   rm -f \"${ridir}/bin/9yacc\"
   mv \"${ridir}/bin/yacc\" \"${ridir}/bin/9yacc\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

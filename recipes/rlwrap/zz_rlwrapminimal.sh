@@ -12,7 +12,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_rlwrap)\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_rlwrap)\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     CC=\"\${CC} -g0 -Os -Wl,-s\" \
     CFLAGS=\"\${CFLAGS} -g0 -Os -Wl,-s\" \
@@ -22,7 +22,7 @@ function cwconfigure_${rname}() {
     PKG_CONFIG_{LIBDIR,PATH}=
   sed -i.ORIG 's/pod2man/echo pod2man/g' filters/Makefile
   echo '#include <stdbool.h>' >> config.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

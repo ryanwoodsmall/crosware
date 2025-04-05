@@ -5,26 +5,26 @@ rreqs="${rreqs} busybox cacertificates"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cat common.c > common.c.ORIG
   busybox sed -i 's|\"/usr/local/etc/ssl/cert.pem\"|\"${cwtop}/etc/ssl/cert.pem\"|' common.c
   busybox sed -i 's|\"/etc/ssl/cert.pem\"|\"${cwtop}/etc/ssl/cert.pem\"|' common.c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   busybox ash generate_errors.sh http .
   busybox ash generate_errors.sh ftp .
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   local includes=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\"
   local libs=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -lssl -lcrypto -static\"
   for f in common estream estream-printf fetch file ftp http ; do
@@ -33,13 +33,13 @@ function cwmake_${rname}() {
   busybox ar r libfetch.a *.o
   ranlib libfetch.a
   \${CC} \${CFLAGS} -I. \${includes} main.c -o fetch -L. -lfetch \${libs}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cwmkdir \"${ridir}/bin\"
   cwmkdir \"${ridir}/include\"
   cwmkdir \"${ridir}/lib\"
@@ -54,7 +54,7 @@ function cwmakeinstall_${rname}() {
   ln -sf fetch \"${ridir}/bin/${rname%%libressl}\"
   ln -sf fetch \"${ridir}/bin/${rname}\"
   \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/fetch\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

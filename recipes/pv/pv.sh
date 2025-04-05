@@ -10,7 +10,7 @@ rreqs="bootstrapmake"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --disable-nls \
       CFLAGS=\"\${CFLAGS} -Os -Wl,-s\" \
@@ -18,7 +18,7 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"-s -static\" \
       PKG_CONFIG_{LIBDIR,PATH}= \
       CPPFLAGS=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

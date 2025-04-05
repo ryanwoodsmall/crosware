@@ -10,12 +10,12 @@ rreqs="make ctags less"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install ${rlibtool}
   echo '#!/bin/sh' > \"${ridir}/bin/srchilite\"
   echo '${cwsw}/${rname}/current/bin/source-highlight -f esc -o STDOUT -i \"\${@}\"' >> \"${ridir}/bin/srchilite\"
   chmod 755 \"${ridir}/bin/srchilite\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

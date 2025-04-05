@@ -17,7 +17,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --disable-silent-rules \
     --enable-static \
@@ -28,13 +28,13 @@ function cwconfigure_${rname}() {
       LIBS='-ledit -ltermcap -static' \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     CC=\"\${CC} -I${cwsw}/libeditminimal/current/include -L${cwsw}/libeditminimal/current/lib\" \
     C{,XX}FLAGS=\"\${CFLAGS} -Os -Wl,-s -Wl,-static\" \
@@ -42,13 +42,13 @@ function cwmake_${rname}() {
     CPPFLAGS= \
     PKG_CONFIG_{LIBDIR,PATH}= \
       make -j${cwmakejobs} ${rlibtool}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     CC=\"\${CC} -I${cwsw}/libeditminimal/current/include -L${cwsw}/libeditminimal/current/lib\" \
     C{,XX}FLAGS=\"\${CFLAGS} -Os -Wl,-s -Wl,-static\" \
@@ -60,7 +60,7 @@ function cwmakeinstall_${rname}() {
   cat \"\$(cwidir_${rname})/bin/${rname%minimal}\" > \"\$(cwidir_${rname})/bin/${rname}\"
   chmod 755 \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/${rname%minimal}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

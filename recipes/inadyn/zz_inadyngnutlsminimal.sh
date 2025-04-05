@@ -19,7 +19,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/pkgconfig/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
       --disable-mbedtls \
@@ -29,17 +29,17 @@ function cwconfigure_${rname}() {
         LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
         LIBS='-lz -lgnutls -lhogweed -lnettle -static'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   ln -sf \"${rname%%gnutlsminimal}\" \"\$(cwidir_${rname})/sbin/${rname}\"
   ln -sf \"${rname%%gnutlsminimal}\" \"\$(cwidir_${rname})/sbin/${rname%%gnutlsminimal}-${rname##inadyn}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

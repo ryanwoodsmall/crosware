@@ -17,7 +17,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cmake . \
     -DCMAKE_INSTALL_PREFIX=\"\$(cwidir_${rname})\" \
     -DZSTD_INCLUDE_DIR=\"${cwsw}/zstd/current/include\" \
@@ -25,13 +25,13 @@ function cwconfigure_${rname}() {
     -DBUILD_SHARED_LIBS=OFF \
     -DREDIS_STORAGE_BACKEND=OFF \
     -DENABLE_TESTING=0
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local c=\"${rname%4}\"
   cwmkdir \"\$(cwidir_${rname})/bin\"
   make install
@@ -44,7 +44,7 @@ function cwmakeinstall_${rname}() {
     ln -sf \${c} \${p}
   done
   unset c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

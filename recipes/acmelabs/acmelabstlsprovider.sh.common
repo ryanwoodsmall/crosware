@@ -29,7 +29,7 @@ unset f
 eval "
 function cwconfigure_${rname}() {
   cwconfigure_${rbase}
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i 's,$(cwidir_${rbase}),${ridir},g' Makefile
   sed -i '/^#SSL_DEFS/s,^#,,g' Makefile
   sed -i '/^#SSL_LIBS/s,^#,,g' Makefile
@@ -38,13 +38,13 @@ function cwconfigure_${rname}() {
   sed -i 's,-lssl.*-lcrypto,-lssl -lcrypto -L${cwsw}/zlib/current/lib -lz,g' Makefile
   sed -i 's,^#SSL_TREE.*,SSL_TREE = ${cwsw}/${rprovider}/current,g' Makefile
   sed -i '/^LDFLAGS/s,-static,-s \$(SSL_LIBS) \$(SYSV_LIBS) -static,g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   egrep '^(BIN|MAN)DIR' Makefile | cut -f2 -d= | xargs mkdir -p
   make install ${rlibtool}
   ln -sf \"${rtdir}/current/bin/${rprogname}\" \"${ridir}/bin/${rprogname}-${rprovider}\"
@@ -59,7 +59,7 @@ function cwmakeinstall_${rname}() {
     cp scripts/* \"${ridir}/share/scripts/\"
     cp mini_httpd.cnf \"${ridir}/share/cert/\"
   fi
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

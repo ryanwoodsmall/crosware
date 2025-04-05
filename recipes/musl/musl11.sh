@@ -12,7 +12,7 @@ rpfile="${cwrecipe}/${rname%11}/${rname}.patches"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG 's#\\\$ldso#${rtdir}/current/lib/ld.so#g' tools/musl-gcc.specs.sh
   ./configure ${cwconfigureprefix} \
     --syslibdir=\"${ridir}/lib\" \
@@ -25,13 +25,13 @@ function cwconfigure_${rname}() {
       CPPFLAGS= \
       CXXFLAGS= \
       LDFLAGS=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install
   ln -sf musl-gcc \"${ridir}/bin/cc\"
   ln -sf musl-gcc \"${ridir}/bin/gcc\"
@@ -42,6 +42,6 @@ function cwmakeinstall_${rname}() {
   ln -sf \"${rtdir}/current/lib/ldd\" \"${ridir}/bin/musl-ldd\"
   ln -sf libc.so \"${ridir}/lib/ld.so\"
   sed -i.ORIG 's#${ridir}#${rtdir}/current#g' \"${ridir}/lib/musl-gcc.specs\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

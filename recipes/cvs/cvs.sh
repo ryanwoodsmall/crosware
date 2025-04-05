@@ -10,11 +10,11 @@ rreqs="make sed zlib"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   sed -i.ORIG 's/^getline /getline_OFF /g' lib/getline.c
   sed -i.ORIG '/getline __PROTO/ s/getline /getline_OFF /g' lib/getline.h
   ./configure ${cwconfigureprefix} --with-ssh
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

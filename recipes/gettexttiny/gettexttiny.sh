@@ -10,25 +10,25 @@ rreqs="make"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   sed -i.ORIG \"s#^prefix=.*#prefix=${ridir}#g\" Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   env LIBINTL=MUSL make -j${cwmakejobs}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   env LIBINTL=MUSL make install
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

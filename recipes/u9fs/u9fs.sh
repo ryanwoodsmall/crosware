@@ -10,29 +10,29 @@ rreqs="bootstrapmake"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG '/authrhosts/d' makefile u9fs.c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make CC=\"\${CC}\" LD=\"\${CC}\" LDFLAGS=-static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   \$(\${CC} -dumpmachine)-strip --strip-all ${rname}
   cwmkdir \"${ridir}/bin\"
   cwmkdir \"${ridir}/share/man/man1\"
   install -m 0755 ${rname} \"${ridir}/bin/${rname}\"
   install -m 0644 ${rname}.man \"${ridir}/share/man/man1/${rname}.1\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

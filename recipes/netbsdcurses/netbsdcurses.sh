@@ -24,7 +24,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 # XXX - diff -Naur libterminfo/genterms{.ORIG,} || true
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG '/(TERMINFODIR)/ s#TERMINFODIR=#TERMINFO=#g;s#(TERMINFODIR)#(PWD)/terminfo/terminfo#g' GNUmakefile
   cat libterminfo/genterms > libterminfo/genterms.ORIG
   sed -n '/^#/,/^TERMLIST=/p' libterminfo/genterms.ORIG > libterminfo/genterms
@@ -34,31 +34,31 @@ function cwconfigure_${rname}() {
   | sort -u \
   | egrep '^[a-zA-Z0-9]' >> libterminfo/genterms
   sed -n '/^\"$/,//p' libterminfo/genterms.ORIG >> libterminfo/genterms
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cd nbperf
   make nbperf CPPFLAGS='-I.. -DTERMINFO_COMPILE -DTERMINFO_DB -DTERMINFO_COMPAT' LDFLAGS='-static'
   cd ..
   make -j${cwmakejobs} all-static PREFIX=\"\$(cwidir_${rname})\" CPPFLAGS='-I./ -I./libterminfo -DTERMINFO_COMPILE -DTERMINFO_DB -DTERMINFO_COMPAT' LDFLAGS='-static'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   # LN=echo will disable libncurses symlinks
   make install-static install-manpages PREFIX=\"\$(cwidir_${rname})\" CPPFLAGS='-I./ -I./libterminfo' LDFLAGS='-static' LN='echo'
   rm -f \$(cwidir_${rname})/lib/pkgconfig/ncurses* \$(cwidir_${rname})/lib/pkgconfig/*w.pc
   make terminfo/terminfo.cdb
   cwmkdir \"\$(cwidir_${rname})/share\"
   install -m 644 terminfo/terminfo.cdb \"\$(cwidir_${rname})/share/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

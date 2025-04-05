@@ -12,7 +12,7 @@ rbdir="${cwbuild}/${rdir}/build"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG 's/VI.pm)$/VI.pm || true/g' Makefile.in
   sed -i.ORIG 's,/usr/tmp,/usr/tmp ${cwtop}/tmp,g' configure
   env \
@@ -24,13 +24,13 @@ function cwconfigure_${rname}() {
         --disable-curses \
         --program-prefix=n \
         --program-suffix=${rver//./}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   eval mkdir -p \"${ridir}/{bin,man,share}\"
   make install
   for n in n{ex,view}${rver//./} ; do
@@ -41,15 +41,15 @@ function cwmakeinstall_${rname}() {
     rm -f \"${ridir}/bin/\${n}\"
     ln -s \"${rtdir}/current/bin/\${n}${rver//./}\" \"${ridir}/bin/\${n}\"
   done
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   rm -rf \"${rdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

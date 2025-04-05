@@ -10,7 +10,7 @@ rreqs="make configgit byacc"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --enable-ipv6 \
     --without-pam \
@@ -18,17 +18,17 @@ function cwconfigure_${rname}() {
       LDFLAGS=-static \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   rm -rf \"\$(cwidir_${rname})/sbin\"
   make install
   test -e \"\$(cwidir_${rname})/sbin/${rname}\" || ln -sf \"${rtdir}/current/libexec\" \"\$(cwidir_${rname})/sbin\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

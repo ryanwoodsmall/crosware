@@ -50,21 +50,21 @@ rreqs="make autoconf automake libtool openssl zlib slibtool"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/autoconf/current/bin:${cwsw}/automake/current/bin:${cwsw}/libtool/current/bin:\${PATH}\" \
     autoreconf -I${cwsw}/libtool/current/share/aclocal -fiv
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --disable-{pam,runtime-loading,utmp} LIBS='-lssl -lcrypto -lz'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install ${rlibtool}
   cwmkdir \"${ridir}/share/${rname}/css\"
   install -m 0644 shellinabox/*.css \"${ridir}/share/${rname}/css/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

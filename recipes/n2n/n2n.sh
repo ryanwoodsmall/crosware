@@ -14,36 +14,36 @@ rreqs="make openssl zstd libpcap libcap libnl"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG 's/-lpcap/-lpcap -lpcap -lnl-3 -lnl-genl-3/g' configure tools/Makefile.in
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --with-openssl \
     --with-zstd
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make -j${cwmakejobs} \
     CC=\"\${CC} \${CFLAGS} -Wl,-s \${CPPFLAGS} -I${cwsw}/libpcap/current/include/pcap\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install PREFIX=\"${ridir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

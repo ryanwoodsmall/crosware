@@ -11,36 +11,36 @@ rbdir="${cwbuild}/${rdir}/libraries/lib${rname}"
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   rm -rf \"${rdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cat Makefile > Makefile.ORIG
   sed -i 's,^prefix.*,prefix = ${ridir},g' Makefile
   sed -i 's,^ILIBS.*,ILIBS = lib${rname}.a,g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make -j${cwmakejobs} CC=\"\${CC}\" CPPFLAGS= LDFLAGS=-static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install ${rlibtool}
   \$(\${CC} -dumpmachine)-strip --strip-all ${ridir}/bin/*
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

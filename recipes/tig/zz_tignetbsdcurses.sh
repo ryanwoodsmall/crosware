@@ -20,18 +20,18 @@ unset f
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat configure > configure.ORIG
   sed -i s/ncurses/curses/g configure || true
   sed -i s/NCURSES/CURSES/g configure || true
   grep -rl 'warn(' . | xargs sed -i.ORIG 's/warn(/tigwarn(/g'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --with-pcre \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
@@ -40,16 +40,16 @@ function cwconfigure_${rname}() {
       CURSES_CFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -L${cwsw}/{${rreqs// /,}/current/lib)\" \
       CURSES_LIBS='-lreadline -lcurses -lterminfo' \
       PKG_CONFIG_{PATH,LIBDIR}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install
   ln -sf tig \"\$(cwidir_${rname})/bin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

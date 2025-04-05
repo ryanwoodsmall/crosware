@@ -18,7 +18,7 @@ cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local a
   if [[ \${karch} =~ ^aarch64 ]] ; then
     a=aarch64
@@ -35,6 +35,6 @@ function cwmakeinstall_${rname}() {
   fi
   make ARCH=\${a} prefix=\"\$(cwidir_${rname})\" install
   unset a
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

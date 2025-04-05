@@ -10,7 +10,7 @@ rreqs="gettexttiny libffi make perl pkgconfig python3 zlib autoconf automake lib
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   cat > gtk-doc.make <<EOF
 EXTRA_DIST =
 CLEANFILES =
@@ -25,7 +25,7 @@ EOF
     --disable-compile-warnings \
     --disable-fam \
     --with-python=\"${cwsw}/python3/current/bin/python3\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

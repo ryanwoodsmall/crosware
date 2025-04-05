@@ -31,10 +31,10 @@ fi
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   rm -rf \"${rname}\"
   rm -rf \"slib\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -53,7 +53,7 @@ function cwconfigure_${rname}() {
     export CPPFLAGS=\"\$(echo -I${cwsw}/{ncurses,readline}/current/include{,/ncurses{,w}})\"
     export LDFLAGS=\"\$(echo -L${cwsw}/{ncurses,readline}/current/lib)\"
     export PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{ncurses,readline}/current/lib/pkgconfig | tr ' ' ':')\"
-    pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+    pushd \"\$(cwbdir_${rname})\" &>/dev/null
     ./configure ${cwconfigureprefix}
     cat Makefile > Makefile.ORIG
     sed -i \"/^#CC/s,.*,CC=\${CC} \$(echo -I${cwsw}/{ncurses,readline}/current/include{,/ncurses{,w}}) \$(echo -L${cwsw}/{ncurses,readline}/current/lib),\" Makefile
@@ -69,17 +69,17 @@ function cwconfigure_${rname}() {
     sed -i 's,\"cc\",\"gcc\",g' build.scm
     sed -i 's,\"-shared\",\"-shared\" \"-L${cwsw}/readline/current/lib\" \"-L${cwsw}/ncurses/current/lib\",g' build.scm
     sed -i.ORIG '/#.*include.*getpagesize.*/d' gmalloc.c unexec.c
-    popd >/dev/null 2>&1
-    pushd \"${cwbuild}/slib\" >/dev/null 2>&1
+    popd &>/dev/null
+    pushd \"${cwbuild}/slib\" &>/dev/null
     ./configure ${cwconfigureprefix}
-    popd >/dev/null 2>&1
+    popd &>/dev/null
   )
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     export PATH=\"${cwsw}/ccache/current/bin:${cwsw}/ccache4/current/bin:${cwsw}/statictoolchain/current/bin:\${PATH}\"
     export CFLAGS=-fPIC
@@ -89,7 +89,7 @@ function cwmake_${rname}() {
     make scmlit
     make all
   )
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -101,12 +101,12 @@ function cwmakeinstall_${rname}() {
     export CPPFLAGS=\"\$(echo -I${cwsw}/{ncurses,readline}/current/include{,/ncurses{,w}})\"
     export LDFLAGS=\"\$(echo -L${cwsw}/{ncurses,readline}/current/lib)\"
     export PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{ncurses,readline}/current/lib/pkgconfig | tr ' ' ':')\"
-    pushd \"${cwbuild}/slib\" >/dev/null 2>&1
+    pushd \"${cwbuild}/slib\" &>/dev/null
     env PATH=\"${rbdir}:\${PATH}\" make install
-    popd >/dev/null 2>&1
-    pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+    popd &>/dev/null
+    pushd \"\$(cwbdir_${rname})\" &>/dev/null
     make install
-    popd >/dev/null 2>&1
+    popd &>/dev/null
     local initfile=\"\$(cwidir_${rname})/lib/scm/Init\$(cwver_${rname} | cut -f1 -d-).scm\"
     cat \${initfile} > \${initfile}.ORIG
     echo '(load \"/usr/local/crosware/software/scm/current/lib/scm/edline.so\")' >> \${initfile}

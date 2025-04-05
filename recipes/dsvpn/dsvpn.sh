@@ -12,18 +12,18 @@ cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make OPTFLAGS=\"\${CFLAGS} -Wl,-s -g0 -Os\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/sbin\"
   make install {prefix,PREFIX}=\"\$(cwidir_${rname})\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

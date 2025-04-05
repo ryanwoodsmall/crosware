@@ -18,7 +18,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --disable-pump-mode \
     --disable-Werror \
@@ -33,13 +33,13 @@ function cwconfigure_${rname}() {
       LDFLAGS=-static \
       PKG_CONFIG_LIBDIR= \
       PKG_CONFIG_PATH=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   local c
   make install ${rlibtool}
   cwmkdir \"${ridir}/lib/${rname}/bin\"
@@ -49,7 +49,7 @@ function cwmakeinstall_${rname}() {
     ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/lib/${rname}/bin/\${c}\"
   done
   unset c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

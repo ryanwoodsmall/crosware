@@ -10,9 +10,9 @@ rreqs="make m4 flex perl sed gawk"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} --disable-nls
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

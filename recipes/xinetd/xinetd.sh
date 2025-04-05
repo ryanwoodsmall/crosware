@@ -10,7 +10,7 @@ rreqs="make slibtool"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG 's#/usr/bin/perl#/usr/bin/env perl#g' src/xconv.pl
   sed -i.ORIG 's#/etc/#${rtdir}/current/etc/#g' contrib/xinetd.conf src/xconfig.h
   sed -i.ORIG 's/-pie//g' configure
@@ -23,7 +23,7 @@ function cwconfigure_${rname}() {
     --without-loadavg \
     --without-rpc \
       CC=\"\${CC} \${CFLAGS} -static --static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

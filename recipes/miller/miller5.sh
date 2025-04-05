@@ -10,21 +10,21 @@ rreqs="make sed flex"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i 's/-g -pg//g' c/Makefile.am c/Makefile.in
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install
   ln -sf mlr \"${ridir}/bin/mlr5\"
   ln -sf mlr \"${ridir}/bin/${rname}\"
   ln -sf mlr \"${ridir}/bin/${rname%5}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

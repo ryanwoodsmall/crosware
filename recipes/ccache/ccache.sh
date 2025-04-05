@@ -11,20 +11,20 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --with-bundled-zlib \
       C{,XX}FLAGS=\"\${CFLAGS} -Os -Wl,-s -g0\" \
       LDFLAGS='-s -static' \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install
   strip --strip-all \"\$(cwidir_${rname})/bin/${rname}\"
   cd \"\$(cwidir_${rname})/bin\"
@@ -35,7 +35,7 @@ function cwmakeinstall_${rname}() {
     ln -sf ${rname} \${p}
   done
   cd -
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

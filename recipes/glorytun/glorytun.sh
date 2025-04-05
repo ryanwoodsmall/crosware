@@ -10,12 +10,12 @@ rreqs="bootstrapmake libsodium pkgconfig"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     CPPFLAGS=\"-I${cwsw}/libsodium/current/include\" \
     LDFLAGS=\"-L${cwsw}/libsodium/current/lib -static\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/libsodium/current/lib/pkgconfig\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

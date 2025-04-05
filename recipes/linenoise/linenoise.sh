@@ -16,20 +16,20 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   \${CC} -fPIC -Os -g -c -o ${rname}.{o,c}
   ar rcs lib${rname}.a ${rname}.o
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   mkdir -p \"${ridir}/include\" \"${ridir}/lib\"
   install -m 644 ${rname}.h \"${ridir}/include/\"
   install -m 644 lib${rname}.a \"${ridir}/lib/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -10,17 +10,17 @@ rreqs="make openssl libconfuse pkgconfig zlib"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat configure > configure.ORIG
   sed -i 's,^CAFILE1=.*,CAFILE1=\"${cwtop}/etc/ssl/cert.pem\",g' configure
   sed -i 's,^CAFILE2=.*,CAFILE2=\"${cwsw}/caextract/current/cert.pem\",g' configure
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/pkgconfig/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
       --disable-mbedtls \
@@ -29,7 +29,7 @@ function cwconfigure_${rname}() {
         CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
         LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

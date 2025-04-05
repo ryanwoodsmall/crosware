@@ -26,33 +26,33 @@ function cwextract_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG 's#^prefix=.*#prefix=${ridir}#g' Makefile
   local p
   for p in \$(cat debian/patches/series) ; do
     patch -p1 < debian/patches/\${p}
   done
   unset p
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make CC=\"\${CC} \${CPPFLAGS}\" YACC=byacc
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cwmkdir \"${ridir}/bin\"
   cwmkdir \"${ridir}/man/man1\"
   cwmkdir \"${ridir}/share/doc\"
   make install
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

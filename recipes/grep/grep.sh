@@ -10,22 +10,22 @@ rreqs="make pcre2 sed pkgconfig"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} --program-prefix=g --disable-nls
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install
   ln -sf g${rname} \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf ge${rname} \"\$(cwidir_${rname})/bin/e${rname}\"
   ln -sf gf${rname} \"\$(cwidir_${rname})/bin/f${rname}\"
   sed -i '/obsolescent/s,^,#,g' \"\$(cwidir_${rname})/bin/ge${rname}\"
   sed -i '/obsolescent/s,^,#,g' \"\$(cwidir_${rname})/bin/gf${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

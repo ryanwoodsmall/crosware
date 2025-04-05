@@ -22,7 +22,7 @@ function cwclean_${rname}() {
   (
     pushd \"${cwbuild}\"
     rm -rf \"${rbdir}\"
-    popd >/dev/null 2>&1
+    popd &>/dev/null
   ) &>/dev/null || true
 }
 "

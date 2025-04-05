@@ -16,7 +16,7 @@ rreqs="make gmp mpfr mpc flex bison slibtool isl zlib gawk"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --disable-nls \
     --with-system-zlib \
@@ -31,7 +31,7 @@ function cwconfigure_${rname}() {
       CXX=\"\${CXX} -static --static\"
     #--with-{boot,stage1}-ldflags=\"\${LDFLAGS}\" \
     #--with-{boot,stage1}-libs=\"-static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

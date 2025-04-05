@@ -17,7 +17,7 @@ rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname
 rsha256="a74ff18139564c597d047cfb167f74ab1963dd8608b6fb2e034e7635d6170444"
 rreqs="make ncurses"
 
-if ! command -v rsync >/dev/null 2>&1 ; then
+if ! command -v rsync &>/dev/null ; then
   rreqs="${rreqs} rsyncminimal"
 fi
 
@@ -25,7 +25,7 @@ fi
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   cat Makefile > Makefile.ORIG
   sed -i 's/-march=i586//g' Makefile
   sed -i \"/^CURSES_DEF/ s# = # = -I${cwsw}/ncurses/current/include -I${cwsw}/ncurses/current/include/ncurses #g\" Makefile
@@ -36,22 +36,22 @@ function cwconfigure_${rname}() {
   cat src/brogue/Rogue.h > src/brogue/Rogue.h.ORIG
   echo '#include <stdint.h>' > src/brogue/Rogue.h
   cat src/brogue/Rogue.h.ORIG >> src/brogue/Rogue.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   rm -f bin/brogue
   make curses
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   cwmkdir "${ridir}"
   find . -maxdepth 1 ! -type d -exec chmod a-x {} +
   chmod 755 brogue
@@ -59,7 +59,7 @@ function cwmakeinstall_${rname}() {
   rm -rf ${ridir}/bin/*.so*
   rm -f ${ridir}/src/libtcod*/{samples_c{,pp},hmtool}{,_debug}
   find ${ridir}/ -type f -name '*.o' -print | xargs rm -f
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -10,12 +10,12 @@ rreqs="make"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cwmkdir \"${ridir}/bin\"
   cwmkdir \"${ridir}/share/man/man1\"
   install -m 0755 ${rname} \"${ridir}/bin/${rname}\"
   install -m 0644 ${rname}.1 \"${ridir}/share/man/man1/${rname}.1\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

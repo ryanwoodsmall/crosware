@@ -10,31 +10,31 @@ rreqs="bootstrapmake bearssl cacertificates"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cat Makefile > Makefile.ORIG
   sed -i 's,/usr/local,${ridir},g' Makefile
   sed -i '/^install:/s,install-shared,,g' Makefile
   sed -i.ORIG 's,/etc/ssl/cert.pem,${cwetc}/ssl/cert.pem,g' tls_internal.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make -j${cwmakejobs} ${rlibtool} CC=\"\${CC} -I${cwsw}/bearssl/current/include -L${cwsw}/bearssl/current/lib\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   rm -f \"${ridir}/lib/pkgconfig/libtls.pc\" || true
   make install
   sed -i 's,${ridir},${rtdir}/current,g' \"${ridir}/lib/pkgconfig/libtls.pc\"
   sed -i 's,-lbearssl,-L${cwsw}/bearssl/current/lib -lbearssl,g' \"${ridir}/lib/pkgconfig/libtls.pc\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -10,7 +10,7 @@ rreqs="bootstrapmake configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i 's/-Werror=missing-include-dirs//g' glib/configure
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-internal-glib \
@@ -18,7 +18,7 @@ function cwconfigure_${rname}() {
       LDFLAGS=-static \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}='${cwsw}/${rname}/current/lib/pkgconfig'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

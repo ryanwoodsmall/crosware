@@ -16,7 +16,7 @@ rreqs="make gmp liboop netbsdcurses readlinenetbsdcurses zlib configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --disable-assembler \
     --disable-gss \
@@ -27,17 +27,17 @@ function cwconfigure_${rname}() {
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       LIBS=\"-lgmp -loop -lreadline -lcurses -lterminfo -lz -static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   rm -rf \"\$(cwidir_${rname})/include\"
   rm -rf \"\$(cwidir_${rname})/lib\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

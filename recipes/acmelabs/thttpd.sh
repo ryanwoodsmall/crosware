@@ -10,7 +10,7 @@ rreqs="bootstrapmake configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG 's/-o bin -g bin//g' Makefile.in
   cat extras/Makefile.in > extras/Makefile.in.ORIG
   sed -i /chgrp/d extras/Makefile.in
@@ -18,17 +18,17 @@ function cwconfigure_${rname}() {
   sed -i '/cp.*BINDIR/s,cp,install -D -m 0755,g' extras/Makefile.in
   env LDFLAGS=-static CPPFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH= \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install ${rlibtool}
   chmod 755 \"${ridir}/sbin/${rname}\"
   strip --strip-all \"${ridir}/sbin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

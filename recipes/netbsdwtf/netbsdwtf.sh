@@ -12,17 +12,17 @@ cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make PREFIX=\"\$(cwidir_${rname})\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install PREFIX=\"\$(cwidir_${rname})\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -16,28 +16,28 @@ rreqs="bootstrapmake"
 # XXX - man pages require txt2tags, python - just disable and run install twice
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cat config.mk > config.mk.ORIG
   sed -i \"/^CC/s,^.*,CC=\${CC} -c,g\" config.mk
   sed -i '/^LIBS/s,^.*,LIBS=-static,g' config.mk
   sed -i '/^PREFIX/s,^.*,PREFIX=${ridir},g' config.mk
   sed -i 's,-I/usr/include,,g' config.mk
   sed -i.ORIG 's,man,include,g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install
   \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/ixpc\"
   rm -f  \"${ridir}/bin/9p\" || true
@@ -45,7 +45,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${ridir}/share/man/man3\"
   install -m 0644 man/*.1 \"${ridir}/share/man/man1/\"
   install -m 0644 man/*.3 \"${ridir}/share/man/man3/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

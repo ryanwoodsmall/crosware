@@ -16,7 +16,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-ftp \
     --with-http \
@@ -33,6 +33,6 @@ function cwconfigure_${rname}() {
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
   sed -i.ORIG '/SUBDIRS.*=.*doc/s, doc , ,g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

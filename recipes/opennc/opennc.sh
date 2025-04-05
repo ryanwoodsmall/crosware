@@ -17,20 +17,20 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make CC=\"\${CC}\" CFLAGS=\"\${CFLAGS} \$(pkg-config --cflags libbsd-overlay)\" LIBS=\"\$(pkg-config --libs glib-2.0 libbsd-overlay) -static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   install -D -m 755 nc \"${ridir}/bin/${rname}\"
   ln -sf \"${ridir}/bin/${rname}\" \"${ridir}/bin/nc\"
   install -D -m 644 nc.1 \"${ridir}/share/man/man1/${rname}.1\"
   ln -sf \"${ridir}/share/man/man1/${rname}.1\" \"${ridir}/share/man/man1/nc.1\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

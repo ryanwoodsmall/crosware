@@ -39,11 +39,11 @@ function cwfetch_${rname}() {
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG /tar/s,xvf,xf,g Makefile
   test -e sources && mv sources{,.PRE-\${TS}}
   ln -s \"${cwdl}/${rname}\" sources
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -52,7 +52,7 @@ for a in ${statictoolchain_triplet[@]} ; do
   function cwmakeinstall_${rname}_${a//-/_}() {
     cwscriptecho \"\${FUNCNAME[0]}: building ${rname} for ${a}\"
     IFS=- read v g m <<< ${rver}
-    pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+    pushd \"\$(cwbdir_${rname})\" &>/dev/null
     make clean || true
     : \${CC:=\"gcc\"}
     : \${CXX:=\"g++\"}
@@ -70,13 +70,13 @@ for a in ${statictoolchain_triplet[@]} ; do
     sed 's,^,  ,g' < config.mak
     make -j${cwmakejobs} CFLAGS= CPPFLAGS= LDFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
     make install
-    popd >/dev/null 2>&1
-    pushd \"\$(cwidir_${rname})/${a}/lib\" >/dev/null 2>&1
+    popd &>/dev/null
+    pushd \"\$(cwidir_${rname})/${a}/lib\" &>/dev/null
     for l in ld-musl*.so* ld.so ldd ; do
       ln -sf \"${rtdir}/current/${a}/lib/libc.so\" \"\${l}\"
     done
     unset g l m v
-    popd >/dev/null 2>&1
+    popd &>/dev/null
   }
   "
 done
@@ -85,15 +85,15 @@ unset a
 eval "
 function cwmakeinstall_${rname}_post() {
   for a in \$(cwnormalizeargs ${statictoolchain_triplet[@]}) ; do
-    pushd \"\$(cwidir_${rname})/\${a}/include\" >/dev/null 2>&1
+    pushd \"\$(cwidir_${rname})/\${a}/include\" &>/dev/null
     for d in \$(find ../../x86_64-linux-musl/include/ -maxdepth 1 -mindepth 1 -type d) ; do
       b=\"\$(basename \${d})\"
       test -e \${b} || ln -s \${d} \${b}
     done
-    popd >/dev/null 2>&1
+    popd &>/dev/null
     rm -rf \"\$(cwidir_${rname})/\${a}/devbin\"
     cwmkdir \"\$(cwidir_${rname})/\${a}/devbin\"
-    pushd \"\$(cwidir_${rname})/\${a}/devbin\" >/dev/null 2>&1
+    pushd \"\$(cwidir_${rname})/\${a}/devbin\" &>/dev/null
     for b in \$(find ../../bin/ ! -type d | grep /bin/\${a}-) ; do
       t=\"\$(basename \${b})\"
       m=\"\$(basename \${b} | sed s,\${a}-,musl-,g)\"
@@ -103,7 +103,7 @@ function cwmakeinstall_${rname}_post() {
       ln -sf \${b} \${r}
     done
     ln -sf ../lib/ldd musl-ldd
-    popd >/dev/null 2>&1
+    popd &>/dev/null
   done
   unset a b d m r t
 }

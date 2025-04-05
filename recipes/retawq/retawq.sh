@@ -16,7 +16,7 @@ rreqs="make ncurses openssl zlib pkgconfig"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   chmod -R u+rw .
   sed -i.ORIG /RAND_egd/d resource.c
   sed -i.ORIG '/pkg-config/s,openssl,openssl zlib,g' tool/tlsmode
@@ -31,7 +31,7 @@ function cwconfigure_${rname}() {
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{openssl,zlib}/current/lib/pkgconfig | tr ' ' ':')\" \
       CC=\"\${CC} \${CFLAGS} -I${cwsw}/ncurses/current/include -I${cwsw}/ncurses/current/include/ncurses -L${cwsw}/ncurses/current/lib\" \
       LDFLAGS='-static -s'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

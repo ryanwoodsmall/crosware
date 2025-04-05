@@ -10,10 +10,10 @@ rreqs="make configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} LDFLAGS=-static CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}=
   sed -i.ORIG 's/__gnu_linux__/__linux__/g' src/closures.c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

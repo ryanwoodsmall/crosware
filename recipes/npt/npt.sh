@@ -12,33 +12,33 @@ cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG \"s,-lm,-lm -static,g;s,-O3,-Os,g\" build/Makefile.linux_terme_release
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s\" \
     LDFLAGS=-static \
     CPPFLAGS= \
     PKG_CONFIG_{LIBDIR,PATH}= \
       bash build/linux_terme_release.sh
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   install -m 755 ${rname} \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf ${rname} \"\$(cwidir_${rname})/bin/${rname}terme\"
   ln -sf ${rname} \"\$(cwidir_${rname})/bin/${rname}-terme\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

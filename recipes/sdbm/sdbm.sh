@@ -22,26 +22,26 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cat sdbm.h > sdbm.h.ORIG
   echo '#include <fcntl.h>' > sdbm.h
   echo >> sdbm.h
   cat sdbm.h.ORIG >> sdbm.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make CC=\"\${CC} \${CFLAGS}\" LDFLAGS=-static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cwmkdir \"${ridir}/bin\"
   cwmkdir \"${ridir}/include\"
   cwmkdir \"${ridir}/lib\"
@@ -56,7 +56,7 @@ function cwmakeinstall_${rname}() {
   install -m 644 sdbm.3 \"${ridir}/share/man/man3/\"
   ln -sf sdbm.h \"${ridir}/include/ndbm.h\"
   ln -sf libsdbm.a \"${ridir}/lib/libndbm.a\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

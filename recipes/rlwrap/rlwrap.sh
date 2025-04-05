@@ -12,13 +12,13 @@ rreqs="make netbsdcurses readlinenetbsdcurses configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
     LIBS=\"-lreadline -lcurses -lterminfo\"
   which pod2man || sed -i.ORIG 's/pod2man/echo pod2man/g' filters/Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -20,7 +20,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   env \
     PATH=\"${cwsw}/pkgconf/current/bin:\${PATH}\" \
     PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\" \
@@ -41,13 +41,13 @@ function cwconfigure_${rname}() {
           CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
           LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
           PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   rm -f ${ridir}/bin/* || true
   make install ${rlibtool}
   mv \"${ridir}/bin/curl\" \"${ridir}/bin/${rname}\"
@@ -60,7 +60,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${ridir}/devbin\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/devbin/curl\"
   ln -sf \"${rtdir}/current/bin/${rname}-config\" \"${ridir}/devbin/curl-config\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

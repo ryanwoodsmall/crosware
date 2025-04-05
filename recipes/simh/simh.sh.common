@@ -11,7 +11,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} all \
     TESTS=0 \
     CC=\"\${CC} -I. -D_LARGEFILE64_SOURCE -static\" \
@@ -19,13 +19,13 @@ function cwmake_${rname}() {
     CPPFLAGS= \
     CXXFLAGS= \
     LDFLAGS=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   cwmkdir \"\$(cwidir_${rname})/share\"
   local b
@@ -41,7 +41,7 @@ function cwmakeinstall_${rname}() {
     install -m 0644 \"\${b}\" \"\${t}\"
   done
   unset b t
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

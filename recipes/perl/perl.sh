@@ -19,7 +19,7 @@ rreqs="make toybox busybox byacc"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local sttop=\"${cwsw}/statictoolchain/current\"
   local starch=\"\$(\${CC} -dumpmachine)\"
   local stbin=\"\${sttop}/bin\"
@@ -40,17 +40,17 @@ function cwconfigure_${rname}() {
     -Dsysroot=\"\${PWD}/sysroot\" \
     -Dlibc=\"\${stlib}/libc.a\" \
     -Dcc=\"\${CC} \${CFLAGS} \${LDFLAGS}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 # XXX - adapt "oldversion" linkage to be more generic
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   for ov in 5.32.1 5.34.1 5.36.0 ; do
-    pushd \"${rtdir}\" >/dev/null 2>&1
+    pushd \"${rtdir}\" &>/dev/null
     test -e \"${rname}-\${ov}\" \
       && mv \"${rname}-\${ov}\" \"${rname}-\${ov}.PRE-\${TS}\" \
       || true
@@ -61,9 +61,9 @@ function cwmakeinstall_${rname}() {
     ln -sf \"\$(cwver_${rname})\" \"\${ov}\"
     cd \"\$(cwidir_${rname})/lib/site_perl\"
     ln -sf \"\$(cwver_${rname})\" \"\${ov}\"
-    popd >/dev/null 2>&1
+    popd &>/dev/null
   done
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

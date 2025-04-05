@@ -18,10 +18,10 @@ unset f
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwpatch_readline
   sed -i '/^install-static:/s,install-doc,,g' Makefile.in
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -36,7 +36,7 @@ function cwinstall_${rname}_termcap() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwinstall_${rname}_termcap
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-install-examples \
@@ -47,6 +47,6 @@ function cwconfigure_${rname}() {
       CPPFLAGS=\"-I\$(cwidir_${rname})/include\" \
       LDFLAGS=\"-L\$(cwidir_${rname})/lib -static\" \
       PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

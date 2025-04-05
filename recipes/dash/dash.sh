@@ -10,7 +10,7 @@ rreqs="make netbsdcurses libeditnetbsdcurses byacc"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --enable-static \
     --with-libedit \
@@ -20,7 +20,7 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -ledit -lcurses -lterminfo -static -s\" \
       LIBS=\"-ledit -lcurses -lterminfo -static -s\" \
       YACC=byacc
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

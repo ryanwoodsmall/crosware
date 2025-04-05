@@ -10,10 +10,10 @@ rreqs="make ncurses readline git pkgconfig pcre2"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --with-pcre
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -16,15 +16,15 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   \${CC} \${CFLAGS} carl.c -o carl -static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
   cwmkdir \"\$(cwidir_${rname})/src\"
@@ -32,7 +32,7 @@ function cwmakeinstall_${rname}() {
   install -m 0644 carl.1 \"\$(cwidir_${rname})/share/man/man1/carl.1\"
   ln -sf carl \"\$(cwidir_${rname})/bin/${rname}\"
   cp *.{c,h,md} \"\$(cwidir_${rname})/src/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

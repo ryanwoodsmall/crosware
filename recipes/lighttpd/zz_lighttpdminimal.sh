@@ -20,7 +20,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/pcre2/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --enable-ipv6 \
@@ -36,17 +36,17 @@ function cwconfigure_${rname}() {
         LUA_CFLAGS=\"-I${cwsw}/lua/current/include\" \
         LUA_LIBS=\"-L${cwsw}/lua/current/libs -llua\" \
         PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   rm -f \$(cwidir_${rname})/lib/*.la
   ln -sf lighttpd \"\$(cwidir_${rname})/sbin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

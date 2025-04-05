@@ -44,7 +44,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
   cwmkdir \"\$(cwidir_${rname})/share/doc\"
@@ -55,7 +55,7 @@ function cwmakeinstall_${rname}() {
     install -m 0644 doc/\${p}.1.html \"\$(cwidir_${rname})/share/doc/\${p}.1.html\"
   done
   unset p
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

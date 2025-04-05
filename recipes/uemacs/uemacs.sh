@@ -16,20 +16,20 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make -j${cwmakejobs} \
     V=1 \
     BINDIR=\"${ridir}/bin\" \
     LIBDIR=\"${ridir}/lib\" \
     CC=\"\${CC} \${CFLAGS} \$(echo -I${cwsw}/ncurses/current/include{,/ncurses}) -L${cwsw}/ncurses/current/lib\" \
     LIBS='-lncurses -static -s'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cwmkdir \"${ridir}/bin\"
   cwmkdir \"${ridir}/lib\"
   make install \
@@ -39,7 +39,7 @@ function cwmakeinstall_${rname}() {
   ln -sf em \"${ridir}/bin/${rname}\"
   ln -sf em \"${ridir}/bin/microemacs\"
   ln -sf em \"${ridir}/bin/micro-emacs\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

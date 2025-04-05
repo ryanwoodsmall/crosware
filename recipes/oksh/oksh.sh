@@ -11,7 +11,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's/ncurses\.h/curses.h/g' configure emacs.c var.c vi.c
   sed -i 's/-lncurses/-lcurses -lterminfo/g' configure
   env \
@@ -26,27 +26,27 @@ function cwconfigure_${rname}() {
         --enable-ksh \
         --enable-sh \
         --enable-static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} CPPFLAGS=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   find \$(cwidir_${rname})/bin/ ! -type d | grep 'sh$' | xargs rm -f &>/dev/null || true
   make install
   mv \"\$(cwidir_${rname})/bin/ksh\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/ksh\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/sh\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

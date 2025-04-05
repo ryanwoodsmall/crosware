@@ -23,29 +23,29 @@ cwstubfunc "cwconfigure_${rname}"
 
 #eval "
 #function cwconfigure_${rname}() {
-#  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+#  pushd \"\$(cwbdir_${rname})\" &>/dev/null
 #  cat config.def.h > config.def.h.ORIG
 #  sed -i 's,screen-256color-bce,xterm-color,g' config.def.h
 #  sed -i 's,screen-bce,xterm-color,g' config.def.h
-#  popd >/dev/null 2>&1
+#  popd &>/dev/null
 #}
 #"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make \
     CC=\"\${CC}\" \
     CFLAGS=\"\${CFLAGS} \${CPPFLAGS}\" \
     DESTDIR=\"\$(cwidir_${rname})\" \
     LIBS=\"\${LDFLAGS} -lncursesw -lutil -static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
   cwmkdir \"\$(cwidir_${rname})/share/terminfo\"
@@ -54,7 +54,7 @@ function cwmakeinstall_${rname}() {
   env TERMINFO=\"${cwsw}/ncurses/current/share/terminfo\" \"${cwsw}/ncurses/current/bin/tic\" -s -x ${rname}.ti || true
   cwmkdir \"\${HOME}/.terminfo\"
   env TERMINFO=\"\${HOME}/.terminfo\" \"${cwsw}/ncurses/current/bin/tic\" -s -x ${rname}.ti || true
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

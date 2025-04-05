@@ -10,12 +10,12 @@ rreqs="make diffutils"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   rm -f \"\$(cwidir_${rname})/bin/{b,}yacc\"
   make install
   mv \"\$(cwidir_${rname})/bin/yacc\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf ${rname} \"\$(cwidir_${rname})/bin/yacc\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

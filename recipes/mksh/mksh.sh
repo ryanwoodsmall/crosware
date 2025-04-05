@@ -10,11 +10,11 @@ rreqs=""
 
 eval "
 function cwextract_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   rm -rf \"${rname}\"
   cwextract \"${rdlfile}\" \"${cwbuild}\"
   mv \"${rname}\" \"${rdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -26,15 +26,15 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   env CC=\"\${CC}\" LDFLAGS='-static' CFLAGS='-Wl,-static' CPPFLAGS= sh Build.sh
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cwmkdir \"${ridir}/bin\"
   install -m 0755 \"${rname}\" \"${ridir}/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"${ridir}/bin/ksh\"
@@ -47,7 +47,7 @@ function cwmakeinstall_${rname}() {
   install -m 0755 lksh \"${ridir}/bin/lksh\"
   ln -sf \"${rtdir}/current/bin/lksh\" \"${ridir}/bin/sh\"
   find \"${ridir}/bin/\" -type f | xargs \$(\${CC} -dumpmachine)-strip --strip-all
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

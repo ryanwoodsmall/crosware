@@ -22,14 +22,14 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   mkdir -p \"${ridir}\"
   rm -f \"${ridir}/JZip.jar\"
   cp dist/J7Zip.jar \"${ridir}\"
   echo '#!/bin/sh' > \"${ridir}/${rname}\"
   echo 'java -jar \"${rtdir}/current/J7Zip.jar\" \"\${@}\"' >> \"${ridir}/${rname}\"
   chmod 755 \"${ridir}/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

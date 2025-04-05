@@ -22,7 +22,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/etc\"
   install -m 755 \"${cwdl}/${rname%gnutls}/vpnc-script\" \"\$(cwidir_${rname})/etc/vpnc-script\"
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
@@ -38,16 +38,16 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       LIBS='-lgnutls -ltasn1 -lunistring -lhogweed -lgmp -lnettle -lxml2 -llzma -lz -llz4'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   ln -sf ${rname%gnutls} \"\$(cwidir_${rname})/sbin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

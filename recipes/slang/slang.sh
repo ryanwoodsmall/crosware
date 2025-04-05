@@ -16,28 +16,28 @@ rreqs="make zlib ncurses configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's/-ltermcap/-lncurses/g' configure
   sed -i 's/ncurses5-config/ncurses6-config/g' configure
   sed -i 's/ncursesw5-config/ncursesw6-config/g' configure
   ./configure ${cwconfigureprefix}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install-static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

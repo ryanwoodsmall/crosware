@@ -10,35 +10,35 @@ rreqs="make libbsd netbsdcurses pkgconfig"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   grep -ril sys/queue . | xargs sed -i.ORIG s,sys/queue,bsd/sys/queue,g
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env CPPFLAGS= LDFLAGS=-static ./configure --enable-static --prefix=\"\$(cwidir_${rname})\" --mandir=\"\$(cwidir_${rname})/share/man\"
   sed -i.ORIG 's/-lncursesw/-lcurses -lterminfo/g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make CPPFLAGS= LDFLAGS=-static CC=\"\${CC} \$(pkg-config --libs --cflags libbsd) -I${cwsw}/netbsdcurses/current/include -L${cwsw}/netbsdcurses/current/lib -Wl,-static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install CPPFLAGS= LDFLAGS=-static CC=\"\${CC} \$(pkg-config --libs --cflags libbsd) -I${cwsw}/netbsdcurses/current/include -L${cwsw}/netbsdcurses/current/lib -Wl,-static\"
   ln -sf mg \"\$(cwidir_${rname})/bin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

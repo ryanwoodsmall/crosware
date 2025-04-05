@@ -20,34 +20,34 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --with-openssl \
     --with-zstd \
       CPPFLAGS=\"\$(echo -I${cwsw}/{libressl,zstd}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{libressl,zstd}/current/lib) -L. -L.. -static -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make -j${cwmakejobs} \
     CC=\"\${CC} \${CFLAGS} -Wl,-s -L. -L..\"\
     CPPFLAGS=\"\$(echo -I${cwsw}/{libressl,zstd}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{libressl,zstd}/current/lib) -L. -L.. -static -s\" \
     PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install PREFIX=\"${ridir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

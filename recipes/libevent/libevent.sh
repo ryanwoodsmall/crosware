@@ -10,9 +10,9 @@ rreqs="make pkgconfig"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --disable-openssl --disable-samples
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

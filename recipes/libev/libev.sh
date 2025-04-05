@@ -12,11 +12,11 @@ rreqs="make slibtool"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install ${rlibtool}
   cat \"${ridir}/include/event.h\" > \"${ridir}/include/${rname}_event.h\"
   rm -f \"${ridir}/include/event.h\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

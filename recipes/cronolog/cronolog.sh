@@ -10,10 +10,10 @@ rreqs="bootstrapmake"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   env CFLAGS=\"\${CFLAGS} -Wl,-s\" LDFLAGS='-s -static' CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}= \
     ./configure ${cwconfigureprefix}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -29,16 +29,16 @@ function cwfetch_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   install -m 0644 \"${cwdl}/${rname}/Makefile\" Makefile
   make brotli lib CPPFLAGS= LDFLAGS=-static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local l
   for l in common dec enc ; do
     ( cd bin/obj/c/\${l} ; \${AR} -v -r \"\$(cwbdir_${rname})/lib${rname}\${l}.a\" *.o )
@@ -59,7 +59,7 @@ function cwmakeinstall_${rname}() {
   sed -i \"s,@libdir@,${rtdir}/current/lib,g\" \$(cwidir_${rname})/lib/pkgconfig/*.pc
   sed -i \"s,@PACKAGE_VERSION@,\$(cwver_${rname}),g\" \$(cwidir_${rname})/lib/pkgconfig/*.pc
   unset l
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

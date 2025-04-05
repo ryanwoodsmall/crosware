@@ -22,7 +22,7 @@ cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}_base() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   mkdir -p base_build
   cd base_build
   ../configure ${cwconfigureprefix} \
@@ -36,13 +36,13 @@ function cwmake_${rname}_base() {
         LDFLAGS=-static \
         CPPFLAGS=
   make -j${cwmakejobs}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}_wide() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   mkdir -p wide_build
   cd wide_build
   ../configure ${cwconfigureprefix} \
@@ -57,7 +57,7 @@ function cwmake_${rname}_wide() {
         LDFLAGS=-static \
         CPPFLAGS=
   make -j${cwmakejobs}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -70,7 +70,7 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cd base_build
   make install
   cd -
@@ -82,7 +82,7 @@ function cwmakeinstall_${rname}() {
   done
   unset v
   sed -i \"s,\$(cwidir_${rname}),${rtdir}/current,g\" \$(cwidir_${rname})/lib/pkgconfig/*.pc
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

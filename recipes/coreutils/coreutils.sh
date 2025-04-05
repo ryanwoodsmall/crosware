@@ -15,7 +15,7 @@ rreqs="make gettexttiny sed attr acl perl gmp utillinux libcap"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env FORCE_UNSAFE_CONFIGURE=1 ./configure ${cwconfigureprefix} \
     --disable-nls \
     --enable-acl \
@@ -30,7 +30,7 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   uname -m | egrep -q '(aarch|riscv)64' && echo '#define SYS_getdents SYS_getdents64' >> src/ls.h || true
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

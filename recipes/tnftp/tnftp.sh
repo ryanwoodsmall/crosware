@@ -10,7 +10,7 @@ rreqs="make netbsdcurses libeditnetbsdcurses configgit libressl pkgconf"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} ${cwconfigurelibopts} \
     --enable-editcomplete \
     --enable-ipv6 \
@@ -22,7 +22,7 @@ function cwconfigure_${rname}() {
       LIBS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -ledit -lcurses -lterminfo\" \
       PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

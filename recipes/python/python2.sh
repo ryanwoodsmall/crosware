@@ -24,7 +24,7 @@ rreqs="make bzip2 zlib ncurses readline openssl gdbm sqlite bdb47"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-ensurepip=install \
     --with-dbmliborder=gdbm:bdb \
@@ -34,7 +34,7 @@ function cwconfigure_${rname}() {
   echo '_ssl _ssl.c -DUSE_SSL -lssl -lcrypto -lz' >> Modules/Setup.local
   #echo \"dbm dbmmodule.c -lgdbm_compat -I${cwsw}/gdbm/current/include\" >> Modules/Setup.local
   sed -i.ORIG 's#/usr/include#/no/usr/include#g' setup.py
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

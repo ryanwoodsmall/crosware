@@ -10,10 +10,10 @@ rreqs="make"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install ${rlibtool}
   ln -sf \"${rname}\" \"${ridir}/bin/tcpredir\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -10,13 +10,13 @@ rreqs="bootstrapmake"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cat Makefile > Makefile.ORIG
   sed -i '/^LIBRARIES/s,^LIBRARIES.*,LIBRARIES=lib${rname}.a,g' Makefile
   sed -i '/ln.*LIB_SH/s, ln , echo ln ,g' Makefile
   sed -i 's,-march=,-mtune=,g' Makefile
   sed -i 's,-O3,-Os,g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -28,7 +28,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make -j${cwmakejobs} \
     PREFIX=\"${ridir}\" \
     LIBRARY_REL=lib \
@@ -38,13 +38,13 @@ function cwmake_${rname}() {
     LDFLAGS=-static \
     CPPFLAGS= \
     PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install \
     PREFIX=\"${ridir}\" \
     LIBRARY_REL=lib \
@@ -53,7 +53,7 @@ function cwmakeinstall_${rname}() {
     PC_EXTRA_LIBS=
   sed -i 's,^prefix=.*,prefix=${rtdir}/current,g' \"${ridir}/lib/pkgconfig/lib${rname}.pc\"
   \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

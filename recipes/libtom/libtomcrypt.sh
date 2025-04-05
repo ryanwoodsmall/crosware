@@ -12,32 +12,32 @@ cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   pcf=\"${rname}.pc\"
   cat \"\${pcf}.in\" > \"\${pcf}\"
   sed -i '/^prefix=/s,@to-be-replaced@,${rtdir}/current,g' \"\${pcf}\"
   sed -i '/^Version:/s,@to-be-replaced@,'\"\$(cwver_${rname})\"',g' \"\${pcf}\"
   unset pcf
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} \
     PREFIX=\"\$(cwidir_${rname})\" \
     CC=\"\${CC}\" \
     CFLAGS=\"\${CFLAGS} -DUSE_LTM -DLTM_DESC -I${cwsw}/libtommath/current/include\" \
     EXTRALIBS=\"-L${cwsw}/libtommath/current/lib -ltommath -static\" \
       all
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   rm -f \"\$(cwidir_${rname})/bin/${rname}-hashsum\"
   rm -f \"\$(cwidir_${rname})/bin/hashsum\"
   for t in install_all hashsum ltcrypt sizes constants openssl-enc ; do
@@ -55,7 +55,7 @@ function cwmakeinstall_${rname}() {
   ln -sf \"${rname}-hashsum\" \"\$(cwidir_${rname})/bin/hashsum\"
   cwmkdir \"\$(cwidir_${rname})/lib/pkgconfig\"
   install -m 644 \"${rname}.pc\" \"\$(cwidir_${rname})/lib/pkgconfig/${rname}.pc\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -13,7 +13,7 @@ rreqs="make sed flex configgit texinfo gettexttiny slibtool bison"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   cd config
   cd ..
   sed -i.ORIG 's/GNUC/GNUC_OFF/g' src/lexi.c
@@ -25,7 +25,7 @@ function cwconfigure_${rname}() {
     gl_cv_cc_vis_werror=no \
     LIBTOOL=\"${cwsw}/slibtool/current/bin/slibtool-static -all-static\"
   echo '#include <locale.h>' >> config.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

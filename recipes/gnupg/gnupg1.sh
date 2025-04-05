@@ -11,7 +11,7 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --program-suffix=1 \
     --disable-ldap \
@@ -23,7 +23,7 @@ function cwconfigure_${rname}() {
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       LIBS='-lreadline -lterminfo -lcurses -static'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

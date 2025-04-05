@@ -13,19 +13,19 @@ rreqs="bootstrapmake libmd"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} LDFLAGS='-L${cwsw}/libmd/current/lib -static' CPPFLAGS='-I${cwsw}/libmd/current/include' PKG_CONFIG_{LIBDIR,PATH}=
   echo '#include <fcntl.h>' >> config.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   rm -f \$(cwidir_${rname})/lib/*.so
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

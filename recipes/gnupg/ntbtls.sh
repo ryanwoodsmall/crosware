@@ -10,7 +10,7 @@ rreqs="make slibtool libgpgerror libgcrypt libksba zlib configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-libgpg-error-prefix=\"${cwsw}/libgpgerror/current\" \
     --with-libgcrypt-prefix=\"${cwsw}/libgcrypt/current\" \
@@ -19,7 +19,7 @@ function cwconfigure_${rname}() {
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

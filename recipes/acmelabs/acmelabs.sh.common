@@ -27,17 +27,17 @@ rreqs="bootstrapmake"
 
 eval "
 function cwextract_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   rm -rf \"${r}\" \"${rdir}\"
   cwextract \"${rdlfile}\" \"${cwbuild}\"
   test -e \"${rdir}\" || mv \"${r}\" \"${rdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cat Makefile > Makefile.ORIG
   sed -i \"s,^CC.*,CC = \${CC},g\" Makefile
   sed -i 's,^BINDIR.*,BINDIR = ${ridir}/bin,g' Makefile
@@ -47,7 +47,7 @@ function cwconfigure_${rname}() {
   rm -rf \"${ridir}/sbin\" \"${ridir}/share/man\"
   grep ^MANDIR Makefile | cut -f2 -d= | xargs mkdir -p ${ridir}/bin
   ln -sf bin \"${ridir}/sbin\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

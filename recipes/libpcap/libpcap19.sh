@@ -11,7 +11,7 @@ rreqs="make bison flex libnl pkgconfig"
 # XXX - yuck
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ln -s ${cwsw}/libnl/current/include/libnl3/netlink .
   ./configure \
     ${cwconfigureprefix} \
@@ -26,15 +26,15 @@ function cwconfigure_${rname}() {
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   echo '#include <limits.h>' >> config.h
   echo '#include <unistd.h>' >> config.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install
   sed -i 's#/\\.libs # #g' \$(cwidir_${rname})/bin/pcap-config \$(cwidir_${rname})/lib/pkgconfig/libpcap.pc
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

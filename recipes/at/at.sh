@@ -14,7 +14,7 @@ rreqs="make byacc reflex configgit"
 # glibc-specific workaround via: https://www.openembedded.org/pipermail/openembedded-core/2015-April/103802.html
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   local u g
   u=\$(cut -f1,3 -d: /etc/passwd | grep \${UID}\$ | cut -f1 -d: | head -1)
   g=\$(cut -f1,3 -d: /etc/group | grep \${GROUPS[0]}\$ | cut -f1 -d: | head -1)
@@ -38,17 +38,17 @@ function cwconfigure_${rname}() {
   #echo '#define is_leap_year(y) ((y) % 4 == 0 && ((y) % 100 != 0 || (y) % 400 == 0))' >> parsetime.y
   #sed -i.ORIG 's/__isleap/is_leap_year/g' parsetime.y
   unset u g
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install ${rlibtool}
   cwmkdir \"${cwtop}/var/spool/at/atjobs\"
   cwmkdir \"${cwtop}/var/spool/at/atspool\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

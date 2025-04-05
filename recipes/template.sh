@@ -59,11 +59,11 @@ rreqs="fakereq1 fakereq2"
 
 eval "
 function cwclean_${rname}() {
-  pushd "${cwbuild}" >/dev/null 2>&1
+  pushd "${cwbuild}" &>/dev/null
   custom
   clean
   commands
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -77,25 +77,25 @@ function cwfetch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   ./configure --prefix="${ridir}" --custom-flag
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   make -custom...
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   make install DESTDIR=...
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

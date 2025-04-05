@@ -11,11 +11,11 @@ rreqs="make m4 configgit"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install
   ln -sf \"${rname}\" \"${ridir}/bin/lex\"
   ln -sf \"${rname}++\" \"${ridir}/bin/lex++\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

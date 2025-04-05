@@ -10,26 +10,26 @@ rreqs="make abduco ncurses"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG '/^PREFIX/s,^PREFIX.*,PREFIX=${ridir},g' config.mk
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   env PATH=\"${cwsw}/ncurses/current/bin:\${PATH}\" \
     make \
       CC=\"\${CC} -I${cwsw}/ncurses/current/include -I${cwsw}/ncurses/current/include/ncursesw -L${cwsw}/ncurses/current/lib\" \
       LDFLAGS=\"-L${cwsw}/ncurses/current/lib -lncursesw -static\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   env PATH=\"${cwsw}/ncurses/current/bin:\${PATH}\" \
     make \
       install \
@@ -38,7 +38,7 @@ function cwmakeinstall_${rname}() {
   cwmkdir \"${ridir}/share/terminfo\"
   install -m 0644 ${rname}.info \"${ridir}/share/terminfo/${rname}.info\"
   \"${cwsw}/ncurses/current/bin/tic\" -s -x ${rname}.info
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

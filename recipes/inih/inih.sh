@@ -10,28 +10,28 @@ rreqs="meson ninja"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:\${PATH}\" \
     \"${cwsw}/meson/current/bin/meson\" setup --prefix=\"\$(cwidir_${rname})\" --libdir=\"\$(cwidir_${rname})/lib\" -Ddefault_library=static build
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:\${PATH}\" \
     \"${cwsw}/meson/current/bin/meson\" compile -C build
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/meson/current/bin:${cwsw}/ninja/current/bin:\${PATH}\" \
     \"${cwsw}/meson/current/bin/meson\" install -C build
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

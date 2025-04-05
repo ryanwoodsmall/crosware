@@ -12,11 +12,11 @@ rreqs="make"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   sed -i.ORIG \"s#=/usr/local#=${ridir}#g\" install.sh makefile.common
   sed -i.ORIG \"s#^CC=gcc#CC=\${CC}#g\" makefile.*
   sed -i.ORIG \"s#^CXX=g++#CXX=\${CXX}#g\" makefile.*
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -20,22 +20,22 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make \
     INSTALLROOT=\"${ridir}\" \
     CC=\"\${CC} \${CFLAGS} -I${cwsw}/netbsdcurses/current/include\" \
     LDFLAGS=\"-static -L${cwsw}/netbsdcurses/current/lib\" \
     LIBS=\"-lcurses -lterminfo -static\" \
     CPPFLAGS=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install INSTALLROOT=\"${ridir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

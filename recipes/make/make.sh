@@ -13,7 +13,7 @@ rreqs="busybox sed gawk bashtiny"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/bashtiny/current/bin:${cwsw}/sed/current/bin:${cwsw}/gawk/current/bin:${cwsw}/busybox/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
       --disable-dependency-tracking \
@@ -23,25 +23,25 @@ function cwconfigure_${rname}() {
         LDFLAGS=-static \
         CPPFLAGS= \
         PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     LDFLAGS=-static \
     CPPFLAGS= \
     PATH=\"${cwsw}/bashtiny/current/bin:${cwsw}/sed/current/bin:${cwsw}/gawk/current/bin:${cwsw}/busybox/current/bin:\${PATH}\" \
       \"${cwsw}/bashtiny/current/bin/bash\" ./build.sh
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     LDFLAGS=-static \
     CPPFLAGS= \
@@ -49,7 +49,7 @@ function cwmakeinstall_${rname}() {
       ./make install-binPROGRAMS
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/g${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/gnu${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -16,19 +16,19 @@ cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local p=\"${cwsw}/pkgconfig/current/bin/pkg-config\"
   cat GNUmakefile > GNUmakefile.ORIG
   sed -i '/CURSES_LIBS:=/s|=.*|=-L${cwsw}/netbsdcurses/current/lib -lcurses -lterminfo -static|g' GNUmakefile
   sed -i \"/BSD_CPPFLAGS:=/s|=.*|=\$(\${p} --cflags libbsd-overlay) -DHAVE_PTY_H|g\" GNUmakefile
   sed -i \"/BSD_LIBS:=/s|=.*|=\$(\${p} --libs libbsd-overlay) -lutil -static|g\" GNUmakefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local p=\"${cwsw}/pkgconfig/current/bin/pkg-config\"
   local m='mg'
   local n=\"${rname%mg}\"
@@ -47,7 +47,7 @@ function cwmakeinstall_${rname}() {
   ln -sf \"\${f}\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"\${f}\" \"\$(cwidir_${rname})/bin/\${m}-\${n}\"
   ln -sf \"\${f}\" \"\$(cwidir_${rname})/bin/\${n}-\${m}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

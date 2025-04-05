@@ -10,30 +10,30 @@ rreqs="bootstrapmake"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG 's/-flto//g' Makefile
   sed -i 's#^prefix=.*#prefix=${ridir}#g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make CPPFLAGS= LDFLAGS=-static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install
   \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname}\"
   rm -rf \"${ridir}/themes\"
   ln -sf \"${rtdir}/current/share/${rname}/themes\" \"${ridir}/themes\"
   ln -sf \"${rname}\" \"${ridir}/bin/${rname}${rver%%.*}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -10,7 +10,7 @@ rreqs="make ncurses libpcap19 autoconf automake libtool libnl"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   autoreconf -fiv
   env PATH=\"${cwsw}/libpcap19/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
@@ -18,7 +18,7 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       LIBS=\"\$(${cwsw}/libpcap19/current/bin/pcap-config --static --libs)\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

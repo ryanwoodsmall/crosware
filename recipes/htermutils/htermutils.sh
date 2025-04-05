@@ -30,7 +30,7 @@ function cwextract_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local jstcopy=\"\$(cwidir_${rname})/bin/jstcopy\"
   mkdir -p \"\$(cwidir_${rname})/bin\"
   mkdir -p \"\$(cwidir_${rname})/share\"
@@ -44,7 +44,7 @@ function cwmakeinstall_${rname}() {
   echo 'env TMUX= TERM=vt100 osc52.sh --force \"\${@}\"' >> \"\${jstcopy}\"
   chmod 755 \"\${jstcopy}\"
   unset jstcopy
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

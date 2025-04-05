@@ -16,7 +16,7 @@ fi
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cat Makefile > Makefile.ORIG
   sed -i '/^CONFIG_SDL=.*/d' Makefile
   if [[ ${karch} =~ ^(aarch|armv) ]] ; then
@@ -29,13 +29,13 @@ function cwconfigure_${rname}() {
   sed -i \"/^LDFLAGS=/s|=|=\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static|g\" Makefile
   sed -i 's|^bindir=.*|bindir=${ridir}/bin|g' Makefile
   sed -i 's/-lcrypto/-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz/g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cwmkdir \"${ridir}/bin\"
   make install
   \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/temu\"
@@ -43,7 +43,7 @@ function cwmakeinstall_${rname}() {
   ln -sf \"${rtdir}/current/bin/temu\" \"${ridir}/bin/${rname//tiny/riscv}\"
   ln -sf \"${rtdir}/current/bin/temu\" \"${ridir}/bin/tinyemu\"
   ln -sf \"${rtdir}/current/bin/temu\" \"${ridir}/bin/riscvemu\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

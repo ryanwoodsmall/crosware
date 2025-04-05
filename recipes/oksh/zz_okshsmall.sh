@@ -22,7 +22,7 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     CPPFLAGS= \
     CFLAGS=\"\${CFLAGS} -Os -g0 -Wl,-s -DEMACS\" \
@@ -36,28 +36,28 @@ function cwconfigure_${rname}() {
         --enable-ksh \
         --enable-sh \
         --enable-static
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} CPPFLAGS= CFLAGS=\"\${CFLAGS} -Os -g0 -Wl,-s -DEMACS\" LDFLAGS=\"-static -s\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   find \$(cwidir_${rname})/bin/ ! -type d | grep '/bin/.*sh' | xargs rm -f &>/dev/null || true
   make install
   mv \"\$(cwidir_${rname})/bin/ksh\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/oksh\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/ksh\"
   ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/sh\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

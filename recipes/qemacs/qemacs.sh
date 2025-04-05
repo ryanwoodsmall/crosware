@@ -10,7 +10,7 @@ rreqs="make"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   ./configure --prefix="${ridir}" \
     --enable-tiny \
     --disable-x11 \
@@ -24,17 +24,17 @@ function cwconfigure_${rname}() {
   grep -v 'install.*html2png.*/bin' Makefile > Makefile.NEW
   sed '/^install:/ s/html2png//g' Makefile.NEW > Makefile
   sed -i 's/HOST_CC/CC/g;s/CFLAGS)/CFLAGS) \$(LDFLAGS)/g' libqhtml/Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   cwmkdir "${ridir}/bin"
   cwmkdir "${ridir}/man/man1"
   make install
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

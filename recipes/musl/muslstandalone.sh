@@ -30,7 +30,7 @@ function cwextract_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's#\\\$ldso#${rtdir}/current/lib/ld.so#g' tools/musl-gcc.specs.sh
   ./configure ${cwconfigureprefix} \
     --syslibdir=\"\$(cwidir_${rname})/lib\" \
@@ -43,13 +43,13 @@ function cwconfigure_${rname}() {
       CPPFLAGS= \
       CXXFLAGS= \
       LDFLAGS=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local a
   if [[ ${karch} =~ ^i ]] ; then
     a=x86
@@ -74,7 +74,7 @@ function cwmakeinstall_${rname}() {
     test -e \"\$(cwidir_${rname})/lib/\$(basename \${a})\" || ln -s \"\${a}\" \"\$(cwidir_${rname})/lib/\" || true
   done
   unset a
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -1,27 +1,27 @@
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   cp unix/Makefile{,.ORIG}
   sed -i \"s|^prefix =.*|prefix = ${ridir}|g\" unix/Makefile
   sed -i \"s|^CC =.*|CC = \${CC} \${CFLAGS} -static|g\" unix/Makefile
   sed -i \"s|^CPP =.*|CPP = \${CPP}|g\" unix/Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   make -f unix/Makefile generic
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   make -f unix/Makefile install
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

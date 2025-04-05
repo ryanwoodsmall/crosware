@@ -54,7 +54,7 @@ function cwpatch_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env PATH=\"${cwsw}/lua/current/bin:${cwsw}/pcre2/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
       --enable-ipv6 \
@@ -75,16 +75,16 @@ function cwconfigure_${rname}() {
         XML_CFLAGS=\"-I${cwsw}/libxml2/current/include\" \
         XML_LIBS=\"-L${cwsw}/libxml2/current/libs -lxml2\" \
         PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
   rm -f \$(cwidir_${rname})/lib/*.la
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

@@ -30,15 +30,15 @@ function cwfetch_${rname}() {
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   patch -p1 < \"${cwdl}/${rname%libressl}/stunnel-5.51-libressl.patch\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   grep -ril '/usr/bin/perl' . \
   | xargs sed -i \"s#/usr/bin/perl#${cwsw}/perl/current/bin/perl#g\"
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
@@ -55,7 +55,7 @@ function cwconfigure_${rname}() {
   cwmkdir \"\$(cwidir_${rname})/bin\"
   ln -sf \"${rtdir}/current/bin/${rname%libressl}\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname%libressl}\" \"\$(cwidir_${rname})/bin/${rname%libressl}-${rname#stunnel}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

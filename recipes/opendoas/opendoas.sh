@@ -21,15 +21,15 @@ rmessage="bin/doas requires setuid root; try: 'pushd ${cwsw}/opendoas/current/bi
 # XXX - ugh,
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG '/parseconfig.*DOAS/s/1/0/g' doas.c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   env \
     BINOWN=\"\$(cwgetuser)\" \
     BINGRP=\"\$(cwgetgroup)\" \
@@ -39,13 +39,13 @@ function cwconfigure_${rname}() {
         --sysconfdir=\"${ridir}/etc\" \
         --enable-static \
         --without-pam
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install ${rlibtool}
   ln -sf doas \"${ridir}/bin/${rname}\"
   mkdir \"${ridir}/etc\"
@@ -61,7 +61,7 @@ function cwmakeinstall_${rname}() {
   chmod -R g+rw \"${ridir}/\"
   find \"${ridir}/\" -type d -exec chmod 2775 {} +
   unset dc
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

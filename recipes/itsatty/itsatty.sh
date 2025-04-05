@@ -22,9 +22,9 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install prefix=\"${ridir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

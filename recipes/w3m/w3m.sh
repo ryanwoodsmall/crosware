@@ -21,7 +21,7 @@ rreqs="make libatomicops gc gettexttiny ncurses openssl perl pkgconfig zlib cace
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG '/^for lib in .*nsl/ s/ in / in dne #/g' configure
   env PATH=${cwsw}/perl/current/bin:\${PATH} ./configure ${cwconfigureprefix} \
     --disable-mouse \
@@ -33,7 +33,7 @@ function cwconfigure_${rname}() {
       LIBS='-lssl -lcrypto -lz'
   sed -i.ORIG 's/GC_INIT/setenv(\"GC_DONT_GC\",\"1\",\"1\");GC_INIT/g' main.c
   #sed -i.ORIG 's/GC_INIT/setenv(\"GC_INITIAL_HEAP_SIZE\",\"256M\",\"1\");GC_INIT/g' main.c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

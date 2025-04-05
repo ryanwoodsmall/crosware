@@ -28,31 +28,31 @@ rreqs="bootstrapmake bearssl"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG 's,^PREFIX=.*,PREFIX=${ridir},g' Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make \
     CC=\"\${CC} \${CFLAGS} -I${cwsw}/bearssl/current/include\" \
     LD{FLAGS,LIBS}=\"-L${cwsw}/bearssl/current/lib -lbearssl -static\" \
     CPPFLAGS= \
     PKG_CONFIG_LIBDIR= \
     PKG_CONFIG_PATH=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install
   \$(\${CC} -dumpmachine)-strip --strip-all \"${ridir}/bin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

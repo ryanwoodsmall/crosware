@@ -20,24 +20,24 @@ unset f
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     --enable-size-optimizations \
     --without-curses \
       LDFLAGS=-static \
       CPPFLAGS= PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
   sed -i 's/-flto//g' src/Makefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install-strip
   ln -sf \"${rtdir}/current/bin/${rname%%minimal}\" \"\$(cwidir_${rname})/bin/${rname}\"
   ln -sf \"${rtdir}/current/bin/${rname%%minimal}\" \"\$(cwidir_${rname})/bin/${rname%%minimal}-${rname##mg}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

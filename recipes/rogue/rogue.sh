@@ -30,7 +30,7 @@ function cwextract_${rname}() {
 
 eval "
 function cwpatch_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cat main.c > main.c.ORIG
   echo -n '' > main.c
   echo '#include <curses.h>' >> main.c
@@ -38,13 +38,13 @@ function cwpatch_${rname}() {
   cat main.c.ORIG >> main.c
   sed -i 's/_curx/curx/g' main.c
   sed -i 's/_cury/cury/g' main.c
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   ./configure ${cwconfigureprefix} \
     --enable-wizardmode \
     --enable-scorefile=\"${rtdir}/rogue.scr\" \
@@ -54,7 +54,7 @@ function cwconfigure_${rname}() {
       LIBS=\"-L${cwsw}/netbsdcurses/current/lib/ -lcurses -lterminfo\"
   echo '#include <sys/types.h>' >> config.h
   echo '#define NCURSES_INTERNALS 1' >> config.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

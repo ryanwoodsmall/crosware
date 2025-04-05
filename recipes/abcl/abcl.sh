@@ -16,13 +16,13 @@ cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})\"
   tar -cf - . | ( cd \"\$(cwidir_${rname})\" ; tar -xf - )
   echo '#!/bin/sh' > \"\$(cwidir_${rname})/${rname}\"
   echo 'rlwrap -C ${rname} java -cp ${rtdir}/current/${rname}.jar:${rtdir}/current/${rname}-contrib.jar org.armedbear.lisp.Main \"\${@}\"' >> \"\$(cwidir_${rname})/${rname}\"
   cwchmod \"755\" \"\$(cwidir_${rname})/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

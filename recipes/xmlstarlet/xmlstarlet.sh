@@ -10,22 +10,22 @@ rreqs="make libgcrypt libgpgerror libxml2 libxslt xz zlib configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   env PATH=\"${cwsw}/libxml2/current/bin:${cwsw}/libxslt/current/bin:\${PATH}\" \
     ./configure ${cwconfigureprefix} \
       --with-libxml-prefix=\"${cwsw}/libxml2/current\" \
       --with-libxslt-prefix=\"${cwsw}/libxslt2/current\" \
         LIBS='-llzma -lz -lgcrypt -lgpg-error'
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install
   ln -sf \"${rtdir}/current/bin/xml\" \"${ridir}/bin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

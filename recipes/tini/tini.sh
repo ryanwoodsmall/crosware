@@ -10,27 +10,27 @@ rreqs=""
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   echo '#define TINI_VERSION \"${rver}\"' > ./src/tiniConfig.h
   echo '#define TINI_GIT \"\"' >> ./src/tiniConfig.h
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})/src\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})/src\" &>/dev/null
   \${CC} \${CFLAGS} -g0 -Os -Wl,-s \"${rname}.c\" -o \"${rname}\" -static -s
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})/src\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})/src\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/sbin\"
   install -m 0755 \"${rname}\" \"\$(cwidir_${rname})/sbin/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

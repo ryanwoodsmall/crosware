@@ -10,11 +10,11 @@ cwstubfunc "cwmake_${rname}"
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   mkdir -p ${rtdir}
   rm -rf \$(cwidir_${rname}) || true
   ln -sf \$(cwidir_\$(cwreqs_${rname} | cut -f1 -d' ')) \$(cwidir_${rname})
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

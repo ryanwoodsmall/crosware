@@ -17,7 +17,7 @@ rpfile="${cwrecipe}/${rname%%user}/${rname%%user}.patches"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG 's,sys/signal,signal,g' include/qemu/osdep.h
   ./configure \
     --prefix=\"${ridir}\" \
@@ -29,23 +29,23 @@ function cwconfigure_${rname}() {
     --cc=\"\${CC}\" \
     --host-cc=\"\${CC}\" \
     --cxx=\"\${CXX}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make -j${cwmakejobs} ${rlibtool} CPP=\"\${CC} -E\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install ${rlibtool} CPP=\"\${CC} -E\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

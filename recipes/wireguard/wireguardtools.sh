@@ -12,20 +12,20 @@ cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})/src\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})/src\" &>/dev/null
   make PREFIX=\"\$(cwidir_${rname})\" SYSCONFDIR=\"${cwetc}\" WITH_{BASHCOMPLETION,SYSTEMDUNITS}=no V=1 LDFLAGS=-static CC=\"\${CC} \${CFLAGS}\" CPPFLAGS=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})/src\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})/src\" &>/dev/null
   make install PREFIX=\"\$(cwidir_${rname})\" SYSCONFDIR=\"${cwetc}\" WITH_{BASHCOMPLETION,SYSTEMDUNITS}=no V=1 LDFLAGS=-static CC=\"\${CC} \${CFLAGS}\" CPPFLAGS=
   cwmkdir \"\$(cwidir_${rname})/contrib\"
   ( cd ../contrib/ ; tar cf - . ) | ( cd \"\$(cwidir_${rname})/contrib/\" ; tar xf - )
   grep -ril /etc/wireguard \"\$(cwidir_${rname})/contrib/\" \"\$(cwidir_${rname})/share/\" \"\$(cwidir_${rname})/bin/wg-quick\" | xargs sed -i \"s,/etc/wireguard,${cwetc}/wireguard,g\" || true
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

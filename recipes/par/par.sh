@@ -11,32 +11,32 @@ rreqs="bootstrapmake"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cat protoMakefile > protoMakefile.ORIG
   sed -i \"/^LINK1/s/=.*/= \${CC} -static/g\" protoMakefile
   sed -i \"s/ cc / \${CC} \${CFLAGS} /g\" protoMakefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make -f protoMakefile
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   cwmkdir \"${ridir}/bin\"
   cwmkdir \"${ridir}/share/doc/${rname}\"
   cwmkdir \"${ridir}/share/man/man1\"
   install -m 0755 \"${rname}\" \"${ridir}/bin/${rname}\"
   install -m 0644 \"${rname}.doc\" \"${ridir}/share/doc/${rname}/${rname}.doc\"
   install -m 0644 \"${rname}.1\" \"${ridir}/share/man/man1/${rname}.1\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

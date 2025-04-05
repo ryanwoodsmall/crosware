@@ -10,9 +10,9 @@ rreqs="make"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   sed -i.ORIG '/^PREFIX/s,^PREFIX.*,PREFIX=${ridir},g' config.mk
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

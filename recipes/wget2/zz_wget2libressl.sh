@@ -15,9 +15,9 @@ cwstubfunc "cwpatch_${rname}"
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   rm -rf \"${rbdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -35,8 +35,8 @@ function cwextract_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} ${rlibtool}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

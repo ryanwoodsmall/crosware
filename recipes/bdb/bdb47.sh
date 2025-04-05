@@ -25,7 +25,7 @@ rbdir="${cwbuild}/${rdir}/build_unix"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" >/dev/null 2>&1
+  pushd "${rbdir}" &>/dev/null
   cd ../dist/
   mv config.guess{,.ORIG}
   mv config.sub{,.ORIG}
@@ -33,24 +33,24 @@ function cwconfigure_${rname}() {
   install -m 0755 ${cwsw}/configgit/current/config.guess config.guess
   cd \"${rbdir}\"
   ../dist/configure ${cwconfigureprefix} ${cwconfigurelibopts} --enable-compat185 --enable-cxx
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwclean_${rname}() {
-  pushd "${cwbuild}" >/dev/null 2>&1
+  pushd "${cwbuild}" &>/dev/null
   rm -rf "${cwbuild}/${rdir}"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" >/dev/null 2>&1
+  pushd \"${rbdir}\" &>/dev/null
   make install ${rlibtool}
   chmod -R u+rw \"${ridir}/\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 

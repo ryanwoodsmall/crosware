@@ -16,7 +16,7 @@ rreqs="bootstrapmake"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
      --enable-shared \
      --enable-static \
@@ -26,6 +26,6 @@ function cwconfigure_${rname}() {
        LDFLAGS= \
        PKG_CONFIG_LIBDIR= \
        PKG_CONFIG_PATH=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "

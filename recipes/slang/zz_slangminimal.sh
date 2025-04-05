@@ -22,7 +22,7 @@ function cwinstall_${rname}_termcap() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_slang)\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_slang)\" &>/dev/null
   cwinstall_${rname}_termcap
   cat configure > configure.ORIG
   sed -i s/ncurses5-/off_ncurses5-/g configure
@@ -31,23 +31,23 @@ function cwconfigure_${rname}() {
     CPPFLAGS=\"-I\$(cwidir_${rname})/include\" \
     LDFLAGS=\"-L\$(cwidir_${rname})/lib -static\" \
     PKG_CONFIG_{LIBDIR,PATH}=
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_slang)\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_slang)\" &>/dev/null
   make -j${cwmakejobs} static ${rlibtool}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_slang)\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_slang)\" &>/dev/null
   make install-static ${rlibtool}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
