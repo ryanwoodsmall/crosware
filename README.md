@@ -542,7 +542,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - sdbm (ndbm) kv/hash, zlib, mbedtls, libressl for `openssl` command
 - gawk (gnu awk, prepended to $PATH, becomes default awk)
 - gc (working on x86\_64, aarch64; broken on i386, arm)
-- gdbm
+- gdbm (https://www.gnu.org.ua/software/gdbm/ - gnu dbm datbase library, netbsdcurses readline)
+  - gdbmminimal (no readline)
 - gettext (https://www.gnu.org/software/gettext - gnu translations, opt-in)
 - gettexttiny (https://github.com/sabotage-linux/gettext-tiny - stub/lightweight substitutes)
 - ghostunnel (https://github.com/ghostunnel/ghostunnel - stunnel-ish in go, with mutual tls auth)
