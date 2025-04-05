@@ -946,7 +946,7 @@ function cwupdate() {
       return
     else
       cwsourceprofile
-      if ! $(hash ${CW_GIT_CMD} >/dev/null 2>&1) ; then
+      if ! command -v ${CW_GIT_CMD} &>/dev/null ; then
         cwscriptecho "git client ${CW_GIT_CMD} not found"
         if [[ ${CW_UPDATE_USE_ZIP} =~ ^true$ ]] ; then
           cwscriptecho "falling back to zip"
@@ -956,11 +956,11 @@ function cwupdate() {
       fi
       cwscriptecho "attempting to update using a git client"
       cwscriptecho "attempting to fetch/merge in ${cwtop}"
-      pushd "${cwtop}" >/dev/null 2>&1 || cwfailexit "could not pushd into ${cwtop}"
+      pushd "${cwtop}" &>/dev/null || cwfailexit "could not pushd into ${cwtop}"
       cwscriptecho "$(cwmyfuncname) using client ${CW_GIT_CMD}: $(${CW_GIT_CMD} version 2>/dev/null || true)"
       ${CW_GIT_CMD} fetch "${cworigin}" || { popd ; cwfailexit "could not fetch ${cworigin} in ${cwtop}" ; }
       ${CW_GIT_CMD} merge "${cworigin}/${cwbranch}" || { popd ; cwfailexit "could not merge ${cworigin}/${cwbranch} in ${cwtop}" ; }
-      popd >/dev/null 2>&1
+      popd &>/dev/null
       cwchmod "${cwtmpperm}" "${cwtmp}"
     fi
   elif [[ ${CW_UPDATE_USE_ZIP} =~ ^true$ ]] ; then
@@ -1064,7 +1064,7 @@ function cwinstall() {
   cwsourceprofile
   cwcheckrecipessourced || cwsourcerecipes
   for recipe in "${@}" ; do
-    declare -f "cwinstall_${recipe}" >/dev/null 2>&1 || cwfailexit "recipe ${recipe} not found"
+    declare -f "cwinstall_${recipe}" &>/dev/null || cwfailexit "recipe ${recipe} not found"
     recipestobuild[${#recipestobuild[@]}]="cwinstall_${recipe}"
   done
   test ${#recipestobuild[@]} -eq 0 && cwfailexit "please provide at least one valid recipe to build"
@@ -1209,7 +1209,7 @@ function cwuninstall() {
   cwcheckrecipessourced || cwsourcerecipes
   local recipe=""
   for recipe in "${@}" ; do
-    if ! declare -f "cwuninstall_${recipe}" >/dev/null 2>&1 ; then
+    if ! declare -f "cwuninstall_${recipe}" &>/dev/null ; then
       cwscriptecho "no uninstall found for ${recipe}"
       continue
     fi
@@ -1607,7 +1607,7 @@ function cwrunfunc() {
   local cwfuncname
   for cwfunc in "${@}" ; do
     cwfuncname="${cwfunc%%,*}"
-    declare -f "${cwfuncname}" >/dev/null 2>&1 || cwfailexit "$(cwmyfuncname): no such function '${cwfuncname}'"
+    declare -f "${cwfuncname}" &>/dev/null || cwfailexit "$(cwmyfuncname): no such function '${cwfuncname}'"
     eval "${cwfunc//,/ }"
   done
   unset cwfunc
@@ -1806,7 +1806,7 @@ function cwgetexpandedreqs() {
 function cwlistrecipereqsexp() {
   cwcheckrecipessourced || cwsourcerecipes
   for recipe in $(cwgetallrecipes) ; do
-    test "${cwrecipereqsexpanded[${recipe}]}" -eq 1 || cwgetexpandedreqs "${recipe}" >/dev/null 2>&1
+    test "${cwrecipereqsexpanded[${recipe}]}" -eq 1 || cwgetexpandedreqs "${recipe}" &>/dev/null
     echo "${recipe} : ${cwrecipeexpreqs[${recipe}]}"
   done
 }
@@ -2058,17 +2058,17 @@ function cwcreatesharedlib() {
   rm -rf "${extdir}"
   cwmkdir "${extdir}"
   rm -f "${solib}"
-  pushd "${extdir}" >/dev/null 2>&1
+  pushd "${extdir}" &>/dev/null
   cwscriptecho "extracting ${alib} in ${PWD}"
   ar x "${alib}"
   cwscriptecho "creating ${solib} from object list: ${olist}"
   "${CC}" -fPIC -shared ${olist} -o "${solib}"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
   cwscriptecho "shared library saved to ${solib}"
   cwscriptecho "cleaning up ${extdir}"
-  pushd "${cwtmp}" >/dev/null 2>&1
+  pushd "${cwtmp}" &>/dev/null
   rm -rf "$(basename ${extdir})"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 
 #
