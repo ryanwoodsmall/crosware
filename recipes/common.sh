@@ -64,9 +64,9 @@ cwechofunc "cwreqs_${rname}" "${rreqs}"
 
 eval "
 function cwclean_${rname}() {
-  pushd \"${cwbuild}\" >/dev/null 2>&1
+  pushd \"${cwbuild}\" &>/dev/null
   rm -rf \"${rbdir}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -97,25 +97,25 @@ function cwcheckreqs_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} ${rlibtool}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -171,7 +171,7 @@ else
   "
   eval "
   function cwpatch_${rname}() {
-    pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+    pushd \"\$(cwbdir_${rname})\" &>/dev/null
     local p
     local f
     local c
@@ -190,7 +190,7 @@ else
       patch -p\${c} < \"\${f}\"
     done
     unset p f c l s
-    popd >/dev/null 2>&1
+    popd &>/dev/null
   }
   "
 fi
@@ -221,11 +221,11 @@ function cwinstall_${rname}() {
 
 eval "
 function cwuninstall_${rname}() {
-  pushd \"${cwsw}\" >/dev/null 2>&1
+  pushd \"${cwsw}\" &>/dev/null
   rm -rf \"${rname}\"
   rm -f \"${rprof}\"
   rm -f \"${cwvarinst}/${rname}\"
-  popd >/dev/null 2>&1
+  popd &>/dev/null
 }
 "
 
@@ -281,7 +281,7 @@ if [[ ${rreqs} =~ configgit ]] ; then
   eval "
   function cwfixupconfig_${rname}() {
     cwscriptecho \"fixing up config files\"
-    pushd \"\$(cwbdir_${rname})\" >/dev/null 2>&1
+    pushd \"\$(cwbdir_${rname})\" &>/dev/null
     local c l
     for c in config.{guess,sub} ; do
       for l in \$(find . -name \${c}) ; do
@@ -291,7 +291,7 @@ if [[ ${rreqs} =~ configgit ]] ; then
       done
     done
     unset c l
-    popd >/dev/null 2>&1
+    popd &>/dev/null
   }
   "
 else
