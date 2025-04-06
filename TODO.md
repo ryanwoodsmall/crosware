@@ -1414,6 +1414,8 @@ time_func ls -l -A /
   - netbsdwtf
   - units
 - `gettid` syscall added in 1.2.2 - https://git.musl-libc.org/cgit/musl/commit/?id=d49cf07541bb54a5ac7aec1feec8514db33db8ea
+- `cwcreatefile` and `cwappendfile` & `cwprependfile` wrappers
+  - on the tin, what it says
 
 <!--
 # vim: ft=markdown
