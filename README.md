@@ -679,6 +679,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - liboop (https://www.lysator.liu.se/liboop/)
 - libpcap (https://www.tcpdump.org/ and https://www.tcpdump.org/release/ - packet capture library)
   - libpcap19 (older version for compatibility? with iftop? i dunno)
+- libproxyprotocol (https://libproxyprotocol.com/ and https://github.com/kosmas-valianos/libproxyprotocol - haproxy PROXY protocol support)
 - libpsl (https://github.com/rockdaboot/libpsl & https://github.com/publicsuffix/list & https://publicsuffix.org/ - libidn2+libunistring, python3)
 - libressl (https://www.libressl.org/)
   - libressl37 (old but default version that's still currently the current default by default, currently, until i can update to 3.8/3.9/4.x)
