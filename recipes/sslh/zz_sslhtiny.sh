@@ -6,7 +6,7 @@ rfile="$(cwfile_sslh)"
 rdlfile="$(cwdlfile_sslh)"
 rurl="$(cwurl_sslh)"
 rsha256="$(cwsha256_sslh)"
-rreqs="bootstrapmake"
+rreqs="bootstrapmake pcre2"
 
 . "${cwrecipe}/common.sh"
 
@@ -18,9 +18,6 @@ unset f
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  sed -i s,-lpcre2-8,,g Makefile.in
-  sed -i s,-DLIBPCRE,,g Makefile.in
-  sed -i s,^ENABLE_REGEX=1,ENABLE_REGEX=0,g Makefile.in
   sed -i s,^USELIBCONFIG=1,USELIBCONFIG=0,g Makefile.in
   sed -i s,^USELIBEV=1,USELIBEV=0,g Makefile.in
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
@@ -40,12 +37,10 @@ function cwmake_${rname}() {
       CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s\" \
       C{,XX}FLAGS=\"\${CFLAGS} -Wl,-s -g0 -Os\" \
       USELIBCONFIG= \
-      ENABLE_REGEX= \
       USELIBBSD= \
       USELIBCAP= \
       USELIBEV= \
-      LIBPCRE= \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -U{USELIBCONFIG,ENABLE_REGEX,USELIBEV,LIBPCRE})\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -U{USELIBCONFIG,USELIBEV})\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd &>/dev/null
@@ -56,19 +51,16 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir tmpinst
-  make install DESTDIR=\"\$(cwbdir_${rname})/tmpinst\" ${rlibtool}
-  cwmkdir \"\$(cwidir_${rname})\"
-  tar -C tmpinst/usr/ -cf - . | tar -C \"\$(cwidir_${rname})/\" -xvf -
-  ln -sf sslh \"$(cwidir_${rname})/sbin/${rname}\"
-  popd &>/dev/null
-}
-"
-
-eval "
-function cwmakeinstall_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  cwmkdir tmpinst
-  make install DESTDIR=\"\$(cwbdir_${rname})/tmpinst\" ${rlibtool}
+  make install DESTDIR=\"\$(cwbdir_${rname})/tmpinst\" ${rlibtool} \
+    CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s\" \
+    C{,XX}FLAGS=\"\${CFLAGS} -Wl,-s -g0 -Os\" \
+    USELIBCONFIG= \
+    USELIBBSD= \
+    USELIBCAP= \
+    USELIBEV= \
+    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -U{USELIBCONFIG,USELIBEV})\" \
+    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   cwmkdir \"\$(cwidir_${rname})\"
   tar -C tmpinst/usr/ -cf - . | tar -C \"\$(cwidir_${rname})/\" -xvf -
   install -m 755 echosrv \"$(cwidir_${rname})/sbin/echosrv\"
