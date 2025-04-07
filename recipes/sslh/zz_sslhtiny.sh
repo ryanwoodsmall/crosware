@@ -32,17 +32,13 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  env PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
-    make -j${cwmakejobs} ${rlibtool} \
-      CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s\" \
-      C{,XX}FLAGS=\"\${CFLAGS} -Wl,-s -g0 -Os\" \
-      USELIBCONFIG= \
-      USELIBBSD= \
-      USELIBCAP= \
-      USELIBEV= \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -U{USELIBCONFIG,USELIBEV})\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
-      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
+  make -j${cwmakejobs} ${rlibtool} \
+    USELIB{BSD,CONFIG,EV}= \
+    CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s\" \
+    C{,XX}FLAGS=\"\${CFLAGS} -Wl,-s -g0 -Os\" \
+    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -UUSELIB{BSD,CONFIG,EV})\" \
+    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd &>/dev/null
 }
 "
@@ -52,13 +48,10 @@ function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir tmpinst
   make install DESTDIR=\"\$(cwbdir_${rname})/tmpinst\" ${rlibtool} \
+    USELIB{BSD,CONFIG,EV}= \
     CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s\" \
     C{,XX}FLAGS=\"\${CFLAGS} -Wl,-s -g0 -Os\" \
-    USELIBCONFIG= \
-    USELIBBSD= \
-    USELIBCAP= \
-    USELIBEV= \
-    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -U{USELIBCONFIG,USELIBEV})\" \
+    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -UUSELIB{BSD,CONFIG,EV})\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   cwmkdir \"\$(cwidir_${rname})\"
