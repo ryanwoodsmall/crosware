@@ -6,7 +6,7 @@ rfile="$(cwfile_sslh)"
 rdlfile="$(cwdlfile_sslh)"
 rurl="$(cwurl_sslh)"
 rsha256="$(cwsha256_sslh)"
-rreqs="make pcre2 libconfig libbsd pkgconfig libev"
+rreqs="make pcre2 libconfig libbsd pkgconfig libev libproxyprotocol"
 
 . "${cwrecipe}/common.sh"
 
@@ -37,7 +37,7 @@ function cwmake_${rname}() {
       USELIBCONFIG=1 \
       USELIBBSD=1 \
       USELIBCAP= \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include) -DENABLE_REGEX -DLIBCONFIG -DLIBBSD\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include) -DENABLE_REGEX -DLIBCONFIG -DLIBBSD -DHAVE_PROXYPROTOCOL=1\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd &>/dev/null
@@ -48,7 +48,16 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir tmpinst
-  make install DESTDIR=\"\$(cwbdir_${rname})/tmpinst\" ${rlibtool}
+  env PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+    make install DESTDIR=\"\$(cwbdir_${rname})/tmpinst\" ${rlibtool} \
+      CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s \$(pkg-config --{cflags,libs} libbsd)\" \
+      ENABLE_REGEX=1 \
+      USELIBCONFIG=1 \
+      USELIBBSD=1 \
+      USELIBCAP= \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include) -DENABLE_REGEX -DLIBCONFIG -DLIBBSD -DHAVE_PROXYPROTOCOL=1\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   cwmkdir \"\$(cwidir_${rname})\"
   tar -C tmpinst/usr/ -cf - . | tar -C \"\$(cwidir_${rname})/\" -xvf -
   install -m 755 echosrv \"$(cwidir_${rname})/sbin/echosrv\"
