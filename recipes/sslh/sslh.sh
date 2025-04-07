@@ -1,13 +1,10 @@
-#
-# XXX - proxy protocol via? https://github.com/kosmas-valianos/libproxyprotocol
-#
 rname="sslh"
 rver="2.2.1"
 rdir="${rname}-v${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.rutschle.net/tech/sslh/${rfile}"
 rsha256="ae4d1a2969a9cc205a35247b4fcdb7f84886048fbe2d8b2ea41b0cadad92e48c"
-rreqs="make pcre2 libconfig libcap libbsd pkgconfig libev"
+rreqs="make pcre2 libconfig libcap libbsd pkgconfig libev libproxyprotocol"
 
 . "${cwrecipe}/common.sh"
 
@@ -32,7 +29,7 @@ function cwmake_${rname}() {
       USELIBCONFIG=1 \
       USELIBCAP=1 \
       USELIBBSD=1 \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include) -DENABLE_REGEX -DLIBCONFIG -DLIBCAP -DLIBBSD\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include) -DENABLE_REGEX -DLIBCONFIG -DLIBCAP -DLIBBSD -DHAVE_PROXYPROTOCOL=1\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd &>/dev/null
@@ -43,7 +40,16 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir tmpinst
-  make install DESTDIR=\"\$(cwbdir_${rname})/tmpinst\" ${rlibtool}
+  env PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+    make install DESTDIR=\"\$(cwbdir_${rname})/tmpinst\" ${rlibtool} \
+      CC=\"\${CC} \${CFLAGS} \$(pkg-config --{cflags,libs} libbsd)\" \
+      ENABLE_REGEX=1 \
+      USELIBCONFIG=1 \
+      USELIBCAP=1 \
+      USELIBBSD=1 \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include) -DENABLE_REGEX -DLIBCONFIG -DLIBCAP -DLIBBSD -DHAVE_PROXYPROTOCOL=1\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   cwmkdir \"\$(cwidir_${rname})\"
   tar -C tmpinst/usr/ -cf - . | tar -C \"\$(cwidir_${rname})/\" -xvf -
   install -m 755 echosrv \"$(cwidir_${rname})/sbin/echosrv\"
