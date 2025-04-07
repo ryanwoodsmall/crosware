@@ -1,9 +1,12 @@
+#
+# XXX - proxy protocol via? https://github.com/kosmas-valianos/libproxyprotocol
+#
 rname="sslh"
-rver="2.1.4"
+rver="2.2.1"
 rdir="${rname}-v${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.rutschle.net/tech/sslh/${rfile}"
-rsha256="c9d76a627839b5f779e21dd49c40762918f47b46197418b3715ec0c52e3c5cb7"
+rsha256="ae4d1a2969a9cc205a35247b4fcdb7f84886048fbe2d8b2ea41b0cadad92e48c"
 rreqs="make pcre2 libconfig libcap libbsd pkgconfig libev"
 
 . "${cwrecipe}/common.sh"
