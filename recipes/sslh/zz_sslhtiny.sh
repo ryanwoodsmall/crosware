@@ -6,7 +6,7 @@ rfile="$(cwfile_sslh)"
 rdlfile="$(cwdlfile_sslh)"
 rurl="$(cwurl_sslh)"
 rsha256="$(cwsha256_sslh)"
-rreqs="bootstrapmake pcre2"
+rreqs="bootstrapmake pcre2 libproxyprotocol"
 
 . "${cwrecipe}/common.sh"
 
@@ -36,7 +36,7 @@ function cwmake_${rname}() {
     USELIB{BSD,CONFIG,EV}= \
     CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s\" \
     C{,XX}FLAGS=\"\${CFLAGS} -Wl,-s -g0 -Os\" \
-    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -UUSELIB{BSD,CONFIG,EV})\" \
+    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -UUSELIB{BSD,CONFIG,EV} -DHAVE_PROXYPROTOCOL=1)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   popd &>/dev/null
@@ -51,7 +51,7 @@ function cwmakeinstall_${rname}() {
     USELIB{BSD,CONFIG,EV}= \
     CC=\"\${CC} \${CFLAGS} -Os -g0 -Wl,-s\" \
     C{,XX}FLAGS=\"\${CFLAGS} -Wl,-s -g0 -Os\" \
-    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -UUSELIB{BSD,CONFIG,EV})\" \
+    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -UUSELIB{BSD,CONFIG,EV} -DHAVE_PROXYPROTOCOL)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
   cwmkdir \"\$(cwidir_${rname})\"
