@@ -3,11 +3,11 @@
 # XXX - if this doesn't match what we have stored, should indicate an update
 #
 rname="caextract"
-rver="2024-12-31"
+rver="2025-02-25"
 rdir="${rname}-${rver}"
 rfile="cacert-${rver}.pem"
 rurl="https://curl.se/ca/${rfile}"
-rsha256="a3f328c21e39ddd1f2be1cea43ac0dec819eaa20a90425d7da901a11531b3aa5"
+rsha256="50a6277ec69113f00c5fd45f09e8b97a4b3e32daa35d3a95ab30137a55386cef"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
