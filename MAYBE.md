@@ -1051,6 +1051,7 @@ wc -l /tmp/astbuild.out
 - pwnat (https://github.com/samyk/pwnat and https://samy.pl/pwnat - NAT-to-NAT traversal)
 - q (https://github.com/natesales/q - nice go dns query program)
 - qalc (https://qalculate.github.io/ - libqalculate and cli/text interface)
+- quickjs-ng (https://github.com/quickjs-ng/quickjs and https://quickjs-ng.github.io/quickjs - quickjs fork, supported in njs)
 - quicssh (https://github.com/moul/quicssh - ssh client/server wrapper/proxy/tunnel using quic, go)
 - quictls (https://github.com/quictls/openssl - openssl (3+?) patched with quic support, for ngtcp2+nghttp3)
 - ragel (http://www.colm.net/open-source/ragel/)
