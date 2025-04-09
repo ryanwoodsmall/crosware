@@ -1,9 +1,9 @@
 rname="diffutils"
-rver="3.11"
+rver="3.12"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/diffutils/${rfile}"
-rsha256="c80a3c2bf87e252fe7d605b8ba6bf928d75a90b55f3bfcf7c4a4f337ec62fc31"
+rsha256="5be181b27ec38aad2450080661a64e4a1752bb29b7d5052bf0a02a70f623f9b2"
 rreqs="make sed gawk"
 
 . "${cwrecipe}/common.sh"
