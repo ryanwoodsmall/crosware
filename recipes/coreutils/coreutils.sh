@@ -4,11 +4,11 @@
 #
 
 rname="coreutils"
-rver="9.6"
+rver="9.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="2bec616375002c92c1ed5ead32a092b174fe44c14bc736d32e5961053b821d84"
+rurl="https://ftp.gnu.org/gnu/coreutils/${rfile}"
+rsha256="0898a90191c828e337d5e4e4feb71f8ebb75aacac32c434daf5424cda16acb42"
 rreqs="make gettexttiny sed attr acl perl gmp utillinux libcap"
 
 . "${cwrecipe}/common.sh"
