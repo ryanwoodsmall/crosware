@@ -15,11 +15,11 @@
 # XXX - ccache4, other cmake stuff needs to be able to pull deps, gotta fix this
 #
 rname="cmake"
-rver="3.31.6"
+rver="3.31.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/Kitware/CMake/releases/download/v${rver}/${rfile}"
-rsha256="653427f0f5014750aafff22727fb2aa60c6c732ca91808cfb78ce22ddd9e55f0"
+rsha256="a6d2eb1ebeb99130dfe63ef5a340c3fdb11431cce3d7ca148524c125924cea68"
 rreqs="make bash busybox toybox"
 
 . "${cwrecipe}/common.sh"
