@@ -863,7 +863,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - opensshwolfssl (patches from wolfssl osp project - netbsdcurses, libedit, zlib)
 - openssl
   - openssl111 (deprecated lts version, still default. whoops)
-  - openssl30 (current lts version)
+  - openssl30 (old lts version)
+  - openssl35 (current lts version)
 - openvpn (https://openvpn.net/community-downloads/ and https://github.com/OpenVPN/openvpn - openssl, zlib, lz4, lzo)
   - openvpnlibressl (libressl, lz4, lzo)
   - openvpnmbedtls (mbedtls, lz4, lzo)
