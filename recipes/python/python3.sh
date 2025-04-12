@@ -14,11 +14,11 @@
 # XXX - need to clean this WHOLE mess up
 #
 rname="python3"
-rver="3.9.21"
+rver="3.9.22"
 rdir="Python-${rver}"
-rfile="${rdir}.tar.xz"
+rfile="${rdir}.tgz"
 rurl="https://www.python.org/ftp/python/${rver}/${rfile}"
-rsha256="3126f59592c9b0d798584755f2bf7b081fa1ca35ce7a6fea980108d752a05bb1"
+rsha256="76f4daef4ffce6fd107280a0db8d108b1f896c1c22f09d8300efd90a69c4298b"
 rreqs="make bzip2 zlib ncurses readline openssl gdbm sqlite bdb47 expat libffi xz e2fsprogs pkgconfig"
 
 . "${cwrecipe}/common.sh"
