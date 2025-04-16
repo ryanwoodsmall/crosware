@@ -2,11 +2,11 @@
 # XXX - needs gnu (or invisible island!) indent for (system-provided) gperf support
 #
 rname="libcap"
-rver="2.75"
+rver="2.76"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/${rfile}"
-rsha256="f58898263cf4a20da5920e4340b3ff7addfa5021b48d79e7ad6b97c196557998"
+rsha256="a6ea4eb67ab46590e53936b0c7922b08ac2c5f4c9cc15a0bad177b70ca19a609"
 rreqs="make attr"
 
 . "${cwrecipe}/common.sh"
