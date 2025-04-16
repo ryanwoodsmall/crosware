@@ -1,9 +1,9 @@
 rname="neon"
-rver="0.34.0"
+rver="0.34.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://notroj.github.io/neon/${rfile}"
-rsha256="2e3ee8535039966c80764f539d5c9bfee1651a17e2f36e5ca462632181253977"
+rsha256="f98ce3c74300be05eddf05dccbdca498b14d40c289f773195dd1a559cffa5856"
 rreqs="make expat zlib openssl"
 
 . "${cwrecipe}/common.sh"
