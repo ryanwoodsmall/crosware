@@ -681,6 +681,7 @@ wc -l /tmp/astbuild.out
 - libwebsockets (https://libwebsockets.org/)
 - libxcrypt (https://github.com/besser82/libxcrypt - use with openssh for more auth methods? may need perl?)
 - libyaml (https://github.com/yaml/libyaml)
+- lima (https://github.com/lima-vm/lima - linux cross-platform vm shim+container+file sharing)
 - lisp stuff
   - aria (https://github.com/rxi/aria - tiny embeddable language)
   - carp (https://github.com/carp-lang/Carp)
@@ -1218,6 +1219,7 @@ wc -l /tmp/astbuild.out
 - sredird (https://github.com/msantos/sredird - network serial port redirector)
 - srv (https://github.com/joshuarli/srv)
 - ssf (https://github.com/securesocketfunneling/ssf and https://securesocketfunneling.github.io/ssf/#home - secure sockets funneling, c++ w/boost, openssl, cmake, krb5? ssh drop-in, looks nice!)
+- sshocker (https://github.com/lima-vm/sshocker - ssh fs sharing)
 - sshuttle (https://github.com/sshuttle/sshuttle)
 - sslwrap (http://www.rickk.com/sslwrap/ way old)
 - st (https://github.com/fabiensanglard/st - command space-time explorer, track memory/threads/etc. from cli: https://fabiensanglard.net/st/index.html)
