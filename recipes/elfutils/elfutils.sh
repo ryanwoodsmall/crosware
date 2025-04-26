@@ -3,11 +3,11 @@
 # XXX - baseutils has an m4 as well, bmake is only req
 #
 rname="elfutils"
-rver="0.192"
+rver="0.193"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://sourceware.org/elfutils/ftp/${rver}/${rfile}"
-rsha256="616099beae24aba11f9b63d86ca6cc8d566d968b802391334c91df54eab416b4"
+rsha256="7857f44b624f4d8d421df851aaae7b1402cfe6bcdd2d8049f15fc07d3dde7635"
 rreqs="bootstrapmake zlib libuargp muslfts muslobstack otools"
 
 . "${cwrecipe}/common.sh"
