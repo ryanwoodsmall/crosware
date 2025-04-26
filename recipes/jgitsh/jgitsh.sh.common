@@ -1,5 +1,6 @@
 : ${rfile:="org.eclipse.jgit.pgm-${rver}.sh"}
-: ${rurl:="https://repo.eclipse.org/content/groups/releases/org/eclipse/jgit/org.eclipse.jgit.pgm/${rver}/${rfile}"}
+#: ${rurl:="https://repo.eclipse.org/content/groups/releases/org/eclipse/jgit/org.eclipse.jgit.pgm/${rver}/${rfile}"}
+: ${rurl:="https://repo1.maven.org/maven2/org/eclipse/jgit/org.eclipse.jgit.pgm/${rver}/${rfile}"}
 rdir="${rname}-${rver}"
 rreqs=""
 
