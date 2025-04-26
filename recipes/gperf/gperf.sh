@@ -1,9 +1,9 @@
 rname="gperf"
-rver="3.2"
+rver="3.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://ftp.gnu.org/pub/gnu/gperf/${rfile}"
-rsha256="e0ddadebb396906a3e3e4cac2f697c8d6ab92dffa5d365a5bc23c7d41d30ef62"
+rsha256="fd87e0aba7e43ae054837afd6cd4db03a3f2693deb3619085e6ed9d8d9604ad8"
 rreqs="configgit bootstrapmake"
 
 . "${cwrecipe}/common.sh"
