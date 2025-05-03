@@ -686,6 +686,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - libressl38
   - libressl39
   - libressl40
+  - libressl41
 - libretls (https://git.causal.agency/libretls/about/ - libtls from libressl on top of openssl)
 - libssh2 (openssl, zlib)
   - libssh2libgcrypt (gcrypt, zlib)
