@@ -1,3 +1,18 @@
+#
+# XXX - use lessnetbsdcurses!
+# XXX - conditionally: check for a real less with...
+#
+#   if command -v less ; then
+#     if which -a less | grep -q ${cwsw} ; then
+#       if ! $(which -a less | grep ${cwsw} | head -1) --version |& grep -qE '^less [0-9]+' ; then
+#         rreqs+=" lessnetbsdcurses"
+#         rextrapath+="${cwsw}/lessnetbsdcurses/current/bin:"
+#       fi
+#     fi
+#   fi
+#   ...
+#   unset rextrapath
+#
 rname="mandoc"
 rver="1.14.6"
 rdir="${rname}-${rver}"
