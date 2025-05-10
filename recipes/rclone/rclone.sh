@@ -3,13 +3,12 @@
 # XXX - results in failed mounts missing fusermount3 on PATH
 # XXX - ugh, ugh
 #
-
 rname="rclone"
-rver="1.69.1"
+rver="1.69.2"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="2fe258d1b4257aef98b53794c27d1b254ee0f2e307634f94fbf3c71786e3b1b5"
+rsha256="46507a8314742255c8949f3ee7ab57c0cb2cab0b01065c9a4ad7b28da1fb54ae"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
