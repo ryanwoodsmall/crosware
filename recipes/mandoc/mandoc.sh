@@ -1,17 +1,10 @@
 #
-# XXX - use lessnetbsdcurses!
-# XXX - conditionally: check for a real less with...
-#
-#   if command -v less ; then
+# XXX - conditionally check one of our less
 #     if which -a less | grep -q ${cwsw} ; then
 #       if ! $(which -a less | grep ${cwsw} | head -1) --version |& grep -qE '^less [0-9]+' ; then
-#         rreqs+=" lessnetbsdcurses"
-#         rextrapath+="${cwsw}/lessnetbsdcurses/current/bin:"
+#         ...
 #       fi
 #     fi
-#   fi
-#   ...
-#   unset rextrapath
 #
 rname="mandoc"
 rver="1.14.6"
@@ -19,9 +12,23 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://mandoc.bsd.lv/snapshots/${rfile}"
 rsha256="8bf0d570f01e70a6e124884088870cbed7537f36328d512909eb10cd53179d9c"
-rreqs="make zlib busybox less"
+rreqs="make zlib busybox"
 
 . "${cwrecipe}/common.sh"
+
+eval "
+function cwreqs_${rname}() {
+  rreqs=\"${rreqs}\"
+  if command -v less &>/dev/null ; then
+    if ! less --version |& tr '\\t' ' ' | tr -s ' ' | head -1 | grep -qE '^less [0-9]+ ' ; then
+      rreqs=\"less ${rreqs}\"
+    fi
+  else
+    rreqs=\"less ${rreqs}\"
+  fi
+  echo \"\${rreqs}\"
+}
+"
 
 eval "
 function cwconfigure_${rname}() {
@@ -39,7 +46,7 @@ function cwconfigure_${rname}() {
   } > configure.local
   cat cgi.h.example > cgi.h
   sed -i '/MAN_DIR/s#/man#${cwsw}/manpages/current/share/man#g' cgi.h
-  env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/less/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
+  env PATH=\"\$(echo ${cwsw}/{ccache{4,},statictoolchain,less{,minimal},${rreqs// /,}}/current/bin | tr ' ' ':')\" \
     ./configure
   popd &>/dev/null
 }
@@ -48,7 +55,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/less/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
+  env PATH=\"\$(echo ${cwsw}/{ccache{4,},statictoolchain,less{,minimal},${rreqs// /,}}/current/bin | tr ' ' ':')\" \
     make CFLAGS=\"\${CFLAGS} -I${cwsw}/zlib/current/include\" LDFLAGS=\"-L${cwsw}/zlib/current/lib -static\" CPPFLAGS=
   popd &>/dev/null
 }
@@ -57,7 +64,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  env PATH=\"${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/less/current/bin:${cwsw}/busybox/current/bin:${cwsw}/make/current/bin\" \
+  env PATH=\"\$(echo ${cwsw}/{ccache{4,},statictoolchain,less{,minimal},${rreqs// /,}}/current/bin | tr ' ' ':')\" \
     make install CFLAGS=\"\${CFLAGS} -I${cwsw}/zlib/current/include\" LDFLAGS=\"-L${cwsw}/zlib/current/lib -static\" CPPFLAGS=
   local s
   for s in 1 3 5 7 8 ; do
