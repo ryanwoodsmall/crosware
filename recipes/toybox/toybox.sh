@@ -20,7 +20,7 @@ rreqs="bootstrapmake alpinemuslutils"
 eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  sed -i.ORIG 's,/bin/bash,/usr/bin/env bash,g; scripts/genconfig.sh
+  sed -i.ORIG 's,/bin/bash,/usr/bin/env bash,g' scripts/genconfig.sh
   sed -i.ORIG '/crypt.*ssl/s,for i in .*,for i in nononononono,g' scripts/make.sh
   popd &>/dev/null
 }
