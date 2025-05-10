@@ -36,6 +36,8 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
+  rm -f \"${cwetcprofd}/${rname}.sh\"
+  rm -f \"${cwetcprofd}/zz_${rname}.sh\"
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "

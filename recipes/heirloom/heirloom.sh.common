@@ -4,6 +4,6 @@ rfile="${rver}.tar.gz"
 rdlfile="${cwdl}/heirloom/${rfile}"
 rurl="https://github.com/ryanwoodsmall/heirloom-project/archive/${rfile}"
 rsha256="3da8a5ac50951748c32cf31dd3002effb16c21f20636f92b58ab304daef3b534"
-rprof="${cwetcprofd}/zz_${rname}.sh"
+rprof="${cwetcprofd}/zz_aa_${rname}.sh"
 
 # vim: set ft=sh:

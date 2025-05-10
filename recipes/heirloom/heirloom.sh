@@ -7,16 +7,24 @@
 #   - https://github.com/illumos/illumos-gate/commit/356ba08c15b26adbde3440aa89d8b31cd39fc526
 #
 rname="heirloom"
-rreqs="make sed netbsdcurses zlib bzip2 ed byacc reflex oksh busybox"
+rreqs="make sed netbsdcurses zlib bzip2 ed byacc reflex oksh busybox bashtiny"
 
 . "${cwrecipe}/heirloom/heirloom.sh.common"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  grep -ril /bin/bash . | xargs sed -i.ORIG \"s,/bin/bash,${cwsw}/bashtiny/current/bin/bash,g\"
+  popd &>/dev/null
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" &>/dev/null
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   grep -ril \"/usr/local/${rname}\" . \
-  | xargs sed -i \"s#/usr/local/${rname}#${ridir}#g\"
+  | xargs sed -i \"s#/usr/local/${rname}#\$(cwidir_${rname})#g\"
   sed -i '/^LEX = /s/LEX.*/LEX=reflex/g' heirloom/build/mk.config
   sed -i '/^YACC = /s/YACC.*/YACC=byacc/g' heirloom/build/mk.config
   sed -i '/^LCURS = /s/LCURS.*/LCURS = -lcurses -lterminfo/g' heirloom/build/mk.config
@@ -31,7 +39,7 @@ function cwconfigure_${rname}() {
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" &>/dev/null
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   local d=''
   for d in ${rname}{,-{sh,devtools,doctools,ex-vi}} ; do
     pushd \${d}
@@ -51,6 +59,8 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
+  rm -f \"${cwetcprofd}/${rname}.sh\"
+  rm -f \"${cwetcprofd}/zz_${rname}.sh\"
   echo -n '' > \"${rprof}\"
   echo 'append_path \"${cwsw}/bison/current/bin\"' >> \"${rprof}\"
   echo 'append_path \"${cwsw}/byacc/current/bin\"' >> \"${rprof}\"
