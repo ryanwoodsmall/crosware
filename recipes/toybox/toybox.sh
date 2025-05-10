@@ -18,9 +18,17 @@ rreqs="bootstrapmake alpinemuslutils"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  sed -i.ORIG 's,/bin/bash,/usr/bin/env bash,g; scripts/genconfig.sh
+  sed -i.ORIG '/crypt.*ssl/s,for i in .*,for i in nononononono,g' scripts/make.sh
+  popd &>/dev/null
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  sed -i.ORIG '/crypt.*ssl/s,for i in .*,for i in nononononono,g' scripts/make.sh
   csu=\"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/${rname}_config_script.sh\"
   cs=\"\$(basename \${csu})\"
   cwfetch \"\${csu}\" \"\$(cwbdir_${rname})/\${cs}\"
