@@ -1416,6 +1416,9 @@ time_func ls -l -A /
 - `gettid` syscall added in 1.2.2 - https://git.musl-libc.org/cgit/musl/commit/?id=d49cf07541bb54a5ac7aec1feec8514db33db8ea
 - `cwcreatefile` and `cwappendfile` & `cwprependfile` wrappers
   - on the tin, what it says
+- check for real bash!
+  - `declare -A tmphash=() 2>&1 && undef tmphash || cwfailexit "this does not appear to be a real bash"`
+  - TEST
 
 <!--
 # vim: ft=markdown
