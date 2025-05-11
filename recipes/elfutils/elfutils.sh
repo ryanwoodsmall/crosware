@@ -8,7 +8,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://sourceware.org/elfutils/ftp/${rver}/${rfile}"
 rsha256="7857f44b624f4d8d421df851aaae7b1402cfe6bcdd2d8049f15fc07d3dde7635"
-rreqs="bootstrapmake zlib libuargp muslfts muslobstack otools"
+rreqs="bootstrapmake zlib libuargp muslfts muslobstack otools pkgconf"
 
 . "${cwrecipe}/common.sh"
 
@@ -26,6 +26,7 @@ function cwconfigure_${rname}() {
       C{,XX}FLAGS='-fPIC -Wno-error=unused-parameter -Os -g0 -Wl,-s' \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -s\" \
+      PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       LIBS=\"-largp -lfts -lz -s\"
   echo '#undef FNM_EXTMATCH' >> config.h
