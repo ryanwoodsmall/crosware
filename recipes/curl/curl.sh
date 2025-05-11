@@ -22,6 +22,7 @@
 #       - https://github.com/curl/curl/issues/8551
 # XXX - libpsl support is enabled by default now; it requires libidn2, libunistring and a python, explicitly disable...
 # XXX - mbedtls is messy at/after fba9afebba22d577f122239b184edc90c18fd81b (bisected) - need to figure out why
+# XXX - 8.13.0 is broken with everything i support except openssl/libressl
 #
 rname="curl"
 rver="8.12.1"
