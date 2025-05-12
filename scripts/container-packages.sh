@@ -42,7 +42,9 @@ container_recipes+=( 'tinyscheme' )
 container_recipes+=( 'toybox' )
 container_recipes+=( 'u9fs' )
 container_recipes+=( 'ubase' )
+container_recipes+=( 'unzip' )
 container_recipes+=( 'x509cert' )
+container_recipes+=( 'zip' )
 
 for (( i=0; i<${#container_recipes[@]}; i++ )) ; do
   echo "${container_recipes[${i}]}"
