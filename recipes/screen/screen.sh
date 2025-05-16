@@ -1,9 +1,9 @@
 rname="screen"
-rver="5.0.0"
+rver="5.0.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="f04a39d00a0e5c7c86a55338808903082ad5df4d73df1a2fd3425976aed94971"
+rurl="https://ftp.gnu.org/gnu/screen/${rfile}"
+rsha256="2dae36f4db379ffcd14b691596ba6ec18ac3a9e22bc47ac239789ab58409869d"
 rreqs="make netbsdcurses sed"
 
 . "${cwrecipe}/common.sh"
@@ -14,8 +14,8 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} \
     --disable-pam \
     --disable-socket-dir \
-    --disable-use-locale \
-    --enable-colors256 \
+    --enable-telnet \
+    --with-system_screenrc=\"${rtdir}/current/etc/screenrc\" \
       CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
       LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -static\" \
       LIBS=\"-lcurses -lterminfo\"
