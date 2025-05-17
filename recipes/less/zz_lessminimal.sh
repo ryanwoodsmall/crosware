@@ -10,6 +10,8 @@ rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
+cwappendfunc cwmakeinstall_${rname} "ln -sf less \$(cwidir_${rname})/bin/${rname}"
+
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_less)\" &>/dev/null
