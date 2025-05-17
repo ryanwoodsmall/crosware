@@ -15,7 +15,7 @@ rfile="${rdir}.tar.bz2"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 #rurl="http://${rname}.net/downloads/${rfile}"
 rsha256="3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4"
-rreqs="bootstrapmake toybox bashtiny"
+rreqs="bootstrapmake bashtiny alpinemuslutils toybox"
 
 . "${cwrecipe}/common.sh"
 
@@ -30,7 +30,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
-    export PATH=\"${cwsw}/bashtiny/current/bin:${cwsw}/toybox/current/bin:${cwsw}/bzip2/current/bin:\${PATH}\"
+    export PATH=\"\$(echo ${cwsw}/{bashtiny,bootstrapmake,toybox,ccache{{4,},3},statictoolchain}/current/bin | paste -s -d: -):\${PATH}\"
     chmod -R u+w .
     csu=\"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/bb_config_script.sh\"
     cs=\"\$(basename \${csu})\"
@@ -54,7 +54,7 @@ eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
-    export PATH=\"${cwsw}/bashtiny/current/bin:${cwsw}/toybox/current/bin:${cwsw}/bzip2/current/bin:\${PATH}\"
+    export PATH=\"\$(echo ${cwsw}/{bashtiny,bootstrapmake,toybox,ccache{{4,},3},statictoolchain}/current/bin | paste -s -d: -):\${PATH}\"
     make -j${cwmakejobs} \
       CC=\"\${CC} -Wl,-static\" \
       HOSTCC=\"\${CC} -static -Wl,-static\" \
@@ -71,7 +71,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
-    export PATH=\"${cwsw}/bashtiny/current/bin:${cwsw}/toybox/current/bin:${cwsw}/bzip2/current/bin:\${PATH}\"
+    export PATH=\"\$(echo ${cwsw}/{bashtiny,bootstrapmake,toybox,ccache{{4,},3},statictoolchain}/current/bin | paste -s -d: -):\${PATH}\"
     cwmkdir \"\$(cwidir_${rname})/bin\"
     rm -f \"\$(cwidir_${rname})/bin/${rname}\"
     cp -a \"${rname}\" \"\$(cwidir_${rname})/bin\"
