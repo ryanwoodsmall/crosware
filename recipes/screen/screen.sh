@@ -27,6 +27,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install
+  ln -sf ${rname} \"\$(cwidir_${rname})/bin/screen${rver%%.*}\"
   echo 'hardstatus alwayslastline \"%Lw\"' >> etc/screenrc
   cwmkdir \"\$(cwidir_${rname})/etc\"
   install -m 0644 etc/screenrc \"\$(cwidir_${rname})/etc/screenrc\"

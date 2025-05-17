@@ -54,6 +54,7 @@ function cwmakeinstall_${rname}() {
   mv \"\$(cwidir_${rname})/bin/screen\" \"\$(cwidir_${rname})/bin/${rname}\"
   mv \"\$(cwidir_${rname})/bin/screen-${rver}\" \"\$(cwidir_${rname})/bin/${rname}-${rver}\"
   ln -sf ${rname}-${rver} \"\$(cwidir_${rname})/bin/screen-${rver}\"
+  ln -sf ${rname} \"\$(cwidir_${rname})/bin/screen${rver%%.*}\"
   echo '#!/usr/bin/env bash' > \"\$(cwidir_${rname})/bin/screen\"
   echo 'env TERM=screen ${rtdir}/current/bin/${rname} \"\${@}\"' >> \"\$(cwidir_${rname})/bin/screen\"
   chmod 755 \"\$(cwidir_${rname})/bin/screen\"
