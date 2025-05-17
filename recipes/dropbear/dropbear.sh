@@ -27,15 +27,15 @@
 # XXX - enable DROPBEAR_USE_SSH_CONFIG in dropbear-misc and test
 #
 rname="dropbear"
-rsver="2025.87"
-rdate="20250316031738"
+rsver="2025.88"
+rdate="20250517152332"
 rver="${rsver}-${rdate}"
 rdir="${rname}-${rsver}"
 rfile="${rdir}.tar.bz2"
 #rurl="https://matt.ucc.asn.au/dropbear/releases/${rfile}"
 #rurl="https://dropbear.nl/mirror/releases/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/dropbear/${rfile}"
-rsha256="738b7f358547f0c64c3e1a56bbc5ef98d34d9ec6adf9ccdf01dc0bf2caa2bc8d"
+rsha256="783f50ea27b17c16da89578fafdb6decfa44bb8f6590e5698a4e4d3672dc53d4"
 # need a patch program, try toybox
 rreqs="make toybox zlib configgit lshsftpserver"
 
@@ -45,9 +45,9 @@ eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
   cwfetchcheck \
-    \"https://raw.githubusercontent.com/ryanwoodsmall/dropbear-misc/${rdate}-${rname}-${rsver}/options/${rname}-${rsver}_localoptions.h\" \
+    \"https://raw.githubusercontent.com/ryanwoodsmall/dropbear-misc/refs/tags/${rdate}-${rname}-${rsver}-crosware/options/${rname}-${rsver}_localoptions.h\" \
     \"${cwdl}/${rname}/${rname}-\$(cwver_${rname})_localoptions.h\" \
-    \"5102cb5cd514e5b3bf8b515de6ab19875a92230c24d5089b2a5e322e37a58cac\"
+    \"ba27bea2c3a29fa754ca3d870217fca24f5e52bd067e4330f04379ee5d49313c\"
 }
 "
 
