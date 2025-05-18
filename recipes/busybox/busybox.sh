@@ -30,7 +30,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
-    export PATH=\"\$(echo ${cwsw}/{bashtiny,bootstrapmake,toybox,ccache{{4,},3},statictoolchain}/current/bin | paste -s -d: -):\${PATH}\"
+    export PATH=\"\$(echo ${cwsw}/{bashtiny,bootstrapmake,toybox,ccache{{4,},3},statictoolchain}/current/bin | tr ' ' ':'):\${PATH}\"
     chmod -R u+w .
     csu=\"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/bb_config_script.sh\"
     cs=\"\$(basename \${csu})\"
@@ -54,7 +54,7 @@ eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
-    export PATH=\"\$(echo ${cwsw}/{bashtiny,bootstrapmake,toybox,ccache{{4,},3},statictoolchain}/current/bin | paste -s -d: -):\${PATH}\"
+    export PATH=\"\$(echo ${cwsw}/{bashtiny,bootstrapmake,toybox,ccache{{4,},3},statictoolchain}/current/bin | tr ' ' ':'):\${PATH}\"
     make -j${cwmakejobs} \
       CC=\"\${CC} -Wl,-static\" \
       HOSTCC=\"\${CC} -static -Wl,-static\" \
@@ -71,7 +71,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
-    export PATH=\"\$(echo ${cwsw}/{bashtiny,bootstrapmake,toybox,ccache{{4,},3},statictoolchain}/current/bin | paste -s -d: -):\${PATH}\"
+    export PATH=\"\$(echo ${cwsw}/{bashtiny,bootstrapmake,toybox,ccache{{4,},3},statictoolchain}/current/bin | tr ' ' ':'):\${PATH}\"
     cwmkdir \"\$(cwidir_${rname})/bin\"
     rm -f \"\$(cwidir_${rname})/bin/${rname}\"
     cp -a \"${rname}\" \"\$(cwidir_${rname})/bin\"
