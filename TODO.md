@@ -1419,6 +1419,17 @@ time_func ls -l -A /
 - check for real bash!
   - `declare -A tmphash=() 2>&1 && undef tmphash || cwfailexit "this does not appear to be a real bash"`
   - TEST
+- gotta have a caching mechanism... see below? need:
+  - filename (rdlfile)
+  - url
+  - sha-256
+- `cwfetch` handler/hook to e.g. ...
+  - run something on fail (download from a local cache)
+  - override default fetch (DOWNLOAD FROM A LOCAL CACHE)
+  - could create a `${cwtop}/downloads/${rname}/${rdlfile}.id` with base64 of the download url, etc.?
+  - `cgi-bin/downloads.cgi` - act as a proxy-ish kinda thing?
+    - "got this file? no, you have the id, so get it and send it. thanks!"
+  - github "too many requests" has finally killed me dead
 
 <!--
 # vim: ft=markdown
