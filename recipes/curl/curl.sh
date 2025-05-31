@@ -25,12 +25,12 @@
 # XXX - 8.13.0 is broken with everything i support except openssl/libressl
 #
 rname="curl"
-rver="8.12.1"
+rver="8.14.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="https://curl.se/download/${rfile}"
 rurl="https://github.com/curl/curl/releases/download/curl-${rver//./_}/${rfile}"
-rsha256="7b40ea64947e0b440716a4d7f0b7aa56230a5341c8377d7b609649d4aea8dbcf"
+rsha256="5eba3ec2d898919a4b34cc89ace0068d9d09420b8643f265aebac59f8d126203"
 rreqs="make zlib openssl libssh2 cacertificates nghttp2 pkgconfig caextract"
 
 . "${cwrecipe}/common.sh"
