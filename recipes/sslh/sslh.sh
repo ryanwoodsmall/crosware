@@ -1,9 +1,9 @@
 rname="sslh"
-rver="2.2.3"
+rver="2.2.4"
 rdir="${rname}-v${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.rutschle.net/tech/sslh/${rfile}"
-rsha256="dd7e51c90308ad24654b047bfc29b82578c8e96b872232029ce31517e90b7af7"
+rsha256="696edac467111d0c1353a4ff32ed8dfa33bc914036644c69a7b9506b7ee49115"
 rreqs="make pcre2 libconfig libcap libbsd pkgconfig libev libproxyprotocol"
 
 . "${cwrecipe}/common.sh"
