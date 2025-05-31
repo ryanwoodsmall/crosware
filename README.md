@@ -407,6 +407,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - attr (https://savannah.nongnu.org/projects/attr/)
 - autoconf
 - automake
+- b2sum (https://github.com/BLAKE2/BLAKE2 - standalone blake2 sum program)
 - baseutils (https://github.com/ibara/baseutils - portable openbsd userland)
 - bash (latest 5.x, netbsdcurses)
   - bashminimal (latest 5.x, internal readline, no curses/termcap)
