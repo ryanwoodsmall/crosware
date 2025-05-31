@@ -1,9 +1,9 @@
 rname="wireguardtools"
-rver="1.0.20210914"
+rver="1.0.20250521"
 rdir="wireguard-tools-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/WireGuard/wireguard-tools/archive/refs/tags/${rfile}"
-rsha256="acb8517eed8f352bbf0758a70573c665521a4300d0c4865afebd6b643738c640"
+rsha256="aa502f511aa3ce8b5e79b86f21a0e7b8589591d142b28d2b26cf1996f725cd69"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
