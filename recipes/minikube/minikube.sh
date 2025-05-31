@@ -1,9 +1,9 @@
 rname="minikube"
-rver="1.35.0"
+rver="1.36.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/kubernetes/${rname}/archive/refs/tags/${rfile}"
-rsha256="6e19aa1441a3bcf6d3ba3d71df0515f23d3fd2c6f6fbf9f1438c746675e652e1"
+rsha256="d78302d4ad1745341f5c26f49b1cfb42a3e78b486c371c279ae6820a73cd4c26"
 rreqs="bootstrapmake go"
 
 # XXX - ugh
@@ -16,6 +16,20 @@ fi
 cwstubfunc "cwconfigure_${rname}"
 
 eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  cat go.mod > go.mod.ORIG
+  sed -i \"s/go 1\\.24\\.0/go \$(cwver_go)/g\" go.mod
+  sed -i \"s/go1\\.24\\.1/go\$(cwver_go)/g\" go.mod
+  sed -i '/^toolchain /d' go.mod
+  cat Makefile > Makefile.ORIG
+  sed -i 's/export GOTOOLCHAIN.*/export GOTOOLCHAIN=local/g' Makefile
+  sed -i \"s/^GO_VERSION .*/GO_VERSION=\$(cwver_go)/g\" Makefile
+  popd &>/dev/null
+}
+"
+
+eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
@@ -26,7 +40,9 @@ function cwmake_${rname}() {
     if [[ ${karch} =~ ^riscv64 ]] ; then a='riscv64' ; fi
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
+    export GOTOOLCHAIN=local
     env \
+      GOTOOLCHAIN=local \
       PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
       GOCACHE=\"\${GOCACHE}\" \
       GOMODCACHE=\"\${GOMODCACHE}\" \
