@@ -1,18 +1,14 @@
 rname="neatvi"
-rver="16"
+rver="17"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
-rurl="https://github.com/aligrudi/${rname}/archive/refs/tags/${rfile}"
-rsha256="7ceae3d6433d514c642e6a8bd1cd0fa2992095d64ff2e8a02a40ce90113d6e9f"
+rurl="https://github.com/aligrudi/neatvi/archive/refs/tags/${rfile}"
+rsha256="ec8c5e120c96a18e70e1383ff664168cbc1a87177383d3c86efef44bb44c96db"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
-eval "
-function cwconfigure_${rname}() {
-  true
-}
-"
+cwstubfunc "cwconfigure_${rname}"
 
 eval "
 function cwmake_${rname}() {
