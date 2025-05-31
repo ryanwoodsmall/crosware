@@ -1,9 +1,9 @@
 rname="wireguardgo"
-rver="0.0.20250515"
+rver="0.0.20250522"
 rdir="wireguard-go-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/WireGuard/wireguard-go/archive/refs/tags/${rfile}"
-rsha256="764b0f80b62c1399267d347ddfdbdd9ec37525193104d87987d4f7ca21c841f0"
+rsha256="70d0448d289a691978920f615c687864c3d7b0379d6f974e4f3590487dff35f7"
 rreqs="bootstrapmake go wireguardtools"
 
 . "${cwrecipe}/common.sh"
