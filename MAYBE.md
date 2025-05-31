@@ -633,6 +633,7 @@ wc -l /tmp/astbuild.out
 - lf (https://github.com/gokcehan/lf - go)
 - lib1305 (https://lib1305.cr.yp.to - otp-like single authentication library, can be used by tinyssh; needs python)
 - libagentcrypt (https://github.com/ndilieto/libagentcrypt - file encryption using ssh-agent)
+- libb2 (https://github.com/BLAKE2/libb2 - blake2 checksum library, usable with libarchive)
 - libdash (https://github.com/mgree/libdash - shell as a library, ast, etc.)
 - libdbi (https://github.com/balabit/libdbi)
 - libdbi-drivers (https://github.com/balabit/libdbi-drivers)
