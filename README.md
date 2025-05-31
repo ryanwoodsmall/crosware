@@ -654,6 +654,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libarchive (https://github.com/libarchive/libarchive and https://www.libarchive.org/ - libarchive.a, bsdtar/bsdcpio/bsdcat, gz/bz2/lzo/lz4/lzma/iso9660 fs/... support)
 - libassuan (https://gnupg.org/software/libassuan/index.html)
 - libatomicops
+- libb2 (https://github.com/BLAKE2/libb2 - blake2 library)
 - libbsd
 - libcap (https://mirrors.edge.kernel.org/pub/linux/libs/security/linux-privs/libcap2/)
 - libcapng (https://people.redhat.com/sgrubb/libcap-ng/ and https://github.com/stevegrubb/libcap-ng - posix capabilities lib)
