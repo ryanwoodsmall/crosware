@@ -5,6 +5,7 @@ rfile="${rname}.c"
 rurl="https://raw.githubusercontent.com/blake2/blake2/${rver}/b2sum/${rfile}"
 rsha256="6a11a2f7a5f135a683277c2187e94ce80a92c98a8dee2cb25d873ecabc63e06f"
 rreqs="libb2"
+rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
 
@@ -35,6 +36,7 @@ function cwmakeinstall_${rname}() {
 
 eval "
 function cwgenprofd_${rname}() {
+  rm -f \"${cwetcprofd}/${rname}.sh\"
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
