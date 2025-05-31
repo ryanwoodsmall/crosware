@@ -13,7 +13,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/libarchive/libarchive/releases/download/v${rver}/${rfile}"
 rsha256="191b5b24811499d5c2e5efa3248975fa6daa5e6a227700cc7b8e54d6d7c06eef"
-rreqs="make expat zlib bzip2 lz4 lzo zstd mbedtls xz libmd attr acl e2fsprogs libbsd pkgconfig"
+rreqs="make expat zlib bzip2 lz4 lzo zstd mbedtls xz libmd attr acl e2fsprogs libbsd pkgconfig libb2"
 
 . "${cwrecipe}/common.sh"
 
@@ -27,14 +27,15 @@ function cwconfigure_${rname}() {
     --enable-xattr \
     --with-bz2lib \
     --with-expat \
+    --with-libb2 \
     --with-lz4 \
     --with-lzma \
     --with-lzo2 \
     --with-mbedtls \
     --with-zlib \
     --with-zstd \
-    --without-openssl \
     --without-nettle \
+    --without-openssl \
     --without-xml2 \
       CC=\"\${CC} \$(pkg-config --{cflags,libs} libbsd-overlay)\" \
       CPP=\"\${CPP} \$(pkg-config --cflags libbsd-overlay)\" \
