@@ -3,12 +3,12 @@
 # XXX - ugh
 #
 rname="bmake"
-rver="20250414"
+rver="20250528"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="http://www.crufty.net/ftp/pub/sjg/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
-rsha256="43258a0b819f3e362dd66c05b8212ea977606945f3887ba1b6ad612affabc9aa"
+rsha256="0dc389a5e0298aa585353b60796d5d632de660dade58d00acd60ad722846c9a3"
 rreqs=""
 rbdir="${cwbuild}/${rdir}/build"
 rprof="${cwetcprofd}/zz_${rname}.sh"
