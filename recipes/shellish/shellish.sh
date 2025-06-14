@@ -2,7 +2,7 @@
 # XXX - detect and test ${CW_GIT_CMD} and modify install/upgrade procedure to use a local clone
 #
 rname="shellish"
-rver="d7261d7ec978351025f169cf9d637e3598118b13"
+rver="1d3d5985e2f201afad5d78a2a8c72324589936d5"
 rdir="${rname//ish/-ish}-${rver}"
 rfile="${rver}.zip"
 #rurl="https://github.com/ryanwoodsmall/${rname//ish/-ish}/archive/refs/heads/${rfile}"
