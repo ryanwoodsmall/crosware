@@ -2,7 +2,7 @@ rname="corkscrew"
 rver="2.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
+rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/corkscrew/${rfile}"
 rsha256="0d0fcbb41cba4a81c4ab494459472086f377f9edb78a2e2238ed19b58956b0be"
 rreqs="bootstrapmake configgit"
 
@@ -10,8 +10,8 @@ rreqs="bootstrapmake configgit"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" &>/dev/null
-  env CPPFLAGS= LDFLAGS=-static ./configure ${cwconfigureprefix}
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  env LDFLAGS=-static CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}= ./configure ${cwconfigureprefix}
   popd &>/dev/null
 }
 "
