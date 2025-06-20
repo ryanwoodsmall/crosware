@@ -3,13 +3,13 @@
 # XXX - moving to https://gitea.treehouse.systems/ariadne/pkgconf
 #
 rname="pkgconf"
-rver="2.4.3"
+rver="2.5.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
 #rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rurl="https://distfiles.dereferenced.org/${rname}/${rfile}"
-rsha256="cf6be37c79265802f2cb1dfc412e18de23a35b5204fc5868bc09fcfd092ac225"
+rsha256="fafa613fee321790b04e960ba0d67a98461f3cb915ba732f5572b59ab8ef90d2"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
