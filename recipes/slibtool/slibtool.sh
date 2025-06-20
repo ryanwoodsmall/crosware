@@ -1,9 +1,9 @@
 rname="slibtool"
-rver="0.7.1"
+rver="0.7.2"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/midipix-project/slibtool/archive/refs/tags/${rfile}"
-rsha256="18d8c5e82e41ab36daece81777028d89691f501a447055755d06f47fe4710649"
+rsha256="cc25a3c71ee1facf71f932af1ee01058e462cd758a22c056ba007353851a28be"
 rreqs="make m4"
 
 . "${cwrecipe}/common.sh"
