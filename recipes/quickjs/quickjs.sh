@@ -7,7 +7,7 @@
 #
 
 rname="quickjs"
-rver="6e2e68fd0896957f92eb6c242a2e048c1ef3cae0"
+rver="4d9a27c578d20fc22f0f1a51ff3bfaf47798f30e"
 rdir="${rname}-${rver}"
 rfile="${rver}.zip"
 #rfile="${rdir}.tar.xz"
@@ -15,7 +15,7 @@ rfile="${rver}.zip"
 #rfile="${rver}.tar.gz"
 #rurl="https://github.com/horhof/${rname}/archive/${rfile}"
 rurl="https://github.com/bellard/quickjs/archive/${rfile}"
-rsha256="d4542882686eefa8c0c80493dfb30d858588c0553ffe17a058189132607ff24e"
+rsha256="c34353d2df3ffc6a1ac0c8eec2849ddbb97815f341bfaf597cabe8138162cff8"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
