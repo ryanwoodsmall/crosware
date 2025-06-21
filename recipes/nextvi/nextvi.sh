@@ -1,9 +1,9 @@
 rname="nextvi"
-rver="07e9da9acfd5fbe48b2b35c9534032687d45aa67"
+rver="828f8bb4bac385c11057026a19e20d454f9eecc9"
 rdir="${rname}-${rver}"
 rfile="${rver}.zip"
 rurl="https://github.com/kyx0r/nextvi/archive/${rfile}"
-rsha256="94b741ccb1db9c3cd7a864d80175daeae7c74d94d0c0b3bc53b898ce1843b4b9"
+rsha256="b6b60de17459f1ebe280766b73f972794a64ea8f4abd3e6b05091b4c43951672"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
@@ -13,7 +13,7 @@ cwstubfunc "cwconfigure_${rname}"
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  bash ./build.sh
+  bash ./cbuild.sh
   popd &>/dev/null
 }
 "
