@@ -1,10 +1,13 @@
+#
+# XXX - UTF data build need python3
+#
 rname="mujs"
 rver="1.3.7"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/ccxvii/${rname}/archive/${rfile}"
 rsha256="fa15735edc4b3d27675d954b5703e36a158f19cfa4f265aa5388cd33aede1c70"
-rreqs="make netbsdcurses readlinenetbsdcurses"
+rreqs="make netbsdcurses readlinenetbsdcurses python3"
 
 . "${cwrecipe}/common.sh"
 
