@@ -1,17 +1,20 @@
 rname="mujs"
-rver="1.3.6"
+rver="1.3.7"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/ccxvii/${rname}/archive/${rfile}"
-rsha256="7cf3a5e622cff41903efff0334518fc94af063256752c38ba4618a5191e44f18"
+rsha256="fa15735edc4b3d27675d954b5703e36a158f19cfa4f265aa5388cd33aede1c70"
 rreqs="make netbsdcurses readlinenetbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
+cwstubfunc "cwconfigure_${rname}"
+
 eval "
-function cwconfigure_${rname}() {
+function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's/-lreadline/-lreadline -lcurses -lterminfo -static/g' Makefile
+  sed -i.ORIG \"s,^#define JS_VERSION_PATCH.*,#define JS_VERSION_PATCH \$(cwver_${rname} | cut -f3 -d.),\" mujs.h
   popd &>/dev/null
 }
 "
