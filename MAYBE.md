@@ -375,8 +375,7 @@ wc -l /tmp/astbuild.out
   - etc.
 - gplaces (https://github.com/dimkr/gplaces - terminal gemini client, based on delve (https://github.com/kieselsteini/delve) gopher client?)
 - graphviz (http://graphviz.org/)
-- gron (https://github.com/tomnomnom/gron - greppable json, in go)
-  - gron.awk (https://github.com/xonixx/gron.awk - gron, in awk,,,)
+- gron.awk (https://github.com/xonixx/gron.awk - gron, in awk,,,)
 - gsasl/libgsasl (https://www.gnu.org/software/gsasl/)
 - gsl (gnu scientific library, https://www.gnu.org/software/gsl/)
 - gss (https://www.gnu.org/software/gss/)
