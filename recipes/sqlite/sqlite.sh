@@ -7,11 +7,11 @@
 # XXX - clean this up!
 #
 rname="sqlite"
-rver="3500100"
+rver="3500200"
 rdir="${rname}-autoconf-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.sqlite.org/2025/${rfile}"
-rsha256="00a65114d697cfaa8fe0630281d76fd1b77afcd95cd5e40ec6a02cbbadbfea71"
+rsha256="84a616ffd31738e4590b65babb3a9e1ef9370f3638e36db220ee0e73f8ad2156"
 rreqs="make netbsdcurses readlinenetbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
