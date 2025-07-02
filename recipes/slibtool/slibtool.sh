@@ -1,9 +1,17 @@
+#
+# XXX - moved may/june of 2025
+#   - repository: https://git.foss21.org/cross/slibtool
+#   - issue tracker: https://dev.midipix.org/cross/slibtool
+#   - tarballs: https://dl.foss21.org/slibtool
+#
 rname="slibtool"
-rver="0.7.2"
+rver="0.7.3"
 rdir="${rname}-${rver}"
-rfile="v${rver}.tar.gz"
-rurl="https://github.com/midipix-project/slibtool/archive/refs/tags/${rfile}"
-rsha256="cc25a3c71ee1facf71f932af1ee01058e462cd758a22c056ba007353851a28be"
+#rfile="v${rver}.tar.gz"
+#rurl="https://github.com/midipix-project/slibtool/archive/refs/tags/${rfile}"
+rfile="${rdir}.tar.gz"
+rurl="https://dl.foss21.org/slibtool/${rfile}"
+rsha256="634736b9bbe16b04d7dc22abff0afb916dd56f45b4641e0afc542c6595035ea9"
 rreqs="make m4"
 
 . "${cwrecipe}/common.sh"
