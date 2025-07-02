@@ -1,9 +1,9 @@
 rname="automake"
-rver="1.18"
+rver="1.18.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/automake/${rfile}"
-rsha256="af6043a5d4b3beef0c48161f4a6936259321cd101a34c1ab0768328515626c8a"
+rsha256="63e585246d0fc8772dffdee0724f2f988146d1a3f1c756a3dc5cfbefa3c01915"
 rreqs="make perl m4 autoconf sed"
 
 . "${cwrecipe}/common.sh"
