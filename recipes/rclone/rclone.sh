@@ -4,11 +4,11 @@
 # XXX - ugh, ugh
 #
 rname="rclone"
-rver="1.70.1"
+rver="1.70.2"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/rclone/rclone/archive/refs/tags/${rfile}"
-rsha256="d3d31bdf271a374748b0b1611d82d1a868e87471c31ed9715055b2ae36de7282"
+rsha256="dc6b1eabbe35cfde3b9db2a25567ed6d4f4e65b5c71e52da7d6ff5f987ba86dc"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
