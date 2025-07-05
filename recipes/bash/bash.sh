@@ -2,14 +2,18 @@
 # XXX - version history, not sure where else to link this: https://mywiki.wooledge.org/BashFAQ/061
 #
 rname="bash"
-rver="5.2.37"
+rver="5.3"
+rmaj="${rver%%.*}"
+rmin="${rver#${rmaj}.}"
+rmin="${rmin##.*}"
 rdir="${rname}-${rver}"
-rbdir="${cwbuild}/${rname}-${rver%.*}"
-rfile="${rname}-${rver%.*}.tar.gz"
+rbdir="${cwbuild}/${rname}-${rmaj}.${rmin}"
+rfile="${rname}-${rmaj}.${rmin}.tar.gz"
 #rbdir="${cwbuild}/${rname}-${rver}"
 #rfile="${rname}-${rver}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="a139c166df7ff4471c5e0733051642ee5556c1cc8a4a78f145583c5c81ab32fb"
+rsha256="62dd49c44c399ed1b3f7f731e87a782334d834f08e098a35f2c87547d5dbb269"
+unset rmaj rmin
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
 
