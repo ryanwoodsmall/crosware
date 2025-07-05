@@ -1,9 +1,13 @@
 rname="readline"
-rver="8.2.13"
-rdir="${rname}-${rver%.*}"
+rver="8.3"
+rmaj="${rver%%.*}"
+rmin="${rver#${rmaj}.}"
+rmin="${rmin%%.*}"
+rdir="${rname}-${rmaj}.${rmin}"
+unset rmaj rmin
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="3feb7171f16a84ee82ca18a36d7b9be109a52c04f492a053331d7d1095007c35"
+rsha256="fe5383204467828cd495ee8d1d3c037a7eba1389c22bc6a041f627976f9061cc"
 rreqs="make ncurses sed patch"
 
 . "${cwrecipe}/common.sh"
