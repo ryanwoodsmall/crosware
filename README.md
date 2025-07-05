@@ -415,6 +415,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - bash4 (4.4, netbsdcurses)
   - bash50 (5.0, netbsdcurses)
   - bash51 (5.1, netbsdcurses)
+  - bash52 (5.2, netbsdcurses)
   - bashtermcap (termcap.h, libtermcap.a from bash, etc/termcap from gnu termcap)
 - bc (gnu bc, dc)
 - bdb185 (berkeley db 1.85)
