@@ -2,10 +2,10 @@
 # XXX - version history, not sure where else to link this: https://mywiki.wooledge.org/BashFAQ/061
 #
 rname="bash"
-rver="5.3"
+rver="5.3.3"
 rmaj="${rver%%.*}"
 rmin="${rver#${rmaj}.}"
-rmin="${rmin##.*}"
+rmin="${rmin%%.*}"
 rdir="${rname}-${rver}"
 rbdir="${cwbuild}/${rname}-${rmaj}.${rmin}"
 rfile="${rname}-${rmaj}.${rmin}.tar.gz"
