@@ -1,5 +1,5 @@
 rname="readline"
-rver="8.3"
+rver="8.3.1"
 rmaj="${rver%%.*}"
 rmin="${rver#${rmaj}.}"
 rmin="${rmin%%.*}"
