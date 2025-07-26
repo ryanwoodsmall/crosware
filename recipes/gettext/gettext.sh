@@ -2,11 +2,11 @@
 # opt-in only
 #
 rname="gettext"
-rver="0.25.1"
+rver="0.26"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/gettext/${rfile}"
-rsha256="746f955d42d71eb69ce763869cb92682f09a4066528d018b6ca7a3f48089a085"
+rsha256="39acf4b0371e9b110b60005562aace5b3631fed9b1bb9ecccfc7f56e58bb1d7f"
 rreqs="bashtiny gawk sed make busybox toybox"
 
 rnewpath=""
