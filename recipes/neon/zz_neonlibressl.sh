@@ -1,25 +1,18 @@
 rname="neonlibressl"
-rver="$(cwver_neon)"
-rdir="$(cwdir_neon)"
-rfile="$(cwfile_neon)"
-rdlfile="$(cwdlfile_neon)"
-rurl="$(cwurl_neon)"
-rsha256=""
+rver="0.34.2"
+rdir="${rname%libressl}-${rver}"
+rfile="${rdir}.tar.gz"
+rurl="https://notroj.github.io/neon/${rfile}"
+rsha256="f98ce3c74300be05eddf05dccbdca498b14d40c289f773195dd1a559cffa5856"
 rreqs="make expat zlib libressl"
 
 . "${cwrecipe}/common.sh"
 
-local f
-for f in clean fetch extract patch make makeinstall ; do
-  eval "function cw${f}_${rname}() { cw${f}_neon ; }"
-done
-unset f
-
 eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  cwpatch_${rname%libressl}
-  sed -i.ORIG s,HAVE_OPENSSL11,FAKE_HAVE_OPENSSL11,g src/ne_openssl.c
+  cat src/ne_openssl.c > src/ne_openssl.c.ORIG
+  sed -i s,HAVE_OPENSSL11,FAKE_HAVE_OPENSSL11,g src/ne_openssl.c
   popd &>/dev/null
 }
 "
