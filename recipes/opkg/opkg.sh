@@ -15,6 +15,11 @@
 # XXX - bringing in mbedtls for some reason?
 # XXX - libressl variant w/pre-autotools'ed archive... avoid perl?
 #
+# XXX - 0.9.0 moved to cmake; revisit with:
+#  - updated compilers
+#  - better cmake support
+#  - libsolv support
+#
 
 rname="opkg"
 rver="0.8.0"
