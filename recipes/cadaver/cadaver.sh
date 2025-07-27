@@ -3,11 +3,11 @@
 # XXX - use cwappendfunc in other tls lib variants instead of full cwmakeinstall_
 #
 rname="cadaver"
-rver="0.26"
+rver="0.27"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://notroj.github.io/cadaver/${rfile}"
-rsha256="9236e43cdf3505d9ef06185fda43252840105c0c02d9370b6e1077d866357b55"
+rsha256="12afc62b23e1291270e95e821dcab0d5746ba4461cbfc84d08c2aebabb2ab54f"
 rreqs="make expat zlib openssl neon netbsdcurses readlinenetbsdcurses"
 
 . "${cwrecipe}/common.sh"
