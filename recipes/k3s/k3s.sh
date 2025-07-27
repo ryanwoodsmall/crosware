@@ -8,7 +8,7 @@
 # XXX - without airgap, that makes sense, but i'm not a huge fan of this approach (no caching, no offline)
 #
 rname="k3s"
-rver="1.33.2_${rname}1"
+rver="1.33.3_${rname}1"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""

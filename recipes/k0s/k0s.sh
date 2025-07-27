@@ -4,7 +4,7 @@
 # XXX - online install only ala kubernetes, k3s, ...
 #
 rname="k0s"
-rver="1.33.2_${rname}.0"
+rver="1.33.3_${rname}.0"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
