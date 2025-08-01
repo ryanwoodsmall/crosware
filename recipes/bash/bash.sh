@@ -12,7 +12,7 @@ rfile="${rname}-${rmaj}.${rmin}.tar.gz"
 #rbdir="${cwbuild}/${rname}-${rver}"
 #rfile="${rname}-${rver}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="62dd49c44c399ed1b3f7f731e87a782334d834f08e098a35f2c87547d5dbb269"
+rsha256="0d5cd86965f869a26cf64f4b71be7b96f90a3ba8b3d74e27e8e9d9d5550f31ba"
 unset rmaj rmin
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
