@@ -118,6 +118,7 @@ wc -l /tmp/astbuild.out
   - it's like a 100MB tgz, 700MB extracted, 900MB during build, 190MB installed
   - yikes
 - bootterm (https://github.com/wtarreau/bootterm - small user-friendly serial client/terminal emulator)
+- boson (https://git.sr.ht/~bl4ckb0ne/boson - meson implementation, predates muon)
 - botan (https://github.com/randombit/botan)
   - build with something like...
   - ```
