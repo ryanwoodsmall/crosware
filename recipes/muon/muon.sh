@@ -2,11 +2,11 @@
 # XXX - libcurl, libarchive, etc.
 #
 rname="muon"
-rver="0.4.0"
+rver="0.5.0"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/annacrombie/muon/archive/refs/tags/${rfile}"
-rsha256="c2ce8302e886b2d3534ec38896a824dc83f43698d085d57bb19a751611d94e86"
+rsha256="565c1b6e1e58f7e90d8813fda0e2102df69fb493ddab4cf6a84ce3647466bee5"
 rreqs="samurai pkgconf"
 
 . "${cwrecipe}/common.sh"
@@ -37,8 +37,7 @@ function cwmake_${rname}() {
         -Dstatic=true \
         -Dlibpkgconf=enabled \
         -Dreadline=builtin \
-        -D{docs,libarchive,libcurl,tracy}=disabled \
-        -Dwebsite=false \
+        -D{libarchive,libcurl,man-pages,meson-{docs,tests},tracy,website}=disabled \
          build
   \"${cwsw}/samurai/current/bin/samu\" -C build
   popd &>/dev/null
