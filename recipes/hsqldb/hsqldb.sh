@@ -1,12 +1,12 @@
 rname="hsqldb"
-rver="2.7.3"
+rver="2.7.4"
 rvermaj="${rver%%.*}"
 rvermin="${rver#*.}"
 rvermin="${rvermin%.*}"
 rdir="${rname}-${rver}"
 rfile="${rdir}.zip"
 rurl="https://sourceforge.net/projects/hsqldb/files/hsqldb/${rname}_${rvermaj}_${rvermin}/${rfile}/download"
-rsha256="d3edee859f7fc58237e108864a71733eff5613d92dc65508dfa335bc0c5b1e94"
+rsha256="9388a1d151c3f91575fa4cabc7f922594aa6ecfd2012957ae853e82a3a5008d5"
 rreqs=""
 
 unset rvermaj rvermin
