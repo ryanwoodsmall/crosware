@@ -1250,6 +1250,7 @@ wc -l /tmp/astbuild.out
 - sunwait (sunrise/sundown calculator/figurer - https://github.com/risacher/sunwait)
 - svi (https://github.com/byllgrim/svi)
 - syclladb (https://en.wikipedia.org/wiki/ScyllaDB and https://www.scylladb.com - cassandra/dynamodb implementation, c++20)
+- systeminfo (https://github.com/ahrtr/systeminfo - go, simple endian/page size/etc. info)
 - tab (https://tkatchev.bitbucket.io/tab/)
 - tack (https://github.com/davidgiven/ack and http://tack.sourceforge.net/ - the amsterdam compiler kit)
 - taggins (https://github.com/bromanbro/taggins - easy, extended attr filesystem user.tags for files)
