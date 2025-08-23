@@ -5,11 +5,11 @@
 # XXX - replace rlwrap with jline?
 #
 rname="nashorn"
-rver="15.6"
+rver="15.7"
 rdir="${rname}-${rver}"
 rfile="${rname}-core-${rver}.jar"
 rurl="https://repo1.maven.org/maven2/org/openjdk/nashorn/nashorn-core/${rver}/${rfile}"
-rsha256="fake"
+rsha256="3f2b62e55b5458ba2e8a0cc4599aa3abe81b1422e31c38bb8294a7096ceee6f2"
 rreqs="busybox libxml2 rlwrap"
 
 . "${cwrecipe}/common.sh"
@@ -19,12 +19,12 @@ cwstubfunc "cwextract_${rname}"
 cwstubfunc "cwconfigure_${rname}"
 cwstubfunc "cwmake_${rname}"
 
-eval "
-function cwsha256_${rname}() {
-  cwfetch \"\$(cwurl_${rname}).sha256\" \"\$(cwdlfile_${rname}).sha256\" &>/dev/null
-  cat \"\$(cwdlfile_${rname}).sha256\" | dos2unix | xargs echo -n | awk '{print \$1}'
-}
-"
+#eval "
+#function cwsha256_${rname}() {
+#  cwfetch \"\$(cwurl_${rname}).sha256\" \"\$(cwdlfile_${rname}).sha256\" &>/dev/null
+#  cat \"\$(cwdlfile_${rname}).sha256\" | dos2unix | xargs echo -n | awk '{print \$1}'
+#}
+#"
 
 eval "
 function cwfetch_${rname}() {
