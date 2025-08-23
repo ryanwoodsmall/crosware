@@ -659,6 +659,7 @@ wc -l /tmp/astbuild.out
 - libmawk (http://repo.hu/projects/libmawk/ - embeddable mawk library fork)
 - libnl-tiny (from sabotage, replacement for big libnl? https://github.com/sabotage-linux/libnl-tiny)
 - libntlm (https://www.nongnu.org/libntlm/)
+- libptytty (https://software.schmorp.de/pkg/libptytty.html - pty handler rlwrap can use; requires cmake)
 - libsigsegv (https://www.gnu.org/software/libsigsegv/)
 - libsixel (https://github.com/saitoha/libsixel)
 - libslz (http://www.libslz.org/)
