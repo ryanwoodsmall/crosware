@@ -14,12 +14,13 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_rlwrap)\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
-    CC=\"\${CC} -g0 -Os -Wl,-s\" \
-    CFLAGS=\"\${CFLAGS} -g0 -Os -Wl,-s\" \
-    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
-    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
-    LIBS='-lreadline -ltermcap' \
-    PKG_CONFIG_{LIBDIR,PATH}=
+    --without-libptytty \
+      CC=\"\${CC} -g0 -Os -Wl,-s\" \
+      CFLAGS=\"\${CFLAGS} -g0 -Os -Wl,-s\" \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
+      LIBS='-lreadline -ltermcap' \
+      PKG_CONFIG_{LIBDIR,PATH}=
   sed -i.ORIG 's/pod2man/echo pod2man/g' filters/Makefile
   echo '#include <stdbool.h>' >> config.h
   popd &>/dev/null
