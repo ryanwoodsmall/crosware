@@ -1,13 +1,17 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # disable idle suspend
 #
 # XXX - this doesn't work all the time but should
 #   https://chromium.googlesource.com/chromiumos/platform2/+/master/power_manager/docs/faq.md
 #
-
 set -eu
 set -o pipefail
+
+for p in {,/usr{,/local}}/{,s}bin ; do
+  PATH="${p}:${PATH}"
+done
+export PATH
 
 if [[ ${UID} != 0 ]] ; then
   echo "please run as root" 1>&2
