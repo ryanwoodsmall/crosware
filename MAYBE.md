@@ -456,6 +456,7 @@ wc -l /tmp/astbuild.out
   - groovy (included in sdkman)
   - hg4j and client wrapper (https://github.com/nathansgreen/hg4j)
   - ivy (https://ant.apache.org/ivy/)
+  - java-ldap-ssl-test (https://github.com/UniconLabs/java-ldap-ssl-test - java ldaps test)
   - java-repl
   - jbang (https://www.jbang.dev/ - in sdkman)
   - jikes (dead but useful?)
@@ -473,6 +474,7 @@ wc -l /tmp/astbuild.out
   - ringojs
   - sbt (included in sdkman)
   - scala (included in sdkman)
+  - ssltest (https://github.com/ChristopherSchultz/ssltest - test certs, keystore, etc.)
   - teavm (https://github.com/konsoletyper/teavm - java bytecode to javascript)
   - xtend
 - java jvm/jdk stuff
