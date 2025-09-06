@@ -30,8 +30,9 @@ cd "${cgidir}"
 scriptecho "installing ${cgidir}/env.cgi"
 cat >env.cgi<<EOF
 #!/usr/bin/env sh
-echo "Content-type: text/plain"
-echo
+printf 'Status: 200 OK\\r\\n'
+printf 'Content-type: text/plain\\r\\n'
+printf '\\r\\n'
 set
 EOF
 chmod 755 env.cgi
@@ -41,8 +42,9 @@ scriptecho "installing ${cgidir}/env.awk"
 cat >env.awk<<EOF
 #!${cwsw}/busybox/current/bin/awk -f
 BEGIN {
-    printf("Status: 200 OK\\n");
-    printf("Content-type: text/plain\\n\\n");
+    printf("Status: 200 OK\\r\\n");
+    printf("Content-type: text/plain\\r\\n");
+    printf("\\r\\n");
     for ( key in ENVIRON ) {
         print key " : " ENVIRON[key] | "sort";
     }
@@ -54,9 +56,9 @@ chmod 755 env.awk
 scriptecho "installing ${cgidir}/env.njs"
 cat >env.njs<<EOF
 #!${cwsw}/njs/current/bin/njs
-console.log("Status: 200 OK");
-console.log("Content-type: application/json");
-console.log("");
+console.log("Status: 200 OK\\r");
+console.log("Content-type: application/json\\r");
+console.log("\\r");
 console.log(JSON.stringify(process.env));
 EOF
 chmod 755 env.njs
@@ -65,9 +67,9 @@ chmod 755 env.njs
 scriptecho "installing ${cgidir}/env.qjs"
 cat >env.qjs<<EOF
 #!${cwsw}/quickjs/current/bin/qjs --std
-console.log("Status: 200 OK");
-console.log("Content-type: application/json");
-console.log("");
+console.log("Status: 200 OK\\r");
+console.log("Content-type: application/json\\r");
+console.log("\\r");
 console.log(JSON.stringify(std.getenviron()));
 EOF
 chmod 755 env.qjs
@@ -79,8 +81,9 @@ cat >env.jojq<<EOF
 #!/usr/bin/env sh
 : \${jo:="/usr/local/crosware/software/jo/current/bin/jo"}
 : \${jq:="/usr/local/crosware/software/jq/current/bin/jq"}
-echo "Content-type: application/json"
-echo
+printf 'Status: 200 OK\\r\\n'
+printf 'Content-type: application/json\\r\\n'
+printf '\\r\\n'
 ( tr '\\0' '\\n' < /proc/\$\$/environ | grep -vE -- '^(PKG_CONF|((CPP|LD)FLAGS|PATH)=)' ; echo JO_VER=\$(\${jo} -V) ; echo JQ_VER=\$(\${jq} --version) ) \
   | ( \${jo} -p -- | \${jq} -M -S . ) 2>/dev/null
 EOF
@@ -95,9 +98,9 @@ jvmjs+=( 'var p = {};' )
 jvmjs+=( 'for (k in eka) { e[eka[k]] = java.lang.System.getenv(eka[k]); }' )
 jvmjs+=( 'for (k in pka) { p[pka[k]] = java.lang.System.getProperty(pka[k]); }' )
 jvmjs+=( 'e["JAVA_PROPERTIES"] = p;' )
-jvmjs+=( 'print("Status: 200 OK");' )
-jvmjs+=( 'print("Content-type: application/json");' )
-jvmjs+=( 'print("");' )
+jvmjs+=( 'print("Status: 200 OK\r");' )
+jvmjs+=( 'print("Content-type: application/json\r");' )
+jvmjs+=( 'print("\r");' )
 jvmjs+=( 'print(JSON.stringify(e));' )
 
 # env.nashorn - nashorn javascript on java jvm
