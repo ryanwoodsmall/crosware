@@ -1,9 +1,9 @@
 rname="cpu"
-rver="a0eb86c8c59541e94719beab70562cd04fcf21cc"
+rver="31103c0229b62ccb5a48453daa9a765e7a802c5c"
 rdir="${rname}-${rver}"
 rfile="${rver}.zip"
 rurl="https://github.com/u-root/cpu/archive/${rfile}"
-rsha256="4b84274c28515076700114c0868700a52b7219528ea83f8ef2b0dae73b5f4712"
+rsha256="2fcf9d1fec3dd0b8e3957fd40f1552d6f36330f1e308712abcb811a1942274bf"
 rreqs="go cacertificates"
 
 . "${cwrecipe}/common.sh"
