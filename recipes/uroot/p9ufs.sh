@@ -2,11 +2,11 @@
 # XXX - this doesn't really belong here but is tightly coupled with u-root
 #
 rname="p9ufs"
-rver="6f4f11e5296eca26bcb7a7a3b44197723ce82bee"
+rver="abc96d20b3081fa9ff6cf834fa710ef98fec4385"
 rdir="p9-${rver}"
 rfile="${rver}.zip"
 rurl="https://github.com/hugelgupf/p9/archive/${rfile}"
-rsha256="756dd80a438971bd4516815ed54f0c9734618ccc78a58f95ac20cf666037d9b9"
+rsha256="bb0d8c6b74db3adb2e7ff2778d98d5bbc3d296dd407885d8a2bb3f972efbe0de"
 rreqs="go cacertificates"
 
 . "${cwrecipe}/common.sh"
