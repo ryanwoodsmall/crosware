@@ -355,6 +355,7 @@ wc -l /tmp/astbuild.out
   - https://github.com/avelino/awesome-go
 - go9p (https://github.com/knusbaum/go9p - 9p in go)
 - goaccess (https://github.com/allinurl/goaccess and https://goaccess.io - interactive web log analyzer/viewer)
+- goawk (https://github.com/benhoyt/goawk - awk in go)
 - go-git (https://github.com/go-git/go-git)
   - pure go, might make for a decent no-frills clone/fetch/merge client?
   - more stuff in examples directory!
@@ -365,6 +366,7 @@ wc -l /tmp/astbuild.out
 - gopass (https://github.com/gopasspw/gopass - like pass but in go, uses gpg/git)
 - goph (https://github.com/melbahja/goph - go ssh client)
 - gops (https://github.com/google/gops - running go process analyzer)
+- go-sed (https://github.com/zkry/go-sed - sed in go)
 - gosecure (https://github.com/diegohce/gosecure - simple secure tls proxy in go)
 - gosmb (https://github.com/wthorp/GoSMB = currently an smb proxy, eventually implementing a full server)
 - gotify (https://github.com/gotify/server - go, simple message sending via rest api)
