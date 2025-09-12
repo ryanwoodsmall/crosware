@@ -136,3 +136,4 @@ function cwgenprofd_${rname}() {
 unset rurootver
 unset rgobusyboxver
 unset rmkuimagever
+unset relvishver
