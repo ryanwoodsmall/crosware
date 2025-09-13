@@ -9,6 +9,7 @@ rdir="${rname}-${rver}"
 rfile="core-hab-${rver%.*}-${rver##*.}-x86_64-linux.hart"
 rurl="https://bldr.habitat.sh/v1/depot/pkgs/core/hab/${rver%.*}/${rver##*.}/download?target=x86_64-linux"
 rsha256="d52c8f85f4c12fed04e69bc248f452e51d37684a6eb3f488708f663cbcfe4197"
+rprof="${cwetcprofd}/zz_${rname}.sh"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
@@ -50,6 +51,7 @@ function cwmakeinstall_${rname}() {
 # XXX - HAB_LICENSE="accept-no-persist" ???
 eval "
 function cwgenprofd_${rname}() {
+  rm -f \"${cwetcprofd}/${rname}.sh\"
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
   echo ': \${HAB_LICENSE:=\"accept\"}' >> \"${rprof}\"
   echo ': \${HAB_BINLINK_DIR:=\"${rtdir}/current/bin\"}' >> \"${rprof}\"
