@@ -1,7 +1,5 @@
 #
-# XXX - pograms disabled, something pulls in generated files, which calls python, ad infinitum
-# XXX - MBEDTLS_SSL_PROTO_TLS1_3
-# XXX - MBEDTLS_SSL_SRV_C
+# XXX - programs disabled, something pulls in generated files, which calls python, ad infinitum
 # XXX - WHOLE bunch more: include/mbedtls/check_config.h
 #
 sname="mbedtls"
