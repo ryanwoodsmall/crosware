@@ -77,6 +77,12 @@ function cwmakeinstall_${rname}() {
       ${rcommonopts}
   echo '#include <sched.h>' >> lib/curl_config.h
   echo '#include <stdatomic.h>' >> lib/curl_config.h
+  if ! command -v perl &>/dev/null ; then
+    echo 'no perl, fixing UNITPTR stuff'
+    cat lib/Makefile > lib/Makefile.orig
+    sed -i '/^CLEANFILES /s,.*,CLEANFILES = ,g' lib/Makefile
+    sed -i '/^all-local: /s,UNITPROTOS,CHECKSOURCES,g' lib/Makefile
+  fi
   make -j${cwmakejobs} ${rlibtool}
   make install ${rlibtool}
   rm -f \"\$(cwidir_${rname})/bin/curl-${rprovider}\" \"\$(cwidir_${rname})/bin/${rname%${rprovider}}-${rprovider}-config\"
