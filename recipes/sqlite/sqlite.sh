@@ -5,6 +5,8 @@
 # XXX - minimal/tiny variant?
 # XXX - separate out linenoise variant, make that minimal?
 # XXX - clean this up!
+# XXX - ORIGIN / REPLICA - sqlite3_rsync?
+# XXX - extra tools (sqldiff, sqlite3_analyze, ...) need full source code .zip
 #
 rname="sqlite"
 rver="3500400"
@@ -79,6 +81,8 @@ function cwmakeinstall_${rname}_minimal() {
     export PKG_CONFIG_{LIBDIR,PATH}=
     ./configure ${cwconfigureprefix} --disable-shared --disable-readline --disable-editline
     make -j${cwmakejobs} ${rlibtool}
+    : make sqldiff ${rlibtool}
+    : make sqlite3_analyzer ${rlibtool}
   )
   install -m 755 sqlite3 \"\$(cwidir_${rname})/bin/sqlite3-minimal\"
   popd &>/dev/null
