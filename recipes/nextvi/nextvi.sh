@@ -1,3 +1,7 @@
+#
+# XXX - patches are included in the released .tar.gz at least as of 1.0
+# XXX - keep patches separate or no?
+#
 rname="nextvi"
 rver="1.0"
 rdir="${rname}-${rver}"
@@ -23,10 +27,11 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  cwmkdir \"\$(cwidir_${rname})/bin\"
+  cwmkdir \$(cwidir_${rname})/{bin,share/man/man1}
   rm -f \"\$(cwidir_${rname})/bin/${rname}\"
   strip --strip-all vi
   install -m 0755 vi \"\$(cwidir_${rname})/bin/${rname}\"
+  install -m 0644 vi.1 \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
   popd &>/dev/null
 }
 "
