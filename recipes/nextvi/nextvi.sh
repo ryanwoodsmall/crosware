@@ -3,13 +3,13 @@
 # XXX - keep patches separate or no?
 #
 rname="nextvi"
-rver="1.2"
+rver="1.3"
 rdir="${rname}-${rver}"
 #rfile="${rver}.zip"
 #rurl="https://github.com/kyx0r/nextvi/archive/${rfile}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/kyx0r/nextvi/archive/refs/tags/${rfile}"
-rsha256="ebedcfe560f1239f4411500380a5a2ce0ec1dca2b06d8ae076ac5770037108d5"
+rsha256="80a19784cac9396b813ea5ab847d16e24548511f60c2d1a7426dbf831d880698"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
