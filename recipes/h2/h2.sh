@@ -7,13 +7,12 @@
 #  jdbc:postgresql://localhost:5435/~/tmppg;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
 #
 rname="h2"
-rver="2.3.232"
+rver="2.4.240"
 rdir="${rname}-${rver}"
 rbdir="${cwbuild}/${rname}"
-rfile="${rname}-2024-08-11.zip"
-#rurl="https://h2database.com/${rfile}"
+rfile="${rname}-2025-09-22.zip"
 rurl="https://github.com/h2database/h2database/releases/download/version-${rver}/${rfile}"
-rsha256="aa95a3433b6f434cac43b072b52756fa46c611239b7a0de3a8038501b8dae2af"
+rsha256="154d7aac3c33cae3dc361ad0c5296040be08ed0508acde6560c03842088d147e"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
