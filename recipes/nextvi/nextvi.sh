@@ -3,18 +3,30 @@
 # XXX - keep patches separate or no?
 #
 rname="nextvi"
-rver="1.0"
+rver="1.2"
 rdir="${rname}-${rver}"
 #rfile="${rver}.zip"
 #rurl="https://github.com/kyx0r/nextvi/archive/${rfile}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/kyx0r/nextvi/archive/refs/tags/${rfile}"
-rsha256="fb955a4c9226dac678783e545a98d2b480a308fed240b02ce85d67741479d322"
+rsha256="ebedcfe560f1239f4411500380a5a2ce0ec1dca2b06d8ae076ac5770037108d5"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
 
 cwstubfunc "cwconfigure_${rname}"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  local p
+  for p in arrowkeys_insert.patch arrowkeys_normal.patch filetype_shebang.patch stdin_pipe.patch c_option.patch ; do
+    cwscriptecho \"${rname}: applying patch \${p}\"
+    patch -p1 < \${p}
+  done
+  popd &>/dev/null
+}
+"
 
 eval "
 function cwmake_${rname}() {
