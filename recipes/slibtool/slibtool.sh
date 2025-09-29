@@ -5,13 +5,13 @@
 #   - tarballs: https://dl.foss21.org/slibtool
 #
 rname="slibtool"
-rver="0.7.3"
+rver="0.7.4"
 rdir="${rname}-${rver}"
 #rfile="v${rver}.tar.gz"
 #rurl="https://github.com/midipix-project/slibtool/archive/refs/tags/${rfile}"
 rfile="${rdir}.tar.gz"
 rurl="https://dl.foss21.org/slibtool/${rfile}"
-rsha256="634736b9bbe16b04d7dc22abff0afb916dd56f45b4641e0afc542c6595035ea9"
+rsha256="bad9e038f3a490568135845631dff6b0ba5861d9d9cd558b84cd58504131b184"
 rreqs="make m4"
 
 . "${cwrecipe}/common.sh"
