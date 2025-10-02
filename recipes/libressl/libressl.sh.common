@@ -15,7 +15,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --disable-asm \
     --enable-nc \
-    --with-openssldir=\"${cwetc}/${rname}\" \
+    --with-openssldir=\"${cwetc}/libressl\" \
     --with-pic \
       CC=\"\${CC} -Os\" \
       CFLAGS=\"-Os \${CFLAGS}\" \
