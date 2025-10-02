@@ -1,15 +1,14 @@
 #
 # XXX - patches are included in the released .tar.gz at least as of 1.0
-# XXX - keep patches separate or no?
 #
 rname="nextvi"
-rver="1.3"
+rver="1.4"
 rdir="${rname}-${rver}"
 #rfile="${rver}.zip"
 #rurl="https://github.com/kyx0r/nextvi/archive/${rfile}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/kyx0r/nextvi/archive/refs/tags/${rfile}"
-rsha256="80a19784cac9396b813ea5ab847d16e24548511f60c2d1a7426dbf831d880698"
+rsha256="22f4ff98da04d636441ddb8f0a7c865c2eceb235a44d11be43667a31c42de9a8"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
