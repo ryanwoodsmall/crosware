@@ -1,4 +1,7 @@
 #
+# XXX - 0.119 broke ancient openssl 1.1.1[a-zA-Z]
+# XXX - worry about it after move to new openssl lts
+#
 # XXX - default to libressl since this is a portable version of an openbsd project!
 # XXX - should this switch to default openssl, with libressl variant like... everything else?
 # XXX - netbsdcurses has issues
@@ -22,11 +25,11 @@
 #   got send
 #
 rname="got"
-rver="0.118.1"
+rver="0.119"
 rdir="${rname}-portable-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://gameoftrees.org/releases/portable/${rfile}"
-rsha256="77c138791ede6fa9c535078711ff7bed49fe54d86c186b0820cba65cb09ba650"
+rsha256="85009c9bb419c633eeb8a80fd269a4db40927fc68969924b6f9d5389a0a0f6f9"
 rreqs="libressl"
 
 . "${cwrecipe}/got/got.sh.common"
