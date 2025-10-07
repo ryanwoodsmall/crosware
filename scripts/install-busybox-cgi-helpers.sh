@@ -103,13 +103,14 @@ jvmjs+=( 'print("Content-Type: application/json\r");' )
 jvmjs+=( 'print("\r");' )
 jvmjs+=( 'print(JSON.stringify(e));' )
 
-# shorter versions; nashorn needs "--language=es6" for `text` and no arrow functions or sort
+# shorter versions; nashorn needs "--language=es6" for `text` and no sort
 #   // works in rhino and nashorn
 #   var e = {};
 #   e[`JAVA_PROPERTIES`] = {};
 #   Array.prototype.forEach.call(java.lang.System.getenv().keySet().toArray(), function(k) { e[k] = java.lang.System.getenv(k); });
 #   Array.prototype.forEach.call(java.lang.System.getProperties().keySet().toArray(), function(k) { e[`JAVA_PROPERTIES`][k] = java.lang.System.getProperty(k); });
 #   print(JSON.stringify(e));
+#   // arrow functions also work, e.g.: Array.prototype.forEach.call(java.lang.System.getenv().keySet().toArray(), ((k) => (print(k))));
 #
 #   // works only in rhino
 #   var e = {};
@@ -120,6 +121,7 @@ jvmjs+=( 'print(JSON.stringify(e));' )
 
 # env.nashorn - nashorn javascript on java jvm
 # XXX - nashorn has an '$ENV' object in scripting mode; should be same as java.lang.System.getenv()
+# XXX - add "-Dnashorn.args=--language=es6" to _JAVA_OPTIONS
 : ${JAVA_HOME:=""}
 if [ ! -z "${JAVA_HOME}" ] ; then
   scriptecho "installing ${cgidir}/env.nashorn"
