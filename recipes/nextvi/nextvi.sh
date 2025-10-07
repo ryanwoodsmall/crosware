@@ -8,7 +8,7 @@ rdir="${rname}-${rver}"
 #rurl="https://github.com/kyx0r/nextvi/archive/${rfile}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/kyx0r/nextvi/archive/refs/tags/${rfile}"
-rsha256="8984f6b6dbe4f29f4071cc1d3a63a07153fcb8a831b7fd6d237515d0cb1f5e69"
+rsha256="88aa19b3995459c8dfad32bd1e1883f264073f6e8bbcfec27e677cd8f888967c"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
