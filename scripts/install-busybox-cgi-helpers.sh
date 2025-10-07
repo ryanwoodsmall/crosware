@@ -103,11 +103,19 @@ jvmjs+=( 'print("Content-Type: application/json\r");' )
 jvmjs+=( 'print("\r");' )
 jvmjs+=( 'print(JSON.stringify(e));' )
 
-# shorter version, but nashorn needs "--language=es6" for `text` and arrow functions
+# shorter versions; nashorn needs "--language=es6" for `text` and no arrow functions or sort
+#   // works in rhino and nashorn
 #   var e = {};
 #   e[`JAVA_PROPERTIES`] = {};
 #   Array.prototype.forEach.call(java.lang.System.getenv().keySet().toArray(), function(k) { e[k] = java.lang.System.getenv(k); });
 #   Array.prototype.forEach.call(java.lang.System.getProperties().keySet().toArray(), function(k) { e[`JAVA_PROPERTIES`][k] = java.lang.System.getProperty(k); });
+#   print(JSON.stringify(e));
+#
+#   // works only in rhino
+#   var e = {};
+#   e[`JAVA_PROPERTIES`] = {};
+#   java.lang.System.getenv().keySet().toArray().sort().forEach((k) => (e[k] = java.lang.System.getenv(k)));
+#   java.lang.System.getProperties().keySet().toArray().sort().forEach((k) => (e[`JAVA_PROPERTIES`][k] = java.lang.System.getProperty(k)));
 #   print(JSON.stringify(e));
 
 # env.nashorn - nashorn javascript on java jvm
