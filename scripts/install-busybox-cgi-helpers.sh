@@ -103,6 +103,13 @@ jvmjs+=( 'print("Content-Type: application/json\r");' )
 jvmjs+=( 'print("\r");' )
 jvmjs+=( 'print(JSON.stringify(e));' )
 
+# shorter version, but nashorn needs "--language=es6" for `text` and arrow functions
+#   var e = {};
+#   e[`JAVA_PROPERTIES`] = {};
+#   Array.prototype.forEach.call(java.lang.System.getenv().keySet().toArray(), function(k) { e[k] = java.lang.System.getenv(k); });
+#   Array.prototype.forEach.call(java.lang.System.getProperties().keySet().toArray(), function(k) { e[`JAVA_PROPERTIES`][k] = java.lang.System.getProperty(k); });
+#   print(JSON.stringify(e));
+
 # env.nashorn - nashorn javascript on java jvm
 # XXX - nashorn has an '$ENV' object in scripting mode; should be same as java.lang.System.getenv()
 : ${JAVA_HOME:=""}
