@@ -3,11 +3,11 @@
 # XXX - need to reinstall "build" via pip as in python3 recipe???
 #
 rname="meson"
-rver="1.8.5"
+rver="1.9.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/mesonbuild/meson/releases/download/${rver}/${rfile}"
-rsha256="aa8082004d5a60568987efecc2fab0506bf2a15a23181fe57eb0699fac3275a4"
+rsha256="4e076606f2afff7881d195574bddcd8d89286f35a17b4977a216f535dc0c74ac"
 rreqs="python3 ninja"
 
 . "${cwrecipe}/common.sh"
