@@ -2,13 +2,13 @@
 # XXX - patches are included in the released .tar.gz at least as of 1.0
 #
 rname="nextvi"
-rver="1.7"
+rver="1.8"
 rdir="${rname}-${rver}"
 #rfile="${rver}.zip"
 #rurl="https://github.com/kyx0r/nextvi/archive/${rfile}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/kyx0r/nextvi/archive/refs/tags/${rfile}"
-rsha256="88aa19b3995459c8dfad32bd1e1883f264073f6e8bbcfec27e677cd8f888967c"
+rsha256="d7c0804f422289a95d07af38bb94374646abc2d25fefe4b6ac225c46886515f2"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
