@@ -39,11 +39,11 @@
 #
 
 rname="shellinabox"
-rver="2.20"
+rver="2.21"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
-rsha256="27a5ec6c3439f87aee238c47cc56e7357a6249e5ca9ed0f044f0057ef389d81e"
+rsha256="2a8f94beb286d0851bb146f7a7c480a8740f59b959cbd274e21a8fcbf0a7f307"
 rreqs="make autoconf automake libtool openssl zlib slibtool"
 
 . "${cwrecipe}/common.sh"
