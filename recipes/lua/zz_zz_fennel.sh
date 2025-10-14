@@ -6,14 +6,14 @@
 # XXX - luarocks fennel install broken w/fennel 1.5.0?
 #
 rname="fennel"
-rfennelver="1.5.3"
+rfennelver="1.6.0"
 # "vendor" a recent/system version of lua (needs to be shared)
 rluaver="$(cwver_lua)"
 # append lua version to fennel version so they kinda move in lockstep
 rdir="${rname}-${rfennelver}"
 rfile="${rdir}"
 rurl="https://fennel-lang.org/downloads/${rfile}"
-rsha256="7edd9c6b0bb055e29434e655766100609c255be021336f5bb2b572672c55cc10"
+rsha256="040a0e191c9107803650376a8d99984390e251b72590a107250b90e2137eed58"
 rreqs="make netbsdcurses readlinenetbsdcurses"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 # no separate recipe for luarocks for now
