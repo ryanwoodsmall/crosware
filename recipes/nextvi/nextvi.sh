@@ -9,7 +9,7 @@ rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/kyx0r/nextvi/archive/refs/tags/${rfile}"
 rsha256="d7c0804f422289a95d07af38bb94374646abc2d25fefe4b6ac225c46886515f2"
-rreqs=""
+rreqs="patch"
 
 . "${cwrecipe}/common.sh"
 
