@@ -1,9 +1,9 @@
 rname="gosftpserver"
-rver="1.13.9"
+rver="1.13.10"
 rdir="sftp-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/pkg/sftp/archive/refs/tags/${rfile}"
-rsha256="b621990f61c03dd60f86b8c669ea50d57a1e0a56a634b0edb8777c9cc82892a1"
+rsha256="cd8f565078441f0810ed0f451e0556df24a644467c6fa439a86126b1542a098c"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
