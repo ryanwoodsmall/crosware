@@ -10,7 +10,7 @@ rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/annacrombie/muon/archive/refs/tags/${rfile}"
 rsha256="565c1b6e1e58f7e90d8813fda0e2102df69fb493ddab4cf6a84ce3647466bee5"
-rreqs="samurai pkgconf pkgconfig"
+rreqs="samurai pkgconf"
 
 . "${cwrecipe}/common.sh"
 
@@ -19,6 +19,7 @@ function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     PATH=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/bin | tr ' ' ':'):\${PATH}\" \
+    PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
@@ -32,6 +33,7 @@ function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     PATH=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/bin | tr ' ' ':'):\${PATH}\" \
+    PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
