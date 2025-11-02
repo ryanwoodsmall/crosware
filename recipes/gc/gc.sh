@@ -21,11 +21,11 @@
 #     LDFLAGS=\"\${LDFLAGS//-static/}\"
 #
 rname="gc"
-rver="8.2.8"
+rver="8.2.10"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ivmai/bdwgc/releases/download/v${rver}/${rfile}"
-rsha256="7649020621cb26325e1fb5c8742590d92fb48ce5c259b502faf7d9fb5dabb160"
+rsha256="832cf4f7cf676b59582ed3b1bbd90a8d0e0ddbc3b11cb3b2096c5177ce39cc47"
 rreqs="make libatomicops pkgconfig configgit"
 
 . "${cwrecipe}/common.sh"
