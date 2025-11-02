@@ -1039,7 +1039,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - tree2 (tree version 2.x)
 - troglobit stuff
   - editline (https://github.com/troglobit/editline - minix readline-like)
-  - inadyn (https://github.com/troglobit/inadyn - dynamic dns updater, openssl)
+  - inadyn (https://github.com/troglobit/inadyn - dynamic dns updater, openssl - EOL!!!)
     - inadyngnutls (gnutls)
     - inadyngnutlsminimal (gnutlsminimal built with nettleminimal/mini-gmp)
     - inadynlibressl (libressl)
