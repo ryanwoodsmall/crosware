@@ -1,6 +1,6 @@
-rver="4.1.1"
+rver="4.1.2"
 rname="libressl${rver%.*}"
 rname="${rname//./}"
-rsha256="c7ff7a7d675d5f57730940e5ccff1dbe2dcd5b7405b5397e0f7ffd66a5ed5679"
+rsha256="fba4e2fa2a7f52306df7a389970a10e98b97eb0edb299a9fdb9dbf49999c61e1"
 
 . "${cwrecipe}/libressl/libressl.sh.common"
