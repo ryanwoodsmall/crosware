@@ -13,13 +13,13 @@
 # XXX - add -X to leave content on screen after exit?
 #
 rname="less"
-rver="679"
+rver="685"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="http://www.greenwoodsoftware.com/less/${rfile}"
 #rurl="https://ftp.gnu.org/pub/gnu/less/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/less/${rfile}"
-rsha256="9b68820c34fa8a0af6b0e01b74f0298bcdd40a0489c61649b47058908a153d78"
+rsha256="2701041e767e697ee420ce0825641cedc8f20b51576abe99d92c1666d332e9dc"
 rreqs="make netbsdcurses busybox toybox"
 
 . "${cwrecipe}/common.sh"
