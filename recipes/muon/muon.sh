@@ -1,5 +1,8 @@
 #
 # XXX - libcurl, libarchive, etc.
+# XXX - 2025/11/02 - require pkgconfig, something is screwy
+#   - getting a core dump on bootstrap using only pkgconf
+#   - UGHHHHHHHHHHHHHHHHHH
 #
 rname="muon"
 rver="0.5.0"
@@ -7,7 +10,7 @@ rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/annacrombie/muon/archive/refs/tags/${rfile}"
 rsha256="565c1b6e1e58f7e90d8813fda0e2102df69fb493ddab4cf6a84ce3647466bee5"
-rreqs="samurai pkgconf"
+rreqs="samurai pkgconf pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
