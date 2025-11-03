@@ -3,11 +3,11 @@
 # XXX - baseutils has an m4 as well, bmake is only req
 #
 rname="elfutils"
-rver="0.193"
+rver="0.194"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://sourceware.org/elfutils/ftp/${rver}/${rfile}"
-rsha256="7857f44b624f4d8d421df851aaae7b1402cfe6bcdd2d8049f15fc07d3dde7635"
+rsha256="09e2ff033d39baa8b388a2d7fbc5390bfde99ae3b7c67c7daaf7433fbcf0f01e"
 rreqs="bootstrapmake zlib libuargp muslfts muslobstack otools pkgconf"
 
 . "${cwrecipe}/common.sh"
@@ -23,7 +23,7 @@ function cwconfigure_${rname}() {
     --enable-install-elfh \
     --program-prefix=eu- \
     --without-biarch \
-      C{,XX}FLAGS='-fPIC -Wno-error=unused-parameter -Os -g0 -Wl,-s' \
+      C{,XX}FLAGS='-fPIC -Wno-error=unused-parameter -Wno-error=unused-but-set-variable -Os -g0 -Wl,-s' \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -s\" \
       PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\" \
