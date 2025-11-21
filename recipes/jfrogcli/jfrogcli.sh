@@ -1,9 +1,9 @@
 rname="jfrogcli"
-rver="2.80.0"
+rver="2.84.0"
 rdir="jfrog-cli-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/jfrog/jfrog-cli/archive/refs/tags/${rfile}"
-rsha256="59c2c5b2d6cda0e06069c5249baa05431507dadc694d173e764653455efdae5a"
+rsha256="64b00022f0ccb05fe3a1a35ca9e9c9595925a0827814aefbf22e439ac382cfd5"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
