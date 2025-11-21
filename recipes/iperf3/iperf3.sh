@@ -1,11 +1,11 @@
 rname="iperf3"
-rver="3.19.1"
+rver="3.20"
 rdir="iperf-${rver}"
 #rfile="${rdir}.tar.gz"
 #rurl="https://github.com/esnet/iperf/releases/download/${rver}/${rfile}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/esnet/iperf/archive/refs/tags/${rfile}"
-rsha256="85e480d7fffdcb1368888aaee9d76bcfc211e17c2a6dcb2060b281498f82c97b"
+rsha256="84640ea0f43831850434e50134d0554b7a94f97fb02e2488ffbe252c9fb05a56"
 rreqs="make openssl configgit zlib"
 
 . "${cwrecipe}/common.sh"
