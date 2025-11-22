@@ -1,9 +1,9 @@
 rname="e2fsprogs"
-rver="1.47.2"
+rver="1.47.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v${rver}/${rfile}"
-rsha256="7a959221c1b1cc6e28b7d7a4e204a2ffd8ec6d8a2de4461c482b64c5f4463cca"
+rsha256="7d4612f4e4f7ca6c2f669679028bcb02763e3b6280c9c19b2cf168eaf65e88af"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
