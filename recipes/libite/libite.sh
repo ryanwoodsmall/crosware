@@ -1,9 +1,9 @@
 rname="libite"
-rver="2.6.1"
+rver="2.6.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/troglobit/libite/releases/download/v${rver}/${rfile}"
-rsha256="d0a73fa4c91c2fdae4afaa490167359ffc60beeeed47de9cbb67566f3f3f09e5"
+rsha256="83a439237528388fe3134f1b96524fb6c350c7881032e2f7d9b0b85570eedfdf"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
