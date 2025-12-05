@@ -3,7 +3,7 @@ rver="1.8.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://hyperrealm.github.io/libconfig/dist/${rfile}"
-rsha256="87c6f382994b245f9213be34a2bf19c8ee7d033d7abaa51e88fbb7bad79e2dc6"
+rsha256="c73ee3d914ec68c99b61e864832931e9a7112eeabfb449dad217fd83e385cbdf"
 rreqs="make configgit slibtool"
 
 . "${cwrecipe}/common.sh"
