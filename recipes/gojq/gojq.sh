@@ -1,9 +1,9 @@
 rname="gojq"
-rver="0.12.17"
+rver="0.12.18"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/itchyny/${rname}/archive/refs/tags/${rfile}"
-rsha256="86b8393d04cb40db09a8de96199f358c1e49bbd7d1ace5c95496cc7cc4102b3b"
+rsha256="8a228e4feab900f45db14bde147e8c6f820ec2413631b932e3c15bc1f0545995"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
