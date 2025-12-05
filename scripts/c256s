@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# curl something and get its sha-256 sum
+#
+
+set -eou pipefail
+
+: ${curlopts:="-f -k -L -s"}
+
+curl ${curlopts} "${@}" | sha256sum | awk '{print $1}'
