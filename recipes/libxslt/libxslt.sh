@@ -1,3 +1,7 @@
+#
+# XXX - 1.1.45 requires libxml2 2.15.1+
+#   checking for libxml libraries >= 2.15.1... configure: error: Version 2.11.8 found. You need at least libxml2 2.15.1 for this version of libxslt
+#
 rname="libxslt"
 rver="1.1.43"
 rdir="${rname}-${rver}"
