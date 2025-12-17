@@ -1,9 +1,9 @@
 rname="ed"
-rver="1.22.2"
+rver="1.22.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="f58d15242056e15af76f13f34c60d890fa2a2d5cb0abef91c115e4d83794ffe3"
+rsha256="47a55ddfc52d4a1ff6f7559fbd00cf948a16b6cf151ec520392761aeae4e97be"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
