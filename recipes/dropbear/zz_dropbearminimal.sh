@@ -51,6 +51,25 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwmake_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  (
+    export CC=\"\${CC} -Os -Wl,-s -I${cwsw}/zlib/current/include\"
+    export CFLAGS=\"\${CFLAGS} -Os -Wl,-s\"
+    export CXXFLAGS=\"\${CXXFLAGS} -Os -Wl,-s\"
+    export CPPFLAGS=\"-I${cwsw}/zlib/current/include\"
+    export LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\"
+    export PKG_CONFIG_{LIBDIR,PATH}=
+    make -j${cwmakejobs} ${rlibtool} \
+      MULTI=1 \
+      SCPPROGRESS=1 \
+      PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
+  )
+  popd &>/dev/null
+}
+"
+
+eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install \

@@ -27,15 +27,15 @@
 # XXX - enable DROPBEAR_USE_SSH_CONFIG in dropbear-misc and test
 #
 rname="dropbear"
-rsver="2025.88"
-rdate="20250517152332"
-rver="${rsver}-${rdate}"
+rsver="2025.89"
+rdate="20251219183303"
+rver="2025.89"
 rdir="${rname}-${rsver}"
 rfile="${rdir}.tar.bz2"
 #rurl="https://matt.ucc.asn.au/dropbear/releases/${rfile}"
 #rurl="https://dropbear.nl/mirror/releases/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/dropbear/${rfile}"
-rsha256="783f50ea27b17c16da89578fafdb6decfa44bb8f6590e5698a4e4d3672dc53d4"
+rsha256="0d1f7ca711cfc336dc8a85e672cab9cfd8223a02fe2da0a4a7aeb58c9e113634"
 # need a patch program, try toybox
 rreqs="make toybox zlib configgit lshsftpserver"
 
