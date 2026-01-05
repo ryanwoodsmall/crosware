@@ -1,9 +1,9 @@
 rname="dsvpn"
-rver="0.1.4"
+rver="0.1.5"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/jedisct1/${rname}/archive/refs/tags/${rfile}"
-rsha256="b98604e1ca2ffa7a909bf07ca7cf0597e3baa73c116fbd257f93a4249ac9c0c5"
+rsha256="53c9ff2518acea188926a4f10d38929da7b61b6770d6ec00f73a4c82ff918c5e"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
