@@ -1,9 +1,12 @@
+#
+# XXX - remove patch stuff
+#
 rname="gh"
-rver="2.83.1"
+rver="2.83.2"
 rdir="cli-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/cli/cli/archive/refs/tags/${rfile}"
-rsha256="5053825b631fa240bba1bfdb3de6ac2c7af5e3c7884b755a6a5764994d02f999"
+rsha256="c031ca887d3aaccb40402a224d901c366852f394f6b2b60d1158f20569e33c89"
 rreqs="go bootstrapmake"
 
 if ! command -v git &>/dev/null ; then
@@ -29,6 +32,8 @@ eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG \"s,/usr/local,\$(cwidir_${rname}),g\" Makefile
+  sed -i.ORIG s,1\\.25\\.5,1.25.0,g go.mod || true
+  go mod tidy || true
   popd &>/dev/null
 }
 "
