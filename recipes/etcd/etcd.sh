@@ -1,9 +1,9 @@
 rname="etcd"
-rver="3.6.6"
+rver="3.6.7"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/etcd-io/etcd/archive/refs/tags/${rfile}"
-rsha256="371dd03b6ae1f6ed06496dbe53ffee5ec9126583184bf27c835047d1b0686d11"
+rsha256="bdaf94ba46303819bb82ccf960780d0d1deda180414e9782857355938067f635"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
