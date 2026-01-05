@@ -1,9 +1,9 @@
 rname="libnl"
-rver="3.11.0"
+rver="3.12.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/thom311/libnl/releases/download/${rname}${rver//./_}/${rfile}"
-rsha256="2a56e1edefa3e68a7c00879496736fdbf62fc94ed3232c0baba127ecfa76874d"
+rsha256="fc51ca7196f1a3f5fdf6ffd3864b50f4f9c02333be28be4eeca057e103c0dd18"
 rreqs="make bison"
 
 . "${cwrecipe}/common.sh"
