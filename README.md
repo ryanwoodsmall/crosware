@@ -727,6 +727,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - lsh (https://www.lysator.liu.se/~nisse/lsh/ - version 2.0, 2.1 has issues with separate/new nettle)
   - lshsftpserver (`sftp-server` binary only for e.g. dropbear, tinyssh, ...)
 - lua (http://www.lua.org/ - 5.x release, may change! posix, no readline)
+  - lua55 (posix, barebones)
   - lua54 (posix, barebones)
   - lua53 (posix, barebones)
   - lua52 (posix, barebones)
