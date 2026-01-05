@@ -1,9 +1,9 @@
 rname="ddrescue"
-rver="1.29.1"
+rver="1.30"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.lz"
 rurl="http://ftp.gnu.org/pub/gnu/ddrescue/${rfile}"
-rsha256="ddd7d45df026807835a2ec6ab9c365df2ef19e8de1a50ffe6886cd391e04dd75"
+rsha256="2264622d309d6c87a1cfc19148292b8859a688e9bc02d4702f5cd4f288745542"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
