@@ -29,7 +29,7 @@
 rname="dropbear"
 rsver="2025.89"
 rdate="20251219183303"
-rver="2025.89"
+rver="${rsver}-${rdate}"
 rdir="${rname}-${rsver}"
 rfile="${rdir}.tar.bz2"
 #rurl="https://matt.ucc.asn.au/dropbear/releases/${rfile}"
