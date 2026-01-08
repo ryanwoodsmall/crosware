@@ -1,6 +1,3 @@
-#
-# XXX - remove patch stuff
-#
 rname="gh"
 rver="2.83.2"
 rdir="cli-${rver}"
@@ -32,8 +29,6 @@ eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG \"s,/usr/local,\$(cwidir_${rname}),g\" Makefile
-  sed -i.ORIG s,1\\.25\\.5,1.25.0,g go.mod || true
-  go mod tidy || true
   popd &>/dev/null
 }
 "
