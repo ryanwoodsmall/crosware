@@ -25,6 +25,8 @@
 # XXX - 8.13.0 is broken with everything i support except openssl/libressl
 # XXX - 8.15.0 removed bearssl support
 # XXX - 8.16.0 requires mbedtls 3.2+
+# XXX - 8.17.0 dropped wolfssh support
+# XXX - 8.18.0 requires openssl 3+
 #
 rname="curl"
 rver="8.15.0"
