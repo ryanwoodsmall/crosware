@@ -849,6 +849,7 @@ wc -l /tmp/astbuild.out
   - config/build/install with: ```env PATH=${cwsw}/python2/current/bin:${PATH} make <all|install> PREFIX=${ridir} CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS//-static/}" CFLAGS='' CPPFLAGS=''```
 - mes (https://www.gnu.org/software/mes/) and m2 stuff (links above)
 - mesalink (https://mesalink.io/ and https://github.com/mesalock-linux/mesalink)
+- metalog (https://github.com/hvisage/metalog - syslog with regex)
 - mg3a (https://github.com/paaguti/mg3a)
 - mkcert (https://github.com/FiloSottile/mkcert)
 - micro (https://micro-editor.github.io/ and https://github.com/zyedidia/micro - go terminal editor)
