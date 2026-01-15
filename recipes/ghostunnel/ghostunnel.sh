@@ -1,6 +1,4 @@
 #
-# XXX - go 1.22.x - tls.go too many args (logger) to certstore
-#
 # to create and exchange certs on a single node to test:
 #   for t in client server ; do
 #     ${cwsw}/bearssl/current/bin/brssl skey -gen rsa:2048 -rawpem ${cwtop}/tmp/ghostunnel-${t}.key
@@ -30,11 +28,11 @@
 #       --verify-cn=$(hostname)
 #
 rname="ghostunnel"
-rver="1.8.4"
+rver="1.9.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="6700ea0ae9a83df18aa216f6346f177ff70e6d80df16690742b823a92af3af46"
+rsha256="0cc3b2ac8b30aa6d6c2c3df9289436b985c21aed6f986b025c7a4057666bd47c"
 rreqs="go cacertificates bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -53,8 +51,6 @@ function cwclean_${rname}() {
 eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  sed -i.ORIG \"s,1\\.22\\.4,\$(cwver_go),g\" go.mod
-  sed -i.ORIG '/CertificateFromPKCS11Module/s/, logger//g' tls.go
   sed -i.ORIG \"s,^VERSION.*,VERSION=\$(cwver_${rname}),g\" Makefile
   sed -i '/-ldflags/s,-X,-s -w -X,g' Makefile
   popd &>/dev/null
