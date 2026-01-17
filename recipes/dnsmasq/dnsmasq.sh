@@ -3,11 +3,11 @@
 # XXX - nettle support for dnssec/etc.?
 #
 rname="dnsmasq"
-rver="2.91"
+rver="2.92"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.thekelleys.org.uk/${rname}/${rfile}"
-rsha256="2d26a048df452b3cfa7ba05efbbcdb19b12fe7a0388761eb5d00938624bd76c8"
+rsha256="fd908e79ff37f73234afcb6d3363f78353e768703d92abd8e3220ade6819b1e1"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
@@ -19,6 +19,7 @@ function cwconfigure_${rname}() {
   echo '#!/usr/bin/env bash' > bld/get-version
   echo 'echo ${rver}' >> bld/get-version
   sed -i.ORIG \"s#^PREFIX.*#PREFIX = \$(cwidir_${rname})#g\" Makefile
+  sed -i \"s#^LDFLAGS.*#LDFLAGS=-static#g\" Makefile
   sed -i.ORIG 's#<sys/poll.h>#<poll.h>#g' src/dnsmasq.h
   sed -i.ORIG 's#/etc/dnsmasq.conf#${cwetc}/${rname}.conf#g' src/config.h
   popd &>/dev/null
