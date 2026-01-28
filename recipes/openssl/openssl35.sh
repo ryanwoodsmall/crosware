@@ -1,9 +1,9 @@
 rname="openssl35"
-rver="3.5.4"
+rver="3.5.5"
 rdir="${rname%35}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/openssl/openssl/releases/download/openssl-${rver}/${rfile}"
-rsha256="967311f84955316969bdb1d8d4b983718ef42338639c621ec4c34fddef355e99"
+rsha256="b28c91532a8b65a1f983b4c28b7488174e4a01008e29ce8e69bd789f28bc2a89"
 rreqs="make perl cacertificates"
 
 . "${cwrecipe}/common.sh"

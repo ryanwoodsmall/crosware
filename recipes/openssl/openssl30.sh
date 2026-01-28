@@ -1,9 +1,9 @@
 rname="openssl30"
-rver="3.0.18"
+rver="3.0.19"
 rdir="${rname%30}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/openssl/openssl/releases/download/openssl-${rver}/${rfile}"
-rsha256="d80c34f5cf902dccf1f1b5df5ebb86d0392e37049e5d73df1b3abae72e4ffe8b"
+rsha256="fa5a4143b8aae18be53ef2f3caf29a2e0747430b8bc74d32d88335b94ab63072"
 rreqs="make perl cacertificates"
 
 . "${cwrecipe}/common.sh"
