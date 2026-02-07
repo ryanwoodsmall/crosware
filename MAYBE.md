@@ -1264,6 +1264,8 @@ wc -l /tmp/astbuild.out
 - tab (https://tkatchev.bitbucket.io/tab/)
 - tack (https://github.com/davidgiven/ack and http://tack.sourceforge.net/ - the amsterdam compiler kit)
 - taggins (https://github.com/bromanbro/taggins - easy, extended attr filesystem user.tags for files)
+- tailscale (https://github.com/tailscale/tailscale and https://tailscale.com - secure overlay network/tunnels/proxies)
+  - headscale (https://github.com/juanfont/headscale and https://headscale.net - open source, self hosted tailscale head node)
 - tarsnap stuff (https://www.tarsnap.com/open-source.html)
   - spiped (https://www.tarsnap.com/spiped.html and https://github.com/Tarsnap/spiped - symmetric pipe w/psk, `ssh -L`-ish)
 - taskwarrior (https://taskwarrior.org/ and https://github.com/GothenburgBitFactory/taskwarrior)
