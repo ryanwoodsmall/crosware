@@ -27,12 +27,14 @@
 #       --cacert=${cwtop}/tmp/ghostunnel-cacert.pem \
 #       --verify-cn=$(hostname)
 #
+# XXX - build with mage???
+#
 rname="ghostunnel"
-rver="1.9.0"
+rver="1.9.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="0cc3b2ac8b30aa6d6c2c3df9289436b985c21aed6f986b025c7a4057666bd47c"
+rsha256="264cd681f22138429dbbbf91d8dd06449c8d950880ee0d3f7bacaa48dea8bf65"
 rreqs="go cacertificates bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -49,27 +51,18 @@ function cwclean_${rname}() {
 "
 
 eval "
-function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  sed -i.ORIG \"s,^VERSION.*,VERSION=\$(cwver_${rname}),g\" Makefile
-  sed -i '/-ldflags/s,-X,-s -w -X,g' Makefile
-  popd &>/dev/null
-}
-"
-
-eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
-    env \
-      VERSION=\"\$(cwver_${rname})\" \
-      CGO_ENABLED=0 \
-      GOCACHE=\"\${GOCACHE}\" \
-      GOMODCACHE=\"\${GOMODCACHE}\" \
-      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-        make ${rname}{,.man}
+    export VERSION=\"\$(cwver_${rname})\"
+    export CGO_ENABLED=0
+    export GOCACHE=\"\${GOCACHE}\"
+    export GOMODCACHE=\"\${GOMODCACHE}\"
+    export PATH=\"${cwsw}/go/current/bin:\${PATH}\"
+    go build -ldflags \"-s -w -X main.version=\$(cwver_${rname})\" -o ${rname} .
+    ./${rname} --help-custom-man > ${rname}.man
     chmod -R u+rw . || true
   )
   popd &>/dev/null
@@ -81,8 +74,8 @@ function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cwmkdir \"\$(cwidir_${rname})/bin\"
   cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
-  install -m 0755 ${rname} \"\$(cwidir_${rname})/bin/${rname}\"
-  install -m 0644 ${rname}.man \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
+  install -m 0755 \"${rname}\" \"\$(cwidir_${rname})/bin/${rname}\"
+  install -m 0644 \"${rname}.man\" \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
   popd &>/dev/null
 }
 "
