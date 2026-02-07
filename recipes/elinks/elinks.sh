@@ -18,11 +18,11 @@
 # XXX again, now requires autotools...
 rp="minimal"
 rname="elinks"
-rver="0.18.0"
+rver="0.19.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/rkd77/elinks/releases/download/v${rver}/${rfile}"
-rsha256="e56ef15996a1ca130789293ee6d49cbecf175c06266acfa676fa6edb271a1173"
+rsha256="a993a4870cadce60abbc724cf6a5c2a80f6be9020243b9e5ce075c16c6665c04"
 rreqs="elinks${rp}"
 
 . "${cwrecipe}/common.sh"
