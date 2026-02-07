@@ -1,6 +1,7 @@
 #
 # XXX - explicitly opt-in
 # XXX - 2.1.x broke something with shared, might be gcc version. turn it off for now
+# XXX - need to adjust configure flags
 #
 rname="zlibng"
 rver="2.3.3"
