@@ -27,11 +27,11 @@
 # - https://stackoverflow.com/questions/4565700/how-to-specify-the-private-ssh-key-to-use-when-executing-shell-command-on-git
 #
 rname="git"
-rver="2.52.0"
+rver="2.53.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
-rsha256="6880cb1e737e26f81cf7db9957ab2b5bb2aa1490d87619480b860816e0c10c32"
+rsha256="429dc0f5fe5f14109930cdbbb588c5d6ef5b8528910f0d738040744bebdc6275"
 rreqs="make bzip2 zlib openssl curl expat pcre2 perl libssh2 busybox less cacertificates nghttp2 mandoc"
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
@@ -42,7 +42,7 @@ function cwfetch_${rname}() {
   cwfetchcheck \
     \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \
     \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \
-    \"14426e66b5a12c188e44f53f89282bc586b34ebc3a22fafa8eb80d0bbe370f10\"
+    \"4954390466c125e82dce4a978dd1dadda13a916564d908cfdbd319f2e174a8ae\"
 }
 "
 
