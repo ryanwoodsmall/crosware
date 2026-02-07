@@ -2,9 +2,15 @@
 #
 # curl something and get its sha-256 sum
 #
-
+# XXX - now in shell-ish: https://github.com/ryanwoodsmall/shell-ish/blob/master/bin/c256s
+# XXX - use that  version if available
+#
 set -eou pipefail
-
-: ${curlopts:="-f -k -L -s"}
-
-curl ${curlopts} "${@}" | sha256sum | awk '{print $1}'
+: ${c256sprog:="/usr/local/crosware/software/shellish/current/bin/c256s"}
+if [[ -e "${c256sprog}" ]] && [[ -x "${c256sprog}" ]] ; then
+  printf '%s: using %s\n' "$(basename -- ${BASH_SOURCE[0]} 2>/dev/null || echo 'c256s')" "${c256sprog}" 1>&2
+  "${c256sprog}" "${@}"
+else
+  : ${curlopts:="-f -k -L -s"}
+  curl ${curlopts} "${@}" | sha256sum | awk '{print $1}'
+fi
