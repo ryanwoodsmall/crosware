@@ -1,3 +1,16 @@
+#
+# XXX - openvpn 2.7.x needs mbedtls 3.2 or newer:
+#   checking mbedtls version... configure: error: mbed TLS version >= 3.2.1 required
+#
+# XXX - wolfssl breaks on 2.7.x as well:
+#   ssl_verify_openssl.c: In function 'backend_x509_get_username':
+#   ssl_verify_openssl.c:260:21: error: 'LN_serialNumber' undeclared (first use in this function); did you mean 'NID_serialNumber'?
+#     260 |     else if (strcmp(LN_serialNumber, x509_username_field) == 0)
+#         |                     ^~~~~~~~~~~~~~~
+#         |                     NID_serialNumber
+#   ssl_verify_openssl.c:260:21: note: each undeclared identifier is reported only once for each function it appears in
+#   make[3]: *** [Makefile:814: ssl_verify_openssl.o] Error 1
+#
 rname="openvpn"
 rver="2.6.19"
 rdir="${rname}-${rver}"
