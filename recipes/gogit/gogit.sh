@@ -4,11 +4,11 @@
 # XXX - lots of useful stuff in the _examples/ directory!!!
 #
 rname="gogit"
-rver="5.16.4"
+rver="5.16.5"
 rdir="go-git-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/go-git/go-git/archive/refs/tags/${rfile}"
-rsha256="26cdfed8a961cffde877432022246e6249cb1ee910ecc815515a2c6c45d48377"
+rsha256="a11ff799357d9d0e0f253ce50ffa908ee014ce02eca54718dba17da5e486a45d"
 rreqs="go"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
@@ -55,6 +55,8 @@ function cwmakeinstall_${rname}() {
   chmod 755 \$(cwidir_${rname})/bin/git-{receive,upload}-pack
   echo '${rtdir}/current/bin/go-git receive-pack \"\${@}\"' | tee -a \$(cwidir_${rname})/bin/git-receive-pack
   echo '${rtdir}/current/bin/go-git upload-pack \"\${@}\"' | tee -a \$(cwidir_${rname})/bin/git-upload-pack
+  mkdir -p \$(cwidir_${rname})/_examples
+  ( cd ./_examples/ ; tar -cf - . ) | ( cd \$(cwidir_${rname})/_examples/ ; tar -xf - )
   popd &>/dev/null
 }
 "
