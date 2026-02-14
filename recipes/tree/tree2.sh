@@ -1,9 +1,9 @@
 rname="tree2"
-rver="2.2.1"
+rver="2.3.1"
 rdir="${rname%2}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/Old-Man-Programmer/tree/archive/refs/tags/${rfile}"
-rsha256="5caddcbca805131ff590b126d3218019882e4ca10bc9eb490bba51c05b9b3b75"
+rsha256="621ff2b4faf214d7023143f6f9d496117c7c75131927837750b904140aff48a1"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
