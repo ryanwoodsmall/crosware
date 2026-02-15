@@ -255,6 +255,8 @@ wc -l /tmp/astbuild.out
   - would be useful to provide gcc with glibc support for more "native" builds
   - base on centos 7? rhel 8? debian 10? ubuntu 20 lts?
   - could be used to bootstrap llvm/clang and bootstrap rust?
+- crun (https://github.com/containers/crun - oci runtime/library for containers, c)
+  - libkrun (https://github.com/containers/libkrun - kvm based process isolation, rust)
 - ctop (https://ctop.sh/ and https://github.com/bcicen/ctop - container top)
 - curlie (https://github.com/rs/curlie and https://curlie.io/ - curl features with httpie-alike in go)
 - cwebsocket (https://github.com/jeremyhahn/cwebsocket - c websocket client/server)
@@ -915,6 +917,7 @@ wc -l /tmp/astbuild.out
   - musl-compat (https://github.com/Projeto-Pindorama/musl-compat - missing headers - cdefs, etc.)
   - musl-extra (https://github.com/Projeto-Pindorama/musl-extra - getconf, etc.)
 - mutt
+- muvm (https://github.com/AsahiLinux/muvm - microvm, rust)
 - mvi (https://github.com/byllgrim/mvi)
 - nackle (https://github.com/howerj/nackle - small tls/ssl tools)
 - nanomsg (https://github.com/nanomsg/nanomsg and https://nanomsg.org/)
