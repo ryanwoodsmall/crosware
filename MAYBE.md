@@ -624,7 +624,6 @@ wc -l /tmp/astbuild.out
   - knot-resolver (https://www.knot-resolver.cz - caching recursive dns resolver)
 - kramdown (markdown, in ruby - https://github.com/gettalong/kramdown)
 - ksh-openbsd (https://github.com/levaidaniel/ksh-openbsd - another ksh port)
-- kvmtool (https://github.com/kvmtool/kvmtool - standalone native kvm frontend w/o qemu?)
 - kvrocks (https://github.com/apache/kvrocks and https://kvrocks.apache.org - redis-alike, proto compat, c++)
 - larn (short roguelike https://en.wikipedia.org/wiki/Larn_(video_game) - maintained/modern https://github.com/atsb/RL_M)
 - ldd

@@ -652,6 +652,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - kubernetes (binaries)
   - kubectllatest (kubectl only)
 - kuroko (https://kuroko-lang.github.io/ and https://github.com/kuroko-lang/kuroko - small python-like dynamic language)
+- kvmtool (https://github.com/kvmtool/kvmtool - standalone native kvm frontend w/o qemu)
 - less (netbsdcurses)
   - lessminimal (stripped down with small gnu termcap from bash)
 - lftp (https://lftp.yar.ru/)
