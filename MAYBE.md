@@ -286,6 +286,7 @@ wc -l /tmp/astbuild.out
     - rip off vidoas into opendoas?
 - docbook?
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
+- dtc (https://git.kernel.org/pub/scm/utils/dtc/dtc.git/ - device tree compiler/libfdt)
 - dumb-init (https://github.com/Yelp/dumb-init)
 - duplicity (http://duplicity.nongnu.org/)
 - e (https://github.com/hellerve/e - simple editor, syntax highlighting, archived?)
@@ -649,7 +650,7 @@ wc -l /tmp/astbuild.out
 - libeconf (https://github.com/openSUSE/libeconf)
 - libest (https://github.com/cisco/libest - "enrollment over secure transport" cert distribution, https://en.wikipedia.org/wiki/Enrollment_over_Secure_Transport)
 - libfawk (http://repo.hu/projects/libfawk/ - awk like function language/vm/library)
-- libfdt (https://github.com/kernkonzept/libfdt - device tree library)
+- libfdt (https://github.com/kernkonzept/libfdt - device tree library (l4re))
 - libfetch (https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.3-stable and https://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/net/libfetch/README.html - alpine, netbsd, needs work)
   - https://github.com/Gottox/libfetch - newer combo of netbsd/freebsd versions? no fetchReqHTTP
   - https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.8-stable - _old_ alpine port against netbsd libfetch? no fetchReqHTTP
