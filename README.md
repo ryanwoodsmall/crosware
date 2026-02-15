@@ -514,6 +514,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - dsvpn (https://github.com/jedisct1/dsvpn - dead simple vpn)
 - dtach (https://github.com/crigler/dtach and http://dtach.sourceforge.net/ - simpler detachable screenalike)
 - dtc (https://git.kernel.org/pub/scm/utils/dtc/dtc.git/ - device tree compiler/libfdt)
+  - libfdtminimal - library only, compiled with byacc instead of bison, may be completely broken, who's to say?
 - duktape (http://duktape.org/ and https://github.com/svaarala/duktape)
 - dvtm (https://www.brain-dump.org/projects/dvtm/ and https://github.com/martanne/dvtm/)
 - e2fsprogs (https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/ and http://e2fsprogs.sourceforge.net/ and https://github.com/tytso/e2fsprogs)
