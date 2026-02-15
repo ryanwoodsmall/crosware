@@ -286,7 +286,6 @@ wc -l /tmp/astbuild.out
     - rip off vidoas into opendoas?
 - docbook?
 - dpic (https://ece.uwaterloo.ca/~aplevich/dpic/)
-- dtc (https://git.kernel.org/pub/scm/utils/dtc/dtc.git/ - device tree compiler/libfdt)
 - dumb-init (https://github.com/Yelp/dumb-init)
 - duplicity (http://duplicity.nongnu.org/)
 - e (https://github.com/hellerve/e - simple editor, syntax highlighting, archived?)
