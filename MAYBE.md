@@ -256,6 +256,7 @@ wc -l /tmp/astbuild.out
   - base on centos 7? rhel 8? debian 10? ubuntu 20 lts?
   - could be used to bootstrap llvm/clang and bootstrap rust?
 - crun (https://github.com/containers/crun - oci runtime/library for containers, c)
+  - krunvm (https://github.com/containers/krunvm - microvms from oci images)
   - libkrun (https://github.com/containers/libkrun - kvm based process isolation, rust)
 - ctop (https://ctop.sh/ and https://github.com/bcicen/ctop - container top)
 - curlie (https://github.com/rs/curlie and https://curlie.io/ - curl features with httpie-alike in go)
