@@ -639,6 +639,7 @@ wc -l /tmp/astbuild.out
 - lf (https://github.com/gokcehan/lf - go)
 - lib1305 (https://lib1305.cr.yp.to - otp-like single authentication library, can be used by tinyssh; needs python)
 - libagentcrypt (https://github.com/ndilieto/libagentcrypt - file encryption using ssh-agent)
+- libaio (https://github.com/yugabyte/libaio - asynch i/o library)
 - libdash (https://github.com/mgree/libdash - shell as a library, ast, etc.)
 - libdbi (https://github.com/balabit/libdbi)
 - libdbi-drivers (https://github.com/balabit/libdbi-drivers)
@@ -648,6 +649,7 @@ wc -l /tmp/astbuild.out
 - libeconf (https://github.com/openSUSE/libeconf)
 - libest (https://github.com/cisco/libest - "enrollment over secure transport" cert distribution, https://en.wikipedia.org/wiki/Enrollment_over_Secure_Transport)
 - libfawk (http://repo.hu/projects/libfawk/ - awk like function language/vm/library)
+- libfdt (https://github.com/kernkonzept/libfdt - device tree library)
 - libfetch (https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.3-stable and https://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/net/libfetch/README.html - alpine, netbsd, needs work)
   - https://github.com/Gottox/libfetch - newer combo of netbsd/freebsd versions? no fetchReqHTTP
   - https://git.alpinelinux.org/aports/tree/main/libfetch?h=3.8-stable - _old_ alpine port against netbsd libfetch? no fetchReqHTTP
