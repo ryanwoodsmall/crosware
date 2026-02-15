@@ -1,5 +1,6 @@
 #
 # XXX - libaio, zlib, ...
+# XXX - arm, riscv need libfdt; can't get aarch64 to compile though
 #
 rname="kvmtool"
 rver="b48735e5d562eaffb96cf98a91da212176f1534c"

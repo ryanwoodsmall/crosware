@@ -1,3 +1,6 @@
+#
+# XXX - no idea if this works
+#
 rname="libfdtminimal"
 rver="$(cwver_dtc)"
 rdir="$(cwdir_dtc)"
