@@ -28,8 +28,8 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  mkdir -p \$(cwidir_${rname})/bin
-  mkdir -p \$(cwidir_${rname})/share/man/man1
+  cwmkdir \$(cwidir_${rname})/bin
+  cwmkdir \$(cwidir_${rname})/share/man/man1
   install -m 0755 lkvm \$(cwidir_${rname})/bin/${rname}
   install -m 0755 lkvm \$(cwidir_${rname})/bin/lkvm
   \${CC//gcc/strip} --strip-all \$(cwidir_${rname})/bin/lkvm
