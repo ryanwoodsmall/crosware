@@ -1,9 +1,9 @@
 rname="vile"
-rver="9.8za"
+rver="9.8zb"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://invisible-mirror.net/archives/${rname}/current/${rfile}"
-rsha256="65ba15ec145dfc5506217162228c7d88f01c0490a0dccde7a8a19f1c7c1b93b2"
+rsha256="d6239e6b728fa9d0b49f526d8f0998d2db4b7a7dfc317273dbff7aea2a09ea31"
 rreqs="make flex ncurses pkgconfig"
 
 . "${cwrecipe}/common.sh"
