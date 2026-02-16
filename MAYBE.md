@@ -482,6 +482,7 @@ wc -l /tmp/astbuild.out
   - ringojs
   - sbt (included in sdkman)
   - scala (included in sdkman)
+  - slicer (https://github.com/katana-project/slicer - java disassembly/decompilation/reversing tool)
   - ssltest (https://github.com/ChristopherSchultz/ssltest - test certs, keystore, etc.)
   - teavm (https://github.com/konsoletyper/teavm - java bytecode to javascript)
   - xtend
