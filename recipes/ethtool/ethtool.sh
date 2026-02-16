@@ -1,13 +1,14 @@
 #
 # XXX - 6.4 has some compilation issues, linux/kernel.h include workaround below
 # XXX - mailing list message: https://www.spinics.net/lists/netdev/msg658962.html
+# XXX - 6.19+ is available in git but doesn't have autotools-ed archives (yet)
 #
 rname="ethtool"
-rver="6.14.2"
+rver="6.15"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://mirrors.edge.kernel.org/pub/software/network/ethtool/${rfile}"
-rsha256="86ee1ab1deedae458f50865e8d16fb1d21eda370f01077e1323ea736052c1bd1"
+rsha256="5d21a75b54c5e617b8ac0fe161e2ef3a75ecdf569ab64831474882dd3ece6077"
 rreqs="make libmnl"
 
 . "${cwrecipe}/common.sh"
