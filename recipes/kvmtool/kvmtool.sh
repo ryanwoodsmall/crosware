@@ -1,6 +1,11 @@
 #
 # XXX - libaio, zlib, ...
 # XXX - arm, riscv need libfdt; can't get aarch64 to compile though
+# XXX - fork/branch?
+#   - https://git.kernel.org/?q=kvmtool
+#     - https://git.kernel.org/pub/scm/linux/kernel/git/maz/kvmtool.git/
+#     - https://git.kernel.org/pub/scm/linux/kernel/git/oupton/kvmtool.git/
+#     - https://git.kernel.org/pub/scm/linux/kernel/git/will/kvmtool.git/
 #
 rname="kvmtool"
 rver="b48735e5d562eaffb96cf98a91da212176f1534c"
