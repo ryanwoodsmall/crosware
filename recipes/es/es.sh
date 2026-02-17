@@ -1,24 +1,30 @@
 rname="es"
-rver="0.9.2"
+rver="0.10.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/wryun/es-shell/releases/download/v${rver}/${rfile}"
-rsha256="c926482b42084e903eb871ee1eb0cefc09dae6f1adeb8408dd9e933035c4f5dd"
+rsha256="551ec0974822ec081e7b9f8ee79374c62766ca6dcdb1c685a98efdc3e6dbc4b9"
 rreqs="make byacc netbsdcurses readlinenetbsdcurses"
 
 . "${cwrecipe}/common.sh"
 
 eval "
-function cwextract_${rname}() {
-  cwmkdir \"\$(cwbdir_${rname})\"
-  cwextract \"\$(cwdlfile_${rname})\" \"\$(cwbdir_${rname})\"
+function cwconfigure_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+    --with-readline \
+      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+      YACC=\"${cwsw}/byacc/current/bin/byacc\"
+  popd &>/dev/null
 }
 "
 
 eval "
-function cwconfigure_${rname}() {
+function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+  make -j${cwmakejobs} ${rlibtool} \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
