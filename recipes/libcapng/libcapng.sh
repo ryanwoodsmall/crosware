@@ -1,3 +1,6 @@
+#
+# XXX - 0.9 doesn't have an autotools'ed archive (yet)
+#
 rname="libcapng"
 rver="0.8.5"
 rdir="libcap-ng-${rver}"
