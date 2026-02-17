@@ -1,9 +1,9 @@
 rname="zlib"
-rver="1.3.1"
+rver="1.3.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/madler/zlib/releases/download/v${rver}/${rfile}"
-rsha256="9a93b2b7dfdac77ceba5a558a580e74667dd6fede4585b91eefb60f03b72df23"
+rsha256="bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -22,8 +22,8 @@ eval "
 function cwmakeinstall_${rname}_static() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make clean || true
-  env CFLAGS=\"\${CFLAGS} -fPIC\" ./configure ${cwconfigureprefix} --static
-  make -j${cwmakejobs} ${rlibtool}
+  env CFLAGS=\"\${CFLAGS} -fPIC\" CPPFLAGS= LFLAGS=-static ./configure ${cwconfigureprefix} --static
+  make -j${cwmakejobs} ${rlibtool} LDFLAGS=-static CPPFLAGS=
   make install ${rlibtool}
   popd &>/dev/null
 }
