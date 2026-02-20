@@ -1,9 +1,9 @@
 rname="tea"
-rver="0.11.1"
+rver="0.12.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://gitea.com/gitea/${rname}/archive/${rfile}"
-rsha256="1da6b6d2534bd6ffb0931400014bbdef26242cf4d35d4ba44c24928811825805"
+rsha256="db2f442c3ff8038f41a1745e70f9f17257368e9c6dd7b6706dd096778b06dee5"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
