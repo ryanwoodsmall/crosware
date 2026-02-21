@@ -14,7 +14,8 @@ rdir="u-root-${rurootver}"
 rfile="v${rurootver}.tar.gz"
 rurl="https://github.com/u-root/u-root/archive/refs/tags/${rfile}"
 rsha256="c89f434981803cf53700361effae1efece266fa40a716d504888f8a3e59025b2"
-rreqs="go cacertificates"
+rgover="124"
+rreqs="go${rgover} cacertificates"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -61,7 +62,7 @@ function cwmake_${rname}() {
     export GOCACHE
     export GOMODCACHE
     export GOPATH=\"\$(cwbdir_${rname})/gopath\"
-    export PATH=\"${cwsw}/go/current/bin:\${PATH}\"
+    export PATH=\"${cwsw}/go${rgover}/current/bin:\${PATH}\"
     export CGO_ENABLED=0
     cwmkdir \$(cwbdir_${rname})/bin
     go build -o \$(cwbdir_${rname})/bin/u-root \$(cwbdir_${rname})/
@@ -137,3 +138,4 @@ unset rurootver
 unset rgobusyboxver
 unset rmkuimagever
 unset relvishver
+unset rgover
