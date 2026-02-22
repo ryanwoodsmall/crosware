@@ -24,16 +24,16 @@ fi
 # fail fast from here on out
 set -eu
 
-# default to jdk 21
+# default to jdk 25
 if [ ${#} -lt 1 ] ; then
-  reqver=21
+  reqver=25
 else
   reqver="${1}"
 fi
 
 # version picker
 case "${reqver}" in
-  8|11|17|21) :
+  8|11|17|21|25) :
     echo "installing zulu ${reqver} musl..."
     echo "getting full version..."
     zuluver="$(crosware run-func cwver_zulu${reqver}musl)"
@@ -45,6 +45,7 @@ case "${reqver}" in
     bash "${BASH_SOURCE[0]}" 11
     bash "${BASH_SOURCE[0]}" 17
     bash "${BASH_SOURCE[0]}" 21
+    bash "${BASH_SOURCE[0]}" 25
     exit 0
     ;;
   custom) :
@@ -65,7 +66,7 @@ case "${reqver}" in
     fi
     ;;
   *) :
-    echo "${BASH_SOURCE[0]} [8|11|17|21|all|custom]"
+    echo "${BASH_SOURCE[0]} [8|11|17|21|25|all|custom]"
     exit 1
     ;;
 esac
