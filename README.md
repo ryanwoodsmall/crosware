@@ -1114,14 +1114,13 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - zlib
 - zlibng (https://github.com/zlib-ng/zlib-ng - fork with vector support, compiled static ~and shared~ with `libz.a` compat lib ~and `libz.so.1`~ created as well)
 - zstd (https://github.com/facebook/zstd)
-- zulu - built-in recipe, glibc-based for bootstrapping (chrome os, centos, debian, ubuntu, ...)
-  - zulu8glibc - zulu 8 jdk
-  - zulu11glibc - zulu 11 jdk
-  - zulu17glibc - zulu 17 jdk
-  - zulu8musl - zulu 8 jdk built against musl libc (x86_64, aarch64 only)
-  - zulu11musl - zulu 11 jdk built against musl libc (x86_64, aarch64 only)
-  - zulu17musl - zulu 17 jdk built against musl libc (x86_64, aarch64 only)
-  - zulu21musl - zulu 21 jdk built against musl libc (x86_64, aarch64 only)
+- zulu - built-in java 11 recipe, glibc-based for bootstrapping with jgit 6.x (chrome os, centos/rhel 6+, debian, ubuntu, ...)
+- zulu#musl - azul's musl-based zulu openjdk builds
+  - zulu8musl - java 8
+  - zulu11musl - java 11
+  - zulu17musl - java 17
+  - zulu21musl - java 21
+  - zulu25musl - java 25
 
 ## deprecated/broken/disabled recipes
 
@@ -1132,6 +1131,10 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - dormant
 - libmetalink (https://github.com/metalink-dev/libmetalink)
   - supported only in wget, which tries to bring in gpgme and its assorted deps; easier to remove for now
+- zulu - glibc-based zulu openjdk builds that i'm no longer maintaining
+  - zulu8glibc - java 8
+  - zulu11glibc - java 11
+  - zulu17glibc - java 17
 
 <!--
 # vim: ft=markdown

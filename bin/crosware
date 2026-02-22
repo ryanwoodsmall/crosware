@@ -349,7 +349,7 @@ zulu_jdk_arch["riscv64"]="none"
 
 # zulu jdk version map
 declare -A zulu_jdk_ver
-zulu_jdk_ver_base="11.74.15-ca-jdk11.0.24"
+zulu_jdk_ver_base="11.86.21-ca-jdk11.0.30"
 zulu_jdk_ver["aarch64"]="${zulu_jdk_ver_base}"
 zulu_jdk_ver["armv6l"]="${zulu_jdk_ver_base}"
 zulu_jdk_ver["armv7l"]="${zulu_jdk_ver['armv6l']}"
@@ -361,12 +361,12 @@ zulu_ver="${zulu_jdk_ver[${uarch}]}"
 
 # zulu jdk file sha256sum
 declare -A zulu_jdk_sha256sum
-zulu_jdk_sha256sum["aarch64"]="4f473e6307c465c037889981ae2cb3c4133648409c7331b6e57540a4896033e1"
-zulu_jdk_sha256sum["armv6l"]="bb0d50e7c08306fe093fde2c0f96d09f195a5b3d0fda48f681bb4640839c30eb"
+zulu_jdk_sha256sum["aarch64"]="dd1ca3e89ba93cf43fa966503e2a91aeed658fa726acccb37775f5668f1ec8b7"
+zulu_jdk_sha256sum["armv6l"]="6d375d9ba2e7bec1f818b06a2fdbf7aeca38c0d4538d726e49cdcbce9ed50f53"
 zulu_jdk_sha256sum["armv7l"]="${zulu_jdk_sha256sum['armv6l']}"
 zulu_jdk_sha256sum["armv8l"]="${zulu_jdk_sha256sum['armv6l']}"
-zulu_jdk_sha256sum["i686"]="d6e9f14562b6a6b89e37bc740e0700de8f831e81a64ce701ab0c5d6ba4fc1b71"
-zulu_jdk_sha256sum["x86_64"]="a7aac0e69a99bf64a1a3ec96f08149ac069a5bbdaaefae922ee3a7465fd918b3"
+zulu_jdk_sha256sum["i686"]="0f7fa817cbced51cdd75a0e76c7fe44ca2391a294fe936e673eee6400ac6f686"
+zulu_jdk_sha256sum["x86_64"]="88175af4f67ccd51a0bd0b461af11e83511cd7b38bbe79259c0a545431bf636b"
 zulu_jdk_sha256sum["riscv64"]="none"
 
 # zulu directory, file, and url map
@@ -383,6 +383,7 @@ for supported_arch in ${supported_arches[@]} ; do
 done
 
 # zulu install function
+# XXX - need to bail out for riscv64 here
 function cwinstall_zulu() {
   cwfetchcheck "${zulu_jdk_url[${uarch}]}" "${cwtmptmp}/${zulu_jdk_file[${uarch}]}" "${zulu_jdk_sha256sum[${uarch}]}"
   cwextract "${cwtmptmp}/${zulu_jdk_file[${uarch}]}" "${zulu_inst_dir}"

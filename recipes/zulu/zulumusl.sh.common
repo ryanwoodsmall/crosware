@@ -48,7 +48,7 @@ function cwgenprofd_${rname}() {
   find ${cwetcprofd}/ -type f -name '*zulu*musl*' | xargs rm -f || true
   echo -n > \"${rprof}\"
   echo 'export _JAVA_OPTIONS=\"-Djava.io.tmpdir=${cwtmp} -Djava.awt.headless=true -XX:-UsePerfData\"' >> \"${rprof}\"
-  for v in 8 11 17 21 ; do
+  for v in 8 11 17 21 25 ; do
     echo \"if [ -e ${cwsw}/zulu\${v}musl/current ] ; then prepend_path ${cwsw}/zulu\${v}musl/current/bin ; export JAVA_HOME=${cwsw}/zulu\${v}musl/current ; fi\" >> \"${rprof}\"
   done
 }
