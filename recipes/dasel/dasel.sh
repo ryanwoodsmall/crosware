@@ -2,11 +2,11 @@
 # XXX - hard-coded rver for go ldflags
 #
 rname="dasel"
-rver="3.2.2"
+rver="3.3.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/TomWright/dasel/archive/refs/tags/${rfile}"
-rsha256="4711deb92e3b6daf65453244559cb6e718041b5673f76d5dfa2aa4584e38e5c6"
+rsha256="0d83ee2235b2698ae84402cc03f0e3880a7b8e132408d5b45d02d544da894abc"
 rreqs="go cacertificates"
 
 . "${cwrecipe}/common.sh"
