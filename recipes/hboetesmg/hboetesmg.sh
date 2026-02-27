@@ -3,11 +3,11 @@
 #
 
 rname="hboetesmg"
-rver="20230501"
+rver="20260227"
 rdir="${rname#hboetes}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/${rname%mg}/${rname#hboetes}/archive/refs/tags/${rfile}"
-rsha256="e2878feca64067a0c524e456ffba68d8cb69bcdce0943d2f2b69cad06174462e"
+rsha256="21877e912a63c69253538dc8ba6ae3beb1c89f35222e8381d14320f6537cec89"
 rreqs="make netbsdcurses pkgconfig libbsd"
 
 . "${cwrecipe}/common.sh"
