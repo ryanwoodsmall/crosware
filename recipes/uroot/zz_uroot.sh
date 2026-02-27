@@ -5,7 +5,7 @@
 # XXX - more... age, awk replacement, etcd, dasel, gron, jj, jq, miller, minio + mc, sed replacement, toml, webhook, yj, yq
 #
 rname="uroot"
-rurootver="0.15.0"
+rurootver="0.16.0"
 rgobusyboxver="2e884e4509c722a97c0ec87b1835966eb1a4ad1a"
 rmkuimagever="9a40452f5d3ba67f236a83de54fa2c40f797b68b"
 relvishver="26a8bd5c4ee1eb5c0a2d53578d0368de2b8b3274"
@@ -13,7 +13,7 @@ rver="${rurootver}_${rgobusyboxver}_${rmkuimagever}_${relvishver}_$(cwver_cpu)_$
 rdir="u-root-${rurootver}"
 rfile="v${rurootver}.tar.gz"
 rurl="https://github.com/u-root/u-root/archive/refs/tags/${rfile}"
-rsha256="c89f434981803cf53700361effae1efece266fa40a716d504888f8a3e59025b2"
+rsha256="161da1394da9acd96f69957620db630ce086f71bef62785bad4a82884eee9b77"
 rgover="124"
 rreqs="go${rgover} cacertificates"
 rprof="${cwetcprofd}/zz_${rname}.sh"
