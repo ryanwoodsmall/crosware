@@ -3,11 +3,11 @@
 # XXX - need to make this virtual, with haproxy2 and haproxy3
 #
 rname="haproxy"
-rver="2.8.13"
+rver="2.8.18"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://www.haproxy.org/download/${rver%.*}/src/${rfile}"
-rsha256="13dc06a65b7705b94c843bda8b845edbb621bf45e8a9dc7db590d40ab920a9ce"
+rsha256="5664a435f3e5f8c22bd97adc219de6a6e73aa6be68b8d17d7324286112cf88cf"
 rreqs="make openssl pcre2 zlib lua"
 
 . "${cwrecipe}/common.sh"
