@@ -1,9 +1,9 @@
 rname="groff"
-rver="1.23.0"
+rver="1.24.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="6b9757f592b7518b4902eb6af7e54570bdccba37a871fddb2d30ae3863511c13"
+rsha256="e79bbcd8ff3ed0200e7ac55d3962a15e118c1229990213025f2fc8b264727570"
 rreqs="gawk make perl sed m4"
 
 . "${cwrecipe}/common.sh"
