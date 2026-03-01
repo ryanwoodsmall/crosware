@@ -325,6 +325,8 @@ Mes (and m2) might be useful at some point.
 - https://lists.gnu.org/archive/html/guile-user/2016-06/msg00061.html
 - https://lists.gnu.org/archive/html/guile-user/2017-07/msg00089.html
 - http://lists.gnu.org/archive/html/info-gnu/2018-08/msg00006.html
+- grey386linux - 386-compat linux+busybox+musl
+  - https://github.com/marmolak/gray386linux
 
 ## other sites/utilities/etc.
 
@@ -368,10 +370,10 @@ There are a handful of other binary recipes that are not necessary for bootstrap
 The **statictoolchain** recipe could theoretically be pulled into a normal standalone recipe, but is bedrock enough that it fits in the main script.
 A smaller, more supportable, preferably single-binary static Git client would/will hopefully also find its way to the main script for bootstrap purposes.
 
-- **zulu** azul zulu openjdk jvm
-- **jgitsh** standalone jgit shell script
+- **zulu** azul zulu openjdk jvm (glibc-based)
+- **jgitsh** standalone jgit shell script wrapper
 - **statictoolchain** musl-cross-make static toolchain
-  - now self-hosted on crosware
+  - self-hosting on crosware
     - https://github.com/ryanwoodsmall/musl-misc/blob/master/musl-cross-make-confs/Makefile.arch_indep
     - https://github.com/ryanwoodsmall/crosware/blob/master/scripts/build-statictoolchain.sh
 
