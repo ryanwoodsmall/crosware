@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tgz"
 rurl="https://invisible-mirror.net/archives/${rname}/${rfile}"
 rsha256="e2c08a77d0a84a01f9be454d1ca3872d4f103f9ada683d075198b0c6e965633d"
-rreqs="make"
+rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
@@ -12,8 +12,8 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
-    CFLAGS=\"\${CFLAGS} -static\" \
-    LDFLAGS=\"-static\" \
+    CFLAGS=\"\${CFLAGS} -Wl,-s -Wl,-static -g0 -Os -static\" \
+    LDFLAGS=-static \
     CPPFLAGS= \
     PKG_CONFIG_{LIBDIR,PATH}=
   popd &>/dev/null
