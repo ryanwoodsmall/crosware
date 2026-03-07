@@ -2,11 +2,11 @@
 # XXX - man pages need pod2man/perl
 #
 rname="tinyproxy"
-rver="1.11.2"
+rver="1.11.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/releases/download/${rver}/${rfile}"
-rsha256="2c8fe5496f2c642bfd189020504ab98d74b9edbafcdb94d9f108e157b5bdf96d"
+rsha256="9bcf46db1a2375ff3e3d27a41982f1efec4706cce8899ff9f33323a8218f7592"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
