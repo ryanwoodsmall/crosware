@@ -42,3 +42,4 @@
 /etc/pci.ids
 /etc/usb.ids
 /.jython_cache*
+/etc/opendoas*
