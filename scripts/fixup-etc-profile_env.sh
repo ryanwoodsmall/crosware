@@ -45,4 +45,4 @@ sed -i "/^export PATH=/s,.*,export PATH='/opt/bin:${PROFENVPATH}',g" "${cwprofen
 sed -i "/^export ROOTPATH=/s,.*,export PATH='/opt/bin:${PROFENVROOTPATH}',g" "${cwprofenv}"
 
 # mount it
-${sudocmd} mount -o bind,ro "${cwprofenv}" "${profenv}"
+${sudocmd} $(which mount) -o bind,ro "${cwprofenv}" "${profenv}"
