@@ -1,15 +1,10 @@
-#
-# XXX - patches are included in the released .tar.gz at least as of 1.0
-#
 rname="nextvi"
-rver="3.2"
+rver="4.0"
 rdir="${rname}-${rver}"
-#rfile="${rver}.zip"
-#rurl="https://github.com/kyx0r/nextvi/archive/${rfile}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/kyx0r/nextvi/archive/refs/tags/${rfile}"
-rsha256="6c6a6c2f78ca05bf2929669dfef04747f21d2b8973be62c26bbbbfcea9ae12a8"
-rreqs="patch"
+rsha256="7bd18d3f0fce5aa3616af5dfa153463808259a0e6925b341605ac79f4d06c919"
+rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
@@ -18,11 +13,31 @@ cwstubfunc "cwconfigure_${rname}"
 eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  bash ./cbuild.sh
+  mv vi nextvi.temp
+  make clean
   local p
-  for p in arrowkeys_insert.patch arrowkeys_normal.patch filetype_shebang.patch stdin_pipe.patch c_option.patch ; do
+  for p in \
+    arrowkeys_normal.sh \
+    arrowkeys_insert.sh \
+    stdin_pipe.sh \
+    filetype_shebang.sh \
+    c_option.sh \
+    readonly.sh \
+    alternate-w-behaviour.sh \
+    ac_context.sh \
+    linewrap.sh \
+    ex-scripting.sh \
+    visual.sh \
+    alt_sections.sh
+  do
     cwscriptecho \"${rname}: applying patch \${p}\"
-    patch -p1 < \${p}
+    (
+      export VI=\"\$(cwbdir_${rname})/nextvi.temp\"
+      bash \"\${p}\"
+    )
   done
+  unset p
   popd &>/dev/null
 }
 "
@@ -31,6 +46,7 @@ eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   bash ./cbuild.sh
+  \${CC} \${CFLAGS} patch2vi.c -o patch2vi -static
   popd &>/dev/null
 }
 "
@@ -38,11 +54,12 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  cwmkdir \$(cwidir_${rname})/{bin,share/man/man1}
+  cwmkdir \$(cwidir_${rname})/{bin,share/man/man1,libexec}
   rm -f \"\$(cwidir_${rname})/bin/${rname}\"
-  strip --strip-all vi
+  strip --strip-all vi patch2vi
   install -m 0755 vi \"\$(cwidir_${rname})/bin/${rname}\"
   install -m 0644 vi.1 \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
+  install -m 0755 patch2vi \"\$(cwidir_${rname})/libexec/\"
   popd &>/dev/null
 }
 "
