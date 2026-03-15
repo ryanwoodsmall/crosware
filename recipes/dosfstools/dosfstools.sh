@@ -11,7 +11,12 @@ rreqs="bootstrapmake"
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} LDFLAGS=-static CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}=
+  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+     --enable-compat-symlinks \
+       C{,XX}FLAGS=\"\${CFLAGS} -Os -g0 -Wl,-s\" \
+       LDFLAGS='-static -s' \
+       CPPFLAGS= \
+       PKG_CONFIG_{LIBDIR,PATH}=
   popd &>/dev/null
 }
 "
@@ -20,7 +25,8 @@ eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
-    export LDFLAGS=-static
+    export C{,XX}FLAGS=\"\${CFLAGS} -Os -g0 -Wl,-s\"
+    export LDFLAGS='-static -s'
     unset CPPFLAGS PKG_CONFIG_{LIBDIR,PATH}
     make -j${cwmakejobs} ${rlibtool}
   )
