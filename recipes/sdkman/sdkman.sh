@@ -6,7 +6,7 @@ rdir="${rver}"
 rsha256=""
 # we need real zip and unzip
 # PAGER needs to be set, busybox (or less) recipes will set it
-rreqs="busybox unzip zip cacertificates"
+rreqs="busybox unzip zip cacertificates gawk sed make"
 
 . "${cwrecipe}/common.sh"
 
