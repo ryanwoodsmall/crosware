@@ -1,9 +1,9 @@
 rname="tree2"
-rver="2.3.1"
+rver="2.3.2"
 rdir="${rname%2}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/Old-Man-Programmer/tree/archive/refs/tags/${rfile}"
-rsha256="621ff2b4faf214d7023143f6f9d496117c7c75131927837750b904140aff48a1"
+rsha256="22cf32e84e3eb508d97a9e991c2c3cc006b9dcf4afed201d96311c5c57d08fcf"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
@@ -14,6 +14,18 @@ function cwconfigure_${rname}() {
   sed -i.ORIG \"/^PREFIX.*=/s#/usr.*#\$(cwidir_${rname})#g\" Makefile
   sed -i \"s#^CC=gcc#CC=\${CC}#g\" Makefile
   sed -i 's/^#LDFLAGS.*=.*\$/LDFLAGS=-static/g' Makefile
+  popd &>/dev/null
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  (
+    unset CPPFLAGS PKG_CONFIG_{LIBDIR,PATH}
+    export LDFLAGS=-static
+    make -j${cwmakejobs} ${rlibtool}
+  )
   popd &>/dev/null
 }
 "
