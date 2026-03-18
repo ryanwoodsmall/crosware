@@ -1,5 +1,35 @@
 # TODO
 
+- updates (spread over recipes too, ugh)
+  - ccache - 4.x needs a working cmake w/curl
+  - cmake - 4.x needs updates, features
+  - coreutils - 9.8+ requires gmp 6.2+
+  - curl - 8.16+
+    - curl - 8.15 (crosware current) dropped bearssl support
+    - curl - 8.16 needs mbedtls 3.2+
+    - curl - 8.17 dropped wolfssh support
+    - curl - 8.18 needs openssl 3+
+  - gnupg - and its components
+    - gnupg needs upgrading
+    - multiple components need upgrading
+    - probably need lib and compiler upgrades too...
+  - gnutls - needs upgrade, with nettle, gmp, ...
+  - libgcrypt - openssl 3, gnutls coexistence?
+  - libressl - upgrade default to latest
+  - libxml2 - needs uprading, plus openssl-coexistence?
+  - mbedtls - 3.x default
+    - mbedtls3 - latest lts, actually working?
+    - newer curls need 3.2+
+    - ... and 3.0/3.6/... don't work/just crash
+  - netfilter - all bits need work, updates
+  - nettle - 4
+  - nmap - broken on new versions/
+  - openssl - upgrade default to latest lts
+  - openvpn - 2.7.x needs mbedtls 3.2+... which just crashes
+  - perl - 5.x badly in need of upgrade, now kinda _requires_ shared
+  - python - 3.x same as perl, this'll break sometime
+  - wolfssl - autoconf wolfssl, wolfssh, wolfmqtt
+
 - `cwneedupgrade_${rname}` function
   - recipes responsible for checking themselves if they need an upgrade
   - then chasing recursively
