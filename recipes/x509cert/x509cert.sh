@@ -17,11 +17,11 @@
 #
 
 rname="x509cert"
-rver="0.4"
+rver="0.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/michaelforney/${rname}/releases/download/${rver}/${rfile}"
-rsha256="10199016a96931146a7b488ac3797ab761c6a0d72fb0ceebe89838f19f10ff88"
+rsha256="40a0b94fa16b8220ef616f948a27f1e2c91417103c14b282c9c22c01168f5673"
 rreqs="bootstrapmake bearssl"
 
 . "${cwrecipe}/common.sh"
