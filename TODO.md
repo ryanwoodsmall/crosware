@@ -1,6 +1,10 @@
 # TODO
 
 - updates (spread over recipes too, ugh)
+  - move development to "main"
+  - first and foremost...
+    - statictoolchain - 9 to 9+musl 1.2.6 to 10/11/12/13/14/15
+    - musl - 1.2.6
   - ccache - 4.x needs a working cmake w/curl
   - cmake - 4.x needs updates, features
   - coreutils - 9.8+ requires gmp 6.2+
