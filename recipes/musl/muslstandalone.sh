@@ -3,11 +3,11 @@
 #   -L/usr/local/crosware/software/statictoolchain/current/lib/$(${CC} -dumpmachine)/lib
 #
 rname="muslstandalone"
-rver="1.2.5"
+rver="1.2.6"
 rdir="musl-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://musl.libc.org/releases/${rfile}"
-rsha256="a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4"
+rsha256="d585fd3b613c66151fc3249e8ed44f77020cb5e6c1e635a616d3f9f82460512a"
 rreqs="make"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rpfile="${cwrecipe}/musl/${rname}.patches"
