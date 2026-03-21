@@ -1,3 +1,6 @@
+#
+# XXX - this is broken
+#
 rname="glib"
 rver="2.58.3"
 rdir="${rname}-${rver}"

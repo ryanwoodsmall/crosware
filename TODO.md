@@ -9,6 +9,9 @@
     - curl - 8.16 needs mbedtls 3.2+
     - curl - 8.17 dropped wolfssh support
     - curl - 8.18 needs openssl 3+
+  - glib - broken but installs anyway, ugh
+    - needs upgrade, move to nuon
+    - or drop it, needed by tio (don't use) and opennc (obsolete)
   - gnupg - and its components
     - gnupg needs upgrading
     - multiple components need upgrading
