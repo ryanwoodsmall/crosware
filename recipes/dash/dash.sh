@@ -1,9 +1,9 @@
 rname="dash"
-rver="0.5.13.1"
+rver="0.5.13.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://gondor.apana.org.au/~herbert/${rname}/files/${rfile}"
-rsha256="d9271bce09c127d9866e25c011582ddc75ab988958a04bc4d8553a3b8f30e370"
+rsha256="e7136826b1eed6ce3193e8affa2f70b1b2b9168dd91ffa7ddb4f46e9e62054fe"
 rreqs="make netbsdcurses libeditnetbsdcurses byacc"
 
 . "${cwrecipe}/common.sh"
