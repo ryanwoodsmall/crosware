@@ -34,7 +34,7 @@ mount | grep -q " ${profenv} " && {
 
 # make sure we have a dir
 mkdir -p "${cwtmp}"
-test -e "${cwtmp}" && test -r "${cwtop}" && test -d "${cwtmp}" || {
+test -e "${cwtmp}" && test -r "${cwtmp}" && test -d "${cwtmp}" || {
   printf '%s not a readable directory\n' "${cwtmp}" 1>&2
   exit 1
 }
