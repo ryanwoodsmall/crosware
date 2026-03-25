@@ -21,6 +21,19 @@ function cwconfigure_${rname}() {
 "
 
 eval "
+function cwmake_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  (
+    cwmkdir ./tempbin
+    ln -sf \"${cwsw}/toybox/current/bin/sed\" ./tempbin/
+    export PATH=\"\${PWD}/tempbin:\${PATH}\"
+    make -j${cwmakejobs} ${rlibtool}
+  )
+  popd &>/dev/null
+}
+"
+
+eval "
 function cwgenprofd_${rname}() {
   echo 'prepend_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
