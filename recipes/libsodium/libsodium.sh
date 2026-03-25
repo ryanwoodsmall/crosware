@@ -1,13 +1,19 @@
 #
 # XXX - this probably needs to be the -stable release, but the archive appears to change w/additions
 # XXX - could just download every build but that precludes cache and known-good sha-256, ugh
+# XXX - HACKING AROUND VERSIONS/BREAKAGE
+# XXX - --disable-asm / --disable-opt / ... options
 #
 rname="libsodium"
 rver="1.0.21"
+rsha256="9e4285c7a419e82dedb0be63a72eea357d6943bc3e28e6735bf600dd4883feaf"
+if [[ ${karch} =~ aarch64 ]] ; then
+  rver="1.0.20"
+  rsha256="ebb65ef6ca439333c2bb41a0c1990587288da07f6c7fd07cb3a18cc18d30ce19"
+fi
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/jedisct1/libsodium/releases/download/${rver}-RELEASE/${rfile}"
-rsha256="9e4285c7a419e82dedb0be63a72eea357d6943bc3e28e6735bf600dd4883feaf"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"

@@ -23,6 +23,7 @@
   - gnutls - needs upgrade, with nettle, gmp, ...
   - libgcrypt - openssl 3, gnutls coexistence?
   - libressl - upgrade default to latest
+  - libsodium - 1.0.21 breaks on (at least) aarch64; check others
   - libxml2 - needs uprading, plus openssl-coexistence?
   - mbedtls - 3.x default
     - mbedtls3 - latest lts, actually working?
