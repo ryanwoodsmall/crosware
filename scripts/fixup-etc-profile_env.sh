@@ -42,7 +42,7 @@ test -e "${cwtmp}" && test -r "${cwtmp}" && test -d "${cwtmp}" || {
 # insert our ${PATH}
 cat "${profenv}" > "${cwprofenv}"
 sed -i "/^export PATH=/s,.*,export PATH='/opt/bin:${PROFENVPATH}',g" "${cwprofenv}"
-sed -i "/^export ROOTPATH=/s,.*,export PATH='/opt/bin:${PROFENVROOTPATH}',g" "${cwprofenv}"
+sed -i "/^export ROOTPATH=/s,.*,export ROOTPATH='/opt/bin:${PROFENVROOTPATH}',g" "${cwprofenv}"
 
 # mount it
 ${sudocmd} $(which mount) -o bind,ro "${cwprofenv}" "${profenv}"
