@@ -75,10 +75,11 @@ EOF
 chmod 755 env.qjs
 
 # env.jojq - json w/jo+jq
-# XXX exclude long FLAG/PKG_CONF_...; chokes up jo
+# XXX - exclude long FLAG/PKG_CONF_...; chokes up jo
+# XXX - this NEEDS bash
 scriptecho "installing ${cgidir}/env.jojq"
 cat >env.jojq<<EOF
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 : \${jo:="/usr/local/crosware/software/jo/current/bin/jo"}
 : \${jq:="/usr/local/crosware/software/jq/current/bin/jq"}
 printf 'Status: 200 OK\\r\\n'
