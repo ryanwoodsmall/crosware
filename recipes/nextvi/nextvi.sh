@@ -1,9 +1,9 @@
 rname="nextvi"
-rver="4.1"
+rver="4.2"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/kyx0r/nextvi/archive/refs/tags/${rfile}"
-rsha256="2c7f33f2ac2ba356d053e3c396504fc46858adf8cc9bff959ba93192cb839067"
+rsha256="eab8fe6432408c16b339392420ba1b480e8f9e7a000f4fcb9b18cc3ec3dc72b3"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
