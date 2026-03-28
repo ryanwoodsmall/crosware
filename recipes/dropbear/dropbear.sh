@@ -74,10 +74,11 @@ function cwconfigure_${rname}() {
     --disable-pam \
     --enable-zlib \
     --enable-static \
+    --with-zlib=\"${cwsw}/zlib/current\" \
       CC=\"\${CC}\" \
-      CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
-      LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
-      PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
+      CPPFLAGS=\"-I${cwsw}/zlib/current/include\" \
+      LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/zlib/current/lib/pkgconfig | tr ' ' ':')\"
   popd &>/dev/null
 }
 "
@@ -85,10 +86,15 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  make -j${cwmakejobs} \
-    MULTI=1 \
-    SCPPROGRESS=1 \
-    PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
+  (
+    export CPPFLAGS=\"-I${cwsw}/zlib/current/include\"
+    export LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\"
+    export PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/zlib/current/lib/pkgconfig | tr ' ' ':')\"
+    make -j${cwmakejobs} \
+      MULTI=1 \
+      SCPPROGRESS=1 \
+      PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
+  )
   popd &>/dev/null
 }
 "

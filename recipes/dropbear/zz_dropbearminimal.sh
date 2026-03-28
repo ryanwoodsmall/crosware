@@ -40,6 +40,7 @@ function cwconfigure_${rname}() {
      --disable-pam \
      --enable-zlib \
      --enable-static \
+     --with-zlib=\"${cwsw}/zlib/current\" \
        CC=\"\${CC} -Os -Wl,-s -I${cwsw}/zlib/current/include\" \
        CFLAGS=\"\${CFLAGS} -Os -Wl,-s\" \
        CXXFLAGS=\"\${CXXFLAGS} -Os -Wl,-s\" \
