@@ -13,12 +13,12 @@
 #
 
 rname="openssh"
-rver="10.2p1"
+rver="10.3p1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${rfile}"
 rurl="https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/${rfile}"
-rsha256="ccc42c0419937959263fa1dbd16dafc18c56b984c03562d2937ce56a60f798b2"
+rsha256="56682a36bb92dcf4b4f016fd8ec8e74059b79a8de25c15d670d731e7d18e45f4"
 
 sslprov="openssl"
 
