@@ -1,9 +1,9 @@
 rname="uacme"
-rver="1.8.0"
+rver="1.8.1"
 rdir="${rname}-upstream-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/ndilieto/${rname}/archive/refs/tags/upstream/${rfile}"
-rsha256="69170ef84891a0e3ccce50833ac90db75de26b2c8432050256c1bf4ec26c8ad7"
+rsha256="de7588577f8298dcb0d42dfaa9452a918fa692c4e165060207ac22f72fb0425d"
 rreqs="make curl zlib openssl libssh2 cacertificates nghttp2 pkgconfig"
 
 . "${cwrecipe}/common.sh"
