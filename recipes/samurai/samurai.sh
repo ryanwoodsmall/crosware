@@ -1,9 +1,9 @@
 rname="samurai"
-rver="1.2"
+rver="1.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/michaelforney/${rname}/releases/download/${rver}/${rfile}"
-rsha256="3b8cf51548dfc49b7efe035e191ff5e1963ebc4fe8f6064a5eefc5343eaf78a5"
+rsha256="1bc020a9e133432df51911ac71cc34322f828934d9a2282ba2916d88c15976af"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
