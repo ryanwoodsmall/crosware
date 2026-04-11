@@ -6,11 +6,11 @@
 #   8727e53bb8b7528f850327a2a149158422c02183bc120d1d733cc65b1e2c349d  stunnel-5.78.tar.gz
 #
 rname="stunnel"
-rver="5.77"
+rver="5.78"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/stunnel/${rfile}"
-rsha256="ec026f4fae4e0d25b940cc7a9451d925e359e7fd59e9edad20baea66ce45f263"
+rsha256="8727e53bb8b7528f850327a2a149158422c02183bc120d1d733cc65b1e2c349d"
 rreqs="make openssl zlib toybox perl"
 
 . "${cwrecipe}/common.sh"
