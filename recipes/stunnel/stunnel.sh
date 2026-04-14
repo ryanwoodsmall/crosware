@@ -1,10 +1,3 @@
-#
-# XXX - 5.7.8
-#   # curl -kLs https://www.stunnel.org/downloads/stunnel-5.78.tar.gz | sha256sum
-#   fada662282c73923ff1c39ae7089c487694ecea92098a0e3190a81a6f492d3a0  -
-#   # curl -kLs https://www.stunnel.org/downloads/stunnel-5.78.tar.gz.sha256
-#   8727e53bb8b7528f850327a2a149158422c02183bc120d1d733cc65b1e2c349d  stunnel-5.78.tar.gz
-#
 rname="stunnel"
 rver="5.78"
 rdir="${rname}-${rver}"
