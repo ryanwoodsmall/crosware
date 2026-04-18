@@ -1,16 +1,27 @@
 #
 # XXX - use m4 from otools instead of bringing in m4+make+sed+gawk+busybox+toybox...
 # XXX - baseutils has an m4 as well, bmake is only req
+# XXX - something changed with 0.195 (or zlib), zlib is now giving crc32 conflicts
 #
 rname="elfutils"
-rver="0.194"
+rver="0.195"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://sourceware.org/elfutils/ftp/${rver}/${rfile}"
-rsha256="09e2ff033d39baa8b388a2d7fbc5390bfde99ae3b7c67c7daaf7433fbcf0f01e"
+rsha256="37629fdf7f1f3dc2818e138fca2b8094177d6c2d0f701d3bb650a561218dc026"
 rreqs="bootstrapmake zlib libuargp muslfts muslobstack otools pkgconf"
 
 . "${cwrecipe}/common.sh"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  grep -rl ' crc32 ' . | grep -E '\\.(c|h)\$' | xargs sed -i.ORIG 's, crc32 , eu_crc32 ,g'
+  sed -i.ORIG 's,^crc32 ,eu_crc32 ,g' lib/crc32.c
+  # find . -type f | grep ORIG$ ; exit 1
+  popd &>/dev/null
+}
+"
 
 eval "
 function cwconfigure_${rname}() {
