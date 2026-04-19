@@ -1,9 +1,9 @@
 rname="libtlsbearssl"
-rver="0.5"
+rver="0.6"
 rdir="libtls-bearssl-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/michaelforney/libtls-bearssl/releases/download/${rver}/${rfile}"
-rsha256="8714ab140eff675931212c869bf6dae797516d0fead2d0884d49a6ca0ee11c23"
+rsha256="b5becdfbab7e849a145c0caf94be8bbf8c89be9d7e0479e13e65bab5b5b875ab"
 rreqs="bootstrapmake bearssl cacertificates"
 
 . "${cwrecipe}/common.sh"
