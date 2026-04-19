@@ -1,14 +1,6 @@
-rver="4.3.0"
+rver="4.3.1"
 rname="libressl${rver%.*}"
 rname="${rname//./}"
-rsha256="e4fd17e1be4cc1e0c3197c132981204758f9909f49434789590971bd52bc7161"
+rsha256="c2db42ace14e7d5419826fab35a742ec6e4d12725a051a51d0cea3c10ba0fa50"
 
 . "${cwrecipe}/libressl/libressl.sh.common"
-
-eval "
-function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  echo '#include <limits.h>' >> tls/tls_internal.h
-  popd &>/dev/null
-}
-"
