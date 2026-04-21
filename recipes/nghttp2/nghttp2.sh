@@ -7,11 +7,11 @@
 # XXX - ... and NEED separate openssl, libressl and wolfssl variants for apps, examples
 #
 rname="nghttp2"
-rver="1.68.1"
+rver="1.69.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/nghttp2/nghttp2/releases/download/v${rver}/${rfile}"
-rsha256="ceb434c1f9dfe2a9d305b6b797786fb9227484dfa88508d14ca1c50263db55d3"
+rsha256="c866b7477cbb7512ab6863a685027adbb1bb8da8fc3bab7429ed43d3281d5aa9"
 rreqs="bootstrapmake busybox bashtiny slibtool"
 
 . "${cwrecipe}/common.sh"
