@@ -1,9 +1,9 @@
 rname="vultrcli"
-rver="3.9.2"
+rver="3.10.0"
 rdir="vultr-cli-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/vultr/vultr-cli/archive/refs/tags/${rfile}"
-rsha256="27ec2e67054d92c8b8a868be3ee88680f12b72dca7fe9f690371542f89747e0f"
+rsha256="cc5caa50168e2dd94600e7cbb7449d1435fa6a656a641be98da483b3de871958"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
