@@ -6,11 +6,11 @@
 #
 
 rname="sed"
-rver="4.9"
+rver="4.10"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="6e226b732e1cd739464ad6862bd1a1aba42d7982922da7a53519631d24975181"
+rsha256="b8e72182b2ec96a3574e2998c47b7aaa64cc20ce000d8e9ac313cc07cecf28c7"
 rreqs="bootstrapmake busybox toybox"
 
 . "${cwrecipe}/common.sh"
