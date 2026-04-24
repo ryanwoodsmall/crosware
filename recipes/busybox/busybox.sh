@@ -12,7 +12,7 @@ rname="busybox"
 rver="1.37.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
-rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
+rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/busybox/${rfile}"
 #rurl="http://${rname}.net/downloads/${rfile}"
 rsha256="3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4"
 rreqs="bootstrapmake bashtiny alpinemuslutils toybox"
@@ -32,7 +32,7 @@ function cwconfigure_${rname}() {
   (
     export PATH=\"\$(echo ${cwsw}/{bashtiny,bootstrapmake,toybox,ccache{{4,},3},statictoolchain}/current/bin | tr ' ' ':'):\${PATH}\"
     chmod -R u+w .
-    csu=\"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/bb_config_script.sh\"
+    csu=\"https://raw.githubusercontent.com/ryanwoodsmall/busybox-misc/master/scripts/bb_config_script.sh\"
     cs=\"\$(basename \${csu})\"
     cwfetch \"\${csu}\" \"\$(cwbdir_${rname})/\${cs}\"
     sed -i.ORIG 's/^make/#make/g;s/^test/#test/g' \"\${cs}\"

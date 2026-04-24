@@ -11,7 +11,7 @@ rname="toybox"
 rver="0.8.13"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
-rurl="https://github.com/landley/${rname}/archive/${rfile}"
+rurl="https://github.com/landley/toybox/archive/${rfile}"
 rsha256="fa84ca399c2a88c3d841db943052911355b817f8151cd6bfb9e0b12541e4828c"
 rreqs="bootstrapmake alpinemuslutils"
 
@@ -29,7 +29,7 @@ function cwpatch_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  csu=\"https://raw.githubusercontent.com/ryanwoodsmall/${rname}-misc/master/scripts/${rname}_config_script.sh\"
+  csu=\"https://raw.githubusercontent.com/ryanwoodsmall/toybox-misc/master/scripts/toybox_config_script.sh\"
   cs=\"\$(basename \${csu})\"
   cwfetch \"\${csu}\" \"\$(cwbdir_${rname})/\${cs}\"
   sed -i.ORIG 's/^make/#make/g;s/^test/#test/g' \"\${cs}\"
