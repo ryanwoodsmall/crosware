@@ -30,11 +30,11 @@
 # XXX - build with mage???
 #
 rname="ghostunnel"
-rver="1.9.2"
+rver="1.10.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="88164c8a1f284b70ca5271fbd001f29967a40d3be23abdce316708118ba01915"
+rsha256="0a3a00748d837216051fc1ab031be66a2c937acc9e6bf877d18a4fdd397438e8"
 rreqs="go cacertificates bootstrapmake"
 
 . "${cwrecipe}/common.sh"
