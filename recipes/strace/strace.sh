@@ -1,3 +1,7 @@
+#
+# XXX - 7.0 requires kernel 5.7+ for linux/time_types.h
+#   ../bundled/linux/include/uapi/linux/taskstats.h:21:10: fatal error: linux/time_types.h: No such file or directory
+#
 rname="strace"
 rver="6.19"
 rdir="${rname}-${rver}"
