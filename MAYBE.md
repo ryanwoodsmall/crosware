@@ -960,6 +960,8 @@ wc -l /tmp/astbuild.out
   - netsurf w/framebuffer nsfb? sdl? vnc doesn't seem to work
   - libnsfb (https://www.netsurf-browser.org/projects/libnsfb/)
 - nfs-utils (http://git.linux-nfs.org/?p=steved/nfs-utils.git;a=summary and https://mirrors.edge.kernel.org/pub/linux/utils/nfs-utils/)
+- nginx
+  - https://github.com/chobits/ngx_http_proxy_connect_module (forward proxy CONNECT module)
 - nghttp3 (https://github.com/ngtcp2/nghttp3)
 - ngtcp2 (https://github.com/ngtcp2/ngtcp2)
 - ninep (https://github.com/gnoack/ninep - go 9p tools)
