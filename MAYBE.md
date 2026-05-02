@@ -1265,6 +1265,7 @@ wc -l /tmp/astbuild.out
       --enable-static-sudoers
     ```
 - sundown (markdown lib - https://github.com/vmg/sundown)
+- surfraw (https://gitlab.com/surfraw/Surfraw - shell web search)
 - sunwait (sunrise/sundown calculator/figurer - https://github.com/risacher/sunwait)
 - svi (https://github.com/byllgrim/svi)
 - syclladb (https://en.wikipedia.org/wiki/ScyllaDB and https://www.scylladb.com - cassandra/dynamodb implementation, c++20)
