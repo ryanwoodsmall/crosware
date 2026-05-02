@@ -1,0 +1,10 @@
+[Unit]
+Description=crosware busybox httpd server
+After=network.target
+
+[Service]
+ExecStart=/usr/local/crosware/software/busybox/current/bin/httpd -vv -p 18080 -h /usr/local/crosware
+PIDFile=/var/run/crosware-busybox-httpd.pid
+
+[Install]
+WantedBy=multi-user.target
