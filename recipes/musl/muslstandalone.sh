@@ -8,7 +8,7 @@ rdir="musl-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="http://musl.libc.org/releases/${rfile}"
 rsha256="d585fd3b613c66151fc3249e8ed44f77020cb5e6c1e635a616d3f9f82460512a"
-rreqs="make"
+rreqs="bootstrapmake"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rpfile="${cwrecipe}/musl/${rname}.patches"
 
