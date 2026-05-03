@@ -14,13 +14,12 @@
 #     }
 #   }
 #
-
 rname="inetutils"
-rver="2.7"
+rver="2.8"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="a156be1cde3c5c0ffefc262180d9369a60484087907aa554c62787d2f40ec086"
+rsha256="57b3cf4f77555992881e5ba2a09a63b05aa2c56342a60ed4305b5f45938390b5"
 rreqs="make sed netbsdcurses readlinenetbsdcurses configgit"
 
 . "${cwrecipe}/common.sh"
