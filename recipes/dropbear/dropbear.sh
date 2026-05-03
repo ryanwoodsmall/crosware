@@ -25,19 +25,20 @@
 #   dropbearkey -y -f ~/.ssh/id_dropbear | egrep -v '^(Public key.*:|Fingerprint:)' > ~/.ssh/id_rsa.pub
 #
 # XXX - enable DROPBEAR_USE_SSH_CONFIG in dropbear-misc and test
+# XXX - dropbear 2026.90 uses reallocarry
 #
 rname="dropbear"
-rsver="2025.89"
-rdate="20251219183303"
+rsver="2026.90"
+rdate="20260503173437"
 rver="${rsver}-${rdate}"
 rdir="${rname}-${rsver}"
 rfile="${rdir}.tar.bz2"
 #rurl="https://matt.ucc.asn.au/dropbear/releases/${rfile}"
 #rurl="https://dropbear.nl/mirror/releases/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/dropbear/${rfile}"
-rsha256="0d1f7ca711cfc336dc8a85e672cab9cfd8223a02fe2da0a4a7aeb58c9e113634"
+rsha256="16be820347723271b0fea6049ffeed6d6680d7429c65406d8af37776393a0250"
 # need a patch program, try toybox
-rreqs="make toybox zlib configgit lshsftpserver"
+rreqs="make toybox zlib configgit lshsftpserver muslstandalone"
 
 . "${cwrecipe}/common.sh"
 
@@ -61,24 +62,27 @@ function cwconfigure_${rname}() {
   sed -i \"s#/opt/${rname}#${rtdir}#g\" localoptions.h
   echo '#undef SFTPSERVER_PATH' >> localoptions.h
   echo '#define SFTPSERVER_PATH \"${rtdir}/current/libexec/sftp-server\"' >> localoptions.h
-  ./configure \
-    ${cwconfigureprefix} \
-    --disable-lastlog \
-    --disable-utmp \
-    --disable-utmpx \
-    --disable-wtmp \
-    --disable-wtmpx \
-    --disable-pututline \
-    --disable-pututxline \
-    --enable-bundled-libtom \
-    --disable-pam \
-    --enable-zlib \
-    --enable-static \
-    --with-zlib=\"${cwsw}/zlib/current\" \
-      CC=\"\${CC}\" \
-      CPPFLAGS=\"-I${cwsw}/zlib/current/include\" \
-      LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\" \
-      PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/zlib/current/lib/pkgconfig | tr ' ' ':')\"
+  (
+    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/muslstandalone/current/bin:\${PATH}\"
+    ./configure \
+      ${cwconfigureprefix} \
+      --disable-lastlog \
+      --disable-utmp \
+      --disable-utmpx \
+      --disable-wtmp \
+      --disable-wtmpx \
+      --disable-pututline \
+      --disable-pututxline \
+      --enable-bundled-libtom \
+      --disable-pam \
+      --enable-zlib \
+      --enable-static \
+      --with-zlib=\"${cwsw}/zlib/current\" \
+        CC=\"\${CC}\" \
+        CPPFLAGS=\"-I${cwsw}/zlib/current/include\" \
+        LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\" \
+        PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/zlib/current/lib/pkgconfig | tr ' ' ':')\"
+  )
   popd &>/dev/null
 }
 "
@@ -90,6 +94,7 @@ function cwmake_${rname}() {
     export CPPFLAGS=\"-I${cwsw}/zlib/current/include\"
     export LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\"
     export PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/zlib/current/lib/pkgconfig | tr ' ' ':')\"
+    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/muslstandalone/current/bin:\${PATH}\"
     make -j${cwmakejobs} \
       MULTI=1 \
       SCPPROGRESS=1 \
@@ -102,14 +107,20 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  make install \
-    MULTI=1 \
-    SCPPROGRESS=1 \
-    PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
-  ln -sf dbclient \"\$(cwidir_${rname})/bin/ssh\"
-  cwmkdir \"${cwetc}/${rname}\"
-  cwmkdir \"\$(cwidir_${rname})/libexec\"
-  install -m 0755 \"${cwsw}/lshsftpserver/current/sbin/sftp-server\" \"\$(cwidir_${rname})/libexec/\"
+  (
+    export CPPFLAGS=\"-I${cwsw}/zlib/current/include\"
+    export LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\"
+    export PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/zlib/current/lib/pkgconfig | tr ' ' ':')\"
+    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/muslstandalone/current/bin:\${PATH}\"
+    make install \
+      MULTI=1 \
+      SCPPROGRESS=1 \
+      PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
+    ln -sf dbclient \"\$(cwidir_${rname})/bin/ssh\"
+    cwmkdir \"${cwetc}/${rname}\"
+    cwmkdir \"\$(cwidir_${rname})/libexec\"
+    install -m 0755 \"${cwsw}/lshsftpserver/current/sbin/sftp-server\" \"\$(cwidir_${rname})/libexec/\"
+  )
   popd &>/dev/null
 }
 "

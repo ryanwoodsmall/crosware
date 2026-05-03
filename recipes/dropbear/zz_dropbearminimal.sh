@@ -6,7 +6,7 @@ rfile="$(cwfile_dropbear)"
 rdlfile="$(cwdlfile_dropbear)"
 rurl="$(cwurl_dropbear)"
 rsha256="$(cwsha256_dropbear)"
-rreqs="bootstrapmake zlib configgit"
+rreqs="bootstrapmake zlib configgit muslstandalone"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -18,35 +18,38 @@ done
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  cat \"${cwdl}/${rname%minimal}/${rname%minimal}-\$(cwver_${rname})_localoptions.h\" > localoptions.h
-  cat localoptions.h > localoptions.h.ORIG
-  cwscriptecho 'patching localoptions.h'
-  sed -i \"/PRIV/s#/opt/${rname%minimal}/etc#${cwetc}/${rname%minimal}#g\" localoptions.h
-  sed -i \"s#/opt/${rname%minimal}#${rtdir}#g\" localoptions.h
-  sed -i '/DROPBEAR_SMALL_CODE/s,0,1,g' localoptions.h
-  sed -i s,2222,22222,g localoptions.h
-  echo '#undef SFTPSERVER_PATH' >> localoptions.h
-  echo '#define SFTPSERVER_PATH \"${rtdir}/current/libexec/sftp-server\"' >> localoptions.h
-  ./configure \
-    ${cwconfigureprefix} \
-     --disable-lastlog \
-     --disable-utmp \
-     --disable-utmpx \
-     --disable-wtmp \
-     --disable-wtmpx \
-     --disable-pututline \
-     --disable-pututxline \
-     --enable-bundled-libtom \
-     --disable-pam \
-     --enable-zlib \
-     --enable-static \
-     --with-zlib=\"${cwsw}/zlib/current\" \
-       CC=\"\${CC} -Os -Wl,-s -I${cwsw}/zlib/current/include\" \
-       CFLAGS=\"\${CFLAGS} -Os -Wl,-s\" \
-       CXXFLAGS=\"\${CXXFLAGS} -Os -Wl,-s\" \
-       CPPFLAGS=\"-I${cwsw}/zlib/current/include\" \
-       LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\" \
-       PKG_CONFIG_{LIBDIR,PATH}=
+  (
+    cat \"${cwdl}/${rname%minimal}/${rname%minimal}-\$(cwver_${rname})_localoptions.h\" > localoptions.h
+    cat localoptions.h > localoptions.h.ORIG
+    cwscriptecho 'patching localoptions.h'
+    sed -i \"/PRIV/s#/opt/${rname%minimal}/etc#${cwetc}/${rname%minimal}#g\" localoptions.h
+    sed -i \"s#/opt/${rname%minimal}#${rtdir}#g\" localoptions.h
+    sed -i '/DROPBEAR_SMALL_CODE/s,0,1,g' localoptions.h
+    sed -i s,2222,22222,g localoptions.h
+    echo '#undef SFTPSERVER_PATH' >> localoptions.h
+    echo '#define SFTPSERVER_PATH \"${rtdir}/current/libexec/sftp-server\"' >> localoptions.h
+    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/muslstandalone/current/bin:\${PATH}\"
+    ./configure \
+      ${cwconfigureprefix} \
+       --disable-lastlog \
+       --disable-utmp \
+       --disable-utmpx \
+       --disable-wtmp \
+       --disable-wtmpx \
+       --disable-pututline \
+       --disable-pututxline \
+       --enable-bundled-libtom \
+       --disable-pam \
+       --enable-zlib \
+       --enable-static \
+       --with-zlib=\"${cwsw}/zlib/current\" \
+         CC=\"\${CC} -Os -Wl,-s -I${cwsw}/zlib/current/include\" \
+         CFLAGS=\"\${CFLAGS} -Os -Wl,-s\" \
+         CXXFLAGS=\"\${CXXFLAGS} -Os -Wl,-s\" \
+         CPPFLAGS=\"-I${cwsw}/zlib/current/include\" \
+         LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\" \
+         PKG_CONFIG_{LIBDIR,PATH}=
+  )
   popd &>/dev/null
 }
 "
@@ -61,6 +64,7 @@ function cwmake_${rname}() {
     export CPPFLAGS=\"-I${cwsw}/zlib/current/include\"
     export LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\"
     export PKG_CONFIG_{LIBDIR,PATH}=
+    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/muslstandalone/current/bin:\${PATH}\"
     make -j${cwmakejobs} ${rlibtool} \
       MULTI=1 \
       SCPPROGRESS=1 \
@@ -73,13 +77,16 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  make install \
-    MULTI=1 \
-    SCPPROGRESS=1 \
-    PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
-  ln -sf dbclient \"\$(cwidir_${rname})/bin/ssh\"
-  cwmkdir \"${cwetc}/${rname%minimal}\"
-  cwmkdir \"\$(cwidir_${rname})/libexec\"
+  (
+    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/muslstandalone/current/bin:\${PATH}\"
+    make install \
+      MULTI=1 \
+      SCPPROGRESS=1 \
+      PROGRAMS=\"dropbear dbclient dropbearkey dropbearconvert scp\"
+    ln -sf dbclient \"\$(cwidir_${rname})/bin/ssh\"
+    cwmkdir \"${cwetc}/${rname%minimal}\"
+    cwmkdir \"\$(cwidir_${rname})/libexec\"
+  )
   popd &>/dev/null
 }
 "
