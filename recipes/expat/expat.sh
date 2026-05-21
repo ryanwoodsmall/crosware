@@ -1,9 +1,9 @@
 rname="expat"
-rver="2.8.0"
+rver="2.8.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/libexpat/libexpat/releases/download/R_${rver//./_}/${rfile}"
-rsha256="c7cec5f60ea3a42e7780781c6745255c19aa3dbfeeae58646b7132f88dc24780"
+rsha256="a52eb72108be160e190b5cafa5bba8663f1313f2013e26060d1c18e26e31067b"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
