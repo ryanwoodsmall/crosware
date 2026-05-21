@@ -45,8 +45,6 @@ function cwconfigure_${rname}() {
     --disable-roll-asm \
     --disable-roll-simd \
       CFLAGS=\"\${CFLAGS} -DINET6\"
-  # echo '#undef AT_FDCWD' >> config.h
-  # echo '#undef __linux__' >> config.h
   popd &>/dev/null
 }
 "
