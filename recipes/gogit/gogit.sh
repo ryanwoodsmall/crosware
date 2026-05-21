@@ -4,11 +4,11 @@
 # XXX - lots of useful stuff in the _examples/ directory!!!
 #
 rname="gogit"
-rver="5.18.0"
+rver="5.19.1"
 rdir="go-git-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/go-git/go-git/archive/refs/tags/${rfile}"
-rsha256="b7d63db37b383a85c9487982545618fa509b0360dc9e05ddb0d635ef1af545e3"
+rsha256="91b44587081b94cee4c379f7eaad28e660384f77c334da57cf53551e7e710596"
 rreqs="go"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
