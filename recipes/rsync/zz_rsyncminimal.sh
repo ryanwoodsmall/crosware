@@ -36,6 +36,7 @@ function cwconfigure_${rname}() {
       AWK=\"${cwsw}/busybox/current/bin/awk\" \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
+  # echo '#undef AT_FDCWD' >> config.h
   popd &>/dev/null
 }
 "
