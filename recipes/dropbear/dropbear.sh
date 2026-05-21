@@ -26,19 +26,20 @@
 #
 # XXX - enable DROPBEAR_USE_SSH_CONFIG in dropbear-misc and test
 # XXX - dropbear 2026.90 uses reallocarry
+# XXX - dropbear 2026.91 does not use reallocarry
 #
 rname="dropbear"
-rsver="2026.90"
-rdate="20260503173437"
+rsver="2026.91"
+rdate="20260521150813"
 rver="${rsver}-${rdate}"
 rdir="${rname}-${rsver}"
 rfile="${rdir}.tar.bz2"
 #rurl="https://matt.ucc.asn.au/dropbear/releases/${rfile}"
 #rurl="https://dropbear.nl/mirror/releases/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/dropbear/${rfile}"
-rsha256="16be820347723271b0fea6049ffeed6d6680d7429c65406d8af37776393a0250"
+rsha256="defa924475abf6bc1e74abc00173e46bfdc804bd47caafa14f5a4ef0cc76da34"
 # need a patch program, try toybox
-rreqs="make toybox zlib configgit lshsftpserver muslstandalone"
+rreqs="make toybox zlib configgit lshsftpserver"
 
 . "${cwrecipe}/common.sh"
 
@@ -62,8 +63,10 @@ function cwconfigure_${rname}() {
   sed -i \"s#/opt/${rname}#${rtdir}#g\" localoptions.h
   echo '#undef SFTPSERVER_PATH' >> localoptions.h
   echo '#define SFTPSERVER_PATH \"${rtdir}/current/libexec/sftp-server\"' >> localoptions.h
+  echo '#undef DROPBEAR_CLI_COMPRESSION' localoptions.h
+  echo '#define DROPBEAR_CLI_COMPRESSION 1' localoptions.h
   (
-    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/muslstandalone/current/bin:\${PATH}\"
+    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:\${PATH}\"
     ./configure \
       ${cwconfigureprefix} \
       --disable-lastlog \
@@ -94,7 +97,7 @@ function cwmake_${rname}() {
     export CPPFLAGS=\"-I${cwsw}/zlib/current/include\"
     export LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\"
     export PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/zlib/current/lib/pkgconfig | tr ' ' ':')\"
-    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/muslstandalone/current/bin:\${PATH}\"
+    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:\${PATH}\"
     make -j${cwmakejobs} \
       MULTI=1 \
       SCPPROGRESS=1 \
@@ -111,7 +114,7 @@ function cwmakeinstall_${rname}() {
     export CPPFLAGS=\"-I${cwsw}/zlib/current/include\"
     export LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\"
     export PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/zlib/current/lib/pkgconfig | tr ' ' ':')\"
-    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/muslstandalone/current/bin:\${PATH}\"
+    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:\${PATH}\"
     make install \
       MULTI=1 \
       SCPPROGRESS=1 \

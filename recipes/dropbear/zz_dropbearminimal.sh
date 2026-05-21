@@ -6,7 +6,7 @@ rfile="$(cwfile_dropbear)"
 rdlfile="$(cwdlfile_dropbear)"
 rurl="$(cwurl_dropbear)"
 rsha256="$(cwsha256_dropbear)"
-rreqs="bootstrapmake zlib configgit muslstandalone"
+rreqs="bootstrapmake configgit"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -28,7 +28,7 @@ function cwconfigure_${rname}() {
     sed -i s,2222,22222,g localoptions.h
     echo '#undef SFTPSERVER_PATH' >> localoptions.h
     echo '#define SFTPSERVER_PATH \"${rtdir}/current/libexec/sftp-server\"' >> localoptions.h
-    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/muslstandalone/current/bin:\${PATH}\"
+    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:\${PATH}\"
     ./configure \
       ${cwconfigureprefix} \
        --disable-lastlog \
@@ -38,16 +38,16 @@ function cwconfigure_${rname}() {
        --disable-wtmpx \
        --disable-pututline \
        --disable-pututxline \
+       --disable-zlib \
        --enable-bundled-libtom \
        --disable-pam \
-       --enable-zlib \
        --enable-static \
-       --with-zlib=\"${cwsw}/zlib/current\" \
-         CC=\"\${CC} -Os -Wl,-s -I${cwsw}/zlib/current/include\" \
+       --without-zlib \
+         CC=\"\${CC} -Os -Wl,-s\" \
          CFLAGS=\"\${CFLAGS} -Os -Wl,-s\" \
          CXXFLAGS=\"\${CXXFLAGS} -Os -Wl,-s\" \
-         CPPFLAGS=\"-I${cwsw}/zlib/current/include\" \
-         LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\" \
+         CPPFLAGS=\"\" \
+         LDFLAGS=\"-static -s\" \
          PKG_CONFIG_{LIBDIR,PATH}=
   )
   popd &>/dev/null
@@ -58,13 +58,13 @@ eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
-    export CC=\"\${CC} -Os -Wl,-s -I${cwsw}/zlib/current/include\"
+    export CC=\"\${CC} -Os -Wl,-s\"
     export CFLAGS=\"\${CFLAGS} -Os -Wl,-s\"
     export CXXFLAGS=\"\${CXXFLAGS} -Os -Wl,-s\"
-    export CPPFLAGS=\"-I${cwsw}/zlib/current/include\"
-    export LDFLAGS=\"-L${cwsw}/zlib/current/lib -static -s\"
+    export CPPFLAGS=\"\"
+    export LDFLAGS=\"-static -s\"
     export PKG_CONFIG_{LIBDIR,PATH}=
-    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/muslstandalone/current/bin:\${PATH}\"
+    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:\${PATH}\"
     make -j${cwmakejobs} ${rlibtool} \
       MULTI=1 \
       SCPPROGRESS=1 \
@@ -78,7 +78,7 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
-    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:${cwsw}/muslstandalone/current/bin:\${PATH}\"
+    export PATH=\"${cwsw}/ccache4/current/bin:${cwsw}/ccache/current/bin:\${PATH}\"
     make install \
       MULTI=1 \
       SCPPROGRESS=1 \
