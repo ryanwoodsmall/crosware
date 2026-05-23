@@ -4,11 +4,11 @@
 # XXX - lib64 fix - cmake?
 #
 rname="libgit2"
-rver="1.9.3"
+rver="1.9.4"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/libgit2/libgit2/archive/refs/tags/${rfile}"
-rsha256="d532172d7ab24d2a25944e2434212d63ee85f3650e97b5f7579e7f201a78ad64"
+rsha256="824b73bd13647800fe4b566a1008ae77fea0e3e3424edab632fcfd8c0b14ba8b"
 rreqs="make zlib pkgconfig openssl libssh2 cmake"
 rbdir="${cwbuild}/${rdir}/build"
 
