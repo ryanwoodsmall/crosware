@@ -1,11 +1,11 @@
 rname="libucontext"
-rver="1.5"
+rver="1.5.1"
 rdir="${rname}-${rver}"
 # weird libucontext-libucontext-#.# dir
 rbdir="${cwbuild}/${rname}-${rdir}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/kaniini/libucontext/archive/refs/tags/${rfile}"
-rsha256="b3ca8d7d3e5c926a90ddb691f8a52ccb364069a745304a40c29f3b0d39b80c93"
+rsha256="228925a4427339283b79b5ba1357ec11a7dea32ec46bd191a88c0542eb13e679"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
