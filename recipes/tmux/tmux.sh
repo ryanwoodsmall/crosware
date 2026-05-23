@@ -3,11 +3,11 @@
 # XXX - explicitly disable jemalloc
 #
 rname="tmux"
-rver="3.6a"
+rver="3.6b"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/tmux/tmux/releases/download/${rver}/${rfile}"
-rsha256="b6d8d9c76585db8ef5fa00d4931902fa4b8cbe8166f528f44fc403961a3f3759"
+rsha256="390759d25fdba016887ec982b808927e637070fd7d03a8021f8ef3102b9ae3c7"
 rreqs="make libevent netbsdcurses pkgconfig byacc"
 
 . "${cwrecipe}/common.sh"
