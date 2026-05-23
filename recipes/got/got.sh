@@ -25,11 +25,11 @@
 #   got send
 #
 rname="got"
-rver="0.124"
+rver="0.126"
 rdir="${rname}-portable-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://gameoftrees.org/releases/portable/${rfile}"
-rsha256="8ff38e980a9343aec4152bb5ac1fc916ca093cf655c73a786fb8bd87a50d9c44"
+rsha256="ad75dd883186af10a2f8ba25f5b4e6e9b2974d392f35c8e0a393b4ff134b482d"
 rreqs="libressl"
 
 . "${cwrecipe}/got/got.sh.common"
