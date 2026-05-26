@@ -1,5 +1,7 @@
 #
 # XXX - move config to ${cwetc}/ppp
+# XXX - 2.5.3 needs a newer C compiler
+#     - exposed as "error: parameter name omitted"
 #
 rtls="openssl"
 rname="ppp"
