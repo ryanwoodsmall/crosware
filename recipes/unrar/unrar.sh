@@ -1,6 +1,3 @@
-#
-# XXX - unrar 7.x is out...
-#
 rname="unrar"
 rver="7.2.6"
 rdir="${rname}"
