@@ -2,11 +2,11 @@
 # XXX - unrar 7.x is out...
 #
 rname="unrar"
-rver="6.2.10"
+rver="7.2.6"
 rdir="${rname}"
 rfile="${rname}src-${rver}.tar.gz"
 rurl="https://www.rarlab.com/rar/${rfile}"
-rsha256="55fe6ebd5e48d6655bfda3fd19b55438ca05e13c7e69772420caad9fdb68ef42"
+rsha256="d1afa67ef4121ebc5986815699e05db0ce8648499e5dca854f282a4c3f72c003"
 rreqs="make"
 ridir="${cwsw}/${rname}/${rname}-${rver}"
 
