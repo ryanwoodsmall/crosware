@@ -47,8 +47,14 @@ function cwconfigure_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  make install
+  make install ${rlibtool}
   ln -sf tig \"\$(cwidir_${rname})/bin/${rname}\"
+  local m=0
+  for m in 1 5 7 ; do
+    cwmkdir \$(cwidir_${rname})/share/man/man\${m}
+    install -m 0644 doc/*.\${m} \$(cwidir_${rname})/share/man/man\${m}/
+  done
+  unset m
   popd &>/dev/null
 }
 "
