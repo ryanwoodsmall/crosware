@@ -9,12 +9,12 @@
 #
 
 rname="busybox"
-rver="1.37.0"
+rver="1.38.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/busybox/${rfile}"
 #rurl="http://${rname}.net/downloads/${rfile}"
-rsha256="3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4"
+rsha256="34f9ea6ff8636f2c9241153b9114eefa9e65674a45318ae1ef95bb5f31c53bb2"
 rreqs="bootstrapmake bashtiny alpinemuslutils toybox"
 
 . "${cwrecipe}/common.sh"
