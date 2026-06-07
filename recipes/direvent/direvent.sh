@@ -1,9 +1,9 @@
 rname="direvent"
-rver="5.4"
+rver="5.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/direvent/${rfile}"
-rsha256="1dbbc6192aab67e345725148603d570c6a2828380c964215762af91524d795ba"
+rsha256="0e16c0b4b3e6f7673e9b4f31d81ab01236ad22f83538512f3b2f58f9f96fdcb7"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
