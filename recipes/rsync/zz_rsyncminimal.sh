@@ -5,7 +5,7 @@ rfile="$(cwfile_rsync)"
 rdlfile="$(cwdlfile_rsync)"
 rurl="$(cwurl_rsync)"
 rsha256="$(cwsha256_rsync)"
-rreqs="bootstrapmake busybox"
+rreqs="bootstrapmake toybox mawk"
 
 . "${cwrecipe}/common.sh"
 
@@ -32,8 +32,8 @@ function cwconfigure_${rname}() {
     --disable-zstd \
       CFLAGS=\"\${CFLAGS} -DINET6 -Os -g0 -Wl,-s\" \
       LDFLAGS=\"-static -s\" \
-      SED=\"${cwsw}/busybox/current/bin/sed\" \
-      AWK=\"${cwsw}/busybox/current/bin/awk\" \
+      SED=\"${cwsw}/toybox/current/bin/sed\" \
+      AWK=\"${cwsw}/mawk/current/bin/mawk\" \
       CPPFLAGS= \
       PKG_CONFIG_{LIBDIR,PATH}=
   popd &>/dev/null
@@ -50,7 +50,9 @@ function cwmake_${rname}() {
   sed -i '/\"unsafe\"/s, .unsafe. , unsafe ,' help-rsync.h
   sed -i '/\"log file\"/s, .log file. , log file ,' help-rsyncd.h
   sed -i '/\"log format\"/s, .log format. , log format,' help-rsyncd.h
-  make -j${cwmakejobs} ${rlibtool}
+  make -j${cwmakejobs} ${rlibtool} \
+    SED=\"${cwsw}/toybox/current/bin/sed\" \
+    AWK=\"${cwsw}/mawk/current/bin/mawk\"
   popd &>/dev/null
 }
 "
