@@ -1,8 +1,12 @@
+#
+# XXX - https://www.rutschle.net/tech/sslh/ unreachable on 20260607
+#
 rname="sslh"
 rver="2.3.1"
 rdir="${rname}-v${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://www.rutschle.net/tech/sslh/${rfile}"
+#rurl="https://www.rutschle.net/tech/sslh/${rfile}"
+rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname}/${rfile}"
 rsha256="51a5516ec5cb01823633b4d8cacdeee4efa0c56ef620d1c996d4f52ca51a601b"
 rreqs="make pcre2 libconfig libcap libbsd pkgconfig libev libproxyprotocol"
 
