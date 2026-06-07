@@ -4,6 +4,8 @@
 #    in function `itoalen':
 #  patch2vi.c:(.text+0x3e): undefined reference to `itoa'
 #
+# XXX - splits.c fails, not sure why
+#
 rname="nextvi"
 rver="5.3"
 rdir="${rname}-${rver}"
