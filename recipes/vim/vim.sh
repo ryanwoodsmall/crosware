@@ -2,11 +2,11 @@
 # XXX - disable mouse? ugh
 #
 rname="vim"
-rver="9.2.0600"
+rver="9.2.0602"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/${rfile}"
-rsha256="9bbfe0be244dbd57d2b0f9a3749e3504d215185376bbddfc3ad6420c113b4be1"
+rsha256="b63edd81edaa7b318782628033d72f75c715d5f614b94b74c2bdf8cca994c6a9"
 rreqs="make ncurses lua gettexttiny attr acl libsodium"
 
 . "${cwrecipe}/common.sh"
