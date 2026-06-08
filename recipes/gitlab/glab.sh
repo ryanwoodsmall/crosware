@@ -1,9 +1,9 @@
 rname="glab"
-rver="1.100.0"
+rver="1.102.0"
 rdir="cli-v${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://gitlab.com/gitlab-org/cli/-/archive/v${rver}/${rfile}"
-rsha256="ca21a68d34020d69d8f349d7fb23f3a8b9c65d194e1186f3b8e01d3ef29118f5"
+rsha256="40b1ba91634c150c01358bf41dd7878621002a248a40e5d62926bdf64e89709a"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
