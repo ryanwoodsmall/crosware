@@ -2,7 +2,7 @@
 # XXX - version history, not sure where else to link this: https://mywiki.wooledge.org/BashFAQ/061
 #
 rname="bash"
-rver="5.3.12"
+rver="5.3.15"
 rmaj="${rver%%.*}"
 rmin="${rver#${rmaj}.}"
 rmin="${rmin%%.*}"
