@@ -2,11 +2,11 @@
 # XXX - zstd support
 #
 rname="file"
-rver="5.47"
+rver="5.48"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://astron.com/pub/file/${rfile}"
-rsha256="45672fec165cb4cc1358a2d76b5d57d22876dcb97ab169427ac385cbe1d5597a"
+rsha256="ed14656883b23a364b4057c05595d93252da9bc473d30106519519d0da141283"
 rreqs="make zlib bzip2 xz"
 
 . "${cwrecipe}/common.sh"
