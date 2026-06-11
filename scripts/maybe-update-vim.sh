@@ -8,6 +8,11 @@ set -o pipefail
 : ${cwtop:=""}
 test -z "${cwtop}" && { echo 'the ${cwtop} environment variable is not set' 1>&2 ; exit 1 ; }
 
+for c in curl xmllint ; do
+  command -v "${c}" &>/dev/null || { echo "required program '${c}' not found" 1>&2 ; exit 1 ; }
+done
+unset c
+
 currentver=$(grep ^rver= ${cwtop}/recipes/vim/vim.sh | cut -f2 -d'"')
 latestver=$(bash ${cwtop}/scripts/show-latest-vim.sh)
 
