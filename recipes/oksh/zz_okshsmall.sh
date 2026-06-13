@@ -25,7 +25,7 @@ function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
     CPPFLAGS= \
-    CFLAGS=\"\${CFLAGS} -Os -g0 -Wl,-s -DEMACS\" \
+    CFLAGS=\"\${CFLAGS} -Os -g0 -Wl,-s -DEMACS -DVI -DSMALL\" \
     LDFLAGS=\"-static -s\" \
       ./configure \
         --prefix=\"\$(cwidir_${rname})\" \
@@ -43,7 +43,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  make -j${cwmakejobs} CPPFLAGS= CFLAGS=\"\${CFLAGS} -Os -g0 -Wl,-s -DEMACS\" LDFLAGS=\"-static -s\"
+  make -j${cwmakejobs} CPPFLAGS= CFLAGS=\"\${CFLAGS} -Os -g0 -Wl,-s -DEMACS -DVI -DSMALL\" LDFLAGS=\"-static -s\"
   popd &>/dev/null
 }
 "

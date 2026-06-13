@@ -1,9 +1,9 @@
 rname="oksh"
-rver="7.8"
+rver="7.9"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://github.com/ibara/${rname}/releases/download/${rdir}/${rfile}"
-rsha256="3b30d5a1183b829590cc020d8ab87f22d288e98dc3fdf12feb7159536beaa950"
+rurl="https://github.com/ibara/oksh/releases/download/${rdir}/${rfile}"
+rsha256="51b2d92515950c959dbf24f6fc33336db8c0526c2a50fee4ca598a18a6114a49"
 rreqs="make netbsdcurses"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
