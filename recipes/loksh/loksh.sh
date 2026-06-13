@@ -10,7 +10,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/dimkr/${rname}/releases/download/${rver}/${rfile}"
 rsha256="9cd50a5d5023c1886ef70dfe7334cebec4f4c6a9548f15d01a04732038e9ac0f"
-rreqs="samurai muon bashtiny busybox"
+rreqs="samurai muonminimal bashtiny busybox"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
