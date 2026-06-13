@@ -799,6 +799,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - mtm (https://github.com/deadpixi/mtm - micro terminal multiplexer)
 - mujs (http://mujs.com/ and https://github.com/ccxvii/mujs)
 - muon (https://github.com/annacrombie/muon and https://muon.build/ - meson-alike in c, use with samurai (ninja) and pkgconf (pkg-config))
+  - muonminimal (no libpkgconf)
 - muslfts (https://github.com/pullmoll/musl-fts)
 - muslobstack (https://github.com/void-linux/musl-obstack - glibc obstack+some libiberty macros for musl)
 - muslstandalone (http://musl.libc.org/ - unbundled musl libc and kernel headers with musl-gcc wrapper, possibly different version from statictoolchain)

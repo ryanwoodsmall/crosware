@@ -3,6 +3,8 @@
 # XXX - 2025/11/02 - require pkgconfig, something is screwy
 #   - getting a core dump on bootstrap using only pkgconf
 #   - UGHHHHHHHHHHHHHHHHHH
+# XXX - need to fix path to pkg-config -> pkgconf
+# XXX - see muonminimal for some funky config stuff
 #
 rname="muon"
 rver="0.5.0"
@@ -62,3 +64,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:
