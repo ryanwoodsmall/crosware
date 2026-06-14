@@ -1,5 +1,24 @@
 # TODO
 
+- 20260614 - _everything_ needs to be limited to internal paths only
+  - **ncurses** needs corralling, downstreams too
+  - during `cw{configure,make{,install}}_xyz` runs for PATH, etc.
+    - can turn off with `CW_LIMIT_PATH` flag?
+  - this _requires_ a userspace and known tools, etc.
+    - bootstrap recipes can't be limited
+      - **configgit**
+      - **bootstrapmake**
+      - **alpinemuslutils**
+      - **toybox**
+      - **patch**
+      - **bashtiny**
+      - **busybox**
+    - need a curl too? **libressl**?
+  - good opportunity to move to **pkgconf**
+  - capture output and return code with
+    - `r=$( { do ; something ; here ; } &| tee /tmp/${FUNCNAME[0]}.stderr 1>&2 ; echo ${?} )`
+    - uggy
+
 - updates (spread over recipes too, ugh)
   - move development to "main"
   - first and foremost...
@@ -14,13 +33,14 @@
     - curl - 8.17 dropped wolfssh support
     - curl - 8.18 needs openssl 3+
   - glib - broken but installs anyway, ugh
-    - needs upgrade, move to nuon
+    - needs upgrade, move to muon
     - or drop it, needed by tio (don't use) and opennc (obsolete)
   - gnupg - and its components
     - gnupg needs upgrading
     - multiple components need upgrading
     - probably need lib and compiler upgrades too...
   - gnutls - needs upgrade, with nettle, gmp, ...
+  - habitat - 2, but, no? maybe just remove it? probably yes
   - libgcrypt - openssl 3, gnutls coexistence?
   - libressl - upgrade default to latest
   - libsodium - 1.0.21 breaks on (at least) aarch64; check others

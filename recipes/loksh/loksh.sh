@@ -3,6 +3,10 @@
 # XXX   - remove ncurses support
 # XXX   - inhibit environment and use a stripped-down muon without pkg-config support
 # XXX   - always make loksh last of the ksh providers
+# XXX - 20260614 - ncurses was a miscompilation issue
+# XXX   - it was pulling in weird system components on raspbian
+# XXX   - fixed by limiting build environment, which will become default at some point
+# XXX   - keep this as lokshsmall, add ncurses w/regular muon+pkgconf back in as loksh
 #
 rname="loksh"
 rver="7.9"
