@@ -14,7 +14,7 @@ rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159"
 # cmp, use toybox
-rreqs="make toybox sed pkgconfig"
+rreqs="make gawk sed pkgconfig bashtiny busybox toybox"
 
 . "${cwrecipe}/common.sh"
 
@@ -23,19 +23,22 @@ cwstubfunc "cwconfigure_${rname}"
 eval "
 function cwmake_${rname}_base() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  mkdir -p base_build
-  cd base_build
-  ../configure ${cwconfigureprefix} \
-    --without-shared \
-    --without-cxx-shared \
-    --enable-pc-files \
-    --with-pkg-config-libdir=\"\$(cwidir_${rname})/lib/pkgconfig\" \
-    --with-pkg-config=${cwsw}/pkgconfig/current/bin/pkg-config \
-      ${cwconfigurefpicopts} \
-        PKG_CONFIG_{LIBDIR,PATH}=\"\$(cwidir_${rname})/lib/pkgconfig\" \
-        LDFLAGS=-static \
-        CPPFLAGS=
-  make -j${cwmakejobs}
+  (
+    export PATH=\"\$(echo ${cwsw}/{ccache{4,},statictoolchain,${rreqs// /,}}/current/bin | tr ' ' ':')\"
+    mkdir -p base_build
+    cd base_build
+    ../configure ${cwconfigureprefix} \
+      --without-shared \
+      --without-cxx-shared \
+      --enable-pc-files \
+      --with-pkg-config-libdir=\"\$(cwidir_${rname})/lib/pkgconfig\" \
+      --with-pkg-config=${cwsw}/pkgconfig/current/bin/pkg-config \
+        ${cwconfigurefpicopts} \
+          PKG_CONFIG_{LIBDIR,PATH}=\"\$(cwidir_${rname})/lib/pkgconfig\" \
+          LDFLAGS=-static \
+          CPPFLAGS=
+    make -j${cwmakejobs}
+  )
   popd &>/dev/null
 }
 "
@@ -43,20 +46,23 @@ function cwmake_${rname}_base() {
 eval "
 function cwmake_${rname}_wide() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  mkdir -p wide_build
-  cd wide_build
-  ../configure ${cwconfigureprefix} \
-    --without-shared \
-    --without-cxx-shared \
-    --enable-pc-files \
-    --enable-widec \
-    --with-pkg-config-libdir=\"\$(cwidir_${rname})/lib/pkgconfig\" \
-    --with-pkg-config=${cwsw}/pkgconfig/current/bin/pkg-config \
-      ${cwconfigurefpicopts} \
-        PKG_CONFIG_{LIBDIR,PATH}=\"\$(cwidir_${rname})/lib/pkgconfig\" \
-        LDFLAGS=-static \
-        CPPFLAGS=
-  make -j${cwmakejobs}
+  (
+    export PATH=\"\$(echo ${cwsw}/{ccache{4,},statictoolchain,${rreqs// /,}}/current/bin | tr ' ' ':')\"
+    mkdir -p wide_build
+    cd wide_build
+    ../configure ${cwconfigureprefix} \
+      --without-shared \
+      --without-cxx-shared \
+      --enable-pc-files \
+      --enable-widec \
+      --with-pkg-config-libdir=\"\$(cwidir_${rname})/lib/pkgconfig\" \
+      --with-pkg-config=${cwsw}/pkgconfig/current/bin/pkg-config \
+        ${cwconfigurefpicopts} \
+          PKG_CONFIG_{LIBDIR,PATH}=\"\$(cwidir_${rname})/lib/pkgconfig\" \
+          LDFLAGS=-static \
+          CPPFLAGS=
+    make -j${cwmakejobs}
+  )
   popd &>/dev/null
 }
 "
@@ -71,17 +77,23 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  cd base_build
-  make install
-  cd -
-  cd wide_build
-  make install
-  cd -
-  for v in 6.0 6.1 6.2 6.3 ; do
-    test -e \"${rtdir}/${rname}-\${v}\" || ln -s \"${rtdir}/current\" \"${rtdir}/${rname}-\${v}\"
-  done
-  unset v
-  sed -i \"s,\$(cwidir_${rname}),${rtdir}/current,g\" \$(cwidir_${rname})/lib/pkgconfig/*.pc
+  (
+    export PATH=\"\$(echo ${cwsw}/{ccache{4,},statictoolchain,${rreqs// /,}}/current/bin | tr ' ' ':')\"
+    cd base_build
+    make install
+    cd -
+    cd wide_build
+    make install
+    cd -
+    for v in 6.0 6.1 6.2 6.3 ; do
+      test -e \"${rtdir}/${rname}-\${v}\" || ln -s \"${rtdir}/current\" \"${rtdir}/${rname}-\${v}\"
+    done
+    unset v
+    for p in \$(cwidir_${rname})/lib/pkgconfig/*.pc ; do
+      sed -i \"s,\$(cwidir_${rname}),${rtdir}/current,g\" \"\${p}\"
+    done
+    unset p
+  )
   popd &>/dev/null
 }
 "
@@ -96,3 +108,5 @@ function cwgenprofd_${rname}() {
   echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:
