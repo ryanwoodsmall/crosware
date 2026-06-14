@@ -1,9 +1,9 @@
 rname="tig"
-rver="2.6.0"
+rver="2.6.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/jonas/tig/releases/download/${rdir}/${rfile}"
-rsha256="99d4a0fdd3d93547ebacfe511195cb92e4f75b91644c06293c067f401addeb3e"
+rsha256="5adeabdcd93aa0423d618da8b878b53482bef6e0e9e1fe224acc0f18031fe91e"
 rreqs="make ncurses readline git pkgconfig pcre2"
 
 . "${cwrecipe}/common.sh"
@@ -12,6 +12,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
+    --with-ncurses \
     --with-pcre
   popd &>/dev/null
 }
