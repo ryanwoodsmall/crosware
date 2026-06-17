@@ -1,9 +1,9 @@
 rname="libidn"
-rver="1.43"
+rver="1.44"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/libidn/${rfile}"
-rsha256="bdc662c12d041b2539d0e638f3a6e741130cdb33a644ef3496963a443482d164"
+rsha256="499608bab3a65650a0ea52888c13a8deebe3f71408e319acd9ec52e02eb13959"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
