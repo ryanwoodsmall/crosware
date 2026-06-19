@@ -1,5 +1,5 @@
 rname="k0sctl"
-rver="0.30.1"
+rver="0.31.0"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
@@ -49,3 +49,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:
