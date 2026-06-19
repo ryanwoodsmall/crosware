@@ -121,3 +121,5 @@ function cwinstall_${rname}() {
   cwclean_${rname}
 }
 "
+
+# vim: set ft=bash:
