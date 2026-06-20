@@ -605,6 +605,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - grep (gnu grep)
 - groff
 - gron (https://github.com/tomnomnom/gron - greppable json, in go)
+- gronawk (https://github.com/xonixx/gron.awk - gron, in awk,,,)
 - gosftpserver (https://github.com/pkg/sftp - standalone `sftp-server` that works with tinysshd/dropbear from go sftp lib)
 - guile (https://www.gnu.org/software/guile/)
   - works for aarch64/x86_64
