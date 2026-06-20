@@ -38,7 +38,8 @@ function cwmake_${rname}() {
       GOCACHE=\"\${GOCACHE}\" \
       GOMODCACHE=\"\${GOMODCACHE}\" \
       PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
-        env CGO_ENABLED=0 go build -ldflags '-s -w -extldflags \"-s -static\"' -o \"${rname}\"
+      CGO_ENABLED=0 \
+        go build -ldflags '-s -w -extldflags \"-s -static\"' -o \"${rname}\"
     chmod -R u+rw . || true
   )
   popd &>/dev/null
