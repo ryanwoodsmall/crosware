@@ -1,11 +1,11 @@
 rname="gron"
-rver="500da076bcf16951635bb860bb7ada1f29011f02"
+rver="88a6234ea2d0c487090988182ad9a7cdf6def924"
 rdir="${rname}-${rver}"
 rfile="${rver}.zip"
 #rfile="v${rver}.tar.gz"
 #rurl="https://github.com/tomnomnom/gron/archive/refs/tags/${rfile}"
 rurl="https://github.com/tomnomnom/gron/archive/${rfile}"
-rsha256="daf1d3edf55d5c6661d78a0c16bec380a12855a4136a5c4096fdd3f1f41aa823"
+rsha256="14840c06397aec4854b33835407633ef15c79c682e76dfecd502c008b4bff517"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
