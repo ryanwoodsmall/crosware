@@ -3,11 +3,11 @@
 # XXX - SIGSEGV in asctime_r/strlen/strdup in a container - crosware, alpine, centos:7
 #
 rname="libixp"
-rver="39bc91ae4daa39cdf0ff0bb18f8429cdacaf8a79"
+rver="90140b6c683a0de91d03f167992e8f96957c4d19"
 rdir="${rname}-${rver}"
 rfile="${rver}.zip"
 rurl="https://github.com/0intro/${rname}/archive/${rfile}"
-rsha256="d7f5766d12341d1d1c00d41806362be61142ebb7264a61b9c26f97e8dec4e745"
+rsha256="0e5a02c4ec38cd0a188e194e304e869faaf0b3efcc760fa02b41519c8f1384fc"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
