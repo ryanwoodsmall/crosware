@@ -855,6 +855,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - njsquickjs (njs with libedit shell, libressl crypto and quickjs, with `-n QuickJS` cli support)
   - njsminimal (njs with libedit shell, no crypto)
   - njstiny (njs with no libedit shell, no crypto, no cli)
+- ninep (https://github.com/gnoack/ninep - go 9p tools)
 - ninja (https://ninja-build.org/)
 - nmap
 - npt (https://github.com/nptcl/npt and https://nptcl.github.io/npt/docs/md/ - ansi common lisp implementation, terme display/repl)
