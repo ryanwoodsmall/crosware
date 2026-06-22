@@ -5,6 +5,7 @@
 #   - UGHHHHHHHHHHHHHHHHHH
 # XXX - need to fix path to pkg-config -> pkgconf
 # XXX - see muonminimal for some funky config stuff
+# XXX - 0.6.0 broke something with my config, copy_file succeeds on "muon ... install" and dump fails?
 #
 rname="muon"
 rver="0.5.0"
@@ -25,7 +26,8 @@ function cwconfigure_${rname}() {
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
-      ./bootstrap.sh build
+    CFLAGS=\"\${CFLAGS} -DBOOTSTRAP_NO_SAMU\" \
+      ./bootstrap.sh build-boot
   popd &>/dev/null
 }
 "
@@ -39,7 +41,7 @@ function cwmake_${rname}() {
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
-      \"\$(cwbdir_${rname})/build/muon-bootstrap\" setup \
+      \"\$(cwbdir_${rname})/build-boot/muon-bootstrap\" -v setup \
         -Dprefix=\"\$(cwidir_${rname})\" \
         -Dstatic=true \
         -Dlibpkgconf=enabled \
@@ -54,7 +56,7 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  \"\$(cwbdir_${rname})/build/muon\" -C build install
+  \"\$(cwbdir_${rname})/build/muon\" -v -C build install
   popd &>/dev/null
 }
 "

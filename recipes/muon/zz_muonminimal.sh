@@ -43,9 +43,9 @@ function cwconfigure_${rname}() {
   (
     unset CPPFLAGS PKG_CONFIG_{LIBDIR,PATH}
     export PATH=\"\$(echo ${cwsw}/{ccache{4,},statictoolchain,${rreqs// /,}}/current/bin | tr ' ' ':')\"
-    export C{,XX}FLAGS=\"\${CFLAGS} -g0 -Os -Wl,-s\"
+    export C{,XX}FLAGS=\"\${CFLAGS} -g0 -Os -Wl,-s -DBOOTSTRAP_NO_SAMU\"
     export LDFLAGS='-static -s'
-    bash ./bootstrap.sh build
+    bash ./bootstrap.sh build-boot
   )
   popd &>/dev/null
 }
@@ -59,7 +59,7 @@ function cwmake_${rname}() {
     export PATH=\"\$(echo ${cwsw}/{ccache{4,},statictoolchain,${rreqs// /,}}/current/bin | tr ' ' ':')\"
     export C{,XX}FLAGS=\"\${CFLAGS} -g0 -Os -Wl,-s\"
     export LDFLAGS='-static -s'
-    \"\$(cwbdir_${rname})/build/muon-bootstrap\" setup \
+    \"\$(cwbdir_${rname})/build-boot/muon-bootstrap\" -v setup \
       -Dprefix=\"\$(cwidir_${rname})\" \
       -Dbuildtype=minsize \
       -Denv.NINJA=samu \
@@ -85,7 +85,7 @@ function cwmakeinstall_${rname}() {
     export LDFLAGS='-static -s'
     cwmkdir \"\$(cwidir_${rname})/bin\"
     rm -f \$(cwidir_${rname})/bin/muon{,minimal}
-    \"\$(cwbdir_${rname})/build/muon\" -C build install
+    \"\$(cwbdir_${rname})/build/muon\" -v -C build install
     mv \$(cwidir_${rname})/bin/{muon,${rname}}
     ln -sf \"${rtdir}/current/bin/${rname}\" \"\$(cwidir_${rname})/bin/muon\"
   )
