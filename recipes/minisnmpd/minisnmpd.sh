@@ -20,7 +20,6 @@ cwappendfunc "cwextract_${rname}" "install -m 0644 ${cwdl}/${rname}/ethtool-conf
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  sed -i.ORIG s,sys/sysinfo,linux/sysinfo,g linux.c
   ./configure ${cwconfigureprefix} \
     --enable-ethtool \
     --with-config \
