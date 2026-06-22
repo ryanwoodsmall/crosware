@@ -31,8 +31,10 @@ function  cwpatch_${rname}() {
   sed -i \"/'libpkgconf'/s|'.*'|'null', 'auto'|g\" src/script/options/global.meson
   sed -i \"s,'pkg-config','no-default-pkg-config',g\" src/script/options/global.meson
   sed -i \"s,/usr/local,\$(cwidir_${rname}),g\" src/script/options/global.meson
-  cat src/compilers.c > src/compilers.c.MINIMAL
-  sed -i 's,/lib,/no-default-lib,g' src/compilers.c
+  cat src/toolchains.c > src/toolchains.c.MINIMAL
+  sed -i 's,/lib,/no-default-lib,g' src/toolchains.c
+  cat src/platform/posix/rpath_fixer.c > src/platform/posix/rpath_fixer.c.MINIMAL
+  cat src/platform/null/rpath_fixer.c > src/platform/posix/rpath_fixer.c
   popd &>/dev/null
 }
 "
@@ -66,7 +68,7 @@ function cwmake_${rname}() {
       -Dstatic=true \
       -Dreadline=builtin \
       -Doptimization=s \
-      -D{libarchive,libcurl,libpkgconf,man-pages,meson-{docs,tests},samurai,tracy,ui,website}=disabled \
+      -D{libarchive,libcurl,libpkgconf,man-pages,meson-{docs,tests},tracy,ui,website}=disabled \
       -Dmuon.pkgconfig=null \
        build
     \"${cwsw}/samurai/current/bin/samu\" -C build
