@@ -1,9 +1,9 @@
 rname="tnftp"
-rver="20230507"
+rver="20260211"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.netbsd.org/pub/NetBSD/misc/tnftp/${rfile}"
-rsha256="be0134394bd7d418a3b34892b0709eeb848557e86474e1786f0d1a887d3a6580"
+rsha256="101cda6927e5de4338ad9d4b264304d7d15d6a78b435968a7b95093e0a2efe03"
 rreqs="make netbsdcurses libeditnetbsdcurses configgit libressl pkgconf"
 
 . "${cwrecipe}/common.sh"
@@ -31,3 +31,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:
