@@ -3,18 +3,20 @@
 # XXX - unbundle gobusybox?
 # XXX - docker? containerd?  ghostunnel, minio/mc, rclone, wireguard, nebula, 9p client, ssh client/server, caddy, ...
 # XXX - more... age, awk replacement, etcd, dasel, gron, jj, jq, miller, minio + mc, sed replacement, toml, webhook, yj, yq
+# XXX - minimum viable kubernetes / k8s https://eevans.co/blog/minimum-viable-kubernetes/
+# XXX - tools from https://github.com/u-root/k4s - containerd, runc, etcdctl, ...
 #
 rname="uroot"
 rurootver="0.16.0"
-rgobusyboxver="2e884e4509c722a97c0ec87b1835966eb1a4ad1a"
-rmkuimagever="9a40452f5d3ba67f236a83de54fa2c40f797b68b"
+rgobusyboxver="0.3.0"
+rmkuimagever="0.1.0"
 relvishver="26a8bd5c4ee1eb5c0a2d53578d0368de2b8b3274"
 rver="${rurootver}_${rgobusyboxver}_${rmkuimagever}_${relvishver}_$(cwver_cpu)_$(cwver_p9ufs)"
 rdir="u-root-${rurootver}"
 rfile="v${rurootver}.tar.gz"
 rurl="https://github.com/u-root/u-root/archive/refs/tags/${rfile}"
 rsha256="161da1394da9acd96f69957620db630ce086f71bef62785bad4a82884eee9b77"
-rgover="124"
+rgover="126"
 rreqs="go${rgover} cacertificates"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
@@ -28,13 +30,13 @@ function cwfetch_${rname}() {
   cwfetch_cpu
   cwfetch_p9ufs
   cwfetchcheck \
-    \"https://github.com/u-root/gobusybox/archive/${rgobusyboxver}.zip\" \
-    \"${cwdl}/${rname}/gobusybox/${rgobusyboxver}.zip\" \
-    \"e4f554f273a5f5b68f44ad97509c1c386934f07f5bcbc54ffbc41657e366c47c\"
+    \"https://github.com/u-root/gobusybox/archive/refs/tags/src/v${rgobusyboxver}.tar.gz\" \
+    \"${cwdl}/${rname}/gobusybox/v${rgobusyboxver}.tar.gz\" \
+    \"9b2a51f1ff1d94e0052eba34bb370b42df5aa4dd18d6d8fa2f9f3be46aa29c59\"
   cwfetchcheck \
-    \"https://github.com/u-root/mkuimage/archive/${rmkuimagever}.zip\" \
-    \"${cwdl}/${rname}/mkuimage/${rmkuimagever}.zip\" \
-    \"705408330184c7a07271f7b671607068774e22f19ca3fd28487c1d48dfd03838\"
+    \"https://github.com/u-root/mkuimage/archive/refs/tags/v${rmkuimagever}.tar.gz\" \
+    \"${cwdl}/${rname}/mkuimage/v${rmkuimagever}.tar.gz\" \
+    \"e503ef8534b5802ae679d09ff7514a9aa1daca9b7f2e30d19707e48959ae8cae\"
   cwfetchcheck \
     \"https://github.com/elves/elvish/archive/${relvishver}.zip\" \
     \"${cwdl}/${rname}/elvish/${relvishver}.zip\" \
@@ -47,8 +49,8 @@ function cwextract_${rname}() {
   cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
   cwextract \"\$(cwdlfile_cpu)\" \"\$(cwbdir_${rname})\"
   cwextract \"\$(cwdlfile_p9ufs)\" \"\$(cwbdir_${rname})\"
-  cwextract \"${cwdl}/${rname}/gobusybox/${rgobusyboxver}.zip\" \"\$(cwbdir_${rname})\"
-  cwextract \"${cwdl}/${rname}/mkuimage/${rmkuimagever}.zip\" \"\$(cwbdir_${rname})\"
+  cwextract \"${cwdl}/${rname}/gobusybox/v${rgobusyboxver}.tar.gz\" \"\$(cwbdir_${rname})\"
+  cwextract \"${cwdl}/${rname}/mkuimage/v${rmkuimagever}.tar.gz\" \"\$(cwbdir_${rname})\"
   cwextract \"${cwdl}/${rname}/elvish/${relvishver}.zip\" \"\$(cwbdir_${rname})\"
 }
 "
@@ -65,39 +67,45 @@ function cwmake_${rname}() {
     export PATH=\"${cwsw}/go${rgover}/current/bin:\${PATH}\"
     export CGO_ENABLED=0
     cwmkdir \$(cwbdir_${rname})/bin
+    cwscriptecho 'building u-root'
     go build -o \$(cwbdir_${rname})/bin/u-root \$(cwbdir_${rname})/
     (
-      cd \$(cwbdir_${rname})/gobusybox-${rgobusyboxver}/src/
+      cwscriptecho 'building gobusybox'
+      cd \$(cwbdir_${rname})/gobusybox-src-v${rgobusyboxver}/src/
       for c in \${PWD}/cmd/*/ ; do
         go build -o \$(cwbdir_${rname})/bin/\$(basename -- \${c}) \${c} || true
       done
       cd -
     )
     (
+      cwscriptecho 'building mkuimage'
       cd \$(cwbdir_${rname})/mkuimage-${rmkuimagever}/
       go build -o \$(cwbdir_${rname})/bin/mkuimage \${PWD}/cmd/mkuimage/ || cwfailexit \"could not build mkuimage\"
       cd -
     )
     (
+      cwscriptecho 'building elvish'
       cd \$(cwbdir_${rname})/elvish-${relvishver}/
       for c in \${PWD}/cmd/{elvish,elvmdfmt}/ ; do
         go build -o \$(cwbdir_${rname})/bin/\$(basename -- \${c}) \${c} || true
       done
       cd -
     )
+    cwscriptecho 'setting up go work dirs'
     rm -f go.work || true
     go work init . || true
     go work use . || true
-    go work use ./gobusybox-${rgobusyboxver}/src/
+    go work use ./gobusybox-src-v${rgobusyboxver}/src/
     go work use ./mkuimage-${rmkuimagever}/
     go work use ./elvish-${relvishver}/
     go work use ./cpu-\$(cwver_cpu)/
     go work use ./p9-\$(cwver_p9ufs)/
     rm -rf bb \$(cwbdir_${rname})/bin/bb
+    cwscriptecho 'building bb with extra commands'
     \$(cwbdir_${rname})/bin/makebb -o \$(cwbdir_${rname})/bin/bb \
       \${PWD}/cmds/*/*/ \
       \${PWD}/mkuimage-${rmkuimagever}/cmd/mkuimage/ \
-      \${PWD}/gobusybox-${rgobusyboxver}/src/cmd/{goanywhere,makebb{,main}}/ \
+      \${PWD}/gobusybox-src-v${rgobusyboxver}/src/cmd/{goanywhere,makebb{,main}}/ \
       \${PWD}/elvish-${relvishver}/cmd/{elvish,elvmdfmt}/ \
       \${PWD}/cpu-\$(cwver_cpu)/cmds/{cpu{,d},decpu}/ \
       \${PWD}/p9-\$(cwver_p9ufs)/cmd/p9ufs/
