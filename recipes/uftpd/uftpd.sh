@@ -1,10 +1,10 @@
 rname="uftpd"
-rver="2.15"
+rver="2.16"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/troglobit/uftpd/releases/download/v${rver}/${rfile}"
-rsha256="6c9c5bd40499af772e00cae10ef54e80e39d189d62cc6d7e13ac10929a700ccf"
-rreqs="bootstrapmake libuev libite pkgconfig"
+rsha256="98b6474909e82f49920e208acdaae4be5241c01cb55084bca5928b70e173b389"
+rreqs="bootstrapmake libuev libite pkgconf"
 
 . "${cwrecipe}/common.sh"
 
@@ -14,6 +14,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
     CPPFLAGS=\"\$(echo -I${cwsw}/{libite,libuev}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{libite,libuev}/current/lib) -static -s\" \
+    PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{libite,libuev}/current/lib/pkgconfig | tr ' ' ':')\"
   popd &>/dev/null
 }
