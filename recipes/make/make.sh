@@ -7,7 +7,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
 rsha256="dd16fb1d67bfab79a72f5e8390735c49e3e8e70b4945a15ab1f81ddb78658fb3"
-rreqs="busybox sed gawk bashtiny"
+rreqs="bashtiny sed gawk busybox"
 
 . "${cwrecipe}/common.sh"
 

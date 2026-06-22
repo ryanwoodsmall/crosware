@@ -7,7 +7,7 @@
 #   - https://github.com/illumos/illumos-gate/commit/356ba08c15b26adbde3440aa89d8b31cd39fc526
 #
 rname="heirloom"
-rreqs="make sed netbsdcurses zlib bzip2 ed byacc reflex oksh busybox bashtiny"
+rreqs="make sed netbsdcurses zlib bzip2 ed byacc reflex oksh bashtiny busybox"
 
 . "${cwrecipe}/heirloom/heirloom.sh.common"
 . "${cwrecipe}/common.sh"

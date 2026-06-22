@@ -12,7 +12,7 @@ rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/nghttp2/nghttp2/releases/download/v${rver}/${rfile}"
 rsha256="c866b7477cbb7512ab6863a685027adbb1bb8da8fc3bab7429ed43d3281d5aa9"
-rreqs="bootstrapmake busybox bashtiny slibtool"
+rreqs="bootstrapmake bashtiny slibtool busybox"
 
 . "${cwrecipe}/common.sh"
 
