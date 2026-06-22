@@ -1,9 +1,9 @@
 rname="editline"
-rver="1.17.1"
+rver="2.0.0"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
-rurl="https://github.com/troglobit/${rname}/releases/download/${rver}/${rfile}"
-rsha256="df223b3333a545fddbc67b49ded3d242c66fadf7a04beb3ada20957fcd1ffc0e"
+rfile="${rdir}.tar.gz"
+rurl="https://github.com/troglobit/editline/releases/download/${rver}/${rfile}"
+rsha256="81e38df4f3e6b6627ba71970ab300dc4aee2d404ac340fcff71016ae27149ecf"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
