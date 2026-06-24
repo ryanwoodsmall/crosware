@@ -13,10 +13,10 @@ ftpgnuls="https://ftp.gnu.org/ls-lrRt.txt.gz"
 
 curl -kLs "${ftpgnuls}" \
 | gzip -dc \
-| egrep -- '(^-|:$)' \
+| grep -E -- '(^-|:$)' \
 | tr '\t' ' ' \
 | tr -s ' ' \
 | cut -f6- -d' ' \
-| egrep "(^${month} .*:|^/.*:$)" \
+| grep -E "(^${month} .*:|^/.*:$)" \
 | grep -B1 "${month} " \
 | grep -v -- '^--$'

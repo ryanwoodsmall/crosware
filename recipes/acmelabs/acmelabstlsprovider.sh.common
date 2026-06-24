@@ -45,7 +45,7 @@ function cwconfigure_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"${rbdir}\" &>/dev/null
-  egrep '^(BIN|MAN)DIR' Makefile | cut -f2 -d= | xargs mkdir -p
+  grep -E '^(BIN|MAN)DIR' Makefile | cut -f2 -d= | xargs mkdir -p
   make install ${rlibtool}
   ln -sf \"${rtdir}/current/bin/${rprogname}\" \"${ridir}/bin/${rprogname}-${rprovider}\"
   if [[ ${rprogname} =~ ^http_ ]] ; then
@@ -72,4 +72,4 @@ function cwgenprofd_${rname}() {
 
 unset rprovider rbase rprogname
 
-# vim: ft=sh:
+# vim: ft=bash:

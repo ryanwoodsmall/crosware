@@ -14,7 +14,7 @@
 #     r=${f##/tmp/crosware-}
 #     r=${r%.out}
 #     tail -5 ${f} \
-#     | egrep -v '^(sys|user)' \
+#     | grep -vE '^(sys|user)' \
 #     | tac \
 #     | xargs echo \
 #     | sed "s#real ##g;s#^#${r}: #g"

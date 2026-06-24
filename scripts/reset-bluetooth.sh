@@ -3,7 +3,7 @@
 set -eu
 
 sudo initctl stop bluetoothd || true
-btmods=( $(lsmod | egrep '^(bt|bluetooth|rfcomm)' | awk '{print $NF}' | tr ',' '\n' | egrep '^(b|r)') )
+btmods=( $(lsmod | grep -E '^(bt|bluetooth|rfcomm)' | awk '{print $NF}' | tr ',' '\n' | grep -E '^(b|r)') )
 for btmod in ${btmods[@]} ; do
   echo "rmmod ${btmod}"
   sudo rmmod ${btmod} || true

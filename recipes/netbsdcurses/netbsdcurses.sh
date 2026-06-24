@@ -28,11 +28,11 @@ function cwconfigure_${rname}() {
   sed -i.ORIG '/(TERMINFODIR)/ s#TERMINFODIR=#TERMINFO=#g;s#(TERMINFODIR)#(PWD)/terminfo/terminfo#g' GNUmakefile
   cat libterminfo/genterms > libterminfo/genterms.ORIG
   sed -n '/^#/,/^TERMLIST=/p' libterminfo/genterms.ORIG > libterminfo/genterms
-  egrep -v '^(#|\\t)' terminfo/terminfo \
+  grep -vE '^(#|\\t)' terminfo/terminfo \
   | cut -f1 -d'|' \
   | tr -d ',' \
   | sort -u \
-  | egrep '^[a-zA-Z0-9]' >> libterminfo/genterms
+  | grep -E '^[a-zA-Z0-9]' >> libterminfo/genterms
   sed -n '/^\"$/,//p' libterminfo/genterms.ORIG >> libterminfo/genterms
   popd &>/dev/null
 }

@@ -12,7 +12,7 @@
 #     test ${t} == rsa && e='-s 4096'
 #     test ${t} == ecdsa && e='-s 521'
 #     dropbearkey -t ${t} ${e} -f ${d}
-#     dropbearkey -y -f ${d} | egrep -v '^(Public key.*:|Fingerprint:)' > ${s}_pub
+#     dropbearkey -y -f ${d} | grep -vE '^(Public key.*:|Fingerprint:)' > ${s}_pub
 #     dropbearconvert dropbear openssh ${d} ${s}
 #     echo
 #   done
@@ -22,7 +22,7 @@
 #
 # convert dropbear rsa key to openssh and write a pub key
 #   dropbearconvert dropbear openssh ~/.ssh/id_dropbear ~/.ssh/id_rsa
-#   dropbearkey -y -f ~/.ssh/id_dropbear | egrep -v '^(Public key.*:|Fingerprint:)' > ~/.ssh/id_rsa.pub
+#   dropbearkey -y -f ~/.ssh/id_dropbear | grep -vE '^(Public key.*:|Fingerprint:)' > ~/.ssh/id_rsa.pub
 #
 # XXX - enable DROPBEAR_USE_SSH_CONFIG in dropbear-misc and test
 # XXX - dropbear 2026.90 uses reallocarry

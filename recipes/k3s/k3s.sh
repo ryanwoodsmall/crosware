@@ -46,7 +46,7 @@ function cwfetch_${rname}() {
   local shafile=\"sha256sum-\${a}.txt\"
   local shaurl=\"${rburl}/\${shafile}\"
   cwfetch \"\${shaurl}\" \"${cwdl}/${rname}/\${shafile}\"
-  local rsha256=\"\$(grep -v images ${cwdl}/${rname}/\${shafile} | egrep ${rfile}\$ | awk '{print \$1}')\"
+  local rsha256=\"\$(grep -v images ${cwdl}/${rname}/\${shafile} | grep -E ${rfile}\$ | awk '{print \$1}')\"
   cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\${rsha256}\"
   cwechofunc \"cwsha256_${rname}\" \"\${rsha256}\"
 }
@@ -66,3 +66,5 @@ function cwgenprofd_${rname}() {
 "
 
 unset rburl
+
+# vim: set ft=bash:

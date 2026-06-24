@@ -21,11 +21,11 @@ ${cw} set \
   | tr -s ' ' \
   | tr ' ' '\n' \
   | awk -F'"' '/^href=/{print $2}' \
-  | egrep -v '(/|\.sig)$' \
+  | grep -vE '(/|\.sig)$' \
   | sed "s#^#${u}/#g"
 done
 
 echo
 
 ${cw} list-recipe-versions \
-| egrep '(l.*zip|lzlib|zutils)'
+| grep -E '(l.*zip|lzlib|zutils)'

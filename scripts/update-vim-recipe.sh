@@ -73,7 +73,7 @@ if command -v git &>/dev/null ; then
   done
   test -e "${sd}/vim/current/bin/vim" || test -e "${sd}/vimnetbsdcurses/current/bin/vim" || { echo "installing vimnetbsdcurses" ; "${cw}" install vimnetbsdcurses ; }
   for v in vim vimnetbsdcurses ; do
-    test -e "${sd}/${v}/current/bin/vim" && "${sd}/${v}/current/bin/vim" --version | egrep '(^VIM|patches:)' || true
+    test -e "${sd}/${v}/current/bin/vim" && "${sd}/${v}/current/bin/vim" --version | grep -E '(^VIM|patches:)' || true
   done
   echo
   git diff "${vrf}"
