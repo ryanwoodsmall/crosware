@@ -5,9 +5,10 @@
 # XXX - alpine build, may need libucontext patch (and libucontext recipe) https://git.alpinelinux.org/aports/tree/testing/plan9port?h=master
 # XXX - generate a tree of html files like so...
 #     ( cd ${cwsw}/plan9port/current/ ; ${cwsw}/tree/current/bin/tree -F -f -P '*\.html' -H $(pwd | sed s,${cwtop},,g) | tee tree.html )
-# XXX - plumber is crashing on aarch64, at least?
 # XXX - need to figure out default NAMESPACE stuff...
 # XXX - abortive attempt at an rlwrap-ed shell (9rc) below
+#
+# XXX - plumber is crashing on aarch64, at least? and verified on x86_64
 #
 
 rname="plan9port"
@@ -36,7 +37,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's,^PATH=,PATH=${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/busybox/current/bin:${cwsw}/toybox/current/bin:,g' INSTALL
-  sed -i.ORIG '/^LDFLAGS/s/=/=-static/g' src/mkhdr
+  sed -i.ORIG '/^LDFLAGS/s/=/=-static/' src/mkhdr
   sed -i.ORIG '/</s,1024,0,g' src/libthread/pthread.c
   grep -ril 'sys/termios\.h' . | xargs sed -i.ORIG 's,sys/termios\.h,termios.h,g' || true
   find src/cmd -name mk\* -exec grep -l 'LD -o' {} + | xargs sed -i.ORIG 's,LD ,LD \$LDFLAGS ,g' || true
@@ -61,12 +62,12 @@ function cwconfigure_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  time busybox ash ./INSTALL 2>&1 | tee ${rname}_build.out
-  find bin/ -type f -exec toybox file {} + \
-  | grep ELF \
-  | cut -f1 -d: \
-  | xargs \$(\${CC} -dumpmachine)-strip --strip-all \
-    || true
+  time busybox ash ./INSTALL |& tee ${cwtop}/tmp/${TS}_${rname}_build.out
+  #find bin/ -type f -exec toybox file {} + \
+  #| grep ELF \
+  #| cut -f1 -d: \
+  #| xargs \$(\${CC} -dumpmachine)-strip --strip-all \
+  #  || true
   # rm -f \"\$(cwidir_${rname})/bin/9rc\"
   # touch \"\$(cwidir_${rname})/bin/9rc\"
   # echo -n > \"\$(cwidir_${rname})/bin/9rc\"
