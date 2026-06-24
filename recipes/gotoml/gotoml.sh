@@ -1,9 +1,9 @@
 rname="gotoml"
-rver="2.4.1"
+rver="2.4.2"
 rdir="${rname%toml}-${rname#go}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/pelletier/go-toml/archive/refs/tags/${rfile}"
-rsha256="55ba845c5a4d214602c1a5f4314eec16185d19b2958cf5f4530cab032207d0d3"
+rsha256="1ecb0a9160099656c5cfc4bb5b493e98af0d7533762c78cbc4945b45e2d6a8fc"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
