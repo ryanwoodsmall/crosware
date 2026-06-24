@@ -11,6 +11,7 @@
 # XXX - plumber is crashing on aarch64, at least? and verified on x86_64
 #     - on x86_64 in debian w/gui, PATH needs to be shortened and $PLAN9/bin should come early
 #       - plumber/9pserve at least start
+#       - or not? shit
 #     - still crashing on aarch64
 #
 rname="plan9port"
