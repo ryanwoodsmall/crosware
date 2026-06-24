@@ -9,8 +9,10 @@
 # XXX - abortive attempt at an rlwrap-ed shell (9rc) below
 #
 # XXX - plumber is crashing on aarch64, at least? and verified on x86_64
+#     - on x86_64 in debian w/gui, PATH needs to be shortened and $PLAN9/bin should come early
+#       - plumber/9pserve at least start
+#     - still crashing on aarch64
 #
-
 rname="plan9port"
 rver="e5cc7c8e39c894f2ad8c7c800acfd299f1b512fa"
 rdir="${rname}-${rver}"
@@ -38,7 +40,7 @@ function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's,^PATH=,PATH=${cwsw}/ccache/current/bin:${cwsw}/statictoolchain/current/bin:${cwsw}/busybox/current/bin:${cwsw}/toybox/current/bin:,g' INSTALL
   sed -i.ORIG '/^LDFLAGS/s/=/=-static/' src/mkhdr
-  sed -i.ORIG '/</s,1024,0,g' src/libthread/pthread.c
+  : sed -i.ORIG '/</s,1024,0,g' src/libthread/pthread.c
   grep -ril 'sys/termios\.h' . | xargs sed -i.ORIG 's,sys/termios\.h,termios.h,g' || true
   find src/cmd -name mk\* -exec grep -l 'LD -o' {} + | xargs sed -i.ORIG 's,LD ,LD \$LDFLAGS ,g' || true
   if ! command -v perl &>/dev/null ; then
