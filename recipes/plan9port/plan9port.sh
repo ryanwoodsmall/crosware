@@ -13,6 +13,25 @@
 #       - plumber/9pserve at least start
 #       - or not? shit
 #     - still crashing on aarch64
+#     - muslstandalone didn't help, gotta be the way i'm compiling stuff :\
+#
+# example .bash_profile setup
+#
+#   if [ ! -z "${PLAN9}" ] ; then
+#     p9pdefns="/tmp/ns.${USER}.:0"
+#     if [ -z "${NAMESPACE}" ] ; then
+#       p9pns="${PLAN9}/bin/namespace"
+#       if [ -e "${p9pns}" ] ; then
+#         NAMESPACE="$(p9pns 2>/dev/null || echo ${p9pdefns})"
+#       else
+#         NAMESPACE="${p9pdefns}"
+#       fi
+#     fi
+#     test -z "${NAMESPACE}" && NAMESPACE="${p9pdefns}" || true
+#     export NAMESPACE
+#     test -e "${NAMESPACE}" && test -d "${NAMESPACE}" || mkdir -p "${NAMESPACE}"
+#     chmod 0700 "${NAMESPACE}"
+#   fi
 #
 rname="plan9port"
 rver="e5cc7c8e39c894f2ad8c7c800acfd299f1b512fa"
