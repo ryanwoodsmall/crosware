@@ -4,15 +4,18 @@
 # XXX - in-place build; INSTALL -b/INSTALL -c may be a better fit here - build in ${cwtop}/builds/, then tar/untar in ${cwtop}/software/${rname}
 # XXX - alpine build, may need libucontext patch (and libucontext recipe) https://git.alpinelinux.org/aports/tree/testing/plan9port?h=master
 # XXX - generate a tree of html files like so...
-#   ( cd ${cwsw}/plan9port/current/ ; ${cwsw}/tree/current/bin/tree -F -f -P '*\.html' -H $(pwd | sed s,${cwtop},,g) | tee tree.html )
+#     ( cd ${cwsw}/plan9port/current/ ; ${cwsw}/tree/current/bin/tree -F -f -P '*\.html' -H $(pwd | sed s,${cwtop},,g) | tee tree.html )
+# XXX - plumber is crashing on aarch64, at least?
+# XXX - need to figure out default NAMESPACE stuff...
+# XXX - abortive attempt at an rlwrap-ed shell (9rc) below
 #
 
 rname="plan9port"
-rver="61e362add9e1485bec1ab8261d729016850ec270"
+rver="e5cc7c8e39c894f2ad8c7c800acfd299f1b512fa"
 rdir="${rname}-${rver}"
 rfile="${rver}.zip"
-rurl="https://github.com/9fans/${rname}/archive/${rfile}"
-rsha256="b86ed10afe0c469fa4c477527f0a3bcfe79b83c1d14a30b2e9f83d674295e455"
+rurl="https://github.com/9fans/plan9port/archive/${rfile}"
+rsha256="f8eeb31dc8c3fdd4f1eba89262df7b01fe8869e82030ce9e1dec8d661f7590d2"
 rreqs="busybox toybox"
 rprof="${cwetcprofd}/zz_zz_${rname}.sh"
 rbdir="${cwsw}/${rname}/${rdir}"
@@ -50,6 +53,7 @@ function cwconfigure_${rname}() {
   echo WSYSTYPE=nowsys > LOCAL.config
   echo CC9=\${CC} >> LOCAL.config
   echo CC9FLAGS=-Wl,-static >> LOCAL.config
+  echo 'egrep=\"grep -E\"' >> LOCAL.config
   popd &>/dev/null
 }
 "
@@ -63,6 +67,13 @@ function cwmakeinstall_${rname}() {
   | cut -f1 -d: \
   | xargs \$(\${CC} -dumpmachine)-strip --strip-all \
     || true
+  # rm -f \"\$(cwidir_${rname})/bin/9rc\"
+  # touch \"\$(cwidir_${rname})/bin/9rc\"
+  # echo -n > \"\$(cwidir_${rname})/bin/9rc\"
+  # printf '#/usr/bin/env bash\\n' | tee -a \"\$(cwidir_${rname})/bin/9rc\"
+  # printf '${rtdir}/current/bin/9 namespace &>/dev/null || export NAMESPACE=\"/tmp/ns.\${USER}.:0\"\\n' | tee -a \"\$(cwidir_${rname})/bin/9rc\"
+  # printf 'rlwrap -C 9rc -c -r -- ${rtdir}/current/bin/9 rc \"\${@}\"\\n' | tee -a \"\$(cwidir_${rname})/bin/9rc\"
+  # chmod 755 \"\$(cwidir_${rname})/bin/9rc\"
   popd &>/dev/null
 }
 "
