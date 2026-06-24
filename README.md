@@ -786,6 +786,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - miller (https://github.com/johnkerl/miller - miller, aka mlr, awk/sed/grep/jq/... for csv, etc.)
   - miller5 (mlr, old version in c)
   - miller6 (mlr, reimplemented in go)
+- miniflux (https://github.com/miniflux/v2 - rss/feed reader in go, only supports postgres)
 - minikube (https://minikube.sigs.k8s.io/)
 - minio (https://github.com/minio/minio and https://min.io - s3-compatible object store)
   - miniomc (https://github.com/minio/mc - minio `mc` client)
