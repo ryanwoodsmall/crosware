@@ -1,5 +1,5 @@
 rname="dockerstatic"
-rver="29.2.1"
+rver="29.6.0"
 rdir="${rname//static/}-${rver}"
 rbdir="${cwbuild}/docker"
 rfile="${rdir}.tgz"
@@ -9,13 +9,13 @@ rsha256=""
 rburl="https://download.docker.com/linux/static/stable"
 if [[ ${karch} =~ ^aarch64 ]] ; then
   rurl="${rburl}/aarch64/${rfile}"
-  rsha256="236c5064473295320d4bf732fbbfc5b11b6b2dc446e8bc7ebb9222015fb36857"
+  rsha256="17aede86d504841427b92e52d8ebb50d3fa67e5fd6d6a90a4224dfc81cd79ebc"
 elif [[ ${karch} =~ ^arm ]] ; then
   rurl="${rburl}/armhf/${rfile}"
-  rsha256="75cda05bbd685b8cf86a3f3ba02c601635608dd3d83e0b926022d0f11daefcde"
+  rsha256="e6b65dcf3f506f432eba79fef979b27291cddcdb48dad7de3de6cd17ac953ae4"
 elif [[ ${karch} =~ ^x86_64 ]] ; then
   rurl="${rburl}/x86_64/${rfile}"
-  rsha256="995b1d0b51e96d551a3b49c552c0170bc6ce9f8b9e0866b8c15bbc67d1cf93a3"
+  rsha256="4d2f6782406b56eb43a519ad5078a6a79abe4d663328acb69136aceff5e05224"
 fi
 unset rburl
 
@@ -51,3 +51,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
 "
+
+# vim: set ft=bash:
