@@ -62,7 +62,7 @@ function cwconfigure_${rname}() {
   sed -i.ORIG '/^LDFLAGS/s/=/=-static/' src/mkhdr
   : sed -i.ORIG '/</s,1024,0,g' src/libthread/pthread.c
   grep -ril 'sys/termios\.h' . | xargs sed -i.ORIG 's,sys/termios\.h,termios.h,g' || true
-  find src/cmd -name mk\* -exec grep -l 'LD -o' {} + | xargs sed -i.ORIG 's,LD ,LD \$LDFLAGS ,g' || true
+  find src/cmd ! -type d -name mk\* -exec grep -l 'LD -o' \"{}\" + | xargs sed -i.ORIG 's,LD ,LD \$LDFLAGS ,g' || true
   if ! command -v perl &>/dev/null ; then
     cwscriptecho ''
     cwscriptecho 'disabling manweb'
