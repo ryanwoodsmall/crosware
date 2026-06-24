@@ -19,11 +19,11 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   env \
+    CC=\"\${CC} \${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include) \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
-    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
-    CC=\"\${CC} \${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include) \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
     PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
       ./configure ${cwconfigureprefix} \
         --with-fts=musl-fts \
         --with-less-t=no \
@@ -39,8 +39,14 @@ function cwconfigure_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  make ${rlibtool} \
-    CC=\"\${CC} \${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include) \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\"
+  env \
+    CC=\"\${CC} \${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include) \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
+    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+    PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+      make ${rlibtool} \
+        CC=\"\${CC} \${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include) \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\"
   popd &>/dev/null
 }
 "
@@ -48,8 +54,14 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  make install ${rlibtool} \
-    CC=\"\${CC} \${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include) \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\"
+  env \
+    CC=\"\${CC} \${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include) \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
+    CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
+    LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static\" \
+    PKG_CONFIG=\"${cwsw}/pkgconf/current/bin/pkgconf\" \
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+      make install ${rlibtool} \
+        CC=\"\${CC} \${CFLAGS} \$(echo -I${cwsw}/{${rreqs// /,}}/current/include) \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\"
   popd &>/dev/null
 }
 "
@@ -59,3 +71,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:
