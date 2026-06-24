@@ -1,5 +1,11 @@
 #
 # XXX - man pages need pod2man/perl
+# XXX - example conf:
+#     Port 1080
+#     Listen 192.168.123.234/24
+#     Timeout 600
+#     Allow 192.168.123.0/24
+#     LogLevel Info
 #
 rname="tinyproxy"
 rver="1.11.3"
