@@ -1,5 +1,17 @@
 # TODO
 
+- 20260624 - need a function to check if a recipe is supported
+  - generalized CPU check plus
+  - `if [ \${karch} == blah ] ; then blah-prog ; elif [ \${karch} == guh ] ; then guh-prog ; ... ; fi`
+    - make the default dumb, just return true
+  - could also use this with hash of arch-to-version, -dir, -file, -url, -sha256, ...
+    - multiple files + sha256 sums space-/pipe-delimited
+    - loop over for fetch/check
+    - ```
+      rfiles[${karch}]="file1 file2"
+      rsha256s[${karch}]="0123... 1234..."
+      ```
+
 - 20260614 - _everything_ needs to be limited to internal paths only
   - **ncurses** needs corralling, downstreams too
   - during `cw{configure,make{,install}}_xyz` runs for PATH, etc.
@@ -18,6 +30,9 @@
   - capture output and return code with
     - `r=$( { do ; something ; here ; } &| tee /tmp/${FUNCNAME[0]}.stderr 1>&2 ; echo ${?} )`
     - uggy
+  - wrap this in a `source`-able function - `PATH`, `CPPFLAGS`, `LDFLAGS`, etc.
+    - run at `configure`, `make`, `make install`, ...
+    - move to subshells and capture value `rretval` to `return ${retvalue}` in functions
 
 - updates (spread over recipes too, ugh)
   - move development to "main"
@@ -32,6 +47,7 @@
     - curl - 8.16 needs mbedtls 3.2+
     - curl - 8.17 dropped wolfssh support
     - curl - 8.18 needs openssl 3+
+  - docker - add rootless-extras
   - glib - broken but installs anyway, ugh
     - needs upgrade, move to muon
     - or drop it, needed by tio (don't use) and opennc (obsolete)
@@ -55,6 +71,7 @@
   - openssl - upgrade default to latest lts
   - openvpn - 2.7.x needs mbedtls 3.2+... which just crashes
   - perl - 5.x badly in need of upgrade, now kinda _requires_ shared
+  - pkgconf - 2.9.x broke muon?
   - python - 3.x same as perl, this'll break sometime
   - wolfssl - autoconf wolfssl, wolfssh, wolfmqtt
 
