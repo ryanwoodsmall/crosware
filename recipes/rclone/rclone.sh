@@ -39,8 +39,10 @@ function cwmakeinstall_${rname}() {
         \"${cwsw}/go/current/bin/go\" build -ldflags \"-s -X github.com/rclone/rclone/fs.Version=\$(cwver_${rname}) -w -extldflags '-s -static'\"
     cwmkdir \"\$(cwidir_${rname})/bin\"
     cwmkdir \"\$(cwidir_${rname})/share/man/man1\"
-    install -m 755 ${rname} \"\$(cwidir_${rname})/bin/${rname}\"
-    install -m 644 ${rname}.1 \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
+    install -m 0755 ${rname} \"\$(cwidir_${rname})/bin/${rname}\"
+    install -m 0644 ${rname}.1 \"\$(cwidir_${rname})/share/man/man1/${rname}.1\"
+    ln -sf rclone \"$(cwidir_${rname})/bin/mount.rclone\"
+    ln -sf rclone \"$(cwidir_${rname})/bin/rclonefs\"
     chmod -R u+rw . || true
   )
   popd &>/dev/null
