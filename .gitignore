@@ -34,6 +34,8 @@
 /*.core
 /**/core
 /.got/**
+/**/*.swn
+/**/*.swo
 /**/*.swp
 /.git.PRE-*
 /etc/wireguard*
