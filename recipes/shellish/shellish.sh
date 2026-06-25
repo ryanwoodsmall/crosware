@@ -2,7 +2,7 @@
 # XXX - detect and test ${CW_GIT_CMD} and modify install/upgrade procedure to use a local clone
 #
 rname="shellish"
-rver="f7b0b80387acd98981d7e3aefe1cd50f11c9c0e9"
+rver="53169e2c7c812b557c6dfa332aed9714488b1484"
 rdir="${rname//ish/-ish}-${rver}"
 rfile="${rver}.zip"
 #rurl="https://github.com/ryanwoodsmall/${rname//ish/-ish}/archive/refs/heads/${rfile}"
@@ -53,3 +53,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:
