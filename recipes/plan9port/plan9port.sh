@@ -16,13 +16,14 @@
 #     - muslstandalone didn't help, gotta be the way i'm compiling stuff :\
 #
 # example .bash_profile setup
-#
 #   if [ ! -z "${PLAN9}" ] ; then
-#     p9pdefns="/tmp/ns.${USER}.:0"
+#     p9pdefdisp=":0"
+#     test -z "${DISPLAY}" || export DISPLAY="${p9pdefdisp}"
+#     p9pdefns="/tmp/ns.${USER}.${DISPLAY}"
 #     if [ -z "${NAMESPACE}" ] ; then
 #       p9pns="${PLAN9}/bin/namespace"
 #       if [ -e "${p9pns}" ] ; then
-#         NAMESPACE="$(p9pns 2>/dev/null || echo ${p9pdefns})"
+#         NAMESPACE="$(${p9pns} 2>/dev/null || echo ${p9pdefns})"
 #       else
 #         NAMESPACE="${p9pdefns}"
 #       fi
@@ -31,7 +32,14 @@
 #     export NAMESPACE
 #     test -e "${NAMESPACE}" && test -d "${NAMESPACE}" || mkdir -p "${NAMESPACE}"
 #     chmod 0700 "${NAMESPACE}"
+#     9p ls plumb/ &>/dev/null || "${PLAN9}/bin/plumber" &> "/tmp/${USER}-plumber.out" || true
 #   fi
+#   unset p9pdefdisp p9pdefns p9pns
+#
+# mount /mnt/plumb
+#   sudo mount -t 9p -o "trans=unix,uname=$(id -n -u $(id -u)),dfltuid=$(id -u),dfltgid=$(id -g)" $(9 namespace)/plumb /mnt/plumb
+# or over tcp, fronted with socat tcp-listen/unix-connect
+#   sudo mount -t 9p -o rw,relatime,uname=${USER},trans=tcp,port=12345,dfltuid=$(id -u),dfltgid=$(id -g) 1.2.3.4 /tmp/plumb
 #
 rname="plan9port"
 rver="e5cc7c8e39c894f2ad8c7c800acfd299f1b512fa"
