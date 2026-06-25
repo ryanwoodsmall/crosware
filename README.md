@@ -299,6 +299,10 @@ many are in use in crosware:
 - https://wiki.musl-libc.org/compatibility.html#Software-compatibility,-patches-and-build-instructions
 - https://wiki.musl-libc.org/alternatives.html
 
+Plan9 stuff:
+
+- https://shithub.us/
+
 ## bootstrapping ex nihilo
 
 Mes (and m2) might be useful at some point.
