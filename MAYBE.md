@@ -392,6 +392,7 @@ wc -l /tmp/astbuild.out
 - hittpd (https://github.com/leahneukirchen/hittpd - small http server with http-parser library)
 - hoedown (markdown lib - https://github.com/hoedown/hoedown)
 - hq (https://github.com/rbwinslow/hq)
+- httpd-portable (https://github.com/moritzbuhl/httpd-portable - openbsd httpd)
 - http-parser (https://github.com/nodejs/http-parser - no longer active, (useful with libgit2?))
   - llhttp (https://github.com/nodejs/llhttp - continuation on a different parsing platform)
 - http servers/proxies/load balancers/etc.
