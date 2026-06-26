@@ -10,12 +10,12 @@
 #     socat -d -d openssl-dtls-client:server:8444,cert=client.crt,key=client.key,cafile=server.crt tun:192.168.123.2/24,tun-name=tun0,iff-up
 #
 rname="socat"
-rver="1.8.1.1"
+rver="1.8.1.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="http://www.dest-unreach.org/${rname}/download/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/socat/${rfile}"
-rsha256="f68b602c80e94b4b7498d74ec408785536fe33534b39467977a82ab2f7f01ddb"
+rsha256="06602ffd591e98c75b3dc1d66f0f19136cc666b0b2d95caad987d6ab2cb28097"
 rreqs="make openssl netbsdcurses readlinenetbsdcurses zlib"
 
 . "${cwrecipe}/common.sh"
