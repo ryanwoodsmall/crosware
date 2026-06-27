@@ -3,11 +3,11 @@
 # XXX - test with h2 postgres compat
 #
 rname="miniflux"
-rver="2.3.1"
+rver="2.3.2"
 rdir="v2-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/miniflux/v2/archive/refs/tags/${rfile}"
-rsha256="2cf82b224aba61dd8dddd60d7e850d3fdd06c1eaf4f1572aabb0818ec0a95ff2"
+rsha256="5bcfab4ca5c8d3ab83627d7230129fc616c98e5050f475f2876995441b2fc94e"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
