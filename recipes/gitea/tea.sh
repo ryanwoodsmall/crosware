@@ -1,20 +1,18 @@
 rname="tea"
-rver="0.14.1"
+rver="0.14.2"
 rdir="${rname}-${rver}"
-rfile="v${rver}.tar.gz"
-rurl="https://gitea.com/gitea/${rname}/archive/${rfile}"
-rsha256="848b6b2fafa270fa77b4e278d521bfcc16d2f721c45ac90f08f5b16dc630c3f9"
+rfile="${rdir}.tar.gz"
+rurl="https://gitea.com.fake.url/gitea/tea/${rfile}"
+rsha256=""
 rreqs="go"
+
+if [ ! command -v git &>/dev/null ] ; then
+  rreqs+=" git"
+fi
 
 . "${cwrecipe}/common.sh"
 
 cwstubfunc "cwconfigure_${rname}"
-
-eval "
-function cwfetch_${rname}() {
-  cwfetch \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\"
-}
-"
 
 eval "
 function cwclean_${rname}() {
@@ -26,12 +24,21 @@ function cwclean_${rname}() {
 "
 
 eval "
-function cwextract_${rname}() {
-  pushd \"${cwbuild}\" &>/dev/null
-  rm -rf \"${rname}\" \"\$(cwdir_${rname})\"
-  cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
-  mv \"${rname}\" \"\$(cwdir_${rname})\"
-  popd &>/dev/null
+function cwfetch_${rname}() {
+  if [ ! -e \$(cwdlfile_${rname}) ] ; then
+    pushd ${cwbuild} &>/dev/null
+    cwscriptecho \"fetching ${rname} via git\"
+    rm -rf \$(cwdir_${rname})
+    git clone --single-branch --branch main --depth 1 https://gitea.com/gitea/tea.git \$(cwdir_${rname})
+    cwscriptecho \"fetching and checking out tag v\$(cwver_${rname})\"
+    git -C \$(cwdir_${rname}) fetch --tags
+    git -C \$(cwdir_${rname}) checkout -b {local_,}v\$(cwver_${rname})
+    cwscriptecho \"archiving to \$(cwdlfile_${rname})\"
+    tar -cf - \$(cwdir_${rname}) | gzip -9 > \$(cwdlfile_${rname})
+    popd
+  else
+    cwscriptecho \"using archived \$(cwdlfile_${rname})\"
+  fi
 }
 "
 
