@@ -1711,8 +1711,12 @@ function cwcheckuniq() {
   local r="${@}"
   local t="${a%%${r}}"
   #local t="$(echo "${a}" | sed "s#${r}\$##g")"
-  t="${t// }"
-  echo "${r}" | tr ' ' '\n' | grep -q "^${t}$" && cwfailexit "non-unique element '${t}' detected in stack '${a}' - possible cycle"
+  t="${t// */}"
+  echo "${r}" \
+  | tr ' ' '\n' \
+  | grep -q "^${t}$" \
+    && cwfailexit "non-unique element '${t}' detected in stack '${a}' - possible cycle" \
+    || true
   unset a r t
   return 0
 }
