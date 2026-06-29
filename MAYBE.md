@@ -893,6 +893,10 @@ wc -l /tmp/astbuild.out
 - mjson (https://github.com/cesanta/mjson - json parser/emitter/json-rpc engine)
   - frozen (https://github.com/cesanta/frozen - json parser/generator)
 - mk (go, https://github.com/dcjones/mk)
+- mlibc (https://github.com/managarm/mlibc - portable c library, rfc in glaucus?)
+  - mlibc-crossers (https://github.com/managarm/mlibc-crossers - cross compilation for mlibc)
+  - other managarm projects too: https://github.com/orgs/managarm/repositories
+  - https://github.com/no92/linux-mlibc (bootstrap for mlibc-based distro)
 - mold (https://github.com/rui314/mold - fast linker, gcc 10+ (or clang 12+) for c++20 i think?)
 - moreutils (https://joeyh.name/code/moreutils/)
 - moscow ml (https://github.com/kfl/mosml)

@@ -299,10 +299,6 @@ many are in use in crosware:
 - https://wiki.musl-libc.org/compatibility.html#Software-compatibility,-patches-and-build-instructions
 - https://wiki.musl-libc.org/alternatives.html
 
-Plan9 stuff:
-
-- https://shithub.us/
-
 ## bootstrapping ex nihilo
 
 Mes (and m2) might be useful at some point.
@@ -342,6 +338,10 @@ Mark Williams Company open sourced Coherent; might be a good source for SUSv3/SU
 
 - http://www.nesssoftware.com/home/mwc/source.php
 
+Plan9 stuff:
+
+- https://shithub.us/
+
 9p implementations:
 
 - http://9p.cat-v.org/implementations
@@ -354,6 +354,12 @@ Eltanin tools may be useful:
 Busybox tiny utility notes:
 
 - https://busybox.net/tinyutils.html
+
+Glaucus is cool:
+
+- https://glaucuslinux.org
+- https://github.com/glaucuslinux/glaucus
+- https://wiki.glaucuslinux.org/build-notes/musl - lots of great build notes, RFCs, etc. for linux stuff!
 
 ## C/C++ compiler
 
