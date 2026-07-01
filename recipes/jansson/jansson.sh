@@ -1,9 +1,9 @@
 rname="jansson"
-rver="2.15.0"
+rver="2.15.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/akheron/jansson/releases/download/v${rver}/${rfile}"
-rsha256="070a629590723228dc3b744ae90e965a569efb9c535b3309b52e80e75d8eb3be"
+rsha256="0c7114dc0b2d22a670724a1f95922029d7077c19dbf79a584cb8084d2f267f2f"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
