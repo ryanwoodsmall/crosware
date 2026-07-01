@@ -1,16 +1,16 @@
 rname="libevent"
-rver="2.1.12-stable"
+rver="2.1.13-stable"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://github.com/${rname}/${rname}/releases/download/release-${rver}/${rfile}"
-rsha256="92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb"
+rurl="https://github.com/libevent/libevent/releases/download/release-${rver}/${rfile}"
+rsha256="f7e9383b8c0baa81b687e5b5eecc01beefaf1b19b64151d95ed61647fe7a315c"
 rreqs="make pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" &>/dev/null
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} --disable-openssl --disable-samples
   popd &>/dev/null
 }
