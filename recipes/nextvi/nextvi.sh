@@ -7,11 +7,11 @@
 # XXX - splits.c fails, not sure why
 #
 rname="nextvi"
-rver="6.0"
+rver="6.1"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/kyx0r/nextvi/archive/refs/tags/${rfile}"
-rsha256="1d619804deb4c3585683bf792d10c063014f1d02b47bc883ca2d661eb1b0459b"
+rsha256="d7efefb29f3dc55c3a246ff8c71b377dfbdac43a43bce2c77f9e02e6b7db8208"
 rreqs="bootstrapmake muslstandalone"
 
 . "${cwrecipe}/common.sh"
