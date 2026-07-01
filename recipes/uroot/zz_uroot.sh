@@ -9,7 +9,7 @@
 rname="uroot"
 rurootver="0.16.0"
 rgobusyboxver="0.3.0"
-rmkuimagever="0.1.0"
+rmkuimagever="0.2.0"
 relvishver="26a8bd5c4ee1eb5c0a2d53578d0368de2b8b3274"
 rver="${rurootver}_${rgobusyboxver}_${rmkuimagever}_${relvishver}_$(cwver_cpu)_$(cwver_p9ufs)"
 rdir="u-root-${rurootver}"
@@ -36,7 +36,7 @@ function cwfetch_${rname}() {
   cwfetchcheck \
     \"https://github.com/u-root/mkuimage/archive/refs/tags/v${rmkuimagever}.tar.gz\" \
     \"${cwdl}/${rname}/mkuimage/v${rmkuimagever}.tar.gz\" \
-    \"e503ef8534b5802ae679d09ff7514a9aa1daca9b7f2e30d19707e48959ae8cae\"
+    \"b38928b9c9a19e1892bc363b22670ff9dfb465fc43381098b64bd8640c8dd9b5\"
   cwfetchcheck \
     \"https://github.com/elves/elvish/archive/${relvishver}.zip\" \
     \"${cwdl}/${rname}/elvish/${relvishver}.zip\" \
