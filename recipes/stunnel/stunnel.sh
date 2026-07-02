@@ -1,9 +1,9 @@
 rname="stunnel"
-rver="5.78"
+rver="5.79"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/stunnel/${rfile}"
-rsha256="8727e53bb8b7528f850327a2a149158422c02183bc120d1d733cc65b1e2c349d"
+rsha256="8ea0de6e5ea76f38ea987fa831c7fd47f7a1f1e7dd465fd6fa8622edf30d3a45"
 rreqs="make openssl zlib toybox perl"
 
 . "${cwrecipe}/common.sh"
