@@ -12,11 +12,11 @@
 #   make[3]: *** [Makefile:814: ssl_verify_openssl.o] Error 1
 #
 rname="openvpn"
-rver="2.6.20"
+rver="2.6.21"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://swupdate.openvpn.org/community/releases/${rfile}"
-rsha256="952ecee5b911a5353c0a6d40af62a7076c6dea1481ef204ce6d3f10481531315"
+rsha256="24cb6185e544a47323d6798b03d39f2367d96f227bee9cd1543e8ed528319b17"
 rreqs="make openssl zlib lzo lz4 pkgconfig libcapng"
 
 . "${cwrecipe}/common.sh"
