@@ -1,5 +1,70 @@
 # TODO
 
+
+- 20260702 - sdk
+  - use system perl for first round of openssl
+  - use git for _everything_ if possible
+  - musl-cros-make base
+    - packages for each of gcc 9/10/11/12/13/14/15/16
+  - ccache3
+  - make
+  - ccache3
+  - slibtool
+  - neatvi
+  - nextvi
+  - openssl (lite)
+  - libretls
+  - toybox
+  - busybox
+  - diffutils
+  - patch
+  - bash (minimal)
+  - sbase/ubase/9base
+  - outils
+  - gawk
+  - sed
+  - m4
+  - lua
+  - ncurses
+  - bash (full)
+  - gdb
+  - vim
+  - screen
+  - tmux
+  - samurai
+  - muon (minimal)
+  - pkgconf (lite)
+  - perl (lite)
+  - openssl (full)
+  - libretls
+  - otools
+  - perl (full)
+  - autoconf/automake/libtool
+  - sqlite3
+  - gdbm
+  - python
+  - ninja
+  - meson
+  - libarchive
+  - curl
+  - pkgconf (full)
+  - muon (full)
+  - git
+  - cmake
+  - ccache4
+  - maybe...
+    - common lisp (which?)
+    - elfutils
+    - go
+    - lsp(s)
+    - llvm
+    - openjdk
+    - opkg
+    - qemu
+    - rust
+    - scheme (also which?)
+    - zig
+
 - 20260624 - need a function to check if a recipe is supported
   - generalized CPU check plus
   - `if [ \${karch} == blah ] ; then blah-prog ; elif [ \${karch} == guh ] ; then guh-prog ; ... ; fi`
@@ -70,6 +135,7 @@
   - nmap - broken on new versions/
   - openssl - upgrade default to latest lts
   - openvpn - 2.7.x needs mbedtls 3.2+... which just crashes
+  - opkg - 0.10.x; 0.9.x moved to cmake, need sdk
   - perl - 5.x badly in need of upgrade, now kinda _requires_ shared
   - pkgconf - 2.9.x broke muon?
   - python - 3.x same as perl, this'll break sometime
