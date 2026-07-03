@@ -1,5 +1,5 @@
 rname="k0sctl"
-rver="0.31.1"
+rver="0.32.0"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
