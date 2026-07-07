@@ -12,6 +12,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
+    --enable-ipv6 \
     --without-systemd \
       LDFLAGS=-static \
       CPPFLAGS= \
