@@ -1,4 +1,5 @@
 #
+# XXX - 3.x is going to require rust. great. love that shit.
 # XXX - add html docs?
 # XXX - cool git proxy stuff: https://gitolite.com/git-over-proxy.html
 #
@@ -27,11 +28,11 @@
 # - https://stackoverflow.com/questions/4565700/how-to-specify-the-private-ssh-key-to-use-when-executing-shell-command-on-git
 #
 rname="git"
-rver="2.54.0"
+rver="2.55.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
-rsha256="45e8107643a44e3ce46f5665beb35af3932fb0d70017687905ab5d4e3aafa8eb"
+rsha256="0842dc384a23ac33ba3e570c4f3a8ded85963ee4713b1cd21153c3db41813d1e"
 rreqs="make bzip2 zlib openssl curl expat pcre2 perl libssh2 busybox less cacertificates nghttp2 mandoc"
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
@@ -42,7 +43,7 @@ function cwfetch_${rname}() {
   cwfetchcheck \
     \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \
     \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \
-    \"2d0950c3dd3346f1072e5791ac308961639828f2b6ba91927e64fed97a1bd550\"
+    \"e1d56c160c55be805d339613d6c5cdb1269d5346a50d757c39135f1449e28ed5\"
 }
 "
 
@@ -66,7 +67,8 @@ function cwconfigure_${rname}() {
         CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
         LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
-        LIBS='-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz'
+        LIBS='-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz' \
+        NO_RUST=1
   sed -i.ORIG 's/-lcurl/-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz/g' Makefile
   : sed -i '/:.* build-unit-tests/s,build-unit-tests,,g' Makefile
   : sed -i '/:.* unit-tests/s,unit-tests,,g' Makefile
@@ -76,3 +78,5 @@ function cwconfigure_${rname}() {
   popd &>/dev/null
 }
 "
+
+# vim: set ft=bash:

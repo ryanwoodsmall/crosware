@@ -62,6 +62,7 @@
     - opkg
     - qemu
     - rust
+      - git will require rust in version 3.x+
     - scheme (also which?)
     - zig
 
@@ -113,6 +114,7 @@
     - curl - 8.17 dropped wolfssh support
     - curl - 8.18 needs openssl 3+
   - docker - add rootless-extras
+  - git - rust requirement in 3.x
   - glib - broken but installs anyway, ugh
     - needs upgrade, move to muon
     - or drop it, needed by tio (don't use) and opennc (obsolete)

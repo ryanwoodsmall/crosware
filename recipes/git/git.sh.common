@@ -29,7 +29,8 @@ function cwmake_${rname}() {
     CXXFLAGS=\"\${CXXFLAGS}\" \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
-    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+    NO_RUST=1
   popd &>/dev/null
 }
 "
@@ -44,7 +45,8 @@ function cwmakeinstall_${rname}() {
     CXXFLAGS=\"\${CXXFLAGS}\" \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
-    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+    NO_RUST=1
   cwmkdir \"\$(cwidir_${rname})/etc\"
   cwextract \"${rdlfile//${rname%libressl}-${rver}/${rname%libressl}-manpages-${rver}}\" \"\$(cwidir_${rname})/share/man\"
   ln -sf \"${rtdir}/current/bin/${rname%libressl}\" \"\$(cwidir_${rname})/bin/${rname%libressl}libressl\"
@@ -59,4 +61,4 @@ function cwgenprofd_${rname}() {
 }
 "
 
-# vim: ft=sh:
+# vim: ft=bash:

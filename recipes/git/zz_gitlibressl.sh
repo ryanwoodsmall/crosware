@@ -38,7 +38,8 @@ function cwconfigure_${rname}() {
         LDFLAGS=\"\$(echo -L${cwsw}/{libressl,zlib,nghttp2,expat,pcre2,curllibressl,libssh2libressl}/current/lib -static)\" \
         CPPFLAGS=\"\$(echo -I${cwsw}/{libressl,zlib,nghttp2,expat,pcre2,curllibressl,libssh2libressl}/current/include)\" \
         PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
-        LIBS='-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz -lexpat'
+        LIBS='-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz -lexpat' \
+        NO_RUST=1
   sed -i.ORIG 's/-lcurl/-lcurl -latomic -lnghttp2 -lssh2 -lssl -lcrypto -lz -lexpat/g' Makefile
   : sed -i '/:.* build-unit-tests/s,build-unit-tests,,g' Makefile
   : sed -i '/:.* unit-tests/s,unit-tests,,g' Makefile
@@ -59,7 +60,10 @@ function cwmake_${rname}() {
     CXXFLAGS=\"\${CXXFLAGS}\" \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
-    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
+    PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
+    NO_RUST=1
   popd &>/dev/null
 }
 "
+
+# vim: set ft=bash:
