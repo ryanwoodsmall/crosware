@@ -3,13 +3,12 @@
 # XXX - regular `make`/`make install` with proper vars works fine!
 # XXX - vim integration files???
 #
-
 rname="miller6"
-rver="6.19.0"
+rver="6.20.2"
 rdir="${rname%6}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/johnkerl/miller/archive/refs/tags/${rfile}"
-rsha256="032cd07d947986dfe9a97ed4f4ea5fb8bf354dce81229b58acad9e89e941a59e"
+rsha256="3fe628547293f1c70c70593961277e3e27940c4968a6115304251a0b494acd30"
 rreqs="bootstrapmake go"
 
 . "${cwrecipe}/common.sh"
