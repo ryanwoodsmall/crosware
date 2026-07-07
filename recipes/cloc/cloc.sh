@@ -1,9 +1,9 @@
 rname="cloc"
-rver="2.08"
+rver="2.10"
 rdir="${rname}-${rver}"
 rfile="${rdir}.pl"
 rurl="https://github.com/AlDanial/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="0a551a86c7785880bcaa0fdfe6107c064abfbebc7cc26b7eaeac423fe2c0d49e"
+rsha256="bf59272455172108072a0a106379f7509fd4349bdcfd85203bac038ccd286d83"
 rreqs="perl"
 
 . "${cwrecipe}/common.sh"
