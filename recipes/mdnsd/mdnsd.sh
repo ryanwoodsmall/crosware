@@ -1,16 +1,16 @@
 rname="mdnsd"
-rver="0.12"
+rver="1.0"
 rdir="${rname}-${rver}"
-rfile="${rdir}.tar.xz"
-rurl="https://github.com/troglobit/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="f20ea7fc559dcdb72cd5bcbc526dfac44f91e1554409d40108c53f290db69afe"
+rfile="${rdir}.tar.gz"
+rurl="https://github.com/troglobit/mdnsd/releases/download/v${rver}/${rfile}"
+rsha256="d44abbb60fd6677c34b7d80233fdb12e525995c807edcce5d1313cf92203ad08"
 rreqs="make slibtool"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" &>/dev/null
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rconfigureopts} ${rcommonopts} \
     --without-systemd \
       LDFLAGS=-static \
