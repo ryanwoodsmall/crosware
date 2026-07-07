@@ -1,9 +1,9 @@
 rname="editline"
-rver="2.0.0"
+rver="2.1.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/troglobit/editline/releases/download/${rver}/${rfile}"
-rsha256="81e38df4f3e6b6627ba71970ab300dc4aee2d404ac340fcff71016ae27149ecf"
+rsha256="189e179253c0932d15ce94f53e8cde7a0c38383f39f11f3b92d40cd18839678f"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -11,7 +11,7 @@ rreqs="bootstrapmake"
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} CPPFLAGS= LDFLAGS=-static
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} LDFLAGS=-static CPPFLAGS= PKG_CONFIG_{LIBDIR,PATH}=
   popd &>/dev/null
 }
 "
