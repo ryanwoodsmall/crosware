@@ -1,9 +1,9 @@
 rname="libffi"
-rver="3.6.0"
+rver="3.7.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/libffi/libffi/releases/download/v${rver}/${rfile}"
-rsha256="31ff1fe32deaebfbb388727f32677bb254bf2a41382c51464c0b1837c9ee9828"
+rsha256="2255c5a638dfb51bf67c20a12a7bb70d17feb1e9eababac05f5573146f586436"
 rreqs="make configgit"
 
 . "${cwrecipe}/common.sh"
