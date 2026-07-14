@@ -313,6 +313,7 @@ wc -l /tmp/astbuild.out
 - eris (https://github.com/nealey/eris - small web server)
 - ewd (https://github.com/chettrick/ewd - event watcher daemon)
 - faasd (https://github.com/openfaas/faasd - openfaas but smaller? needs runc, etc.)
+- fastfetch (https://github.com/fastfetch-cli/fastfetch - neofetch like?)
 - fcgiwrap (https://github.com/gnosek/fcgiwrap - standard cgi to fcgi socket wrapper, useful with nginx?)
 - felinks (https://github.com/rkd77/elinks - up-to-date fork of elinks)
 - ferretdb (https://github.com/FerretDB/FerretDB and https://www.ferretdb.com - mongodb-alike with postgresql/sqlite support, go)
