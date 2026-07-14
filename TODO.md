@@ -134,6 +134,7 @@
     - ... and 3.0/3.6/... don't work/just crash
   - netfilter - all bits need work, updates
   - nettle - 4
+  - njs - 1.0.0 deprecated old js engine, quickjs is suggested
   - nmap - broken on new versions/
   - openssl - upgrade default to latest lts
   - openvpn - 2.7.x needs mbedtls 3.2+... which just crashes
