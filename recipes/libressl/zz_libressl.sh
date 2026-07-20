@@ -7,7 +7,7 @@
 # XXX - need to figure out ${cwtop}/etc/libressl{,##} situation
 #
 rname="libressl"
-rsv="37"
+rsv="43"
 rlp="${rname}${rsv}"
 rver="$(cwver_${rlp})"
 rdir="$(cwdir_${rlp})"
@@ -35,3 +35,5 @@ function cwmakeinstall_${rname}() {
 
 unset rsv
 unset rlp
+
+# vim: set ft=bash:
