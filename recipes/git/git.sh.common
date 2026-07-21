@@ -1,6 +1,9 @@
-# XXX - should this fallback to dropbear?
 if ! command -v ssh &>/dev/null ; then
-  rreqs="${rreqs} openssh"
+  if [[ ${rname} =~ libressl ]] ; then
+    rreqs="${rreqs} dropbear"
+  else
+    rreqs="${rreqs} openssh"
+  fi
 fi
 
 . "${cwrecipe}/common.sh"
