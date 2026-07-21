@@ -8,11 +8,11 @@
 # XXX - shell configs?
 #
 rname="toybox"
-rver="0.8.13"
+rver="0.8.14"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/landley/toybox/archive/${rfile}"
-rsha256="fa84ca399c2a88c3d841db943052911355b817f8151cd6bfb9e0b12541e4828c"
+rsha256="082df8cfd76135ce3c4820c8cf4c0081d61491e0990aff2da48e21fc9bbb24d1"
 rreqs="bootstrapmake alpinemuslutils"
 
 . "${cwrecipe}/common.sh"
