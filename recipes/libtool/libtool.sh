@@ -1,9 +1,9 @@
 rname="libtool"
-rver="2.5.4"
+rver="2.6.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/libtool/${rfile}"
-rsha256="da8ebb2ce4dcf46b90098daf962cffa68f4b4f62ea60f798d0ef12929ede6adf"
+rsha256="24adb3aa9ae035c70faba344af57d73215eb89281045af6c7ccd307751f8b0bf"
 rreqs="make perl m4 autoconf automake gawk sed configgit"
 
 . "${cwrecipe}/common.sh"
