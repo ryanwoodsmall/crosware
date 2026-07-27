@@ -1,9 +1,9 @@
 rname="dash"
-rver="0.5.13.4"
+rver="0.5.13.5"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="http://gondor.apana.org.au/~herbert/${rname}/files/${rfile}"
-rsha256="d10dfd41cda59165560db39ca915c2c4a7636fff04281d8d2df77ad92c753e2b"
+rurl="http://gondor.apana.org.au/~herbert/dash/files/${rfile}"
+rsha256="40090101a2a491f13e901d3d48e90414f26634628b9bfff35ff540363c227a7d"
 rreqs="make netbsdcurses libeditnetbsdcurses byacc"
 
 . "${cwrecipe}/common.sh"
@@ -29,3 +29,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:
