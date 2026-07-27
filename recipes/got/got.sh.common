@@ -28,6 +28,8 @@ function cwconfigure_${rname}() {
       YACC=\"${cwsw}/byacc/current/bin/byacc\"
   find . -type f -name Makefile | xargs sed -i 's,-lbsd,-lbsd -lmd,g'
   find . -type f -name Makefile | xargs sed -i 's,-lpanelw,-lpanelw -lncursesw,g'
+  find . -type f -name Makefile | xargs sed -i 's,-lssl,-lssl -lcrypto,g'
+  find . -type f -name Makefile | xargs sed -i 's,-ltls,-ltls -lssl -lcrypto,g'
   popd &>/dev/null
 }
 "
