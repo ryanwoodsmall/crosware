@@ -1,9 +1,9 @@
 rname="stunnel"
-rver="5.79"
+rver="5.80"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/stunnel/${rfile}"
-rsha256="8ea0de6e5ea76f38ea987fa831c7fd47f7a1f1e7dd465fd6fa8622edf30d3a45"
+rsha256="6d0841d48de07cbbaf4a055919065bf7bb5ebc63cc15c97a2c76caa2bf285513"
 rreqs="make openssl zlib toybox perl"
 
 . "${cwrecipe}/common.sh"
@@ -18,7 +18,8 @@ function cwconfigure_${rname}() {
     --disable-libwrap \
     --disable-systemd \
     --with-ssl=\"${cwsw}/openssl/current\" \
-      LIBS='-lz'
+      LIBS='-lz' \
+      CC=\"\${CC} -DOPENSSL_THREADS\"
   find . -type f -name Makefile -exec sed -i 's/-fPIE/-fPIC/g' {} \;
   find . -type f -name Makefile -exec sed -i 's/-pie//g' {} \;
   popd &>/dev/null
