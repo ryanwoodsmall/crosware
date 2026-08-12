@@ -219,6 +219,7 @@ wc -l /tmp/astbuild.out
 - c-kermit (http://www.kermitproject.org/, and/or e-kermit...)
 - cataclysm: dark days ahead (https://github.com/CleverRaven/Cataclysm-DDA - fork of https://github.com/Whales/Cataclysm)
 - cawf (nroff workalike, https://github.com/ksherlock/cawf or https://github.com/0xffea/MINIX3/tree/master/commands/cawf or ???)
+- cbas (https://codeberg.org/gek/coders_basilisk - coder's basillisk, lang/compiler for a c-like language; can be used for syntax highlighting in nextvi)
 - cembed (https://github.com/rxi/cembed - embed files in a c header - useful for tinyscheme/minischeme library in single binary???)
 - cepl (https://github.com/alyptik/cepl)
 - certik (https://github.com/opencoff/certik - tls client/server pki tools in go, from the go-tunnel author)
