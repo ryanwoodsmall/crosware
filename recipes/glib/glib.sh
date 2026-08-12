@@ -1,5 +1,7 @@
 #
-# XXX - this is broken
+# XXX - this is broken, had to turn off "po" subdir
+# XXX - this BADLY needs an update
+# XXX - move to samurai+muon?
 #
 rname="glib"
 rver="2.58.3"
@@ -12,8 +14,17 @@ rreqs="gettexttiny libffi make perl pkgconfig python3 zlib autoconf automake lib
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  cat Makefile.am > Makefile.am.ORIG
+  sed -i '/^SUBDIRS.*=.* po .*/s, po , ,g' Makefile.am
+  popd &>/dev/null
+}
+"
+
+eval "
 function cwconfigure_${rname}() {
-  pushd "${rbdir}" &>/dev/null
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat > gtk-doc.make <<EOF
 EXTRA_DIST =
 CLEANFILES =
