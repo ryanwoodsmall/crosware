@@ -7,11 +7,11 @@
 # XXX - splits.c fails, not sure why
 #
 rname="nextvi"
-rver="6.1"
+rver="7.3"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/kyx0r/nextvi/archive/refs/tags/${rfile}"
-rsha256="d7efefb29f3dc55c3a246ff8c71b377dfbdac43a43bce2c77f9e02e6b7db8208"
+rsha256="0211704b11809b09cb737038a78b1fa637362a402da8f9e7879554496eb585de"
 rreqs="bootstrapmake muslstandalone"
 
 . "${cwrecipe}/common.sh"
@@ -27,6 +27,7 @@ function cwpatch_${rname}() {
     bash ./cbuild.sh
     mv vi nextvi.temp
     make clean
+    local ev=0
     local p
     for p in \
       arrowkeys_normal.sh \
@@ -37,18 +38,23 @@ function cwpatch_${rname}() {
       readonly.sh \
       alternate-w-behaviour.sh \
       ac_context.sh \
-      linewrap.sh \
+      linewrap_v1.sh \
       ex-scripting.sh \
       visual.sh \
       alt_sections.sh
     do
       cwscriptecho \"${rname}: applying patch \${p}\"
-      (
-        export VI=\"\$(cwbdir_${rname})/nextvi.temp\"
-        bash \"\${p}\"
-      )
+      export VI=\"\$(cwbdir_${rname})/nextvi.temp\"
+      bash \"\${p}\"
+      export ev=\"\${?}\"
+      cwscriptecho \"${rname}: patch exit code was \${ev}\"
+      test \"\${ev}\" -eq 0 || break
     done
+    if [[ \"\${ev}\" -ne 0 ]] ; then
+      cwfailexit \"failed with exit code \${ev}\"
+    fi
     unset p
+    unset ev
   )
   popd &>/dev/null
 }
