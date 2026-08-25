@@ -30,11 +30,11 @@
 # XXX - build with mage???
 #
 rname="ghostunnel"
-rver="1.11.0"
+rver="1.11.3"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
-rsha256="fd5757ca08f60f29bd0997dbf285f0a94a77e7e6d115467bea01027791e963b0"
+rsha256="3b7221a474d39cd56598a874d5d9b27b20ebb857c655899b5c6960ccfa3b6a30"
 rreqs="go cacertificates bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -46,6 +46,14 @@ function cwclean_${rname}() {
   pushd \"${cwbuild}\" &>/dev/null
   test -e \"\$(cwbdir_${rname})\" && chmod -R u+rw \"\$(cwbdir_${rname})/\" || true
   rm -rf \"\$(cwbdir_${rname})\"
+  popd &>/dev/null
+}
+"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  sed -i.ORIG '/^go 1/s,1.27.0,1.26.0,' go.mod
   popd &>/dev/null
 }
 "
