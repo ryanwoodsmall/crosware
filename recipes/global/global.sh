@@ -1,10 +1,10 @@
 rname="global"
-rver="6.6.15"
+rver="6.7"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="cf0937cb3ed521b2ab1acfa7aff45103040b860bb642c4c2f094ac3a3fe86024"
-rreqs="make ncurses sed"
+rsha256="fdab590c9bda2d68d55e99c51c7e60c2c8595ae4dcebab9bbbb0795f2a5c8bf7"
+rreqs="make ncurses sed slibtool"
 
 . "${cwrecipe}/common.sh"
 
@@ -12,7 +12,7 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG 's/-lcurses/-lncurses/g;s/makeinfo/true/g' configure
-  ./configure ${cwconfigureprefix} ${cwconfigurelibopts}
+  ./configure ${cwconfigureprefix} ${cwconfigurelibopts} ${rlibtool}
   sed -i.ORIG s,-shared,,g plugin-factory/Makefile
   popd &>/dev/null
 }
