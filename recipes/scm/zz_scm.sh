@@ -3,6 +3,7 @@
 # XXX - posix/editline/lib/dump/regex/socket/... options?
 # XXX - editline could replace readline? not sure
 # XXX - build script generator? http://people.csail.mit.edu/jaffer/buildscm.html
+# XXX - jacal: https://people.csail.mit.edu/jaffer/JACAL.html
 #
 # more detailed installation in docs:
 # - https://people.csail.mit.edu/jaffer/scm/Installing-SCM.html#Installing-SCM
@@ -15,12 +16,12 @@
 #     - https://people.csail.mit.edu/jaffer/scm/Compiling-and-Linking-Custom-Files.html#Compiling-and-Linking-Custom-Files
 #
 rname="scm"
-rver="5f4-$(cwver_slib)"
+rver="5f5-$(cwver_slib)"
 rbdir="${cwbuild}/${rname}"
 rdir="${rname}-${rver}"
 rfile="${rname}-${rver%-*}.zip"
-rurl="http://groups.csail.mit.edu/mac/ftpdir/${rname}/${rfile}"
-rsha256="d3426dff809d80b49bf2e9f7f3bab21183ef920323fc53f5ac58310137d4269e"
+rurl="http://groups.csail.mit.edu/mac/ftpdir/scm/${rfile}"
+rsha256="60d7abe8aa67d610e3b3ae8d00895541fffd484ec2b19db20224148adbfda6fa"
 rreqs="make texinfo readline ncurses slib"
 
 if ! command -v rsync &>/dev/null ; then
@@ -28,6 +29,8 @@ if ! command -v rsync &>/dev/null ; then
 fi
 
 . "${cwrecipe}/common.sh"
+
+cwprependfunc cwinstall_${rname} 'if [[ ! "${karch}" == x86_64 ]] ; then cwfailexit "scm supported on x86_64 for now" ; fi'
 
 eval "
 function cwclean_${rname}() {
