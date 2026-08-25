@@ -1,9 +1,9 @@
 rname="libconfuse"
-rver="3.3"
+rver="3.4"
 rdir="${rname#lib}-${rver}"
-rfile="${rdir}.tar.xz"
+rfile="${rdir}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="1dd50a0320e135a55025b23fcdbb3f0a81913b6d0b0a9df8cc2fdf3b3dc67010"
+rsha256="d98a793f4cafc1b3c18e2509ba54f6cb9ac6291b181bcda152dc987cb78f43ec"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
