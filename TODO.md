@@ -124,23 +124,30 @@
     - probably need lib and compiler upgrades too...
   - gnutls - needs upgrade, with nettle, gmp, ...
   - habitat - 2, but, no? maybe just remove it? probably yes
+  - libcapng - autotools necessary for 0.9.x
   - libgcrypt - openssl 3, gnutls coexistence?
   - libressl - upgrade default to latest
+    - ferret out packages that rely on old versions and pin
   - libsodium - 1.0.21 breaks on (at least) aarch64; check others
   - libxml2 - needs uprading, plus openssl-coexistence?
+  - libxslt - needs uprading? plus openssl-coexistence?
+  - lmdb - 0.96.x and 1.x.x verions + virtual recipe
   - mbedtls - 3.x default
     - mbedtls3 - latest lts, actually working?
     - newer curls need 3.2+
     - ... and 3.0/3.6/... don't work/just crash
   - netfilter - all bits need work, updates
   - nettle - 4
+  - nginx - fix with libressl 3.9+
   - njs - 1.0.0 deprecated old js engine, quickjs is suggested
   - nmap - broken on new versions/
   - openssl - upgrade default to latest lts
+    - fix `-DOPENSSL_THREADS` in one place so it doesn't proliferate
   - openvpn - 2.7.x needs mbedtls 3.2+... which just crashes
   - opkg - 0.10.x; 0.9.x moved to cmake, need sdk
   - perl - 5.x badly in need of upgrade, now kinda _requires_ shared
   - pkgconf - 2.9.x broke muon?
+    - 3.0.x+ needs ninja/samurai + meson/muon
   - python - 3.x same as perl, this'll break sometime
   - wolfssl - autoconf wolfssl, wolfssh, wolfmqtt
 
