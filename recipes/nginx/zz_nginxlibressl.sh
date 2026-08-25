@@ -1,11 +1,15 @@
+#
+# XXX - gcrypt breaks with libressl 3.8+; stick to 3.7 for now
+#
 rname="nginxlibressl"
+rlibresslver="37"
 rver="$(cwver_nginx)"
 rdir="$(cwdir_nginx)"
 rfile="$(cwfile_nginx)"
 rdlfile="$(cwdlfile_nginx)"
 rurl="$(cwurl_nginx)"
 rsha256="$(cwsha256_nginx)"
-rreqs="make slibtool libressl libgpgerror libgcrypt libxml2 libxslt zlib xz pkgconfig"
+rreqs="make slibtool libressl${rlibresslver} libgpgerror libgcrypt libxml2 libxslt zlib xz pkgconfig"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 
 . "${cwrecipe}/common.sh"
@@ -18,9 +22,9 @@ unset f
 eval "
 function cwinstall_${rname}_libressl() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  cwmkdir \"\$(cwdir_libressl)\"
-  cd \"\$(cwdir_libressl)\"
-  ln -sf \"${cwsw}/libressl/current\" .openssl
+  cwmkdir \"\$(cwdir_libressl${rlibresslver})\"
+  cd \"\$(cwdir_libressl${rlibresslver})\"
+  ln -sf \"${cwsw}/libressl${rlibresslver}/current\" .openssl
   echo | tee config Makefile
   chmod 755 config
   echo all: >> Makefile
@@ -40,7 +44,7 @@ function cwconfigure_${rname}() {
     --with-cc=\"\$(which \${CC})\" \
     --with-cc-opt=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include) \$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -fPIC -Wl,-static -g0 -Os -Wl,-s\" \
     --with-ld-opt=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
-    --with-openssl=\"\$(cwbdir_${rname})/\$(cwdir_libressl)\" \
+    --with-openssl=\"\$(cwbdir_${rname})/\$(cwdir_libressl${rlibresslver})\" \
     --with-pcre=\"\$(cwbdir_${rname})/\$(cwdir_pcre2)\" \
     --with-zlib=\"\$(cwbdir_${rname})/\$(cwdir_zlib)\" \
     --with-compat \
@@ -96,3 +100,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/sbin\"' >> \"${rprof}\"
 }
 "
+
+unset rlibresslver
