@@ -1,10 +1,10 @@
-rver="17.66.19-ca-jdk17.0.19"
+rver="17.68.203-ca-jdk17.0.20.1"
 mver="${rver%%.*}"
 rname="zulu${mver}musl"
-rsha256="a9cf70d7d2c70fbf424e68326f8963bbbdef14069f5435ded54552d6efe6ed76"
+rsha256="7512b062d1ca3e43eec9fa8c83bbd525c93fa6ab618ee7f391931847a7619705"
 if [[ ${karch} =~ aarch64 ]] ; then
   rdir="zulu${rver}-linux_musl_aarch64"
-  rsha256="2f740bbca0fb27017859a5e66d74540b517ac7a6b78b1c5de143c82bc6b64309"
+  rsha256="d6c73e707810169099fb793e87341f829603e2063569f2ab2fbf73302f0c1bc1"
 fi
 
 . "${cwrecipe}/${rname%${mver}musl}/${rname//${mver}musl/musl}.sh.common"
