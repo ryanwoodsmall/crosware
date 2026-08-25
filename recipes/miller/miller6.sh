@@ -4,11 +4,11 @@
 # XXX - vim integration files???
 #
 rname="miller6"
-rver="6.20.2"
+rver="6.21.0"
 rdir="${rname%6}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/johnkerl/miller/archive/refs/tags/${rfile}"
-rsha256="3fe628547293f1c70c70593961277e3e27940c4968a6115304251a0b494acd30"
+rsha256="f92366ed67ffdbc75e8daf99a5087bcaa786c50f7c0eec08a8846e14fe7b2e5d"
 rreqs="bootstrapmake go"
 
 . "${cwrecipe}/common.sh"
