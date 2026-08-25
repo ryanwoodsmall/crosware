@@ -3,7 +3,6 @@
 # XXX - posix/editline/lib/dump/regex/socket/... options?
 # XXX - editline could replace readline? not sure
 # XXX - build script generator? http://people.csail.mit.edu/jaffer/buildscm.html
-# XXX - jacal: https://people.csail.mit.edu/jaffer/JACAL.html
 #
 # more detailed installation in docs:
 # - https://people.csail.mit.edu/jaffer/scm/Installing-SCM.html#Installing-SCM
@@ -16,13 +15,13 @@
 #     - https://people.csail.mit.edu/jaffer/scm/Compiling-and-Linking-Custom-Files.html#Compiling-and-Linking-Custom-Files
 #
 rname="scm"
-rver="5f5-$(cwver_slib)"
+rver="5f5-$(cwver_slib)-$(cwver_jacal)"
 rbdir="${cwbuild}/${rname}"
 rdir="${rname}-${rver}"
-rfile="${rname}-${rver%-*}.zip"
+rfile="${rname}-${rver%%-*}.zip"
 rurl="http://groups.csail.mit.edu/mac/ftpdir/scm/${rfile}"
 rsha256="60d7abe8aa67d610e3b3ae8d00895541fffd484ec2b19db20224148adbfda6fa"
-rreqs="make texinfo readline ncurses slib"
+rreqs="make texinfo readline ncurses slib jacal"
 
 if ! command -v rsync &>/dev/null ; then
   rreqs+=" rsyncminimal"
@@ -37,6 +36,7 @@ function cwclean_${rname}() {
   pushd \"${cwbuild}\" &>/dev/null
   rm -rf \"${rname}\"
   rm -rf \"slib\"
+  rm -rf \"jacal\"
   popd &>/dev/null
 }
 "
@@ -45,6 +45,7 @@ eval "
 function cwextract_${rname}() {
   cwextract \"\$(cwdlfile_${rname})\" \"${cwbuild}\"
   cwextract_slib
+  cwextract_jacal
 }
 "
 
@@ -110,11 +111,18 @@ function cwmakeinstall_${rname}() {
     pushd \"\$(cwbdir_${rname})\" &>/dev/null
     make install
     popd &>/dev/null
+    pushd \"${cwbuild}/jacal\" &>/dev/null
+    export PATH=\"${rbdir}:\$(cwidir_${rname})/bin:\${PATH}\"
+    bash ./configure ${cwconfigureprefix}
+    make install
+    popd &>/dev/null
+    pushd \"\$(cwbdir_${rname})\" &>/dev/null
     local initfile=\"\$(cwidir_${rname})/lib/scm/Init\$(cwver_${rname} | cut -f1 -d-).scm\"
     cat \${initfile} > \${initfile}.ORIG
     echo '(load \"/usr/local/crosware/software/scm/current/lib/scm/edline.so\")' >> \${initfile}
     echo '(load \"/usr/local/crosware/software/scm/current/lib/scm/Iedline.scm\")' >> \${initfile}
     unset initfile
+    popd &>/dev/null
   )
 }
 "
