@@ -30,8 +30,8 @@ function cwconfigure_${rname}() {
     --with-ensurepip=install \
     --with-dbmliborder=gdbm:bdb \
     --with-system-{expat,ffi} \
-      CFLAGS='-fPIC' \
-      CXXFLAGS='-fPIC' \
+      CFLAGS='-fPIC -DOPENSSL_THREADS' \
+      CXXFLAGS='-fPIC -DOPENSSL_THREADS' \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -I${cwsw}/ncurses/current/include/ncurses{,w} -I${cwsw}/e2fsprogs/current/include/uuid)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
@@ -56,8 +56,8 @@ eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} \
-    CFLAGS='-fPIC' \
-    CXXFLAGS'=-fPIC' \
+    CFLAGS='-fPIC -DOPENSSL_THREADS' \
+    CXXFLAGS'=-fPIC -DOPENSSL_THREADS' \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -I${cwsw}/ncurses/current/include/ncurses{,w} -I${cwsw}/e2fsprogs/current/include/uuid)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"
@@ -69,8 +69,8 @@ eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install \
-    CFLAGS='-fPIC' \
-    CXXFLAGS='-fPIC' \
+    CFLAGS='-fPIC -DOPENSSL_THREADS' \
+    CXXFLAGS='-fPIC -DOPENSSL_THREADS' \
     CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include -I${cwsw}/ncurses/current/include/ncurses{,w} -I${cwsw}/e2fsprogs/current/include/uuid)\" \
     LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib)\" \
     PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\"

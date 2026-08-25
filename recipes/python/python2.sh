@@ -28,7 +28,7 @@ function cwconfigure_${rname}() {
   ./configure ${cwconfigureprefix} ${cwconfigurelibopts} \
     --with-ensurepip=install \
     --with-dbmliborder=gdbm:bdb \
-    LDFLAGS=\"\${LDFLAGS//-static/}\" CPPFLAGS=\"\${CPPFLAGS}\" CFLAGS='-fPIC' CXXFLAGS='-fPIC'
+    LDFLAGS=\"\${LDFLAGS//-static/}\" CPPFLAGS=\"\${CPPFLAGS}\" CFLAGS='-fPIC -DOPENSSL_THREADS' CXXFLAGS='-fPIC -DOPENSSL_THREADS'
   echo >> Modules/Setup.local
   echo 'readline readline.c -lreadline -lncurses' >> Modules/Setup.local
   echo '_ssl _ssl.c -DUSE_SSL -lssl -lcrypto -lz' >> Modules/Setup.local
