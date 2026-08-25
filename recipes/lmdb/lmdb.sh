@@ -1,3 +1,7 @@
+#
+# XXX - 0.96.x and 1.x db formats are incompatible
+# XXX - need lmdb0 and lmdb1 with a virtual lmdb
+#
 rname="lmdb"
 rver="1.0.1"
 rdir="${rname}-LMDB_${rver}"
