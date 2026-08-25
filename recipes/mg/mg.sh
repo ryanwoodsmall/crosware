@@ -1,25 +1,22 @@
-#
-# XXX - ncurses variant
-#
-
 rname="mg"
-rver="3.7"
+rver="4.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
-rurl="https://github.com/troglobit/${rname}/releases/download/v${rver}/${rfile}"
-rsha256="05101360d2194392da0950e8b6f18d067d8af0fd2f572461ba4d4e7b4ccbb4c1"
-rreqs="make netbsdcurses"
+rurl="https://github.com/troglobit/mg/releases/download/v${rver}/${rfile}"
+rsha256="7040117fc8177b73038027fc59e62012c77842e4ef40ab07e57f7b69832446e2"
+rreqs="make ncurses"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
-    CPPFLAGS=\"-I${cwsw}/netbsdcurses/current/include\" \
-    LDFLAGS=\"-L${cwsw}/netbsdcurses/current/lib -static\" \
-    LIBS=\"-lcurses -lterminfo -static\" \
-    PKG_CONFIG_LIBDIR= PKG_CONFIG_PATH=
+  env PATH=\"${cwsw}/ncurses/current/bin:\${PATH}\" \
+    ./configure ${cwconfigureprefix} ${rconfigureopts} ${rcommonopts} \
+      CPPFLAGS=\"-I${cwsw}/ncurses/current/include\" \
+      LDFLAGS=\"-L${cwsw}/ncurses/current/lib -static\" \
+      PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/ncurses/current/lib/pkgconfig\" \
+      LIBS=-static
   popd &>/dev/null
 }
 "
