@@ -826,6 +826,7 @@ wc -l /tmp/astbuild.out
   - luajit (https://luajit.org/)
   - luau (https://github.com/Roblox/luau - lua 5.1 compatible)
   - terra (https://github.com/zdevito/terra and http://terralang.org/)
+- lumsql (https://lumosql.org/src/lumosql/doc/trunk/README.md and https://codeberg.org/LumoSQL/lumosql - sqlite on lmdb)
 - mage (https://magefile.org and https://github.com/magefile/mage - make/rake like in go)
 - maildev (https://github.com/maildev/maildev - node.js test mail server, like mailhog)
 - mailhog (https://github.com/mailhog/MailHog - unmaintained! web/api smtp testing/capture, go)
