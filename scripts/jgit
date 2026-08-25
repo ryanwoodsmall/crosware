@@ -6,7 +6,8 @@ set -eu
 
 : ${cwtop:="/usr/local/crosware"}
 : ${cwsw:="${cwtop}/software"}
-: ${jgitsh:="${cwsw}/jgitsh/current/bin/jgitsh"}
+#: ${jgitsh:="${cwsw}/jgitsh/current/bin/jgitsh"}
+: ${jgitsh:="jgitsh"}
 : ${origin:="origin"}
 : ${branch:="master"}
 
