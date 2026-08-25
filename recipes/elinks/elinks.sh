@@ -13,16 +13,17 @@
 # XXX - no more pregenerated autotools
 # XXX - move this to meson (muon!): https://github.com/rkd77/elinks/issues/335
 #
-
+#
 # XXX - small, libressl+zlib for now
 # XXX again, now requires autotools...
+#
 rp="minimal"
 rname="elinks"
-rver="0.19.1"
+rver="0.20.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.xz"
 rurl="https://github.com/rkd77/elinks/releases/download/v${rver}/${rfile}"
-rsha256="31960cd471246692b84008bffec89182f25818472f86ee1a41a09bf0dad09eeb"
+rsha256="75af7ba88af99ff5069ec7b4b7a3241d5920f4089764c7297cff3c8484a9e33f"
 rreqs="elinks${rp}"
 
 . "${cwrecipe}/common.sh"
