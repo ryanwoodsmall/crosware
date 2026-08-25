@@ -1,9 +1,9 @@
 rname="jfrogcli"
-rver="2.113.0"
+rver="2.121.0"
 rdir="jfrog-cli-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/jfrog/jfrog-cli/archive/refs/tags/${rfile}"
-rsha256="05dcf32f56f4541338fd94722e88ec5017b9163e7cd207112c715bcdf60ad644"
+rsha256="c646dae6af75c185ad7fff479705cf7a48f658ce9b06b4a28c72015870b45a5d"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
@@ -15,6 +15,14 @@ function cwclean_${rname}() {
   pushd \"${cwbuild}\" &>/dev/null
   chmod -R u+rw \"\$(cwdir_${rname})\" &>/dev/null || true
   rm -rf \"${rbdir}\"
+  popd &>/dev/null
+}
+"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  sed -i.ORIG '/^go 1/s,.*,go 1.26.0,' go.mod
   popd &>/dev/null
 }
 "
