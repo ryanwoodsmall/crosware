@@ -1,9 +1,9 @@
 rname="gh"
-rver="2.96.0"
+rver="2.98.0"
 rdir="cli-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/cli/cli/archive/refs/tags/${rfile}"
-rsha256="8d80d0aeccea7bec8024f8c30365bbfa76852901f2b2cb0afb7ab2cbf6d317c2"
+rsha256="abada9e8b550547ac93f99250f3ad4d90ad623fa245cb54cb058f78030a6a5f6"
 rreqs="go bootstrapmake"
 
 if ! command -v git &>/dev/null ; then
@@ -29,6 +29,7 @@ eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   sed -i.ORIG \"s,/usr/local,\$(cwidir_${rname}),g\" Makefile
+  sed -i.ORIG '/^toolchain /d' go.mod
   popd &>/dev/null
 }
 "
