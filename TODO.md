@@ -131,6 +131,7 @@
   - libsodium - 1.0.21 breaks on (at least) aarch64; check others
   - libxml2 - needs uprading, plus openssl-coexistence?
   - libxslt - needs uprading? plus openssl-coexistence?
+  - libxo - 2.x.x is all fucked up, needs gettext? breaks with missing refs to `xo_filt_dump`
   - lmdb - 0.96.x and 1.x.x verions + virtual recipe
   - mbedtls - 3.x default
     - mbedtls3 - latest lts, actually working?
