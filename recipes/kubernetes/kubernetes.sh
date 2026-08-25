@@ -9,7 +9,7 @@
 #   https://github.com/kubernetes/community/blob/master/contributors/devel/development.md
 #
 rname="kubernetes"
-rver="1.36.2"
+rver="1.36.3"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
@@ -85,3 +85,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' > "${rprof}"
 }
 "
+
+# vim: set ft=bash:
