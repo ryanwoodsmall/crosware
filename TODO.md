@@ -136,6 +136,7 @@
     - mbedtls3 - latest lts, actually working?
     - newer curls need 3.2+
     - ... and 3.0/3.6/... don't work/just crash
+  - meson - 1.12.x needs python 3.10+
   - netfilter - all bits need work, updates
   - nettle - 4
   - nginx - fix with libressl 3.9+
