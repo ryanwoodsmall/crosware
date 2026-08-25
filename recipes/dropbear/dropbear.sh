@@ -29,15 +29,15 @@
 # XXX - dropbear 2026.91 does not use reallocarry
 #
 rname="dropbear"
-rsver="2026.93"
-rdate="20260825153401"
+rsver="2026.94"
+rdate="20260825154139"
 rver="${rsver}-${rdate}"
 rdir="${rname}-${rsver}"
 rfile="${rdir}.tar.bz2"
 #rurl="https://matt.ucc.asn.au/dropbear/releases/${rfile}"
 #rurl="https://dropbear.nl/mirror/releases/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/dropbear/${rfile}"
-rsha256="310a6087952897c182efbe16088fa0c4d07c467e850a22699472137278fabf09"
+rsha256="e098034a843699200c8c977a991fff73159735bf795d5f72ef672c41a6b1ae81"
 # need a patch program, try toybox
 rreqs="make toybox zlib configgit lshsftpserver"
 
