@@ -1,9 +1,9 @@
 rname="libpsl"
-rver="0.23.2"
+rver="0.23.3"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/rockdaboot/libpsl/releases/download/${rver}/${rfile}"
-rsha256="f2ea0e59bffb36597a872f6ef89893ffa4c30196c87eff7aeb2c47e4e8c98133"
+rsha256="93941f85a1e7bd593fa94f299233cb5dfc91cd144fd9a78a6ceb75001c5b03be"
 rreqs="make libidn2 libunistring python3"
 
 . "${cwrecipe}/common.sh"
