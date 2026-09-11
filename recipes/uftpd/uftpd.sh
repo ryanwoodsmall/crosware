@@ -1,9 +1,9 @@
 rname="uftpd"
-rver="2.16"
+rver="2.17"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/troglobit/uftpd/releases/download/v${rver}/${rfile}"
-rsha256="98b6474909e82f49920e208acdaae4be5241c01cb55084bca5928b70e173b389"
+rsha256="e5c7701a3b344d3d31849369f1b9549903e71644540cfb012e3637b3c1a3302f"
 rreqs="bootstrapmake libuev libite pkgconf"
 
 . "${cwrecipe}/common.sh"
