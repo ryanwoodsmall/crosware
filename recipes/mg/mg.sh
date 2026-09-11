@@ -1,9 +1,9 @@
 rname="mg"
-rver="4.0"
+rver="4.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/troglobit/mg/releases/download/v${rver}/${rfile}"
-rsha256="7040117fc8177b73038027fc59e62012c77842e4ef40ab07e57f7b69832446e2"
+rsha256="6b33adb70d59d1449b40343be1162201576026242470dbf76985aefad5d4b0ee"
 rreqs="make ncurses"
 
 . "${cwrecipe}/common.sh"
