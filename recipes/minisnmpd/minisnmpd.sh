@@ -2,11 +2,11 @@
 # XXX - ethtool support? no idea if it works
 #
 rname="minisnmpd"
-rver="2.0"
+rver="2.1"
 rdir="${rname//is/i-s}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/troglobit/mini-snmpd/releases/download/v${rver}/${rfile}"
-rsha256="851acf49a1a36356664af0a7a040fa31f75403eb26e03627eba188ee15d4854c"
+rsha256="2f9936e4c62d1469a13e43611001b6ac36901ddb9809e3c7cb2297830615a6a1"
 rreqs="make pkgconf libconfuse ethtool"
 
 . "${cwrecipe}/common.sh"
