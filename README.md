@@ -597,6 +597,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
     - go124 recipe with golang 1.24.x static binaries for all supported architectures
     - go125 recipe with golang 1.25.x static binaries for all supported architectures
     - go126 recipe with golang 1.26.x static binaries for all supported architectures
+    - go127 recipe with golang 1.27.x static binaries for all supported architectures
   - static binary archive
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
 - go9p (https://github.com/knusbaum/go9p - 9p in go)
