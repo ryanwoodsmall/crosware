@@ -4,14 +4,17 @@
 #    in function `itoalen':
 #  patch2vi.c:(.text+0x3e): undefined reference to `itoa'
 #
-# XXX - splits.c fails, not sure why
+# XXX - splits.sh fails, not sure why
+# XXX - linewrap_v2.sh fails, ???
+# XXX - tab_complete.sh fails, led.c:904:3: error: duplicate case value : 904 |   case TK_CTL('_'): /* list the matches on their own screen */
+# XXX - lsp.sh fails
 #
 rname="nextvi"
-rver="7.4"
+rver="7.5"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/kyx0r/nextvi/archive/refs/tags/${rfile}"
-rsha256="f1cff340d1f294feef792edb26133dea4f9cf2f42302ec97eefc2fba3f7c1332"
+rsha256="e21564d2bf54632f23935c8bb3b0ee47e3fe5abd9a4b2f8258f71a1b69d33fdb"
 rreqs="bootstrapmake muslstandalone"
 
 . "${cwrecipe}/common.sh"
@@ -32,6 +35,7 @@ function cwpatch_${rname}() {
     for p in \
       arrowkeys_normal.sh \
       arrowkeys_insert.sh \
+      incsearch.sh \
       stdin_pipe.sh \
       filetype_shebang.sh \
       c_option.sh \
