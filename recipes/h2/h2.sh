@@ -7,13 +7,17 @@
 #  jdbc:postgresql://localhost:5435/~/tmppg;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
 #
 rname="h2"
-rver="2.4.240"
-rdir="${rname}-${rver}"
+rbver="2.5.250"
+rdate="2026-08-29"
+rver="${rbver}-${rdate}"
+rdir="${rname}-${rbver}"
 rbdir="${cwbuild}/${rname}"
-rfile="${rname}-2025-09-22.zip"
-rurl="https://github.com/h2database/h2database/releases/download/version-${rver}/${rfile}"
-rsha256="154d7aac3c33cae3dc361ad0c5296040be08ed0508acde6560c03842088d147e"
+rfile="${rname}-${rdate}.zip"
+rurl="https://github.com/h2database/h2database/releases/download/version-${rbver}/${rfile}"
+rsha256="732af485bc9719a31102a9880d44001241061ae1fcbc4bfd4550055220023280"
 rreqs=""
+
+unset rbver rdate
 
 . "${cwrecipe}/common.sh"
 
@@ -52,7 +56,7 @@ function cwmakeinstall_${rname}() {
   tar -cf - . | ( cd \"\$(cwidir_${rname})\" ; tar -xf - )
   rm -rf \"\$(cwidir_${rname})/jar\"
   cwmkdir \"\$(cwidir_${rname})/jar\"
-  ln -sf \"${rtdir}/current/bin/${rname}-\$(cwver_${rname}).jar\" \"\$(cwidir_${rname})/jar/${rname}.jar\"
+  ln -sf \"${rtdir}/current/bin/${rname}-\$(cwver_${rname} | cut -f1 -d-).jar\" \"\$(cwidir_${rname})/jar/${rname}.jar\"
   ln -sf \"${rtdir}/current/service/wrapper.jar\" \"\$(cwidir_${rname})/jar/wrapper.jar\"
   echo -n | tee \"\${h2server}\" \"\${h2shell}\" &>/dev/null
   echo '#!/usr/bin/env bash' | tee -a \"\${h2server}\" \"\${h2shell}\" &>/dev/null
