@@ -1,5 +1,5 @@
 rname="tea"
-rver="0.14.2"
+rver="0.16.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://gitea.com.fake.url/gitea/tea/${rfile}"
