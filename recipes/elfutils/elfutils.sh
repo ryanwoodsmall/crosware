@@ -4,14 +4,16 @@
 # XXX - something changed with 0.195 (or zlib), zlib is now giving crc32 conflicts
 #
 rname="elfutils"
-rver="0.195"
+rver="0.196"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://sourceware.org/elfutils/ftp/${rver}/${rfile}"
-rsha256="37629fdf7f1f3dc2818e138fca2b8094177d6c2d0f701d3bb650a561218dc026"
+rsha256="fd5cc6b77ad6773cac93cb3f415f9318ac3b3455eecf801f6b4a742c4f6c7209"
 rreqs="bootstrapmake zlib libuargp muslfts muslobstack otools pkgconf"
 
 . "${cwrecipe}/common.sh"
+
+cwprependfunc cwinstall_${rname} 'if [[ ! "${karch}" == x86_64 ]] ; then cwfailexit "elfutils supported on x86_64 for now" ; fi'
 
 eval "
 function cwpatch_${rname}() {
