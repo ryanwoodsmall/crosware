@@ -1159,5 +1159,5 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - zulu17glibc - java 17
 
 <!--
-# vim: ft=markdown
+# vim: set ft=markdown:
 -->
