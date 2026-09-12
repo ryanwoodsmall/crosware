@@ -623,8 +623,6 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - does _not_ work on arm/i686 (gc)
   - guile2 recipe as well, with same caveats
 - h2 (http://www.h2database.com/ and https://github.com/h2database/h2database - java embedded/client-server db with postgres compat mode)
-- habitat (https://community.chef.io/tools/chef-habitat)
-  - single static `hab` binary
 - haproxy (http://www.haproxy.org/ - openssl+pcre+zlib)
   - haproxylibressl (libressl+pcre+zlib)
 - hboetesmg (https://github.com/hboetes/mg - micro gnuemacs, libbsd+netbsdcurses)
@@ -1151,6 +1149,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - (old) ksh93 (https://github.com/att/ast/ via at&t ast)
   - actually ksh2020
   - dormant
+- habitat (https://community.chef.io/tools/chef-habitat)
+  - nope
 - libmetalink (https://github.com/metalink-dev/libmetalink)
   - supported only in wget, which tries to bring in gpgme and its assorted deps; easier to remove for now
 - zulu - glibc-based zulu openjdk builds that i'm no longer maintaining
