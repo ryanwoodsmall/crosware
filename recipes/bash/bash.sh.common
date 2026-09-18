@@ -35,4 +35,4 @@ function cwgenprofd_${rname}() {
 }
 "
 
-# vim: ft=sh
+# vim: ft=bash:

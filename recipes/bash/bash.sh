@@ -2,7 +2,7 @@
 # XXX - version history, not sure where else to link this: https://mywiki.wooledge.org/BashFAQ/061
 #
 rname="bash"
-rver="5.3.15"
+rver="5.3.20"
 rmaj="${rver%%.*}"
 rmin="${rver#${rmaj}.}"
 rmin="${rmin%%.*}"
@@ -17,11 +17,9 @@ unset rmaj rmin
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
 
-# XXX - ugh, lib/sh/strtoimax.c - broken on alpine too
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  echo > lib/sh/strtoimax.c
   make -j${cwmakejobs} ${rlibtool}
   popd &>/dev/null
 }
