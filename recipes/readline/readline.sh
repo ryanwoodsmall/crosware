@@ -1,5 +1,5 @@
 rname="readline"
-rver="8.3.3"
+rver="8.3.6"
 rmaj="${rver%%.*}"
 rmin="${rver#${rmaj}.}"
 rmin="${rmin%%.*}"
@@ -30,3 +30,5 @@ function cwgenprofd_${rname}() {
   echo 'append_cppflags \"-I${rtdir}/current/include/${rname}\"' >> \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:
