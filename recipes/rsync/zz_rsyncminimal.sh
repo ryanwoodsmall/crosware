@@ -18,18 +18,19 @@ eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   ./configure ${cwconfigureprefix} \
-    --with-included-popt \
-    --with-included-zlib \
-    --enable-ipv6 \
     --disable-acl-support \
+    --disable-idn \
+    --disable-lz4 \
     --disable-md5-asm \
+    --disable-openssl \
     --disable-roll-asm \
     --disable-roll-simd \
-    --disable-lz4 \
-    --disable-openssl \
     --disable-xattr-support \
     --disable-xxhash \
     --disable-zstd \
+    --enable-ipv6 \
+    --with-included-popt \
+    --with-included-zlib \
       CFLAGS=\"\${CFLAGS} -DINET6 -Os -g0 -Wl,-s\" \
       LDFLAGS=\"-static -s\" \
       SED=\"${cwsw}/toybox/current/bin/sed\" \
