@@ -1,9 +1,9 @@
 rname="xxhash"
-rver="0.8.3"
+rver="0.8.4"
 rdir="${rname/h/H}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/Cyan4973/${rname}/archive/${rfile}"
-rsha256="aae608dfe8213dfd05d909a57718ef82f30722c392344583d3f39050c7f29a80"
+rsha256="5738270935e7c3d38a79b3adf7c9692566ce7895a25f67de43ad52ab504acd32"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
@@ -45,3 +45,5 @@ function cwgenprofd_${rname}() {
   echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:
