@@ -1,5 +1,5 @@
 rname="k0sctl"
-rver="0.33.0"
+rver="0.33.1"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
@@ -12,6 +12,8 @@ elif [[ ${karch} =~ ^arm ]] ; then
   rfile="${rbfile}-arm"
 elif [[ ${karch} =~ ^aarch64 ]] ; then
   rfile="${rbfile}-arm64"
+elif [[ ${karch} =~ ^riscv64 ]] ; then
+  rfile="${rbfile}-riscv64"
 fi
 rurl="${rburl}/${rfile}"
 unset rbfile
@@ -23,7 +25,7 @@ cwstubfunc "cwextract_${rname}"
 cwstubfunc "cwconfigure_${rname}"
 cwstubfunc "cwmake_${rname}"
 
-cwprependfunc cwinstall 'if [[ ${karch} =~ ^(i.86|riscv64) ]] ; then cwscriptecho "'${rname}' not supported on ${karch}" ; return ; fi'
+cwprependfunc cwinstall 'if [[ ${karch} =~ ^i.86 ]] ; then cwscriptecho "'${rname}' not supported on ${karch}" ; return ; fi'
 
 eval "
 function cwfetch_${rname}() {
