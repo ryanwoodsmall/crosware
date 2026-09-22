@@ -1,9 +1,9 @@
 rname="doctl"
-rver="1.168.0"
+rver="1.171.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/digitalocean/doctl/archive/refs/tags/${rfile}"
-rsha256="a5c7c045d7f14a8f4e7249e07a5302520f5b3130137360047dd7964246527905"
+rsha256="8dc3a8d33a63225fc59642c0c5debe9c8c1b90899446f7512e7c79ced761076d"
 
 rreqs="go"
 
