@@ -1,9 +1,9 @@
 rname="goawk"
-rver="1.31.0"
+rver="1.32.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/benhoyt/goawk/archive/refs/tags/${rfile}"
-rsha256="2df274d8680a9405646b0729b6465b8952f795f118358cf8a25fe1526cbd0909"
+rsha256="5425248c199bf506987af0deff9109bbdeecfb723f11b30c712c54a10b78f1a9"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
