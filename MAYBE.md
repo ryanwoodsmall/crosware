@@ -373,6 +373,7 @@ wc -l /tmp/astbuild.out
 - goph (https://github.com/melbahja/goph - go ssh client)
 - gops (https://github.com/google/gops - running go process analyzer)
 - go-sed (https://github.com/zkry/go-sed - sed in go)
+- go.sed (https://github.com/rwtodd/Go.Sed - sed-ish in go - different regex)
 - gosecure (https://github.com/diegohce/gosecure - simple secure tls proxy in go)
 - gosmb (https://github.com/wthorp/GoSMB = currently an smb proxy, eventually implementing a full server)
 - gotify (https://github.com/gotify/server - go, simple message sending via rest api)
