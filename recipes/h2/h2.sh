@@ -7,14 +7,14 @@
 #  jdbc:postgresql://localhost:5435/~/tmppg;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
 #
 rname="h2"
-rbver="2.5.250"
-rdate="2026-08-29"
+rbver="2.5.252"
+rdate="2026-09-23"
 rver="${rbver}-${rdate}"
 rdir="${rname}-${rbver}"
 rbdir="${cwbuild}/${rname}"
 rfile="${rname}-${rdate}.zip"
 rurl="https://github.com/h2database/h2database/releases/download/version-${rbver}/${rfile}"
-rsha256="732af485bc9719a31102a9880d44001241061ae1fcbc4bfd4550055220023280"
+rsha256="e81c3cb2174a3a0aa4d7887dd0c8c5e307960e6f47925d8c40283f9bb960b13b"
 rreqs=""
 
 unset rbver rdate
