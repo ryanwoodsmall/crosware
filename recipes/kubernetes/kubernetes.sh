@@ -9,7 +9,7 @@
 #   https://github.com/kubernetes/community/blob/master/contributors/devel/development.md
 #
 rname="kubernetes"
-rver="1.36.5"
+rver="1.37.1"
 rdir="${rname}-${rver}"
 rfile=""
 rreqs=""
