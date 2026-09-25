@@ -1,10 +1,10 @@
 rname="slib"
-rver="3c2"
+rver="3c3"
 rdir="${rname}-${rver}"
 rbdir="${cwbuild}/${rname}"
 rfile="${rdir}.zip"
 rurl="http://groups.csail.mit.edu/mac/ftpdir/scm/${rfile}"
-rsha256="7906d8e201dc18e97945a61ac62ce792ec939b67d0bcc23073e0011ac2561a04"
+rsha256="75de909ba42f1af2d1ac036eb52a2c7c6be62e61ec0d452809455390da08d942"
 rreqs=""
 
 . "${cwrecipe}/common.sh"

@@ -15,12 +15,12 @@
 #     - https://people.csail.mit.edu/jaffer/scm/Compiling-and-Linking-Custom-Files.html#Compiling-and-Linking-Custom-Files
 #
 rname="scm"
-rver="5f5-$(cwver_slib)-$(cwver_jacal)"
+rver="5f6-$(cwver_slib)-$(cwver_jacal)"
 rbdir="${cwbuild}/${rname}"
 rdir="${rname}-${rver}"
 rfile="${rname}-${rver%%-*}.zip"
 rurl="http://groups.csail.mit.edu/mac/ftpdir/scm/${rfile}"
-rsha256="60d7abe8aa67d610e3b3ae8d00895541fffd484ec2b19db20224148adbfda6fa"
+rsha256="51dfdedf7bb8d8f8ec6a5502b18915903e1ae00c7978792020f49342cacec578"
 rreqs="make texinfo readline ncurses slib jacal"
 
 if ! command -v rsync &>/dev/null ; then
