@@ -1,4 +1,4 @@
-name="wget2libressl"
+rname="wget2libressl"
 rver="$(cwver_wget2)"
 rdir="$(cwdir_wget2)"
 rfile="$(cwfile_wget2)"
