@@ -14,13 +14,13 @@
 # XXX - manually define USE_TERMCAP?
 #
 rname="less"
-rver="704"
+rver="710"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="http://www.greenwoodsoftware.com/less/${rfile}"
 #rurl="https://ftp.gnu.org/pub/gnu/less/${rfile}"
 rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/less/${rfile}"
-rsha256="20a0b0a2bb2525fa53c7eee9beb854b4c9cf172eabb209af7020743547bfe9fb"
+rsha256="d1008fb78dcae1323ddab664bcb352a61f022b1b131bd8018548e021d975ec7a"
 rreqs="make netbsdcurses busybox toybox"
 
 . "${cwrecipe}/common.sh"
