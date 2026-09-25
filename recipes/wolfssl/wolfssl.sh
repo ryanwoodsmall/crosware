@@ -1,4 +1,9 @@
 #
+# XXX - THIS IS CURRENTLY BROKEN FOR MOST THINGS, I THINK
+# XXX - cert verification straight up fails with wget2, at least
+# XXX - wolfssl curl against letsencrypt certs fail with: "SSL_connect failed with error -155: ASN sig error, confirm failure"
+# XXX - gotta investigate (and upgrade)
+#
 # XXX - replace pem/key/etc. with host-specific stuff at build time with mbedtls/bearssl/x509cert/px5g/...?
 # XXX - --enable-haproxy bumps OPENSSL_VERSION_NUMBER _but_ requires openssl bin for renegotiation stuff. ugh
 # XXX - stunnel patch from osp applies but doesn't seem to work, old version
@@ -10,7 +15,7 @@
 # XXX - openssh osp requires some finagling but works, at least ssh/sftp clients
 # XXX - new default disabled options in 5.5.x: --enable-quic --enable-dtlscid
 # XXX - docs on QUIC: https://github.com/wolfSSL/wolfssl/blob/master/doc/QUIC.md
-# XXX - fix ca certs in src/ssl.c - broken?
+# XXX - fix ca certs in src/ssl.c src/ssl_load.c - broken?
 # XXX - link in cacertificates/caextract pem in certs/? which files?
 # XXX - kyber, shake###, etc.
 # XXX - configure needs colrm; bring in baseutils instead of util-linux...
@@ -25,9 +30,25 @@ rurl="https://github.com/ryanwoodsmall/crosware-source-mirror/raw/master/${rname
 #rfile="${rdir}.tar.gz"
 #rurl="https://github.com/wolfSSL/wolfssl/releases/download/v${rver}-stable/${rfile}"
 rsha256="b1dcdebd7164228b5516a30cc5f58c7207eca8d23352ccd0adec1f82c365b091"
-rreqs="make cacertificates configgit slibtool toybox baseutils"
+rreqs="make cacertificates configgit slibtool toybox baseutils caextract shellish"
 
 . "${cwrecipe}/common.sh"
+
+eval "
+function cwpatch_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  : sed -i.ORIG \"s,/etc/ssl/certs,${cwtop}/etc/ssl/certs,g\" src/ssl_load.c
+  cat src/ssl_load.c > src/ssl_load.c.ORIG
+  sed -i '/\\/etc\\/ssl\\/certs/s|^|\"'${rtdir}'/current/certs\",|' src/ssl_load.c
+  sed -i '/\\/etc\\/ssl\\/certs/s|^|\"'${cwtop}'/etc/ssl\",|' src/ssl_load.c
+  sed -i '/\\/etc\\/ssl\\/certs/s|^|\"'${cwtop}'/etc/ssl/certs\",|' src/ssl_load.c
+  cat wolfssl/test.h > wolfssl/test.h.ORIG
+  sed -i 's,\./certs/,certs/,g' wolfssl/test.h
+  sed -i 's,\"certs/,\"${rtdir}/current/certs/,g' wolfssl/test.h
+  sed -i.ORIG 's,\"certs/ocsp,\"${rtdir}/current/certs/ocsp,g' examples/server/server.c
+  popd &>/dev/null
+}
+"
 
 eval "
 function cwconfigure_${rname}() {
@@ -140,18 +161,6 @@ function cwconfigure_${rname}() {
 "
 
 eval "
-function cwpatch_${rname}() {
-  pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  sed -i.ORIG \"s,/etc/ssl/certs,${cwtop}/etc/ssl/certs,g\" src/ssl.c
-  cat wolfssl/test.h > wolfssl/test.h.ORIG
-  sed -i 's,\./certs/,certs/,g' wolfssl/test.h
-  sed -i 's,\"certs/,\"${rtdir}/current/certs/,g' wolfssl/test.h
-  sed -i.ORIG 's,\"certs/ocsp,\"${rtdir}/current/certs/ocsp,g' examples/server/server.c
-  popd &>/dev/null
-}
-"
-
-eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
@@ -162,11 +171,22 @@ function cwmakeinstall_${rname}() {
     install -m 0755 \"\${i}\" \"\$(cwidir_${rname})/bin/${rname}-\${n}\"
     \$(\${CC} -dumpmachine)-strip --strip-all \"\$(cwidir_${rname})/bin/${rname}-\${n}\"
   done
+  sed -i \"s,\$(cwidir_${rname}),${rtdir}/current,g\" \"\$(cwidir_${rname})/bin/${rname}-config\"
   unset i n
   rm -rf \"\$(cwidir_${rname})/certs\"
   cwmkdir \"\$(cwidir_${rname})/certs\"
   ( cd certs ; tar -cf - . ) | ( cd \"\$(cwidir_${rname})/certs/\" ; tar -xf - )
-  sed -i \"s,\$(cwidir_${rname}),${rtdir}/current,g\" \"\$(cwidir_${rname})/bin/${rname}-config\"
+  (
+    cd \"\$(cwidir_${rname})/certs/\"
+    cat ${cwsw}/caextract/current/caextract.pem > ca-bundle.crt
+    ${cwsw}/shellish/current/shell-ish-master/bin/cacert-pem-split.sh ca-bundle.crt
+    for i in *.crt ; do
+      ln -sf \${i} \${i//.crt/.pem}
+    done
+    unset i
+    # cat ca-cert.pem to ca-cert.pem.ORIG?
+    # cat ca-bundle.crt to ca-cert.pem?
+  )
   popd &>/dev/null
 }
 "
