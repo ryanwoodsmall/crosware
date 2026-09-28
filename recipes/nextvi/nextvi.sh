@@ -10,11 +10,11 @@
 # XXX - lsp.sh fails
 #
 rname="nextvi"
-rver="7.6"
+rver="7.7"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/kyx0r/nextvi/archive/refs/tags/${rfile}"
-rsha256="2bf8935eb3385cac5d84ba1dd63462b5eb9eca5ff0e9e4ab225e84486b84f325"
+rsha256="df7299375291c857beeacb3ef6aae1936f93501015cc141f817608cd904dda86"
 rreqs="bootstrapmake muslstandalone"
 
 . "${cwrecipe}/common.sh"
