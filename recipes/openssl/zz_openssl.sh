@@ -3,7 +3,7 @@
 # XXX - other "openssl version -a" stuff?
 # XXX - 1.1.1j disables threads/pic with -static in LDFLAGS. WHY? COME ON
 #
-rv="30"
+rv="35"
 rname="openssl"
 rver="$(cwver_${rname}${rv})"
 rdir="$(cwdir_${rname}${rv})"
