@@ -15,7 +15,7 @@ rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/kyx0r/nextvi/archive/refs/tags/${rfile}"
 rsha256="f2828552bb5a5eed3c31c86a4f40dd8446d8f46827558e8c7ad3b499e6585f9f"
-rreqs="bootstrapmake muslstandalone"
+rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
