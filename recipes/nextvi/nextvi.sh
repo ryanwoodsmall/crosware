@@ -25,7 +25,7 @@ eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
-    export PATH=\"\$(echo ${cwsw}/{ccache{4,},muslstandalone,statictoolchain}/current/bin | tr ' ' ':'):\${PATH}\"
+    export PATH=\"\$(echo ${cwsw}/{ccache{4,},statictoolchain}/current/bin | tr ' ' ':'):\${PATH}\"
     export CC=musl-gcc
     bash ./cbuild.sh
     mv vi nextvi.temp
@@ -68,7 +68,7 @@ eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   (
-    export PATH=\"\$(echo ${cwsw}/{ccache{4,},muslstandalone,statictoolchain}/current/bin | tr ' ' ':'):\${PATH}\"
+    export PATH=\"\$(echo ${cwsw}/{ccache{4,},statictoolchain}/current/bin | tr ' ' ':'):\${PATH}\"
     export CC=musl-gcc
     bash ./cbuild.sh
     : \${CC} \${CFLAGS} patch2vi.c -o patch2vi -static
