@@ -28,11 +28,11 @@
 # - https://stackoverflow.com/questions/4565700/how-to-specify-the-private-ssh-key-to-use-when-executing-shell-command-on-git
 #
 rname="git"
-rver="2.55.0"
+rver="2.56.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.kernel.org/pub/software/scm/${rname}/${rfile}"
-rsha256="0842dc384a23ac33ba3e570c4f3a8ded85963ee4713b1cd21153c3db41813d1e"
+rsha256="826817fd3671b8565586d6d49f688298de8354ab11db829c02720e5c74b9b39f"
 rreqs="make bzip2 zlib openssl curl expat pcre2 perl libssh2 busybox less cacertificates nghttp2 mandoc"
 
 . "${cwrecipe}/${rname}/${rname}.sh.common"
@@ -41,9 +41,13 @@ eval "
 function cwfetch_${rname}() {
   cwfetchcheck \"${rurl}\" \"${rdlfile}\" \"${rsha256}\"
   cwfetchcheck \
+    \"${rurl//${rname}-${rver}/${rname}-htmldocs-${rver}}\" \
+    \"${rdlfile//${rname}-${rver}/${rname}-htmldocs-${rver}}\" \
+    \"62b477a75a997fa16532c4d44e26a6a47a512ad7086116d912bb2ab16c785bc3\"
+  cwfetchcheck \
     \"${rurl//${rname}-${rver}/${rname}-manpages-${rver}}\" \
     \"${rdlfile//${rname}-${rver}/${rname}-manpages-${rver}}\" \
-    \"e1d56c160c55be805d339613d6c5cdb1269d5346a50d757c39135f1449e28ed5\"
+    \"be5ced6a6333baa36ecd4c1575bcf66aee9b04444b918115ff87bf65cd6d61b4\"
 }
 "
 
