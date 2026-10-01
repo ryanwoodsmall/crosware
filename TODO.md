@@ -1,5 +1,7 @@
 # TODO
 
+- 20260930
+  - per-recipe `TMPDIR` in e.g. `${cwtop}/var/tmp/${rname}`
 
 - 20260702 - sdk
   - use system perl for first round of openssl
