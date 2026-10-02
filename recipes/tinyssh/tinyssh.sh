@@ -5,11 +5,11 @@
 #   env -i ${cwsw}/busybox/current/bin/busybox tcpsvd -vE 0.0.0.0 22222 ${cwsw}/tinyssh/current/sbin/tinysshd -v -x sftp=${cwsw}/lshsftpserver/current/sbin/sftp-server ${cwtop}/etc/tinyssh/
 #
 rname="tinyssh"
-rver="20260906"
+rver="20261001"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/janmojzis/${rname}/archive/refs/tags/${rfile}"
-rsha256="54c143281e3a7430e9db80847c3242bbd6bf859ceafb5a18562bc4ecbbb2806d"
+rsha256="f79b1b4b8db16d3b1ecc339828d48c3754e354634ac28d2fbf82c85da56e503e"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
@@ -29,6 +29,7 @@ eval "
 function cwpatch_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
   grep -ril /usr/local . | xargs sed -i.ORIG \"/PREFIX/s,/usr/local,\$(cwidir_${rname}),g\"
+  : sed -i.ORIG 's/^#define.*sshcrypto_FLAGSTRICTKEX.*/#define sshcrypto_FLAGSTRICTKEX 0x0/g' sshcrypto.h
   popd &>/dev/null
 }
 "
