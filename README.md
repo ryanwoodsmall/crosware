@@ -327,6 +327,8 @@ Mes (and m2) might be useful at some point.
 - http://lists.gnu.org/archive/html/info-gnu/2018-08/msg00006.html
 - grey386linux - 386-compat linux+busybox+musl
   - https://github.com/marmolak/gray386linux
+- SHORK-486 - small, up-to-date 486 compatible distro; super cool!
+  - https://github.com/SharktasticA/SHORK-486
 
 ## other sites/utilities/etc.
 
