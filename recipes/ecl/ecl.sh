@@ -2,11 +2,11 @@
 # XXX - no riscv64 support yet due to gc
 #
 rname="ecl"
-rver="24.5.10"
+rver="26.5.5"
 rdir="${rname}-${rver}"
 rfile="${rname}-${rver}.tgz"
 rurl="https://common-lisp.net/project/${rname}/static/files/release/${rfile}"
-rsha256="e4ea65bb1861e0e495386bfa8bc673bd014e96d3cf9d91e9038f91435cbe622b"
+rsha256="a01a5bcda8c5b73e59dda3494fd13e5fec5db6aa1dad782c3cc3bb57f1633435"
 rreqs="make"
 
 . "${cwrecipe}/common.sh"
