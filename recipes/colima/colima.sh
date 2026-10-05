@@ -56,6 +56,8 @@ function cwmake_${rname}() {
 eval "
 function cwmakeinstall_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  cwmkdir \$(cwidir_${rname})
+  rm -f \$(cwidir_${rname})/${rname}
   (
     : \${GOCACHE=\"\$(cwbdir_${rname})/gocache\"}
     : \${GOMODCACHE=\"\$(cwbdir_${rname})/gomodcache\"}
@@ -70,6 +72,9 @@ function cwmakeinstall_${rname}() {
           VERSION=\"\$(cwver_${rname})\"
     chmod -R u+rw . || true
   )
+  cwmkdir \$(cwidir_${rname})/bin
+  rm -f \$(cwidir_${rname})/bin/${rname}
+  mv \$(cwidir_${rname})/${rname} \$(cwidir_${rname})/bin/${rname}
   popd &>/dev/null
 }
 "
