@@ -699,7 +699,6 @@ wc -l /tmp/astbuild.out
 - libwebsockets (https://libwebsockets.org/)
 - libxcrypt (https://github.com/besser82/libxcrypt - use with openssh for more auth methods? may need perl?)
 - libyaml (https://github.com/yaml/libyaml)
-- lima (https://github.com/lima-vm/lima - linux cross-platform vm shim+container+file sharing)
 - lisp stuff
   - aria (https://github.com/rxi/aria - tiny embeddable language)
   - carp (https://github.com/carp-lang/Carp)

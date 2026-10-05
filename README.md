@@ -740,6 +740,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - libz (sortix, zlib fork https://sortix.org/libz/ - static and shared libs for compatibility with alpine/musl bins)
 - lighttpd (https://www.lighttpd.net/ - mbedtls - ssl/tls, webdav support)
   - lighttpdminimal (zlib, pcre2, libbsd - not tls, webdav, etc.)
+- lima (https://github.com/lima-vm/lima - linux cross-platform vm shim+container+file sharing)
 - linenoise (https://github.com/antirez/linenoise)
 - links (http://links.twibright.com/ - openssl)
   - linkslibressl (libressl)
