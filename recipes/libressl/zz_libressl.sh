@@ -33,6 +33,13 @@ function cwmakeinstall_${rname}() {
 }
 "
 
+eval "
+function cwgenprofd_${rname}() {
+  echo 'append_path \"${cwsw}/openssl/current/bin\"' > \"${rprof}\"
+  echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
+}
+"
+
 unset rsv
 unset rlp
 
