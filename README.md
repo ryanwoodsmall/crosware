@@ -468,6 +468,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - cjson (https://github.com/DaveGamble/cJSON)
 - cloc (https://github.com/AlDanial/cloc)
 - cmake
+- colima (https://github.com/abiosoft/colima - containers on lima, for macos and linux)
 - colorizedlogs (https://github.com/kilobyte/colorized-logs and https://launchpad.net/ubuntu/+source/colorized-logs - includes ansi2txt/ansi2html/ttyrec2ansi/pipetty)
 - configgit (gnu config.guess, config.sub updates for musl, aarch64, etc. http://git.savannah.gnu.org/gitweb/?p=config.git;a=summary)
 - coreutils (single static binary with symlinks, no nls/attr/acl/gmp/pcap/selinux)
