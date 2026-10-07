@@ -2,11 +2,11 @@
 # XXX - move scores to shared etc/var
 #
 rname="nbsdgames"
-rver="6.0.2"
+rver="6.0.3"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/abakh/nbsdgames/archive/refs/tags/${rfile}"
-rsha256="9545b099f6edb2be08d8885eaae2e10cf3d114c3a8fa1fc3eefff156053f37ca"
+rsha256="359da5f698da00437205eddad3fc97fbdcecfa8cb005fd8d1830fe8fd3dd7e3b"
 rreqs="make netbsdcurses"
 
 . "${cwrecipe}/common.sh"
