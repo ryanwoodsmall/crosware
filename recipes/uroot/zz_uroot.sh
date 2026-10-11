@@ -1,14 +1,15 @@
 #
 # XXX - this should be a git hash probably?
 # XXX - unbundle gobusybox?
-# XXX - docker? containerd?  ghostunnel, minio/mc, rclone, wireguard, nebula, 9p client, ssh client/server, caddy, ...
+# XXX - docker? containerd? ghostunnel, minio/mc, rclone, wireguard, nebula, 9p client, ssh client/server, caddy, ...
 # XXX - more... age, awk replacement, etcd, dasel, gron, jj, jq, miller, minio + mc, sed replacement, toml, webhook, yj, yq
+# XXX - lima, colima, incus, postman, buildah, skopeo, ...
 # XXX - minimum viable kubernetes / k8s https://eevans.co/blog/minimum-viable-kubernetes/
 # XXX - tools from https://github.com/u-root/k4s - containerd, runc, etcdctl, ...
 #
 rname="uroot"
 rurootver="0.16.0"
-rgobusyboxver="0.3.0"
+rgobusyboxver="0.4.0"
 rmkuimagever="0.2.0"
 relvishver="26a8bd5c4ee1eb5c0a2d53578d0368de2b8b3274"
 rver="${rurootver}_${rgobusyboxver}_${rmkuimagever}_${relvishver}_$(cwver_cpu)_$(cwver_p9ufs)"
@@ -30,9 +31,9 @@ function cwfetch_${rname}() {
   cwfetch_cpu
   cwfetch_p9ufs
   cwfetchcheck \
-    \"https://github.com/u-root/gobusybox/archive/refs/tags/src/v${rgobusyboxver}.tar.gz\" \
+    \"https://github.com/u-root/gobusybox/archive/refs/tags/v${rgobusyboxver}.tar.gz\" \
     \"${cwdl}/${rname}/gobusybox/v${rgobusyboxver}.tar.gz\" \
-    \"9b2a51f1ff1d94e0052eba34bb370b42df5aa4dd18d6d8fa2f9f3be46aa29c59\"
+    \"043993ad681a4f7dea333a0e917346e6e8deaa23e5f52664df5b541aa1a25cac\"
   cwfetchcheck \
     \"https://github.com/u-root/mkuimage/archive/refs/tags/v${rmkuimagever}.tar.gz\" \
     \"${cwdl}/${rname}/mkuimage/v${rmkuimagever}.tar.gz\" \
@@ -71,7 +72,7 @@ function cwmake_${rname}() {
     go build -o \$(cwbdir_${rname})/bin/u-root \$(cwbdir_${rname})/
     (
       cwscriptecho 'building gobusybox'
-      cd \$(cwbdir_${rname})/gobusybox-src-v${rgobusyboxver}/src/
+      cd \$(cwbdir_${rname})/gobusybox-${rgobusyboxver}/src/
       for c in \${PWD}/cmd/*/ ; do
         go build -o \$(cwbdir_${rname})/bin/\$(basename -- \${c}) \${c} || true
       done
@@ -95,7 +96,7 @@ function cwmake_${rname}() {
     rm -f go.work || true
     go work init . || true
     go work use . || true
-    go work use ./gobusybox-src-v${rgobusyboxver}/src/
+    go work use ./gobusybox-${rgobusyboxver}/src/
     go work use ./mkuimage-${rmkuimagever}/
     go work use ./elvish-${relvishver}/
     go work use ./cpu-\$(cwver_cpu)/
@@ -105,7 +106,7 @@ function cwmake_${rname}() {
     \$(cwbdir_${rname})/bin/makebb -o \$(cwbdir_${rname})/bin/bb \
       \${PWD}/cmds/*/*/ \
       \${PWD}/mkuimage-${rmkuimagever}/cmd/mkuimage/ \
-      \${PWD}/gobusybox-src-v${rgobusyboxver}/src/cmd/{goanywhere,makebb{,main}}/ \
+      \${PWD}/gobusybox-${rgobusyboxver}/src/cmd/{goanywhere,makebb{,main}}/ \
       \${PWD}/elvish-${relvishver}/cmd/{elvish,elvmdfmt}/ \
       \${PWD}/cpu-\$(cwver_cpu)/cmds/{cpu{,d},decpu}/ \
       \${PWD}/p9-\$(cwver_p9ufs)/cmd/p9ufs/
