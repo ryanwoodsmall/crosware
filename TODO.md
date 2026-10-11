@@ -1,5 +1,14 @@
 # TODO
 
+- 20261011
+  - `golatest` - use `go` to just build the latest go
+  - allows recipes hard-coding versions in `go.mod`
+  - at the expense of building a local version of go
+  - `goprevious` too
+    - `N` and `N-1`
+    - can always rebuild
+  - same approach for e.g. llvm/clang + rust???
+
 - 20260930
   - per-recipe `TMPDIR` in e.g. `${cwtop}/var/tmp/${rname}`
 
