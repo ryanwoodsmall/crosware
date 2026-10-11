@@ -1,5 +1,4 @@
 #
-# XXX - move config script download to versioned based on git commit, move to cwfetch_
 # XXX - busybox should be reproducible; use KCONFIG_NOTIMESTAMP=1 ??? - what else? BB_EXTRA_VERSION is the biggie, taken care of below...
 # XXX - see... https://github.com/osresearch/linux-builder/blob/main/modules/busybox
 # XXX - reproducible: based on statictoolchain version, also need to account for/probably include...
@@ -20,6 +19,16 @@ rreqs="bootstrapmake bashtiny alpinemuslutils toybox"
 . "${cwrecipe}/common.sh"
 
 eval "
+function cwfetch_${rname}() {
+  cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
+  cwfetchcheck \
+    \"https://raw.githubusercontent.com/ryanwoodsmall/busybox-misc/ce861260798ddba2882c4fb71367fbaee3b0dbc2/scripts/bb_config_script.sh\" \
+    \"\$(dirname \$(cwdlfile_${rname}))/bb_config_script.sh\" \
+    \"7b9f2f955dcaca8aa799636ad02ed1ef3c4269306f5b2211af667501ec9bf4e8\"
+}
+"
+
+eval "
 function cwextract_${rname}() {
   cwscriptecho \"extracting \$(cwdlfile_${rname}) to ${cwbuild} using toybox\"
   \"${cwsw}/toybox/current/bin/toybox\" bzcat \"\$(cwdlfile_${rname})\" | \"${cwsw}/toybox/current/bin/toybox\" tar -C \"${cwbuild}\" -xf -
@@ -32,9 +41,9 @@ function cwconfigure_${rname}() {
   (
     export PATH=\"\$(echo ${cwsw}/{bashtiny,bootstrapmake,toybox,ccache{{4,},3},statictoolchain}/current/bin | tr ' ' ':'):\${PATH}\"
     chmod -R u+w .
-    csu=\"https://raw.githubusercontent.com/ryanwoodsmall/busybox-misc/master/scripts/bb_config_script.sh\"
-    cs=\"\$(basename \${csu})\"
-    cwfetch \"\${csu}\" \"\$(cwbdir_${rname})/\${cs}\"
+    cs=\"bb_config_script.sh\"
+    cat \"\$(dirname \$(cwdlfile_${rname}))/\${cs}\" > \"\${cs}\"
+    chmod 755 \"\${cs}\"
     sed -i.ORIG 's/^make/#make/g;s/^test/#test/g' \"\${cs}\"
     make defconfig HOSTCC=\"\${CC} -static\"
     bash \"\${cs}\" -m -s
