@@ -75,4 +75,4 @@ function cwgenprofd_${rname}() {
 
 unset sslprov
 
-# vim: set ft=sh:
+# vim: set ft=bash:

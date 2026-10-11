@@ -13,13 +13,15 @@
 #
 
 rname="openssh"
-rver="10.5p1"
+rver="10.6p1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 #rurl="https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${rfile}"
 rurl="https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/${rfile}"
-rsha256="d44d28a839ea9daf969cc69150fde59910b2b39361dad81a3bd6cbd19218db11"
+rsha256="a9dc9565dffe8640f64d863cd29a32bc4a3dbdec0566a7fc44c5d6ee767d5f39"
 
 sslprov="openssl"
 
 . "${cwrecipe}/${rname%${sslprov}}/${rname%${sslprov}}.sh.common"
+
+# vim: set ft=bash:

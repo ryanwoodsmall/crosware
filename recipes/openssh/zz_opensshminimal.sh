@@ -66,3 +66,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/sbin\"' >> \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:

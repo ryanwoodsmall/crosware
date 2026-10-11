@@ -26,3 +26,5 @@ rsha256=""
 sslprov="libressl"
 
 . "${cwrecipe}/${rname%${sslprov}}/${rname%${sslprov}}.sh.common"
+
+# vim: set ft=bash:
