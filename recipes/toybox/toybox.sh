@@ -1,5 +1,4 @@
 #
-# XXX - should probably use hash or tag for toybox_config_script.sh and add a sha for offline build
 # XXX - cwmake_ loop since aarch64 occasionally just dies?
 # XXX - bearssl+libtlsbearssl with CONFIG_WGET_LIBTLS?
 # XXX - openssl variant with CONFIG_WGET_OPENSSL?
@@ -8,14 +7,25 @@
 # XXX - shell configs?
 #
 rname="toybox"
-rver="0.8.14"
+rver="0.8.15"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/landley/toybox/archive/${rfile}"
-rsha256="082df8cfd76135ce3c4820c8cf4c0081d61491e0990aff2da48e21fc9bbb24d1"
+rsha256="52452b68a6cf50f9a9728b0f844b03c4dd1f70463675b202e6cf0475bda3934f"
 rreqs="bootstrapmake alpinemuslutils"
 
 . "${cwrecipe}/common.sh"
+
+# ef599804ec9ce57336ab4699409412678b5450ca
+eval "
+function cwfetch_${rname}() {
+  cwfetchcheck \"\$(cwurl_${rname})\" \"\$(cwdlfile_${rname})\" \"\$(cwsha256_${rname})\"
+  cwfetchcheck \
+    \"https://github.com/ryanwoodsmall/toybox-misc/raw/ef599804ec9ce57336ab4699409412678b5450ca/scripts/toybox_config_script.sh\" \
+    \"\$(dirname \$(cwdlfile_${rname}))/toybox_config_script.sh\" \
+    \"fa5e277d7f97ace82ffab1a720e7cda9e8af2ea32d4c783acc46208ad9966f80\"
+}
+"
 
 eval "
 function cwpatch_${rname}() {
@@ -29,9 +39,9 @@ function cwpatch_${rname}() {
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  csu=\"https://raw.githubusercontent.com/ryanwoodsmall/toybox-misc/master/scripts/toybox_config_script.sh\"
-  cs=\"\$(basename \${csu})\"
-  cwfetch \"\${csu}\" \"\$(cwbdir_${rname})/\${cs}\"
+  cs=\"toybox_config_script.sh\"
+  cat \"\$(dirname \$(cwdlfile_${rname}))/\${cs}\" > \"\${cs}\"
+  chmod 755 \"\${cs}\"
   sed -i.ORIG 's/^make/#make/g;s/^test/#test/g' \"\${cs}\"
   make defconfig HOSTCC=\"\${CC} -static\"
   bash \"\${cs}\" -m -s
