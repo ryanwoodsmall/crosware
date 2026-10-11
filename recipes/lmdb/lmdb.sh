@@ -3,11 +3,11 @@
 # XXX - need lmdb0 and lmdb1 with a virtual lmdb
 #
 rname="lmdb"
-rver="1.0.1"
+rver="1.0.2"
 rdir="${rname}-LMDB_${rver}"
 rfile="LMDB_${rver}.tar.gz"
-rurl="https://github.com/LMDB/${rname}/archive/refs/tags/${rfile}"
-rsha256="7ce1db4b8c13f60e0881f12537340c73fb5e0125dba4daa6649a2314341855db"
+rurl="https://github.com/lmdb/lmdb/archive/refs/tags/${rfile}"
+rsha256="17e4cb8e80874fccc1ff6f7d5fdb62f029624967d001ff40c47c0fb7a5b42d7d"
 rreqs="bootstrapmake"
 rbdir="${cwbuild}/${rdir}/libraries/lib${rname}"
 
@@ -23,17 +23,17 @@ function cwclean_${rname}() {
 
 eval "
 function cwconfigure_${rname}() {
-  pushd \"${rbdir}\" &>/dev/null
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   cat Makefile > Makefile.ORIG
-  sed -i 's,^prefix.*,prefix = ${ridir},g' Makefile
-  sed -i 's,^ILIBS.*,ILIBS = lib${rname}.a,g' Makefile
+  sed -i \"s,^prefix.*,prefix = \$(cwidir_${rname}),g\" Makefile
+  sed -i \"s,^ILIBS.*,ILIBS = lib${rname}.a,g\" Makefile
   popd &>/dev/null
 }
 "
 
 eval "
 function cwmake_${rname}() {
-  pushd \"${rbdir}\" &>/dev/null
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make -j${cwmakejobs} CC=\"\${CC}\" CPPFLAGS= LDFLAGS=-static
   popd &>/dev/null
 }
@@ -41,9 +41,9 @@ function cwmake_${rname}() {
 
 eval "
 function cwmakeinstall_${rname}() {
-  pushd \"${rbdir}\" &>/dev/null
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
   make install ${rlibtool}
-  \$(\${CC} -dumpmachine)-strip --strip-all ${ridir}/bin/*
+  \$(\${CC} -dumpmachine)-strip --strip-all \$(cwidir_${rname})/bin/*
   popd &>/dev/null
 }
 "
