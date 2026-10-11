@@ -1,6 +1,8 @@
 #
 # XXX - 0.96.x and 1.x db formats are incompatible
-# XXX - need lmdb0 and lmdb1 with a virtual lmdb
+# XXX - added lmdb0, move this to lmdb1?
+# XXX - add a virtual lmdb recipe?
+# XXX - am i actually using this?
 #
 rname="lmdb"
 rver="1.0.2"
