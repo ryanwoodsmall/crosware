@@ -9,11 +9,11 @@
 # XXX - extra tools (sqldiff, sqlite3_analyze, ...) need full source code .zip
 #
 rname="sqlite"
-rver="3530400"
+rver="3540000"
 rdir="${rname}-autoconf-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://www.sqlite.org/2026/${rfile}"
-rsha256="0e9483900e92cd5de8fd48d16bf9200145a61f7fd5be542a5ac81d8a9516eb9c"
+rsha256="134ec0802dda5795816e25d25872d20b312cb3973438c49b30bc40b7705ea9ed"
 rreqs="make netbsdcurses readlinenetbsdcurses zlib"
 rconfigureopts="--all --fts3 --scanstatus --update-limit --disable-shared"
 
