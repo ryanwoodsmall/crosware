@@ -44,3 +44,5 @@ function cwconfigure_${rname}() {
   popd &>/dev/null
 }
 "
+
+# vim: set ft=bash:

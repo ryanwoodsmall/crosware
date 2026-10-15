@@ -48,10 +48,14 @@ function cwmakeinstall_${rname}() {
 }
 "
 
-
 eval "
 function cwgenprofd_${rname}() {
-  echo 'append_path \"${rtdir}/current/bin\"' > \"${rprof}\"
+  echo -n > \"${rprof}\"
+  echo 'append_path \"${cwsw}/njs/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/njsopenssl/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/njsquickjs/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/njsminimal/current/bin\"' >> \"${rprof}\"
+  echo 'append_path \"${cwsw}/njstiny/current/bin\"' >> \"${rprof}\"
 }
 "
 
