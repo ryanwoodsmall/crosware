@@ -99,4 +99,4 @@ function cwmakeinstall_${rname}() {
 
 unset rprovider sslproviders othersslproviders rproviderreqs libssh2provider rcppflags
 
-# vim: ft=sh:
+# vim: ft=bash:

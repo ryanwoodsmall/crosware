@@ -3,3 +3,5 @@ rreqs="gnutlsminimal nettleminimal"
 rproviderreqs="${rreqs// /,}"
 rcommonopts="LIBS='-lgnutls -lhogweed -lnettle -latomic'"
 . "${cwrecipe}/${rname%gnutlsminimal}/${rname%gnutlsminimal}tlsprovider.sh.common"
+
+# vim: set ft=bash:

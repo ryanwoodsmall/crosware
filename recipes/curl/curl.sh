@@ -127,3 +127,5 @@ function cwgenprofd_${rname}() {
   echo 'append_cppflags \"-I${rtdir}/current/include\"' >> \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:
