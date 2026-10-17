@@ -244,6 +244,8 @@ wc -l /tmp/astbuild.out
 - cocker (https://github.com/calvinwilliams/cocker - small container engine in c)
 - connect/connect-proxy (https://github.com/jjkeijser/connect-proxy/ and https://src.fedoraproject.org/rpms/connect-proxy/tree/rawhide - small openssl http/https/socks proxy)
 - conty (https://github.com/Kron4ek/Conty - shell containerizer, needs fuse2/3, coreutils, tar (gnu?), gzip (gnu?), bash)
+- cowsql (https://github.com/cowsql/cowsql - extends sqlite, forked from dqlite)
+  - raft (https://github.com/cowsql/raft - raft protocol implementation for cowsql, can use libuv and lz4)
 - cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
 - cpu - look at using with troglobit mdnsd!
 - croc (https://github.com/schollz/croc and https://schollz.com/blog/croc6/ - point-to-point filesharing, with a relay)
@@ -437,6 +439,7 @@ wc -l /tmp/astbuild.out
 - ifupdown-ng (ttps://github.com/ifupdown-ng/ifupdown-ng - debian/busybox compatible-ish ifupdown in c w/dep resolver)
 - iglunix (https://github.com/iglunix/iglunix - gnu-less linux distribution, musl+llvm, looks useful)
 - incron (https://github.com/ar-/incron - cron for filesystem events)
+- incus (https://github.com/lxc/incus - container and vm manager, lxc, etc.)
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - invisible-island (thomas e. dickey) stuff
   - add (https://invisible-island.net/add/add.html - nice full screen curses calculator!)
