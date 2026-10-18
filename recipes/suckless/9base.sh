@@ -76,3 +76,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"\${PLAN9}/bin\"' >> \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:

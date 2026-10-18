@@ -20,4 +20,4 @@ function cwgenprofd_${rname}() {
 }
 "
 
-# vim: ft=sh
+# vim: set ft=bash:
