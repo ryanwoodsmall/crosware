@@ -158,6 +158,7 @@
     - fix `-DOPENSSL_THREADS` in one place so it doesn't proliferate
   - openvpn - 2.7.x needs mbedtls 3.2+... which just crashes
   - opkg - 0.10.x; 0.9.x moved to cmake, need sdk
+    - move to libressl/openssl
   - perl - 5.x badly in need of upgrade, now kinda _requires_ shared
   - pkgconf - 2.9.x broke muon?
     - 3.0.x+ needs ninja/samurai + meson/muon
