@@ -60,4 +60,4 @@ function cwgenprofd_${rname}() {
 
 unset r
 
-# vim: ft=sh:
+# vim: ft=bash:
