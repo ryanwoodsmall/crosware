@@ -1,9 +1,12 @@
+#
+# XXX - keyname() conflicts with ncurses. oy
+#
 rname="mg"
-rver="4.3"
+rver="4.4"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/troglobit/mg/releases/download/v${rver}/${rfile}"
-rsha256="c884f3a4b6ed293130651ad4f3d5b8a5bb30b3533000a8fc83d3b7e781dc35c7"
+rsha256="5955f48138bd5fc3ac53945d610f4089446afc5eea99bfb5f0a01f079426907e"
 rreqs="make ncurses"
 
 . "${cwrecipe}/common.sh"
@@ -17,6 +20,8 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"-L${cwsw}/ncurses/current/lib -static\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/ncurses/current/lib/pkgconfig\" \
       LIBS=-static
+  grep -rl 'getkeyname.*(' . | grep -E '\\.(c|h)\$' | xargs sed -i.ORIG1 '/getkeyname.*(/s,getkeyname,local_get_key_name,g'
+  grep -rl 'keyname.*(' .    | grep -E '\\.(c|h)\$' | xargs sed -i.ORIG2 '/keyname.*(/s,keyname,local_key_name,g'
   popd &>/dev/null
 }
 "
