@@ -244,7 +244,7 @@ wc -l /tmp/astbuild.out
 - cocker (https://github.com/calvinwilliams/cocker - small container engine in c)
 - connect/connect-proxy (https://github.com/jjkeijser/connect-proxy/ and https://src.fedoraproject.org/rpms/connect-proxy/tree/rawhide - small openssl http/https/socks proxy)
 - conty (https://github.com/Kron4ek/Conty - shell containerizer, needs fuse2/3, coreutils, tar (gnu?), gzip (gnu?), bash)
-- cowsql (https://github.com/cowsql/cowsql - extends sqlite, forked from dqlite)
+- cowsql (https://github.com/cowsql/cowsql - requires/extends sqlite, uses libuv, forked from dqlite)
   - raft (https://github.com/cowsql/raft - raft protocol implementation for cowsql, can use libuv and lz4)
 - cpplint (https://github.com/google/styleguide and https://github.com/cpplint/cpplint)
 - cpu - look at using with troglobit mdnsd!
@@ -440,6 +440,12 @@ wc -l /tmp/astbuild.out
 - iglunix (https://github.com/iglunix/iglunix - gnu-less linux distribution, musl+llvm, looks useful)
 - incron (https://github.com/ar-/incron - cron for filesystem events)
 - incus (https://github.com/lxc/incus - container and vm manager, lxc, etc.)
+  - needs cowsql & raft (libuv, sqlite, lz4)
+    - incus has issues linking with crosware go? `CGO_ENABLED=1` must be set
+  - needs lxc build
+    - lxc needs udev (libudev-zero), openssl and libcap
+    - _lots_ of tinkering, untested but can kinda get it to build
+  - qemu? probably! `qemu-system-...`
 - inotify-tools (https://github.com/rvoicilas/inotify-tools)
 - invisible-island (thomas e. dickey) stuff
   - add (https://invisible-island.net/add/add.html - nice full screen curses calculator!)
