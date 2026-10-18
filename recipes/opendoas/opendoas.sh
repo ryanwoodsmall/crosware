@@ -36,10 +36,30 @@ function cwconfigure_${rname}() {
     BINGRP=\"\$(cwgetgroup)\" \
     CPPFLAGS= \
     LDFLAGS=-static \
+    PATH=\"${cwsw}/byacc/current/bin:\${PATH}\" \
+    YACC=\"${cwsw}/byacc/current/bin/byacc\" \
       ./configure ${cwconfigureprefix} \
         --sysconfdir=\"${rconfdir}\" \
         --enable-static \
+        --with-shadow \
+        --with-timestamp \
         --without-pam
+  popd &>/dev/null
+}
+"
+
+eval "
+function cwmake_${rname}() {
+  pushd \"\$(cwbdir_${rname})\" &>/dev/null
+  (
+    unset CPPFLAGS PKG_CONFIG_{LIBDIR,PATH}
+    export BINOWN=\"\$(cwgetuser)\"
+    export BINGRP=\"\$(cwgetgroup)\"
+    export LDFLAGS=-static
+    export PATH=\"${cwsw}/byacc/current/bin:\${PATH}\"
+    export YACC=\"${cwsw}/byacc/current/bin/byacc\"
+    make -j${cwmakejobs} ${rlibtool} YACC=\"\${YACC}\"
+  )
   popd &>/dev/null
 }
 "
