@@ -7,6 +7,12 @@
 # XXX - shar:
 #   https://github.com/libarchive/libarchive/tree/master/contrib/shar
 #
+# XXX - mbedtls -> libressl?
+# XXX - opkg -> uses mbedtls, change to libressl???
+# XXX - pcre
+# XXX - pkgconf
+# XXX - nettle, openssl, libxml2, mbedtls, ... variants
+#
 rname="libarchive"
 rver="3.8.10"
 rdir="${rname}-${rver}"
@@ -31,19 +37,19 @@ function cwconfigure_${rname}() {
     --with-lz4 \
     --with-lzma \
     --with-lzo2 \
-    --with-mbedtls \
+    --with-openssl \
     --with-zlib \
     --with-zstd \
     --without-nettle \
-    --without-openssl \
+    --without-mbedtls \
     --without-xml2 \
-      CC=\"\${CC} \$(pkg-config --{cflags,libs} libbsd-overlay)\" \
-      CPP=\"\${CPP} \$(pkg-config --cflags libbsd-overlay)\" \
+      CC=\"\${CC} \$(pkg-config --{cflags,libs} libbsd-overlay) -I${cwsw}/libressl/current/include\" \
+      CPP=\"\${CPP} \$(pkg-config --cflags libbsd-overlay) -I${cwsw}/libressl/current/include\" \
       CFLAGS=\"\${CFLAGS} -Wl,-s\" \
       CPPFLAGS=\"\$(echo -I${cwsw}/{${rreqs// /,}}/current/include)\" \
       LDFLAGS=\"\$(echo -L${cwsw}/{${rreqs// /,}}/current/lib) -static -s\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"\$(echo ${cwsw}/{${rreqs// /,}}/current/lib/pkgconfig | tr ' ' ':')\" \
-      LIBS='-lbsd -lmd -lmbedtls -lmbedcrypto -lmbedx509'
+      LIBS='-lbsd -lmd -L${cwsw}/libressl/current/lib -lssl -lcrypto'
   popd &>/dev/null
 }
 "
