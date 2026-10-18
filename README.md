@@ -403,6 +403,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
   - httppost (http://www.acme.com/software/http_post/)
     - httppostlibressl (libressl https support)
     - httppostopenssl (openssl https support)
+  - lmin (https://www.acme.com/software/lmin - small embeddable lisp)
   - microhttpd (http://acme.com/software/micro_httpd/)
   - microinetd (http://acme.com/software/micro_inetd/)
   - microproxy (http://acme.com/software/micro_proxy/)
