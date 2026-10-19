@@ -411,6 +411,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
     - minihttpdlibressl (libressl https support)
     - minihttpdopenssl (openssl https support)
   - minisendmail (http://www.acme.com/software/mini_sendmail/)
+  - oauth_sign (https://www.acme.com/software/oauth_sign/ - oauth signature generator, libressl)
   - subproxy (http://www.acme.com/software/sub_proxy/)
   - thttpd (http://www.acme.com/software/thttpd/)
 - ag (https://geoff.greer.fm/ag/ and https://github.com/ggreer/the_silver_searcher - the silver searcher, fast grep/ack-like)

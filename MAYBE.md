@@ -16,7 +16,6 @@ some notes, experiments, etc. as well.
   - js_httpd (http://www.acme.com/software/js_httpd/)
   - lam (http://www.acme.com/software/lam/)
   - mudecode (http://www.acme.com/software/mudecode/)
-  - oauth_sign (https://www.acme.com/software/oauth_sign/ - oauth signature generator, openssl)
 - acme.sh (https://github.com/acmesh-official/acme.sh - shell cert client with openssl+curl+wget)
   - see `openssl-cert-wrapper` idea in [TODO.md](TODO.md)
   - lots of dns updates in there too...
