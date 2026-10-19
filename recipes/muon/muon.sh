@@ -10,11 +10,11 @@
 #     - ovewrite src/platform/posix/rpath_fixer.c with src/platform/null/rpath_fixer.c
 #
 rname="muon"
-rver="0.6.0"
+rver="0.7.0"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/annacrombie/muon/archive/refs/tags/${rfile}"
-rsha256="5300e58c4b4d43e3026856004c79d746075aaa9d9e66d76ba9f32ce249495b81"
+rsha256="e7095741dc11338f5ed8e0aa02e993fc34df4295dad4296127bbb212bcf56e07"
 rreqs="samurai pkgconf"
 
 . "${cwrecipe}/common.sh"
