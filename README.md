@@ -933,6 +933,7 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - ppp (https://github.com/ppp-project/ppp - paul's ppp package, static minimal pppd+chat, no pcap/tls/peap/eap/...)
   - ppplibressl (libressl, pcap, plugins - shared)
   - pppopenssl (openssl, pcap, plugins - shared)
+- proxytunnel (https://github.com/proxytunnel/proxytunnel - http/https proxy for ssh, libressl)
 - pv (http://www.ivarch.com/programs/pv.shtml and https://github.com/a-j-wood/pv - pv pipe viewer pipeviewer)
 - px5g (https://github.com/openwrt/openwrt/tree/master/package/utils/px5g-mbedtls - mbedtls cert/key gen program)
   - px5gwolfssl (https://github.com/openwrt/openwrt/tree/master/package/utils/px5g-wolfssl - px5g built with wolfssl)
