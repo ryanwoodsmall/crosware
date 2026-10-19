@@ -8,7 +8,7 @@ rfile="${rdir}_${rver}.tar.gz"
 rurl="https://acme.com/software/oauth_sign/${rfile}"
 rsha256="213fa77e3f6a15b9164eead728d67299a0c9a34bec4aaf1a1b27df0a64f38e04"
 ridir="${cwsw}/${rname}/${rdir}_${rver}"
-rreqs="make libressl"
+rreqs="bootstrapmake libressl"
 
 . "${cwrecipe}/common.sh"
 
