@@ -4,11 +4,11 @@
 # XXX - something changed with 0.195 (or zlib), zlib is now giving crc32 conflicts
 #
 rname="elfutils"
-rver="0.196"
+rver="0.197"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.bz2"
 rurl="https://sourceware.org/elfutils/ftp/${rver}/${rfile}"
-rsha256="fd5cc6b77ad6773cac93cb3f415f9318ac3b3455eecf801f6b4a742c4f6c7209"
+rsha256="1fdf525f22dcf796d99a99ba3ea00a1f7b1ae5421bc62e8443a708920b99b904"
 rreqs="bootstrapmake zlib libuargp muslfts muslobstack otools pkgconf"
 
 . "${cwrecipe}/common.sh"
