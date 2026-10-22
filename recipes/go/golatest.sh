@@ -3,11 +3,11 @@
 # XXX - may need to manually clean up...
 #
 rname="golatest"
-rver="1.27.2"
+rver="1.27.3"
 rdir="go"
 rfile="go${rver}.src.tar.gz"
 rurl="https://go.dev/dl/${rfile}"
-rsha256="03495da2ba64894d40f5c4992e49454fa78b50690604ff92b6afff5081b76e62"
+rsha256="6e7749035cf360f06b2575d162ea79df9fda8ef671889e5c375f8e50777f26bb"
 rgobootstrap="127"
 rreqs="bashtiny bootstrapmake busybox toybox go${rgobootstrap}"
 rprof="${cwetcprofd}/zz_${rname}.sh"
