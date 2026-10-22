@@ -4,11 +4,11 @@
 # XXX - 6.19+ is available in git but doesn't have autotools-ed archives (yet)
 #
 rname="ethtool"
-rver="7.0"
+rver="7.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://mirrors.edge.kernel.org/pub/software/network/ethtool/${rfile}"
-rsha256="1a17b13dba2aef3897bb66c6140d88dc19e807b7948de3773d37320daae5266c"
+rsha256="b2f2f1e94c3b6e35715d969185a0208d411586d88f49ccbad740063e51720f94"
 rreqs="make libmnl"
 
 . "${cwrecipe}/common.sh"
