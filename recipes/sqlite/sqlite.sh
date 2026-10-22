@@ -15,7 +15,7 @@ rfile="${rdir}.tar.gz"
 rurl="https://www.sqlite.org/2026/${rfile}"
 rsha256="926ef8d3eab93fbf6e06011901273eec076b25594a4e1cdadd50c987f4f6d64e"
 rreqs="make netbsdcurses readlinenetbsdcurses zlib"
-rconfigureopts="--all --fts3 --scanstatus --update-limit --disable-shared"
+rconfigureopts="--all --fts3 --scanstatus --update-limit --disable-shared --column-metadata"
 
 . "${cwrecipe}/common.sh"
 
@@ -118,3 +118,5 @@ function cwgenprofd_${rname}() {
   echo 'append_pkgconfigpath \"${rtdir}/current/lib/pkgconfig\"' >> \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:
