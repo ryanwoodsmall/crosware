@@ -589,21 +589,21 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - gperf (https://www.gnu.org/software/gperf - gnu perfect hash function generator)
 - gpgme (https://gnupg.org/software/gpgme/index.html - gnupg access library)
 - go
-  - go recipe is latest available version
-  - verions
-    - gobootstrap recipe with 1.4 bootstrap binaries (i386, amd64, arm, arm 32-bit static for aarch64)
-    - go117 recipe with golang 1.17.x static binaries for all supported architectures
-    - go118 recipe with golang 1.18.x static binaries for all supported architectures
-    - go119 recipe with golang 1.19.x static binaries for all supported architectures
-    - go120 recipe with golang 1.20.x static binaries for all supported architectures
-    - go121 recipe with golang 1.21.x static binaries for all supported architectures
-    - go122 recipe with golang 1.22.x static binaries for all supported architectures
-    - go123 recipe with golang 1.23.x static binaries for all supported architectures
-    - go124 recipe with golang 1.24.x static binaries for all supported architectures
-    - go125 recipe with golang 1.25.x static binaries for all supported architectures
-    - go126 recipe with golang 1.26.x static binaries for all supported architectures
-    - go127 recipe with golang 1.27.x static binaries for all supported architectures
-  - static binary archive
+  - golatest - hopefully the "latest" stable for projects that need it
+    - built from source using one of the below versions
+  - go - bare recipe is a recent(-ish) available version from below
+    - gobootstrap - 1.4 bootstrap binaries (i386, amd64, arm, arm 32-bit static for aarch64)
+    - go117 - golang 1.17.x static binaries for all supported architectures
+    - go118 - golang 1.18.x static binaries for all supported architectures
+    - go119 - golang 1.19.x static binaries for all supported architectures
+    - go120 - golang 1.20.x static binaries for all supported architectures
+    - go121 - golang 1.21.x static binaries for all supported architectures
+    - go122 - golang 1.22.x static binaries for all supported architectures
+    - go123 - golang 1.23.x static binaries for all supported architectures
+    - go124 - golang 1.24.x static binaries for all supported architectures
+    - go125 - golang 1.25.x static binaries for all supported architectures
+    - go126 - golang 1.26.x static binaries for all supported architectures
+    - go127 - golang 1.27.x static binaries for all supported architectures
   - built via: https://github.com/ryanwoodsmall/go-misc/blob/master/bootstrap-static/build.sh
 - go9p (https://github.com/knusbaum/go9p - 9p in go)
 - goawk (https://github.com/benhoyt/goawk - awk in go)
