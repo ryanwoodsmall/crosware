@@ -9,7 +9,7 @@
 #
 rname="uroot"
 rurootver="0.16.0"
-rgobusyboxver="0.4.0"
+rgobusyboxver="0.5.0"
 rmkuimagever="0.2.0"
 relvishver="26a8bd5c4ee1eb5c0a2d53578d0368de2b8b3274"
 rver="${rurootver}_${rgobusyboxver}_${rmkuimagever}_${relvishver}_$(cwver_cpu)_$(cwver_p9ufs)"
@@ -34,7 +34,7 @@ function cwfetch_${rname}() {
   cwfetchcheck \
     \"https://github.com/u-root/gobusybox/archive/refs/tags/v${rgobusyboxver}.tar.gz\" \
     \"${cwdl}/${rname}/gobusybox/v${rgobusyboxver}.tar.gz\" \
-    \"043993ad681a4f7dea333a0e917346e6e8deaa23e5f52664df5b541aa1a25cac\"
+    \"00578d62781e5fc5ae9776786cd5acd3f280063c8a52792d18ff17bc086cc317\"
   cwfetchcheck \
     \"https://github.com/u-root/mkuimage/archive/refs/tags/v${rmkuimagever}.tar.gz\" \
     \"${cwdl}/${rname}/mkuimage/v${rmkuimagever}.tar.gz\" \
@@ -43,6 +43,15 @@ function cwfetch_${rname}() {
     \"https://github.com/elves/elvish/archive/${relvishver}.zip\" \
     \"${cwdl}/${rname}/elvish/${relvishver}.zip\" \
     \"f54c2523494ecefe48d07294b0f13f80143ff56eac2375a8a05ec766edbaa5e2\"
+}
+"
+
+eval "
+function cwclean_${rname}() {
+  pushd \"${cwbuild}\" &>/dev/null
+  chmod -R u+rw \"\$(cwdir_${rname})\" &>/dev/null || true
+  rm -rf \"${rbdir}\"
+  popd &>/dev/null
 }
 "
 
@@ -107,7 +116,7 @@ function cwmake_${rname}() {
     \$(cwbdir_${rname})/bin/makebb -o \$(cwbdir_${rname})/bin/bb \
       \${PWD}/cmds/*/*/ \
       \${PWD}/mkuimage-${rmkuimagever}/cmd/mkuimage/ \
-      \${PWD}/gobusybox-${rgobusyboxver}/src/cmd/{goanywhere,makebb{,main}}/ \
+      \${PWD}/gobusybox-${rgobusyboxver}/src/cmd/{goanywhere,makebb}/ \
       \${PWD}/elvish-${relvishver}/cmd/{elvish,elvmdfmt}/ \
       \${PWD}/cpu-\$(cwver_cpu)/cmds/{cpu{,d},decpu}/ \
       \${PWD}/p9-\$(cwver_p9ufs)/cmd/p9ufs/
