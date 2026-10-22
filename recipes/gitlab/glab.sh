@@ -4,7 +4,7 @@ rdir="cli-v${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://gitlab.com/gitlab-org/cli/-/archive/v${rver}/${rfile}"
 rsha256="878e9459f3f47a7998d868f49b15905113a21328c2a5358c1073007a1507add6"
-rreqs="go"
+rreqs="golatest"
 
 . "${cwrecipe}/common.sh"
 
@@ -29,7 +29,7 @@ function cwmake_${rname}() {
       CGO_ENABLED=0 \
       GOCACHE=\"\${GOCACHE}\" \
       GOMODCACHE=\"\${GOMODCACHE}\" \
-      PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
+      PATH=\"${cwsw}/golatest/current/bin:\${PATH}\" \
         go build -ldflags \"-s -w -extldflags '-s -static' -X main.buildDate=\$(date +%Y-%m-%d) -X main.version=\$(cwver_${rname}) -X main.platform=linux -X main.debugMode=false\" -o \"${rname}\" \"\$(cwbdir_${rname})/cmd/${rname}\"
     chmod -R u+rw . || true
   )
