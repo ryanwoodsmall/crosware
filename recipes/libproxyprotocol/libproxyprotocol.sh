@@ -1,9 +1,9 @@
 rname="libproxyprotocol"
-rver="1.3.3"
+rver="1.3.4"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/kosmas-valianos/libproxyprotocol/archive/refs/tags/${rfile}"
-rsha256="4f1cbd714e5b52a91a9a43228d55c8165b578b738f743d057ae321b69b8437f7"
+rsha256="e54f7d03924d607042f0ce8f3ce04e1b73e509b913a75a89781416edf4c4337e"
 rreqs=""
 
 . "${cwrecipe}/common.sh"
