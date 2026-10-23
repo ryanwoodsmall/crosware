@@ -45,3 +45,4 @@
 /etc/usb.ids
 /.jython_cache*
 /etc/opendoas*
+/etc/ca-certs

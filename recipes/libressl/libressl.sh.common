@@ -35,6 +35,12 @@ function cwmakeinstall_${rname}() {
   ln -sf \"${rtdir}/current/bin/${rsn}\" \"\$(cwidir_${rname})/bin/openssl\"
   ln -sf \"${rtdir}/current/bin/nc\" \"\$(cwidir_${rname})/bin/${rsn}-nc\"
   ln -sf \"${rtdir}/current/bin/${rsn}\" \"\$(cwidir_${rname})/bin/${rname}\"
+  cwmkdir \"${cwetc}/ca-certs/${rname}\"
+  cwmkdir \"\$(cwidir_${rname})/etc\"
+  rm -f \"${cwetc}/ca-certs/${rname}/cert.pem\" || true
+  rm -f \"\$(cwidir_${rname})/etc/cert.pem\" || true
+  install -D -m 0644 \"\$(realpath cert.pem)\" \"${cwetc}/ca-certs/${rname}/cert.pem\"
+  install -D -m 0644 \"\$(realpath cert.pem)\" \"\$(cwidir_${rname})/etc/cert.pem\"
   popd &>/dev/null
 }
 "

@@ -36,25 +36,37 @@ eval "
 function cwmakeinstall_${rname}() {
   cwmkdir \"${cwetc}/ssl/certs\"
   cwmkdir \"${cwetc}/libressl/certs\"
-  rm -f \"${cwetc}/ssl/cert.pem\"
-  rm -f \"${cwetc}/libressl/cert.pem\"
-  rm -f \"${cwetc}/ssl/certs/ca-bundle.crt\"
-  rm -f \"${cwetc}/libressl/certs/ca-bundle.crt\"
+  for c in \
+    \"${cwetc}/ssl/cert.pem\" \
+    \"${cwetc}/ssl/certs/ca-bundle.crt\" \
+    \"${cwetc}/libressl/cert.pem\" \
+    \"${cwetc}/libressl/certs/ca-bundle.crt\"
+  do
+    test -e \${c} && test -L \${c} && rm -f \${c} || true
+    test -e \${c} && test -f \${c} && mv \${c}{,.PRE-\${TS}} || true
+  done
   ln -sf \"${rtdir}/current/etc/ssl/cert.pem\" \"${cwetc}/ssl/\"
   ln -sf \"${rtdir}/current/etc/ssl/cert.pem\" \"${cwetc}/libressl/\"
   ln -sf \"${cwetc}/ssl/cert.pem\" \"${cwetc}/ssl/certs/ca-bundle.crt\"
-  ln -sf \"${cwetc}/ssl/cert.pem\" \"${cwetc}/libressl/certs/ca-bundle.crt\"
+  ln -sf \"${cwetc}/libressl/cert.pem\" \"${cwetc}/libressl/certs/ca-bundle.crt\"
+  cwmkdir \"${cwetc}/ca-certs/${rname}\"
+  rm -f \"${cwetc}/ca-certs/${rname}/cert.pem\" || true
+  install -D -m 0644 \"\$(cwidir_${rname})/etc/ssl/cert.pem\" \"${cwetc}/ca-certs/${rname}/cert.pem\"
 }
 "
 
 eval "
 function cwuninstall_${rname}() {
   pushd \"${cwsw}\" &>/dev/null
-  rm -rf \"${rname}\"
-  rm -f \"${cwetc}/ssl/cert.pem\"
-  rm -f \"${cwetc}/ssl/certs/ca-bundle.crt\"
-  rm -f \"${rprof}\"
-  rm -f \"${cwvarinst}/${rname}\"
+  cwstderrecho 'i will not uninstall the ${rname} package, sorry'
+  cwstderrecho 'overwrite files in ${cwetc}/{libre,}ssl/{certs/,} manually'
+  : rm -rf \"${rname}\"
+  : rm -f \"${cwetc}/ssl/cert.pem\"
+  : rm -f \"${cwetc}/ssl/certs/ca-bundle.crt\"
+  : rm -f \"${cwetc}/libressl/cert.pem\"
+  : rm -f \"${cwetc}/libressl/certs/ca-bundle.crt\"
+  : rm -f \"${rprof}\"
+  : rm -f \"${cwvarinst}/${rname}\"
   popd &>/dev/null
 }
 "

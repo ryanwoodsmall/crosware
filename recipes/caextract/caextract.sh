@@ -27,6 +27,9 @@ function cwmakeinstall_${rname}() {
   ln -sf \"\${f}\" \"\$(cwidir_${rname})/cacert.pem\"
   ln -sf \"\${f}\" \"\$(cwidir_${rname})/cert.pem\"
   ln -sf \"\${f}\" \"\$(cwidir_${rname})/ca-bundle.crt\"
+  cwmkdir \"${cwetc}/ca-certs/${rname}\"
+  rm -f \"${cwetc}/ca-certs/${rname}/cert.pem\" || true
+  install -D -m 0644 \"\$(realpath \$(cwidir_${rname})/\${f})\" \"${cwetc}/ca-certs/${rname}/cert.pem\"
   unset f
 }
 "

@@ -20,3 +20,4 @@ var/spool/**
 etc/pci.ids
 etc/usb.ids
 .jython_cache**
+etc/ca-certs
