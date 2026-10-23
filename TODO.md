@@ -1,7 +1,19 @@
 # TODO
 
+- 202610xx
+  - **musl**
+  - **statictoolchain**
+  - libressl44
+  - openssl##
+  - java (zulu, ...)
+  - go (go126, go127)
+  - perl
+  - python
+  - much more
+  - ...
+
 - 20261011
-  - `golatest` - use `go` to just build the latest go
+  - ~`golatest` - use `go` to just build the latest go~
   - allows recipes hard-coding versions in `go.mod`
   - at the expense of building a local version of go
   - `goprevious` too
