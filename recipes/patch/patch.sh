@@ -1,9 +1,9 @@
 rname="patch"
-rver="2.8"
+rver="2.8.1"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/${rname}/${rfile}"
-rsha256="308a4983ff324521b9b21310bfc2398ca861798f02307c79eb99bb0e0d2bf980"
+rsha256="0f7b43c7ea450c5d3e9eaf8301177628bc0171d580b2bd6a72822409767144ff"
 rreqs="bootstrapmake toybox"
 
 . "${cwrecipe}/common.sh"
