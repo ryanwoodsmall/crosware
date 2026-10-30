@@ -35,7 +35,7 @@ rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/${rname}/${rname}/archive/refs/tags/${rfile}"
 rsha256="4e422caf02e8fc2082f749f56b37dd64133da0e288cebdfdde52be8537ead69a"
-rreqs="golatest cacertificates bootstrapmake"
+rreqs="go cacertificates bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
@@ -60,7 +60,7 @@ function cwmake_${rname}() {
     export CGO_ENABLED=0
     export GOCACHE=\"\${GOCACHE}\"
     export GOMODCACHE=\"\${GOMODCACHE}\"
-    export PATH=\"${cwsw}/golatest/current/bin:\${PATH}\"
+    export PATH=\"${cwsw}/go/current/bin:\${PATH}\"
     go build -ldflags \"-s -w -X main.version=\$(cwver_${rname})\" -o ${rname} .
     ./${rname} --help-custom-man > ${rname}.man
     chmod -R u+rw . || true

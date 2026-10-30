@@ -4,7 +4,7 @@ rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/slackhq/nebula/archive/refs/tags/${rfile}"
 rsha256="f4d33fbe0a57d2914b8cc94b463d3f170990f92f34251aaef1ca80fb5cd952b0"
-rreqs="golatest cacertificates bootstrapmake"
+rreqs="go cacertificates bootstrapmake"
 
 . "${cwrecipe}/common.sh"
 
@@ -30,7 +30,7 @@ function cwclean_${rname}() {
 eval "
 function cwmake_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  env PATH=\"${cwsw}/golatest/current/bin:\${PATH}\" \
+  env PATH=\"${cwsw}/go/current/bin:\${PATH}\" \
     CGO_ENABLED=0 \
     make BUILD_NUMBER=\"\$(cwver_${rname})\" GOPATH=\"\$(cwbdir_${rname})/build\"
   popd &>/dev/null
