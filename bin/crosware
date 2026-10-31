@@ -1587,7 +1587,7 @@ function cwshowfunc() {
     funclist="${@}"
   fi
   for funcname in ${funclist} ; do
-    declare -F "${funcname}" || cwfailexit "$(cwmyfuncname): no such function '${funcname}'"
+    declare -F "${funcname}" &>/dev/null && declare -f "${funcname}" || cwfailexit "$(cwmyfuncname): no such function '${funcname}'"
   done
   unset funcname funclist
 }
