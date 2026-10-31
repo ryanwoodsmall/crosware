@@ -10,11 +10,7 @@ rreqs="bootstrapmake"
 . "${cwrecipe}/common.sh"
 
 for f in clean fetch extract patch make ; do
-  eval "
-    function cw${f}_${rname}() {
-      cw${f}_${rname%%minimal}
-    }
-    "
+  eval "function cw${f}_${rname}() { cw${f}_${rname%%minimal} ; }"
 done
 unset f
 
@@ -47,3 +43,5 @@ function cwgenprofd_${rname}() {
   echo 'append_path \"${rtdir}/current/bin\"' >> \"${rprof}\"
 }
 "
+
+# vim: set ft=bash:
