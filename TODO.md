@@ -6,10 +6,12 @@
   - libressl44
   - openssl##
   - java (zulu, ...)
-  - go (go126, go127)
-  - perl
-  - python
+  - go (go126, go127, ...)
+  - perl (libressl, opensssl)
+  - python (openssl)
   - wolfssl
+  - ncurses...
+    - mg 4.4/4.5/... are giving me fits
   - much more
   - ...
   - **TIME TO RETIRE SOME SHIT**
