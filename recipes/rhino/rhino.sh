@@ -1,9 +1,9 @@
 rname="rhino"
-rver="1.9.1"
+rver="1.9.2"
 rdir="${rname}-all-${rver}"
 rfile="${rdir}.jar"
 rurl="https://repo.maven.apache.org/maven2/org/mozilla/rhino-all/${rver}/${rfile}"
-rsha256="1cc2b468a51857747dcb29ae533e352a2abc04e81c5aa61e397dc774dd395329"
+rsha256="9b4fc23fdd7902beabd542099b6f590f05638dbbb054e9784f444982a6296493"
 rreqs="rlwrap"
 
 . "${cwrecipe}/common.sh"
