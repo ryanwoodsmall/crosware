@@ -13,6 +13,14 @@
   - much more
   - ...
   - **TIME TO RETIRE SOME SHIT**
+  - recipes should be able to mark themselves upgradable if a downstream is upgradable
+    - probably faster
+    - use directly with well-defined global hashes
+    - use for e.g. variant recipes
+      - `cwcheckupgradable ${rreq} && cwmarkupgradable ${rname}`
+  - integration work for: https://github.com/ryanwoodsmall/static-binaries/issues/3
+    - `rlicense` and `rlicensefile`
+    - **GOTTA GET THIS IN PLACE**
 
 - 20261011
   - ~`golatest` - use `go` to just build the latest go~
