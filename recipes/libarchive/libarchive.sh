@@ -8,11 +8,11 @@
 #   https://github.com/libarchive/libarchive/tree/master/contrib/shar
 #
 rname="libarchive"
-rver="3.8.10"
+rver="3.8.11"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/libarchive/libarchive/releases/download/v${rver}/${rfile}"
-rsha256="a1bffbe5152cfe869751179e7b16648c87c461cb8c46eee75062efbe164cc57c"
+rsha256="900fe9fc7237c2b04f090f3c3648de8fe597525771f5035016537ce2d667d12b"
 rreqs="make expat zlib bzip2 lz4 lzo zstd mbedtls xz libmd attr acl e2fsprogs libbsd pkgconfig libb2"
 
 . "${cwrecipe}/common.sh"
