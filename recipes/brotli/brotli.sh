@@ -6,11 +6,11 @@
 # XXX - if the Makefile ever breaks, it's curtains for this recipe.
 #
 rname="brotli"
-rver="1.2.0"
+rver="1.2.1"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/google/${rname}/archive/refs/tags/${rfile}"
-rsha256="816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec"
+rsha256="98d35d11a78dc453aebb7d10c3748f3f73ff78c8267c0dc697b8631f67bf7e8f"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
