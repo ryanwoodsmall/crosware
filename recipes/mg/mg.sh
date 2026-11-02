@@ -17,8 +17,6 @@ function cwconfigure_${rname}() {
       LDFLAGS=\"-L${cwsw}/ncurses/current/lib -static\" \
       PKG_CONFIG_{LIBDIR,PATH}=\"${cwsw}/ncurses/current/lib/pkgconfig\" \
       LIBS=-static
-  # grep -rl 'getkeyname.*(' . | grep -E '\\.(c|h)\$' | xargs sed -i.ORIG1 '/getkeyname.*(/s,getkeyname,local_get_key_name,g'
-  # grep -rl 'keyname.*(' .    | grep -E '\\.(c|h)\$' | xargs sed -i.ORIG2 '/keyname.*(/s,keyname,local_key_name,g'
   popd &>/dev/null
 }
 "
