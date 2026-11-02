@@ -2,11 +2,11 @@
 # XXX - avoid execution of `git log` for every file? wtf
 #
 rname="manpages"
-rver="6.19"
+rver="6.20"
 rdir="man-pages-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/${rfile}"
-rsha256="fc0c620f07b4eba8ede128fbc267db5ebb4a67bab1aca3b01e5734956baf5572"
+rsha256="46f325713f2fd75c8d1f4fa42748153526a44846806d37028fab85cd0143de46"
 rreqs="make coreutils"
 
 . "${cwrecipe}/common.sh"
