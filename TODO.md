@@ -1,5 +1,14 @@
 # TODO
 
+- 202611xx
+  - `r...{{arch,}files,{arch,}shasums}` recipe hashes
+    - hashes for multiple files
+    - hashes for multiple _arches_ based on `${karch}`
+    - expand at runtime instead of parsetime
+      - (more serializability down the line)
+    - make these general purpose
+      - e.g., patches, ...
+
 - 202610xx
   - **musl**
   - **statictoolchain**
