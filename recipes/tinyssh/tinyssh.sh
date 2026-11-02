@@ -45,11 +45,11 @@
 #   tcpsvd: status 0/30
 #
 rname="tinyssh"
-rver="20261001"
+rver="20261101"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/janmojzis/${rname}/archive/refs/tags/${rfile}"
-rsha256="f79b1b4b8db16d3b1ecc339828d48c3754e354634ac28d2fbf82c85da56e503e"
+rsha256="eb06d86c5858cfece45b9c02b7338ef0e24dfd84a39c1a963d461d022237f639"
 rreqs="bootstrapmake"
 
 . "${cwrecipe}/common.sh"
