@@ -8,13 +8,14 @@
 # XXX - 0.6.0 broke something with my config, copy_file succeeds on "muon ... install" and dump fails?
 #     - fix_rpaths is breaking?
 #     - ovewrite src/platform/posix/rpath_fixer.c with src/platform/null/rpath_fixer.c
+# XXX - failure on execinfo.h - from glibc, not sure what this effects; backtraces maybe?
 #
 rname="muon"
-rver="0.7.0"
+rver="0.7.1"
 rdir="${rname}-${rver}"
 rfile="${rver}.tar.gz"
 rurl="https://github.com/annacrombie/muon/archive/refs/tags/${rfile}"
-rsha256="e7095741dc11338f5ed8e0aa02e993fc34df4295dad4296127bbb212bcf56e07"
+rsha256="967a99ade648a850807d5637c80d55043ded34556e9dcbfec8736d6de52f96c5"
 rreqs="samurai pkgconf"
 
 . "${cwrecipe}/common.sh"
