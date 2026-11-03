@@ -329,6 +329,8 @@ wc -l /tmp/astbuild.out
   - firecracker-containerd (https://github.com/firecracker-microvm/firecracker-containerd)
 - firejail (https://github.com/netblue30/firejail)
 - fleet (https://fleetdm.com and https://github.com/fleetdm/fleet - mobile device management in go)
+  - couple with `samba` or `389ds`/`dogtag`/..., `unbound`, let's encrypt, etc. for full laptop management stack?
+  - android?
 - forgejo (https://forgejo.org/ and https://codeberg.org/forgejo/forgejo - gitea fork)
 - forth stuff
   - embed (https://github.com/howerj/embed - small forth interpreter+metacompiler in c, j1 and h2 (virtual) cpu models)
@@ -1442,5 +1444,5 @@ wc -l /tmp/astbuild.out
 - whatever else seems useful
 
 <!--
-# vim: ft=markdown
+# vim: set ft=markdown:
 -->
