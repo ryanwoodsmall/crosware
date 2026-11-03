@@ -8,6 +8,11 @@
       - (more serializability down the line)
     - make these general purpose
       - e.g., patches, ...
+  - move to `main`
+  - move off github (gitlab? codeburg? ...)
+  - move to **got**? (lol... unless)
+  - figure out binary file storage
+    - long-term/permanent
 
 - 202610xx
   - **musl**
