@@ -274,6 +274,7 @@ wc -l /tmp/astbuild.out
 - dasel (https://github.com/TomWright/dasel - data selector like jq, yq - go)
 - dave (https://github.com/micromata/dave - go webdav sever w/tls)
 - davix (https://github.com/cern-fts/davix - c++ (cmake, libxml2, openssl) webdav/s3 client?)
+- defguard (https://defguard.net and https://github.com/DefGuard/defguard - wireguard, id, etc. vpn/mgmt, rust)
 - dehydrated (https://github.com/dehydrated-io/dehydrated - shell acme/letsencrypt client)
 - dinit (https://github.com/davmac314/dinit - init and service monitor)
 - diod (https://github.com/chaos/diod - 9p fileserver)
