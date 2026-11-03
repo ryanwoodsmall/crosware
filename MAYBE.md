@@ -328,6 +328,7 @@ wc -l /tmp/astbuild.out
   - firectl (https://github.com/firecracker-microvm/firectl - firecracker vm control, go)
   - firecracker-containerd (https://github.com/firecracker-microvm/firecracker-containerd)
 - firejail (https://github.com/netblue30/firejail)
+- fleet (https://fleetdm.com and https://github.com/fleetdm/fleet - mobile device management in go)
 - forgejo (https://forgejo.org/ and https://codeberg.org/forgejo/forgejo - gitea fork)
 - forth stuff
   - embed (https://github.com/howerj/embed - small forth interpreter+metacompiler in c, j1 and h2 (virtual) cpu models)
