@@ -591,6 +591,8 @@ A smaller, more supportable, preferably single-binary static Git client would/wi
 - go
   - golatest - hopefully the "latest" stable for projects that need it
     - built from source using one of the below versions
+  - goprevious - latest version of the previous stable go
+    - built from source using one of the below versions
   - go - bare recipe is a recent(-ish) available version from below
     - gobootstrap - 1.4 bootstrap binaries (i386, amd64, arm, arm 32-bit static for aarch64)
     - go117 - golang 1.17.x static binaries for all supported architectures
