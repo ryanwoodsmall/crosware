@@ -1068,6 +1068,7 @@ wc -l /tmp/astbuild.out
 - picohttpparser (https://github.com/h2o/picohttpparser - small, fast http protocol parser)
 - pigz
 - pkgconf (https://github.com/pkgconf/pkgconf - pkg-config-alike in c, opt-in only for now - not yet on path)
+- plan9port-extras (https://github.com/0intro/plan9port-extra - mothra, pq/ev/dispatch)
 - planck (clojurescript repl, https://github.com/planck-repl/planck)
 - pocketlang (https://github.com/ThakeeNathees/pocketlang and https://thakeenathees.github.io/pocketlang/)
 - poke (http://www.jemarch.net/poke.html - gnu binary data editor/language)
