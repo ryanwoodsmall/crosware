@@ -1,4 +1,4 @@
-rver="7.8.0.202609011348-r"
+rver="7.8.1.202611041320-r"
 rname="jgitsh${rver%%.*}"
-rsha256="0a3a1d2cc7999e427193f8f81edba43a3f602517c91d0923ec4bff10093a6265"
+rsha256="5446356d35a0260d11f0d0c346472b98496cea03251c10ac572efc2a54c67ec6"
 . "${cwrecipe}/jgitsh/jgitsh.sh.common"
