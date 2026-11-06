@@ -1,12 +1,14 @@
-rver="11.90.205-ca-jdk11.0.32.1"
+rver="11.92.109-ca-jdk11.0.33"
 mver="${rver%%.*}"
 rname="zulu${mver}musl"
-rsha256="54e010980f549ed33db8732ac09f188c52d3b67f51e941345c3a48a855682b9d"
+rsha256="2946c47ac9aab714e58d9bacdf89cbcb8d8954d5fb7e3e91eb9a42b3d0f8ee2b"
 if [[ ${karch} =~ aarch64 ]] ; then
   rdir="zulu${rver}-linux_musl_aarch64"
-  rsha256="9bf3379f31570732db3f71fe386fd8c492e2dd8095584226e989160d000690c5"
+  rsha256="94f1094f921c30a7176f9e72fc950add3e6bf0b34d41177e78443acfceb40b2a"
 fi
 
 . "${cwrecipe}/${rname%${mver}musl}/${rname//${mver}musl/musl}.sh.common"
 
 unset mver
+
+# vim: set ft=bash:

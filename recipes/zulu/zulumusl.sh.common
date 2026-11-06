@@ -54,4 +54,4 @@ function cwgenprofd_${rname}() {
 }
 "
 
-# vim: ft=bash:
+# vim: set ft=bash:
