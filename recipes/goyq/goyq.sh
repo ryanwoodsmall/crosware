@@ -1,9 +1,9 @@
 rname="goyq"
-rver="4.54.1"
+rver="4.54.2"
 rdir="${rname#go}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/mikefarah/yq/archive/refs/tags/${rfile}"
-rsha256="0cec36e7035dd56c508bda56245cbd71e4495d2317bc2528165c4162bce79335"
+rsha256="13391403bb284452e102a532037c1ce5f5cd9d2a45f3e70521e810d5c32afe46"
 rreqs="go"
 
 . "${cwrecipe}/common.sh"
