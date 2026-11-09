@@ -1,9 +1,9 @@
 rname="lima"
-rver="2.2.1"
+rver="2.3.0"
 rdir="${rname}-${rver}"
 rfile="v${rver}.tar.gz"
 rurl="https://github.com/lima-vm/lima/archive/refs/tags/${rfile}"
-rsha256="d551efb52115ba006c1052d5c929e4d3afac363c78c9cfca6975af1f85c1426a"
+rsha256="436ace830cb3e8fa512e0157a220bd8d6f826aef789c3f26d2984f0ea1e3c2ea"
 rreqs="go bootstrapmake"
 
 . "${cwrecipe}/common.sh"
