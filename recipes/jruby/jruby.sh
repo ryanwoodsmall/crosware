@@ -1,9 +1,9 @@
 rname="jruby"
-rver="10.1.2.0"
+rver="10.1.3.0"
 rdir="${rname}-${rver}"
 rfile="${rname}-dist-${rver}-bin.tar.gz"
 rurl="https://repo1.maven.org/maven2/org/jruby/jruby-dist/${rver}/${rfile}"
-rsha256="6dcb361bc1df554803fdd0243dc7c7a42723ac88a4b6f66830026afe82db28a8"
+rsha256="3d76fe1fce6aa9f56fd7efb1015a9db95a0aa6f95fe9ec868f9e75d9ddc1871c"
 rprof="${cwetcprofd}/zz_${rname}.sh"
 rreqs=""
 
