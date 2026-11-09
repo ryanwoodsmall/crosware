@@ -7,19 +7,19 @@
 # XXX - ... and NEED separate openssl, libressl and wolfssl variants for apps, examples
 #
 rname="nghttp2"
-rver="1.70.0"
+rver="1.71.0"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://github.com/nghttp2/nghttp2/releases/download/v${rver}/${rfile}"
-rsha256="aa317e2cf9dca6afa0aed68f8fad6ff303ec6982e25a78c75c0b65e2b9b3ded5"
-rreqs="bootstrapmake bashtiny slibtool busybox"
+rsha256="0cdd35ecec77919b4b7b245f87fe8d2216e3d62da854eb0838c594ff058042fc"
+rreqs="bootstrapmake bashtiny slibtool busybox pkgconfig"
 
 . "${cwrecipe}/common.sh"
 
 eval "
 function cwconfigure_${rname}() {
   pushd \"\$(cwbdir_${rname})\" &>/dev/null
-  env PATH=\"\$(echo ${cwsw}/{bashtiny,busybox,bootstrapmake,slibtool,ccache{,4},statictoolchain}/current/bin | tr ' ' ':')\" \
+  env PATH=\"\$(echo ${cwsw}/{bashtiny,busybox,bootstrapmake,slibtool,ccache{,4},statictoolchain,pkgconfig}/current/bin | tr ' ' ':')\" \
     \"${cwsw}/bashtiny/current/bin/bash\" \
       ./configure \
         --disable-app \
