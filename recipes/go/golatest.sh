@@ -3,9 +3,9 @@
 # XXX - may need to manually clean up...
 #
 rname="golatest"
-rver="1.27.3"
+rver="1.27.4"
 rgobootstrap="127"
-rsha256="6e7749035cf360f06b2575d162ea79df9fda8ef671889e5c375f8e50777f26bb"
+rsha256="73cfb8571aec0c01177687db87163d46aa20e9779672772891aa17654d9a6099"
 
 . "${cwrecipe}/go/gobuildgo.sh.common"
 
