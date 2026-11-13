@@ -96,6 +96,7 @@ time \
 wc -l /tmp/astbuild.out
 ```
 - atac (https://github.com/Julien-cpsn/ATAC - terminal api client, rust)
+- autoconf-archive (https://www.gnu.org/software/autoconf-archive - gnu macros for autoconf+autotools)
 - awall (https://github.com/alpinelinux/awall - alpine firewall!)
 - awka (http://awka.sourceforge.net/index.html - generate c from awk and compile)
 - awkcc (https://github.com/nokia/awkcc - awk to c transpiler w/binary executable output)
