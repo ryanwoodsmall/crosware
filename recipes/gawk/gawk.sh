@@ -1,9 +1,9 @@
 rname="gawk"
-rver="5.4.1"
+rver="5.4.2"
 rdir="${rname}-${rver}"
 rfile="${rdir}.tar.gz"
 rurl="https://ftp.gnu.org/gnu/gawk/${rfile}"
-rsha256="8b3b0ea83930311a3f30905d3ce898d32c6103c2fe20d6a90b40341171b174de"
+rsha256="79c46f5de14401663c63c8df4fc45c3bda76f6329d73b213523a7c71f32f7243"
 rreqs="bootstrapmake sed"
 
 . "${cwrecipe}/common.sh"
